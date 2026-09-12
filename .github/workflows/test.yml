@@ -1,4 +1,4 @@
-name: Test API Key
+name: Customs API Test
 
 on:
   workflow_dispatch:
@@ -8,6 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
       - name: 저장소 파일 가져오기
         uses: actions/checkout@v4
 
@@ -16,7 +17,10 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: test.py 실행
+      - name: 필요한 프로그램 설치
+        run: pip install requests
+
+      - name: 관세청 데이터 조회
         env:
           CUSTOMS_API_KEY: ${{ secrets.CUSTOMS_API_KEY }}
         run: python test.py
