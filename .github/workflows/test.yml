@@ -1,10 +1,13 @@
-name: Customs API Test
+name: Customs Export Data
 
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
-  test:
+  update:
     runs-on: ubuntu-latest
 
     steps:
@@ -24,3 +27,11 @@ jobs:
         env:
           CUSTOMS_API_KEY: ${{ secrets.CUSTOMS_API_KEY }}
         run: python test.py
+
+      - name: CSV 파일 GitHub에 저장
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add export_330499.csv
+          git commit -m "Update export data" || echo "변경사항 없음"
+          git push
