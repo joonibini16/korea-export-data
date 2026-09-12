@@ -1,34 +1,26 @@
 import os
 import requests
 import xml.etree.ElementTree as ET
+import csv
 
-# GitHub Secret에서 인증키 가져오기
 api_key = os.environ.get("CUSTOMS_API_KEY")
 
 if not api_key:
     print("실패: API 인증키를 찾지 못했습니다.")
     exit()
 
-# 관세청 API 주소
 url = "https://apis.data.go.kr/1220000/Itemtrade/getItemtradeList"
 
-# 조회조건
 params = {
     "serviceKey": api_key,
-    "strtYymm": "202601",
-    "endYymm": "202601",
+    "strtYymm": "202501",
+    "endYymm": "202608",
     "hsSgn": "330499"
 }
 
 print("관세청 데이터를 요청합니다...")
-print("조회 HS Code: 330499")
-print("조회기간: 2026년 1월")
-print()
 
 response = requests.get(url, params=params, timeout=30)
-
-print("HTTP 상태코드:", response.status_code)
-print()
 
 if response.status_code != 200:
     print("API 호출 실패")
@@ -39,17 +31,50 @@ root = ET.fromstring(response.text)
 
 items = root.findall(".//item")
 
-print("데이터 개수:", len(items))
+rows = []
+
+for item in items:
+
+    year = item.findtext("year")
+    hs_code = item.findtext("hsCode")
+    stat_kor = item.findtext("statKor")
+    exp_dlr = item.findtext("expDlr")
+    exp_wgt = item.findtext("expWgt")
+    imp_dlr = item.findtext("impDlr")
+    imp_wgt = item.findtext("impWgt")
+
+    # 총계 행은 제외
+    if year == "총계":
+        continue
+
+    rows.append([
+        year,
+        hs_code,
+        stat_kor,
+        exp_dlr,
+        exp_wgt,
+        imp_dlr,
+        imp_wgt
+    ])
+
+# CSV 저장
+with open("export_330499.csv", "w", newline="", encoding="utf-8-sig") as f:
+
+    writer = csv.writer(f)
+
+    writer.writerow([
+        "월",
+        "HS코드",
+        "품목명",
+        "수출금액_USD",
+        "수출중량_KG",
+        "수입금액_USD",
+        "수입중량_KG"
+    ])
+
+    writer.writerows(rows)
+
 print()
-
-# 모든 item의 실제 필드 이름과 값을 출력
-for number, item in enumerate(items, start=1):
-
-    print("=" * 70)
-    print("ITEM", number)
-    print("=" * 70)
-
-    for child in item:
-        print(child.tag, "=", child.text)
-
-    print()
+print("성공!")
+print("export_330499.csv 파일을 만들었습니다.")
+print("저장된 데이터 행:", len(rows))
