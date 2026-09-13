@@ -150,3 +150,108 @@ with open(
 
 print()
 print("export_330499.csv 저장 완료")
+
+# -----------------------------
+# 월별 요약 데이터 만들기
+# -----------------------------
+
+from collections import defaultdict
+
+monthly = defaultdict(lambda: {
+    "exp_dlr": 0,
+    "exp_wgt": 0
+})
+
+for row in rows:
+    year = row[0]
+    exp_dlr = int(row[3]) if row[3] else 0
+    exp_wgt = int(row[4]) if row[4] else 0
+
+    monthly[year]["exp_dlr"] += exp_dlr
+    monthly[year]["exp_wgt"] += exp_wgt
+
+
+summary_rows = []
+
+months_sorted = sorted(monthly.keys())
+
+for i, month in enumerate(months_sorted):
+
+    exp_dlr = monthly[month]["exp_dlr"]
+    exp_wgt = monthly[month]["exp_wgt"]
+
+    # 수출단가
+    if exp_wgt > 0:
+        unit_price = exp_dlr / exp_wgt
+    else:
+        unit_price = 0
+
+    # MoM
+    if i > 0:
+        prev_month = months_sorted[i - 1]
+        prev_exp = monthly[prev_month]["exp_dlr"]
+
+        if prev_exp > 0:
+            mom = ((exp_dlr / prev_exp) - 1) * 100
+        else:
+            mom = None
+    else:
+        mom = None
+
+    # YoY
+    year_num = int(month[:4])
+    month_num = month[-2:]
+
+    prev_year_month = f"{year_num - 1}.{month_num}"
+
+    if prev_year_month in monthly:
+        prev_year_exp = monthly[prev_year_month]["exp_dlr"]
+
+        if prev_year_exp > 0:
+            yoy = ((exp_dlr / prev_year_exp) - 1) * 100
+        else:
+            yoy = None
+    else:
+        yoy = None
+
+    summary_rows.append([
+        month,
+        exp_dlr,
+        exp_wgt,
+        unit_price,
+        yoy,
+        mom
+    ])
+
+
+with open(
+    "summary_330499.csv",
+    "w",
+    newline="",
+    encoding="utf-8-sig"
+) as f:
+
+    writer = csv.writer(f)
+
+    writer.writerow([
+        "월",
+        "수출금액_USD",
+        "수출중량_KG",
+        "수출단가_USD_per_KG",
+        "YoY_pct",
+        "MoM_pct"
+    ])
+
+    for row in summary_rows:
+
+        writer.writerow([
+            row[0],
+            row[1],
+            row[2],
+            round(row[3], 2),
+            "" if row[4] is None else round(row[4], 2),
+            "" if row[5] is None else round(row[5], 2)
+        ])
+
+
+print("summary_330499.csv 저장 완료")
