@@ -193,7 +193,7 @@ def collect_data(hs_code):
             response = requests.get(
                 API_URL,
                 params=params,
-                timeout=30
+                timeout=(60, 120)
             )
 
             if response.status_code != 200:
