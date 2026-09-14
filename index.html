@@ -1519,49 +1519,28 @@ function createChangeChart(itemName) {
 
     const data =
         allData
-
         .filter(
-            d =>
-                d["품목명"]
-                ===
-                itemName
+            d => d["품목명"] === itemName
         )
-
         .sort(
-            (
-                a,
-                b
-            ) =>
-                a["월"]
-                .localeCompare(
-                    b["월"]
-                )
+            (a, b) =>
+                a["월"].localeCompare(b["월"])
         );
 
 
     const labels =
-        data
-        .map(
-            d =>
-                d["월"]
+        data.map(
+            d => d["월"]
         );
 
 
     const yoyValues =
-        data
-        .map(
+        data.map(
             d => {
 
-                if (
-                    d["YoY_pct"]
-                    ===
-                    ""
-                ) {
-
+                if (d["YoY_pct"] === "") {
                     return null;
-
                 }
-
 
                 return Number(
                     d["YoY_pct"]
@@ -1572,20 +1551,12 @@ function createChangeChart(itemName) {
 
 
     const momValues =
-        data
-        .map(
+        data.map(
             d => {
 
-                if (
-                    d["MoM_pct"]
-                    ===
-                    ""
-                ) {
-
+                if (d["MoM_pct"] === "") {
                     return null;
-
                 }
-
 
                 return Number(
                     d["MoM_pct"]
@@ -1605,18 +1576,13 @@ function createChangeChart(itemName) {
         " 수출액 증감률";
 
 
-    if (
-        changeChart
-    ) {
-
+    if (changeChart) {
         changeChart.destroy();
-
     }
 
 
     const ctx =
-        document
-        .getElementById(
+        document.getElementById(
             "changeChart"
         );
 
@@ -1626,44 +1592,30 @@ function createChangeChart(itemName) {
             ctx,
             {
 
-                type:
-                    "line",
-
+                type: "line",
 
                 plugins: [
                     ChartDataLabels
                 ],
 
-
                 data: {
 
-                    labels:
-                        labels,
-
+                    labels: labels,
 
                     datasets: [
 
-
                         {
+                            label: "YoY",
 
-                            label:
-                                "YoY",
+                            data: yoyValues,
 
-                            data:
-                                yoyValues,
+                            tension: 0.2,
 
-                            tension:
-                                0.2,
+                            pointRadius: 1.5,
 
-                            pointRadius:
-                                1.5,
+                            pointHoverRadius: 5,
 
-                            pointHoverRadius:
-                                5,
-
-                            spanGaps:
-                                true,
-
+                            spanGaps: true,
 
                             datalabels: {
 
@@ -1678,26 +1630,17 @@ function createChangeChart(itemName) {
 
                                     },
 
-                                align:
-                                    "top",
+                                align: "top",
 
-                                anchor:
-                                    "end",
+                                anchor: "end",
 
-                                offset:
-                                    4,
+                                offset: 7,
 
-                                clamp:
-                                    true,
+                                clamp: true,
 
                                 font: {
-
-                                    size:
-                                        11,
-
-                                    weight:
-                                        "bold"
-
+                                    size: 11,
+                                    weight: "bold"
                                 },
 
                                 formatter:
@@ -1708,23 +1651,16 @@ function createChangeChart(itemName) {
                                             ||
                                             value === undefined
                                         ) {
-
                                             return "";
-
                                         }
 
+                                        const rounded =
+                                            Math.round(value);
 
                                         return (
-                                            (
-                                                value > 0
-                                                ?
-                                                "+"
-                                                :
-                                                ""
-                                            )
+                                            (rounded > 0 ? "+" : "")
                                             +
-                                            value
-                                            .toFixed(1)
+                                            rounded
                                             +
                                             "%"
                                         );
@@ -1737,28 +1673,19 @@ function createChangeChart(itemName) {
 
 
                         {
+                            label: "MoM",
 
-                            label:
-                                "MoM",
+                            data: momValues,
 
-                            data:
-                                momValues,
+                            tension: 0.2,
 
-                            tension:
-                                0.2,
+                            pointRadius: 1.5,
 
-                            pointRadius:
-                                1.5,
+                            pointHoverRadius: 5,
 
-                            pointHoverRadius:
-                                5,
+                            spanGaps: true,
 
-                            spanGaps:
-                                true,
-
-                            borderDash:
-                                [5, 5],
-
+                            borderDash: [5, 5],
 
                             datalabels: {
 
@@ -1773,26 +1700,17 @@ function createChangeChart(itemName) {
 
                                     },
 
-                                align:
-                                    "bottom",
+                                align: "bottom",
 
-                                anchor:
-                                    "end",
+                                anchor: "end",
 
-                                offset:
-                                    4,
+                                offset: 7,
 
-                                clamp:
-                                    true,
+                                clamp: true,
 
                                 font: {
-
-                                    size:
-                                        11,
-
-                                    weight:
-                                        "bold"
-
+                                    size: 11,
+                                    weight: "bold"
                                 },
 
                                 formatter:
@@ -1803,23 +1721,16 @@ function createChangeChart(itemName) {
                                             ||
                                             value === undefined
                                         ) {
-
                                             return "";
-
                                         }
 
+                                        const rounded =
+                                            Math.round(value);
 
                                         return (
-                                            (
-                                                value > 0
-                                                ?
-                                                "+"
-                                                :
-                                                ""
-                                            )
+                                            (rounded > 0 ? "+" : "")
                                             +
-                                            value
-                                            .toFixed(1)
+                                            rounded
                                             +
                                             "%"
                                         );
@@ -1837,21 +1748,15 @@ function createChangeChart(itemName) {
 
                 options: {
 
-                    responsive:
-                        true,
+                    responsive: true,
 
-
-                    maintainAspectRatio:
-                        false,
-
+                    maintainAspectRatio: false,
 
                     interaction: {
 
-                        mode:
-                            "index",
+                        mode: "index",
 
-                        intersect:
-                            false
+                        intersect: false
 
                     },
 
@@ -1859,10 +1764,7 @@ function createChangeChart(itemName) {
                     plugins: {
 
                         legend: {
-
-                            position:
-                                "top"
-
+                            position: "top"
                         },
 
 
@@ -1874,41 +1776,26 @@ function createChangeChart(itemName) {
                                     function(context) {
 
                                         if (
-                                            context
-                                            .parsed
-                                            .y
+                                            context.parsed.y
                                             ===
                                             null
                                         ) {
-
                                             return "";
-
                                         }
 
 
                                         const value =
-                                            context
-                                            .parsed
-                                            .y;
+                                            context.parsed.y;
 
 
                                         return (
-                                            context
-                                            .dataset
-                                            .label
+                                            context.dataset.label
                                             +
                                             ": "
                                             +
-                                            (
-                                                value > 0
-                                                ?
-                                                "+"
-                                                :
-                                                ""
-                                            )
+                                            (value > 0 ? "+" : "")
                                             +
-                                            value
-                                            .toFixed(1)
+                                            value.toFixed(1)
                                             +
                                             "%"
                                         );
@@ -1928,25 +1815,18 @@ function createChangeChart(itemName) {
 
                             title: {
 
-                                display:
-                                    true,
+                                display: true,
 
-                                text:
-                                    "증감률 (%)"
+                                text: "증감률 (%)"
 
                             },
-
 
                             ticks: {
 
                                 callback:
                                     function(value) {
 
-                                        return (
-                                            value
-                                            +
-                                            "%"
-                                        );
+                                        return value + "%";
 
                                     }
 
@@ -1958,26 +1838,18 @@ function createChangeChart(itemName) {
                         x: {
 
                             grid: {
-
-                                display:
-                                    false
-
+                                display: false
                             },
-
 
                             ticks: {
 
-                                maxRotation:
-                                    45,
+                                maxRotation: 45,
 
-                                minRotation:
-                                    45,
+                                minRotation: 45,
 
-                                autoSkip:
-                                    true,
+                                autoSkip: true,
 
-                                maxTicksLimit:
-                                    24
+                                maxTicksLimit: 24
 
                             }
 
@@ -2007,49 +1879,34 @@ function createSeasonalChart(itemName) {
 
     const data =
         allData
-
         .filter(
-            d =>
-                d["품목명"]
-                ===
-                itemName
+            d => d["품목명"] === itemName
         )
-
         .sort(
-            (
-                a,
-                b
-            ) =>
-                a["월"]
-                .localeCompare(
-                    b["월"]
-                )
+            (a, b) =>
+                a["월"].localeCompare(b["월"])
         );
 
+
+    /* =====================================
+       연도 목록
+    ===================================== */
 
     const years =
         [
             ...new Set(
-                data
-                .map(
+                data.map(
                     d =>
                         d["월"]
-                        .substring(
-                            0,
-                            4
-                        )
+                        .substring(0, 4)
                 )
             )
         ]
         .sort();
 
 
-    if (
-        years.length === 0
-    ) {
-
+    if (years.length === 0) {
         return;
-
     }
 
 
@@ -2058,6 +1915,10 @@ function createSeasonalChart(itemName) {
             years.length - 1
         ];
 
+
+    /* =====================================
+       X축
+    ===================================== */
 
     const monthLabels = [
 
@@ -2077,213 +1938,247 @@ function createSeasonalChart(itemName) {
     ];
 
 
-    const datasets =
-        years.map(
-            year => {
+    const datasets = [];
 
 
-                const values =
-                    [];
+    /* =====================================
+       연도별 수출액 막대
+    ===================================== */
+
+    years.forEach(
+        year => {
 
 
-                for (
-                    let month = 1;
-                    month <= 12;
-                    month++
-                ) {
+            const exportValues =
+                [];
 
 
-                    const monthString =
-                        year
-                        +
-                        "."
-                        +
-                        String(month)
-                        .padStart(
-                            2,
-                            "0"
-                        );
+            for (
+                let month = 1;
+                month <= 12;
+                month++
+            ) {
 
 
-                    const row =
-                        data.find(
-                            d =>
-                                d["월"]
-                                ===
-                                monthString
-                        );
+                const monthString =
+                    year
+                    +
+                    "."
+                    +
+                    String(month)
+                    .padStart(
+                        2,
+                        "0"
+                    );
 
 
-                    if (
-                        row
-                    ) {
+                const row =
+                    data.find(
+                        d =>
+                            d["월"]
+                            ===
+                            monthString
+                    );
 
 
-                        values.push(
+                if (row) {
 
-                            Number(
-                                row[
-                                    "수출금액_USD"
-                                ]
-                            )
+                    exportValues.push(
 
-                            /
+                        Number(
+                            row[
+                                "수출금액_USD"
+                            ]
+                        )
+                        /
+                        1000000
 
-                            1000000
-
-                        );
-
-
-                    }
-
-                    else {
-
-
-                        values.push(
-                            null
-                        );
-
-
-                    }
+                    );
 
                 }
 
+                else {
 
-                return {
+                    exportValues.push(
+                        null
+                    );
 
-                    type:
-                        "bar",
-
-                    label:
-                        year
-                        +
-                        " 수출액",
-
-                    data:
-                        values,
-
-                    yAxisID:
-                        "yExport",
-
-                    borderWidth:
-                        0,
-
-                    barPercentage:
-                        0.9,
-
-                    categoryPercentage:
-                        0.85
-
-                };
-
+                }
 
             }
-        );
 
 
-    const latestYoY =
-        [];
+            datasets.push({
 
+                type: "bar",
 
-    for (
-        let month = 1;
-        month <= 12;
-        month++
-    ) {
+                label:
+                    year
+                    +
+                    " 수출액",
 
+                data:
+                    exportValues,
 
-        const monthString =
-            latestYear
-            +
-            "."
-            +
-            String(month)
-            .padStart(
-                2,
-                "0"
-            );
+                yAxisID:
+                    "yExport",
 
+                borderWidth:
+                    0,
 
-        const row =
-            data.find(
-                d =>
-                    d["월"]
-                    ===
-                    monthString
-            );
+                barPercentage:
+                    0.85,
 
+                categoryPercentage:
+                    0.85,
 
-        if (
-            row
-            &&
-            row["YoY_pct"]
-            !==
-            ""
-        ) {
+                order:
+                    2
 
-
-            latestYoY.push(
-
-                Number(
-                    row[
-                        "YoY_pct"
-                    ]
-                )
-
-            );
+            });
 
 
         }
+    );
 
-        else {
+
+    /* =====================================
+       연도별 YoY 선
+    ===================================== */
+
+    years.forEach(
+        year => {
 
 
-            latestYoY.push(
-                null
-            );
+            const yoyValues =
+                [];
+
+
+            for (
+                let month = 1;
+                month <= 12;
+                month++
+            ) {
+
+
+                const monthString =
+                    year
+                    +
+                    "."
+                    +
+                    String(month)
+                    .padStart(
+                        2,
+                        "0"
+                    );
+
+
+                const row =
+                    data.find(
+                        d =>
+                            d["월"]
+                            ===
+                            monthString
+                    );
+
+
+                if (
+                    row
+                    &&
+                    row["YoY_pct"]
+                    !==
+                    ""
+                ) {
+
+                    yoyValues.push(
+
+                        Number(
+                            row[
+                                "YoY_pct"
+                            ]
+                        )
+
+                    );
+
+                }
+
+                else {
+
+                    yoyValues.push(
+                        null
+                    );
+
+                }
+
+            }
+
+
+            const isLatest =
+                year === latestYear;
+
+
+            datasets.push({
+
+                type: "line",
+
+                label:
+                    year
+                    +
+                    " YoY",
+
+                data:
+                    yoyValues,
+
+                yAxisID:
+                    "yYoY",
+
+                tension:
+                    0.25,
+
+                pointRadius:
+                    isLatest
+                    ?
+                    3
+                    :
+                    1,
+
+                pointHoverRadius:
+                    6,
+
+                borderWidth:
+                    isLatest
+                    ?
+                    4
+                    :
+                    1.2,
+
+                spanGaps:
+                    false,
+
+                order:
+                    isLatest
+                    ?
+                    0
+                    :
+                    1,
+
+                datalabels: {
+
+                    display:
+                        false
+
+                }
+
+            });
 
 
         }
+    );
 
-    }
 
-
-    datasets.push({
-
-        type:
-            "line",
-
-        label:
-            latestYear
-            +
-            " YoY",
-
-        data:
-            latestYoY,
-
-        yAxisID:
-            "yYoY",
-
-        tension:
-            0.25,
-
-        pointRadius:
-            3,
-
-        pointHoverRadius:
-            6,
-
-        borderWidth:
-            2,
-
-        spanGaps:
-            false,
-
-        order:
-            0
-
-    });
-
+    /* =====================================
+       제목
+    ===================================== */
 
     document
     .getElementById(
@@ -2295,9 +2190,7 @@ function createSeasonalChart(itemName) {
         " 연도별 월간 수출 비교";
 
 
-    if (
-        seasonalChart
-    ) {
+    if (seasonalChart) {
 
         seasonalChart.destroy();
 
@@ -2305,8 +2198,7 @@ function createSeasonalChart(itemName) {
 
 
     const ctx =
-        document
-        .getElementById(
+        document.getElementById(
             "seasonalChart"
         );
 
@@ -2332,7 +2224,6 @@ function createSeasonalChart(itemName) {
                     responsive:
                         true,
 
-
                     maintainAspectRatio:
                         false,
 
@@ -2353,7 +2244,17 @@ function createSeasonalChart(itemName) {
                         legend: {
 
                             position:
-                                "top"
+                                "top",
+
+                            labels: {
+
+                                boxWidth:
+                                    14,
+
+                                usePointStyle:
+                                    true
+
+                            }
 
                         },
 
@@ -2375,26 +2276,23 @@ function createSeasonalChart(itemName) {
 
 
                                         if (
+                                            context.parsed.y
+                                            ===
+                                            null
+                                        ) {
+
+                                            return "";
+
+                                        }
+
+
+                                        if (
                                             context
                                             .dataset
                                             .yAxisID
                                             ===
                                             "yExport"
                                         ) {
-
-
-                                            if (
-                                                context
-                                                .parsed
-                                                .y
-                                                ===
-                                                null
-                                            ) {
-
-                                                return "";
-
-                                            }
-
 
                                             return (
                                                 context
@@ -2426,17 +2324,6 @@ function createSeasonalChart(itemName) {
                                             .y;
 
 
-                                        if (
-                                            value
-                                            ===
-                                            null
-                                        ) {
-
-                                            return "";
-
-                                        }
-
-
                                         return (
                                             context
                                             .dataset
@@ -2469,6 +2356,10 @@ function createSeasonalChart(itemName) {
 
                     scales: {
 
+
+                        /* =========================
+                           왼쪽축 : 수출액
+                        ========================= */
 
                         yExport: {
 
@@ -2501,9 +2392,7 @@ function createSeasonalChart(itemName) {
                                         return (
                                             "$"
                                             +
-                                            Number(
-                                                value
-                                            )
+                                            Number(value)
                                             .toLocaleString()
                                             +
                                             "M"
@@ -2515,6 +2404,10 @@ function createSeasonalChart(itemName) {
 
                         },
 
+
+                        /* =========================
+                           오른쪽축 : YoY
+                        ========================= */
 
                         yYoY: {
 
