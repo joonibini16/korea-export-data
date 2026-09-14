@@ -14,11 +14,19 @@ if not api_key:
 
 API_URL = "https://apis.data.go.kr/1220000/Itemtrade/getItemtradeList"
 
+from datetime import datetime
+
 START_YEAR = 2025
 START_MONTH = 1
 
-END_YEAR = 2026
-END_MONTH = 8
+today = datetime.now()
+
+if today.month == 1:
+    END_YEAR = today.year - 1
+    END_MONTH = 12
+else:
+    END_YEAR = today.year
+    END_MONTH = today.month - 1
 
 
 def make_month_list(start_year, start_month, end_year, end_month):
@@ -288,6 +296,13 @@ def save_summary_csv(hs_code, name, rows):
 # ------------------------------------
 # 프로그램 시작
 # ------------------------------------
+
+print(
+    f"자동 조회기간: "
+    f"{START_YEAR}-{START_MONTH:02d} "
+    f"~ "
+    f"{END_YEAR}-{END_MONTH:02d}"
+)
 
 hs_items = read_hs_codes()
 
