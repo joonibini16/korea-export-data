@@ -2,8 +2,7 @@ name: Customs Export Data
 
 on:
   workflow_dispatch:
-
-    schedule:
+  schedule:
     - cron: '0 1 16 * *'
 
 permissions:
