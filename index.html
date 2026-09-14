@@ -2,195 +2,464 @@
 <html lang="ko">
 
 <head>
-    <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
 
-    <title>한국 수출 데이터 모니터링</title>
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<meta http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate">
 
-    <style>
+<meta http-equiv="Pragma"
+      content="no-cache">
 
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background: #f5f6f8;
-        }
+<meta http-equiv="Expires"
+      content="0">
 
-        .container {
-            width: 92%;
-            max-width: 1250px;
-            margin: 30px auto;
-        }
 
-        h1 {
-            margin-bottom: 5px;
-        }
+<title>한국 수출 데이터 모니터링</title>
 
-        .subtitle {
-            color: #666;
-            margin-bottom: 30px;
-        }
 
-        .cards {
-            display: grid;
-            grid-template-columns:
-                repeat(auto-fit, minmax(230px, 1fr));
-            gap: 15px;
-            margin-bottom: 30px;
-        }
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-        .card {
-            background: white;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow:
-                0 2px 8px rgba(0,0,0,0.08);
-            cursor: pointer;
-            transition: 0.2s;
-        }
 
-        .card:hover {
-            transform: translateY(-3px);
-            box-shadow:
-                0 4px 12px rgba(0,0,0,0.12);
-        }
+<style>
 
-        .item-name {
-            font-size: 18px;
-            font-weight: bold;
-        }
+body {
 
-        .amount {
-            font-size: 28px;
-            font-weight: bold;
-            margin-top: 12px;
-        }
+    font-family:
+        Arial,
+        "Noto Sans KR",
+        sans-serif;
 
-        .change {
-            margin-top: 10px;
-            font-size: 14px;
-        }
+    margin: 0;
 
-        .unit-price {
-            margin-top: 10px;
-            font-size: 15px;
-        }
+    background: #f5f6f8;
 
-        .positive {
-            color: #d33;
-            font-weight: bold;
-        }
+    color: #222;
 
-        .negative {
-            color: #1677ff;
-            font-weight: bold;
-        }
+}
 
-        .chart-box {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 25px;
-            box-shadow:
-                0 2px 8px rgba(0,0,0,0.08);
-        }
 
-        .chart-wrapper {
-            position: relative;
-            height: 500px;
-        }
+.container {
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background: white;
-        }
+    width: 94%;
 
-        th, td {
-            padding: 12px;
-            border-bottom: 1px solid #ddd;
-        }
+    max-width: 1400px;
 
-        th {
-            background: #f0f2f5;
-            text-align: center;
-        }
+    margin: 25px auto;
 
-        td.number {
-            text-align: right;
-        }
+}
 
-        td.center {
-            text-align: center;
-        }
 
-    </style>
+h1 {
+
+    margin-bottom: 5px;
+
+}
+
+
+.subtitle {
+
+    color: #666;
+
+    margin-bottom: 25px;
+
+}
+
+
+/* ==============================
+   상단 카드
+============================== */
+
+.cards {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(230px, 1fr)
+        );
+
+    gap: 15px;
+
+    margin-bottom: 25px;
+
+}
+
+
+.card {
+
+    background: white;
+
+    border-radius: 12px;
+
+    padding: 20px;
+
+    box-shadow:
+        0 2px 8px rgba(0,0,0,0.08);
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+}
+
+
+.card:hover {
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 4px 14px rgba(0,0,0,0.13);
+
+}
+
+
+.card.active {
+
+    outline:
+        2px solid #666;
+
+}
+
+
+.item-name {
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+}
+
+
+.amount {
+
+    font-size: 29px;
+
+    font-weight: bold;
+
+    margin-top: 10px;
+
+}
+
+
+.change {
+
+    margin-top: 10px;
+
+    font-size: 14px;
+
+}
+
+
+.unit-price {
+
+    margin-top: 9px;
+
+    font-size: 14px;
+
+    color: #555;
+
+}
+
+
+.positive {
+
+    color: #d33;
+
+    font-weight: bold;
+
+}
+
+
+.negative {
+
+    color: #1677ff;
+
+    font-weight: bold;
+
+}
+
+
+/* ==============================
+   그래프 박스
+============================== */
+
+.chart-box {
+
+    background: white;
+
+    padding: 20px;
+
+    border-radius: 12px;
+
+    margin-bottom: 20px;
+
+    box-shadow:
+        0 2px 8px rgba(0,0,0,0.08);
+
+}
+
+
+.chart-title {
+
+    margin-top: 0;
+
+    margin-bottom: 20px;
+
+}
+
+
+.main-chart {
+
+    position: relative;
+
+    height: 470px;
+
+}
+
+
+.change-chart {
+
+    position: relative;
+
+    height: 280px;
+
+}
+
+
+/* ==============================
+   표
+============================== */
+
+.table-wrapper {
+
+    overflow-x: auto;
+
+}
+
+
+table {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+    background: white;
+
+}
+
+
+th,
+td {
+
+    padding: 12px;
+
+    border-bottom:
+        1px solid #e5e5e5;
+
+}
+
+
+th {
+
+    background: #f3f4f6;
+
+    text-align: center;
+
+}
+
+
+td.number {
+
+    text-align: right;
+
+}
+
+
+td.center {
+
+    text-align: center;
+
+}
+
+
+@media (max-width: 700px) {
+
+    .main-chart {
+
+        height: 380px;
+
+    }
+
+    .change-chart {
+
+        height: 260px;
+
+    }
+
+}
+
+</style>
 
 </head>
 
+
+
 <body>
+
 
 <div class="container">
 
-    <h1>한국 수출 데이터 모니터링</h1>
 
-    <div class="subtitle"
-         id="latestMonth">
-        데이터 불러오는 중...
-    </div>
+<h1>
+한국 수출 데이터 모니터링
+</h1>
 
 
-    <!-- 상단 카드 -->
-    <div class="cards"
-         id="cards">
-    </div>
+<div
+    class="subtitle"
+    id="latestMonth">
 
-
-    <!-- 수출액 + 수출단가 그래프 -->
-    <div class="chart-box">
-
-        <h2 id="chartTitle">
-            월별 수출액 및 수출단가
-        </h2>
-
-        <div class="chart-wrapper">
-            <canvas id="exportChart"></canvas>
-        </div>
-
-    </div>
-
-
-    <!-- 최신 데이터 표 -->
-    <div class="chart-box">
-
-        <h2>최신 수출 현황</h2>
-
-        <table>
-
-            <thead>
-
-            <tr>
-                <th>품목</th>
-                <th>HS Code</th>
-                <th>수출액</th>
-                <th>YoY</th>
-                <th>MoM</th>
-                <th>수출단가</th>
-            </tr>
-
-            </thead>
-
-            <tbody id="latestTable">
-            </tbody>
-
-        </table>
-
-    </div>
+    데이터 불러오는 중...
 
 </div>
+
+
+
+<!-- ===========================
+     품목 카드
+=========================== -->
+
+<div
+    class="cards"
+    id="cards">
+</div>
+
+
+
+<!-- ===========================
+     수출액 + 수출단가
+=========================== -->
+
+<div class="chart-box">
+
+<h2
+    class="chart-title"
+    id="mainChartTitle">
+
+    월별 수출액 및 수출단가
+
+</h2>
+
+
+<div class="main-chart">
+
+<canvas
+    id="mainChart">
+</canvas>
+
+</div>
+
+</div>
+
+
+
+<!-- ===========================
+     YoY + MoM
+=========================== -->
+
+<div class="chart-box">
+
+<h2 class="chart-title">
+
+    수출 증감률
+
+</h2>
+
+
+<div class="change-chart">
+
+<canvas
+    id="changeChart">
+</canvas>
+
+</div>
+
+</div>
+
+
+
+<!-- ===========================
+     최신 수출 현황
+=========================== -->
+
+<div class="chart-box">
+
+
+<h2 class="chart-title">
+
+    최신 수출 현황
+
+</h2>
+
+
+<div class="table-wrapper">
+
+<table>
+
+
+<thead>
+
+<tr>
+
+<th>
+품목
+</th>
+
+<th>
+HS Code
+</th>
+
+<th>
+수출액
+</th>
+
+<th>
+YoY
+</th>
+
+<th>
+MoM
+</th>
+
+<th>
+수출단가
+</th>
+
+</tr>
+
+</thead>
+
+
+<tbody
+    id="latestTable">
+</tbody>
+
+
+</table>
+
+</div>
+
+</div>
+
+
+</div>
+
 
 
 <script>
@@ -198,54 +467,92 @@
 
 let allData = [];
 
-let chart;
+let mainChart = null;
+
+let changeChart = null;
+
+let selectedItem = null;
 
 
-/* =====================================================
-   CSV 읽기
-===================================================== */
+/* ==============================================
+   CSV 불러오기
+============================================== */
 
 async function loadCSV() {
 
+
     const response =
-        await fetch("summary_all.csv");
+        await fetch(
+            "summary_all.csv?t="
+            +
+            Date.now()
+        );
+
 
     const text =
         await response.text();
 
+
     const rows =
-        text.trim().split(/\r?\n/);
+        text
+        .trim()
+        .split(/\r?\n/);
+
 
     const headers =
         rows[0]
         .split(",")
-        .map(x => x.trim());
+        .map(
+            x =>
+                x.trim()
+        );
 
 
     allData =
-        rows.slice(1)
-        .filter(row => row.trim() !== "")
-        .map(row => {
+        rows
+        .slice(1)
 
-            const values =
-                row.split(",");
+        .filter(
+            row =>
+                row.trim() !== ""
+        )
 
-            let obj = {};
+        .map(
+            row => {
 
-            headers.forEach(
-                (header, index) => {
 
-                    obj[header] =
-                        values[index]
-                        ? values[index].trim()
-                        : "";
+                const values =
+                    row.split(",");
 
-                }
-            );
 
-            return obj;
+                let obj = {};
 
-        });
+
+                headers.forEach(
+                    (
+                        header,
+                        index
+                    ) => {
+
+
+                        obj[header] =
+                            values[index]
+                            ?
+                            values[index]
+                            .trim()
+                            :
+                            "";
+
+
+                    }
+                );
+
+
+                return obj;
+
+
+            }
+        );
 
 
     createDashboard();
@@ -253,107 +560,187 @@ async function loadCSV() {
 }
 
 
-/* =====================================================
-   수출액 보기 좋게 표시
-===================================================== */
 
-function formatMoney(value) {
+/* ==============================================
+   수출액 표시
+============================================== */
+
+function formatMoney(
+    value
+) {
+
 
     const num =
         Number(value);
 
-    if (num >= 1000000000) {
-
-        return "$" +
-            (num / 1000000000)
-            .toFixed(2) +
-            "B";
-
-    }
-
-    if (num >= 1000000) {
-
-        return "$" +
-            (num / 1000000)
-            .toFixed(1) +
-            "M";
-
-    }
-
-    return "$" +
-        num.toLocaleString();
-
-}
-
-
-/* =====================================================
-   퍼센트 표시
-===================================================== */
-
-function formatPercent(value) {
 
     if (
-        value === "" ||
-        value === undefined ||
-        value === null
+        num >= 1000000000
     ) {
-        return "-";
+
+
+        return (
+            "$"
+            +
+            (
+                num
+                /
+                1000000000
+            )
+            .toFixed(2)
+            +
+            "B"
+        );
+
+
     }
 
-    const num =
-        Number(value);
 
-    if (num > 0) {
+    if (
+        num >= 1000000
+    ) {
 
-        return "+" +
-            num.toFixed(1) +
-            "%";
+
+        return (
+            "$"
+            +
+            (
+                num
+                /
+                1000000
+            )
+            .toFixed(1)
+            +
+            "M"
+        );
+
 
     }
 
-    return num.toFixed(1) +
-        "%";
+
+    return (
+        "$"
+        +
+        num.toLocaleString()
+    );
 
 }
 
 
-/* =====================================================
-   증감 색상
-===================================================== */
 
-function percentClass(value) {
+/* ==============================================
+   퍼센트 표시
+============================================== */
+
+function formatPercent(
+    value
+) {
+
+
+    if (
+        value === ""
+        ||
+        value === undefined
+        ||
+        value === null
+    ) {
+
+
+        return "-";
+
+
+    }
+
 
     const num =
         Number(value);
 
-    if (num > 0) {
-        return "positive";
+
+    if (
+        num > 0
+    ) {
+
+
+        return (
+            "+"
+            +
+            num.toFixed(1)
+            +
+            "%"
+        );
+
+
     }
 
-    if (num < 0) {
-        return "negative";
+
+    return (
+        num.toFixed(1)
+        +
+        "%"
+    );
+
+}
+
+
+
+/* ==============================================
+   플러스/마이너스 색상
+============================================== */
+
+function percentClass(
+    value
+) {
+
+
+    const num =
+        Number(value);
+
+
+    if (
+        num > 0
+    ) {
+
+        return "positive";
+
     }
+
+
+    if (
+        num < 0
+    ) {
+
+        return "negative";
+
+    }
+
 
     return "";
 
 }
 
 
-/* =====================================================
-   대시보드 생성
-===================================================== */
+
+/* ==============================================
+   대시보드 시작
+============================================== */
 
 function createDashboard() {
 
+
     if (
-        !allData ||
+        !allData
+        ||
         allData.length === 0
     ) {
 
-        document.getElementById(
+
+        document
+        .getElementById(
             "latestMonth"
-        ).innerText =
+        )
+        .innerText =
             "데이터가 없습니다.";
+
 
         return;
 
@@ -361,72 +748,106 @@ function createDashboard() {
 
 
     const months =
-        allData.map(
-            d => d["월"]
+        allData
+        .map(
+            d =>
+                d["월"]
         );
 
 
     const latestMonth =
-        months.sort().reverse()[0];
+        [...months]
+        .sort()
+        .reverse()[0];
 
 
-    document.getElementById(
+    document
+    .getElementById(
         "latestMonth"
-    ).innerText =
-        "최신 데이터: " +
+    )
+    .innerText =
+        "최신 데이터: "
+        +
         latestMonth;
 
 
     const latest =
-        allData.filter(
+        allData
+        .filter(
             d =>
-                d["월"] ===
+                d["월"]
+                ===
                 latestMonth
         );
 
 
-    createCards(latest);
+    createCards(
+        latest
+    );
 
-    createLatestTable(latest);
+
+    createLatestTable(
+        latest
+    );
 
 
-    if (latest.length > 0) {
+    if (
+        latest.length > 0
+    ) {
 
-        createChart(
+
+        selectItem(
             latest[0]["품목명"]
         );
+
 
     }
 
 }
 
 
-/* =====================================================
-   상단 카드
-===================================================== */
 
-function createCards(data) {
+/* ==============================================
+   상단 품목 카드
+============================================== */
+
+function createCards(
+    data
+) {
+
 
     const container =
-        document.getElementById(
+        document
+        .getElementById(
             "cards"
         );
 
-    container.innerHTML = "";
+
+    container.innerHTML =
+        "";
 
 
-    data.forEach(item => {
-
-        const card =
-            document.createElement(
-                "div"
-            );
-
-        card.className =
-            "card";
+    data.forEach(
+        item => {
 
 
-        card.innerHTML = `
+            const card =
+                document
+                .createElement(
+                    "div"
+                );
+
+
+            card.className =
+                "card";
+
+
+            card.dataset.item =
+                item["품목명"];
+
+
+            card.innerHTML =
+            `
 
             <div class="item-name">
 
@@ -438,7 +859,9 @@ function createCards(data) {
             <div class="amount">
 
                 ${formatMoney(
-                    item["수출금액_USD"]
+                    item[
+                        "수출금액_USD"
+                    ]
                 )}
 
             </div>
@@ -448,9 +871,10 @@ function createCards(data) {
 
                 YoY:
 
-                <span class="${percentClass(
-                    item["YoY_pct"]
-                )}">
+                <span
+                    class="${percentClass(
+                        item["YoY_pct"]
+                    )}">
 
                     ${formatPercent(
                         item["YoY_pct"]
@@ -462,9 +886,10 @@ function createCards(data) {
 
                 MoM:
 
-                <span class="${percentClass(
-                    item["MoM_pct"]
-                )}">
+                <span
+                    class="${percentClass(
+                        item["MoM_pct"]
+                    )}">
 
                     ${formatPercent(
                         item["MoM_pct"]
@@ -477,7 +902,7 @@ function createCards(data) {
 
             <div class="unit-price">
 
-                수출단가:
+                수출단가
 
                 <strong>
 
@@ -485,80 +910,158 @@ function createCards(data) {
                         item[
                             "수출단가_USD_per_KG"
                         ]
-                    ).toFixed(2)}
-
+                    )
+                    .toFixed(2)}
                     /kg
 
                 </strong>
 
             </div>
-        `;
+
+            `;
 
 
-        card.onclick =
-            () =>
-                createChart(
-                    item["품목명"]
-                );
+            card.onclick =
+                () => {
 
 
-        container.appendChild(
-            card
-        );
+                    selectItem(
+                        item[
+                            "품목명"
+                        ]
+                    );
 
-    });
+
+                };
+
+
+            container
+            .appendChild(
+                card
+            );
+
+
+        }
+    );
 
 }
 
 
-/* =====================================================
-   최신월 표
-===================================================== */
 
-function createLatestTable(data) {
+/* ==============================================
+   품목 선택
+============================================== */
 
-    const tbody =
-        document.getElementById(
-            "latestTable"
-        );
-
-    tbody.innerHTML = "";
+function selectItem(
+    itemName
+) {
 
 
-    data.forEach(item => {
+    selectedItem =
+        itemName;
 
-        const tr =
-            document.createElement(
-                "tr"
+
+    document
+    .querySelectorAll(
+        ".card"
+    )
+    .forEach(
+        card => {
+
+
+            card
+            .classList
+            .toggle(
+                "active",
+                card.dataset.item
+                ===
+                itemName
             );
 
 
-        tr.innerHTML = `
+        }
+    );
+
+
+    createMainChart(
+        itemName
+    );
+
+
+    createChangeChart(
+        itemName
+    );
+
+}
+
+
+
+/* ==============================================
+   최신 현황 표
+============================================== */
+
+function createLatestTable(
+    data
+) {
+
+
+    const tbody =
+        document
+        .getElementById(
+            "latestTable"
+        );
+
+
+    tbody.innerHTML =
+        "";
+
+
+    data.forEach(
+        item => {
+
+
+            const tr =
+                document
+                .createElement(
+                    "tr"
+                );
+
+
+            tr.innerHTML =
+            `
 
             <td>
+
                 ${item["품목명"]}
+
             </td>
 
 
             <td class="center">
+
                 ${item["HS코드"]}
+
             </td>
 
 
             <td class="number">
 
                 ${Number(
-                    item["수출금액_USD"]
-                ).toLocaleString()}
+                    item[
+                        "수출금액_USD"
+                    ]
+                )
+                .toLocaleString()}
 
             </td>
 
 
             <td class="number">
 
-                <span class="${percentClass(
-                    item["YoY_pct"]
-                )}">
+                <span
+                    class="${percentClass(
+                        item["YoY_pct"]
+                    )}">
 
                     ${formatPercent(
                         item["YoY_pct"]
@@ -571,9 +1074,10 @@ function createLatestTable(data) {
 
             <td class="number">
 
-                <span class="${percentClass(
-                    item["MoM_pct"]
-                )}">
+                <span
+                    class="${percentClass(
+                        item["MoM_pct"]
+                    )}">
 
                     ${formatPercent(
                         item["MoM_pct"]
@@ -590,38 +1094,58 @@ function createLatestTable(data) {
                     item[
                         "수출단가_USD_per_KG"
                     ]
-                ).toFixed(2)}
+                )
+                .toFixed(2)}
                 /kg
 
             </td>
 
-        `;
+            `;
 
 
-        tbody.appendChild(
-            tr
-        );
+            tbody
+            .appendChild(
+                tr
+            );
 
-    });
+
+        }
+    );
 
 }
 
 
-/* =====================================================
-   수출액 + 수출단가 이중축 그래프
-===================================================== */
 
-function createChart(itemName) {
+/* ==============================================
+   메인 그래프
+
+   막대 = 수출액
+   선   = 수출단가
+
+   왼쪽축 = 수출액
+   오른쪽축 = 수출단가
+============================================== */
+
+function createMainChart(
+    itemName
+) {
+
 
     const data =
         allData
+
         .filter(
             d =>
-                d["품목명"] ===
+                d["품목명"]
+                ===
                 itemName
         )
+
         .sort(
-            (a, b) =>
+            (
+                a,
+                b
+            ) =>
                 a["월"]
                 .localeCompare(
                     b["월"]
@@ -630,27 +1154,35 @@ function createChart(itemName) {
 
 
     const labels =
-        data.map(
-            d => d["월"]
+        data
+        .map(
+            d =>
+                d["월"]
         );
 
-
-    /* 수출액 → 백만 USD */
 
     const exportValues =
-        data.map(
+        data
+        .map(
             d =>
+
                 Number(
-                    d["수출금액_USD"]
-                ) / 1000000
+                    d[
+                        "수출금액_USD"
+                    ]
+                )
+
+                /
+
+                1000000
         );
 
 
-    /* 수출단가 → USD/kg */
-
     const unitPriceValues =
-        data.map(
+        data
+        .map(
             d =>
+
                 Number(
                     d[
                         "수출단가_USD_per_KG"
@@ -659,42 +1191,55 @@ function createChart(itemName) {
         );
 
 
-    document.getElementById(
-        "chartTitle"
-    ).innerText =
-        itemName +
-        " 월별 수출액 및 수출단가";
+    document
+    .getElementById(
+        "mainChartTitle"
+    )
+    .innerText =
+        itemName
+        +
+        " 수출액 및 수출단가";
 
 
-    if (chart) {
+    if (
+        mainChart
+    ) {
 
-        chart.destroy();
+
+        mainChart
+        .destroy();
+
 
     }
 
 
     const ctx =
-        document.getElementById(
-            "exportChart"
+        document
+        .getElementById(
+            "mainChart"
         );
 
 
-    chart =
+    mainChart =
         new Chart(
             ctx,
             {
 
-                type: "line",
-
 
                 data: {
 
-                    labels: labels,
+
+                    labels:
+                        labels,
 
 
                     datasets: [
 
+
                         {
+
+                            type:
+                                "bar",
 
                             label:
                                 "수출액 (백만 USD)",
@@ -705,19 +1250,16 @@ function createChart(itemName) {
                             yAxisID:
                                 "yExport",
 
-                            tension:
-                                0.2,
-
-                            pointRadius:
-                                2,
-
-                            pointHoverRadius:
-                                5
+                            borderWidth:
+                                0
 
                         },
 
 
                         {
+
+                            type:
+                                "line",
 
                             label:
                                 "수출단가 (USD/kg)",
@@ -729,25 +1271,29 @@ function createChart(itemName) {
                                 "yPrice",
 
                             tension:
-                                0.2,
+                                0.25,
 
                             pointRadius:
-                                2,
+                                1.5,
 
                             pointHoverRadius:
                                 5
 
                         }
 
+
                     ]
+
 
                 },
 
 
                 options: {
 
+
                     responsive:
                         true,
+
 
                     maintainAspectRatio:
                         false,
@@ -766,53 +1312,77 @@ function createChart(itemName) {
 
                     plugins: {
 
+
+                        legend: {
+
+                            position:
+                                "top"
+
+                        },
+
+
                         tooltip: {
+
 
                             callbacks: {
 
+
                                 label:
-                                    function(context) {
+                                    function(
+                                        context
+                                    ) {
+
 
                                         if (
-                                            context.dataset.yAxisID
+                                            context
+                                            .dataset
+                                            .yAxisID
                                             ===
                                             "yExport"
                                         ) {
 
+
                                             return (
                                                 "수출액: $"
                                                 +
-                                                context.parsed.y
+                                                context
+                                                .parsed
+                                                .y
                                                 .toLocaleString(
                                                     undefined,
                                                     {
-                                                        maximumFractionDigits: 1
+                                                        maximumFractionDigits:
+                                                            1
                                                     }
                                                 )
                                                 +
                                                 "M"
                                             );
 
-                                        }
-
-                                        else {
-
-                                            return (
-                                                "수출단가: $"
-                                                +
-                                                context.parsed.y
-                                                .toFixed(2)
-                                                +
-                                                "/kg"
-                                            );
 
                                         }
+
+
+                                        return (
+                                            "수출단가: $"
+                                            +
+                                            context
+                                            .parsed
+                                            .y
+                                            .toFixed(2)
+                                            +
+                                            "/kg"
+                                        );
+
 
                                     }
 
+
                             }
 
+
                         }
+
 
                     },
 
@@ -820,11 +1390,8 @@ function createChart(itemName) {
                     scales: {
 
 
-                        /* -----------------------------
-                           왼쪽 Y축 : 수출액
-                        ----------------------------- */
-
                         yExport: {
+
 
                             type:
                                 "linear",
@@ -833,7 +1400,7 @@ function createChart(itemName) {
                                 "left",
 
                             beginAtZero:
-                                false,
+                                true,
 
 
                             title: {
@@ -849,30 +1416,36 @@ function createChart(itemName) {
 
                             ticks: {
 
+
                                 callback:
-                                    function(value) {
+                                    function(
+                                        value
+                                    ) {
+
 
                                         return (
                                             "$"
                                             +
-                                            Number(value)
+                                            Number(
+                                                value
+                                            )
                                             .toLocaleString()
                                             +
                                             "M"
                                         );
 
+
                                     }
 
+
                             }
+
 
                         },
 
 
-                        /* -----------------------------
-                           오른쪽 Y축 : 수출단가
-                        ----------------------------- */
-
                         yPrice: {
+
 
                             type:
                                 "linear",
@@ -895,38 +1468,52 @@ function createChart(itemName) {
                             },
 
 
-                            ticks: {
-
-                                callback:
-                                    function(value) {
-
-                                        return (
-                                            "$"
-                                            +
-                                            Number(value)
-                                            .toFixed(2)
-                                        );
-
-                                    }
-
-                            },
-
-
                             grid: {
 
                                 drawOnChartArea:
                                     false
 
+                            },
+
+
+                            ticks: {
+
+
+                                callback:
+                                    function(
+                                        value
+                                    ) {
+
+
+                                        return (
+                                            "$"
+                                            +
+                                            Number(
+                                                value
+                                            )
+                                            .toFixed(1)
+                                        );
+
+
+                                    }
+
+
                             }
+
 
                         },
 
 
-                        /* -----------------------------
-                           X축
-                        ----------------------------- */
-
                         x: {
+
+
+                            grid: {
+
+                                display:
+                                    false
+
+                            },
+
 
                             ticks: {
 
@@ -944,11 +1531,15 @@ function createChart(itemName) {
 
                             }
 
+
                         }
+
 
                     }
 
+
                 }
+
 
             }
         );
@@ -956,10 +1547,382 @@ function createChart(itemName) {
 }
 
 
+
+/* ==============================================
+   YoY + MoM 그래프
+============================================== */
+
+function createChangeChart(
+    itemName
+) {
+
+
+    const data =
+        allData
+
+        .filter(
+            d =>
+                d["품목명"]
+                ===
+                itemName
+        )
+
+        .sort(
+            (
+                a,
+                b
+            ) =>
+                a["월"]
+                .localeCompare(
+                    b["월"]
+                )
+        );
+
+
+    const labels =
+        data.map(
+            d =>
+                d["월"]
+        );
+
+
+    const yoyValues =
+        data.map(
+            d => {
+
+
+                if (
+                    d["YoY_pct"]
+                    ===
+                    ""
+                ) {
+
+                    return null;
+
+                }
+
+
+                return Number(
+                    d["YoY_pct"]
+                );
+
+
+            }
+        );
+
+
+    const momValues =
+        data.map(
+            d => {
+
+
+                if (
+                    d["MoM_pct"]
+                    ===
+                    ""
+                ) {
+
+                    return null;
+
+                }
+
+
+                return Number(
+                    d["MoM_pct"]
+                );
+
+
+            }
+        );
+
+
+    if (
+        changeChart
+    ) {
+
+
+        changeChart
+        .destroy();
+
+
+    }
+
+
+    const ctx =
+        document
+        .getElementById(
+            "changeChart"
+        );
+
+
+    changeChart =
+        new Chart(
+            ctx,
+            {
+
+
+                type:
+                    "line",
+
+
+                data: {
+
+
+                    labels:
+                        labels,
+
+
+                    datasets: [
+
+
+                        {
+
+                            label:
+                                "YoY",
+
+                            data:
+                                yoyValues,
+
+                            tension:
+                                0.2,
+
+                            pointRadius:
+                                1.5,
+
+                            pointHoverRadius:
+                                5,
+
+                            spanGaps:
+                                true
+
+                        },
+
+
+                        {
+
+                            label:
+                                "MoM",
+
+                            data:
+                                momValues,
+
+                            tension:
+                                0.2,
+
+                            pointRadius:
+                                1.5,
+
+                            pointHoverRadius:
+                                5,
+
+                            spanGaps:
+                                true,
+
+                            borderDash:
+                                [5, 5]
+
+                        }
+
+
+                    ]
+
+
+                },
+
+
+                options: {
+
+
+                    responsive:
+                        true,
+
+
+                    maintainAspectRatio:
+                        false,
+
+
+                    interaction: {
+
+                        mode:
+                            "index",
+
+                        intersect:
+                            false
+
+                    },
+
+
+                    plugins: {
+
+
+                        legend: {
+
+                            position:
+                                "top"
+
+                        },
+
+
+                        tooltip: {
+
+
+                            callbacks: {
+
+
+                                label:
+                                    function(
+                                        context
+                                    ) {
+
+
+                                        if (
+                                            context
+                                            .parsed
+                                            .y
+                                            ===
+                                            null
+                                        ) {
+
+
+                                            return "";
+
+
+                                        }
+
+
+                                        const value =
+                                            context
+                                            .parsed
+                                            .y;
+
+
+                                        return (
+                                            context
+                                            .dataset
+                                            .label
+                                            +
+                                            ": "
+                                            +
+                                            (
+                                                value
+                                                >
+                                                0
+                                                ?
+                                                "+"
+                                                :
+                                                ""
+                                            )
+                                            +
+                                            value
+                                            .toFixed(1)
+                                            +
+                                            "%"
+                                        );
+
+
+                                    }
+
+
+                            }
+
+
+                        }
+
+
+                    },
+
+
+                    scales: {
+
+
+                        y: {
+
+
+                            title: {
+
+                                display:
+                                    true,
+
+                                text:
+                                    "증감률 (%)"
+
+                            },
+
+
+                            ticks: {
+
+
+                                callback:
+                                    function(
+                                        value
+                                    ) {
+
+
+                                        return (
+                                            value
+                                            +
+                                            "%"
+                                        );
+
+
+                                    }
+
+
+                            }
+
+
+                        },
+
+
+                        x: {
+
+
+                            grid: {
+
+                                display:
+                                    false
+
+                            },
+
+
+                            ticks: {
+
+                                maxRotation:
+                                    45,
+
+                                minRotation:
+                                    45,
+
+                                autoSkip:
+                                    true,
+
+                                maxTicksLimit:
+                                    24
+
+                            }
+
+
+                        }
+
+
+                    }
+
+
+                }
+
+
+            }
+        );
+
+}
+
+
+
 loadCSV();
 
 
 </script>
+
 
 </body>
 
