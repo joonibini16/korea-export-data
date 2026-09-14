@@ -26,7 +26,7 @@ API_URL = (
 
 # 새 품목을 처음 등록했을 때
 # 국가별 데이터를 어디서부터 받을지 설정
-FULL_START_YEAR = 2025
+FULL_START_YEAR = 2020
 FULL_START_MONTH = 1
 
 
