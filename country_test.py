@@ -32,7 +32,6 @@ else:
     END_MONTH = today.month - 1
 
 
-# 우선 주요 국가만 테스트
 COUNTRIES = {
     "US": "미국",
     "CN": "중국",
@@ -84,6 +83,174 @@ MONTHS = make_month_list(
 )
 
 
+# -----------------------------------
+# summary_330499.csv에서 전체 수출 읽기
+# -----------------------------------
+
+def load_total_export():
+
+    totals = {}
+
+    filename = f"summary_{HS_CODE}.csv"
+
+    with open(
+        filename,
+        "r",
+        encoding="utf-8-sig"
+    ) as f:
+
+        reader = csv.DictReader(f)
+
+        for row in reader:
+
+            totals[
+                row["월"]
+            ] = {
+
+                "export_usd":
+                    int(
+                        row[
+                            "수출금액_USD"
+                        ]
+                    ),
+
+                "export_kg":
+                    int(
+                        row[
+                            "수출중량_KG"
+                        ]
+                    )
+            }
+
+    return totals
+
+
+TOTAL_EXPORT = load_total_export()
+
+
+# -----------------------------------
+# 국가별 API 조회
+# -----------------------------------
+
+def fetch_country_data(
+    yymm,
+    country_code
+):
+
+    params = {
+        "serviceKey": API_KEY,
+        "strtYymm": yymm,
+        "endYymm": yymm,
+        "hsSgn": HS_CODE,
+        "cntyCd": country_code
+    }
+
+
+    response = None
+
+
+    for attempt in range(1, 4):
+
+        try:
+
+            response = requests.get(
+                API_URL,
+                params=params,
+                timeout=(60, 120)
+            )
+
+            break
+
+
+        except requests.exceptions.Timeout:
+
+            print(
+                f"timeout {attempt}/3",
+                end=" "
+            )
+
+            if attempt < 3:
+                time.sleep(5)
+
+
+    if response is None:
+
+        return 0, 0
+
+
+    if response.status_code != 200:
+
+        return 0, 0
+
+
+    try:
+
+        root = ET.fromstring(
+            response.content
+        )
+
+    except:
+
+        return 0, 0
+
+
+    items = root.findall(
+        ".//item"
+    )
+
+
+    export_usd = 0
+    export_kg = 0
+
+
+    for item in items:
+
+        year = item.findtext(
+            "year"
+        )
+
+        if year == "총계":
+            continue
+
+
+        exp_dlr = (
+            item.findtext(
+                "expDlr"
+            )
+            or
+            "0"
+        )
+
+
+        exp_wgt = (
+            item.findtext(
+                "expWgt"
+            )
+            or
+            "0"
+        )
+
+
+        export_usd += int(
+            exp_dlr
+        )
+
+
+        export_kg += int(
+            exp_wgt
+        )
+
+
+    return (
+        export_usd,
+        export_kg
+    )
+
+
+# -----------------------------------
+# 국가별 수집
+# -----------------------------------
+
 rows = []
 
 
@@ -100,171 +267,143 @@ print(
 )
 
 
-for country_code, country_name in COUNTRIES.items():
+for yymm in MONTHS:
+
+    month_label = (
+        yymm[:4]
+        +
+        "."
+        +
+        yymm[4:]
+    )
+
 
     print()
-    print("=" * 60)
-    print(
-        country_name,
-        country_code
-    )
-    print("=" * 60)
+    print("=" * 70)
+    print("월:", month_label)
+    print("=" * 70)
 
 
-    for yymm in MONTHS:
+    major_export_usd = 0
+    major_export_kg = 0
+
+
+    for (
+        country_code,
+        country_name
+    ) in COUNTRIES.items():
 
         print(
-            "조회:",
-            yymm,
+            country_name,
             end=" "
         )
 
 
-        params = {
-            "serviceKey": API_KEY,
-            "strtYymm": yymm,
-            "endYymm": yymm,
-            "hsSgn": HS_CODE,
-            "cntyCd": country_code
-        }
-
-
-        response = None
-
-
-        for attempt in range(1, 4):
-
-            try:
-
-                response = requests.get(
-                    API_URL,
-                    params=params,
-                    timeout=(60, 120)
-                )
-
-                break
-
-
-            except requests.exceptions.Timeout:
-
-                print(
-                    f"[timeout {attempt}/3]",
-                    end=" "
-                )
-
-                if attempt < 3:
-                    time.sleep(5)
-
-
-        if response is None:
-
-            print("실패")
-            continue
-
-
-        if response.status_code != 200:
-
-            print(
-                "HTTP 오류:",
-                response.status_code
+        export_usd, export_kg = (
+            fetch_country_data(
+                yymm,
+                country_code
             )
-
-            continue
-
-
-        try:
-
-            root = ET.fromstring(
-                response.content
-            )
-
-        except Exception as e:
-
-            print(
-                "XML 오류:",
-                e
-            )
-
-            continue
-
-
-        items = root.findall(
-            ".//item"
         )
 
 
-        if len(items) == 0:
+        major_export_usd += (
+            export_usd
+        )
 
-            print("데이터 없음")
-            continue
-
-
-        export_usd = 0
-        export_kg = 0
-
-
-        for item in items:
-
-            year = item.findtext(
-                "year"
-            )
-
-            if year == "총계":
-                continue
-
-
-            exp_dlr = (
-                item.findtext(
-                    "expDlr"
-                )
-                or
-                "0"
-            )
-
-
-            exp_wgt = (
-                item.findtext(
-                    "expWgt"
-                )
-                or
-                "0"
-            )
-
-
-            export_usd += int(
-                exp_dlr
-            )
-
-
-            export_kg += int(
-                exp_wgt
-            )
+        major_export_kg += (
+            export_kg
+        )
 
 
         rows.append([
-            yymm[:4]
-            +
-            "."
-            +
-            yymm[4:],
-
+            month_label,
             HS_CODE,
-
             country_code,
-
             country_name,
-
             export_usd,
-
             export_kg
         ])
 
 
         print(
-            "수출액:",
             f"{export_usd:,}"
         )
 
+
+    # -----------------------------------
+    # 기타 계산
+    # -----------------------------------
+
+    total = TOTAL_EXPORT.get(
+        month_label
+    )
+
+
+    if total:
+
+        other_export_usd = (
+            total[
+                "export_usd"
+            ]
+            -
+            major_export_usd
+        )
+
+        other_export_kg = (
+            total[
+                "export_kg"
+            ]
+            -
+            major_export_kg
+        )
+
+    else:
+
+        other_export_usd = 0
+        other_export_kg = 0
+
+
+    # 음수 방지
+    other_export_usd = max(
+        0,
+        other_export_usd
+    )
+
+    other_export_kg = max(
+        0,
+        other_export_kg
+    )
+
+
+    rows.append([
+        month_label,
+        HS_CODE,
+        "OTHER",
+        "기타",
+        other_export_usd,
+        other_export_kg
+    ])
+
+
+    print(
+        "기타",
+        f"{other_export_usd:,}"
+    )
+
+
+    print(
+        "전체",
+        f"{total['export_usd']:,}"
+        if total
+        else
+        "없음"
+    )
+
+
+# -----------------------------------
+# CSV 저장
+# -----------------------------------
 
 filename = (
     f"country_{HS_CODE}.csv"
