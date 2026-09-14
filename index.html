@@ -17,64 +17,45 @@
 <meta http-equiv="Expires"
       content="0">
 
-
 <title>한국 수출 데이터 모니터링</title>
 
-
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
 
 <style>
 
 body {
-
     font-family:
         Arial,
         "Noto Sans KR",
         sans-serif;
 
     margin: 0;
-
     background: #f5f6f8;
-
     color: #222;
-
 }
-
 
 .container {
-
     width: 94%;
-
     max-width: 1400px;
-
     margin: 25px auto;
-
 }
-
 
 h1 {
-
     margin-bottom: 5px;
-
 }
-
 
 .subtitle {
-
     color: #666;
-
     margin-bottom: 25px;
-
 }
 
 
-/* ==============================
+/* =====================================
    상단 카드
-============================== */
+===================================== */
 
 .cards {
-
     display: grid;
 
     grid-template-columns:
@@ -84,222 +65,137 @@ h1 {
         );
 
     gap: 15px;
-
     margin-bottom: 25px;
-
 }
 
-
 .card {
-
     background: white;
-
     border-radius: 12px;
-
     padding: 20px;
 
     box-shadow:
         0 2px 8px rgba(0,0,0,0.08);
 
     cursor: pointer;
-
     transition: 0.2s;
-
 }
 
-
 .card:hover {
-
-    transform:
-        translateY(-3px);
+    transform: translateY(-3px);
 
     box-shadow:
         0 4px 14px rgba(0,0,0,0.13);
-
 }
-
 
 .card.active {
-
-    outline:
-        2px solid #666;
-
+    outline: 2px solid #666;
 }
-
 
 .item-name {
-
     font-size: 18px;
-
     font-weight: bold;
-
 }
-
 
 .amount {
-
     font-size: 29px;
-
     font-weight: bold;
-
     margin-top: 10px;
-
 }
-
 
 .change {
-
     margin-top: 10px;
-
     font-size: 14px;
-
 }
-
 
 .unit-price {
-
     margin-top: 9px;
-
     font-size: 14px;
-
     color: #555;
-
 }
-
 
 .positive {
-
     color: #d33;
-
     font-weight: bold;
-
 }
-
 
 .negative {
-
     color: #1677ff;
-
     font-weight: bold;
-
 }
 
 
-/* ==============================
-   그래프 박스
-============================== */
+/* =====================================
+   그래프 영역
+===================================== */
 
 .chart-box {
-
     background: white;
-
     padding: 20px;
-
     border-radius: 12px;
-
     margin-bottom: 20px;
 
     box-shadow:
         0 2px 8px rgba(0,0,0,0.08);
-
 }
-
 
 .chart-title {
-
     margin-top: 0;
-
     margin-bottom: 20px;
-
 }
-
 
 .main-chart {
-
     position: relative;
-
     height: 470px;
-
 }
-
 
 .change-chart {
-
     position: relative;
-
-    height: 280px;
-
+    height: 300px;
 }
 
 
-/* ==============================
+/* =====================================
    표
-============================== */
+===================================== */
 
 .table-wrapper {
-
     overflow-x: auto;
-
 }
-
 
 table {
-
     width: 100%;
-
     border-collapse: collapse;
-
     background: white;
-
 }
-
 
 th,
 td {
-
     padding: 12px;
-
-    border-bottom:
-        1px solid #e5e5e5;
-
+    border-bottom: 1px solid #e5e5e5;
 }
-
 
 th {
-
     background: #f3f4f6;
-
     text-align: center;
-
 }
-
 
 td.number {
-
     text-align: right;
-
 }
 
-
 td.center {
-
     text-align: center;
-
 }
 
 
 @media (max-width: 700px) {
 
     .main-chart {
-
         height: 380px;
-
     }
 
     .change-chart {
-
-        height: 260px;
-
+        height: 280px;
     }
 
 }
@@ -307,7 +203,6 @@ td.center {
 </style>
 
 </head>
-
 
 
 <body>
@@ -331,9 +226,9 @@ td.center {
 
 
 
-<!-- ===========================
+<!-- =====================================
      품목 카드
-=========================== -->
+===================================== -->
 
 <div
     class="cards"
@@ -342,9 +237,9 @@ td.center {
 
 
 
-<!-- ===========================
+<!-- =====================================
      수출액 + 수출단가
-=========================== -->
+===================================== -->
 
 <div class="chart-box">
 
@@ -369,15 +264,17 @@ td.center {
 
 
 
-<!-- ===========================
+<!-- =====================================
      YoY + MoM
-=========================== -->
+===================================== -->
 
 <div class="chart-box">
 
-<h2 class="chart-title">
+<h2
+    class="chart-title"
+    id="changeChartTitle">
 
-    수출 증감률
+    수출액 증감률
 
 </h2>
 
@@ -394,12 +291,11 @@ td.center {
 
 
 
-<!-- ===========================
+<!-- =====================================
      최신 수출 현황
-=========================== -->
+===================================== -->
 
 <div class="chart-box">
-
 
 <h2 class="chart-title">
 
@@ -412,34 +308,21 @@ td.center {
 
 <table>
 
-
 <thead>
 
 <tr>
 
-<th>
-품목
-</th>
+<th>품목</th>
 
-<th>
-HS Code
-</th>
+<th>HS Code</th>
 
-<th>
-수출액
-</th>
+<th>수출액</th>
 
-<th>
-YoY
-</th>
+<th>YoY</th>
 
-<th>
-MoM
-</th>
+<th>MoM</th>
 
-<th>
-수출단가
-</th>
+<th>수출단가</th>
 
 </tr>
 
@@ -450,7 +333,6 @@ MoM
     id="latestTable">
 </tbody>
 
-
 </table>
 
 </div>
@@ -459,7 +341,6 @@ MoM
 
 
 </div>
-
 
 
 <script>
@@ -474,12 +355,11 @@ let changeChart = null;
 let selectedItem = null;
 
 
-/* ==============================================
+/* =====================================
    CSV 불러오기
-============================================== */
+===================================== */
 
 async function loadCSV() {
-
 
     const response =
         await fetch(
@@ -561,14 +441,11 @@ async function loadCSV() {
 
 
 
-/* ==============================================
+/* =====================================
    수출액 표시
-============================================== */
+===================================== */
 
-function formatMoney(
-    value
-) {
-
+function formatMoney(value) {
 
     const num =
         Number(value);
@@ -577,7 +454,6 @@ function formatMoney(
     if (
         num >= 1000000000
     ) {
-
 
         return (
             "$"
@@ -592,14 +468,12 @@ function formatMoney(
             "B"
         );
 
-
     }
 
 
     if (
         num >= 1000000
     ) {
-
 
         return (
             "$"
@@ -614,7 +488,6 @@ function formatMoney(
             "M"
         );
 
-
     }
 
 
@@ -628,14 +501,11 @@ function formatMoney(
 
 
 
-/* ==============================================
+/* =====================================
    퍼센트 표시
-============================================== */
+===================================== */
 
-function formatPercent(
-    value
-) {
-
+function formatPercent(value) {
 
     if (
         value === ""
@@ -645,9 +515,7 @@ function formatPercent(
         value === null
     ) {
 
-
         return "-";
-
 
     }
 
@@ -660,7 +528,6 @@ function formatPercent(
         num > 0
     ) {
 
-
         return (
             "+"
             +
@@ -668,7 +535,6 @@ function formatPercent(
             +
             "%"
         );
-
 
     }
 
@@ -683,14 +549,11 @@ function formatPercent(
 
 
 
-/* ==============================================
-   플러스/마이너스 색상
-============================================== */
+/* =====================================
+   증감 색상
+===================================== */
 
-function percentClass(
-    value
-) {
-
+function percentClass(value) {
 
     const num =
         Number(value);
@@ -720,19 +583,17 @@ function percentClass(
 
 
 
-/* ==============================================
-   대시보드 시작
-============================================== */
+/* =====================================
+   대시보드 생성
+===================================== */
 
 function createDashboard() {
-
 
     if (
         !allData
         ||
         allData.length === 0
     ) {
-
 
         document
         .getElementById(
@@ -795,11 +656,9 @@ function createDashboard() {
         latest.length > 0
     ) {
 
-
         selectItem(
             latest[0]["품목명"]
         );
-
 
     }
 
@@ -807,14 +666,11 @@ function createDashboard() {
 
 
 
-/* ==============================================
-   상단 품목 카드
-============================================== */
+/* =====================================
+   상단 카드
+===================================== */
 
-function createCards(
-    data
-) {
-
+function createCards(data) {
 
     const container =
         document
@@ -924,13 +780,11 @@ function createCards(
             card.onclick =
                 () => {
 
-
                     selectItem(
                         item[
                             "품목명"
                         ]
                     );
-
 
                 };
 
@@ -948,14 +802,11 @@ function createCards(
 
 
 
-/* ==============================================
+/* =====================================
    품목 선택
-============================================== */
+===================================== */
 
-function selectItem(
-    itemName
-) {
-
+function selectItem(itemName) {
 
     selectedItem =
         itemName;
@@ -996,14 +847,11 @@ function selectItem(
 
 
 
-/* ==============================================
+/* =====================================
    최신 현황 표
-============================================== */
+===================================== */
 
-function createLatestTable(
-    data
-) {
-
+function createLatestTable(data) {
 
     const tbody =
         document
@@ -1116,20 +964,14 @@ function createLatestTable(
 
 
 
-/* ==============================================
+/* =====================================
    메인 그래프
 
    막대 = 수출액
-   선   = 수출단가
+   선 = 수출단가
+===================================== */
 
-   왼쪽축 = 수출액
-   오른쪽축 = 수출단가
-============================================== */
-
-function createMainChart(
-    itemName
-) {
-
+function createMainChart(itemName) {
 
     const data =
         allData
@@ -1205,10 +1047,7 @@ function createMainChart(
         mainChart
     ) {
 
-
-        mainChart
-        .destroy();
-
+        mainChart.destroy();
 
     }
 
@@ -1225,9 +1064,7 @@ function createMainChart(
             ctx,
             {
 
-
                 data: {
-
 
                     labels:
                         labels,
@@ -1284,12 +1121,10 @@ function createMainChart(
 
                     ]
 
-
                 },
 
 
                 options: {
-
 
                     responsive:
                         true,
@@ -1312,7 +1147,6 @@ function createMainChart(
 
                     plugins: {
 
-
                         legend: {
 
                             position:
@@ -1323,14 +1157,10 @@ function createMainChart(
 
                         tooltip: {
 
-
                             callbacks: {
 
-
                                 label:
-                                    function(
-                                        context
-                                    ) {
+                                    function(context) {
 
 
                                         if (
@@ -1340,7 +1170,6 @@ function createMainChart(
                                             ===
                                             "yExport"
                                         ) {
-
 
                                             return (
                                                 "수출액: $"
@@ -1359,7 +1188,6 @@ function createMainChart(
                                                 "M"
                                             );
 
-
                                         }
 
 
@@ -1374,15 +1202,11 @@ function createMainChart(
                                             "/kg"
                                         );
 
-
                                     }
-
 
                             }
 
-
                         }
-
 
                     },
 
@@ -1391,7 +1215,6 @@ function createMainChart(
 
 
                         yExport: {
-
 
                             type:
                                 "linear",
@@ -1416,12 +1239,8 @@ function createMainChart(
 
                             ticks: {
 
-
                                 callback:
-                                    function(
-                                        value
-                                    ) {
-
+                                    function(value) {
 
                                         return (
                                             "$"
@@ -1434,18 +1253,14 @@ function createMainChart(
                                             "M"
                                         );
 
-
                                     }
 
-
                             }
-
 
                         },
 
 
                         yPrice: {
-
 
                             type:
                                 "linear",
@@ -1478,12 +1293,8 @@ function createMainChart(
 
                             ticks: {
 
-
                                 callback:
-                                    function(
-                                        value
-                                    ) {
-
+                                    function(value) {
 
                                         return (
                                             "$"
@@ -1494,18 +1305,14 @@ function createMainChart(
                                             .toFixed(1)
                                         );
 
-
                                     }
 
-
                             }
-
 
                         },
 
 
                         x: {
-
 
                             grid: {
 
@@ -1531,15 +1338,11 @@ function createMainChart(
 
                             }
 
-
                         }
-
 
                     }
 
-
                 }
-
 
             }
         );
@@ -1548,14 +1351,16 @@ function createMainChart(
 
 
 
-/* ==============================================
-   YoY + MoM 그래프
-============================================== */
+/* =====================================
+   수출액 증감률 그래프
 
-function createChangeChart(
-    itemName
-) {
+   YoY = 실선
+   MoM = 점선
 
+   최근 3개월에만 숫자 표시
+===================================== */
+
+function createChangeChart(itemName) {
 
     const data =
         allData
@@ -1580,16 +1385,17 @@ function createChangeChart(
 
 
     const labels =
-        data.map(
+        data
+        .map(
             d =>
                 d["월"]
         );
 
 
     const yoyValues =
-        data.map(
+        data
+        .map(
             d => {
-
 
                 if (
                     d["YoY_pct"]
@@ -1605,16 +1411,15 @@ function createChangeChart(
                 return Number(
                     d["YoY_pct"]
                 );
-
 
             }
         );
 
 
     const momValues =
-        data.map(
+        data
+        .map(
             d => {
-
 
                 if (
                     d["MoM_pct"]
@@ -1631,19 +1436,25 @@ function createChangeChart(
                     d["MoM_pct"]
                 );
 
-
             }
         );
+
+
+    document
+    .getElementById(
+        "changeChartTitle"
+    )
+    .innerText =
+        itemName
+        +
+        " 수출액 증감률";
 
 
     if (
         changeChart
     ) {
 
-
-        changeChart
-        .destroy();
-
+        changeChart.destroy();
 
     }
 
@@ -1660,13 +1471,16 @@ function createChangeChart(
             ctx,
             {
 
-
                 type:
                     "line",
 
 
-                data: {
+                plugins: [
+                    ChartDataLabels
+                ],
 
+
+                data: {
 
                     labels:
                         labels,
@@ -1693,7 +1507,76 @@ function createChangeChart(
                                 5,
 
                             spanGaps:
-                                true
+                                true,
+
+
+                            datalabels: {
+
+                                display:
+                                    function(context) {
+
+                                        return (
+                                            context.dataIndex
+                                            >=
+                                            labels.length - 3
+                                        );
+
+                                    },
+
+                                align:
+                                    "top",
+
+                                anchor:
+                                    "end",
+
+                                offset:
+                                    4,
+
+                                clamp:
+                                    true,
+
+                                font: {
+
+                                    size:
+                                        11,
+
+                                    weight:
+                                        "bold"
+
+                                },
+
+                                formatter:
+                                    function(value) {
+
+                                        if (
+                                            value === null
+                                            ||
+                                            value === undefined
+                                        ) {
+
+                                            return "";
+
+                                        }
+
+
+                                        return (
+                                            (
+                                                value > 0
+                                                ?
+                                                "+"
+                                                :
+                                                ""
+                                            )
+                                            +
+                                            value
+                                            .toFixed(1)
+                                            +
+                                            "%"
+                                        );
+
+                                    }
+
+                            }
 
                         },
 
@@ -1719,19 +1602,85 @@ function createChangeChart(
                                 true,
 
                             borderDash:
-                                [5, 5]
+                                [5, 5],
+
+
+                            datalabels: {
+
+                                display:
+                                    function(context) {
+
+                                        return (
+                                            context.dataIndex
+                                            >=
+                                            labels.length - 3
+                                        );
+
+                                    },
+
+                                align:
+                                    "bottom",
+
+                                anchor:
+                                    "end",
+
+                                offset:
+                                    4,
+
+                                clamp:
+                                    true,
+
+                                font: {
+
+                                    size:
+                                        11,
+
+                                    weight:
+                                        "bold"
+
+                                },
+
+                                formatter:
+                                    function(value) {
+
+                                        if (
+                                            value === null
+                                            ||
+                                            value === undefined
+                                        ) {
+
+                                            return "";
+
+                                        }
+
+
+                                        return (
+                                            (
+                                                value > 0
+                                                ?
+                                                "+"
+                                                :
+                                                ""
+                                            )
+                                            +
+                                            value
+                                            .toFixed(1)
+                                            +
+                                            "%"
+                                        );
+
+                                    }
+
+                            }
 
                         }
 
-
                     ]
-
 
                 },
 
 
                 options: {
-
 
                     responsive:
                         true,
@@ -1754,7 +1703,6 @@ function createChangeChart(
 
                     plugins: {
 
-
                         legend: {
 
                             position:
@@ -1765,15 +1713,10 @@ function createChangeChart(
 
                         tooltip: {
 
-
                             callbacks: {
 
-
                                 label:
-                                    function(
-                                        context
-                                    ) {
-
+                                    function(context) {
 
                                         if (
                                             context
@@ -1783,9 +1726,7 @@ function createChangeChart(
                                             null
                                         ) {
 
-
                                             return "";
-
 
                                         }
 
@@ -1804,9 +1745,7 @@ function createChangeChart(
                                             ": "
                                             +
                                             (
-                                                value
-                                                >
-                                                0
+                                                value > 0
                                                 ?
                                                 "+"
                                                 :
@@ -1819,24 +1758,18 @@ function createChangeChart(
                                             "%"
                                         );
 
-
                                     }
-
 
                             }
 
-
                         }
-
 
                     },
 
 
                     scales: {
 
-
                         y: {
-
 
                             title: {
 
@@ -1851,12 +1784,8 @@ function createChangeChart(
 
                             ticks: {
 
-
                                 callback:
-                                    function(
-                                        value
-                                    ) {
-
+                                    function(value) {
 
                                         return (
                                             value
@@ -1864,18 +1793,14 @@ function createChangeChart(
                                             "%"
                                         );
 
-
                                     }
 
-
                             }
-
 
                         },
 
 
                         x: {
-
 
                             grid: {
 
@@ -1901,15 +1826,11 @@ function createChangeChart(
 
                             }
 
-
                         }
-
 
                     }
 
-
                 }
-
 
             }
         );
