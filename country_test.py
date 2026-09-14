@@ -10,33 +10,29 @@ if not api_key:
     raise SystemExit(1)
 
 
-url = "https://apis.data.go.kr/1220000/Countrytrade/getCountrytradeList"
+url = "https://apis.data.go.kr/1220000/nitemtrade/getNitemtradeList"
 
 
 params = {
-
     "serviceKey": api_key,
-
     "strtYymm": "202608",
-
-    "endYymm": "202608"
-
+    "endYymm": "202608",
+    "hsSgn": "330499",
+    "cntyCd": "US"
 }
 
 
-print("국가별 수출입 데이터 요청")
+print("품목별 국가별 수출입 데이터 요청")
+print("HS Code: 330499")
+print("국가: 미국(US)")
 print("조회기간: 2026년 8월")
 print()
 
 
 response = requests.get(
-
     url,
-
     params=params,
-
     timeout=30
-
 )
 
 
@@ -45,15 +41,35 @@ print()
 
 
 if response.status_code != 200:
-
     print(response.text)
-
     raise SystemExit(1)
 
 
 root = ET.fromstring(
-    response.text
+    response.content
 )
+
+
+result_code = root.findtext(
+    ".//resultCode"
+)
+
+result_msg = root.findtext(
+    ".//resultMsg"
+)
+
+
+print(
+    "결과코드:",
+    result_code
+)
+
+print(
+    "결과메시지:",
+    result_msg
+)
+
+print()
 
 
 items = root.findall(
@@ -70,19 +86,13 @@ print()
 
 
 for number, item in enumerate(
-    items[:15],
+    items[:20],
     start=1
 ):
 
     print("=" * 70)
-
-    print(
-        "ITEM",
-        number
-    )
-
+    print("ITEM", number)
     print("=" * 70)
-
 
     for child in item:
 
@@ -91,6 +101,5 @@ for number, item in enumerate(
             "=",
             child.text
         )
-
 
     print()
