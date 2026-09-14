@@ -1,4 +1,5 @@
 import os
+import time
 import requests
 import xml.etree.ElementTree as ET
 
@@ -29,25 +30,90 @@ print("조회기간: 2026년 8월")
 print()
 
 
-response = requests.get(
-    url,
-    params=params,
-    timeout=30
-)
+response = None
 
 
-print("HTTP 상태코드:", response.status_code)
+# 최대 3번 재시도
+for attempt in range(1, 4):
+
+    try:
+
+        print(f"API 접속 시도 {attempt}/3")
+
+        response = requests.get(
+            url,
+            params=params,
+            timeout=(60, 120)
+        )
+
+        print(
+            "HTTP 상태코드:",
+            response.status_code
+        )
+
+        break
+
+
+    except requests.exceptions.Timeout:
+
+        print("시간 초과 발생")
+
+        if attempt < 3:
+
+            print("10초 후 다시 시도합니다.")
+            time.sleep(10)
+
+        else:
+
+            print("3번 모두 시간 초과했습니다.")
+            raise SystemExit(1)
+
+
+    except requests.exceptions.RequestException as e:
+
+        print(
+            "API 연결 오류:",
+            e
+        )
+
+        raise SystemExit(1)
+
+
+if response is None:
+
+    print("응답을 받지 못했습니다.")
+    raise SystemExit(1)
+
+
 print()
 
 
 if response.status_code != 200:
+
+    print("API 요청 실패")
     print(response.text)
+
     raise SystemExit(1)
 
 
-root = ET.fromstring(
-    response.content
-)
+try:
+
+    root = ET.fromstring(
+        response.content
+    )
+
+except Exception as e:
+
+    print(
+        "XML 해석 오류:",
+        e
+    )
+
+    print(
+        response.text[:3000]
+    )
+
+    raise SystemExit(1)
 
 
 result_code = root.findtext(
@@ -91,8 +157,14 @@ for number, item in enumerate(
 ):
 
     print("=" * 70)
-    print("ITEM", number)
+
+    print(
+        "ITEM",
+        number
+    )
+
     print("=" * 70)
+
 
     for child in item:
 
@@ -101,5 +173,6 @@ for number, item in enumerate(
             "=",
             child.text
         )
+
 
     print()
