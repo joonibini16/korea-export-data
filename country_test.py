@@ -7,6 +7,10 @@ import xml.etree.ElementTree as ET
 from datetime import datetime
 
 
+# =========================================================
+# 1. 기본 설정
+# =========================================================
+
 API_KEY = os.environ.get("CUSTOMS_API_KEY")
 
 if not API_KEY:
@@ -14,9 +18,11 @@ if not API_KEY:
     raise SystemExit(1)
 
 
-API_URL = "http://apis.data.go.kr/1220000/nitemtrade/getNitemtradeList"
+API_URL = (
+    "http://apis.data.go.kr/"
+    "1220000/nitemtrade/getNitemtradeList"
+)
 
-HS_CODE = "330499"
 
 START_YEAR = 2025
 START_MONTH = 1
@@ -32,15 +38,25 @@ else:
     END_MONTH = today.month - 1
 
 
+# =========================================================
+# 주요 국가
+# =========================================================
+
 COUNTRIES = {
     "US": "미국",
     "CN": "중국",
     "JP": "일본",
     "VN": "베트남",
     "HK": "홍콩",
-    "FR": "프랑스"
+    "FR": "프랑스",
+    "PL": "폴란드",
+    "GB": "영국"
 }
 
+
+# =========================================================
+# 2. 조회월 만들기
+# =========================================================
 
 def make_month_list(
     start_year,
@@ -83,18 +99,16 @@ MONTHS = make_month_list(
 )
 
 
-# -----------------------------------
-# summary_330499.csv에서 전체 수출 읽기
-# -----------------------------------
+# =========================================================
+# 3. hs_codes.csv 읽기
+# =========================================================
 
-def load_total_export():
+def read_hs_codes():
 
-    totals = {}
-
-    filename = f"summary_{HS_CODE}.csv"
+    items = []
 
     with open(
-        filename,
+        "hs_codes.csv",
         "r",
         encoding="utf-8-sig"
     ) as f:
@@ -103,36 +117,90 @@ def load_total_export():
 
         for row in reader:
 
-            totals[
-                row["월"]
-            ] = {
+            hs_code = (
+                row["hs_code"]
+                .strip()
+            )
 
-                "export_usd":
-                    int(
-                        row[
-                            "수출금액_USD"
-                        ]
-                    ),
+            name = (
+                row["name"]
+                .strip()
+            )
 
-                "export_kg":
-                    int(
-                        row[
-                            "수출중량_KG"
-                        ]
-                    )
-            }
+            if not hs_code:
+                continue
+
+            items.append({
+                "hs_code": hs_code,
+                "name": name
+            })
+
+    return items
+
+
+HS_ITEMS = read_hs_codes()
+
+
+# =========================================================
+# 4. 품목별 전체 수출액 읽기
+# =========================================================
+
+def load_total_export(hs_code):
+
+    totals = {}
+
+    filename = (
+        f"summary_{hs_code}.csv"
+    )
+
+    try:
+
+        with open(
+            filename,
+            "r",
+            encoding="utf-8-sig"
+        ) as f:
+
+            reader = csv.DictReader(f)
+
+            for row in reader:
+
+                totals[
+                    row["월"]
+                ] = {
+
+                    "export_usd":
+                        int(
+                            row[
+                                "수출금액_USD"
+                            ]
+                        ),
+
+                    "export_kg":
+                        int(
+                            row[
+                                "수출중량_KG"
+                            ]
+                        )
+                }
+
+    except FileNotFoundError:
+
+        print(
+            "오류:",
+            filename,
+            "파일이 없습니다."
+        )
 
     return totals
 
 
-TOTAL_EXPORT = load_total_export()
-
-
-# -----------------------------------
-# 국가별 API 조회
-# -----------------------------------
+# =========================================================
+# 5. 국가별 API 조회
+# =========================================================
 
 def fetch_country_data(
+    hs_code,
     yymm,
     country_code
 ):
@@ -141,7 +209,7 @@ def fetch_country_data(
         "serviceKey": API_KEY,
         "strtYymm": yymm,
         "endYymm": yymm,
-        "hsSgn": HS_CODE,
+        "hsSgn": hs_code,
         "cntyCd": country_code
     }
 
@@ -173,6 +241,16 @@ def fetch_country_data(
                 time.sleep(5)
 
 
+        except requests.exceptions.RequestException as e:
+
+            print(
+                "API 오류:",
+                e
+            )
+
+            return 0, 0
+
+
     if response is None:
 
         return 0, 0
@@ -189,7 +267,7 @@ def fetch_country_data(
             response.content
         )
 
-    except:
+    except Exception:
 
         return 0, 0
 
@@ -247,12 +325,254 @@ def fetch_country_data(
     )
 
 
-# -----------------------------------
-# 국가별 수집
-# -----------------------------------
+# =========================================================
+# 6. 품목 하나 수집
+# =========================================================
 
-rows = []
+def collect_one_item(
+    hs_code,
+    item_name
+):
 
+    print()
+    print("=" * 70)
+
+    print(
+        item_name,
+        hs_code
+    )
+
+    print("=" * 70)
+
+
+    total_export = (
+        load_total_export(
+            hs_code
+        )
+    )
+
+
+    rows = []
+
+
+    for yymm in MONTHS:
+
+        month_label = (
+            yymm[:4]
+            +
+            "."
+            +
+            yymm[4:]
+        )
+
+
+        print()
+        print(
+            "월:",
+            month_label
+        )
+
+
+        major_export_usd = 0
+        major_export_kg = 0
+
+
+        for (
+            country_code,
+            country_name
+        ) in COUNTRIES.items():
+
+            print(
+                " ",
+                country_name,
+                end=" "
+            )
+
+
+            export_usd, export_kg = (
+                fetch_country_data(
+                    hs_code,
+                    yymm,
+                    country_code
+                )
+            )
+
+
+            major_export_usd += (
+                export_usd
+            )
+
+            major_export_kg += (
+                export_kg
+            )
+
+
+            rows.append([
+
+                month_label,
+
+                item_name,
+
+                hs_code,
+
+                country_code,
+
+                country_name,
+
+                export_usd,
+
+                export_kg
+            ])
+
+
+            print(
+                f"{export_usd:,}"
+            )
+
+
+        # =================================================
+        # 기타 계산
+        # =================================================
+
+        total = total_export.get(
+            month_label
+        )
+
+
+        if total:
+
+            other_export_usd = (
+                total[
+                    "export_usd"
+                ]
+                -
+                major_export_usd
+            )
+
+            other_export_kg = (
+                total[
+                    "export_kg"
+                ]
+                -
+                major_export_kg
+            )
+
+        else:
+
+            other_export_usd = 0
+            other_export_kg = 0
+
+
+        # 혹시 계산 오차로 음수가 생기는 것 방지
+        other_export_usd = max(
+            0,
+            other_export_usd
+        )
+
+        other_export_kg = max(
+            0,
+            other_export_kg
+        )
+
+
+        rows.append([
+
+            month_label,
+
+            item_name,
+
+            hs_code,
+
+            "OTHER",
+
+            "기타",
+
+            other_export_usd,
+
+            other_export_kg
+        ])
+
+
+        print(
+            " 기타",
+            f"{other_export_usd:,}"
+        )
+
+
+        # =================================================
+        # 합계 검증
+        # =================================================
+
+        if total:
+
+            check_total = (
+                major_export_usd
+                +
+                other_export_usd
+            )
+
+
+            print(
+                " 합계확인:",
+                f"{check_total:,}",
+                "/",
+                f"{total['export_usd']:,}"
+            )
+
+
+    return rows
+
+
+# =========================================================
+# 7. CSV 저장
+# =========================================================
+
+def save_country_csv(
+    hs_code,
+    rows
+):
+
+    filename = (
+        f"country_{hs_code}.csv"
+    )
+
+
+    with open(
+        filename,
+        "w",
+        newline="",
+        encoding="utf-8-sig"
+    ) as f:
+
+        writer = csv.writer(f)
+
+
+        writer.writerow([
+            "월",
+            "품목명",
+            "HS코드",
+            "국가코드",
+            "국가명",
+            "수출금액_USD",
+            "수출중량_KG"
+        ])
+
+
+        writer.writerows(
+            rows
+        )
+
+
+    print()
+    print(
+        filename,
+        "저장 완료"
+    )
+
+
+# =========================================================
+# 8. 모든 품목 실행
+# =========================================================
 
 print(
     f"조회기간: "
@@ -262,184 +582,44 @@ print(
 )
 
 print(
-    "HS Code:",
-    HS_CODE
+    "품목 수:",
+    len(HS_ITEMS)
+)
+
+print(
+    "주요국 수:",
+    len(COUNTRIES)
 )
 
 
-for yymm in MONTHS:
+for item in HS_ITEMS:
 
-    month_label = (
-        yymm[:4]
-        +
-        "."
-        +
-        yymm[4:]
+    hs_code = (
+        item["hs_code"]
+    )
+
+    item_name = (
+        item["name"]
     )
 
 
-    print()
-    print("=" * 70)
-    print("월:", month_label)
-    print("=" * 70)
-
-
-    major_export_usd = 0
-    major_export_kg = 0
-
-
-    for (
-        country_code,
-        country_name
-    ) in COUNTRIES.items():
-
-        print(
-            country_name,
-            end=" "
-        )
-
-
-        export_usd, export_kg = (
-            fetch_country_data(
-                yymm,
-                country_code
-            )
-        )
-
-
-        major_export_usd += (
-            export_usd
-        )
-
-        major_export_kg += (
-            export_kg
-        )
-
-
-        rows.append([
-            month_label,
-            HS_CODE,
-            country_code,
-            country_name,
-            export_usd,
-            export_kg
-        ])
-
-
-        print(
-            f"{export_usd:,}"
-        )
-
-
-    # -----------------------------------
-    # 기타 계산
-    # -----------------------------------
-
-    total = TOTAL_EXPORT.get(
-        month_label
+    rows = collect_one_item(
+        hs_code,
+        item_name
     )
 
 
-    if total:
-
-        other_export_usd = (
-            total[
-                "export_usd"
-            ]
-            -
-            major_export_usd
-        )
-
-        other_export_kg = (
-            total[
-                "export_kg"
-            ]
-            -
-            major_export_kg
-        )
-
-    else:
-
-        other_export_usd = 0
-        other_export_kg = 0
-
-
-    # 음수 방지
-    other_export_usd = max(
-        0,
-        other_export_usd
-    )
-
-    other_export_kg = max(
-        0,
-        other_export_kg
-    )
-
-
-    rows.append([
-        month_label,
-        HS_CODE,
-        "OTHER",
-        "기타",
-        other_export_usd,
-        other_export_kg
-    ])
-
-
-    print(
-        "기타",
-        f"{other_export_usd:,}"
-    )
-
-
-    print(
-        "전체",
-        f"{total['export_usd']:,}"
-        if total
-        else
-        "없음"
-    )
-
-
-# -----------------------------------
-# CSV 저장
-# -----------------------------------
-
-filename = (
-    f"country_{HS_CODE}.csv"
-)
-
-
-with open(
-    filename,
-    "w",
-    newline="",
-    encoding="utf-8-sig"
-) as f:
-
-    writer = csv.writer(f)
-
-    writer.writerow([
-        "월",
-        "HS코드",
-        "국가코드",
-        "국가명",
-        "수출금액_USD",
-        "수출중량_KG"
-    ])
-
-    writer.writerows(
+    save_country_csv(
+        hs_code,
         rows
     )
 
 
 print()
-print(
-    filename,
-    "저장 완료"
-)
+print("=" * 70)
 
 print(
-    "총 데이터 행:",
-    len(rows)
+    "모든 국가별 데이터 수집 완료"
 )
+
+print("=" * 70)
