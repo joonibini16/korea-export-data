@@ -236,3 +236,41 @@
 2026.08,반도체,8542,38235698070,1674296,22836.88,203.08,16.84
 2026.08,변압기,8504,415631807,22427513,18.53,19.3,4.16
 2026.08,화장품,330499,1013661135,27971579,36.24,58.94,-1.12
+# ------------------------------------
+# 최신월 데이터만 latest.csv로 저장
+# ------------------------------------
+
+if all_summary_rows:
+
+    latest_month = max(row[0] for row in all_summary_rows)
+
+    latest_rows = [
+        row
+        for row in all_summary_rows
+        if row[0] == latest_month
+    ]
+
+    with open(
+        "latest.csv",
+        "w",
+        newline="",
+        encoding="utf-8-sig"
+    ) as f:
+
+        writer = csv.writer(f)
+
+        writer.writerow([
+            "월",
+            "품목명",
+            "HS코드",
+            "수출금액_USD",
+            "수출중량_KG",
+            "수출단가_USD_per_KG",
+            "YoY_pct",
+            "MoM_pct"
+        ])
+
+        writer.writerows(latest_rows)
+
+    print("latest.csv 저장 완료")
+    print("최신월:", latest_month)
