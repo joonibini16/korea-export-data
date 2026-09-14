@@ -1,2488 +1,1432 @@
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
-
-<meta http-equiv="Cache-Control"
-      content="no-cache, no-store, must-revalidate">
-
-<meta http-equiv="Pragma"
-      content="no-cache">
-
-<meta http-equiv="Expires"
-      content="0">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 
 <title>한국 수출 데이터 모니터링</title>
 
-
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
 
-
 <style>
+:root {
+    --bg: #f5f6f8;
+    --card: #ffffff;
+    --text: #222;
+    --muted: #666;
+    --border: #e5e7eb;
+    --positive: #d33;
+    --negative: #1677ff;
+}
+
+* {
+    box-sizing: border-box;
+}
 
 body {
-
-    font-family:
-        Arial,
-        "Noto Sans KR",
-        sans-serif;
-
     margin: 0;
-
-    background: #f5f6f8;
-
-    color: #222;
-
+    background: var(--bg);
+    color: var(--text);
+    font-family: Arial, "Noto Sans KR", sans-serif;
 }
-
 
 .container {
-
     width: 94%;
-
-    max-width: 1400px;
-
-    margin: 25px auto;
-
+    max-width: 1450px;
+    margin: 25px auto 50px;
 }
-
 
 h1 {
-
     margin-bottom: 5px;
-
 }
-
 
 .subtitle {
-
-    color: #666;
-
+    color: var(--muted);
     margin-bottom: 25px;
-
 }
-
-
-/* =====================================
-   상단 카드
-===================================== */
 
 .cards {
-
     display: grid;
-
-    grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(230px, 1fr)
-        );
-
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
     gap: 15px;
-
     margin-bottom: 25px;
-
 }
 
+.card,
+.chart-box {
+    background: var(--card);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
 
 .card {
-
-    background: white;
-
-    border-radius: 12px;
-
     padding: 20px;
-
-    box-shadow:
-        0 2px 8px rgba(0,0,0,0.08);
-
     cursor: pointer;
-
     transition: 0.2s;
-
 }
-
 
 .card:hover {
-
-    transform:
-        translateY(-3px);
-
-    box-shadow:
-        0 4px 14px rgba(0,0,0,0.13);
-
+    transform: translateY(-3px);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.13);
 }
-
 
 .card.active {
-
-    outline:
-        2px solid #666;
-
+    outline: 2px solid #555;
 }
-
 
 .item-name {
-
     font-size: 18px;
-
     font-weight: bold;
-
 }
-
 
 .amount {
-
     font-size: 29px;
-
     font-weight: bold;
-
     margin-top: 10px;
-
 }
-
 
 .change {
-
     margin-top: 10px;
-
     font-size: 14px;
-
 }
-
 
 .unit-price {
-
     margin-top: 9px;
-
     font-size: 14px;
-
     color: #555;
-
 }
-
 
 .positive {
-
-    color: #d33;
-
+    color: var(--positive);
     font-weight: bold;
-
 }
-
 
 .negative {
-
-    color: #1677ff;
-
+    color: var(--negative);
     font-weight: bold;
-
 }
-
-
-/* =====================================
-   그래프 영역
-===================================== */
 
 .chart-box {
-
-    background: white;
-
     padding: 20px;
-
-    border-radius: 12px;
-
     margin-bottom: 20px;
-
-    box-shadow:
-        0 2px 8px rgba(0,0,0,0.08);
-
 }
-
 
 .chart-title {
-
-    margin-top: 0;
-
-    margin-bottom: 20px;
-
+    margin: 0 0 16px;
 }
 
+.chart-subtitle {
+    margin: -8px 0 16px;
+    color: var(--muted);
+    font-size: 13px;
+}
 
 .main-chart {
-
     position: relative;
-
     height: 470px;
-
 }
-
 
 .change-chart {
-
     position: relative;
-
-    height: 300px;
-
+    height: 320px;
 }
-
 
 .seasonal-chart {
-
     position: relative;
-
     height: 440px;
-
 }
 
+.country-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.35fr;
+    gap: 20px;
+}
 
-/* =====================================
-   표
-===================================== */
+.country-share-chart {
+    position: relative;
+    height: 390px;
+}
+
+.country-trend-chart {
+    position: relative;
+    height: 390px;
+}
+
+.control-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+}
+
+.control-row label {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+select {
+    padding: 8px 12px;
+    border: 1px solid #d5d8de;
+    border-radius: 8px;
+    background: white;
+    font-size: 14px;
+}
 
 .table-wrapper {
-
     overflow-x: auto;
-
 }
-
 
 table {
-
     width: 100%;
-
     border-collapse: collapse;
-
     background: white;
-
 }
-
 
 th,
 td {
-
     padding: 12px;
-
-    border-bottom:
-        1px solid #e5e5e5;
-
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
 }
-
 
 th {
-
     background: #f3f4f6;
-
     text-align: center;
-
 }
-
 
 td.number {
-
     text-align: right;
-
 }
-
 
 td.center {
-
     text-align: center;
-
 }
 
+.section-divider {
+    margin: 32px 0 18px;
+    border: 0;
+    border-top: 2px solid #ddd;
+}
+
+.section-heading {
+    margin: 0 0 18px;
+    font-size: 24px;
+}
+
+.error-box {
+    display: none;
+    background: #fff4f4;
+    border: 1px solid #f1b5b5;
+    color: #9d2020;
+    padding: 12px 14px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 900px) {
+    .country-grid {
+        grid-template-columns: 1fr;
+    }
+}
 
 @media (max-width: 700px) {
-
     .main-chart {
-
         height: 380px;
-
     }
-
 
     .change-chart {
-
-        height: 280px;
-
+        height: 290px;
     }
-
 
     .seasonal-chart {
-
         height: 380px;
-
     }
 
+    .country-share-chart,
+    .country-trend-chart {
+        height: 340px;
+    }
 }
-
 </style>
-
 </head>
 
-
 <body>
-
-
 <div class="container">
 
+<h1>한국 수출 데이터 모니터링</h1>
+<div class="subtitle" id="latestMonth">데이터 불러오는 중...</div>
+<div class="error-box" id="errorBox"></div>
 
-<h1>
-한국 수출 데이터 모니터링
-</h1>
-
-
-<div
-    class="subtitle"
-    id="latestMonth">
-
-    데이터 불러오는 중...
-
-</div>
-
-
-
-<!-- =====================================
-     품목 카드
-===================================== -->
-
-<div
-    class="cards"
-    id="cards">
-</div>
-
-
-
-<!-- =====================================
-     1. 수출액 + 수출단가
-===================================== -->
+<div class="cards" id="cards"></div>
 
 <div class="chart-box">
-
-<h2
-    class="chart-title"
-    id="mainChartTitle">
-
-    월별 수출액 및 수출단가
-
-</h2>
-
-
-<div class="main-chart">
-
-<canvas
-    id="mainChart">
-</canvas>
-
+    <h2 class="chart-title" id="mainChartTitle">월별 수출액 및 수출단가</h2>
+    <div class="main-chart">
+        <canvas id="mainChart"></canvas>
+    </div>
 </div>
-
-</div>
-
-
-
-<!-- =====================================
-     2. YoY + MoM
-===================================== -->
 
 <div class="chart-box">
-
-<h2
-    class="chart-title"
-    id="changeChartTitle">
-
-    수출액 증감률
-
-</h2>
-
-
-<div class="change-chart">
-
-<canvas
-    id="changeChart">
-</canvas>
-
+    <h2 class="chart-title" id="changeChartTitle">수출액 증감률</h2>
+    <div class="change-chart">
+        <canvas id="changeChart"></canvas>
+    </div>
 </div>
-
-</div>
-
-
-
-<!-- =====================================
-     3. 연도별 월간 비교
-===================================== -->
 
 <div class="chart-box">
-
-<h2
-    class="chart-title"
-    id="seasonalChartTitle">
-
-    연도별 월간 수출 비교
-
-</h2>
-
-
-<div class="seasonal-chart">
-
-<canvas
-    id="seasonalChart">
-</canvas>
-
+    <h2 class="chart-title" id="seasonalChartTitle">연도별 월간 수출 비교</h2>
+    <div class="seasonal-chart">
+        <canvas id="seasonalChart"></canvas>
+    </div>
 </div>
-
-</div>
-
-
-
-<!-- =====================================
-     최신 수출 현황
-===================================== -->
 
 <div class="chart-box">
+    <h2 class="chart-title">최신 수출 현황</h2>
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>품목</th>
+                    <th>HS Code</th>
+                    <th>수출액</th>
+                    <th>YoY</th>
+                    <th>MoM</th>
+                    <th>수출단가</th>
+                </tr>
+            </thead>
+            <tbody id="latestTable"></tbody>
+        </table>
+    </div>
+</div>
 
-<h2 class="chart-title">
+<hr class="section-divider">
+<h2 class="section-heading">국가별 수출 분석</h2>
 
-    최신 수출 현황
+<div class="country-grid">
 
-</h2>
+    <div class="chart-box">
+        <h2 class="chart-title" id="countryShareTitle">최신월 국가별 수출 비중</h2>
+        <div class="chart-subtitle" id="countryShareSubtitle"></div>
+        <div class="country-share-chart">
+            <canvas id="countryShareChart"></canvas>
+        </div>
+    </div>
 
+    <div class="chart-box">
+        <h2 class="chart-title" id="countryTrendTitle">국가별 월간 수출 추이</h2>
 
-<div class="table-wrapper">
+        <div class="control-row">
+            <label for="countrySelect">국가 선택</label>
+            <select id="countrySelect"></select>
+        </div>
 
-<table>
-
-<thead>
-
-<tr>
-
-<th>품목</th>
-
-<th>HS Code</th>
-
-<th>수출액</th>
-
-<th>YoY</th>
-
-<th>MoM</th>
-
-<th>수출단가</th>
-
-</tr>
-
-</thead>
-
-
-<tbody
-    id="latestTable">
-</tbody>
-
-</table>
+        <div class="country-trend-chart">
+            <canvas id="countryTrendChart"></canvas>
+        </div>
+    </div>
 
 </div>
 
+<div class="chart-box">
+    <h2 class="chart-title" id="countryTableTitle">최신월 국가별 수출 현황</h2>
+
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>순위</th>
+                    <th>국가</th>
+                    <th>국가코드</th>
+                    <th>수출액</th>
+                    <th>비중</th>
+                    <th>수출중량</th>
+                </tr>
+            </thead>
+            <tbody id="countryTable"></tbody>
+        </table>
+    </div>
 </div>
 
-
 </div>
-
-
 
 <script>
-
+Chart.register(ChartDataLabels);
 
 let allData = [];
-
-let mainChart = null;
-
-let changeChart = null;
-
-let seasonalChart = null;
+let countryData = [];
 
 let selectedItem = null;
 
+let mainChart = null;
+let changeChart = null;
+let seasonalChart = null;
+let countryShareChart = null;
+let countryTrendChart = null;
 
-/* =====================================
-   CSV 불러오기
-===================================== */
+const COUNTRY_ORDER = [
+    "US", "CN", "JP", "VN", "HK", "FR", "PL", "GB", "OTHER"
+];
 
-async function loadCSV() {
+const COUNTRY_COLORS = [
+    "#4472C4",
+    "#ED7D31",
+    "#A5A5A5",
+    "#FFC000",
+    "#5B9BD5",
+    "#70AD47",
+    "#8064A2",
+    "#C55A11",
+    "#BFBFBF"
+];
 
-    const response =
-        await fetch(
-            "summary_all.csv?t="
-            +
-            Date.now()
-        );
-
-
-    const text =
-        await response.text();
-
-
-    const rows =
-        text
-        .trim()
-        .split(/\r?\n/);
-
-
-    const headers =
-        rows[0]
-        .split(",")
-        .map(
-            x =>
-                x.trim()
-        );
-
-
-    allData =
-        rows
-        .slice(1)
-
-        .filter(
-            row =>
-                row.trim() !== ""
-        )
-
-        .map(
-            row => {
-
-
-                const values =
-                    row.split(",");
-
-
-                let obj = {};
-
-
-                headers.forEach(
-                    (
-                        header,
-                        index
-                    ) => {
-
-
-                        obj[header] =
-                            values[index]
-                            ?
-                            values[index]
-                            .trim()
-                            :
-                            "";
-
-
-                    }
-                );
-
-
-                return obj;
-
-
-            }
-        );
-
-
-    createDashboard();
-
+function showError(message) {
+    const box = document.getElementById("errorBox");
+    box.style.display = "block";
+    box.textContent = message;
 }
 
+function parseCSV(text) {
+    const lines = text.trim().split(/\r?\n/);
 
+    if (!lines.length) return [];
 
-/* =====================================
-   수출액 표시
-===================================== */
+    function splitCSVLine(line) {
+        const result = [];
+        let current = "";
+        let inQuotes = false;
+
+        for (let i = 0; i < line.length; i++) {
+            const ch = line[i];
+
+            if (ch === '"') {
+                if (inQuotes && line[i + 1] === '"') {
+                    current += '"';
+                    i++;
+                } else {
+                    inQuotes = !inQuotes;
+                }
+            } else if (ch === "," && !inQuotes) {
+                result.push(current);
+                current = "";
+            } else {
+                current += ch;
+            }
+        }
+
+        result.push(current);
+        return result;
+    }
+
+    const headers = splitCSVLine(lines[0]).map(x => x.replace(/^\uFEFF/, "").trim());
+
+    return lines
+        .slice(1)
+        .filter(line => line.trim() !== "")
+        .map(line => {
+            const values = splitCSVLine(line);
+            const obj = {};
+
+            headers.forEach((header, index) => {
+                obj[header] = values[index] !== undefined
+                    ? values[index].trim()
+                    : "";
+            });
+
+            return obj;
+        });
+}
+
+async function fetchCSV(filename) {
+    const response = await fetch(
+        filename + "?t=" + Date.now(),
+        { cache: "no-store" }
+    );
+
+    if (!response.ok) {
+        throw new Error(filename + " 불러오기 실패: HTTP " + response.status);
+    }
+
+    return parseCSV(await response.text());
+}
+
+async function loadData() {
+    try {
+        const [summary, countries] = await Promise.all([
+            fetchCSV("summary_all.csv"),
+            fetchCSV("country_all.csv")
+        ]);
+
+        allData = summary;
+        countryData = countries;
+
+        createDashboard();
+
+    } catch (error) {
+        console.error(error);
+        showError("데이터를 불러오지 못했습니다: " + error.message);
+    }
+}
 
 function formatMoney(value) {
+    const num = Number(value || 0);
 
-    const num =
-        Number(value);
-
-
-    if (
-        num >= 1000000000
-    ) {
-
-        return (
-            "$"
-            +
-            (
-                num
-                /
-                1000000000
-            )
-            .toFixed(2)
-            +
-            "B"
-        );
-
+    if (num >= 1000000000) {
+        return "$" + (num / 1000000000).toFixed(2) + "B";
     }
 
-
-    if (
-        num >= 1000000
-    ) {
-
-        return (
-            "$"
-            +
-            (
-                num
-                /
-                1000000
-            )
-            .toFixed(1)
-            +
-            "M"
-        );
-
+    if (num >= 1000000) {
+        return "$" + (num / 1000000).toFixed(1) + "M";
     }
 
+    if (num >= 1000) {
+        return "$" + (num / 1000).toFixed(1) + "K";
+    }
 
-    return (
-        "$"
-        +
-        num.toLocaleString()
-    );
-
+    return "$" + num.toLocaleString();
 }
-
-
-
-/* =====================================
-   퍼센트 표시
-===================================== */
 
 function formatPercent(value) {
-
-    if (
-        value === ""
-        ||
-        value === undefined
-        ||
-        value === null
-    ) {
-
+    if (value === "" || value === undefined || value === null) {
         return "-";
-
     }
 
+    const num = Number(value);
 
-    const num =
-        Number(value);
+    if (!Number.isFinite(num)) return "-";
 
-
-    if (
-        num > 0
-    ) {
-
-        return (
-            "+"
-            +
-            num.toFixed(1)
-            +
-            "%"
-        );
-
-    }
-
-
-    return (
-        num.toFixed(1)
-        +
-        "%"
-    );
-
+    return (num > 0 ? "+" : "") + num.toFixed(1) + "%";
 }
-
-
-
-/* =====================================
-   증감 색상
-===================================== */
 
 function percentClass(value) {
+    const num = Number(value);
 
-    const num =
-        Number(value);
-
-
-    if (
-        num > 0
-    ) {
-
-        return "positive";
-
-    }
-
-
-    if (
-        num < 0
-    ) {
-
-        return "negative";
-
-    }
-
+    if (num > 0) return "positive";
+    if (num < 0) return "negative";
 
     return "";
-
 }
-
-
-
-/* =====================================
-   대시보드 생성
-===================================== */
 
 function createDashboard() {
-
-    if (
-        !allData
-        ||
-        allData.length === 0
-    ) {
-
-        document
-        .getElementById(
-            "latestMonth"
-        )
-        .innerText =
-            "데이터가 없습니다.";
-
-
+    if (!allData.length) {
+        showError("summary_all.csv에 데이터가 없습니다.");
         return;
-
     }
 
+    const latestMonth = [...new Set(allData.map(d => d["월"]))].sort().pop();
 
-    const months =
-        allData
-        .map(
-            d =>
-                d["월"]
-        );
+    document.getElementById("latestMonth").textContent =
+        "최신 데이터: " + latestMonth + " | 품목 카드를 클릭하면 모든 차트가 변경됩니다.";
 
+    const latestRows = allData
+        .filter(d => d["월"] === latestMonth)
+        .sort((a, b) => Number(b["수출금액_USD"]) - Number(a["수출금액_USD"]));
 
-    const latestMonth =
-        [...months]
-        .sort()
-        .reverse()[0];
+    createCards(latestRows);
+    createLatestTable(latestRows);
 
+    selectedItem = latestRows[0]?.["품목명"] || allData[0]["품목명"];
 
-    document
-    .getElementById(
-        "latestMonth"
-    )
-    .innerText =
-        "최신 데이터: "
-        +
-        latestMonth;
-
-
-    const latest =
-        allData
-        .filter(
-            d =>
-                d["월"]
-                ===
-                latestMonth
-        );
-
-
-    createCards(
-        latest
-    );
-
-
-    createLatestTable(
-        latest
-    );
-
-
-    if (
-        latest.length > 0
-    ) {
-
-        selectItem(
-            latest[0]["품목명"]
-        );
-
-    }
-
+    selectItem(selectedItem);
 }
 
-
-
-/* =====================================
-   상단 카드
-===================================== */
-
 function createCards(data) {
+    const container = document.getElementById("cards");
+    container.innerHTML = "";
 
-    const container =
-        document
-        .getElementById(
-            "cards"
-        );
+    data.forEach(item => {
+        const card = document.createElement("div");
 
+        card.className = "card";
+        card.dataset.item = item["품목명"];
 
-    container.innerHTML =
-        "";
-
-
-    data.forEach(
-        item => {
-
-
-            const card =
-                document
-                .createElement(
-                    "div"
-                );
-
-
-            card.className =
-                "card";
-
-
-            card.dataset.item =
-                item["품목명"];
-
-
-            card.innerHTML =
-            `
-
-            <div class="item-name">
-
-                ${item["품목명"]}
-
-            </div>
-
+        card.innerHTML = `
+            <div class="item-name">${item["품목명"]}</div>
 
             <div class="amount">
-
-                ${formatMoney(
-                    item[
-                        "수출금액_USD"
-                    ]
-                )}
-
+                ${formatMoney(item["수출금액_USD"])}
             </div>
 
-
             <div class="change">
-
                 YoY:
-
-                <span
-                    class="${percentClass(
-                        item["YoY_pct"]
-                    )}">
-
-                    ${formatPercent(
-                        item["YoY_pct"]
-                    )}
-
+                <span class="${percentClass(item["YoY_pct"])}">
+                    ${formatPercent(item["YoY_pct"])}
                 </span>
 
                 &nbsp;&nbsp;
 
                 MoM:
-
-                <span
-                    class="${percentClass(
-                        item["MoM_pct"]
-                    )}">
-
-                    ${formatPercent(
-                        item["MoM_pct"]
-                    )}
-
+                <span class="${percentClass(item["MoM_pct"])}">
+                    ${formatPercent(item["MoM_pct"])}
                 </span>
-
             </div>
-
 
             <div class="unit-price">
-
                 수출단가
-
                 <strong>
-
-                    $${Number(
-                        item[
-                            "수출단가_USD_per_KG"
-                        ]
-                    )
-                    .toFixed(2)}
-                    /kg
-
+                    $${Number(item["수출단가_USD_per_KG"] || 0).toFixed(2)}/kg
                 </strong>
-
             </div>
+        `;
 
-            `;
+        card.onclick = () => selectItem(item["품목명"]);
 
-
-            card.onclick =
-                () => {
-
-                    selectItem(
-                        item[
-                            "품목명"
-                        ]
-                    );
-
-                };
-
-
-            container
-            .appendChild(
-                card
-            );
-
-
-        }
-    );
-
+        container.appendChild(card);
+    });
 }
-
-
-
-/* =====================================
-   품목 선택
-===================================== */
 
 function selectItem(itemName) {
+    selectedItem = itemName;
 
-    selectedItem =
-        itemName;
+    document.querySelectorAll(".card").forEach(card => {
+        card.classList.toggle(
+            "active",
+            card.dataset.item === itemName
+        );
+    });
 
+    createMainChart(itemName);
+    createChangeChart(itemName);
+    createSeasonalChart(itemName);
 
-    document
-    .querySelectorAll(
-        ".card"
-    )
-    .forEach(
-        card => {
-
-
-            card
-            .classList
-            .toggle(
-                "active",
-                card.dataset.item
-                ===
-                itemName
-            );
-
-
-        }
-    );
-
-
-    createMainChart(
-        itemName
-    );
-
-
-    createChangeChart(
-        itemName
-    );
-
-
-    createSeasonalChart(
-        itemName
-    );
-
+    createCountryControls(itemName);
+    createCountryShareChart(itemName);
+    createCountryTable(itemName);
 }
-
-
-
-/* =====================================
-   최신 현황 표
-===================================== */
 
 function createLatestTable(data) {
+    const tbody = document.getElementById("latestTable");
+    tbody.innerHTML = "";
 
-    const tbody =
-        document
-        .getElementById(
-            "latestTable"
-        );
+    data.forEach(item => {
+        const tr = document.createElement("tr");
 
-
-    tbody.innerHTML =
-        "";
-
-
-    data.forEach(
-        item => {
-
-
-            const tr =
-                document
-                .createElement(
-                    "tr"
-                );
-
-
-            tr.innerHTML =
-            `
-
-            <td>
-
-                ${item["품목명"]}
-
-            </td>
-
-
-            <td class="center">
-
-                ${item["HS코드"]}
-
-            </td>
-
+        tr.innerHTML = `
+            <td>${item["품목명"]}</td>
+            <td class="center">${item["HS코드"]}</td>
+            <td class="number">${Number(item["수출금액_USD"] || 0).toLocaleString()}</td>
 
             <td class="number">
-
-                ${Number(
-                    item[
-                        "수출금액_USD"
-                    ]
-                )
-                .toLocaleString()}
-
-            </td>
-
-
-            <td class="number">
-
-                <span
-                    class="${percentClass(
-                        item["YoY_pct"]
-                    )}">
-
-                    ${formatPercent(
-                        item["YoY_pct"]
-                    )}
-
+                <span class="${percentClass(item["YoY_pct"])}">
+                    ${formatPercent(item["YoY_pct"])}
                 </span>
-
             </td>
 
-
             <td class="number">
-
-                <span
-                    class="${percentClass(
-                        item["MoM_pct"]
-                    )}">
-
-                    ${formatPercent(
-                        item["MoM_pct"]
-                    )}
-
+                <span class="${percentClass(item["MoM_pct"])}">
+                    ${formatPercent(item["MoM_pct"])}
                 </span>
-
             </td>
-
 
             <td class="number">
-
-                $${Number(
-                    item[
-                        "수출단가_USD_per_KG"
-                    ]
-                )
-                .toFixed(2)}
-                /kg
-
+                $${Number(item["수출단가_USD_per_KG"] || 0).toFixed(2)}/kg
             </td>
+        `;
 
-            `;
-
-
-            tbody
-            .appendChild(
-                tr
-            );
-
-
-        }
-    );
-
+        tbody.appendChild(tr);
+    });
 }
-
-
-
-/* =====================================
-   1. 메인 그래프
-
-   막대 = 수출액
-   선   = 수출단가
-===================================== */
 
 function createMainChart(itemName) {
+    const data = allData
+        .filter(d => d["품목명"] === itemName)
+        .sort((a, b) => a["월"].localeCompare(b["월"]));
 
-    const data =
-        allData
+    const labels = data.map(d => d["월"]);
 
-        .filter(
-            d =>
-                d["품목명"]
-                ===
-                itemName
-        )
+    const exportsMillion = data.map(
+        d => Number(d["수출금액_USD"] || 0) / 1000000
+    );
 
-        .sort(
-            (
-                a,
-                b
-            ) =>
-                a["월"]
-                .localeCompare(
-                    b["월"]
-                )
-        );
+    const prices = data.map(
+        d => Number(d["수출단가_USD_per_KG"] || 0)
+    );
 
+    document.getElementById("mainChartTitle").textContent =
+        itemName + " 월별 수출액 및 수출단가";
 
-    const labels =
-        data
-        .map(
-            d =>
-                d["월"]
-        );
+    if (mainChart) mainChart.destroy();
 
-
-    const exportValues =
-        data
-        .map(
-            d =>
-
-                Number(
-                    d[
-                        "수출금액_USD"
-                    ]
-                )
-
-                /
-
-                1000000
-        );
-
-
-    const unitPriceValues =
-        data
-        .map(
-            d =>
-
-                Number(
-                    d[
-                        "수출단가_USD_per_KG"
-                    ]
-                )
-        );
-
-
-    document
-    .getElementById(
-        "mainChartTitle"
-    )
-    .innerText =
-        itemName
-        +
-        " 수출액 및 수출단가";
-
-
-    if (
-        mainChart
-    ) {
-
-        mainChart.destroy();
-
-    }
-
-
-    const ctx =
-        document
-        .getElementById(
-            "mainChart"
-        );
-
-
-    mainChart =
-        new Chart(
-            ctx,
-            {
-
-                data: {
-
-                    labels:
-                        labels,
-
-
-                    datasets: [
-
-
-                        {
-
-                            type:
-                                "bar",
-
-                            label:
-                                "수출액 (백만 USD)",
-
-                            data:
-                                exportValues,
-
-                            yAxisID:
-                                "yExport",
-
-                            borderWidth:
-                                0
-
-                        },
-
-
-                        {
-
-                            type:
-                                "line",
-
-                            label:
-                                "수출단가 (USD/kg)",
-
-                            data:
-                                unitPriceValues,
-
-                            yAxisID:
-                                "yPrice",
-
-                            tension:
-                                0.25,
-
-                            pointRadius:
-                                1.5,
-
-                            pointHoverRadius:
-                                5
-
+    mainChart = new Chart(
+        document.getElementById("mainChart"),
+        {
+            data: {
+                labels,
+                datasets: [
+                    {
+                        type: "bar",
+                        label: "수출액",
+                        data: exportsMillion,
+                        yAxisID: "yExport",
+                        order: 2,
+                        datalabels: {
+                            display: false
                         }
+                    },
+                    {
+                        type: "line",
+                        label: "수출단가",
+                        data: prices,
+                        yAxisID: "yPrice",
+                        tension: 0.25,
+                        borderWidth: 2.5,
+                        pointRadius: 1.5,
+                        pointHoverRadius: 5,
+                        order: 1,
+                        datalabels: {
+                            display: false
+                        }
+                    }
+                ]
+            },
 
-
-                    ]
-
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                    mode: "index",
+                    intersect: false
                 },
 
-
-                options: {
-
-                    responsive:
-                        true,
-
-
-                    maintainAspectRatio:
-                        false,
-
-
-                    interaction: {
-
-                        mode:
-                            "index",
-
-                        intersect:
-                            false
-
+                plugins: {
+                    legend: {
+                        position: "top"
                     },
 
+                    tooltip: {
+                        callbacks: {
+                            label(context) {
+                                if (context.dataset.yAxisID === "yExport") {
+                                    return "수출액: $" +
+                                        context.parsed.y.toLocaleString(
+                                            undefined,
+                                            { maximumFractionDigits: 1 }
+                                        ) +
+                                        "M";
+                                }
 
-                    plugins: {
-
-                        legend: {
-
-                            position:
-                                "top"
-
-                        },
-
-
-                        tooltip: {
-
-                            callbacks: {
-
-                                label:
-                                    function(context) {
-
-
-                                        if (
-                                            context
-                                            .dataset
-                                            .yAxisID
-                                            ===
-                                            "yExport"
-                                        ) {
-
-                                            return (
-                                                "수출액: $"
-                                                +
-                                                context
-                                                .parsed
-                                                .y
-                                                .toLocaleString(
-                                                    undefined,
-                                                    {
-                                                        maximumFractionDigits:
-                                                            1
-                                                    }
-                                                )
-                                                +
-                                                "M"
-                                            );
-
-                                        }
-
-
-                                        return (
-                                            "수출단가: $"
-                                            +
-                                            context
-                                            .parsed
-                                            .y
-                                            .toFixed(2)
-                                            +
-                                            "/kg"
-                                        );
-
-                                    }
-
+                                return "수출단가: $" +
+                                    context.parsed.y.toFixed(2) +
+                                    "/kg";
                             }
-
                         }
-
-                    },
-
-
-                    scales: {
-
-
-                        yExport: {
-
-                            type:
-                                "linear",
-
-                            position:
-                                "left",
-
-                            beginAtZero:
-                                true,
-
-
-                            title: {
-
-                                display:
-                                    true,
-
-                                text:
-                                    "수출액 (백만 USD)"
-
-                            },
-
-
-                            ticks: {
-
-                                callback:
-                                    function(value) {
-
-                                        return (
-                                            "$"
-                                            +
-                                            Number(
-                                                value
-                                            )
-                                            .toLocaleString()
-                                            +
-                                            "M"
-                                        );
-
-                                    }
-
-                            }
-
-                        },
-
-
-                        yPrice: {
-
-                            type:
-                                "linear",
-
-                            position:
-                                "right",
-
-                            beginAtZero:
-                                false,
-
-
-                            title: {
-
-                                display:
-                                    true,
-
-                                text:
-                                    "수출단가 (USD/kg)"
-
-                            },
-
-
-                            grid: {
-
-                                drawOnChartArea:
-                                    false
-
-                            },
-
-
-                            ticks: {
-
-                                callback:
-                                    function(value) {
-
-                                        return (
-                                            "$"
-                                            +
-                                            Number(
-                                                value
-                                            )
-                                            .toFixed(1)
-                                        );
-
-                                    }
-
-                            }
-
-                        },
-
-
-                        x: {
-
-                            grid: {
-
-                                display:
-                                    false
-
-                            },
-
-
-                            ticks: {
-
-                                maxRotation:
-                                    45,
-
-                                minRotation:
-                                    45,
-
-                                autoSkip:
-                                    true,
-
-                                maxTicksLimit:
-                                    24
-
-                            }
-
-                        }
-
                     }
+                },
 
+                scales: {
+                    yExport: {
+                        type: "linear",
+                        position: "left",
+                        beginAtZero: true,
+
+                        title: {
+                            display: true,
+                            text: "수출액 (백만 USD)"
+                        },
+
+                        ticks: {
+                            callback(value) {
+                                return "$" + Number(value).toLocaleString() + "M";
+                            }
+                        }
+                    },
+
+                    yPrice: {
+                        type: "linear",
+                        position: "right",
+                        beginAtZero: false,
+
+                        title: {
+                            display: true,
+                            text: "수출단가 (USD/kg)"
+                        },
+
+                        grid: {
+                            drawOnChartArea: false
+                        },
+
+                        ticks: {
+                            callback(value) {
+                                return "$" + Number(value).toFixed(1);
+                            }
+                        }
+                    },
+
+                    x: {
+                        grid: {
+                            display: false
+                        },
+
+                        ticks: {
+                            autoSkip: true,
+                            maxTicksLimit: 24,
+                            maxRotation: 45,
+                            minRotation: 45
+                        }
+                    }
                 }
-
             }
-        );
-
+        }
+    );
 }
-
-
-
-/* =====================================
-   2. YoY + MoM 그래프
-
-   최근 3개월만 숫자 표시
-===================================== */
 
 function createChangeChart(itemName) {
+    const data = allData
+        .filter(d => d["품목명"] === itemName)
+        .sort((a, b) => a["월"].localeCompare(b["월"]));
 
-    const data =
-        allData
-        .filter(
-            d => d["품목명"] === itemName
-        )
-        .sort(
-            (a, b) =>
-                a["월"].localeCompare(b["월"])
-        );
+    const labels = data.map(d => d["월"]);
 
+    const yoy = data.map(
+        d => d["YoY_pct"] === "" ? null : Number(d["YoY_pct"])
+    );
 
-    const labels =
-        data.map(
-            d => d["월"]
-        );
+    const mom = data.map(
+        d => d["MoM_pct"] === "" ? null : Number(d["MoM_pct"])
+    );
 
+    document.getElementById("changeChartTitle").textContent =
+        itemName + " 수출액 증감률";
 
-    const yoyValues =
-        data.map(
-            d => {
+    if (changeChart) changeChart.destroy();
 
-                if (d["YoY_pct"] === "") {
-                    return null;
-                }
+    changeChart = new Chart(
+        document.getElementById("changeChart"),
+        {
+            type: "line",
 
-                return Number(
-                    d["YoY_pct"]
-                );
+            data: {
+                labels,
 
-            }
-        );
+                datasets: [
+                    {
+                        label: "YoY",
+                        data: yoy,
+                        tension: 0.25,
+                        borderWidth: 2.5,
+                        pointRadius: 1.5,
 
+                        datalabels: {
+                            align: "top",
+                            anchor: "end",
+                            offset: 7,
+                            font: {
+                                size: 11,
+                                weight: "bold"
+                            },
 
-    const momValues =
-        data.map(
-            d => {
+                            display(context) {
+                                const index = context.dataIndex;
+                                return index >= context.dataset.data.length - 3;
+                            },
 
-                if (d["MoM_pct"] === "") {
-                    return null;
-                }
-
-                return Number(
-                    d["MoM_pct"]
-                );
-
-            }
-        );
-
-
-    document
-    .getElementById(
-        "changeChartTitle"
-    )
-    .innerText =
-        itemName
-        +
-        " 수출액 증감률";
-
-
-    if (changeChart) {
-        changeChart.destroy();
-    }
-
-
-    const ctx =
-        document.getElementById(
-            "changeChart"
-        );
-
-
-    changeChart =
-        new Chart(
-            ctx,
-            {
-
-                type: "line",
-
-                plugins: [
-                    ChartDataLabels
-                ],
-
-                data: {
-
-                    labels: labels,
-
-                    datasets: [
-
-                        {
-                            label: "YoY",
-
-                            data: yoyValues,
-
-                            tension: 0.2,
-
-                            pointRadius: 1.5,
-
-                            pointHoverRadius: 5,
-
-                            spanGaps: true,
-
-                            datalabels: {
-
-                                display:
-                                    function(context) {
-
-                                        return (
-                                            context.dataIndex
-                                            >=
-                                            labels.length - 3
-                                        );
-
-                                    },
-
-                                align: "top",
-
-                                anchor: "end",
-
-                                offset: 7,
-
-                                clamp: true,
-
-                                font: {
-                                    size: 11,
-                                    weight: "bold"
-                                },
-
-                                formatter:
-                                    function(value) {
-
-                                        if (
-                                            value === null
-                                            ||
-                                            value === undefined
-                                        ) {
-                                            return "";
-                                        }
-
-                                        const rounded =
-                                            Math.round(value);
-
-                                        return (
-                                            (rounded > 0 ? "+" : "")
-                                            +
-                                            rounded
-                                            +
-                                            "%"
-                                        );
-
-                                    }
-
+                            formatter(value) {
+                                if (value === null || value === undefined) return "";
+                                const rounded = Math.round(value);
+                                return (rounded > 0 ? "+" : "") + rounded + "%";
                             }
-
-                        },
-
-
-                        {
-                            label: "MoM",
-
-                            data: momValues,
-
-                            tension: 0.2,
-
-                            pointRadius: 1.5,
-
-                            pointHoverRadius: 5,
-
-                            spanGaps: true,
-
-                            borderDash: [5, 5],
-
-                            datalabels: {
-
-                                display:
-                                    function(context) {
-
-                                        return (
-                                            context.dataIndex
-                                            >=
-                                            labels.length - 3
-                                        );
-
-                                    },
-
-                                align: "bottom",
-
-                                anchor: "end",
-
-                                offset: 7,
-
-                                clamp: true,
-
-                                font: {
-                                    size: 11,
-                                    weight: "bold"
-                                },
-
-                                formatter:
-                                    function(value) {
-
-                                        if (
-                                            value === null
-                                            ||
-                                            value === undefined
-                                        ) {
-                                            return "";
-                                        }
-
-                                        const rounded =
-                                            Math.round(value);
-
-                                        return (
-                                            (rounded > 0 ? "+" : "")
-                                            +
-                                            rounded
-                                            +
-                                            "%"
-                                        );
-
-                                    }
-
-                            }
-
                         }
+                    },
 
-                    ]
+                    {
+                        label: "MoM",
+                        data: mom,
+                        tension: 0.25,
+                        borderWidth: 2,
+                        borderDash: [6, 5],
+                        pointRadius: 1.5,
 
+                        datalabels: {
+                            align: "bottom",
+                            anchor: "end",
+                            offset: 7,
+                            font: {
+                                size: 11,
+                                weight: "bold"
+                            },
+
+                            display(context) {
+                                const index = context.dataIndex;
+                                return index >= context.dataset.data.length - 3;
+                            },
+
+                            formatter(value) {
+                                if (value === null || value === undefined) return "";
+                                const rounded = Math.round(value);
+                                return (rounded > 0 ? "+" : "") + rounded + "%";
+                            }
+                        }
+                    }
+                ]
+            },
+
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+
+                interaction: {
+                    mode: "index",
+                    intersect: false
                 },
 
-
-                options: {
-
-                    responsive: true,
-
-                    maintainAspectRatio: false,
-
-                    interaction: {
-
-                        mode: "index",
-
-                        intersect: false
-
+                plugins: {
+                    legend: {
+                        position: "top"
                     },
 
+                    tooltip: {
+                        callbacks: {
+                            label(context) {
+                                if (context.parsed.y === null) return "";
 
-                    plugins: {
+                                const value = context.parsed.y;
 
-                        legend: {
-                            position: "top"
-                        },
-
-
-                        tooltip: {
-
-                            callbacks: {
-
-                                label:
-                                    function(context) {
-
-                                        if (
-                                            context.parsed.y
-                                            ===
-                                            null
-                                        ) {
-                                            return "";
-                                        }
-
-
-                                        const value =
-                                            context.parsed.y;
-
-
-                                        return (
-                                            context.dataset.label
-                                            +
-                                            ": "
-                                            +
-                                            (value > 0 ? "+" : "")
-                                            +
-                                            value.toFixed(1)
-                                            +
-                                            "%"
-                                        );
-
-                                    }
-
+                                return context.dataset.label +
+                                    ": " +
+                                    (value > 0 ? "+" : "") +
+                                    value.toFixed(1) +
+                                    "%";
                             }
-
                         }
-
-                    },
-
-
-                    scales: {
-
-                        y: {
-
-                            title: {
-
-                                display: true,
-
-                                text: "증감률 (%)"
-
-                            },
-
-                            ticks: {
-
-                                callback:
-                                    function(value) {
-
-                                        return value + "%";
-
-                                    }
-
-                            }
-
-                        },
-
-
-                        x: {
-
-                            grid: {
-                                display: false
-                            },
-
-                            ticks: {
-
-                                maxRotation: 45,
-
-                                minRotation: 45,
-
-                                autoSkip: true,
-
-                                maxTicksLimit: 24
-
-                            }
-
-                        }
-
                     }
+                },
 
+                scales: {
+                    y: {
+                        title: {
+                            display: true,
+                            text: "증감률 (%)"
+                        },
+
+                        ticks: {
+                            callback(value) {
+                                return value + "%";
+                            }
+                        }
+                    },
+
+                    x: {
+                        grid: {
+                            display: false
+                        },
+
+                        ticks: {
+                            autoSkip: true,
+                            maxTicksLimit: 24,
+                            maxRotation: 45,
+                            minRotation: 45
+                        }
+                    }
                 }
-
             }
-        );
-
+        }
+    );
 }
 
-
-
-/* =====================================
-   3. 연도별 월간 수출 비교
-
-   X축  = 1월 ~ 12월
-
-   막대 = 각 연도 수출액
-   선   = 최신연도 YoY
-===================================== */
-
 function createSeasonalChart(itemName) {
+    const data = allData
+        .filter(d => d["품목명"] === itemName)
+        .sort((a, b) => a["월"].localeCompare(b["월"]));
 
-    const data =
-        allData
-        .filter(
-            d => d["품목명"] === itemName
-        )
-        .sort(
-            (a, b) =>
-                a["월"].localeCompare(b["월"])
-        );
+    const years = [...new Set(data.map(d => d["월"].slice(0, 4)))].sort();
 
-
-    /* =====================================
-       연도 목록
-    ===================================== */
-
-    const years =
-        [
-            ...new Set(
-                data.map(
-                    d =>
-                        d["월"]
-                        .substring(0, 4)
-                )
-            )
-        ]
-        .sort();
-
-
-    if (years.length === 0) {
-        return;
-    }
-
-
-    const latestYear =
-        years[
-            years.length - 1
-        ];
-
-
-    /* =====================================
-       X축
-    ===================================== */
+    const recentYears = years.slice(-3);
+    const latestYear = years[years.length - 1];
 
     const monthLabels = [
-
-        "1월",
-        "2월",
-        "3월",
-        "4월",
-        "5월",
-        "6월",
-        "7월",
-        "8월",
-        "9월",
-        "10월",
-        "11월",
-        "12월"
-
+        "1월", "2월", "3월", "4월", "5월", "6월",
+        "7월", "8월", "9월", "10월", "11월", "12월"
     ];
-
 
     const datasets = [];
 
+    recentYears.forEach(year => {
+        const values = [];
 
-    /* =====================================
-       연도별 수출액 막대
-    ===================================== */
+        for (let month = 1; month <= 12; month++) {
+            const key = year + "." + String(month).padStart(2, "0");
 
-    years.forEach(
-        year => {
+            const row = data.find(d => d["월"] === key);
 
-
-            const exportValues =
-                [];
-
-
-            for (
-                let month = 1;
-                month <= 12;
-                month++
-            ) {
-
-
-                const monthString =
-                    year
-                    +
-                    "."
-                    +
-                    String(month)
-                    .padStart(
-                        2,
-                        "0"
-                    );
-
-
-                const row =
-                    data.find(
-                        d =>
-                            d["월"]
-                            ===
-                            monthString
-                    );
-
-
-                if (row) {
-
-                    exportValues.push(
-
-                        Number(
-                            row[
-                                "수출금액_USD"
-                            ]
-                        )
-                        /
-                        1000000
-
-                    );
-
-                }
-
-                else {
-
-                    exportValues.push(
-                        null
-                    );
-
-                }
-
-            }
-
-
-            datasets.push({
-
-                type: "bar",
-
-                label:
-                    year
-                    +
-                    " 수출액",
-
-                data:
-                    exportValues,
-
-                yAxisID:
-                    "yExport",
-
-                borderWidth:
-                    0,
-
-                barPercentage:
-                    0.85,
-
-                categoryPercentage:
-                    0.85,
-
-                order:
-                    2
-
-            });
-
-
+            values.push(
+                row ? Number(row["수출금액_USD"] || 0) / 1000000 : null
+            );
         }
-    );
 
-
-    /* =====================================
-       연도별 YoY 선
-    ===================================== */
-
-    years.forEach(
-        year => {
-
-
-            const yoyValues =
-                [];
-
-
-            for (
-                let month = 1;
-                month <= 12;
-                month++
-            ) {
-
-
-                const monthString =
-                    year
-                    +
-                    "."
-                    +
-                    String(month)
-                    .padStart(
-                        2,
-                        "0"
-                    );
-
-
-                const row =
-                    data.find(
-                        d =>
-                            d["월"]
-                            ===
-                            monthString
-                    );
-
-
-                if (
-                    row
-                    &&
-                    row["YoY_pct"]
-                    !==
-                    ""
-                ) {
-
-                    yoyValues.push(
-
-                        Number(
-                            row[
-                                "YoY_pct"
-                            ]
-                        )
-
-                    );
-
-                }
-
-                else {
-
-                    yoyValues.push(
-                        null
-                    );
-
-                }
-
+        datasets.push({
+            type: "bar",
+            label: year + " 수출액",
+            data: values,
+            yAxisID: "yExport",
+            datalabels: {
+                display: false
             }
+        });
+    });
 
+    const yoyValues = [];
 
-            const isLatest =
-                year === latestYear;
+    for (let month = 1; month <= 12; month++) {
+        const key = latestYear + "." + String(month).padStart(2, "0");
+        const row = data.find(d => d["월"] === key);
 
-
-            datasets.push({
-
-                type: "line",
-
-                label:
-                    year
-                    +
-                    " YoY",
-
-                data:
-                    yoyValues,
-
-                yAxisID:
-                    "yYoY",
-
-                tension:
-                    0.25,
-
-                pointRadius:
-                    isLatest
-                    ?
-                    3
-                    :
-                    1,
-
-                pointHoverRadius:
-                    6,
-
-                borderWidth:
-                    isLatest
-                    ?
-                    4
-                    :
-                    1.2,
-
-                spanGaps:
-                    false,
-
-                order:
-                    isLatest
-                    ?
-                    0
-                    :
-                    1,
-
-                datalabels: {
-
-                    display:
-                        false
-
-                }
-
-            });
-
-
+        if (row && row["YoY_pct"] !== "") {
+            yoyValues.push(Number(row["YoY_pct"]));
+        } else {
+            yoyValues.push(null);
         }
-    );
-
-
-    /* =====================================
-       제목
-    ===================================== */
-
-    document
-    .getElementById(
-        "seasonalChartTitle"
-    )
-    .innerText =
-        itemName
-        +
-        " 연도별 월간 수출 비교";
-
-
-    if (seasonalChart) {
-
-        seasonalChart.destroy();
-
     }
 
+    datasets.push({
+        type: "line",
+        label: latestYear + " YoY",
+        data: yoyValues,
+        yAxisID: "yYoY",
+        tension: 0.25,
+        borderWidth: 3,
+        pointRadius: 3,
+        pointHoverRadius: 6,
+        datalabels: {
+            display: false
+        }
+    });
 
-    const ctx =
-        document.getElementById(
-            "seasonalChart"
-        );
+    document.getElementById("seasonalChartTitle").textContent =
+        itemName + " 연도별 월간 수출 비교";
 
+    if (seasonalChart) seasonalChart.destroy();
 
-    seasonalChart =
-        new Chart(
-            ctx,
-            {
+    seasonalChart = new Chart(
+        document.getElementById("seasonalChart"),
+        {
+            data: {
+                labels: monthLabels,
+                datasets
+            },
 
-                data: {
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
 
-                    labels:
-                        monthLabels,
-
-                    datasets:
-                        datasets
-
+                interaction: {
+                    mode: "index",
+                    intersect: false
                 },
 
-
-                options: {
-
-                    responsive:
-                        true,
-
-                    maintainAspectRatio:
-                        false,
-
-
-                    interaction: {
-
-                        mode:
-                            "index",
-
-                        intersect:
-                            false
-
+                plugins: {
+                    legend: {
+                        position: "top"
                     },
 
-
-                    plugins: {
-
-                        legend: {
-
-                            position:
-                                "top",
-
-                            labels: {
-
-                                boxWidth:
-                                    14,
-
-                                usePointStyle:
-                                    true
-
-                            }
-
-                        },
-
-
-                        datalabels: {
-
-                            display:
-                                false
-
-                        },
-
-
-                        tooltip: {
-
-                            callbacks: {
-
-                                label:
-                                    function(context) {
-
-
-                                        if (
-                                            context.parsed.y
-                                            ===
-                                            null
-                                        ) {
-
-                                            return "";
-
-                                        }
-
-
-                                        if (
-                                            context
-                                            .dataset
-                                            .yAxisID
-                                            ===
-                                            "yExport"
-                                        ) {
-
-                                            return (
-                                                context
-                                                .dataset
-                                                .label
-                                                +
-                                                ": $"
-                                                +
-                                                context
-                                                .parsed
-                                                .y
-                                                .toLocaleString(
-                                                    undefined,
-                                                    {
-                                                        maximumFractionDigits:
-                                                            1
-                                                    }
-                                                )
-                                                +
-                                                "M"
-                                            );
-
-                                        }
-
-
-                                        const value =
-                                            context
-                                            .parsed
-                                            .y;
-
-
-                                        return (
-                                            context
-                                            .dataset
-                                            .label
-                                            +
-                                            ": "
-                                            +
-                                            (
-                                                value > 0
-                                                ?
-                                                "+"
-                                                :
-                                                ""
-                                            )
-                                            +
-                                            value
-                                            .toFixed(1)
-                                            +
-                                            "%"
-                                        );
-
-                                    }
-
-                            }
-
-                        }
-
+                    datalabels: {
+                        display: false
                     },
 
+                    tooltip: {
+                        callbacks: {
+                            label(context) {
+                                if (context.parsed.y === null) return "";
 
-                    scales: {
+                                if (context.dataset.yAxisID === "yExport") {
+                                    return context.dataset.label +
+                                        ": $" +
+                                        context.parsed.y.toLocaleString(
+                                            undefined,
+                                            { maximumFractionDigits: 1 }
+                                        ) +
+                                        "M";
+                                }
 
+                                const value = context.parsed.y;
 
-                        /* =========================
-                           왼쪽축 : 수출액
-                        ========================= */
-
-                        yExport: {
-
-                            type:
-                                "linear",
-
-                            position:
-                                "left",
-
-                            beginAtZero:
-                                true,
-
-
-                            title: {
-
-                                display:
-                                    true,
-
-                                text:
-                                    "수출액 (백만 USD)"
-
-                            },
-
-
-                            ticks: {
-
-                                callback:
-                                    function(value) {
-
-                                        return (
-                                            "$"
-                                            +
-                                            Number(value)
-                                            .toLocaleString()
-                                            +
-                                            "M"
-                                        );
-
-                                    }
-
+                                return context.dataset.label +
+                                    ": " +
+                                    (value > 0 ? "+" : "") +
+                                    value.toFixed(1) +
+                                    "%";
                             }
-
-                        },
-
-
-                        /* =========================
-                           오른쪽축 : YoY
-                        ========================= */
-
-                        yYoY: {
-
-                            type:
-                                "linear",
-
-                            position:
-                                "right",
-
-
-                            title: {
-
-                                display:
-                                    true,
-
-                                text:
-                                    "YoY (%)"
-
-                            },
-
-
-                            grid: {
-
-                                drawOnChartArea:
-                                    false
-
-                            },
-
-
-                            ticks: {
-
-                                callback:
-                                    function(value) {
-
-                                        return (
-                                            value
-                                            +
-                                            "%"
-                                        );
-
-                                    }
-
-                            }
-
-                        },
-
-
-                        x: {
-
-                            grid: {
-
-                                display:
-                                    false
-
-                            }
-
                         }
-
                     }
+                },
 
+                scales: {
+                    yExport: {
+                        position: "left",
+                        beginAtZero: true,
+
+                        title: {
+                            display: true,
+                            text: "수출액 (백만 USD)"
+                        },
+
+                        ticks: {
+                            callback(value) {
+                                return "$" + Number(value).toLocaleString() + "M";
+                            }
+                        }
+                    },
+
+                    yYoY: {
+                        position: "right",
+
+                        title: {
+                            display: true,
+                            text: "YoY (%)"
+                        },
+
+                        grid: {
+                            drawOnChartArea: false
+                        },
+
+                        ticks: {
+                            callback(value) {
+                                return value + "%";
+                            }
+                        }
+                    },
+
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
                 }
-
             }
-        );
-
+        }
+    );
 }
 
+/* =========================================================
+   국가별 분석
+========================================================= */
 
+function getCountryRowsForItem(itemName) {
+    return countryData.filter(d => d["품목명"] === itemName);
+}
 
-loadCSV();
+function getLatestCountryMonth(itemName) {
+    const rows = getCountryRowsForItem(itemName);
 
+    if (!rows.length) return null;
 
+    return [...new Set(rows.map(d => d["월"]))].sort().pop();
+}
+
+function createCountryControls(itemName) {
+    const rows = getCountryRowsForItem(itemName);
+    const select = document.getElementById("countrySelect");
+
+    if (!rows.length) {
+        select.innerHTML = "";
+        return;
+    }
+
+    const available = [...new Map(
+        rows.map(row => [
+            row["국가코드"],
+            row["국가명"]
+        ])
+    ).entries()];
+
+    available.sort((a, b) => {
+        const aIndex = COUNTRY_ORDER.indexOf(a[0]);
+        const bIndex = COUNTRY_ORDER.indexOf(b[0]);
+
+        return (aIndex === -1 ? 999 : aIndex) -
+               (bIndex === -1 ? 999 : bIndex);
+    });
+
+    const oldValue = select.value;
+
+    select.innerHTML = "";
+
+    available.forEach(([code, name]) => {
+        const option = document.createElement("option");
+        option.value = code;
+        option.textContent = name;
+        select.appendChild(option);
+    });
+
+    if (available.some(([code]) => code === oldValue)) {
+        select.value = oldValue;
+    } else if (available.some(([code]) => code === "US")) {
+        select.value = "US";
+    } else {
+        select.value = available[0]?.[0] || "";
+    }
+
+    select.onchange = () => {
+        createCountryTrendChart(
+            selectedItem,
+            select.value
+        );
+    };
+
+    createCountryTrendChart(
+        itemName,
+        select.value
+    );
+}
+
+function createCountryShareChart(itemName) {
+    const latestMonth = getLatestCountryMonth(itemName);
+
+    if (!latestMonth) return;
+
+    const rows = countryData
+        .filter(
+            d =>
+                d["품목명"] === itemName &&
+                d["월"] === latestMonth
+        )
+        .sort((a, b) => {
+            const aIndex = COUNTRY_ORDER.indexOf(a["국가코드"]);
+            const bIndex = COUNTRY_ORDER.indexOf(b["국가코드"]);
+
+            return (aIndex === -1 ? 999 : aIndex) -
+                   (bIndex === -1 ? 999 : bIndex);
+        });
+
+    const total = rows.reduce(
+        (sum, row) => sum + Number(row["수출금액_USD"] || 0),
+        0
+    );
+
+    document.getElementById("countryShareTitle").textContent =
+        itemName + " 최신월 국가별 수출 비중";
+
+    document.getElementById("countryShareSubtitle").textContent =
+        latestMonth + " 기준 · 합계 " + formatMoney(total);
+
+    if (countryShareChart) countryShareChart.destroy();
+
+    countryShareChart = new Chart(
+        document.getElementById("countryShareChart"),
+        {
+            type: "doughnut",
+
+            data: {
+                labels: rows.map(d => d["국가명"]),
+
+                datasets: [{
+                    data: rows.map(d => Number(d["수출금액_USD"] || 0)),
+                    backgroundColor: COUNTRY_COLORS,
+                    borderWidth: 1
+                }]
+            },
+
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: "58%",
+
+                plugins: {
+                    legend: {
+                        position: "bottom"
+                    },
+
+                    datalabels: {
+                        color: "#222",
+                        font: {
+                            size: 11,
+                            weight: "bold"
+                        },
+
+                        formatter(value) {
+                            if (!total) return "";
+
+                            const share = value / total * 100;
+
+                            if (share < 4) return "";
+
+                            return share.toFixed(1) + "%";
+                        }
+                    },
+
+                    tooltip: {
+                        callbacks: {
+                            label(context) {
+                                const value = Number(context.raw || 0);
+                                const share = total ? value / total * 100 : 0;
+
+                                return context.label +
+                                    ": " +
+                                    formatMoney(value) +
+                                    " (" +
+                                    share.toFixed(1) +
+                                    "%)";
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    );
+}
+
+function createCountryTrendChart(itemName, countryCode) {
+    const rows = countryData
+        .filter(
+            d =>
+                d["품목명"] === itemName &&
+                d["국가코드"] === countryCode
+        )
+        .sort((a, b) => a["월"].localeCompare(b["월"]));
+
+    if (!rows.length) {
+        if (countryTrendChart) {
+            countryTrendChart.destroy();
+            countryTrendChart = null;
+        }
+
+        return;
+    }
+
+    const countryName = rows[0]["국가명"];
+
+    document.getElementById("countryTrendTitle").textContent =
+        itemName + " - " + countryName + " 월간 수출 추이";
+
+    if (countryTrendChart) countryTrendChart.destroy();
+
+    countryTrendChart = new Chart(
+        document.getElementById("countryTrendChart"),
+        {
+            type: "bar",
+
+            data: {
+                labels: rows.map(d => d["월"]),
+
+                datasets: [{
+                    label: countryName + " 수출액",
+                    data: rows.map(
+                        d => Number(d["수출금액_USD"] || 0) / 1000000
+                    ),
+                    datalabels: {
+                        display: false
+                    }
+                }]
+            },
+
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+
+                interaction: {
+                    mode: "index",
+                    intersect: false
+                },
+
+                plugins: {
+                    legend: {
+                        position: "top"
+                    },
+
+                    tooltip: {
+                        callbacks: {
+                            label(context) {
+                                return "수출액: $" +
+                                    context.parsed.y.toLocaleString(
+                                        undefined,
+                                        { maximumFractionDigits: 1 }
+                                    ) +
+                                    "M";
+                            }
+                        }
+                    }
+                },
+
+                scales: {
+                    y: {
+                        beginAtZero: true,
+
+                        title: {
+                            display: true,
+                            text: "수출액 (백만 USD)"
+                        },
+
+                        ticks: {
+                            callback(value) {
+                                return "$" + Number(value).toLocaleString() + "M";
+                            }
+                        }
+                    },
+
+                    x: {
+                        grid: {
+                            display: false
+                        },
+
+                        ticks: {
+                            autoSkip: true,
+                            maxTicksLimit: 24,
+                            maxRotation: 45,
+                            minRotation: 45
+                        }
+                    }
+                }
+            }
+        }
+    );
+}
+
+function createCountryTable(itemName) {
+    const latestMonth = getLatestCountryMonth(itemName);
+
+    if (!latestMonth) {
+        document.getElementById("countryTable").innerHTML = "";
+        return;
+    }
+
+    const rows = countryData
+        .filter(
+            d =>
+                d["품목명"] === itemName &&
+                d["월"] === latestMonth
+        )
+        .sort(
+            (a, b) =>
+                Number(b["수출금액_USD"] || 0) -
+                Number(a["수출금액_USD"] || 0)
+        );
+
+    const total = rows.reduce(
+        (sum, row) => sum + Number(row["수출금액_USD"] || 0),
+        0
+    );
+
+    document.getElementById("countryTableTitle").textContent =
+        itemName + " " + latestMonth + " 국가별 수출 현황";
+
+    const tbody = document.getElementById("countryTable");
+    tbody.innerHTML = "";
+
+    rows.forEach((row, index) => {
+        const value = Number(row["수출금액_USD"] || 0);
+        const weight = Number(row["수출중량_KG"] || 0);
+        const share = total ? value / total * 100 : 0;
+
+        const tr = document.createElement("tr");
+
+        tr.innerHTML = `
+            <td class="center">${index + 1}</td>
+            <td>${row["국가명"]}</td>
+            <td class="center">${row["국가코드"]}</td>
+            <td class="number">${value.toLocaleString()}</td>
+            <td class="number">${share.toFixed(1)}%</td>
+            <td class="number">${weight.toLocaleString()} kg</td>
+        `;
+
+        tbody.appendChild(tr);
+    });
+}
+
+loadData();
 </script>
 
-
 </body>
-
 </html>
