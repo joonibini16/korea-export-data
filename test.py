@@ -329,3 +329,83 @@ for item in hs_items:
 
 print()
 print("모든 품목 수집 완료")
+
+# ------------------------------------
+# 모든 품목 요약 파일 하나로 합치기
+# ------------------------------------
+
+all_summary_rows = []
+
+for item in hs_items:
+
+    hs_code = item["hs_code"]
+    name = item["name"]
+
+    filename = f"summary_{hs_code}.csv"
+
+    try:
+
+        with open(
+            filename,
+            "r",
+            encoding="utf-8-sig"
+        ) as f:
+
+            reader = csv.DictReader(f)
+
+            for row in reader:
+
+                all_summary_rows.append([
+                    row["월"],
+                    row["품목명"],
+                    row["HS코드"],
+                    row["수출금액_USD"],
+                    row["수출중량_KG"],
+                    row["수출단가_USD_per_KG"],
+                    row["YoY_pct"],
+                    row["MoM_pct"]
+                ])
+
+    except Exception as e:
+
+        print(
+            filename,
+            "읽기 오류:",
+            e
+        )
+
+
+# 월 기준 + 품목명 기준으로 정렬
+all_summary_rows.sort(
+    key=lambda x: (x[0], x[1])
+)
+
+
+with open(
+    "summary_all.csv",
+    "w",
+    newline="",
+    encoding="utf-8-sig"
+) as f:
+
+    writer = csv.writer(f)
+
+    writer.writerow([
+        "월",
+        "품목명",
+        "HS코드",
+        "수출금액_USD",
+        "수출중량_KG",
+        "수출단가_USD_per_KG",
+        "YoY_pct",
+        "MoM_pct"
+    ])
+
+    writer.writerows(
+        all_summary_rows
+    )
+
+
+print(
+    "summary_all.csv 저장 완료"
+)
