@@ -11,7 +11,7 @@ if not api_key:
     raise SystemExit(1)
 
 
-url = "https://apis.data.go.kr/1220000/nitemtrade/getNitemtradeList"
+url = "http://apis.data.go.kr/1220000/nitemtrade/getNitemtradeList"
 
 
 params = {
