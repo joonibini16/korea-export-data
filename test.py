@@ -16,7 +16,7 @@ API_URL = "https://apis.data.go.kr/1220000/Itemtrade/getItemtradeList"
 
 from datetime import datetime
 
-START_YEAR = 2025
+START_YEAR = 2020
 START_MONTH = 1
 
 today = datetime.now()
