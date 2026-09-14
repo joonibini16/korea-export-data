@@ -3,6 +3,9 @@ name: Country API Test
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -20,7 +23,15 @@ jobs:
       - name: requests 설치
         run: pip install requests
 
-      - name: 국가별 API 테스트
+      - name: 국가별 데이터 수집
         env:
           CUSTOMS_API_KEY: ${{ secrets.CUSTOMS_API_KEY }}
         run: python country_test.py
+
+      - name: 국가별 CSV 저장
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add country_*.csv
+          git commit -m "Update country export data" || echo "변경사항 없음"
+          git push
