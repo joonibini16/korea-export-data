@@ -19,7 +19,7 @@ if not API_KEY:
 
 
 API_URL = (
-    "https://apis.data.go.kr/"
+    "http://apis.data.go.kr/"
     "1220000/Itemtrade/getItemtradeList"
 )
 
