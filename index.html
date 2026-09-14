@@ -137,7 +137,7 @@ h1 {
 
 .seasonal-chart {
     position: relative;
-    height: 440px;
+    height: 460px;
 }
 
 .country-grid {
@@ -244,7 +244,7 @@ td.center {
     }
 
     .seasonal-chart {
-        height: 380px;
+        height: 400px;
     }
 
     .country-share-chart,
@@ -279,7 +279,7 @@ td.center {
 </div>
 
 <div class="chart-box">
-    <h2 class="chart-title" id="seasonalChartTitle">연도별 월간 수출 비교</h2>
+    <h2 class="chart-title" id="seasonalChartTitle">연도별 월간 수출 및 YoY 비교</h2>
     <div class="seasonal-chart">
         <canvas id="seasonalChart"></canvas>
     </div>
@@ -422,7 +422,9 @@ function parseCSV(text) {
         return result;
     }
 
-    const headers = splitCSVLine(lines[0]).map(x => x.replace(/^\uFEFF/, "").trim());
+    const headers = splitCSVLine(lines[0]).map(x =>
+        x.replace(/^\uFEFF/, "").trim()
+    );
 
     return lines
         .slice(1)
@@ -448,7 +450,11 @@ async function fetchCSV(filename) {
     );
 
     if (!response.ok) {
-        throw new Error(filename + " 불러오기 실패: HTTP " + response.status);
+        throw new Error(
+            filename +
+            " 불러오기 실패: HTTP " +
+            response.status
+        );
     }
 
     return parseCSV(await response.text());
@@ -468,7 +474,11 @@ async function loadData() {
 
     } catch (error) {
         console.error(error);
-        showError("데이터를 불러오지 못했습니다: " + error.message);
+
+        showError(
+            "데이터를 불러오지 못했습니다: " +
+            error.message
+        );
     }
 }
 
@@ -476,30 +486,46 @@ function formatMoney(value) {
     const num = Number(value || 0);
 
     if (num >= 1000000000) {
-        return "$" + (num / 1000000000).toFixed(2) + "B";
+        return "$" +
+            (num / 1000000000).toFixed(2) +
+            "B";
     }
 
     if (num >= 1000000) {
-        return "$" + (num / 1000000).toFixed(1) + "M";
+        return "$" +
+            (num / 1000000).toFixed(1) +
+            "M";
     }
 
     if (num >= 1000) {
-        return "$" + (num / 1000).toFixed(1) + "K";
+        return "$" +
+            (num / 1000).toFixed(1) +
+            "K";
     }
 
     return "$" + num.toLocaleString();
 }
 
 function formatPercent(value) {
-    if (value === "" || value === undefined || value === null) {
+    if (
+        value === "" ||
+        value === undefined ||
+        value === null
+    ) {
         return "-";
     }
 
     const num = Number(value);
 
-    if (!Number.isFinite(num)) return "-";
+    if (!Number.isFinite(num)) {
+        return "-";
+    }
 
-    return (num > 0 ? "+" : "") + num.toFixed(1) + "%";
+    return (
+        (num > 0 ? "+" : "") +
+        num.toFixed(1) +
+        "%"
+    );
 }
 
 function percentClass(value) {
@@ -513,39 +539,75 @@ function percentClass(value) {
 
 function createDashboard() {
     if (!allData.length) {
-        showError("summary_all.csv에 데이터가 없습니다.");
+        showError(
+            "summary_all.csv에 데이터가 없습니다."
+        );
         return;
     }
 
-    const latestMonth = [...new Set(allData.map(d => d["월"]))].sort().pop();
+    const latestMonth = [
+        ...new Set(
+            allData.map(
+                d => d["월"]
+            )
+        )
+    ].sort().pop();
 
-    document.getElementById("latestMonth").textContent =
-        "최신 데이터: " + latestMonth + " | 품목 카드를 클릭하면 모든 차트가 변경됩니다.";
+    document.getElementById(
+        "latestMonth"
+    ).textContent =
+        "최신 데이터: " +
+        latestMonth +
+        " | 품목 카드를 클릭하면 모든 차트가 변경됩니다.";
 
     const latestRows = allData
-        .filter(d => d["월"] === latestMonth)
-        .sort((a, b) => Number(b["수출금액_USD"]) - Number(a["수출금액_USD"]));
+        .filter(
+            d => d["월"] === latestMonth
+        )
+        .sort(
+            (a, b) =>
+                Number(
+                    b["수출금액_USD"]
+                )
+                -
+                Number(
+                    a["수출금액_USD"]
+                )
+        );
 
     createCards(latestRows);
     createLatestTable(latestRows);
 
-    selectedItem = latestRows[0]?.["품목명"] || allData[0]["품목명"];
+    selectedItem =
+        latestRows[0]?.["품목명"]
+        ||
+        allData[0]["품목명"];
 
     selectItem(selectedItem);
 }
 
 function createCards(data) {
-    const container = document.getElementById("cards");
+    const container =
+        document.getElementById(
+            "cards"
+        );
+
     container.innerHTML = "";
 
     data.forEach(item => {
-        const card = document.createElement("div");
+        const card =
+            document.createElement(
+                "div"
+            );
 
         card.className = "card";
-        card.dataset.item = item["품목명"];
+        card.dataset.item =
+            item["품목명"];
 
         card.innerHTML = `
-            <div class="item-name">${item["품목명"]}</div>
+            <div class="item-name">
+                ${item["품목명"]}
+            </div>
 
             <div class="amount">
                 ${formatMoney(item["수출금액_USD"])}
@@ -568,26 +630,39 @@ function createCards(data) {
             <div class="unit-price">
                 수출단가
                 <strong>
-                    $${Number(item["수출단가_USD_per_KG"] || 0).toFixed(2)}/kg
+                    $${Number(
+                        item["수출단가_USD_per_KG"]
+                        ||
+                        0
+                    ).toFixed(2)}/kg
                 </strong>
             </div>
         `;
 
-        card.onclick = () => selectItem(item["품목명"]);
+        card.onclick = () =>
+            selectItem(
+                item["품목명"]
+            );
 
-        container.appendChild(card);
+        container.appendChild(
+            card
+        );
     });
 }
 
 function selectItem(itemName) {
     selectedItem = itemName;
 
-    document.querySelectorAll(".card").forEach(card => {
-        card.classList.toggle(
-            "active",
-            card.dataset.item === itemName
-        );
-    });
+    document
+        .querySelectorAll(".card")
+        .forEach(card => {
+
+            card.classList.toggle(
+                "active",
+                card.dataset.item === itemName
+            );
+
+        });
 
     createMainChart(itemName);
     createChangeChart(itemName);
@@ -599,16 +674,33 @@ function selectItem(itemName) {
 }
 
 function createLatestTable(data) {
-    const tbody = document.getElementById("latestTable");
+    const tbody =
+        document.getElementById(
+            "latestTable"
+        );
+
     tbody.innerHTML = "";
 
     data.forEach(item => {
-        const tr = document.createElement("tr");
+        const tr =
+            document.createElement(
+                "tr"
+            );
 
         tr.innerHTML = `
             <td>${item["품목명"]}</td>
-            <td class="center">${item["HS코드"]}</td>
-            <td class="number">${Number(item["수출금액_USD"] || 0).toLocaleString()}</td>
+
+            <td class="center">
+                ${item["HS코드"]}
+            </td>
+
+            <td class="number">
+                ${Number(
+                    item["수출금액_USD"]
+                    ||
+                    0
+                ).toLocaleString()}
+            </td>
 
             <td class="number">
                 <span class="${percentClass(item["YoY_pct"])}">
@@ -623,7 +715,11 @@ function createLatestTable(data) {
             </td>
 
             <td class="number">
-                $${Number(item["수출단가_USD_per_KG"] || 0).toFixed(2)}/kg
+                $${Number(
+                    item["수출단가_USD_per_KG"]
+                    ||
+                    0
+                ).toFixed(2)}/kg
             </td>
         `;
 
@@ -633,29 +729,61 @@ function createLatestTable(data) {
 
 function createMainChart(itemName) {
     const data = allData
-        .filter(d => d["품목명"] === itemName)
-        .sort((a, b) => a["월"].localeCompare(b["월"]));
+        .filter(
+            d => d["품목명"] === itemName
+        )
+        .sort(
+            (a, b) =>
+                a["월"].localeCompare(
+                    b["월"]
+                )
+        );
 
-    const labels = data.map(d => d["월"]);
+    const labels =
+        data.map(
+            d => d["월"]
+        );
 
-    const exportsMillion = data.map(
-        d => Number(d["수출금액_USD"] || 0) / 1000000
-    );
+    const exportsMillion =
+        data.map(
+            d =>
+                Number(
+                    d["수출금액_USD"]
+                    ||
+                    0
+                )
+                /
+                1000000
+        );
 
-    const prices = data.map(
-        d => Number(d["수출단가_USD_per_KG"] || 0)
-    );
+    const prices =
+        data.map(
+            d =>
+                Number(
+                    d["수출단가_USD_per_KG"]
+                    ||
+                    0
+                )
+        );
 
-    document.getElementById("mainChartTitle").textContent =
-        itemName + " 월별 수출액 및 수출단가";
+    document.getElementById(
+        "mainChartTitle"
+    ).textContent =
+        itemName +
+        " 월별 수출액 및 수출단가";
 
-    if (mainChart) mainChart.destroy();
+    if (mainChart) {
+        mainChart.destroy();
+    }
 
     mainChart = new Chart(
-        document.getElementById("mainChart"),
+        document.getElementById(
+            "mainChart"
+        ),
         {
             data: {
                 labels,
+
                 datasets: [
                     {
                         type: "bar",
@@ -663,10 +791,12 @@ function createMainChart(itemName) {
                         data: exportsMillion,
                         yAxisID: "yExport",
                         order: 2,
+
                         datalabels: {
                             display: false
                         }
                     },
+
                     {
                         type: "line",
                         label: "수출단가",
@@ -677,6 +807,7 @@ function createMainChart(itemName) {
                         pointRadius: 1.5,
                         pointHoverRadius: 5,
                         order: 1,
+
                         datalabels: {
                             display: false
                         }
@@ -687,6 +818,7 @@ function createMainChart(itemName) {
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
+
                 interaction: {
                     mode: "index",
                     intersect: false
@@ -700,18 +832,32 @@ function createMainChart(itemName) {
                     tooltip: {
                         callbacks: {
                             label(context) {
-                                if (context.dataset.yAxisID === "yExport") {
-                                    return "수출액: $" +
+
+                                if (
+                                    context.dataset.yAxisID
+                                    ===
+                                    "yExport"
+                                ) {
+
+                                    return (
+                                        "수출액: $" +
                                         context.parsed.y.toLocaleString(
                                             undefined,
-                                            { maximumFractionDigits: 1 }
+                                            {
+                                                maximumFractionDigits: 1
+                                            }
                                         ) +
-                                        "M";
+                                        "M"
+                                    );
+
                                 }
 
-                                return "수출단가: $" +
+                                return (
+                                    "수출단가: $" +
                                     context.parsed.y.toFixed(2) +
-                                    "/kg";
+                                    "/kg"
+                                );
+
                             }
                         }
                     }
@@ -730,7 +876,14 @@ function createMainChart(itemName) {
 
                         ticks: {
                             callback(value) {
-                                return "$" + Number(value).toLocaleString() + "M";
+                                return (
+                                    "$" +
+                                    Number(
+                                        value
+                                    ).toLocaleString()
+                                    +
+                                    "M"
+                                );
                             }
                         }
                     },
@@ -751,7 +904,12 @@ function createMainChart(itemName) {
 
                         ticks: {
                             callback(value) {
-                                return "$" + Number(value).toFixed(1);
+                                return (
+                                    "$" +
+                                    Number(
+                                        value
+                                    ).toFixed(1)
+                                );
                             }
                         }
                     },
@@ -776,26 +934,59 @@ function createMainChart(itemName) {
 
 function createChangeChart(itemName) {
     const data = allData
-        .filter(d => d["품목명"] === itemName)
-        .sort((a, b) => a["월"].localeCompare(b["월"]));
+        .filter(
+            d => d["품목명"] === itemName
+        )
+        .sort(
+            (a, b) =>
+                a["월"].localeCompare(
+                    b["월"]
+                )
+        );
 
-    const labels = data.map(d => d["월"]);
+    const labels =
+        data.map(
+            d => d["월"]
+        );
 
-    const yoy = data.map(
-        d => d["YoY_pct"] === "" ? null : Number(d["YoY_pct"])
-    );
+    const yoy =
+        data.map(
+            d =>
+                d["YoY_pct"] === ""
+                ?
+                null
+                :
+                Number(
+                    d["YoY_pct"]
+                )
+        );
 
-    const mom = data.map(
-        d => d["MoM_pct"] === "" ? null : Number(d["MoM_pct"])
-    );
+    const mom =
+        data.map(
+            d =>
+                d["MoM_pct"] === ""
+                ?
+                null
+                :
+                Number(
+                    d["MoM_pct"]
+                )
+        );
 
-    document.getElementById("changeChartTitle").textContent =
-        itemName + " 수출액 증감률";
+    document.getElementById(
+        "changeChartTitle"
+    ).textContent =
+        itemName +
+        " 수출액 증감률";
 
-    if (changeChart) changeChart.destroy();
+    if (changeChart) {
+        changeChart.destroy();
+    }
 
     changeChart = new Chart(
-        document.getElementById("changeChart"),
+        document.getElementById(
+            "changeChart"
+        ),
         {
             type: "line",
 
@@ -814,20 +1005,53 @@ function createChangeChart(itemName) {
                             align: "top",
                             anchor: "end",
                             offset: 7,
+
                             font: {
                                 size: 11,
                                 weight: "bold"
                             },
 
                             display(context) {
-                                const index = context.dataIndex;
-                                return index >= context.dataset.data.length - 3;
+                                const index =
+                                    context.dataIndex;
+
+                                return (
+                                    index
+                                    >=
+                                    context.dataset.data.length
+                                    -
+                                    3
+                                );
                             },
 
                             formatter(value) {
-                                if (value === null || value === undefined) return "";
-                                const rounded = Math.round(value);
-                                return (rounded > 0 ? "+" : "") + rounded + "%";
+
+                                if (
+                                    value === null
+                                    ||
+                                    value === undefined
+                                ) {
+                                    return "";
+                                }
+
+                                const rounded =
+                                    Math.round(
+                                        value
+                                    );
+
+                                return (
+                                    (
+                                        rounded > 0
+                                        ?
+                                        "+"
+                                        :
+                                        ""
+                                    )
+                                    +
+                                    rounded
+                                    +
+                                    "%"
+                                );
                             }
                         }
                     },
@@ -844,20 +1068,53 @@ function createChangeChart(itemName) {
                             align: "bottom",
                             anchor: "end",
                             offset: 7,
+
                             font: {
                                 size: 11,
                                 weight: "bold"
                             },
 
                             display(context) {
-                                const index = context.dataIndex;
-                                return index >= context.dataset.data.length - 3;
+                                const index =
+                                    context.dataIndex;
+
+                                return (
+                                    index
+                                    >=
+                                    context.dataset.data.length
+                                    -
+                                    3
+                                );
                             },
 
                             formatter(value) {
-                                if (value === null || value === undefined) return "";
-                                const rounded = Math.round(value);
-                                return (rounded > 0 ? "+" : "") + rounded + "%";
+
+                                if (
+                                    value === null
+                                    ||
+                                    value === undefined
+                                ) {
+                                    return "";
+                                }
+
+                                const rounded =
+                                    Math.round(
+                                        value
+                                    );
+
+                                return (
+                                    (
+                                        rounded > 0
+                                        ?
+                                        "+"
+                                        :
+                                        ""
+                                    )
+                                    +
+                                    rounded
+                                    +
+                                    "%"
+                                );
                             }
                         }
                     }
@@ -881,15 +1138,36 @@ function createChangeChart(itemName) {
                     tooltip: {
                         callbacks: {
                             label(context) {
-                                if (context.parsed.y === null) return "";
 
-                                const value = context.parsed.y;
+                                if (
+                                    context.parsed.y
+                                    ===
+                                    null
+                                ) {
+                                    return "";
+                                }
 
-                                return context.dataset.label +
-                                    ": " +
-                                    (value > 0 ? "+" : "") +
-                                    value.toFixed(1) +
-                                    "%";
+                                const value =
+                                    context.parsed.y;
+
+                                return (
+                                    context.dataset.label
+                                    +
+                                    ": "
+                                    +
+                                    (
+                                        value > 0
+                                        ?
+                                        "+"
+                                        :
+                                        ""
+                                    )
+                                    +
+                                    value.toFixed(1)
+                                    +
+                                    "%"
+                                );
+
                             }
                         }
                     }
@@ -927,244 +1205,712 @@ function createChangeChart(itemName) {
     );
 }
 
+/* =========================================================
+   3번째 차트
+   2020년부터 모든 연도 수출액 막대
+   최근 3년 YoY 라인
+   올해 YoY = 빨간색 + 굵게
+========================================================= */
+
 function createSeasonalChart(itemName) {
+
     const data = allData
-        .filter(d => d["품목명"] === itemName)
-        .sort((a, b) => a["월"].localeCompare(b["월"]));
+        .filter(
+            d => d["품목명"] === itemName
+        )
+        .sort(
+            (a, b) =>
+                a["월"].localeCompare(
+                    b["월"]
+                )
+        );
 
-    const years = [...new Set(data.map(d => d["월"].slice(0, 4)))].sort();
 
-    const recentYears = years.slice(-3);
-    const latestYear = years[years.length - 1];
+    const years = [
+        ...new Set(
+            data.map(
+                d => d["월"].slice(
+                    0,
+                    4
+                )
+            )
+        )
+    ].sort();
+
+
+    const exportYears =
+        years.filter(
+            year =>
+                Number(
+                    year
+                )
+                >=
+                2020
+        );
+
+
+    const yoyYears =
+        exportYears.slice(
+            -3
+        );
+
+
+    const currentYear =
+        String(
+            new Date().getFullYear()
+        );
+
 
     const monthLabels = [
-        "1월", "2월", "3월", "4월", "5월", "6월",
-        "7월", "8월", "9월", "10월", "11월", "12월"
+        "1월",
+        "2월",
+        "3월",
+        "4월",
+        "5월",
+        "6월",
+        "7월",
+        "8월",
+        "9월",
+        "10월",
+        "11월",
+        "12월"
     ];
+
 
     const datasets = [];
 
-    recentYears.forEach(year => {
-        const values = [];
 
-        for (let month = 1; month <= 12; month++) {
-            const key = year + "." + String(month).padStart(2, "0");
+    // 2020년부터 모든 연도 수출액
+    exportYears.forEach(
+        year => {
 
-            const row = data.find(d => d["월"] === key);
+            const values = [];
 
-            values.push(
-                row ? Number(row["수출금액_USD"] || 0) / 1000000 : null
-            );
-        }
 
-        datasets.push({
-            type: "bar",
-            label: year + " 수출액",
-            data: values,
-            yAxisID: "yExport",
-            datalabels: {
-                display: false
+            for (
+                let month = 1;
+                month <= 12;
+                month++
+            ) {
+
+                const key =
+                    year
+                    +
+                    "."
+                    +
+                    String(
+                        month
+                    ).padStart(
+                        2,
+                        "0"
+                    );
+
+
+                const row =
+                    data.find(
+                        d =>
+                            d["월"]
+                            ===
+                            key
+                    );
+
+
+                if (row) {
+
+                    values.push(
+                        Number(
+                            row[
+                                "수출금액_USD"
+                            ]
+                            ||
+                            0
+                        )
+                        /
+                        1000000
+                    );
+
+                } else {
+
+                    values.push(
+                        null
+                    );
+
+                }
+
             }
-        });
-    });
 
-    const yoyValues = [];
 
-    for (let month = 1; month <= 12; month++) {
-        const key = latestYear + "." + String(month).padStart(2, "0");
-        const row = data.find(d => d["월"] === key);
+            datasets.push({
 
-        if (row && row["YoY_pct"] !== "") {
-            yoyValues.push(Number(row["YoY_pct"]));
-        } else {
-            yoyValues.push(null);
+                type:
+                    "bar",
+
+                label:
+                    year
+                    +
+                    " 수출액",
+
+                data:
+                    values,
+
+                yAxisID:
+                    "yExport",
+
+                order:
+                    2,
+
+                datalabels: {
+                    display:
+                        false
+                }
+
+            });
+
         }
+    );
+
+
+    // 최근 3개년 YoY
+    yoyYears.forEach(
+        year => {
+
+            const values = [];
+
+
+            for (
+                let month = 1;
+                month <= 12;
+                month++
+            ) {
+
+                const key =
+                    year
+                    +
+                    "."
+                    +
+                    String(
+                        month
+                    ).padStart(
+                        2,
+                        "0"
+                    );
+
+
+                const row =
+                    data.find(
+                        d =>
+                            d["월"]
+                            ===
+                            key
+                    );
+
+
+                if (
+                    row
+                    &&
+                    row["YoY_pct"] !== ""
+                ) {
+
+                    values.push(
+                        Number(
+                            row[
+                                "YoY_pct"
+                            ]
+                        )
+                    );
+
+                } else {
+
+                    values.push(
+                        null
+                    );
+
+                }
+
+            }
+
+
+            const isCurrentYear =
+                year
+                ===
+                currentYear;
+
+
+            datasets.push({
+
+                type:
+                    "line",
+
+                label:
+                    year
+                    +
+                    " YoY",
+
+                data:
+                    values,
+
+                yAxisID:
+                    "yYoY",
+
+                tension:
+                    0.25,
+
+
+                borderColor:
+                    isCurrentYear
+                    ?
+                    "red"
+                    :
+                    undefined,
+
+
+                borderWidth:
+                    isCurrentYear
+                    ?
+                    5
+                    :
+                    2,
+
+
+                pointRadius:
+                    isCurrentYear
+                    ?
+                    4
+                    :
+                    2,
+
+
+                pointHoverRadius:
+                    isCurrentYear
+                    ?
+                    7
+                    :
+                    5,
+
+
+                pointBackgroundColor:
+                    isCurrentYear
+                    ?
+                    "red"
+                    :
+                    undefined,
+
+
+                pointBorderColor:
+                    isCurrentYear
+                    ?
+                    "red"
+                    :
+                    undefined,
+
+
+                order:
+                    isCurrentYear
+                    ?
+                    0
+                    :
+                    1,
+
+
+                datalabels: {
+                    display:
+                        false
+                }
+
+            });
+
+        }
+    );
+
+
+    document.getElementById(
+        "seasonalChartTitle"
+    ).textContent =
+        itemName
+        +
+        " 연도별 월간 수출 및 YoY 비교";
+
+
+    if (seasonalChart) {
+        seasonalChart.destroy();
     }
 
-    datasets.push({
-        type: "line",
-        label: latestYear + " YoY",
-        data: yoyValues,
-        yAxisID: "yYoY",
-        tension: 0.25,
-        borderWidth: 3,
-        pointRadius: 3,
-        pointHoverRadius: 6,
-        datalabels: {
-            display: false
-        }
-    });
-
-    document.getElementById("seasonalChartTitle").textContent =
-        itemName + " 연도별 월간 수출 비교";
-
-    if (seasonalChart) seasonalChart.destroy();
 
     seasonalChart = new Chart(
-        document.getElementById("seasonalChart"),
+
+        document.getElementById(
+            "seasonalChart"
+        ),
+
         {
+
             data: {
-                labels: monthLabels,
-                datasets
+                labels:
+                    monthLabels,
+
+                datasets:
+                    datasets
             },
 
+
             options: {
-                responsive: true,
-                maintainAspectRatio: false,
+                responsive:
+                    true,
+
+                maintainAspectRatio:
+                    false,
+
 
                 interaction: {
-                    mode: "index",
-                    intersect: false
+                    mode:
+                        "index",
+
+                    intersect:
+                        false
                 },
 
+
                 plugins: {
+
                     legend: {
-                        position: "top"
+                        position:
+                            "top"
                     },
 
+
                     datalabels: {
-                        display: false
+                        display:
+                            false
                     },
+
 
                     tooltip: {
                         callbacks: {
-                            label(context) {
-                                if (context.parsed.y === null) return "";
 
-                                if (context.dataset.yAxisID === "yExport") {
-                                    return context.dataset.label +
-                                        ": $" +
-                                        context.parsed.y.toLocaleString(
-                                            undefined,
-                                            { maximumFractionDigits: 1 }
-                                        ) +
-                                        "M";
+                            label(context) {
+
+                                if (
+                                    context.parsed.y
+                                    ===
+                                    null
+                                ) {
+                                    return "";
                                 }
 
-                                const value = context.parsed.y;
 
-                                return context.dataset.label +
-                                    ": " +
-                                    (value > 0 ? "+" : "") +
-                                    value.toFixed(1) +
-                                    "%";
+                                if (
+                                    context.dataset.yAxisID
+                                    ===
+                                    "yExport"
+                                ) {
+
+                                    return (
+                                        context.dataset.label
+                                        +
+                                        ": $"
+                                        +
+                                        context.parsed.y.toLocaleString(
+                                            undefined,
+                                            {
+                                                maximumFractionDigits:
+                                                    1
+                                            }
+                                        )
+                                        +
+                                        "M"
+                                    );
+
+                                }
+
+
+                                const value =
+                                    context.parsed.y;
+
+
+                                return (
+                                    context.dataset.label
+                                    +
+                                    ": "
+                                    +
+                                    (
+                                        value > 0
+                                        ?
+                                        "+"
+                                        :
+                                        ""
+                                    )
+                                    +
+                                    value.toFixed(
+                                        1
+                                    )
+                                    +
+                                    "%"
+                                );
+
                             }
+
                         }
                     }
+
                 },
 
+
                 scales: {
+
                     yExport: {
-                        position: "left",
-                        beginAtZero: true,
+                        position:
+                            "left",
+
+                        beginAtZero:
+                            true,
+
 
                         title: {
-                            display: true,
-                            text: "수출액 (백만 USD)"
+                            display:
+                                true,
+
+                            text:
+                                "수출액 (백만 USD)"
                         },
+
 
                         ticks: {
                             callback(value) {
-                                return "$" + Number(value).toLocaleString() + "M";
+
+                                return (
+                                    "$"
+                                    +
+                                    Number(
+                                        value
+                                    ).toLocaleString()
+                                    +
+                                    "M"
+                                );
+
                             }
                         }
                     },
+
 
                     yYoY: {
-                        position: "right",
+                        position:
+                            "right",
+
 
                         title: {
-                            display: true,
-                            text: "YoY (%)"
+                            display:
+                                true,
+
+                            text:
+                                "YoY (%)"
                         },
 
+
                         grid: {
-                            drawOnChartArea: false
+                            drawOnChartArea:
+                                false
                         },
+
 
                         ticks: {
                             callback(value) {
-                                return value + "%";
+
+                                return (
+                                    value
+                                    +
+                                    "%"
+                                );
+
                             }
                         }
                     },
+
 
                     x: {
                         grid: {
-                            display: false
+                            display:
+                                false
                         }
                     }
+
                 }
+
             }
+
         }
+
     );
+
 }
+
 
 /* =========================================================
    국가별 분석
 ========================================================= */
 
-function getCountryRowsForItem(itemName) {
-    return countryData.filter(d => d["품목명"] === itemName);
+function getCountryRowsForItem(
+    itemName
+) {
+    return countryData.filter(
+        d =>
+            d["품목명"]
+            ===
+            itemName
+    );
 }
 
-function getLatestCountryMonth(itemName) {
-    const rows = getCountryRowsForItem(itemName);
+function getLatestCountryMonth(
+    itemName
+) {
+    const rows =
+        getCountryRowsForItem(
+            itemName
+        );
 
-    if (!rows.length) return null;
+    if (!rows.length) {
+        return null;
+    }
 
-    return [...new Set(rows.map(d => d["월"]))].sort().pop();
+    return [
+        ...new Set(
+            rows.map(
+                d => d["월"]
+            )
+        )
+    ].sort().pop();
 }
 
-function createCountryControls(itemName) {
-    const rows = getCountryRowsForItem(itemName);
-    const select = document.getElementById("countrySelect");
+function createCountryControls(
+    itemName
+) {
+    const rows =
+        getCountryRowsForItem(
+            itemName
+        );
+
+    const select =
+        document.getElementById(
+            "countrySelect"
+        );
 
     if (!rows.length) {
         select.innerHTML = "";
         return;
     }
 
-    const available = [...new Map(
-        rows.map(row => [
-            row["국가코드"],
-            row["국가명"]
-        ])
-    ).entries()];
+    const available = [
+        ...new Map(
+            rows.map(
+                row => [
+                    row["국가코드"],
+                    row["국가명"]
+                ]
+            )
+        ).entries()
+    ];
 
-    available.sort((a, b) => {
-        const aIndex = COUNTRY_ORDER.indexOf(a[0]);
-        const bIndex = COUNTRY_ORDER.indexOf(b[0]);
+    available.sort(
+        (a, b) => {
 
-        return (aIndex === -1 ? 999 : aIndex) -
-               (bIndex === -1 ? 999 : bIndex);
-    });
+            const aIndex =
+                COUNTRY_ORDER.indexOf(
+                    a[0]
+                );
 
-    const oldValue = select.value;
+            const bIndex =
+                COUNTRY_ORDER.indexOf(
+                    b[0]
+                );
+
+            return (
+                (
+                    aIndex === -1
+                    ?
+                    999
+                    :
+                    aIndex
+                )
+                -
+                (
+                    bIndex === -1
+                    ?
+                    999
+                    :
+                    bIndex
+                )
+            );
+        }
+    );
+
+    const oldValue =
+        select.value;
 
     select.innerHTML = "";
 
-    available.forEach(([code, name]) => {
-        const option = document.createElement("option");
-        option.value = code;
-        option.textContent = name;
-        select.appendChild(option);
-    });
+    available.forEach(
+        ([code, name]) => {
 
-    if (available.some(([code]) => code === oldValue)) {
-        select.value = oldValue;
-    } else if (available.some(([code]) => code === "US")) {
-        select.value = "US";
+            const option =
+                document.createElement(
+                    "option"
+                );
+
+            option.value =
+                code;
+
+            option.textContent =
+                name;
+
+            select.appendChild(
+                option
+            );
+
+        }
+    );
+
+    if (
+        available.some(
+            ([code]) =>
+                code
+                ===
+                oldValue
+        )
+    ) {
+
+        select.value =
+            oldValue;
+
+    } else if (
+        available.some(
+            ([code]) =>
+                code
+                ===
+                "US"
+        )
+    ) {
+
+        select.value =
+            "US";
+
     } else {
-        select.value = available[0]?.[0] || "";
+
+        select.value =
+            available[0]?.[0]
+            ||
+            "";
+
     }
 
+
     select.onchange = () => {
+
         createCountryTrendChart(
             selectedItem,
             select.value
         );
+
     };
+
 
     createCountryTrendChart(
         itemName,
@@ -1172,50 +1918,127 @@ function createCountryControls(itemName) {
     );
 }
 
-function createCountryShareChart(itemName) {
-    const latestMonth = getLatestCountryMonth(itemName);
+function createCountryShareChart(
+    itemName
+) {
+    const latestMonth =
+        getLatestCountryMonth(
+            itemName
+        );
 
-    if (!latestMonth) return;
+    if (!latestMonth) {
+        return;
+    }
 
     const rows = countryData
         .filter(
             d =>
-                d["품목명"] === itemName &&
-                d["월"] === latestMonth
+                d["품목명"]
+                ===
+                itemName
+                &&
+                d["월"]
+                ===
+                latestMonth
         )
-        .sort((a, b) => {
-            const aIndex = COUNTRY_ORDER.indexOf(a["국가코드"]);
-            const bIndex = COUNTRY_ORDER.indexOf(b["국가코드"]);
+        .sort(
+            (a, b) => {
 
-            return (aIndex === -1 ? 999 : aIndex) -
-                   (bIndex === -1 ? 999 : bIndex);
-        });
+                const aIndex =
+                    COUNTRY_ORDER.indexOf(
+                        a["국가코드"]
+                    );
 
-    const total = rows.reduce(
-        (sum, row) => sum + Number(row["수출금액_USD"] || 0),
-        0
-    );
+                const bIndex =
+                    COUNTRY_ORDER.indexOf(
+                        b["국가코드"]
+                    );
 
-    document.getElementById("countryShareTitle").textContent =
-        itemName + " 최신월 국가별 수출 비중";
+                return (
+                    (
+                        aIndex === -1
+                        ?
+                        999
+                        :
+                        aIndex
+                    )
+                    -
+                    (
+                        bIndex === -1
+                        ?
+                        999
+                        :
+                        bIndex
+                    )
+                );
+            }
+        );
 
-    document.getElementById("countryShareSubtitle").textContent =
-        latestMonth + " 기준 · 합계 " + formatMoney(total);
+    const total =
+        rows.reduce(
+            (sum, row) =>
+                sum
+                +
+                Number(
+                    row["수출금액_USD"]
+                    ||
+                    0
+                ),
+            0
+        );
 
-    if (countryShareChart) countryShareChart.destroy();
+    document.getElementById(
+        "countryShareTitle"
+    ).textContent =
+        itemName
+        +
+        " 최신월 국가별 수출 비중";
+
+    document.getElementById(
+        "countryShareSubtitle"
+    ).textContent =
+        latestMonth
+        +
+        " 기준 · 합계 "
+        +
+        formatMoney(
+            total
+        );
+
+    if (countryShareChart) {
+        countryShareChart.destroy();
+    }
 
     countryShareChart = new Chart(
-        document.getElementById("countryShareChart"),
+        document.getElementById(
+            "countryShareChart"
+        ),
         {
             type: "doughnut",
 
             data: {
-                labels: rows.map(d => d["국가명"]),
+                labels:
+                    rows.map(
+                        d =>
+                            d["국가명"]
+                    ),
 
                 datasets: [{
-                    data: rows.map(d => Number(d["수출금액_USD"] || 0)),
-                    backgroundColor: COUNTRY_COLORS,
-                    borderWidth: 1
+                    data:
+                        rows.map(
+                            d =>
+                                Number(
+                                    d["수출금액_USD"]
+                                    ||
+                                    0
+                                )
+                        ),
+
+                    backgroundColor:
+                        COUNTRY_COLORS,
+
+                    borderWidth:
+                        1
                 }]
             },
 
@@ -1231,34 +2054,80 @@ function createCountryShareChart(itemName) {
 
                     datalabels: {
                         color: "#222",
+
                         font: {
                             size: 11,
                             weight: "bold"
                         },
 
                         formatter(value) {
-                            if (!total) return "";
 
-                            const share = value / total * 100;
+                            if (!total) {
+                                return "";
+                            }
 
-                            if (share < 4) return "";
+                            const share =
+                                value
+                                /
+                                total
+                                *
+                                100;
 
-                            return share.toFixed(1) + "%";
+                            if (
+                                share < 4
+                            ) {
+                                return "";
+                            }
+
+                            return (
+                                share.toFixed(
+                                    1
+                                )
+                                +
+                                "%"
+                            );
                         }
                     },
 
                     tooltip: {
                         callbacks: {
                             label(context) {
-                                const value = Number(context.raw || 0);
-                                const share = total ? value / total * 100 : 0;
 
-                                return context.label +
-                                    ": " +
-                                    formatMoney(value) +
-                                    " (" +
-                                    share.toFixed(1) +
-                                    "%)";
+                                const value =
+                                    Number(
+                                        context.raw
+                                        ||
+                                        0
+                                    );
+
+                                const share =
+                                    total
+                                    ?
+                                    value
+                                    /
+                                    total
+                                    *
+                                    100
+                                    :
+                                    0;
+
+                                return (
+                                    context.label
+                                    +
+                                    ": "
+                                    +
+                                    formatMoney(
+                                        value
+                                    )
+                                    +
+                                    " ("
+                                    +
+                                    share.toFixed(
+                                        1
+                                    )
+                                    +
+                                    "%)"
+                                );
                             }
                         }
                     }
@@ -1268,16 +2137,30 @@ function createCountryShareChart(itemName) {
     );
 }
 
-function createCountryTrendChart(itemName, countryCode) {
+function createCountryTrendChart(
+    itemName,
+    countryCode
+) {
     const rows = countryData
         .filter(
             d =>
-                d["품목명"] === itemName &&
-                d["국가코드"] === countryCode
+                d["품목명"]
+                ===
+                itemName
+                &&
+                d["국가코드"]
+                ===
+                countryCode
         )
-        .sort((a, b) => a["월"].localeCompare(b["월"]));
+        .sort(
+            (a, b) =>
+                a["월"].localeCompare(
+                    b["월"]
+                )
+        );
 
     if (!rows.length) {
+
         if (countryTrendChart) {
             countryTrendChart.destroy();
             countryTrendChart = null;
@@ -1286,28 +2169,59 @@ function createCountryTrendChart(itemName, countryCode) {
         return;
     }
 
-    const countryName = rows[0]["국가명"];
+    const countryName =
+        rows[0]["국가명"];
 
-    document.getElementById("countryTrendTitle").textContent =
-        itemName + " - " + countryName + " 월간 수출 추이";
+    document.getElementById(
+        "countryTrendTitle"
+    ).textContent =
+        itemName
+        +
+        " - "
+        +
+        countryName
+        +
+        " 월간 수출 추이";
 
-    if (countryTrendChart) countryTrendChart.destroy();
+    if (countryTrendChart) {
+        countryTrendChart.destroy();
+    }
 
     countryTrendChart = new Chart(
-        document.getElementById("countryTrendChart"),
+        document.getElementById(
+            "countryTrendChart"
+        ),
         {
             type: "bar",
 
             data: {
-                labels: rows.map(d => d["월"]),
+                labels:
+                    rows.map(
+                        d =>
+                            d["월"]
+                    ),
 
                 datasets: [{
-                    label: countryName + " 수출액",
-                    data: rows.map(
-                        d => Number(d["수출금액_USD"] || 0) / 1000000
-                    ),
+                    label:
+                        countryName
+                        +
+                        " 수출액",
+
+                    data:
+                        rows.map(
+                            d =>
+                                Number(
+                                    d["수출금액_USD"]
+                                    ||
+                                    0
+                                )
+                                /
+                                1000000
+                        ),
+
                     datalabels: {
-                        display: false
+                        display:
+                            false
                     }
                 }]
             },
@@ -1329,12 +2243,21 @@ function createCountryTrendChart(itemName, countryCode) {
                     tooltip: {
                         callbacks: {
                             label(context) {
-                                return "수출액: $" +
+
+                                return (
+                                    "수출액: $"
+                                    +
                                     context.parsed.y.toLocaleString(
                                         undefined,
-                                        { maximumFractionDigits: 1 }
-                                    ) +
-                                    "M";
+                                        {
+                                            maximumFractionDigits:
+                                                1
+                                        }
+                                    )
+                                    +
+                                    "M"
+                                );
+
                             }
                         }
                     }
@@ -1351,7 +2274,17 @@ function createCountryTrendChart(itemName, countryCode) {
 
                         ticks: {
                             callback(value) {
-                                return "$" + Number(value).toLocaleString() + "M";
+
+                                return (
+                                    "$"
+                                    +
+                                    Number(
+                                        value
+                                    ).toLocaleString()
+                                    +
+                                    "M"
+                                );
+
                             }
                         }
                     },
@@ -1374,55 +2307,145 @@ function createCountryTrendChart(itemName, countryCode) {
     );
 }
 
-function createCountryTable(itemName) {
-    const latestMonth = getLatestCountryMonth(itemName);
+function createCountryTable(
+    itemName
+) {
+    const latestMonth =
+        getLatestCountryMonth(
+            itemName
+        );
 
     if (!latestMonth) {
-        document.getElementById("countryTable").innerHTML = "";
+
+        document.getElementById(
+            "countryTable"
+        ).innerHTML = "";
+
         return;
     }
 
     const rows = countryData
         .filter(
             d =>
-                d["품목명"] === itemName &&
-                d["월"] === latestMonth
+                d["품목명"]
+                ===
+                itemName
+                &&
+                d["월"]
+                ===
+                latestMonth
         )
         .sort(
             (a, b) =>
-                Number(b["수출금액_USD"] || 0) -
-                Number(a["수출금액_USD"] || 0)
+                Number(
+                    b["수출금액_USD"]
+                    ||
+                    0
+                )
+                -
+                Number(
+                    a["수출금액_USD"]
+                    ||
+                    0
+                )
         );
 
-    const total = rows.reduce(
-        (sum, row) => sum + Number(row["수출금액_USD"] || 0),
-        0
-    );
+    const total =
+        rows.reduce(
+            (sum, row) =>
+                sum
+                +
+                Number(
+                    row["수출금액_USD"]
+                    ||
+                    0
+                ),
+            0
+        );
 
-    document.getElementById("countryTableTitle").textContent =
-        itemName + " " + latestMonth + " 국가별 수출 현황";
+    document.getElementById(
+        "countryTableTitle"
+    ).textContent =
+        itemName
+        +
+        " "
+        +
+        latestMonth
+        +
+        " 국가별 수출 현황";
 
-    const tbody = document.getElementById("countryTable");
+    const tbody =
+        document.getElementById(
+            "countryTable"
+        );
+
     tbody.innerHTML = "";
 
-    rows.forEach((row, index) => {
-        const value = Number(row["수출금액_USD"] || 0);
-        const weight = Number(row["수출중량_KG"] || 0);
-        const share = total ? value / total * 100 : 0;
+    rows.forEach(
+        (row, index) => {
 
-        const tr = document.createElement("tr");
+            const value =
+                Number(
+                    row["수출금액_USD"]
+                    ||
+                    0
+                );
 
-        tr.innerHTML = `
-            <td class="center">${index + 1}</td>
-            <td>${row["국가명"]}</td>
-            <td class="center">${row["국가코드"]}</td>
-            <td class="number">${value.toLocaleString()}</td>
-            <td class="number">${share.toFixed(1)}%</td>
-            <td class="number">${weight.toLocaleString()} kg</td>
-        `;
+            const weight =
+                Number(
+                    row["수출중량_KG"]
+                    ||
+                    0
+                );
 
-        tbody.appendChild(tr);
-    });
+            const share =
+                total
+                ?
+                value
+                /
+                total
+                *
+                100
+                :
+                0;
+
+            const tr =
+                document.createElement(
+                    "tr"
+                );
+
+            tr.innerHTML = `
+                <td class="center">
+                    ${index + 1}
+                </td>
+
+                <td>
+                    ${row["국가명"]}
+                </td>
+
+                <td class="center">
+                    ${row["국가코드"]}
+                </td>
+
+                <td class="number">
+                    ${value.toLocaleString()}
+                </td>
+
+                <td class="number">
+                    ${share.toFixed(1)}%
+                </td>
+
+                <td class="number">
+                    ${weight.toLocaleString()} kg
+                </td>
+            `;
+
+            tbody.appendChild(
+                tr
+            );
+
+        }
+    );
 }
 
 loadData();
