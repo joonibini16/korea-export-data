@@ -24,43 +24,47 @@ API_URL = (
 )
 
 
-# 신규 품목은 2020년부터 전체 수집
+# 신규 품목은 2020년부터
 FULL_START_YEAR = 2020
 FULL_START_MONTH = 1
 
 
-# 기존 품목은 최근 3개월 재조회
+# 기존 품목 최근 갱신개월
 UPDATE_MONTHS = 3
 
 
-# 정상 API 호출 간격
-REQUEST_INTERVAL_SECONDS = 1.0
+# 정상 API 호출 사이 휴식
+REQUEST_INTERVAL_SECONDS = 3
 
 
-# 품목 하나가 끝난 후 휴식
-ITEM_PAUSE_SECONDS = 10
+# 품목 하나 끝난 뒤 휴식
+ITEM_PAUSE_SECONDS = 5
 
 
-# 429 발생 시 대기시간
+# 429 최대 시도
+MAX_429_ATTEMPTS = 3
+
+
+# 429 대기
 RATE_LIMIT_WAITS = [
-    60,
-    120,
-    180,
-    300,
-    600
-]
-
-
-# 일반 오류 재시도 대기시간
-NORMAL_RETRY_WAITS = [
-    15,
     30,
     60
 ]
 
 
+# 일반 오류 최대 시도
+MAX_NORMAL_ATTEMPTS = 3
+
+
+# 일반 오류 대기
+NORMAL_RETRY_WAITS = [
+    10,
+    20
+]
+
+
 # =========================================================
-# 2. 주요 국가
+# 2. 주요국
 # =========================================================
 
 COUNTRIES = {
@@ -90,23 +94,13 @@ today = datetime.now()
 
 if today.month == 1:
 
-    END_YEAR = (
-        today.year
-        -
-        1
-    )
-
+    END_YEAR = today.year - 1
     END_MONTH = 12
 
 else:
 
     END_YEAR = today.year
-
-    END_MONTH = (
-        today.month
-        -
-        1
-    )
+    END_MONTH = today.month - 1
 
 
 # =========================================================
@@ -132,21 +126,16 @@ def make_month_list(
             f"{year}{month:02d}"
         )
 
-
         if (
             year == end_year
             and
             month == end_month
         ):
-
             break
-
 
         month += 1
 
-
         if month == 13:
-
             month = 1
             year += 1
 
@@ -172,12 +161,9 @@ def get_recent_months(
             f"{year}{month:02d}"
         )
 
-
         month -= 1
 
-
         if month == 0:
-
             month = 12
             year -= 1
 
@@ -203,13 +189,12 @@ RECENT_MONTHS = get_recent_months(
 
 
 # =========================================================
-# 5. HS 코드 읽기
+# 5. HS 코드
 # =========================================================
 
 def read_hs_codes():
 
     items = []
-
 
     with open(
         "hs_codes.csv",
@@ -219,7 +204,6 @@ def read_hs_codes():
 
         reader = csv.DictReader(f)
 
-
         for row in reader:
 
             hs_code = (
@@ -227,26 +211,17 @@ def read_hs_codes():
                 .strip()
             )
 
-
             item_name = (
                 row["name"]
                 .strip()
             )
 
-
             if not hs_code:
-
                 continue
 
-
             items.append({
-
-                "hs_code":
-                    hs_code,
-
-                "name":
-                    item_name
-
+                "hs_code": hs_code,
+                "name": item_name
             })
 
 
@@ -288,31 +263,22 @@ FAILED_FIELDS = [
 def to_int(value):
 
     if value is None:
-
         return 0
-
 
     value = str(value).strip()
 
-
     if value == "":
-
         return 0
 
-
     try:
-
-        return int(
-            float(value)
-        )
+        return int(float(value))
 
     except:
-
         return 0
 
 
 # =========================================================
-# 8. summary 파일에서 전체 수출액 읽기
+# 8. summary 전체 수출액
 # =========================================================
 
 def load_total_export(
@@ -321,17 +287,13 @@ def load_total_export(
 
     totals = {}
 
-
     filename = (
         f"summary_{hs_code}.csv"
     )
 
 
-    if not os.path.exists(
-        filename
-    ):
+    if not os.path.exists(filename):
 
-        print()
         print(
             "⚠",
             filename,
@@ -349,17 +311,10 @@ def load_total_export(
 
         reader = csv.DictReader(f)
 
-
         for row in reader:
 
-            month = (
-                row["월"]
-                .strip()
-            )
-
-
             totals[
-                month
+                row["월"]
             ] = {
 
                 "export_usd":
@@ -375,7 +330,6 @@ def load_total_export(
                             "수출중량_KG"
                         ]
                     )
-
             }
 
 
@@ -383,7 +337,7 @@ def load_total_export(
 
 
 # =========================================================
-# 9. 기존 국가별 파일 읽기
+# 9. 기존 country 파일
 # =========================================================
 
 def load_existing_country_rows(
@@ -395,10 +349,7 @@ def load_existing_country_rows(
     )
 
 
-    if not os.path.exists(
-        filename
-    ):
-
+    if not os.path.exists(filename):
         return []
 
 
@@ -413,9 +364,7 @@ def load_existing_country_rows(
 
         reader = csv.DictReader(f)
 
-
         for row in reader:
-
             rows.append(row)
 
 
@@ -423,7 +372,7 @@ def load_existing_country_rows(
 
 
 # =========================================================
-# 10. 개별 country CSV 저장
+# 10. 저장
 # =========================================================
 
 def save_country_csv(
@@ -436,7 +385,7 @@ def save_country_csv(
     )
 
 
-    country_order = {
+    order_map = {
 
         code: index
 
@@ -444,23 +393,17 @@ def save_country_csv(
         in enumerate(
             COUNTRY_CODES_WITH_OTHER
         )
-
     }
 
 
     rows.sort(
-
         key=lambda row: (
-
             row["월"],
-
-            country_order.get(
+            order_map.get(
                 row["국가코드"],
                 999
             )
-
         )
-
     )
 
 
@@ -476,16 +419,12 @@ def save_country_csv(
             fieldnames=FIELDNAMES
         )
 
-
         writer.writeheader()
-
-        writer.writerows(
-            rows
-        )
+        writer.writerows(rows)
 
 
 # =========================================================
-# 11. 국가별 API 조회
+# 11. API
 # =========================================================
 
 session = requests.Session()
@@ -498,36 +437,19 @@ def fetch_country_data(
 ):
 
     params = {
-
-        "serviceKey":
-            API_KEY,
-
-        "strtYymm":
-            yymm,
-
-        "endYymm":
-            yymm,
-
-        "hsSgn":
-            hs_code,
-
-        "cntyCd":
-            country_code
-
+        "serviceKey": API_KEY,
+        "strtYymm": yymm,
+        "endYymm": yymm,
+        "hsSgn": hs_code,
+        "cntyCd": country_code
     }
 
 
-    # -----------------------------------------------------
-    # 최대 5회까지 시도
-    # -----------------------------------------------------
-
-    max_attempts = 5
+    normal_attempt = 0
+    rate_attempt = 0
 
 
-    for attempt in range(
-        1,
-        max_attempts + 1
-    ):
+    while True:
 
         try:
 
@@ -539,20 +461,25 @@ def fetch_country_data(
 
 
             # =================================================
-            # HTTP 429
+            # 429
             # =================================================
 
             if response.status_code == 429:
 
-                print()
+                rate_attempt += 1
 
+                print()
                 print(
-                    f"    ⚠ HTTP 429 발생 "
-                    f"({attempt}/{max_attempts})"
+                    f"    ⚠ HTTP 429 "
+                    f"({rate_attempt}/{MAX_429_ATTEMPTS})"
                 )
 
 
-                if attempt >= max_attempts:
+                if (
+                    rate_attempt
+                    >=
+                    MAX_429_ATTEMPTS
+                ):
 
                     return (
                         None,
@@ -561,25 +488,22 @@ def fetch_country_data(
                     )
 
 
-                # Retry-After가 있으면 우선 사용
+                wait_seconds = (
+                    RATE_LIMIT_WAITS[
+                        min(
+                            rate_attempt - 1,
+                            len(
+                                RATE_LIMIT_WAITS
+                            ) - 1
+                        )
+                    ]
+                )
+
+
                 retry_after = (
                     response.headers.get(
                         "Retry-After"
                     )
-                )
-
-
-                wait_seconds = (
-                    RATE_LIMIT_WAITS[
-                        min(
-                            attempt - 1,
-                            len(
-                                RATE_LIMIT_WAITS
-                            )
-                            -
-                            1
-                        )
-                    ]
                 )
 
 
@@ -589,18 +513,15 @@ def fetch_country_data(
 
                         wait_seconds = max(
                             wait_seconds,
-                            int(
-                                retry_after
-                            )
+                            int(retry_after)
                         )
 
                     except:
-
                         pass
 
 
                 print(
-                    f"    → {wait_seconds}초 대기 후 재시도"
+                    f"    → {wait_seconds}초 후 재시도"
                 )
 
 
@@ -617,15 +538,20 @@ def fetch_country_data(
 
             if response.status_code != 200:
 
-                print()
+                normal_attempt += 1
 
+                print()
                 print(
                     f"    ⚠ HTTP "
                     f"{response.status_code}"
                 )
 
 
-                if attempt >= max_attempts:
+                if (
+                    normal_attempt
+                    >=
+                    MAX_NORMAL_ATTEMPTS
+                ):
 
                     return (
                         None,
@@ -637,12 +563,10 @@ def fetch_country_data(
                 wait_seconds = (
                     NORMAL_RETRY_WAITS[
                         min(
-                            attempt - 1,
+                            normal_attempt - 1,
                             len(
                                 NORMAL_RETRY_WAITS
-                            )
-                            -
-                            1
+                            ) - 1
                         )
                     ]
                 )
@@ -670,18 +594,15 @@ def fetch_country_data(
                     response.content
                 )
 
+            except Exception:
 
-            except Exception as e:
+                normal_attempt += 1
 
-                print()
-
-                print(
-                    "    ⚠ XML 해석 오류:",
-                    e
-                )
-
-
-                if attempt >= max_attempts:
+                if (
+                    normal_attempt
+                    >=
+                    MAX_NORMAL_ATTEMPTS
+                ):
 
                     return (
                         None,
@@ -691,26 +612,23 @@ def fetch_country_data(
 
 
                 time.sleep(
-                    20
+                    10
                 )
 
                 continue
 
 
             # =================================================
-            # 정상 데이터 집계
+            # 정상 데이터
             # =================================================
 
             export_usd = 0
             export_kg = 0
 
 
-            items = root.findall(
+            for item in root.findall(
                 ".//item"
-            )
-
-
-            for item in items:
+            ):
 
                 year = (
                     item.findtext(
@@ -722,7 +640,6 @@ def fetch_country_data(
 
 
                 if year == "총계":
-
                     continue
 
 
@@ -740,7 +657,7 @@ def fetch_country_data(
                 )
 
 
-            # 정상 호출 뒤 잠시 쉬기
+            # 호출 간격
             time.sleep(
                 REQUEST_INTERVAL_SECONDS
             )
@@ -757,17 +674,22 @@ def fetch_country_data(
         # Timeout
         # =====================================================
 
-        except requests.exceptions.Timeout as e:
+        except requests.exceptions.Timeout:
+
+            normal_attempt += 1
 
             print()
-
             print(
                 f"    ⚠ Timeout "
-                f"({attempt}/{max_attempts})"
+                f"({normal_attempt}/{MAX_NORMAL_ATTEMPTS})"
             )
 
 
-            if attempt >= max_attempts:
+            if (
+                normal_attempt
+                >=
+                MAX_NORMAL_ATTEMPTS
+            ):
 
                 return (
                     None,
@@ -779,12 +701,10 @@ def fetch_country_data(
             wait_seconds = (
                 NORMAL_RETRY_WAITS[
                     min(
-                        attempt - 1,
+                        normal_attempt - 1,
                         len(
                             NORMAL_RETRY_WAITS
-                        )
-                        -
-                        1
+                        ) - 1
                     )
                 ]
             )
@@ -806,15 +726,14 @@ def fetch_country_data(
 
         except requests.exceptions.RequestException as e:
 
-            print()
-
-            print(
-                "    ⚠ API 연결 오류:",
-                e
-            )
+            normal_attempt += 1
 
 
-            if attempt >= max_attempts:
+            if (
+                normal_attempt
+                >=
+                MAX_NORMAL_ATTEMPTS
+            ):
 
                 return (
                     None,
@@ -826,16 +745,19 @@ def fetch_country_data(
             wait_seconds = (
                 NORMAL_RETRY_WAITS[
                     min(
-                        attempt - 1,
+                        normal_attempt - 1,
                         len(
                             NORMAL_RETRY_WAITS
-                        )
-                        -
-                        1
+                        ) - 1
                     )
                 ]
             )
 
+
+            print()
+            print(
+                "    ⚠ 연결 오류"
+            )
 
             print(
                 f"    → {wait_seconds}초 후 재시도"
@@ -847,15 +769,8 @@ def fetch_country_data(
             )
 
 
-    return (
-        None,
-        None,
-        "알 수 없는 API 실패"
-    )
-
-
 # =========================================================
-# 12. 월 하나 전체 조회
+# 12. 한 달 조회
 # =========================================================
 
 def collect_month(
@@ -881,53 +796,35 @@ def collect_month(
     )
 
 
-    total = total_export.get(
-        month_label
+    total = (
+        total_export.get(
+            month_label
+        )
     )
 
 
     if total is None:
 
-        print(
-            "  ⚠ 전체 수출액(summary)이 없습니다."
-        )
-
-
         return (
             None,
             [{
-                "품목명":
-                    item_name,
-
-                "HS코드":
-                    hs_code,
-
-                "월":
-                    month_label,
-
-                "국가코드":
-                    "-",
-
-                "국가명":
-                    "-",
-
-                "오류":
-                    "summary 데이터 없음"
+                "품목명": item_name,
+                "HS코드": hs_code,
+                "월": month_label,
+                "국가코드": "-",
+                "국가명": "-",
+                "오류": "summary 없음"
             }]
         )
 
 
     month_rows = []
-
     failed_rows = []
+
 
     major_export_usd = 0
     major_export_kg = 0
 
-
-    # -----------------------------------------------------
-    # 주요 국가 조회
-    # -----------------------------------------------------
 
     for (
         country_code,
@@ -953,11 +850,7 @@ def collect_month(
         )
 
 
-        # -------------------------------------------------
-        # 실패
-        # -------------------------------------------------
-
-        if error is not None:
+        if error:
 
             print(
                 "실패"
@@ -990,22 +883,13 @@ def collect_month(
             continue
 
 
-        # -------------------------------------------------
-        # 성공
-        # -------------------------------------------------
-
         print(
             f"${export_usd:,}"
         )
 
 
-        major_export_usd += (
-            export_usd
-        )
-
-        major_export_kg += (
-            export_kg
-        )
+        major_export_usd += export_usd
+        major_export_kg += export_kg
 
 
         month_rows.append({
@@ -1035,20 +919,15 @@ def collect_month(
 
 
     # =====================================================
-    # 한 국가라도 실패했다면
-    # 기타를 계산하면 안 됨
+    # 국가 하나라도 실패
+    # 해당 월 전체 갱신 보류
     # =====================================================
 
     if failed_rows:
 
-        print()
         print(
-            "  ⚠ 이 월은 일부 국가 조회가 실패했습니다."
-        )
-
-        print(
-            "  → 잘못된 기타값 생성을 막기 위해 "
-            "이번 월 갱신을 보류합니다."
+            "  ⚠ 일부 국가 실패 → "
+            "이 월은 갱신하지 않습니다."
         )
 
 
@@ -1059,38 +938,24 @@ def collect_month(
 
 
     # =====================================================
-    # 기타 계산
+    # 기타
     # =====================================================
 
     other_export_usd = (
-        total[
-            "export_usd"
-        ]
+        total["export_usd"]
         -
         major_export_usd
     )
 
 
     other_export_kg = (
-        total[
-            "export_kg"
-        ]
+        total["export_kg"]
         -
         major_export_kg
     )
 
 
-    # -----------------------------------------------------
-    # 주요국 합 > 전체수출이면 오류
-    # -----------------------------------------------------
-
     if other_export_usd < 0:
-
-        print()
-        print(
-            "  ⚠ 주요국 수출액이 전체 수출액보다 큽니다."
-        )
-
 
         return (
             None,
@@ -1111,7 +976,7 @@ def collect_month(
                     "기타",
 
                 "오류":
-                    "주요국 합계가 전체 수출액보다 큼"
+                    "주요국 합계가 전체수출보다 큼"
             }]
         )
 
@@ -1148,16 +1013,9 @@ def collect_month(
     )
 
 
-    check_total = (
-        major_export_usd
-        +
-        other_export_usd
-    )
-
-
     print(
         " 합계확인:",
-        f"${check_total:,}",
+        f"${major_export_usd + other_export_usd:,}",
         "/",
         f"${total['export_usd']:,}"
     )
@@ -1170,14 +1028,14 @@ def collect_month(
 
 
 # =========================================================
-# 13. 기존 파일의 누락월 찾기
+# 13. 누락월 찾기
 # =========================================================
 
 def find_incomplete_months(
     existing_rows
 ):
 
-    month_country_map = {}
+    month_map = {}
 
 
     for row in existing_rows:
@@ -1187,26 +1045,28 @@ def find_incomplete_months(
         )
 
 
-        country_code = (
-            row["국가코드"]
-        )
+        if month not in month_map:
 
-
-        if month not in month_country_map:
-
-            month_country_map[
+            month_map[
                 month
             ] = set()
 
 
-        month_country_map[
+        month_map[
             month
         ].add(
-            country_code
+            row[
+                "국가코드"
+            ]
         )
 
 
-    incomplete_months = []
+    required = set(
+        COUNTRY_CODES_WITH_OTHER
+    )
+
+
+    incomplete = []
 
 
     for yymm in FULL_MONTHS:
@@ -1221,28 +1081,23 @@ def find_incomplete_months(
 
 
         existing_codes = (
-            month_country_map.get(
+            month_map.get(
                 month_label,
                 set()
             )
         )
 
 
-        required_codes = set(
-            COUNTRY_CODES_WITH_OTHER
-        )
-
-
-        if not required_codes.issubset(
+        if not required.issubset(
             existing_codes
         ):
 
-            incomplete_months.append(
+            incomplete.append(
                 yymm
             )
 
 
-    return incomplete_months
+    return incomplete
 
 
 # =========================================================
@@ -1255,7 +1110,6 @@ def update_one_item(
 ):
 
     print()
-    print()
     print("=" * 75)
 
     print(
@@ -1267,11 +1121,6 @@ def update_one_item(
     print("=" * 75)
 
 
-    filename = (
-        f"country_{hs_code}.csv"
-    )
-
-
     total_export = (
         load_total_export(
             hs_code
@@ -1281,16 +1130,8 @@ def update_one_item(
 
     if not total_export:
 
-        print(
-            "⚠ summary 데이터가 없어 "
-            "이 품목을 건너뜁니다."
-        )
-
-
         return (
-            load_existing_country_rows(
-                hs_code
-            ),
+            [],
             [{
                 "품목명":
                     item_name,
@@ -1308,7 +1149,7 @@ def update_one_item(
                     "-",
 
                 "오류":
-                    "summary 파일 없음 또는 비어 있음"
+                    "summary 없음"
             }]
         )
 
@@ -1320,18 +1161,11 @@ def update_one_item(
     )
 
 
-    # =====================================================
-    # 신규 품목
-    # =====================================================
-
+    # 신규
     if not existing_rows:
 
         print(
-            "신규 품목입니다."
-        )
-
-        print(
-            "2020.01부터 전체 수집합니다."
+            "신규 품목 → 2020년부터 수집"
         )
 
 
@@ -1340,58 +1174,51 @@ def update_one_item(
         )
 
 
-    # =====================================================
-    # 기존 품목
-    # =====================================================
-
     else:
 
-        print(
-            "기존 품목입니다."
-        )
-
-
-        incomplete_months = (
+        incomplete = (
             find_incomplete_months(
                 existing_rows
             )
         )
 
 
-        # 최근 3개월 + 과거 누락월
         target_months = sorted(
             set(
                 RECENT_MONTHS
                 +
-                incomplete_months
+                incomplete
             )
         )
 
 
         print(
-            "최근 갱신월:",
+            "기존 품목"
+        )
+
+        print(
+            "최근 갱신:",
             ", ".join(
                 RECENT_MONTHS
             )
         )
 
 
-        if incomplete_months:
+        if incomplete:
 
             print(
-                "과거 누락월도 재조회:",
+                "과거 누락월:",
                 ", ".join(
-                    incomplete_months
+                    incomplete
                 )
             )
 
 
     print(
-        "총 조회월:",
+        "이번 조회월:",
         len(
             target_months
-        ),
-        "개"
+        )
     )
 
 
@@ -1400,17 +1227,14 @@ def update_one_item(
     )
 
 
-    all_failed_rows = []
+    failed_rows_all = []
 
-
-    # =====================================================
-    # 월별 처리
-    # =====================================================
 
     for index, yymm in enumerate(
         target_months,
         start=1
     ):
+
 
         print()
         print(
@@ -1438,13 +1262,8 @@ def update_one_item(
         )
 
 
-        # -------------------------------------------------
-        # 월 전체 성공
-        # -------------------------------------------------
-
         if month_rows is not None:
 
-            # 기존 같은 월 삭제
             working_rows = [
 
                 row
@@ -1459,13 +1278,11 @@ def update_one_item(
             ]
 
 
-            # 새 데이터 추가
             working_rows.extend(
                 month_rows
             )
 
 
-            # 체크포인트 저장
             save_country_csv(
                 hs_code,
                 working_rows
@@ -1473,50 +1290,36 @@ def update_one_item(
 
 
             print(
-                "  ✓ 체크포인트 저장"
+                " ✓ 저장"
             )
 
 
-        # -------------------------------------------------
-        # 실패
-        # 기존 데이터가 있다면 그대로 유지
-        # -------------------------------------------------
-
         else:
 
-            all_failed_rows.extend(
+            failed_rows_all.extend(
                 failed_rows
             )
 
 
             print(
-                "  → 기존 데이터 유지 / "
-                "신규 월이면 다음 실행에서 재시도"
+                " → 실패월 보류"
             )
 
 
-    # 최종 저장
     save_country_csv(
         hs_code,
         working_rows
     )
 
 
-    print()
-    print(
-        filename,
-        "저장 완료"
-    )
-
-
     return (
         working_rows,
-        all_failed_rows
+        failed_rows_all
     )
 
 
 # =========================================================
-# 15. country_all.csv 생성
+# 15. country_all.csv
 # =========================================================
 
 def create_country_all():
@@ -1551,7 +1354,6 @@ def create_country_all():
 
             reader = csv.DictReader(f)
 
-
             for row in reader:
 
                 all_rows.append(
@@ -1560,17 +1362,11 @@ def create_country_all():
 
 
     all_rows.sort(
-
         key=lambda row: (
-
             row["월"],
-
             row["품목명"],
-
             row["국가코드"]
-
         )
-
     )
 
 
@@ -1586,25 +1382,17 @@ def create_country_all():
             fieldnames=FIELDNAMES
         )
 
-
         writer.writeheader()
-
         writer.writerows(
             all_rows
         )
-
-
-    print()
-    print(
-        "country_all.csv 저장 완료"
-    )
 
 
     return all_rows
 
 
 # =========================================================
-# 16. country_latest.csv
+# 16. latest
 # =========================================================
 
 def create_country_latest(
@@ -1612,17 +1400,13 @@ def create_country_latest(
 ):
 
     if not all_rows:
-
         return
 
 
     latest_month = max(
-
         row["월"]
-
         for row
         in all_rows
-
     )
 
 
@@ -1636,24 +1420,18 @@ def create_country_latest(
         if row["월"]
         ==
         latest_month
-
     ]
 
 
     latest_rows.sort(
-
         key=lambda row: (
-
             row["품목명"],
-
             -to_int(
                 row[
                     "수출금액_USD"
                 ]
             )
-
         )
-
     )
 
 
@@ -1669,9 +1447,7 @@ def create_country_latest(
             fieldnames=FIELDNAMES
         )
 
-
         writer.writeheader()
-
         writer.writerows(
             latest_rows
         )
@@ -1681,18 +1457,13 @@ def create_country_latest(
         "country_latest.csv 저장 완료"
     )
 
-    print(
-        "최신월:",
-        latest_month
-    )
-
 
 # =========================================================
-# 17. 실패목록 저장
+# 17. 실패목록
 # =========================================================
 
 def save_failed_rows(
-    failed_rows
+    rows
 ):
 
     with open(
@@ -1707,26 +1478,18 @@ def save_failed_rows(
             fieldnames=FAILED_FIELDS
         )
 
-
         writer.writeheader()
-
         writer.writerows(
-            failed_rows
+            rows
         )
 
 
-    print()
-    print(
-        "country_failed.csv 저장 완료"
-    )
-
-
 # =========================================================
-# 18. 전체 실행
+# 18. 실행
 # =========================================================
 
 print("=" * 75)
-print("국가별 수출 데이터 업데이트 시작")
+print("국가별 수출 데이터 업데이트")
 print("=" * 75)
 
 print(
@@ -1737,19 +1500,7 @@ print(
 )
 
 print(
-    "등록 품목:",
-    len(HS_ITEMS),
-    "개"
-)
-
-print(
-    "국가:",
-    len(COUNTRIES),
-    "개 + 기타"
-)
-
-print(
-    "API 정상 호출 간격:",
+    "정상 API 호출 간격:",
     REQUEST_INTERVAL_SECONDS,
     "초"
 )
@@ -1770,19 +1521,10 @@ for item_index, item in enumerate(
     )
 
 
-    hs_code = (
-        item["hs_code"]
-    )
-
-    item_name = (
-        item["name"]
-    )
-
-
     _, failed_rows = (
         update_one_item(
-            hs_code,
-            item_name
+            item["hs_code"],
+            item["name"]
         )
     )
 
@@ -1792,15 +1534,12 @@ for item_index, item in enumerate(
     )
 
 
-    # 품목 사이 휴식
     if item_index < len(
         HS_ITEMS
     ):
 
-        print()
         print(
-            f"다음 품목 조회 전 "
-            f"{ITEM_PAUSE_SECONDS}초 대기..."
+            f"{ITEM_PAUSE_SECONDS}초 휴식..."
         )
 
 
@@ -1808,10 +1547,6 @@ for item_index, item in enumerate(
             ITEM_PAUSE_SECONDS
         )
 
-
-# =========================================================
-# 통합파일 생성
-# =========================================================
 
 all_rows = (
     create_country_all()
@@ -1828,45 +1563,32 @@ save_failed_rows(
 )
 
 
-# =========================================================
-# 최종 결과
-# =========================================================
-
 print()
 print("=" * 75)
-print("국가별 수출 데이터 업데이트 결과")
-print("=" * 75)
 
 
-if not all_failed_rows:
+if all_failed_rows:
 
     print(
-        "✅ 모든 조회가 정상 완료되었습니다."
-    )
-
-else:
-
-    print(
-        "⚠ 일부 조회가 완료되지 않았습니다."
-    )
-
-    print(
-        "실패 건수:",
+        "⚠ 실패 건수:",
         len(
             all_failed_rows
         )
     )
 
     print(
-        "country_failed.csv를 확인하세요."
+        "country_failed.csv에 기록했습니다."
     )
 
     print(
-        "다음 실행 시 누락월을 자동으로 다시 조회합니다."
+        "다음 실행에서 누락월을 자동 재조회합니다."
+    )
+
+else:
+
+    print(
+        "✅ 모든 국가별 데이터 조회 성공"
     )
 
 
-print()
-print("=" * 75)
-print("작업 종료")
 print("=" * 75)
