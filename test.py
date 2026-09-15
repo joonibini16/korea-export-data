@@ -24,15 +24,34 @@ API_URL = (
 )
 
 
-START_YEAR = 2020
-START_MONTH = 1
+# 신규 품목은 여기부터 전체 수집
+FULL_START_YEAR = 2020
+FULL_START_MONTH = 1
 
 
-# 월별 기본 재시도 횟수
-MAX_RETRIES = 3
+# 기존 품목은 최근 몇 개월 재조회
+UPDATE_MONTHS = 3
 
-# 재시도 전 대기시간
-RETRY_WAIT_SECONDS = 10
+
+# 정상 호출 간격
+REQUEST_INTERVAL_SECONDS = 0.5
+
+
+# 일반 오류 재시도 대기
+RETRY_WAITS = [
+    10,
+    20,
+    40
+]
+
+
+# 429 발생 시 대기
+RATE_LIMIT_WAITS = [
+    30,
+    60,
+    120,
+    180
+]
 
 
 # =========================================================
@@ -42,15 +61,28 @@ RETRY_WAIT_SECONDS = 10
 today = datetime.now()
 
 if today.month == 1:
-    END_YEAR = today.year - 1
+
+    END_YEAR = (
+        today.year
+        -
+        1
+    )
+
     END_MONTH = 12
+
 else:
+
     END_YEAR = today.year
-    END_MONTH = today.month - 1
+
+    END_MONTH = (
+        today.month
+        -
+        1
+    )
 
 
 # =========================================================
-# 3. 월 목록 생성
+# 3. 월 관련 함수
 # =========================================================
 
 def make_month_list(
@@ -65,42 +97,91 @@ def make_month_list(
     year = start_year
     month = start_month
 
+
     while True:
 
         months.append(
             f"{year}{month:02d}"
         )
 
+
         if (
             year == end_year
-            and month == end_month
+            and
+            month == end_month
         ):
+
             break
+
 
         month += 1
 
+
         if month == 13:
+
             month = 1
             year += 1
+
 
     return months
 
 
-MONTHS = make_month_list(
-    START_YEAR,
-    START_MONTH,
+def get_recent_months(
+    end_year,
+    end_month,
+    count
+):
+
+    months = []
+
+    year = end_year
+    month = end_month
+
+
+    for _ in range(count):
+
+        months.append(
+            f"{year}{month:02d}"
+        )
+
+
+        month -= 1
+
+
+        if month == 0:
+
+            month = 12
+            year -= 1
+
+
+    months.reverse()
+
+    return months
+
+
+FULL_MONTHS = make_month_list(
+    FULL_START_YEAR,
+    FULL_START_MONTH,
     END_YEAR,
     END_MONTH
 )
 
 
+RECENT_MONTHS = get_recent_months(
+    END_YEAR,
+    END_MONTH,
+    UPDATE_MONTHS
+)
+
+
 # =========================================================
-# 4. hs_codes.csv 읽기
+# 4. HS 코드 읽기
 # =========================================================
 
 def read_hs_codes():
 
     items = []
+
 
     with open(
         "hs_codes.csv",
@@ -110,6 +191,7 @@ def read_hs_codes():
 
         reader = csv.DictReader(f)
 
+
         for row in reader:
 
             hs_code = (
@@ -117,18 +199,28 @@ def read_hs_codes():
                 .strip()
             )
 
-            name = (
+
+            item_name = (
                 row["name"]
                 .strip()
             )
 
+
             if not hs_code:
+
                 continue
 
+
             items.append({
-                "hs_code": hs_code,
-                "name": name
+
+                "hs_code":
+                    hs_code,
+
+                "name":
+                    item_name
+
             })
+
 
     return items
 
@@ -137,88 +229,394 @@ HS_ITEMS = read_hs_codes()
 
 
 # =========================================================
-# 5. 숫자 변환
+# 5. CSV 필드
+# =========================================================
+
+DETAIL_FIELDS = [
+    "월",
+    "대표품목",
+    "조회_HS코드",
+    "세부_HS코드",
+    "세부품목명",
+    "수출금액_USD",
+    "수출중량_KG",
+    "수입금액_USD",
+    "수입중량_KG"
+]
+
+
+SUMMARY_FIELDS = [
+    "월",
+    "품목명",
+    "HS코드",
+    "수출금액_USD",
+    "수출중량_KG",
+    "수출단가_USD_per_KG",
+    "YoY_pct",
+    "MoM_pct"
+]
+
+
+FAILED_FIELDS = [
+    "품목명",
+    "HS코드",
+    "월",
+    "오류"
+]
+
+
+# =========================================================
+# 6. 숫자 변환
 # =========================================================
 
 def to_int(value):
 
     if value is None:
+
         return 0
 
-    value = str(value).strip()
+
+    value = str(
+        value
+    ).strip()
+
 
     if value == "":
+
         return 0
+
 
     try:
-        return int(float(value))
+
+        return int(
+            float(
+                value
+            )
+        )
 
     except:
+
         return 0
 
 
 # =========================================================
-# 6. 월별 API 조회
+# 7. 기존 export 파일 읽기
 # =========================================================
+
+def load_existing_detail_rows(
+    hs_code
+):
+
+    filename = (
+        f"export_{hs_code}.csv"
+    )
+
+
+    if not os.path.exists(
+        filename
+    ):
+
+        return []
+
+
+    rows = []
+
+
+    with open(
+        filename,
+        "r",
+        encoding="utf-8-sig"
+    ) as f:
+
+        reader = csv.DictReader(f)
+
+
+        for row in reader:
+
+            rows.append(
+                row
+            )
+
+
+    return rows
+
+
+# =========================================================
+# 8. 기존 summary 파일 월 목록
+# =========================================================
+
+def load_existing_summary_months(
+    hs_code
+):
+
+    filename = (
+        f"summary_{hs_code}.csv"
+    )
+
+
+    if not os.path.exists(
+        filename
+    ):
+
+        return set()
+
+
+    months = set()
+
+
+    with open(
+        filename,
+        "r",
+        encoding="utf-8-sig"
+    ) as f:
+
+        reader = csv.DictReader(f)
+
+
+        for row in reader:
+
+            month = (
+                row.get(
+                    "월",
+                    ""
+                )
+                .strip()
+            )
+
+
+            if month:
+
+                months.add(
+                    month
+                )
+
+
+    return months
+
+
+# =========================================================
+# 9. 상세 CSV 저장
+# =========================================================
+
+def save_detail_csv(
+    hs_code,
+    rows
+):
+
+    filename = (
+        f"export_{hs_code}.csv"
+    )
+
+
+    rows.sort(
+
+        key=lambda row: (
+
+            row["월"],
+
+            row[
+                "세부_HS코드"
+            ]
+
+        )
+
+    )
+
+
+    with open(
+        filename,
+        "w",
+        newline="",
+        encoding="utf-8-sig"
+    ) as f:
+
+        writer = csv.DictWriter(
+            f,
+            fieldnames=DETAIL_FIELDS
+        )
+
+
+        writer.writeheader()
+
+        writer.writerows(
+            rows
+        )
+
+
+# =========================================================
+# 10. 월별 API 조회
+# =========================================================
+
+session = requests.Session()
+
 
 def fetch_month(
     hs_code,
-    yymm,
-    retry_count=MAX_RETRIES
+    yymm
 ):
 
     params = {
-        "serviceKey": API_KEY,
-        "strtYymm": yymm,
-        "endYymm": yymm,
-        "hsSgn": hs_code
+
+        "serviceKey":
+            API_KEY,
+
+        "strtYymm":
+            yymm,
+
+        "endYymm":
+            yymm,
+
+        "hsSgn":
+            hs_code
+
     }
+
+
+    max_attempts = 4
 
 
     for attempt in range(
         1,
-        retry_count + 1
+        max_attempts + 1
     ):
 
         try:
 
             print(
                 f"조회 중: {yymm}",
-                end=""
+                end="",
+                flush=True
             )
 
 
             if attempt > 1:
 
                 print(
-                    f" / 재시도 {attempt}/{retry_count}",
-                    end=""
+                    f" / 재시도 "
+                    f"{attempt}/{max_attempts}",
+                    end="",
+                    flush=True
                 )
 
 
-            response = requests.get(
+            response = session.get(
                 API_URL,
                 params=params,
                 timeout=(60, 120)
             )
 
 
-            if response.status_code != 200:
+            # =================================================
+            # 429
+            # =================================================
+
+            if (
+                response.status_code
+                ==
+                429
+            ):
 
                 print(
-                    f" 오류: HTTP {response.status_code}"
+                    " → HTTP 429"
                 )
 
-                if attempt < retry_count:
 
-                    time.sleep(
-                        RETRY_WAIT_SECONDS
+                if (
+                    attempt
+                    >=
+                    max_attempts
+                ):
+
+                    return (
+                        None,
+                        "HTTP 429 최종 실패"
                     )
 
-                    continue
 
-                return None
+                wait_seconds = (
+                    RATE_LIMIT_WAITS[
+                        min(
+                            attempt - 1,
+                            len(
+                                RATE_LIMIT_WAITS
+                            )
+                            -
+                            1
+                        )
+                    ]
+                )
 
+
+                print(
+                    f"{wait_seconds}초 후 재시도"
+                )
+
+
+                time.sleep(
+                    wait_seconds
+                )
+
+                continue
+
+
+            # =================================================
+            # 기타 HTTP 오류
+            # =================================================
+
+            if (
+                response.status_code
+                !=
+                200
+            ):
+
+                print(
+                    f" → HTTP "
+                    f"{response.status_code}"
+                )
+
+
+                if (
+                    attempt
+                    >=
+                    max_attempts
+                ):
+
+                    return (
+                        None,
+                        f"HTTP "
+                        f"{response.status_code}"
+                    )
+
+
+                wait_seconds = (
+                    RETRY_WAITS[
+                        min(
+                            attempt - 1,
+                            len(
+                                RETRY_WAITS
+                            )
+                            -
+                            1
+                        )
+                    ]
+                )
+
+
+                print(
+                    f"{wait_seconds}초 후 재시도"
+                )
+
+
+                time.sleep(
+                    wait_seconds
+                )
+
+                continue
+
+
+            # =================================================
+            # XML 파싱
+            # =================================================
 
             try:
 
@@ -226,22 +624,31 @@ def fetch_month(
                     response.content
                 )
 
+
             except Exception as e:
 
                 print(
-                    " 오류: XML 해석 실패:",
-                    e
+                    " → XML 오류"
                 )
 
-                if attempt < retry_count:
 
-                    time.sleep(
-                        RETRY_WAIT_SECONDS
+                if (
+                    attempt
+                    >=
+                    max_attempts
+                ):
+
+                    return (
+                        None,
+                        "XML 해석 실패"
                     )
 
-                    continue
 
-                return None
+                time.sleep(
+                    15
+                )
+
+                continue
 
 
             items = root.findall(
@@ -255,14 +662,17 @@ def fetch_month(
             for item in items:
 
                 year = (
-                    item.findtext("year")
+                    item.findtext(
+                        "year"
+                    )
                     or
                     ""
                 ).strip()
 
 
-                # 총계 행은 제외
+                # 총계 제외
                 if year == "총계":
+
                     continue
 
 
@@ -284,35 +694,8 @@ def fetch_month(
                 ).strip()
 
 
-                export_usd = to_int(
-                    item.findtext(
-                        "expDlr"
-                    )
-                )
-
-
-                export_kg = to_int(
-                    item.findtext(
-                        "expWgt"
-                    )
-                )
-
-
-                import_usd = to_int(
-                    item.findtext(
-                        "impDlr"
-                    )
-                )
-
-
-                import_kg = to_int(
-                    item.findtext(
-                        "impWgt"
-                    )
-                )
-
-
                 rows.append({
+
                     "월":
                         year,
 
@@ -323,337 +706,124 @@ def fetch_month(
                         stat_kor,
 
                     "수출금액_USD":
-                        export_usd,
+                        to_int(
+                            item.findtext(
+                                "expDlr"
+                            )
+                        ),
 
                     "수출중량_KG":
-                        export_kg,
+                        to_int(
+                            item.findtext(
+                                "expWgt"
+                            )
+                        ),
 
                     "수입금액_USD":
-                        import_usd,
+                        to_int(
+                            item.findtext(
+                                "impDlr"
+                            )
+                        ),
 
                     "수입중량_KG":
-                        import_kg
+                        to_int(
+                            item.findtext(
+                                "impWgt"
+                            )
+                        )
+
                 })
 
 
             print(
-                f" → {len(rows)} 개 저장"
+                f" → {len(rows)}개 저장"
             )
 
 
-            return rows
+            time.sleep(
+                REQUEST_INTERVAL_SECONDS
+            )
 
 
-        except requests.exceptions.Timeout as e:
+            return (
+                rows,
+                None
+            )
+
+
+        except requests.exceptions.Timeout:
 
             print(
-                " 오류:",
-                e
+                " → Timeout"
             )
+
+
+            if (
+                attempt
+                >=
+                max_attempts
+            ):
+
+                return (
+                    None,
+                    "Timeout 최종 실패"
+                )
 
 
         except requests.exceptions.RequestException as e:
 
             print(
-                " 오류:",
+                " → 연결 오류:",
                 e
             )
 
 
-        except Exception as e:
+            if (
+                attempt
+                >=
+                max_attempts
+            ):
 
-            print(
-                " 알 수 없는 오류:",
-                e
-            )
-
-
-        if attempt < retry_count:
-
-            print(
-                f"{RETRY_WAIT_SECONDS}초 후 다시 시도"
-            )
-
-            time.sleep(
-                RETRY_WAIT_SECONDS
-            )
-
-
-    return None
-
-
-# =========================================================
-# 7. 품목별 상세 데이터 수집
-# =========================================================
-
-def collect_item(
-    hs_code,
-    item_name
-):
-
-    print()
-    print("=" * 70)
-
-    print(
-        item_name,
-        "/ HS",
-        hs_code
-    )
-
-    print("=" * 70)
-
-
-    detail_rows = []
-
-    failed_months = []
-
-
-    # -----------------------------------------------------
-    # 1차 전체 조회
-    # -----------------------------------------------------
-
-    for yymm in MONTHS:
-
-        result = fetch_month(
-            hs_code,
-            yymm
-        )
-
-
-        if result is None:
-
-            failed_months.append(
-                yymm
-            )
-
-            continue
-
-
-        for row in result:
-
-            detail_rows.append({
-
-                "월":
-                    row["월"],
-
-                "대표품목":
-                    item_name,
-
-                "조회_HS코드":
-                    hs_code,
-
-                "세부_HS코드":
-                    row["세부_HS코드"],
-
-                "세부품목명":
-                    row["세부품목명"],
-
-                "수출금액_USD":
-                    row["수출금액_USD"],
-
-                "수출중량_KG":
-                    row["수출중량_KG"],
-
-                "수입금액_USD":
-                    row["수입금액_USD"],
-
-                "수입중량_KG":
-                    row["수입중량_KG"]
-            })
-
-
-    # -----------------------------------------------------
-    # 실패월 마지막 재조회
-    # -----------------------------------------------------
-
-    final_failed_months = []
-
-
-    if failed_months:
-
-        print()
-        print("=" * 70)
-        print(
-            item_name,
-            "실패월 재조회 시작"
-        )
-        print("=" * 70)
-
-        print(
-            "1차 실패월:",
-            ", ".join(
-                failed_months
-            )
-        )
-
-
-        for yymm in failed_months:
-
-            print()
-
-            print(
-                "실패월 다시 조회:",
-                yymm
-            )
-
-
-            result = fetch_month(
-                hs_code,
-                yymm,
-                retry_count=3
-            )
-
-
-            if result is None:
-
-                final_failed_months.append(
-                    yymm
+                return (
+                    None,
+                    str(e)
                 )
 
-                continue
 
-
-            for row in result:
-
-                detail_rows.append({
-
-                    "월":
-                        row["월"],
-
-                    "대표품목":
-                        item_name,
-
-                    "조회_HS코드":
-                        hs_code,
-
-                    "세부_HS코드":
-                        row["세부_HS코드"],
-
-                    "세부품목명":
-                        row["세부품목명"],
-
-                    "수출금액_USD":
-                        row["수출금액_USD"],
-
-                    "수출중량_KG":
-                        row["수출중량_KG"],
-
-                    "수입금액_USD":
-                        row["수입금액_USD"],
-
-                    "수입중량_KG":
-                        row["수입중량_KG"]
-                })
-
-
-    # -----------------------------------------------------
-    # 최종 실패월 출력
-    # -----------------------------------------------------
-
-    print()
-    print("-" * 70)
-
-
-    if final_failed_months:
-
-        print(
-            "⚠ 최종 실패월:",
-            ", ".join(
-                final_failed_months
-            )
-        )
-
-    else:
-
-        print(
-            "모든 월 조회 성공"
+        wait_seconds = (
+            RETRY_WAITS[
+                min(
+                    attempt - 1,
+                    len(
+                        RETRY_WAITS
+                    )
+                    -
+                    1
+                )
+            ]
         )
 
 
-    print("-" * 70)
+        print(
+            f"{wait_seconds}초 후 다시 시도"
+        )
+
+
+        time.sleep(
+            wait_seconds
+        )
 
 
     return (
-        detail_rows,
-        final_failed_months
+        None,
+        "알 수 없는 오류"
     )
 
 
 # =========================================================
-# 8. 상세 CSV 저장
+# 11. summary 만들기
 # =========================================================
-
-DETAIL_FIELDS = [
-    "월",
-    "대표품목",
-    "조회_HS코드",
-    "세부_HS코드",
-    "세부품목명",
-    "수출금액_USD",
-    "수출중량_KG",
-    "수입금액_USD",
-    "수입중량_KG"
-]
-
-
-def save_detail_csv(
-    hs_code,
-    rows
-):
-
-    filename = (
-        f"export_{hs_code}.csv"
-    )
-
-
-    rows.sort(
-        key=lambda x: (
-            x["월"],
-            x["세부_HS코드"]
-        )
-    )
-
-
-    with open(
-        filename,
-        "w",
-        newline="",
-        encoding="utf-8-sig"
-    ) as f:
-
-        writer = csv.DictWriter(
-            f,
-            fieldnames=DETAIL_FIELDS
-        )
-
-        writer.writeheader()
-
-        writer.writerows(
-            rows
-        )
-
-
-    print(
-        filename,
-        "저장 완료"
-    )
-
-
-# =========================================================
-# 9. 월별 요약 생성
-# =========================================================
-
-SUMMARY_FIELDS = [
-    "월",
-    "품목명",
-    "HS코드",
-    "수출금액_USD",
-    "수출중량_KG",
-    "수출단가_USD_per_KG",
-    "YoY_pct",
-    "MoM_pct"
-]
-
 
 def make_summary(
     hs_code,
@@ -676,8 +846,13 @@ def make_summary(
             monthly[
                 month
             ] = {
-                "export_usd": 0,
-                "export_kg": 0
+
+                "export_usd":
+                    0,
+
+                "export_kg":
+                    0
+
             }
 
 
@@ -746,28 +921,24 @@ def make_summary(
             unit_price = 0
 
 
-        # -------------------------------------------------
+        # =================================================
         # YoY
-        # -------------------------------------------------
+        # =================================================
 
-        try:
+        year_number = int(
+            month[:4]
+        )
 
-            year_number = int(
-                month[:4]
-            )
 
-            month_number = int(
-                month[5:7]
-            )
+        month_number = int(
+            month[5:7]
+        )
 
-            previous_year_month = (
-                f"{year_number - 1}."
-                f"{month_number:02d}"
-            )
 
-        except:
-
-            previous_year_month = ""
+        previous_year_month = (
+            f"{year_number - 1}."
+            f"{month_number:02d}"
+        )
 
 
         previous_year_value = (
@@ -781,9 +952,12 @@ def make_summary(
 
 
         if (
-            previous_year_value is not None
+            previous_year_value
+            is not None
             and
-            previous_year_value != 0
+            previous_year_value
+            !=
+            0
         ):
 
             yoy = (
@@ -801,9 +975,9 @@ def make_summary(
             yoy = ""
 
 
-        # -------------------------------------------------
+        # =================================================
         # MoM
-        # -------------------------------------------------
+        # =================================================
 
         if index > 0:
 
@@ -823,7 +997,11 @@ def make_summary(
             )
 
 
-            if previous_month_value != 0:
+            if (
+                previous_month_value
+                !=
+                0
+            ):
 
                 mom = (
                     (
@@ -888,6 +1066,7 @@ def make_summary(
                     else
                     ""
                 )
+
         })
 
 
@@ -895,7 +1074,7 @@ def make_summary(
 
 
 # =========================================================
-# 10. summary CSV 저장
+# 12. summary 저장
 # =========================================================
 
 def save_summary_csv(
@@ -920,6 +1099,7 @@ def save_summary_csv(
             fieldnames=SUMMARY_FIELDS
         )
 
+
         writer.writeheader()
 
         writer.writerows(
@@ -927,61 +1107,300 @@ def save_summary_csv(
         )
 
 
+# =========================================================
+# 13. 누락월 확인
+# =========================================================
+
+def find_missing_months(
+    existing_summary_months
+):
+
+    missing = []
+
+
+    for yymm in FULL_MONTHS:
+
+        month_label = (
+            yymm[:4]
+            +
+            "."
+            +
+            yymm[4:]
+        )
+
+
+        if (
+            month_label
+            not in
+            existing_summary_months
+        ):
+
+            missing.append(
+                yymm
+            )
+
+
+    return missing
+
+
+# =========================================================
+# 14. 품목 하나 업데이트
+# =========================================================
+
+def update_one_item(
+    hs_code,
+    item_name
+):
+
+    print()
+    print("=" * 75)
+
     print(
-        filename,
-        "저장 완료"
+        item_name,
+        "/ HS",
+        hs_code
     )
 
-
-# =========================================================
-# 11. 전체 실행
-# =========================================================
-
-print("=" * 70)
-print("관세청 품목별 수출입 데이터 업데이트 시작")
-print("=" * 70)
-
-print(
-    "조회기간:",
-    f"{START_YEAR}.{START_MONTH:02d}",
-    "~",
-    f"{END_YEAR}.{END_MONTH:02d}"
-)
-
-print(
-    "등록 품목:",
-    len(HS_ITEMS),
-    "개"
-)
+    print("=" * 75)
 
 
-all_summary_rows = []
-
-all_failed = {}
-
-
-for item in HS_ITEMS:
-
-    hs_code = (
-        item["hs_code"]
-    )
-
-    item_name = (
-        item["name"]
-    )
-
-
-    detail_rows, failed_months = (
-        collect_item(
-            hs_code,
-            item_name
+    existing_rows = (
+        load_existing_detail_rows(
+            hs_code
         )
     )
 
 
+    existing_summary_months = (
+        load_existing_summary_months(
+            hs_code
+        )
+    )
+
+
+    # =====================================================
+    # 신규 품목
+    # =====================================================
+
+    if not existing_rows:
+
+        print(
+            "신규 품목입니다."
+        )
+
+        print(
+            "2020.01부터 전체 조회합니다."
+        )
+
+
+        target_months = (
+            FULL_MONTHS.copy()
+        )
+
+
+    # =====================================================
+    # 기존 품목
+    # =====================================================
+
+    else:
+
+        print(
+            "기존 품목입니다."
+        )
+
+
+        missing_months = (
+            find_missing_months(
+                existing_summary_months
+            )
+        )
+
+
+        target_months = sorted(
+            set(
+                RECENT_MONTHS
+                +
+                missing_months
+            )
+        )
+
+
+        print(
+            "최근 갱신월:",
+            ", ".join(
+                RECENT_MONTHS
+            )
+        )
+
+
+        if missing_months:
+
+            print(
+                "과거 누락월:",
+                ", ".join(
+                    missing_months
+                )
+            )
+
+
+    print(
+        "이번 조회월:",
+        len(
+            target_months
+        ),
+        "개"
+    )
+
+
+    working_rows = (
+        existing_rows.copy()
+    )
+
+
+    failed_rows = []
+
+
+    for index, yymm in enumerate(
+        target_months,
+        start=1
+    ):
+
+        print(
+            f"[{index}/{len(target_months)}] ",
+            end=""
+        )
+
+
+        result, error = (
+            fetch_month(
+                hs_code,
+                yymm
+            )
+        )
+
+
+        month_label = (
+            yymm[:4]
+            +
+            "."
+            +
+            yymm[4:]
+        )
+
+
+        # =================================================
+        # 실패
+        # =================================================
+
+        if error is not None:
+
+            failed_rows.append({
+
+                "품목명":
+                    item_name,
+
+                "HS코드":
+                    hs_code,
+
+                "월":
+                    month_label,
+
+                "오류":
+                    error
+
+            })
+
+
+            print(
+                "  → 기존 데이터 유지"
+            )
+
+
+            continue
+
+
+        # =================================================
+        # 성공
+        # 기존 같은 월 삭제 후 새 데이터로 교체
+        # =================================================
+
+        working_rows = [
+
+            row
+
+            for row
+            in working_rows
+
+            if row["월"]
+            !=
+            month_label
+
+        ]
+
+
+        for row in result:
+
+            working_rows.append({
+
+                "월":
+                    row["월"],
+
+                "대표품목":
+                    item_name,
+
+                "조회_HS코드":
+                    hs_code,
+
+                "세부_HS코드":
+                    row[
+                        "세부_HS코드"
+                    ],
+
+                "세부품목명":
+                    row[
+                        "세부품목명"
+                    ],
+
+                "수출금액_USD":
+                    row[
+                        "수출금액_USD"
+                    ],
+
+                "수출중량_KG":
+                    row[
+                        "수출중량_KG"
+                    ],
+
+                "수입금액_USD":
+                    row[
+                        "수입금액_USD"
+                    ],
+
+                "수입중량_KG":
+                    row[
+                        "수입중량_KG"
+                    ]
+
+            })
+
+
+        # =================================================
+        # 체크포인트 저장
+        # =================================================
+
+        save_detail_csv(
+            hs_code,
+            working_rows
+        )
+
+
+    # =====================================================
+    # 최종 summary 생성
+    # =====================================================
+
     save_detail_csv(
         hs_code,
-        detail_rows
+        working_rows
     )
 
 
@@ -989,7 +1408,7 @@ for item in HS_ITEMS:
         make_summary(
             hs_code,
             item_name,
-            detail_rows
+            working_rows
         )
     )
 
@@ -1000,27 +1419,102 @@ for item in HS_ITEMS:
     )
 
 
+    print()
+    print(
+        f"export_{hs_code}.csv 저장 완료"
+    )
+
+    print(
+        f"summary_{hs_code}.csv 저장 완료"
+    )
+
+
+    return (
+        summary_rows,
+        failed_rows
+    )
+
+
+# =========================================================
+# 15. 전체 실행
+# =========================================================
+
+print("=" * 75)
+print("관세청 수출입 데이터 업데이트 시작")
+print("=" * 75)
+
+print(
+    "전체기간:",
+    f"{FULL_START_YEAR}.{FULL_START_MONTH:02d}",
+    "~",
+    f"{END_YEAR}.{END_MONTH:02d}"
+)
+
+print(
+    "등록품목:",
+    len(HS_ITEMS),
+    "개"
+)
+
+
+all_summary_rows = []
+
+all_failed_rows = []
+
+
+for item_index, item in enumerate(
+    HS_ITEMS,
+    start=1
+):
+
+    print()
+    print(
+        f"######## 품목 "
+        f"{item_index}/{len(HS_ITEMS)} ########"
+    )
+
+
+    hs_code = (
+        item["hs_code"]
+    )
+
+    item_name = (
+        item["name"]
+    )
+
+
+    summary_rows, failed_rows = (
+        update_one_item(
+            hs_code,
+            item_name
+        )
+    )
+
+
     all_summary_rows.extend(
         summary_rows
     )
 
 
-    if failed_months:
-
-        all_failed[
-            hs_code
-        ] = failed_months
+    all_failed_rows.extend(
+        failed_rows
+    )
 
 
 # =========================================================
-# 12. summary_all.csv
+# 16. summary_all.csv
 # =========================================================
 
 all_summary_rows.sort(
+
     key=lambda row: (
+
         row["월"],
+
         row["품목명"]
+
     )
+
 )
 
 
@@ -1036,6 +1530,7 @@ with open(
         fieldnames=SUMMARY_FIELDS
     )
 
+
     writer.writeheader()
 
     writer.writerows(
@@ -1050,7 +1545,7 @@ print(
 
 
 # =========================================================
-# 13. latest.csv
+# 17. latest.csv
 # =========================================================
 
 if all_summary_rows:
@@ -1061,6 +1556,7 @@ if all_summary_rows:
 
         for row
         in all_summary_rows
+
     )
 
 
@@ -1074,16 +1570,20 @@ if all_summary_rows:
         if row["월"]
         ==
         latest_month
+
     ]
 
 
     latest_rows.sort(
+
         key=lambda row:
-        -to_int(
-            row[
-                "수출금액_USD"
-            ]
-        )
+
+            -to_int(
+                row[
+                    "수출금액_USD"
+                ]
+            )
+
     )
 
 
@@ -1098,6 +1598,7 @@ if all_summary_rows:
             f,
             fieldnames=SUMMARY_FIELDS
         )
+
 
         writer.writeheader()
 
@@ -1117,50 +1618,63 @@ if all_summary_rows:
 
 
 # =========================================================
-# 14. 최종 실패월 요약
+# 18. 실패월 파일
+# =========================================================
+
+with open(
+    "export_failed.csv",
+    "w",
+    newline="",
+    encoding="utf-8-sig"
+) as f:
+
+    writer = csv.DictWriter(
+        f,
+        fieldnames=FAILED_FIELDS
+    )
+
+
+    writer.writeheader()
+
+    writer.writerows(
+        all_failed_rows
+    )
+
+
+print(
+    "export_failed.csv 저장 완료"
+)
+
+
+# =========================================================
+# 19. 결과
 # =========================================================
 
 print()
-print("=" * 70)
-print("조회 결과")
-print("=" * 70)
+print("=" * 75)
 
 
-if not all_failed:
+if all_failed_rows:
 
     print(
-        "✅ 모든 품목 / 모든 월 조회 성공"
+        "⚠ 일부 월 조회 실패:",
+        len(
+            all_failed_rows
+        ),
+        "건"
     )
 
+    print(
+        "다음 실행 시 누락월을 자동 재조회합니다."
+    )
 
 else:
 
     print(
-        "⚠ 아래 월은 최종적으로 조회에 실패했습니다."
-    )
-
-    print()
-
-
-    for hs_code, months in all_failed.items():
-
-        print(
-            "HS",
-            hs_code,
-            ":",
-            ", ".join(
-                months
-            )
-        )
-
-
-    print()
-    print(
-        "위 월은 CSV에서 누락될 수 있습니다."
+        "✅ 모든 수출입 데이터 조회 성공"
     )
 
 
-print()
-print("=" * 70)
-print("전체 수출입 데이터 업데이트 완료")
-print("=" * 70)
+print("=" * 75)
+print("작업 완료")
+print("=" * 75)
