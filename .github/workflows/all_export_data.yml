@@ -2,6 +2,7 @@ name: All Export Data
 
 on:
   workflow_dispatch:
+
   schedule:
     - cron: '0 1 16 * *'
 
@@ -14,26 +15,60 @@ jobs:
 
     steps:
 
+      # =====================================================
+      # 1. 저장소 가져오기
+      # =====================================================
+
       - name: 저장소 파일 가져오기
         uses: actions/checkout@v4
+
+
+      # =====================================================
+      # 2. Python 설치
+      # =====================================================
 
       - name: Python 설치
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
+
+      # =====================================================
+      # 3. 필요한 라이브러리 설치
+      # =====================================================
+
       - name: 필요한 프로그램 설치
-        run: pip install requests
+        run: |
+          pip install requests
+
+
+      # =====================================================
+      # 4. 전체 품목 수출입 데이터 수집
+      # test.py
+      # =====================================================
 
       - name: 전체 품목 수출데이터 수집
         env:
           CUSTOMS_API_KEY: ${{ secrets.CUSTOMS_API_KEY }}
-        run: python test.py
+        run: |
+          python test.py
+
+
+      # =====================================================
+      # 5. 국가별 수출데이터 수집
+      # country_test.py
+      # =====================================================
 
       - name: 국가별 수출데이터 수집
         env:
           CUSTOMS_API_KEY: ${{ secrets.CUSTOMS_API_KEY }}
-        run: python country_test.py
+        run: |
+          python country_test.py
+
+
+      # =====================================================
+      # 6. 생성된 CSV 파일 GitHub에 저장
+      # =====================================================
 
       - name: CSV 파일 GitHub에 저장
         run: |
@@ -43,7 +78,9 @@ jobs:
           git add export_*.csv
           git add summary_*.csv
           git add latest.csv
+
           git add country_*.csv
 
           git commit -m "Update all export data" || echo "변경사항 없음"
+
           git push
