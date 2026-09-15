@@ -3,7 +3,7 @@ import os
 
 from customs_common import (
     CollectionError, CustomsClient, aggregate_csv, atomic_csv, build_ranges,
-    fetch_months, label, month_range, number, read_csv, read_hs_codes, save_latest,
+    fetch_months, label, month_range, next_month, number, read_csv, read_hs_codes, save_latest,
 )
 
 API_URL = 'http://apis.data.go.kr/1220000/nitemtrade/getNitemtradeList'
@@ -19,6 +19,25 @@ def complete_months(rows):
         codes_by_month.setdefault(row['월'], set()).add(row['국가코드'])
     required = set(COUNTRIES) | {'OTHER'}
     return {month for month, codes in codes_by_month.items() if required <= codes}
+
+
+def collection_priority(item):
+    """Use saved progress so the 200-request cap cannot always exclude the tail."""
+    complete = complete_months(read_csv(f"country_{item['hs_code']}.csv"))
+    return max(complete, default=''), len(complete)
+
+
+def eligible_ranges(start, end, totals):
+    """Only request consecutive months with usable general totals."""
+    ranges = []
+    for month in month_range(start, end):
+        if label(month) not in totals:
+            continue
+        if ranges and next_month(ranges[-1][1]) == month:
+            ranges[-1] = (ranges[-1][0], month)
+        else:
+            ranges.append((month, month))
+    return ranges
 
 
 def update_one_item(client, hs_code, name):
@@ -40,15 +59,18 @@ def update_one_item(client, hs_code, name):
         fail('-', '-', '-', '일반 품목 summary 없음; 기존 국가 데이터 유지')
         return failures, changed
     print(f'\n{name} / HS {hs_code}: 국가별 기간조회', flush=True)
+    ranges = []
     for start, end in build_ranges(complete_months(working)):
+        ranges.extend(eligible_ranges(start, end, totals))
+        missing = {label(month): True for month in month_range(start, end)
+                   if label(month) not in totals}
+        for gap_start, gap_end in eligible_ranges(start, end, missing):
+            fail('-', gap_start, gap_end, '사용 가능한 일반 품목 합계 없음; 조회 보류')
+    for start, end in ranges:
         if client.stopped:
             fail('-', start, end, client.stopped)
             continue
         expected = [label(month) for month in month_range(start, end)]
-        # Without a total, there is no safe OTHER value to publish.
-        if not any(month in totals for month in expected):
-            fail('-', start, end, '해당 구간 일반 품목 합계 없음; 조회 보류')
-            continue
         results = {}
         for code in COUNTRIES:
             if client.stopped:
@@ -102,7 +124,7 @@ def update_one_item(client, hs_code, name):
 def main():
     failures = []
     try:
-        items = read_hs_codes()
+        items = sorted(read_hs_codes(), key=collection_priority)
         client = CustomsClient()
         changed = False
         for item in items:

@@ -33,6 +33,11 @@ def row(month='2026.08', code='3304991000', usd=10, kg=2):
             'expWgt': kg, 'impDlr': 3, 'impWgt': 1}
 
 
+def country_row(month='2026.08', code='3304991000', usd=10, kg=2, country='US'):
+    return {'year': month, 'hsCd': code, 'cntyCd': country,
+            'expDlr': usd, 'expWgt': kg}
+
+
 class Response:
     def __init__(self, payload=None, status=200, headers=None):
         self.content = payload if payload is not None else xml([row()])
@@ -59,6 +64,30 @@ def client(responses):
 
 
 class RequestTests(unittest.TestCase):
+    def test_country_hscd_response_and_request_parameters(self):
+        api = client([Response(xml([country_row('2026.07'), country_row()]))])
+        records = api.records('unused', '330499', '202607', '202608', 'US')
+        self.assertEqual(len(records), 2)
+        self.assertEqual(records[0]['세부_HS코드'], '3304991000')
+        self.assertEqual(api.session.calls[0][1]['hsSgn'], '330499')
+        self.assertEqual(api.session.calls[0][1]['cntyCd'], 'US')
+
+    def test_country_hscd_does_not_bypass_validation(self):
+        missing = country_row()
+        del missing['hsCd']
+        conflict = {**country_row(), 'hsCode': '8504000000'}
+        for values in (missing, conflict, country_row(code='8504000000'),
+                       country_row(country='CN')):
+            with self.subTest(values=values):
+                api = client([Response(xml([values]))])
+                with self.assertRaises(common.CollectionError):
+                    api.records('unused', '330499', '202608', '202608', 'US')
+
+    def test_item_response_still_requires_hscode(self):
+        api = client([Response(xml([country_row()]))])
+        with self.assertRaises(common.CollectionError):
+            api.records('unused', '330499', '202608', '202608')
+
     def test_429_opens_circuit_without_monthly_fallback(self):
         api = client([Response(status=429)] * 3)
         rows, failures = common.fetch_months(api, 'unused', '330499', '202606', '202608')
@@ -232,7 +261,8 @@ class FileTests(unittest.TestCase):
 
     def test_country_success_reconciles_amount_and_weight(self):
         self.seed_general()
-        api = client([Response()] * 8)
+        api = client([Response(xml([country_row(country=code)]))
+                      for code in countries.COUNTRIES])
         with patch.object(countries, 'build_ranges', return_value=[('202608', '202608')]):
             failures, changed = countries.update_one_item(api, '330499', '화장품')
         self.assertEqual(failures, [])
@@ -241,6 +271,36 @@ class FileTests(unittest.TestCase):
         self.assertEqual(len(rows), 9)
         self.assertEqual(sum(int(row['수출금액_USD']) for row in rows), 100)
         self.assertEqual(sum(int(row['수출중량_KG']) for row in rows), 100)
+
+    def test_country_requests_only_months_with_fresh_totals(self):
+        self.seed_general()
+        common.atomic_csv('.customs_refreshed.csv', ['HS코드', '월'],
+                          [{'HS코드': '330499', '월': '2026.08'}])
+        api = client([Response(xml([country_row(country=code)]))
+                      for code in countries.COUNTRIES])
+        with patch.dict(os.environ, {'CUSTOMS_REQUIRE_FRESH_TOTALS': '1'}), \
+             patch.object(countries, 'build_ranges', return_value=[('202601', '202608')]):
+            failures, changed = countries.update_one_item(api, '330499', '화장품')
+        self.assertTrue(changed)
+        self.assertEqual(len(api.session.calls), 8)
+        self.assertTrue(all(call[1]['strtYymm'] == '202608' and
+                            call[1]['endYymm'] == '202608' for call in api.session.calls))
+        self.assertEqual([(r['시작월'], r['종료월']) for r in failures], [('202601', '202607')])
+
+    def test_eligible_country_ranges_split_at_missing_totals(self):
+        self.assertEqual(countries.eligible_ranges('202601', '202604',
+                         {'2026.01': {}, '2026.03': {}, '2026.04': {}}),
+                         [('202601', '202601'), ('202603', '202604')])
+
+    def test_country_saved_progress_moves_uncollected_item_to_front(self):
+        self.seed_countries()
+        configured = [{'hs_code': '330499'}, {'hs_code': '8504'}]
+        self.assertEqual(sorted(configured, key=countries.collection_priority)[0], configured[1])
+        complete = common.read_csv('country_330499.csv')
+        common.atomic_csv('country_8504.csv', countries.FIELDNAMES,
+                          [{**r, 'HS코드': '8504'} for r in complete] +
+                          [{**r, 'HS코드': '8504', '월': '2026.07'} for r in complete])
+        self.assertEqual(sorted(configured, key=countries.collection_priority)[0], configured[0])
 
     def test_country_stale_totals_block_requests(self):
         self.seed_general()

@@ -286,7 +286,15 @@ class CustomsClient:
                 raise CollectionError('예상하지 못한 월 형식; 해당 구간 유지')
             if not start <= month.replace('.', '') <= end:
                 raise CollectionError('요청 범위 밖 월 수신; 해당 구간 유지')
-            code = (item.findtext('hsCode') or '').strip()
+            # Itemtrade returns hsCode; nitemtrade documents the field as hsCd.
+            # Validate both if a response contains both names, rather than hiding
+            # a conflicting code behind an alias fallback.
+            code_fields = ('hsCd', 'hsCode') if country else ('hsCode',)
+            codes = [(item.findtext(field) or '').strip() for field in code_fields]
+            codes = [value for value in codes if value]
+            if len(set(codes)) > 1:
+                raise CollectionError('응답 HS코드 필드 간 불일치')
+            code = codes[0] if codes else ''
             if not code or not code.startswith(hs_code):
                 raise CollectionError('HS코드 누락 또는 요청 코드 불일치')
             returned_country = (item.findtext('cntyCd') or '').strip()
