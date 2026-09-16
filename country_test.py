@@ -11,6 +11,7 @@ COUNTRIES = {'US': '미국', 'CN': '중국', 'JP': '일본', 'VN': '베트남',
              'HK': '홍콩', 'FR': '프랑스', 'PL': '폴란드', 'GB': '영국'}
 FIELDNAMES = ['월', '품목명', 'HS코드', '국가코드', '국가명', '수출금액_USD', '수출중량_KG']
 FAILED_FIELDS = ['품목명', 'HS코드', '국가코드', '국가명', '시작월', '종료월', '오류']
+EMPTY_RESPONSE_REASON = '월별 데이터 없는 응답; 0으로 간주하지 않고 기존 값 유지'
 
 
 def complete_months(rows):
@@ -49,6 +50,7 @@ def update_one_item(client, hs_code, name, requested_ranges=None):
         fresh = {row['월'] for row in read_csv('.customs_refreshed.csv') if row['HS코드'] == hs_code}
         totals = {month: value for month, value in totals.items() if month in fresh}
     failures, changed = [], False
+    empty_as_zero = os.environ.get('CUSTOMS_COUNTRY_EMPTY_AS_ZERO') == '1'
 
     def fail(code, start, end, reason):
         failures.append({'품목명': name, 'HS코드': hs_code, '국가코드': code,
@@ -77,13 +79,24 @@ def update_one_item(client, hs_code, name, requested_ranges=None):
                 fail(code, start, end, client.stopped)
                 continue
             rows, errors = fetch_months(client, API_URL, hs_code, start, end, code)
-            for error in errors:
-                fail(code, error['시작월'], error['종료월'], error['오류'])
             monthly = {}
             for row in rows:
                 values = monthly.setdefault(row['월'], {'usd': 0, 'kg': 0})
                 values['usd'] += number(row['수출금액_USD'])
                 values['kg'] += number(row['수출중량_KG'])
+
+            for error in errors:
+                reason = error['오류']
+                if empty_as_zero and reason == EMPTY_RESPONSE_REASON:
+                    for zero_month in month_range(error['시작월'], error['종료월']):
+                        monthly.setdefault(label(zero_month), {'usd': 0, 'kg': 0})
+                    print(
+                        f"  {code} {error['시작월']}~{error['종료월']}: "
+                        '정상 빈 응답 → 수출 0으로 확정',
+                        flush=True,
+                    )
+                else:
+                    fail(code, error['시작월'], error['종료월'], reason)
             results[code] = monthly
         updated = 0
         for month in expected:
