@@ -147,13 +147,57 @@ def collection_tasks(items):
     return sorted(tasks, key=lambda task: task[2], reverse=True)
 
 
+def failed_collection_tasks(items):
+    """Retry only ranges still listed in country_failed.csv, excluding completed months."""
+    by_hs = {item['hs_code']: item for item in items}
+    complete_cache = {}
+    tasks = []
+    seen = set()
+
+    def add_task(item, start, end):
+        key = (item['hs_code'], start, end)
+        if key not in seen:
+            seen.add(key)
+            tasks.append((item, start, end))
+
+    for failure in read_csv('country_failed.csv'):
+        hs_code = failure.get('HS코드', '')
+        start = failure.get('시작월', '')
+        end = failure.get('종료월', '')
+        item = by_hs.get(hs_code)
+        if item is None or len(start) != 6 or len(end) != 6 or not start.isdigit() or not end.isdigit():
+            continue
+
+        complete = complete_cache.setdefault(
+            hs_code, complete_months(read_csv(f'country_{hs_code}.csv')))
+        range_start = None
+        range_end = None
+        for month in month_range(start, end):
+            if label(month) in complete:
+                if range_start is not None:
+                    add_task(item, range_start, range_end)
+                    range_start = None
+                    range_end = None
+                continue
+            if range_start is None:
+                range_start = month
+            range_end = month
+        if range_start is not None:
+            add_task(item, range_start, range_end)
+    return tasks
+
+
 def main():
     failures = []
     try:
         items = sorted(read_hs_codes(), key=collection_priority)
         client = CustomsClient()
         changed = False
-        for item, start, end in collection_tasks(items):
+        failed_only = os.environ.get('CUSTOMS_COUNTRY_FAILED_ONLY') == '1'
+        tasks = failed_collection_tasks(items) if failed_only else collection_tasks(items)
+        if failed_only:
+            print(f'국가별 미수집 전용 모드: {len(tasks)}개 구간만 재조회', flush=True)
+        for item, start, end in tasks:
             if not client.stopped and client.max_requests - client.count < len(COUNTRIES):
                 client.stopped = '실행당 호출 잔여량이 8개국 조회에 부족; 다음 실행으로 보류'
             errors, updated = update_one_item(
