@@ -55,6 +55,12 @@ python country_test.py
 
 ## 검증 범위
 
+### 연결 진단
+
+`Customs Connectivity Diagnostics`는 전체 수집 없이 GitHub 실행 서버에서 DNS, TCP 80/443, HTTP/HTTPS의 일반·국가 API 연결을 점검합니다. PR 및 수동 실행을 지원하며 인증키를 사용하지 않고 CSV를 읽거나 변경하지 않습니다. 각 API·프로토콜 조합에 한 번씩 총 4번만 요청하며 재시도하지 않습니다.
+
+HTTP 401/403 또는 인증 오류 XML이 돌아와도 연결 자체는 성공입니다. 이 검사는 API 인증이나 실제 통계 수집 성공을 보장하지 않습니다. 결과 JSON은 실행 artifact로 보관됩니다. 실행마다 배정되는 서버가 다를 수 있으므로 한 번의 성공만으로 간헐적 연결 문제가 해결됐다고 판단하지 않습니다.
+
 `tests/test_collectors.py`는 실제 API나 인증키를 사용하지 않고 429, Timeout, Retry-After, XML 오류, 페이지 분할, 누락월, 기존 파일 보존, 국가별 합계 검증을 재현합니다.
 
 `tests/test_repository_compatibility.py`는 저장소의 기존 CSV를 임시 디렉터리에 복사하여 실패 시 바이트 단위 보존과 실제 CSV 열 호환성을 검증합니다. 원본 CSV를 수정하지 않습니다. PR의 `Collector Regression Tests` 워크플로는 인증키 없이 이 테스트만 실행합니다.

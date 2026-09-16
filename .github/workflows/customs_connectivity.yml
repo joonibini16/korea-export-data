@@ -1,0 +1,36 @@
+name: Customs Connectivity Diagnostics
+
+on:
+  pull_request:
+    paths:
+      - 'customs_diagnostics.py'
+      - '.github/workflows/customs_connectivity.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install requests
+      - name: DNS, TCP, HTTP and HTTPS (no API key)
+        run: python customs_diagnostics.py
+      - name: Confirm no trade data changed
+        if: ${{ always() }}
+        run: git diff --exit-code -- '*.csv'
+      - uses: actions/upload-artifact@v4
+        if: ${{ always() }}
+        with:
+          name: customs-connectivity-${{ github.run_id }}-${{ github.run_attempt }}
+          path: connection-diagnostics.json
+          if-no-files-found: ignore
+          retention-days: 7
