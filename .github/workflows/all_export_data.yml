@@ -74,6 +74,8 @@ jobs:
             echo "CSV 변경사항 없음"
           else
             git commit -m "Update validated customs data and collection diagnostics"
+            # 실행 중 브랜치에 다른 커밋이 생겨도 비-패스트포워드로 데이터 저장이 실패하지 않도록 최신 커밋 위에 재배치한다.
+            git pull --rebase origin "$TARGET_BRANCH"
             git push origin "HEAD:$TARGET_BRANCH"
           fi
 
