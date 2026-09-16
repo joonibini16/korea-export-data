@@ -1209,7 +1209,7 @@ function createChangeChart(itemName) {
    3번째 차트
    2020년부터 모든 연도 수출액 막대
    최근 3년 YoY 라인
-   올해 YoY = 빨간색 + 굵게
+   연도별 색상 통일 · YoY 선 굵기 동일
 ========================================================= */
 
 function createSeasonalChart(itemName) {
@@ -1255,10 +1255,9 @@ function createSeasonalChart(itemName) {
         );
 
 
-    const currentYear =
-        String(
-            new Date().getFullYear()
-        );
+    // 같은 연도는 수출액 막대와 YoY 선에 같은 색상을 사용합니다.
+    const yearPalette = ["#2563eb", "#d97706", "#059669", "#9333ea", "#0891b2", "#db2777", "#dc2626", "#64748b"];
+    const yearColor = year => yearPalette[(Number(year) - 2020) % yearPalette.length];
 
 
     const monthLabels = [
@@ -1344,6 +1343,9 @@ function createSeasonalChart(itemName) {
 
                 type:
                     "bar",
+                backgroundColor: yearColor(year) + "B3",
+                borderColor: yearColor(year),
+                borderWidth: 1,
 
                 label:
                     year
@@ -1430,13 +1432,7 @@ function createSeasonalChart(itemName) {
             }
 
 
-            const isCurrentYear =
-                year
-                ===
-                currentYear;
-
-
-            datasets.push({
+datasets.push({
 
                 type:
                     "line",
@@ -1456,61 +1452,14 @@ function createSeasonalChart(itemName) {
                     0.25,
 
 
-                borderColor:
-                    isCurrentYear
-                    ?
-                    "red"
-                    :
-                    undefined,
-
-
-                borderWidth:
-                    isCurrentYear
-                    ?
-                    5
-                    :
-                    2,
-
-
-                pointRadius:
-                    isCurrentYear
-                    ?
-                    4
-                    :
-                    2,
-
-
-                pointHoverRadius:
-                    isCurrentYear
-                    ?
-                    7
-                    :
-                    5,
-
-
-                pointBackgroundColor:
-                    isCurrentYear
-                    ?
-                    "red"
-                    :
-                    undefined,
-
-
-                pointBorderColor:
-                    isCurrentYear
-                    ?
-                    "red"
-                    :
-                    undefined,
-
-
-                order:
-                    isCurrentYear
-                    ?
-                    0
-                    :
-                    1,
-
+                borderColor: yearColor(year),
+                backgroundColor: yearColor(year),
+                borderWidth: 2,
+                pointRadius: 2,
+                pointHoverRadius: 5,
+                pointBackgroundColor: yearColor(year),
+                pointBorderColor: yearColor(year),
+                order: 1,
 
                 datalabels: {
                     display:
