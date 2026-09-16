@@ -2,6 +2,11 @@ name: All Export Data
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - fix/customs-retry-csv-preservation-20260915
+    paths:
+      - country_test.py
   schedule:
     # UTC 01:00 = Korea 10:00, every month on the 15th.
     - cron: '0 1 15 * *'
@@ -21,7 +26,7 @@ jobs:
     env:
       PYTHONUNBUFFERED: '1'
       CUSTOMS_REQUEST_INTERVAL: '3'
-      CUSTOMS_MAX_REQUESTS: '200'
+      CUSTOMS_MAX_REQUESTS: '500'
     steps:
       - name: 저장소 파일 가져오기
         uses: actions/checkout@v4
@@ -58,7 +63,7 @@ jobs:
         continue-on-error: true
         env:
           CUSTOMS_API_KEY: ${{ secrets.CUSTOMS_API_KEY }}
-          CUSTOMS_REQUIRE_FRESH_TOTALS: '1'
+          CUSTOMS_REQUIRE_FRESH_TOTALS: '0'
           CUSTOMS_COUNTRY_EMPTY_AS_ZERO: '1'
         run: python country_test.py
 
