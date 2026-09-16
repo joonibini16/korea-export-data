@@ -2,11 +2,6 @@ name: All Export Data
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - fix/customs-retry-csv-preservation-20260915
-    paths:
-      - country_test.py
   schedule:
     # UTC 01:00 = Korea 10:00, every month on the 15th.
     - cron: '0 1 15 * *'
