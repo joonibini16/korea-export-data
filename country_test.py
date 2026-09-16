@@ -1,564 +1,150 @@
+"""Collect countries in periods; publish only complete validated months."""
 import os
-import csv
-import time
-import requests
-import xml.etree.ElementTree as ET
-from datetime import datetime
 
-API_KEY = os.environ.get("CUSTOMS_API_KEY")
-if not API_KEY:
-    print("API 인증키를 찾지 못했습니다.")
-    raise SystemExit(1)
-
-API_URL = "http://apis.data.go.kr/1220000/nitemtrade/getNitemtradeList"
-
-FULL_START_YEAR = 2020
-FULL_START_MONTH = 1
-UPDATE_MONTHS = 3
-REQUEST_INTERVAL_SECONDS = 1.0
-
-COUNTRIES = {
-    "US": "미국",
-    "CN": "중국",
-    "JP": "일본",
-    "VN": "베트남",
-    "HK": "홍콩",
-    "FR": "프랑스",
-    "PL": "폴란드",
-    "GB": "영국"
-}
-
-FIELDNAMES = [
-    "월", "품목명", "HS코드", "국가코드", "국가명",
-    "수출금액_USD", "수출중량_KG"
-]
-
-FAILED_FIELDS = [
-    "품목명", "HS코드", "국가코드", "국가명",
-    "시작월", "종료월", "오류"
-]
-
-today = datetime.now()
-if today.month == 1:
-    END_YEAR = today.year - 1
-    END_MONTH = 12
-else:
-    END_YEAR = today.year
-    END_MONTH = today.month - 1
-
-
-def to_int(value):
-    if value is None:
-        return 0
-    value = str(value).strip().replace(",", "")
-    if not value:
-        return 0
-    try:
-        return int(float(value))
-    except Exception:
-        return 0
-
-
-def next_month(yymm):
-    y = int(yymm[:4])
-    m = int(yymm[4:]) + 1
-    if m == 13:
-        y += 1
-        m = 1
-    return f"{y}{m:02d}"
-
-
-def prev_month(yymm):
-    y = int(yymm[:4])
-    m = int(yymm[4:]) - 1
-    if m == 0:
-        y -= 1
-        m = 12
-    return f"{y}{m:02d}"
-
-
-def month_range(start_yymm, end_yymm):
-    out = []
-    cur = start_yymm
-    while True:
-        out.append(cur)
-        if cur == end_yymm:
-            break
-        cur = next_month(cur)
-    return out
-
-
-def yymm_to_label(yymm):
-    return f"{yymm[:4]}.{yymm[4:]}"
-
-
-def get_recent_months(end_year, end_month, count):
-    end = f"{end_year}{end_month:02d}"
-    months = [end]
-    while len(months) < count:
-        months.append(prev_month(months[-1]))
-    return sorted(months)
-
-
-def make_year_chunks(start_year, start_month, end_year, end_month):
-    chunks = []
-    for year in range(start_year, end_year + 1):
-        sm = start_month if year == start_year else 1
-        em = end_month if year == end_year else 12
-        chunks.append((f"{year}{sm:02d}", f"{year}{em:02d}"))
-    return chunks
-
-
-def group_contiguous_months(months):
-    months = sorted(set(months))
-    if not months:
-        return []
-
-    groups = []
-    start = months[0]
-    prev = months[0]
-
-    for cur in months[1:]:
-        if cur == next_month(prev):
-            prev = cur
-        else:
-            groups.append((start, prev))
-            start = cur
-            prev = cur
-
-    groups.append((start, prev))
-    return groups
-
-
-def read_hs_codes():
-    items = []
-    with open("hs_codes.csv", "r", encoding="utf-8-sig") as f:
-        reader = csv.DictReader(f)
-        for row in reader:
-            hs_code = row["hs_code"].strip()
-            name = row["name"].strip()
-            if hs_code:
-                items.append({"hs_code": hs_code, "name": name})
-    return items
-
-
-HS_ITEMS = read_hs_codes()
-RECENT_MONTHS = get_recent_months(END_YEAR, END_MONTH, UPDATE_MONTHS)
-ALL_MONTHS = month_range(
-    f"{FULL_START_YEAR}{FULL_START_MONTH:02d}",
-    f"{END_YEAR}{END_MONTH:02d}"
+from customs_common import (
+    CollectionError, CustomsClient, aggregate_csv, atomic_csv, build_ranges,
+    fetch_months, label, month_range, next_month, number, read_csv, read_hs_codes, save_latest,
 )
 
-session = requests.Session()
+API_URL = 'https://apis.data.go.kr/1220000/nitemtrade/getNitemtradeList'
+COUNTRIES = {'US': '미국', 'CN': '중국', 'JP': '일본', 'VN': '베트남',
+             'HK': '홍콩', 'FR': '프랑스', 'PL': '폴란드', 'GB': '영국'}
+FIELDNAMES = ['월', '품목명', 'HS코드', '국가코드', '국가명', '수출금액_USD', '수출중량_KG']
+FAILED_FIELDS = ['품목명', 'HS코드', '국가코드', '국가명', '시작월', '종료월', '오류']
 
 
-def load_total_export(hs_code):
-    totals = {}
-    filename = f"summary_{hs_code}.csv"
-
-    if not os.path.exists(filename):
-        return totals
-
-    with open(filename, "r", encoding="utf-8-sig") as f:
-        reader = csv.DictReader(f)
-        for row in reader:
-            totals[row["월"]] = {
-                "export_usd": to_int(row["수출금액_USD"]),
-                "export_kg": to_int(row["수출중량_KG"])
-            }
-
-    return totals
+def complete_months(rows):
+    codes_by_month = {}
+    for row in rows:
+        codes_by_month.setdefault(row['월'], set()).add(row['국가코드'])
+    required = set(COUNTRIES) | {'OTHER'}
+    return {month for month, codes in codes_by_month.items() if required <= codes}
 
 
-def load_existing_country_rows(hs_code):
-    filename = f"country_{hs_code}.csv"
-
-    if not os.path.exists(filename):
-        return []
-
-    with open(filename, "r", encoding="utf-8-sig") as f:
-        return list(csv.DictReader(f))
+def collection_priority(item):
+    """Use saved progress so the 200-request cap cannot always exclude the tail."""
+    complete = complete_months(read_csv(f"country_{item['hs_code']}.csv"))
+    return max(complete, default=''), len(complete)
 
 
-def save_country_csv(hs_code, rows):
-    order = {
-        code: idx
-        for idx, code in enumerate(list(COUNTRIES.keys()) + ["OTHER"])
-    }
-
-    rows.sort(
-        key=lambda r: (
-            r["월"],
-            order.get(r["국가코드"], 999)
-        )
-    )
-
-    with open(
-        f"country_{hs_code}.csv",
-        "w",
-        newline="",
-        encoding="utf-8-sig"
-    ) as f:
-        writer = csv.DictWriter(f, fieldnames=FIELDNAMES)
-        writer.writeheader()
-        writer.writerows(rows)
+def eligible_ranges(start, end, totals):
+    """Only request consecutive months with usable general totals."""
+    ranges = []
+    for month in month_range(start, end):
+        if label(month) not in totals:
+            continue
+        if ranges and next_month(ranges[-1][1]) == month:
+            ranges[-1] = (ranges[-1][0], month)
+        else:
+            ranges.append((month, month))
+    return ranges
 
 
-def request_country_range(hs_code, country_code, start_yymm, end_yymm):
-    params = {
-        "serviceKey": API_KEY,
-        "strtYymm": start_yymm,
-        "endYymm": end_yymm,
-        "hsSgn": hs_code,
-        "cntyCd": country_code
-    }
+def update_one_item(client, hs_code, name):
+    path = f'country_{hs_code}.csv'
+    working = read_csv(path)
+    totals = {row['월']: {'usd': number(row['수출금액_USD']), 'kg': number(row['수출중량_KG'])}
+              for row in read_csv(f'summary_{hs_code}.csv')}
+    if os.environ.get('CUSTOMS_REQUIRE_FRESH_TOTALS') == '1':
+        fresh = {row['월'] for row in read_csv('.customs_refreshed.csv') if row['HS코드'] == hs_code}
+        totals = {month: value for month, value in totals.items() if month in fresh}
+    failures, changed = [], False
 
-    for attempt in range(1, 4):
-        try:
-            print(
-                f"    {country_code} {start_yymm}~{end_yymm}"
-                + (f" / 재시도 {attempt}/3" if attempt > 1 else ""),
-                flush=True
-            )
-
-            response = session.get(
-                API_URL,
-                params=params,
-                timeout=(60, 180)
-            )
-
-            if response.status_code == 429:
-                wait = 30 if attempt == 1 else 60
-                print(f"      HTTP 429 → {wait}초 대기")
-                if attempt == 3:
-                    return None, "HTTP 429 최종 실패"
-                time.sleep(wait)
-                continue
-
-            if response.status_code != 200:
-                if attempt == 3:
-                    return None, f"HTTP {response.status_code}"
-                time.sleep(10 * attempt)
-                continue
-
-            try:
-                root = ET.fromstring(response.content)
-            except Exception:
-                if attempt == 3:
-                    return None, "XML 해석 실패"
-                time.sleep(10)
-                continue
-
-            monthly = {}
-
-            for item in root.findall(".//item"):
-                year = (item.findtext("year") or "").strip()
-
-                if not year or year == "총계":
-                    continue
-
-                if len(year) != 7 or "." not in year:
-                    continue
-
-                monthly.setdefault(
-                    year,
-                    {"export_usd": 0, "export_kg": 0}
-                )
-
-                monthly[year]["export_usd"] += to_int(
-                    item.findtext("expDlr")
-                )
-                monthly[year]["export_kg"] += to_int(
-                    item.findtext("expWgt")
-                )
-
-            time.sleep(REQUEST_INTERVAL_SECONDS)
-            print(f"      → {len(monthly)}개월 수신")
-            return monthly, None
-
-        except requests.exceptions.Timeout:
-            if attempt == 3:
-                return None, "Timeout 최종 실패"
-            time.sleep(10 * attempt)
-
-        except requests.exceptions.RequestException as e:
-            if attempt == 3:
-                return None, str(e)
-            time.sleep(10 * attempt)
-
-    return None, "알 수 없는 오류"
-
-
-def existing_complete_months(existing_rows):
-    required = set(COUNTRIES.keys()) | {"OTHER"}
-    month_map = {}
-
-    for row in existing_rows:
-        month_map.setdefault(row["월"], set()).add(row["국가코드"])
-
-    return {
-        month
-        for month, codes in month_map.items()
-        if required.issubset(codes)
-    }
-
-
-def build_ranges(existing_rows):
-    if not existing_rows:
-        return make_year_chunks(
-            FULL_START_YEAR,
-            FULL_START_MONTH,
-            END_YEAR,
-            END_MONTH
-        )
-
-    complete = existing_complete_months(existing_rows)
-    missing = [
-        yymm
-        for yymm in ALL_MONTHS
-        if yymm_to_label(yymm) not in complete
-    ]
-
-    target_months = sorted(set(RECENT_MONTHS + missing))
-    return group_contiguous_months(target_months)
-
-
-def update_one_item(hs_code, item_name):
-    print("\n" + "=" * 75)
-    print(f"{item_name} / HS {hs_code}")
-    print("=" * 75)
-
-    totals = load_total_export(hs_code)
+    def fail(code, start, end, reason):
+        failures.append({'품목명': name, 'HS코드': hs_code, '국가코드': code,
+                         '국가명': COUNTRIES.get(code, '기타' if code == 'OTHER' else '-'),
+                         '시작월': start, '종료월': end, '오류': reason})
 
     if not totals:
-        print("⚠ summary 파일이 없어 건너뜁니다.")
-        return [], [{
-            "품목명": item_name,
-            "HS코드": hs_code,
-            "국가코드": "-",
-            "국가명": "-",
-            "시작월": "-",
-            "종료월": "-",
-            "오류": "summary 없음"
-        }]
-
-    existing_rows = load_existing_country_rows(hs_code)
-    ranges = build_ranges(existing_rows)
-
-    if not existing_rows:
-        print("신규 품목 → 2020년부터 기간 단위 조회")
-    else:
-        print("기존 품목 → 최근 3개월 + 누락구간 조회")
-
-    print("조회 구간:", ranges)
-
-    working_rows = existing_rows.copy()
-    failed_rows = []
-
-    for start_yymm, end_yymm in ranges:
-        print(f"\n구간 {start_yymm}~{end_yymm}")
-
-        country_results = {}
-        range_failed = False
-
-        for country_code, country_name in COUNTRIES.items():
-            monthly, error = request_country_range(
-                hs_code,
-                country_code,
-                start_yymm,
-                end_yymm
-            )
-
-            if error is not None:
-                range_failed = True
-                failed_rows.append({
-                    "품목명": item_name,
-                    "HS코드": hs_code,
-                    "국가코드": country_code,
-                    "국가명": country_name,
-                    "시작월": start_yymm,
-                    "종료월": end_yymm,
-                    "오류": error
-                })
-                print(f"      실패: {country_name}")
-                continue
-
-            country_results[country_code] = monthly
-
-        if range_failed:
-            print("  ⚠ 일부 국가 실패 → 이 구간은 갱신 보류")
+        fail('-', '-', '-', '일반 품목 summary 없음; 기존 국가 데이터 유지')
+        return failures, changed
+    print(f'\n{name} / HS {hs_code}: 국가별 기간조회', flush=True)
+    ranges = []
+    for start, end in build_ranges(complete_months(working)):
+        ranges.extend(eligible_ranges(start, end, totals))
+        missing = {label(month): True for month in month_range(start, end)
+                   if label(month) not in totals}
+        for gap_start, gap_end in eligible_ranges(start, end, missing):
+            fail('-', gap_start, gap_end, '사용 가능한 일반 품목 합계 없음; 조회 보류')
+    for start, end in ranges:
+        if client.stopped:
+            fail('-', start, end, client.stopped)
             continue
-
-        requested_months = month_range(start_yymm, end_yymm)
-
-        for yymm in requested_months:
-            month_label = yymm_to_label(yymm)
-            total = totals.get(month_label)
-
-            if total is None:
+        expected = [label(month) for month in month_range(start, end)]
+        results = {}
+        for code in COUNTRIES:
+            if client.stopped:
+                fail(code, start, end, client.stopped)
                 continue
-
-            month_rows = []
-            major_usd = 0
-            major_kg = 0
-
-            for country_code, country_name in COUNTRIES.items():
-                data = country_results[country_code].get(
-                    month_label,
-                    {"export_usd": 0, "export_kg": 0}
-                )
-
-                export_usd = data["export_usd"]
-                export_kg = data["export_kg"]
-
-                major_usd += export_usd
-                major_kg += export_kg
-
-                month_rows.append({
-                    "월": month_label,
-                    "품목명": item_name,
-                    "HS코드": hs_code,
-                    "국가코드": country_code,
-                    "국가명": country_name,
-                    "수출금액_USD": export_usd,
-                    "수출중량_KG": export_kg
-                })
-
-            other_usd = total["export_usd"] - major_usd
-            other_kg = total["export_kg"] - major_kg
-
-            if other_usd < 0:
-                failed_rows.append({
-                    "품목명": item_name,
-                    "HS코드": hs_code,
-                    "국가코드": "OTHER",
-                    "국가명": "기타",
-                    "시작월": yymm,
-                    "종료월": yymm,
-                    "오류": "주요국 합계가 전체수출보다 큼"
-                })
+            rows, errors = fetch_months(client, API_URL, hs_code, start, end, code)
+            for error in errors:
+                fail(code, error['시작월'], error['종료월'], error['오류'])
+            monthly = {}
+            for row in rows:
+                values = monthly.setdefault(row['월'], {'usd': 0, 'kg': 0})
+                values['usd'] += number(row['수출금액_USD'])
+                values['kg'] += number(row['수출중량_KG'])
+            results[code] = monthly
+        updated = 0
+        for month in expected:
+            yymm = month.replace('.', '')
+            if month not in totals:
+                fail('-', yymm, yymm, '일반 품목 합계 없음; 기존 월 유지')
                 continue
-
-            month_rows.append({
-                "월": month_label,
-                "품목명": item_name,
-                "HS코드": hs_code,
-                "국가코드": "OTHER",
-                "국가명": "기타",
-                "수출금액_USD": other_usd,
-                "수출중량_KG": other_kg
-            })
-
-            working_rows = [
-                row
-                for row in working_rows
-                if row["월"] != month_label
+            if any(month not in results.get(code, {}) for code in COUNTRIES):
+                fail('-', yymm, yymm, '8개국 중 누락 응답 있음; 0으로 채우지 않고 기존 월 유지')
+                continue
+            major_usd = sum(results[code][month]['usd'] for code in COUNTRIES)
+            major_kg = sum(results[code][month]['kg'] for code in COUNTRIES)
+            other_usd = totals[month]['usd'] - major_usd
+            other_kg = totals[month]['kg'] - major_kg
+            if other_usd < 0 or other_kg < 0:
+                fail('OTHER', yymm, yymm, '주요국 금액/중량 합계가 전체보다 큼; 기존 월 유지')
+                continue
+            monthly_rows = [
+                {'월': month, '품목명': name, 'HS코드': hs_code, '국가코드': code,
+                 '국가명': country_name, '수출금액_USD': results[code][month]['usd'],
+                 '수출중량_KG': results[code][month]['kg']}
+                for code, country_name in COUNTRIES.items()
             ]
-
-            working_rows.extend(month_rows)
-
-        save_country_csv(hs_code, working_rows)
-        print("  ✓ 구간 저장 완료")
-
-    save_country_csv(hs_code, working_rows)
-    return working_rows, failed_rows
-
-
-def create_country_all():
-    all_rows = []
-
-    for item in HS_ITEMS:
-        filename = f"country_{item['hs_code']}.csv"
-
-        if not os.path.exists(filename):
-            continue
-
-        with open(filename, "r", encoding="utf-8-sig") as f:
-            all_rows.extend(csv.DictReader(f))
-
-    all_rows.sort(
-        key=lambda r: (
-            r["월"],
-            r["품목명"],
-            r["국가코드"]
-        )
-    )
-
-    with open(
-        "country_all.csv",
-        "w",
-        newline="",
-        encoding="utf-8-sig"
-    ) as f:
-        writer = csv.DictWriter(f, fieldnames=FIELDNAMES)
-        writer.writeheader()
-        writer.writerows(all_rows)
-
-    return all_rows
+            monthly_rows.append({'월': month, '품목명': name, 'HS코드': hs_code,
+                                 '국가코드': 'OTHER', '국가명': '기타',
+                                 '수출금액_USD': other_usd, '수출중량_KG': other_kg})
+            working = [row for row in working if row['월'] != month] + monthly_rows
+            updated += 1
+        if updated:
+            order = {code: index for index, code in enumerate([*COUNTRIES, 'OTHER'])}
+            working.sort(key=lambda row: (row['월'], order.get(row['국가코드'], 99)))
+            atomic_csv(path, FIELDNAMES, working)
+            changed = True
+            print(f'  {updated}개월 검증 후 저장', flush=True)
+    return failures, changed
 
 
-def create_country_latest(all_rows):
-    if not all_rows:
-        return
-
-    latest_month = max(row["월"] for row in all_rows)
-    latest_rows = [
-        row for row in all_rows
-        if row["월"] == latest_month
-    ]
-
-    latest_rows.sort(
-        key=lambda r: (
-            r["품목명"],
-            -to_int(r["수출금액_USD"])
-        )
-    )
-
-    with open(
-        "country_latest.csv",
-        "w",
-        newline="",
-        encoding="utf-8-sig"
-    ) as f:
-        writer = csv.DictWriter(f, fieldnames=FIELDNAMES)
-        writer.writeheader()
-        writer.writerows(latest_rows)
+def main():
+    failures = []
+    try:
+        items = sorted(read_hs_codes(), key=collection_priority)
+        client = CustomsClient()
+        changed = False
+        for item in items:
+            errors, updated = update_one_item(client, item['hs_code'], item['name'])
+            failures.extend(errors)
+            changed = changed or updated
+        if changed:
+            rows = aggregate_csv('country_[0-9]*.csv', 'country_all.csv', FIELDNAMES,
+                                 ['월', 'HS코드', '국가코드'])
+            save_latest('country_latest.csv', FIELDNAMES, rows)
+    except CollectionError as exc:
+        failures.append({'품목명': '-', 'HS코드': '-', '국가코드': '-', '국가명': '-',
+                         '시작월': '-', '종료월': '-', '오류': str(exc)})
+    atomic_csv('country_failed.csv', FAILED_FIELDS, failures, allow_empty=True)
+    if failures:
+        print(f'수집 미완료 {len(failures)}건: country_failed.csv 확인', flush=True)
+        return 1
+    print('국가별 데이터 수집 완료', flush=True)
+    return 0
 
 
-print("=" * 75)
-print("국가별 수출데이터 기간조회 방식 업데이트")
-print("=" * 75)
-print(f"조회기간: {FULL_START_YEAR}.{FULL_START_MONTH:02d} ~ {END_YEAR}.{END_MONTH:02d}")
-print(f"등록품목: {len(HS_ITEMS)}개")
-
-all_failed_rows = []
-
-for idx, item in enumerate(HS_ITEMS, start=1):
-    print(f"\n######## 품목 {idx}/{len(HS_ITEMS)} ########")
-
-    _, failed_rows = update_one_item(
-        item["hs_code"],
-        item["name"]
-    )
-
-    all_failed_rows.extend(failed_rows)
-
-all_rows = create_country_all()
-create_country_latest(all_rows)
-
-with open(
-    "country_failed.csv",
-    "w",
-    newline="",
-    encoding="utf-8-sig"
-) as f:
-    writer = csv.DictWriter(f, fieldnames=FAILED_FIELDS)
-    writer.writeheader()
-    writer.writerows(all_failed_rows)
-
-print("\n" + "=" * 75)
-if all_failed_rows:
-    print(f"⚠ 실패 구간 {len(all_failed_rows)}건 → country_failed.csv 확인")
-else:
-    print("✅ 모든 국가별 데이터 조회 성공")
-print("=" * 75)
+if __name__ == '__main__':
+    raise SystemExit(main())
