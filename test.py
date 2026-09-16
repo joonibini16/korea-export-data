@@ -4,7 +4,7 @@ from customs_common import (
     fetch_months, number, prev_month, read_csv, read_hs_codes, save_latest,
 )
 
-API_URL = 'http://apis.data.go.kr/1220000/Itemtrade/getItemtradeList'
+API_URL = 'https://apis.data.go.kr/1220000/Itemtrade/getItemtradeList'
 DETAIL_FIELDS = ['월', '대표품목', '조회_HS코드', '세부_HS코드', '세부품목명',
                  '수출금액_USD', '수출중량_KG', '수입금액_USD', '수입중량_KG']
 SUMMARY_FIELDS = ['월', '품목명', 'HS코드', '수출금액_USD', '수출중량_KG',

@@ -6,7 +6,7 @@ from customs_common import (
     fetch_months, label, month_range, next_month, number, read_csv, read_hs_codes, save_latest,
 )
 
-API_URL = 'http://apis.data.go.kr/1220000/nitemtrade/getNitemtradeList'
+API_URL = 'https://apis.data.go.kr/1220000/nitemtrade/getNitemtradeList'
 COUNTRIES = {'US': '미국', 'CN': '중국', 'JP': '일본', 'VN': '베트남',
              'HK': '홍콩', 'FR': '프랑스', 'PL': '폴란드', 'GB': '영국'}
 FIELDNAMES = ['월', '품목명', 'HS코드', '국가코드', '국가명', '수출금액_USD', '수출중량_KG']
