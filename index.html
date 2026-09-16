@@ -252,6 +252,18 @@ td.center {
         height: 340px;
     }
 }
+
+[hidden] { display: none !important; }
+.category-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:20px 0;}
+.category-button {background:white;border:1px solid #dbe2ea;border-radius:12px;padding:20px;text-align:left;cursor:pointer;color:#17263d;font:inherit;}
+.category-button strong {display:block;font-size:18px;margin-bottom:8px;}
+.category-button span {color:#64748b;font-size:13px;}
+.category-button[aria-pressed="true"] {background:#eff6ff;border:2px solid #2563eb;}
+.category-button:hover {border-color:#2563eb;}
+button.card {text-align:left;font:inherit;color:inherit;cursor:pointer;}
+button:focus-visible {outline:3px solid #2563eb;outline-offset:3px;}
+.selection-hint {padding:14px 0;color:#526174;line-height:1.7;}
+#selectionTitle {margin:24px 0 12px;}
 </style>
 </head>
 
@@ -262,7 +274,11 @@ td.center {
 <div class="subtitle" id="latestMonth">데이터 불러오는 중...</div>
 <div class="error-box" id="errorBox"></div>
 
+<nav class="category-grid" id="categories" aria-label="수출 품목 대분류"></nav>
+<h2 id="selectionTitle">대분류를 선택하세요</h2>
+<div id="selectionHint" class="selection-hint" role="status">대분류 → 품목 순서로 선택하면 수출 추이와 국가별 자료를 볼 수 있습니다.</div>
 <div class="cards" id="cards"></div>
+<section id="analysisDetails" hidden>
 
 <div class="chart-box">
     <h2 class="chart-title" id="mainChartTitle">월별 수출액 및 수출단가</h2>
@@ -307,6 +323,8 @@ td.center {
 <hr class="section-divider">
 <h2 class="section-heading">국가별 수출 분석</h2>
 
+<p id="countryEmpty" hidden>이 품목은 국가별 자료가 아직 없습니다.</p>
+<section id="countryDetails">
 <div class="country-grid">
 
     <div class="chart-box">
@@ -352,6 +370,8 @@ td.center {
     </div>
 </div>
 
+</section>
+</section>
 </div>
 
 <script>
@@ -467,8 +487,20 @@ async function loadData() {
             fetchCSV("country_all.csv")
         ]);
 
-        allData = summary;
-        countryData = countries;
+        const namesByCode = new Map(summary.map(r => [r["HS코드"], r["품목명"]]));
+        const codesByName = new Map();
+        for (const [code, name] of namesByCode) {
+            if (!codesByName.has(name)) codesByName.set(name, new Set());
+            codesByName.get(name).add(code);
+        }
+        function displayRows(rows) {
+            return rows.map(row => {
+                const name = namesByCode.get(row["HS코드"]) || row["품목명"];
+                return {...row, "품목명": codesByName.get(name)?.size > 1 ? name + " · HS " + row["HS코드"] : name};
+            });
+        }
+        allData = displayRows(summary);
+        countryData = displayRows(countries);
 
         createDashboard();
 
@@ -558,7 +590,7 @@ function createDashboard() {
     ).textContent =
         "최신 데이터: " +
         latestMonth +
-        " | 품목 카드를 클릭하면 모든 차트가 변경됩니다.";
+        " | 대분류와 품목을 선택하세요.";
 
     const latestRows = allData
         .filter(
@@ -575,15 +607,38 @@ function createDashboard() {
                 )
         );
 
-    createCards(latestRows);
-    createLatestTable(latestRows);
+    createCategories(latestRows);
+}
 
-    selectedItem =
-        latestRows[0]?.["품목명"]
-        ||
-        allData[0]["품목명"];
 
-    selectItem(selectedItem);
+const ITEM_CATEGORIES = [["반도체",["8542","8542321010","8542321030","8542323000","8473304060","8523511000"]],["반도체 부품·장비",["8536909090","9030901000","8486902090","8486902040","8542900000","8456119000"]],["전자부품",["8532240000","853400","8534009000","8534002000"]],["전력기기·전선",["8504","8504230000","8544603010","8544602010"]],["배터리·소재",["850760","2841909020","7606120000","7410211000","8506500000"]],["화장품",["330499","3304991000","3304992000","3307904000"]],["바이오·의료",["300249","3002491000","3304999000","3005904000","9018198000"]],["태양광",["8541430000"]],["식품",["1902301010"]]];
+function createCategories(rows) {
+    const root = document.getElementById("categories");
+    root.replaceChildren();
+    const known = new Set(ITEM_CATEGORIES.flatMap(([, codes]) => codes));
+    const groups = [...ITEM_CATEGORIES, ["기타", rows.filter(r => !known.has(r["HS코드"])).map(r => r["HS코드"])]];
+    for (const [name, codes] of groups) {
+        const items = rows.filter(r => codes.includes(r["HS코드"]));
+        if (!items.length) continue;
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "category-button";
+        button.setAttribute("aria-pressed", "false");
+        button.setAttribute("aria-controls", "cards");
+        const title = document.createElement("strong"); title.textContent = name;
+        const count = document.createElement("span"); count.textContent = items.length + "개 품목";
+        button.append(title, count);
+        button.onclick = () => {
+            root.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(b === button)));
+            document.getElementById("selectionTitle").textContent = name + " · 품목 선택";
+            document.getElementById("selectionHint").textContent = "아래 품목을 선택하세요. 품목별 HS 범위가 겹칠 수 있어 금액을 합산하지 않습니다.";
+            document.getElementById("analysisDetails").hidden = true;
+            selectedItem = null;
+            createCards(items);
+            createLatestTable(items);
+        };
+        root.appendChild(button);
+    }
 }
 
 function createCards(data) {
@@ -597,9 +652,10 @@ function createCards(data) {
     data.forEach(item => {
         const card =
             document.createElement(
-                "div"
+                "button"
             );
 
+        card.type = "button";
         card.className = "card";
         card.dataset.item =
             item["품목명"];
@@ -651,6 +707,8 @@ function createCards(data) {
 }
 
 function selectItem(itemName) {
+    document.getElementById("analysisDetails").hidden = false;
+    document.getElementById("selectionHint").textContent = "선택한 품목: " + itemName;
     selectedItem = itemName;
 
     document
@@ -668,6 +726,16 @@ function selectItem(itemName) {
     createChangeChart(itemName);
     createSeasonalChart(itemName);
 
+    const hasCountries = countryData.some(r => r["품목명"] === itemName);
+    document.getElementById("countryDetails").hidden = !hasCountries;
+    document.getElementById("countryEmpty").hidden = hasCountries;
+    if (!hasCountries) {
+        if (countryShareChart) countryShareChart.destroy();
+        if (countryTrendChart) countryTrendChart.destroy();
+        countryShareChart = null;
+        countryTrendChart = null;
+        return;
+    }
     createCountryControls(itemName);
     createCountryShareChart(itemName);
     createCountryTable(itemName);
