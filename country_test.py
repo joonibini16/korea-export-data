@@ -40,7 +40,7 @@ def eligible_ranges(start, end, totals):
     return ranges
 
 
-def update_one_item(client, hs_code, name):
+def update_one_item(client, hs_code, name, requested_ranges=None):
     path = f'country_{hs_code}.csv'
     working = read_csv(path)
     totals = {row['월']: {'usd': number(row['수출금액_USD']), 'kg': number(row['수출중량_KG'])}
@@ -60,7 +60,7 @@ def update_one_item(client, hs_code, name):
         return failures, changed
     print(f'\n{name} / HS {hs_code}: 국가별 기간조회', flush=True)
     ranges = []
-    for start, end in build_ranges(complete_months(working)):
+    for start, end in (build_ranges(complete_months(working)) if requested_ranges is None else requested_ranges):
         ranges.extend(eligible_ranges(start, end, totals))
         missing = {label(month): True for month in month_range(start, end)
                    if label(month) not in totals}
@@ -121,14 +121,28 @@ def update_one_item(client, hs_code, name):
     return failures, changed
 
 
+def collection_tasks(items):
+    """Collect recent periods across all items before any historical backfill."""
+    tasks = []
+    for item in sorted(items, key=collection_priority):
+        complete = complete_months(read_csv(f"country_{item['hs_code']}.csv"))
+        for start, end in build_ranges(complete):
+            tasks.append((item, start, end))
+    # Stable sort retains least-covered item priority within each period.
+    return sorted(tasks, key=lambda task: task[2], reverse=True)
+
+
 def main():
     failures = []
     try:
         items = sorted(read_hs_codes(), key=collection_priority)
         client = CustomsClient()
         changed = False
-        for item in items:
-            errors, updated = update_one_item(client, item['hs_code'], item['name'])
+        for item, start, end in collection_tasks(items):
+            if not client.stopped and client.max_requests - client.count < len(COUNTRIES):
+                client.stopped = '실행당 호출 잔여량이 8개국 조회에 부족; 다음 실행으로 보류'
+            errors, updated = update_one_item(
+                client, item['hs_code'], item['name'], requested_ranges=[(start, end)])
             failures.extend(errors)
             changed = changed or updated
         if changed:
