@@ -2,6 +2,11 @@ name: All Export Data
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - fix/customs-retry-csv-preservation-20260915
+    paths:
+      - country_test.py
   schedule:
     # UTC 01:00 = Korea 10:00, every month on the 15th.
     - cron: '0 1 15 * *'
@@ -59,6 +64,7 @@ jobs:
         env:
           CUSTOMS_API_KEY: ${{ secrets.CUSTOMS_API_KEY }}
           CUSTOMS_REQUIRE_FRESH_TOTALS: '1'
+          CUSTOMS_COUNTRY_EMPTY_AS_ZERO: '1'
         run: python country_test.py
 
       - name: 검증된 CSV와 오류 기록 저장
