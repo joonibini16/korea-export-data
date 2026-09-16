@@ -41,6 +41,8 @@ jobs:
         id: verify
         run: python -m unittest discover -s tests -v
 
+      # Current-code applicability is enforced in country_test.py; pre-HSK-2022
+      # predecessor periods are not treated as failed current-code backfill.
       - name: 국가별 미수집만 백필
         id: country
         continue-on-error: true
