@@ -23,7 +23,7 @@ def complete_months(rows):
 
 
 def collection_priority(item):
-    """Use saved progress so the 200-request cap cannot always exclude the tail."""
+    """Use saved progress so the request cap cannot always exclude the tail."""
     complete = complete_months(read_csv(f"country_{item['hs_code']}.csv"))
     return max(complete, default=''), len(complete)
 
@@ -44,6 +44,8 @@ def eligible_ranges(start, end, totals):
 def update_one_item(client, hs_code, name, requested_ranges=None):
     path = f'country_{hs_code}.csv'
     working = read_csv(path)
+    # Stored summary rows are already validated collector output and can be used
+    # for historical country backfill unless an explicit fresh-only run is requested.
     totals = {row['월']: {'usd': number(row['수출금액_USD']), 'kg': number(row['수출중량_KG'])}
               for row in read_csv(f'summary_{hs_code}.csv')}
     if os.environ.get('CUSTOMS_REQUIRE_FRESH_TOTALS') == '1':
