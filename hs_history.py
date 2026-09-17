@@ -28,6 +28,25 @@ HS_HISTORY = {
         'quality': 'legacy_proxy',
         'note': 'pre-2022 broader lithium metal-oxide salt bucket; not NCM-only',
     },),
+    # HSK 2021 classified semiconductor-equipment parts under 8486902010/2020
+    # by the underlying machine subheading. HSK 2022 reorganized the parts into
+    # 8486902030/2040/2090. There is no clean one-to-one concordance: named
+    # coating/developing/deposition/etching machine subheadings were mostly in
+    # 8486902010, while residual "other" machine subheadings were in 8486902020.
+    # Keep the two repository SIC-ring series non-overlapping and mark both as
+    # legacy proxies rather than exact historical equivalents.
+    '8486902040': ({
+        'start': '202001', 'end': '202112',
+        'sources': ('8486902010',),
+        'quality': 'legacy_proxy',
+        'note': 'pre-2022 proxy: named semiconductor-equipment parts bucket; not exact SIC-ring-only history',
+    },),
+    '8486902090': ({
+        'start': '202001', 'end': '202112',
+        'sources': ('8486902020',),
+        'quality': 'legacy_proxy',
+        'note': 'pre-2022 proxy: residual semiconductor-equipment parts bucket; not exact SIC-ring-only history',
+    },),
     # Before 2022, the current electronic-integrated-circuit parts line mapped
     # to HSK 8542904090.  The official HSK correlation table identifies this as
     # the predecessor of current 8542900000.
