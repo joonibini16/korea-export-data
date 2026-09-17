@@ -28,6 +28,15 @@ HS_HISTORY = {
         'quality': 'legacy_proxy',
         'note': 'pre-2022 broader lithium metal-oxide salt bucket; not NCM-only',
     },),
+    # Before 2022, the current electronic-integrated-circuit parts line mapped
+    # to HSK 8542904090.  The official HSK correlation table identifies this as
+    # the predecessor of current 8542900000.
+    '8542900000': ({
+        'start': '202001', 'end': '202112',
+        'sources': ('8542904090',),
+        'quality': 'exact_merge',
+        'note': 'pre-2022 predecessor code for electronic integrated circuit parts',
+    },),
     # The repository labels both current series as toxin.  Before HSK 2022,
     # toxin was split into saxitoxin, ricin and other toxin subcodes.
     '3002491000': ({
