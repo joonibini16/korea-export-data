@@ -31,11 +31,17 @@ class HistoryMappingTests(unittest.TestCase):
         self.assertEqual(source_codes('300249', '202012'), expected)
         self.assertEqual(source_quality('300249', '202012'), 'item_proxy')
 
-    def test_leadframe_uses_pre_2022_code_and_sic_keeps_same_code(self):
+    def test_leadframe_uses_pre_2022_code(self):
         self.assertEqual(source_codes('8542900000', '202001'), ('8542904090',))
         self.assertEqual(source_codes('8542900000', '202201'), ('8542900000',))
-        self.assertEqual(source_codes('8486902090', '202001'), ('8486902090',))
-        self.assertEqual(source_codes('8486902040', '202001'), ('8486902040',))
+
+    def test_sic_ring_uses_non_overlapping_pre_2022_proxies(self):
+        self.assertEqual(source_codes('8486902040', '202001'), ('8486902010',))
+        self.assertEqual(source_codes('8486902090', '202001'), ('8486902020',))
+        self.assertEqual(source_quality('8486902040', '202001'), 'legacy_proxy')
+        self.assertEqual(source_quality('8486902090', '202001'), 'legacy_proxy')
+        self.assertEqual(source_codes('8486902040', '202201'), ('8486902040',))
+        self.assertEqual(source_codes('8486902090', '202201'), ('8486902090',))
 
 
 class HistoricalCollectorTests(unittest.TestCase):
