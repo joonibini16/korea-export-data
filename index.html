@@ -298,7 +298,7 @@ button:focus-visible {outline:3px solid #2563eb;outline-offset:3px;}
 </div>
 
 <div class="chart-box">
-    <h2 class="chart-title" id="seasonalChartTitle">연도별 수출 및 YoY 비교</h2>
+    <h2 class="chart-title" id="seasonalChartTitle">연도별 월간 수출 비교</h2>
     <div class="control-row">
         <label for="comparisonPeriod">비교 기준</label>
         <select id="comparisonPeriod" onchange="if (selectedItem) createSeasonalChart(selectedItem)">
@@ -309,6 +309,13 @@ button:focus-visible {outline:3px solid #2563eb;outline-offset:3px;}
     <p id="quarterNote" class="selection-hint" hidden>분기 수출액은 3개월 합계이며, YoY는 전년 같은 분기 대비입니다. 3개월 자료가 모두 확보된 분기만 표시합니다. 진행 중이거나 자료가 누락된 분기는 빈칸으로 표시합니다.</p>
     <div class="seasonal-chart">
         <canvas id="seasonalChart"></canvas>
+    </div>
+</div>
+
+<div class="chart-box">
+    <h2 class="chart-title" id="seasonalYoyChartTitle">연도별 YoY 증감률 비교</h2>
+    <div class="change-chart">
+        <canvas id="seasonalYoyChart"></canvas>
     </div>
 </div>
 
@@ -396,6 +403,7 @@ let selectedItem = null;
 let mainChart = null;
 let changeChart = null;
 let seasonalChart = null;
+let seasonalYoyChart = null;
 let countryShareChart = null;
 let countryTrendChart = null;
 
@@ -1341,528 +1349,227 @@ function quarterTotals(rows, year) {
 }
 
 function createSeasonalChart(itemName) {
-
     const data = allData
-        .filter(
-            d => d["품목명"] === itemName
-        )
-        .sort(
-            (a, b) =>
-                a["월"].localeCompare(
-                    b["월"]
-                )
-        );
+        .filter(d => d["품목명"] === itemName)
+        .sort((a, b) => a["월"].localeCompare(b["월"]));
 
+    const years = [...new Set(data.map(d => d["월"].slice(0, 4)))].sort();
+    const exportYears = years.filter(year => Number(year) >= 2020);
+    const yoyYears = exportYears.slice(-3);
+    const currentYear = exportYears[exportYears.length - 1];
 
-    const years = [
-        ...new Set(
-            data.map(
-                d => d["월"].slice(
-                    0,
-                    4
-                )
-            )
-        )
-    ].sort();
-
-
-    const exportYears =
-        years.filter(
-            year =>
-                Number(
-                    year
-                )
-                >=
-                2020
-        );
-
-
-    const yoyYears =
-        exportYears.slice(
-            -3
-        );
-
-
-    // 같은 연도는 수출액 막대와 YoY 선에 같은 색상을 사용합니다.
     const yearPalette = ["#2563eb", "#d97706", "#059669", "#9333ea", "#0891b2", "#db2777", "#dc2626", "#64748b"];
     const yearColor = year => yearPalette[(Number(year) - 2020) % yearPalette.length];
 
-
-    let monthLabels = [
-        "1월",
-        "2월",
-        "3월",
-        "4월",
-        "5월",
-        "6월",
-        "7월",
-        "8월",
-        "9월",
-        "10월",
-        "11월",
-        "12월"
-    ];
-
-
-    const datasets = [];
-
-
-    // 2020년부터 모든 연도 수출액
-    exportYears.forEach(
-        year => {
-
-            const values = [];
-
-
-            for (
-                let month = 1;
-                month <= 12;
-                month++
-            ) {
-
-                const key =
-                    year
-                    +
-                    "."
-                    +
-                    String(
-                        month
-                    ).padStart(
-                        2,
-                        "0"
-                    );
-
-
-                const row =
-                    data.find(
-                        d =>
-                            d["월"]
-                            ===
-                            key
-                    );
-
-
-                if (row) {
-
-                    values.push(
-                        Number(
-                            row[
-                                "수출금액_USD"
-                            ]
-                            ||
-                            0
-                        )
-                        /
-                        1000000
-                    );
-
-                } else {
-
-                    values.push(
-                        null
-                    );
-
-                }
-
-            }
-
-
-            datasets.push({
-
-                type:
-                    "bar",
-                backgroundColor: yearColor(year) + "B3",
-                borderColor: yearColor(year),
-                borderWidth: 1,
-
-                label:
-                    year
-                    +
-                    " 수출액",
-
-                data:
-                    values,
-
-                yAxisID:
-                    "yExport",
-
-                order:
-                    2,
-
-                datalabels: {
-                    display:
-                        false
-                }
-
-            });
-
-        }
-    );
-
-
-    // 최근 3개년 YoY
-    yoyYears.forEach(
-        year => {
-
-            const values = [];
-
-
-            for (
-                let month = 1;
-                month <= 12;
-                month++
-            ) {
-
-                const key =
-                    year
-                    +
-                    "."
-                    +
-                    String(
-                        month
-                    ).padStart(
-                        2,
-                        "0"
-                    );
-
-
-                const row =
-                    data.find(
-                        d =>
-                            d["월"]
-                            ===
-                            key
-                    );
-
-
-                if (
-                    row
-                    &&
-                    row["YoY_pct"] !== ""
-                ) {
-
-                    values.push(
-                        Number(
-                            row[
-                                "YoY_pct"
-                            ]
-                        )
-                    );
-
-                } else {
-
-                    values.push(
-                        null
-                    );
-
-                }
-
-            }
-
-
-const currentYear = exportYears[exportYears.length - 1];
-            const isCurrentYear = year === currentYear;
-
-            datasets.push({
-
-                type:
-                    "line",
-
-                label:
-                    year
-                    +
-                    " YoY"
-                    +
-                    (isCurrentYear ? " (올해)" : ""),
-
-                data:
-                    values,
-
-                yAxisID:
-                    "yYoY",
-
-                tension:
-                    0.25,
-
-                // 올해 YoY는 진한 빨간색과 굵은 선/큰 점으로 최우선 강조합니다.
-                borderColor: isCurrentYear ? "#dc2626" : yearColor(year) + "80",
-                backgroundColor: isCurrentYear ? "#dc2626" : yearColor(year) + "80",
-                borderWidth: isCurrentYear ? 4.5 : 1.5,
-                borderDash: isCurrentYear ? [] : [5, 4],
-                pointRadius: isCurrentYear ? 5 : 1.5,
-                pointHoverRadius: isCurrentYear ? 8 : 4,
-                pointBackgroundColor: isCurrentYear ? "#dc2626" : yearColor(year) + "80",
-                pointBorderColor: isCurrentYear ? "#ffffff" : yearColor(year) + "80",
-                pointBorderWidth: isCurrentYear ? 2 : 1,
-                order: isCurrentYear ? 0 : 1,
-
-                datalabels: isCurrentYear ? {
-                    display(context) {
-                        return context.dataset.data[context.dataIndex] !== null;
-                    },
-                    align: "top",
-                    anchor: "end",
-                    offset: 6,
-                    color: "#b91c1c",
-                    backgroundColor: "rgba(255,255,255,0.94)",
-                    borderColor: "#fecaca",
-                    borderWidth: 1,
-                    borderRadius: 5,
-                    padding: {top: 3, right: 5, bottom: 3, left: 5},
-                    font: {
-                        size: 11,
-                        weight: "bold"
-                    },
-                    formatter(value) {
-                        if (value === null || value === undefined) return "";
-                        return (value > 0 ? "+" : "") + value.toFixed(1) + "%";
-                    }
-                } : {
-                    display: false
-                }
-
-            });
-
-        }
-    );
-
-
     const quarterly = document.getElementById("comparisonPeriod").value === "quarter";
     document.getElementById("quarterNote").hidden = !quarterly;
-    if (quarterly) {
-        monthLabels = ["1분기", "2분기", "3분기", "4분기"];
-        for (const dataset of datasets) {
-            const year = dataset.label.slice(0, 4);
+
+    const labels = quarterly
+        ? ["1분기", "2분기", "3분기", "4분기"]
+        : ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"];
+
+    function monthlyExportValues(year) {
+        return Array.from({length: 12}, (_, index) => {
+            const month = String(index + 1).padStart(2, "0");
+            const row = data.find(d => d["월"] === year + "." + month);
+            if (!row) return null;
+            const value = Number(row["수출금액_USD"]);
+            return Number.isFinite(value) ? value / 1000000 : null;
+        });
+    }
+
+    function monthlyYoyValues(year) {
+        return Array.from({length: 12}, (_, index) => {
+            const month = String(index + 1).padStart(2, "0");
+            const row = data.find(d => d["월"] === year + "." + month);
+            if (!row || row["YoY_pct"] === "") return null;
+            const value = Number(row["YoY_pct"]);
+            return Number.isFinite(value) ? value : null;
+        });
+    }
+
+    const exportDatasets = exportYears.map(year => ({
+        type: "bar",
+        label: year + " 수출액",
+        data: quarterly
+            ? quarterTotals(data, year).map(value => value === null ? null : value / 1000000)
+            : monthlyExportValues(year),
+        backgroundColor: yearColor(year) + "B3",
+        borderColor: yearColor(year),
+        borderWidth: 1,
+        datalabels: { display: false }
+    }));
+
+    const yoyDatasets = yoyYears.map(year => {
+        const isCurrentYear = year === currentYear;
+        let values;
+
+        if (quarterly) {
             const totals = quarterTotals(data, year);
-            if (dataset.type === "bar") {
-                dataset.data = totals.map(value => value === null ? null : value / 1000000);
-            } else {
-                const previous = quarterTotals(data, String(Number(year) - 1));
-                dataset.data = totals.map((value, i) =>
-                    value === null || previous[i] === null || previous[i] === 0
-                        ? null : (value / previous[i] - 1) * 100);
-            }
+            const previous = quarterTotals(data, String(Number(year) - 1));
+            values = totals.map((value, i) =>
+                value === null || previous[i] === null || previous[i] === 0
+                    ? null
+                    : (value / previous[i] - 1) * 100
+            );
+        } else {
+            values = monthlyYoyValues(year);
         }
-    }
 
-    document.getElementById(
-        "seasonalChartTitle"
-    ).textContent =
-        itemName
-        +
-        (quarterly ? " 연도별 분기 수출 및 YoY 비교" : " 연도별 월간 수출 및 YoY 비교");
+        return {
+            type: "line",
+            label: year + " YoY" + (isCurrentYear ? " (올해)" : ""),
+            data: values,
+            tension: 0.25,
+            spanGaps: false,
+            borderColor: isCurrentYear ? "#dc2626" : yearColor(year) + "80",
+            backgroundColor: isCurrentYear ? "#dc2626" : yearColor(year) + "80",
+            borderWidth: isCurrentYear ? 4.5 : 1.5,
+            borderDash: isCurrentYear ? [] : [5, 4],
+            pointRadius: isCurrentYear ? 5 : 2,
+            pointHoverRadius: isCurrentYear ? 8 : 5,
+            pointBackgroundColor: isCurrentYear ? "#dc2626" : yearColor(year) + "80",
+            pointBorderColor: isCurrentYear ? "#ffffff" : yearColor(year) + "80",
+            pointBorderWidth: isCurrentYear ? 2 : 1,
+            datalabels: isCurrentYear ? {
+                display(context) {
+                    return context.dataset.data[context.dataIndex] !== null;
+                },
+                align: "top",
+                anchor: "end",
+                offset: 6,
+                color: "#b91c1c",
+                backgroundColor: "rgba(255,255,255,0.94)",
+                borderColor: "#fecaca",
+                borderWidth: 1,
+                borderRadius: 5,
+                padding: {top: 3, right: 5, bottom: 3, left: 5},
+                font: {size: 11, weight: "bold"},
+                formatter(value) {
+                    if (value === null || value === undefined) return "";
+                    return (value > 0 ? "+" : "") + value.toFixed(1) + "%";
+                }
+            } : {
+                display: false
+            }
+        };
+    });
 
+    document.getElementById("seasonalChartTitle").textContent =
+        itemName + (quarterly ? " 연도별 분기 수출 비교" : " 연도별 월간 수출 비교");
 
-    if (seasonalChart) {
-        seasonalChart.destroy();
-    }
+    document.getElementById("seasonalYoyChartTitle").textContent =
+        itemName + (quarterly ? " 연도별 분기 YoY 증감률 비교" : " 연도별 월간 YoY 증감률 비교");
 
+    if (seasonalChart) seasonalChart.destroy();
+    if (seasonalYoyChart) seasonalYoyChart.destroy();
 
     seasonalChart = new Chart(
-
-        document.getElementById(
-            "seasonalChart"
-        ),
-
+        document.getElementById("seasonalChart"),
         {
-
+            type: "bar",
             data: {
-                labels:
-                    monthLabels,
-
-                datasets:
-                    datasets
+                labels,
+                datasets: exportDatasets
             },
-
-
             options: {
-                responsive:
-                    true,
-
-                maintainAspectRatio:
-                    false,
-
-
+                responsive: true,
+                maintainAspectRatio: false,
                 interaction: {
-                    mode:
-                        "index",
-
-                    intersect:
-                        false
+                    mode: "index",
+                    intersect: false
                 },
-
-
                 plugins: {
-
                     legend: {
-                        position:
-                            "top"
+                        position: "top"
                     },
-
-
                     datalabels: {
-                        display:
-                            false
+                        display: false
                     },
-
-
                     tooltip: {
                         callbacks: {
-
                             label(context) {
-
-                                if (
-                                    context.parsed.y
-                                    ===
-                                    null
-                                ) {
-                                    return "";
-                                }
-
-
-                                if (
-                                    context.dataset.yAxisID
-                                    ===
-                                    "yExport"
-                                ) {
-
-                                    return (
-                                        context.dataset.label
-                                        +
-                                        ": $"
-                                        +
-                                        context.parsed.y.toLocaleString(
-                                            undefined,
-                                            {
-                                                maximumFractionDigits:
-                                                    1
-                                            }
-                                        )
-                                        +
-                                        "M"
-                                    );
-
-                                }
-
-
-                                const value =
-                                    context.parsed.y;
-
-
-                                return (
-                                    context.dataset.label
-                                    +
-                                    ": "
-                                    +
-                                    (
-                                        value > 0
-                                        ?
-                                        "+"
-                                        :
-                                        ""
-                                    )
-                                    +
-                                    value.toFixed(
-                                        1
-                                    )
-                                    +
-                                    "%"
-                                );
-
+                                if (context.parsed.y === null) return "";
+                                return context.dataset.label + ": $" +
+                                    context.parsed.y.toLocaleString(undefined, {maximumFractionDigits: 1}) + "M";
                             }
-
                         }
                     }
-
                 },
-
-
                 scales: {
-
-                    yExport: {
-                        position:
-                            "left",
-
-                        beginAtZero:
-                            true,
-
-
+                    y: {
+                        beginAtZero: true,
                         title: {
-                            display:
-                                true,
-
-                            text:
-                                "수출액 (백만 USD)"
+                            display: true,
+                            text: "수출액 (백만 USD)"
                         },
-
-
                         ticks: {
                             callback(value) {
-
-                                return (
-                                    "$"
-                                    +
-                                    Number(
-                                        value
-                                    ).toLocaleString()
-                                    +
-                                    "M"
-                                );
-
+                                return "$" + Number(value).toLocaleString() + "M";
                             }
                         }
                     },
-
-
-                    yYoY: {
-                        position:
-                            "right",
-
-
-                        title: {
-                            display:
-                                true,
-
-                            text:
-                                "YoY (%)"
-                        },
-
-
-                        grid: {
-                            drawOnChartArea:
-                                false
-                        },
-
-
-                        ticks: {
-                            callback(value) {
-
-                                return (
-                                    value
-                                    +
-                                    "%"
-                                );
-
-                            }
-                        }
-                    },
-
-
                     x: {
                         grid: {
-                            display:
-                                false
+                            display: false
                         }
                     }
-
                 }
-
             }
-
         }
-
     );
 
+    seasonalYoyChart = new Chart(
+        document.getElementById("seasonalYoyChart"),
+        {
+            type: "line",
+            data: {
+                labels,
+                datasets: yoyDatasets
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                    mode: "index",
+                    intersect: false
+                },
+                plugins: {
+                    legend: {
+                        position: "top"
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label(context) {
+                                if (context.parsed.y === null) return "";
+                                const value = context.parsed.y;
+                                return context.dataset.label + ": " +
+                                    (value > 0 ? "+" : "") + value.toFixed(1) + "%";
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        title: {
+                            display: true,
+                            text: "YoY 증감률 (%)"
+                        },
+                        ticks: {
+                            callback(value) {
+                                return value + "%";
+                            }
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        }
+    );
 }
 
 
