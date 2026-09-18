@@ -206,6 +206,14 @@ class FileTests(unittest.TestCase):
         for name in ('country_330499.csv', 'country_all.csv', 'country_latest.csv'):
             common.atomic_csv(name, countries.FIELDNAMES, rows)
 
+    def seed_legacy_countries_without_tw(self):
+        rows = [{'월': '2026.08', '품목명': '화장품', 'HS코드': '330499',
+                 '국가코드': code, '국가명': name, '수출금액_USD': 1, '수출중량_KG': 1}
+                for code, name in {**{k: v for k, v in countries.COUNTRIES.items() if k != 'TW'},
+                                   'OTHER': '기타'}.items()]
+        for name in ('country_330499.csv', 'country_all.csv', 'country_latest.csv'):
+            common.atomic_csv(name, countries.FIELDNAMES, rows)
+
     def snapshot(self):
         return {path.name: path.read_bytes() for path in Path('.').glob('*.csv')}
 
@@ -239,24 +247,27 @@ class FileTests(unittest.TestCase):
 
     def test_missing_country_keeps_entire_existing_month(self):
         self.seed_general()
-        self.seed_countries()
+        self.seed_legacy_countries_without_tw()
         before = self.snapshot()
-        api = client([Response(xml(total=0))] + [Response()] * 7)
+        api = client([Response(xml(total=0))])
         with patch.object(countries, 'CustomsClient', return_value=api), \
              patch.object(countries, 'build_ranges', return_value=[('202608', '202608')]):
             self.assertEqual(countries.main(), 1)
+        self.assertEqual(len(api.session.calls), 1)
+        self.assertEqual(api.session.calls[0][1]['cntyCd'], 'TW')
         for name, contents in before.items():
             self.assertEqual(Path(name).read_bytes(), contents, name)
 
     def test_country_negative_other_weight_keeps_month(self):
         self.seed_general()
-        self.seed_countries()
+        self.seed_legacy_countries_without_tw()
         before = Path('country_330499.csv').read_bytes()
-        api = client([Response(xml([row(usd=1, kg=20)]))] * 8)
+        api = client([Response(xml([country_row(country='TW', usd=1, kg=95)]))])
         with patch.object(countries, 'build_ranges', return_value=[('202608', '202608')]):
             failures, changed = countries.update_one_item(api, '330499', '화장품')
         self.assertTrue(failures)
         self.assertFalse(changed)
+        self.assertEqual(len(api.session.calls), 1)
         self.assertEqual(Path('country_330499.csv').read_bytes(), before)
 
     def test_country_success_reconciles_amount_and_weight(self):
@@ -268,9 +279,26 @@ class FileTests(unittest.TestCase):
         self.assertEqual(failures, [])
         self.assertTrue(changed)
         rows = common.read_csv('country_330499.csv')
-        self.assertEqual(len(rows), 9)
+        self.assertEqual(len(rows), len(countries.COUNTRIES) + 1)
         self.assertEqual(sum(int(row['수출금액_USD']) for row in rows), 100)
         self.assertEqual(sum(int(row['수출중량_KG']) for row in rows), 100)
+
+    def test_new_taiwan_backfill_reuses_existing_major_countries(self):
+        self.seed_general()
+        self.seed_legacy_countries_without_tw()
+        api = client([Response(xml([country_row(country='TW', usd=5, kg=5)]))])
+        with patch.object(countries, 'build_ranges', return_value=[('202608', '202608')]):
+            failures, changed = countries.update_one_item(api, '330499', '화장품')
+        self.assertEqual(failures, [])
+        self.assertTrue(changed)
+        self.assertEqual(len(api.session.calls), 1)
+        self.assertEqual(api.session.calls[0][1]['cntyCd'], 'TW')
+        rows = common.read_csv('country_330499.csv')
+        self.assertEqual(len(rows), len(countries.COUNTRIES) + 1)
+        taiwan = next(row for row in rows if row['국가코드'] == 'TW')
+        other = next(row for row in rows if row['국가코드'] == 'OTHER')
+        self.assertEqual(int(taiwan['수출금액_USD']), 5)
+        self.assertEqual(int(other['수출금액_USD']), 87)
 
     def test_country_requests_only_months_with_fresh_totals(self):
         self.seed_general()
@@ -282,7 +310,7 @@ class FileTests(unittest.TestCase):
              patch.object(countries, 'build_ranges', return_value=[('202601', '202608')]):
             failures, changed = countries.update_one_item(api, '330499', '화장품')
         self.assertTrue(changed)
-        self.assertEqual(len(api.session.calls), 8)
+        self.assertEqual(len(api.session.calls), len(countries.COUNTRIES))
         self.assertTrue(all(call[1]['strtYymm'] == '202608' and
                             call[1]['endYymm'] == '202608' for call in api.session.calls))
         self.assertEqual([(r['시작월'], r['종료월']) for r in failures], [('202601', '202607')])
