@@ -263,6 +263,8 @@ td.center {
 button.card {text-align:left;font:inherit;color:inherit;cursor:pointer;}
 button:focus-visible {outline:3px solid #2563eb;outline-offset:3px;}
 .selection-hint {padding:14px 0;color:#526174;line-height:1.7;}
+.history-note {margin:0 0 18px;padding:12px 14px;border-radius:10px;border:1px solid #bfdbfe;background:#eff6ff;color:#1e3a5f;font-size:13px;line-height:1.6;}
+.history-note.proxy {border-color:#f5c26b;background:#fff8e8;color:#6b4f12;}
 #selectionTitle {margin:24px 0 12px;}
 </style>
 </head>
@@ -277,6 +279,7 @@ button:focus-visible {outline:3px solid #2563eb;outline-offset:3px;}
 <nav class="category-grid" id="categories" aria-label="수출 품목 대분류"></nav>
 <h2 id="selectionTitle">대분류를 선택하세요</h2>
 <div id="selectionHint" class="selection-hint" role="status">대분류 → 품목 순서로 선택하면 수출 추이와 국가별 자료를 볼 수 있습니다.</div>
+<div id="historyNote" class="history-note" hidden></div>
 <div class="cards" id="cards"></div>
 <section id="analysisDetails" hidden>
 
@@ -619,6 +622,38 @@ function createDashboard() {
 }
 
 
+const HISTORICAL_CONTINUITY = {
+    "8541430000": {mapping: "8541409021 + 8541409022 → 8541430000", proxy: false, note: "2020~2021 두 과거 코드를 합산한 연속 비교 데이터입니다."},
+    "2841909020": {mapping: "2841909000 → 2841909020", proxy: true, note: "과거 코드 범위가 현재 NCM보다 넓어 proxy로 봐야 합니다."},
+    "300249": {mapping: "3002903010 + 3002903020 + 3002903090 → 300249", proxy: true, note: "톡신 품목 개념 기준의 과거 proxy입니다."},
+    "3002491000": {mapping: "3002903010 + 3002903020 + 3002903090 → 3002491000", proxy: false, note: "2020~2021 과거 톡신 세부코드를 합산한 연속 비교 데이터입니다."},
+    "8486902040": {mapping: "8486902010 → 8486902040", proxy: true, note: "2022년 HSK 개편 전 반도체 장비 부품 버킷을 연결한 legacy proxy입니다."},
+    "8486902090": {mapping: "8486902020 → 8486902090", proxy: true, note: "2022년 HSK 개편 전 기타 반도체 장비 부품 버킷을 연결한 legacy proxy입니다."},
+    "8542900000": {mapping: "8542904090 → 8542900000", proxy: false, note: "2020~2021 선행 HSK를 연결한 연속 비교 데이터입니다."}
+};
+
+function updateHistoricalNote(itemName) {
+    const box = document.getElementById("historyNote");
+    if (!box) return;
+    if (!itemName) {
+        box.hidden = true;
+        box.textContent = "";
+        box.className = "history-note";
+        return;
+    }
+    const row = allData.find(d => d["품목명"] === itemName);
+    const meta = row ? HISTORICAL_CONTINUITY[row["HS코드"]] : null;
+    if (!meta) {
+        box.hidden = true;
+        box.textContent = "";
+        box.className = "history-note";
+        return;
+    }
+    box.hidden = false;
+    box.className = "history-note" + (meta.proxy ? " proxy" : "");
+    box.textContent = "2020~2021 과거 HSK 연결: " + meta.mapping + " · " + meta.note;
+}
+
 const ITEM_CATEGORIES = [["반도체",["8542","8542321010","8542321030","8542323000","8473304060","8523511000"]],["반도체 부품·장비",["8536909090","9030901000","8486902090","8486902040","8542900000","8456119000"]],["전자부품",["8532240000","853400","8534009000","8534002000"]],["전력기기·전선",["8504","8504230000","8544603010","8544602010"]],["배터리·소재",["850760","2841909020","7606120000","7410211000","8506500000"]],["화장품",["330499","3304991000","3304992000","3307904000"]],["바이오·의료",["300249","3002491000","3304999000","3005904000","9018198000"]],["태양광",["8541430000"]],["식품",["1902301010"]]];
 function createCategories(rows) {
     const root = document.getElementById("categories");
@@ -642,6 +677,7 @@ function createCategories(rows) {
             document.getElementById("selectionHint").textContent = "아래 품목을 선택하세요. 품목별 HS 범위가 겹칠 수 있어 금액을 합산하지 않습니다.";
             document.getElementById("analysisDetails").hidden = true;
             selectedItem = null;
+            updateHistoricalNote(null);
             createCards(items);
             createLatestTable(items);
         };
@@ -718,6 +754,7 @@ function selectItem(itemName) {
     document.getElementById("analysisDetails").hidden = false;
     document.getElementById("selectionHint").textContent = "선택한 품목: " + itemName;
     selectedItem = itemName;
+    updateHistoricalNote(itemName);
 
     document
         .querySelectorAll(".card")
