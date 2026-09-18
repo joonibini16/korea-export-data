@@ -1560,7 +1560,10 @@ function createSeasonalChart(itemName) {
             }
 
 
-datasets.push({
+const currentYear = exportYears[exportYears.length - 1];
+            const isCurrentYear = year === currentYear;
+
+            datasets.push({
 
                 type:
                     "line",
@@ -1568,7 +1571,9 @@ datasets.push({
                 label:
                     year
                     +
-                    " YoY",
+                    " YoY"
+                    +
+                    (isCurrentYear ? " (올해)" : ""),
 
                 data:
                     values,
@@ -1579,19 +1584,41 @@ datasets.push({
                 tension:
                     0.25,
 
+                // 올해 YoY는 진한 빨간색과 굵은 선/큰 점으로 최우선 강조합니다.
+                borderColor: isCurrentYear ? "#dc2626" : yearColor(year) + "80",
+                backgroundColor: isCurrentYear ? "#dc2626" : yearColor(year) + "80",
+                borderWidth: isCurrentYear ? 4.5 : 1.5,
+                borderDash: isCurrentYear ? [] : [5, 4],
+                pointRadius: isCurrentYear ? 5 : 1.5,
+                pointHoverRadius: isCurrentYear ? 8 : 4,
+                pointBackgroundColor: isCurrentYear ? "#dc2626" : yearColor(year) + "80",
+                pointBorderColor: isCurrentYear ? "#ffffff" : yearColor(year) + "80",
+                pointBorderWidth: isCurrentYear ? 2 : 1,
+                order: isCurrentYear ? 0 : 1,
 
-                borderColor: yearColor(year),
-                backgroundColor: yearColor(year),
-                borderWidth: 2,
-                pointRadius: 2,
-                pointHoverRadius: 5,
-                pointBackgroundColor: yearColor(year),
-                pointBorderColor: yearColor(year),
-                order: 1,
-
-                datalabels: {
-                    display:
-                        false
+                datalabels: isCurrentYear ? {
+                    display(context) {
+                        return context.dataset.data[context.dataIndex] !== null;
+                    },
+                    align: "top",
+                    anchor: "end",
+                    offset: 6,
+                    color: "#b91c1c",
+                    backgroundColor: "rgba(255,255,255,0.94)",
+                    borderColor: "#fecaca",
+                    borderWidth: 1,
+                    borderRadius: 5,
+                    padding: {top: 3, right: 5, bottom: 3, left: 5},
+                    font: {
+                        size: 11,
+                        weight: "bold"
+                    },
+                    formatter(value) {
+                        if (value === null || value === undefined) return "";
+                        return (value > 0 ? "+" : "") + value.toFixed(1) + "%";
+                    }
+                } : {
+                    display: false
                 }
 
             });
