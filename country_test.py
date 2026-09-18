@@ -9,7 +9,7 @@ from hs_history import split_source_ranges
 
 API_URL = 'https://apis.data.go.kr/1220000/nitemtrade/getNitemtradeList'
 COUNTRIES = {'US': '미국', 'CN': '중국', 'JP': '일본', 'VN': '베트남',
-             'HK': '홍콩', 'FR': '프랑스', 'PL': '폴란드', 'GB': '영국'}
+             'HK': '홍콩', 'TW': '대만', 'FR': '프랑스', 'PL': '폴란드', 'GB': '영국'}
 FIELDNAMES = ['월', '품목명', 'HS코드', '국가코드', '국가명', '수출금액_USD', '수출중량_KG']
 FAILED_FIELDS = ['품목명', 'HS코드', '국가코드', '국가명', '시작월', '종료월', '오류']
 EMPTY_RESPONSE_REASON = '월별 데이터 없는 응답; 0으로 간주하지 않고 기존 값 유지'
@@ -115,12 +115,29 @@ def update_one_item(client, hs_code, name, requested_ranges=None):
             continue
         expected = [label(month) for month in month_range(start, end)]
         results = {}
+        # Existing validated major-country rows are reusable.  This lets a newly
+        # added country (for example TW) be backfilled without re-querying every
+        # country for every historical month.  OTHER is always recalculated from
+        # the general total after all required major countries are available.
+        expected_set = set(expected)
         for code in COUNTRIES:
+            existing = {}
+            for row in working:
+                if row['국가코드'] != code or row['월'] not in expected_set:
+                    continue
+                existing[row['월']] = {
+                    'usd': number(row['수출금액_USD']),
+                    'kg': number(row['수출중량_KG']),
+                }
+            results[code] = existing
+            if expected_set <= set(existing):
+                continue
             if client.stopped:
                 fail(code, start, end, client.stopped)
                 continue
-            results[code] = fetch_country_logical(
+            fetched = fetch_country_logical(
                 client, hs_code, start, end, code, empty_as_zero, fail)
+            results[code].update(fetched)
         updated = 0
         for month in expected:
             yymm = month.replace('.', '')
@@ -128,7 +145,7 @@ def update_one_item(client, hs_code, name, requested_ranges=None):
                 fail('-', yymm, yymm, '일반 품목 합계 없음; 기존 월 유지')
                 continue
             if any(month not in results.get(code, {}) for code in COUNTRIES):
-                fail('-', yymm, yymm, '8개국 중 누락 응답 있음; 0으로 채우지 않고 기존 월 유지')
+                fail('-', yymm, yymm, f'{len(COUNTRIES)}개국 중 누락 응답 있음; 0으로 채우지 않고 기존 월 유지')
                 continue
             major_usd = sum(results[code][month]['usd'] for code in COUNTRIES)
             major_kg = sum(results[code][month]['kg'] for code in COUNTRIES)
