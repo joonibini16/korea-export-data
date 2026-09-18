@@ -41,16 +41,16 @@ jobs:
         id: verify
         run: python -m unittest discover -s tests -v
 
-      # Current-code applicability is enforced in country_test.py; pre-HSK-2022
-      # predecessor periods are not treated as failed current-code backfill.
-      - name: 국가별 미수집만 백필
+      # Run the normal completeness flow so newly added major countries (such as
+      # Taiwan) are discovered even when country_failed.csv was previously empty.
+      - name: 국가별 미수집 백필
         id: country
         continue-on-error: true
         env:
           CUSTOMS_API_KEY: ${{ secrets.CUSTOMS_API_KEY }}
           CUSTOMS_REQUIRE_FRESH_TOTALS: '0'
           CUSTOMS_COUNTRY_EMPTY_AS_ZERO: '1'
-          CUSTOMS_COUNTRY_FAILED_ONLY: '1'
+          CUSTOMS_COUNTRY_FAILED_ONLY: '0'
         run: python country_test.py
 
       - name: 검증된 국가별 CSV 저장
