@@ -313,8 +313,8 @@ button:focus-visible {outline:3px solid #2563eb;outline-offset:3px;}
 </div>
 
 <div class="chart-box">
-    <h2 class="chart-title" id="seasonalYoyChartTitle">연도별 YoY 증감률 비교</h2>
-    <div class="change-chart">
+    <h2 class="chart-title" id="seasonalYoyChartTitle">2021년 이후 YoY 증감률 비교</h2>
+    <div class="seasonal-chart">
         <canvas id="seasonalYoyChart"></canvas>
     </div>
 </div>
@@ -1355,7 +1355,7 @@ function createSeasonalChart(itemName) {
 
     const years = [...new Set(data.map(d => d["월"].slice(0, 4)))].sort();
     const exportYears = years.filter(year => Number(year) >= 2020);
-    const yoyYears = exportYears.slice(-3);
+    const yoyYears = exportYears.filter(year => Number(year) >= 2021);
     const currentYear = exportYears[exportYears.length - 1];
 
     const yearPalette = ["#2563eb", "#d97706", "#059669", "#9333ea", "#0891b2", "#db2777", "#dc2626", "#64748b"];
@@ -1422,14 +1422,14 @@ function createSeasonalChart(itemName) {
             data: values,
             tension: 0.25,
             spanGaps: false,
-            borderColor: isCurrentYear ? "#dc2626" : yearColor(year) + "80",
-            backgroundColor: isCurrentYear ? "#dc2626" : yearColor(year) + "80",
-            borderWidth: isCurrentYear ? 4.5 : 1.5,
-            borderDash: isCurrentYear ? [] : [5, 4],
-            pointRadius: isCurrentYear ? 5 : 2,
-            pointHoverRadius: isCurrentYear ? 8 : 5,
-            pointBackgroundColor: isCurrentYear ? "#dc2626" : yearColor(year) + "80",
-            pointBorderColor: isCurrentYear ? "#ffffff" : yearColor(year) + "80",
+            borderColor: yearColor(year),
+            backgroundColor: yearColor(year),
+            borderWidth: isCurrentYear ? 4.5 : 2.2,
+            borderDash: [],
+            pointRadius: isCurrentYear ? 5 : 2.5,
+            pointHoverRadius: isCurrentYear ? 8 : 6,
+            pointBackgroundColor: yearColor(year),
+            pointBorderColor: isCurrentYear ? "#ffffff" : yearColor(year),
             pointBorderWidth: isCurrentYear ? 2 : 1,
             datalabels: isCurrentYear ? {
                 display(context) {
@@ -1459,7 +1459,7 @@ function createSeasonalChart(itemName) {
         itemName + (quarterly ? " 연도별 분기 수출 비교" : " 연도별 월간 수출 비교");
 
     document.getElementById("seasonalYoyChartTitle").textContent =
-        itemName + (quarterly ? " 연도별 분기 YoY 증감률 비교" : " 연도별 월간 YoY 증감률 비교");
+        itemName + (quarterly ? " 2021년 이후 분기 YoY 증감률 비교" : " 2021년 이후 월간 YoY 증감률 비교");
 
     if (seasonalChart) seasonalChart.destroy();
     if (seasonalYoyChart) seasonalYoyChart.destroy();
