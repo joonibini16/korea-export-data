@@ -1,0 +1,4 @@
+기준월,기간구분,종료일,발표일,수출_USD_mn,전년동기수출_USD_mn,수출YoY_pct,수입_USD_mn,전년동기수입_USD_mn,수입YoY_pct,무역수지_USD_mn,조업일수,전년조업일수,일평균수출_USD_mn,전년일평균수출_USD_mn,일평균YoY_pct,반도체수출_USD_mn,출처URL
+2026.08,MONTH,31,2026-09-01,98255,58259,68.7,63507,51857,22.5,34748,22.0,22.5,4470,2590,72.5,,https://www.customs.go.kr/kcs/na/ntt/selectNttInfo.do?bbsId=1362&mi=2891&nttSn=10175205
+2026.09,D10,10,2026-09-11,34973,19154,82.6,24606,20383,20.7,10367,8.5,8.5,4110,2250,82.6,16500,https://customs.go.kr/kcs/na/ntt/selectNttInfo.do?bbsId=1362&mi=2891&nttSn=10176444
+2026.09,D20,20,2026-09-21,71409,40050,78.3,48443,38222,26.7,22966,15.5,16.5,4610,2430,89.8,34100,https://customs.go.kr/kcs/na/ntt/selectNttInfo.do?bbsId=1362&mi=2891&nttSn=10177443
