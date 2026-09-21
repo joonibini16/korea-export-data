@@ -4,6 +4,12 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '30 1 * * *'
+  push:
+    branches:
+      - main
+    paths:
+      - 'collect_provisional_official.py'
+      - '.github/workflows/provisional_export.yml'
 
 permissions:
   contents: write
