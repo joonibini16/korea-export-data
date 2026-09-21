@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>10일 잠정수출 모니터링</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+:root{--bg:#f5f6f8;--card:#fff;--text:#20242a;--muted:#667085;--border:#e5e7eb;--pos:#d92d20;--neg:#1570ef}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,"Noto Sans KR",sans-serif}
+.container{width:94%;max-width:1450px;margin:24px auto 50px}.top{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+h1{margin:0 0 6px}.sub{color:var(--muted);line-height:1.6}.nav{display:flex;gap:8px}.nav a{padding:9px 13px;border:1px solid #d0d5dd;border-radius:9px;background:#fff;color:#344054;text-decoration:none;font-weight:700}
+.notice{margin:18px 0;padding:13px 15px;background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;color:#1e3a5f}
+.controls{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.period{border:1px solid #d0d5dd;background:#fff;border-radius:9px;padding:9px 14px;cursor:pointer;font-weight:700}.period.active{background:#111827;color:white;border-color:#111827}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:20px}.card,.box{background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.07)}
+.card{padding:18px}.label{color:var(--muted);font-size:13px}.value{font-size:28px;font-weight:800;margin-top:8px}.detail{font-size:13px;color:#475467;margin-top:7px}.pos{color:var(--pos)}.neg{color:var(--neg)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.box{padding:18px;margin-bottom:18px}.chart{height:350px;position:relative}.wide{height:420px}
+h2{margin:0 0 14px}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse}th,td{padding:11px;border-bottom:1px solid var(--border);white-space:nowrap}th{background:#f9fafb;text-align:center}td.num{text-align:right}
+.empty{padding:28px;text-align:center;color:var(--muted);border:1px dashed #cbd5e1;border-radius:10px;background:#fafafa}
+@media(max-width:900px){.grid{grid-template-columns:1fr}.chart,.wide{height:330px}}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="top">
+  <div><h1>10일 잠정수출 모니터링</h1><div class="sub" id="latest">관세청 잠정치 불러오는 중...</div></div>
+  <div class="nav"><a href="./index.html">월간 수출 대시보드</a></div>
+</div>
+<div class="notice">관세청 공식 발표 기준: 1~10일은 11일, 1~20일은 21일, 월 전체 잠정치는 익월 1일 발표. 주말·공휴일에는 발표일이 조정될 수 있습니다.</div>
+<div class="controls">
+  <button class="period active" data-period="ALL">전체</button>
+  <button class="period" data-period="D10">1~10일</button>
+  <button class="period" data-period="D20">1~20일</button>
+  <button class="period" data-period="MONTH">월 전체</button>
+</div>
+<div class="cards">
+  <div class="card"><div class="label">최신 잠정 수출</div><div class="value" id="exportValue">-</div><div class="detail" id="exportPeriod"></div></div>
+  <div class="card"><div class="label">전년동기 대비</div><div class="value" id="yoyValue">-</div><div class="detail" id="priorValue"></div></div>
+  <div class="card"><div class="label">일평균 수출 YoY</div><div class="value" id="dailyYoy">-</div><div class="detail" id="workdays"></div></div>
+  <div class="card"><div class="label">반도체 잠정 수출</div><div class="value" id="semiValue">-</div><div class="detail">관세청 보도자료에 금액이 명시된 경우</div></div>
+</div>
+<div class="grid">
+  <div class="box"><h2>잠정 수출액 vs 전년동기</h2><div class="chart"><canvas id="exportChart"></canvas></div></div>
+  <div class="box"><h2>잠정 수출 YoY</h2><div class="chart"><canvas id="yoyChart"></canvas></div></div>
+</div>
+<div class="box"><h2>발표 이력</h2><div class="table-wrap"><table><thead><tr><th>기준</th><th>기간</th><th>수출</th><th>YoY</th><th>일평균 YoY</th><th>반도체</th><th>무역수지</th><th>발표일</th></tr></thead><tbody id="history"></tbody></table></div></div>
+<div class="box">
+  <h2>품목별 10일 잠정수출</h2>
+  <div class="sub">현재 월간 대시보드의 36개 HS 품목을 동일하게 연결할 영역입니다.</div>
+  <div id="hsArea" class="empty">TRASS/Aicel 정식 10일 데이터 피드를 연결하면 품목별 수출액·중량·단가·YoY가 이곳에 표시됩니다.</div>
+</div>
+</div>
+<script>
+let official=[], hs=[], filterPeriod="ALL", exportChart, yoyChart;
+function parseCSV(text){
+ const lines=text.trim().split(/\r?\n/); if(!lines.length||!lines[0]) return [];
+ const split=line=>{let out=[],cur="",q=false;for(let i=0;i<line.length;i++){const c=line[i];if(c=='"'){if(q&&line[i+1]=='"'){cur+='"';i++;}else q=!q;}else if(c==','&&!q){out.push(cur);cur="";}else cur+=c;}out.push(cur);return out};
+ const h=split(lines[0]).map(x=>x.replace(/^\uFEFF/,"").trim());
+ return lines.slice(1).filter(Boolean).map(line=>{const v=split(line);return Object.fromEntries(h.map((k,i)=>[k,(v[i]??"").trim()]));});
+}
+async function csv(name){const r=await fetch(name+"?t="+Date.now(),{cache:"no-store"});if(!r.ok)throw new Error(name);return parseCSV(await r.text())}
+const money=v=>"$"+(Number(v||0)/1000).toFixed(1)+"B";
+const pct=v=>{const n=Number(v);return Number.isFinite(n)?(n>0?"+":"")+n.toFixed(1)+"%":"-"};
+const pclass=v=>Number(v)>=0?"pos":"neg";
+const periodLabel=r=>r["기간구분"]==="D10"?"1~10일":r["기간구분"]==="D20"?"1~20일":"월 전체";
+function rows(){return official.filter(r=>filterPeriod==="ALL"||r["기간구분"]===filterPeriod).sort((a,b)=>(a["기준월"]+a["종료일"]).localeCompare(b["기준월"]+b["종료일"]))}
+function latestRow(){return rows().slice(-1)[0]}
+function render(){
+ const data=rows(), latest=latestRow(); if(!latest)return;
+ document.getElementById("latest").textContent="최신 발표: "+latest["발표일"]+" · "+latest["기준월"]+" "+periodLabel(latest);
+ document.getElementById("exportValue").textContent=money(latest["수출_USD_mn"]);
+ document.getElementById("exportPeriod").textContent=latest["기준월"]+" "+periodLabel(latest);
+ document.getElementById("yoyValue").textContent=pct(latest["수출YoY_pct"]); document.getElementById("yoyValue").className="value "+pclass(latest["수출YoY_pct"]);
+ document.getElementById("priorValue").textContent="전년동기 "+money(latest["전년동기수출_USD_mn"]);
+ document.getElementById("dailyYoy").textContent=pct(latest["일평균YoY_pct"]); document.getElementById("dailyYoy").className="value "+pclass(latest["일평균YoY_pct"]);
+ document.getElementById("workdays").textContent="조업일수 "+latest["조업일수"]+"일 (전년 "+latest["전년조업일수"]+"일)";
+ document.getElementById("semiValue").textContent=latest["반도체수출_USD_mn"]?money(latest["반도체수출_USD_mn"]):"-";
+ const labels=data.map(r=>r["기준월"]+" "+periodLabel(r));
+ if(exportChart)exportChart.destroy(); exportChart=new Chart(document.getElementById("exportChart"),{type:"bar",data:{labels,datasets:[{label:"전년동기",data:data.map(r=>Number(r["전년동기수출_USD_mn"])/1000)},{label:"당해 잠정",data:data.map(r=>Number(r["수출_USD_mn"])/1000)}]},options:{responsive:true,maintainAspectRatio:false,plugins:{tooltip:{callbacks:{label:c=>c.dataset.label+": $"+c.parsed.y.toFixed(1)+"B"}}},scales:{y:{beginAtZero:true,title:{display:true,text:"십억 USD"}}}}});
+ if(yoyChart)yoyChart.destroy(); yoyChart=new Chart(document.getElementById("yoyChart"),{type:"line",data:{labels,datasets:[{label:"수출 YoY",data:data.map(r=>Number(r["수출YoY_pct"])),borderWidth:3,pointRadius:4},{label:"일평균 YoY",data:data.map(r=>Number(r["일평균YoY_pct"])),borderWidth:2,pointRadius:3}]},options:{responsive:true,maintainAspectRatio:false,scales:{y:{title:{display:true,text:"증감률 (%)"},ticks:{callback:v=>v+"%"}}}}});
+ document.getElementById("history").innerHTML=[...data].reverse().map(r=>`<tr><td>${r["기준월"]}</td><td>${periodLabel(r)}</td><td class="num">${money(r["수출_USD_mn"])}</td><td class="num ${pclass(r["수출YoY_pct"])}">${pct(r["수출YoY_pct"])}</td><td class="num ${pclass(r["일평균YoY_pct"])}">${pct(r["일평균YoY_pct"])}</td><td class="num">${r["반도체수출_USD_mn"]?money(r["반도체수출_USD_mn"]):"-"}</td><td class="num">${money(r["무역수지_USD_mn"])}</td><td>${r["발표일"]}</td></tr>`).join("");
+}
+document.querySelectorAll(".period").forEach(b=>b.onclick=()=>{document.querySelectorAll(".period").forEach(x=>x.classList.toggle("active",x===b));filterPeriod=b.dataset.period;render()});
+Promise.all([csv("provisional_official.csv"),csv("provisional_hs.csv")]).then(([a,b])=>{official=a;hs=b;render();if(hs.length){document.getElementById("hsArea").textContent=hs.length+"개 품목 잠정 데이터 연결됨";}}).catch(e=>{document.getElementById("latest").textContent="데이터 로딩 오류: "+e.message});
+</script>
+</body></html>
