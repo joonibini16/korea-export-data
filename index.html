@@ -1140,7 +1140,7 @@ function createChangeChart(itemName) {
                         segment: {borderDash: ctx => data[ctx.p1DataIndex]?.estimated ? [3, 4] : undefined},
 
                         datalabels: {
-                            align: "top",
+                            align: ctx => data[ctx.dataIndex]?.estimated ? "left" : "top",
                             anchor: "end",
                             offset: 7,
 
@@ -1205,7 +1205,7 @@ function createChangeChart(itemName) {
                         segment: {borderDash: ctx => data[ctx.p1DataIndex]?.estimated ? [3, 4] : undefined},
 
                         datalabels: {
-                            align: "bottom",
+                            align: ctx => data[ctx.dataIndex]?.estimated ? "left" : "bottom",
                             anchor: "end",
                             offset: 7,
 
