@@ -297,7 +297,7 @@ button:focus-visible {outline:3px solid #2563eb;outline-offset:3px;}
             <option value="quarter">분기별</option>
         </select>
     </div>
-    <p id="quarterNote" class="selection-hint" hidden>분기 수출액·중량은 3개월 합계, 단가는 합계 수출액 ÷ 합계 중량입니다. YoY는 전년 같은 분기, QoQ는 직전 분기 대비입니다. 3개월이 모두 확보된 분기만 계산하며 미완료 분기는 0으로 처리하지 않습니다. 아래 국가별 분석과 최신 월간 현황은 월간 기준입니다.</p>
+    <p id="quarterNote" class="selection-hint" hidden>진한 막대 = 확정분, 연한 막대 = 남은 달 추정분. 최신 진행 분기는 확정 월평균 × 남은 개월 수로 수출액·중량을 추정합니다. 단가는 합계 수출액 ÷ 합계 중량이며, 추정 포함 YoY·QoQ는 점선과 빈 원으로 표시합니다. 계절성·조업일수는 반영하지 않은 단순 추정입니다. 과거 누락 분기는 추정하지 않습니다. 아래 국가별 분석과 최신 월간 현황은 월간 기준입니다.</p>
     <section id="quarterSummary" hidden aria-label="분기 수출 요약">
         <h2 id="quarterSummaryTitle" class="chart-title">최신 완성 분기</h2>
         <div id="quarterMetrics" class="quarter-metrics"></div>
@@ -356,7 +356,7 @@ button:focus-visible {outline:3px solid #2563eb;outline-offset:3px;}
     <h2 id="quarterTableTitle" class="chart-title">분기별 수출 데이터</h2>
     <div class="table-wrapper" style="max-height:520px;overflow:auto">
         <table>
-            <thead><tr><th>분기</th><th>자료 상태</th><th>수출액 (USD)</th><th>YoY</th><th>QoQ</th><th>수출중량 (KG)</th><th>수출단가 (USD/KG)</th></tr></thead>
+            <thead><tr><th>분기</th><th>자료 상태</th><th>분기 합계 (USD)</th><th>확정분 (USD)</th><th>추정분 (USD)</th><th>YoY</th><th>QoQ</th><th>수출중량 (KG)</th><th>수출단가 (USD/KG)</th></tr></thead>
             <tbody id="quarterTable"></tbody>
         </table>
     </div>
@@ -912,8 +912,10 @@ function createMainChart(itemName) {
                 datasets: [
                     {
                         type: "bar",
-                        label: "수출액",
-                        data: exportsMillion,
+                        label: quarterly ? "확정 수출액" : "수출액",
+                        data: quarterly ? data.map(d => d.complete || d.estimated ? d.actualUSD / 1000000 : null) : exportsMillion,
+                        backgroundColor: quarterly ? "#2563eb" : undefined,
+                        stack: "exports",
                         yAxisID: "yExport",
                         order: 2,
 
@@ -922,6 +924,13 @@ function createMainChart(itemName) {
                         }
                     },
 
+                    ...(quarterly && data.some(d => d.estimated) ? [{
+                        type: "bar", label: "남은 달 추정 수출액",
+                        data: data.map(d => d.estimated ? d.estimatedUSD / 1000000 : null),
+                        backgroundColor: "#2563eb40", borderColor: "#2563eb", borderWidth: 1,
+                        stack: "exports", yAxisID: "yExport", order: 2,
+                        datalabels: {display: false}
+                    }] : []),
                     {
                         type: "line",
                         label: "수출단가",
@@ -929,7 +938,11 @@ function createMainChart(itemName) {
                         yAxisID: "yPrice",
                         tension: 0.25,
                         borderWidth: 2.5,
-                        pointRadius: 1.5,
+                        pointRadius: data.map(d => d.estimated ? 5 : 1.5),
+                        pointBackgroundColor: data.map(d => d.estimated ? "#ffffff" : "#d97706"),
+                        pointBorderColor: "#d97706",
+                        borderColor: "#d97706",
+                        segment: {borderDash: ctx => data[ctx.p1DataIndex]?.estimated ? [6, 4] : undefined},
                         pointHoverRadius: 5,
                         order: 1,
 
@@ -956,6 +969,10 @@ function createMainChart(itemName) {
 
                     tooltip: {
                         callbacks: {
+                            afterBody(contexts) {
+                                const row = data[contexts[0]?.dataIndex];
+                                return row?.estimated ? "분기 합계 (추정 포함): " + formatMoney(row["수출금액_USD"]) : "";
+                            },
                             label(context) {
 
                                 if (
@@ -965,7 +982,7 @@ function createMainChart(itemName) {
                                 ) {
 
                                     return (
-                                        "수출액: $" +
+                                        context.dataset.label + ": $" +
                                         context.parsed.y.toLocaleString(
                                             undefined,
                                             {
@@ -978,7 +995,7 @@ function createMainChart(itemName) {
                                 }
 
                                 return (
-                                    "수출단가: $" +
+                                    (data[context.dataIndex]?.estimated ? "수출단가 (추정): $" : "수출단가: $") +
                                     context.parsed.y.toFixed(2) +
                                     "/kg"
                                 );
@@ -990,6 +1007,7 @@ function createMainChart(itemName) {
 
                 scales: {
                     yExport: {
+                        stacked: quarterly,
                         type: "linear",
                         position: "left",
                         beginAtZero: true,
@@ -1040,6 +1058,7 @@ function createMainChart(itemName) {
                     },
 
                     x: {
+                        stacked: quarterly,
                         grid: {
                             display: false
                         },
@@ -1116,7 +1135,9 @@ function createChangeChart(itemName) {
                         data: yoy,
                         tension: 0.25,
                         borderWidth: 2.5,
-                        pointRadius: 1.5,
+                        pointRadius: data.map(d => d.estimated ? 5 : 1.5),
+                        pointBackgroundColor: ctx => data[ctx.dataIndex]?.estimated ? "#ffffff" : ctx.dataset.borderColor,
+                        segment: {borderDash: ctx => data[ctx.p1DataIndex]?.estimated ? [3, 4] : undefined},
 
                         datalabels: {
                             align: "top",
@@ -1141,7 +1162,7 @@ function createChangeChart(itemName) {
                                 );
                             },
 
-                            formatter(value) {
+                            formatter(value, context) {
 
                                 if (
                                     value === null
@@ -1167,7 +1188,7 @@ function createChangeChart(itemName) {
                                     +
                                     rounded
                                     +
-                                    "%"
+                                    "%" + (data[context.dataIndex]?.estimated ? " (추정)" : "")
                                 );
                             }
                         }
@@ -1179,7 +1200,9 @@ function createChangeChart(itemName) {
                         tension: 0.25,
                         borderWidth: 2,
                         borderDash: [6, 5],
-                        pointRadius: 1.5,
+                        pointRadius: data.map(d => d.estimated ? 5 : 1.5),
+                        pointBackgroundColor: ctx => data[ctx.dataIndex]?.estimated ? "#ffffff" : ctx.dataset.borderColor,
+                        segment: {borderDash: ctx => data[ctx.p1DataIndex]?.estimated ? [3, 4] : undefined},
 
                         datalabels: {
                             align: "bottom",
@@ -1204,7 +1227,7 @@ function createChangeChart(itemName) {
                                 );
                             },
 
-                            formatter(value) {
+                            formatter(value, context) {
 
                                 if (
                                     value === null
@@ -1230,7 +1253,7 @@ function createChangeChart(itemName) {
                                     +
                                     rounded
                                     +
-                                    "%"
+                                    "%" + (data[context.dataIndex]?.estimated ? " (추정)" : "")
                                 );
                             }
                         }
@@ -1282,7 +1305,7 @@ function createChangeChart(itemName) {
                                     +
                                     value.toFixed(1)
                                     +
-                                    "%"
+                                    "%" + (data[context.dataIndex]?.estimated ? " (추정)" : "") + (data[context.dataIndex]?.estimated ? " (추정)" : "")
                                 );
 
                             }
@@ -1335,7 +1358,7 @@ function nonnegativeNumber(raw) {
     return Number.isFinite(value) && value >= 0 ? value : null;
 }
 
-function buildQuarterRows(rows) {
+function buildQuarterRows(rows, asOfMonth) {
     const months = new Map();
     for (const row of rows) {
         if (!/^\d{4}\.(0[1-9]|1[0-2])$/.test(row["월"])) continue;
@@ -1345,6 +1368,7 @@ function buildQuarterRows(rows) {
     const keys = [...months.keys()].sort();
     if (!keys.length) return [];
     const ordinal = month => Number(month.slice(0, 4)) * 4 + Math.floor((Number(month.slice(5)) - 1) / 3);
+    const cutoff = asOfMonth || [...allData.map(row => row["월"])].sort().at(-1) || keys.at(-1);
     const quarters = [];
     for (let index = ordinal(keys[0]); index <= ordinal(keys.at(-1)); index++) {
         const year = Math.floor(index / 4), quarter = index % 4 + 1;
@@ -1359,11 +1383,20 @@ function buildQuarterRows(rows) {
             usd += amount; kg += weight; validMonths++;
         }
         const complete = validMonths === 3;
-        quarters.push({index, year, quarter, complete, validMonths,
+        // Project only the latest quarter with every elapsed month valid and unique.
+        const elapsed = (Number(cutoff.slice(5)) - 1) % 3 + 1;
+        const estimated = !complete && index === ordinal(cutoff) && keys.at(-1) === cutoff
+            && elapsed < 3 && validMonths === elapsed;
+        const estimatedUSD = estimated ? usd / validMonths * (3 - validMonths) : 0;
+        const estimatedKG = estimated ? kg / validMonths * (3 - validMonths) : 0;
+        const usable = complete || estimated;
+        const totalUSD = usd + estimatedUSD, totalKG = kg + estimatedKG;
+        quarters.push({index, year, quarter, complete, estimated, validMonths,
+            actualUSD: usd, actualKG: kg, estimatedUSD, estimatedKG,
             "월": year + " Q" + quarter,
-            "수출금액_USD": complete ? usd : "",
-            "수출중량_KG": complete ? kg : "",
-            "수출단가_USD_per_KG": complete && kg > 0 ? usd / kg : "",
+            "수출금액_USD": usable ? totalUSD : "",
+            "수출중량_KG": usable ? totalKG : "",
+            "수출단가_USD_per_KG": usable && totalKG > 0 ? totalUSD / totalKG : "",
             "YoY_pct": "", "QoQ_pct": ""
         });
     }
@@ -1371,7 +1404,7 @@ function buildQuarterRows(rows) {
     for (const row of quarters) {
         for (const [field, offset] of [["YoY_pct", 4], ["QoQ_pct", 1]]) {
             const previous = byIndex.get(row.index - offset);
-            if (row.complete && previous?.complete && previous["수출금액_USD"] > 0) {
+            if ((row.complete || row.estimated) && previous?.complete && previous["수출금액_USD"] > 0) {
                 row[field] = (row["수출금액_USD"] / previous["수출금액_USD"] - 1) * 100;
             }
         }
@@ -1399,22 +1432,22 @@ function renderQuarterData(itemName) {
     document.getElementById("quarterHistory").hidden = !quarterly;
     if (!quarterly) return;
     const rows = getPeriodRows(itemName, true);
-    const latest = rows.filter(row => row.complete).at(-1);
+    const latest = rows.filter(row => row.complete || row.estimated).at(-1);
     const format = (raw, digits = 0) => {
         const value = nonnegativeNumber(raw);
         return value === null ? "-" : value.toLocaleString("ko-KR", {maximumFractionDigits: digits});
     };
     document.getElementById("quarterSummaryTitle").textContent = itemName +
-        (latest ? " · 최신 완성 분기 " + latest["월"] : " · 완성 분기 없음");
+        (latest ? " · " + latest["월"] + (latest.estimated ? " (확정 + 추정)" : " (확정)") : " · 완성 분기 없음");
     const metrics = document.getElementById("quarterMetrics");
     metrics.replaceChildren();
     if (latest) {
         for (const [label, value, css] of [
-            ["수출액", formatMoney(latest["수출금액_USD"]), ""],
-            ["전년동기 대비 (YoY)", formatPercent(latest["YoY_pct"]), percentClass(latest["YoY_pct"])],
-            ["전분기 대비 (QoQ)", formatPercent(latest["QoQ_pct"]), percentClass(latest["QoQ_pct"])],
-            ["수출중량 (KG)", format(latest["수출중량_KG"], 2), ""],
-            ["수출단가 (USD/KG)", format(latest["수출단가_USD_per_KG"], 4), ""]
+            [latest.estimated ? "분기 수출액 (추정 포함)" : "수출액", formatMoney(latest["수출금액_USD"]), ""],
+            [latest.estimated ? "YoY (추정)" : "전년동기 대비 (YoY)", formatPercent(latest["YoY_pct"]), percentClass(latest["YoY_pct"])],
+            [latest.estimated ? "QoQ (추정)" : "전분기 대비 (QoQ)", formatPercent(latest["QoQ_pct"]), percentClass(latest["QoQ_pct"])],
+            [latest.estimated ? "수출중량 (KG, 추정 포함)" : "수출중량 (KG)", format(latest["수출중량_KG"], 2), ""],
+            [latest.estimated ? "수출단가 (USD/KG, 추정)" : "수출단가 (USD/KG)", format(latest["수출단가_USD_per_KG"], 4), ""]
         ]) {
             const box = document.createElement("div"); box.className = "quarter-metric";
             const title = document.createElement("span"); title.textContent = label;
@@ -1422,20 +1455,31 @@ function renderQuarterData(itemName) {
             box.append(title, number); metrics.appendChild(box);
         }
     }
-    const pending = rows.filter(row => !row.complete);
-    document.getElementById("quarterPending").textContent = pending.length
-        ? "미완료 분기: " + pending.map(row => row["월"] + " (유효 월 " + row.validMonths + "/3)").join(", ") : "";
+    const pending = rows.filter(row => !row.complete && !row.estimated);
+    document.getElementById("quarterPending").textContent =
+        (latest?.estimated ? "확정 " + latest.validMonths + "개월 " + formatMoney(latest.actualUSD) +
+            " + 남은 " + (3 - latest.validMonths) + "개월 추정 " + formatMoney(latest.estimatedUSD) +
+            " = 분기 합계 " + formatMoney(latest["수출금액_USD"]) + " · 추정분 = 확정분 ÷ " +
+            latest.validMonths + " × " + (3 - latest.validMonths) + ". " : "") +
+        (pending.length ? "자료 누락으로 추정 제외: " + pending.map(row => row["월"] + " (유효 월 " + row.validMonths + "/3)").join(", ") : "");
     document.getElementById("quarterTableTitle").textContent = itemName + " · 분기별 수출 데이터";
     const tbody = document.getElementById("quarterTable"); tbody.replaceChildren();
     for (const row of [...rows].reverse()) {
         const tr = document.createElement("tr");
-        const values = [row["월"], row.complete ? "3/3개월" : "미완료 · " + row.validMonths + "/3개월",
-            format(row["수출금액_USD"], 2), formatPercent(row["YoY_pct"]), formatPercent(row["QoQ_pct"]),
+        const suffix = row.estimated ? " (추정)" : "";
+        const values = [row["월"], row.complete ? "확정 3개월" : row.estimated
+                ? "확정 " + row.validMonths + " + 추정 " + (3 - row.validMonths) + "개월"
+                : "미완료 · " + row.validMonths + "/3개월",
+            format(row["수출금액_USD"], 2) + suffix,
+            row.validMonths ? format(row.actualUSD, 2) : "-", row.estimated ? format(row.estimatedUSD, 2) : "-",
+            formatPercent(row["YoY_pct"]) + (row["YoY_pct"] === "" ? "" : suffix),
+            formatPercent(row["QoQ_pct"]) + (row["QoQ_pct"] === "" ? "" : suffix),
             format(row["수출중량_KG"], 2), format(row["수출단가_USD_per_KG"], 4)];
         values.forEach((value, i) => {
             const td = document.createElement("td"); td.textContent = value;
             td.className = i < 2 ? "center" : "number";
-            if (i === 3 || i === 4) td.className += " " + percentClass(row[i === 3 ? "YoY_pct" : "QoQ_pct"]);
+            if (i === 5 || i === 6) td.className += " " + percentClass(row[i === 5 ? "YoY_pct" : "QoQ_pct"]);
+            if (row.estimated && i === 4) td.style.color = "#64748b";
             tr.appendChild(td);
         });
         tbody.appendChild(tr);
@@ -1446,7 +1490,7 @@ function quarterTotals(rows, year) {
     const values = buildQuarterRows(rows).filter(row => row.year === Number(year));
     return [1, 2, 3, 4].map(quarter => {
         const row = values.find(row => row.quarter === quarter);
-        return row?.complete ? row["수출금액_USD"] : null;
+        return row && (row.complete || row.estimated) ? row["수출금액_USD"] : null;
     });
 }
 
@@ -1490,17 +1534,26 @@ function createSeasonalChart(itemName) {
         });
     }
 
-    const exportDatasets = exportYears.map(year => ({
+    const quarterRows = quarterly ? buildQuarterRows(data) : [];
+    const yearQuarters = year => [1, 2, 3, 4].map(q => quarterRows.find(r => r.year === Number(year) && r.quarter === q));
+    const projectedAt = (year, i) => quarterly && !!yearQuarters(year)[i]?.estimated;
+    const exportDatasets = exportYears.flatMap(year => [{
         type: "bar",
-        label: year + " 수출액",
+        label: year + (quarterly ? " 확정" : " 수출액"),
+        stack: quarterly ? year : undefined,
         data: quarterly
-            ? quarterTotals(data, year).map(value => value === null ? null : value / 1000000)
+            ? yearQuarters(year).map(row => row && (row.complete || row.estimated) ? row.actualUSD / 1000000 : null)
             : monthlyExportValues(year),
-        backgroundColor: yearColor(year) + "B3",
+        backgroundColor: yearColor(year) + (quarterly ? "FF" : "B3"),
         borderColor: yearColor(year),
         borderWidth: 1,
         datalabels: { display: false }
-    }));
+    }, ...(quarterly && yearQuarters(year).some(r => r?.estimated) ? [{
+        type: "bar", label: year + " 추정", stack: year,
+        data: yearQuarters(year).map(row => row?.estimated ? row.estimatedUSD / 1000000 : null),
+        backgroundColor: yearColor(year) + "40", borderColor: yearColor(year), borderWidth: 1,
+        datalabels: {display: false}
+    }] : [])]);
 
     const yoyDatasets = yoyYears.map(year => {
         const isCurrentYear = year === currentYear;
@@ -1530,8 +1583,9 @@ function createSeasonalChart(itemName) {
             borderDash: [],
             pointRadius: isCurrentYear ? 5 : 2.5,
             pointHoverRadius: isCurrentYear ? 8 : 6,
-            pointBackgroundColor: yearColor(year),
-            pointBorderColor: isCurrentYear ? "#ffffff" : yearColor(year),
+            pointBackgroundColor: ctx => projectedAt(year, ctx.dataIndex) ? "#ffffff" : yearColor(year),
+            segment: {borderDash: ctx => projectedAt(year, ctx.p1DataIndex) ? [6, 4] : undefined},
+            pointBorderColor: ctx => projectedAt(year, ctx.dataIndex) ? yearColor(year) : (isCurrentYear ? "#ffffff" : yearColor(year)),
             pointBorderWidth: isCurrentYear ? 2 : 1,
             datalabels: isCurrentYear ? {
                 display(context) {
@@ -1547,9 +1601,9 @@ function createSeasonalChart(itemName) {
                 borderRadius: 5,
                 padding: {top: 3, right: 5, bottom: 3, left: 5},
                 font: {size: 11, weight: "bold"},
-                formatter(value) {
+                formatter(value, context) {
                     if (value === null || value === undefined) return "";
-                    return (value > 0 ? "+" : "") + value.toFixed(1) + "%";
+                    return (value > 0 ? "+" : "") + value.toFixed(1) + "%" + (projectedAt(year, context.dataIndex) ? " (추정)" : "");
                 }
             } : {
                 display: false
@@ -1590,6 +1644,11 @@ function createSeasonalChart(itemName) {
                     },
                     tooltip: {
                         callbacks: {
+                            afterBody(contexts) {
+                                const i = contexts[0]?.dataIndex;
+                                const row = quarterRows.find(r => r.estimated && r.quarter === i + 1);
+                                return row ? row.year + " 분기 합계 (추정 포함): " + formatMoney(row["수출금액_USD"]) : "";
+                            },
                             label(context) {
                                 if (context.parsed.y === null) return "";
                                 return context.dataset.label + ": $" +
@@ -1600,6 +1659,7 @@ function createSeasonalChart(itemName) {
                 },
                 scales: {
                     y: {
+                        stacked: quarterly,
                         beginAtZero: true,
                         title: {
                             display: true,
@@ -1612,6 +1672,7 @@ function createSeasonalChart(itemName) {
                         }
                     },
                     x: {
+                        stacked: quarterly,
                         grid: {
                             display: false
                         }
@@ -1646,7 +1707,8 @@ function createSeasonalChart(itemName) {
                                 if (context.parsed.y === null) return "";
                                 const value = context.parsed.y;
                                 return context.dataset.label + ": " +
-                                    (value > 0 ? "+" : "") + value.toFixed(1) + "%";
+                                    (value > 0 ? "+" : "") + value.toFixed(1) + "%" +
+                                    (projectedAt(yoyYears[context.datasetIndex], context.dataIndex) ? " (추정)" : "");
                             }
                         }
                     }
