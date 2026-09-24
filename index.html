@@ -313,6 +313,20 @@ button:focus-visible {outline:3px solid #2563eb;outline-offset:3px;}
 </div>
 
 <div class="chart-box">
+    <h2 class="chart-title" id="movingAverageTitle">월별 추이 · 3개월 이동평균</h2>
+    <div class="control-row">
+        <label for="movingAverageMetric">이동평균 지표</label>
+        <select id="movingAverageMetric" onchange="if (selectedItem) createMovingAverageChart(selectedItem)">
+            <option value="amount">수출액</option>
+            <option value="price">수출단가</option>
+        </select>
+    </div>
+    <p class="selection-hint">연한 선은 월별 실적, 진한 선은 해당 월과 직전 2개월의 이동평균입니다. 수출액은 3개월 합계 ÷ 3, 단가는 3개월 총수출액 ÷ 총중량으로 계산합니다. 확정 월간 자료만 사용하며 연속 3개월이 없으면 표시하지 않습니다. 위 조회 기준과 관계없이 월별 흐름을 보여줍니다.</p>
+    <p id="movingAverageLatest" class="chart-subtitle" aria-live="polite"></p>
+    <div class="main-chart"><canvas id="movingAverageChart"></canvas></div>
+</div>
+
+<div class="chart-box">
     <h2 class="chart-title" id="changeChartTitle">수출액 증감률</h2>
     <div class="change-chart">
         <canvas id="changeChart"></canvas>
@@ -424,6 +438,7 @@ let countryData = [];
 let selectedItem = null;
 
 let mainChart = null;
+let movingAverageChart = null;
 let changeChart = null;
 let seasonalChart = null;
 let seasonalYoyChart = null;
@@ -806,6 +821,7 @@ function selectItem(itemName) {
         });
 
     updatePeriodCharts();
+    createMovingAverageChart(itemName);
 
     const hasCountries = countryData.some(r => r["품목명"] === itemName);
     document.getElementById("countryDetails").hidden = !hasCountries;
@@ -873,6 +889,70 @@ function createLatestTable(data) {
         `;
 
         tbody.appendChild(tr);
+    });
+}
+
+function buildMovingAverageRows(rows) {
+    const byMonth = new Map();
+    for (const row of rows) {
+        if (!/^\d{4}\.(0[1-9]|1[0-2])$/.test(row["월"])) continue;
+        const index = Number(row["월"].slice(0, 4)) * 12 + Number(row["월"].slice(5)) - 1;
+        if (!byMonth.has(index)) byMonth.set(index, []);
+        byMonth.get(index).push(row);
+    }
+    const keys = [...byMonth.keys()].sort((a, b) => a - b);
+    if (!keys.length) return [];
+    const valueAt = (index, field) => {
+        const matches = byMonth.get(index) || [];
+        return matches.length === 1 ? nonnegativeNumber(matches[0][field]) : null;
+    };
+    const result = [];
+    for (let index = keys[0]; index <= keys.at(-1); index++) {
+        const amounts = [2, 1, 0].map(offset => valueAt(index - offset, "수출금액_USD"));
+        const weights = [2, 1, 0].map(offset => valueAt(index - offset, "수출중량_KG"));
+        const amountReady = amounts.every(value => value !== null);
+        const weightReady = weights.every(value => value !== null);
+        const totalAmount = amountReady ? amounts.reduce((a, b) => a + b, 0) : null;
+        const totalWeight = weightReady ? weights.reduce((a, b) => a + b, 0) : null;
+        const amount = amounts[2], weight = weights[2];
+        result.push({month: Math.floor(index / 12) + "." + String(index % 12 + 1).padStart(2, "0"),
+            amount, price: amount !== null && weight > 0 ? amount / weight : null,
+            averageAmount: amountReady ? totalAmount / 3 : null,
+            averagePrice: amountReady && weightReady && totalWeight > 0 ? totalAmount / totalWeight : null});
+    }
+    return result;
+}
+
+function createMovingAverageChart(itemName) {
+    const rows = buildMovingAverageRows(allData.filter(row => row["품목명"] === itemName));
+    const price = document.getElementById("movingAverageMetric").value === "price";
+    const metric = price ? "수출단가" : "수출액";
+    const rawField = price ? "price" : "amount", averageField = price ? "averagePrice" : "averageAmount";
+    const scale = price ? 1 : 1000000;
+    const values = field => rows.map(row => row[field] === null ? null : row[field] / scale);
+    const format = value => value === null ? "자료 부족" : price
+        ? "$" + value.toLocaleString("ko-KR", {maximumFractionDigits: 4}) + "/kg" : formatMoney(value);
+    const latest = rows.at(-1);
+    document.getElementById("movingAverageTitle").textContent = itemName + " · " + metric + " 3개월 이동평균";
+    document.getElementById("movingAverageLatest").textContent = latest
+        ? latest.month + " 기준 · 월별 실적 " + format(latest[rawField]) + " · 3개월 이동평균 " + format(latest[averageField]) : "자료가 없습니다.";
+    if (movingAverageChart) movingAverageChart.destroy();
+    movingAverageChart = new Chart(document.getElementById("movingAverageChart"), {
+        type: "line",
+        data: {labels: rows.map(row => row.month), datasets: [
+            {label: "월별 " + metric, data: values(rawField), borderColor: "#94a3b866", backgroundColor: "#94a3b866",
+                borderWidth: 1.5, pointRadius: 0, pointHoverRadius: 4, tension: 0, spanGaps: false, order: 2},
+            {label: "3개월 이동평균" + (price ? " (중량 가중)" : ""), data: values(averageField),
+                borderColor: "#2563eb", backgroundColor: "#2563eb", borderWidth: 3,
+                pointRadius: 1.5, pointHoverRadius: 5, tension: 0, spanGaps: false, order: 1}
+        ]},
+        options: {responsive: true, maintainAspectRatio: false,
+            interaction: {mode: "index", intersect: false},
+            plugins: {legend: {position: "top"}, datalabels: {display: false},
+                tooltip: {callbacks: {label: context => context.dataset.label + ": " + format(context.parsed.y === null ? null : context.parsed.y * scale)}}},
+            scales: {y: {beginAtZero: true, title: {display: true, text: price ? "수출단가 (USD/kg)" : "월평균 수출액 (백만 USD)"}},
+                x: {grid: {display: false}, ticks: {autoSkip: true, maxTicksLimit: 24, maxRotation: 45, minRotation: 45}}}
+        }
     });
 }
 
