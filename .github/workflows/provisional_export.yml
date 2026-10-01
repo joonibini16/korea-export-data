@@ -3,7 +3,7 @@ name: Provisional Export Dashboard
 on:
   workflow_dispatch:
   schedule:
-    - cron: '30 1 * * *'
+    - cron: '30 1,4,7 * * *' # KST 10:30, 13:30, 16:30
   push:
     branches:
       - main
@@ -13,6 +13,8 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 concurrency:
   group: provisional-export-dashboard
@@ -22,6 +24,9 @@ jobs:
   collect:
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -43,3 +48,17 @@ jobs:
             git pull --rebase origin main
             git push origin main
           fi
+      # GITHUB_TOKEN commits do not start a Pages build; deploy explicitly.
+      - name: Prepare dashboard files
+        run: |
+          mkdir -p _site
+          cp index.html provisional.html hs_codes.csv summary_all.csv country_all.csv provisional_official.csv provisional_hs.csv _site/
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Upload dashboard
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+      - name: Deploy dashboard
+        id: deployment
+        uses: actions/deploy-pages@v4
