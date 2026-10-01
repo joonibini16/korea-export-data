@@ -19,7 +19,7 @@ HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; KoreaExportDashboard/1.0)"}
 
 
 def number(value):
-    return float(value.replace(",", "").replace("△", "-").replace("−", "-").strip())
+    return float(re.sub(r"\s+", "", value.replace(",", "").replace("△", "-").replace("−", "-")))
 
 
 def int_number(value):
