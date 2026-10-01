@@ -56,8 +56,12 @@ def find_release_links():
             title = " ".join(a.get_text(" ", strip=True).split())
             if "수출입 현황" not in title or "잠정치" not in title:
                 continue
+            print("release link:", str(a), flush=True)
             href = urljoin(BASE, a["href"])
             found[href] = title
+    print(f"release links discovered: {len(found)}", flush=True)
+    if not found:
+        raise RuntimeError("No release links found; listing parser or source unavailable")
     return found
 
 
@@ -169,6 +173,8 @@ def main():
         except Exception as exc:
             print(f"skip {title}: {exc}")
             continue
+        if not row:
+            raise RuntimeError(f"Release parsing failed: {title} ({url})")
         if row:
             by_key[key] = row
             changed = True
