@@ -61,8 +61,9 @@ function parseCSV(text){
 }
 async function csv(name){const r=await fetch(name+"?t="+Date.now(),{cache:"no-store"});if(!r.ok)throw new Error(name);return parseCSV(await r.text())}
 const money=v=>"$"+(Number(v||0)/1000).toFixed(1)+"B";
-const pct=v=>{const n=Number(v);return Number.isFinite(n)?(n>0?"+":"")+n.toFixed(1)+"%":"-"};
-const pclass=v=>Number(v)>=0?"pos":"neg";
+const numeric=v=>v==null||String(v).trim()===""?null:(Number.isFinite(Number(v))?Number(v):null);
+const pct=v=>{const n=numeric(v);return n!==null?(n>0?"+":"")+n.toFixed(1)+"%":"-"};
+const pclass=v=>numeric(v)===null?"":Number(v)>=0?"pos":"neg";
 const periodLabel=r=>r["기간구분"]==="D10"?"1~10일":r["기간구분"]==="D20"?"1~20일":"월 전체";
 function rows(){return official.filter(r=>filterPeriod==="ALL"||r["기간구분"]===filterPeriod).sort((a,b)=>(a["기준월"]+a["종료일"]).localeCompare(b["기준월"]+b["종료일"]))}
 function latestRow(){return rows().slice(-1)[0]}
@@ -74,11 +75,11 @@ function render(){
  document.getElementById("yoyValue").textContent=pct(latest["수출YoY_pct"]); document.getElementById("yoyValue").className="value "+pclass(latest["수출YoY_pct"]);
  document.getElementById("priorValue").textContent="전년동기 "+money(latest["전년동기수출_USD_mn"]);
  document.getElementById("dailyYoy").textContent=pct(latest["일평균YoY_pct"]); document.getElementById("dailyYoy").className="value "+pclass(latest["일평균YoY_pct"]);
- document.getElementById("workdays").textContent="조업일수 "+latest["조업일수"]+"일 (전년 "+latest["전년조업일수"]+"일)";
+ document.getElementById("workdays").textContent=latest["조업일수"] && latest["전년조업일수"] ? "조업일수 "+latest["조업일수"]+"일 (전년 "+latest["전년조업일수"]+"일)" : "조업일수·일평균 자료 미확보";
  document.getElementById("semiValue").textContent=latest["반도체수출_USD_mn"]?money(latest["반도체수출_USD_mn"]):"-";
  const labels=data.map(r=>r["기준월"]+" "+periodLabel(r));
  if(exportChart)exportChart.destroy(); exportChart=new Chart(document.getElementById("exportChart"),{type:"bar",data:{labels,datasets:[{label:"전년동기",data:data.map(r=>Number(r["전년동기수출_USD_mn"])/1000)},{label:"당해 잠정",data:data.map(r=>Number(r["수출_USD_mn"])/1000)}]},options:{responsive:true,maintainAspectRatio:false,plugins:{tooltip:{callbacks:{label:c=>c.dataset.label+": $"+c.parsed.y.toFixed(1)+"B"}}},scales:{y:{beginAtZero:true,title:{display:true,text:"십억 USD"}}}}});
- if(yoyChart)yoyChart.destroy(); yoyChart=new Chart(document.getElementById("yoyChart"),{type:"line",data:{labels,datasets:[{label:"수출 YoY",data:data.map(r=>Number(r["수출YoY_pct"])),borderWidth:3,pointRadius:4},{label:"일평균 YoY",data:data.map(r=>Number(r["일평균YoY_pct"])),borderWidth:2,pointRadius:3}]},options:{responsive:true,maintainAspectRatio:false,scales:{y:{title:{display:true,text:"증감률 (%)"},ticks:{callback:v=>v+"%"}}}}});
+ if(yoyChart)yoyChart.destroy(); yoyChart=new Chart(document.getElementById("yoyChart"),{type:"line",data:{labels,datasets:[{label:"수출 YoY",data:data.map(r=>Number(r["수출YoY_pct"])),borderWidth:3,pointRadius:4},{label:"일평균 YoY",data:data.map(r=>numeric(r["일평균YoY_pct"])),borderWidth:2,pointRadius:3}]},options:{responsive:true,maintainAspectRatio:false,scales:{y:{title:{display:true,text:"증감률 (%)"},ticks:{callback:v=>v+"%"}}}}});
  document.getElementById("history").innerHTML=[...data].reverse().map(r=>`<tr><td>${r["기준월"]}</td><td>${periodLabel(r)}</td><td class="num">${money(r["수출_USD_mn"])}</td><td class="num ${pclass(r["수출YoY_pct"])}">${pct(r["수출YoY_pct"])}</td><td class="num ${pclass(r["일평균YoY_pct"])}">${pct(r["일평균YoY_pct"])}</td><td class="num">${r["반도체수출_USD_mn"]?money(r["반도체수출_USD_mn"]):"-"}</td><td class="num">${money(r["무역수지_USD_mn"])}</td><td>${r["발표일"]}</td></tr>`).join("");
 }
 document.querySelectorAll(".period").forEach(b=>b.onclick=()=>{document.querySelectorAll(".period").forEach(x=>x.classList.toggle("active",x===b));filterPeriod=b.dataset.period;render()});
