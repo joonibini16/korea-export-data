@@ -1,7 +1,7 @@
 import csv
 import re
 from pathlib import Path
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlencode, urlparse
 
 import requests
 from bs4 import BeautifulSoup
@@ -56,12 +56,20 @@ def find_release_links():
             title = " ".join(a.get_text(" ", strip=True).split())
             if "수출입 현황" not in title or "잠정치" not in title:
                 continue
-            print("release link:", str(a), flush=True)
-            href = urljoin(BASE, a["href"])
+            post_id = a.get("data-id", "")
+            if post_id.isdigit():
+                query = {"bbsId": "1362", "mi": "2891", "nttSn": post_id}
+                if a.get("data-url"):
+                    query["nttSnUrl"] = a["data-url"]
+                href = urljoin(BASE, "/kcs/na/ntt/selectNttInfo.do") + "?" + urlencode(query)
+            else:
+                href = urljoin(BASE, a["href"])
+            if urlparse(href).scheme not in ("https", "http") or "selectNttInfo.do" not in href:
+                raise RuntimeError(f"Unrecognized release link: {title}")
             found[href] = title
     print(f"release links discovered: {len(found)}", flush=True)
     if not found:
-        raise RuntimeError("No release links found; listing parser or source unavailable")
+        raise RuntimeError("No release links found; source or listing parser needs checking")
     return found
 
 
@@ -103,7 +111,7 @@ def parse_detail(url, title):
     r = requests.get(url, headers=HEADERS, timeout=30)
     r.raise_for_status()
     soup = BeautifulSoup(r.text, "html.parser")
-    text = " ".join(soup.get_text(" ", strip=True).split())
+    text = " ".join(soup.get_text(" ", strip=True).split()).replace("△", "-").replace("−", "-")
 
     release = re.search(r"등록일\s*(\d{4}\.\d{2}\.\d{2})", text)
     if not release:
@@ -153,6 +161,12 @@ def parse_detail(url, title):
         "반도체수출_USD_mn": str(int(round(number(semi.group(1)) * 100))) if semi else "",
         "출처URL": url,
     }
+    if min(exports[0], exports[3], imports[0], imports[3]) < 0:
+        raise ValueError("Negative export/import amount")
+    if abs(exports[3] - imports[3] - balances[3]) > 1:
+        raise ValueError("Trade balance mismatch")
+    if exports[0] and abs((exports[3] / exports[0] - 1) * 100 - export_rates[3]) > 0.2:
+        raise ValueError("Export YoY mismatch")
     return row
 
 
@@ -160,6 +174,7 @@ def main():
     rows = read_existing()
     by_key = {(r["기준월"], r["기간구분"]): r for r in rows}
     changed = False
+    failures = []
 
     for url, title in find_release_links().items():
         meta = parse_title(title)
@@ -171,15 +186,18 @@ def main():
         try:
             row = parse_detail(url, title)
         except Exception as exc:
-            print(f"skip {title}: {exc}")
+            failures.append(f"{title}: {exc}")
             continue
         if not row:
-            raise RuntimeError(f"Release parsing failed: {title} ({url})")
+            failures.append(f"Release parsing failed: {title} ({url})")
+            continue
         if row:
             by_key[key] = row
             changed = True
             print("added", row["기준월"], row["기간구분"], row["발표일"])
 
+    if failures:
+        raise RuntimeError("; ".join(failures))
     if changed:
         write_rows(list(by_key.values()))
     else:
