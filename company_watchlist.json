@@ -1,3 +1,89 @@
 {
-  "companies": [{"id":"222800","name":"심텍","category":"전자부품","hs_codes":["853400"],"sido_code":"43","region_keyword":"청주시","region_basis":"제조장소 우편번호 기준 시군구","mapping_status":"후보 지표 · 업체 전용 수출 아님","rationale":"청주 본사·공장과 PCB 제품군을 근거로 선정. 청주세관 통계와는 집계 기준이 다르며 해외 생산·내수·다른 업체 수출이 포함되거나 누락될 수 있음.","sources":["https://www.simmtech.com/about/map.aspx","https://www.simmtech.com/about/ir_manage04.aspx","https://www.data.go.kr/data/15134343/openapi.do"]}]
+  "companies": [
+    {
+      "id": "222800",
+      "name": "심텍",
+      "category": "전자부품",
+      "hs_codes": [
+        "853400"
+      ],
+      "sido_code": "43",
+      "region_keyword": "청주시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "후보 지표 · 업체 전용 수출 아님",
+      "rationale": "청주 본사·공장과 PCB 제품군을 근거로 선정. 청주세관 통계와는 집계 기준이 다르며 해외 생산·내수·다른 업체 수출이 포함되거나 누락될 수 있음.",
+      "sources": [
+        "https://www.simmtech.com/about/map.aspx",
+        "https://www.simmtech.com/about/ir_manage04.aspx",
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ]
+    },
+    {
+      "id": "353200",
+      "name": "대덕전자",
+      "category": "전자부품",
+      "hs_codes": [
+        "853400"
+      ],
+      "sido_code": "41",
+      "region_keyword": "안산시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "후보 지표 · 업체 전용 수출 아님",
+      "rationale": "시흥 사업장도 있어 안산 단독으로 연결 매출을 대표하지 않음.",
+      "sources": [
+        "https://www.daeduck.com/ko/content/summary.do",
+        "https://recruit.daeduck.com/RECRUIT/hr/rec/recruit/jobopen/controller/candidate/JobOpen320WebController/view.hr?jobopen_id=DE202504030001"
+      ]
+    },
+    {
+      "id": "007660",
+      "name": "이수페타시스",
+      "category": "전자부품",
+      "hs_codes": [
+        "853400"
+      ],
+      "sido_code": "27",
+      "region_keyword": "달성군",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "후보 지표 · 업체 전용 수출 아님",
+      "rationale": "초고다층 PCB 생산. 해외법인 매출과 지역의 다른 PCB업체 수출이 달라질 수 있음.",
+      "sources": [
+        "https://www.petasys.com/kor/company/domesticbusiness.jsp",
+        "https://www.petasys.com/kor/product/network.jsp"
+      ]
+    },
+    {
+      "id": "192820",
+      "name": "코스맥스",
+      "category": "화장품",
+      "hs_codes": [
+        "330499"
+      ],
+      "sido_code": "41",
+      "region_keyword": "화성시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "후보 지표 · 업체 전용 수출 아님",
+      "rationale": "화성 화장품공장 근거. ODM 고객의 수출·내수·해외법인 매출이 혼재하며 화성 행정구역 변경에 유의.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/03/18/000830/20260318004136/11011.htm"
+      ]
+    },
+    {
+      "id": "161890",
+      "name": "한국콜마",
+      "category": "화장품",
+      "hs_codes": [
+        "330499"
+      ],
+      "sido_code": "36",
+      "region_keyword": "세종",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "후보 지표 · 업체 전용 수출 아님",
+      "rationale": "세종 기초화장품공장 근거. 부천 색조공장·해외법인·타 사업 매출을 대표하지 않음.",
+      "sources": [
+        "https://www.kolmar.co.kr/about/location.php",
+        "https://www.kolmar.co.kr/businessinfo/korea.php"
+      ]
+    }
+  ]
 }
