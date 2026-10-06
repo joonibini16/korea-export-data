@@ -116,11 +116,13 @@ def main():
     if len(merged) != len(old): raise DataError('duplicate existing CSV keys')
     for row in old: number(row['export_amount_raw'])
     failures, received, requested = [], 0, 0
-    key = os.environ.get('CUSTOMS_API_KEY','')
+    key = os.environ.get('REGIONAL_CUSTOMS_API_KEY') or os.environ.get('CUSTOMS_API_KEY','')
     if not key:
         failures.append({'error':'CUSTOMS_API_KEY missing'})
     else:
         for sido, hs in targets:
+            if any(f.get('error','').startswith('API_ERROR_') for f in failures):
+                break
             # Retry missing years; refresh current and prior year for corrections.
             for year in range(2020,int(end[:4])+1):
                 months = [f'{year}.{m:02}' for m in range(1,(int(end[4:]) if year==int(end[:4]) else 12)+1)]
