@@ -24,6 +24,7 @@ jobs:
         id: collect
         continue-on-error: true
         env:
+          REGIONAL_CUSTOMS_API_KEY: ${{ secrets.REGIONAL_CUSTOMS_API_KEY }}
           CUSTOMS_API_KEY: ${{ secrets.CUSTOMS_API_KEY }}
         run: python collect_regional_exports.py
       - name: Preserve validated data and collection status
