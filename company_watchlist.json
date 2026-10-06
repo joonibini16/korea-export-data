@@ -1,0 +1,3 @@
+{
+  "companies": [{"id":"222800","name":"심텍","category":"전자부품","hs_codes":["853400"],"sido_code":"43","region_keyword":"청주시","region_basis":"제조장소 우편번호 기준 시군구","mapping_status":"후보 지표 · 업체 전용 수출 아님","rationale":"청주 본사·공장과 PCB 제품군을 근거로 선정. 청주세관 통계와는 집계 기준이 다르며 해외 생산·내수·다른 업체 수출이 포함되거나 누락될 수 있음.","sources":["https://www.simmtech.com/about/map.aspx","https://www.simmtech.com/about/ir_manage04.aspx","https://www.data.go.kr/data/15134343/openapi.do"]}]
+}
