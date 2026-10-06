@@ -11,6 +11,7 @@ import re
 import time
 import urllib.parse
 import urllib.request
+import urllib.error
 import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta, timezone
 from decimal import Decimal, InvalidOperation
@@ -74,6 +75,13 @@ def request(hs, sido, start, end, key, stamp):
             with urllib.request.urlopen(URL+'?'+query,timeout=45) as response:
                 data = response.read()
             return parse_xml(data,hs,sido,start,end,stamp)
+        except urllib.error.HTTPError as exc:
+            body = exc.read().decode('utf-8',errors='replace')
+            known = ['SERVICE_ACCESS_DENIED_ERROR','SERVICE_KEY_IS_NOT_REGISTERED_ERROR','PERMISSION_DENIED','SERVICE_KEY_IS_NULL','LIMITED_NUMBER_OF_SERVICE_REQUESTS_EXCEEDS_ERROR']
+            reason = next((name for name in known if name in body), 'HTTP_' + str(exc.code))
+            if exc.code in (400,401,403,404):
+                raise DataError('API_ERROR_' + reason) from None
+            failure = reason
         except DataError as exc:
             if str(exc).startswith('API_ERROR_'):
                 raise
