@@ -1,7 +1,7 @@
 {
-  "updated_at": "2026-10-06T14:32:03+09:00",
+  "updated_at": "2026-10-06T14:35:39+09:00",
   "source": "https://www.data.go.kr/data/15134343/openapi.do",
-  "requested_ranges": 7,
+  "requested_ranges": 1,
   "received_rows": 0,
   "stored_rows": 0,
   "failures": [
@@ -10,49 +10,7 @@
       "hs": "853400",
       "start": "202001",
       "end": "202012",
-      "error": "HTTPError"
-    },
-    {
-      "sido": "43",
-      "hs": "853400",
-      "start": "202101",
-      "end": "202112",
-      "error": "HTTPError"
-    },
-    {
-      "sido": "43",
-      "hs": "853400",
-      "start": "202201",
-      "end": "202212",
-      "error": "HTTPError"
-    },
-    {
-      "sido": "43",
-      "hs": "853400",
-      "start": "202301",
-      "end": "202312",
-      "error": "HTTPError"
-    },
-    {
-      "sido": "43",
-      "hs": "853400",
-      "start": "202401",
-      "end": "202412",
-      "error": "HTTPError"
-    },
-    {
-      "sido": "43",
-      "hs": "853400",
-      "start": "202501",
-      "end": "202512",
-      "error": "HTTPError"
-    },
-    {
-      "sido": "43",
-      "hs": "853400",
-      "start": "202601",
-      "end": "202608",
-      "error": "HTTPError"
+      "error": "API_ERROR_SERVICE_KEY_IS_NOT_REGISTERED_ERROR"
     }
   ],
   "coverage": [
