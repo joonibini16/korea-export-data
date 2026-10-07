@@ -1,240 +1,870 @@
 {
-  "updated_at": "2026-10-07T13:25:48+09:00",
+  "updated_at": "2026-10-07T13:32:01+09:00",
   "source": "https://www.data.go.kr/data/15134343/openapi.do",
-  "requested_ranges": 261,
-  "received_rows": 24422,
+  "requested_ranges": 123,
+  "received_rows": 0,
   "stored_rows": 28791,
   "failures": [
     {
+      "sido": "26",
+      "hs": "190230",
+      "start": "202501",
+      "end": "202512",
+      "error": "URLError"
+    },
+    {
+      "sido": "26",
+      "hs": "190230",
+      "start": "202601",
+      "end": "202608",
+      "error": "URLError"
+    },
+    {
+      "sido": "26",
+      "hs": "850423",
+      "start": "202001",
+      "end": "202012",
+      "error": "URLError"
+    },
+    {
+      "sido": "26",
+      "hs": "850423",
+      "start": "202101",
+      "end": "202112",
+      "error": "URLError"
+    },
+    {
+      "sido": "26",
+      "hs": "850423",
+      "start": "202201",
+      "end": "202212",
+      "error": "URLError"
+    },
+    {
+      "sido": "26",
+      "hs": "850423",
+      "start": "202301",
+      "end": "202312",
+      "error": "URLError"
+    },
+    {
+      "sido": "26",
+      "hs": "850423",
+      "start": "202401",
+      "end": "202412",
+      "error": "URLError"
+    },
+    {
+      "sido": "26",
+      "hs": "850423",
+      "start": "202501",
+      "end": "202512",
+      "error": "URLError"
+    },
+    {
+      "sido": "26",
+      "hs": "850423",
+      "start": "202601",
+      "end": "202608",
+      "error": "URLError"
+    },
+    {
+      "sido": "26",
+      "hs": "853224",
+      "start": "202501",
+      "end": "202512",
+      "error": "URLError"
+    },
+    {
+      "sido": "26",
+      "hs": "853224",
+      "start": "202601",
+      "end": "202608",
+      "error": "URLError"
+    },
+    {
+      "sido": "26",
+      "hs": "853400",
+      "start": "202501",
+      "end": "202512",
+      "error": "URLError"
+    },
+    {
+      "sido": "26",
+      "hs": "853400",
+      "start": "202601",
+      "end": "202608",
+      "error": "URLError"
+    },
+    {
+      "sido": "26",
+      "hs": "853690",
+      "start": "202501",
+      "end": "202512",
+      "error": "URLError"
+    },
+    {
+      "sido": "26",
+      "hs": "853690",
+      "start": "202601",
+      "end": "202608",
+      "error": "URLError"
+    },
+    {
+      "sido": "27",
+      "hs": "284190",
+      "start": "202001",
+      "end": "202012",
+      "error": "URLError"
+    },
+    {
+      "sido": "27",
+      "hs": "284190",
+      "start": "202501",
+      "end": "202512",
+      "error": "URLError"
+    },
+    {
+      "sido": "27",
+      "hs": "284190",
+      "start": "202601",
+      "end": "202608",
+      "error": "URLError"
+    },
+    {
+      "sido": "27",
+      "hs": "853400",
+      "start": "202501",
+      "end": "202512",
+      "error": "URLError"
+    },
+    {
+      "sido": "27",
+      "hs": "853400",
+      "start": "202601",
+      "end": "202608",
+      "error": "URLError"
+    },
+    {
+      "sido": "28",
+      "hs": "853400",
+      "start": "202501",
+      "end": "202512",
+      "error": "URLError"
+    },
+    {
+      "sido": "28",
+      "hs": "853400",
+      "start": "202601",
+      "end": "202608",
+      "error": "URLError"
+    },
+    {
+      "sido": "31",
+      "hs": "850423",
+      "start": "202001",
+      "end": "202012",
+      "error": "URLError"
+    },
+    {
       "sido": "31",
       "hs": "850423",
       "start": "202101",
       "end": "202112",
-      "error": "empty response; not zero"
+      "error": "URLError"
+    },
+    {
+      "sido": "31",
+      "hs": "850423",
+      "start": "202201",
+      "end": "202212",
+      "error": "URLError"
     },
     {
       "sido": "31",
       "hs": "850423",
       "start": "202301",
       "end": "202312",
-      "error": "empty response; not zero"
+      "error": "URLError"
+    },
+    {
+      "sido": "31",
+      "hs": "850423",
+      "start": "202401",
+      "end": "202412",
+      "error": "URLError"
+    },
+    {
+      "sido": "31",
+      "hs": "850423",
+      "start": "202501",
+      "end": "202512",
+      "error": "URLError"
     },
     {
       "sido": "31",
       "hs": "850423",
       "start": "202601",
       "end": "202608",
-      "error": "empty response; not zero"
+      "error": "URLError"
     },
     {
-      "sido": "42",
+      "sido": "31",
+      "hs": "850760",
+      "start": "202501",
+      "end": "202512",
+      "error": "URLError"
+    },
+    {
+      "sido": "31",
+      "hs": "850760",
+      "start": "202601",
+      "end": "202608",
+      "error": "URLError"
+    },
+    {
+      "sido": "36",
+      "hs": "330499",
+      "start": "202501",
+      "end": "202512",
+      "error": "URLError"
+    },
+    {
+      "sido": "36",
+      "hs": "330499",
+      "start": "202601",
+      "end": "202608",
+      "error": "URLError"
+    },
+    {
+      "sido": "36",
+      "hs": "853400",
+      "start": "202501",
+      "end": "202512",
+      "error": "URLError"
+    },
+    {
+      "sido": "36",
+      "hs": "853400",
+      "start": "202601",
+      "end": "202608",
+      "error": "URLError"
+    },
+    {
+      "sido": "41",
+      "hs": "190230",
+      "start": "202501",
+      "end": "202512",
+      "error": "URLError"
+    },
+    {
+      "sido": "41",
+      "hs": "190230",
+      "start": "202601",
+      "end": "202608",
+      "error": "URLError"
+    },
+    {
+      "sido": "41",
+      "hs": "300249",
+      "start": "202501",
+      "end": "202512",
+      "error": "URLError"
+    },
+    {
+      "sido": "41",
+      "hs": "300249",
+      "start": "202601",
+      "end": "202608",
+      "error": "URLError"
+    },
+    {
+      "sido": "41",
+      "hs": "330499",
+      "start": "202501",
+      "end": "202512",
+      "error": "URLError"
+    },
+    {
+      "sido": "41",
+      "hs": "330499",
+      "start": "202601",
+      "end": "202608",
+      "error": "URLError"
+    },
+    {
+      "sido": "41",
+      "hs": "845611",
+      "start": "202501",
+      "end": "202512",
+      "error": "URLError"
+    },
+    {
+      "sido": "41",
+      "hs": "845611",
+      "start": "202601",
+      "end": "202608",
+      "error": "URLError"
+    },
+    {
+      "sido": "41",
+      "hs": "848690",
+      "start": "202501",
+      "end": "202512",
+      "error": "URLError"
+    },
+    {
+      "sido": "41",
+      "hs": "848690",
+      "start": "202601",
+      "end": "202608",
+      "error": "URLError"
+    },
+    {
+      "sido": "41",
+      "hs": "853400",
+      "start": "202501",
+      "end": "202512",
+      "error": "URLError"
+    },
+    {
+      "sido": "41",
+      "hs": "853400",
+      "start": "202601",
+      "end": "202608",
+      "error": "URLError"
+    },
+    {
+      "sido": "41",
+      "hs": "854232",
+      "start": "202501",
+      "end": "202512",
+      "error": "URLError"
+    },
+    {
+      "sido": "41",
+      "hs": "854232",
+      "start": "202601",
+      "end": "202608",
+      "error": "URLError"
+    },
+    {
+      "sido": "43",
+      "hs": "284190",
+      "start": "202501",
+      "end": "202512",
+      "error": "URLError"
+    },
+    {
+      "sido": "43",
+      "hs": "284190",
+      "start": "202601",
+      "end": "202608",
+      "error": "URLError"
+    },
+    {
+      "sido": "43",
+      "hs": "300249",
+      "start": "202501",
+      "end": "202512",
+      "error": "URLError"
+    },
+    {
+      "sido": "43",
+      "hs": "300249",
+      "start": "202601",
+      "end": "202608",
+      "error": "URLError"
+    },
+    {
+      "sido": "43",
+      "hs": "330499",
+      "start": "202501",
+      "end": "202512",
+      "error": "URLError"
+    },
+    {
+      "sido": "43",
+      "hs": "330499",
+      "start": "202601",
+      "end": "202608",
+      "error": "URLError"
+    },
+    {
+      "sido": "43",
+      "hs": "850760",
+      "start": "202501",
+      "end": "202512",
+      "error": "URLError"
+    },
+    {
+      "sido": "43",
+      "hs": "850760",
+      "start": "202601",
+      "end": "202608",
+      "error": "URLError"
+    },
+    {
+      "sido": "43",
+      "hs": "853400",
+      "start": "202501",
+      "end": "202512",
+      "error": "URLError"
+    },
+    {
+      "sido": "43",
+      "hs": "853400",
+      "start": "202601",
+      "end": "202608",
+      "error": "URLError"
+    },
+    {
+      "sido": "43",
+      "hs": "854143",
+      "start": "202501",
+      "end": "202512",
+      "error": "URLError"
+    },
+    {
+      "sido": "43",
+      "hs": "854143",
+      "start": "202601",
+      "end": "202608",
+      "error": "URLError"
+    },
+    {
+      "sido": "43",
+      "hs": "854232",
+      "start": "202501",
+      "end": "202512",
+      "error": "URLError"
+    },
+    {
+      "sido": "43",
+      "hs": "854232",
+      "start": "202601",
+      "end": "202608",
+      "error": "URLError"
+    },
+    {
+      "sido": "44",
+      "hs": "848690",
+      "start": "202501",
+      "end": "202512",
+      "error": "URLError"
+    },
+    {
+      "sido": "44",
+      "hs": "848690",
+      "start": "202601",
+      "end": "202608",
+      "error": "URLError"
+    },
+    {
+      "sido": "44",
+      "hs": "850423",
+      "start": "202001",
+      "end": "202012",
+      "error": "URLError"
+    },
+    {
+      "sido": "44",
+      "hs": "850423",
+      "start": "202101",
+      "end": "202112",
+      "error": "URLError"
+    },
+    {
+      "sido": "44",
+      "hs": "850423",
+      "start": "202201",
+      "end": "202212",
+      "error": "URLError"
+    },
+    {
+      "sido": "44",
+      "hs": "850423",
+      "start": "202301",
+      "end": "202312",
+      "error": "URLError"
+    },
+    {
+      "sido": "44",
+      "hs": "850423",
+      "start": "202401",
+      "end": "202412",
+      "error": "URLError"
+    },
+    {
+      "sido": "44",
+      "hs": "850423",
+      "start": "202501",
+      "end": "202512",
+      "error": "URLError"
+    },
+    {
+      "sido": "44",
+      "hs": "850423",
+      "start": "202601",
+      "end": "202608",
+      "error": "URLError"
+    },
+    {
+      "sido": "44",
+      "hs": "850650",
+      "start": "202501",
+      "end": "202512",
+      "error": "URLError"
+    },
+    {
+      "sido": "44",
+      "hs": "850650",
+      "start": "202601",
+      "end": "202608",
+      "error": "URLError"
+    },
+    {
+      "sido": "44",
+      "hs": "850760",
+      "start": "202501",
+      "end": "202512",
+      "error": "URLError"
+    },
+    {
+      "sido": "44",
+      "hs": "850760",
+      "start": "202601",
+      "end": "202608",
+      "error": "URLError"
+    },
+    {
+      "sido": "44",
+      "hs": "901819",
+      "start": "202501",
+      "end": "202512",
+      "error": "URLError"
+    },
+    {
+      "sido": "44",
+      "hs": "901819",
+      "start": "202601",
+      "end": "202608",
+      "error": "URLError"
+    },
+    {
+      "sido": "46",
+      "hs": "284190",
+      "start": "202001",
+      "end": "202012",
+      "error": "URLError"
+    },
+    {
+      "sido": "46",
+      "hs": "284190",
+      "start": "202101",
+      "end": "202112",
+      "error": "URLError"
+    },
+    {
+      "sido": "46",
+      "hs": "284190",
+      "start": "202201",
+      "end": "202212",
+      "error": "URLError"
+    },
+    {
+      "sido": "46",
+      "hs": "284190",
+      "start": "202301",
+      "end": "202312",
+      "error": "URLError"
+    },
+    {
+      "sido": "46",
+      "hs": "284190",
+      "start": "202401",
+      "end": "202412",
+      "error": "URLError"
+    },
+    {
+      "sido": "46",
+      "hs": "284190",
+      "start": "202501",
+      "end": "202512",
+      "error": "URLError"
+    },
+    {
+      "sido": "46",
+      "hs": "284190",
+      "start": "202601",
+      "end": "202608",
+      "error": "URLError"
+    },
+    {
+      "sido": "47",
+      "hs": "284190",
+      "start": "202501",
+      "end": "202512",
+      "error": "URLError"
+    },
+    {
+      "sido": "47",
+      "hs": "284190",
+      "start": "202601",
+      "end": "202608",
+      "error": "URLError"
+    },
+    {
+      "sido": "47",
+      "hs": "853400",
+      "start": "202501",
+      "end": "202512",
+      "error": "URLError"
+    },
+    {
+      "sido": "47",
+      "hs": "853400",
+      "start": "202601",
+      "end": "202608",
+      "error": "URLError"
+    },
+    {
+      "sido": "48",
+      "hs": "190230",
+      "start": "202501",
+      "end": "202512",
+      "error": "URLError"
+    },
+    {
+      "sido": "48",
+      "hs": "190230",
+      "start": "202601",
+      "end": "202608",
+      "error": "URLError"
+    },
+    {
+      "sido": "48",
+      "hs": "850423",
+      "start": "202501",
+      "end": "202512",
+      "error": "URLError"
+    },
+    {
+      "sido": "48",
+      "hs": "850423",
+      "start": "202601",
+      "end": "202608",
+      "error": "URLError"
+    },
+    {
+      "sido": "48",
+      "hs": "853400",
+      "start": "202501",
+      "end": "202512",
+      "error": "URLError"
+    },
+    {
+      "sido": "48",
+      "hs": "853400",
+      "start": "202601",
+      "end": "202608",
+      "error": "URLError"
+    },
+    {
+      "sido": "48",
+      "hs": "854290",
+      "start": "202501",
+      "end": "202512",
+      "error": "URLError"
+    },
+    {
+      "sido": "48",
+      "hs": "854290",
+      "start": "202601",
+      "end": "202608",
+      "error": "URLError"
+    },
+    {
+      "sido": "51",
       "hs": "190230",
       "start": "202001",
       "end": "202012",
-      "error": "API_ERROR_99"
+      "error": "URLError"
     },
     {
-      "sido": "42",
+      "sido": "51",
       "hs": "190230",
       "start": "202101",
       "end": "202112",
-      "error": "API_ERROR_99"
+      "error": "URLError"
     },
     {
-      "sido": "42",
+      "sido": "51",
       "hs": "190230",
       "start": "202201",
       "end": "202212",
-      "error": "API_ERROR_99"
+      "error": "URLError"
     },
     {
-      "sido": "42",
+      "sido": "51",
       "hs": "190230",
       "start": "202301",
       "end": "202312",
-      "error": "API_ERROR_99"
+      "error": "URLError"
     },
     {
-      "sido": "42",
+      "sido": "51",
       "hs": "190230",
       "start": "202401",
       "end": "202412",
-      "error": "API_ERROR_99"
+      "error": "URLError"
     },
     {
-      "sido": "42",
+      "sido": "51",
       "hs": "190230",
       "start": "202501",
       "end": "202512",
-      "error": "API_ERROR_99"
+      "error": "URLError"
     },
     {
-      "sido": "42",
+      "sido": "51",
       "hs": "190230",
       "start": "202601",
       "end": "202608",
-      "error": "API_ERROR_99"
+      "error": "URLError"
     },
     {
-      "sido": "42",
+      "sido": "51",
       "hs": "300249",
       "start": "202201",
       "end": "202212",
-      "error": "API_ERROR_99"
+      "error": "URLError"
     },
     {
-      "sido": "42",
+      "sido": "51",
       "hs": "300249",
       "start": "202301",
       "end": "202312",
-      "error": "API_ERROR_99"
+      "error": "URLError"
     },
     {
-      "sido": "42",
+      "sido": "51",
       "hs": "300249",
       "start": "202401",
       "end": "202412",
-      "error": "API_ERROR_99"
+      "error": "URLError"
     },
     {
-      "sido": "42",
+      "sido": "51",
       "hs": "300249",
       "start": "202501",
       "end": "202512",
-      "error": "API_ERROR_99"
+      "error": "URLError"
     },
     {
-      "sido": "42",
+      "sido": "51",
       "hs": "300249",
       "start": "202601",
       "end": "202608",
-      "error": "API_ERROR_99"
+      "error": "URLError"
     },
     {
-      "sido": "42",
+      "sido": "51",
       "hs": "854460",
       "start": "202001",
       "end": "202012",
-      "error": "API_ERROR_99"
+      "error": "URLError"
     },
     {
-      "sido": "42",
+      "sido": "51",
       "hs": "854460",
       "start": "202101",
       "end": "202112",
-      "error": "API_ERROR_99"
+      "error": "URLError"
     },
     {
-      "sido": "42",
+      "sido": "51",
       "hs": "854460",
       "start": "202201",
       "end": "202212",
-      "error": "API_ERROR_99"
+      "error": "URLError"
     },
     {
-      "sido": "42",
+      "sido": "51",
       "hs": "854460",
       "start": "202301",
       "end": "202312",
-      "error": "API_ERROR_99"
+      "error": "URLError"
     },
     {
-      "sido": "42",
+      "sido": "51",
       "hs": "854460",
       "start": "202401",
       "end": "202412",
-      "error": "API_ERROR_99"
+      "error": "URLError"
     },
     {
-      "sido": "42",
+      "sido": "51",
       "hs": "854460",
       "start": "202501",
       "end": "202512",
-      "error": "API_ERROR_99"
+      "error": "URLError"
     },
     {
-      "sido": "42",
+      "sido": "51",
       "hs": "854460",
       "start": "202601",
       "end": "202608",
-      "error": "API_ERROR_99"
+      "error": "URLError"
     },
     {
-      "sido": "44",
-      "hs": "850423",
-      "start": "202101",
-      "end": "202112",
-      "error": "empty response; not zero"
-    },
-    {
-      "sido": "44",
-      "hs": "850423",
-      "start": "202201",
-      "end": "202212",
-      "error": "empty response; not zero"
-    },
-    {
-      "sido": "44",
-      "hs": "850423",
-      "start": "202501",
-      "end": "202512",
-      "error": "empty response; not zero"
-    },
-    {
-      "sido": "44",
-      "hs": "850423",
-      "start": "202601",
-      "end": "202608",
-      "error": "empty response; not zero"
-    },
-    {
-      "sido": "45",
+      "sido": "52",
       "hs": "190230",
       "start": "202001",
       "end": "202012",
-      "error": "API_ERROR_99"
+      "error": "URLError"
     },
     {
-      "sido": "45",
+      "sido": "52",
       "hs": "190230",
       "start": "202101",
       "end": "202112",
-      "error": "API_ERROR_99"
+      "error": "URLError"
     },
     {
-      "sido": "45",
+      "sido": "52",
       "hs": "190230",
       "start": "202201",
       "end": "202212",
-      "error": "API_ERROR_99"
+      "error": "URLError"
     },
     {
-      "sido": "45",
+      "sido": "52",
       "hs": "190230",
       "start": "202301",
       "end": "202312",
-      "error": "API_ERROR_99"
+      "error": "URLError"
     },
     {
-      "sido": "45",
+      "sido": "52",
       "hs": "190230",
       "start": "202401",
       "end": "202412",
-      "error": "API_ERROR_99"
+      "error": "URLError"
     },
     {
-      "sido": "45",
+      "sido": "52",
       "hs": "190230",
       "start": "202501",
       "end": "202512",
-      "error": "API_ERROR_99"
+      "error": "URLError"
     },
     {
-      "sido": "45",
+      "sido": "52",
       "hs": "190230",
       "start": "202601",
       "end": "202608",
-      "error": "API_ERROR_99"
+      "error": "URLError"
     }
   ],
   "coverage": [
@@ -1117,7 +1747,7 @@
       "hs": "8544603010",
       "query_hs": "854460",
       "region": "동해시",
-      "sido": "42",
+      "sido": "51",
       "months": 0,
       "expected_months": 80,
       "missing": [
@@ -1210,7 +1840,7 @@
       "hs": "8544602010",
       "query_hs": "854460",
       "region": "동해시",
-      "sido": "42",
+      "sido": "51",
       "months": 0,
       "expected_months": 80,
       "missing": [
@@ -1476,7 +2106,7 @@
       "hs": "300249",
       "query_hs": "300249",
       "region": "춘천시",
-      "sido": "42",
+      "sido": "51",
       "months": 0,
       "expected_months": 56,
       "missing": [
@@ -1545,7 +2175,7 @@
       "hs": "3002491000",
       "query_hs": "300249",
       "region": "춘천시",
-      "sido": "42",
+      "sido": "51",
       "months": 0,
       "expected_months": 56,
       "missing": [
@@ -1665,7 +2295,7 @@
       "hs": "1902301010",
       "query_hs": "190230",
       "region": "원주시",
-      "sido": "42",
+      "sido": "51",
       "months": 0,
       "expected_months": 80,
       "missing": [
@@ -1758,7 +2388,7 @@
       "hs": "1902301010",
       "query_hs": "190230",
       "region": "익산시",
-      "sido": "45",
+      "sido": "52",
       "months": 0,
       "expected_months": 80,
       "missing": [
