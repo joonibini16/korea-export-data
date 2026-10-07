@@ -35,7 +35,8 @@ def number(value):
         raise DataError('negative/non-finite amount')
     return str(n)
 
-def parse_xml(body, hs, sido, start, end, stamp):
+def parse_xml(body, hs, query_sido, start, end, stamp, stored_sido=None):
+    stored_sido = stored_sido or query_sido
     try:
         root = ET.fromstring(body)
     except ET.ParseError:
@@ -59,22 +60,22 @@ def parse_xml(body, hs, sido, start, end, stamp):
             raise DataError('unexpected period schema')
         if not start <= month.replace('.','') <= end or actual_hs != hs or not region:
             raise DataError('response scope mismatch')
-        key = (month, hs, sido, region)
+        key = (month, hs, stored_sido, region)
         if key in seen:
             raise DataError('duplicate response key')
         seen.add(key)
-        result.append(dict(zip(FIELDS, [month,hs,sido,region,number(item.findtext('expUsdAmt')),
+        result.append(dict(zip(FIELDS, [month,hs,stored_sido,region,number(item.findtext('expUsdAmt')),
             'API_EXP_USD_AMT_UNVERIFIED_SCALE',SOURCE,stamp])))
     return result
 
-def request(hs, sido, start, end, key, stamp):
+def request(hs, sido, start, end, key, stamp, stored_sido=None):
     query = urllib.parse.urlencode(dict(serviceKey=urllib.parse.unquote(key),
         strtYymm=start,endYymm=end,HsSgn=hs,sidoCd=sido))
     for attempt in range(3):
         try:
             with urllib.request.urlopen(URL+'?'+query,timeout=45) as response:
                 data = response.read()
-            return parse_xml(data,hs,sido,start,end,stamp)
+            return parse_xml(data,hs,sido,start,end,stamp,stored_sido)
         except urllib.error.HTTPError as exc:
             body = exc.read().decode('utf-8',errors='replace')
             known = ['SERVICE_ACCESS_DENIED_ERROR','SERVICE_KEY_IS_NOT_REGISTERED_ERROR','PERMISSION_DENIED','SERVICE_KEY_IS_NULL','LIMITED_NUMBER_OF_SERVICE_REQUESTS_EXCEEDS_ERROR']
@@ -110,6 +111,25 @@ def query_code(company, hs):
 def first_year(code):
     # HS2022 codes: do not invent narrower historical city data from broad legacy HS6.
     return 2022 if code in ('300249', '854143') else 2020
+
+def period_segments(sido, start, end):
+    """Return API province-code segments across the 2026-07 administration change.
+
+    The CSV keeps the watchlist's current canonical code; only the request code
+    changes. This prevents Gangwon/Jeonbuk and the merged Gwangju-Jeonnam area
+    from losing pre/post-reorganization months.
+    """
+    aliases = {
+        '51': [('42', '202001', '202606'), ('51', '202607', end)],
+        '52': [('45', '202001', '202606'), ('52', '202607', end)],
+        '42': [('42', start, min(end, '202606'))],
+        '45': [('45', start, min(end, '202606'))],
+        '12': [('29', start, min(end, '202606')), ('46', start, min(end, '202606'))],
+        '46': [('46', start, min(end, '202606')), ('12', '202607', end)],
+        '29': [('29', start, min(end, '202606')), ('12', '202607', end)],
+    }
+    return [(q, max(start, a), min(end, b)) for q, a, b in aliases.get(sido, [(sido, start, end)])
+            if max(start, a) <= min(end, b)]
 
 def main():
     now = datetime.now(timezone(timedelta(hours=9)))
@@ -151,18 +171,20 @@ def main():
                     and r['hs_code']==hs and keyword in r['region']} for keyword in keywords)
                 if year < int(end[:4])-1 and complete: continue
                 start, finish = f'{year}01', min(f'{year}12',end)
-                count += 1
-                try:
-                    rows = request(hs,sido,start,finish,key,stamp)
-                    collected.extend(rows)
-                    print(f'{sido}/{hs}/{year}: {len(rows)} rows',flush=True)
-                except DataError as exc:
-                    errors.append(dict(sido=sido,hs=hs,start=start,end=finish,error=str(exc)))
-                    print(f'{sido}/{hs}/{year}: {exc}',flush=True)
-                    if any(token in str(exc) for token in ('SERVICE_KEY', 'ACCESS_DENIED', 'PERMISSION', 'HTTP_401', 'HTTP_403', 'LIMITED_NUMBER')):
-                        stop.set()
-                        break
-                time.sleep(1)
+                for query_sido, seg_start, seg_end in period_segments(sido, start, finish):
+                    count += 1
+                    try:
+                        rows = request(hs,query_sido,seg_start,seg_end,key,stamp,sido)
+                        collected.extend(rows)
+                        print(f'{sido}[{query_sido}]/{hs}/{seg_start}-{seg_end}: {len(rows)} rows',flush=True)
+                    except DataError as exc:
+                        errors.append(dict(sido=sido,query_sido=query_sido,hs=hs,start=seg_start,end=seg_end,error=str(exc)))
+                        print(f'{sido}[{query_sido}]/{hs}/{seg_start}-{seg_end}: {exc}',flush=True)
+                        if any(token in str(exc) for token in ('SERVICE_KEY', 'ACCESS_DENIED', 'PERMISSION', 'HTTP_401', 'HTTP_403', 'LIMITED_NUMBER')):
+                            stop.set()
+                            break
+                    time.sleep(1)
+                if stop.is_set(): break
             return collected, errors, count
         # At most three independent requests; retries and pauses remain bounded.
         with ThreadPoolExecutor(max_workers=3) as pool:
