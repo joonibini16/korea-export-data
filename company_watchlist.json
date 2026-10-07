@@ -730,11 +730,11 @@
       ],
       "sites": [
         {
-          "sido_code": "42",
+          "sido_code": "51",
           "region_keyword": "동해시"
         }
       ],
-      "sido_code": "42",
+      "sido_code": "51",
       "region_keyword": "동해시",
       "region_basis": "제조장소 우편번호 기준 시군구",
       "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
@@ -955,11 +955,11 @@
       ],
       "sites": [
         {
-          "sido_code": "42",
+          "sido_code": "51",
           "region_keyword": "춘천시"
         }
       ],
-      "sido_code": "42",
+      "sido_code": "51",
       "region_keyword": "춘천시",
       "region_basis": "제조장소 우편번호 기준 시군구",
       "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
@@ -1043,11 +1043,11 @@
           "region_keyword": "밀양시"
         },
         {
-          "sido_code": "42",
+          "sido_code": "51",
           "region_keyword": "원주시"
         },
         {
-          "sido_code": "45",
+          "sido_code": "52",
           "region_keyword": "익산시"
         }
       ],
@@ -1162,5 +1162,6 @@
     "9030901000": "인터페이스보드 제조지역·세부 신고코드 확인 필요",
     "7606120000": "관리명은 원본 유지. 알루미늄박 업체를 연결하기 전에 신고 HS와 실제 제품의 일치 확인 필요",
     "7410211000": "관리명은 원본 유지. 전지용 동박과 해당 세부 HS의 일치 확인 필요"
-  }
+  },
+  "region_code_note": "강원 51·전북 52: 특별자치도 현행 코드. API 응답의 실제 지역명·기간을 검증하며 과거 자료를 임의 생성하지 않음."
 }
