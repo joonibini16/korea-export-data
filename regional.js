@@ -56,14 +56,14 @@ function render(){const c=watch.find(c=>c.id===el('company').value),hs=el('hs').
  const monthlyYoy=p=>growth(monthlyMap.get(p),monthlyMap.get(monthLabel(monthId(p)-12)));
  const monthlyMode=el('frequency').value==='month';
  const comparisonPeriods=monthlyMode?selected.map(r=>r.month):periods;
- chart('comparison',comparisonPeriods,[{label:monthlyMode?'수출 YoY · 월별':'수출 YoY · 완전분기',data:comparisonPeriods.map(monthlyMode?monthlyYoy:qy),borderColor:'#2784b8',pointRadius:3},{label:monthlyMode?'공시 매출 YoY · 분기 자료':'매출 YoY',data:comparisonPeriods.map(monthlyMode?()=>null:fy),borderColor:'#27925c',pointRadius:5,borderWidth:3}],'전년 동기 대비 (%)');
+ chart('comparison',comparisonPeriods,[{label:monthlyMode?'수출 YoY · 월별':'수출 YoY · 완전분기',data:comparisonPeriods.map(monthlyMode?monthlyYoy:qy),borderColor:'#2784b8',pointRadius:3},{label:monthlyMode?'공시 매출 YoY · 분기 자료':'매출 YoY',data:comparisonPeriods.map(monthlyMode?()=>null:fy),borderColor:'#27925c',pointRadius:5,borderWidth:3,spanGaps:true}],'전년 동기 대비 (%)');
  if(el('comparisonNote'))el('comparisonNote').textContent=monthlyMode?'월별 선택: 수출 YoY는 동일 월 전년 대비로 표시합니다. 공시 매출은 분기 자료만 있어 월별 그래프에는 표시하지 않습니다.':'분기별 선택: 수출 YoY와 회사 공시 매출 YoY를 동일 분기 기준으로 비교합니다.';
  const amountPeriods=monthlyMode?selected.map(r=>r.month):quarter.map(q=>q.period);
  const exportAmounts=monthlyMode?selected.map(r=>r.value):quarter.map(q=>q.value);
  const revenueAmounts=monthlyMode?amountPeriods.map(p=>{const q=`${p.slice(0,4)}-Q${Math.ceil(Number(p.slice(5))/3)}`;return Number(p.slice(5))%3===0?num(fm.get(q)?.revenue_KRW):null;}):amountPeriods.map(p=>num(fm.get(p)?.revenue_KRW));
- chart('amountComparison',amountPeriods,[{label:'지역 수출액 · API 원단위',data:exportAmounts,borderColor:'#2784b8',pointRadius:2,yAxisID:'yExport'},{label:c.name+' 매출액 · 원화',data:revenueAmounts,borderColor:'#d97835',pointRadius:4,borderWidth:3,yAxisID:'yRevenue'}],'금액');
+ chart('amountComparison',amountPeriods,[{label:'지역 수출액 · API 원단위',data:exportAmounts,borderColor:'#2784b8',pointRadius:2,yAxisID:'yExport'},{label:c.name+' 매출액 · 원화',data:revenueAmounts,borderColor:'#d97835',pointRadius:4,borderWidth:3,spanGaps:true,yAxisID:'yRevenue'}],'금액');
  if(charts.amountComparison){charts.amountComparison.options.scales={x:{ticks:{maxTicksLimit:16},grid:{display:false}},yExport:{type:'linear',position:'left',title:{display:true,text:'지역 수출액 API 원단위'},ticks:{callback:v=>Number(v).toLocaleString()}},yRevenue:{type:'linear',position:'right',title:{display:true,text:'회사 매출액 (원)'},grid:{drawOnChartArea:false},ticks:{callback:v=>Number(v).toLocaleString()}}};charts.amountComparison.update();}
- if(el('amountNote'))el('amountNote').textContent=monthlyMode?'월별 수출액과 분기말 공시 매출액을 좌우 이중축으로 표시합니다. 지역 API 금액 배율은 아직 검증 전입니다.':'분기별 수출액과 회사 공시 매출액을 좌우 이중축으로 표시합니다. 지역 API 금액 배율은 아직 검증 전입니다.';
+ if(el('amountNote'))el('amountNote').textContent=monthlyMode?'월별 수출액과 분기말 공시 매출액을 좌우 이중축으로 표시합니다. 매출선은 확보된 공시 시점끼리 연결하며 누락 구간을 추정하지 않습니다. 지역 API 금액 배율은 아직 검증 전입니다.':'분기별 수출액과 회사 공시 매출액을 좌우 이중축으로 표시합니다. 매출선은 확보된 공시 시점끼리 연결하며 누락 구간을 추정하지 않습니다. 지역 API 금액 배율은 아직 검증 전입니다.';
  const nrows=nationwide.filter(r=>r['HS코드']===hs).sort((a,b)=>a['월'].localeCompare(b['월']));
  chart('price',nrows.map(r=>r['월']),[{label:'전국 USD/KG',data:nrows.map(r=>{const w=num(r['수출중량_KG']),v=num(r['수출금액_USD']);return w>0&&v!=null?v/w:null;}),borderColor:'#b47737',pointRadius:0}],'USD/KG');
  chart('revenue',periods,[{type:'bar',label:'연결 매출 (공시)',data:periods.map(p=>{const v=num(fm.get(p)?.revenue_KRW);return v==null?null:v/1e6;}),backgroundColor:'#70a78c'}],'백만원');
