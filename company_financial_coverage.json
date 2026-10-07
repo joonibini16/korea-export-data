@@ -1,0 +1,734 @@
+{
+  "reviewed_at": "2026-10-08",
+  "start_period": "2024-Q1",
+  "end_period": "2026-Q2",
+  "companies": [
+    {
+      "company_id": "222800",
+      "name": "심텍",
+      "expected_quarters": 10,
+      "complete_quarters": 10,
+      "missing_periods": [],
+      "status": "complete"
+    },
+    {
+      "company_id": "353200",
+      "name": "대덕전자",
+      "expected_quarters": 10,
+      "complete_quarters": 10,
+      "missing_periods": [],
+      "status": "complete"
+    },
+    {
+      "company_id": "007660",
+      "name": "이수페타시스",
+      "expected_quarters": 10,
+      "complete_quarters": 10,
+      "missing_periods": [],
+      "status": "complete"
+    },
+    {
+      "company_id": "192820",
+      "name": "코스맥스",
+      "expected_quarters": 10,
+      "complete_quarters": 0,
+      "missing_periods": [
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3",
+        "2024-Q4",
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "status": "not_collected"
+    },
+    {
+      "company_id": "161890",
+      "name": "한국콜마",
+      "expected_quarters": 10,
+      "complete_quarters": 0,
+      "missing_periods": [
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3",
+        "2024-Q4",
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "status": "not_collected"
+    },
+    {
+      "company_id": "007810",
+      "name": "코리아써키트",
+      "expected_quarters": 10,
+      "complete_quarters": 0,
+      "missing_periods": [
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3",
+        "2024-Q4",
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "status": "not_collected"
+    },
+    {
+      "company_id": "051370",
+      "name": "인터플렉스",
+      "expected_quarters": 10,
+      "complete_quarters": 0,
+      "missing_periods": [
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3",
+        "2024-Q4",
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "status": "not_collected"
+    },
+    {
+      "company_id": "090460",
+      "name": "비에이치",
+      "expected_quarters": 10,
+      "complete_quarters": 0,
+      "missing_periods": [
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3",
+        "2024-Q4",
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "status": "not_collected"
+    },
+    {
+      "company_id": "009150",
+      "name": "삼성전기",
+      "expected_quarters": 10,
+      "complete_quarters": 0,
+      "missing_periods": [
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3",
+        "2024-Q4",
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "status": "not_collected"
+    },
+    {
+      "company_id": "011070",
+      "name": "LG이노텍",
+      "expected_quarters": 10,
+      "complete_quarters": 0,
+      "missing_periods": [
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3",
+        "2024-Q4",
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "status": "not_collected"
+    },
+    {
+      "company_id": "195870",
+      "name": "해성디에스",
+      "expected_quarters": 10,
+      "complete_quarters": 0,
+      "missing_periods": [
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3",
+        "2024-Q4",
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "status": "not_collected"
+    },
+    {
+      "company_id": "241710",
+      "name": "코스메카코리아",
+      "expected_quarters": 10,
+      "complete_quarters": 0,
+      "missing_periods": [
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3",
+        "2024-Q4",
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "status": "not_collected"
+    },
+    {
+      "company_id": "003350",
+      "name": "한국화장품제조",
+      "expected_quarters": 10,
+      "complete_quarters": 0,
+      "missing_periods": [
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3",
+        "2024-Q4",
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "status": "not_collected"
+    },
+    {
+      "company_id": "090430",
+      "name": "아모레퍼시픽",
+      "expected_quarters": 10,
+      "complete_quarters": 0,
+      "missing_periods": [
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3",
+        "2024-Q4",
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "status": "not_collected"
+    },
+    {
+      "company_id": "051900",
+      "name": "LG생활건강",
+      "expected_quarters": 10,
+      "complete_quarters": 0,
+      "missing_periods": [
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3",
+        "2024-Q4",
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "status": "not_collected"
+    },
+    {
+      "company_id": "005930",
+      "name": "삼성전자",
+      "expected_quarters": 10,
+      "complete_quarters": 0,
+      "missing_periods": [
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3",
+        "2024-Q4",
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "status": "not_collected"
+    },
+    {
+      "company_id": "000660",
+      "name": "SK하이닉스",
+      "expected_quarters": 10,
+      "complete_quarters": 0,
+      "missing_periods": [
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3",
+        "2024-Q4",
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "status": "not_collected"
+    },
+    {
+      "company_id": "064760",
+      "name": "티씨케이",
+      "expected_quarters": 10,
+      "complete_quarters": 0,
+      "missing_periods": [
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3",
+        "2024-Q4",
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "status": "not_collected"
+    },
+    {
+      "company_id": "166090",
+      "name": "하나머티리얼즈",
+      "expected_quarters": 10,
+      "complete_quarters": 0,
+      "missing_periods": [
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3",
+        "2024-Q4",
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "status": "not_collected"
+    },
+    {
+      "company_id": "058470",
+      "name": "리노공업",
+      "expected_quarters": 10,
+      "complete_quarters": 0,
+      "missing_periods": [
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3",
+        "2024-Q4",
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "status": "not_collected"
+    },
+    {
+      "company_id": "039030",
+      "name": "이오테크닉스",
+      "expected_quarters": 10,
+      "complete_quarters": 0,
+      "missing_periods": [
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3",
+        "2024-Q4",
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "status": "not_collected"
+    },
+    {
+      "company_id": "267260",
+      "name": "HD현대일렉트릭",
+      "expected_quarters": 10,
+      "complete_quarters": 0,
+      "missing_periods": [
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3",
+        "2024-Q4",
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "status": "not_collected"
+    },
+    {
+      "company_id": "298040",
+      "name": "효성중공업",
+      "expected_quarters": 10,
+      "complete_quarters": 0,
+      "missing_periods": [
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3",
+        "2024-Q4",
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "status": "not_collected"
+    },
+    {
+      "company_id": "010120",
+      "name": "LS ELECTRIC",
+      "expected_quarters": 10,
+      "complete_quarters": 0,
+      "missing_periods": [
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3",
+        "2024-Q4",
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "status": "not_collected"
+    },
+    {
+      "company_id": "103590",
+      "name": "일진전기",
+      "expected_quarters": 10,
+      "complete_quarters": 0,
+      "missing_periods": [
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3",
+        "2024-Q4",
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "status": "not_collected"
+    },
+    {
+      "company_id": "LS-CABLE",
+      "name": "LS전선",
+      "expected_quarters": 10,
+      "complete_quarters": 0,
+      "missing_periods": [
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3",
+        "2024-Q4",
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "status": "not_collected"
+    },
+    {
+      "company_id": "373220",
+      "name": "LG에너지솔루션",
+      "expected_quarters": 10,
+      "complete_quarters": 0,
+      "missing_periods": [
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3",
+        "2024-Q4",
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "status": "not_collected"
+    },
+    {
+      "company_id": "006400",
+      "name": "삼성SDI",
+      "expected_quarters": 10,
+      "complete_quarters": 0,
+      "missing_periods": [
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3",
+        "2024-Q4",
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "status": "not_collected"
+    },
+    {
+      "company_id": "247540",
+      "name": "에코프로비엠",
+      "expected_quarters": 10,
+      "complete_quarters": 0,
+      "missing_periods": [
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3",
+        "2024-Q4",
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "status": "not_collected"
+    },
+    {
+      "company_id": "066970",
+      "name": "엘앤에프",
+      "expected_quarters": 10,
+      "complete_quarters": 0,
+      "missing_periods": [
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3",
+        "2024-Q4",
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "status": "not_collected"
+    },
+    {
+      "company_id": "003670",
+      "name": "포스코퓨처엠",
+      "expected_quarters": 10,
+      "complete_quarters": 0,
+      "missing_periods": [
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3",
+        "2024-Q4",
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "status": "not_collected"
+    },
+    {
+      "company_id": "082920",
+      "name": "비츠로셀",
+      "expected_quarters": 10,
+      "complete_quarters": 0,
+      "missing_periods": [
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3",
+        "2024-Q4",
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "status": "not_collected"
+    },
+    {
+      "company_id": "086900",
+      "name": "메디톡스",
+      "expected_quarters": 10,
+      "complete_quarters": 0,
+      "missing_periods": [
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3",
+        "2024-Q4",
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "status": "not_collected"
+    },
+    {
+      "company_id": "145020",
+      "name": "휴젤",
+      "expected_quarters": 10,
+      "complete_quarters": 0,
+      "missing_periods": [
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3",
+        "2024-Q4",
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "status": "not_collected"
+    },
+    {
+      "company_id": "069620",
+      "name": "대웅제약",
+      "expected_quarters": 10,
+      "complete_quarters": 0,
+      "missing_periods": [
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3",
+        "2024-Q4",
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "status": "not_collected"
+    },
+    {
+      "company_id": "041830",
+      "name": "인바디",
+      "expected_quarters": 10,
+      "complete_quarters": 0,
+      "missing_periods": [
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3",
+        "2024-Q4",
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "status": "not_collected"
+    },
+    {
+      "company_id": "003230",
+      "name": "삼양식품",
+      "expected_quarters": 10,
+      "complete_quarters": 0,
+      "missing_periods": [
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3",
+        "2024-Q4",
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "status": "not_collected"
+    },
+    {
+      "company_id": "004370",
+      "name": "농심",
+      "expected_quarters": 10,
+      "complete_quarters": 0,
+      "missing_periods": [
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3",
+        "2024-Q4",
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "status": "not_collected"
+    },
+    {
+      "company_id": "007310",
+      "name": "오뚜기",
+      "expected_quarters": 10,
+      "complete_quarters": 0,
+      "missing_periods": [
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3",
+        "2024-Q4",
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "status": "not_collected"
+    },
+    {
+      "company_id": "009830",
+      "name": "한화솔루션",
+      "expected_quarters": 10,
+      "complete_quarters": 0,
+      "missing_periods": [
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3",
+        "2024-Q4",
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "status": "not_collected"
+    }
+  ]
+}

@@ -1,0 +1,241 @@
+{
+  "reviewed_at": "2026-10-08",
+  "start_period": "2024-Q1",
+  "end_period": "2026-Q2",
+  "reports": [
+    {
+      "company_id": "222800",
+      "year": 2025,
+      "report": "H1",
+      "unit": "KRW",
+      "basis": "연결",
+      "source": "https://kind.krx.co.kr/external/2025/08/13/001032/20250813002821/11012.htm",
+      "revenue": [
+        340767377716,
+        644364848818,
+        311661006046,
+        605528196811
+      ],
+      "operating_profit": [
+        5543628386,
+        -10779950338,
+        3609894197,
+        -11323716543
+      ]
+    },
+    {
+      "company_id": "222800",
+      "year": 2025,
+      "report": "Q3",
+      "unit": "KRW",
+      "basis": "연결",
+      "source": "https://kind.krx.co.kr/external/2025/11/13/000877/20251113002045/11013.htm",
+      "revenue": [
+        372838724895,
+        1017203573713,
+        324781039660,
+        930309236471
+      ],
+      "operating_profit": [
+        12388778971,
+        1608828633,
+        510177680,
+        -10813538863
+      ]
+    },
+    {
+      "company_id": "222800",
+      "year": 2026,
+      "report": "H1",
+      "unit": "KRW",
+      "basis": "연결",
+      "source": "https://kind.krx.co.kr/external/2026/08/13/001043/20260813002788/11012.htm",
+      "revenue": [
+        514564784270,
+        936936204100,
+        340767377716,
+        644364848818
+      ],
+      "operating_profit": [
+        62889541310,
+        76600558645,
+        5543628386,
+        -10779950338
+      ]
+    },
+    {
+      "company_id": "353200",
+      "year": 2025,
+      "report": "H1",
+      "unit": "KRW",
+      "basis": "연결",
+      "source": "https://kind.krx.co.kr/external/2025/08/13/000822/20250813002283/11012.htm",
+      "revenue": [
+        245857719982,
+        461233491217,
+        238238516857,
+        453004481450
+      ],
+      "operating_profit": [
+        1866095223,
+        -4335406410,
+        10903641724,
+        8017756089
+      ]
+    },
+    {
+      "company_id": "353200",
+      "year": 2025,
+      "report": "Q3",
+      "unit": "KRW",
+      "basis": "연결",
+      "source": "https://kind.krx.co.kr/external/2025/11/13/000702/20251113001702/11013.htm",
+      "revenue": [
+        286173331095,
+        747406822312,
+        232654029818,
+        685658511268
+      ],
+      "operating_profit": [
+        24447836803,
+        20112430393,
+        9218191469,
+        17235947558
+      ]
+    },
+    {
+      "company_id": "007660",
+      "year": 2025,
+      "report": "H1",
+      "unit": "KRW",
+      "basis": "연결",
+      "source": "https://kind.krx.co.kr/external/2025/08/14/002795/20250814008623/11012.htm",
+      "revenue": [
+        241419469661,
+        493909332376,
+        204739981040,
+        404350478216
+      ],
+      "operating_profit": [
+        42070313737,
+        89754435157,
+        27501553319,
+        50490092239
+      ]
+    },
+    {
+      "company_id": "007660",
+      "year": 2025,
+      "report": "Q3",
+      "unit": "KRW",
+      "basis": "연결",
+      "source": "https://kind.krx.co.kr/external/2025/11/14/002282/20251114005181/11013.htm",
+      "revenue": [
+        296132768434,
+        790042100810,
+        206412069883,
+        610762548099
+      ],
+      "operating_profit": [
+        58429667779,
+        148184102936,
+        25914194363,
+        76404286602
+      ]
+    },
+    {
+      "company_id": "353200",
+      "year": 2026,
+      "report": "H1",
+      "unit": "KRW",
+      "basis": "연결",
+      "source": "https://dart.fss.or.kr/report/viewer.do?rcpNo=20260813001620&dcmNo=11525746&eleId=21&offset=246204&length=35648&dtd=dart4.xsd",
+      "revenue": [
+        400975252509,
+        747289416199,
+        245857719982,
+        461233491217
+      ],
+      "operating_profit": [
+        70276407960,
+        121574516810,
+        1866095223,
+        -4335406410
+      ]
+    },
+    {
+      "company_id": "007660",
+      "year": 2026,
+      "report": "H1",
+      "unit": "KRW",
+      "basis": "연결",
+      "source": "https://dart.fss.or.kr/report/viewer.do?rcpNo=20260814002283&dcmNo=11532726&eleId=21&offset=253116&length=38447&dtd=dart4.xsd",
+      "revenue": [
+        379888407878,
+        720170287342,
+        241419469661,
+        493909332376
+      ],
+      "operating_profit": [
+        77063854985,
+        144285211984,
+        42070313737,
+        89754435157
+      ]
+    },
+    {
+      "company_id": "353200",
+      "year": 2025,
+      "report": "FY",
+      "unit": "KRW",
+      "basis": "연결",
+      "source": "https://dart.fss.or.kr/report/viewer.do?rcpNo=20260318001514&dcmNo=11143387&eleId=21&offset=255398&length=28178&dtd=dart4.xsd",
+      "revenue": [
+        1065294559811,
+        892135903752,
+        909651486895
+      ],
+      "operating_profit": [
+        49061483387,
+        11259489061,
+        23732043885
+      ]
+    },
+    {
+      "company_id": "007660",
+      "year": 2025,
+      "report": "FY",
+      "unit": "KRW",
+      "basis": "연결",
+      "source": "https://dart.fss.or.kr/report/viewer.do?rcpNo=20260323000847&dcmNo=11164034&eleId=21&offset=289207&length=30407&dtd=dart4.xsd",
+      "revenue": [
+        1088025119176,
+        836866961285,
+        675332755709
+      ],
+      "operating_profit": [
+        204724531402,
+        101878836049,
+        62169058401
+      ]
+    },
+    {
+      "company_id": "222800",
+      "year": 2025,
+      "report": "FY",
+      "unit": "KRW",
+      "basis": "연결",
+      "source": "https://dart.fss.or.kr/report/viewer.do?rcpNo=20260317000641&dcmNo=11132615&eleId=21&offset=402330&length=30658&dtd=dart4.xsd",
+      "revenue": [
+        1410559919451,
+        1231421381070,
+        1041895724977
+      ],
+      "operating_profit": [
+        11868602919,
+        -46969220820,
+        -88124119458
+      ]
+    }
+  ]
+}
