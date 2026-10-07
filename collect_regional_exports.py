@@ -178,6 +178,22 @@ def main():
                         collected.extend(rows)
                         print(f'{sido}[{query_sido}]/{hs}/{seg_start}-{seg_end}: {len(rows)} rows',flush=True)
                     except DataError as exc:
+                        # Some API deployments reject the retired province code
+                        # for historical periods. Retry that same period with
+                        # the current code before declaring it missing.
+                        fallback_ok = False
+                        if str(exc) == 'API_ERROR_99' and query_sido != sido:
+                            try:
+                                rows = request(hs,sido,seg_start,seg_end,key,stamp,sido)
+                                collected.extend(rows)
+                                print(f'{sido}[fallback]/{hs}/{seg_start}-{seg_end}: {len(rows)} rows',flush=True)
+                                fallback_ok = True
+                            except DataError:
+                                fallback_ok = False
+                        if fallback_ok:
+                            time.sleep(1)
+                            continue
+                        errors.append(dict(sido=sido,query_sido=query_sido,hs=hs,start=seg_start,end=seg_end,error=str(exc)))
                         errors.append(dict(sido=sido,query_sido=query_sido,hs=hs,start=seg_start,end=seg_end,error=str(exc)))
                         print(f'{sido}[{query_sido}]/{hs}/{seg_start}-{seg_end}: {exc}',flush=True)
                         if any(token in str(exc) for token in ('SERVICE_KEY', 'ACCESS_DENIED', 'PERMISSION', 'HTTP_401', 'HTTP_403', 'LIMITED_NUMBER')):
