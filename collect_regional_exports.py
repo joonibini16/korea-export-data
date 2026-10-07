@@ -194,7 +194,6 @@ def main():
                             time.sleep(1)
                             continue
                         errors.append(dict(sido=sido,query_sido=query_sido,hs=hs,start=seg_start,end=seg_end,error=str(exc)))
-                        errors.append(dict(sido=sido,query_sido=query_sido,hs=hs,start=seg_start,end=seg_end,error=str(exc)))
                         print(f'{sido}[{query_sido}]/{hs}/{seg_start}-{seg_end}: {exc}',flush=True)
                         if any(token in str(exc) for token in ('SERVICE_KEY', 'ACCESS_DENIED', 'PERMISSION', 'HTTP_401', 'HTTP_403', 'LIMITED_NUMBER')):
                             stop.set()
