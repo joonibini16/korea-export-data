@@ -97,6 +97,20 @@ def save(path, text):
     temp.write_text(text,encoding='utf-8')
     temp.replace(path)
 
+def sites(company, hs):
+    return [s for s in company.get('sites', [company]) if hs in s.get('hs_codes', company['hs_codes'])]
+
+def query_code(company, hs):
+    # An explicit reviewed mapping. The managed HS file is never modified.
+    code = company.get('regional_hs', {}).get(hs, hs if len(hs) == 6 else None)
+    if code is not None and (not re.fullmatch(r'\d{6}', code) or not hs.startswith(code)):
+        raise DataError('invalid reviewed HS6 parent mapping')
+    return code
+
+def first_year(code):
+    # HS2022 codes: do not invent narrower historical city data from broad legacy HS6.
+    return 2022 if code in ('300249', '854143') else 2020
+
 def main():
     now = datetime.now(timezone(timedelta(hours=9)))
     stamp = now.isoformat(timespec='seconds')
@@ -106,9 +120,10 @@ def main():
     with open('hs_codes.csv',encoding='utf-8-sig') as f:
         allowed = {r[0] for r in list(csv.reader(f))[1:] if r}
     companies = json.loads(Path('company_watchlist.json').read_text())['companies']
-    targets = sorted({(c['sido_code'],hs) for c in companies for hs in c['hs_codes']})
-    if any(hs not in allowed or not re.fullmatch(r'\d{6}',hs) for _,hs in targets):
-        raise DataError('watchlist must use existing HS6 in hs_codes.csv')
+    if any(hs not in allowed for c in companies for hs in c['hs_codes']):
+        raise DataError('watchlist logical HS must exist in hs_codes.csv')
+    targets = sorted({(s['sido_code'], query_code(c, hs)) for c in companies
+        for hs in c['hs_codes'] if query_code(c, hs) for s in sites(c, hs)})
     path = Path('regional_exports.csv')
     old = list(csv.DictReader(path.open(encoding='utf-8-sig'))) if path.exists() else []
     def identity(r): return tuple(r[k] for k in ['month','hs_code','sido_code','region'])
@@ -120,26 +135,42 @@ def main():
     if not key:
         failures.append({'error':'CUSTOMS_API_KEY missing'})
     else:
-        for sido, hs in targets:
-            if any(f.get('error','').startswith('API_ERROR_') for f in failures):
-                break
+        from concurrent.futures import ThreadPoolExecutor
+        from threading import Event
+        stop = Event()
+        def collect_target(target):
+            sido, hs = target
+            collected, errors, count = [], [], 0
+            keywords = {s['region_keyword'] for c in companies for logical in c['hs_codes']
+                if query_code(c, logical) == hs for s in sites(c, logical) if s['sido_code'] == sido}
             # Retry missing years; refresh current and prior year for corrections.
-            for year in range(2020,int(end[:4])+1):
+            for year in range(first_year(hs),int(end[:4])+1):
+                if stop.is_set(): break
                 months = [f'{year}.{m:02}' for m in range(1,(int(end[4:]) if year==int(end[:4]) else 12)+1)]
-                existing = {r['month'] for r in old if r['sido_code']==sido and r['hs_code']==hs}
-                if year < int(end[:4])-1 and set(months) <= existing: continue
+                complete = all(set(months) <= {r['month'] for r in old if r['sido_code']==sido
+                    and r['hs_code']==hs and keyword in r['region']} for keyword in keywords)
+                if year < int(end[:4])-1 and complete: continue
                 start, finish = f'{year}01', min(f'{year}12',end)
-                requested += 1
+                count += 1
                 try:
                     rows = request(hs,sido,start,finish,key,stamp)
-                    merged.update({identity(r):r for r in rows})
-                    received += len(rows)
+                    collected.extend(rows)
                     print(f'{sido}/{hs}/{year}: {len(rows)} rows',flush=True)
                 except DataError as exc:
-                    failures.append(dict(sido=sido,hs=hs,start=start,end=finish,error=str(exc)))
+                    errors.append(dict(sido=sido,hs=hs,start=start,end=finish,error=str(exc)))
                     print(f'{sido}/{hs}/{year}: {exc}',flush=True)
-                    if str(exc).startswith('API_ERROR_'): break
+                    if any(token in str(exc) for token in ('SERVICE_KEY', 'ACCESS_DENIED', 'PERMISSION', 'HTTP_401', 'HTTP_403', 'LIMITED_NUMBER')):
+                        stop.set()
+                        break
                 time.sleep(1)
+            return collected, errors, count
+        # At most three independent requests; retries and pauses remain bounded.
+        with ThreadPoolExecutor(max_workers=3) as pool:
+            for rows, errors, count in pool.map(collect_target, targets):
+                merged.update({identity(r):r for r in rows})
+                received += len(rows)
+                failures.extend(errors)
+                requested += count
     if received:
         import io
         buffer = io.StringIO(newline='')
@@ -149,12 +180,17 @@ def main():
     coverage=[]
     for c in companies:
         for hs in c['hs_codes']:
-            present={r['month'] for r in merged.values() if r['hs_code']==hs and r['sido_code']==c['sido_code'] and c['region_keyword'] in r['region']}
-            expected=[f'{y}.{m:02}' for y in range(2020,int(end[:4])+1) for m in range(1,13) if f'{y}{m:02}'<=end]
-            coverage.append(dict(company=c['id'],hs=hs,months=len(present),missing=[m for m in expected if m not in present]))
+            code = query_code(c, hs)
+            for site in sites(c, hs):
+                present={r['month'] for r in merged.values() if r['hs_code']==code and r['sido_code']==site['sido_code'] and site['region_keyword'] in r['region']}
+                expected=[f'{y}.{m:02}' for y in range(first_year(code),int(end[:4])+1) for m in range(1,13) if f'{y}{m:02}'<=end] if code else []
+                coverage.append(dict(company=c['id'],hs=hs,query_hs=code,region=site['region_keyword'],sido=site['sido_code'],months=len(present),
+                    expected_months=len(expected),missing=[m for m in expected if m not in present],
+                    scope='HS6' if code==hs else 'parent_HS6_proxy' if code else 'unsupported_HS4',
+                    historical_note='2020~2021 지역 HS 연결 미확보' if first_year(code)==2022 else ''))
     status=dict(updated_at=stamp,source=SOURCE,requested_ranges=requested,received_rows=received,
         stored_rows=len(merged),failures=failures,coverage=coverage,currency_scale_verified=False,
-        note='지역 수출액은 API 원단위 보존. 절대 USD 및 중량·단가 미표시. 지역 YoY·지수만 사용.')
+        note='지역 원본 HS6 보존. 관리 HS10과 상위 HS6 proxy 구분. HS4 미지원. 2022년 신설 HS의 과거 지역 데이터는 미연결. 절대 USD 배율 미검증.')
     save(Path('regional_status.json'),json.dumps(status,ensure_ascii=False,indent=2)+'\n')
     print(json.dumps(status,ensure_ascii=False))
     return 1 if failures or any(c['missing'] for c in coverage) else 0

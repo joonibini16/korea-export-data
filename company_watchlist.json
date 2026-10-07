@@ -16,7 +16,11 @@
         "https://www.simmtech.com/about/map.aspx",
         "https://www.simmtech.com/about/ir_manage04.aspx",
         "https://www.data.go.kr/data/15134343/openapi.do"
-      ]
+      ],
+      "regional_hs": {
+        "853400": "853400"
+      },
+      "reviewed_at": "2026-10-07"
     },
     {
       "id": "353200",
@@ -33,7 +37,21 @@
       "sources": [
         "https://www.daeduck.com/ko/content/summary.do",
         "https://recruit.daeduck.com/RECRUIT/hr/rec/recruit/jobopen/controller/candidate/JobOpen320WebController/view.hr?jobopen_id=DE202504030001"
-      ]
+      ],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "안산시"
+        },
+        {
+          "sido_code": "41",
+          "region_keyword": "시흥시"
+        }
+      ],
+      "regional_hs": {
+        "853400": "853400"
+      },
+      "reviewed_at": "2026-10-07"
     },
     {
       "id": "007660",
@@ -50,7 +68,11 @@
       "sources": [
         "https://www.petasys.com/kor/company/domesticbusiness.jsp",
         "https://www.petasys.com/kor/product/network.jsp"
-      ]
+      ],
+      "regional_hs": {
+        "853400": "853400"
+      },
+      "reviewed_at": "2026-10-07"
     },
     {
       "id": "192820",
@@ -66,7 +88,11 @@
       "rationale": "화성 화장품공장 근거. ODM 고객의 수출·내수·해외법인 매출이 혼재하며 화성 행정구역 변경에 유의.",
       "sources": [
         "https://kind.krx.co.kr/external/2026/03/18/000830/20260318004136/11011.htm"
-      ]
+      ],
+      "regional_hs": {
+        "330499": "330499"
+      },
+      "reviewed_at": "2026-10-07"
     },
     {
       "id": "161890",
@@ -83,7 +109,1058 @@
       "sources": [
         "https://www.kolmar.co.kr/about/location.php",
         "https://www.kolmar.co.kr/businessinfo/korea.php"
-      ]
+      ],
+      "regional_hs": {
+        "330499": "330499"
+      },
+      "reviewed_at": "2026-10-07"
+    },
+    {
+      "id": "007810",
+      "name": "코리아써키트",
+      "category": "전자부품",
+      "hs_codes": [
+        "853400",
+        "8534009000"
+      ],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "안산시"
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "안산시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "PCB 제조. 안산의 다른 PCB 업체와 동일 통계이며 각 업체 수출 비중을 구분할 수 없음.",
+      "sources": [
+        "https://www.kcg.co.kr/location",
+        "https://kind.krx.co.kr/external/2026/03/19/001229/20260319005107/11011.htm"
+      ],
+      "reviewed_at": "2026-10-07",
+      "regional_hs": {
+        "853400": "853400",
+        "8534009000": "853400"
+      }
+    },
+    {
+      "id": "051370",
+      "name": "인터플렉스",
+      "category": "전자부품",
+      "hs_codes": [
+        "853400",
+        "8534002000"
+      ],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "안산시"
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "안산시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "FPCB 제조. 베트남 생산·연결 실적은 안산 수출에 포함되지 않음.",
+      "sources": [
+        "https://www.interflex.co.kr/company/overview.php"
+      ],
+      "reviewed_at": "2026-10-07",
+      "regional_hs": {
+        "853400": "853400",
+        "8534002000": "853400"
+      }
+    },
+    {
+      "id": "090460",
+      "name": "비에이치",
+      "category": "전자부품",
+      "hs_codes": [
+        "853400",
+        "8534002000"
+      ],
+      "sites": [
+        {
+          "sido_code": "28",
+          "region_keyword": "부평구"
+        },
+        {
+          "sido_code": "28",
+          "region_keyword": "서구"
+        }
+      ],
+      "sido_code": "28",
+      "region_keyword": "부평구",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "FPCB 제조. 인천 공장과 해외 공장 혼재. 2026년 인천 행정구역 개편으로 시계열 단절 가능.",
+      "sources": [
+        "https://www.bhflex.co.kr/sub01/sub06.php",
+        "https://www.bhflex.co.kr/sub01/sub01.php"
+      ],
+      "reviewed_at": "2026-10-07",
+      "regional_hs": {
+        "853400": "853400",
+        "8534002000": "853400"
+      }
+    },
+    {
+      "id": "009150",
+      "name": "삼성전기",
+      "category": "전자부품",
+      "hs_codes": [
+        "853400",
+        "8532240000"
+      ],
+      "sites": [
+        {
+          "sido_code": "36",
+          "region_keyword": "세종",
+          "hs_codes": [
+            "853400"
+          ]
+        },
+        {
+          "sido_code": "26",
+          "region_keyword": "강서구"
+        }
+      ],
+      "sido_code": "36",
+      "region_keyword": "세종",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "국내 기판·MLCC 생산거점 참고. 카메라모듈과 해외 생산이 포함된 연결 매출 전체를 대표하지 않음.",
+      "sources": [
+        "https://samsungsem.com/kr/product/substrate/package-substrate.do",
+        "https://sem.samsung.com/resources/file/kr/ir/archive/24_Business_Report.pdf"
+      ],
+      "reviewed_at": "2026-10-07",
+      "regional_hs": {
+        "853400": "853400",
+        "8532240000": "853224"
+      }
+    },
+    {
+      "id": "011070",
+      "name": "LG이노텍",
+      "category": "전자부품",
+      "hs_codes": [
+        "853400"
+      ],
+      "sites": [
+        {
+          "sido_code": "47",
+          "region_keyword": "구미시"
+        }
+      ],
+      "sido_code": "47",
+      "region_keyword": "구미시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "구미 반도체기판 생산. 광학솔루션 비중이 큰 연결 실적 전체와 직접 비교하기 어려움.",
+      "sources": [
+        "https://news.lginnotek.com/1656",
+        "https://www.lginnotek.com/news/insightsView.do?idx=237&locale=ko"
+      ],
+      "reviewed_at": "2026-10-07",
+      "regional_hs": {
+        "853400": "853400"
+      }
+    },
+    {
+      "id": "195870",
+      "name": "해성디에스",
+      "category": "반도체 부품·장비",
+      "hs_codes": [
+        "8542900000",
+        "853400"
+      ],
+      "sites": [
+        {
+          "sido_code": "48",
+          "region_keyword": "창원시"
+        }
+      ],
+      "sido_code": "48",
+      "region_keyword": "창원시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "창원 리드프레임·패키지기판 제조. 두 HS 품목은 별도 조회하며 중복 합산하지 않음.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/03/18/002181/20260318010171/11011.htm",
+        "https://www.haesungind.co.kr/ko/mo/business/business01.php"
+      ],
+      "reviewed_at": "2026-10-07",
+      "regional_hs": {
+        "853400": "853400",
+        "8542900000": "854290"
+      }
+    },
+    {
+      "id": "241710",
+      "name": "코스메카코리아",
+      "category": "화장품",
+      "hs_codes": [
+        "330499",
+        "3304991000",
+        "3304992000"
+      ],
+      "sites": [
+        {
+          "sido_code": "43",
+          "region_keyword": "음성군"
+        }
+      ],
+      "sido_code": "43",
+      "region_keyword": "음성군",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "음성 기초화장품·유화 메이크업 ODM. 해외법인·고객사의 수출 및 지역 타 업체가 혼재.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/03/19/002147/20260319008945/11011.htm"
+      ],
+      "reviewed_at": "2026-10-07",
+      "regional_hs": {
+        "330499": "330499",
+        "3304991000": "330499",
+        "3304992000": "330499"
+      }
+    },
+    {
+      "id": "003350",
+      "name": "한국화장품제조",
+      "category": "화장품",
+      "hs_codes": [
+        "330499",
+        "3304991000",
+        "3304992000"
+      ],
+      "sites": [
+        {
+          "sido_code": "43",
+          "region_keyword": "음성군"
+        }
+      ],
+      "sido_code": "43",
+      "region_keyword": "음성군",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "음성 제조공장. 코스메카코리아 등과 같은 지역 품목 통계를 공유하므로 업체별 분리 불가.",
+      "sources": [
+        "https://www.hkcosm.com/01_aboutus/01_about.jsp",
+        "https://www.hkcosm.com/"
+      ],
+      "reviewed_at": "2026-10-07",
+      "regional_hs": {
+        "330499": "330499",
+        "3304991000": "330499",
+        "3304992000": "330499"
+      }
+    },
+    {
+      "id": "090430",
+      "name": "아모레퍼시픽",
+      "category": "화장품",
+      "hs_codes": [
+        "330499",
+        "3304991000",
+        "3304992000"
+      ],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "오산시"
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "오산시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "오산 뷰티파크 화장품 생산. 내수·해외생산·해외 유통 재고와 국내 수출의 차이에 유의.",
+      "sources": [
+        "https://www.apgroup.com/int/ko/our-culture/amorepacific-space/amorepacific-space.html",
+        "https://www.apgroup.com/int/ko/investors/amorepacific-group/ir-reports/audit-reports/__icsFiles/afieldfile/2024/03/29/APG_2023.pdf"
+      ],
+      "reviewed_at": "2026-10-07",
+      "regional_hs": {
+        "330499": "330499",
+        "3304991000": "330499",
+        "3304992000": "330499"
+      }
+    },
+    {
+      "id": "051900",
+      "name": "LG생활건강",
+      "category": "화장품",
+      "hs_codes": [
+        "330499",
+        "3304991000"
+      ],
+      "sites": [
+        {
+          "sido_code": "43",
+          "region_keyword": "청주시"
+        }
+      ],
+      "sido_code": "43",
+      "region_keyword": "청주시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "청주 화장품공장. 생활용품·음료·해외법인이 포함된 연결 매출과 범위가 다름.",
+      "sources": [
+        "https://www.lghnh.com/file/23_LGHH_ESG_REPORT_SR_KOR_fin.pdf",
+        "https://kind.krx.co.kr/external/2026/03/16/001500/20260316004560/11011.htm"
+      ],
+      "reviewed_at": "2026-10-07",
+      "regional_hs": {
+        "330499": "330499",
+        "3304991000": "330499"
+      }
+    },
+    {
+      "id": "005930",
+      "name": "삼성전자",
+      "category": "반도체",
+      "hs_codes": [
+        "8542",
+        "8542321010",
+        "8542321030"
+      ],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "평택시"
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "평택시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "평택 D램·낸드 생산. HS 854232는 메모리 전체로 DRAM/NAND를 나눌 수 없으며 완제품·해외 생산을 대표하지 않음. 8542는 지역 API 직접 조회 불가.",
+      "sources": [
+        "https://news.samsung.com/kr/삼성전자-세계-최대규모-평택-2라인-가동",
+        "https://www.samsung.com/sec/about-us/company-info/"
+      ],
+      "reviewed_at": "2026-10-07",
+      "regional_hs": {
+        "8542": null,
+        "8542321010": "854232",
+        "8542321030": "854232"
+      }
+    },
+    {
+      "id": "000660",
+      "name": "SK하이닉스",
+      "category": "반도체",
+      "hs_codes": [
+        "8542",
+        "8542321010",
+        "8542321030"
+      ],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "이천시",
+          "hs_codes": [
+            "8542",
+            "8542321010"
+          ]
+        },
+        {
+          "sido_code": "43",
+          "region_keyword": "청주시",
+          "hs_codes": [
+            "8542",
+            "8542321030"
+          ]
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "이천시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "이천 D램·청주 낸드 생산거점 참고. HS6 메모리 전체 지표이며 국내 공장 간 제품 재배치와 해외 생산 영향 존재.",
+      "sources": [
+        "https://news.skhynix.co.kr/semiconductor-cluster-spc-submits-letter-of-intent/",
+        "https://news.skhynix.co.kr/one-team-spirit-ep5/"
+      ],
+      "reviewed_at": "2026-10-07",
+      "regional_hs": {
+        "8542": null,
+        "8542321010": "854232",
+        "8542321030": "854232"
+      }
+    },
+    {
+      "id": "064760",
+      "name": "티씨케이",
+      "category": "반도체 부품·장비",
+      "hs_codes": [
+        "8486902090",
+        "8486902040"
+      ],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "안성시"
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "안성시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "SiC 링 제조. 848690에는 다른 반도체 장비 부품이 포함되므로 두 세부 링 코드를 구별하거나 업체 실적을 분리할 수 없음.",
+      "sources": [
+        "https://tck.co.kr/kor/business/SolidSiC.php",
+        "https://www.tck.co.kr/jap/business/SolidSiC.php"
+      ],
+      "reviewed_at": "2026-10-07",
+      "regional_hs": {
+        "8486902090": "848690",
+        "8486902040": "848690"
+      }
+    },
+    {
+      "id": "166090",
+      "name": "하나머티리얼즈",
+      "category": "반도체 부품·장비",
+      "hs_codes": [
+        "8486902090",
+        "8486902040"
+      ],
+      "sites": [
+        {
+          "sido_code": "44",
+          "region_keyword": "아산시"
+        },
+        {
+          "sido_code": "44",
+          "region_keyword": "천안시"
+        }
+      ],
+      "sido_code": "44",
+      "region_keyword": "아산시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "Si·SiC 링 및 식각 부품 생산거점. 848690의 범위가 매우 넓어 참고 지표로만 사용.",
+      "sources": [
+        "https://hanamts.com/corp1_temp/",
+        "https://en.hanamts.com/corp2_temp/"
+      ],
+      "reviewed_at": "2026-10-07",
+      "regional_hs": {
+        "8486902090": "848690",
+        "8486902040": "848690"
+      }
+    },
+    {
+      "id": "058470",
+      "name": "리노공업",
+      "category": "반도체 부품·장비",
+      "hs_codes": [
+        "8536909090"
+      ],
+      "sites": [
+        {
+          "sido_code": "26",
+          "region_keyword": "강서구"
+        }
+      ],
+      "sido_code": "26",
+      "region_keyword": "강서구",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "부산 강서구 IC 테스트 소켓·프로브 생산. HS6에는 일반 전기 접속용 부품도 포함.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/03/18/000195/20260318000896/11011.htm"
+      ],
+      "reviewed_at": "2026-10-07",
+      "regional_hs": {
+        "8536909090": "853690"
+      }
+    },
+    {
+      "id": "039030",
+      "name": "이오테크닉스",
+      "category": "반도체 부품·장비",
+      "hs_codes": [
+        "8456119000"
+      ],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "안양시"
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "안양시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "반도체 레이저마커·레이저응용 장비 제조. HS6 레이저 가공기 전체에 다른 장비·업체가 포함.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/03/23/002295/20260323009640/11011.htm"
+      ],
+      "reviewed_at": "2026-10-07",
+      "regional_hs": {
+        "8456119000": "845611"
+      }
+    },
+    {
+      "id": "267260",
+      "name": "HD현대일렉트릭",
+      "category": "전력기기·전선",
+      "hs_codes": [
+        "8504230000",
+        "8504"
+      ],
+      "sites": [
+        {
+          "sido_code": "31",
+          "region_keyword": "동구"
+        }
+      ],
+      "sido_code": "31",
+      "region_keyword": "동구",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "울산 전력변압기 생산. 미국 공장 매출은 국내 수출과 다르며 선암 배전변압기 공장은 별도 지역.",
+      "sources": [
+        "https://www.hd-hyundaielectric.com/elect/ko/company/workplace.jsp"
+      ],
+      "reviewed_at": "2026-10-07",
+      "regional_hs": {
+        "8504": null,
+        "8504230000": "850423"
+      }
+    },
+    {
+      "id": "298040",
+      "name": "효성중공업",
+      "category": "전력기기·전선",
+      "hs_codes": [
+        "8504230000",
+        "8504"
+      ],
+      "sites": [
+        {
+          "sido_code": "48",
+          "region_keyword": "창원시"
+        }
+      ],
+      "sido_code": "48",
+      "region_keyword": "창원시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "창원 초고압변압기 생산. 건설·해외 생산과 제품 구성 변화로 연결 매출과 차이.",
+      "sources": [
+        "https://www.hyosungheavyindustries.com/kr/company/info/global-network",
+        "https://www.hyosungheavyindustries.com/kr/company/info/history"
+      ],
+      "reviewed_at": "2026-10-07",
+      "regional_hs": {
+        "8504": null,
+        "8504230000": "850423"
+      }
+    },
+    {
+      "id": "010120",
+      "name": "LS ELECTRIC",
+      "category": "전력기기·전선",
+      "hs_codes": [
+        "8504230000",
+        "8504"
+      ],
+      "sites": [
+        {
+          "sido_code": "26",
+          "region_keyword": "강서구"
+        }
+      ],
+      "sido_code": "26",
+      "region_keyword": "강서구",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "부산 초고압변압기 공장. 자동화·전력기기 전체 실적을 대표하지 않음.",
+      "sources": [
+        "https://www.ls-electric.com/ko/company/place"
+      ],
+      "reviewed_at": "2026-10-07",
+      "regional_hs": {
+        "8504": null,
+        "8504230000": "850423"
+      }
+    },
+    {
+      "id": "103590",
+      "name": "일진전기",
+      "category": "전력기기·전선",
+      "hs_codes": [
+        "8504230000",
+        "8504"
+      ],
+      "sites": [
+        {
+          "sido_code": "44",
+          "region_keyword": "홍성군"
+        }
+      ],
+      "sido_code": "44",
+      "region_keyword": "홍성군",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "홍성 변압기 공장. 화성 전선 사업 실적과 구분해서 해석.",
+      "sources": [
+        "https://www.iljinelectric.co.kr/company/place-hongseong-plant?lang=en",
+        "https://iljinelectric.co.kr/main?lang=ko"
+      ],
+      "reviewed_at": "2026-10-07",
+      "regional_hs": {
+        "8504": null,
+        "8504230000": "850423"
+      }
+    },
+    {
+      "id": "LS-CABLE",
+      "name": "LS전선",
+      "category": "전력기기·전선",
+      "hs_codes": [
+        "8544603010",
+        "8544602010"
+      ],
+      "sites": [
+        {
+          "sido_code": "42",
+          "region_keyword": "동해시"
+        }
+      ],
+      "sido_code": "42",
+      "region_keyword": "동해시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "비상장 제조사. 상장 모회사 LS와는 다른 법인. HS854460은 해저전용이 아니며 두 관리 코드는 동일 상위 통계를 공유.",
+      "sources": [
+        "https://lscns.co.kr/upload/download/LS_2024_reports_korean.pdf"
+      ],
+      "reviewed_at": "2026-10-07",
+      "regional_hs": {
+        "8544603010": "854460",
+        "8544602010": "854460"
+      }
+    },
+    {
+      "id": "373220",
+      "name": "LG에너지솔루션",
+      "category": "배터리·소재",
+      "hs_codes": [
+        "850760"
+      ],
+      "sites": [
+        {
+          "sido_code": "43",
+          "region_keyword": "청주시"
+        }
+      ],
+      "sido_code": "43",
+      "region_keyword": "청주시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "오창 에너지플랜트 배터리 생산. HS850760은 EV·소형·ESS 전체로 ESS만의 수출 아님.",
+      "sources": [
+        "https://inside.lgensol.com/2023/03/lg에너지솔루션-오창-사업장-공식-명칭-오창-에너지/"
+      ],
+      "reviewed_at": "2026-10-07",
+      "regional_hs": {
+        "850760": "850760"
+      }
+    },
+    {
+      "id": "006400",
+      "name": "삼성SDI",
+      "category": "배터리·소재",
+      "hs_codes": [
+        "850760"
+      ],
+      "sites": [
+        {
+          "sido_code": "44",
+          "region_keyword": "천안시"
+        },
+        {
+          "sido_code": "31",
+          "region_keyword": "울주군"
+        }
+      ],
+      "sido_code": "44",
+      "region_keyword": "천안시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "천안·울산 배터리 생산. EV·소형·ESS 혼합이며 해외 생산 비중에 유의.",
+      "sources": [
+        "https://www.samsungsdi.co.kr/about-sdi/global-network.html",
+        "https://news.samsungsdi.com/ko/articleView?seq=324"
+      ],
+      "reviewed_at": "2026-10-07",
+      "regional_hs": {
+        "850760": "850760"
+      }
+    },
+    {
+      "id": "247540",
+      "name": "에코프로비엠",
+      "category": "배터리·소재",
+      "hs_codes": [
+        "2841909020"
+      ],
+      "sites": [
+        {
+          "sido_code": "43",
+          "region_keyword": "청주시"
+        },
+        {
+          "sido_code": "47",
+          "region_keyword": "포항시"
+        }
+      ],
+      "sido_code": "43",
+      "region_keyword": "청주시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "오창·포항 양극재 생산. HS284190은 NCM보다 넓은 품목군이며 NCA·NCM 구분 및 금속가격 영향 확인 필요.",
+      "sources": [
+        "https://www.ecoprobm.co.kr/sub020101",
+        "https://www.ecoprobm.com/sub0606"
+      ],
+      "reviewed_at": "2026-10-07",
+      "regional_hs": {
+        "2841909020": "284190"
+      }
+    },
+    {
+      "id": "066970",
+      "name": "엘앤에프",
+      "category": "배터리·소재",
+      "hs_codes": [
+        "2841909020"
+      ],
+      "sites": [
+        {
+          "sido_code": "27",
+          "region_keyword": "달성군"
+        }
+      ],
+      "sido_code": "27",
+      "region_keyword": "달성군",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "구지 양극재 공장. HS284190 전체 참고지표로 NCM 세부제품·판가·물량을 분리하지 못함.",
+      "sources": [
+        "https://www.landf.co.kr/company/history.html",
+        "https://www.landf.co.kr/company/notice_1.html?action=read&board_db=tk_notice&num=157&page=1"
+      ],
+      "reviewed_at": "2026-10-07",
+      "regional_hs": {
+        "2841909020": "284190"
+      }
+    },
+    {
+      "id": "003670",
+      "name": "포스코퓨처엠",
+      "category": "배터리·소재",
+      "hs_codes": [
+        "2841909020"
+      ],
+      "sites": [
+        {
+          "sido_code": "46",
+          "region_keyword": "광양시"
+        }
+      ],
+      "sido_code": "46",
+      "region_keyword": "광양시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "광양 양극재 생산·수출 근거. 음극재·기타 사업은 제외되며 HS6 단위로 NCM을 식별할 수 없음. 2026년 전남 행정코드 변경 가능.",
+      "sources": [
+        "https://www.poscofuturem.com/pr/view.do?num=959",
+        "https://www.poscofuturem.com/business/energy.do"
+      ],
+      "reviewed_at": "2026-10-07",
+      "regional_hs": {
+        "2841909020": "284190"
+      }
+    },
+    {
+      "id": "082920",
+      "name": "비츠로셀",
+      "category": "배터리·소재",
+      "hs_codes": [
+        "8506500000"
+      ],
+      "sites": [
+        {
+          "sido_code": "44",
+          "region_keyword": "당진시"
+        }
+      ],
+      "sido_code": "44",
+      "region_keyword": "당진시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "당진 리튬일차전지 제조. 지역 타 업체 포함 및 내수/수출 비중 차이.",
+      "sources": [
+        "https://www.vitzrocell.com/sub/sub01_01.php",
+        "https://vitzrocell.com/index.php"
+      ],
+      "reviewed_at": "2026-10-07",
+      "regional_hs": {
+        "8506500000": "850650"
+      }
+    },
+    {
+      "id": "086900",
+      "name": "메디톡스",
+      "category": "바이오·의료",
+      "hs_codes": [
+        "300249",
+        "3002491000"
+      ],
+      "sites": [
+        {
+          "sido_code": "43",
+          "region_keyword": "청주시"
+        }
+      ],
+      "sido_code": "43",
+      "region_keyword": "청주시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "오송·오창 톡신 제조. HS300249는 톡신 전용이 아니며 다른 생물학적 제제가 포함. 2022년 이전 지역 시계열은 미연결.",
+      "sources": [
+        "https://www.medytox.com/page/directions"
+      ],
+      "reviewed_at": "2026-10-07",
+      "regional_hs": {
+        "300249": "300249",
+        "3002491000": "300249"
+      }
+    },
+    {
+      "id": "145020",
+      "name": "휴젤",
+      "category": "바이오·의료",
+      "hs_codes": [
+        "300249",
+        "3002491000"
+      ],
+      "sites": [
+        {
+          "sido_code": "42",
+          "region_keyword": "춘천시"
+        }
+      ],
+      "sido_code": "42",
+      "region_keyword": "춘천시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "춘천 거두 공장 톡신 생산. 필러 사업은 이 통계로 측정하지 않으며 HS6 품목 혼합에 유의.",
+      "sources": [
+        "https://www.hugel-inc.com/pr/rec1buRwJ6Miq0DIo",
+        "https://www.hugel-inc.com/pr/rec9vMi2jrMcSVxtf"
+      ],
+      "reviewed_at": "2026-10-07",
+      "regional_hs": {
+        "300249": "300249",
+        "3002491000": "300249"
+      }
+    },
+    {
+      "id": "069620",
+      "name": "대웅제약",
+      "category": "바이오·의료",
+      "hs_codes": [
+        "300249",
+        "3002491000"
+      ],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "화성시"
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "화성시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "향남 나보타 공장. 다른 의약품 매출 제외, HS300249 내 다른 제제·지역 타 업체 포함.",
+      "sources": [
+        "https://men.daewoong.co.kr/kr/company/location/3/view",
+        "https://www.daewoong.co.kr/ko/newsroom/news/7507"
+      ],
+      "reviewed_at": "2026-10-07",
+      "regional_hs": {
+        "300249": "300249",
+        "3002491000": "300249"
+      }
+    },
+    {
+      "id": "041830",
+      "name": "인바디",
+      "category": "바이오·의료",
+      "hs_codes": [
+        "9018198000"
+      ],
+      "sites": [
+        {
+          "sido_code": "44",
+          "region_keyword": "천안시"
+        }
+      ],
+      "sido_code": "44",
+      "region_keyword": "천안시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "천안 체성분분석기 생산. HS901819는 다른 전기진단 기기도 포함하므로 체성분분석기 전용 수출로 해석 불가.",
+      "sources": [
+        "https://inbody.co.kr/history/",
+        "https://inbody.co.kr/press_release/contents/view/27/?page=&qr="
+      ],
+      "reviewed_at": "2026-10-07",
+      "regional_hs": {
+        "9018198000": "901819"
+      }
+    },
+    {
+      "id": "003230",
+      "name": "삼양식품",
+      "category": "식품",
+      "hs_codes": [
+        "1902301010"
+      ],
+      "sites": [
+        {
+          "sido_code": "48",
+          "region_keyword": "밀양시"
+        },
+        {
+          "sido_code": "42",
+          "region_keyword": "원주시"
+        },
+        {
+          "sido_code": "45",
+          "region_keyword": "익산시"
+        }
+      ],
+      "sido_code": "48",
+      "region_keyword": "밀양시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "밀양·원주·익산 면 생산. HS190230은 라면 외 조제 파스타를 포함하며 공장 가동 전 지역 수출도 회사 실적으로 간주하지 않음.",
+      "sources": [
+        "https://www.samyangfoods.com/kor/information/factory/index.do",
+        "https://www.samyangfoods.com/kor/information/company/index.do"
+      ],
+      "reviewed_at": "2026-10-07",
+      "regional_hs": {
+        "1902301010": "190230"
+      }
+    },
+    {
+      "id": "004370",
+      "name": "농심",
+      "category": "식품",
+      "hs_codes": [
+        "1902301010"
+      ],
+      "sites": [
+        {
+          "sido_code": "26",
+          "region_keyword": "사상구"
+        },
+        {
+          "sido_code": "26",
+          "region_keyword": "강서구"
+        }
+      ],
+      "sido_code": "26",
+      "region_keyword": "사상구",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "부산 수출전문공장·녹산공장. 해외 생산·내수 제외, 2026년 신규 공장의 가동 시점에 유의.",
+      "sources": [
+        "https://www.nongshim.com/customer/factory_trip/registration_busan",
+        "https://www.nongshim.com/customer/factory_trip/registration_noksan"
+      ],
+      "reviewed_at": "2026-10-07",
+      "regional_hs": {
+        "1902301010": "190230"
+      }
+    },
+    {
+      "id": "007310",
+      "name": "오뚜기",
+      "category": "식품",
+      "hs_codes": [
+        "1902301010"
+      ],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "평택시"
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "평택시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "평택 오뚜기라면 생산법인 연결. 다른 식품·해외법인 매출은 지역 면류 수출로 설명되지 않음.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2025/03/18/001303/20250318006046/11011.htm"
+      ],
+      "reviewed_at": "2026-10-07",
+      "regional_hs": {
+        "1902301010": "190230"
+      }
+    },
+    {
+      "id": "009830",
+      "name": "한화솔루션",
+      "category": "태양광",
+      "hs_codes": [
+        "8541430000"
+      ],
+      "sites": [
+        {
+          "sido_code": "43",
+          "region_keyword": "진천군"
+        }
+      ],
+      "sido_code": "43",
+      "region_keyword": "진천군",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "큐셀 진천 태양광 모듈 생산. 해외 생산·화학 사업은 제외. 2022년 HS 개편 이전 지역 데이터는 연결하지 않음.",
+      "sources": [
+        "https://qcells.com/kr/get-support/factory",
+        "https://qcells.com/kr/get-inspired/birth-of-sustainable-future"
+      ],
+      "reviewed_at": "2026-10-07",
+      "regional_hs": {
+        "8541430000": "854143"
+      }
     }
-  ]
+  ],
+  "reviewed_at": "2026-10-07",
+  "scope_note": "hs_codes.csv 전체를 조사 대상으로 표시. 공식 제품·생산지역 근거를 확인한 후보 목록이며 국내 모든 기업의 누락 없는 전수명부나 개별 업체 수출 추정 모델이 아님.",
+  "unmapped_notes": {
+    "3005904000": "창상피복재 제조공장·수출 신고코드 근거 추가 확인 필요",
+    "3304999000": "필러의 의약품·의료기기·화장품 분류 및 실제 신고코드 확인 전 업체 연결 보류",
+    "3307904000": "마스크팩 제조지역·세부 신고코드 추가 확인 필요",
+    "8542323000": "MCP 제품·국내 최종 제조지역 연결 근거 추가 확인 필요",
+    "8473304060": "DRAM 모듈의 최종 조립·제조지역 확인 필요",
+    "8523511000": "SSD 최종 조립지역과 메모리 팹 소재지는 다를 수 있어 연결 보류",
+    "9030901000": "인터페이스보드 제조지역·세부 신고코드 확인 필요",
+    "7606120000": "관리명은 원본 유지. 알루미늄박 업체를 연결하기 전에 신고 HS와 실제 제품의 일치 확인 필요",
+    "7410211000": "관리명은 원본 유지. 전지용 동박과 해당 세부 HS의 일치 확인 필요"
+  }
 }
