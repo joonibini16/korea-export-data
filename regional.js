@@ -37,8 +37,11 @@ function render(){const c=watch.find(c=>c.id===el('company').value),hs=el('hs').
  el('maYoy').textContent=pct(growth(average(selected,i),average(selected,i-12)));
  const latestFin=fin.at(-1);el('revenueYoy').textContent=latestFin?pct(fy(latestFin.period)):'—';el('revenueLatest').textContent=latestFin?latestFin.period+' · '+latestFin.status:'공시 미확보';
  const pairs=quarter.map(q=>[qy(q.period),fy(q.period)]).filter(p=>p.every(v=>v!=null));
- el('agreement').textContent=pairs.length>=8?`${(pairs.filter(p=>Math.sign(p[0])===Math.sign(p[1])).length/pairs.length*100).toFixed(0)}%`:'표본 부족';el('pairs').textContent=`동일 분기 YoY ${pairs.length}쌍 · 8쌍부터 표시`;
- el('validation').textContent=`${pairs.length}개 비교 분기 확보. ${pairs.length<12?'12개 미만으로 실적 방향 예측을 보류합니다.':'위 방향 일치율은 과거 동행성 지표입니다. 표본 외 예측 검증 전에는 매출 전망을 산출하지 않습니다.'}`;
+ const agree=pairs.length?pairs.filter(p=>Math.sign(p[0])===Math.sign(p[1])).length/pairs.length*100:null;
+ const confidence=pairs.length>=8?'참고 가능':pairs.length>=3?'초기 신호':'표본 부족';
+ el('agreement').textContent=agree==null?'표본 부족':`${agree.toFixed(0)}% · ${confidence}`;
+ el('pairs').textContent=`동일 분기 YoY ${pairs.length}쌍 · 3쌍부터 초기 신호, 8쌍부터 참고 가능`;
+ el('validation').textContent=pairs.length<3?`${pairs.length}개 비교 분기 확보. 방향 일치율을 표시하기에는 표본이 부족합니다.`:pairs.length<8?`${pairs.length}개 비교 분기의 초기 신호입니다. 방향 일치율은 참고용으로만 표시하며 매출 예측에는 사용하지 않습니다.`:`${pairs.length}개 비교 분기의 과거 동행성 지표입니다. 표본 외 예측 검증 전에는 매출 전망을 산출하지 않습니다.`;
  const base=selected.find(r=>r.value>0)?.value;const scale=v=>v==null||!base?null:v/base*100;
  el('trendTitle').textContent=(isNational?'전국':reg==='missing'?sites(c,hs).map(t=>t.region_keyword).join(' · '):regionName)+' · '+(isNational?hs:query||hs)+' 수출 추세';
  el('trendEmpty').hidden=!!selected.length;el('trendEmpty').textContent='지역 데이터가 아직 확보되지 않았습니다. 수집 상태를 확인하거나 지역 선택에서 전국 비교를 볼 수 있습니다.';
