@@ -35,7 +35,7 @@ function render(){const c=watch.find(c=>c.id===el('company').value),hs=el('hs').
  const i=selected.length-1,last=selected[i],map=new Map(selected.map(r=>[r.month,r.value]));
  el('yoy').textContent=pct(last?growth(last.value,map.get(monthLabel(monthId(last.month)-12))):null);el('latest').textContent=last?last.month+' · '+(isNational?'전국':regionName):'지역 데이터 미확보';
  el('maYoy').textContent=pct(growth(average(selected,i),average(selected,i-12)));
- const latestFin=fin.at(-1);el('revenueYoy').textContent=latestFin?pct(fy(latestFin.period)):'—';el('revenueLatest').textContent=latestFin?latestFin.period+' · '+latestFin.status:'공시 미확보';
+ const latestFin=[...fin].reverse().find(r=>fy(r.period)!=null)||fin.at(-1);el('revenueYoy').textContent=latestFin?pct(fy(latestFin.period)):'—';el('revenueLatest').textContent=latestFin?(fy(latestFin.period)!=null?latestFin.period+' · '+latestFin.status:latestFin.period+' · 전년동기 공시 미확보'):'공시 미확보';
  const pairs=quarter.map(q=>[qy(q.period),fy(q.period)]).filter(p=>p.every(v=>v!=null));
  const agree=pairs.length?pairs.filter(p=>Math.sign(p[0])===Math.sign(p[1])).length/pairs.length*100:null;
  const confidence=pairs.length>=8?'참고 가능':pairs.length>=3?'초기 신호':'표본 부족';
