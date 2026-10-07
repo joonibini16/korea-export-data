@@ -1,8 +1,8 @@
 {
-  "updated_at": "2026-10-07T16:46:10+09:00",
+  "updated_at": "2026-10-07T16:49:49+09:00",
   "source": "https://www.data.go.kr/data/15134343/openapi.do",
-  "requested_ranges": 128,
-  "received_rows": 10870,
+  "requested_ranges": 113,
+  "received_rows": 8758,
   "stored_rows": 31812,
   "failures": [
     {
@@ -17,22 +17,6 @@
       "sido": "31",
       "query_sido": "31",
       "hs": "850423",
-      "start": "202101",
-      "end": "202112",
-      "error": "empty response; not zero"
-    },
-    {
-      "sido": "31",
-      "query_sido": "31",
-      "hs": "850423",
-      "start": "202301",
-      "end": "202312",
-      "error": "empty response; not zero"
-    },
-    {
-      "sido": "31",
-      "query_sido": "31",
-      "hs": "850423",
       "start": "202301",
       "end": "202312",
       "error": "empty response; not zero"
@@ -43,22 +27,6 @@
       "hs": "850423",
       "start": "202601",
       "end": "202608",
-      "error": "empty response; not zero"
-    },
-    {
-      "sido": "31",
-      "query_sido": "31",
-      "hs": "850423",
-      "start": "202601",
-      "end": "202608",
-      "error": "empty response; not zero"
-    },
-    {
-      "sido": "44",
-      "query_sido": "44",
-      "hs": "850423",
-      "start": "202101",
-      "end": "202112",
       "error": "empty response; not zero"
     },
     {
@@ -81,32 +49,8 @@
       "sido": "44",
       "query_sido": "44",
       "hs": "850423",
-      "start": "202201",
-      "end": "202212",
-      "error": "empty response; not zero"
-    },
-    {
-      "sido": "44",
-      "query_sido": "44",
-      "hs": "850423",
       "start": "202501",
       "end": "202512",
-      "error": "empty response; not zero"
-    },
-    {
-      "sido": "44",
-      "query_sido": "44",
-      "hs": "850423",
-      "start": "202501",
-      "end": "202512",
-      "error": "empty response; not zero"
-    },
-    {
-      "sido": "44",
-      "query_sido": "44",
-      "hs": "850423",
-      "start": "202601",
-      "end": "202608",
       "error": "empty response; not zero"
     },
     {
