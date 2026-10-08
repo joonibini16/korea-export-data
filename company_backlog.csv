@@ -1,0 +1,6 @@
+company_id,period,value,unit,unit_label,status,source
+222800,2025-Q4,290,M_USD,M USD,리서치 확인,https://contents.premium.naver.com/study21/finance21/contents/260319131317068lq
+222800,2026-Q2,390,M_USD,M USD,리서치 확인,https://telemetr.io/en/channels/2043701782-hanaitmk/posts
+353200,2025-Q4,2168,KRW_100m,억원,기사 확인,https://kr.investing.com/news/stock-market-news/article-1978508
+353200,2026-Q1,2374,KRW_100m,억원,기사 확인,https://kr.investing.com/news/stock-market-news/article-1978508
+353200,2026-Q2,3328,KRW_100m,억원,리서치 확인,https://finlit.tovstock.com/files/%EB%8C%80%EB%8D%95%EC%A0%84%EC%9E%90%20%EB%B0%9C%EA%B0%84_260907.pdf
