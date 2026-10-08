@@ -1,6 +1,29 @@
-company_id,period,value,unit,unit_label,status,source
-222800,2025-Q4,290,M_USD,M USD,리서치 확인,https://contents.premium.naver.com/study21/finance21/contents/260319131317068lq
-222800,2026-Q2,390,M_USD,M USD,리서치 확인,https://telemetr.io/en/channels/2043701782-hanaitmk/posts
-353200,2025-Q4,2168,KRW_100m,억원,기사 확인,https://kr.investing.com/news/stock-market-news/article-1978508
-353200,2026-Q1,2374,KRW_100m,억원,기사 확인,https://kr.investing.com/news/stock-market-news/article-1978508
-353200,2026-Q2,3328,KRW_100m,억원,리서치 확인,https://finlit.tovstock.com/files/%EB%8C%80%EB%8D%95%EC%A0%84%EC%9E%90%20%EB%B0%9C%EA%B0%84_260907.pdf
+company_id,period,value,unit,unit_label,status,source,scope,notes
+003670,2026-Q1,361.30,KRW_100m,억원,공시 확인,https://kind.krx.co.kr/external/2026/05/15/001579/20260515003472/11013.htm,산업로·보수공사 등 10억원 이상 계약,양극재·음극재 잔고가 아닙니다. 에너지소재사업 수주잔고 금액은 미기재.
+007660,2025-Q2,3154.96,KRW_100m,억원,공시 확인,https://kind.krx.co.kr/external/2025/08/14/002795/20250814008623/11012.htm,PCB 공시 수주상황,
+007660,2025-Q3,3318.93,KRW_100m,억원,공시 확인,https://kind.krx.co.kr/external/2025/11/14/002282/20251114005181/11013.htm,PCB 공시 수주상황,
+007660,2025-Q4,3575.62,KRW_100m,억원,공시 확인,https://dart.fss.or.kr/report/viewer.do?rcpNo=20260323000847&dcmNo=11164034&eleId=13&offset=142917&length=11644&dtd=dart4.xsd,PCB 공시 수주상황,
+007660,2026-Q1,5737.43,KRW_100m,억원,공시 확인,https://kind.krx.co.kr/external/2026/05/15/002212/20260515004929/11013.htm,PCB 공시 수주상황,
+007660,2026-Q2,6221.80,KRW_100m,억원,공시 확인,https://dart.fss.or.kr/report/viewer.do?rcpNo=20260814002283&dcmNo=11532726&eleId=13&offset=105524&length=11754&dtd=dart4.xsd,PCB 공시 수주상황,
+007810,2026-Q1,1572.54,KRW_100m,억원,공시 확인,https://kind.krx.co.kr/external/2026/05/15/001720/20260515003809/11013.htm,PCB·FPCB 공시 합계,반도체 부문 단기수주 제외. 인터플렉스와 중복 가능하므로 업체 간 합산 금지.
+010120,2025-Q4,50154,KRW_100m,억원,공시 확인,https://kind.krx.co.kr/external/2026/03/18/001763/20260318008079/11011.htm,LS ELECTRIC 본체 합계·자회사 별도,자회사 수주를 합산한 연결 전체 수치가 아닙니다.
+010120,2026-Q1,56425,KRW_100m,억원,공시 확인,https://kind.krx.co.kr/external/2026/05/14/000825/20260514001826/11013.htm,LS ELECTRIC 본체 합계·자회사 별도,자회사 수주를 합산한 연결 전체 수치가 아닙니다.
+051370,2026-Q1,104.14,KRW_100m,억원,공시 확인,https://kind.krx.co.kr/external/2026/05/15/002325/20260515005213/11013.htm,FPCB 공시 수주상황,
+064760,2025-Q3,684.3,KRW_100m,억원,공시 확인,https://kind.krx.co.kr/external/2025/11/14/000705/20251114001554/11013.htm,탄소제품·SiC 등 공시 합계,
+064760,2025-Q4,905,KRW_100m,억원,공시 확인,https://kind.krx.co.kr/external/2026/03/10/001538/20260310003407/11011.htm,탄소제품·SiC 등 공시 합계,
+064760,2026-Q1,973.8,KRW_100m,억원,공시 확인,https://kind.krx.co.kr/external/2026/05/15/002296/20260515005133/11013.htm,탄소제품·SiC 등 공시 합계,
+064760,2026-Q2,1993.7,KRW_100m,억원,공시 확인,https://dart.fss.or.kr/report/viewer.do?rcpNo=20260814001689&dcmNo=11530690&eleId=13&offset=121950&length=17187&dtd=dart4.xsd,탄소제품·SiC 등 공시 합계,
+066970,2026-Q1,234572.70747764,KRW_100m,억원,공시 확인,https://kind.krx.co.kr/external/2026/05/15/001002/20260515002154/11013.htm,공개 양극재 계약 합계·일부 계약 제외,2025-03-11 비공개 계약 제외. 2024-04-11 계약은 상대방 파산·인수에 따라 이행 여부가 달라질 수 있습니다.
+103590,2025-Q4,1624.785,M_USD,백만 USD,공시 확인,https://kind.krx.co.kr/external/2026/03/11/001795/20260311004198/11011.htm,전력선·변압기·중전기 합계,
+222800,2025-Q4,294.564,M_USD,백만 USD,공시 확인,https://dart.fss.or.kr/report/viewer.do?rcpNo=20260317000641&dcmNo=11132615&eleId=13&offset=210309&length=18306&dtd=dart4.xsd,인쇄회로기판 공시 수주상황,기존 리서치 반올림 수치를 공시 원문으로 갱신했습니다.
+222800,2026-Q1,330.609,M_USD,백만 USD,공시 확인,https://kind.krx.co.kr/external/2026/05/14/000890/20260514001959/11013.htm,인쇄회로기판 공시 수주상황,
+222800,2026-Q2,392.355,M_USD,백만 USD,공시 확인,https://kind.krx.co.kr/external/2026/08/13/001043/20260813002788/11012.htm,인쇄회로기판 공시 수주상황,
+267260,2026-Q1,114376.00,KRW_100m,억원,공시 확인,https://kind.krx.co.kr/external/2026/05/15/002528/20260515005720/11013.htm,연결 전기전자 부문,회사가 추정한 예상 환율로 환산한 공시 금액입니다.
+298040,2025-Q4,153402.42,KRW_100m,억원,공시 확인,https://kind.krx.co.kr/external/2026/03/11/001787/20260311004183/11011.htm,중공업 부문·국내외 주요 종속회사 포함,건설 부문 제외. 보고기준일별 환율 환산으로 전기말 비교 수치와 차이가 날 수 있습니다.
+298040,2026-Q1,201964.35,KRW_100m,억원,공시 확인,https://kind.krx.co.kr/external/2026/05/14/001423/20260514003098/11013.htm,중공업 부문·국내외 주요 종속회사 포함,건설 부문 제외. 보고기준일별 환율 환산으로 전기말 비교 수치와 차이가 날 수 있습니다.
+353200,2025-Q2,1283,KRW_100m,억원,공시 확인,https://kind.krx.co.kr/external/2025/08/13/000822/20250813002283/11012.htm,PCB 공시 수주상황,
+353200,2025-Q3,3110,KRW_100m,억원,공시 확인,https://kind.krx.co.kr/external/2025/11/13/000702/20251113001702/11013.htm,PCB 공시 수주상황,
+353200,2025-Q4,2168,KRW_100m,억원,공시 확인,https://dart.fss.or.kr/report/viewer.do?rcpNo=20260318001514&dcmNo=11143387&eleId=13&offset=152549&length=10510&dtd=dart4.xsd,PCB 공시 수주상황,
+353200,2026-Q1,2374.0,KRW_100m,억원,공시 확인,https://kind.krx.co.kr/external/2026/05/14/001527/20260514003325/11013.htm,PCB 공시 수주상황,
+353200,2026-Q2,3328,KRW_100m,억원,공시 확인,https://dart.fss.or.kr/report/viewer.do?rcpNo=20260813001620&dcmNo=11525746&eleId=13&offset=155776&length=10504&dtd=dart4.xsd,PCB 공시 수주상황,
+LS-CABLE,2026-Q1,85086,KRW_100m,억원,공시 확인,https://kind.krx.co.kr/external/2026/05/27/000326/20260527000729/11013.htm,LS 공시 전선 부문 연결·참고,LS전선 단독 금액이 아닌 LS 전선 부문 연결 수치입니다. 해저케이블만의 잔고가 아닙니다.
