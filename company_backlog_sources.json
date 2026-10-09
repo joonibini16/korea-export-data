@@ -1,6 +1,6 @@
 {
   "reviewed_at": "2026-10-09",
-  "review_scope": "업체별로 표시한 보고서 기준. 전체 업체의 최신 분기 또는 모든 과거 분기 확보를 뜻하지 않습니다.",
+  "review_scope": "관심 업체 전체의 2020-Q1~2026-Q2 정기보고서(사업·반기·분기)를 점검했습니다. 업체별로 공시 범위가 바뀐 기간은 섞지 않고 제외 사유를 기록합니다.",
   "companies": [
     {
       "company_id": "222800",
@@ -15,8 +15,8 @@
       "company_id": "353200",
       "status": "verified",
       "label": "공시 금액 확보",
-      "reason": "공시된 기말 수주잔고만 표시합니다. 집계 범위와 주의사항은 아래 표를 확인하세요.",
-      "source": "https://dart.fss.or.kr/report/viewer.do?rcpNo=20260813001620&dcmNo=11525746&eleId=13&offset=155776&length=10504&dtd=dart4.xsd",
+      "reason": "공시된 기말 수주잔고만 표시합니다. 집계 범위와 주의사항은 아래 표를 확인하세요. 2020년 5월 인적분할로 신설 상장되어 2020-Q1 보고서가 없습니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/13/001248/20260813003276/11012.htm",
       "reviewed_period": "2026-Q2",
       "name": "대덕전자"
     },
@@ -24,8 +24,8 @@
       "company_id": "007660",
       "status": "verified",
       "label": "공시 금액 확보",
-      "reason": "공시된 기말 수주잔고만 표시합니다. 집계 범위와 주의사항은 아래 표를 확인하세요.",
-      "source": "https://dart.fss.or.kr/report/viewer.do?rcpNo=20260814002283&dcmNo=11532726&eleId=13&offset=105524&length=11754&dtd=dart4.xsd",
+      "reason": "공시된 기말 수주잔고만 표시합니다. 집계 범위와 주의사항은 아래 표를 확인하세요. 2020-Q1~2021-Q2 공시 표는 \"-\"로 금액 미기재입니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/001720/20260814005804/11012.htm",
       "reviewed_period": "2026-Q2",
       "name": "이수페타시스"
     },
@@ -33,18 +33,18 @@
       "company_id": "192820",
       "status": "not_disclosed",
       "label": "금액 비공개",
-      "reason": "고객사의 판매계획·수시 발주에 따라 물량이 확정되어 특정일의 정확한 수주잔고를 표시하지 않는다고 설명합니다.",
-      "source": "https://kind.krx.co.kr/external/2026/05/14/000784/20260514001734/11013.htm",
-      "reviewed_period": "2026-Q1",
+      "reason": "고객사의 판매계획·수시 발주에 따라 물량이 확정되어 특정일의 정확한 수주잔고를 표시하지 않는다고 설명합니다. 2020-Q1~2026-Q2 정기보고서 26건을 모두 점검했으며 기말 수주잔고 금액 표는 없었습니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/13/001047/20260813002810/11012.htm",
+      "reviewed_period": "2026-Q2",
       "name": "코스맥스"
     },
     {
       "company_id": "161890",
       "status": "not_disclosed",
       "label": "금액 비공개",
-      "reason": "고객사의 판매계획·수시 발주에 따라 물량이 확정되어 특정일의 정확한 수주잔고를 표시하지 않는다고 설명합니다.",
-      "source": "https://kind.krx.co.kr/external/2026/05/14/000869/20260514001909/11013.htm",
-      "reviewed_period": "2026-Q1",
+      "reason": "고객사의 판매계획·수시 발주에 따라 물량이 확정되어 특정일의 정확한 수주잔고를 표시하지 않는다고 설명합니다. 2020-Q1~2026-Q2 정기보고서 26건을 모두 점검했으며 기말 수주잔고 금액 표는 없었습니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/002173/20260814007460/11012.htm",
+      "reviewed_period": "2026-Q2",
       "name": "한국콜마"
     },
     {
@@ -52,8 +52,8 @@
       "status": "verified",
       "label": "공시 금액 확보",
       "reason": "공시된 기말 수주잔고만 표시합니다. 집계 범위와 주의사항은 아래 표를 확인하세요.",
-      "source": "https://kind.krx.co.kr/external/2026/05/15/001720/20260515003809/11013.htm",
-      "reviewed_period": "2026-Q1",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/001829/20260814006211/11012.htm",
+      "reviewed_period": "2026-Q2",
       "name": "코리아써키트"
     },
     {
@@ -61,98 +61,98 @@
       "status": "verified",
       "label": "공시 금액 확보",
       "reason": "공시된 기말 수주잔고만 표시합니다. 집계 범위와 주의사항은 아래 표를 확인하세요.",
-      "source": "https://kind.krx.co.kr/external/2026/05/15/002325/20260515005213/11013.htm",
-      "reviewed_period": "2026-Q1",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/001960/20260814006706/11012.htm",
+      "reviewed_period": "2026-Q2",
       "name": "인터플렉스"
     },
     {
       "company_id": "090460",
       "status": "not_disclosed",
       "label": "금액 비공개",
-      "reason": "영업기밀 보호를 이유로 수주잔고 금액 기재를 생략했습니다.",
-      "source": "https://kind.krx.co.kr/external/2026/05/15/000275/20260515000503/11013.htm",
-      "reviewed_period": "2026-Q1",
+      "reason": "영업기밀 보호를 이유로 수주잔고 금액 기재를 생략했습니다. 2020-Q1~2026-Q2 정기보고서 26건을 모두 점검했으며 기말 수주잔고 금액 표는 없었습니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/000409/20260814001242/11012.htm",
+      "reviewed_period": "2026-Q2",
       "name": "비에이치"
     },
     {
       "company_id": "009150",
       "status": "not_reported",
       "label": "점검 공시 금액 미기재",
-      "reason": "공급물량이 고객 주문·생산계획·시장 수요에 따라 달라져 점검 공시에 수주잔고 금액이 없습니다.",
-      "source": "https://kind.krx.co.kr/external/2026/05/15/003115/20260515007118/11013.htm",
-      "reviewed_period": "2026-Q1",
+      "reason": "공급물량이 고객 주문·생산계획·시장 수요에 따라 달라져 점검 공시에 수주잔고 금액이 없습니다. 2020-Q1~2026-Q2 정기보고서 26건을 모두 점검했으며 기말 수주잔고 금액 표는 없었습니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/003250/20260814011455/11012.htm",
+      "reviewed_period": "2026-Q2",
       "name": "삼성전기"
     },
     {
       "company_id": "011070",
       "status": "not_reported",
       "label": "점검 공시 금액 미기재",
-      "reason": "공급물량이 고객 주문·생산계획·시장 수요에 따라 달라져 점검 공시에 수주잔고 금액이 없습니다.",
-      "source": "https://kind.krx.co.kr/external/2026/05/14/001630/20260514003527/11013.htm",
-      "reviewed_period": "2026-Q1",
+      "reason": "공급물량이 고객 주문·생산계획·시장 수요에 따라 달라져 점검 공시에 수주잔고 금액이 없습니다. 2020-Q1~2026-Q2 정기보고서 26건을 모두 점검했으며 기말 수주잔고 금액 표는 없었습니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/001345/20260814004463/11012.htm",
+      "reviewed_period": "2026-Q2",
       "name": "LG이노텍"
     },
     {
       "company_id": "195870",
       "status": "not_disclosed",
       "label": "금액 비공개",
-      "reason": "영업기밀 보호를 이유로 수주잔고 금액 기재를 생략했습니다.",
-      "source": "https://kind.krx.co.kr/external/2026/05/15/003197/20260515007298/11013.htm",
-      "reviewed_period": "2026-Q1",
+      "reason": "영업기밀 보호를 이유로 수주잔고 금액 기재를 생략했습니다. 2020-Q1~2026-Q2 정기보고서 26건을 모두 점검했으며 기말 수주잔고 금액 표는 없었습니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/003330/20260814011732/11012.htm",
+      "reviewed_period": "2026-Q2",
       "name": "해성디에스"
     },
     {
       "company_id": "241710",
       "status": "not_disclosed",
       "label": "금액 비공개",
-      "reason": "고객사의 판매계획·수시 발주에 따라 물량이 확정되어 특정일의 정확한 수주잔고를 표시하지 않는다고 설명합니다.",
-      "source": "https://kind.krx.co.kr/external/2026/05/15/001865/20260515004141/11013.htm",
-      "reviewed_period": "2026-Q1",
+      "reason": "고객사의 판매계획·수시 발주에 따라 물량이 확정되어 특정일의 정확한 수주잔고를 표시하지 않는다고 설명합니다. 2020-Q1~2026-Q2 정기보고서 26건을 모두 점검했으며 기말 수주잔고 금액 표는 없었습니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/003008/20260814010620/11012.htm",
+      "reviewed_period": "2026-Q2",
       "name": "코스메카코리아"
     },
     {
       "company_id": "003350",
       "status": "not_reported",
       "label": "점검 공시 금액 미기재",
-      "reason": "점검한 보고서의 매출 및 수주상황 항목에 수주잔고 금액이 기재되어 있지 않습니다. 잔고가 0이라는 의미는 아닙니다.",
-      "source": "https://kind.krx.co.kr/external/2026/05/14/001256/20260514002731/11013.htm",
-      "reviewed_period": "2026-Q1",
+      "reason": "점검한 보고서의 매출 및 수주상황 항목에 수주잔고 금액이 기재되어 있지 않습니다. 잔고가 0이라는 의미는 아닙니다. 2020-Q1~2026-Q2 정기보고서 26건을 모두 점검했으며 기말 수주잔고 금액 표는 없었습니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/13/000333/20260813000825/11012.htm",
+      "reviewed_period": "2026-Q2",
       "name": "한국화장품제조"
     },
     {
       "company_id": "090430",
       "status": "not_reported",
       "label": "점검 공시 금액 미기재",
-      "reason": "점검 공시의 수주상황은 사옥 임대계약으로, 화장품 수주잔고 금액은 기재되어 있지 않습니다.",
-      "source": "https://kind.krx.co.kr/external/2026/05/15/001318/20260515002877/11013.htm",
-      "reviewed_period": "2026-Q1",
+      "reason": "점검 공시의 수주상황은 사옥 임대계약으로, 화장품 수주잔고 금액은 기재되어 있지 않습니다. 2020-Q1~2026-Q2 정기보고서 26건을 모두 점검했으며 기말 수주잔고 금액 표는 없었습니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/001885/20260814006414/11012.htm",
+      "reviewed_period": "2026-Q2",
       "name": "아모레퍼시픽"
     },
     {
       "company_id": "051900",
       "status": "not_reported",
       "label": "점검 공시 금액 미기재",
-      "reason": "대량생산 매출이 대부분이며 수주에 의한 매출은 미미하다고 설명합니다. 잔고 금액은 기재하지 않습니다.",
-      "source": "https://kind.krx.co.kr/external/2026/05/15/001730/20260515003829/11013.htm",
-      "reviewed_period": "2026-Q1",
+      "reason": "대량생산 매출이 대부분이며 수주에 의한 매출은 미미하다고 설명합니다. 잔고 금액은 기재하지 않습니다. 2020-Q1~2026-Q2 정기보고서 26건을 모두 점검했으며 기말 수주잔고 금액 표는 없었습니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/001847/20260814006283/11012.htm",
+      "reviewed_period": "2026-Q2",
       "name": "LG생활건강"
     },
     {
       "company_id": "005930",
       "status": "not_disclosed",
       "label": "금액 비공개",
-      "reason": "영업기밀 보호를 이유로 수주잔고 금액 기재를 생략했습니다. 공개된 장기 공급계약 총액은 수주잔고로 사용하지 않습니다.",
-      "source": "https://kind.krx.co.kr/external/2026/05/15/002379/20260515005355/11013.htm",
-      "reviewed_period": "2026-Q1",
+      "reason": "영업기밀 보호를 이유로 수주잔고 금액 기재를 생략했습니다. 공개된 장기 공급계약 총액은 수주잔고로 사용하지 않습니다. 2020-Q1~2026-Q2 정기보고서 26건을 모두 점검했으며 기말 수주잔고 금액 표는 없었습니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/003138/20260814011035/11012.htm",
+      "reviewed_period": "2026-Q2",
       "name": "삼성전자"
     },
     {
       "company_id": "000660",
       "status": "not_reported",
       "label": "점검 공시 금액 미기재",
-      "reason": "고객과의 월·분기별 물량·가격 협의 방식만 설명하며 수주잔고 금액은 기재하지 않습니다.",
-      "source": "https://kind.krx.co.kr/external/2026/05/15/002501/20260515005649/11013.htm",
-      "reviewed_period": "2026-Q1",
+      "reason": "고객과의 월·분기별 물량·가격 협의 방식만 설명하며 수주잔고 금액은 기재하지 않습니다. 2020-Q1~2026-Q2 정기보고서 26건을 모두 점검했으며 기말 수주잔고 금액 표는 없었습니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/002925/20260814010304/11012.htm",
+      "reviewed_period": "2026-Q2",
       "name": "SK하이닉스"
     },
     {
@@ -160,7 +160,7 @@
       "status": "verified",
       "label": "공시 금액 확보",
       "reason": "공시된 기말 수주잔고만 표시합니다. 집계 범위와 주의사항은 아래 표를 확인하세요.",
-      "source": "https://dart.fss.or.kr/report/viewer.do?rcpNo=20260814001689&dcmNo=11530690&eleId=13&offset=121950&length=17187&dtd=dart4.xsd",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/001157/20260814003821/11012.htm",
       "reviewed_period": "2026-Q2",
       "name": "티씨케이"
     },
@@ -168,45 +168,45 @@
       "company_id": "166090",
       "status": "not_reported",
       "label": "점검 공시 금액 미기재",
-      "reason": "기본거래계약 후 수시 발주 방식이며 장기수주가 없어 특정시점의 수주현황 의미가 작다고 설명합니다.",
-      "source": "https://kind.krx.co.kr/external/2026/05/14/001008/20260514002222/11013.htm",
-      "reviewed_period": "2026-Q1",
+      "reason": "기본거래계약 후 수시 발주 방식이며 장기수주가 없어 특정시점의 수주현황 의미가 작다고 설명합니다. 2020-Q1~2026-Q2 정기보고서 26건을 모두 점검했으며 기말 수주잔고 금액 표는 없었습니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/13/000880/20260813002354/11012.htm",
+      "reviewed_period": "2026-Q2",
       "name": "하나머티리얼즈"
     },
     {
       "company_id": "058470",
       "status": "not_reported",
       "label": "점검 공시 금액 미기재",
-      "reason": "양산 제품은 발주 후 10일 이내, 특별주문은 2~4주 이내 납품하는 방식으로 금액 합계는 기재하지 않습니다.",
-      "source": "https://kind.krx.co.kr/external/2026/05/14/000390/20260514000861/11013.htm",
-      "reviewed_period": "2026-Q1",
+      "reason": "양산 제품은 발주 후 10일 이내, 특별주문은 2~4주 이내 납품하는 방식으로 금액 합계는 기재하지 않습니다. 2020-Q1~2026-Q2 정기보고서 26건을 모두 점검했으며 기말 수주잔고 금액 표는 없었습니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/000250/20260814000683/11012.htm",
+      "reviewed_period": "2026-Q2",
       "name": "리노공업"
     },
     {
       "company_id": "039030",
       "status": "not_reported",
       "label": "점검 공시 금액 미기재",
-      "reason": "점검한 보고서의 매출 및 수주상황 항목에 수주잔고 금액이 기재되어 있지 않습니다. 잔고가 0이라는 의미는 아닙니다.",
-      "source": "https://kind.krx.co.kr/external/2026/05/15/001222/20260515002659/11013.htm",
-      "reviewed_period": "2026-Q1",
+      "reason": "점검한 보고서의 매출 및 수주상황 항목에 수주잔고 금액이 기재되어 있지 않습니다. 잔고가 0이라는 의미는 아닙니다. 2020-Q1~2026-Q2 정기보고서 26건을 모두 점검했으며 기말 수주잔고 금액 표는 없었습니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/000722/20260814002424/11012.htm",
+      "reviewed_period": "2026-Q2",
       "name": "이오테크닉스"
     },
     {
       "company_id": "267260",
       "status": "verified",
       "label": "공시 금액 확보",
-      "reason": "공시된 기말 수주잔고만 표시합니다. 집계 범위와 주의사항은 아래 표를 확인하세요.",
-      "source": "https://kind.krx.co.kr/external/2026/05/15/002528/20260515005720/11013.htm",
-      "reviewed_period": "2026-Q1",
+      "reason": "공시된 기말 수주잔고만 표시합니다. 집계 범위와 주의사항은 아래 표를 확인하세요. 2022-Q1부터 연결(종속회사 포함) 합계로 공시. 2020~2021년은 법인별 표만 있어 합산하지 않았습니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/002666/20260814009318/11012.htm",
+      "reviewed_period": "2026-Q2",
       "name": "HD현대일렉트릭"
     },
     {
       "company_id": "298040",
       "status": "verified",
       "label": "공시 금액 확보",
-      "reason": "공시된 기말 수주잔고만 표시합니다. 집계 범위와 주의사항은 아래 표를 확인하세요.",
-      "source": "https://kind.krx.co.kr/external/2026/05/14/001423/20260514003098/11013.htm",
-      "reviewed_period": "2026-Q1",
+      "reason": "공시된 기말 수주잔고만 표시합니다. 집계 범위와 주의사항은 아래 표를 확인하세요. 2025년부터 주요 해외 종속회사를 포함한 원화 합계로 공시. 2024-Q4는 2025년 사업보고서의 전기말 비교 수치이며, 2020~2024년 공시는 본사 금액만 있어 범위가 달라 제외했습니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/13/001190/20260813003134/11012.htm",
+      "reviewed_period": "2026-Q2",
       "name": "효성중공업"
     },
     {
@@ -214,8 +214,8 @@
       "status": "verified",
       "label": "공시 금액 확보",
       "reason": "공시된 기말 수주잔고만 표시합니다. 집계 범위와 주의사항은 아래 표를 확인하세요.",
-      "source": "https://kind.krx.co.kr/external/2026/05/14/000825/20260514001826/11013.htm",
-      "reviewed_period": "2026-Q1",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/002524/20260814008791/11012.htm",
+      "reviewed_period": "2026-Q2",
       "name": "LS ELECTRIC"
     },
     {
@@ -223,8 +223,8 @@
       "status": "verified",
       "label": "공시 금액 확보",
       "reason": "공시된 기말 수주잔고만 표시합니다. 집계 범위와 주의사항은 아래 표를 확인하세요.",
-      "source": "https://kind.krx.co.kr/external/2026/03/11/001795/20260311004198/11011.htm",
-      "reviewed_period": "2025-Q4",
+      "source": "https://kind.krx.co.kr/external/2026/08/11/000470/20260811001106/11012.htm",
+      "reviewed_period": "2026-Q2",
       "name": "일진전기"
     },
     {
@@ -232,138 +232,238 @@
       "status": "verified",
       "label": "공시 금액 확보",
       "reason": "공시된 기말 수주잔고만 표시합니다. 집계 범위와 주의사항은 아래 표를 확인하세요.",
-      "source": "https://kind.krx.co.kr/external/2026/05/27/000326/20260527000729/11013.htm",
-      "reviewed_period": "2026-Q1",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/001351/20260814004491/11012.htm",
+      "reviewed_period": "2026-Q2",
       "name": "LS전선"
     },
     {
       "company_id": "373220",
       "status": "not_reported",
       "label": "점검 공시 금액 미기재",
-      "reason": "공급물량이 고객 주문·생산계획·시장 수요에 따라 달라져 점검 공시에 수주잔고 금액이 없습니다.",
-      "source": "https://kind.krx.co.kr/external/2026/05/14/001078/20260514002352/11013.htm",
-      "reviewed_period": "2026-Q1",
+      "reason": "공급물량이 고객 주문·생산계획·시장 수요에 따라 달라져 점검 공시에 수주잔고 금액이 없습니다. 2020-Q1~2026-Q2 정기보고서 23건을 모두 점검했으며 기말 수주잔고 금액 표는 없었습니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/13/000150/20260813000313/11012.htm",
+      "reviewed_period": "2026-Q2",
       "name": "LG에너지솔루션"
     },
     {
       "company_id": "006400",
       "status": "not_reported",
       "label": "점검 공시 금액 미기재",
-      "reason": "공급물량이 고객 주문·생산계획·시장 수요에 따라 달라져 점검 공시에 수주잔고 금액이 없습니다.",
-      "source": "https://kind.krx.co.kr/external/2026/05/15/002628/20260515005957/11013.htm",
-      "reviewed_period": "2026-Q1",
+      "reason": "공급물량이 고객 주문·생산계획·시장 수요에 따라 달라져 점검 공시에 수주잔고 금액이 없습니다. 2020-Q1~2026-Q2 정기보고서 26건을 모두 점검했으며 기말 수주잔고 금액 표는 없었습니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/002991/20260814010558/11012.htm",
+      "reviewed_period": "2026-Q2",
       "name": "삼성SDI"
     },
     {
       "company_id": "247540",
       "status": "not_reported",
       "label": "점검 공시 금액 미기재",
-      "reason": "중장기 공급계약 및 월별 발주 방식을 설명하지만 기말 수주잔고 금액은 기재하지 않습니다. 계약총액을 잔고로 대체하지 않습니다.",
-      "source": "https://kind.krx.co.kr/external/2026/05/15/001227/20260515002672/11013.htm",
-      "reviewed_period": "2026-Q1",
+      "reason": "중장기 공급계약 및 월별 발주 방식을 설명하지만 기말 수주잔고 금액은 기재하지 않습니다. 계약총액을 잔고로 대체하지 않습니다. 2020-Q1~2026-Q2 정기보고서 26건을 모두 점검했으며 기말 수주잔고 금액 표는 없었습니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/001979/20260814006770/11012.htm",
+      "reviewed_period": "2026-Q2",
       "name": "에코프로비엠"
     },
     {
       "company_id": "066970",
       "status": "verified",
       "label": "공시 금액 확보",
-      "reason": "공시된 기말 수주잔고만 표시합니다. 집계 범위와 주의사항은 아래 표를 확인하세요.",
-      "source": "https://kind.krx.co.kr/external/2026/05/15/001002/20260515002154/11013.htm",
-      "reviewed_period": "2026-Q1",
+      "reason": "공시된 기말 수주잔고만 표시합니다. 집계 범위와 주의사항은 아래 표를 확인하세요. 2021-Q2부터 공개 양극재 계약 합계. 2023-Q2~Q4는 공시 표 잔고가 \"-\"(계약총액=기납품액)로 0입니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/000627/20260814002035/11012.htm",
+      "reviewed_period": "2026-Q2",
       "name": "엘앤에프"
     },
     {
       "company_id": "003670",
       "status": "verified",
       "label": "공시 금액 확보",
-      "reason": "공시된 기말 수주잔고만 표시합니다. 집계 범위와 주의사항은 아래 표를 확인하세요.",
-      "source": "https://kind.krx.co.kr/external/2026/05/15/001579/20260515003472/11013.htm",
-      "reviewed_period": "2026-Q1",
+      "reason": "공시된 기말 수주잔고만 표시합니다. 집계 범위와 주의사항은 아래 표를 확인하세요. 2023-Q3부터 10억원 이상 계약 기준 합계. 그 이전은 기준(1억원 이상·개별 계약 나열)이 달라 제외했습니다.",
+      "source": "https://kind.krx.co.kr/external/2026/09/02/000598/20260902001619/11012.htm",
+      "reviewed_period": "2026-Q2",
       "name": "포스코퓨처엠"
     },
     {
       "company_id": "082920",
-      "status": "not_disclosed",
-      "label": "금액 비공개",
-      "reason": "영업기밀 보호를 이유로 수주잔고 금액 기재를 생략했습니다.",
-      "source": "https://kind.krx.co.kr/external/2026/05/12/000485/20260512001131/11013.htm",
-      "reviewed_period": "2026-Q1",
+      "status": "verified",
+      "label": "공시 금액 확보",
+      "reason": "공시된 기말 수주잔고만 표시합니다. 집계 범위와 주의사항은 아래 표를 확인하세요. 2023-Q1~2025-Q3 장기공급계약 잔고만 표시합니다. 2020~2022년·2026-Q2는 개별 주문 표로 범위가 다르고, 2025-Q4~2026-Q1은 기재하지 않았습니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/12/000164/20260812000444/11012.htm",
+      "reviewed_period": "2026-Q2",
       "name": "비츠로셀"
     },
     {
       "company_id": "086900",
       "status": "not_reported",
       "label": "점검 공시 금액 미기재",
-      "reason": "주문생산 없이 적정 재고로 수시 거래에 대응하므로 수주 관련 사항 기재를 생략합니다.",
-      "source": "https://kind.krx.co.kr/external/2026/03/19/001852/20260319007599/11011.htm",
-      "reviewed_period": "2025-Q4",
+      "reason": "주문생산 없이 적정 재고로 수시 거래에 대응하므로 수주 관련 사항 기재를 생략합니다. 2020-Q1~2026-Q2 정기보고서 26건을 모두 점검했으며 기말 수주잔고 금액 표는 없었습니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/13/001368/20260813003597/11012.htm",
+      "reviewed_period": "2026-Q2",
       "name": "메디톡스"
     },
     {
       "company_id": "145020",
       "status": "not_applicable",
       "label": "공시상 해당사항 없음",
-      "reason": "점검 공시의 수주상황 항목에 해당사항 없음으로 기재되어 있습니다. 임의의 0원 값은 생성하지 않습니다.",
-      "source": "https://kind.krx.co.kr/external/2026/03/20/000391/20260320001556/11011.htm",
-      "reviewed_period": "2025-Q4",
+      "reason": "점검 공시의 수주상황 항목에 해당사항 없음으로 기재되어 있습니다. 임의의 0원 값은 생성하지 않습니다. 2020-Q1~2026-Q2 정기보고서 26건을 모두 점검했으며 기말 수주잔고 금액 표는 없었습니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/000939/20260814003080/11012.htm",
+      "reviewed_period": "2026-Q2",
       "name": "휴젤"
     },
     {
       "company_id": "069620",
       "status": "not_reported",
       "label": "점검 공시 금액 미기재",
-      "reason": "재무제표에 중요한 영향을 미치는 장기공급계약 수주거래가 없다고 설명합니다. 단기 수주잔고 금액은 기재하지 않습니다.",
-      "source": "https://kind.krx.co.kr/external/2026/05/15/001751/20260515003880/11013.htm",
-      "reviewed_period": "2026-Q1",
+      "reason": "재무제표에 중요한 영향을 미치는 장기공급계약 수주거래가 없다고 설명합니다. 단기 수주잔고 금액은 기재하지 않습니다. 2020-Q1~2026-Q2 정기보고서 26건을 모두 점검했으며 기말 수주잔고 금액 표는 없었습니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/001957/20260814006690/11012.htm",
+      "reviewed_period": "2026-Q2",
       "name": "대웅제약"
     },
     {
       "company_id": "041830",
       "status": "not_applicable",
       "label": "공시상 해당사항 없음",
-      "reason": "점검 공시의 수주상황 항목에 해당사항 없음으로 기재되어 있습니다. 임의의 0원 값은 생성하지 않습니다.",
-      "source": "https://kind.krx.co.kr/external/2026/05/14/001499/20260514003267/11013.htm",
-      "reviewed_period": "2026-Q1",
+      "reason": "점검 공시의 수주상황 항목에 해당사항 없음으로 기재되어 있습니다. 임의의 0원 값은 생성하지 않습니다. 2020-Q1~2026-Q2 정기보고서 26건을 모두 점검했으며 기말 수주잔고 금액 표는 없었습니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/003088/20260814010836/11012.htm",
+      "reviewed_period": "2026-Q2",
       "name": "인바디"
     },
     {
       "company_id": "003230",
       "status": "not_reported",
       "label": "점검 공시 금액 미기재",
-      "reason": "점검한 보고서의 매출 및 수주상황 항목에 수주잔고 금액이 기재되어 있지 않습니다. 잔고가 0이라는 의미는 아닙니다.",
-      "source": "https://kind.krx.co.kr/external/2026/05/13/000704/20260513001598/11013.htm",
-      "reviewed_period": "2026-Q1",
+      "reason": "점검한 보고서의 매출 및 수주상황 항목에 수주잔고 금액이 기재되어 있지 않습니다. 잔고가 0이라는 의미는 아닙니다. 2020-Q1~2026-Q2 정기보고서 26건을 모두 점검했으며 기말 수주잔고 금액 표는 없었습니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/002488/20260814008657/11012.htm",
+      "reviewed_period": "2026-Q2",
       "name": "삼양식품"
     },
     {
       "company_id": "004370",
       "status": "not_reported",
       "label": "점검 공시 금액 미기재",
-      "reason": "점검한 보고서의 매출 및 수주상황 항목에 수주잔고 금액이 기재되어 있지 않습니다. 잔고가 0이라는 의미는 아닙니다.",
-      "source": "https://kind.krx.co.kr/external/2026/05/15/000946/20260515002032/11013.htm",
-      "reviewed_period": "2026-Q1",
+      "reason": "점검한 보고서의 매출 및 수주상황 항목에 수주잔고 금액이 기재되어 있지 않습니다. 잔고가 0이라는 의미는 아닙니다. 2020-Q1~2026-Q2 정기보고서 26건을 모두 점검했으며 기말 수주잔고 금액 표는 없었습니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/000202/20260814000521/11012.htm",
+      "reviewed_period": "2026-Q2",
       "name": "농심"
     },
     {
       "company_id": "007310",
       "status": "not_applicable",
       "label": "공시상 해당사항 없음",
-      "reason": "점검 공시의 수주상황 항목에 해당사항 없음으로 기재되어 있습니다. 임의의 0원 값은 생성하지 않습니다.",
-      "source": "https://kind.krx.co.kr/external/2026/05/15/001307/20260515002859/11013.htm",
-      "reviewed_period": "2026-Q1",
+      "reason": "점검 공시의 수주상황 항목에 해당사항 없음으로 기재되어 있습니다. 임의의 0원 값은 생성하지 않습니다. 2020-Q1~2026-Q2 정기보고서 26건을 모두 점검했으며 기말 수주잔고 금액 표는 없었습니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/001418/20260814004713/11012.htm",
+      "reviewed_period": "2026-Q2",
       "name": "오뚜기"
     },
     {
       "company_id": "009830",
       "status": "not_reported",
       "label": "점검 공시 금액 미기재",
-      "reason": "공급물량이 고객 주문·생산계획·시장 수요에 따라 달라져 점검 공시에 수주잔고 금액이 없습니다.",
-      "source": "https://kind.krx.co.kr/external/2026/05/14/000338/20260514000718/11013.htm",
-      "reviewed_period": "2026-Q1",
+      "reason": "공급물량이 고객 주문·생산계획·시장 수요에 따라 달라져 점검 공시에 수주잔고 금액이 없습니다. 2020-Q1~2026-Q2 정기보고서 26건을 모두 점검했으며 기말 수주잔고 금액 표는 없었습니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/002512/20260814008746/11012.htm",
+      "reviewed_period": "2026-Q2",
       "name": "한화솔루션"
     }
   ],
   "observations": [
+    {
+      "company_id": "003670",
+      "period": "2023-Q3",
+      "raw_value": "65745",
+      "raw_unit": "KRW_million",
+      "scope": "산업로·보수공사 등 10억원 이상 계약",
+      "source": "https://kind.krx.co.kr/external/2023/11/14/001632/20231114003507/11013.htm",
+      "status": "공시 확인",
+      "notes": "양극재·음극재 잔고가 아닙니다. 에너지소재사업 수주잔고 금액은 미기재."
+    },
+    {
+      "company_id": "003670",
+      "period": "2023-Q4",
+      "raw_value": "92148",
+      "raw_unit": "KRW_million",
+      "scope": "산업로·보수공사 등 10억원 이상 계약",
+      "source": "https://kind.krx.co.kr/external/2024/03/26/000499/20240326001783/11011.htm",
+      "status": "공시 확인",
+      "notes": "양극재·음극재 잔고가 아닙니다. 에너지소재사업 수주잔고 금액은 미기재."
+    },
+    {
+      "company_id": "003670",
+      "period": "2024-Q1",
+      "raw_value": "74804",
+      "raw_unit": "KRW_million",
+      "scope": "산업로·보수공사 등 10억원 이상 계약",
+      "source": "https://kind.krx.co.kr/external/2024/05/14/001431/20240514003130/11013.htm",
+      "status": "공시 확인",
+      "notes": "양극재·음극재 잔고가 아닙니다. 에너지소재사업 수주잔고 금액은 미기재."
+    },
+    {
+      "company_id": "003670",
+      "period": "2024-Q2",
+      "raw_value": "57316",
+      "raw_unit": "KRW_million",
+      "scope": "산업로·보수공사 등 10억원 이상 계약",
+      "source": "https://kind.krx.co.kr/external/2024/08/13/000949/20240813002576/11012.htm",
+      "status": "공시 확인",
+      "notes": "양극재·음극재 잔고가 아닙니다. 에너지소재사업 수주잔고 금액은 미기재."
+    },
+    {
+      "company_id": "003670",
+      "period": "2024-Q3",
+      "raw_value": "48011",
+      "raw_unit": "KRW_million",
+      "scope": "산업로·보수공사 등 10억원 이상 계약",
+      "source": "https://kind.krx.co.kr/external/2024/11/14/000384/20241114000764/11013.htm",
+      "status": "공시 확인",
+      "notes": "양극재·음극재 잔고가 아닙니다. 에너지소재사업 수주잔고 금액은 미기재."
+    },
+    {
+      "company_id": "003670",
+      "period": "2024-Q4",
+      "raw_value": "24584",
+      "raw_unit": "KRW_million",
+      "scope": "산업로·보수공사 등 10억원 이상 계약",
+      "source": "https://kind.krx.co.kr/external/2025/03/14/000503/20250314001489/11011.htm",
+      "status": "공시 확인",
+      "notes": "양극재·음극재 잔고가 아닙니다. 에너지소재사업 수주잔고 금액은 미기재."
+    },
+    {
+      "company_id": "003670",
+      "period": "2025-Q1",
+      "raw_value": "55983",
+      "raw_unit": "KRW_million",
+      "scope": "산업로·보수공사 등 10억원 이상 계약",
+      "source": "https://kind.krx.co.kr/external/2025/05/13/000317/20250513000549/11013.htm",
+      "status": "공시 확인",
+      "notes": "양극재·음극재 잔고가 아닙니다. 에너지소재사업 수주잔고 금액은 미기재."
+    },
+    {
+      "company_id": "003670",
+      "period": "2025-Q2",
+      "raw_value": "36149",
+      "raw_unit": "KRW_million",
+      "scope": "산업로·보수공사 등 10억원 이상 계약",
+      "source": "https://kind.krx.co.kr/external/2025/08/14/003412/20250814010733/11012.htm",
+      "status": "공시 확인",
+      "notes": "양극재·음극재 잔고가 아닙니다. 에너지소재사업 수주잔고 금액은 미기재."
+    },
+    {
+      "company_id": "003670",
+      "period": "2025-Q3",
+      "raw_value": "35102",
+      "raw_unit": "KRW_million",
+      "scope": "산업로·보수공사 등 10억원 이상 계약",
+      "source": "https://kind.krx.co.kr/external/2025/11/14/001469/20251114003275/11013.htm",
+      "status": "공시 확인",
+      "notes": "양극재·음극재 잔고가 아닙니다. 에너지소재사업 수주잔고 금액은 미기재."
+    },
+    {
+      "company_id": "003670",
+      "period": "2025-Q4",
+      "raw_value": "30175",
+      "raw_unit": "KRW_million",
+      "scope": "산업로·보수공사 등 10억원 이상 계약",
+      "source": "https://kind.krx.co.kr/external/2026/03/12/001284/20260312003158/11011.htm",
+      "status": "공시 확인",
+      "notes": "양극재·음극재 잔고가 아닙니다. 에너지소재사업 수주잔고 금액은 미기재."
+    },
     {
       "company_id": "003670",
       "period": "2026-Q1",
@@ -373,6 +473,166 @@
       "source": "https://kind.krx.co.kr/external/2026/05/15/001579/20260515003472/11013.htm",
       "notes": "양극재·음극재 잔고가 아닙니다. 에너지소재사업 수주잔고 금액은 미기재.",
       "status": "공시 확인"
+    },
+    {
+      "company_id": "003670",
+      "period": "2026-Q2",
+      "raw_value": "25958",
+      "raw_unit": "KRW_million",
+      "scope": "산업로·보수공사 등 10억원 이상 계약",
+      "source": "https://kind.krx.co.kr/external/2026/09/02/000598/20260902001619/11012.htm",
+      "status": "공시 확인",
+      "notes": "양극재·음극재 잔고가 아닙니다. 에너지소재사업 수주잔고 금액은 미기재."
+    },
+    {
+      "company_id": "007660",
+      "period": "2021-Q3",
+      "raw_value": "83859",
+      "raw_unit": "KRW_million",
+      "scope": "PCB 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2021/11/15/001997/20211115004230/11013.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 품목별 잔고 합계 대조. 신규 수주액과 기초 잔고를 혼동하지 않음."
+    },
+    {
+      "company_id": "007660",
+      "period": "2021-Q4",
+      "raw_value": "98762",
+      "raw_unit": "KRW_million",
+      "scope": "PCB 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2022/03/23/001530/20220323005804/11011.htm",
+      "status": "공시 확인",
+      "notes": "표 앞 단위 문구가 없어 같은 회사 공시 계열의 단위(백만원)를 적용 · 기납품액이 분기 매출 규모와 일치함을 확인"
+    },
+    {
+      "company_id": "007660",
+      "period": "2022-Q1",
+      "raw_value": "112270",
+      "raw_unit": "KRW_million",
+      "scope": "PCB 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2022/05/16/001890/20220516004164/11013.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 품목별 잔고 합계 대조. 신규 수주액과 기초 잔고를 혼동하지 않음."
+    },
+    {
+      "company_id": "007660",
+      "period": "2022-Q2",
+      "raw_value": "161072",
+      "raw_unit": "KRW_million",
+      "scope": "PCB 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2022/08/16/002159/20220816006801/11012.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "007660",
+      "period": "2022-Q3",
+      "raw_value": "179244",
+      "raw_unit": "KRW_million",
+      "scope": "PCB 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2022/11/14/001763/20221114003748/11013.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 품목별 잔고 합계 대조. 신규 수주액과 기초 잔고를 혼동하지 않음."
+    },
+    {
+      "company_id": "007660",
+      "period": "2022-Q4",
+      "raw_value": "1.9752E+5",
+      "raw_unit": "KRW_million",
+      "scope": "PCB 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2023/03/23/001544/20230323005580/11011.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "007660",
+      "period": "2023-Q1",
+      "raw_value": "2.0067E+5",
+      "raw_unit": "KRW_million",
+      "scope": "PCB 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2023/05/15/002096/20230515004542/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "007660",
+      "period": "2023-Q2",
+      "raw_value": "223334",
+      "raw_unit": "KRW_million",
+      "scope": "PCB 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2023/08/14/002502/20230814007727/11012.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 품목별 잔고 합계 대조. 신규 수주액과 기초 잔고를 혼동하지 않음."
+    },
+    {
+      "company_id": "007660",
+      "period": "2023-Q3",
+      "raw_value": "220692",
+      "raw_unit": "KRW_million",
+      "scope": "PCB 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2023/11/14/002477/20231114005496/11013.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 품목별 잔고 합계 대조. 신규 수주액과 기초 잔고를 혼동하지 않음."
+    },
+    {
+      "company_id": "007660",
+      "period": "2023-Q4",
+      "raw_value": "236408",
+      "raw_unit": "KRW_million",
+      "scope": "PCB 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2024/03/21/001291/20240321005337/11011.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 품목별 잔고 합계 대조. 신규 수주액과 기초 잔고를 혼동하지 않음."
+    },
+    {
+      "company_id": "007660",
+      "period": "2024-Q1",
+      "raw_value": "222618",
+      "raw_unit": "KRW_million",
+      "scope": "PCB 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2024/05/14/001600/20240514003505/11013.htm",
+      "status": "공시 확인",
+      "notes": "표 앞 단위 문구가 없어 같은 회사 공시 계열의 단위(백만원)를 적용 · 기납품액이 분기 매출 규모와 일치함을 확인"
+    },
+    {
+      "company_id": "007660",
+      "period": "2024-Q2",
+      "raw_value": "220131",
+      "raw_unit": "KRW_million",
+      "scope": "PCB 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2024/08/14/002281/20240814007237/11012.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 품목별 잔고 합계 대조. 신규 수주액과 기초 잔고를 혼동하지 않음."
+    },
+    {
+      "company_id": "007660",
+      "period": "2024-Q3",
+      "raw_value": "2.219E+5",
+      "raw_unit": "KRW_million",
+      "scope": "PCB 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2024/11/14/002134/20241114004760/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "007660",
+      "period": "2024-Q4",
+      "raw_value": "259266",
+      "raw_unit": "KRW_million",
+      "scope": "PCB 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2025/03/21/001105/20250321004157/11011.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 품목별 잔고 합계 대조. 신규 수주액과 기초 잔고를 혼동하지 않음."
+    },
+    {
+      "company_id": "007660",
+      "period": "2025-Q1",
+      "raw_value": "295719",
+      "raw_unit": "KRW_million",
+      "scope": "PCB 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2025/05/14/001041/20250514002229/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
     },
     {
       "company_id": "007660",
@@ -426,633 +686,23 @@
     },
     {
       "company_id": "007810",
-      "period": "2026-Q1",
-      "raw_value": 157254,
+      "period": "2020-Q1",
+      "raw_value": "97414",
       "raw_unit": "KRW_million",
       "scope": "PCB·FPCB 공시 합계",
-      "source": "https://kind.krx.co.kr/external/2026/05/15/001720/20260515003809/11013.htm",
-      "notes": "반도체 부문 단기수주 제외. 인터플렉스와 중복 가능하므로 업체 간 합산 금지.",
-      "status": "공시 확인"
-    },
-    {
-      "company_id": "010120",
-      "period": "2025-Q4",
-      "raw_value": 50154,
-      "raw_unit": "KRW_100m",
-      "scope": "LS ELECTRIC 본체 합계·자회사 별도",
-      "source": "https://kind.krx.co.kr/external/2026/03/18/001763/20260318008079/11011.htm",
-      "notes": "자회사 수주를 합산한 연결 전체 수치가 아닙니다.",
-      "status": "공시 확인"
-    },
-    {
-      "company_id": "010120",
-      "period": "2026-Q1",
-      "raw_value": 56425,
-      "raw_unit": "KRW_100m",
-      "scope": "LS ELECTRIC 본체 합계·자회사 별도",
-      "source": "https://kind.krx.co.kr/external/2026/05/14/000825/20260514001826/11013.htm",
-      "notes": "자회사 수주를 합산한 연결 전체 수치가 아닙니다.",
-      "status": "공시 확인"
-    },
-    {
-      "company_id": "051370",
-      "period": "2026-Q1",
-      "raw_value": 10414,
-      "raw_unit": "KRW_million",
-      "scope": "FPCB 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2026/05/15/002325/20260515005213/11013.htm",
-      "notes": "",
-      "status": "공시 확인"
-    },
-    {
-      "company_id": "064760",
-      "period": "2025-Q3",
-      "raw_value": 684.3,
-      "raw_unit": "KRW_100m",
-      "scope": "탄소제품·SiC 등 공시 합계",
-      "source": "https://kind.krx.co.kr/external/2025/11/14/000705/20251114001554/11013.htm",
-      "notes": "",
-      "status": "공시 확인"
-    },
-    {
-      "company_id": "064760",
-      "period": "2025-Q4",
-      "raw_value": 905,
-      "raw_unit": "KRW_100m",
-      "scope": "탄소제품·SiC 등 공시 합계",
-      "source": "https://kind.krx.co.kr/external/2026/03/10/001538/20260310003407/11011.htm",
-      "notes": "",
-      "status": "공시 확인"
-    },
-    {
-      "company_id": "064760",
-      "period": "2026-Q1",
-      "raw_value": 973.8,
-      "raw_unit": "KRW_100m",
-      "scope": "탄소제품·SiC 등 공시 합계",
-      "source": "https://kind.krx.co.kr/external/2026/05/15/002296/20260515005133/11013.htm",
-      "notes": "",
-      "status": "공시 확인"
-    },
-    {
-      "company_id": "064760",
-      "period": "2026-Q2",
-      "raw_value": 1993.7,
-      "raw_unit": "KRW_100m",
-      "scope": "탄소제품·SiC 등 공시 합계",
-      "source": "https://dart.fss.or.kr/report/viewer.do?rcpNo=20260814001689&dcmNo=11530690&eleId=13&offset=121950&length=17187&dtd=dart4.xsd",
-      "notes": "",
-      "status": "공시 확인"
-    },
-    {
-      "company_id": "066970",
-      "period": "2026-Q1",
-      "raw_value": 23457270747764,
-      "raw_unit": "KRW",
-      "scope": "공개 양극재 계약 합계·일부 계약 제외",
-      "source": "https://kind.krx.co.kr/external/2026/05/15/001002/20260515002154/11013.htm",
-      "notes": "2025-03-11 비공개 계약 제외. 2024-04-11 계약은 상대방 파산·인수에 따라 이행 여부가 달라질 수 있습니다.",
-      "status": "공시 확인"
-    },
-    {
-      "company_id": "103590",
-      "period": "2025-Q4",
-      "raw_value": 1624785,
-      "raw_unit": "USD_thousand",
-      "scope": "전력선·변압기·중전기 합계",
-      "source": "https://kind.krx.co.kr/external/2026/03/11/001795/20260311004198/11011.htm",
-      "notes": "",
-      "status": "공시 확인"
-    },
-    {
-      "company_id": "222800",
-      "period": "2025-Q4",
-      "raw_value": 294564,
-      "raw_unit": "USD_thousand",
-      "scope": "인쇄회로기판 공시 수주상황",
-      "source": "https://dart.fss.or.kr/report/viewer.do?rcpNo=20260317000641&dcmNo=11132615&eleId=13&offset=210309&length=18306&dtd=dart4.xsd",
-      "notes": "기존 리서치 반올림 수치를 공시 원문으로 갱신했습니다.",
-      "status": "공시 확인"
-    },
-    {
-      "company_id": "222800",
-      "period": "2026-Q1",
-      "raw_value": 330609,
-      "raw_unit": "USD_thousand",
-      "scope": "인쇄회로기판 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2026/05/14/000890/20260514001959/11013.htm",
-      "notes": "",
-      "status": "공시 확인"
-    },
-    {
-      "company_id": "222800",
-      "period": "2026-Q2",
-      "raw_value": 392355,
-      "raw_unit": "USD_thousand",
-      "scope": "인쇄회로기판 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2026/08/13/001043/20260813002788/11012.htm",
-      "notes": "",
-      "status": "공시 확인"
-    },
-    {
-      "company_id": "267260",
-      "period": "2026-Q1",
-      "raw_value": 11437600,
-      "raw_unit": "KRW_million",
-      "scope": "연결 전기전자 부문",
-      "source": "https://kind.krx.co.kr/external/2026/05/15/002528/20260515005720/11013.htm",
-      "notes": "회사가 추정한 예상 환율로 환산한 공시 금액입니다.",
-      "status": "공시 확인"
-    },
-    {
-      "company_id": "298040",
-      "period": "2025-Q4",
-      "raw_value": 15340242,
-      "raw_unit": "KRW_million",
-      "scope": "중공업 부문·국내외 주요 종속회사 포함",
-      "source": "https://kind.krx.co.kr/external/2026/03/11/001787/20260311004183/11011.htm",
-      "notes": "건설 부문 제외. 보고기준일별 환율 환산으로 전기말 비교 수치와 차이가 날 수 있습니다.",
-      "status": "공시 확인"
-    },
-    {
-      "company_id": "298040",
-      "period": "2026-Q1",
-      "raw_value": 20196435,
-      "raw_unit": "KRW_million",
-      "scope": "중공업 부문·국내외 주요 종속회사 포함",
-      "source": "https://kind.krx.co.kr/external/2026/05/14/001423/20260514003098/11013.htm",
-      "notes": "건설 부문 제외. 보고기준일별 환율 환산으로 전기말 비교 수치와 차이가 날 수 있습니다.",
-      "status": "공시 확인"
-    },
-    {
-      "company_id": "353200",
-      "period": "2025-Q2",
-      "raw_value": 1283,
-      "raw_unit": "KRW_100m",
-      "scope": "PCB 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2025/08/13/000822/20250813002283/11012.htm",
-      "notes": "",
-      "status": "공시 확인"
-    },
-    {
-      "company_id": "353200",
-      "period": "2025-Q3",
-      "raw_value": 3110,
-      "raw_unit": "KRW_100m",
-      "scope": "PCB 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2025/11/13/000702/20251113001702/11013.htm",
-      "notes": "",
-      "status": "공시 확인"
-    },
-    {
-      "company_id": "353200",
-      "period": "2025-Q4",
-      "raw_value": 2168,
-      "raw_unit": "KRW_100m",
-      "scope": "PCB 공시 수주상황",
-      "source": "https://dart.fss.or.kr/report/viewer.do?rcpNo=20260318001514&dcmNo=11143387&eleId=13&offset=152549&length=10510&dtd=dart4.xsd",
-      "notes": "",
-      "status": "공시 확인"
-    },
-    {
-      "company_id": "353200",
-      "period": "2026-Q1",
-      "raw_value": 2374.0,
-      "raw_unit": "KRW_100m",
-      "scope": "PCB 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2026/05/14/001527/20260514003325/11013.htm",
+      "source": "https://kind.krx.co.kr/external/2020/05/15/001565/20200515003341/11013.htm",
       "status": "공시 확인",
-      "notes": ""
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 품목별 잔고 합계 대조. 신규 수주액과 기초 잔고를 혼동하지 않음."
     },
     {
-      "company_id": "353200",
-      "period": "2026-Q2",
-      "raw_value": 3328,
-      "raw_unit": "KRW_100m",
-      "scope": "PCB 공시 수주상황",
-      "source": "https://dart.fss.or.kr/report/viewer.do?rcpNo=20260813001620&dcmNo=11525746&eleId=13&offset=155776&length=10504&dtd=dart4.xsd",
-      "notes": "",
-      "status": "공시 확인"
-    },
-    {
-      "company_id": "LS-CABLE",
-      "period": "2026-Q1",
-      "raw_value": 85086,
-      "raw_unit": "KRW_100m",
-      "scope": "LS 공시 전선 부문 연결·참고",
-      "source": "https://kind.krx.co.kr/external/2026/05/27/000326/20260527000729/11013.htm",
-      "notes": "LS전선 단독 금액이 아닌 LS 전선 부문 연결 수치입니다. 해저케이블만의 잔고가 아닙니다.",
-      "status": "공시 확인"
-    },
-    {
-      "company_id": "222800",
-      "period": "2020-Q3",
-      "raw_value": "149063",
-      "raw_unit": "USD_thousand",
-      "scope": "인쇄회로기판 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2020/11/12/000423/20201112000957/11013.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
-    },
-    {
-      "company_id": "222800",
-      "period": "2020-Q4",
-      "raw_value": "134060",
-      "raw_unit": "USD_thousand",
-      "scope": "인쇄회로기판 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2021/03/17/001534/20210317006364/11011.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
-    },
-    {
-      "company_id": "222800",
-      "period": "2021-Q1",
-      "raw_value": "215532",
-      "raw_unit": "USD_thousand",
-      "scope": "인쇄회로기판 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2021/05/14/001225/20210514002457/11013.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
-    },
-    {
-      "company_id": "222800",
-      "period": "2021-Q2",
-      "raw_value": "411028",
-      "raw_unit": "USD_thousand",
-      "scope": "인쇄회로기판 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2021/08/13/000930/20210813002634/11012.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
-    },
-    {
-      "company_id": "222800",
-      "period": "2021-Q3",
-      "raw_value": "474808",
-      "raw_unit": "USD_thousand",
-      "scope": "인쇄회로기판 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2021/11/12/000774/20211112001634/11013.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
-    },
-    {
-      "company_id": "222800",
-      "period": "2021-Q4",
-      "raw_value": "496519",
-      "raw_unit": "USD_thousand",
-      "scope": "인쇄회로기판 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2022/03/21/001949/20220321008341/11011.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
-    },
-    {
-      "company_id": "222800",
-      "period": "2022-Q1",
-      "raw_value": "476061",
-      "raw_unit": "USD_thousand",
-      "scope": "인쇄회로기판 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2022/05/13/001213/20220513002517/11013.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
-    },
-    {
-      "company_id": "222800",
-      "period": "2022-Q2",
-      "raw_value": "488600",
-      "raw_unit": "USD_thousand",
-      "scope": "인쇄회로기판 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2022/08/12/001125/20220812002874/11012.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
-    },
-    {
-      "company_id": "222800",
-      "period": "2022-Q3",
-      "raw_value": "358042",
-      "raw_unit": "USD_thousand",
-      "scope": "인쇄회로기판 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2022/11/11/000845/20221111001649/11013.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
-    },
-    {
-      "company_id": "222800",
-      "period": "2022-Q4",
-      "raw_value": "219180",
-      "raw_unit": "USD_thousand",
-      "scope": "인쇄회로기판 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2023/03/22/001433/20230322006018/11011.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
-    },
-    {
-      "company_id": "222800",
-      "period": "2023-Q1",
-      "raw_value": "171970",
-      "raw_unit": "USD_thousand",
-      "scope": "인쇄회로기판 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2023/05/12/000776/20230512001653/11013.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
-    },
-    {
-      "company_id": "222800",
-      "period": "2023-Q2",
-      "raw_value": "182626",
-      "raw_unit": "USD_thousand",
-      "scope": "인쇄회로기판 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2023/08/11/000890/20230811002503/11012.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
-    },
-    {
-      "company_id": "222800",
-      "period": "2023-Q3",
-      "raw_value": "191079",
-      "raw_unit": "USD_thousand",
-      "scope": "인쇄회로기판 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2023/11/13/000578/20231113001197/11013.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
-    },
-    {
-      "company_id": "222800",
-      "period": "2023-Q4",
-      "raw_value": "159604",
-      "raw_unit": "USD_thousand",
-      "scope": "인쇄회로기판 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2024/03/21/000951/20240321004153/11011.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
-    },
-    {
-      "company_id": "222800",
-      "period": "2024-Q1",
-      "raw_value": "273020",
-      "raw_unit": "USD_thousand",
-      "scope": "인쇄회로기판 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2024/05/14/001237/20240514002692/11013.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
-    },
-    {
-      "company_id": "222800",
-      "period": "2024-Q2",
-      "raw_value": "140227",
-      "raw_unit": "USD_thousand",
-      "scope": "인쇄회로기판 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2024/08/13/001011/20240813002745/11012.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
-    },
-    {
-      "company_id": "222800",
-      "period": "2024-Q3",
-      "raw_value": "130125",
-      "raw_unit": "USD_thousand",
-      "scope": "인쇄회로기판 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2024/11/13/000577/20241113001249/11013.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
-    },
-    {
-      "company_id": "222800",
-      "period": "2024-Q4",
-      "raw_value": "136721",
-      "raw_unit": "USD_thousand",
-      "scope": "인쇄회로기판 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2025/03/18/000518/20250318002764/11011.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
-    },
-    {
-      "company_id": "222800",
-      "period": "2025-Q1",
-      "raw_value": "118259",
-      "raw_unit": "USD_thousand",
-      "scope": "인쇄회로기판 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2025/05/14/000988/20250514002112/11013.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
-    },
-    {
-      "company_id": "222800",
-      "period": "2025-Q2",
-      "raw_value": "191263",
-      "raw_unit": "USD_thousand",
-      "scope": "인쇄회로기판 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2025/08/13/001032/20250813002821/11012.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
-    },
-    {
-      "company_id": "222800",
-      "period": "2025-Q3",
-      "raw_value": "261706",
-      "raw_unit": "USD_thousand",
-      "scope": "인쇄회로기판 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2025/11/13/000877/20251113002045/11013.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
-    },
-    {
-      "company_id": "353200",
+      "company_id": "007810",
       "period": "2020-Q2",
-      "raw_value": "594",
-      "raw_unit": "KRW_100m",
-      "scope": "PCB 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2020/08/14/002515/20200814007596/11012.htm",
+      "raw_value": "94148",
+      "raw_unit": "KRW_million",
+      "scope": "PCB·FPCB 공시 합계",
+      "source": "https://kind.krx.co.kr/external/2020/08/14/001929/20200814005765/11012.htm",
       "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
-    },
-    {
-      "company_id": "353200",
-      "period": "2020-Q3",
-      "raw_value": "98",
-      "raw_unit": "KRW_100m",
-      "scope": "PCB 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2020/11/16/001619/20201116003616/11013.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
-    },
-    {
-      "company_id": "353200",
-      "period": "2020-Q4",
-      "raw_value": "10",
-      "raw_unit": "KRW_100m",
-      "scope": "PCB 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2021/03/17/001548/20210317006431/11011.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
-    },
-    {
-      "company_id": "353200",
-      "period": "2021-Q1",
-      "raw_value": "635",
-      "raw_unit": "KRW_100m",
-      "scope": "PCB 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2021/05/14/001461/20210514002953/11013.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
-    },
-    {
-      "company_id": "353200",
-      "period": "2021-Q2",
-      "raw_value": "1291",
-      "raw_unit": "KRW_100m",
-      "scope": "PCB 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2021/08/13/001639/20210813004573/11012.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
-    },
-    {
-      "company_id": "353200",
-      "period": "2021-Q3",
-      "raw_value": "2073",
-      "raw_unit": "KRW_100m",
-      "scope": "PCB 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2021/11/12/001101/20211112002279/11013.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
-    },
-    {
-      "company_id": "353200",
-      "period": "2021-Q4",
-      "raw_value": "1304",
-      "raw_unit": "KRW_100m",
-      "scope": "PCB 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2022/03/16/002198/20220316005788/11011.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
-    },
-    {
-      "company_id": "353200",
-      "period": "2022-Q1",
-      "raw_value": "774",
-      "raw_unit": "KRW_100m",
-      "scope": "PCB 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2022/05/13/001108/20220513002284/11013.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
-    },
-    {
-      "company_id": "353200",
-      "period": "2022-Q2",
-      "raw_value": "1101",
-      "raw_unit": "KRW_100m",
-      "scope": "PCB 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2022/08/12/001091/20220812002799/11012.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
-    },
-    {
-      "company_id": "353200",
-      "period": "2022-Q3",
-      "raw_value": "600",
-      "raw_unit": "KRW_100m",
-      "scope": "PCB 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2022/11/11/001160/20221111002240/11013.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
-    },
-    {
-      "company_id": "353200",
-      "period": "2022-Q4",
-      "raw_value": "317",
-      "raw_unit": "KRW_100m",
-      "scope": "PCB 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2023/03/14/002060/20230314004679/11011.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
-    },
-    {
-      "company_id": "353200",
-      "period": "2023-Q1",
-      "raw_value": "791",
-      "raw_unit": "KRW_100m",
-      "scope": "PCB 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2023/05/12/001075/20230512002250/11013.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
-    },
-    {
-      "company_id": "353200",
-      "period": "2023-Q2",
-      "raw_value": "371",
-      "raw_unit": "KRW_100m",
-      "scope": "PCB 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2023/08/11/001323/20230811003718/11012.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
-    },
-    {
-      "company_id": "353200",
-      "period": "2023-Q3",
-      "raw_value": "1011",
-      "raw_unit": "KRW_100m",
-      "scope": "PCB 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2023/11/13/000840/20231113001747/11013.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
-    },
-    {
-      "company_id": "353200",
-      "period": "2023-Q4",
-      "raw_value": "331",
-      "raw_unit": "KRW_100m",
-      "scope": "PCB 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2024/03/20/002100/20240320009674/11011.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
-    },
-    {
-      "company_id": "353200",
-      "period": "2024-Q1",
-      "raw_value": "723",
-      "raw_unit": "KRW_100m",
-      "scope": "PCB 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2024/05/14/001297/20240514002833/11013.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
-    },
-    {
-      "company_id": "353200",
-      "period": "2024-Q4",
-      "raw_value": "357",
-      "raw_unit": "KRW_100m",
-      "scope": "PCB 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2025/03/19/001065/20250319004618/11011.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
-    },
-    {
-      "company_id": "353200",
-      "period": "2024-Q2",
-      "raw_value": "682",
-      "raw_unit": "KRW_100m",
-      "scope": "PCB 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2024/08/13/000666/20240813001886/11012.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
-    },
-    {
-      "company_id": "353200",
-      "period": "2024-Q3",
-      "raw_value": "776",
-      "raw_unit": "KRW_100m",
-      "scope": "PCB 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2024/11/13/000595/20241113001295/11013.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
-    },
-    {
-      "company_id": "353200",
-      "period": "2025-Q1",
-      "raw_value": "792",
-      "raw_unit": "KRW_100m",
-      "scope": "PCB 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2025/05/14/001192/20250514002594/11013.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 품목별 잔고 합계 대조. 신규 수주액과 기초 잔고를 혼동하지 않음."
     },
     {
       "company_id": "007810",
@@ -1063,6 +713,46 @@
       "source": "https://kind.krx.co.kr/external/2020/11/16/000966/20201116002118/11013.htm",
       "status": "공시 확인",
       "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
+    },
+    {
+      "company_id": "007810",
+      "period": "2020-Q4",
+      "raw_value": "89362",
+      "raw_unit": "KRW_million",
+      "scope": "PCB·FPCB 공시 합계",
+      "source": "https://kind.krx.co.kr/external/2021/03/26/001413/20210326003220/11011.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 품목별 잔고 합계 대조. 신규 수주액과 기초 잔고를 혼동하지 않음."
+    },
+    {
+      "company_id": "007810",
+      "period": "2021-Q1",
+      "raw_value": "174373",
+      "raw_unit": "KRW_million",
+      "scope": "PCB·FPCB 공시 합계",
+      "source": "https://kind.krx.co.kr/external/2021/05/17/001397/20210517003180/11013.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 품목별 잔고 합계 대조. 신규 수주액과 기초 잔고를 혼동하지 않음."
+    },
+    {
+      "company_id": "007810",
+      "period": "2021-Q2",
+      "raw_value": "181180",
+      "raw_unit": "KRW_million",
+      "scope": "PCB·FPCB 공시 합계",
+      "source": "https://kind.krx.co.kr/external/2021/08/17/001550/20210817004794/11012.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 품목별 잔고 합계 대조. 신규 수주액과 기초 잔고를 혼동하지 않음."
+    },
+    {
+      "company_id": "007810",
+      "period": "2021-Q3",
+      "raw_value": "168713",
+      "raw_unit": "KRW_million",
+      "scope": "PCB·FPCB 공시 합계",
+      "source": "https://kind.krx.co.kr/external/2021/11/15/001237/20211115002580/11013.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 품목별 잔고 합계 대조. 신규 수주액과 기초 잔고를 혼동하지 않음."
     },
     {
       "company_id": "007810",
@@ -1113,146 +803,6 @@
       "source": "https://kind.krx.co.kr/external/2023/03/17/001289/20230317004450/11011.htm",
       "status": "공시 확인",
       "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
-    },
-    {
-      "company_id": "007660",
-      "period": "2021-Q3",
-      "raw_value": "83859",
-      "raw_unit": "KRW_million",
-      "scope": "PCB 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2021/11/15/001997/20211115004230/11013.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 품목별 잔고 합계 대조. 신규 수주액과 기초 잔고를 혼동하지 않음."
-    },
-    {
-      "company_id": "007660",
-      "period": "2022-Q1",
-      "raw_value": "112270",
-      "raw_unit": "KRW_million",
-      "scope": "PCB 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2022/05/16/001890/20220516004164/11013.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 품목별 잔고 합계 대조. 신규 수주액과 기초 잔고를 혼동하지 않음."
-    },
-    {
-      "company_id": "007660",
-      "period": "2022-Q3",
-      "raw_value": "179244",
-      "raw_unit": "KRW_million",
-      "scope": "PCB 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2022/11/14/001763/20221114003748/11013.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 품목별 잔고 합계 대조. 신규 수주액과 기초 잔고를 혼동하지 않음."
-    },
-    {
-      "company_id": "007660",
-      "period": "2023-Q2",
-      "raw_value": "223334",
-      "raw_unit": "KRW_million",
-      "scope": "PCB 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2023/08/14/002502/20230814007727/11012.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 품목별 잔고 합계 대조. 신규 수주액과 기초 잔고를 혼동하지 않음."
-    },
-    {
-      "company_id": "007660",
-      "period": "2023-Q3",
-      "raw_value": "220692",
-      "raw_unit": "KRW_million",
-      "scope": "PCB 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2023/11/14/002477/20231114005496/11013.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 품목별 잔고 합계 대조. 신규 수주액과 기초 잔고를 혼동하지 않음."
-    },
-    {
-      "company_id": "007660",
-      "period": "2023-Q4",
-      "raw_value": "236408",
-      "raw_unit": "KRW_million",
-      "scope": "PCB 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2024/03/21/001291/20240321005337/11011.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 품목별 잔고 합계 대조. 신규 수주액과 기초 잔고를 혼동하지 않음."
-    },
-    {
-      "company_id": "007660",
-      "period": "2024-Q2",
-      "raw_value": "220131",
-      "raw_unit": "KRW_million",
-      "scope": "PCB 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2024/08/14/002281/20240814007237/11012.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 품목별 잔고 합계 대조. 신규 수주액과 기초 잔고를 혼동하지 않음."
-    },
-    {
-      "company_id": "007660",
-      "period": "2024-Q4",
-      "raw_value": "259266",
-      "raw_unit": "KRW_million",
-      "scope": "PCB 공시 수주상황",
-      "source": "https://kind.krx.co.kr/external/2025/03/21/001105/20250321004157/11011.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 품목별 잔고 합계 대조. 신규 수주액과 기초 잔고를 혼동하지 않음."
-    },
-    {
-      "company_id": "007810",
-      "period": "2020-Q1",
-      "raw_value": "97414",
-      "raw_unit": "KRW_million",
-      "scope": "PCB·FPCB 공시 합계",
-      "source": "https://kind.krx.co.kr/external/2020/05/15/001565/20200515003341/11013.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 품목별 잔고 합계 대조. 신규 수주액과 기초 잔고를 혼동하지 않음."
-    },
-    {
-      "company_id": "007810",
-      "period": "2020-Q2",
-      "raw_value": "94148",
-      "raw_unit": "KRW_million",
-      "scope": "PCB·FPCB 공시 합계",
-      "source": "https://kind.krx.co.kr/external/2020/08/14/001929/20200814005765/11012.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 품목별 잔고 합계 대조. 신규 수주액과 기초 잔고를 혼동하지 않음."
-    },
-    {
-      "company_id": "007810",
-      "period": "2021-Q2",
-      "raw_value": "181180",
-      "raw_unit": "KRW_million",
-      "scope": "PCB·FPCB 공시 합계",
-      "source": "https://kind.krx.co.kr/external/2021/08/17/001550/20210817004794/11012.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 품목별 잔고 합계 대조. 신규 수주액과 기초 잔고를 혼동하지 않음."
-    },
-    {
-      "company_id": "007810",
-      "period": "2020-Q4",
-      "raw_value": "89362",
-      "raw_unit": "KRW_million",
-      "scope": "PCB·FPCB 공시 합계",
-      "source": "https://kind.krx.co.kr/external/2021/03/26/001413/20210326003220/11011.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 품목별 잔고 합계 대조. 신규 수주액과 기초 잔고를 혼동하지 않음."
-    },
-    {
-      "company_id": "007810",
-      "period": "2021-Q1",
-      "raw_value": "174373",
-      "raw_unit": "KRW_million",
-      "scope": "PCB·FPCB 공시 합계",
-      "source": "https://kind.krx.co.kr/external/2021/05/17/001397/20210517003180/11013.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 품목별 잔고 합계 대조. 신규 수주액과 기초 잔고를 혼동하지 않음."
-    },
-    {
-      "company_id": "007810",
-      "period": "2021-Q3",
-      "raw_value": "168713",
-      "raw_unit": "KRW_million",
-      "scope": "PCB·FPCB 공시 합계",
-      "source": "https://kind.krx.co.kr/external/2021/11/15/001237/20211115002580/11013.htm",
-      "status": "공시 확인",
-      "notes": "분기말 공시 수주상황 표의 합계 금액. 품목별 잔고 합계 대조. 신규 수주액과 기초 잔고를 혼동하지 않음."
     },
     {
       "company_id": "007810",
@@ -1376,6 +926,16 @@
     },
     {
       "company_id": "007810",
+      "period": "2026-Q1",
+      "raw_value": 157254,
+      "raw_unit": "KRW_million",
+      "scope": "PCB·FPCB 공시 합계",
+      "source": "https://kind.krx.co.kr/external/2026/05/15/001720/20260515003809/11013.htm",
+      "notes": "반도체 부문 단기수주 제외. 인터플렉스와 중복 가능하므로 업체 간 합산 금지.",
+      "status": "공시 확인"
+    },
+    {
+      "company_id": "007810",
       "period": "2026-Q2",
       "raw_value": "426639",
       "raw_unit": "KRW_million",
@@ -1383,6 +943,266 @@
       "source": "https://kind.krx.co.kr/external/2026/08/14/001829/20260814006211/11012.htm",
       "status": "공시 확인",
       "notes": "분기말 공시 수주상황 표의 합계 금액. 품목별 잔고 합계 대조. 신규 수주액과 기초 잔고를 혼동하지 않음."
+    },
+    {
+      "company_id": "010120",
+      "period": "2020-Q1",
+      "raw_value": "8703",
+      "raw_unit": "KRW_100m",
+      "scope": "LS ELECTRIC 본체 합계·자회사 별도",
+      "source": "https://kind.krx.co.kr/external/2020/05/15/002364/20200515005229/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "010120",
+      "period": "2020-Q2",
+      "raw_value": "7933",
+      "raw_unit": "KRW_100m",
+      "scope": "LS ELECTRIC 본체 합계·자회사 별도",
+      "source": "https://kind.krx.co.kr/external/2020/08/14/001838/20200814005483/11012.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "010120",
+      "period": "2020-Q3",
+      "raw_value": "9.34E+3",
+      "raw_unit": "KRW_100m",
+      "scope": "LS ELECTRIC 본체 합계·자회사 별도",
+      "source": "https://kind.krx.co.kr/external/2020/11/16/001062/20201116002329/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "010120",
+      "period": "2020-Q4",
+      "raw_value": "8436",
+      "raw_unit": "KRW_100m",
+      "scope": "LS ELECTRIC 본체 합계·자회사 별도",
+      "source": "https://kind.krx.co.kr/external/2021/03/19/001796/20210319006413/11011.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "010120",
+      "period": "2021-Q1",
+      "raw_value": "8449",
+      "raw_unit": "KRW_100m",
+      "scope": "LS ELECTRIC 본체 합계·자회사 별도",
+      "source": "https://kind.krx.co.kr/external/2021/05/17/000493/20210517001090/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "010120",
+      "period": "2021-Q2",
+      "raw_value": "10278",
+      "raw_unit": "KRW_100m",
+      "scope": "LS ELECTRIC 본체 합계·자회사 별도",
+      "source": "https://kind.krx.co.kr/external/2021/08/17/001045/20210817003285/11012.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "010120",
+      "period": "2021-Q3",
+      "raw_value": "10242",
+      "raw_unit": "KRW_100m",
+      "scope": "LS ELECTRIC 본체 합계·자회사 별도",
+      "source": "https://kind.krx.co.kr/external/2021/11/15/001844/20211115003904/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "010120",
+      "period": "2021-Q4",
+      "raw_value": "10592",
+      "raw_unit": "KRW_100m",
+      "scope": "LS ELECTRIC 본체 합계·자회사 별도",
+      "source": "https://kind.krx.co.kr/external/2022/03/18/001365/20220318004892/11011.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "010120",
+      "period": "2022-Q1",
+      "raw_value": "15383",
+      "raw_unit": "KRW_100m",
+      "scope": "LS ELECTRIC 본체 합계·자회사 별도",
+      "source": "https://kind.krx.co.kr/external/2022/05/16/002361/20220516005288/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "010120",
+      "period": "2022-Q2",
+      "raw_value": "17185",
+      "raw_unit": "KRW_100m",
+      "scope": "LS ELECTRIC 본체 합계·자회사 별도",
+      "source": "https://kind.krx.co.kr/external/2022/08/16/001285/20220816004073/11012.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "010120",
+      "period": "2022-Q3",
+      "raw_value": "18827",
+      "raw_unit": "KRW_100m",
+      "scope": "LS ELECTRIC 본체 합계·자회사 별도",
+      "source": "https://kind.krx.co.kr/external/2022/11/14/001279/20221114002698/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "010120",
+      "period": "2022-Q4",
+      "raw_value": "2.069E+4",
+      "raw_unit": "KRW_100m",
+      "scope": "LS ELECTRIC 본체 합계·자회사 별도",
+      "source": "https://kind.krx.co.kr/external/2023/03/20/000970/20230320004333/11011.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "010120",
+      "period": "2023-Q1",
+      "raw_value": "23798",
+      "raw_unit": "KRW_100m",
+      "scope": "LS ELECTRIC 본체 합계·자회사 별도",
+      "source": "https://kind.krx.co.kr/external/2023/05/15/001429/20230515003024/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "010120",
+      "period": "2023-Q2",
+      "raw_value": "2.426E+4",
+      "raw_unit": "KRW_100m",
+      "scope": "LS ELECTRIC 본체 합계·자회사 별도",
+      "source": "https://kind.krx.co.kr/external/2023/08/14/000667/20230814002018/11012.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "010120",
+      "period": "2023-Q3",
+      "raw_value": "23537",
+      "raw_unit": "KRW_100m",
+      "scope": "LS ELECTRIC 본체 합계·자회사 별도",
+      "source": "https://kind.krx.co.kr/external/2023/11/14/002205/20231114004796/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "010120",
+      "period": "2023-Q4",
+      "raw_value": "23261",
+      "raw_unit": "KRW_100m",
+      "scope": "LS ELECTRIC 본체 합계·자회사 별도",
+      "source": "https://kind.krx.co.kr/external/2024/03/26/000748/20240326002359/11011.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "010120",
+      "period": "2024-Q1",
+      "raw_value": "25866",
+      "raw_unit": "KRW_100m",
+      "scope": "LS ELECTRIC 본체 합계·자회사 별도",
+      "source": "https://kind.krx.co.kr/external/2024/05/14/001647/20240514003639/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "010120",
+      "period": "2024-Q2",
+      "raw_value": "27622",
+      "raw_unit": "KRW_100m",
+      "scope": "LS ELECTRIC 본체 합계·자회사 별도",
+      "source": "https://kind.krx.co.kr/external/2024/08/14/000535/20240814001587/11012.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "010120",
+      "period": "2024-Q3",
+      "raw_value": "29041",
+      "raw_unit": "KRW_100m",
+      "scope": "LS ELECTRIC 본체 합계·자회사 별도",
+      "source": "https://kind.krx.co.kr/external/2024/11/14/001690/20241114003724/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "010120",
+      "period": "2024-Q4",
+      "raw_value": "34477",
+      "raw_unit": "KRW_100m",
+      "scope": "LS ELECTRIC 본체 합계·자회사 별도",
+      "source": "https://kind.krx.co.kr/external/2025/03/17/001249/20250317005262/11011.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "010120",
+      "period": "2025-Q1",
+      "raw_value": "38894",
+      "raw_unit": "KRW_100m",
+      "scope": "LS ELECTRIC 본체 합계·자회사 별도",
+      "source": "https://kind.krx.co.kr/external/2025/05/15/002417/20250515005662/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "010120",
+      "period": "2025-Q2",
+      "raw_value": "38557",
+      "raw_unit": "KRW_100m",
+      "scope": "LS ELECTRIC 본체 합계·자회사 별도",
+      "source": "https://kind.krx.co.kr/external/2025/08/14/001311/20250814003929/11012.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "010120",
+      "period": "2025-Q3",
+      "raw_value": "40679",
+      "raw_unit": "KRW_100m",
+      "scope": "LS ELECTRIC 본체 합계·자회사 별도",
+      "source": "https://kind.krx.co.kr/external/2025/11/14/002918/20251114006712/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "010120",
+      "period": "2025-Q4",
+      "raw_value": 50154,
+      "raw_unit": "KRW_100m",
+      "scope": "LS ELECTRIC 본체 합계·자회사 별도",
+      "source": "https://kind.krx.co.kr/external/2026/03/18/001763/20260318008079/11011.htm",
+      "notes": "자회사 수주를 합산한 연결 전체 수치가 아닙니다.",
+      "status": "공시 확인"
+    },
+    {
+      "company_id": "010120",
+      "period": "2026-Q1",
+      "raw_value": 56425,
+      "raw_unit": "KRW_100m",
+      "scope": "LS ELECTRIC 본체 합계·자회사 별도",
+      "source": "https://kind.krx.co.kr/external/2026/05/14/000825/20260514001826/11013.htm",
+      "notes": "자회사 수주를 합산한 연결 전체 수치가 아닙니다.",
+      "status": "공시 확인"
+    },
+    {
+      "company_id": "010120",
+      "period": "2026-Q2",
+      "raw_value": "69998",
+      "raw_unit": "KRW_100m",
+      "scope": "LS ELECTRIC 본체 합계·자회사 별도",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/002524/20260814008791/11012.htm",
+      "status": "공시 확인",
+      "notes": ""
     },
     {
       "company_id": "051370",
@@ -1626,6 +1446,16 @@
     },
     {
       "company_id": "051370",
+      "period": "2026-Q1",
+      "raw_value": 10414,
+      "raw_unit": "KRW_million",
+      "scope": "FPCB 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2026/05/15/002325/20260515005213/11013.htm",
+      "notes": "",
+      "status": "공시 확인"
+    },
+    {
+      "company_id": "051370",
       "period": "2026-Q2",
       "raw_value": "9976",
       "raw_unit": "KRW_million",
@@ -1853,25 +1683,1651 @@
       "source": "https://kind.krx.co.kr/external/2025/08/14/002717/20250814008369/11012.htm",
       "status": "공시 확인",
       "notes": "공시 수주상황의 명시적 잔고 금액 · 품목별 합계 대조"
+    },
+    {
+      "company_id": "064760",
+      "period": "2025-Q3",
+      "raw_value": 684.3,
+      "raw_unit": "KRW_100m",
+      "scope": "탄소제품·SiC 등 공시 합계",
+      "source": "https://kind.krx.co.kr/external/2025/11/14/000705/20251114001554/11013.htm",
+      "notes": "",
+      "status": "공시 확인"
+    },
+    {
+      "company_id": "064760",
+      "period": "2025-Q4",
+      "raw_value": 905,
+      "raw_unit": "KRW_100m",
+      "scope": "탄소제품·SiC 등 공시 합계",
+      "source": "https://kind.krx.co.kr/external/2026/03/10/001538/20260310003407/11011.htm",
+      "notes": "",
+      "status": "공시 확인"
+    },
+    {
+      "company_id": "064760",
+      "period": "2026-Q1",
+      "raw_value": 973.8,
+      "raw_unit": "KRW_100m",
+      "scope": "탄소제품·SiC 등 공시 합계",
+      "source": "https://kind.krx.co.kr/external/2026/05/15/002296/20260515005133/11013.htm",
+      "notes": "",
+      "status": "공시 확인"
+    },
+    {
+      "company_id": "064760",
+      "period": "2026-Q2",
+      "raw_value": 1993.7,
+      "raw_unit": "KRW_100m",
+      "scope": "탄소제품·SiC 등 공시 합계",
+      "source": "https://dart.fss.or.kr/report/viewer.do?rcpNo=20260814001689&dcmNo=11530690&eleId=13&offset=121950&length=17187&dtd=dart4.xsd",
+      "notes": "",
+      "status": "공시 확인"
+    },
+    {
+      "company_id": "066970",
+      "period": "2021-Q2",
+      "raw_value": "2.44349500109E+12",
+      "raw_unit": "KRW",
+      "scope": "공개 양극재 계약 합계·일부 계약 제외",
+      "source": "https://kind.krx.co.kr/external/2021/08/13/001397/20210813003914/11012.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "066970",
+      "period": "2021-Q3",
+      "raw_value": "2263558628991",
+      "raw_unit": "KRW",
+      "scope": "공개 양극재 계약 합계·일부 계약 제외",
+      "source": "https://kind.krx.co.kr/external/2021/11/12/000143/20211112000248/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "066970",
+      "period": "2021-Q4",
+      "raw_value": "1945433374724",
+      "raw_unit": "KRW",
+      "scope": "공개 양극재 계약 합계·일부 계약 제외",
+      "source": "https://kind.krx.co.kr/external/2022/03/15/000650/20220315001788/11011.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "066970",
+      "period": "2022-Q1",
+      "raw_value": "1476774669205",
+      "raw_unit": "KRW",
+      "scope": "공개 양극재 계약 합계·일부 계약 제외",
+      "source": "https://kind.krx.co.kr/external/2022/05/16/000101/20220516000158/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "066970",
+      "period": "2022-Q2",
+      "raw_value": "1026448310083",
+      "raw_unit": "KRW",
+      "scope": "공개 양극재 계약 합계·일부 계약 제외",
+      "source": "https://kind.krx.co.kr/external/2022/08/16/000443/20220816001408/11012.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "066970",
+      "period": "2022-Q3",
+      "raw_value": "718348388346",
+      "raw_unit": "KRW",
+      "scope": "공개 양극재 계약 합계·일부 계약 제외",
+      "source": "https://kind.krx.co.kr/external/2022/11/09/000198/20221109000479/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "066970",
+      "period": "2022-Q4",
+      "raw_value": "467644788889",
+      "raw_unit": "KRW",
+      "scope": "공개 양극재 계약 합계·일부 계약 제외",
+      "source": "https://kind.krx.co.kr/external/2023/08/28/000482/20230828001332/11011.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "066970",
+      "period": "2023-Q1",
+      "raw_value": "178036784135",
+      "raw_unit": "KRW",
+      "scope": "공개 양극재 계약 합계·일부 계약 제외",
+      "source": "https://kind.krx.co.kr/external/2023/05/11/000182/20230511000424/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "066970",
+      "period": "2023-Q2",
+      "raw_value": "0",
+      "raw_unit": "KRW",
+      "scope": "공개 양극재 계약 합계·일부 계약 제외",
+      "source": "https://kind.krx.co.kr/external/2023/08/11/001230/20230811003451/11012.htm",
+      "status": "공시 확인",
+      "notes": "공시 표의 잔고 \"-\"(계약총액=기납품액)"
+    },
+    {
+      "company_id": "066970",
+      "period": "2023-Q3",
+      "raw_value": "0",
+      "raw_unit": "KRW",
+      "scope": "공개 양극재 계약 합계·일부 계약 제외",
+      "source": "https://kind.krx.co.kr/external/2023/11/13/000868/20231113001812/11013.htm",
+      "status": "공시 확인",
+      "notes": "공시 표의 잔고 \"-\"(계약총액=기납품액)"
+    },
+    {
+      "company_id": "066970",
+      "period": "2023-Q4",
+      "raw_value": "0",
+      "raw_unit": "KRW",
+      "scope": "공개 양극재 계약 합계·일부 계약 제외",
+      "source": "https://kind.krx.co.kr/external/2024/03/28/002339/20240328004727/11011.htm",
+      "status": "공시 확인",
+      "notes": "공시 표의 잔고 \"-\"(계약총액=기납품액)"
+    },
+    {
+      "company_id": "066970",
+      "period": "2024-Q1",
+      "raw_value": "16970503743081",
+      "raw_unit": "KRW",
+      "scope": "공개 양극재 계약 합계·일부 계약 제외",
+      "source": "https://kind.krx.co.kr/external/2024/05/16/001206/20240516002828/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "066970",
+      "period": "2024-Q2",
+      "raw_value": "16869081828081",
+      "raw_unit": "KRW",
+      "scope": "공개 양극재 계약 합계·일부 계약 제외",
+      "source": "https://kind.krx.co.kr/external/2024/08/14/002811/20240814008928/11012.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "066970",
+      "period": "2024-Q3",
+      "raw_value": "16848967293801",
+      "raw_unit": "KRW",
+      "scope": "공개 양극재 계약 합계·일부 계약 제외",
+      "source": "https://kind.krx.co.kr/external/2024/11/14/001517/20241114003311/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "066970",
+      "period": "2024-Q4",
+      "raw_value": "16791455233131",
+      "raw_unit": "KRW",
+      "scope": "공개 양극재 계약 합계·일부 계약 제외",
+      "source": "https://kind.krx.co.kr/external/2025/03/11/002017/20250311004550/11011.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "066970",
+      "period": "2025-Q1",
+      "raw_value": "25984526490902",
+      "raw_unit": "KRW",
+      "scope": "공개 양극재 계약 합계·일부 계약 제외",
+      "source": "https://kind.krx.co.kr/external/2025/05/15/002408/20250515005636/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "066970",
+      "period": "2025-Q2",
+      "raw_value": "25984526490902",
+      "raw_unit": "KRW",
+      "scope": "공개 양극재 계약 합계·일부 계약 제외",
+      "source": "https://kind.krx.co.kr/external/2025/08/14/001815/20250814005458/11012.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "066970",
+      "period": "2025-Q3",
+      "raw_value": "25855961490455",
+      "raw_unit": "KRW",
+      "scope": "공개 양극재 계약 합계·일부 계약 제외",
+      "source": "https://kind.krx.co.kr/external/2025/11/14/000849/20251114001886/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "066970",
+      "period": "2025-Q4",
+      "raw_value": "21933662820253",
+      "raw_unit": "KRW",
+      "scope": "공개 양극재 계약 합계·일부 계약 제외",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/000484/20260814001527/11011.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "066970",
+      "period": "2026-Q1",
+      "raw_value": 23457270747764,
+      "raw_unit": "KRW",
+      "scope": "공개 양극재 계약 합계·일부 계약 제외",
+      "source": "https://kind.krx.co.kr/external/2026/05/15/001002/20260515002154/11013.htm",
+      "notes": "2025-03-11 비공개 계약 제외. 2024-04-11 계약은 상대방 파산·인수에 따라 이행 여부가 달라질 수 있습니다.",
+      "status": "공시 확인"
+    },
+    {
+      "company_id": "066970",
+      "period": "2026-Q2",
+      "raw_value": "23354654893922",
+      "raw_unit": "KRW",
+      "scope": "공개 양극재 계약 합계·일부 계약 제외",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/000627/20260814002035/11012.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "082920",
+      "period": "2023-Q1",
+      "raw_value": "260098",
+      "raw_unit": "KRW_million",
+      "scope": "장기공급계약 수주잔고 합계(원화)",
+      "source": "https://kind.krx.co.kr/external/2023/05/12/000308/20230512000744/11013.htm",
+      "status": "공시 확인",
+      "notes": "장기공급계약 잔고(외화 계약은 계약일 환율 원화 환산 공시값). 2023-Q4부터 거래처별 표로 바뀜."
+    },
+    {
+      "company_id": "082920",
+      "period": "2023-Q2",
+      "raw_value": "2.4621E+5",
+      "raw_unit": "KRW_million",
+      "scope": "장기공급계약 수주잔고 합계(원화)",
+      "source": "https://kind.krx.co.kr/external/2023/08/10/000112/20230810000217/11012.htm",
+      "status": "공시 확인",
+      "notes": "장기공급계약 잔고(외화 계약은 계약일 환율 원화 환산 공시값). 2023-Q4부터 거래처별 표로 바뀜."
+    },
+    {
+      "company_id": "082920",
+      "period": "2023-Q3",
+      "raw_value": "251717",
+      "raw_unit": "KRW_million",
+      "scope": "장기공급계약 수주잔고 합계(원화)",
+      "source": "https://kind.krx.co.kr/external/2023/11/13/000383/20231113000748/11013.htm",
+      "status": "공시 확인",
+      "notes": "장기공급계약 잔고(외화 계약은 계약일 환율 원화 환산 공시값). 2023-Q4부터 거래처별 표로 바뀜."
+    },
+    {
+      "company_id": "082920",
+      "period": "2023-Q4",
+      "raw_value": "1.5053E+5",
+      "raw_unit": "KRW_million",
+      "scope": "장기공급계약 수주잔고 합계(원화)",
+      "source": "https://kind.krx.co.kr/external/2024/03/20/001524/20240320007018/11011.htm",
+      "status": "공시 확인",
+      "notes": "장기공급계약 잔고(외화 계약은 계약일 환율 원화 환산 공시값). 2023-Q4부터 거래처별 표로 바뀜."
+    },
+    {
+      "company_id": "082920",
+      "period": "2024-Q1",
+      "raw_value": "125275",
+      "raw_unit": "KRW_million",
+      "scope": "장기공급계약 수주잔고 합계(원화)",
+      "source": "https://kind.krx.co.kr/external/2024/05/14/000353/20240514000732/11013.htm",
+      "status": "공시 확인",
+      "notes": "장기공급계약 잔고(외화 계약은 계약일 환율 원화 환산 공시값). 2023-Q4부터 거래처별 표로 바뀜."
+    },
+    {
+      "company_id": "082920",
+      "period": "2024-Q2",
+      "raw_value": "110193",
+      "raw_unit": "KRW_million",
+      "scope": "장기공급계약 수주잔고 합계(원화)",
+      "source": "https://kind.krx.co.kr/external/2024/08/09/000149/20240809000294/11012.htm",
+      "status": "공시 확인",
+      "notes": "장기공급계약 잔고(외화 계약은 계약일 환율 원화 환산 공시값). 2023-Q4부터 거래처별 표로 바뀜."
+    },
+    {
+      "company_id": "082920",
+      "period": "2024-Q3",
+      "raw_value": "94241",
+      "raw_unit": "KRW_million",
+      "scope": "장기공급계약 수주잔고 합계(원화)",
+      "source": "https://kind.krx.co.kr/external/2024/11/12/000106/20241112000173/11013.htm",
+      "status": "공시 확인",
+      "notes": "장기공급계약 잔고(외화 계약은 계약일 환율 원화 환산 공시값). 2023-Q4부터 거래처별 표로 바뀜."
+    },
+    {
+      "company_id": "082920",
+      "period": "2024-Q4",
+      "raw_value": "71569",
+      "raw_unit": "KRW_million",
+      "scope": "장기공급계약 수주잔고 합계(원화)",
+      "source": "https://kind.krx.co.kr/external/2025/03/18/000791/20250318003866/11011.htm",
+      "status": "공시 확인",
+      "notes": "장기공급계약 잔고(외화 계약은 계약일 환율 원화 환산 공시값). 2023-Q4부터 거래처별 표로 바뀜."
+    },
+    {
+      "company_id": "082920",
+      "period": "2025-Q1",
+      "raw_value": "51888",
+      "raw_unit": "KRW_million",
+      "scope": "장기공급계약 수주잔고 합계(원화)",
+      "source": "https://kind.krx.co.kr/external/2025/05/14/000069/20250514000112/11013.htm",
+      "status": "공시 확인",
+      "notes": "장기공급계약 잔고(외화 계약은 계약일 환율 원화 환산 공시값). 2023-Q4부터 거래처별 표로 바뀜."
+    },
+    {
+      "company_id": "082920",
+      "period": "2025-Q2",
+      "raw_value": "3.831E+4",
+      "raw_unit": "KRW_million",
+      "scope": "장기공급계약 수주잔고 합계(원화)",
+      "source": "https://kind.krx.co.kr/external/2025/08/13/000212/20250813000539/11012.htm",
+      "status": "공시 확인",
+      "notes": "장기공급계약 잔고(외화 계약은 계약일 환율 원화 환산 공시값). 2023-Q4부터 거래처별 표로 바뀜."
+    },
+    {
+      "company_id": "082920",
+      "period": "2025-Q3",
+      "raw_value": "24351",
+      "raw_unit": "KRW_million",
+      "scope": "장기공급계약 수주잔고 합계(원화)",
+      "source": "https://kind.krx.co.kr/external/2025/11/12/000185/20251112000418/11013.htm",
+      "status": "공시 확인",
+      "notes": "장기공급계약 잔고(외화 계약은 계약일 환율 원화 환산 공시값). 2023-Q4부터 거래처별 표로 바뀜."
+    },
+    {
+      "company_id": "103590",
+      "period": "2020-Q1",
+      "raw_value": "283269",
+      "raw_unit": "USD_thousand",
+      "scope": "전력선·변압기·중전기 합계",
+      "source": "https://kind.krx.co.kr/external/2020/05/15/001461/20200515003096/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "103590",
+      "period": "2020-Q2",
+      "raw_value": "422199",
+      "raw_unit": "USD_thousand",
+      "scope": "전력선·변압기·중전기 합계",
+      "source": "https://kind.krx.co.kr/external/2020/08/14/000323/20200814000775/11012.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "103590",
+      "period": "2020-Q3",
+      "raw_value": "421508",
+      "raw_unit": "USD_thousand",
+      "scope": "전력선·변압기·중전기 합계",
+      "source": "https://kind.krx.co.kr/external/2020/11/16/001121/20201116002470/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "103590",
+      "period": "2020-Q4",
+      "raw_value": "4.492E+5",
+      "raw_unit": "USD_thousand",
+      "scope": "전력선·변압기·중전기 합계",
+      "source": "https://kind.krx.co.kr/external/2021/03/29/001063/20210329002842/11011.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "103590",
+      "period": "2021-Q1",
+      "raw_value": "509152",
+      "raw_unit": "USD_thousand",
+      "scope": "전력선·변압기·중전기 합계",
+      "source": "https://kind.krx.co.kr/external/2021/05/17/000068/20210517000115/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "103590",
+      "period": "2021-Q2",
+      "raw_value": "5.0667E+5",
+      "raw_unit": "USD_thousand",
+      "scope": "전력선·변압기·중전기 합계",
+      "source": "https://kind.krx.co.kr/external/2021/08/13/000538/20210813001535/11012.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "103590",
+      "period": "2021-Q3",
+      "raw_value": "574946",
+      "raw_unit": "USD_thousand",
+      "scope": "전력선·변압기·중전기 합계",
+      "source": "https://kind.krx.co.kr/external/2021/11/12/000633/20211112001373/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "103590",
+      "period": "2021-Q4",
+      "raw_value": "531741",
+      "raw_unit": "USD_thousand",
+      "scope": "전력선·변압기·중전기 합계",
+      "source": "https://kind.krx.co.kr/external/2022/03/17/001692/20220317006575/11011.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "103590",
+      "period": "2022-Q1",
+      "raw_value": "539873",
+      "raw_unit": "USD_thousand",
+      "scope": "전력선·변압기·중전기 합계",
+      "source": "https://kind.krx.co.kr/external/2022/05/16/000309/20220516000610/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "103590",
+      "period": "2022-Q2",
+      "raw_value": "674837",
+      "raw_unit": "USD_thousand",
+      "scope": "전력선·변압기·중전기 합계",
+      "source": "https://kind.krx.co.kr/external/2022/08/16/000646/20220816002083/11012.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "103590",
+      "period": "2022-Q3",
+      "raw_value": "6.1546E+5",
+      "raw_unit": "USD_thousand",
+      "scope": "전력선·변압기·중전기 합계",
+      "source": "https://kind.krx.co.kr/external/2022/11/14/001027/20221114002153/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "103590",
+      "period": "2022-Q4",
+      "raw_value": "613208",
+      "raw_unit": "USD_thousand",
+      "scope": "전력선·변압기·중전기 합계",
+      "source": "https://kind.krx.co.kr/external/2023/03/15/000818/20230315002382/11011.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "103590",
+      "period": "2023-Q1",
+      "raw_value": "649196",
+      "raw_unit": "USD_thousand",
+      "scope": "전력선·변압기·중전기 합계",
+      "source": "https://kind.krx.co.kr/external/2023/05/12/000504/20230512001099/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "103590",
+      "period": "2023-Q2",
+      "raw_value": "8.2235E+5",
+      "raw_unit": "USD_thousand",
+      "scope": "전력선·변압기·중전기 합계",
+      "source": "https://kind.krx.co.kr/external/2023/08/11/000397/20230811001069/11012.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "103590",
+      "period": "2023-Q3",
+      "raw_value": "963586",
+      "raw_unit": "USD_thousand",
+      "scope": "전력선·변압기·중전기 합계",
+      "source": "https://kind.krx.co.kr/external/2023/11/13/000396/20231113000769/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "103590",
+      "period": "2023-Q4",
+      "raw_value": "1297775",
+      "raw_unit": "USD_thousand",
+      "scope": "전력선·변압기·중전기 합계",
+      "source": "https://kind.krx.co.kr/external/2024/03/13/002760/20240313006558/11011.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "103590",
+      "period": "2024-Q1",
+      "raw_value": "1569945",
+      "raw_unit": "USD_thousand",
+      "scope": "전력선·변압기·중전기 합계",
+      "source": "https://kind.krx.co.kr/external/2024/05/14/000236/20240514000449/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "103590",
+      "period": "2024-Q2",
+      "raw_value": "1.64531E+6",
+      "raw_unit": "USD_thousand",
+      "scope": "전력선·변압기·중전기 합계",
+      "source": "https://kind.krx.co.kr/external/2024/08/13/000170/20240813000476/11012.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "103590",
+      "period": "2024-Q3",
+      "raw_value": "1767894",
+      "raw_unit": "USD_thousand",
+      "scope": "전력선·변압기·중전기 합계",
+      "source": "https://kind.krx.co.kr/external/2024/11/13/000102/20241113000241/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "103590",
+      "period": "2024-Q4",
+      "raw_value": "1671889",
+      "raw_unit": "USD_thousand",
+      "scope": "전력선·변압기·중전기 합계",
+      "source": "https://kind.krx.co.kr/external/2025/03/12/000750/20250312002052/11011.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "103590",
+      "period": "2025-Q1",
+      "raw_value": "1.81047E+6",
+      "raw_unit": "USD_thousand",
+      "scope": "전력선·변압기·중전기 합계",
+      "source": "https://kind.krx.co.kr/external/2025/05/14/000313/20250514000676/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "103590",
+      "period": "2025-Q2",
+      "raw_value": "1892594",
+      "raw_unit": "USD_thousand",
+      "scope": "전력선·변압기·중전기 합계",
+      "source": "https://kind.krx.co.kr/external/2025/08/13/000274/20250813000794/11012.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "103590",
+      "period": "2025-Q3",
+      "raw_value": "1.80706E+6",
+      "raw_unit": "USD_thousand",
+      "scope": "전력선·변압기·중전기 합계",
+      "source": "https://kind.krx.co.kr/external/2025/11/13/000194/20251113000419/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "103590",
+      "period": "2025-Q4",
+      "raw_value": 1624785,
+      "raw_unit": "USD_thousand",
+      "scope": "전력선·변압기·중전기 합계",
+      "source": "https://kind.krx.co.kr/external/2026/03/11/001795/20260311004198/11011.htm",
+      "notes": "",
+      "status": "공시 확인"
+    },
+    {
+      "company_id": "103590",
+      "period": "2026-Q1",
+      "raw_value": "1761584",
+      "raw_unit": "USD_thousand",
+      "scope": "전력선·변압기·중전기 합계",
+      "source": "https://kind.krx.co.kr/external/2026/05/15/001645/20260515003635/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "103590",
+      "period": "2026-Q2",
+      "raw_value": "1939091",
+      "raw_unit": "USD_thousand",
+      "scope": "전력선·변압기·중전기 합계",
+      "source": "https://kind.krx.co.kr/external/2026/08/11/000470/20260811001106/11012.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "222800",
+      "period": "2020-Q1",
+      "raw_value": "39491.097",
+      "raw_unit": "USD_thousand",
+      "scope": "인쇄회로기판 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2020/05/13/000405/20200513000907/11013.htm",
+      "status": "공시 확인",
+      "notes": "공시 표 잔고 칸이 USD 단위로 기재되어 천USD로 환산(수주총액−기납품액과 일치)"
+    },
+    {
+      "company_id": "222800",
+      "period": "2020-Q2",
+      "raw_value": "347106.823",
+      "raw_unit": "USD_thousand",
+      "scope": "인쇄회로기판 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2020/08/13/000658/20200813001849/11012.htm",
+      "status": "공시 확인",
+      "notes": "공시 표 잔고 칸이 USD 단위로 기재되어 천USD로 환산(수주총액−기납품액과 일치)"
+    },
+    {
+      "company_id": "222800",
+      "period": "2020-Q3",
+      "raw_value": "149063",
+      "raw_unit": "USD_thousand",
+      "scope": "인쇄회로기판 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2020/11/12/000423/20201112000957/11013.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
+    },
+    {
+      "company_id": "222800",
+      "period": "2020-Q4",
+      "raw_value": "134060",
+      "raw_unit": "USD_thousand",
+      "scope": "인쇄회로기판 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2021/03/17/001534/20210317006364/11011.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
+    },
+    {
+      "company_id": "222800",
+      "period": "2021-Q1",
+      "raw_value": "215532",
+      "raw_unit": "USD_thousand",
+      "scope": "인쇄회로기판 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2021/05/14/001225/20210514002457/11013.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
+    },
+    {
+      "company_id": "222800",
+      "period": "2021-Q2",
+      "raw_value": "411028",
+      "raw_unit": "USD_thousand",
+      "scope": "인쇄회로기판 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2021/08/13/000930/20210813002634/11012.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
+    },
+    {
+      "company_id": "222800",
+      "period": "2021-Q3",
+      "raw_value": "474808",
+      "raw_unit": "USD_thousand",
+      "scope": "인쇄회로기판 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2021/11/12/000774/20211112001634/11013.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
+    },
+    {
+      "company_id": "222800",
+      "period": "2021-Q4",
+      "raw_value": "496519",
+      "raw_unit": "USD_thousand",
+      "scope": "인쇄회로기판 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2022/03/21/001949/20220321008341/11011.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
+    },
+    {
+      "company_id": "222800",
+      "period": "2022-Q1",
+      "raw_value": "476061",
+      "raw_unit": "USD_thousand",
+      "scope": "인쇄회로기판 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2022/05/13/001213/20220513002517/11013.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
+    },
+    {
+      "company_id": "222800",
+      "period": "2022-Q2",
+      "raw_value": "488600",
+      "raw_unit": "USD_thousand",
+      "scope": "인쇄회로기판 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2022/08/12/001125/20220812002874/11012.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
+    },
+    {
+      "company_id": "222800",
+      "period": "2022-Q3",
+      "raw_value": "358042",
+      "raw_unit": "USD_thousand",
+      "scope": "인쇄회로기판 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2022/11/11/000845/20221111001649/11013.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
+    },
+    {
+      "company_id": "222800",
+      "period": "2022-Q4",
+      "raw_value": "219180",
+      "raw_unit": "USD_thousand",
+      "scope": "인쇄회로기판 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2023/03/22/001433/20230322006018/11011.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
+    },
+    {
+      "company_id": "222800",
+      "period": "2023-Q1",
+      "raw_value": "171970",
+      "raw_unit": "USD_thousand",
+      "scope": "인쇄회로기판 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2023/05/12/000776/20230512001653/11013.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
+    },
+    {
+      "company_id": "222800",
+      "period": "2023-Q2",
+      "raw_value": "182626",
+      "raw_unit": "USD_thousand",
+      "scope": "인쇄회로기판 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2023/08/11/000890/20230811002503/11012.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
+    },
+    {
+      "company_id": "222800",
+      "period": "2023-Q3",
+      "raw_value": "191079",
+      "raw_unit": "USD_thousand",
+      "scope": "인쇄회로기판 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2023/11/13/000578/20231113001197/11013.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
+    },
+    {
+      "company_id": "222800",
+      "period": "2023-Q4",
+      "raw_value": "159604",
+      "raw_unit": "USD_thousand",
+      "scope": "인쇄회로기판 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2024/03/21/000951/20240321004153/11011.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
+    },
+    {
+      "company_id": "222800",
+      "period": "2024-Q1",
+      "raw_value": "273020",
+      "raw_unit": "USD_thousand",
+      "scope": "인쇄회로기판 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2024/05/14/001237/20240514002692/11013.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
+    },
+    {
+      "company_id": "222800",
+      "period": "2024-Q2",
+      "raw_value": "140227",
+      "raw_unit": "USD_thousand",
+      "scope": "인쇄회로기판 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2024/08/13/001011/20240813002745/11012.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
+    },
+    {
+      "company_id": "222800",
+      "period": "2024-Q3",
+      "raw_value": "130125",
+      "raw_unit": "USD_thousand",
+      "scope": "인쇄회로기판 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2024/11/13/000577/20241113001249/11013.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
+    },
+    {
+      "company_id": "222800",
+      "period": "2024-Q4",
+      "raw_value": "136721",
+      "raw_unit": "USD_thousand",
+      "scope": "인쇄회로기판 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2025/03/18/000518/20250318002764/11011.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
+    },
+    {
+      "company_id": "222800",
+      "period": "2025-Q1",
+      "raw_value": "118259",
+      "raw_unit": "USD_thousand",
+      "scope": "인쇄회로기판 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2025/05/14/000988/20250514002112/11013.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
+    },
+    {
+      "company_id": "222800",
+      "period": "2025-Q2",
+      "raw_value": "191263",
+      "raw_unit": "USD_thousand",
+      "scope": "인쇄회로기판 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2025/08/13/001032/20250813002821/11012.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
+    },
+    {
+      "company_id": "222800",
+      "period": "2025-Q3",
+      "raw_value": "261706",
+      "raw_unit": "USD_thousand",
+      "scope": "인쇄회로기판 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2025/11/13/000877/20251113002045/11013.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
+    },
+    {
+      "company_id": "222800",
+      "period": "2025-Q4",
+      "raw_value": 294564,
+      "raw_unit": "USD_thousand",
+      "scope": "인쇄회로기판 공시 수주상황",
+      "source": "https://dart.fss.or.kr/report/viewer.do?rcpNo=20260317000641&dcmNo=11132615&eleId=13&offset=210309&length=18306&dtd=dart4.xsd",
+      "notes": "기존 리서치 반올림 수치를 공시 원문으로 갱신했습니다.",
+      "status": "공시 확인"
+    },
+    {
+      "company_id": "222800",
+      "period": "2026-Q1",
+      "raw_value": 330609,
+      "raw_unit": "USD_thousand",
+      "scope": "인쇄회로기판 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2026/05/14/000890/20260514001959/11013.htm",
+      "notes": "",
+      "status": "공시 확인"
+    },
+    {
+      "company_id": "222800",
+      "period": "2026-Q2",
+      "raw_value": 392355,
+      "raw_unit": "USD_thousand",
+      "scope": "인쇄회로기판 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2026/08/13/001043/20260813002788/11012.htm",
+      "notes": "",
+      "status": "공시 확인"
+    },
+    {
+      "company_id": "267260",
+      "period": "2022-Q1",
+      "raw_value": "2.478E+6",
+      "raw_unit": "KRW_million",
+      "scope": "연결 전기전자 부문",
+      "source": "https://kind.krx.co.kr/external/2022/05/16/002006/20220516004432/11013.htm",
+      "status": "공시 확인",
+      "notes": "회사가 추정한 예상 환율로 환산한 공시 금액입니다."
+    },
+    {
+      "company_id": "267260",
+      "period": "2022-Q2",
+      "raw_value": "2.9677E+6",
+      "raw_unit": "KRW_million",
+      "scope": "연결 전기전자 부문",
+      "source": "https://kind.krx.co.kr/external/2022/08/16/002810/20220816008756/11012.htm",
+      "status": "공시 확인",
+      "notes": "회사가 추정한 예상 환율로 환산한 공시 금액입니다."
+    },
+    {
+      "company_id": "267260",
+      "period": "2022-Q3",
+      "raw_value": "3.601E+6",
+      "raw_unit": "KRW_million",
+      "scope": "연결 전기전자 부문",
+      "source": "https://kind.krx.co.kr/external/2022/11/14/002571/20221114005610/11013.htm",
+      "status": "공시 확인",
+      "notes": "회사가 추정한 예상 환율로 환산한 공시 금액입니다."
+    },
+    {
+      "company_id": "267260",
+      "period": "2022-Q4",
+      "raw_value": "3.5269E+6",
+      "raw_unit": "KRW_million",
+      "scope": "연결 전기전자 부문",
+      "source": "https://kind.krx.co.kr/external/2023/03/14/001897/20230314004303/11011.htm",
+      "status": "공시 확인",
+      "notes": "회사가 추정한 예상 환율로 환산한 공시 금액입니다."
+    },
+    {
+      "company_id": "267260",
+      "period": "2023-Q1",
+      "raw_value": "3.965E+6",
+      "raw_unit": "KRW_million",
+      "scope": "연결 전기전자 부문",
+      "source": "https://kind.krx.co.kr/external/2023/05/15/002385/20230515005309/11013.htm",
+      "status": "공시 확인",
+      "notes": "회사가 추정한 예상 환율로 환산한 공시 금액입니다."
+    },
+    {
+      "company_id": "267260",
+      "period": "2023-Q2",
+      "raw_value": "4.8399E+6",
+      "raw_unit": "KRW_million",
+      "scope": "연결 전기전자 부문",
+      "source": "https://kind.krx.co.kr/external/2023/08/14/001549/20230814004886/11012.htm",
+      "status": "공시 확인",
+      "notes": "회사가 추정한 예상 환율로 환산한 공시 금액입니다."
+    },
+    {
+      "company_id": "267260",
+      "period": "2023-Q3",
+      "raw_value": "5.1571E+6",
+      "raw_unit": "KRW_million",
+      "scope": "연결 전기전자 부문",
+      "source": "https://kind.krx.co.kr/external/2023/11/14/002080/20231114004526/11013.htm",
+      "status": "공시 확인",
+      "notes": "회사가 추정한 예상 환율로 환산한 공시 금액입니다."
+    },
+    {
+      "company_id": "267260",
+      "period": "2023-Q4",
+      "raw_value": "5.3775E+6",
+      "raw_unit": "KRW_million",
+      "scope": "연결 전기전자 부문",
+      "source": "https://kind.krx.co.kr/external/2024/03/18/001004/20240318004339/11011.htm",
+      "status": "공시 확인",
+      "notes": "회사가 추정한 예상 환율로 환산한 공시 금액입니다."
+    },
+    {
+      "company_id": "267260",
+      "period": "2024-Q1",
+      "raw_value": "6.49728E+6",
+      "raw_unit": "KRW_million",
+      "scope": "연결 전기전자 부문",
+      "source": "https://kind.krx.co.kr/external/2024/05/16/001857/20240516004349/11013.htm",
+      "status": "공시 확인",
+      "notes": "회사가 추정한 예상 환율로 환산한 공시 금액입니다."
+    },
+    {
+      "company_id": "267260",
+      "period": "2024-Q2",
+      "raw_value": "7.0902E+6",
+      "raw_unit": "KRW_million",
+      "scope": "연결 전기전자 부문",
+      "source": "https://kind.krx.co.kr/external/2024/08/14/002107/20240814006629/11012.htm",
+      "status": "공시 확인",
+      "notes": "회사가 추정한 예상 환율로 환산한 공시 금액입니다."
+    },
+    {
+      "company_id": "267260",
+      "period": "2024-Q3",
+      "raw_value": "7.18067E+6",
+      "raw_unit": "KRW_million",
+      "scope": "연결 전기전자 부문",
+      "source": "https://kind.krx.co.kr/external/2024/11/14/002071/20241114004626/11013.htm",
+      "status": "공시 확인",
+      "notes": "회사가 추정한 예상 환율로 환산한 공시 금액입니다."
+    },
+    {
+      "company_id": "267260",
+      "period": "2024-Q4",
+      "raw_value": "7.64658E+6",
+      "raw_unit": "KRW_million",
+      "scope": "연결 전기전자 부문",
+      "source": "https://kind.krx.co.kr/external/2025/03/20/001872/20250320007570/11011.htm",
+      "status": "공시 확인",
+      "notes": "회사가 추정한 예상 환율로 환산한 공시 금액입니다."
+    },
+    {
+      "company_id": "267260",
+      "period": "2025-Q1",
+      "raw_value": "8.4939E+6",
+      "raw_unit": "KRW_million",
+      "scope": "연결 전기전자 부문",
+      "source": "https://kind.krx.co.kr/external/2025/05/15/002716/20250515006358/11013.htm",
+      "status": "공시 확인",
+      "notes": "회사가 추정한 예상 환율로 환산한 공시 금액입니다."
+    },
+    {
+      "company_id": "267260",
+      "period": "2025-Q2",
+      "raw_value": "8.7115E+6",
+      "raw_unit": "KRW_million",
+      "scope": "연결 전기전자 부문",
+      "source": "https://kind.krx.co.kr/external/2025/08/14/002172/20250814006595/11012.htm",
+      "status": "공시 확인",
+      "notes": "회사가 추정한 예상 환율로 환산한 공시 금액입니다."
+    },
+    {
+      "company_id": "267260",
+      "period": "2025-Q3",
+      "raw_value": "9.56671E+6",
+      "raw_unit": "KRW_million",
+      "scope": "연결 전기전자 부문",
+      "source": "https://kind.krx.co.kr/external/2025/11/14/002626/20251114006027/11013.htm",
+      "status": "공시 확인",
+      "notes": "회사가 추정한 예상 환율로 환산한 공시 금액입니다."
+    },
+    {
+      "company_id": "267260",
+      "period": "2025-Q4",
+      "raw_value": "9.4234E+6",
+      "raw_unit": "KRW_million",
+      "scope": "연결 전기전자 부문",
+      "source": "https://kind.krx.co.kr/external/2026/03/16/001414/20260316004356/11011.htm",
+      "status": "공시 확인",
+      "notes": "회사가 추정한 예상 환율로 환산한 공시 금액입니다."
+    },
+    {
+      "company_id": "267260",
+      "period": "2026-Q1",
+      "raw_value": 11437600,
+      "raw_unit": "KRW_million",
+      "scope": "연결 전기전자 부문",
+      "source": "https://kind.krx.co.kr/external/2026/05/15/002528/20260515005720/11013.htm",
+      "notes": "회사가 추정한 예상 환율로 환산한 공시 금액입니다.",
+      "status": "공시 확인"
+    },
+    {
+      "company_id": "267260",
+      "period": "2026-Q2",
+      "raw_value": "1.23105E+7",
+      "raw_unit": "KRW_million",
+      "scope": "연결 전기전자 부문",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/002666/20260814009318/11012.htm",
+      "status": "공시 확인",
+      "notes": "회사가 추정한 예상 환율로 환산한 공시 금액입니다."
+    },
+    {
+      "company_id": "298040",
+      "period": "2024-Q4",
+      "raw_value": "10711892",
+      "raw_unit": "KRW_million",
+      "scope": "중공업 부문·국내외 주요 종속회사 포함",
+      "source": "https://kind.krx.co.kr/external/2026/03/23/001326/20260323005846/11011.htm",
+      "status": "공시 확인",
+      "notes": "2025년 사업보고서의 전기말(2024.12.31) 비교 수치. 2025.12.31 환율로 환산된 값이며 2024년 당시 보고서에는 이 범위의 합계가 없습니다."
+    },
+    {
+      "company_id": "298040",
+      "period": "2025-Q1",
+      "raw_value": "12425286",
+      "raw_unit": "KRW_million",
+      "scope": "중공업 부문·국내외 주요 종속회사 포함",
+      "source": "https://kind.krx.co.kr/external/2025/05/14/000925/20250514001968/11013.htm",
+      "status": "공시 확인",
+      "notes": "건설 부문 제외. 보고기준일별 환율 환산으로 전기말 비교 수치와 차이가 날 수 있습니다."
+    },
+    {
+      "company_id": "298040",
+      "period": "2025-Q2",
+      "raw_value": "13344998",
+      "raw_unit": "KRW_million",
+      "scope": "중공업 부문·국내외 주요 종속회사 포함",
+      "source": "https://kind.krx.co.kr/external/2025/08/14/002655/20250814008166/11012.htm",
+      "status": "공시 확인",
+      "notes": "건설 부문 제외. 보고기준일별 환율 환산으로 전기말 비교 수치와 차이가 날 수 있습니다."
+    },
+    {
+      "company_id": "298040",
+      "period": "2025-Q3",
+      "raw_value": "13853724",
+      "raw_unit": "KRW_million",
+      "scope": "중공업 부문·국내외 주요 종속회사 포함",
+      "source": "https://kind.krx.co.kr/external/2025/11/13/000838/20251113001973/11013.htm",
+      "status": "공시 확인",
+      "notes": "건설 부문 제외. 보고기준일별 환율 환산으로 전기말 비교 수치와 차이가 날 수 있습니다."
+    },
+    {
+      "company_id": "298040",
+      "period": "2025-Q4",
+      "raw_value": 15340242,
+      "raw_unit": "KRW_million",
+      "scope": "중공업 부문·국내외 주요 종속회사 포함",
+      "source": "https://kind.krx.co.kr/external/2026/03/11/001787/20260311004183/11011.htm",
+      "notes": "건설 부문 제외. 보고기준일별 환율 환산으로 전기말 비교 수치와 차이가 날 수 있습니다.",
+      "status": "공시 확인"
+    },
+    {
+      "company_id": "298040",
+      "period": "2026-Q1",
+      "raw_value": 20196435,
+      "raw_unit": "KRW_million",
+      "scope": "중공업 부문·국내외 주요 종속회사 포함",
+      "source": "https://kind.krx.co.kr/external/2026/05/14/001423/20260514003098/11013.htm",
+      "notes": "건설 부문 제외. 보고기준일별 환율 환산으로 전기말 비교 수치와 차이가 날 수 있습니다.",
+      "status": "공시 확인"
+    },
+    {
+      "company_id": "298040",
+      "period": "2026-Q2",
+      "raw_value": "23834404",
+      "raw_unit": "KRW_million",
+      "scope": "중공업 부문·국내외 주요 종속회사 포함",
+      "source": "https://kind.krx.co.kr/external/2026/08/13/001190/20260813003134/11012.htm",
+      "status": "공시 확인",
+      "notes": "건설 부문 제외. 보고기준일별 환율 환산으로 전기말 비교 수치와 차이가 날 수 있습니다."
+    },
+    {
+      "company_id": "353200",
+      "period": "2020-Q2",
+      "raw_value": "594",
+      "raw_unit": "KRW_100m",
+      "scope": "PCB 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2020/08/14/002515/20200814007596/11012.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
+    },
+    {
+      "company_id": "353200",
+      "period": "2020-Q3",
+      "raw_value": "98",
+      "raw_unit": "KRW_100m",
+      "scope": "PCB 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2020/11/16/001619/20201116003616/11013.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
+    },
+    {
+      "company_id": "353200",
+      "period": "2020-Q4",
+      "raw_value": "10",
+      "raw_unit": "KRW_100m",
+      "scope": "PCB 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2021/03/17/001548/20210317006431/11011.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
+    },
+    {
+      "company_id": "353200",
+      "period": "2021-Q1",
+      "raw_value": "635",
+      "raw_unit": "KRW_100m",
+      "scope": "PCB 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2021/05/14/001461/20210514002953/11013.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
+    },
+    {
+      "company_id": "353200",
+      "period": "2021-Q2",
+      "raw_value": "1291",
+      "raw_unit": "KRW_100m",
+      "scope": "PCB 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2021/08/13/001639/20210813004573/11012.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
+    },
+    {
+      "company_id": "353200",
+      "period": "2021-Q3",
+      "raw_value": "2073",
+      "raw_unit": "KRW_100m",
+      "scope": "PCB 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2021/11/12/001101/20211112002279/11013.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
+    },
+    {
+      "company_id": "353200",
+      "period": "2021-Q4",
+      "raw_value": "1304",
+      "raw_unit": "KRW_100m",
+      "scope": "PCB 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2022/03/16/002198/20220316005788/11011.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
+    },
+    {
+      "company_id": "353200",
+      "period": "2022-Q1",
+      "raw_value": "774",
+      "raw_unit": "KRW_100m",
+      "scope": "PCB 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2022/05/13/001108/20220513002284/11013.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
+    },
+    {
+      "company_id": "353200",
+      "period": "2022-Q2",
+      "raw_value": "1101",
+      "raw_unit": "KRW_100m",
+      "scope": "PCB 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2022/08/12/001091/20220812002799/11012.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
+    },
+    {
+      "company_id": "353200",
+      "period": "2022-Q3",
+      "raw_value": "600",
+      "raw_unit": "KRW_100m",
+      "scope": "PCB 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2022/11/11/001160/20221111002240/11013.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
+    },
+    {
+      "company_id": "353200",
+      "period": "2022-Q4",
+      "raw_value": "317",
+      "raw_unit": "KRW_100m",
+      "scope": "PCB 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2023/03/14/002060/20230314004679/11011.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
+    },
+    {
+      "company_id": "353200",
+      "period": "2023-Q1",
+      "raw_value": "791",
+      "raw_unit": "KRW_100m",
+      "scope": "PCB 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2023/05/12/001075/20230512002250/11013.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
+    },
+    {
+      "company_id": "353200",
+      "period": "2023-Q2",
+      "raw_value": "371",
+      "raw_unit": "KRW_100m",
+      "scope": "PCB 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2023/08/11/001323/20230811003718/11012.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
+    },
+    {
+      "company_id": "353200",
+      "period": "2023-Q3",
+      "raw_value": "1011",
+      "raw_unit": "KRW_100m",
+      "scope": "PCB 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2023/11/13/000840/20231113001747/11013.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
+    },
+    {
+      "company_id": "353200",
+      "period": "2023-Q4",
+      "raw_value": "331",
+      "raw_unit": "KRW_100m",
+      "scope": "PCB 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2024/03/20/002100/20240320009674/11011.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
+    },
+    {
+      "company_id": "353200",
+      "period": "2024-Q1",
+      "raw_value": "723",
+      "raw_unit": "KRW_100m",
+      "scope": "PCB 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2024/05/14/001297/20240514002833/11013.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
+    },
+    {
+      "company_id": "353200",
+      "period": "2024-Q2",
+      "raw_value": "682",
+      "raw_unit": "KRW_100m",
+      "scope": "PCB 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2024/08/13/000666/20240813001886/11012.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
+    },
+    {
+      "company_id": "353200",
+      "period": "2024-Q3",
+      "raw_value": "776",
+      "raw_unit": "KRW_100m",
+      "scope": "PCB 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2024/11/13/000595/20241113001295/11013.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
+    },
+    {
+      "company_id": "353200",
+      "period": "2024-Q4",
+      "raw_value": "357",
+      "raw_unit": "KRW_100m",
+      "scope": "PCB 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2025/03/19/001065/20250319004618/11011.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
+    },
+    {
+      "company_id": "353200",
+      "period": "2025-Q1",
+      "raw_value": "792",
+      "raw_unit": "KRW_100m",
+      "scope": "PCB 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2025/05/14/001192/20250514002594/11013.htm",
+      "status": "공시 확인",
+      "notes": "분기말 공시 수주상황 표의 합계 금액. 수주총액−기납품액 대조(표시 반올림 허용)."
+    },
+    {
+      "company_id": "353200",
+      "period": "2025-Q2",
+      "raw_value": 1283,
+      "raw_unit": "KRW_100m",
+      "scope": "PCB 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2025/08/13/000822/20250813002283/11012.htm",
+      "notes": "",
+      "status": "공시 확인"
+    },
+    {
+      "company_id": "353200",
+      "period": "2025-Q3",
+      "raw_value": 3110,
+      "raw_unit": "KRW_100m",
+      "scope": "PCB 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2025/11/13/000702/20251113001702/11013.htm",
+      "notes": "",
+      "status": "공시 확인"
+    },
+    {
+      "company_id": "353200",
+      "period": "2025-Q4",
+      "raw_value": 2168,
+      "raw_unit": "KRW_100m",
+      "scope": "PCB 공시 수주상황",
+      "source": "https://dart.fss.or.kr/report/viewer.do?rcpNo=20260318001514&dcmNo=11143387&eleId=13&offset=152549&length=10510&dtd=dart4.xsd",
+      "notes": "",
+      "status": "공시 확인"
+    },
+    {
+      "company_id": "353200",
+      "period": "2026-Q1",
+      "raw_value": 2374.0,
+      "raw_unit": "KRW_100m",
+      "scope": "PCB 공시 수주상황",
+      "source": "https://kind.krx.co.kr/external/2026/05/14/001527/20260514003325/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "353200",
+      "period": "2026-Q2",
+      "raw_value": 3328,
+      "raw_unit": "KRW_100m",
+      "scope": "PCB 공시 수주상황",
+      "source": "https://dart.fss.or.kr/report/viewer.do?rcpNo=20260813001620&dcmNo=11525746&eleId=13&offset=155776&length=10504&dtd=dart4.xsd",
+      "notes": "",
+      "status": "공시 확인"
+    },
+    {
+      "company_id": "LS-CABLE",
+      "period": "2020-Q1",
+      "raw_value": "20231",
+      "raw_unit": "KRW_100m",
+      "scope": "LS 공시 전선 부문 연결·참고",
+      "source": "https://kind.krx.co.kr/external/2021/08/31/000644/20210831001534/11013.htm",
+      "status": "공시 확인",
+      "notes": "LS전선 단독 금액이 아닌 LS 전선 부문 연결 수치입니다. 해저케이블만의 잔고가 아닙니다."
+    },
+    {
+      "company_id": "LS-CABLE",
+      "period": "2020-Q2",
+      "raw_value": "2.064E+4",
+      "raw_unit": "KRW_100m",
+      "scope": "LS 공시 전선 부문 연결·참고",
+      "source": "https://kind.krx.co.kr/external/2021/08/31/000655/20210831001548/11012.htm",
+      "status": "공시 확인",
+      "notes": "LS전선 단독 금액이 아닌 LS 전선 부문 연결 수치입니다. 해저케이블만의 잔고가 아닙니다."
+    },
+    {
+      "company_id": "LS-CABLE",
+      "period": "2020-Q3",
+      "raw_value": "2.34E+4",
+      "raw_unit": "KRW_100m",
+      "scope": "LS 공시 전선 부문 연결·참고",
+      "source": "https://kind.krx.co.kr/external/2021/08/31/000659/20210831001560/11013.htm",
+      "status": "공시 확인",
+      "notes": "LS전선 단독 금액이 아닌 LS 전선 부문 연결 수치입니다. 해저케이블만의 잔고가 아닙니다."
+    },
+    {
+      "company_id": "LS-CABLE",
+      "period": "2020-Q4",
+      "raw_value": "24826",
+      "raw_unit": "KRW_100m",
+      "scope": "LS 공시 전선 부문 연결·참고",
+      "source": "https://kind.krx.co.kr/external/2021/08/31/000664/20210831001573/11011.htm",
+      "status": "공시 확인",
+      "notes": "LS전선 단독 금액이 아닌 LS 전선 부문 연결 수치입니다. 해저케이블만의 잔고가 아닙니다."
+    },
+    {
+      "company_id": "LS-CABLE",
+      "period": "2021-Q1",
+      "raw_value": "22866",
+      "raw_unit": "KRW_100m",
+      "scope": "LS 공시 전선 부문 연결·참고",
+      "source": "https://kind.krx.co.kr/external/2021/05/17/001434/20210517003274/11013.htm",
+      "status": "공시 확인",
+      "notes": "LS전선 단독 금액이 아닌 LS 전선 부문 연결 수치입니다. 해저케이블만의 잔고가 아닙니다."
+    },
+    {
+      "company_id": "LS-CABLE",
+      "period": "2021-Q2",
+      "raw_value": "2.498E+4",
+      "raw_unit": "KRW_100m",
+      "scope": "LS 공시 전선 부문 연결·참고",
+      "source": "https://kind.krx.co.kr/external/2021/08/17/001226/20210817003885/11012.htm",
+      "status": "공시 확인",
+      "notes": "LS전선 단독 금액이 아닌 LS 전선 부문 연결 수치입니다. 해저케이블만의 잔고가 아닙니다."
+    },
+    {
+      "company_id": "LS-CABLE",
+      "period": "2021-Q3",
+      "raw_value": "27112",
+      "raw_unit": "KRW_100m",
+      "scope": "LS 공시 전선 부문 연결·참고",
+      "source": "https://kind.krx.co.kr/external/2021/11/15/001636/20211115003427/11013.htm",
+      "status": "공시 확인",
+      "notes": "LS전선 단독 금액이 아닌 LS 전선 부문 연결 수치입니다. 해저케이블만의 잔고가 아닙니다."
+    },
+    {
+      "company_id": "LS-CABLE",
+      "period": "2021-Q4",
+      "raw_value": "27408",
+      "raw_unit": "KRW_100m",
+      "scope": "LS 공시 전선 부문 연결·참고",
+      "source": "https://kind.krx.co.kr/external/2022/03/21/001703/20220321007229/11011.htm",
+      "status": "공시 확인",
+      "notes": "LS전선 단독 금액이 아닌 LS 전선 부문 연결 수치입니다. 해저케이블만의 잔고가 아닙니다."
+    },
+    {
+      "company_id": "LS-CABLE",
+      "period": "2022-Q1",
+      "raw_value": "32065",
+      "raw_unit": "KRW_100m",
+      "scope": "LS 공시 전선 부문 연결·참고",
+      "source": "https://kind.krx.co.kr/external/2022/05/16/001808/20220516003963/11013.htm",
+      "status": "공시 확인",
+      "notes": "LS전선 단독 금액이 아닌 LS 전선 부문 연결 수치입니다. 해저케이블만의 잔고가 아닙니다."
+    },
+    {
+      "company_id": "LS-CABLE",
+      "period": "2022-Q2",
+      "raw_value": "28698",
+      "raw_unit": "KRW_100m",
+      "scope": "LS 공시 전선 부문 연결·참고",
+      "source": "https://kind.krx.co.kr/external/2022/08/16/001689/20220816005348/11012.htm",
+      "status": "공시 확인",
+      "notes": "LS전선 단독 금액이 아닌 LS 전선 부문 연결 수치입니다. 해저케이블만의 잔고가 아닙니다."
+    },
+    {
+      "company_id": "LS-CABLE",
+      "period": "2022-Q3",
+      "raw_value": "29637",
+      "raw_unit": "KRW_100m",
+      "scope": "LS 공시 전선 부문 연결·참고",
+      "source": "https://kind.krx.co.kr/external/2022/11/14/002821/20221114006176/11013.htm",
+      "status": "공시 확인",
+      "notes": "LS전선 단독 금액이 아닌 LS 전선 부문 연결 수치입니다. 해저케이블만의 잔고가 아닙니다."
+    },
+    {
+      "company_id": "LS-CABLE",
+      "period": "2022-Q4",
+      "raw_value": "32326",
+      "raw_unit": "KRW_100m",
+      "scope": "LS 공시 전선 부문 연결·참고",
+      "source": "https://kind.krx.co.kr/external/2023/03/28/001595/20230328003984/11011.htm",
+      "status": "공시 확인",
+      "notes": "LS전선 단독 금액이 아닌 LS 전선 부문 연결 수치입니다. 해저케이블만의 잔고가 아닙니다."
+    },
+    {
+      "company_id": "LS-CABLE",
+      "period": "2023-Q1",
+      "raw_value": "34045",
+      "raw_unit": "KRW_100m",
+      "scope": "LS 공시 전선 부문 연결·참고",
+      "source": "https://kind.krx.co.kr/external/2023/05/15/001919/20230515004114/11013.htm",
+      "status": "공시 확인",
+      "notes": "LS전선 단독 금액이 아닌 LS 전선 부문 연결 수치입니다. 해저케이블만의 잔고가 아닙니다."
+    },
+    {
+      "company_id": "LS-CABLE",
+      "period": "2023-Q2",
+      "raw_value": "37949",
+      "raw_unit": "KRW_100m",
+      "scope": "LS 공시 전선 부문 연결·참고",
+      "source": "https://kind.krx.co.kr/external/2023/08/14/001999/20230814006257/11012.htm",
+      "status": "공시 확인",
+      "notes": "LS전선 단독 금액이 아닌 LS 전선 부문 연결 수치입니다. 해저케이블만의 잔고가 아닙니다."
+    },
+    {
+      "company_id": "LS-CABLE",
+      "period": "2023-Q3",
+      "raw_value": "43677",
+      "raw_unit": "KRW_100m",
+      "scope": "LS 공시 전선 부문 연결·참고",
+      "source": "https://kind.krx.co.kr/external/2023/11/14/001478/20231114003158/11013.htm",
+      "status": "공시 확인",
+      "notes": "LS전선 단독 금액이 아닌 LS 전선 부문 연결 수치입니다. 해저케이블만의 잔고가 아닙니다."
+    },
+    {
+      "company_id": "LS-CABLE",
+      "period": "2023-Q4",
+      "raw_value": "52431",
+      "raw_unit": "KRW_100m",
+      "scope": "LS 공시 전선 부문 연결·참고",
+      "source": "https://kind.krx.co.kr/external/2024/03/28/003335/20240328006146/11011.htm",
+      "status": "공시 확인",
+      "notes": "LS전선 단독 금액이 아닌 LS 전선 부문 연결 수치입니다. 해저케이블만의 잔고가 아닙니다."
+    },
+    {
+      "company_id": "LS-CABLE",
+      "period": "2024-Q1",
+      "raw_value": "51845",
+      "raw_unit": "KRW_100m",
+      "scope": "LS 공시 전선 부문 연결·참고",
+      "source": "https://kind.krx.co.kr/external/2024/05/16/002106/20240516004944/11013.htm",
+      "status": "공시 확인",
+      "notes": "LS전선 단독 금액이 아닌 LS 전선 부문 연결 수치입니다. 해저케이블만의 잔고가 아닙니다."
+    },
+    {
+      "company_id": "LS-CABLE",
+      "period": "2024-Q2",
+      "raw_value": "56216",
+      "raw_unit": "KRW_100m",
+      "scope": "LS 공시 전선 부문 연결·참고",
+      "source": "https://kind.krx.co.kr/external/2024/08/14/002354/20240814007487/11012.htm",
+      "status": "공시 확인",
+      "notes": "LS전선 단독 금액이 아닌 LS 전선 부문 연결 수치입니다. 해저케이블만의 잔고가 아닙니다."
+    },
+    {
+      "company_id": "LS-CABLE",
+      "period": "2024-Q3",
+      "raw_value": "57073",
+      "raw_unit": "KRW_100m",
+      "scope": "LS 공시 전선 부문 연결·참고",
+      "source": "https://kind.krx.co.kr/external/2025/03/26/001136/20250326002934/11013.htm",
+      "status": "공시 확인",
+      "notes": "LS전선 단독 금액이 아닌 LS 전선 부문 연결 수치입니다. 해저케이블만의 잔고가 아닙니다."
+    },
+    {
+      "company_id": "LS-CABLE",
+      "period": "2024-Q4",
+      "raw_value": "62741",
+      "raw_unit": "KRW_100m",
+      "scope": "LS 공시 전선 부문 연결·참고",
+      "source": "https://kind.krx.co.kr/external/2025/08/14/002192/20250814006667/11011.htm",
+      "status": "공시 확인",
+      "notes": "LS전선 단독 금액이 아닌 LS 전선 부문 연결 수치입니다. 해저케이블만의 잔고가 아닙니다."
+    },
+    {
+      "company_id": "LS-CABLE",
+      "period": "2025-Q1",
+      "raw_value": "6.353E+4",
+      "raw_unit": "KRW_100m",
+      "scope": "LS 공시 전선 부문 연결·참고",
+      "source": "https://kind.krx.co.kr/external/2025/05/15/002336/20250515005476/11013.htm",
+      "status": "공시 확인",
+      "notes": "LS전선 단독 금액이 아닌 LS 전선 부문 연결 수치입니다. 해저케이블만의 잔고가 아닙니다."
+    },
+    {
+      "company_id": "LS-CABLE",
+      "period": "2025-Q2",
+      "raw_value": "62197",
+      "raw_unit": "KRW_100m",
+      "scope": "LS 공시 전선 부문 연결·참고",
+      "source": "https://kind.krx.co.kr/external/2025/08/14/002927/20250814009080/11012.htm",
+      "status": "공시 확인",
+      "notes": "LS전선 단독 금액이 아닌 LS 전선 부문 연결 수치입니다. 해저케이블만의 잔고가 아닙니다."
+    },
+    {
+      "company_id": "LS-CABLE",
+      "period": "2025-Q3",
+      "raw_value": "66015",
+      "raw_unit": "KRW_100m",
+      "scope": "LS 공시 전선 부문 연결·참고",
+      "source": "https://kind.krx.co.kr/external/2025/11/14/002639/20251114006053/11013.htm",
+      "status": "공시 확인",
+      "notes": "LS전선 단독 금액이 아닌 LS 전선 부문 연결 수치입니다. 해저케이블만의 잔고가 아닙니다."
+    },
+    {
+      "company_id": "LS-CABLE",
+      "period": "2025-Q4",
+      "raw_value": "7.63E+4",
+      "raw_unit": "KRW_100m",
+      "scope": "LS 공시 전선 부문 연결·참고",
+      "source": "https://kind.krx.co.kr/external/2026/03/18/002042/20260318009473/11011.htm",
+      "status": "공시 확인",
+      "notes": "LS전선 단독 금액이 아닌 LS 전선 부문 연결 수치입니다. 해저케이블만의 잔고가 아닙니다."
+    },
+    {
+      "company_id": "LS-CABLE",
+      "period": "2026-Q1",
+      "raw_value": 85086,
+      "raw_unit": "KRW_100m",
+      "scope": "LS 공시 전선 부문 연결·참고",
+      "source": "https://kind.krx.co.kr/external/2026/05/27/000326/20260527000729/11013.htm",
+      "notes": "LS전선 단독 금액이 아닌 LS 전선 부문 연결 수치입니다. 해저케이블만의 잔고가 아닙니다.",
+      "status": "공시 확인"
+    },
+    {
+      "company_id": "LS-CABLE",
+      "period": "2026-Q2",
+      "raw_value": "95535",
+      "raw_unit": "KRW_100m",
+      "scope": "LS 공시 전선 부문 연결·참고",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/001351/20260814004491/11012.htm",
+      "status": "공시 확인",
+      "notes": "LS전선 단독 금액이 아닌 LS 전선 부문 연결 수치입니다. 해저케이블만의 잔고가 아닙니다."
     }
   ],
   "start_period": "2020-Q1",
   "end_period": "2026-Q2",
   "history_issues": [
-    {
-      "company_id": "222800",
-      "period": "2020-Q1",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2020/05/13/000405/20200513000907/11013.htm",
-      "reason": "공시 표 금액 산식 불일치"
-    },
-    {
-      "company_id": "222800",
-      "period": "2020-Q2",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2020/08/13/000658/20200813001849/11012.htm",
-      "reason": "공시 표 금액 산식 불일치"
-    },
     {
       "company_id": "007660",
       "period": "2020-Q1",
@@ -1894,179 +3350,394 @@
       "reason": "non-number '-'"
     },
     {
-      "company_id": "103590",
+      "company_id": "003670",
       "period": "2020-Q1",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2020/05/15/001461/20200515003096/11013.htm",
-      "reason": "품목별 잔고 합계 불일치"
+      "source": "https://kind.krx.co.kr/external/2020/05/15/002626/20200515005907/11013.htm",
+      "reason": "10억원 이상 계약 기준 문구 없음(기준 변경 전 표)"
     },
     {
-      "company_id": "103590",
+      "company_id": "003670",
       "period": "2020-Q2",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2020/08/14/000323/20200814000775/11012.htm",
-      "reason": "품목별 잔고 합계 불일치"
+      "source": "https://kind.krx.co.kr/external/2020/08/13/000588/20200813001666/11012.htm",
+      "reason": "10억원 이상 계약 기준 문구 없음(기준 변경 전 표)"
     },
     {
-      "company_id": "103590",
+      "company_id": "003670",
       "period": "2020-Q3",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2020/11/16/001121/20201116002470/11013.htm",
-      "reason": "품목별 잔고 합계 불일치"
+      "source": "https://kind.krx.co.kr/external/2020/11/13/000734/20201113001586/11013.htm",
+      "reason": "10억원 이상 계약 기준 문구 없음(기준 변경 전 표)"
     },
     {
-      "company_id": "103590",
+      "company_id": "003670",
       "period": "2020-Q4",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2021/03/29/001063/20210329002842/11011.htm",
-      "reason": "품목별 잔고 합계 불일치"
+      "source": "https://kind.krx.co.kr/external/2021/05/12/000549/20210512001288/11011.htm",
+      "reason": "10억원 이상 계약 기준 문구 없음(기준 변경 전 표)"
     },
     {
-      "company_id": "103590",
+      "company_id": "003670",
       "period": "2021-Q1",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2021/05/17/000068/20210517000115/11013.htm",
-      "reason": "품목별 잔고 합계 불일치"
+      "source": "https://kind.krx.co.kr/external/2021/05/14/001319/20210514002625/11013.htm",
+      "reason": "10억원 이상 계약 기준 문구 없음(기준 변경 전 표)"
     },
     {
-      "company_id": "103590",
+      "company_id": "003670",
       "period": "2021-Q2",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2021/08/13/000538/20210813001535/11012.htm",
-      "reason": "품목별 잔고 합계 불일치"
+      "source": "https://kind.krx.co.kr/external/2021/08/13/000483/20210813001384/11012.htm",
+      "reason": "10억원 이상 계약 기준 문구 없음(기준 변경 전 표)"
     },
     {
-      "company_id": "103590",
+      "company_id": "003670",
       "period": "2021-Q3",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2021/11/12/000633/20211112001373/11013.htm",
-      "reason": "품목별 잔고 합계 불일치"
+      "source": "https://kind.krx.co.kr/external/2021/11/15/000584/20211115001194/11013.htm",
+      "reason": "10억원 이상 계약 기준 문구 없음(기준 변경 전 표)"
     },
     {
-      "company_id": "103590",
+      "company_id": "003670",
       "period": "2021-Q4",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2022/03/17/001692/20220317006575/11011.htm",
-      "reason": "품목별 잔고 합계 불일치"
+      "source": "https://kind.krx.co.kr/external/2022/03/11/001533/20220311003400/11011.htm",
+      "reason": "10억원 이상 계약 기준 문구 없음(기준 변경 전 표)"
     },
     {
-      "company_id": "103590",
+      "company_id": "003670",
       "period": "2022-Q1",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2022/05/16/000309/20220516000610/11013.htm",
-      "reason": "품목별 잔고 합계 불일치"
+      "source": "https://kind.krx.co.kr/external/2022/05/16/000978/20220516002123/11013.htm",
+      "reason": "10억원 이상 계약 기준 문구 없음(기준 변경 전 표)"
     },
     {
-      "company_id": "103590",
+      "company_id": "003670",
       "period": "2022-Q2",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2022/08/16/000646/20220816002083/11012.htm",
-      "reason": "품목별 잔고 합계 불일치"
+      "source": "https://kind.krx.co.kr/external/2022/08/16/001085/20220816003457/11012.htm",
+      "reason": "10억원 이상 계약 기준 문구 없음(기준 변경 전 표)"
     },
     {
-      "company_id": "103590",
+      "company_id": "003670",
       "period": "2022-Q3",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2022/11/14/001027/20221114002153/11013.htm",
-      "reason": "품목별 잔고 합계 불일치"
+      "source": "https://kind.krx.co.kr/external/2022/11/17/000093/20221117000185/11013.htm",
+      "reason": "10억원 이상 계약 기준 문구 없음(기준 변경 전 표)"
     },
     {
-      "company_id": "103590",
+      "company_id": "003670",
       "period": "2022-Q4",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2023/03/15/000818/20230315002382/11011.htm",
-      "reason": "품목별 잔고 합계 불일치"
+      "source": "https://kind.krx.co.kr/external/2023/03/17/000838/20230317002994/11011.htm",
+      "reason": "10억원 이상 계약 기준 문구 없음(기준 변경 전 표)"
     },
     {
-      "company_id": "103590",
+      "company_id": "003670",
       "period": "2023-Q1",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2023/05/12/000504/20230512001099/11013.htm",
-      "reason": "품목별 잔고 합계 불일치"
+      "source": "https://kind.krx.co.kr/external/2023/05/15/002429/20230515005435/11013.htm",
+      "reason": "10억원 이상 계약 기준 문구 없음(기준 변경 전 표)"
     },
     {
-      "company_id": "103590",
+      "company_id": "003670",
       "period": "2023-Q2",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2023/08/11/000397/20230811001069/11012.htm",
-      "reason": "품목별 잔고 합계 불일치"
+      "source": "https://kind.krx.co.kr/external/2023/08/11/000864/20230811002420/11012.htm",
+      "reason": "10억원 이상 계약 기준 문구 없음(기준 변경 전 표)"
     },
     {
-      "company_id": "103590",
-      "period": "2023-Q3",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2023/11/13/000396/20231113000769/11013.htm",
-      "reason": "품목별 잔고 합계 불일치"
+      "company_id": "007660",
+      "period": "2020-Q1",
+      "source": "https://kind.krx.co.kr/external/2020/05/18/000504/20200518001270/11013.htm",
+      "reason": "balance not disclosed ('-')"
     },
     {
-      "company_id": "103590",
-      "period": "2023-Q4",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2024/03/13/002760/20240313006558/11011.htm",
-      "reason": "품목별 잔고 합계 불일치"
+      "company_id": "007660",
+      "period": "2020-Q2",
+      "source": "https://kind.krx.co.kr/external/2020/08/14/001016/20200814002930/11012.htm",
+      "reason": "balance not disclosed ('-')"
     },
     {
-      "company_id": "103590",
-      "period": "2024-Q1",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2024/05/14/000236/20240514000449/11013.htm",
-      "reason": "품목별 잔고 합계 불일치"
+      "company_id": "007660",
+      "period": "2020-Q3",
+      "source": "https://kind.krx.co.kr/external/2020/11/16/001733/20201116003891/11013.htm",
+      "reason": "balance not disclosed ('-')"
     },
     {
-      "company_id": "103590",
-      "period": "2024-Q2",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2024/08/13/000170/20240813000476/11012.htm",
-      "reason": "품목별 잔고 합계 불일치"
+      "company_id": "007660",
+      "period": "2020-Q4",
+      "source": "https://kind.krx.co.kr/external/2021/04/05/001063/20210405002370/11011.htm",
+      "reason": "balance not disclosed ('-')"
     },
     {
-      "company_id": "103590",
-      "period": "2024-Q3",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2024/11/13/000102/20241113000241/11013.htm",
-      "reason": "품목별 잔고 합계 불일치"
+      "company_id": "007660",
+      "period": "2021-Q1",
+      "source": "https://kind.krx.co.kr/external/2021/05/17/002285/20210517005351/11013.htm",
+      "reason": "balance not disclosed ('-')"
     },
     {
-      "company_id": "103590",
-      "period": "2024-Q4",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2025/03/12/000750/20250312002052/11011.htm",
-      "reason": "품목별 잔고 합계 불일치"
+      "company_id": "007660",
+      "period": "2021-Q2",
+      "source": "https://kind.krx.co.kr/external/2021/08/17/002515/20210817007743/11012.htm",
+      "reason": "balance not disclosed ('-')"
     },
     {
-      "company_id": "103590",
-      "period": "2025-Q1",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2025/05/14/000313/20250514000676/11013.htm",
-      "reason": "품목별 잔고 합계 불일치"
+      "company_id": "066970",
+      "period": "2020-Q1",
+      "source": "https://kind.krx.co.kr/external/2020/05/11/000174/20200511000333/11013.htm",
+      "reason": "2020~2021-Q1 표는 기간 매출 실적으로 계약 잔고 표가 아님"
     },
     {
-      "company_id": "103590",
-      "period": "2025-Q2",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2025/08/13/000274/20250813000794/11012.htm",
-      "reason": "품목별 잔고 합계 불일치"
+      "company_id": "066970",
+      "period": "2020-Q2",
+      "source": "https://kind.krx.co.kr/external/2020/08/14/002465/20200814007424/11012.htm",
+      "reason": "2020~2021-Q1 표는 기간 매출 실적으로 계약 잔고 표가 아님"
     },
     {
-      "company_id": "103590",
-      "period": "2025-Q3",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2025/11/13/000194/20251113000419/11013.htm",
-      "reason": "품목별 잔고 합계 불일치"
+      "company_id": "066970",
+      "period": "2020-Q3",
+      "source": "https://kind.krx.co.kr/external/2020/11/13/000991/20201113002054/11013.htm",
+      "reason": "2020~2021-Q1 표는 기간 매출 실적으로 계약 잔고 표가 아님"
     },
     {
-      "company_id": "103590",
-      "period": "2026-Q1",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2026/05/15/001645/20260515003635/11013.htm",
-      "reason": "품목별 잔고 합계 불일치"
+      "company_id": "066970",
+      "period": "2020-Q4",
+      "source": "https://kind.krx.co.kr/external/2021/03/09/000618/20210309001737/11011.htm",
+      "reason": "2020~2021-Q1 표는 기간 매출 실적으로 계약 잔고 표가 아님"
     },
     {
-      "company_id": "103590",
+      "company_id": "066970",
+      "period": "2021-Q1",
+      "source": "https://kind.krx.co.kr/external/2021/05/14/001389/20210514002797/11013.htm",
+      "reason": "2020~2021-Q1 표는 기간 매출 실적으로 계약 잔고 표가 아님"
+    },
+    {
+      "company_id": "082920",
+      "period": "2020-Q1",
+      "source": "https://kind.krx.co.kr/external/2020/05/07/000120/20200507000146/11013.htm",
+      "reason": "2023-Q1~2025-Q3 장기공급계약 잔고 표와 범위가 다른 표(개별 주문·수시 발주)"
+    },
+    {
+      "company_id": "082920",
+      "period": "2020-Q2",
+      "source": "https://kind.krx.co.kr/external/2020/08/13/000096/20200813000212/11012.htm",
+      "reason": "2023-Q1~2025-Q3 장기공급계약 잔고 표와 범위가 다른 표(개별 주문·수시 발주)"
+    },
+    {
+      "company_id": "082920",
+      "period": "2020-Q3",
+      "source": "https://kind.krx.co.kr/external/2020/11/12/000089/20201112000178/11013.htm",
+      "reason": "2023-Q1~2025-Q3 장기공급계약 잔고 표와 범위가 다른 표(개별 주문·수시 발주)"
+    },
+    {
+      "company_id": "082920",
+      "period": "2020-Q4",
+      "source": "https://kind.krx.co.kr/external/2021/03/19/001199/20210319004410/11011.htm",
+      "reason": "2023-Q1~2025-Q3 장기공급계약 잔고 표와 범위가 다른 표(개별 주문·수시 발주)"
+    },
+    {
+      "company_id": "082920",
+      "period": "2021-Q1",
+      "source": "https://kind.krx.co.kr/external/2021/05/14/000636/20210514001290/11013.htm",
+      "reason": "2023-Q1~2025-Q3 장기공급계약 잔고 표와 범위가 다른 표(개별 주문·수시 발주)"
+    },
+    {
+      "company_id": "082920",
+      "period": "2021-Q2",
+      "source": "https://kind.krx.co.kr/external/2021/08/12/000138/20210812000391/11012.htm",
+      "reason": "2023-Q1~2025-Q3 장기공급계약 잔고 표와 범위가 다른 표(개별 주문·수시 발주)"
+    },
+    {
+      "company_id": "082920",
+      "period": "2021-Q3",
+      "source": "https://kind.krx.co.kr/external/2021/11/10/000158/20211110000343/11013.htm",
+      "reason": "2023-Q1~2025-Q3 장기공급계약 잔고 표와 범위가 다른 표(개별 주문·수시 발주)"
+    },
+    {
+      "company_id": "082920",
+      "period": "2021-Q4",
+      "source": "https://kind.krx.co.kr/external/2022/07/07/000289/20220707000759/11011.htm",
+      "reason": "2023-Q1~2025-Q3 장기공급계약 잔고 표와 범위가 다른 표(개별 주문·수시 발주)"
+    },
+    {
+      "company_id": "082920",
+      "period": "2022-Q1",
+      "source": "https://kind.krx.co.kr/external/2022/05/13/001073/20220513002201/11013.htm",
+      "reason": "2023-Q1~2025-Q3 장기공급계약 잔고 표와 범위가 다른 표(개별 주문·수시 발주)"
+    },
+    {
+      "company_id": "082920",
+      "period": "2022-Q2",
+      "source": "https://kind.krx.co.kr/external/2022/08/16/000819/20220816002604/11012.htm",
+      "reason": "2023-Q1~2025-Q3 장기공급계약 잔고 표와 범위가 다른 표(개별 주문·수시 발주)"
+    },
+    {
+      "company_id": "082920",
+      "period": "2022-Q3",
+      "source": "https://kind.krx.co.kr/external/2022/11/14/000080/20221114000127/11013.htm",
+      "reason": "2023-Q1~2025-Q3 장기공급계약 잔고 표와 범위가 다른 표(개별 주문·수시 발주)"
+    },
+    {
+      "company_id": "082920",
+      "period": "2022-Q4",
+      "source": "https://kind.krx.co.kr/external/2023/03/20/001394/20230320005996/11011.htm",
+      "reason": "2023-Q1~2025-Q3 장기공급계약 잔고 표와 범위가 다른 표(개별 주문·수시 발주)"
+    },
+    {
+      "company_id": "082920",
       "period": "2026-Q2",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2026/08/11/000470/20260811001106/11012.htm",
-      "reason": "품목별 잔고 합계 불일치"
+      "source": "https://kind.krx.co.kr/external/2026/08/12/000164/20260812000444/11012.htm",
+      "reason": "2023-Q1~2025-Q3 장기공급계약 잔고 표와 범위가 다른 표(개별 주문·수시 발주)"
+    },
+    {
+      "company_id": "267260",
+      "period": "2020-Q1",
+      "source": "https://kind.krx.co.kr/external/2020/05/15/002577/20200515005761/11013.htm",
+      "reason": "2020~2021 공시는 법인별 표(본사·중국·미국 등)로만 기재되어 연결 전기전자 부문 합계와 범위가 다름"
+    },
+    {
+      "company_id": "267260",
+      "period": "2020-Q2",
+      "source": "https://kind.krx.co.kr/external/2020/08/14/001917/20200814005730/11012.htm",
+      "reason": "2020~2021 공시는 법인별 표(본사·중국·미국 등)로만 기재되어 연결 전기전자 부문 합계와 범위가 다름"
+    },
+    {
+      "company_id": "267260",
+      "period": "2020-Q3",
+      "source": "https://kind.krx.co.kr/external/2020/11/16/001752/20201116003938/11013.htm",
+      "reason": "2020~2021 공시는 법인별 표(본사·중국·미국 등)로만 기재되어 연결 전기전자 부문 합계와 범위가 다름"
+    },
+    {
+      "company_id": "267260",
+      "period": "2020-Q4",
+      "source": "https://kind.krx.co.kr/external/2021/03/15/001717/20210315003914/11011.htm",
+      "reason": "2020~2021 공시는 법인별 표(본사·중국·미국 등)로만 기재되어 연결 전기전자 부문 합계와 범위가 다름"
+    },
+    {
+      "company_id": "267260",
+      "period": "2021-Q1",
+      "source": "https://kind.krx.co.kr/external/2021/05/17/001612/20210517003688/11013.htm",
+      "reason": "2020~2021 공시는 법인별 표(본사·중국·미국 등)로만 기재되어 연결 전기전자 부문 합계와 범위가 다름"
+    },
+    {
+      "company_id": "267260",
+      "period": "2021-Q2",
+      "source": "https://kind.krx.co.kr/external/2021/08/17/001966/20210817006035/11012.htm",
+      "reason": "2020~2021 공시는 법인별 표(본사·중국·미국 등)로만 기재되어 연결 전기전자 부문 합계와 범위가 다름"
+    },
+    {
+      "company_id": "267260",
+      "period": "2021-Q3",
+      "source": "https://kind.krx.co.kr/external/2021/11/15/002390/20211115005147/11013.htm",
+      "reason": "2020~2021 공시는 법인별 표(본사·중국·미국 등)로만 기재되어 연결 전기전자 부문 합계와 범위가 다름"
+    },
+    {
+      "company_id": "267260",
+      "period": "2021-Q4",
+      "source": "https://kind.krx.co.kr/external/2022/03/11/001567/20220311003471/11011.htm",
+      "reason": "2020~2021 공시는 법인별 표(본사·중국·미국 등)로만 기재되어 연결 전기전자 부문 합계와 범위가 다름"
+    },
+    {
+      "company_id": "298040",
+      "period": "2020-Q1",
+      "source": "https://kind.krx.co.kr/external/2020/05/15/001648/20200515003524/11013.htm",
+      "reason": "2020~2024 공시는 효성중공업(주) 본사 금액만 원화로, 해외 종속회사는 현지통화로 따로 기재되어 2025년부터의 \"주요 종속회사 포함\" 합계와 범위가 다름 (본사 중공업 잔고 2,362,547 백만원)"
+    },
+    {
+      "company_id": "298040",
+      "period": "2020-Q2",
+      "source": "https://kind.krx.co.kr/external/2020/08/14/001133/20200814003220/11012.htm",
+      "reason": "2020~2024 공시는 효성중공업(주) 본사 금액만 원화로, 해외 종속회사는 현지통화로 따로 기재되어 2025년부터의 \"주요 종속회사 포함\" 합계와 범위가 다름 (본사 중공업 잔고 2,358,815 백만원)"
+    },
+    {
+      "company_id": "298040",
+      "period": "2020-Q3",
+      "source": "https://kind.krx.co.kr/external/2020/11/16/001093/20201116002404/11013.htm",
+      "reason": "2020~2024 공시는 효성중공업(주) 본사 금액만 원화로, 해외 종속회사는 현지통화로 따로 기재되어 2025년부터의 \"주요 종속회사 포함\" 합계와 범위가 다름 (본사 중공업 잔고 2,179,038 백만원)"
+    },
+    {
+      "company_id": "298040",
+      "period": "2020-Q4",
+      "source": "https://kind.krx.co.kr/external/2021/03/10/001510/20210310003345/11011.htm",
+      "reason": "2020~2024 공시는 효성중공업(주) 본사 금액만 원화로, 해외 종속회사는 현지통화로 따로 기재되어 2025년부터의 \"주요 종속회사 포함\" 합계와 범위가 다름 (본사 중공업 잔고 2,071,710 백만원)"
+    },
+    {
+      "company_id": "298040",
+      "period": "2021-Q1",
+      "source": "https://kind.krx.co.kr/external/2021/05/14/001428/20210514002885/11013.htm",
+      "reason": "2020~2024 공시는 효성중공업(주) 본사 금액만 원화로, 해외 종속회사는 현지통화로 따로 기재되어 2025년부터의 \"주요 종속회사 포함\" 합계와 범위가 다름 (본사 중공업 잔고 2,129,453 백만원)"
+    },
+    {
+      "company_id": "298040",
+      "period": "2021-Q2",
+      "source": "https://kind.krx.co.kr/external/2021/08/13/001497/20210813004178/11012.htm",
+      "reason": "2020~2024 공시는 효성중공업(주) 본사 금액만 원화로, 해외 종속회사는 현지통화로 따로 기재되어 2025년부터의 \"주요 종속회사 포함\" 합계와 범위가 다름 (본사 중공업 잔고 2,264,423 백만원)"
+    },
+    {
+      "company_id": "298040",
+      "period": "2021-Q3",
+      "source": "https://kind.krx.co.kr/external/2021/11/12/001044/20211112002173/11013.htm",
+      "reason": "2020~2024 공시는 효성중공업(주) 본사 금액만 원화로, 해외 종속회사는 현지통화로 따로 기재되어 2025년부터의 \"주요 종속회사 포함\" 합계와 범위가 다름 (본사 중공업 잔고 2,240,919 백만원)"
+    },
+    {
+      "company_id": "298040",
+      "period": "2021-Q4",
+      "source": "https://kind.krx.co.kr/external/2022/07/27/000457/20220727001259/11011.htm",
+      "reason": "2020~2024 공시는 효성중공업(주) 본사 금액만 원화로, 해외 종속회사는 현지통화로 따로 기재되어 2025년부터의 \"주요 종속회사 포함\" 합계와 범위가 다름 (본사 중공업 잔고 2,306,178 백만원)"
+    },
+    {
+      "company_id": "298040",
+      "period": "2022-Q1",
+      "source": "https://kind.krx.co.kr/external/2022/07/27/000461/20220727001272/11013.htm",
+      "reason": "2020~2024 공시는 효성중공업(주) 본사 금액만 원화로, 해외 종속회사는 현지통화로 따로 기재되어 2025년부터의 \"주요 종속회사 포함\" 합계와 범위가 다름 (본사 중공업 잔고 2,621,494 백만원)"
+    },
+    {
+      "company_id": "298040",
+      "period": "2022-Q2",
+      "source": "https://kind.krx.co.kr/external/2022/08/11/000628/20220811001442/11012.htm",
+      "reason": "2020~2024 공시는 효성중공업(주) 본사 금액만 원화로, 해외 종속회사는 현지통화로 따로 기재되어 2025년부터의 \"주요 종속회사 포함\" 합계와 범위가 다름 (본사 중공업 잔고 3,096,893 백만원)"
+    },
+    {
+      "company_id": "298040",
+      "period": "2022-Q3",
+      "source": "https://kind.krx.co.kr/external/2022/11/11/001138/20221111002195/11013.htm",
+      "reason": "2020~2024 공시는 효성중공업(주) 본사 금액만 원화로, 해외 종속회사는 현지통화로 따로 기재되어 2025년부터의 \"주요 종속회사 포함\" 합계와 범위가 다름 (본사 중공업 잔고 3,325,376 백만원)"
+    },
+    {
+      "company_id": "298040",
+      "period": "2022-Q4",
+      "source": "https://kind.krx.co.kr/external/2023/03/09/000632/20230309001785/11011.htm",
+      "reason": "2020~2024 공시는 효성중공업(주) 본사 금액만 원화로, 해외 종속회사는 현지통화로 따로 기재되어 2025년부터의 \"주요 종속회사 포함\" 합계와 범위가 다름 (본사 중공업 잔고 3,327,341 백만원)"
+    },
+    {
+      "company_id": "298040",
+      "period": "2023-Q1",
+      "source": "https://kind.krx.co.kr/external/2023/05/12/000819/20230512001735/11013.htm",
+      "reason": "2020~2024 공시는 효성중공업(주) 본사 금액만 원화로, 해외 종속회사는 현지통화로 따로 기재되어 2025년부터의 \"주요 종속회사 포함\" 합계와 범위가 다름 (본사 중공업 잔고 3,553,697 백만원)"
+    },
+    {
+      "company_id": "298040",
+      "period": "2023-Q2",
+      "source": "https://kind.krx.co.kr/external/2023/08/11/000959/20230811002693/11012.htm",
+      "reason": "2020~2024 공시는 효성중공업(주) 본사 금액만 원화로, 해외 종속회사는 현지통화로 따로 기재되어 2025년부터의 \"주요 종속회사 포함\" 합계와 범위가 다름 (본사 중공업 잔고 3,464,959 백만원)"
+    },
+    {
+      "company_id": "298040",
+      "period": "2023-Q3",
+      "source": "https://kind.krx.co.kr/external/2023/11/13/000717/20231113001470/11013.htm",
+      "reason": "2020~2024 공시는 효성중공업(주) 본사 금액만 원화로, 해외 종속회사는 현지통화로 따로 기재되어 2025년부터의 \"주요 종속회사 포함\" 합계와 범위가 다름 (본사 중공업 잔고 3,537,983 백만원)"
+    },
+    {
+      "company_id": "298040",
+      "period": "2023-Q4",
+      "source": "https://kind.krx.co.kr/external/2024/03/15/001228/20240315004224/11011.htm",
+      "reason": "2020~2024 공시는 효성중공업(주) 본사 금액만 원화로, 해외 종속회사는 현지통화로 따로 기재되어 2025년부터의 \"주요 종속회사 포함\" 합계와 범위가 다름 (본사 중공업 잔고 3,718,433 백만원)"
+    },
+    {
+      "company_id": "298040",
+      "period": "2024-Q1",
+      "source": "https://kind.krx.co.kr/external/2024/05/17/000472/20240517001069/11013.htm",
+      "reason": "2020~2024 공시는 효성중공업(주) 본사 금액만 원화로, 해외 종속회사는 현지통화로 따로 기재되어 2025년부터의 \"주요 종속회사 포함\" 합계와 범위가 다름 (본사 중공업 잔고 4,118,627 백만원)"
+    },
+    {
+      "company_id": "298040",
+      "period": "2024-Q2",
+      "source": "https://kind.krx.co.kr/external/2024/08/13/000862/20240813002372/11012.htm",
+      "reason": "2020~2024 공시는 효성중공업(주) 본사 금액만 원화로, 해외 종속회사는 현지통화로 따로 기재되어 2025년부터의 \"주요 종속회사 포함\" 합계와 범위가 다름 (본사 중공업 잔고 4,674,009 백만원)"
+    },
+    {
+      "company_id": "298040",
+      "period": "2024-Q3",
+      "source": "https://kind.krx.co.kr/external/2024/11/13/000766/20241113001622/11013.htm",
+      "reason": "2020~2024 공시는 효성중공업(주) 본사 금액만 원화로, 해외 종속회사는 현지통화로 따로 기재되어 2025년부터의 \"주요 종속회사 포함\" 합계와 범위가 다름 (본사 중공업 잔고 5,439,275 백만원)"
     }
   ]
 }
