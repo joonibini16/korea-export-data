@@ -1,0 +1,55 @@
+name: Taiwan Monthly Revenue
+on:
+  workflow_dispatch:
+    inputs:
+      full:
+        description: 'Re-download every month from 2022.01'
+        type: boolean
+        default: false
+  push:
+    branches: [main]
+    paths: ['collect_taiwan_revenue.py', 'taiwan_watchlist.json', '.github/workflows/taiwan_revenue.yml']
+  schedule:
+    # Taiwan companies must report by the 10th; run 11th·13th·16th 10:40 KST
+    - cron: '40 1 11,13,16 * *'
+permissions:
+  contents: write
+  pages: write
+concurrency:
+  group: taiwan-monthly-revenue
+  cancel-in-progress: false
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Collect Taiwan monthly revenue (MOPS)
+        id: collect
+        continue-on-error: true
+        run: python collect_taiwan_revenue.py ${{ inputs.full && '--full' || '' }}
+      - name: Commit data and status
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add taiwan_revenue_status.json
+          if test -f taiwan_monthly_revenue.csv; then git add taiwan_monthly_revenue.csv; fi
+          if ! git diff --cached --quiet; then
+            git commit -m "Update Taiwan monthly revenue"
+            git pull --rebase origin main
+            git push
+          fi
+      - name: Request Pages build
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method POST "repos/$GITHUB_REPOSITORY/pages/builds" || true
+      - name: Report incomplete collection
+        if: steps.collect.outcome == 'failure'
+        run: |
+          echo 'Taiwan revenue collection incomplete; see taiwan_revenue_status.json. Existing data retained.'
+          exit 1

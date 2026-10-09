@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>대만 테크 월매출</title><script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+<style>
+:root{font-family:Arial,"Noto Sans KR",sans-serif;color:#18283c;background:#f5f6f8}*{box-sizing:border-box}body{margin:0}main{max-width:1400px;margin:26px auto;padding:0 22px}a{color:#245bb0}nav{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:25px}h1{font-size:30px;margin:0 0 12px}h2{font-size:20px;margin-top:0}p{line-height:1.65}.muted{color:#64748b;font-size:14px}.panel,.card{background:white;border:1px solid #e3e8ef;border-radius:12px;padding:22px;margin-bottom:20px}.controls{display:flex;gap:16px;flex-wrap:wrap}label{display:grid;gap:7px;font-size:13px;font-weight:bold}select{padding:10px;border:1px solid #cad2dc;border-radius:7px;background:white;max-width:100%}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.card strong{display:block;font-size:26px;margin:12px 0}.notice{background:#fff7e6;border-left:4px solid #dc990e;padding:15px;margin:16px 0;line-height:1.65}.chart{height:360px;position:relative}.table{overflow:auto;max-height:560px}table{border-collapse:collapse;width:100%;font-size:14px}thead{position:sticky;top:0;background:white}th,td{padding:10px 12px;border-bottom:1px solid #e3e8ef;text-align:right;white-space:nowrap}th:first-child,td:first-child,th:nth-child(2),td:nth-child(2){text-align:left}.up{color:#c0392b}.down{color:#1f5fbf}button.link{background:none;border:0;color:#245bb0;cursor:pointer;padding:0;font:inherit;text-decoration:underline}.lag{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.lag span{background:#eef3fa;border-radius:6px;padding:6px 10px;font-size:13px}.lag span.best{background:#245bb0;color:white}@media(max-width:800px){.cards{grid-template-columns:1fr 1fr}.chart{height:290px}}@media(max-width:480px){.cards{grid-template-columns:1fr}main{padding:0 12px}}
+</style></head><body><main>
+<nav><a href="./">월간 수출</a><a href="./provisional.html">10일 잠정수출</a><a href="./regional.html">지역 · 업체 추적</a><b>대만 테크 월매출</b></nav>
+<h1>대만 테크 월매출 · 한국 수출과 비교</h1>
+<p class="muted">대만 상장사는 매월 10일까지 전월 매출을 공시합니다. 한국 기업 분기 실적보다 먼저 나오기 때문에, 같은 공급망의 업황 선행지표로 봅니다. 아래 한국 업체 연결은 제품군이 같다는 뜻이며 거래관계나 점유율을 뜻하지 않습니다.</p>
+<div id="notice" class="notice" hidden></div>
+
+<section class="panel"><h2>전체 목록 · 최신월</h2><p id="summary" class="muted"></p>
+<div class="table"><table><thead><tr><th>업종</th><th>업체</th><th>제품</th><th>최신월</th><th>월매출 (억 NT$)</th><th>YoY</th><th>3개월 합계 YoY</th><th>연누적 YoY</th><th>관련 한국 업체</th></tr></thead><tbody id="list"></tbody></table></div></section>
+
+<section class="panel"><div class="controls">
+<label>업종<select id="category"></select></label><label>업체<select id="company"></select></label><label>비교할 한국 수출 품목<select id="hs"></select></label><label>기간<select id="range"><option value="all">2022년부터</option><option value="24">최근 24개월</option><option value="12">최근 12개월</option></select></label>
+</div><p id="desc" class="muted"></p></section>
+
+<div class="cards"><div class="card">최신 월매출<strong id="cRev">—</strong><span id="cMonth" class="muted"></span></div><div class="card">전년동월 대비<strong id="cYoy">—</strong><span class="muted">공시 YoY</span></div><div class="card">3개월 합계 YoY<strong id="c3m">—</strong><span class="muted">월별 변동 완화</span></div><div class="card">연누적 YoY<strong id="cCum">—</strong><span class="muted">1월부터 누적</span></div></div>
+
+<section class="panel"><h2 id="t1">월매출 · YoY</h2><div class="chart"><canvas id="rev"></canvas></div></section>
+<section class="panel"><h2 id="t2">대만 월매출 YoY vs 한국 품목 수출 YoY</h2><p class="muted">한국 수출은 전국 확정치(관세청) 기준입니다. 3개월 이동평균 YoY로 비교합니다.</p><div class="chart"><canvas id="cmp"></canvas></div><p id="corr" class="muted"></p><div id="lags" class="lag"></div><p class="muted">시차 r: "대만 +k개월"은 대만 매출 YoY가 한국 수출 YoY보다 k개월 먼저 움직였을 때의 상관계수입니다. 표본이 짧아 참고용입니다.</p></section>
+
+<section class="panel"><details><summary><b>월별 원자료</b></summary><div class="table"><table><thead><tr><th>월</th><th>회사명</th><th>월매출 (천 NT$)</th><th>전년동월 (천 NT$)</th><th>MoM</th><th>YoY</th><th>누적 (천 NT$)</th><th>누적 YoY</th><th>비고</th><th>출처</th></tr></thead><tbody id="raw"></tbody></table></div></details></section>
+
+<section class="panel"><h2>기준과 출처</h2><p class="muted">출처: 대만 公開資訊觀測站(MOPS) 每月營收彙總表 · 단위 NT$ 천원(표에서는 억 NT$로 환산). 공시값 그대로 저장하며 미공시 월은 0으로 채우지 않습니다. 매월 11·13·16일 10:40 KST 자동 수집하고 최근 3개월은 정정공시 반영을 위해 다시 받습니다. 한국 품목 수출은 이 사이트 월간 수출 데이터(summary_*.csv)를 사용합니다.</p><p id="status" class="muted"></p></section>
+</main>
+<script>
+'use strict';
+const el=id=>document.getElementById(id),charts={};
+const num=v=>v==null||String(v).trim()===''||!isFinite(Number(v))?null:Number(v);
+const pct=v=>v==null?'—':`${v>0?'+':''}${v.toFixed(1)}%`;
+const cls=v=>v==null?'':v>0?'up':'down';
+const mid=s=>Number(s.slice(0,4))*12+Number(s.slice(5,7))-1, mlab=i=>`${Math.floor(i/12)}.${String(i%12+1).padStart(2,'0')}`;
+function csv(t){return t.replace(/^﻿/,'').trim().split(/\r?\n/).map(l=>{const o=[];let v='',q=false;for(let i=0;i<l.length;i++){const c=l[i];if(c==='"'){if(q&&l[i+1]==='"'){v+='"';i++;}else q=!q;}else if(c===','&&!q){o.push(v);v='';}else v+=c;}o.push(v);return o;});}
+function recs(t){const [h,...r]=csv(t);return r.filter(x=>x.some(Boolean)).map(x=>Object.fromEntries(h.map((k,i)=>[k,x[i]??''])));}
+async function read(p,opt){const r=await fetch(p+'?v='+Date.now(),{cache:'no-store'});if(opt&&!r.ok)return null;if(!r.ok)throw Error(p+': HTTP '+r.status);return r.text();}
+function opt(s,v,l){const o=document.createElement('option');o.value=v;o.textContent=l;s.append(o);}
+function pearson(p){if(p.length<6)return null;const n=p.length,mx=p.reduce((s,x)=>s+x[0],0)/n,my=p.reduce((s,x)=>s+x[1],0)/n;let a=0,b=0,c=0;for(const [x,y] of p){a+=(x-mx)*(y-my);b+=(x-mx)**2;c+=(y-my)**2;}return b&&c?a/Math.sqrt(b*c):null;}
+let meta,tw=[],kr={},status={},hsNames={},krNames={};
+const byCo=id=>tw.filter(r=>r.company_id===id&&num(r.revenue_kNTD)!=null).sort((a,b)=>a.month.localeCompare(b.month));
+function metrics(rows){if(!rows.length)return{};const map=new Map(rows.map(r=>[r.month,num(r.revenue_kNTD)])),last=rows.at(-1),i=mid(last.month);
+ const sum=k=>{let s=0;for(let j=0;j<3;j++){const v=map.get(mlab(k-j));if(v==null)return null;s+=v;}return s;};
+ const a=sum(i),b=sum(i-12),yoy=num(last.yoy_pct)??(map.get(mlab(i-12))>0?(num(last.revenue_kNTD)/map.get(mlab(i-12))-1)*100:null);
+ return{last,yoy,m3:a!=null&&b>0?(a/b-1)*100:null,cum:num(last.cum_yoy_pct)};}
+function yoySeries(rows){const map=new Map(rows.map(r=>[r.month,num(r.revenue_kNTD)]));return new Map(rows.map(r=>{const p=map.get(mlab(mid(r.month)-12));return[r.month,num(r.yoy_pct)??(p>0?(map.get(r.month)/p-1)*100:null)];}));}
+function ma3(m){const out=new Map();for(const k of m.keys()){const i=mid(k),v=[0,1,2].map(j=>m.get(mlab(i-j)));out.set(k,v.every(x=>x!=null)?v.reduce((s,x)=>s+x,0)/3:null);}return out;}
+function sum3yoy(m){const out=new Map();for(const k of m.keys()){const i=mid(k),s=d=>{const v=[0,1,2].map(j=>m.get(mlab(i-d-j)));return v.every(x=>x!=null)?v.reduce((a,b)=>a+b,0):null;};const a=s(0),b=s(12);out.set(k,a!=null&&b>0?(a/b-1)*100:null);}return out;}
+function draw(id,cfg){charts[id]?.destroy();charts[id]=new Chart(el(id),cfg);}
+function renderList(){el('list').replaceChildren();let latest='';for(const c of meta.companies){const m=metrics(byCo(c.id));if(m.last&&m.last.month>latest)latest=m.last.month;const tr=document.createElement('tr');const td=(t,k)=>{const d=document.createElement('td');d.textContent=t;if(k)d.className=k;tr.append(d);return d;};
+ td(c.category);const n=td('');const b=document.createElement('button');b.className='link';b.textContent=c.name+' '+c.name_local;b.onclick=()=>{el('category').value=c.category;fillCo();el('company').value=c.id;fillHS();window.scrollTo({top:el('category').getBoundingClientRect().top+scrollY-20,behavior:'smooth'});};n.append(b);const s=document.createElement('small');s.className='muted';s.textContent=' '+c.id;n.append(s);
+ td(c.product);td(m.last?.month||'수집 대기');td(m.last?(num(m.last.revenue_kNTD)/1e5).toLocaleString(undefined,{maximumFractionDigits:1}):'—');td(pct(m.yoy),cls(m.yoy));td(pct(m.m3),cls(m.m3));td(pct(m.cum),cls(m.cum));td(c.korean_peers.map(id=>krNames[id]||id).join(', '));el('list').append(tr);}
+ el('summary').textContent=meta.companies.length+'개 대만 업체 · 데이터 '+(tw.length?tw.length+'행 · 최신 '+latest:'첫 수집 대기')+' · 행을 클릭하면 아래 차트로 이동합니다.';}
+function fillCo(){el('company').replaceChildren();meta.companies.filter(c=>c.category===el('category').value).forEach(c=>opt(el('company'),c.id,c.name+' '+c.name_local));fillHS();}
+function fillHS(){const c=meta.companies.find(x=>x.id===el('company').value);el('hs').replaceChildren();c.hs_codes.forEach(h=>opt(el('hs'),h,(hsNames[h]||h)+' · '+h));render();}
+async function krSeries(h){if(!(h in kr)){const t=await read('summary_'+h+'.csv',true);kr[h]=t?new Map(recs(t).map(r=>[r['월'],num(r['YoY_pct'])])):new Map();}return kr[h];}
+async function render(){const c=meta.companies.find(x=>x.id===el('company').value),h=el('hs').value;let rows=byCo(c.id);
+ el('desc').textContent=c.name+' ('+c.name_local+', '+c.id+(c.market==='otc'?' · 上櫃':' · 上市')+') · '+c.product+' · 관련 한국 업체: '+c.korean_peers.map(id=>krNames[id]||id).join(', ');
+ const m=metrics(rows);el('cRev').textContent=m.last?(num(m.last.revenue_kNTD)/1e5).toLocaleString(undefined,{maximumFractionDigits:1})+'억 NT$':'—';el('cMonth').textContent=m.last?m.last.month+' 공시':'수집 대기';[['cYoy',m.yoy],['c3m',m.m3],['cCum',m.cum]].forEach(([k,v])=>{el(k).textContent=pct(v);el(k).className=cls(v);});
+ const yoy=yoySeries(rows),y3=sum3yoy(new Map(rows.map(r=>[r.month,num(r.revenue_kNTD)])));
+ const r=el('range').value;if(r!=='all')rows=rows.slice(-Number(r));const labels=rows.map(x=>x.month);
+ el('t1').textContent=c.name+' · 월매출 (억 NT$)과 YoY';
+ draw('rev',{data:{labels,datasets:[{type:'bar',label:'월매출 (억 NT$)',data:rows.map(x=>num(x.revenue_kNTD)/1e5),backgroundColor:'#9db8e0',yAxisID:'y',order:2},{type:'line',label:'YoY (%)',data:labels.map(k=>yoy.get(k)),borderColor:'#c0392b',pointRadius:2,yAxisID:'y1',order:1},{type:'line',label:'3개월 합계 YoY (%)',data:labels.map(k=>y3.get(k)),borderColor:'#7a2b1f',borderDash:[5,4],pointRadius:0,yAxisID:'y1',order:0}]},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{position:'bottom'}},scales:{x:{grid:{display:false},ticks:{maxTicksLimit:16}},y:{title:{display:true,text:'억 NT$'}},y1:{position:'right',grid:{display:false},title:{display:true,text:'YoY %'}}}}});
+ const k=await krSeries(h),tw3=ma3(yoy),kr3=ma3(k);el('t2').textContent=c.name+' 매출 YoY vs 한국 '+(hsNames[h]||h)+' 수출 YoY';
+ draw('cmp',{type:'line',data:{labels,datasets:[{label:c.name+' 매출 YoY (3M 평균)',data:labels.map(x=>tw3.get(x)),borderColor:'#c0392b',pointRadius:1,spanGaps:false},{label:'한국 '+(hsNames[h]||h)+' 수출 YoY (3M 평균)',data:labels.map(x=>kr3.get(x)??null),borderColor:'#245bb0',pointRadius:1,spanGaps:false}]},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{position:'bottom'}},scales:{x:{grid:{display:false},ticks:{maxTicksLimit:16}},y:{title:{display:true,text:'YoY %'}}}}});
+ const pairs=lag=>labels.map(x=>[tw3.get(mlab(mid(x)-lag)),kr3.get(x)]).filter(p=>p[0]!=null&&p[1]!=null);
+ const r0=pearson(pairs(0));el('corr').textContent=r0==null?'상관계수 산출 불가 · 겹치는 월 6개 미만':`동일 월 상관계수 r = ${r0.toFixed(2)} · ${pairs(0).length}개월 (3개월 평균 YoY 기준)`;
+ el('lags').replaceChildren();const res=[-3,-2,-1,0,1,2,3].map(l=>[l,pearson(pairs(l)),pairs(l).length]);const best=res.filter(x=>x[1]!=null).sort((a,b)=>b[1]-a[1])[0];for(const [l,v,n] of res){const s=document.createElement('span');s.textContent=(l>0?'대만 +'+l+'개월':l<0?'한국 +'+(-l)+'개월':'동시')+': '+(v==null?'—':v.toFixed(2));if(best&&l===best[0])s.className='best';s.title=n+'개월 표본';el('lags').append(s);}
+ el('raw').replaceChildren();for(const x of [...byCo(c.id)].reverse()){const tr=document.createElement('tr');[x.month,x.name_local,Number(x.revenue_kNTD).toLocaleString(),x.prev_year_kNTD?Number(x.prev_year_kNTD).toLocaleString():'—',pct(num(x.mom_pct)),pct(num(x.yoy_pct)),x.cum_kNTD?Number(x.cum_kNTD).toLocaleString():'—',pct(num(x.cum_yoy_pct)),x.note&&x.note!=='-'?x.note:''].forEach(v=>{const d=document.createElement('td');d.textContent=v;tr.append(d);});const d=document.createElement('td');if(x.source?.startsWith('https://')){const a=document.createElement('a');a.href=x.source;a.textContent='MOPS';a.target='_blank';a.rel='noopener';d.append(a);}tr.append(d);el('raw').append(tr);}}
+async function init(){const [w,t,s,h,kw]=await Promise.all([read('taiwan_watchlist.json'),read('taiwan_monthly_revenue.csv',true),read('taiwan_revenue_status.json',true),read('hs_codes.csv'),read('company_watchlist.json',true)]);
+ meta=JSON.parse(w);tw=t?recs(t):[];status=s?JSON.parse(s):{};hsNames=Object.fromEntries(csv(h).slice(1).map(r=>[r[0],r.slice(1).join(',')]));if(kw)JSON.parse(kw).companies.forEach(c=>krNames[c.id]=c.name);
+ if(!tw.length){el('notice').hidden=false;el('notice').textContent='대만 월매출 데이터 첫 수집 전입니다. GitHub Actions의 "Taiwan Monthly Revenue" 워크플로우가 실행되면 2022년 1월부터 표시됩니다.';}
+ else if(status.failures?.length){el('notice').hidden=false;el('notice').textContent='최근 수집에서 일부 누락: '+status.failures.slice(0,6).map(f=>f.month+' '+f.market+' '+f.error.split(' ')[0]).join(' · ')+'. 기존 데이터는 유지됩니다.';}
+ el('status').textContent=status.updated_at?'최근 수집 '+status.updated_at.slice(0,16).replace('T',' ')+' · 범위 '+status.range.join(' ~ '):'';
+ [...new Set(meta.companies.map(c=>c.category))].forEach(c=>opt(el('category'),c,c));el('category').onchange=fillCo;el('company').onchange=fillHS;el('hs').onchange=render;el('range').onchange=render;renderList();fillCo();}
+init().catch(e=>{el('notice').hidden=false;el('notice').textContent='불러오기 실패: '+e.message;});
+</script></body></html>
