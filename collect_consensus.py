@@ -48,7 +48,8 @@ def parse(page):
             table = t
             break
     if table is None:
-        raise ValueError('기업실적분석 표 없음')
+        heads = [txt(t)[:60] for t in doc.xpath('//table')][:12]
+        raise ValueError(f'기업실적분석 표 없음 (page {len(page)}B, title {txt(doc.xpath("//title")[0]) if doc.xpath("//title") else "-"}, tables {heads})')
     head_rows = table.xpath('.//thead/tr')
     nq = 6
     for th in head_rows[0].xpath('./th'):
@@ -91,7 +92,7 @@ def main():
             for r in parse(page):
                 rows.append(dict(snapshot_date=today, company_id=code, source=url, **r))
         except Exception as e:
-            failures.append(dict(company_id=code, error=f'{type(e).__name__}: {e}'[:200]))
+            failures.append(dict(company_id=code, error=f'{type(e).__name__}: {e}'[:1500 if not failures else 200]))
         time.sleep(1.5)
     old = []
     if OUT.exists():
