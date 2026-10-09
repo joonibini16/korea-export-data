@@ -21,8 +21,8 @@ def quarter_range(start, end):
         return int(year) * 4 + int(q) - 1
     return [f'{q // 4}-Q{q % 4 + 1}' for q in range(qi(start), qi(end) + 1)]
 
-def build(manifest, existing, companies):
-    expected = quarter_range(manifest['start_period'], manifest['end_period'])
+def build(manifest, existing, companies, history=None):
+    expected = quarter_range((history or manifest)['start_period'], (history or manifest)['end_period'])
     ids = {c['id'] for c in companies}
     reports, observations, annual = {}, {}, {}
     for r in manifest['reports']:
@@ -68,13 +68,29 @@ def build(manifest, existing, companies):
             continue
         assert rev >= 0 and source.startswith('https://')
         rows[cid,p] = dict(company_id=cid,period=p,revenue_KRW=str(rev),basis='연결',status=method,source=source,operating_profit_KRW=str(op),source_secondary=secondary)
+    history_issues = []
+    if history:
+        from financial_history import derive
+        historical, history_issues = derive(history)
+        for r in historical:
+            if r['basis'] != '연결':
+                continue
+            key = r['company_id'], r['period']
+            assert r['company_id'] in ids
+            # Keep the previously reviewed current-period figures.
+            if key not in rows:
+                rows[key] = r
     audit=[]
     for c in companies:
+        starts=[p for r in (history or {}).get('reports',[]) if r['company_id']==c['id'] for p in r.get('period_starts',[]) if p.startswith('2020.')]
+        first_start=min(starts) if starts else ''
+        not_applicable=[p for p in expected if first_start and p.startswith('2020-') and int(p[-1])*3<int(first_start[5:7])]
         missing=[p for p in expected if (c['id'],p) not in rows or any(rows[c['id'],p].get(k,'')=='' for k in METRICS)]
-        audit.append(dict(company_id=c['id'],name=c['name'],expected_quarters=len(expected),complete_quarters=len(expected)-len(missing),missing_periods=missing,status='complete' if not missing else 'not_collected' if len(missing)==len(expected) else 'incomplete'))
+        missing=[p for p in missing if p not in not_applicable]
+        audit.append(dict(company_id=c['id'],name=c['name'],expected_quarters=len(expected)-len(not_applicable),complete_quarters=len(expected)-len(not_applicable)-len(missing),not_applicable_periods=not_applicable,missing_periods=missing,status='complete' if not missing else 'not_collected' if len(missing)==len(expected) else 'incomplete'))
         if c['id'] in covered:
-            assert not missing, (c['name'],missing)
-    return [rows[k] for k in sorted(rows)], dict(reviewed_at=manifest['reviewed_at'],start_period=expected[0],end_period=expected[-1],companies=audit)
+            assert not [p for p in missing if p >= manifest['start_period']], (c['name'],missing)
+    return [rows[k] for k in sorted(rows)], dict(reviewed_at=(history or manifest)['reviewed_at'],start_period=expected[0],end_period=expected[-1],companies=audit,validation_issues=history_issues)
 
 def main():
     parser=argparse.ArgumentParser()
@@ -86,7 +102,9 @@ def main():
     with path.open(newline='') as f:
         reader=csv.DictReader(f); fields=list(reader.fieldnames); old=list(reader)
     if 'source_secondary' not in fields: fields.append('source_secondary')
-    rows,audit=build(manifest,old,companies)
+    history_path=ROOT/'company_financial_history_sources.json'
+    history=json.loads(history_path.read_text()) if history_path.exists() else None
+    rows,audit=build(manifest,old,companies,history)
     out=io.StringIO(newline='');writer=csv.DictWriter(out,fieldnames=fields,lineterminator='\n');writer.writeheader();writer.writerows(rows)
     audit_text=json.dumps(audit,ensure_ascii=False,indent=2)+'\n'
     if args.check:

@@ -1,0 +1,45 @@
+name: Backfill Quarterly Company History
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'collect_company_history.py'
+      - '.github/workflows/company_history.yml'
+permissions:
+  contents: write
+concurrency:
+  group: company-history-backfill
+  cancel-in-progress: false
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install lxml
+      - uses: actions/cache@v4
+        with:
+          path: .history-cache
+          key: company-history-${{ github.run_id }}
+          restore-keys: company-history-
+      - name: Collect 2020 onward public filings
+        run: python collect_company_history.py
+      - name: Build and validate preserved history
+        run: |
+          python build_company_financials.py
+          python build_company_financials.py --check
+          python build_domestic_financials.py
+          python build_company_backlog.py
+          python -m unittest test_financial_history.py
+          node test_backlog_ui.cjs
+      - name: Commit verified data
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add company_financial_history_sources.json company_financials.csv company_financial_coverage.json company_domestic_financials.csv company_backlog_sources.json company_backlog.csv company_backlog_coverage.json company_history_collection_status.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'Backfill verified quarterly company history from 2020'
+          git push origin HEAD:main

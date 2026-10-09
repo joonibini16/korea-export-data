@@ -30,7 +30,7 @@ function backlogStatus(id){const review=backlogReview(id),count=backlog.filter(r
 function renderBacklog(c){
  const rows=backlog.filter(r=>r.company_id===c.id&&num(r.value)!=null).sort((a,b)=>a.period.localeCompare(b.period)),review=backlogReview(c.id);
  el('backlogTitle').textContent=c.name+' · 분기 수주잔고';
- el('backlogNote').textContent=(review?.reason||'추가 공시 확인 필요')+(review?.reviewed_period?' · 점검 공시: '+review.reviewed_period:'')+' · 미확인 분기는 0으로 채우지 않습니다. 수주잔고는 기말 잔액으로 분기 매출과 합산하지 않습니다.';
+ el('backlogNote').textContent=(review?.reason||'추가 공시 확인 필요')+(review?.reviewed_period?' · 점검 공시: '+review.reviewed_period:'')+(review?.expected_quarters?' · '+backlogCoverage.start_period+' ~ '+backlogCoverage.end_period+' · '+review.complete_quarters+'/'+review.expected_quarters+'분기 확보':'')+' · 미확인 분기는 0으로 채우지 않습니다. 수주잔고는 기말 잔액으로 분기 매출과 합산하지 않습니다.';
  el('backlogSources').replaceChildren();
  if(review?.source?.startsWith('https://')){const a=document.createElement('a');a.href=review.source;a.textContent='점검 공시 원문';a.target='_blank';a.rel='noopener';el('backlogSources').append(a);}
  el('backlogRows').replaceChildren();
@@ -39,7 +39,7 @@ function renderBacklog(c){
  if(!rows.length){if(charts.backlog){charts.backlog.destroy();delete charts.backlog;}el('backlogEmpty').textContent=review?.label||'확인 가능한 수주잔고 금액이 없습니다.';return;}
  const unit=rows[0].unit_label;
  if(rows.some(r=>r.unit!==rows[0].unit||r.scope!==rows[0].scope)){throw Error(c.name+' 수주잔고의 단위 또는 집계 범위가 다릅니다.');}
- const qid=p=>Number(p.slice(0,4))*4+Number(p.at(-1))-1,start=qid(rows[0].period),end=qid(rows.at(-1).period),periods=Array.from({length:end-start+1},(_,i)=>Math.floor((start+i)/4)+'-Q'+((start+i)%4+1)),map=new Map(rows.map(r=>[r.period,r]));
+ const qid=p=>Number(p.slice(0,4))*4+Number(p.at(-1))-1,start=qid(backlogCoverage.start_period||rows[0].period),end=qid(backlogCoverage.end_period||rows.at(-1).period),periods=Array.from({length:end-start+1},(_,i)=>Math.floor((start+i)/4)+'-Q'+((start+i)%4+1)),map=new Map(rows.map(r=>[r.period,r]));
  el('backlogTitle').textContent=c.name+' · 분기 수주잔고 ('+unit+')';
  chart('backlog',periods,[{type:'bar',label:(rows[0].scope||'수주잔고')+' · '+unit,data:periods.map(p=>num(map.get(p)?.value)),backgroundColor:periods.map(p=>map.get(p)?.status==='공시 확인'?'#087f74':'#94bdb7'),borderColor:'#087f74',borderWidth:1,maxBarThickness:44}],'수주잔고 ('+unit+')',{scales:{y:{beginAtZero:true,title:{display:true,text:'수주잔고 ('+unit+')'},ticks:{callback:v=>Number(v).toLocaleString()}}},plugins:{tooltip:{callbacks:{label:ctx=>'수주잔고: '+Number(ctx.parsed.y).toLocaleString()+' '+unit,afterLabel:ctx=>{const r=map.get(periods[ctx.dataIndex]);return [r?.status||'',r?.notes||''];}}}}});
 }
@@ -94,15 +94,16 @@ function render(){const c=watch.find(c=>c.id===el('company').value),hs=el('hs').
  chart('domesticComparison',amountPeriods,[{label:'지역 수출액 · USD',data:exportAmounts,borderColor:'#2784b8',pointRadius:2,yAxisID:'yExport'},{label:c.name+' 국내법인 별도 매출 · 억원',data:domesticAmounts,borderColor:'#008b87',pointRadius:4,borderWidth:3,spanGaps:true,yAxisID:'yRevenue'}],'금액',{spanGaps:true,scales:{y:{display:false},yExport:{type:'linear',position:'left',title:{display:true,text:'수출액 (USD · 신고미화금액)'},ticks:{callback:v=>Number(v).toLocaleString()}},yRevenue:{type:'linear',position:'right',title:{display:true,text:'국내법인 별도 매출 (억원)'},grid:{drawOnChartArea:false},ticks:{callback:v=>Number(v).toLocaleString()}}},plugins:{tooltip:{callbacks:{label:ctx=>`${ctx.dataset.label}: ${Number(ctx.parsed.y).toLocaleString()} ${ctx.dataset.yAxisID==='yRevenue'?'억원':'USD'}`}}}});
  const domesticCorrPairs=amountPeriods.map((p,i)=>[exportAmounts[i],domesticAmounts[i]]).filter(([x,y])=>x!=null&&y!=null);if(el('domesticCorrelationNote'))el('domesticCorrelationNote').textContent=corrText(pearson(domesticCorrPairs),domesticCorrPairs.length);
  correlationChart('standaloneCorrelation',domesticCorrPairs,'수출액 (USD)','별도매출 (억원)');
- if(el('domesticAmountNote'))el('domesticAmountNote').textContent=domesticAmounts.some(v=>v!=null)?'국내법인 별도재무제표 기준 매출. 2024~2025년 1~3분기와 2026년 1~2분기(심텍) 확인분을 표시하며, 미공시 분기는 공란으로 유지합니다. 연결매출과 혼용하지 않습니다.':'국내법인 별도재무제표 기준. 확인된 별도 공시값이 없어 선은 공란으로 유지됩니다. 연결매출과 혼용하지 않습니다.';
+ if(el('domesticAmountNote'))el('domesticAmountNote').textContent=domesticAmounts.some(v=>v!=null)?'국내법인 별도재무제표 기준 매출. 2020년 이후 확인된 분기 공시값을 표시하며, 설립 전·미확인 분기는 공란으로 유지합니다. 연결매출과 혼용하지 않습니다.':'국내법인 별도재무제표 기준. 확인된 별도 공시값이 없어 선은 공란으로 유지됩니다. 연결매출과 혼용하지 않습니다.';
  const nrows=nationwide.filter(r=>r['HS코드']===hs).sort((a,b)=>a['월'].localeCompare(b['월']));
  chart('price',nrows.map(r=>r['월']),[{label:'전국 USD/KG',data:nrows.map(r=>{const w=num(r['수출중량_KG']),v=num(r['수출금액_USD']);return w>0&&v!=null?v/w:null;}),borderColor:'#b47737',pointRadius:0}],'USD/KG');
  const earningsPeriods=[];const qi=p=>Number(p.slice(0,4))*4+Number(p.at(-1))-1;
  const rangeStart=financialCoverage.start_period||fin[0]?.period,rangeEnd=financialCoverage.end_period||fin.at(-1)?.period;
  if(rangeStart&&rangeEnd)for(let q=qi(rangeStart);q<=qi(rangeEnd);q++)earningsPeriods.push(Math.floor(q/4)+'-Q'+(q%4+1));
- const earningsMissing=earningsPeriods.filter(p=>num(fm.get(p)?.revenue_KRW)==null||opm(fm.get(p))==null);
+ const notApplicable=financialCoverage.companies?.find(r=>r.company_id===c.id)?.not_applicable_periods||[];
+ const earningsMissing=earningsPeriods.filter(p=>!notApplicable.includes(p)).filter(p=>num(fm.get(p)?.revenue_KRW)==null||opm(fm.get(p))==null);
  el('earningsTitle').textContent=c.name+' · 분기 매출·OPM';
- el('earningsNote').textContent=(rangeStart?rangeStart+' ~ '+rangeEnd+' · ':'')+'연결 분기 실적 · '+(earningsPeriods.length-earningsMissing.length)+'/'+earningsPeriods.length+'분기 확보 · '+(earningsMissing.length?'미확보: '+earningsMissing.join(', '):'누락 없음')+'. OPM = 영업이익 ÷ 매출 × 100. 4분기는 연간−3분기 누적으로 산출하며 아래 표에 두 공시 원문을 표시합니다.';
+ el('earningsNote').textContent=(rangeStart?rangeStart+' ~ '+rangeEnd+' · ':'')+'연결 분기 실적 · '+(earningsPeriods.length-notApplicable.length-earningsMissing.length)+'/'+(earningsPeriods.length-notApplicable.length)+'분기 확보 · '+(earningsMissing.length?'미확보: '+earningsMissing.join(', '):'누락 없음')+(notApplicable.length?' · 공시 회계기간 시작 전: '+notApplicable.join(', '):'')+'. OPM = 영업이익 ÷ 매출 × 100. 4분기는 연간−3분기 누적으로 산출하며 아래 표에 두 공시 원문을 표시합니다.';
  chart('revenue',earningsPeriods,[{type:'bar',label:'매출액 (좌 · 억원)',data:earningsPeriods.map(p=>{const v=num(fm.get(p)?.revenue_KRW);return v==null?null:v/1e8;}),backgroundColor:'#b7bdc4',yAxisID:'y',order:1,maxBarThickness:46},{type:'line',label:'OPM (우 · %)',data:earningsPeriods.map(p=>opm(fm.get(p))),borderColor:'#008b87',backgroundColor:'#008b87',borderWidth:3,pointRadius:4,yAxisID:'yOPM',order:0,spanGaps:false}],'매출액 (억원)',{scales:{y:{type:'linear',position:'left',beginAtZero:true,title:{display:true,text:'매출액 (억원)'}},yOPM:{type:'linear',position:'right',title:{display:true,text:'OPM (%)'},grid:{drawOnChartArea:false},ticks:{callback:v=>v+'%'}}},plugins:{tooltip:{callbacks:{label:ctx=>ctx.dataset.yAxisID==='yOPM'?'OPM: '+ctx.parsed.y.toFixed(2)+'%':'매출액: '+ctx.parsed.y.toLocaleString(undefined,{maximumFractionDigits:1})+'억원'}}}});
  renderBacklog(c);
 

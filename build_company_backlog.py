@@ -6,7 +6,7 @@ are treated as order backlog. Add reviewed observations to the source manifest.
 import csv,json,math,pathlib,re,io,os
 from decimal import Decimal
 ROOT=pathlib.Path(__file__).resolve().parent
-CONVERT={'KRW':('KRW_100m','억원',Decimal('0.00000001')),'KRW_million':('KRW_100m','억원',Decimal('0.01')),'KRW_100m':('KRW_100m','억원',Decimal(1)),'USD_thousand':('M_USD','백만 USD',Decimal('0.001')),'M_USD':('M_USD','백만 USD',Decimal(1))}
+CONVERT={'KRW':('KRW_100m','억원',Decimal('0.00000001')),'KRW_thousand':('KRW_100m','억원',Decimal('0.00001')),'KRW_million':('KRW_100m','억원',Decimal('0.01')),'KRW_100m':('KRW_100m','억원',Decimal(1)),'USD_thousand':('M_USD','백만 USD',Decimal('0.001')),'M_USD':('M_USD','백만 USD',Decimal(1))}
 def build():
  source=json.loads((ROOT/'company_backlog_sources.json').read_text())
  ids={c['id'] for c in json.loads((ROOT/'company_watchlist.json').read_text())['companies']}
@@ -26,6 +26,13 @@ def build():
   assert old<=seen,'Historical records would be removed'
  buf=io.StringIO();w=csv.DictWriter(buf,fieldnames=['company_id','period','value','unit','unit_label','status','source','scope','notes']);w.writeheader();w.writerows(sorted(rows,key=lambda r:(r['company_id'],r['period'])))
  coverage={k:source[k] for k in ['reviewed_at','review_scope','companies']}
+ coverage.update(start_period=source.get('start_period','2020-Q1'),end_period=source.get('end_period','2026-Q2'),history_issues=source.get('history_issues',[]))
+ def qi(p):return int(p[:4])*4+int(p[-1])-1
+ expected=[f'{i//4}-Q{i%4+1}' for i in range(qi(coverage['start_period']),qi(coverage['end_period'])+1)]
+ for r in coverage['companies']:
+  have={p for cid,p in seen if cid==r['company_id']}
+  r['expected_quarters']=len(expected);r['complete_quarters']=sum(p in have for p in expected);r['missing_periods']=[p for p in expected if p not in have]
+
  for name,text in [('company_backlog.csv',buf.getvalue()),('company_backlog_coverage.json',json.dumps(coverage,ensure_ascii=False,indent=2)+'\n')]:
   path=ROOT/name;tmp=path.with_suffix(path.suffix+'.tmp');tmp.write_text(text);os.replace(tmp,path)
  print(f'{len(ids)} companies reviewed; {len(scopes)} with amounts; {len(rows)} observations')
