@@ -156,24 +156,8 @@
       "reviewed_period": "2026-Q1",
       "name": "인터플렉스",
       "expected_quarters": 26,
-      "complete_quarters": 11,
-      "missing_periods": [
-        "2022-Q3",
-        "2022-Q4",
-        "2023-Q1",
-        "2023-Q2",
-        "2023-Q3",
-        "2023-Q4",
-        "2024-Q1",
-        "2024-Q2",
-        "2024-Q3",
-        "2024-Q4",
-        "2025-Q1",
-        "2025-Q2",
-        "2025-Q3",
-        "2025-Q4",
-        "2026-Q2"
-      ]
+      "complete_quarters": 26,
+      "missing_periods": []
     },
     {
       "company_id": "090460",
@@ -574,31 +558,8 @@
       "reviewed_period": "2026-Q2",
       "name": "티씨케이",
       "expected_quarters": 26,
-      "complete_quarters": 4,
-      "missing_periods": [
-        "2020-Q1",
-        "2020-Q2",
-        "2020-Q3",
-        "2020-Q4",
-        "2021-Q1",
-        "2021-Q2",
-        "2021-Q3",
-        "2021-Q4",
-        "2022-Q1",
-        "2022-Q2",
-        "2022-Q3",
-        "2022-Q4",
-        "2023-Q1",
-        "2023-Q2",
-        "2023-Q3",
-        "2023-Q4",
-        "2024-Q1",
-        "2024-Q2",
-        "2024-Q3",
-        "2024-Q4",
-        "2025-Q1",
-        "2025-Q2"
-      ]
+      "complete_quarters": 26,
+      "missing_periods": []
     },
     {
       "company_id": "166090",
@@ -1456,170 +1417,212 @@
     {
       "company_id": "222800",
       "period": "2020-Q1",
+      "metric": "backlog",
       "source": "https://kind.krx.co.kr/external/2020/05/13/000405/20200513000907/11013.htm",
-      "reason": "공시 표 수주총액−기납품액과 수주잔고 불일치: [Decimal('282430'), Decimal('242939'), Decimal('39491097')]"
-    },
-    {
-      "company_id": "222800",
-      "period": "2020-Q1",
-      "source": "https://kind.krx.co.kr/external/2020/05/13/000405/20200513000907/11013.htm",
-      "reason": "금액·단위·합계 또는 집계 범위 수동 확인 필요"
+      "reason": "공시 표 금액 산식 불일치"
     },
     {
       "company_id": "222800",
       "period": "2020-Q2",
+      "metric": "backlog",
       "source": "https://kind.krx.co.kr/external/2020/08/13/000658/20200813001849/11012.htm",
-      "reason": "공시 표 수주총액−기납품액과 수주잔고 불일치: [Decimal('679830'), Decimal('332723'), Decimal('347106823')]"
-    },
-    {
-      "company_id": "222800",
-      "period": "2020-Q2",
-      "source": "https://kind.krx.co.kr/external/2020/08/13/000658/20200813001849/11012.htm",
-      "reason": "금액·단위·합계 또는 집계 범위 수동 확인 필요"
+      "reason": "공시 표 금액 산식 불일치"
     },
     {
       "company_id": "007660",
       "period": "2020-Q1",
+      "metric": "backlog",
       "source": "https://kind.krx.co.kr/external/2020/05/18/000504/20200518001270/11013.htm",
       "reason": "non-number '-'"
     },
     {
       "company_id": "007660",
-      "period": "2020-Q1",
-      "source": "https://kind.krx.co.kr/external/2020/05/18/000504/20200518001270/11013.htm",
-      "reason": "금액·단위·합계 또는 집계 범위 수동 확인 필요"
-    },
-    {
-      "company_id": "007660",
       "period": "2020-Q2",
+      "metric": "backlog",
       "source": "https://kind.krx.co.kr/external/2020/08/14/001016/20200814002930/11012.htm",
       "reason": "non-number '-'"
     },
     {
       "company_id": "007660",
-      "period": "2020-Q2",
-      "source": "https://kind.krx.co.kr/external/2020/08/14/001016/20200814002930/11012.htm",
-      "reason": "금액·단위·합계 또는 집계 범위 수동 확인 필요"
+      "period": "2021-Q1",
+      "metric": "backlog",
+      "source": "https://kind.krx.co.kr/external/2021/05/17/002285/20210517005351/11013.htm",
+      "reason": "non-number '-'"
     },
     {
-      "company_id": "007660",
+      "company_id": "103590",
+      "period": "2020-Q1",
+      "metric": "backlog",
+      "source": "https://kind.krx.co.kr/external/2020/05/15/001461/20200515003096/11013.htm",
+      "reason": "품목별 잔고 합계 불일치"
+    },
+    {
+      "company_id": "103590",
+      "period": "2020-Q2",
+      "metric": "backlog",
+      "source": "https://kind.krx.co.kr/external/2020/08/14/000323/20200814000775/11012.htm",
+      "reason": "품목별 잔고 합계 불일치"
+    },
+    {
+      "company_id": "103590",
       "period": "2020-Q3",
-      "source": "https://kind.krx.co.kr/external/2020/11/16/001733/20201116003891/11013.htm",
-      "reason": "금액·단위·합계 또는 집계 범위 수동 확인 필요"
+      "metric": "backlog",
+      "source": "https://kind.krx.co.kr/external/2020/11/16/001121/20201116002470/11013.htm",
+      "reason": "품목별 잔고 합계 불일치"
     },
     {
-      "company_id": "007660",
+      "company_id": "103590",
       "period": "2020-Q4",
-      "source": "https://kind.krx.co.kr/external/2021/04/05/001063/20210405002370/11011.htm",
-      "reason": "금액·단위·합계 또는 집계 범위 수동 확인 필요"
+      "metric": "backlog",
+      "source": "https://kind.krx.co.kr/external/2021/03/29/001063/20210329002842/11011.htm",
+      "reason": "품목별 잔고 합계 불일치"
     },
     {
-      "company_id": "007660",
+      "company_id": "103590",
       "period": "2021-Q1",
-      "source": "https://kind.krx.co.kr/external/2021/05/17/002285/20210517005351/11013.htm",
-      "reason": "non-number '-'"
+      "metric": "backlog",
+      "source": "https://kind.krx.co.kr/external/2021/05/17/000068/20210517000115/11013.htm",
+      "reason": "품목별 잔고 합계 불일치"
     },
     {
-      "company_id": "007660",
-      "period": "2021-Q1",
-      "source": "https://kind.krx.co.kr/external/2021/05/17/002285/20210517005351/11013.htm",
-      "reason": "금액·단위·합계 또는 집계 범위 수동 확인 필요"
-    },
-    {
-      "company_id": "007660",
-      "period": "2020-Q1",
-      "source": "https://kind.krx.co.kr/external/2020/05/18/000504/20200518001270/11013.htm",
-      "reason": "non-number '-'"
-    },
-    {
-      "company_id": "007660",
-      "period": "2020-Q1",
-      "source": "https://kind.krx.co.kr/external/2020/05/18/000504/20200518001270/11013.htm",
-      "reason": "금액·단위·합계 또는 집계 범위 수동 확인 필요"
-    },
-    {
-      "company_id": "007660",
-      "period": "2020-Q2",
-      "source": "https://kind.krx.co.kr/external/2020/08/14/001016/20200814002930/11012.htm",
-      "reason": "non-number '-'"
-    },
-    {
-      "company_id": "007660",
-      "period": "2020-Q2",
-      "source": "https://kind.krx.co.kr/external/2020/08/14/001016/20200814002930/11012.htm",
-      "reason": "금액·단위·합계 또는 집계 범위 수동 확인 필요"
-    },
-    {
-      "company_id": "007660",
-      "period": "2020-Q3",
-      "source": "https://kind.krx.co.kr/external/2020/11/16/001733/20201116003891/11013.htm",
-      "reason": "금액·단위·합계 또는 집계 범위 수동 확인 필요"
-    },
-    {
-      "company_id": "007660",
-      "period": "2020-Q4",
-      "source": "https://kind.krx.co.kr/external/2021/04/05/001063/20210405002370/11011.htm",
-      "reason": "금액·단위·합계 또는 집계 범위 수동 확인 필요"
-    },
-    {
-      "company_id": "007660",
-      "period": "2021-Q1",
-      "source": "https://kind.krx.co.kr/external/2021/05/17/002285/20210517005351/11013.htm",
-      "reason": "non-number '-'"
-    },
-    {
-      "company_id": "007660",
-      "period": "2021-Q1",
-      "source": "https://kind.krx.co.kr/external/2021/05/17/002285/20210517005351/11013.htm",
-      "reason": "금액·단위·합계 또는 집계 범위 수동 확인 필요"
-    },
-    {
-      "company_id": "007660",
-      "period": "2022-Q2",
-      "source": "https://kind.krx.co.kr/external/2022/08/16/002159/20220816006801/11012.htm",
-      "reason": "금액·단위·합계 또는 집계 범위 수동 확인 필요"
-    },
-    {
-      "company_id": "007660",
+      "company_id": "103590",
       "period": "2021-Q2",
-      "source": "https://kind.krx.co.kr/external/2021/08/17/002515/20210817007743/11012.htm",
-      "reason": "금액·단위·합계 또는 집계 범위 수동 확인 필요"
+      "metric": "backlog",
+      "source": "https://kind.krx.co.kr/external/2021/08/13/000538/20210813001535/11012.htm",
+      "reason": "품목별 잔고 합계 불일치"
     },
     {
-      "company_id": "007660",
+      "company_id": "103590",
+      "period": "2021-Q3",
+      "metric": "backlog",
+      "source": "https://kind.krx.co.kr/external/2021/11/12/000633/20211112001373/11013.htm",
+      "reason": "품목별 잔고 합계 불일치"
+    },
+    {
+      "company_id": "103590",
       "period": "2021-Q4",
-      "source": "https://kind.krx.co.kr/external/2022/03/23/001530/20220323005804/11011.htm",
-      "reason": "금액·단위·합계 또는 집계 범위 수동 확인 필요"
+      "metric": "backlog",
+      "source": "https://kind.krx.co.kr/external/2022/03/17/001692/20220317006575/11011.htm",
+      "reason": "품목별 잔고 합계 불일치"
     },
     {
-      "company_id": "007660",
+      "company_id": "103590",
+      "period": "2022-Q1",
+      "metric": "backlog",
+      "source": "https://kind.krx.co.kr/external/2022/05/16/000309/20220516000610/11013.htm",
+      "reason": "품목별 잔고 합계 불일치"
+    },
+    {
+      "company_id": "103590",
+      "period": "2022-Q2",
+      "metric": "backlog",
+      "source": "https://kind.krx.co.kr/external/2022/08/16/000646/20220816002083/11012.htm",
+      "reason": "품목별 잔고 합계 불일치"
+    },
+    {
+      "company_id": "103590",
+      "period": "2022-Q3",
+      "metric": "backlog",
+      "source": "https://kind.krx.co.kr/external/2022/11/14/001027/20221114002153/11013.htm",
+      "reason": "품목별 잔고 합계 불일치"
+    },
+    {
+      "company_id": "103590",
       "period": "2022-Q4",
-      "source": "https://kind.krx.co.kr/external/2023/03/23/001544/20230323005580/11011.htm",
-      "reason": "금액·단위·합계 또는 집계 범위 수동 확인 필요"
+      "metric": "backlog",
+      "source": "https://kind.krx.co.kr/external/2023/03/15/000818/20230315002382/11011.htm",
+      "reason": "품목별 잔고 합계 불일치"
     },
     {
-      "company_id": "007660",
+      "company_id": "103590",
       "period": "2023-Q1",
-      "source": "https://kind.krx.co.kr/external/2023/05/15/002096/20230515004542/11013.htm",
-      "reason": "금액·단위·합계 또는 집계 범위 수동 확인 필요"
+      "metric": "backlog",
+      "source": "https://kind.krx.co.kr/external/2023/05/12/000504/20230512001099/11013.htm",
+      "reason": "품목별 잔고 합계 불일치"
     },
     {
-      "company_id": "007660",
+      "company_id": "103590",
+      "period": "2023-Q2",
+      "metric": "backlog",
+      "source": "https://kind.krx.co.kr/external/2023/08/11/000397/20230811001069/11012.htm",
+      "reason": "품목별 잔고 합계 불일치"
+    },
+    {
+      "company_id": "103590",
+      "period": "2023-Q3",
+      "metric": "backlog",
+      "source": "https://kind.krx.co.kr/external/2023/11/13/000396/20231113000769/11013.htm",
+      "reason": "품목별 잔고 합계 불일치"
+    },
+    {
+      "company_id": "103590",
+      "period": "2023-Q4",
+      "metric": "backlog",
+      "source": "https://kind.krx.co.kr/external/2024/03/13/002760/20240313006558/11011.htm",
+      "reason": "품목별 잔고 합계 불일치"
+    },
+    {
+      "company_id": "103590",
       "period": "2024-Q1",
-      "source": "https://kind.krx.co.kr/external/2024/05/14/001600/20240514003505/11013.htm",
-      "reason": "금액·단위·합계 또는 집계 범위 수동 확인 필요"
+      "metric": "backlog",
+      "source": "https://kind.krx.co.kr/external/2024/05/14/000236/20240514000449/11013.htm",
+      "reason": "품목별 잔고 합계 불일치"
     },
     {
-      "company_id": "007660",
+      "company_id": "103590",
+      "period": "2024-Q2",
+      "metric": "backlog",
+      "source": "https://kind.krx.co.kr/external/2024/08/13/000170/20240813000476/11012.htm",
+      "reason": "품목별 잔고 합계 불일치"
+    },
+    {
+      "company_id": "103590",
       "period": "2024-Q3",
-      "source": "https://kind.krx.co.kr/external/2024/11/14/002134/20241114004760/11013.htm",
-      "reason": "금액·단위·합계 또는 집계 범위 수동 확인 필요"
+      "metric": "backlog",
+      "source": "https://kind.krx.co.kr/external/2024/11/13/000102/20241113000241/11013.htm",
+      "reason": "품목별 잔고 합계 불일치"
     },
     {
-      "company_id": "007660",
+      "company_id": "103590",
+      "period": "2024-Q4",
+      "metric": "backlog",
+      "source": "https://kind.krx.co.kr/external/2025/03/12/000750/20250312002052/11011.htm",
+      "reason": "품목별 잔고 합계 불일치"
+    },
+    {
+      "company_id": "103590",
       "period": "2025-Q1",
-      "source": "https://kind.krx.co.kr/external/2025/05/14/001041/20250514002229/11013.htm",
-      "reason": "금액·단위·합계 또는 집계 범위 수동 확인 필요"
+      "metric": "backlog",
+      "source": "https://kind.krx.co.kr/external/2025/05/14/000313/20250514000676/11013.htm",
+      "reason": "품목별 잔고 합계 불일치"
+    },
+    {
+      "company_id": "103590",
+      "period": "2025-Q2",
+      "metric": "backlog",
+      "source": "https://kind.krx.co.kr/external/2025/08/13/000274/20250813000794/11012.htm",
+      "reason": "품목별 잔고 합계 불일치"
+    },
+    {
+      "company_id": "103590",
+      "period": "2025-Q3",
+      "metric": "backlog",
+      "source": "https://kind.krx.co.kr/external/2025/11/13/000194/20251113000419/11013.htm",
+      "reason": "품목별 잔고 합계 불일치"
+    },
+    {
+      "company_id": "103590",
+      "period": "2026-Q1",
+      "metric": "backlog",
+      "source": "https://kind.krx.co.kr/external/2026/05/15/001645/20260515003635/11013.htm",
+      "reason": "품목별 잔고 합계 불일치"
+    },
+    {
+      "company_id": "103590",
+      "period": "2026-Q2",
+      "metric": "backlog",
+      "source": "https://kind.krx.co.kr/external/2026/08/11/000470/20260811001106/11012.htm",
+      "reason": "품목별 잔고 합계 불일치"
     }
   ]
 }
