@@ -1,164 +1,164 @@
 {
- "updated_at": "2026-10-09T23:26:14+09:00",
+ "updated_at": "2026-10-09T23:28:53+09:00",
  "companies": 39,
  "parsed": 0,
  "estimate_rows": 0,
  "failures": [
   {
    "company_id": "222800",
-   "error": "ValueError: 기업실적분석 표 없음"
+   "error": "ValueError: 기업실적분석 표 없음 (page 133278B, title Npay 증권, tables [])"
   },
   {
    "company_id": "353200",
-   "error": "ValueError: 기업실적분석 표 없음"
+   "error": "ValueError: 기업실적분석 표 없음 (page 133277B, title Npay 증권, tables [])"
   },
   {
    "company_id": "007660",
-   "error": "ValueError: 기업실적분석 표 없음"
+   "error": "ValueError: 기업실적분석 표 없음 (page 133277B, title Npay 증권, tables [])"
   },
   {
    "company_id": "192820",
-   "error": "ValueError: 기업실적분석 표 없음"
+   "error": "ValueError: 기업실적분석 표 없음 (page 133277B, title Npay 증권, tables [])"
   },
   {
    "company_id": "161890",
-   "error": "ValueError: 기업실적분석 표 없음"
+   "error": "ValueError: 기업실적분석 표 없음 (page 133277B, title Npay 증권, tables [])"
   },
   {
    "company_id": "007810",
-   "error": "ValueError: 기업실적분석 표 없음"
+   "error": "ValueError: 기업실적분석 표 없음 (page 133277B, title Npay 증권, tables [])"
   },
   {
    "company_id": "051370",
-   "error": "ValueError: 기업실적분석 표 없음"
+   "error": "ValueError: 기업실적분석 표 없음 (page 133278B, title Npay 증권, tables [])"
   },
   {
    "company_id": "090460",
-   "error": "ValueError: 기업실적분석 표 없음"
+   "error": "ValueError: 기업실적분석 표 없음 (page 133277B, title Npay 증권, tables [])"
   },
   {
    "company_id": "009150",
-   "error": "ValueError: 기업실적분석 표 없음"
+   "error": "ValueError: 기업실적분석 표 없음 (page 133277B, title Npay 증권, tables [])"
   },
   {
    "company_id": "011070",
-   "error": "ValueError: 기업실적분석 표 없음"
+   "error": "ValueError: 기업실적분석 표 없음 (page 133277B, title Npay 증권, tables [])"
   },
   {
    "company_id": "195870",
-   "error": "ValueError: 기업실적분석 표 없음"
+   "error": "ValueError: 기업실적분석 표 없음 (page 133277B, title Npay 증권, tables [])"
   },
   {
    "company_id": "241710",
-   "error": "ValueError: 기업실적분석 표 없음"
+   "error": "ValueError: 기업실적분석 표 없음 (page 133278B, title Npay 증권, tables [])"
   },
   {
    "company_id": "003350",
-   "error": "ValueError: 기업실적분석 표 없음"
+   "error": "ValueError: 기업실적분석 표 없음 (page 133277B, title Npay 증권, tables [])"
   },
   {
    "company_id": "090430",
-   "error": "ValueError: 기업실적분석 표 없음"
+   "error": "ValueError: 기업실적분석 표 없음 (page 133277B, title Npay 증권, tables [])"
   },
   {
    "company_id": "051900",
-   "error": "ValueError: 기업실적분석 표 없음"
+   "error": "ValueError: 기업실적분석 표 없음 (page 133277B, title Npay 증권, tables [])"
   },
   {
    "company_id": "005930",
-   "error": "ValueError: 기업실적분석 표 없음"
+   "error": "ValueError: 기업실적분석 표 없음 (page 133277B, title Npay 증권, tables [])"
   },
   {
    "company_id": "000660",
-   "error": "ValueError: 기업실적분석 표 없음"
+   "error": "ValueError: 기업실적분석 표 없음 (page 133277B, title Npay 증권, tables [])"
   },
   {
    "company_id": "064760",
-   "error": "ValueError: 기업실적분석 표 없음"
+   "error": "ValueError: 기업실적분석 표 없음 (page 133278B, title Npay 증권, tables [])"
   },
   {
    "company_id": "166090",
-   "error": "ValueError: 기업실적분석 표 없음"
+   "error": "ValueError: 기업실적분석 표 없음 (page 133278B, title Npay 증권, tables [])"
   },
   {
    "company_id": "058470",
-   "error": "ValueError: 기업실적분석 표 없음"
+   "error": "ValueError: 기업실적분석 표 없음 (page 133278B, title Npay 증권, tables [])"
   },
   {
    "company_id": "039030",
-   "error": "ValueError: 기업실적분석 표 없음"
+   "error": "ValueError: 기업실적분석 표 없음 (page 133278B, title Npay 증권, tables [])"
   },
   {
    "company_id": "267260",
-   "error": "ValueError: 기업실적분석 표 없음"
+   "error": "ValueError: 기업실적분석 표 없음 (page 133277B, title Npay 증권, tables [])"
   },
   {
    "company_id": "298040",
-   "error": "ValueError: 기업실적분석 표 없음"
+   "error": "ValueError: 기업실적분석 표 없음 (page 133277B, title Npay 증권, tables [])"
   },
   {
    "company_id": "010120",
-   "error": "ValueError: 기업실적분석 표 없음"
+   "error": "ValueError: 기업실적분석 표 없음 (page 133277B, title Npay 증권, tables [])"
   },
   {
    "company_id": "103590",
-   "error": "ValueError: 기업실적분석 표 없음"
+   "error": "ValueError: 기업실적분석 표 없음 (page 133277B, title Npay 증권, tables [])"
   },
   {
    "company_id": "373220",
-   "error": "ValueError: 기업실적분석 표 없음"
+   "error": "ValueError: 기업실적분석 표 없음 (page 133277B, title Npay 증권, tables [])"
   },
   {
    "company_id": "006400",
-   "error": "ValueError: 기업실적분석 표 없음"
+   "error": "ValueError: 기업실적분석 표 없음 (page 133277B, title Npay 증권, tables [])"
   },
   {
    "company_id": "247540",
-   "error": "ValueError: 기업실적분석 표 없음"
+   "error": "ValueError: 기업실적분석 표 없음 (page 133278B, title Npay 증권, tables [])"
   },
   {
    "company_id": "066970",
-   "error": "ValueError: 기업실적분석 표 없음"
+   "error": "ValueError: 기업실적분석 표 없음 (page 133277B, title Npay 증권, tables [])"
   },
   {
    "company_id": "003670",
-   "error": "ValueError: 기업실적분석 표 없음"
+   "error": "ValueError: 기업실적분석 표 없음 (page 133277B, title Npay 증권, tables [])"
   },
   {
    "company_id": "082920",
-   "error": "ValueError: 기업실적분석 표 없음"
+   "error": "ValueError: 기업실적분석 표 없음 (page 133278B, title Npay 증권, tables [])"
   },
   {
    "company_id": "086900",
-   "error": "ValueError: 기업실적분석 표 없음"
+   "error": "ValueError: 기업실적분석 표 없음 (page 133278B, title Npay 증권, tables [])"
   },
   {
    "company_id": "145020",
-   "error": "ValueError: 기업실적분석 표 없음"
+   "error": "ValueError: 기업실적분석 표 없음 (page 133278B, title Npay 증권, tables [])"
   },
   {
    "company_id": "069620",
-   "error": "ValueError: 기업실적분석 표 없음"
+   "error": "ValueError: 기업실적분석 표 없음 (page 133277B, title Npay 증권, tables [])"
   },
   {
    "company_id": "041830",
-   "error": "ValueError: 기업실적분석 표 없음"
+   "error": "ValueError: 기업실적분석 표 없음 (page 133278B, title Npay 증권, tables [])"
   },
   {
    "company_id": "003230",
-   "error": "ValueError: 기업실적분석 표 없음"
+   "error": "ValueError: 기업실적분석 표 없음 (page 133277B, title Npay 증권, tables [])"
   },
   {
    "company_id": "004370",
-   "error": "ValueError: 기업실적분석 표 없음"
+   "error": "ValueError: 기업실적분석 표 없음 (page 133277B, title Npay 증권, tables [])"
   },
   {
    "company_id": "007310",
-   "error": "ValueError: 기업실적분석 표 없음"
+   "error": "ValueError: 기업실적분석 표 없음 (page 133277B, title Npay 증권, tables [])"
   },
   {
    "company_id": "009830",
-   "error": "ValueError: 기업실적분석 표 없음"
+   "error": "ValueError: 기업실적분석 표 없음 (page 133277B, title Npay 증권, tables [])"
   }
  ]
 }
