@@ -1,10 +1,10 @@
 {
- "updated_at": "2026-10-09T15:39:43+0900",
+ "updated_at": "2026-10-09T16:18:21+0900",
  "range": [
-  "2022.01",
+  "2015.01",
   "2026.09"
  ],
- "months_fetched_this_run": 57,
+ "months_fetched_this_run": 87,
  "failures": [
   {
    "month": "2026.09",
@@ -16,54 +16,54 @@
   {
    "company_id": "2330",
    "name": "TSMC",
-   "months": 57,
-   "expected": 57,
-   "first": "2022.01",
+   "months": 141,
+   "expected": 141,
+   "first": "2015.01",
    "last": "2026.09",
    "missing": []
   },
   {
    "company_id": "2303",
    "name": "UMC",
-   "months": 57,
-   "expected": 57,
-   "first": "2022.01",
+   "months": 141,
+   "expected": 141,
+   "first": "2015.01",
    "last": "2026.09",
    "missing": []
   },
   {
    "company_id": "2454",
    "name": "MediaTek",
-   "months": 57,
-   "expected": 57,
-   "first": "2022.01",
+   "months": 141,
+   "expected": 141,
+   "first": "2015.01",
    "last": "2026.09",
    "missing": []
   },
   {
    "company_id": "2408",
    "name": "Nanya Technology",
-   "months": 57,
-   "expected": 57,
-   "first": "2022.01",
+   "months": 141,
+   "expected": 141,
+   "first": "2015.01",
    "last": "2026.09",
    "missing": []
   },
   {
    "company_id": "2344",
    "name": "Winbond",
-   "months": 57,
-   "expected": 57,
-   "first": "2022.01",
+   "months": 141,
+   "expected": 141,
+   "first": "2015.01",
    "last": "2026.09",
    "missing": []
   },
   {
    "company_id": "3711",
    "name": "ASE Technology",
-   "months": 56,
-   "expected": 57,
-   "first": "2022.01",
+   "months": 101,
+   "expected": 102,
+   "first": "2018.04",
    "last": "2026.08",
    "missing": [
     "2026.09"
@@ -72,99 +72,99 @@
   {
    "company_id": "6488",
    "name": "GlobalWafers",
-   "months": 57,
-   "expected": 57,
-   "first": "2022.01",
+   "months": 141,
+   "expected": 141,
+   "first": "2015.01",
    "last": "2026.09",
    "missing": []
   },
   {
    "company_id": "3037",
    "name": "Unimicron",
-   "months": 57,
-   "expected": 57,
-   "first": "2022.01",
+   "months": 141,
+   "expected": 141,
+   "first": "2015.01",
    "last": "2026.09",
    "missing": []
   },
   {
    "company_id": "3189",
    "name": "Kinsus",
-   "months": 57,
-   "expected": 57,
-   "first": "2022.01",
+   "months": 141,
+   "expected": 141,
+   "first": "2015.01",
    "last": "2026.09",
    "missing": []
   },
   {
    "company_id": "8046",
    "name": "Nan Ya PCB",
-   "months": 57,
-   "expected": 57,
-   "first": "2022.01",
+   "months": 141,
+   "expected": 141,
+   "first": "2015.01",
    "last": "2026.09",
    "missing": []
   },
   {
    "company_id": "2368",
    "name": "Gold Circuit",
-   "months": 57,
-   "expected": 57,
-   "first": "2022.01",
+   "months": 141,
+   "expected": 141,
+   "first": "2015.01",
    "last": "2026.09",
    "missing": []
   },
   {
    "company_id": "2383",
    "name": "Elite Material",
-   "months": 57,
-   "expected": 57,
-   "first": "2022.01",
+   "months": 141,
+   "expected": 141,
+   "first": "2015.01",
    "last": "2026.09",
    "missing": []
   },
   {
    "company_id": "2327",
    "name": "Yageo",
-   "months": 57,
-   "expected": 57,
-   "first": "2022.01",
+   "months": 141,
+   "expected": 141,
+   "first": "2015.01",
    "last": "2026.09",
    "missing": []
   },
   {
    "company_id": "2317",
    "name": "Hon Hai (Foxconn)",
-   "months": 57,
-   "expected": 57,
-   "first": "2022.01",
+   "months": 141,
+   "expected": 141,
+   "first": "2015.01",
    "last": "2026.09",
    "missing": []
   },
   {
    "company_id": "2382",
    "name": "Quanta",
-   "months": 57,
-   "expected": 57,
-   "first": "2022.01",
+   "months": 141,
+   "expected": 141,
+   "first": "2015.01",
    "last": "2026.09",
    "missing": []
   },
   {
    "company_id": "6669",
    "name": "Wiwynn",
-   "months": 57,
-   "expected": 57,
-   "first": "2022.01",
+   "months": 129,
+   "expected": 129,
+   "first": "2016.01",
    "last": "2026.09",
    "missing": []
   },
   {
    "company_id": "2308",
    "name": "Delta Electronics",
-   "months": 56,
-   "expected": 57,
-   "first": "2022.01",
+   "months": 140,
+   "expected": 141,
+   "first": "2015.01",
    "last": "2026.08",
    "missing": [
     "2026.09"
@@ -173,9 +173,9 @@
   {
    "company_id": "1519",
    "name": "Fortune Electric",
-   "months": 56,
-   "expected": 57,
-   "first": "2022.01",
+   "months": 140,
+   "expected": 141,
+   "first": "2015.01",
    "last": "2026.08",
    "missing": [
     "2026.09"
@@ -184,9 +184,9 @@
   {
    "company_id": "1503",
    "name": "Shihlin Electric",
-   "months": 56,
-   "expected": 57,
-   "first": "2022.01",
+   "months": 140,
+   "expected": 141,
+   "first": "2015.01",
    "last": "2026.08",
    "missing": [
     "2026.09"
@@ -195,9 +195,9 @@
   {
    "company_id": "1513",
    "name": "Chung-Hsin Electric",
-   "months": 57,
-   "expected": 57,
-   "first": "2022.01",
+   "months": 141,
+   "expected": 141,
+   "first": "2015.01",
    "last": "2026.09",
    "missing": []
   }
