@@ -10,20 +10,20 @@
 <div id="notice" class="notice" hidden></div>
 
 <section class="panel"><h2>전체 품목 · 최신월</h2><p id="summary" class="muted"></p>
-<div class="table"><table><thead><tr><th>분야</th><th>품목</th><th>최신월</th><th>수출 (백만 USD)</th><th>YoY (USD)</th><th>YoY (엔화)</th><th>3개월 합계 YoY</th><th>중국 비중</th><th>대만 비중</th><th>한국 비중</th><th>미국 비중</th><th>대표 일본 업체</th></tr></thead><tbody id="list"></tbody></table></div></section>
+<div class="table"><table><thead><tr><th>분야</th><th>품목</th><th>최신월</th><th>수출 (백만 USD)</th><th>YoY (USD)</th><th>YoY (엔화)</th><th>월평균(3개월) YoY</th><th>중국 비중</th><th>대만 비중</th><th>한국 비중</th><th>미국 비중</th><th>대표 일본 업체</th></tr></thead><tbody id="list"></tbody></table></div></section>
 
 <section class="panel"><div class="controls">
-<label>품목<select id="item"></select></label><label>통화<select id="cur"><option value="USD">USD (한국 수출과 비교)</option><option value="JPY">엔화 (일본 공시 기준)</option></select></label><label>기간<select id="range"><option value="all">2015년부터</option><option value="2022">2022년부터</option><option value="24">최근 24개월</option><option value="12">최근 12개월</option></select></label>
+<label>품목<select id="item"></select></label><label>통화<select id="cur"><option value="USD">USD (한국 수출과 비교)</option><option value="JPY">엔화 (일본 공시 기준)</option></select></label><label>YoY 기준<select id="basis"><option value="m">월 기준 YoY</option><option value="a">월평균(3개월) YoY</option></select></label><label>기간<select id="range"><option value="all">2015년부터</option><option value="2022">2022년부터</option><option value="24">최근 24개월</option><option value="12">최근 12개월</option></select></label>
 </div><p id="desc" class="muted"></p></section>
 
-<div class="cards"><div class="card">최신월 수출<strong id="cAmt">—</strong><span id="cMonth" class="muted"></span></div><div class="card">전년동월 대비<strong id="cYoy">—</strong><span id="cYoyNote" class="muted"></span></div><div class="card">3개월 합계 YoY<strong id="c3m">—</strong><span class="muted">월별 변동 완화</span></div><div class="card">중국향 3개월 YoY<strong id="cCn">—</strong><span class="muted">수출통제·중국 투자 영향 확인</span></div></div>
+<div class="cards"><div class="card">최신월 수출<strong id="cAmt">—</strong><span id="cMonth" class="muted"></span></div><div class="card">전년동월 대비<strong id="cYoy">—</strong><span id="cYoyNote" class="muted"></span></div><div class="card">월평균(3개월) YoY<strong id="c3m">—</strong><span class="muted">월별 변동 완화</span></div><div class="card">중국향 3개월 YoY<strong id="cCn">—</strong><span class="muted">수출통제·중국 투자 영향 확인</span></div></div>
 
 <section class="panel"><h2 id="t1">국가별 수출</h2><div class="chart"><canvas id="stack"></canvas></div></section>
 <div class="grid">
-<section class="panel"><h2>국가별 YoY (3개월 합계)</h2><div class="chart"><canvas id="cyoy"></canvas></div></section>
+<section class="panel"><h2 id="t3">국가별 YoY</h2><div class="chart"><canvas id="cyoy"></canvas></div></section>
 <section class="panel"><h2>국가별 비중</h2><div class="chart"><canvas id="share"></canvas></div></section>
 </div>
-<section class="panel"><h2 id="t2">일본 수출 YoY vs 한국 수출 YoY</h2><p class="muted">둘 다 USD 기준 3개월 이동평균 YoY. 한국 품목 수출 데이터는 2020년부터입니다.</p><div class="controls"><label>비교할 한국 품목<select id="krhs"></select></label></div><div class="chart"><canvas id="cmp"></canvas></div><p id="corr" class="muted"></p><div id="lags" class="lag"></div><p class="muted">"일본 +k개월"은 일본 수출 YoY가 한국 수출 YoY보다 k개월 먼저 움직였을 때의 상관계수입니다. 참고용입니다.</p></section>
+<section class="panel"><h2 id="t2">일본 수출 YoY vs 한국 수출 YoY</h2><p class="muted">둘 다 USD 기준. 기본은 월 기준 YoY(같은 달 전년 대비), 월평균(3개월) YoY는 최근 3개월 월평균 ÷ 전년 같은 3개월 월평균입니다. 한국 품목 수출 데이터는 2020년부터입니다.</p><div class="controls"><label>비교할 한국 품목<select id="krhs"></select></label></div><div class="chart"><canvas id="cmp"></canvas></div><p id="corr" class="muted"></p><div id="lags" class="lag"></div><p class="muted">"일본 +k개월"은 일본 수출 YoY가 한국 수출 YoY보다 k개월 먼저 움직였을 때의 상관계수입니다. 참고용입니다.</p></section>
 
 <section class="panel"><h2>기준과 출처</h2><p class="muted">출처: 일본 재무성 무역통계 品別国別表(輸出), e-Stat API. 9자리 통계품목을 표의 HS 접두 코드로 합산했고 단위는 천 엔입니다. USD 환산은 미 연준 월평균 환율(FRED EXJPUS)을 씁니다. 엔화 약세기에는 엔화 기준 증가율이 USD 기준보다 높게 나오므로 두 기준을 함께 표시합니다. 당해연도는 확보(確報), 과거연도는 확정치입니다. 매월 말 공표 후 29일·1일·5일에 자동 수집합니다.</p><p id="status" class="muted"></p></section>
 </main>
@@ -46,6 +46,8 @@ function ser(item,country,cur){const m=data.get(item+'|'+country);const out=new 
 function yoyAt(m,k){const a=m.get(k),b=m.get(mlab(mid(k)-12));return a!=null&&b>0?(a/b-1)*100:null;}
 function sum3(m,i){let s=0;for(let j=0;j<3;j++){const v=m.get(mlab(i-j));if(v==null)return null;s+=v;}return s;}
 function y3At(m,k){const i=mid(k),a=sum3(m,i),b=sum3(m,i-12);return a!=null&&b>0?(a/b-1)*100:null;}
+function yb(m,k){return el('basis').value==='m'?yoyAt(m,k):y3At(m,k);}
+const bl=()=>el('basis').value==='m'?'월 기준':'월평균(3개월)';
 function ma3(m){const o=new Map();for(const k of m.keys()){const i=mid(k),v=[0,1,2].map(j=>m.get(mlab(i-j)));o.set(k,v.every(x=>x!=null)?v.reduce((s,x)=>s+x,0)/3:null);}return o;}
 function draw(id,cfg){charts[id]?.destroy();charts[id]=new Chart(el(id),cfg);}
 const base={responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{position:'bottom'}}};
@@ -64,12 +66,12 @@ async function render(){const it=cfg.items.find(x=>x.key===el('item').value),cur
  const y=k?yoyAt(w,k):null,y3=k?y3At(w,k):null,cn=k?y3At(ser(it.key,'CN',cur),k):null;[['cYoy',y],['c3m',y3],['cCn',cn]].forEach(([id,v])=>{el(id).textContent=pct(v);el(id).className=cls(v);});el('cYoyNote').textContent=cur+' 기준';
  el('t1').textContent=it.name+' · 국가별 수출 ('+unit+')';
  const keys=['CN','TW','KR','US','VN','OTHER'];
- draw('stack',{data:{labels,datasets:[...keys.map(c=>({type:'bar',label:C[c][0],data:labels.map(x=>{const v=ser(it.key,c,cur).get(x);return v==null?null:v/div;}),backgroundColor:C[c][1],stack:'s',yAxisID:'y'})),{type:'line',label:'전체 YoY 3개월 합계 (%)',data:labels.map(x=>y3At(w,x)),borderColor:'#111827',pointRadius:0,yAxisID:'y1'}]},options:{...base,scales:{x:{stacked:true,grid:{display:false},ticks:{maxTicksLimit:16}},y:{stacked:true,title:{display:true,text:unit}},y1:{position:'right',grid:{display:false},title:{display:true,text:'YoY %'}}}}});
- draw('cyoy',{type:'line',data:{labels,datasets:['CN','TW','KR','US'].map(c=>{const m=ser(it.key,c,cur);return{label:C[c][0],data:labels.map(x=>y3At(m,x)),borderColor:C[c][1],pointRadius:0};})},options:{...base,scales:{x:{grid:{display:false},ticks:{maxTicksLimit:10}},y:{title:{display:true,text:'YoY % ('+cur+')'}}}}});
+ draw('stack',{data:{labels,datasets:[...keys.map(c=>({type:'bar',label:C[c][0],data:labels.map(x=>{const v=ser(it.key,c,cur).get(x);return v==null?null:v/div;}),backgroundColor:C[c][1],stack:'s',yAxisID:'y'})),{type:'line',label:'전체 YoY · '+bl()+' (%)',data:labels.map(x=>yb(w,x)),borderColor:'#111827',pointRadius:0,yAxisID:'y1'}]},options:{...base,scales:{x:{stacked:true,grid:{display:false},ticks:{maxTicksLimit:16}},y:{stacked:true,title:{display:true,text:unit}},y1:{position:'right',grid:{display:false},title:{display:true,text:'YoY %'}}}}});
+ draw('cyoy',{type:'line',data:{labels,datasets:['CN','TW','KR','US'].map(c=>{const m=ser(it.key,c,cur);return{label:C[c][0],data:labels.map(x=>yb(m,x)),borderColor:C[c][1],pointRadius:0};})},options:{...base,scales:{x:{grid:{display:false},ticks:{maxTicksLimit:10}},y:{title:{display:true,text:'YoY % ('+cur+')'}}}}});
  draw('share',{type:'line',data:{labels,datasets:['CN','TW','KR','US'].map(c=>{const m=ser(it.key,c,'USD');return{label:C[c][0],data:labels.map(x=>{const a=sum3(m,mid(x)),b=sum3(wu,mid(x));return a!=null&&b>0?a/b*100:null;}),borderColor:C[c][1],pointRadius:0};})},options:{...base,scales:{x:{grid:{display:false},ticks:{maxTicksLimit:10}},y:{title:{display:true,text:'비중 % (3개월 합계)'}}}}});
- const h=el('krhs').value,km=await krSeries(h),jy=new Map(labels.map(x=>[x,yoyAt(wu,x)])),ky=new Map([...km.keys()].map(x=>[x,yoyAt(km,x)])),j3=ma3(new Map([...wu.keys()].map(x=>[x,yoyAt(wu,x)]))),k3=ma3(ky);
- el('t2').textContent=it.name+' 일본 수출 YoY vs 한국 '+(hsNames[h]||h)+' 수출 YoY';
- draw('cmp',{type:'line',data:{labels,datasets:[{label:'일본 '+it.name+' (3M 평균 YoY)',data:labels.map(x=>j3.get(x)??null),borderColor:'#c0392b',pointRadius:1},{label:'한국 '+(hsNames[h]||h)+' (3M 평균 YoY)',data:labels.map(x=>k3.get(x)??null),borderColor:'#245bb0',pointRadius:1}]},options:{...base,scales:{x:{grid:{display:false},ticks:{maxTicksLimit:16}},y:{title:{display:true,text:'YoY % (USD)'}}}}});
+ el('t3').textContent='국가별 YoY · '+bl()+' ('+cur+')';const h=el('krhs').value,km=await krSeries(h),j3=new Map([...wu.keys()].map(x=>[x,yb(wu,x)])),k3=new Map([...km.keys()].map(x=>[x,yb(km,x)]));
+ el('t2').textContent=it.name+' 일본 수출 YoY vs 한국 '+(hsNames[h]||h)+' 수출 YoY · '+bl();
+ draw('cmp',{type:'line',data:{labels,datasets:[{label:'일본 '+it.name+' ('+bl()+' YoY)',data:labels.map(x=>j3.get(x)??null),borderColor:'#c0392b',pointRadius:1},{label:'한국 '+(hsNames[h]||h)+' ('+bl()+' YoY)',data:labels.map(x=>k3.get(x)??null),borderColor:'#245bb0',pointRadius:1}]},options:{...base,scales:{x:{grid:{display:false},ticks:{maxTicksLimit:16}},y:{title:{display:true,text:'YoY % (USD)'}}}}});
  const pairs=l=>labels.map(x=>[j3.get(mlab(mid(x)-l)),k3.get(x)]).filter(p=>p[0]!=null&&p[1]!=null);const r0=pearson(pairs(0));
  el('corr').textContent=r0==null?'상관계수 산출 불가 · 겹치는 월 6개 미만':`동일 월 상관계수 r = ${r0.toFixed(2)} · ${pairs(0).length}개월`;
  el('lags').replaceChildren();const res=[-3,-2,-1,0,1,2,3].map(l=>[l,pearson(pairs(l))]);const best=res.filter(x=>x[1]!=null).sort((a,b)=>b[1]-a[1])[0];for(const [l,v] of res){const s=document.createElement('span');s.textContent=(l>0?'일본 +'+l+'개월':l<0?'한국 +'+(-l)+'개월':'동시')+': '+(v==null?'—':v.toFixed(2));if(best&&l===best[0])s.className='best';el('lags').append(s);}}
@@ -81,6 +83,6 @@ async function init(){const [c,d,s,h]=await Promise.all([read('japan_items.json'
  else if(status.failures?.length){el('notice').hidden=false;el('notice').textContent='최근 수집에서 일부 실패: '+status.failures.slice(0,4).map(f=>(f.item||'')+' '+(f.error||'')).join(' · ')+'. 기존 데이터는 유지됩니다.';}
  el('status').textContent=status.updated_at?'최근 수집 '+status.updated_at.slice(0,16).replace('T',' ')+' · 범위 '+(status.range||[]).join(' ~ ')+(status.fx_last?' · 환율 최신 '+status.fx_last:''):'';
  const groups=[...new Set(cfg.items.map(i=>i.group))];for(const g of groups){const og=document.createElement('optgroup');og.label=g;cfg.items.filter(i=>i.group===g).forEach(i=>opt(og,i.key,i.name));el('item').append(og);}
- el('item').onchange=fillKR;el('krhs').onchange=render;el('cur').onchange=render;el('range').onchange=render;renderList();fillKR();}
+ el('item').onchange=fillKR;el('krhs').onchange=render;el('cur').onchange=render;el('range').onchange=render;el('basis').onchange=render;renderList();fillKR();}
 init().catch(e=>{el('notice').hidden=false;el('notice').textContent='불러오기 실패: '+e.message;});
 </script></body></html>

@@ -81,8 +81,8 @@ function render(){const c=watch.find(c=>c.id===el('company').value),hs=el('hs').
  const monthlyYoy=p=>growth(monthlyMap.get(p),monthlyMap.get(monthLabel(monthId(p)-12)));
  const monthlyMode=el('frequency').value==='month';
  const comparisonPeriods=monthlyMode?selected.map(r=>r.month):periods;
- chart('comparison',comparisonPeriods,[{label:monthlyMode?'수출 YoY · 월별':'수출 YoY · 완전분기',data:comparisonPeriods.map(monthlyMode?monthlyYoy:qy),borderColor:'#2784b8',pointRadius:3},{label:monthlyMode?'공시 매출 YoY · 분기 자료':'매출 YoY',data:comparisonPeriods.map(monthlyMode?()=>null:fy),borderColor:'#27925c',pointRadius:5,borderWidth:3,spanGaps:true}],'전년 동기 대비 (%)');
- if(el('comparisonNote'))el('comparisonNote').textContent=monthlyMode?'월별 선택: 수출 YoY는 동일 월 전년 대비로 표시합니다. 공시 매출은 분기 자료만 있어 월별 그래프에는 표시하지 않습니다.':'분기별 선택: 수출 YoY와 회사 공시 매출 YoY를 동일 분기 기준으로 비교합니다.';
+ chart('comparison',comparisonPeriods,[{label:monthlyMode?'수출 YoY · 월별':'수출 YoY · 완전분기',data:comparisonPeriods.map(monthlyMode?monthlyYoy:qy),borderColor:'#2784b8',pointRadius:3},...(monthlyMode?[{label:'수출 YoY · 월평균(3개월)',data:selected.map((_,i)=>growth(average(selected,i),average(selected,i-12))),borderColor:'#7c3aed',borderDash:[6,4],pointRadius:0,borderWidth:2}]:[]),{label:monthlyMode?'공시 매출 YoY · 분기 자료':'매출 YoY',data:comparisonPeriods.map(monthlyMode?()=>null:fy),borderColor:'#27925c',pointRadius:5,borderWidth:3,spanGaps:true}],'전년 동기 대비 (%)');
+ if(el('comparisonNote'))el('comparisonNote').textContent=monthlyMode?'월별 선택: 수출 YoY는 동일 월 전년 대비(실선), 월평균 YoY는 최근 3개월 월평균 ÷ 전년 같은 3개월 월평균(점선)입니다. 공시 매출은 분기 자료만 있어 월별 그래프에는 표시하지 않습니다.':'분기별 선택: 수출 YoY와 회사 공시 매출 YoY를 동일 분기 기준으로 비교합니다.';
  const amountPeriods=monthlyMode?selected.map(r=>r.month):quarter.map(q=>q.period);
  const exportAmounts=monthlyMode?selected.map(r=>r.value):quarter.map(q=>q.value);
  const revenueAmounts=monthlyMode?amountPeriods.map(p=>{const q=`${p.slice(0,4)}-Q${Math.ceil(Number(p.slice(5))/3)}`;const v=num(fm.get(q)?.revenue_KRW);return Number(p.slice(5))%3===0&&v!=null?v/1e8:null;}):amountPeriods.map(p=>{const v=num(fm.get(p)?.revenue_KRW);return v==null?null:v/1e8;});

@@ -1424,6 +1424,30 @@ function createChangeChart(itemName) {
             }
         }
     );
+    if (!quarterly) {
+        // 월평균(3개월 평균) 기준 YoY: 최근 3개월 월평균 수출액 ÷ 전년 같은 3개월 월평균 - 1
+        const amountByMonth = new Map(data.map(d => [d["월"], nonnegativeNumber(d["수출금액_USD"])]));
+        const shift = (label, k) => {
+            const i = Number(label.slice(0, 4)) * 12 + Number(label.slice(5, 7)) - 1 - k;
+            return Math.floor(i / 12) + "." + String(i % 12 + 1).padStart(2, "0");
+        };
+        const avg3 = label => {
+            const v = [0, 1, 2].map(k => amountByMonth.get(shift(label, k)));
+            return v.every(x => x !== null && x !== undefined) ? (v[0] + v[1] + v[2]) / 3 : null;
+        };
+        const avgYoy = labels.map(label => {
+            const now = avg3(label), prev = avg3(shift(label, 12));
+            return now !== null && prev > 0 ? Math.round((now / prev - 1) * 1000) / 10 : null;
+        });
+        changeChart.data.datasets.splice(1, 0, {
+            label: "YoY · 월평균(3개월)", data: avgYoy, borderColor: "#7c3aed", backgroundColor: "#7c3aed",
+            borderWidth: 2, borderDash: [6, 4], pointRadius: 0, pointHoverRadius: 4, tension: 0.25,
+            datalabels: {display: false}
+        });
+        changeChart.update();
+        document.getElementById("changeChartTitle").textContent =
+            itemName + " 월간 수출액 증감률 (YoY / 월평균 YoY / MoM)";
+    }
 }
 
 /* =========================================================
