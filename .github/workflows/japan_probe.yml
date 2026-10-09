@@ -1,0 +1,20 @@
+name: Japan e-Stat Probe
+on:
+  workflow_dispatch:
+    inputs:
+      args:
+        description: 'probe arguments'
+        default: 'list 輸出'
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - env:
+          ESTAT_APP_ID: ${{ secrets.ESTAT_APP_ID }}
+          ARGS: ${{ inputs.args }}
+        run: |
+          test -n "$ESTAT_APP_ID" || { echo 'ESTAT_APP_ID missing'; exit 1; }
+          eval "set -- $ARGS"; python tools/estat_probe.py "$@"
