@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>일본 테크 품목 수출</title><script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+<style>
+:root{font-family:Arial,"Noto Sans KR",sans-serif;color:#18283c;background:#f5f6f8}*{box-sizing:border-box}body{margin:0}main{max-width:1400px;margin:26px auto;padding:0 22px}a{color:#245bb0}nav{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:25px}h1{font-size:30px;margin:0 0 12px}h2{font-size:20px;margin-top:0}p{line-height:1.65}.muted{color:#64748b;font-size:14px}.panel,.card{background:white;border:1px solid #e3e8ef;border-radius:12px;padding:22px;margin-bottom:20px}.controls{display:flex;gap:16px;flex-wrap:wrap}label{display:grid;gap:7px;font-size:13px;font-weight:bold}select{padding:10px;border:1px solid #cad2dc;border-radius:7px;background:white;max-width:100%}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.card strong{display:block;font-size:26px;margin:12px 0}.notice{background:#fff7e6;border-left:4px solid #dc990e;padding:15px;margin:16px 0;line-height:1.65}.chart{height:360px;position:relative}.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.table{overflow:auto;max-height:560px}table{border-collapse:collapse;width:100%;font-size:14px}thead{position:sticky;top:0;background:white}th,td{padding:10px 12px;border-bottom:1px solid #e3e8ef;text-align:right;white-space:nowrap}th:first-child,td:first-child,th:nth-child(2),td:nth-child(2){text-align:left}.up{color:#c0392b}.down{color:#1f5fbf}button.link{background:none;border:0;color:#245bb0;cursor:pointer;padding:0;font:inherit;text-decoration:underline;text-align:left}.lag{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.lag span{background:#eef3fa;border-radius:6px;padding:6px 10px;font-size:13px}.lag span.best{background:#245bb0;color:white}@media(max-width:800px){.cards{grid-template-columns:1fr 1fr}.grid{display:block}.chart{height:290px}}@media(max-width:480px){.cards{grid-template-columns:1fr}main{padding:0 12px}}
+</style></head><body><main>
+<nav><a href="./">월간 수출</a><a href="./provisional.html">10일 잠정수출</a><a href="./regional.html">지역 · 업체 추적</a><a href="./taiwan.html">대만 테크 월매출</a><b>일본 테크 수출</b></nav>
+<h1>일본 테크 품목 수출 · 국가별</h1>
+<p class="muted">일본 재무성 무역통계의 품목별 수출입니다. 일본 기업은 월매출을 공시하지 않으므로, 반도체 장비·소재·부품 품목 전체의 수출로 해당 업체군의 업황을 봅니다. 기업별 수출액이 아닙니다. 국가별 출하는 고객국(한국·대만·중국·미국) 설비투자와 생산 흐름을 보여줍니다.</p>
+<div id="notice" class="notice" hidden></div>
+
+<section class="panel"><h2>전체 품목 · 최신월</h2><p id="summary" class="muted"></p>
+<div class="table"><table><thead><tr><th>분야</th><th>품목</th><th>최신월</th><th>수출 (백만 USD)</th><th>YoY (USD)</th><th>YoY (엔화)</th><th>3개월 합계 YoY</th><th>중국 비중</th><th>대만 비중</th><th>한국 비중</th><th>미국 비중</th><th>대표 일본 업체</th></tr></thead><tbody id="list"></tbody></table></div></section>
+
+<section class="panel"><div class="controls">
+<label>품목<select id="item"></select></label><label>통화<select id="cur"><option value="USD">USD (한국 수출과 비교)</option><option value="JPY">엔화 (일본 공시 기준)</option></select></label><label>기간<select id="range"><option value="all">2015년부터</option><option value="2022">2022년부터</option><option value="24">최근 24개월</option><option value="12">최근 12개월</option></select></label>
+</div><p id="desc" class="muted"></p></section>
+
+<div class="cards"><div class="card">최신월 수출<strong id="cAmt">—</strong><span id="cMonth" class="muted"></span></div><div class="card">전년동월 대비<strong id="cYoy">—</strong><span id="cYoyNote" class="muted"></span></div><div class="card">3개월 합계 YoY<strong id="c3m">—</strong><span class="muted">월별 변동 완화</span></div><div class="card">중국향 3개월 YoY<strong id="cCn">—</strong><span class="muted">수출통제·중국 투자 영향 확인</span></div></div>
+
+<section class="panel"><h2 id="t1">국가별 수출</h2><div class="chart"><canvas id="stack"></canvas></div></section>
+<div class="grid">
+<section class="panel"><h2>국가별 YoY (3개월 합계)</h2><div class="chart"><canvas id="cyoy"></canvas></div></section>
+<section class="panel"><h2>국가별 비중</h2><div class="chart"><canvas id="share"></canvas></div></section>
+</div>
+<section class="panel"><h2 id="t2">일본 수출 YoY vs 한국 수출 YoY</h2><p class="muted">둘 다 USD 기준 3개월 이동평균 YoY. 한국 품목 수출 데이터는 2020년부터입니다.</p><div class="controls"><label>비교할 한국 품목<select id="krhs"></select></label></div><div class="chart"><canvas id="cmp"></canvas></div><p id="corr" class="muted"></p><div id="lags" class="lag"></div><p class="muted">"일본 +k개월"은 일본 수출 YoY가 한국 수출 YoY보다 k개월 먼저 움직였을 때의 상관계수입니다. 참고용입니다.</p></section>
+
+<section class="panel"><h2>기준과 출처</h2><p class="muted">출처: 일본 재무성 무역통계 品別国別表(輸出), e-Stat API. 9자리 통계품목을 표의 HS 접두 코드로 합산했고 단위는 천 엔입니다. USD 환산은 미 연준 월평균 환율(FRED EXJPUS)을 씁니다. 엔화 약세기에는 엔화 기준 증가율이 USD 기준보다 높게 나오므로 두 기준을 함께 표시합니다. 당해연도는 확보(確報), 과거연도는 확정치입니다. 매월 말 공표 후 29일·1일·5일에 자동 수집합니다.</p><p id="status" class="muted"></p></section>
+</main>
+<script>
+'use strict';
+const el=id=>document.getElementById(id),charts={};
+const num=v=>v==null||String(v).trim()===''||!isFinite(Number(v))?null:Number(v);
+const pct=v=>v==null||!isFinite(v)?'—':`${v>0?'+':''}${v.toFixed(1)}%`;
+const cls=v=>v==null?'':v>0?'up':'down';
+const mid=s=>Number(s.slice(0,4))*12+Number(s.slice(5,7))-1,mlab=i=>`${Math.floor(i/12)}.${String(i%12+1).padStart(2,'0')}`;
+const C={KR:['한국','#0f766e'],CN:['중국','#c0392b'],TW:['대만','#245bb0'],US:['미국','#7c3aed'],VN:['베트남','#d97706'],OTHER:['기타','#94a3b8']};
+function csv(t){return t.replace(/^﻿/,'').trim().split(/\r?\n/).map(l=>{const o=[];let v='',q=false;for(let i=0;i<l.length;i++){const c=l[i];if(c==='"'){if(q&&l[i+1]==='"'){v+='"';i++;}else q=!q;}else if(c===','&&!q){o.push(v);v='';}else v+=c;}o.push(v);return o;});}
+function recs(t){const [h,...r]=csv(t);return r.filter(x=>x.some(Boolean)).map(x=>Object.fromEntries(h.map((k,i)=>[k,x[i]??''])));}
+async function read(p,opt){const r=await fetch(p+'?v='+Date.now(),{cache:'no-store'});if(opt&&!r.ok)return null;if(!r.ok)throw Error(p+': HTTP '+r.status);return r.text();}
+function opt(s,v,l){const o=document.createElement('option');o.value=v;o.textContent=l;s.append(o);}
+function pearson(p){if(p.length<6)return null;const n=p.length,mx=p.reduce((s,x)=>s+x[0],0)/n,my=p.reduce((s,x)=>s+x[1],0)/n;let a=0,b=0,c=0;for(const [x,y] of p){a+=(x-mx)*(y-my);b+=(x-mx)**2;c+=(y-my)**2;}return b&&c?a/Math.sqrt(b*c):null;}
+let cfg,data=new Map(),months=[],status={},hsNames={},kr={};
+// data: key item|country -> Map(month -> {usd,jpy})
+function ser(item,country,cur){const m=data.get(item+'|'+country);const out=new Map();if(!m)return out;for(const [k,v] of m)out.set(k,cur==='JPY'?v.jpy:v.usd);return out;}
+function yoyAt(m,k){const a=m.get(k),b=m.get(mlab(mid(k)-12));return a!=null&&b>0?(a/b-1)*100:null;}
+function sum3(m,i){let s=0;for(let j=0;j<3;j++){const v=m.get(mlab(i-j));if(v==null)return null;s+=v;}return s;}
+function y3At(m,k){const i=mid(k),a=sum3(m,i),b=sum3(m,i-12);return a!=null&&b>0?(a/b-1)*100:null;}
+function ma3(m){const o=new Map();for(const k of m.keys()){const i=mid(k),v=[0,1,2].map(j=>m.get(mlab(i-j)));o.set(k,v.every(x=>x!=null)?v.reduce((s,x)=>s+x,0)/3:null);}return o;}
+function draw(id,cfg){charts[id]?.destroy();charts[id]=new Chart(el(id),cfg);}
+const base={responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{position:'bottom'}}};
+function renderList(){el('list').replaceChildren();const last=months.at(-1);for(const it of cfg.items){const w=ser(it.key,'WORLD','USD'),wj=ser(it.key,'WORLD','JPY');const tr=document.createElement('tr');const td=(t,k)=>{const d=document.createElement('td');d.textContent=t;if(k)d.className=k;tr.append(d);return d;};
+ td(it.group);const n=td('');const b=document.createElement('button');b.className='link';b.textContent=it.name;b.onclick=()=>{el('item').value=it.key;fillKR();scrollTo({top:el('item').getBoundingClientRect().top+scrollY-20,behavior:'smooth'});};n.append(b);
+ const k=[...w.keys()].filter(x=>w.get(x)!=null).sort().at(-1);if(!k){td('미수집');for(let i=0;i<8;i++)td('—');td(it.jp_companies);el('list').append(tr);continue;}
+ td(k);td((w.get(k)/1e6).toLocaleString(undefined,{maximumFractionDigits:0}));const y=yoyAt(w,k),yj=yoyAt(wj,k),y3=y3At(w,k);td(pct(y),cls(y));td(pct(yj),cls(yj));td(pct(y3),cls(y3));
+ for(const c of ['CN','TW','KR','US']){const v=ser(it.key,c,'USD').get(k);td(v!=null&&w.get(k)>0?(v/w.get(k)*100).toFixed(1)+'%':'—');}td(it.jp_companies);el('list').append(tr);}
+ el('summary').textContent=cfg.items.length+'개 품목 · '+(months.length?months[0]+' ~ '+last:'첫 수집 대기')+' · 품목명을 누르면 아래 차트로 이동합니다. 비중은 최신월 기준입니다.';}
+function fillKR(){const it=cfg.items.find(x=>x.key===el('item').value);el('krhs').replaceChildren();it.kr_hs.forEach(h=>opt(el('krhs'),h,(hsNames[h]||h)+' · '+h));render();}
+async function krSeries(h){if(!(h in kr)){const t=await read('summary_'+h+'.csv',true);const m=new Map();if(t)recs(t).forEach(r=>m.set(r['월'],num(r['수출금액_USD'])));kr[h]=m;}return kr[h];}
+async function render(){const it=cfg.items.find(x=>x.key===el('item').value),cur=el('cur').value,unit=cur==='USD'?'백만 USD':'억 엔',div=cur==='USD'?1e6:1e5;
+ el('desc').textContent=it.name+' · 일본 HS '+it.prefixes.join(', ')+' · 대표 일본 업체: '+it.jp_companies+' · 한국 연결: '+it.kr_link;
+ const w=ser(it.key,'WORLD',cur),wu=ser(it.key,'WORLD','USD');let labels=months.filter(k=>w.get(k)!=null);const r=el('range').value;if(r==='2022')labels=labels.filter(k=>k>='2022.01');else if(r!=='all')labels=labels.slice(-Number(r));
+ const k=labels.at(-1);el('cAmt').textContent=k?(w.get(k)/div).toLocaleString(undefined,{maximumFractionDigits:0})+' '+unit:'—';el('cMonth').textContent=k||'수집 대기';
+ const y=k?yoyAt(w,k):null,y3=k?y3At(w,k):null,cn=k?y3At(ser(it.key,'CN',cur),k):null;[['cYoy',y],['c3m',y3],['cCn',cn]].forEach(([id,v])=>{el(id).textContent=pct(v);el(id).className=cls(v);});el('cYoyNote').textContent=cur+' 기준';
+ el('t1').textContent=it.name+' · 국가별 수출 ('+unit+')';
+ const keys=['CN','TW','KR','US','VN','OTHER'];
+ draw('stack',{data:{labels,datasets:[...keys.map(c=>({type:'bar',label:C[c][0],data:labels.map(x=>{const v=ser(it.key,c,cur).get(x);return v==null?null:v/div;}),backgroundColor:C[c][1],stack:'s',yAxisID:'y'})),{type:'line',label:'전체 YoY 3개월 합계 (%)',data:labels.map(x=>y3At(w,x)),borderColor:'#111827',pointRadius:0,yAxisID:'y1'}]},options:{...base,scales:{x:{stacked:true,grid:{display:false},ticks:{maxTicksLimit:16}},y:{stacked:true,title:{display:true,text:unit}},y1:{position:'right',grid:{display:false},title:{display:true,text:'YoY %'}}}}});
+ draw('cyoy',{type:'line',data:{labels,datasets:['CN','TW','KR','US'].map(c=>{const m=ser(it.key,c,cur);return{label:C[c][0],data:labels.map(x=>y3At(m,x)),borderColor:C[c][1],pointRadius:0};})},options:{...base,scales:{x:{grid:{display:false},ticks:{maxTicksLimit:10}},y:{title:{display:true,text:'YoY % ('+cur+')'}}}}});
+ draw('share',{type:'line',data:{labels,datasets:['CN','TW','KR','US'].map(c=>{const m=ser(it.key,c,'USD');return{label:C[c][0],data:labels.map(x=>{const a=sum3(m,mid(x)),b=sum3(wu,mid(x));return a!=null&&b>0?a/b*100:null;}),borderColor:C[c][1],pointRadius:0};})},options:{...base,scales:{x:{grid:{display:false},ticks:{maxTicksLimit:10}},y:{title:{display:true,text:'비중 % (3개월 합계)'}}}}});
+ const h=el('krhs').value,km=await krSeries(h),jy=new Map(labels.map(x=>[x,yoyAt(wu,x)])),ky=new Map([...km.keys()].map(x=>[x,yoyAt(km,x)])),j3=ma3(new Map([...wu.keys()].map(x=>[x,yoyAt(wu,x)]))),k3=ma3(ky);
+ el('t2').textContent=it.name+' 일본 수출 YoY vs 한국 '+(hsNames[h]||h)+' 수출 YoY';
+ draw('cmp',{type:'line',data:{labels,datasets:[{label:'일본 '+it.name+' (3M 평균 YoY)',data:labels.map(x=>j3.get(x)??null),borderColor:'#c0392b',pointRadius:1},{label:'한국 '+(hsNames[h]||h)+' (3M 평균 YoY)',data:labels.map(x=>k3.get(x)??null),borderColor:'#245bb0',pointRadius:1}]},options:{...base,scales:{x:{grid:{display:false},ticks:{maxTicksLimit:16}},y:{title:{display:true,text:'YoY % (USD)'}}}}});
+ const pairs=l=>labels.map(x=>[j3.get(mlab(mid(x)-l)),k3.get(x)]).filter(p=>p[0]!=null&&p[1]!=null);const r0=pearson(pairs(0));
+ el('corr').textContent=r0==null?'상관계수 산출 불가 · 겹치는 월 6개 미만':`동일 월 상관계수 r = ${r0.toFixed(2)} · ${pairs(0).length}개월`;
+ el('lags').replaceChildren();const res=[-3,-2,-1,0,1,2,3].map(l=>[l,pearson(pairs(l))]);const best=res.filter(x=>x[1]!=null).sort((a,b)=>b[1]-a[1])[0];for(const [l,v] of res){const s=document.createElement('span');s.textContent=(l>0?'일본 +'+l+'개월':l<0?'한국 +'+(-l)+'개월':'동시')+': '+(v==null?'—':v.toFixed(2));if(best&&l===best[0])s.className='best';el('lags').append(s);}}
+async function init(){const [c,d,s,h]=await Promise.all([read('japan_items.json'),read('japan_exports.csv',true),read('japan_exports_status.json',true),read('hs_codes.csv')]);
+ cfg=JSON.parse(c);status=s?JSON.parse(s):{};hsNames=Object.fromEntries(csv(h).slice(1).map(r=>[r[0],r.slice(1).join(',')]));const ms=new Set();
+ if(d)for(const r of recs(d)){const k=r.item+'|'+r.country;if(!data.has(k))data.set(k,new Map());data.get(k).set(r.month,{usd:num(r.amount_USD),jpy:num(r.amount_kJPY)!=null?num(r.amount_kJPY)*1000:null});ms.add(r.month);}
+ months=[...ms].sort();
+ if(!d){el('notice').hidden=false;el('notice').textContent='일본 수출 데이터 첫 수집 전입니다. GitHub Actions의 "Japan Exports (e-Stat)" 워크플로우가 실행되면 2015년부터 표시됩니다.';}
+ else if(status.failures?.length){el('notice').hidden=false;el('notice').textContent='최근 수집에서 일부 실패: '+status.failures.slice(0,4).map(f=>(f.item||'')+' '+(f.error||'')).join(' · ')+'. 기존 데이터는 유지됩니다.';}
+ el('status').textContent=status.updated_at?'최근 수집 '+status.updated_at.slice(0,16).replace('T',' ')+' · 범위 '+(status.range||[]).join(' ~ ')+(status.fx_last?' · 환율 최신 '+status.fx_last:''):'';
+ const groups=[...new Set(cfg.items.map(i=>i.group))];for(const g of groups){const og=document.createElement('optgroup');og.label=g;cfg.items.filter(i=>i.group===g).forEach(i=>opt(og,i.key,i.name));el('item').append(og);}
+ el('item').onchange=fillKR;el('krhs').onchange=render;el('cur').onchange=render;el('range').onchange=render;renderList();fillKR();}
+init().catch(e=>{el('notice').hidden=false;el('notice').textContent='불러오기 실패: '+e.message;});
+</script></body></html>
