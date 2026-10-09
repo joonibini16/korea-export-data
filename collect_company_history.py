@@ -148,20 +148,21 @@ def main():
     candidates=[]
     for t in r['backlog_tables']:
      rr=t['rows'];header=' '.join(' '.join(a) for a in rr[:2]).replace(' ','');before=t['before'].replace(' ','')
-     if not all(x in header for x in ('수주','기납','잔')):continue
+     if not (all(x in header for x in ('수주','기납','잔')) or (cid=='064760' and '수주잔고' in header)):continue
      if cid=='007660' and '수주상황' not in t['before']:continue
      unit='USD_thousand' if ('천USD' in before or '천US$' in before) else 'KRW_million' if '백만원' in before else 'KRW_100m' if '억원' in before else 'KRW_thousand' if '천원' in before else None
      if not unit:continue
-     totals=[a for a in rr[2:] if a and a[0].replace(' ','') in ('합계','계','총계')]
+     totals=[a for a in rr[1 if cid=='064760' and len(rr[0])==2 else 2:] if a and a[0].replace(' ','') in ('합계','계','총계')]
      if not totals:continue
      try:
       vals=totals[-1][1:]
       if len(vals)==6:amt=[number(x) for x in vals[1::2]]
+      elif len(vals)==1 and cid=='064760':amt=[number(vals[0]),Decimal(0),number(vals[0])]
       elif len(vals)==3 and ('금액' in header or '수량' not in header):amt=[number(x) for x in vals]
       else:continue
       gross,delivered,balance=amt
       if min(amt)<0 or (cid=='222800' and abs(gross-delivered-balance)>max(Decimal(2),gross*Decimal('0.00001'))):raise ValueError('공시 표 금액 산식 불일치')
-      details=[a for a in rr[2:] if a and a[0].replace(' ','') not in ('합계','계','총계') and len(a)>=len(vals)]
+      details=[a for a in rr[1 if cid=='064760' and len(rr[0])==2 else 2:] if a and a[0].replace(' ','') not in ('합계','계','총계') and len(a)>=len(vals)]
       if details and abs(sum(number(a[-1]) for a in details)-balance)>Decimal(len(details)):raise ValueError('품목별 잔고 합계 불일치')
       candidates.append((unit,balance))
      except ValueError as error:issues.append(dict(company_id=cid,period=r['period'],metric='backlog',source=r['url'],reason=str(error)))

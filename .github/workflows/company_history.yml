@@ -42,11 +42,27 @@ jobs:
           git add company_financial_history_sources.json company_financials.csv company_financial_coverage.json company_domestic_financials.csv company_backlog_sources.json company_backlog.csv company_backlog_coverage.json company_history_collection_status.json
           if git diff --cached --quiet; then exit 0; fi
           git commit -m 'Backfill verified quarterly company history from 2020'
+          git fetch origin main
+          git rebase origin/main
           git push origin HEAD:main
       - name: Preserve collection diagnostics
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: company-history-diagnostics
-          path: company_history_collection_status.json
+          path: |
+            company_history_collection_status.json
+            company_financial_history_sources.json
+            company_financials.csv
+            company_financial_coverage.json
+            company_domestic_financials.csv
+            company_backlog_sources.json
+            company_backlog.csv
+            company_backlog_coverage.json
           if-no-files-found: ignore
+      - name: Save downloaded filings even after a publishing conflict
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: .history-cache
+          key: company-history-${{ github.run_id }}
