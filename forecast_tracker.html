@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>매출 예측 추적</title><script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+<style>
+:root{font-family:Arial,"Noto Sans KR",sans-serif;color:#18283c;background:#f5f6f8}*{box-sizing:border-box}body{margin:0}main{max-width:1400px;margin:26px auto;padding:0 22px}a{color:#245bb0}nav{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:25px}h1{font-size:30px;margin:0 0 12px}h2{font-size:20px;margin-top:0}p{line-height:1.65}.muted{color:#64748b;font-size:14px}.panel,.card{background:white;border:1px solid #e3e8ef;border-radius:12px;padding:22px;margin-bottom:20px}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.card strong{display:block;font-size:26px;margin:12px 0}.controls{display:flex;gap:16px;flex-wrap:wrap}label{display:grid;gap:7px;font-size:13px;font-weight:bold}select{padding:10px;border:1px solid #cad2dc;border-radius:7px;background:white}.chart{height:340px;position:relative}.table{overflow:auto;max-height:620px}table{border-collapse:collapse;width:100%;font-size:14px}thead{position:sticky;top:0;background:white}th,td{padding:10px 12px;border-bottom:1px solid #e3e8ef;text-align:right;white-space:nowrap}th:first-child,td:first-child,th:nth-child(2),td:nth-child(2){text-align:left}.win{color:#087f74;font-weight:bold}.lose{color:#b45309}.pending{color:#64748b}.notice{background:#fff7e6;border-left:4px solid #dc990e;padding:15px;margin:16px 0;line-height:1.65}@media(max-width:800px){.cards{grid-template-columns:1fr 1fr}.chart{height:280px}}@media(max-width:480px){.cards{grid-template-columns:1fr}main{padding:0 12px}}
+</style></head><body><main>
+<nav><a href="./">월간 수출</a><a href="./provisional.html">10일 잠정수출</a><a href="./regional.html">지역 · 업체 추적</a><a href="./taiwan.html">대만 테크 월매출</a><a href="./japan.html">일본 테크 수출</a><b>매출 예측 추적</b></nav>
+<h1>수출 기반 매출 예측 · 컨센서스 · 실제 실적 추적</h1>
+<p class="muted">지역·업체 추적 페이지의 분기 매출 예상과 당시 네이버 컨센서스를 매주 고정 저장(스냅샷)하고, 실적이 발표되면 실제 매출과 비교합니다. 저장된 예측은 나중에 수정하지 않으므로, 실적을 미리 알고 맞춘 것처럼 보이는 왜곡이 없습니다.</p>
+<div id="notice" class="notice" hidden></div>
+<div class="cards">
+ <div class="card">실적 확인 건수<strong id="cN">—</strong><span id="cNsub" class="muted"></span></div>
+ <div class="card">수출 기반 예측 평균 오차<strong id="cOur">—</strong><span class="muted">|예측 ÷ 실제 − 1| 평균</span></div>
+ <div class="card">컨센서스 평균 오차<strong id="cCons">—</strong><span class="muted">같은 시점 컨센서스 기준</span></div>
+ <div class="card">컨센 괴리 방향 적중률<strong id="cDir">—</strong><span class="muted">예측이 컨센보다 높/낮았을 때 실제도 같은 쪽</span></div>
+</div>
+<section class="panel"><div class="controls"><label>분기<select id="period"></select></label><label>비교 시점<select id="vintage"><option value="last">발표 전 마지막 스냅샷</option><option value="m1">1개월 수집 시점</option><option value="m2">2개월 수집 시점</option><option value="m3">3개월 모두 수집 시점</option></select></label></div>
+<p class="muted">실적 발표일은 네이버 데이터에서 해당 분기가 추정치(E)에서 실적으로 바뀐 첫 스냅샷 날짜로 봅니다. 실제 매출은 공시 수집 매출(연결)을 우선 쓰고, 없으면 네이버 실적을 씁니다.</p>
+<div class="table"><table><thead><tr><th>업체</th><th>분기</th><th>스냅샷</th><th>수집 월</th><th>수출 기반 예측</th><th>당시 컨센서스</th><th>예측 vs 컨센</th><th>실제 매출</th><th>예측 오차</th><th>컨센 오차</th><th>더 가까운 쪽</th><th>괴리 방향</th></tr></thead><tbody id="rows"></tbody></table></div></section>
+<section class="panel"><h2>업체별 누적 성적</h2><div class="table"><table><thead><tr><th>업체</th><th>확인 분기 수</th><th>예측 평균 오차</th><th>컨센 평균 오차</th><th>예측이 더 가까운 비율</th><th>괴리 방향 적중</th></tr></thead><tbody id="byCompany"></tbody></table></div></section>
+<section class="panel"><h2 id="tTitle">예측 경로</h2><div class="controls"><label>업체 · 분기<select id="pick"></select></label></div><div class="chart"><canvas id="path"></canvas></div><p class="muted">스냅샷마다 저장된 예측(네모)과 컨센서스(X)가 실적 발표 전까지 어떻게 움직였는지, 실제 매출(가로선)과 비교합니다.</p></section>
+<section class="panel"><h2>기준</h2><p class="muted">예측 모형: 매출(t) = 기준 분기 매출 × (추정 분기 수출 ÷ 기준 분기 수출)^β (qoq-elasticity-v1). 스냅샷: 매주 월요일 컨센서스 갱신 후, 그리고 지역 수출 수집(15·16·20일) 후 자동 저장. 모형이 바뀌면 model 열에 버전이 달라져 구분됩니다. 원자료: <a href="./forecast_log.csv">forecast_log.csv</a></p><p id="status" class="muted"></p></section>
+</main>
+<script>
+'use strict';
+const el=id=>document.getElementById(id),charts={};
+const num=v=>v==null||String(v).trim()===''||!isFinite(Number(v))?null:Number(v);
+const pct=v=>v==null?'—':`${v>0?'+':''}${v.toFixed(1)}%`;
+function csv(t){return t.replace(/^﻿/,'').trim().split(/\r?\n/).map(l=>{const o=[];let v='',q=false;for(let i=0;i<l.length;i++){const c=l[i];if(c==='"'){if(q&&l[i+1]==='"'){v+='"';i++;}else q=!q;}else if(c===','&&!q){o.push(v);v='';}else v+=c;}o.push(v);return o;});}
+function recs(t){const [h,...r]=csv(t);return r.filter(x=>x.some(Boolean)).map(x=>Object.fromEntries(h.map((k,i)=>[k,x[i]??''])));}
+async function read(p,opt){const r=await fetch(p+'?v='+Date.now(),{cache:'no-store'});if(opt&&!r.ok)return null;if(!r.ok)throw Error(p+': HTTP '+r.status);return r.text();}
+function opt(s,v,l){const o=document.createElement('option');o.value=v;o.textContent=l;s.append(o);}
+function td(tr,t,cls){const d=document.createElement('td');d.textContent=t;if(cls)d.className=cls;tr.append(d);return d;}
+let log=[],actual=new Map(),announced=new Map();
+function pickSnapshot(rows,mode){const pre=rows.filter(r=>!r.announce||r.snapshot_date<r.announce);if(!pre.length)return null;
+ if(mode==='last')return pre.at(-1);const n={m1:1,m2:2,m3:3}[mode];const m=pre.filter(r=>r.months_collected.split(' ').filter(Boolean).length===n);return m.at(-1)||null;}
+function evaluate(r){const a=actual.get(r.company_id+'|'+r.period),f=num(r.forecast_revenue_100m),c=num(r.consensus_revenue_100m);
+ const o={a,f,c,ef:a&&f?Math.abs(f/a-1)*100:null,ec:a&&c?Math.abs(c/a-1)*100:null};
+ if(o.ef!=null&&o.ec!=null)o.closer=o.ef<o.ec?'예측':o.ef>o.ec?'컨센':'동일';
+ if(a&&f&&c&&f!==c)o.dir=Math.sign(f-c)===Math.sign(a-c);return o;}
+function render(){const period=el('period').value,mode=el('vintage').value;el('rows').replaceChildren();
+ const groups=new Map();for(const r of log){const k=r.company_id+'|'+r.period;if(!groups.has(k))groups.set(k,[]);groups.get(k).push(r);}
+ const all=[];for(const [k,rows] of groups){rows.sort((a,b)=>a.snapshot_date.localeCompare(b.snapshot_date));const s=pickSnapshot(rows,mode);if(s)all.push({s,e:evaluate(s)});}
+ const shown=all.filter(x=>period==='all'||x.s.period===period).sort((a,b)=>(b.e.ef??-1)-(a.e.ef??-1));
+ for(const {s,e} of shown){const tr=document.createElement('tr');td(tr,s.name);td(tr,s.period);td(tr,s.snapshot_date);td(tr,s.months_collected.split(' ').length+'개월');
+  td(tr,e.f!=null?e.f.toLocaleString()+'억':(s.status_note||'—'));td(tr,e.c!=null?e.c.toLocaleString()+'억':'—');td(tr,e.f!=null&&e.c?pct((e.f/e.c-1)*100):'—');
+  td(tr,e.a!=null?Math.round(e.a).toLocaleString()+'억':'발표 대기','' + (e.a==null?'pending':''));td(tr,e.ef!=null?e.ef.toFixed(1)+'%':'—');td(tr,e.ec!=null?e.ec.toFixed(1)+'%':'—');
+  td(tr,e.closer||'—',e.closer==='예측'?'win':e.closer==='컨센'?'lose':'');td(tr,e.dir==null?'—':e.dir?'적중':'빗나감',e.dir?'win':e.dir===false?'lose':'');el('rows').append(tr);}
+ const done=shown.filter(x=>x.e.ef!=null&&x.e.ec!=null),avg=a=>a.length?a.reduce((s,v)=>s+v,0)/a.length:null,dirs=shown.filter(x=>x.e.dir!=null);
+ el('cN').textContent=done.length+'건';el('cNsub').textContent=`예측 ${shown.filter(x=>x.e.f!=null).length}건 중 · 발표 대기 ${shown.filter(x=>x.e.a==null).length}건`;
+ const o=avg(done.map(x=>x.e.ef)),c=avg(done.map(x=>x.e.ec));el('cOur').textContent=o==null?'—':o.toFixed(1)+'%';el('cCons').textContent=c==null?'—':c.toFixed(1)+'%';
+ el('cDir').textContent=dirs.length?(dirs.filter(x=>x.e.dir).length/dirs.length*100).toFixed(0)+'% ('+dirs.filter(x=>x.e.dir).length+'/'+dirs.length+')':'—';
+ el('byCompany').replaceChildren();const byC=new Map();for(const x of all.filter(x=>x.e.ef!=null&&x.e.ec!=null)){if(!byC.has(x.s.name))byC.set(x.s.name,[]);byC.get(x.s.name).push(x.e);}
+ for(const [n,es] of [...byC].sort((a,b)=>b[1].length-a[1].length)){const tr=document.createElement('tr');td(tr,n);td(tr,es.length+'');td(tr,avg(es.map(e=>e.ef)).toFixed(1)+'%');td(tr,avg(es.map(e=>e.ec)).toFixed(1)+'%');
+  td(tr,(es.filter(e=>e.closer==='예측').length/es.length*100).toFixed(0)+'%');const d=es.filter(e=>e.dir!=null);td(tr,d.length?d.filter(e=>e.dir).length+'/'+d.length:'—');el('byCompany').append(tr);}
+ if(!byC.size){const tr=document.createElement('tr');td(tr,'아직 실적이 발표된 분기가 없습니다. 첫 결과는 3분기 실적 발표(10월 말~11월 중순) 이후 채워집니다.');el('byCompany').append(tr);}}
+function renderPath(){const [id,period]=el('pick').value.split('|');const rows=log.filter(r=>r.company_id===id&&r.period===period).sort((a,b)=>a.snapshot_date.localeCompare(b.snapshot_date));if(!rows.length)return;
+ const labels=rows.map(r=>r.snapshot_date),a=actual.get(id+'|'+period);el('tTitle').textContent=rows[0].name+' · '+period+' 예측 경로';
+ charts.p?.destroy();charts.p=new Chart(el('path'),{type:'line',data:{labels,datasets:[{label:'수출 기반 예측',data:rows.map(r=>num(r.forecast_revenue_100m)),borderColor:'#d97835',pointStyle:'rect',pointRadius:6,pointBackgroundColor:'#fff'},{label:'컨센서스',data:rows.map(r=>num(r.consensus_revenue_100m)),borderColor:'#6b21a8',pointStyle:'crossRot',pointRadius:8},...(a?[{label:'실제 매출',data:labels.map(()=>a),borderColor:'#087f74',borderDash:[6,4],pointRadius:0}]:[])]},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{position:'bottom'}},scales:{y:{title:{display:true,text:'억원'}},x:{grid:{display:false}}}}});}
+async function init(){const [l,f,n,w]=await Promise.all([read('forecast_log.csv',true),read('company_financials.csv',true),read('naver_consensus.csv',true),read('company_watchlist.json')]);
+ if(!l){el('notice').hidden=false;el('notice').textContent='아직 저장된 스냅샷이 없습니다.';return;}
+ log=recs(l);if(f)for(const r of recs(f)){const v=num(r.revenue_KRW);if(v!=null)actual.set(r.company_id+'|'+r.period,v/1e8);}
+ if(n){const byKey=new Map();for(const r of recs(n)){const k=r.company_id+'|'+r.period;if(!byKey.has(k))byKey.set(k,[]);byKey.get(k).push(r);}
+  for(const [k,rs] of byKey){rs.sort((a,b)=>a.snapshot_date.localeCompare(b.snapshot_date));const firstActual=rs.find(r=>r.is_estimate==='0');const hadEst=rs.some(r=>r.is_estimate==='1');
+   if(firstActual&&hadEst)announced.set(k,firstActual.snapshot_date);if(firstActual&&!actual.has(k)&&num(firstActual.revenue_100m)!=null&&hadEst)actual.set(k,num(rs.filter(r=>r.is_estimate==='0').at(-1).revenue_100m));}}
+ // 실제 매출: 공시 수집 매출(연결) 우선, 없으면 네이버에서 추정(E)→실적 전환이 관측된 값.
+ for(const k of [...actual.keys()])if(!log.some(r=>r.company_id+'|'+r.period===k))actual.delete(k);
+ for(const r of log)r.announce=announced.get(r.company_id+'|'+r.period)||null;
+ const periods=[...new Set(log.map(r=>r.period))].sort().reverse();opt(el('period'),'all','전체 분기');periods.forEach(p=>opt(el('period'),p,p));
+ const keys=[...new Set(log.filter(r=>num(r.forecast_revenue_100m)!=null).map(r=>r.company_id+'|'+r.period))];keys.sort();
+ for(const k of keys){const r=log.find(x=>x.company_id+'|'+x.period===k);opt(el('pick'),k,r.name+' · '+r.period);}
+ el('status').textContent='스냅샷 '+new Set(log.map(r=>r.snapshot_date)).size+'회 · 최근 '+[...new Set(log.map(r=>r.snapshot_date))].sort().at(-1)+' · 저장 행 '+log.length+'개';
+ el('period').onchange=render;el('vintage').onchange=render;el('pick').onchange=renderPath;render();if(keys.length)renderPath();}
+init().catch(e=>{el('notice').hidden=false;el('notice').textContent='불러오기 실패: '+e.message;});
+</script></body></html>
