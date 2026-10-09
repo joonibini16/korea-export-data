@@ -8,7 +8,7 @@ are stored. Values are kept as published; nothing is interpolated or zero-filled
 
 Usage:
   python collect_taiwan_revenue.py            # backfill missing months + refresh recent 3
-  python collect_taiwan_revenue.py --full     # re-download every month from start_month
+  python collect_taiwan_revenue.py --full     # re-download every month from start_month (2015.01)
 """
 import csv
 import json
@@ -128,7 +128,7 @@ def main():
     full = '--full' in sys.argv
     watch = json.loads(WATCH.read_text(encoding='utf-8'))
     companies = {c['id']: c for c in watch['companies']}
-    sy, sm = map(int, watch.get('start_month', '2022.01').split('.'))
+    sy, sm = map(int, watch.get('start_month', '2015.01').split('.'))
     now = datetime.now(KST)
     # month M is due by day 10 of M+1; collect through previous month
     ly, lm = (now.year, now.month - 1) if now.month > 1 else (now.year - 1, 12)
@@ -147,7 +147,8 @@ def main():
     for y, m in all_months:
         label = f'{y}.{m:02d}'
         have = {cid for (mo, cid) in existing if mo == label}
-        if not full and (y, m) not in recent and have >= set(companies):
+        # past months are fetched once; later-listed companies stay absent there
+        if not full and (y, m) not in recent and have:
             continue
         for market in sorted({c['market'] for c in companies.values()}):
             wanted = {cid for cid, c in companies.items() if c['market'] == market}
@@ -167,7 +168,8 @@ def main():
                 existing[(label, cid)] = {'month': label, 'company_id': cid, 'market': market,
                                           'retrieved_at': stamp, **row}
             missing = wanted - set(got)
-            if missing and not any(f['month'] == label and f['market'] == market for f in failures):
+            # companies listed later than start_month are simply absent in early months
+            if missing and (y, m) in recent and not any(f['month'] == label and f['market'] == market for f in failures):
                 failures.append({'month': label, 'market': market,
                                  'error': 'NOT_IN_TABLE ' + ','.join(sorted(missing))})
         fetched_months += 1
@@ -181,7 +183,7 @@ def main():
     coverage = []
     for cid, c in companies.items():
         ms = sorted(r['month'] for r in rows if r['company_id'] == cid and r.get('revenue_kNTD'))
-        expected = [f'{y}.{m:02d}' for y, m in all_months]
+        expected = [f'{y}.{m:02d}' for y, m in all_months if ms and f'{y}.{m:02d}' >= ms[0]]
         coverage.append({'company_id': cid, 'name': c['name'], 'months': len(ms), 'expected': len(expected),
                          'first': ms[0] if ms else None, 'last': ms[-1] if ms else None,
                          'missing': [x for x in expected if x not in ms][:24]})

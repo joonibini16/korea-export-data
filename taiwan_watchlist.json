@@ -1,6 +1,6 @@
 {
   "reviewed_at": "2026-10-09",
-  "start_month": "2022.01",
+  "start_month": "2015.01",
   "note": "대만 상장사 월매출(MOPS 공시, 단위 NT$ 천원)을 한국 품목 수출과 비교하기 위한 후보 목록. 한국 업체 연결은 같은 공급망·제품군이라는 의미이며 거래관계를 뜻하지 않음.",
   "companies": [
     {"id": "2330", "name": "TSMC", "name_local": "台積電", "market": "sii", "category": "반도체 제조", "product": "파운드리", "hs_codes": ["8542"], "korean_peers": ["005930"]},

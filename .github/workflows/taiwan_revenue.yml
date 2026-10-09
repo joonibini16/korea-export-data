@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       full:
-        description: 'Re-download every month from 2022.01'
+        description: 'Re-download every month from 2015.01'
         type: boolean
         default: false
   push:
