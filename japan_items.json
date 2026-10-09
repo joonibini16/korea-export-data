@@ -1,0 +1,40 @@
+{
+  "reviewed_at": "2026-10-09",
+  "start_year": 2015,
+  "note": "일본 재무성 무역통계(e-Stat 品別国別表 輸出) 9자리 품목을 아래 접두 코드로 합산. 일본 기업별 수출액이 아니라 품목 전체 수출이며, 기업 연결은 해당 품목의 대표 일본 업체라는 의미.",
+  "countries": [
+    {"key": "KR", "name": "한국", "match": "大韓民国"},
+    {"key": "CN", "name": "중국", "match": "中華人民共和国"},
+    {"key": "TW", "name": "대만", "match": "台湾"},
+    {"key": "US", "name": "미국", "match": "アメリカ合衆国"},
+    {"key": "VN", "name": "베트남", "match": "ベトナム"}
+  ],
+  "items": [
+    {"key": "semi_equip", "name": "반도체 제조장비", "prefixes": ["8486"], "group": "반도체 장비·소재",
+     "jp_companies": "도쿄일렉트론, 스크린, 디스코, 고쿠사이, 캐논", "kr_hs": ["8486902090", "8456119000"],
+     "kr_link": "티씨케이·하나머티리얼즈(장비 부품), 이오테크닉스"},
+    {"key": "semi_fab_equip", "name": "웨이퍼·소자 제조장비 (848620)", "prefixes": ["848620"], "group": "반도체 장비·소재",
+     "jp_companies": "도쿄일렉트론(증착·식각·코터), 스크린(세정)", "kr_hs": ["8486902090", "8542"],
+     "kr_link": "국가별 출하는 고객사(삼성·하이닉스·TSMC·중국) 설비투자 선행지표"},
+    {"key": "semi_test", "name": "반도체 검사·측정장비 (903141)", "prefixes": ["903141"], "group": "반도체 장비·소재",
+     "jp_companies": "레이저텍, 히타치하이테크", "kr_hs": ["9030901000"], "kr_link": "리노공업(테스트 소켓)"},
+    {"key": "wafer", "name": "실리콘 웨이퍼 (3818)", "prefixes": ["3818"], "group": "반도체 장비·소재",
+     "jp_companies": "신에츠화학, SUMCO", "kr_hs": ["8542"], "kr_link": "SK실트론(비상장), 대만 GlobalWafers"},
+    {"key": "photoresist", "name": "감광재 등 사진용 조제품 (370790)", "prefixes": ["370790"], "group": "반도체 장비·소재",
+     "jp_companies": "JSR, 도쿄오카공업, 신에츠화학", "kr_hs": ["8542"], "kr_link": "포토레지스트 근사치(다른 사진용 화학품 포함)"},
+    {"key": "ic", "name": "집적회로 (8542)", "prefixes": ["8542"], "group": "반도체",
+     "jp_companies": "키옥시아, 르네사스, 소니(일부)", "kr_hs": ["8542", "8542321010", "8542321030"], "kr_link": "삼성전자, SK하이닉스"},
+    {"key": "discrete", "name": "개별소자·이미지센서 (8541)", "prefixes": ["8541"], "group": "반도체",
+     "jp_companies": "소니(이미지센서), 롬, 미쓰비시전기(파워반도체)", "kr_hs": ["8542"], "kr_link": "삼성전자(이미지센서)"},
+    {"key": "mlcc", "name": "MLCC (853224)", "prefixes": ["853224"], "group": "전자부품",
+     "jp_companies": "무라타, TDK, 다이요유덴", "kr_hs": ["8532240000"], "kr_link": "삼성전기, 대만 Yageo"},
+    {"key": "pcb", "name": "PCB·기판 (8534)", "prefixes": ["8534"], "group": "전자부품",
+     "jp_companies": "이비덴, 신코덴키, 메이코", "kr_hs": ["853400", "8534002000"], "kr_link": "심텍, 대덕전자, 이수페타시스, 대만 기판 3사"},
+    {"key": "transformer_large", "name": "대형 변압기 (850423)", "prefixes": ["850423"], "group": "전력기기",
+     "jp_companies": "히타치에너지, 미쓰비시전기, 도시바", "kr_hs": ["8504230000"], "kr_link": "HD현대일렉트릭, 효성중공업, LS ELECTRIC"},
+    {"key": "transformer", "name": "변압기·전원장치 전체 (8504)", "prefixes": ["8504"], "group": "전력기기",
+     "jp_companies": "TDK, 미쓰비시전기, 다이헨", "kr_hs": ["8504"], "kr_link": "HD현대일렉트릭, 효성중공업, LS ELECTRIC"},
+    {"key": "liion", "name": "리튬이온전지 (850760)", "prefixes": ["850760"], "group": "배터리",
+     "jp_companies": "파나소닉 에너지", "kr_hs": ["850760"], "kr_link": "LG에너지솔루션, 삼성SDI"}
+  ]
+}
