@@ -1,7 +1,8 @@
 """Naver Finance '기업실적분석' snapshot: quarterly 매출액/영업이익 actuals and (E) consensus.
 
-Source: https://finance.naver.com/item/main.naver?code=XXXXXX (company analysis table;
-estimates marked (E) are consensus figures shown by Naver). Amounts in 억원.
+Source: Naver Pay 증권 quarterly finance data used by its stock pages
+(https://m.stock.naver.com/api/stock/XXXXXX/finance/quarter; columns flagged isConsensus=Y
+are consensus estimates). Falls back to the legacy finance.naver.com table. Amounts in 억원.
 Each run appends a dated snapshot so consensus revisions can be traced.
 Unofficial page: if its layout changes, parsing fails loudly and existing data is kept.
 """
@@ -79,6 +80,31 @@ def parse(page):
     return out
 
 
+def from_api(code):
+    url = f'https://m.stock.naver.com/api/stock/{code}/finance/quarter'
+    req = urllib.request.Request(url, headers={**UA, 'Accept': 'application/json', 'Referer': f'https://m.stock.naver.com/domestic/stock/{code}/finance/quarter'})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        d = json.loads(r.read().decode('utf-8'))
+    fi = d.get('financeInfo') or d
+    cols = fi.get('trTitleList') or []
+    rows = {re.sub(r'\s', '', x.get('title', '')): x.get('columns', {}) for x in fi.get('rowList') or []}
+    rev, op = rows.get('매출액'), rows.get('영업이익')
+    if not cols or rev is None:
+        raise ValueError('API 구조 확인 필요: keys=' + ','.join(list(fi.keys())[:10]) + ' rows=' + ','.join(list(rows)[:8]))
+    out = []
+    for c in cols:
+        key, title = str(c.get('key', '')), c.get('title', '')
+        m = re.search(r'(20\d{2})\.?(\d{2})', key + ' ' + title)
+        if not m:
+            continue
+        val = lambda col: num(str((col or {}).get(key, {}).get('value', '')))
+        out.append(dict(period=f'{m[1]}-Q{int(m[2]) // 3}', is_estimate='1' if str(c.get('isConsensus', 'N')).upper() == 'Y' else '0',
+                        revenue_100m=val(rev), operating_profit_100m=val(op)))
+    if not out:
+        raise ValueError('분기 열 없음')
+    return out, f'https://m.stock.naver.com/domestic/stock/{code}/finance/quarter'
+
+
 def main():
     watch = json.loads(Path('company_watchlist.json').read_text(encoding='utf-8'))['companies']
     ids = [c['id'] for c in watch if c['id'].isdigit()]
@@ -88,8 +114,15 @@ def main():
     rows, failures = [], []
     for code in ids:
         try:
-            page, url = fetch(code)
-            for r in parse(page):
+            try:
+                parsed, url = from_api(code)
+            except Exception as api_error:
+                page, url = fetch(code)
+                try:
+                    parsed = parse(page)
+                except Exception as e:
+                    raise ValueError(f'API: {api_error} / 페이지: {e}')
+            for r in parsed:
                 rows.append(dict(snapshot_date=today, company_id=code, source=url, **r))
         except Exception as e:
             failures.append(dict(company_id=code, error=f'{type(e).__name__}: {e}'[:1500 if not failures else 200]))
