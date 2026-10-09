@@ -298,7 +298,7 @@ button:focus-visible {outline:3px solid #2563eb;outline-offset:3px;}
             <option value="quarter">분기별</option>
         </select>
     </div>
-    <p id="quarterNote" class="selection-hint" hidden>진한 막대 = 확정분, 연한 막대 = 남은 달 추정분. 최신 진행 분기는 확정 월평균 × 남은 개월 수로 수출액·중량을 추정합니다. 단가는 합계 수출액 ÷ 합계 중량이며, 추정 포함 YoY·QoQ는 점선과 빈 원으로 표시합니다. 계절성·조업일수는 반영하지 않은 단순 추정입니다. 과거 누락 분기는 추정하지 않습니다. 아래 국가별 분석과 최신 월간 현황은 월간 기준입니다.</p>
+    <p id="quarterNote" class="selection-hint" hidden>진한 막대 = 확정분, 연한 막대 = 남은 달 추정분. 최신 진행 분기의 미수집 월은 확보월의 전년 대비 증감률을 전년 같은 달에 적용해 추정합니다(전년 자료가 없으면 확보월 평균). 추정치는 흰 다이아몬드로 표시합니다. 단가는 합계 수출액 ÷ 합계 중량이며, 추정 포함 YoY·QoQ는 점선과 빈 원으로 표시합니다. 계절성·조업일수는 반영하지 않은 단순 추정입니다. 과거 누락 분기는 추정하지 않습니다. 아래 국가별 분석과 최신 월간 현황은 월간 기준입니다.</p>
     <section id="quarterSummary" hidden aria-label="분기 수출 요약">
         <h2 id="quarterSummaryTitle" class="chart-title">최신 완성 분기</h2>
         <div id="quarterMetrics" class="quarter-metrics"></div>
@@ -1019,7 +1019,8 @@ function createMainChart(itemName) {
                         yAxisID: "yPrice",
                         tension: 0.25,
                         borderWidth: 2.5,
-                        pointRadius: data.map(d => d.estimated ? 5 : 1.5),
+                        pointRadius: data.map(d => d.estimated ? 6 : 1.5),
+                        pointStyle: data.map(d => d.estimated ? "rectRot" : "circle"),
                         pointBackgroundColor: data.map(d => d.estimated ? "#ffffff" : "#d97706"),
                         pointBorderColor: "#d97706",
                         borderColor: "#d97706",
@@ -1216,7 +1217,8 @@ function createChangeChart(itemName) {
                         data: yoy,
                         tension: 0.25,
                         borderWidth: 2.5,
-                        pointRadius: data.map(d => d.estimated ? 5 : 1.5),
+                        pointRadius: data.map(d => d.estimated ? 6 : 1.5),
+                        pointStyle: data.map(d => d.estimated ? "rectRot" : "circle"),
                         pointBackgroundColor: ctx => data[ctx.dataIndex]?.estimated ? "#ffffff" : ctx.dataset.borderColor,
                         segment: {borderDash: ctx => data[ctx.p1DataIndex]?.estimated ? [3, 4] : undefined},
 
@@ -1281,7 +1283,8 @@ function createChangeChart(itemName) {
                         tension: 0.25,
                         borderWidth: 2,
                         borderDash: [6, 5],
-                        pointRadius: data.map(d => d.estimated ? 5 : 1.5),
+                        pointRadius: data.map(d => d.estimated ? 6 : 1.5),
+                        pointStyle: data.map(d => d.estimated ? "rectRot" : "circle"),
                         pointBackgroundColor: ctx => data[ctx.dataIndex]?.estimated ? "#ffffff" : ctx.dataset.borderColor,
                         segment: {borderDash: ctx => data[ctx.p1DataIndex]?.estimated ? [3, 4] : undefined},
 
@@ -1492,11 +1495,29 @@ function buildQuarterRows(rows, asOfMonth) {
         const elapsed = (Number(cutoff.slice(5)) - 1) % 3 + 1;
         const estimated = !complete && index === ordinal(cutoff) && keys.at(-1) === cutoff
             && elapsed < 3 && validMonths === elapsed;
-        const estimatedUSD = estimated ? usd / validMonths * (3 - validMonths) : 0;
-        const estimatedKG = estimated ? kg / validMonths * (3 - validMonths) : 0;
+        // 미수집 월 = 전년 같은 달 × (확보월 합계 ÷ 전년 같은 기간 합계). 전년 자료가 없으면 확보월 평균.
+        let estimatedUSD = 0, estimatedKG = 0, estimateMethod = "";
+        if (estimated) {
+            const value = (month, field) => { const m = months.get(month) || []; return m.length === 1 ? nonnegativeNumber(m[0][field]) : null; };
+            const label = (y, k) => y + "." + String(k).padStart(2, "0");
+            const first = (quarter - 1) * 3 + 1, have = [], missing = [];
+            for (let k = first; k < first + 3; k++) (k < first + validMonths ? have : missing).push(k);
+            const prevSum = field => have.reduce((s, k) => { const v = value(label(year - 1, k), field); return s === null || v === null ? null : s + v; }, 0);
+            const prevMissing = field => missing.map(k => value(label(year - 1, k), field));
+            const pu = prevSum("수출금액_USD"), pk = prevSum("수출중량_KG"), mu = prevMissing("수출금액_USD"), mk = prevMissing("수출중량_KG");
+            if (pu > 0 && pk > 0 && mu.every(v => v !== null) && mk.every(v => v !== null)) {
+                estimatedUSD = mu.reduce((a, b) => a + b, 0) * usd / pu;
+                estimatedKG = mk.reduce((a, b) => a + b, 0) * kg / pk;
+                estimateMethod = "yoy";
+            } else {
+                estimatedUSD = usd / validMonths * (3 - validMonths);
+                estimatedKG = kg / validMonths * (3 - validMonths);
+                estimateMethod = "average";
+            }
+        }
         const usable = complete || estimated;
         const totalUSD = usd + estimatedUSD, totalKG = kg + estimatedKG;
-        quarters.push({index, year, quarter, complete, estimated, validMonths,
+        quarters.push({index, year, quarter, complete, estimated, estimateMethod, validMonths,
             actualUSD: usd, actualKG: kg, estimatedUSD, estimatedKG,
             "월": year + " Q" + quarter,
             "수출금액_USD": usable ? totalUSD : "",
