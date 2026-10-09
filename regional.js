@@ -26,6 +26,23 @@ function queryHS(c,h){if(h.startsWith('ALL:'))return h.slice(4);return c.regiona
 function sites(c,h){return (c.sites||[c]).filter(s=>!h||h.startsWith('ALL:')||!s.hs_codes||s.hs_codes.includes(h));}
 function regionRows(c,h){const q=queryHS(c,h);return regional.filter(r=>r.hs_code===q&&sites(c,h).some(s=>s.sido_code===r.sido_code&&r.region.includes(s.region_keyword)));}
 function comboRows(c,h){const rs=regionRows(c,h),keys=[...new Set(rs.map(r=>r.sido_code+'|'+r.region))],by=new Map();for(const r of rs){if(!by.has(r.month))by.set(r.month,new Map());by.get(r.month).set(r.sido_code+'|'+r.region,num(r.export_amount_raw));}return{keys,rows:[...by].map(([month,m])=>({month,value:keys.every(k=>m.get(k)!=null)?keys.reduce((s,k)=>s+m.get(k),0):null})).sort((a,b)=>a.month.localeCompare(b.month))};}
+
+// 진행 중인 분기의 미수집 월을 같은 분기 확보월의 전년 대비 증감률로 추정합니다.
+function estimateQuarter(selected){const valid=selected.filter(r=>r.value!=null);if(!valid.length)return null;const last=valid.at(-1),y=Number(last.month.slice(0,4)),m=Number(last.month.slice(5)),qn=Math.ceil(m/3),first=(qn-1)*3+1;if(m%3===0)return null;
+ const map=new Map(selected.map(r=>[r.month,r.value])),lab=k=>`${y}.${String(k).padStart(2,'0')}`,prev=k=>`${y-1}.${String(k).padStart(2,'0')}`;
+ const have=[];for(let k=first;k<=m;k++){const v=map.get(lab(k));if(v==null)return null;have.push(k);}
+ const missing=[];for(let k=m+1;k<=first+2;k++)missing.push(k);
+ const cur=have.reduce((s,k)=>s+map.get(lab(k)),0),base=have.reduce((s,k)=>s+(map.get(prev(k))??NaN),0);
+ let ratio=null,method;const est=[];
+ if(Number.isFinite(base)&&base>0&&missing.every(k=>map.get(prev(k))!=null)){ratio=cur/base;method='yoy';missing.forEach(k=>est.push({month:lab(k),value:map.get(prev(k))*ratio}));}
+ else{method='avg';missing.forEach(k=>est.push({month:lab(k),value:cur/have.length}));}
+ const actual=cur,total=cur+est.reduce((s,r)=>s+r.value,0);
+ return{period:`${y}-Q${qn}`,endMonth:lab(first+2),have:have.map(lab),est,actual,total,ratio,method};}
+// 완전분기 수출액-매출 선형회귀로 매출을 예상하고, 최근 분기를 순차 백테스트해 오차를 함께 보여줍니다.
+function linfit(pairs){const n=pairs.length,mx=pairs.reduce((s,p)=>s+p[0],0)/n,my=pairs.reduce((s,p)=>s+p[1],0)/n,sxx=pairs.reduce((s,p)=>s+(p[0]-mx)**2,0);if(!sxx)return null;const b=pairs.reduce((s,p)=>s+(p[0]-mx)*(p[1]-my),0)/sxx,a=my-b*mx;const res=pairs.map(p=>p[1]-(a+b*p[0])),sd=Math.sqrt(res.reduce((s,r)=>s+r*r,0)/Math.max(1,n-2));return{a,b,sd};}
+function revenueForecast(pairs,x){if(pairs.length<8||x==null)return null;const r=pearson(pairs);const f=linfit(pairs);if(!f)return null;
+ const errs=[];for(let i=Math.max(6,pairs.length-4);i<pairs.length;i++){const g=linfit(pairs.slice(0,i));if(g&&pairs[i][1])errs.push(Math.abs((g.a+g.b*pairs[i][0])/pairs[i][1]-1)*100);}
+ const mape=errs.length?errs.reduce((s,e)=>s+e,0)/errs.length:null;return{value:f.a+f.b*x,low:f.a+f.b*x-f.sd,high:f.a+f.b*x+f.sd,r,n:pairs.length,mape,tests:errs.length};}
 function populateRegions(){const c=watch.find(c=>c.id===el('company').value),h=el('hs').value;el('region').replaceChildren();const rows=regionRows(c,h),seen=new Set();const names=[...new Set(rows.map(r=>r.sido_code+'|'+r.region))];if(names.length>1)option(el('region'),'combo','사업장 합계 · '+names.map(k=>k.split('|')[1].split(' ').at(-1)).join(' + '));for(const r of rows){const key=r.sido_code+'|'+r.region;if(!seen.has(key)){option(el('region'),key,r.region);seen.add(key);}}if(!seen.size)option(el('region'),'missing',queryHS(c,h)?'대상 지역 데이터 미확보':'HS4 지역 조회 미지원');option(el('region'),'national','전국 · 관리 품목 비교용');render();}
 
 function backlogReview(id){return backlogCoverage.companies?.find(r=>r.company_id===id);}
@@ -56,6 +73,7 @@ function render(){const c=watch.find(c=>c.id===el('company').value),hs=el('hs').
  else if(isCombo){const cr=comboRows(c,hs),keys=cr.keys;selected=series(cr.rows);const allLast=selected.at(-1)?.month;while(selected.length&&selected.at(-1).value==null)selected.pop();if(selected.length&&selected.at(-1).month!==allLast)breakNote='일부 사업장의 '+allLast+'까지 자료가 아직 없어 합계는 '+selected.at(-1).month+'까지 표시합니다. 지역별 최신 값은 지역 선택에서 확인하세요.';regionName=keys.map(k=>k.split('|')[1]).join(' + ');sido=keys[0].split('|')[0];}
  else selected=series(cut(regional.filter(r=>r.hs_code===query&&r.sido_code===sido&&r.region===regionName).map(r=>({month:r.month,hs_code:r.hs_code,region:r.region,value:num(r.export_amount_raw)}))));
  const quarter=quarterly(selected),qm=new Map(quarter.map(r=>[r.period,r]));
+ const est=isNational?null:estimateQuarter(selected);
  const fin=financial.filter(r=>r.company_id===c.id).sort((a,b)=>a.period.localeCompare(b)),fm=new Map(fin.map(r=>[r.period,r]));
  const dfin=domesticFinancial.filter(r=>r.company_id===c.id).sort((a,b)=>a.period.localeCompare(b)),dfm=new Map(dfin.map(r=>[r.period,r]));
  const prior=p=>`${Number(p.slice(0,4))-1}${p.slice(4)}`;
@@ -83,8 +101,8 @@ function render(){const c=watch.find(c=>c.id===el('company').value),hs=el('hs').
  if(el('frequency').value==='month'){
  el('trendNote').textContent='첫 유효월=100. 월별 변동은 연속 3개월 이동평균으로 함께 확인합니다. 통화 단위의 배율 확인 전에는 지역 절대금액을 표시하지 않습니다.';
  chart('trend',selected.map(r=>r.month),[{type:'bar',label:'월별 수출 지수',data:selected.map(r=>scale(r.value)),backgroundColor:'#adc8ef'},{label:'3개월 이동평균',data:selected.map((_,i)=>scale(average(selected,i))),borderColor:'#2159a6',borderWidth:3,pointRadius:0}],'수출 지수');
- }else{const qbase=quarter.find(q=>q.value>0)?.value,sc=v=>v==null||!qbase?null:v/qbase*100;const actual=[],estimate=[];quarter.forEach((q,i)=>{const firstMonth=(Number(q.period.at(-1))-1)*3+1;const valid=q.rows.filter(r=>r.value!=null);const can=q.period===quarterly(national).at(-1)?.period&&i===quarter.length-1&&q.months>0&&q.months<3&&valid.every((r,j)=>Number(r.month.slice(5))===firstMonth+j);actual.push(q.months===3||can?sc(q.actual):null);estimate.push(can?sc(q.actual/q.months*(3-q.months)):null);});
- el('trendNote').textContent='첫 완전분기=100. 진한색은 확보분, 옅은색은 확정 월평균을 적용한 미확보 월 추정분입니다.';
+ }else{const qbase=quarter.find(q=>q.value>0)?.value,sc=v=>v==null||!qbase?null:v/qbase*100;const actual=[],estimate=[];quarter.forEach((q,i)=>{const firstMonth=(Number(q.period.at(-1))-1)*3+1;const valid=q.rows.filter(r=>r.value!=null);const can=q.period===quarterly(national).at(-1)?.period&&i===quarter.length-1&&q.months>0&&q.months<3&&valid.every((r,j)=>Number(r.month.slice(5))===firstMonth+j);actual.push(q.months===3||can?sc(q.actual):null);estimate.push(can?sc(est&&est.period===q.period?est.total-est.actual:q.actual/q.months*(3-q.months)):null);});
+ el('trendNote').textContent='첫 완전분기=100. 진한색은 확보분, 옅은색은 미확보 월 추정분입니다(확보월의 전년 대비 증감률을 전년 같은 달에 적용, 전년 자료가 없으면 확보월 평균).';
  chart('trend',quarter.map(q=>q.period),[{type:'bar',label:'확보 수출',data:actual,backgroundColor:'#245bb0',stack:'sum'},{type:'bar',label:'미확보 월 추정',data:estimate,backgroundColor:'#c7d9f4',stack:'sum'}],'분기 수출 지수');charts.trend.options.scales.x.stacked=true;charts.trend.options.scales.y.stacked=true;charts.trend.update();}
  const periods=[...new Set([...quarter.map(q=>q.period),...fin.map(f=>f.period)])].sort();
  const monthlyMap=new Map(selected.map(r=>[r.month,r.value]));
@@ -97,10 +115,23 @@ function render(){const c=watch.find(c=>c.id===el('company').value),hs=el('hs').
  const exportAmounts=monthlyMode?selected.map(r=>r.value):quarter.map(q=>q.value);
  const qMap=new Map(quarter.map(q=>[q.period,q.value]));
  const qExport=monthlyMode?amountPeriods.map(p=>Number(p.slice(5))%3===0?(qMap.get(`${p.slice(0,4)}-Q${Number(p.slice(5))/3}`)??null):null):exportAmounts;
- const exportSets=monthlyMode?[{label:'지역 수출액 · 분기 합계 (USD)',data:qExport,borderColor:'#2784b8',backgroundColor:'#2784b8',pointRadius:4,borderWidth:3,spanGaps:true,yAxisID:'yExport'},{label:'지역 수출액 · 월별 (USD, 점선)',data:exportAmounts,borderColor:'#2784b8',borderDash:[4,4],borderWidth:1.5,pointRadius:0,spanGaps:false,yAxisID:'yExport'}]:[{label:'지역 수출액 · USD',data:exportAmounts,borderColor:'#2784b8',pointRadius:2,yAxisID:'yExport'}];
+ const estMap=new Map((est?.est||[]).map(r=>[r.month,r.value]));
+ if(monthlyMode&&est&&!amountPeriods.includes(est.endMonth)){est.est.forEach(r=>{if(!amountPeriods.includes(r.month))amountPeriods.push(r.month);});}
+ const estMonthly=monthlyMode&&est?amountPeriods.map(p=>estMap.has(p)?estMap.get(p):(p===est.have.at(-1)?selected.find(r=>r.month===p)?.value??null:null)):null;
+ const estQuarter=monthlyMode&&est?amountPeriods.map(p=>p===est.endMonth?est.total:null):null;
+ const exportSets=monthlyMode?[{label:'지역 수출액 · 분기 합계 (USD)',data:qExport,borderColor:'#2784b8',backgroundColor:'#2784b8',pointRadius:4,borderWidth:3,spanGaps:true,yAxisID:'yExport'},{label:'지역 수출액 · 월별 (USD, 점선)',data:exportAmounts,borderColor:'#2784b8',borderDash:[4,4],borderWidth:1.5,pointRadius:0,spanGaps:false,yAxisID:'yExport'},...(est?[{label:'추정 · 미수집 월 ('+(est.method==='yoy'?'확보월 YoY 적용':'확보월 평균')+')',data:estMonthly,borderColor:'#9bbad3',borderDash:[2,3],borderWidth:1.5,pointRadius:4,pointStyle:'rectRot',pointBackgroundColor:'#ffffff',spanGaps:true,yAxisID:'yExport'},{label:'추정 · '+est.period+' 분기 합계',data:estQuarter,borderColor:'#2784b8',pointRadius:7,pointBackgroundColor:'#ffffff',pointBorderWidth:2,showLine:false,yAxisID:'yExport'}]:[])]:[{label:'지역 수출액 · USD',data:exportAmounts,borderColor:'#2784b8',pointRadius:2,yAxisID:'yExport'}];
  const revenueAmounts=monthlyMode?amountPeriods.map(p=>{const q=`${p.slice(0,4)}-Q${Math.ceil(Number(p.slice(5))/3)}`;const v=num(fm.get(q)?.revenue_KRW);return Number(p.slice(5))%3===0&&v!=null?v/1e8:null;}):amountPeriods.map(p=>{const v=num(fm.get(p)?.revenue_KRW);return v==null?null:v/1e8;});
  chart('amountComparison',amountPeriods,[...exportSets,{label:c.name+' 매출액 · 억원',data:revenueAmounts,borderColor:'#d97835',pointRadius:4,borderWidth:3,spanGaps:true,yAxisID:'yRevenue'}],'금액',{spanGaps:true,scales:{y:{display:false},yExport:{type:'linear',position:'left',title:{display:true,text:'수출액 (USD · 신고미화금액)'},ticks:{callback:v=>Number(v).toLocaleString()}},yRevenue:{type:'linear',position:'right',title:{display:true,text:'회사 매출액 (억원)'},grid:{drawOnChartArea:false},ticks:{callback:v=>Number(v).toLocaleString()}}},plugins:{tooltip:{callbacks:{label:ctx=>`${ctx.dataset.label}: ${Number(ctx.parsed.y).toLocaleString()} ${ctx.dataset.yAxisID==='yRevenue'?'억원':'USD'}`}}}});
  const revenueCorrPairs=amountPeriods.map((p,i)=>[qExport[i],revenueAmounts[i]]).filter(([x,y])=>x!=null&&y!=null);if(el('amountCorrelationNote'))el('amountCorrelationNote').textContent=corrText(pearson(revenueCorrPairs),revenueCorrPairs.length);
+ {const ch=charts.amountComparison;let fNote='';
+  if(est&&!monthlyMode){if(!ch.data.labels.includes(est.period))ch.data.labels.push(est.period);const k=ch.data.labels.indexOf(est.period);const d=ch.data.labels.map((_,i)=>i===k?est.total:null);ch.data.datasets.splice(1,0,{label:'추정 · '+est.period+' 분기 합계',data:d,borderColor:'#2784b8',pointRadius:7,pointBackgroundColor:'#ffffff',pointBorderWidth:2,showLine:false,yAxisID:'yExport'});}
+  const fc=est?revenueForecast(revenueCorrPairs,est.total):null;
+  if(fc&&fc.r!=null&&fc.r>=0.5){const pos=monthlyMode?est.endMonth:est.period;if(!ch.data.labels.includes(pos))ch.data.labels.push(pos);const k=ch.data.labels.indexOf(pos);
+   ch.data.datasets.push({label:'예상 · '+est.period+' 매출 (회귀)',data:ch.data.labels.map((_,i)=>i===k?fc.value:null),borderColor:'#d97835',pointRadius:8,pointStyle:'triangle',pointBackgroundColor:'#ffffff',pointBorderWidth:2,showLine:false,yAxisID:'yRevenue'});ch.update();
+   fNote=` · ${est.period} 매출 예상 ${Math.round(fc.value).toLocaleString()}억원 (±1σ ${Math.round(fc.low).toLocaleString()}~${Math.round(fc.high).toLocaleString()}억원, 회귀 r=${fc.r.toFixed(2)}, 완전분기 ${fc.n}개${fc.mape!=null?`, 최근 ${fc.tests}개 분기 순차 백테스트 평균 오차 ${fc.mape.toFixed(1)}%`:''})`;}
+  else if(est)fNote=` · 매출 예상 미표시: ${fc?`상관계수 ${fc.r?.toFixed(2)}가 0.5 미만`:'완전분기 8개 미만 또는 자료 부족'}`;
+  if(est)fNote=` · ${est.period} 수출 추정: 확보 ${est.have.join('·')} 합계 ${Math.round(est.actual).toLocaleString()}${est.method==='yoy'?` → 확보월 전년 대비 ${((est.ratio-1)*100).toFixed(1)}%를 미수집 월(${est.est.map(r=>r.month).join('·')}) 전년 값에 적용`:' → 전년 자료가 없어 확보월 평균 적용'}, 분기 합계 추정 ${Math.round(est.total).toLocaleString()} (흰 점 = 추정분)`+fNote;
+  el('amountForecastNote')&&(el('amountForecastNote').textContent=fNote?('추정·예상'+fNote+'. 지역 통계에는 다른 업체 수출이 포함되며, 예상치는 과거 관계가 유지된다는 가정의 참고값입니다.'):'');}
  correlationChart('connectedCorrelation',revenueCorrPairs,'수출액 (USD)','연결매출 (억원)');
  if(el('amountNote'))el('amountNote').textContent=monthlyMode?'굵은 선은 분기 합계 수출액(3개월 모두 확보된 분기, 분기 말월에 표시), 점선은 월별 수출액입니다. 좌측 수출액은 관세청 API 신고미화금액(USD), 우측 매출액은 공시 원화 매출을 억원으로 환산했습니다. 매출선은 확보된 공시 시점을 연결하며 누락 구간은 추정하지 않습니다.':'좌측 수출액은 관세청 API 신고미화금액(USD), 우측 매출액은 공시 원화 매출을 억원으로 환산했습니다. 매출선은 확보된 공시 시점을 연결하며 누락 구간은 추정하지 않습니다.';
  const domesticAmounts=monthlyMode?amountPeriods.map(p=>{const q=`${p.slice(0,4)}-Q${Math.ceil(Number(p.slice(5))/3)}`;const v=num(dfm.get(q)?.domestic_revenue_KRW);return Number(p.slice(5))%3===0&&v!=null?v/1e8:null;}):amountPeriods.map(p=>{const v=num(dfm.get(p)?.domestic_revenue_KRW);return v==null?null:v/1e8;});
