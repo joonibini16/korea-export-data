@@ -1,0 +1,35 @@
+name: Backlog Table Dump (review)
+on:
+  workflow_dispatch:
+    inputs:
+      companies:
+        description: 'space-separated company ids (empty = all)'
+        default: ''
+permissions:
+  contents: write
+jobs:
+  dump:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install lxml
+      - uses: actions/cache/restore@v4
+        with:
+          path: .history-cache
+          key: company-history-dump-${{ github.run_id }}
+          restore-keys: company-history-
+      - run: python tools/dump_backlog_tables.py ${{ inputs.companies }}
+      - uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: .history-cache
+          key: company-history-dump-${{ github.run_id }}
+      - name: Publish dump to backlog-work branch
+        run: |
+          git config user.name github-actions; git config user.email github-actions@github.com
+          cp backlog_tables_dump.json /tmp/dump.json
+          git checkout -q --orphan backlog-work; git rm -rq --cached .; cp /tmp/dump.json backlog_tables_dump.json
+          git add backlog_tables_dump.json; git commit -qm "backlog table dump"; git push -qf origin backlog-work
