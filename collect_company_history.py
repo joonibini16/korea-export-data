@@ -4,6 +4,9 @@ Backlog extraction is limited to reviewed table formats. Ambiguous formats stay 
 """
 import json,re,time,urllib.request,urllib.parse,hashlib,pathlib,concurrent.futures
 from lxml import html
+import threading
+REQUEST_LOCK=threading.Lock()
+LAST_REQUEST=0.0
 ROOT=pathlib.Path(__file__).resolve().parent;CACHE=ROOT/'.history-cache';CACHE.mkdir(exist_ok=True)
 def get(url,data=None):
  p=CACHE/(hashlib.sha256((url+str(data)).encode()).hexdigest()+'.html')
@@ -14,6 +17,11 @@ def get(url,data=None):
    if old.exists():
     raw=old.read_text(errors='replace');p.write_text(raw);return raw
  req=urllib.request.Request(url,data=urllib.parse.urlencode(data).encode() if data else None)
+ global LAST_REQUEST
+ with REQUEST_LOCK:
+  remaining=1.0-(time.monotonic()-LAST_REQUEST)
+  if remaining>0:time.sleep(remaining)
+  LAST_REQUEST=time.monotonic()
  raw=urllib.request.urlopen(req,timeout=40).read().decode('utf-8',errors='replace')
  if len(raw)<100:raise ValueError('Empty response')
  p.write_text(raw);return raw
@@ -120,7 +128,8 @@ def main():
  with concurrent.futures.ThreadPoolExecutor(3) as pool:
   for result in pool.map(catalog,[c for c in companies if c['id'].isdigit()]):
    catalogs.append(result)
-   if result.get('error'):failures.append(result)
+   if result.get('error'):
+    failures.append(result);print('Catalog failure',result['company_id'],result['error'],flush=True)
    print('Catalog',result['company_id'],len(result['reports']),flush=True)
  # Fetch each source quarter for backlog; the same report supplies both financial bases.
  todo=[r for c in catalogs for r in c['reports']]
@@ -128,7 +137,7 @@ def main():
  with concurrent.futures.ThreadPoolExecutor(3) as pool:
   for r in pool.map(process,todo):
    if r.get('error'):
-    failures.append(dict(company_id=r['company_id'],period=r['period'],error=r['error']));continue
+    failures.append(dict(company_id=r['company_id'],period=r['period'],error=r['error']));print('Fetch failure',r['company_id'],r['period'],r['error'],flush=True);continue
    reviewed.append(dict(company_id=r['company_id'],period=r['period'],source=r['url']))
    for f in r['financial']:
     try:
