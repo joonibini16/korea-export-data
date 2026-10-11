@@ -71,8 +71,8 @@ def extract(sheet, period):
                 raise ValueError('재고자산 숫자 없음')
             cur = vals[0] * UNIT[sheet['unit']]
             prior = vals[1] * UNIT[sheet['unit']] if len(vals) > 1 else None
-            if cur < 0:
-                raise ValueError('음수 재고')
+            if cur <= 0:
+                raise ValueError('재고 0 또는 음수 · 표 구조 확인 필요')
             return int(cur), (int(prior) if prior is not None else None)
     raise ValueError('재고자산 행 없음')
 
