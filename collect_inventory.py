@@ -109,6 +109,12 @@ def main():
                 if r['period'].endswith('Q1') and prior is not None:
                     priors[(r['company_id'], f"{int(r['period'][:4]) - 1}-Q4", basis)] = prior
                 got = True
+            if got and not any(sh['basis'] == '연결' for sh in sheets) and doc.xpath('//p[contains(normalize-space(.),"연결 재무상태표")]'):
+                dbg = []
+                for e in doc.xpath('//p[contains(normalize-space(.),"연결 재무상태표")]')[:2]:
+                    nxt = e.xpath('following-sibling::*[position()<=3]')
+                    dbg.append('TITLE: ' + h.text(e)[:60] + ' → ' + ' || '.join(f'{x.tag}:{h.text(x)[:160]}' for x in nxt))
+                issues.append(dict(company_id=r['company_id'], period=r['period'], basis='연결', source=r['url'], reason='연결 재무상태표 해석 실패', debug=dbg))
             if not got and not any(i['company_id'] == r['company_id'] and i['period'] == r['period'] for i in issues):
                 dbg = []
                 for e in doc.xpath('//*[contains(text(),"재무상태표") or contains(text(),"재 무 상 태 표")]')[:8]:
