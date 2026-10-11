@@ -5,6 +5,9 @@ on:
       companies:
         description: 'space-separated ids (empty = all)'
         default: ''
+      debug:
+        description: 'company:period pairs to dump'
+        default: ''
   push:
     branches: [main]
     paths: ['collect_inventory.py', '.github/workflows/inventory.yml']
@@ -32,6 +35,8 @@ jobs:
           key: company-history-inv-${{ github.run_id }}
           restore-keys: company-history-
       - run: python collect_inventory.py ${{ inputs.companies }}
+        env:
+          INV_DEBUG: ${{ inputs.debug }}
       - uses: actions/cache/save@v4
         if: always()
         with:

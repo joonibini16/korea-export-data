@@ -109,6 +109,10 @@ def main():
                 if r['period'].endswith('Q1') and prior is not None:
                     priors[(r['company_id'], f"{int(r['period'][:4]) - 1}-Q4", basis)] = prior
                 got = True
+            if f"{r['company_id']}:{r['period']}" in __import__('os').environ.get('INV_DEBUG', ''):
+                dbg = [f"{e.tag}:{h.text(e)[:90]}" for e in doc.xpath('//*[self::p or self::td or self::span][contains(text(),"재무상태표") or contains(text(),"재무제표")]')[:25]]
+                dbg += [f"TITLE={r['title']}", f"URL={r['url']}", f"tables={len(doc.xpath('//table'))}"]
+                issues.append(dict(company_id=r['company_id'], period=r['period'], reason='DEBUG', debug=dbg))
             if got and not any(sh['basis'] == '연결' for sh in sheets) and doc.xpath('//p[contains(normalize-space(.),"연결 재무상태표")]'):
                 dbg = []
                 for e in doc.xpath('//p[contains(normalize-space(.),"연결 재무상태표")]')[:2]:
