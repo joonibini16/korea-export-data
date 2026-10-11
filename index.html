@@ -1626,12 +1626,13 @@ function createSeasonalChart(itemName) {
         .sort((a, b) => a["월"].localeCompare(b["월"]));
 
     const years = [...new Set(data.map(d => d["월"].slice(0, 4)))].sort();
-    const exportYears = years.filter(year => Number(year) >= 2020);
+    // 최근 5개 연도(올해 포함)만 비교합니다. 올해는 빨간색, 지난해들은 옅어지는 차분한 색으로 구분합니다.
+    const exportYears = years.filter(year => Number(year) >= 2020).slice(-5);
     const yoyYears = exportYears.filter(year => Number(year) >= 2021);
     const currentYear = exportYears[exportYears.length - 1];
 
-    const yearPalette = ["#2563eb", "#d97706", "#059669", "#9333ea", "#0891b2", "#db2777", "#dc2626", "#64748b"];
-    const yearColor = year => yearPalette[(Number(year) - 2020) % yearPalette.length];
+    const pastPalette = ["#1d4ed8", "#0f766e", "#7c3aed", "#94a3b8"]; // 작년 → 4년 전
+    const yearColor = year => year === currentYear ? "#dc2626" : pastPalette[Math.min(Number(currentYear) - Number(year) - 1, pastPalette.length - 1)];
 
     const quarterly = document.getElementById("comparisonPeriod").value === "quarter";
     document.getElementById("quarterNote").hidden = !quarterly;
@@ -1663,7 +1664,7 @@ function createSeasonalChart(itemName) {
     const quarterRows = quarterly ? buildQuarterRows(data) : [];
     const yearQuarters = year => [1, 2, 3, 4].map(q => quarterRows.find(r => r.year === Number(year) && r.quarter === q));
     const projectedAt = (year, i) => quarterly && !!yearQuarters(year)[i]?.estimated;
-    const exportDatasets = exportYears.flatMap(year => [{
+    const exportDatasets = quarterly ? exportYears.flatMap(year => [{
         type: "bar",
         label: year + (quarterly ? " 확정" : " 수출액"),
         stack: quarterly ? year : undefined,
@@ -1679,7 +1680,35 @@ function createSeasonalChart(itemName) {
         data: yearQuarters(year).map(row => row?.estimated ? row.estimatedUSD / 1000000 : null),
         backgroundColor: yearColor(year) + "40", borderColor: yearColor(year), borderWidth: 1,
         datalabels: {display: false}
-    }] : [])]);
+    }] : [])]) : [
+        ...exportYears.map(year => {
+            const isCurrentYear = year === currentYear;
+            return {
+                type: "line",
+                label: year + (isCurrentYear ? " (올해)" : ""),
+                data: monthlyExportValues(year),
+                borderColor: yearColor(year),
+                backgroundColor: yearColor(year),
+                borderWidth: isCurrentYear ? 4 : 1.8,
+                pointRadius: isCurrentYear ? 4 : 2,
+                pointHoverRadius: isCurrentYear ? 7 : 5,
+                tension: 0.2,
+                spanGaps: false,
+                order: isCurrentYear ? 0 : 1,
+                datalabels: {display: false}
+            };
+        }),
+        (() => {
+            // 지난 연도(올해 제외) 같은 달 평균: 올해가 평년보다 높은지 한눈에 보기 위한 기준선
+            const past = exportYears.filter(year => year !== currentYear).map(monthlyExportValues);
+            const avg = Array.from({length: 12}, (_, i) => {
+                const v = past.map(a => a[i]).filter(x => x !== null);
+                return v.length ? v.reduce((a, b) => a + b, 0) / v.length : null;
+            });
+            return {type: "line", label: "지난 " + past.length + "년 평균", data: avg, borderColor: "#64748b",
+                borderDash: [6, 4], borderWidth: 1.5, pointRadius: 0, tension: 0.2, order: 2, datalabels: {display: false}};
+        })()
+    ];
 
     const yoyDatasets = yoyYears.map(year => {
         const isCurrentYear = year === currentYear;
@@ -1738,10 +1767,10 @@ function createSeasonalChart(itemName) {
     });
 
     document.getElementById("seasonalChartTitle").textContent =
-        itemName + (quarterly ? " 연도별 분기 수출 비교" : " 연도별 월간 수출 비교");
+        itemName + (quarterly ? " 최근 5년 분기 수출 비교" : " 최근 5년 월별 수출액 비교 (" + exportYears[0] + "~" + currentYear + ", 빨간 선 = " + currentYear + "년)");
 
     document.getElementById("seasonalYoyChartTitle").textContent =
-        itemName + (quarterly ? " 2021년 이후 분기 YoY 증감률 비교" : " 2021년 이후 월간 YoY 증감률 비교");
+        itemName + (quarterly ? " 최근 분기 YoY 증감률 비교" : " 최근 월간 YoY 증감률 비교");
 
     if (seasonalChart) seasonalChart.destroy();
     if (seasonalYoyChart) seasonalYoyChart.destroy();
@@ -1749,7 +1778,7 @@ function createSeasonalChart(itemName) {
     seasonalChart = new Chart(
         document.getElementById("seasonalChart"),
         {
-            type: "bar",
+            type: quarterly ? "bar" : "line",
             data: {
                 labels,
                 datasets: exportDatasets
