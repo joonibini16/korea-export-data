@@ -91,14 +91,17 @@ function backlogStatus(id){const review=backlogReview(id),count=backlog.filter(r
 // 추세·계절성 때문에 금액 수준끼리의 상관은 과장되므로, 전년 동기 대비 증감률(YoY)끼리의 상관을 기준으로 봅니다.
 let inventory=[];
 const qAdd=(p,k)=>{const i=Number(p.slice(0,4))*4+Number(p.slice(-1))-1+k;return `${Math.floor(i/4)}-Q${i%4+1}`;};
-function invMap(c){const rs=inventory.filter(r=>r.company_id===c.id&&num(r.inventory_KRW)>0);const basis=rs.filter(r=>r.basis==='연결').length>=8?'연결':'별도';const vals=rs.filter(r=>r.basis===basis).map(r=>num(r.inventory_KRW)).sort((a,b)=>a-b),med=vals[Math.floor(vals.length/2)]||0;return{basis,map:new Map(rs.filter(r=>r.basis===basis&&num(r.inventory_KRW)>=med*0.05&&num(r.inventory_KRW)<=med*20).map(r=>[r.period,num(r.inventory_KRW)/1e8]))};}
+function invMap(c){const rs=inventory.filter(r=>r.company_id===c.id&&num(r.inventory_KRW)>0);const basis=rs.filter(r=>r.basis==='연결').length>=8?'연결':'별도';const vals=rs.filter(r=>r.basis===basis).map(r=>num(r.inventory_KRW)).sort((a,b)=>a-b),med=vals[Math.floor(vals.length/2)]||0;const ok=r=>num(r.inventory_KRW)>=med*0.05&&num(r.inventory_KRW)<=med*20;const map=new Map(rs.filter(r=>r.basis===basis&&ok(r)).map(r=>[r.period,num(r.inventory_KRW)/1e8]));
+ // 연결재무제표를 작성하기 전(종속회사 없음) 기간은 별도 재무제표가 회사 전체이므로 이어 붙입니다.
+ let spliced=null;if(basis==='연결'&&map.size){const first=[...map.keys()].sort()[0];const early=rs.filter(r=>r.basis==='별도'&&r.period<first);if(early.length){early.forEach(r=>map.set(r.period,num(r.inventory_KRW)/1e8));spliced=first;}}
+ return{basis,map,spliced};}
 function qYoy(m,p){return growth(m.get(p),m.get(qAdd(p,-4)));}
 function invLagStats(inv,rev){const out=[];for(let k=-2;k<=3;k++){const pairs=[...inv.keys()].sort().map(p=>[qYoy(inv,p),qYoy(rev,qAdd(p,k))]).filter(x=>x[0]!=null&&x[1]!=null);out.push({k,n:pairs.length,r:pairs.length>=8?pearson(pairs):null});}return out;}
 const lagLabel=k=>k>0?`재고 ${k}분기 선행`:k<0?`매출 ${-k}분기 선행`:'동시';
-function inventorySummary(c){const {basis,map:inv}=invMap(c);if(!inv.size)return null;const rev=revenueMap(c);const stats=invLagStats(inv,rev);const ok=stats.filter(s=>s.r!=null);
- const best=ok.length?ok.reduce((a,b)=>b.r>a.r?b:a):null;const lastP=[...inv.keys()].sort().at(-1);
- const days=rev.get(lastP)?inv.get(lastP)/(rev.get(lastP)/91):null;return{basis,inv,rev,stats,best,lastP,invYoy:qYoy(inv,lastP),days,lead:stats.find(s=>s.k===1)};}
-function renderInventory(c){const sec=el('inventoryPanel');if(!sec)return;const s=inventorySummary(c);
+function inventorySummary(c){const {basis,map:inv,spliced}=invMap(c);if(!inv.size)return null;const rev=revenueMap(c);const stats=invLagStats(inv,rev);const ok=stats.filter(s=>s.r!=null);
+ let best=ok.length?ok.reduce((a,b)=>b.r>a.r?b:a):null;if(best&&best.r<0.3)best=null;const lastP=[...inv.keys()].sort().at(-1);
+ const days=rev.get(lastP)?inv.get(lastP)/(rev.get(lastP)/91):null;return{basis,spliced,inv,rev,stats,best,lastP,invYoy:qYoy(inv,lastP),days,lead:stats.find(s=>s.k===1)};}
+function renderInventory(c){const sec=el('inventoryPanel');if(!sec)return;const s=inventorySummary(c);const ok=s?s.stats.filter(x=>x.r!=null):[];
  el('inventoryTitle').textContent=c.name+' · 재고자산(t) ↔ 다음 분기 매출(t+1)';
  if(!s){el('inventoryNote').textContent='재고자산 자료를 아직 확보하지 못했습니다.';charts.inventory?.destroy();el('inventoryLags').replaceChildren();return;}
  const ps=[...s.inv.keys()].sort();
@@ -109,8 +112,8 @@ function renderInventory(c){const sec=el('inventoryPanel');if(!sec)return;const 
  ],'억원',{scales:{y:{display:false},yInv:{type:'linear',position:'left',title:{display:true,text:'재고자산 (억원)'},ticks:{callback:v=>Number(v).toLocaleString()}},yRev:{type:'linear',position:'right',title:{display:true,text:'매출 (억원)'},grid:{drawOnChartArea:false},ticks:{callback:v=>Number(v).toLocaleString()}}},
   plugins:{tooltip:{callbacks:{title:items=>{const p=ps[items[0].dataIndex];return `재고 ${p} · 매출 ${qAdd(p,1)}`;}}}}});
  el('inventoryLags').replaceChildren();for(const st of s.stats){const sp=document.createElement('span');sp.textContent=`${lagLabel(st.k)}: ${st.r==null?'—':st.r.toFixed(2)} (${st.n})`;if(s.best&&st.k===s.best.k)sp.className='best';el('inventoryLags').append(sp);}
- const lead=s.lead;el('inventoryNote').textContent=`${s.basis} 기준 · 최근 ${s.lastP} 재고 ${Math.round(s.inv.get(s.lastP)).toLocaleString()}억원 (전년 대비 ${pct(s.invYoy)})${s.days!=null?`, 재고일수 약 ${Math.round(s.days)}일(재고 ÷ 분기 매출 × 91)`:''}. `+
-  (s.best?`양(+)의 상관이 가장 큰 시차는 「${lagLabel(s.best.k)}」 r=${s.best.r.toFixed(2)} (${s.best.n}분기)입니다. `:'겹치는 분기가 8개 미만이라 상관계수를 계산하지 않았습니다. ')+
+ const lead=s.lead;el('inventoryNote').textContent=`${s.basis} 기준${s.spliced?` (${s.spliced} 이전은 연결재무제표 작성 전이라 별도 기준)`:''} · 최근 ${s.lastP} 재고 ${Math.round(s.inv.get(s.lastP)).toLocaleString()}억원 (전년 대비 ${pct(s.invYoy)})${s.days!=null?`, 재고일수 약 ${Math.round(s.days)}일(재고 ÷ 분기 매출 × 91)`:''}. `+
+  (s.best?`양(+)의 상관이 가장 큰 시차는 「${lagLabel(s.best.k)}」 r=${s.best.r.toFixed(2)} (${s.best.n}분기)입니다. `:ok.length?'어느 시차에서도 뚜렷한 양(+)의 상관(r 0.3 이상)이 없습니다. ':'겹치는 분기가 8개 미만이라 상관계수를 계산하지 않았습니다. ')+
   (lead?.r!=null?(lead.n<10?`재고 1분기 선행 상관 r=${lead.r.toFixed(2)}은 겹친 분기가 ${lead.n}개뿐이라 참고만 하세요.`:lead.r>=0.5?`재고 증가가 다음 분기 매출 증가로 이어진 경향이 있습니다(r=${lead.r.toFixed(2)}). 최근 재고 ${s.invYoy>0?'증가':'감소'}는 다음 분기 매출 ${s.invYoy>0?'증가':'감소'} 쪽 신호입니다.`:lead.r<=-0.5?`재고가 늘면 다음 분기 매출이 줄었던 경향이 있습니다(r=${lead.r.toFixed(2)}) — 재고 증가가 판매 부진의 결과일 가능성을 봐야 합니다.`:`재고와 다음 분기 매출의 관계는 약합니다(r=${lead.r.toFixed(2)}).`):'');}
 function renderInventoryTable(){const box=el('inventoryTable');if(!box)return;box.replaceChildren();
  const rows=watch.map(c=>({c,s:inventorySummary(c)})).filter(x=>x.s).sort((a,b)=>(b.s.lead?.r??-9)-(a.s.lead?.r??-9));
