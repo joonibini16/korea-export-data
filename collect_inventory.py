@@ -109,7 +109,15 @@ def main():
                     priors[(r['company_id'], f"{int(r['period'][:4]) - 1}-Q4", basis)] = prior
                 got = True
             if not got and not any(i['company_id'] == r['company_id'] and i['period'] == r['period'] for i in issues):
-                issues.append(dict(company_id=r['company_id'], period=r['period'], source=r['url'], reason='재무상태표 미확인'))
+                dbg = []
+                for e in doc.xpath('//*[contains(text(),"재무상태표") or contains(text(),"재 무 상 태 표")]')[:8]:
+                    dbg.append(f'{e.tag}: {h.text(e)[:100]}')
+                for tr in doc.xpath('//tr')[:4000]:
+                    c = tr.xpath('./td|./th')
+                    if c and '재고' in h.text(c[0]).replace(' ', '')[:8]:
+                        dbg.append('ROW: ' + ' | '.join(h.text(x)[:30] for x in c[:5])); 
+                        if sum(x.startswith('ROW') for x in dbg) >= 4: break
+                issues.append(dict(company_id=r['company_id'], period=r['period'], source=r['url'], reason='재무상태표 미확인', debug=dbg))
             print(r['company_id'], r['period'], 'ok' if got else 'missing', flush=True)
     for k, p in priors.items():
         v = out.get(k)
