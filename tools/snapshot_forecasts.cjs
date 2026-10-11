@@ -30,10 +30,10 @@ const esc = v => { const s = v == null ? '' : String(v); return /[",\n]/.test(s)
       anchor_period:f?f.anchor:'',anchor_revenue_100m:f?Math.round(f.anchorRev):'',beta:f?f.beta.toFixed(3):'',backtest_mape_pct:f&&f.mape!=null?f.mape.toFixed(1):'',
       consensus_revenue_100m:cs?Math.round(cs.value):'',consensus_date:cs?cs.date:'',gap_vs_consensus_pct:o.gap!=null?o.gap.toFixed(1):'',status_note:f?'':(o.note||'')};}).filter(Boolean)`);
   const invRows = w.eval(`__api.watch.map(c=>{const s=__api.inventorySummary(c);const f=s?__api.inventoryForecast(s):null;if(!f||f.value==null)return null;const cs=__api.consensusFor(c,f.target);
-    return {company_id:c.id,name:c.name,period:f.target,model:'inventory-lag1-v1',months_collected:'',export_actual_part:'',export_estimate_total:'',export_qoq_pct:'',
+    return {company_id:c.id,name:c.name,period:f.target,model:'inventory-qoq-v2',months_collected:'',export_actual_part:'',export_estimate_total:'',export_qoq_pct:'',
       forecast_revenue_100m:Math.round(f.value),forecast_low_100m:Math.round(f.low),forecast_high_100m:Math.round(f.high),anchor_period:f.from,anchor_revenue_100m:Math.round(f.base),
       beta:f.b.toFixed(3),backtest_mape_pct:f.mape!=null?f.mape.toFixed(1):'',consensus_revenue_100m:cs?Math.round(cs.value):'',consensus_date:cs?cs.date:'',
-      gap_vs_consensus_pct:cs?((f.value/cs.value-1)*100).toFixed(1):'',status_note:'신뢰도 '+f.grade+' · 재고 YoY '+f.x0.toFixed(1)+'% · r '+f.r.toFixed(2)};}).filter(Boolean)`);
+      gap_vs_consensus_pct:cs?((f.value/cs.value-1)*100).toFixed(1):'',status_note:'신뢰도 '+f.grade+' · 재고 QoQ '+f.x0.toFixed(1)+'%'};}).filter(Boolean)`);
   rows.push(...invRows);
   let old = [];
   if (fs.existsSync(OUT)) {

@@ -101,21 +101,26 @@ const lagLabel=k=>k>0?`재고 ${k}분기 선행`:k<0?`매출 ${-k}분기 선행`
 function inventorySummary(c){const {basis,map:inv,spliced}=invMap(c);if(!inv.size)return null;const rev=revenueMap(c);const stats=invLagStats(inv,rev);const ok=stats.filter(s=>s.r!=null);
  let best=ok.length?ok.reduce((a,b)=>b.r>a.r?b:a):null;if(best&&best.r<0.3)best=null;const lastP=[...inv.keys()].sort().at(-1);
  const days=rev.get(lastP)?inv.get(lastP)/(rev.get(lastP)/91):null;return{basis,spliced,inv,rev,stats,best,lastP,invYoy:qYoy(inv,lastP),days,lead:stats.find(s=>s.k===1)};}
-// 재고 기반 다음 분기 매출 예상: 매출 YoY(t+1) = a + b × 재고 YoY(t) (최근 분기말 재고 → 다음 분기 매출).
-// 예상 매출 = 전년 같은 분기 매출 × (1 + 예상 YoY). 최근 4개 분기는 그 이전 자료만으로 맞춰 본 순차 백테스트 오차를 함께 냅니다.
+// 재고 기반 다음 분기 매출 예상 (직전 분기 기준):
+// 매출(t+1) = 매출(t) × (재고(t) ÷ 재고(t-1))^β
+// β는 과거 「재고 직전분기 대비 변화(t) → 다음 분기 매출의 직전분기 대비 변화(t+1)」로 추정합니다(절편 없음, 0~1.5).
+// 그래서 재고가 늘면 예상 매출은 최근 분기 매출보다 늘고, 줄면 줄어듭니다.
 function inventoryForecast(s){if(!s)return null;const ps=[...s.inv.keys()].sort();
- const pairs=ps.map(p=>({p,x:qYoy(s.inv,p),y:qYoy(s.rev,qAdd(p,1))})).filter(o=>o.x!=null&&o.y!=null);
- const p0=ps.at(-1),target=qAdd(p0,1),x0=qYoy(s.inv,p0),base=s.rev.get(qAdd(target,-4)),actual=s.rev.get(target)??null;
- const out={target,from:p0,x0,base,actual,n:pairs.length};
- if(pairs.length<8){out.fail='재고·매출 YoY가 함께 있는 분기 8개 미만';return out;}
- if(x0==null){out.fail=p0+' 재고의 전년 비교값 없음';return out;}
- if(!(base>0)){out.fail=qAdd(target,-4)+' 매출(전년 같은 분기) 없음';return out;}
- const f=linfit(pairs.map(o=>[o.x,o.y]));if(!f){out.fail='회귀 불가';return out;}
- out.a=f.a;out.b=f.b;out.r=pearson(pairs.map(o=>[o.x,o.y]));if(!(out.r>=0.3)){out.fail='재고와 다음 분기 매출의 관계가 약함 (r='+(out.r??0).toFixed(2)+')';return out;}out.yoy=f.a+f.b*x0;out.value=base*(1+out.yoy/100);out.low=base*(1+(out.yoy-f.sd)/100);out.high=base*(1+(out.yoy+f.sd)/100);
- const errs=[];for(let i=Math.max(8,pairs.length-4);i<pairs.length;i++){const g=linfit(pairs.slice(0,i).map(o=>[o.x,o.y]));const t=qAdd(pairs[i].p,1),b0=s.rev.get(qAdd(t,-4)),a0=s.rev.get(t);if(g&&b0>0&&a0>0)errs.push(Math.abs(b0*(1+(g.a+g.b*pairs[i].x)/100)/a0-1)*100);}
- out.mape=errs.length?errs.reduce((x,y)=>x+y,0)/errs.length:null;out.tests=errs.length;
- const xs=pairs.map(o=>o.x),lo=Math.min(...xs),hi=Math.max(...xs),span=hi-lo;out.extrap=x0<lo-span*0.25||x0>hi+span*0.25;
- out.grade=out.r>=0.5&&out.n>=10&&out.mape!=null&&out.mape<=15&&!out.extrap?'높음':out.r>=0.3&&(out.mape==null||out.mape<=25)?'보통':'낮음';
+ const ch=ps.map(p=>{const i0=s.inv.get(qAdd(p,-1)),i1=s.inv.get(p),r0=s.rev.get(p),r1=s.rev.get(qAdd(p,1));return i0>0&&i1>0&&r0>0&&r1>0?{p,x:Math.log(i1/i0),y:Math.log(r1/r0),r0,r1}:null;}).filter(Boolean);
+ const p0=ps.at(-1),target=qAdd(p0,1),i0=s.inv.get(qAdd(p0,-1)),i1=s.inv.get(p0),base=s.rev.get(p0),actual=s.rev.get(target)??null;
+ const out={target,from:p0,base,actual,n:ch.length};
+ if(!(i0>0&&i1>0)){out.fail=qAdd(p0,-1)+'·'+p0+' 재고가 모두 있어야 함';return out;}
+ if(!(base>0)){out.fail=p0+' 매출(기준 분기) 없음';return out;}
+ if(ch.length<8){out.fail='재고·매출 연속 분기 변화 8쌍 미만';return out;}
+ const beta=fitBeta(ch.map(c=>[c.x,c.y])),dx=Math.log(i1/i0);out.beta=beta;out.b=beta;out.x0=(i1/i0-1)*100;out.r=pearson(ch.map(c=>[c.x,c.y]));
+ if(beta==null||beta<0.05){out.fail='재고 변화와 다음 분기 매출 변화의 관계가 약함 (β='+(beta??0).toFixed(2)+')';return out;}
+ const res=ch.map(c=>c.y-beta*c.x),sd=Math.sqrt(res.reduce((a,v)=>a+v*v,0)/Math.max(1,ch.length-1));
+ out.value=base*Math.exp(beta*dx);out.low=out.value*Math.exp(-sd);out.high=out.value*Math.exp(sd);out.qoq=(out.value/base-1)*100;
+ const ly=s.rev.get(qAdd(target,-4));out.yoy=ly>0?(out.value/ly-1)*100:null;
+ const errs=[];for(let i=Math.max(6,ch.length-4);i<ch.length;i++){const b=fitBeta(ch.slice(0,i).map(c=>[c.x,c.y]));if(b!=null){const c=ch[i];errs.push(Math.abs(c.r0*Math.exp(b*c.x)/c.r1-1)*100);}}
+ out.mape=errs.length?errs.reduce((a,v)=>a+v,0)/errs.length:null;out.tests=errs.length;
+ const maxdx=Math.max(...ch.map(c=>Math.abs(c.x)));out.extrap=Math.abs(dx)>maxdx*1.5;
+ out.grade=(out.r??0)>=0.4&&out.n>=10&&out.mape!=null&&out.mape<=15&&!out.extrap?'높음':out.mape==null||out.mape<=25?'보통':'낮음';
  return out;}
 function renderInventory(c){const sec=el('inventoryPanel');if(!sec)return;const s=inventorySummary(c);const ok=s?s.stats.filter(x=>x.r!=null):[];
  el('inventoryTitle').textContent=c.name+' · 재고자산(t) ↔ 다음 분기 매출(t+1)';
@@ -132,7 +137,7 @@ function renderInventory(c){const sec=el('inventoryPanel');if(!sec)return;const 
   const cs=consensusFor(c,fc.target);if(cs)charts.inventory.data.datasets.push({label:'컨센서스 · '+fc.target+' (네이버)',data:at(cs.value),borderColor:'#6b21a8',pointStyle:'crossRot',pointRadius:9,pointBorderWidth:2.5,showLine:false,yAxisID:'yRev'});charts.inventory.update();}
  el('inventoryLags').replaceChildren();for(const st of s.stats){const sp=document.createElement('span');sp.textContent=`${lagLabel(st.k)}: ${st.r==null?'—':st.r.toFixed(2)} (${st.n})`;if(s.best&&st.k===s.best.k)sp.className='best';el('inventoryLags').append(sp);}
  const lead=s.lead;
- {const fc=s.fc,cs=fc&&fc.value!=null?consensusFor(c,fc.target):null;el('inventoryForecast').textContent=!fc?'':fc.value==null?`${fc.target} 매출 예상 미표시: ${fc.fail}`:`${fc.target} 매출 예상 ${Math.round(fc.value).toLocaleString()}억원 (신뢰도 ${fc.grade}) = ${qAdd(fc.target,-4)} 매출 ${Math.round(fc.base).toLocaleString()}억원 × (1 + 예상 YoY ${pct(fc.yoy)}) · 예상 YoY = ${fc.a.toFixed(1)} + ${fc.b.toFixed(2)} × ${fc.from} 재고 YoY ${pct(fc.x0)} · 범위 ${Math.round(fc.low).toLocaleString()}~${Math.round(fc.high).toLocaleString()}억원 · r=${fc.r.toFixed(2)} (${fc.n}분기)${fc.mape!=null?` · 최근 ${fc.tests}개 분기 순차 백테스트 오차 ${fc.mape.toFixed(1)}%`:''}${fc.extrap?' · ⚠ 최근 재고 증감률이 과거 범위를 벗어나 외삽':''}${cs?` · 컨센서스 ${Math.round(cs.value).toLocaleString()}억원 대비 ${pct(growth(fc.value,cs.value))}`:''}${fc.actual!=null?` · 실제 ${Math.round(fc.actual).toLocaleString()}억원 (예상 오차 ${pct(growth(fc.value,fc.actual))})`:''}`;}
+ {const fc=s.fc,cs=fc&&fc.value!=null?consensusFor(c,fc.target):null;el('inventoryForecast').textContent=!fc?'':fc.value==null?`${fc.target} 매출 예상 미표시: ${fc.fail}`:`${fc.target} 매출 예상 ${Math.round(fc.value).toLocaleString()}억원 (신뢰도 ${fc.grade}) = ${fc.from} 매출 ${Math.round(fc.base).toLocaleString()}억원 × (${fc.from} 재고 직전 분기 대비 ${pct(fc.x0)})^β ${fc.beta.toFixed(2)} → 직전 분기 대비 ${pct(fc.qoq)}${fc.yoy!=null?`, 전년 대비 ${pct(fc.yoy)}`:''} · 범위 ${Math.round(fc.low).toLocaleString()}~${Math.round(fc.high).toLocaleString()}억원 · 분기 변화 ${fc.n}쌍, 변화율 상관 ${fc.r!=null?fc.r.toFixed(2):'—'}${fc.mape!=null?` · 최근 ${fc.tests}개 분기 순차 백테스트 오차 ${fc.mape.toFixed(1)}%`:''}${fc.extrap?' · ⚠ 재고 변화폭이 과거 범위를 크게 벗어남':''}${cs?` · 컨센서스 ${Math.round(cs.value).toLocaleString()}억원 대비 ${pct(growth(fc.value,cs.value))}`:''}${fc.actual!=null?` · 실제 ${Math.round(fc.actual).toLocaleString()}억원 (예상 오차 ${pct(growth(fc.value,fc.actual))})`:''}`;}
  el('inventoryNote').textContent=`${s.basis} 기준${s.spliced?` (${s.spliced} 이전은 연결재무제표 작성 전이라 별도 기준)`:''} · 최근 ${s.lastP} 재고 ${Math.round(s.inv.get(s.lastP)).toLocaleString()}억원 (전년 대비 ${pct(s.invYoy)})${s.days!=null?`, 재고일수 약 ${Math.round(s.days)}일(재고 ÷ 분기 매출 × 91)`:''}. `+
   (s.best?`양(+)의 상관이 가장 큰 시차는 「${lagLabel(s.best.k)}」 r=${s.best.r.toFixed(2)} (${s.best.n}분기)입니다. `:ok.length?'어느 시차에서도 뚜렷한 양(+)의 상관(r 0.3 이상)이 없습니다. ':'겹치는 분기가 8개 미만이라 상관계수를 계산하지 않았습니다. ')+
   (lead?.r!=null?(lead.n<10?`재고 1분기 선행 상관 r=${lead.r.toFixed(2)}은 겹친 분기가 ${lead.n}개뿐이라 참고만 하세요.`:lead.r>=0.5?`재고 증가가 다음 분기 매출 증가로 이어진 경향이 있습니다(r=${lead.r.toFixed(2)}). 최근 재고 ${s.invYoy>0?'증가':'감소'}는 다음 분기 매출 ${s.invYoy>0?'증가':'감소'} 쪽 신호입니다.`:lead.r<=-0.5?`재고가 늘면 다음 분기 매출이 줄었던 경향이 있습니다(r=${lead.r.toFixed(2)}) — 재고 증가가 판매 부진의 결과일 가능성을 봐야 합니다.`:`재고와 다음 분기 매출의 관계는 약합니다(r=${lead.r.toFixed(2)}).`):'');}
@@ -141,7 +146,7 @@ function renderInventoryTable(){const box=el('inventoryTable');if(!box)return;bo
  for(const {c,s} of rows){const tr=document.createElement('tr');const n=cell(tr,'');n.append(companyButton(c));cell(tr,s.basis);
   for(const k of [-1,0,1,2]){const st=s.stats.find(x=>x.k===k);const td=cell(tr,st?.r==null?'—':st.r.toFixed(2));if(st?.r!=null&&Math.abs(st.r)>=0.5)td.style.fontWeight='bold';}
   cell(tr,s.best?lagLabel(s.best.k)+' (r '+s.best.r.toFixed(2)+' · '+s.best.n+'분기)':'—');cell(tr,s.lastP+' '+pct(s.invYoy));cell(tr,s.days!=null?Math.round(s.days)+'일':'—');
-  {const fc=inventoryForecast(s),cs=fc&&fc.value!=null?consensusFor(c,fc.target):null;cell(tr,fc&&fc.value!=null?`${fc.target} ${Math.round(fc.value).toLocaleString()}억 (YoY ${pct(fc.yoy)})`:(fc?fc.fail:'—'));cell(tr,fc&&fc.value!=null?fc.grade+(fc.mape!=null?' · 오차 '+fc.mape.toFixed(0)+'%':''):'—');cell(tr,cs?pct(growth(fc.value,cs.value)):'—');}
+  {const fc=inventoryForecast(s),cs=fc&&fc.value!=null?consensusFor(c,fc.target):null;cell(tr,fc&&fc.value!=null?`${fc.target} ${Math.round(fc.value).toLocaleString()}억 (전분기 ${pct(fc.qoq)}${fc.yoy!=null?', 전년 '+pct(fc.yoy):''} · 재고 ${pct(fc.x0)})`:(fc?fc.fail:'—'));cell(tr,fc&&fc.value!=null?fc.grade+(fc.mape!=null?' · 오차 '+fc.mape.toFixed(0)+'%':''):'—');cell(tr,cs?pct(growth(fc.value,cs.value)):'—');}
   const lr=s.lead?.r,ln=s.lead?.n||0;cell(tr,lr==null||s.invYoy==null?'—':ln<10?'표본 부족':lr>=0.5?(s.invYoy>0?'다음 분기 매출 증가 신호':'다음 분기 매출 감소 신호'):lr<=-0.5?(s.invYoy>0?'재고 누적 · 판매 둔화 주의':'재고 소진 · 판매 개선'):'관계 약함');box.append(tr);}
  if(el('inventoryTableNote'))el('inventoryTableNote').textContent=rows.length+'개 업체 · 숫자는 재고 YoY와 매출 YoY의 피어슨 상관계수(겹치는 분기 8개 이상). 해석은 「재고 1분기 선행」 r이 ±0.5 이상이고 겹친 분기가 10개 이상일 때만 표시합니다.';}
 function renderBacklog(c){
