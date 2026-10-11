@@ -2,7 +2,7 @@ name: Forecast Snapshot
 on:
   workflow_dispatch:
   workflow_run:
-    workflows: ['Naver Consensus Snapshot', 'Regional Company Exports']
+    workflows: ['Naver Consensus Snapshot', 'Regional Company Exports', 'Quarterly Inventory']
     types: [completed]
   schedule:
     - cron: '50 23 * * 0'   # Monday 08:50 KST (after consensus refresh)

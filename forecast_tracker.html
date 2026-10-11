@@ -10,13 +10,13 @@
 <div id="notice" class="notice" hidden></div>
 <div class="cards">
  <div class="card">실적 확인 건수<strong id="cN">—</strong><span id="cNsub" class="muted"></span></div>
- <div class="card">수출 기반 예측 평균 오차<strong id="cOur">—</strong><span class="muted">|예측 ÷ 실제 − 1| 평균</span></div>
+ <div class="card">예측 평균 오차<strong id="cOur">—</strong><span class="muted">|예측 ÷ 실제 − 1| 평균</span></div>
  <div class="card">컨센서스 평균 오차<strong id="cCons">—</strong><span class="muted">같은 시점 컨센서스 기준</span></div>
  <div class="card">컨센 괴리 방향 적중률<strong id="cDir">—</strong><span class="muted">예측이 컨센보다 높/낮았을 때 실제도 같은 쪽</span></div>
 </div>
-<section class="panel"><div class="controls"><label>분기<select id="period"></select></label><label>비교 시점<select id="vintage"><option value="last">발표 전 마지막 스냅샷</option><option value="m1">1개월 수집 시점</option><option value="m2">2개월 수집 시점</option><option value="m3">3개월 모두 수집 시점</option></select></label></div>
+<section class="panel"><div class="controls"><label>예측 방식<select id="model"><option value="qoq-elasticity-v1">수출 기반 (직전 분기 탄력도)</option><option value="inventory-lag1-v1">재고 기반 (재고 YoY → 다음 분기 매출 YoY)</option></select></label><label>분기<select id="period"></select></label><label>비교 시점<select id="vintage"><option value="last">발표 전 마지막 스냅샷</option><option value="m1">1개월 수집 시점</option><option value="m2">2개월 수집 시점</option><option value="m3">3개월 모두 수집 시점</option></select></label></div>
 <p class="muted">실적 발표일은 네이버 데이터에서 해당 분기가 추정치(E)에서 실적으로 바뀐 첫 스냅샷 날짜로 봅니다. 실제 매출은 공시 수집 매출(연결)을 우선 쓰고, 없으면 네이버 실적을 씁니다.</p>
-<div class="table"><table><thead><tr><th>업체</th><th>분기</th><th>스냅샷</th><th>수집 월</th><th>수출 기반 예측</th><th>당시 컨센서스</th><th>예측 vs 컨센</th><th>실제 매출</th><th>예측 오차</th><th>컨센 오차</th><th>더 가까운 쪽</th><th>괴리 방향</th></tr></thead><tbody id="rows"></tbody></table></div></section>
+<div class="table"><table><thead><tr><th>업체</th><th>분기</th><th>스냅샷</th><th>수집 월</th><th>예측</th><th>당시 컨센서스</th><th>예측 vs 컨센</th><th>실제 매출</th><th>예측 오차</th><th>컨센 오차</th><th>더 가까운 쪽</th><th>괴리 방향</th></tr></thead><tbody id="rows"></tbody></table></div></section>
 <section class="panel"><h2>업체별 누적 성적</h2><div class="table"><table><thead><tr><th>업체</th><th>확인 분기 수</th><th>예측 평균 오차</th><th>컨센 평균 오차</th><th>예측이 더 가까운 비율</th><th>괴리 방향 적중</th></tr></thead><tbody id="byCompany"></tbody></table></div></section>
 <section class="panel"><h2 id="tTitle">예측 경로</h2><div class="controls"><label>업체 · 분기<select id="pick"></select></label></div><div class="chart"><canvas id="path"></canvas></div><p class="muted">스냅샷마다 저장된 예측(네모)과 컨센서스(X)가 실적 발표 전까지 어떻게 움직였는지, 실제 매출(가로선)과 비교합니다.</p></section>
 <section class="panel"><h2>기준</h2><p class="muted">예측 모형: 매출(t) = 기준 분기 매출 × (추정 분기 수출 ÷ 기준 분기 수출)^β (qoq-elasticity-v1). 스냅샷: 매주 월요일 컨센서스 갱신 후, 그리고 지역 수출 수집(15·16·20일) 후 자동 저장. 모형이 바뀌면 model 열에 버전이 달라져 구분됩니다. 원자료: <a href="./forecast_log.csv">forecast_log.csv</a></p><p id="status" class="muted"></p></section>
@@ -39,7 +39,7 @@ function evaluate(r){const a=actual.get(r.company_id+'|'+r.period),f=num(r.forec
  if(o.ef!=null&&o.ec!=null)o.closer=o.ef<o.ec?'예측':o.ef>o.ec?'컨센':'동일';
  if(a&&f&&c&&f!==c)o.dir=Math.sign(f-c)===Math.sign(a-c);return o;}
 function render(){const period=el('period').value,mode=el('vintage').value;el('rows').replaceChildren();
- const groups=new Map();for(const r of log){const k=r.company_id+'|'+r.period;if(!groups.has(k))groups.set(k,[]);groups.get(k).push(r);}
+ const model=el('model').value;const groups=new Map();for(const r of log.filter(r=>(r.model||'qoq-elasticity-v1')===model)){const k=r.company_id+'|'+r.period;if(!groups.has(k))groups.set(k,[]);groups.get(k).push(r);}
  const all=[];for(const [k,rows] of groups){rows.sort((a,b)=>a.snapshot_date.localeCompare(b.snapshot_date));const s=pickSnapshot(rows,mode);if(s)all.push({s,e:evaluate(s)});}
  const shown=all.filter(x=>period==='all'||x.s.period===period).sort((a,b)=>(b.e.ef??-1)-(a.e.ef??-1));
  for(const {s,e} of shown){const tr=document.createElement('tr');td(tr,s.name);td(tr,s.period);td(tr,s.snapshot_date);td(tr,s.months_collected.split(' ').length+'개월');
@@ -70,6 +70,6 @@ async function init(){const [l,f,n,w]=await Promise.all([read('forecast_log.csv'
  const keys=[...new Set(log.filter(r=>num(r.forecast_revenue_100m)!=null).map(r=>r.company_id+'|'+r.period))];keys.sort();
  for(const k of keys){const r=log.find(x=>x.company_id+'|'+x.period===k);opt(el('pick'),k,r.name+' · '+r.period);}
  el('status').textContent='스냅샷 '+new Set(log.map(r=>r.snapshot_date)).size+'회 · 최근 '+[...new Set(log.map(r=>r.snapshot_date))].sort().at(-1)+' · 저장 행 '+log.length+'개';
- el('period').onchange=render;el('vintage').onchange=render;el('pick').onchange=renderPath;render();if(keys.length)renderPath();}
+ el('period').onchange=render;el('model').onchange=render;el('vintage').onchange=render;el('pick').onchange=renderPath;render();if(keys.length)renderPath();}
 init().catch(e=>{el('notice').hidden=false;el('notice').textContent='불러오기 실패: '+e.message;});
 </script></body></html>

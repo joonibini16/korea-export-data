@@ -19,7 +19,7 @@ const esc = v => { const s = v == null ? '' : String(v); return /[",\n]/.test(s)
   w.Chart = class { constructor(el, cfg) { this.data = cfg.data; this.options = cfg.options || {}; this.options.scales = this.options.scales || {};
     this.options.scales.x = this.options.scales.x || {}; this.options.scales.y = this.options.scales.y || {}; } destroy() {} update() {} };
   w.addEventListener('error', e => errs.push(e.message));
-  w.eval(fs.readFileSync(path.join(root, 'regional.js'), 'utf8') + '\n;window.__api={get watch(){return watch},companyOutlook,consensusFor};');
+  w.eval(fs.readFileSync(path.join(root, 'regional.js'), 'utf8') + '\n;window.__api={get watch(){return watch},companyOutlook,consensusFor,inventorySummary,inventoryForecast};');
   for (let i = 0; i < 60 && !w.document.querySelector('#companyList tr'); i++) await new Promise(r => setTimeout(r, 500));
   if (errs.length) throw new Error('page errors: ' + errs.join('; '));
   const today = new Date(Date.now() + 9 * 3600e3).toISOString().slice(0, 10);
@@ -29,12 +29,18 @@ const esc = v => { const s = v == null ? '' : String(v); return /[",\n]/.test(s)
       forecast_revenue_100m:f?Math.round(f.value):'',forecast_low_100m:f?Math.round(f.low):'',forecast_high_100m:f?Math.round(f.high):'',
       anchor_period:f?f.anchor:'',anchor_revenue_100m:f?Math.round(f.anchorRev):'',beta:f?f.beta.toFixed(3):'',backtest_mape_pct:f&&f.mape!=null?f.mape.toFixed(1):'',
       consensus_revenue_100m:cs?Math.round(cs.value):'',consensus_date:cs?cs.date:'',gap_vs_consensus_pct:o.gap!=null?o.gap.toFixed(1):'',status_note:f?'':(o.note||'')};}).filter(Boolean)`);
+  const invRows = w.eval(`__api.watch.map(c=>{const s=__api.inventorySummary(c);const f=s?__api.inventoryForecast(s):null;if(!f||f.value==null)return null;const cs=__api.consensusFor(c,f.target);
+    return {company_id:c.id,name:c.name,period:f.target,model:'inventory-lag1-v1',months_collected:'',export_actual_part:'',export_estimate_total:'',export_qoq_pct:'',
+      forecast_revenue_100m:Math.round(f.value),forecast_low_100m:Math.round(f.low),forecast_high_100m:Math.round(f.high),anchor_period:f.from,anchor_revenue_100m:Math.round(f.base),
+      beta:f.b.toFixed(3),backtest_mape_pct:f.mape!=null?f.mape.toFixed(1):'',consensus_revenue_100m:cs?Math.round(cs.value):'',consensus_date:cs?cs.date:'',
+      gap_vs_consensus_pct:cs?((f.value/cs.value-1)*100).toFixed(1):'',status_note:'신뢰도 '+f.grade+' · 재고 YoY '+f.x0.toFixed(1)+'% · r '+f.r.toFixed(2)};}).filter(Boolean)`);
+  rows.push(...invRows);
   let old = [];
   if (fs.existsSync(OUT)) {
     const lines = fs.readFileSync(OUT, 'utf8').replace(/^﻿/, '').trim().split('\n');
     old = lines.slice(1).filter(l => !l.startsWith(today + ','));
   }
-  const fresh = rows.map(r => FIELDS.map(k => esc(k === 'snapshot_date' ? today : k === 'model' ? MODEL : r[k])).join(','));
+  const fresh = rows.map(r => FIELDS.map(k => esc(k === 'snapshot_date' ? today : k === 'model' ? (r.model || MODEL) : r[k])).join(','));
   fs.writeFileSync(OUT, '﻿' + [FIELDS.join(','), ...old, ...fresh].join('\n') + '\n');
-  console.log(`snapshot ${today}: ${rows.length} companies, ${rows.filter(r => r.forecast_revenue_100m !== '').length} with forecasts`);
+  console.log(`snapshot ${today}: ${rows.length} rows (inventory model ${invRows.length})`);
 })().catch(e => { console.error(e); process.exit(1); });
