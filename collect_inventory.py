@@ -17,7 +17,8 @@ import collect_company_history as h
 
 OUT = ROOT / 'company_inventory.csv'
 STATUS = ROOT / 'company_inventory_status.json'
-LABEL = re.compile(r'^(?:[ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩ\d]+[.)]?)?재고자산(?:\(주[^)]*\)|\(주석[^)]*\)|\([\d,\s]+\))?$')
+# '유동재고자산' is the XBRL standard label used in KIND statements from 2023-Q3 onward.
+LABEL = re.compile(r'^(?:\(\d+\)|[ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩ\d]+[.)]?)?(?:유동)?재고자산(?:\(주[^)]*\)|\(주석[^)]*\)|\([\d,\s]+\))?$')
 UNIT = {'원': 1, '천원': 1000, '백만원': 1000000}
 
 
@@ -40,7 +41,7 @@ def balance_sheets(doc):
         src = title if len(title) < 600 and re.search(r'재무상태표', title) else ptxt if len(ptxt) < 120 and re.search(r'재무상태표', ptxt) else ''
         if not src or '요약' in src or '자본변동' in src:
             continue
-        if not re.match(r'^(?:\d+[.)-]*|[가-하]\.)?(?:연결)?재무상태표', src):
+        if not re.match(r'^(?:\d+(?:-\d+)*[.)]?|[가-하]\.)?(?:연결)?재무상태표', src):
             continue
         name = '연결' if '연결' in src.split('재무상태표')[0] else '별도'
         ctx = ts[i:i + 4]
