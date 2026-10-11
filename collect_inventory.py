@@ -35,20 +35,21 @@ def balance_sheets(doc):
         title = h.text(t).replace(' ', '')
         prev = t.xpath('preceding-sibling::*[1]')
         ptxt = h.text(prev[0]).replace(' ', '') if prev else ''
-        name = None
-        for cand in (title if len(title) < 200 else '', ptxt if len(ptxt) < 60 else ''):
-            m = re.fullmatch(r'(연결)?재무상태표(\(.*\))?', cand)
-            if m:
-                name = '연결' if m.group(1) else '별도'
-                break
-        if not name:
+        # Title is either a short table of its own ("연결 재무상태표 제 N 기 ... 현재 (단위 : 원)")
+        # or the paragraph right before the data table.
+        src = title if len(title) < 600 and re.search(r'재무상태표', title) else ptxt if len(ptxt) < 120 and re.search(r'재무상태표', ptxt) else ''
+        if not src or '요약' in src or '자본변동' in src:
             continue
+        if not re.match(r'^(?:\d+[.)-]*|[가-하]\.)?(?:연결)?재무상태표', src):
+            continue
+        name = '연결' if '연결' in src.split('재무상태표')[0] else '별도'
         ctx = ts[i:i + 4]
         joined = ' '.join(h.text(x) for x in ctx)
         u = re.search(r'단위\s*[:：]\s*(백만원|천원|원)', joined)
         rows = [r for tb in ctx for r in h.rows(tb)]
         header = ' '.join(' '.join(r) for r in rows[:6])
-        found.append(dict(basis=name, unit=u.group(1) if u else None, rows=rows, header=header))
+        if any(r and LABEL.fullmatch(r[0].replace(' ', '')) for r in rows) and not any(f['basis'] == name for f in found):
+            found.append(dict(basis=name, unit=u.group(1) if u else None, rows=rows, header=header))
     return found
 
 
