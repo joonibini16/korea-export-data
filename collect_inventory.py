@@ -44,6 +44,12 @@ def balance_sheets(doc):
         if not re.match(r'^(?:\d+(?:-\d+)*[.)]?|[가-하]\.)?(?:연결)?재무상태표', src):
             continue
         name = '연결' if '연결' in src.split('재무상태표')[0] else '별도'
+        if name == '별도':
+            # Some reports title both sheets just "재무상태표"; the section heading ("2. 연결재무제표" vs "4. 재무제표") decides.
+            sec = [h.text(e).replace(' ', '') for e in t.xpath('preceding::p[contains(.,"재무제표")]')[-40:]]
+            sec = [x for x in sec if re.fullmatch(r'\d+\.(연결)?재무제표', x)]
+            if sec and sec[-1].endswith('연결재무제표'):
+                name = '연결'
         ctx = ts[i:i + 4]
         joined = ' '.join(h.text(x) for x in ctx)
         u = re.search(r'단위\s*[:：]\s*(백만원|천원|원)', joined)
