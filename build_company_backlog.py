@@ -17,7 +17,8 @@ def build():
   key=(cid,p);assert key not in seen,'Duplicate '+str(key);seen.add(key)
   unit,label,factor=CONVERT[r['raw_unit']];v=Decimal(str(r['raw_value']));assert v.is_finite() and v>=0
   assert r['source'].startswith('https://') and r['scope']
-  scope=(unit,r['scope']);assert cid not in scopes or scopes[cid]==scope,'Incomparable series '+cid;scopes[cid]=scope
+  # 범위가 다른 구간은 scope 이름을 달리해 별도 시계열로 둔다(같은 scope 안에서는 단위가 같아야 함).
+  scope=(cid,r['scope']);assert scope not in scopes or scopes[scope]==unit,'Incomparable series '+cid;scopes[scope]=unit
   rows.append(dict(company_id=cid,period=p,value=format(v*factor,'f'),unit=unit,unit_label=label,status=r['status'],source=r['source'],scope=r['scope'],notes=r.get('notes','')))
  # Validate preservation before either output is replaced.
  existing=ROOT/'company_backlog.csv'
@@ -35,5 +36,5 @@ def build():
 
  for name,text in [('company_backlog.csv',buf.getvalue()),('company_backlog_coverage.json',json.dumps(coverage,ensure_ascii=False,indent=2)+'\n')]:
   path=ROOT/name;tmp=path.with_suffix(path.suffix+'.tmp');tmp.write_text(text);os.replace(tmp,path)
- print(f'{len(ids)} companies reviewed; {len(scopes)} with amounts; {len(rows)} observations')
+ print(f'{len(ids)} companies reviewed; {len({c for c,_ in scopes})} with amounts; {len(rows)} observations')
 if __name__=='__main__':build()

@@ -60,7 +60,7 @@ for c in W:
     exp = [q for q in Q]
     rev_struct = [q for q in exp if q not in rev and structural(cid, 'rev', q)]
     inv_struct = [q for q in exp if q not in invq and structural(cid, 'inv', q)]
-    out.append(dict(id=cid, name=c['name'], rev_missing=[q for q in exp if q not in rev and not structural(cid, 'rev', q)] if cid != 'LS-CABLE' else [],
+    out.append(dict(id=cid, name=c['name'], rev_missing=[q for q in exp if q not in rev and not structural(cid, 'rev', q)],
                     inv_missing=[q for q in exp if q not in invq and not structural(cid, 'inv', q)] if cid != 'LS-CABLE' else [],
                     structural=dict(rev=rev_struct, inv=inv_struct, note=[v[1] for (k, t), v in STRUCTURAL.items() if k == cid]),
                     first=listed, regional_missing={k: (len(v), v[:6]) for k, v in regmiss.items()}))

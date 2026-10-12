@@ -1,0 +1,48 @@
+name: Quarterly Backlog Refresh
+# 분기·반기·사업보고서 제출 후 규칙이 있는 업체의 수주잔고와 LS 전선 부문 매출을 자동으로 갱신한다.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '40 22 20 5,8,11 *'
+    - cron: '40 22 5 4 *'
+permissions:
+  contents: write
+concurrency:
+  group: backlog-refresh
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install lxml
+      - uses: actions/cache/restore@v4
+        with:
+          path: .history-cache
+          key: company-history-refresh-${{ github.run_id }}
+          restore-keys: company-history-
+      - name: Dump backlog tables (rule companies)
+        run: |
+          main=$(python -c "import sys;sys.path.insert(0,'tools');import backlog_from_dump as b;print(' '.join(sorted(k for k in b.RULES if k.isdigit() and k not in b.ALT_RULES)))")
+          alt=$(python -c "import sys;sys.path.insert(0,'tools');import backlog_from_dump as b;print(' '.join(sorted(b.ALT_RULES)))")
+          python tools/dump_backlog_tables.py $main 006260:LS && mv backlog_tables_dump.json /tmp/backlog_main.json
+          python tools/dump_backlog_tables.py $alt --broad && mv backlog_tables_dump.json /tmp/backlog_alt.json
+          python tools/dump_backlog_tables.py 006260:LS --broad --kw=전선 && mv backlog_tables_dump.json /tmp/ls.json
+      - uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: .history-cache
+          key: company-history-refresh-${{ github.run_id }}
+      - name: Apply rules and rebuild
+        run: |
+          python tools/backlog_from_dump.py /tmp/backlog_main.json /tmp/backlog_alt.json --write
+          python build_company_backlog.py
+          python tools/ls_cable_revenue.py /tmp/ls.json --write
+      - name: Commit
+        run: |
+          git config user.name github-actions; git config user.email github-actions@github.com
+          git add company_backlog_sources.json company_backlog.csv company_backlog_coverage.json company_revenue_kind.csv
+          if ! git diff --cached --quiet; then git commit -m "Quarterly backlog refresh"; git pull --rebase origin main || (git rebase --abort; exit 1); git push; fi

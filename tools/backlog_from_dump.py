@@ -213,6 +213,80 @@ RULES = {
     '298040': (r_hyosung, '중공업 부문·국내외 주요 종속회사 포함'),
     'LS-CABLE': (r_lscable, 'LS 공시 전선 부문 연결·참고'),
 }
+# ---- 범위가 다른 구간: 본 시계열과 섞지 않고 별도 scope(차트에서 다른 색 시리즈)로 보존 ----
+def a_hdelectric(rep):
+    if rep['period'] >= '2022-Q1':
+        raise ValueError('main series')
+    vals, names = [], []
+    for t in rep['tables']:
+        if not t['rows'] or '수주잔고' not in ' '.join(t['rows'][0]).replace(' ', ''):
+            continue
+        m = re.search(r'\d\)\s*(.+?)\s*\(단위\s*:\s*백만원\s*\)\s*$', t['before'])
+        if not m:
+            continue
+        g, d, b = [num(v) for v in t['rows'][-1][-3:]]
+        if not check(g, d, b):
+            raise ValueError('법인별 표 산식 불일치: ' + m.group(1)[-30:])
+        vals.append(b); names.append(m.group(1).split(')')[-1].strip()[-30:] or m.group(1)[-30:])
+    if not vals:
+        raise ValueError('법인별 수주상황 표 없음')
+    return sum(vals), 'KRW_million', f'법인별 수주상황 표 {len(vals)}개 단순 합산(본사·중국·미국 법인 등). 법인 간 내부거래가 빠지지 않아 2022년부터의 연결 합계와 범위가 다릅니다.'
+
+
+def a_posco(rep):
+    if rep['period'] >= '2023-Q3':
+        raise ValueError('main series')
+    b = ' '.join(t['before'] for t in rep['tables'])
+    m = re.search(r'수주잔고\s*총액은\s*약?\s*([\d,]+)\s*백만원', b)
+    if not m:
+        raise ValueError('수주잔고 총액 문구 없음')
+    return num(m.group(1)), 'KRW_million', '사업의 내용 요약 문구의 "수주잔고 총액 약 N백만원"(1억원 이상 개별 계약 기준). 2023-Q3부터의 10억원 이상 계약 합계와 기준이 다릅니다.'
+
+
+def a_vitzro(rep):
+    if '2023-Q1' <= rep['period'] <= '2025-Q3':
+        raise ValueError('main series')
+    for t in rep['tables']:
+        if t['rows'] and '수주잔고' in ' '.join(t['rows'][0]).replace(' ', '') and '백만원' in t['before']:
+            row = total_row(t)
+            if row and num(row[-1]) is not None:
+                return num(row[-1]), 'KRW_million', '개별 주문(수시 발주) 표의 합계 잔고. 장기공급계약 잔고와 범위가 다릅니다.'
+    raise ValueError('수주현황 표 없음(미기재)')
+
+
+def a_hyosung(rep):
+    if rep['period'] >= '2025-Q1':
+        raise ValueError('main series')
+    head, row = hyosung_table(rep)
+    col = next(i for i, h in enumerate(head) if h.replace(' ', '').startswith('당기말수주잔'))
+    vals = [v for v in row if re.fullmatch(r'[\d,]+', v.replace(' ', ''))]
+    hvals = [h for h in head if re.search(r'수주|매출', h)]
+    return num(vals[hvals.index(head[col])]), 'KRW_million', '효성중공업(주) 본사 중공업 부문 잔고(원화). 해외 종속회사(현지통화 별도 기재)는 빠져 2025년부터의 합계보다 작습니다.'
+
+
+def a_nepes(rep):
+    for t in rep['tables']:
+        if t['rows'] and '수주잔고' in ' '.join(t['rows'][0]).replace(' ', '') and '백만원' in t['before']:
+            body = [r for r in t['rows'][2:] if r and len(r) >= 3]
+            tot = Decimal(0)
+            for r in body:
+                g, d, b = r[-3], r[-2], r[-1]
+                gv, dv = num(g), num(d)
+                bv = Decimal(0) if b.strip() in ('-', '') and gv is not None and gv == dv else num(b)
+                if bv is None:
+                    raise ValueError('잔고 칸 해석 불가')
+                tot += bv
+            return tot, 'KRW_million', '품목별(반도체 LDI 외·Developer 외·Lead Tab·기타) 잔고 합계. 단기 납기 주문이라 분기말 잔고가 0에 가깝습니다. 2021-Q2부터 수주상황 표를 싣지 않습니다.'
+    raise ValueError('수주상황 표 없음')
+
+
+ALT_RULES = {
+    '267260': (a_hdelectric, '법인별 표 합산(2020~2021)'),
+    '003670': (a_posco, '1억원 이상 계약 기준(2022-Q1~2023-Q2)'),
+    '082920': (a_vitzro, '개별 주문 표 합계'),
+    '298040': (a_hyosung, '본사 중공업 부문만(2020~2024)'),
+    '033640': (a_nepes, '품목별 수주상황 합계(2020~2021-Q1)'),
+}
 ALIASES = {'006260': 'LS-CABLE'}
 
 
@@ -222,22 +296,31 @@ def main():
     reports = [r for f in files for r in json.load(open(f))['reports']]
     for r in reports:
         r['company_id'] = ALIASES.get(r['company_id'], r['company_id'])
+        # --broad 덤프에는 '수주'가 우연히 들어간 무관한 표가 섞이므로 수주 표만 남긴다.
+        r['tables'] = [t for t in r['tables'] if re.search(r'수주(잔고|잔액|상황|현황|총액|잔)', (t['before'][-400:] + '|' + '|'.join('|'.join(x) for x in t['rows'][:2])).replace(' ', ''))]
     src_path = ROOT / 'company_backlog_sources.json'
     src = json.loads(src_path.read_text())
     obs = {(o['company_id'], o['period']): o for o in src['observations']}
     added, mismatch, skipped = [], [], []
     for rep in reports:
         rule = RULES.get(rep['company_id'])
-        if not rule or not rep['tables']:
+        altr = ALT_RULES.get(rep['company_id'])
+        if (not rule and not altr) or not rep['tables']:
             continue
-        fn, scope = rule
         key = (rep['company_id'], rep['period'])
-        try:
-            val, unit, note = fn(rep)
-            if val is None or val < 0:
-                raise ValueError('no disclosed amount')
-        except (ValueError, TypeError, IndexError) as e:
-            skipped.append(dict(company_id=rep['company_id'], period=rep['period'], source=rep['url'], reason=str(e)))
+        val = None
+        err = 'no rule'
+        for fn, scope in [x for x in (rule, altr) if x]:
+            try:
+                val, unit, note = fn(rep)
+                if val is None or val < 0:
+                    raise ValueError('no disclosed amount')
+                break
+            except (ValueError, TypeError, IndexError, StopIteration) as e:
+                err = str(e) if str(e) != 'main series' else err
+                val = None
+        if val is None:
+            skipped.append(dict(company_id=rep['company_id'], period=rep['period'], source=rep['url'], reason=err))
             continue
         new = dict(company_id=rep['company_id'], period=rep['period'], raw_value=str(val.normalize() if val == val.to_integral() else val),
                    raw_unit=unit, scope=scope, source=rep['url'], status='공시 확인', notes=note)
