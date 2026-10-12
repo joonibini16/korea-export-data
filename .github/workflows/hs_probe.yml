@@ -1,0 +1,22 @@
+name: HS Probe (review)
+on:
+  workflow_dispatch:
+    inputs:
+      args: {description: 'HS:YYYYMM-YYYYMM ...', required: true}
+permissions:
+  contents: write
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: pip install requests && python tools/hs_probe.py
+        env:
+          CUSTOMS_API_KEY: ${{ secrets.CUSTOMS_API_KEY }}
+          HS_ARGS: ${{ inputs.args }}
+      - run: |
+          git config user.name github-actions; git config user.email github-actions@github.com
+          cp hs_probe.json /tmp/p.json; git checkout -q --orphan probe-output; git rm -rq --cached .; cp /tmp/p.json hs_probe.json
+          git add hs_probe.json; git commit -qm "hs probe"; git push -qf origin HEAD:probe-output
