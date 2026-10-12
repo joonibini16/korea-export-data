@@ -1,0 +1,48 @@
+/* 공통 셸: 어두운 테마 + 왼쪽 메뉴. 각 페이지의 기존 스타일 위에 덮어씁니다. */
+:root{--sh-bg:#0b1324;--sh-side:#0e1830;--sh-card:#111d36;--sh-card2:#152241;--sh-line:#22314f;--sh-text:#e6ecf5;--sh-muted:#93a3bd;--sh-accent:#3b82f6;--sh-btn:#13234a;--sh-btn-line:#2a4378;--sh-red:#ef4444;
+ --bg:var(--sh-bg);--card:var(--sh-card);--text:var(--sh-text);--muted:var(--sh-muted);--border:var(--sh-line);--positive:#f87171;--negative:#60a5fa;--pos:#f87171;--neg:#60a5fa;color-scheme:dark}
+html,body{background:var(--sh-bg)!important;color:var(--sh-text)!important;font-family:"Pretendard","Noto Sans KR",Arial,sans-serif}
+body{padding-left:280px}
+.sh-side{position:fixed;left:0;top:0;bottom:0;width:280px;background:var(--sh-side);border-right:1px solid var(--sh-line);padding:34px 20px 30px;overflow-y:auto;z-index:50}
+.sh-brand{font-size:21px;font-weight:800;margin:20px 0 6px;color:#fff}
+.sh-sub{font-size:12.5px;color:var(--sh-muted);margin-bottom:18px}
+.sh-cta{display:block;background:var(--sh-red);color:#fff!important;text-align:center;border-radius:8px;padding:10px 12px;font-size:13px;font-weight:700;text-decoration:none;margin-bottom:12px}
+.sh-note{font-size:12.5px;color:var(--sh-muted);line-height:1.7;margin:0 0 22px;padding-bottom:22px;border-bottom:1px solid var(--sh-line)}
+.sh-group{font-size:15px;font-weight:800;color:#fff;margin:24px 0 12px}
+.sh-link{display:block;text-align:center;background:var(--sh-btn);border:1px solid var(--sh-btn-line);border-radius:8px;padding:10px 8px;margin:0 0 12px;color:#dbe6ff!important;text-decoration:none!important;font-size:13.5px;font-weight:600}
+.sh-link:hover{background:#1a2f60}
+.sh-link.active{background:#1d3b7a;border-color:#3b82f6;color:#fff!important}
+.sh-link.active::before{content:"● ";font-size:10px;vertical-align:1px}
+.sh-hero{width:100%;flex:1 1 100%;box-sizing:border-box;background:linear-gradient(180deg,#14234a,#101b38);border:1px solid var(--sh-line);border-radius:14px;padding:26px 26px 22px;margin:0 0 18px}
+.sh-hero h1{font-size:40px!important;font-weight:900!important;margin:0 0 10px!important;color:#fff!important;letter-spacing:-.5px}
+.sh-hero .sh-hero-sub{color:#d5def0;font-size:14.5px;margin:0}
+/* 기존 상단 링크 줄은 왼쪽 메뉴로 옮겼으므로 숨김 */
+body>main>nav:not(.category-grid),.container>.top .nav,#topLinks{display:none!important}
+/* 카드·패널 */
+.panel,.card,.box,.chart-box,.quarter-metric,details{background:var(--sh-card)!important;border:1px solid var(--sh-line)!important;box-shadow:none!important;color:var(--sh-text)}
+.card:hover{box-shadow:0 0 0 1px #3b82f6 inset!important}
+.card.active{outline:2px solid #3b82f6!important}
+h1,h2,h3,b,strong{color:#f1f5fb}
+a{color:#7fb0ff}
+.muted,.subtitle,.sub,.label,.detail,.chart-subtitle,.unit-price,small{color:var(--sh-muted)!important}
+.notice,.history-note,.error-box{background:#1b2440!important;border-color:#3b5998!important;color:#dbe4f3!important}
+.notice{border-left:4px solid #e0a106!important}
+.history-note.proxy{background:#2a2414!important;border-color:#a77b1c!important;color:#f3dfb0!important}
+table{background:transparent!important;color:var(--sh-text)}
+th{background:#16244a!important;color:#e6ecf5!important}
+thead{background:#16244a!important}
+th,td{border-bottom:1px solid var(--sh-line)!important}
+tr:hover td{background:#14213f}
+select,input,button.period,.category-button{background:#0f1a33!important;color:var(--sh-text)!important;border:1px solid var(--sh-btn-line)!important}
+.period.active,.category-button[aria-pressed="true"]{background:#1d3b7a!important;border-color:#3b82f6!important;color:#fff!important}
+button:not(.period):not(.category-button):not(.link){background:var(--sh-btn)!important;border:1px solid var(--sh-btn-line)!important;color:#dbe6ff!important}
+button.link{color:#7fb0ff!important}
+.badge{background:#2a2414!important;color:#f3dfb0!important}
+.lag span{background:#16244a!important;color:#dbe4f3}
+.lag span.best{background:#2563eb!important;color:#fff}
+.rel-high{background:#0f2a1d!important;color:#c9f2d8}.rel-mid{background:#2a2414!important;color:#f3dfb0}.rel-low{background:#2c1518!important;color:#f5c2c2}.rel-rev{background:#22183d!important;color:#ddd0ff}.rel-na{background:#1a2238!important;color:#cbd5e1}
+.g-high{background:#14532d!important;color:#bbf7d0!important}.g-mid{background:#713f12!important;color:#fde68a!important}.g-low{background:#7f1d1d!important;color:#fecaca!important}.g-rev{background:#4c1d95!important;color:#ddd6fe!important}.g-na{background:#334155!important;color:#e2e8f0!important}
+.positive,.pos,.up{color:#f87171!important}.negative,.neg,.down{color:#60a5fa!important}
+.win{color:#34d399!important}.lose{color:#fbbf24!important}
+@media(max-width:900px){body{padding-left:0}.sh-side{position:static;width:auto;border-right:0;border-bottom:1px solid var(--sh-line);padding:18px 16px}.sh-links{display:flex;flex-wrap:wrap;gap:8px}.sh-link{margin:0;flex:1 1 140px}.sh-group{margin:14px 0 8px}.sh-hero h1{font-size:28px!important}}
+.container>.top{display:block!important}
