@@ -47,7 +47,7 @@ jobs:
       - name: Commit
         run: |
           git config user.name github-actions; git config user.email github-actions@github.com
-          git add company_inventory.csv company_inventory_status.json
+          git add company_inventory.csv company_inventory_status.json company_revenue_kind.csv
           if ! git diff --cached --quiet; then git commit -m "Update quarterly inventory"; git pull --rebase origin main; git push; fi
       - name: Request Pages build
         env: {GH_TOKEN: '${{ github.token }}'}

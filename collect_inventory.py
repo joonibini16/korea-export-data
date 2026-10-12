@@ -84,6 +84,46 @@ def extract(sheet, period):
     raise ValueError('재고자산 행 없음')
 
 
+REV_LABEL = re.compile(r'^(?:[ⅠⅡⅢⅣ\d]+[.)]?)?(?:매출액|수익\(매출액\)|영업수익|매출|수익|매출액\(주[^)]*\)|수익\(주[^)]*\))$')
+
+
+def income_statements(doc):
+    ts = doc.xpath('//table')
+    found = []
+    for i, t in enumerate(ts):
+        title = h.text(t).replace(' ', '')
+        prev = t.xpath('preceding-sibling::*[1]')
+        ptxt = h.text(prev[0]).replace(' ', '') if prev else ''
+        src = title if len(title) < 600 and re.search(r'손익계산서', title) else ptxt if len(ptxt) < 120 and re.search(r'손익계산서', ptxt) else ''
+        if not src or '요약' in src:
+            continue
+        if not re.match(r'^(?:\d+(?:-\d+)*[.)]?|[가-하]\.)?(?:연결)?(?:포괄)?손익계산서', src):
+            continue
+        name = '연결' if '연결' in src.split('손익계산서')[0] else '별도'
+        if name == '별도':
+            sec = [h.text(e).replace(' ', '') for e in t.xpath('preceding::p[contains(.,"재무제표")]')[-40:]]
+            sec = [x for x in sec if re.fullmatch(r'\d+\.(연결)?재무제표', x)]
+            if sec and sec[-1].endswith('연결재무제표'):
+                name = '연결'
+        ctx = ts[i:i + 4]
+        joined = ' '.join(h.text(x) for x in ctx)
+        u = re.search(r'단위\s*[:：]\s*(백만원|천원|원)', joined)
+        rows = [r for tb in ctx for r in h.rows(tb)]
+        header = ' '.join(' '.join(r) for r in rows[:6])
+        rev = next((r for r in rows if r and REV_LABEL.fullmatch(r[0].replace(' ', ''))), None)
+        if rev and u and not any(f['basis'] == name for f in found):
+            found.append(dict(basis=name, unit=u.group(1), header=header, row=rev))
+    return found
+
+
+def revenue_values(st):
+    cells = st['row'][1:]
+    if '주석' in st['header'] and cells and (numcell(cells[0]) is None or len(cells) >= 3):
+        cells = cells[1:]
+    vals = [numcell(c) for c in cells if c.strip()]
+    return [v * UNIT[st['unit']] for v in vals if v is not None]
+
+
 def main():
     watch = json.loads((ROOT / 'company_watchlist.json').read_text())['companies']
     companies = [c for c in watch if c['id'].isdigit() and (len(sys.argv) < 2 or c['id'] in sys.argv[1:])]
@@ -92,6 +132,7 @@ def main():
     todo = [r for c in cats for r in c['reports']]
     out, issues, failures = {}, [], [dict(company_id=c['company_id'], error=c['error']) for c in cats if c.get('error')]
     priors = {}
+    revs = {}
     with concurrent.futures.ThreadPoolExecutor(3) as pool:
         for r in pool.map(h.process, todo):
             if r.get('error'):
@@ -115,6 +156,23 @@ def main():
                 if r['period'].endswith('Q1') and prior is not None:
                     priors[(r['company_id'], f"{int(r['period'][:4]) - 1}-Q4", basis)] = prior
                 got = True
+            try:
+                for st in income_statements(doc):
+                    v = revenue_values(st)
+                    if not v:
+                        continue
+                    q = int(r['period'][-1])
+                    key = (r['company_id'], r['period'], st['basis'])
+                    if q == 1:
+                        revs[key] = dict(value=int(v[0]), cum=int(v[0]), method='1분기 3개월')
+                    elif q in (2, 3):
+                        if '3개월' in st['header'] and '누적' in st['header'] and len(v) >= 2:
+                            revs[key] = dict(value=int(v[0]), cum=int(v[1]), method=f'{q}분기 3개월')
+                    else:
+                        revs[key] = dict(value=None, annual=int(v[0]), method='연간−3분기 누적')
+                    revs[key].update(company_id=r['company_id'], period=r['period'], basis=st['basis'], source=r['url'])
+            except Exception as e:
+                issues.append(dict(company_id=r['company_id'], period=r['period'], reason='매출 추출 오류: ' + str(e)[:100]))
             if f"{r['company_id']}:{r['period']}" in __import__('os').environ.get('INV_DEBUG', ''):
                 dbg = [f"{e.tag}:{h.text(e)[:90]}" for e in doc.xpath('//*[self::p or self::td or self::span][contains(text(),"재무상태표") or contains(text(),"재무제표")]')[:25]]
                 dbg += [f"TITLE={r['title']}", f"URL={r['url']}", f"tables={len(doc.xpath('//table'))}"]
@@ -140,6 +198,20 @@ def main():
         v = out.get(k)
         if v and abs(v['inventory_KRW'] - p) > max(1_000_000, p * 0.001):
             issues.append(dict(company_id=k[0], period=k[1], basis=k[2], reason=f'다음 해 1분기 보고서의 전기말 값과 다름 ({v["inventory_KRW"]:,} vs {p:,}) · 재작성 가능성'))
+    rev_rows = []
+    for k, v in revs.items():
+        if v.get('annual') is not None:
+            q3 = revs.get((k[0], k[1][:4] + '-Q3', k[2]))
+            if q3 and q3.get('cum') and v['annual'] - q3['cum'] > 0:
+                v['value'] = v['annual'] - q3['cum']
+            else:
+                continue
+        if v.get('value') and v['value'] > 0:
+            rev_rows.append(dict(company_id=v['company_id'], period=v['period'], basis=v['basis'], revenue_KRW=v['value'], method=v['method'], source=v['source']))
+    if rev_rows:
+        with (ROOT / 'company_revenue_kind.csv').open('w', encoding='utf-8', newline='') as f:
+            w = csv.DictWriter(f, fieldnames=['company_id', 'period', 'basis', 'revenue_KRW', 'method', 'source']); w.writeheader()
+            w.writerows(sorted(rev_rows, key=lambda r: (r['company_id'], r['basis'], r['period'])))
     rows = sorted(out.values(), key=lambda r: (r['company_id'], r['basis'], r['period']))
     if not rows:
         print('no rows'); sys.exit(1)
@@ -151,7 +223,7 @@ def main():
     STATUS.write_text(json.dumps(dict(updated_at=datetime.datetime.now().isoformat(timespec='seconds'), reports=len(todo), rows=len(rows),
         coverage={k: {b: [min(v), max(v), len(v)] for b, v in d.items()} for k, d in cov.items()}, issues=issues, failures=failures),
         ensure_ascii=False, indent=1))
-    print('rows', len(rows), 'issues', len(issues), 'failures', len(failures))
+    print('rows', len(rows), 'revenue rows', len(rev_rows), 'issues', len(issues), 'failures', len(failures))
 
 
 if __name__ == '__main__':
