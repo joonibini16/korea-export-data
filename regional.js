@@ -252,6 +252,14 @@ function renderFper(c){const sec=el('fperPanel');if(!sec)return;const d=fperData
  const csets=[{...priceSet,data:cm.map(t=>d.px.find(r=>r.month===t).close)},...cband,{label:'컨센 FPER 기준 시점',data:cm.map(t=>cmap.get(t)?.price??null),borderColor:'#6b21a8',pointStyle:'crossRot',pointRadius:7,pointBorderWidth:2,showLine:false}];
  chart('fperCons',cm,csets,'주가 (원)',tip);
  el('fperConsNote').textContent=cur?`컨센 기반(그 시점 컨센): 매주·매월 저장하는 네이버 컨센서스 스냅샷으로 계산합니다(저장 시작 ${d.cons[0].date}, ${d.cons.length}개월치). 최근 ${cur.date} 12M Fwd EPS ${fmt(cur.eps)}원 → FPER ${fmt(cur.per)}배${rank(cur.per)!=null?` (실적 기반 과거 분포의 하위 ${Math.round(rank(cur.per))}% 위치)`:''}${cur.assumed?' · 다음 연도 연간 컨센이 없어 마지막 연간 컨센 수준을 가정한 달이 포함됨':''}. 점선 밴드는 실적 기반 과거 배수(10~90%)를 그 시점 컨센 EPS에 곱한 가격입니다. 컨센 FPER 자체의 분포는 스냅샷이 12개월 이상 쌓이면 따로 계산합니다.`:'컨센서스 스냅샷이 아직 없습니다.';}
+// 업체·지역 수출액을 1~12월 축에 연도별 선으로 비교(올해 굵은 파랑, 작년 하늘색, 그 이전 회색).
+function renderTrendYears(selected,title){if(!el('trendYears'))return;const by=new Map();for(const r of selected){if(r.value==null)continue;const y=r.month.slice(0,4),m=Number(r.month.slice(5,7));if(!by.has(y))by.set(y,new Array(12).fill(null));by.get(y)[m-1]=musd(r.value);}
+ const years=[...by.keys()].sort().slice(-5),cur=years.at(-1),st=['#1d6fd8','#8ec5f2','#cbd5e1','#94a3b8','#64748b'];
+ const sets=years.slice().reverse().map((y,k)=>({label:y+'년',data:by.get(y),borderColor:st[k],backgroundColor:st[k],borderWidth:k===0?3.5:k===1?2.5:1.5,pointRadius:k===0?5:k===1?4:3,pointBackgroundColor:'#0f1a33',pointBorderColor:st[k],pointBorderWidth:2,tension:0,order:k}));
+ if(el('trendYearsTitle'))el('trendYearsTitle').textContent=(title||'')+' · 연도별 월 수출액 비교 (백만 USD)';
+ const ytd=y=>{const a=by.get(y)||[];const n=(by.get(cur)||[]).filter(v=>v!=null).length;const v=a.slice(0,n);return v.every(x=>x!=null)?v.reduce((s,x)=>s+x,0):null;};const prev=years.at(-2);
+ if(el('trendYearsNote'))el('trendYearsNote').textContent=cur&&prev?`${cur}년 1~${(by.get(cur)||[]).filter(v=>v!=null).length}월 누적 ${ytd(cur)?.toLocaleString(undefined,{maximumFractionDigits:1})}백만 USD · 전년 같은 기간 ${ytd(prev)?.toLocaleString(undefined,{maximumFractionDigits:1})}백만 USD (${pct(growth(ytd(cur),ytd(prev)))}). 지역 통계에는 같은 지역의 다른 업체 수출도 포함됩니다.`:'';
+ chart('trendYears',Array.from({length:12},(_,i)=>(i+1)+'월'),sets,'수출액 (백만 USD)',{interaction:{mode:'index',intersect:false},plugins:{legend:{position:'top',align:'end'},tooltip:{callbacks:{label:x=>x.parsed.y==null?'':`${x.dataset.label}: ${x.parsed.y.toLocaleString(undefined,{maximumFractionDigits:1})} 백만 USD`}}},scales:{x:{grid:{display:false}}}});}
 function renderInventoryTable(){const box=el('inventoryTable');if(!box)return;box.replaceChildren();
  const rows=watch.map(c=>({c,s:inventorySummary(c)})).filter(x=>x.s).sort((a,b)=>(b.s.lead?.r??-9)-(a.s.lead?.r??-9));
  for(const {c,s} of rows){const tr=document.createElement('tr');const n=cell(tr,'');n.append(companyButton(c));cell(tr,s.basis);{const v=s.inv.get(s.lastP);cell(tr,v==null?'—':v.toLocaleString(undefined,{maximumFractionDigits:v<100?1:0})+' '+s.unit);}
@@ -345,6 +353,7 @@ function render(){const c=watch.find(c=>c.id===el('company').value),hs=el('hs').
  el('trendNote').textContent='분기 수출액(백만 USD). 진한색은 확보분, 옅은색은 미확보 월 추정분입니다(확보월의 전년 대비 증감률을 전년 같은 달에 적용, 전년 자료가 없으면 확보월 평균).';
  chart('trend',quarter.map(q=>q.period),[{type:'bar',label:'확보 수출 (백만 USD)',data:actual,backgroundColor:'#245bb0',stack:'sum'},{type:'bar',label:'수출 추정 · 미확보 월 (백만 USD)',data:estimate,backgroundColor:'#c7d9f4',stack:'sum'}],'분기 수출액 (백만 USD)');charts.trend.options.scales.x.stacked=true;charts.trend.options.scales.y.stacked=true;charts.trend.update();}
  renderTrendKrw(selected,quarter,el('frequency').value==='month');
+ renderTrendYears(selected,c.name+' · '+(el('trendTitle')?.textContent||'').replace(/ 수출 추세$/,''));
  const periods=[...new Set([...quarter.map(q=>q.period),...fin.map(f=>f.period)])].sort();
  const monthlyMap=new Map(selected.map(r=>[r.month,r.value]));
  const monthlyYoy=p=>growth(monthlyMap.get(p),monthlyMap.get(monthLabel(monthId(p)-12)));
