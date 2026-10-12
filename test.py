@@ -354,9 +354,12 @@ LEGACY_BRIDGE = {
     "2841909020": ["2841909000"],
     "300249": ["3002903010", "3002903020", "3002903090"],
     "3002491000": ["3002903010", "3002903020", "3002903090"],
-    "8486902040": ["8486902010"],
-    "8486902090": ["8486902020"],
-    "8542900000": ["8542904090"],
+    # 2022 개편 전 8486.20 부분품(902010·902020)이 2022년 902030·902040·902090으로 나뉨.
+    # 개별 연결이 불가해 2022년 연간 수출 비중(902040 45.9%, 902090 50.4%)으로 배분한 추정치.
+    "8486902040": {"codes": ["8486902010", "8486902020"], "share": 0.4587},
+    "8486902090": {"codes": ["8486902010", "8486902020"], "share": 0.5040},
+    # 2022년 8542.90 '부분품' 단일 코드 = 2021년 8542.90 하위 코드 전체(모노리식 IC 부분품 등) 합계.
+    "8542900000": ["854290"],
 }
 LEGACY_END = "202112"
 
@@ -365,6 +368,9 @@ def fill_legacy(hs_code, item_name, working_rows, failed_rows):
     legacy = LEGACY_BRIDGE.get(hs_code)
     if not legacy:
         return working_rows
+    share = 1.0
+    if isinstance(legacy, dict):
+        share, legacy = legacy["share"], legacy["codes"]
     have = {row["월"] for row in working_rows}
     missing = [m for m in ALL_MONTHS if m <= LEGACY_END and yymm_to_label(m) not in have]
     if not missing:
@@ -382,9 +388,9 @@ def fill_legacy(hs_code, item_name, working_rows, failed_rows):
                     "대표품목": item_name,
                     "조회_HS코드": hs_code,
                     "세부_HS코드": row["세부_HS코드"] or code,
-                    "세부품목명": "[HSK2017 선행코드] " + row["세부품목명"],
-                    "수출금액_USD": row["수출금액_USD"],
-                    "수출중량_KG": row["수출중량_KG"],
+                    "세부품목명": ("[HSK2017 선행코드" + (f" · 2022년 비중 {share:.1%} 배분 추정" if share != 1.0 else "") + "] ") + row["세부품목명"],
+                    "수출금액_USD": round(to_int(row["수출금액_USD"]) * share),
+                    "수출중량_KG": round(to_int(row["수출중량_KG"]) * share),
                     "수입금액_USD": row["수입금액_USD"],
                     "수입중량_KG": row["수입중량_KG"]
                 })
