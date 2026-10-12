@@ -114,9 +114,33 @@ def income_statements(doc):
         rows = [r for tb in ctx for r in h.rows(tb)]
         header = ' '.join(' '.join(r) for r in rows[:6])
         rev = next((r for r in rows if r and REV_LABEL.fullmatch(r[0].replace(' ', ''))), None)
+        op = next((r for r in rows if r and OP_LABEL.fullmatch(r[0].replace(' ', ''))), None)
         if rev and u and not any(f['basis'] == name for f in found):
-            found.append(dict(basis=name, unit=u.group(1), header=header, row=rev))
+            found.append(dict(basis=name, unit=u.group(1), header=header, row=rev, op_row=op))
     return found
+
+
+OP_LABEL = re.compile(r'^(?:[ⅠⅡⅢⅣⅤⅥⅦ\d]+[.)]?)?(?:영업이익\(손실\)|영업이익|영업손실|영업손익|영업이익\(손익\))(?:\((?:주|주석|Note)[^)]*\))?$')
+
+
+def signed(c):
+    c = c.strip()
+    neg = c.startswith('(') and c.endswith(')') or c.startswith('-') or c.startswith('△') or c.startswith('▽')
+    v = numcell(c.strip('()-△▽ '))
+    return None if v is None else (-v if neg else v)
+
+
+def op_values(st):
+    if not st.get('op_row'):
+        return []
+    cells = st['op_row'][1:]
+    if '주석' in st['header'] and cells and (signed(cells[0]) is None or len(cells) >= 3):
+        cells = cells[1:]
+    vals = [signed(c) for c in cells if c.strip()]
+    vals = [v * UNIT[st['unit']] for v in vals if v is not None]
+    if '수정후' in st['header'].replace(' ', '') and len(vals) >= 2:
+        vals = vals[len(vals) // 2:]
+    return vals
 
 
 def revenue_values(st):
@@ -176,6 +200,16 @@ def main():
                             revs[key] = dict(value=int(v[0]), cum=int(v[1]), method=f'{q}분기 3개월')
                     else:
                         revs[key] = dict(value=None, annual=int(v[0]), method='연간−3분기 누적')
+                    if key not in revs:
+                        continue
+                    o = op_values(st)
+                    if o:
+                        if q == 1:
+                            revs[key].update(op=int(o[0]), op_cum=int(o[0]))
+                        elif q in (2, 3) and len(o) >= 2:
+                            revs[key].update(op=int(o[0]), op_cum=int(o[1]))
+                        elif q == 4:
+                            revs[key].update(op_annual=int(o[0]))
                     revs[key].update(company_id=r['company_id'], period=r['period'], basis=st['basis'], source=r['url'])
             except Exception as e:
                 issues.append(dict(company_id=r['company_id'], period=r['period'], reason='매출 추출 오류: ' + str(e)[:100]))
@@ -229,8 +263,13 @@ def main():
                 v['value'] = v['annual'] - sum(parts); v['method'] = '연간−(1~3분기 합)'
             else:
                 continue
+        if v.get('op_annual') is not None:
+            q3 = revs.get((k[0], k[1][:4] + '-Q3', k[2])) or {}
+            parts = [revs.get((k[0], k[1][:4] + f'-Q{i}', k[2]), {}).get('op') for i in (1, 2, 3)]
+            v['op'] = v['op_annual'] - q3['op_cum'] if q3.get('op_cum') is not None else (v['op_annual'] - sum(parts) if all(x is not None for x in parts) else None)
         if v.get('value') and v['value'] > 0:
-            rev_rows.append(dict(company_id=v['company_id'], period=v['period'], basis=v['basis'], revenue_KRW=v['value'], method=v['method'], source=v['source']))
+            rev_rows.append(dict(company_id=v['company_id'], period=v['period'], basis=v['basis'], revenue_KRW=v['value'], method=v['method'], source=v['source'],
+                                 operating_profit_KRW='' if v.get('op') is None else v['op']))
     run_ids = {c['id'] for c in companies}
     rev_path = ROOT / 'company_revenue_kind.csv'
     if rev_path.exists():
@@ -238,7 +277,7 @@ def main():
             rev_rows += [r for r in csv.DictReader(f) if r['company_id'] not in run_ids]
     if rev_rows:
         with rev_path.open('w', encoding='utf-8', newline='') as f:
-            w = csv.DictWriter(f, fieldnames=['company_id', 'period', 'basis', 'revenue_KRW', 'method', 'source']); w.writeheader()
+            w = csv.DictWriter(f, fieldnames=['company_id', 'period', 'basis', 'revenue_KRW', 'method', 'source', 'operating_profit_KRW'], extrasaction='ignore', restval=''); w.writeheader()
             w.writerows(sorted(rev_rows, key=lambda r: (r['company_id'], r['basis'], r['period'])))
     run_ids = {c['id'] for c in companies}
     # A partial run (company ids given) keeps every other company's existing rows.

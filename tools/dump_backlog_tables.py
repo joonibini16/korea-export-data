@@ -12,6 +12,7 @@ import collect_company_history as h
 def main():
     args = [a for a in sys.argv[1:] if not a.startswith('--')]
     broad = '--broad' in sys.argv
+    kw = next((a.split('=',1)[1] for a in sys.argv if a.startswith('--kw=')), '수주')
     watch = json.loads((h.ROOT / 'company_watchlist.json').read_text())['companies']
     companies = []
     for a in args:
@@ -37,9 +38,9 @@ def main():
                 doc = html.fromstring(h.get(r['url'])); tables = []
                 for t in doc.xpath('//table'):
                     tx = h.text(t)
-                    if '수주' in tx.replace(' ', '') and len(tx) < 45000:
+                    if kw in tx.replace(' ', '') and len(tx) < 45000:
                         before = ' '.join(h.text(e) for e in t.xpath('preceding-sibling::*[position()<=3]'))[-1300:]
-                        if '수주' in tx.replace(' ', '') or '수주' in before:
+                        if kw in tx.replace(' ', '') or kw in before:
                             tables.append(dict(before=before, rows=h.rows(t)))
             tabs = [dict(before=t['before'][-500:], rows=[[c[:80] for c in row[:16]] for row in t['rows'][:45]]) for t in tables]
             out.append(dict(company_id=r['company_id'], name=r['name'], period=r['period'], url=r['url'], title=r['title'], tables=tabs))
