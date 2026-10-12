@@ -234,12 +234,12 @@ function renderBacklog(c){
  for(const r of [...rows].reverse()){const tr=document.createElement('tr');[r.period,Number(r.value).toLocaleString(undefined,{maximumFractionDigits:3}),r.unit_label,r.scope||'기존 참고자료 기준',r.notes||r.status].forEach(v=>cell(tr,v));const td=cell(tr,'');if(r.source?.startsWith('https://')){const a=document.createElement('a');a.href=r.source;a.textContent=r.status;a.target='_blank';a.rel='noopener';td.append(a);}el('backlogRows').append(tr);}
  el('backlog').hidden=!rows.length;el('backlogEmpty').hidden=!!rows.length;
  if(!rows.length){if(charts.backlog){charts.backlog.destroy();delete charts.backlog;}el('backlogEmpty').textContent=review?.label||'확인 가능한 수주잔고 금액이 없습니다.';return;}
- // 범위(scope)가 다른 구간은 섞지 않고 색을 달리한 별도 막대로 그립니다. 관측치가 가장 많은 scope가 본 시계열입니다.
+ // 범위(scope)가 다른 구간은 섞지 않고 색을 달리한 별도 막대로 그립니다. 가장 최근 분기의 범위를 진한 녹색으로, 이전 범위는 다른 색으로 표시합니다.
  const unit=rows.at(-1).unit_label;if(rows.some(r=>r.unit_label!==unit)){throw Error(c.name+' 수주잔고의 단위가 다릅니다.');}
  const qid=p=>Number(p.slice(0,4))*4+Number(p.at(-1))-1,start=qid(backlogCoverage.start_period||rows[0].period),end=qid(backlogCoverage.end_period||rows.at(-1).period),periods=Array.from({length:end-start+1},(_,i)=>Math.floor((start+i)/4)+'-Q'+((start+i)%4+1));
- const cnt=new Map();rows.forEach(r=>cnt.set(r.scope,(cnt.get(r.scope)||0)+1));const latest=rows.at(-1).scope,main=[...cnt].sort((a,b)=>b[1]-a[1]||(a[0]===latest?-1:b[0]===latest?1:0))[0][0],scopes=[main,...new Set(rows.map(r=>r.scope).filter(x=>x!==main))],pal=[['#087f74','#94bdb7'],['#c2410c','#fdba74'],['#6d28d9','#c4b5fd'],['#475569','#cbd5e1']];
+ const main=rows.at(-1).scope,scopes=[main,...new Set(rows.map(r=>r.scope).filter(x=>x!==main))],pal=[['#087f74','#94bdb7'],['#c2410c','#fdba74'],['#6d28d9','#c4b5fd'],['#475569','#cbd5e1']];
  el('backlogTitle').textContent=c.name+' · 분기 수주잔고 ('+unit+')'+(scopes.length>1?' · 집계 범위 '+scopes.length+'개':'');
- const sets=scopes.map((sc,k)=>{const m=new Map(rows.filter(r=>r.scope===sc).map(r=>[r.period,r]));const [col,light]=pal[k%pal.length];return{type:'bar',label:(sc||'수주잔고')+(k===0?' (본 시계열)':' (범위 다름)')+' · '+unit,data:periods.map(p=>num(m.get(p)?.value)),backgroundColor:periods.map(p=>m.get(p)?.status==='공시 확인'?col:light),borderColor:col,borderWidth:1,maxBarThickness:44,grouped:false,_m:m};});
+ const sets=scopes.map((sc,k)=>{const m=new Map(rows.filter(r=>r.scope===sc).map(r=>[r.period,r]));const [col,light]=pal[k%pal.length];return{type:'bar',label:(sc||'수주잔고')+' · '+[...m.keys()].sort()[0]+'~'+[...m.keys()].sort().at(-1)+' · '+unit,data:periods.map(p=>num(m.get(p)?.value)),backgroundColor:periods.map(p=>m.get(p)?.status==='공시 확인'?col:light),borderColor:col,borderWidth:1,maxBarThickness:44,grouped:false,_m:m};});
  chart('backlog',periods,sets,'수주잔고 ('+unit+')',{scales:{y:{beginAtZero:true,title:{display:true,text:'수주잔고 ('+unit+')'},ticks:{callback:v=>Number(v).toLocaleString()}}},plugins:{tooltip:{callbacks:{label:ctx=>ctx.dataset.label.split(' · ')[0]+': '+Number(ctx.parsed.y).toLocaleString()+' '+unit,afterLabel:ctx=>{const r=sets[ctx.datasetIndex]._m.get(periods[ctx.dataIndex]);return [r?.status||'',r?.notes||''];}}}}});
 }
 
