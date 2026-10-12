@@ -13,9 +13,9 @@ body{padding-left:280px}
 .sh-link:hover{background:#1a2f60}
 .sh-link.active{background:#1d3b7a;border-color:#3b82f6;color:#fff!important}
 .sh-link.active::before{content:"● ";font-size:10px;vertical-align:1px}
-.sh-hero{width:100%;flex:1 1 100%;box-sizing:border-box;background:linear-gradient(180deg,#14234a,#101b38);border:1px solid var(--sh-line);border-radius:14px;padding:26px 26px 22px;margin:0 0 18px}
-.sh-hero h1{font-size:40px!important;font-weight:900!important;margin:0 0 10px!important;color:#fff!important;letter-spacing:-.5px}
-.sh-hero .sh-hero-sub{color:#d5def0;font-size:14.5px;margin:0}
+.sh-hero{width:100%;flex:1 1 100%;box-sizing:border-box;background:linear-gradient(180deg,#14234a,#101b38);border:1px solid var(--sh-line);border-radius:14px;padding:16px 22px 14px;margin:0 0 14px}
+.sh-hero h1{font-size:30px!important;font-weight:900!important;margin:0 0 10px!important;color:#fff!important;letter-spacing:-.5px}
+.sh-hero .sh-hero-sub{color:#c6d2e8;font-size:13.5px;margin:0}
 /* 기존 상단 링크 줄은 왼쪽 메뉴로 옮겼으므로 숨김 */
 body>main>nav:not(.category-grid),.container>.top .nav,#topLinks{display:none!important}
 /* 카드·패널 */
