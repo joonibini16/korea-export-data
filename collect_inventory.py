@@ -133,11 +133,12 @@ def income_statements(doc):
         ni = rows[ni_i] if ni_i is not None else None
         ctrl = None
         if ni_i is not None:
+            # 순서: 당기순이익 → 기타포괄손익 → 총포괄이익 → 당기순이익의 귀속(지배/비지배) → 총포괄이익의 귀속.
             for r in rows[ni_i + 1:]:
                 lab = r[0].replace(' ', '') if r else ''
-                if '포괄' in lab or '주당' in lab:
+                if ('포괄' in lab and '귀속' in lab) or '주당' in lab:
                     break
-                if CTRL_LABEL.match(lab):
+                if CTRL_LABEL.match(lab) and '포괄' not in lab:
                     ctrl = r; break
         if rev and u and not any(f['basis'] == name for f in found):
             found.append(dict(basis=name, unit=u, header=header, row=rev, op_row=op, ni_row=ni, ctrl_row=ctrl))
