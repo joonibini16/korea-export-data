@@ -1156,6 +1156,56 @@ function createMainChart(itemName) {
     );
 }
 
+/* 월별 YoY를 연도별 선으로 겹쳐 그림(가로축 1~12월). 올해 굵은 파랑, 작년 하늘색, 그 이전은 가는 검정·회색. */
+function createYearOverlayYoy(itemName, data) {
+    const byYear = new Map();
+    data.forEach(d => {
+        const y = d["월"].slice(0, 4), m = Number(d["월"].slice(5, 7));
+        const v = d["YoY_pct"] === "" || d["YoY_pct"] == null ? null : Number(d["YoY_pct"]);
+        if (!byYear.has(y)) byYear.set(y, new Array(12).fill(null));
+        byYear.get(y)[m - 1] = {v, est: !!d.estimated};
+    });
+    const years = [...byYear.keys()].filter(y => byYear.get(y).some(x => x && x.v != null)).sort().slice(-4);
+    const cur = years[years.length - 1];
+    const style = y => {
+        const k = years.length - 1 - years.indexOf(y);
+        return [{c: "#1d6fd8", w: 3.5, r: 5}, {c: "#8ec5f2", w: 2.5, r: 4}, {c: "#cbd5e1", w: 1.5, r: 3}, {c: "#94a3b8", w: 1.5, r: 3}][Math.min(k, 3)];
+    };
+    const datasets = years.slice().reverse().map(y => {
+        const st = style(y), arr = byYear.get(y);
+        return {
+            label: y + "년", data: arr.map(x => x ? x.v : null), borderColor: st.c, backgroundColor: st.c,
+            borderWidth: st.w, pointRadius: arr.map(x => x && x.est ? 7 : st.r), pointStyle: arr.map(x => x && x.est ? "rectRot" : "circle"),
+            pointBackgroundColor: "#0f1a33", pointBorderColor: st.c, pointBorderWidth: 2, tension: 0, spanGaps: false,
+            order: y === cur ? 0 : 1,
+            segment: {borderDash: ctx => arr[ctx.p1DataIndex] && arr[ctx.p1DataIndex].est ? [4, 4] : undefined},
+            datalabels: {
+                display: ctx => y === cur && ctx.dataIndex === arr.map(x => x && x.v != null).lastIndexOf(true),
+                align: "right", anchor: "end", offset: 6, color: st.c, font: {size: 12, weight: "bold"},
+                formatter: (v, ctx) => v == null ? "" : (v > 0 ? "+" : "") + Math.round(v) + "%" + (arr[ctx.dataIndex] && arr[ctx.dataIndex].est ? " (추정)" : "")
+            }
+        };
+    });
+    document.getElementById("changeChartTitle").textContent = itemName + " · 월별 수출액 YoY (연도별 비교)";
+    if (changeChart) changeChart.destroy();
+    changeChart = new Chart(document.getElementById("changeChart"), {
+        type: "line",
+        data: {labels: Array.from({length: 12}, (_, i) => (i + 1) + "월"), datasets},
+        options: {
+            responsive: true, maintainAspectRatio: false, interaction: {mode: "index", intersect: false},
+            layout: {padding: {right: 40}},
+            plugins: {
+                legend: {position: "top", align: "end"},
+                tooltip: {callbacks: {label: ctx => ctx.parsed.y == null ? "" : `${ctx.dataset.label}: ${ctx.parsed.y > 0 ? "+" : ""}${ctx.parsed.y.toFixed(1)}%`}}
+            },
+            scales: {
+                y: {title: {display: true, text: "전년 같은 달 대비 (%)"}, ticks: {callback: v => v + "%"}, grid: {color: ctx => ctx.tick.value === 0 ? "rgba(226,232,240,0.55)" : "rgba(148,163,184,0.14)"}},
+                x: {grid: {display: false}}
+            }
+        }
+    });
+}
+
 function createChangeChart(itemName) {
     const quarterly = document.getElementById("comparisonPeriod").value === "quarter";
     const data = getPeriodRows(itemName, quarterly);
@@ -1425,6 +1475,10 @@ function createChangeChart(itemName) {
             }
         }
     );
+    if (!quarterly) {
+        createYearOverlayYoy(itemName, data);
+        return;
+    }
     if (!quarterly) {
         // 월평균(3개월 평균) 기준 YoY: 최근 3개월 월평균 수출액 ÷ 전년 같은 3개월 월평균 - 1
         const amountByMonth = new Map(data.map(d => [d["월"], nonnegativeNumber(d["수출금액_USD"])]));
