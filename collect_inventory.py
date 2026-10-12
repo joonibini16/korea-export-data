@@ -128,8 +128,19 @@ def income_statements(doc):
         header = ' '.join(' '.join(r) for r in rows[:6])
         rev = next((r for r in rows if r and REV_LABEL.fullmatch(r[0].replace(' ', ''))), None)
         op = next((r for r in rows if r and OP_LABEL.fullmatch(r[0].replace(' ', ''))), None)
+        # 당기순이익과 그 귀속(지배기업 소유주) — 포괄손익 귀속 행보다 앞의 첫 지배 행을 쓴다.
+        ni_i = next((k for k, r in enumerate(rows) if r and NI_LABEL.fullmatch(r[0].replace(' ', ''))), None)
+        ni = rows[ni_i] if ni_i is not None else None
+        ctrl = None
+        if ni_i is not None:
+            for r in rows[ni_i + 1:]:
+                lab = r[0].replace(' ', '') if r else ''
+                if '포괄' in lab or '주당' in lab:
+                    break
+                if CTRL_LABEL.match(lab):
+                    ctrl = r; break
         if rev and u and not any(f['basis'] == name for f in found):
-            found.append(dict(basis=name, unit=u, header=header, row=rev, op_row=op))
+            found.append(dict(basis=name, unit=u, header=header, row=rev, op_row=op, ni_row=ni, ctrl_row=ctrl))
     return found
 
 
@@ -143,10 +154,14 @@ def signed(c):
     return None if v is None else (-v if neg else v)
 
 
-def op_values(st):
-    if not st.get('op_row'):
+NI_LABEL = re.compile(r'^(?:[ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩ\d]+[.)]?)?(?:연결)?(?:당기|분기|반기|당분기|당반기)?순(?:이익|손익|손실)(?:\(손실\))?(?:\((?:주|주석|Note)[^)]*\))?$')
+CTRL_LABEL = re.compile(r'^(?:\d+[.)]?)?(?:지배기업|지배회사|지배주주|모회사)(?:의)?(?:소유주|주주|지분|소유지분)?')
+
+
+def op_values(st, key='op_row'):
+    if not st.get(key):
         return []
-    cells = st['op_row'][1:]
+    cells = st[key][1:]
     if '주석' in st['header'] and cells and (signed(cells[0]) is None or len(cells) >= 3):
         cells = cells[1:]
     vals = [signed(c) for c in cells if c.strip()]
@@ -215,6 +230,15 @@ def main():
                         revs[key] = dict(value=None, annual=int(v[0]), method='연간−3분기 누적')
                     if key not in revs:
                         continue
+                    for fld, rk in (('ni', 'ni_row'), ('nic', 'ctrl_row')):
+                        nv = op_values(st, rk)
+                        if nv:
+                            if q == 1:
+                                revs[key].update({fld: int(nv[0]), fld + '_cum': int(nv[0])})
+                            elif q in (2, 3) and len(nv) >= 2:
+                                revs[key].update({fld: int(nv[0]), fld + '_cum': int(nv[1])})
+                            elif q == 4:
+                                revs[key].update({fld + '_annual': int(nv[0])})
                     o = op_values(st)
                     if o:
                         if q == 1:
@@ -276,13 +300,20 @@ def main():
                 v['value'] = v['annual'] - sum(parts); v['method'] = '연간−(1~3분기 합)'
             else:
                 continue
+        for fld in ('ni', 'nic'):
+            if v.get(fld + '_annual') is not None:
+                q3 = revs.get((k[0], k[1][:4] + '-Q3', k[2])) or {}
+                parts = [revs.get((k[0], k[1][:4] + f'-Q{i}', k[2]), {}).get(fld) for i in (1, 2, 3)]
+                v[fld] = v[fld + '_annual'] - q3[fld + '_cum'] if q3.get(fld + '_cum') is not None else (v[fld + '_annual'] - sum(parts) if all(x is not None for x in parts) else None)
         if v.get('op_annual') is not None:
             q3 = revs.get((k[0], k[1][:4] + '-Q3', k[2])) or {}
             parts = [revs.get((k[0], k[1][:4] + f'-Q{i}', k[2]), {}).get('op') for i in (1, 2, 3)]
             v['op'] = v['op_annual'] - q3['op_cum'] if q3.get('op_cum') is not None else (v['op_annual'] - sum(parts) if all(x is not None for x in parts) else None)
         if v.get('value') and v['value'] > 0:
             rev_rows.append(dict(company_id=v['company_id'], period=v['period'], basis=v['basis'], revenue_KRW=v['value'], method=v['method'], source=v['source'], currency=v.get('currency', 'KRW'), unit_raw=v.get('unit_raw', ''),
-                                 operating_profit_KRW='' if v.get('op') is None else v['op']))
+                                 operating_profit_KRW='' if v.get('op') is None else v['op'],
+                                 net_income_KRW='' if v.get('ni') is None else v['ni'],
+                                 net_income_ctrl_KRW='' if v.get('nic') is None else v['nic']))
     run_ids = {c['id'] for c in companies}
     rev_path = ROOT / 'company_revenue_kind.csv'
     if rev_path.exists():
@@ -290,7 +321,7 @@ def main():
             rev_rows += [r for r in csv.DictReader(f) if r['company_id'] not in run_ids]
     if rev_rows:
         with rev_path.open('w', encoding='utf-8', newline='') as f:
-            w = csv.DictWriter(f, fieldnames=['company_id', 'period', 'basis', 'revenue_KRW', 'method', 'source', 'operating_profit_KRW', 'currency', 'unit_raw'], extrasaction='ignore', restval=''); w.writeheader()
+            w = csv.DictWriter(f, fieldnames=['company_id', 'period', 'basis', 'revenue_KRW', 'method', 'source', 'operating_profit_KRW', 'currency', 'unit_raw', 'net_income_KRW', 'net_income_ctrl_KRW'], extrasaction='ignore', restval=''); w.writeheader()
             w.writerows(sorted(rev_rows, key=lambda r: (r['company_id'], r['basis'], r['period'])))
     run_ids = {c['id'] for c in companies}
     # A partial run (company ids given) keeps every other company's existing rows.

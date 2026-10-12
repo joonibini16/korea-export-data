@@ -50,7 +50,7 @@ def main():
     if '--write' in sys.argv:
         path = ROOT / 'company_revenue_kind.csv'
         rows = [r for r in csv.DictReader(path.open(encoding='utf-8')) if r['company_id'] != 'LS-CABLE']
-        fields = ['company_id', 'period', 'basis', 'revenue_KRW', 'method', 'source', 'operating_profit_KRW', 'currency', 'unit_raw']
+        fields = ['company_id', 'period', 'basis', 'revenue_KRW', 'method', 'source', 'operating_profit_KRW', 'currency', 'unit_raw', 'net_income_KRW', 'net_income_ctrl_KRW']
         with path.open('w', encoding='utf-8', newline='') as f:
             w = csv.DictWriter(f, fieldnames=fields, extrasaction='ignore', restval=''); w.writeheader()
             w.writerows(sorted(rows + out, key=lambda r: (r['company_id'], r['basis'], r['period'])))
