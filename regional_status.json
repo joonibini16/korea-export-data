@@ -1,8 +1,8 @@
 {
-  "updated_at": "2026-10-12T13:37:05+09:00",
+  "updated_at": "2026-10-12T13:48:49+09:00",
   "source": "https://www.data.go.kr/data/15134343/openapi.do",
-  "requested_ranges": 129,
-  "received_rows": 11980,
+  "requested_ranges": 121,
+  "received_rows": 11279,
   "stored_rows": 43399,
   "failures": [
     {
@@ -26,7 +26,7 @@
       "query_sido": "31",
       "hs": "850423",
       "start": "202601",
-      "end": "202608",
+      "end": "202609",
       "error": "empty response; not zero"
     },
     {
@@ -58,7 +58,7 @@
       "query_sido": "44",
       "hs": "850423",
       "start": "202601",
-      "end": "202608",
+      "end": "202609",
       "error": "empty response; not zero"
     }
   ],
@@ -70,8 +70,10 @@
       "region": "청주시",
       "sido": "43",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "HS6",
       "historical_note": ""
     },
@@ -82,8 +84,10 @@
       "region": "안산시",
       "sido": "41",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "HS6",
       "historical_note": ""
     },
@@ -94,8 +98,10 @@
       "region": "시흥시",
       "sido": "41",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "HS6",
       "historical_note": ""
     },
@@ -106,8 +112,10 @@
       "region": "달성군",
       "sido": "27",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "HS6",
       "historical_note": ""
     },
@@ -118,8 +126,10 @@
       "region": "화성시",
       "sido": "41",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "HS6",
       "historical_note": ""
     },
@@ -130,8 +140,10 @@
       "region": "세종",
       "sido": "36",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "HS6",
       "historical_note": ""
     },
@@ -142,8 +154,10 @@
       "region": "안산시",
       "sido": "41",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "HS6",
       "historical_note": ""
     },
@@ -154,8 +168,10 @@
       "region": "안산시",
       "sido": "41",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "parent_HS6_proxy",
       "historical_note": ""
     },
@@ -166,8 +182,10 @@
       "region": "안산시",
       "sido": "41",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "HS6",
       "historical_note": ""
     },
@@ -178,8 +196,10 @@
       "region": "안산시",
       "sido": "41",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "parent_HS6_proxy",
       "historical_note": ""
     },
@@ -190,8 +210,10 @@
       "region": "부평구",
       "sido": "28",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "HS6",
       "historical_note": ""
     },
@@ -202,8 +224,10 @@
       "region": "서구",
       "sido": "28",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "HS6",
       "historical_note": ""
     },
@@ -214,8 +238,10 @@
       "region": "부평구",
       "sido": "28",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "parent_HS6_proxy",
       "historical_note": ""
     },
@@ -226,8 +252,10 @@
       "region": "서구",
       "sido": "28",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "parent_HS6_proxy",
       "historical_note": ""
     },
@@ -238,8 +266,10 @@
       "region": "세종",
       "sido": "36",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "HS6",
       "historical_note": ""
     },
@@ -250,8 +280,10 @@
       "region": "강서구",
       "sido": "26",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "HS6",
       "historical_note": ""
     },
@@ -262,8 +294,10 @@
       "region": "강서구",
       "sido": "26",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "parent_HS6_proxy",
       "historical_note": ""
     },
@@ -274,8 +308,10 @@
       "region": "구미시",
       "sido": "47",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "HS6",
       "historical_note": ""
     },
@@ -286,8 +322,10 @@
       "region": "창원시",
       "sido": "48",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "parent_HS6_proxy",
       "historical_note": ""
     },
@@ -298,8 +336,10 @@
       "region": "창원시",
       "sido": "48",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "HS6",
       "historical_note": ""
     },
@@ -310,8 +350,10 @@
       "region": "음성군",
       "sido": "43",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "HS6",
       "historical_note": ""
     },
@@ -322,8 +364,10 @@
       "region": "음성군",
       "sido": "43",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "parent_HS6_proxy",
       "historical_note": ""
     },
@@ -334,8 +378,10 @@
       "region": "음성군",
       "sido": "43",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "parent_HS6_proxy",
       "historical_note": ""
     },
@@ -346,8 +392,10 @@
       "region": "음성군",
       "sido": "43",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "HS6",
       "historical_note": ""
     },
@@ -358,8 +406,10 @@
       "region": "음성군",
       "sido": "43",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "parent_HS6_proxy",
       "historical_note": ""
     },
@@ -370,8 +420,10 @@
       "region": "음성군",
       "sido": "43",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "parent_HS6_proxy",
       "historical_note": ""
     },
@@ -382,8 +434,10 @@
       "region": "오산시",
       "sido": "41",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "HS6",
       "historical_note": ""
     },
@@ -394,8 +448,10 @@
       "region": "오산시",
       "sido": "41",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "parent_HS6_proxy",
       "historical_note": ""
     },
@@ -406,8 +462,10 @@
       "region": "오산시",
       "sido": "41",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "parent_HS6_proxy",
       "historical_note": ""
     },
@@ -418,8 +476,10 @@
       "region": "청주시",
       "sido": "43",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "HS6",
       "historical_note": ""
     },
@@ -430,8 +490,10 @@
       "region": "청주시",
       "sido": "43",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "parent_HS6_proxy",
       "historical_note": ""
     },
@@ -454,8 +516,10 @@
       "region": "평택시",
       "sido": "41",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "parent_HS6_proxy",
       "historical_note": ""
     },
@@ -466,8 +530,10 @@
       "region": "평택시",
       "sido": "41",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "parent_HS6_proxy",
       "historical_note": ""
     },
@@ -502,8 +568,10 @@
       "region": "이천시",
       "sido": "41",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "parent_HS6_proxy",
       "historical_note": ""
     },
@@ -514,8 +582,10 @@
       "region": "청주시",
       "sido": "43",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "parent_HS6_proxy",
       "historical_note": ""
     },
@@ -526,8 +596,10 @@
       "region": "안성시",
       "sido": "41",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "parent_HS6_proxy",
       "historical_note": ""
     },
@@ -538,8 +610,10 @@
       "region": "안성시",
       "sido": "41",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "parent_HS6_proxy",
       "historical_note": ""
     },
@@ -550,8 +624,10 @@
       "region": "아산시",
       "sido": "44",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "parent_HS6_proxy",
       "historical_note": ""
     },
@@ -562,8 +638,10 @@
       "region": "천안시",
       "sido": "44",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "parent_HS6_proxy",
       "historical_note": ""
     },
@@ -574,8 +652,10 @@
       "region": "아산시",
       "sido": "44",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "parent_HS6_proxy",
       "historical_note": ""
     },
@@ -586,8 +666,10 @@
       "region": "천안시",
       "sido": "44",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "parent_HS6_proxy",
       "historical_note": ""
     },
@@ -598,8 +680,10 @@
       "region": "강서구",
       "sido": "26",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "parent_HS6_proxy",
       "historical_note": ""
     },
@@ -610,8 +694,10 @@
       "region": "안양시",
       "sido": "41",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "parent_HS6_proxy",
       "historical_note": ""
     },
@@ -622,7 +708,7 @@
       "region": "동구",
       "sido": "31",
       "months": 6,
-      "expected_months": 80,
+      "expected_months": 81,
       "missing": [
         "2020.02",
         "2020.03",
@@ -697,7 +783,8 @@
         "2026.05",
         "2026.06",
         "2026.07",
-        "2026.08"
+        "2026.08",
+        "2026.09"
       ],
       "scope": "parent_HS6_proxy",
       "historical_note": ""
@@ -721,8 +808,10 @@
       "region": "창원시",
       "sido": "48",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "parent_HS6_proxy",
       "historical_note": ""
     },
@@ -745,7 +834,7 @@
       "region": "강서구",
       "sido": "26",
       "months": 51,
-      "expected_months": 80,
+      "expected_months": 81,
       "missing": [
         "2020.01",
         "2020.02",
@@ -775,7 +864,8 @@
         "2024.01",
         "2024.04",
         "2024.05",
-        "2026.02"
+        "2026.02",
+        "2026.09"
       ],
       "scope": "parent_HS6_proxy",
       "historical_note": ""
@@ -799,7 +889,7 @@
       "region": "홍성군",
       "sido": "44",
       "months": 5,
-      "expected_months": 80,
+      "expected_months": 81,
       "missing": [
         "2020.01",
         "2020.02",
@@ -875,7 +965,8 @@
         "2026.05",
         "2026.06",
         "2026.07",
-        "2026.08"
+        "2026.08",
+        "2026.09"
       ],
       "scope": "parent_HS6_proxy",
       "historical_note": ""
@@ -899,12 +990,13 @@
       "region": "동해시",
       "sido": "51",
       "months": 76,
-      "expected_months": 80,
+      "expected_months": 81,
       "missing": [
         "2020.01",
         "2022.11",
         "2022.12",
-        "2023.01"
+        "2023.01",
+        "2026.09"
       ],
       "scope": "parent_HS6_proxy",
       "historical_note": ""
@@ -916,12 +1008,13 @@
       "region": "동해시",
       "sido": "51",
       "months": 76,
-      "expected_months": 80,
+      "expected_months": 81,
       "missing": [
         "2020.01",
         "2022.11",
         "2022.12",
-        "2023.01"
+        "2023.01",
+        "2026.09"
       ],
       "scope": "parent_HS6_proxy",
       "historical_note": ""
@@ -933,8 +1026,10 @@
       "region": "청주시",
       "sido": "43",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "HS6",
       "historical_note": ""
     },
@@ -945,8 +1040,10 @@
       "region": "천안시",
       "sido": "44",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "HS6",
       "historical_note": ""
     },
@@ -957,8 +1054,10 @@
       "region": "울주군",
       "sido": "31",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "HS6",
       "historical_note": ""
     },
@@ -969,8 +1068,10 @@
       "region": "청주시",
       "sido": "43",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "parent_HS6_proxy",
       "historical_note": ""
     },
@@ -981,8 +1082,10 @@
       "region": "포항시",
       "sido": "47",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "parent_HS6_proxy",
       "historical_note": ""
     },
@@ -993,8 +1096,10 @@
       "region": "달성군",
       "sido": "27",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "parent_HS6_proxy",
       "historical_note": ""
     },
@@ -1005,8 +1110,10 @@
       "region": "광양시",
       "sido": "46",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "parent_HS6_proxy",
       "historical_note": ""
     },
@@ -1017,8 +1124,10 @@
       "region": "당진시",
       "sido": "44",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "parent_HS6_proxy",
       "historical_note": ""
     },
@@ -1029,8 +1138,10 @@
       "region": "청주시",
       "sido": "43",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "HS6",
       "historical_note": "2020~2021은 HS2017 선행코드 300290 연결(범위가 더 넓음)"
     },
@@ -1041,8 +1152,10 @@
       "region": "청주시",
       "sido": "43",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "parent_HS6_proxy",
       "historical_note": "2020~2021은 HS2017 선행코드 300290 연결(범위가 더 넓음)"
     },
@@ -1053,8 +1166,10 @@
       "region": "춘천시",
       "sido": "51",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "HS6",
       "historical_note": "2020~2021은 HS2017 선행코드 300290 연결(범위가 더 넓음)"
     },
@@ -1065,8 +1180,10 @@
       "region": "춘천시",
       "sido": "51",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "parent_HS6_proxy",
       "historical_note": "2020~2021은 HS2017 선행코드 300290 연결(범위가 더 넓음)"
     },
@@ -1077,8 +1194,10 @@
       "region": "화성시",
       "sido": "41",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "HS6",
       "historical_note": "2020~2021은 HS2017 선행코드 300290 연결(범위가 더 넓음)"
     },
@@ -1089,8 +1208,10 @@
       "region": "화성시",
       "sido": "41",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "parent_HS6_proxy",
       "historical_note": "2020~2021은 HS2017 선행코드 300290 연결(범위가 더 넓음)"
     },
@@ -1101,8 +1222,10 @@
       "region": "천안시",
       "sido": "44",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "parent_HS6_proxy",
       "historical_note": ""
     },
@@ -1113,8 +1236,10 @@
       "region": "밀양시",
       "sido": "48",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "parent_HS6_proxy",
       "historical_note": ""
     },
@@ -1125,8 +1250,10 @@
       "region": "원주시",
       "sido": "51",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "parent_HS6_proxy",
       "historical_note": ""
     },
@@ -1137,8 +1264,10 @@
       "region": "익산시",
       "sido": "52",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "parent_HS6_proxy",
       "historical_note": ""
     },
@@ -1149,8 +1278,10 @@
       "region": "사상구",
       "sido": "26",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "parent_HS6_proxy",
       "historical_note": ""
     },
@@ -1161,8 +1292,10 @@
       "region": "강서구",
       "sido": "26",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "parent_HS6_proxy",
       "historical_note": ""
     },
@@ -1173,8 +1306,10 @@
       "region": "평택시",
       "sido": "41",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "parent_HS6_proxy",
       "historical_note": ""
     },
@@ -1185,8 +1320,10 @@
       "region": "진천군",
       "sido": "43",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "parent_HS6_proxy",
       "historical_note": "2020~2021은 HS2017 선행코드 854140 연결(범위가 더 넓음)"
     },
@@ -1197,8 +1334,10 @@
       "region": "아산시",
       "sido": "44",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "HS6",
       "historical_note": ""
     },
@@ -1209,8 +1348,10 @@
       "region": "아산시",
       "sido": "44",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "HS6",
       "historical_note": ""
     },
@@ -1221,8 +1362,10 @@
       "region": "천안시",
       "sido": "44",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "HS6",
       "historical_note": ""
     },
@@ -1233,8 +1376,10 @@
       "region": "천안시",
       "sido": "44",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "HS6",
       "historical_note": ""
     },
@@ -1245,8 +1390,10 @@
       "region": "평택시",
       "sido": "41",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "HS6",
       "historical_note": ""
     },
@@ -1257,8 +1404,10 @@
       "region": "평택시",
       "sido": "41",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "HS6",
       "historical_note": ""
     },
@@ -1269,8 +1418,10 @@
       "region": "평택시",
       "sido": "41",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "HS6",
       "historical_note": ""
     },
@@ -1281,8 +1432,10 @@
       "region": "안성시",
       "sido": "41",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "HS6",
       "historical_note": ""
     },
@@ -1293,8 +1446,10 @@
       "region": "이천시",
       "sido": "41",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "HS6",
       "historical_note": ""
     },
@@ -1305,8 +1460,10 @@
       "region": "평택시",
       "sido": "41",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "HS6",
       "historical_note": ""
     },
@@ -1317,8 +1474,10 @@
       "region": "안성시",
       "sido": "41",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "HS6",
       "historical_note": ""
     },
@@ -1329,8 +1488,10 @@
       "region": "이천시",
       "sido": "41",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "HS6",
       "historical_note": ""
     },
@@ -1341,8 +1502,10 @@
       "region": "청주시",
       "sido": "43",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "HS6",
       "historical_note": ""
     },
@@ -1353,8 +1516,10 @@
       "region": "음성군",
       "sido": "43",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "HS6",
       "historical_note": ""
     },
@@ -1365,8 +1530,10 @@
       "region": "괴산군",
       "sido": "43",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "HS6",
       "historical_note": ""
     },
@@ -1377,8 +1544,10 @@
       "region": "용인시",
       "sido": "41",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "HS6",
       "historical_note": ""
     },
@@ -1389,8 +1558,10 @@
       "region": "파주시",
       "sido": "41",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "HS6",
       "historical_note": ""
     },
@@ -1401,8 +1572,10 @@
       "region": "파주시",
       "sido": "41",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "HS6",
       "historical_note": ""
     },
@@ -1413,8 +1586,10 @@
       "region": "청주시",
       "sido": "43",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "HS6",
       "historical_note": ""
     },
@@ -1425,8 +1600,10 @@
       "region": "진천군",
       "sido": "43",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "HS6",
       "historical_note": ""
     },
@@ -1437,8 +1614,10 @@
       "region": "안성시",
       "sido": "41",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "HS6",
       "historical_note": ""
     },
@@ -1449,8 +1628,10 @@
       "region": "진천군",
       "sido": "43",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "HS6",
       "historical_note": ""
     },
@@ -1461,8 +1642,10 @@
       "region": "안성시",
       "sido": "41",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "HS6",
       "historical_note": ""
     },
@@ -1473,8 +1656,10 @@
       "region": "화성시",
       "sido": "41",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "parent_HS6_proxy",
       "historical_note": ""
     },
@@ -1485,8 +1670,10 @@
       "region": "화성시",
       "sido": "41",
       "months": 80,
-      "expected_months": 80,
-      "missing": [],
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
       "scope": "parent_HS6_proxy",
       "historical_note": ""
     }
