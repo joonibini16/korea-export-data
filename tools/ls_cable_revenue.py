@@ -45,12 +45,12 @@ def main():
             if not prev:
                 print('skip', p, '직전 누적 없음'); continue
             val, how = v - prev[0], f'{q}분기 누적−{q-1}분기 누적'
-        out.append(dict(company_id='LS-CABLE', period=p, basis='연결', revenue_KRW=int(val), method='LS 전선 부문 매출(연결조정 전) · ' + how, source=url, operating_profit_KRW=''))
+        out.append(dict(company_id='LS-CABLE', period=p, basis='연결', revenue_KRW=int(val), method='LS 전선 부문 매출(연결조정 전) · ' + how, source=url, operating_profit_KRW='', currency='KRW', unit_raw='백만원'))
         print(p, round(val / 10**8))
     if '--write' in sys.argv:
         path = ROOT / 'company_revenue_kind.csv'
         rows = [r for r in csv.DictReader(path.open(encoding='utf-8')) if r['company_id'] != 'LS-CABLE']
-        fields = ['company_id', 'period', 'basis', 'revenue_KRW', 'method', 'source', 'operating_profit_KRW']
+        fields = ['company_id', 'period', 'basis', 'revenue_KRW', 'method', 'source', 'operating_profit_KRW', 'currency', 'unit_raw']
         with path.open('w', encoding='utf-8', newline='') as f:
             w = csv.DictWriter(f, fieldnames=fields, extrasaction='ignore', restval=''); w.writeheader()
             w.writerows(sorted(rows + out, key=lambda r: (r['company_id'], r['basis'], r['period'])))

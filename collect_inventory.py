@@ -19,7 +19,20 @@ OUT = ROOT / 'company_inventory.csv'
 STATUS = ROOT / 'company_inventory_status.json'
 # '유동재고자산' is the XBRL standard label used in KIND statements from 2023-Q3 onward.
 LABEL = re.compile(r'^(?:\(\d+\)|[ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩ\d]+[.)]?)?(?:유동)?재고자산(?:\(주[^)]*\)|\(주석[^)]*\)|\([\d,\s]+\))?$')
-UNIT = {'원': 1, '천원': 1000, '백만원': 1000000}
+UNIT = {'원': 1, '천원': 1000, '백만원': 1000000, 'USD': 1, '천USD': 1000, '백만USD': 1000000}
+CUR = {k: ('USD' if 'USD' in k else 'KRW') for k in UNIT}
+UNIT_RE = re.compile(r'단위\s*[:：]\s*(백만\s*원|천\s*원|원|(?:백만|천)?\s*(?:US\s*\$|USD|U\.S\.\s*달러|미국\s*달러|달러))')
+
+
+def unit_of(text):
+    m = UNIT_RE.search(text)
+    if not m:
+        return None
+    u = m.group(1).replace(' ', '')
+    if '원' in u:
+        return u
+    scale = '백만' if u.startswith('백만') else '천' if u.startswith('천') else ''
+    return scale + 'USD'
 
 
 def numcell(s):
@@ -52,11 +65,11 @@ def balance_sheets(doc):
                 name = '연결'
         ctx = ts[i:i + 4]
         joined = ' '.join(h.text(x) for x in ctx)
-        u = re.search(r'단위\s*[:：]\s*(백만원|천원|원)', joined)
+        u = unit_of(joined)
         rows = [r for tb in ctx for r in h.rows(tb)]
         header = ' '.join(' '.join(r) for r in rows[:6])
         if any(r and LABEL.fullmatch(r[0].replace(' ', '')) for r in rows) and not any(f['basis'] == name for f in found):
-            found.append(dict(basis=name, unit=u.group(1) if u else None, rows=rows, header=header))
+            found.append(dict(basis=name, unit=u, rows=rows, header=header))
     return found
 
 
@@ -110,13 +123,13 @@ def income_statements(doc):
                 name = '연결'
         ctx = ts[i:i + 4]
         joined = ' '.join(h.text(x) for x in ctx)
-        u = re.search(r'단위\s*[:：]\s*(백만원|천원|원)', joined)
+        u = unit_of(joined)
         rows = [r for tb in ctx for r in h.rows(tb)]
         header = ' '.join(' '.join(r) for r in rows[:6])
         rev = next((r for r in rows if r and REV_LABEL.fullmatch(r[0].replace(' ', ''))), None)
         op = next((r for r in rows if r and OP_LABEL.fullmatch(r[0].replace(' ', ''))), None)
         if rev and u and not any(f['basis'] == name for f in found):
-            found.append(dict(basis=name, unit=u.group(1), header=header, row=rev, op_row=op))
+            found.append(dict(basis=name, unit=u, header=header, row=rev, op_row=op))
     return found
 
 
@@ -182,7 +195,7 @@ def main():
                 except ValueError as e:
                     issues.append(dict(company_id=r['company_id'], period=r['period'], basis=basis, source=r['url'], reason=str(e))); continue
                 out[(r['company_id'], r['period'], basis)] = dict(company_id=r['company_id'], period=r['period'], basis=basis,
-                    inventory_KRW=cur, source=r['url'])
+                    inventory_KRW=cur, source=r['url'], currency=CUR[sh['unit']], unit_raw=sh['unit'])
                 if r['period'].endswith('Q1') and prior is not None:
                     priors[(r['company_id'], f"{int(r['period'][:4]) - 1}-Q4", basis)] = prior
                 got = True
@@ -210,7 +223,7 @@ def main():
                             revs[key].update(op=int(o[0]), op_cum=int(o[1]))
                         elif q == 4:
                             revs[key].update(op_annual=int(o[0]))
-                    revs[key].update(company_id=r['company_id'], period=r['period'], basis=st['basis'], source=r['url'])
+                    revs[key].update(company_id=r['company_id'], period=r['period'], basis=st['basis'], source=r['url'], currency=CUR[st['unit']], unit_raw=st['unit'])
             except Exception as e:
                 issues.append(dict(company_id=r['company_id'], period=r['period'], reason='매출 추출 오류: ' + str(e)[:100]))
             if f"{r['company_id']}:{r['period']}" in __import__('os').environ.get('INV_DEBUG', ''):
@@ -268,7 +281,7 @@ def main():
             parts = [revs.get((k[0], k[1][:4] + f'-Q{i}', k[2]), {}).get('op') for i in (1, 2, 3)]
             v['op'] = v['op_annual'] - q3['op_cum'] if q3.get('op_cum') is not None else (v['op_annual'] - sum(parts) if all(x is not None for x in parts) else None)
         if v.get('value') and v['value'] > 0:
-            rev_rows.append(dict(company_id=v['company_id'], period=v['period'], basis=v['basis'], revenue_KRW=v['value'], method=v['method'], source=v['source'],
+            rev_rows.append(dict(company_id=v['company_id'], period=v['period'], basis=v['basis'], revenue_KRW=v['value'], method=v['method'], source=v['source'], currency=v.get('currency', 'KRW'), unit_raw=v.get('unit_raw', ''),
                                  operating_profit_KRW='' if v.get('op') is None else v['op']))
     run_ids = {c['id'] for c in companies}
     rev_path = ROOT / 'company_revenue_kind.csv'
@@ -277,7 +290,7 @@ def main():
             rev_rows += [r for r in csv.DictReader(f) if r['company_id'] not in run_ids]
     if rev_rows:
         with rev_path.open('w', encoding='utf-8', newline='') as f:
-            w = csv.DictWriter(f, fieldnames=['company_id', 'period', 'basis', 'revenue_KRW', 'method', 'source', 'operating_profit_KRW'], extrasaction='ignore', restval=''); w.writeheader()
+            w = csv.DictWriter(f, fieldnames=['company_id', 'period', 'basis', 'revenue_KRW', 'method', 'source', 'operating_profit_KRW', 'currency', 'unit_raw'], extrasaction='ignore', restval=''); w.writeheader()
             w.writerows(sorted(rev_rows, key=lambda r: (r['company_id'], r['basis'], r['period'])))
     run_ids = {c['id'] for c in companies}
     # A partial run (company ids given) keeps every other company's existing rows.
@@ -290,7 +303,7 @@ def main():
     if not rows:
         print('no rows'); sys.exit(1)
     with OUT.open('w', encoding='utf-8', newline='') as f:
-        w = csv.DictWriter(f, fieldnames=['company_id', 'period', 'basis', 'inventory_KRW', 'source']); w.writeheader(); w.writerows(rows)
+        w = csv.DictWriter(f, fieldnames=['company_id', 'period', 'basis', 'inventory_KRW', 'source', 'currency', 'unit_raw'], extrasaction='ignore', restval=''); w.writeheader(); w.writerows(rows)
     cov = {}
     for r in rows:
         cov.setdefault(r['company_id'], {}).setdefault(r['basis'], []).append(r['period'])
