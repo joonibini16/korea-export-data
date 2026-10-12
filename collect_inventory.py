@@ -174,7 +174,14 @@ def main():
             except Exception as e:
                 issues.append(dict(company_id=r['company_id'], period=r['period'], reason='매출 추출 오류: ' + str(e)[:100]))
             if f"{r['company_id']}:{r['period']}" in __import__('os').environ.get('INV_DEBUG', ''):
-                dbg = [f"{e.tag}:{h.text(e)[:90]}" for e in doc.xpath('//*[self::p or self::td or self::span][contains(text(),"재무상태표") or contains(text(),"재무제표")]')[:25]]
+                dbg = [f"{e.tag}:{h.text(e)[:90]}" for e in doc.xpath('//*[self::p or self::td or self::span][contains(text(),"재무상태표") or contains(text(),"손익계산서") or contains(text(),"재무제표")]')[:30]]
+                dbg += ['IS:' + st['basis'] + ' ' + st['unit'] + ' | ' + st['header'][:200] + ' | ' + ' / '.join(st['row'][:6]) for st in income_statements(doc)]
+                dbg += ['BS:' + sh['basis'] + ' ' + str(sh['unit']) + ' | ' + sh['header'][:160] for sh in sheets]
+                for tr in doc.xpath('//tr')[:6000]:
+                    cc = tr.xpath('./td|./th')
+                    if cc and re.match(r'^(?:[ⅠⅡ\d.()]*)?(유동)?(재고자산|매출액|수익\(매출액\)|영업수익)', h.text(cc[0]).replace(' ', '')):
+                        dbg.append('ROW: ' + ' | '.join(h.text(x)[:25] for x in cc[:5]))
+                        if sum(x.startswith('ROW') for x in dbg) >= 8: break
                 dbg += [f"TITLE={r['title']}", f"URL={r['url']}", f"tables={len(doc.xpath('//table'))}"]
                 issues.append(dict(company_id=r['company_id'], period=r['period'], reason='DEBUG', debug=dbg))
             if got and not any(sh['basis'] == '연결' for sh in sheets) and doc.xpath('//p[contains(normalize-space(.),"연결 재무상태표")]'):
@@ -202,8 +209,11 @@ def main():
     for k, v in revs.items():
         if v.get('annual') is not None:
             q3 = revs.get((k[0], k[1][:4] + '-Q3', k[2]))
+            parts = [revs.get((k[0], k[1][:4] + f'-Q{i}', k[2]), {}).get('value') for i in (1, 2, 3)]
             if q3 and q3.get('cum') and v['annual'] - q3['cum'] > 0:
                 v['value'] = v['annual'] - q3['cum']
+            elif all(parts) and v['annual'] - sum(parts) > 0:
+                v['value'] = v['annual'] - sum(parts); v['method'] = '연간−(1~3분기 합)'
             else:
                 continue
         if v.get('value') and v['value'] > 0:
