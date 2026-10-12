@@ -442,6 +442,24 @@
       "source": "https://kind.krx.co.kr/external/2026/08/14/001725/20260814005825/11012.htm",
       "reviewed_period": "",
       "name": "에이엘티"
+    },
+    {
+      "company_id": "200470",
+      "status": "pending",
+      "label": "점검 예정",
+      "reason": "2026-10-12 관심 업체에 추가. 정기보고서 수주상황 점검 전입니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/000066/20260814000134/11012.htm",
+      "reviewed_period": "",
+      "name": "에이팩트"
+    },
+    {
+      "company_id": "078350",
+      "status": "pending",
+      "label": "점검 예정",
+      "reason": "2026-10-12 관심 업체에 추가. 정기보고서 수주상황 점검 전입니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/13/000590/20260813001569/11012.htm",
+      "reviewed_period": "",
+      "name": "한양디지텍"
     }
   ],
   "observations": [
