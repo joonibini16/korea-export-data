@@ -1148,6 +1148,262 @@
       "regional_hs": {
         "8541430000": "854143"
       }
+    },
+    {
+      "id": "067310",
+      "name": "하나마이크론",
+      "category": "반도체 후공정(OSAT)",
+      "hs_codes": [
+        "854232",
+        "854239"
+      ],
+      "sites": [
+        {
+          "sido_code": "44",
+          "region_keyword": "아산시"
+        }
+      ],
+      "sido_code": "44",
+      "region_keyword": "아산시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·후공정 품목 확인 / 개별 업체 수출 미확인",
+      "rationale": "아산 음봉 패키징·테스트 공장. 메모리(삼성전자·SK하이닉스) 및 비메모리 후공정. 베트남·브라질 해외 생산 비중이 크며 수탁 가공분은 고객사 수출로 잡힐 수 있음.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/14/003199/20260814011260/11012.htm"
+      ],
+      "reviewed_at": "2026-10-12",
+      "regional_hs": {
+        "854232": "854232",
+        "854239": "854239"
+      }
+    },
+    {
+      "id": "036540",
+      "name": "SFA반도체",
+      "category": "반도체 후공정(OSAT)",
+      "hs_codes": [
+        "854232",
+        "854239"
+      ],
+      "sites": [
+        {
+          "sido_code": "44",
+          "region_keyword": "천안시"
+        }
+      ],
+      "sido_code": "44",
+      "region_keyword": "천안시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·후공정 품목 확인 / 개별 업체 수출 미확인",
+      "rationale": "천안 백석공단 패키징·범핑 사업장. 메모리 패키징 중심, 필리핀 법인 생산은 국내 수출에 포함되지 않음.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/12/000273/20260812000750/11012.htm"
+      ],
+      "reviewed_at": "2026-10-12",
+      "regional_hs": {
+        "854232": "854232",
+        "854239": "854239"
+      }
+    },
+    {
+      "id": "061970",
+      "name": "엘비세미콘",
+      "category": "반도체 후공정(OSAT)",
+      "hs_codes": [
+        "854239",
+        "854231"
+      ],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "평택시"
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "평택시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·후공정 품목 확인 / 개별 업체 수출 미확인",
+      "rationale": "평택 청북 본사·공장. DDI·PMIC 범핑·테스트 등 비메모리 후공정.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/14/001509/20260814005033/11012.htm"
+      ],
+      "reviewed_at": "2026-10-12",
+      "regional_hs": {
+        "854239": "854239",
+        "854231": "854231"
+      }
+    },
+    {
+      "id": "131970",
+      "name": "두산테스나",
+      "category": "반도체 후공정(OSAT)",
+      "hs_codes": [
+        "854239",
+        "854231"
+      ],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "평택시"
+        },
+        {
+          "sido_code": "41",
+          "region_keyword": "안성시"
+        },
+        {
+          "sido_code": "41",
+          "region_keyword": "이천시"
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "평택시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·후공정 품목 확인 / 개별 업체 수출 미확인",
+      "rationale": "평택(본사)·안성·이천 테스트 사업장. SoC·CIS 테스트 서비스로, 테스트 후 칩의 수출은 고객사 명의로 신고될 수 있어 지역 지표와의 연결은 약함.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/14/002324/20260814008053/11012.htm"
+      ],
+      "reviewed_at": "2026-10-12",
+      "regional_hs": {
+        "854239": "854239",
+        "854231": "854231"
+      }
+    },
+    {
+      "id": "033640",
+      "name": "네패스",
+      "category": "반도체 후공정(OSAT)",
+      "hs_codes": [
+        "854239"
+      ],
+      "sites": [
+        {
+          "sido_code": "43",
+          "region_keyword": "청주시"
+        },
+        {
+          "sido_code": "43",
+          "region_keyword": "음성군"
+        }
+      ],
+      "sido_code": "43",
+      "region_keyword": "청주시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·후공정 품목 확인 / 개별 업체 수출 미확인",
+      "rationale": "청주 오창(2026.03 본점 이전)·음성 사업장. PMIC 등 웨이퍼레벨 패키징 및 전자재료.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/14/003158/20260814011104/11012.htm"
+      ],
+      "reviewed_at": "2026-10-12",
+      "regional_hs": {
+        "854239": "854239"
+      }
+    },
+    {
+      "id": "330860",
+      "name": "네패스아크",
+      "category": "반도체 후공정(OSAT)",
+      "hs_codes": [
+        "854239"
+      ],
+      "sites": [
+        {
+          "sido_code": "43",
+          "region_keyword": "괴산군"
+        }
+      ],
+      "sido_code": "43",
+      "region_keyword": "괴산군",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·후공정 품목 확인 / 개별 업체 수출 미확인",
+      "rationale": "괴산 청안 본사·사업장. 비메모리 테스트 전문(네패스에서 분할).",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/14/003189/20260814011221/11012.htm"
+      ],
+      "reviewed_at": "2026-10-12",
+      "regional_hs": {
+        "854239": "854239"
+      }
+    },
+    {
+      "id": "097800",
+      "name": "윈팩",
+      "category": "반도체 후공정(OSAT)",
+      "hs_codes": [
+        "854232"
+      ],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "용인시"
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "용인시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·후공정 품목 확인 / 개별 업체 수출 미확인",
+      "rationale": "용인 처인구 백암 본사·공장. 메모리 패키징·테스트(주요 고객 SK하이닉스).",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/14/003448/20260814012133/11012.htm"
+      ],
+      "reviewed_at": "2026-10-12",
+      "regional_hs": {
+        "854232": "854232"
+      }
+    },
+    {
+      "id": "033170",
+      "name": "시그네틱스",
+      "category": "반도체 후공정(OSAT)",
+      "hs_codes": [
+        "854232",
+        "854239"
+      ],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "파주시"
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "파주시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·후공정 품목 확인 / 개별 업체 수출 미확인",
+      "rationale": "파주 탄현 본사·공장. 메모리·비메모리 패키징.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/14/002374/20260814008230/11012.htm"
+      ],
+      "reviewed_at": "2026-10-12",
+      "regional_hs": {
+        "854232": "854232",
+        "854239": "854239"
+      }
+    },
+    {
+      "id": "172670",
+      "name": "에이엘티",
+      "category": "반도체 후공정(OSAT)",
+      "hs_codes": [
+        "854239"
+      ],
+      "sites": [
+        {
+          "sido_code": "43",
+          "region_keyword": "청주시"
+        }
+      ],
+      "sido_code": "43",
+      "region_keyword": "청주시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·후공정 품목 확인 / 개별 업체 수출 미확인",
+      "rationale": "청주 흥덕구 옥산 본사·사업장. 비메모리(DDI·PMIC·CIS) 테스트.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/14/001725/20260814005825/11012.htm"
+      ],
+      "reviewed_at": "2026-10-12",
+      "regional_hs": {
+        "854239": "854239"
+      }
     }
   ],
   "reviewed_at": "2026-10-07",

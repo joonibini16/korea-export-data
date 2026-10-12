@@ -361,6 +361,87 @@
       "source": "https://kind.krx.co.kr/external/2026/08/14/002512/20260814008746/11012.htm",
       "reviewed_period": "2026-Q2",
       "name": "한화솔루션"
+    },
+    {
+      "company_id": "067310",
+      "status": "pending",
+      "label": "점검 예정",
+      "reason": "2026-10-12 관심 업체에 추가. 정기보고서 수주상황 점검 전입니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/003199/20260814011260/11012.htm",
+      "reviewed_period": "",
+      "name": "하나마이크론"
+    },
+    {
+      "company_id": "036540",
+      "status": "pending",
+      "label": "점검 예정",
+      "reason": "2026-10-12 관심 업체에 추가. 정기보고서 수주상황 점검 전입니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/12/000273/20260812000750/11012.htm",
+      "reviewed_period": "",
+      "name": "SFA반도체"
+    },
+    {
+      "company_id": "061970",
+      "status": "pending",
+      "label": "점검 예정",
+      "reason": "2026-10-12 관심 업체에 추가. 정기보고서 수주상황 점검 전입니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/001509/20260814005033/11012.htm",
+      "reviewed_period": "",
+      "name": "엘비세미콘"
+    },
+    {
+      "company_id": "131970",
+      "status": "pending",
+      "label": "점검 예정",
+      "reason": "2026-10-12 관심 업체에 추가. 정기보고서 수주상황 점검 전입니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/002324/20260814008053/11012.htm",
+      "reviewed_period": "",
+      "name": "두산테스나"
+    },
+    {
+      "company_id": "033640",
+      "status": "pending",
+      "label": "점검 예정",
+      "reason": "2026-10-12 관심 업체에 추가. 정기보고서 수주상황 점검 전입니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/003158/20260814011104/11012.htm",
+      "reviewed_period": "",
+      "name": "네패스"
+    },
+    {
+      "company_id": "330860",
+      "status": "pending",
+      "label": "점검 예정",
+      "reason": "2026-10-12 관심 업체에 추가. 정기보고서 수주상황 점검 전입니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/003189/20260814011221/11012.htm",
+      "reviewed_period": "",
+      "name": "네패스아크"
+    },
+    {
+      "company_id": "097800",
+      "status": "pending",
+      "label": "점검 예정",
+      "reason": "2026-10-12 관심 업체에 추가. 정기보고서 수주상황 점검 전입니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/003448/20260814012133/11012.htm",
+      "reviewed_period": "",
+      "name": "윈팩"
+    },
+    {
+      "company_id": "033170",
+      "status": "pending",
+      "label": "점검 예정",
+      "reason": "2026-10-12 관심 업체에 추가. 정기보고서 수주상황 점검 전입니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/002374/20260814008230/11012.htm",
+      "reviewed_period": "",
+      "name": "시그네틱스"
+    },
+    {
+      "company_id": "172670",
+      "status": "pending",
+      "label": "점검 예정",
+      "reason": "2026-10-12 관심 업체에 추가. 정기보고서 수주상황 점검 전입니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/001725/20260814005825/11012.htm",
+      "reviewed_period": "",
+      "name": "에이엘티"
     }
   ],
   "observations": [
