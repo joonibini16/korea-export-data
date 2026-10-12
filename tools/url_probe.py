@@ -1,7 +1,7 @@
 """Fetch candidate URLs from Actions and save status + head of body (review only). Args: URLs."""
-import json, sys, urllib.request, pathlib
+import json, os, sys, urllib.request, pathlib
 out = []
-for u in sys.argv[1:]:
+for u in (sys.argv[1:] or os.environ.get('URLS', '').split()):
     try:
         req = urllib.request.Request(u, headers={'User-Agent': 'Mozilla/5.0', 'Referer': 'https://comp.fnguide.com/' if 'fnguide' in u else 'https://navercomp.wisereport.co.kr/'})
         with urllib.request.urlopen(req, timeout=40) as r:
