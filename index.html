@@ -9,7 +9,7 @@
 
 <title>한국 수출 데이터 모니터링</title>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script><script src="./chart_legend.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script><script src="./chart_legend.js?v=3"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
 
 <style>
@@ -1006,7 +1006,7 @@ function createMainChart(itemName) {
                     },
 
                     ...(quarterly && data.some(d => d.estimated) ? [{
-                        type: "bar", label: "남은 달 추정 수출액",
+                        type: "bar", label: "수출 추정 · 남은 달",
                         data: data.map(d => d.estimated ? d.estimatedUSD / 1000000 : null),
                         backgroundColor: "#2563eb40", borderColor: "#2563eb", borderWidth: 1,
                         stack: "exports", yAxisID: "yExport", order: 2,
@@ -1686,7 +1686,7 @@ function createSeasonalChart(itemName) {
         borderWidth: 1,
         datalabels: { display: false }
     }, ...(quarterly && yearQuarters(year).some(r => r?.estimated) ? [{
-        type: "bar", label: year + " 추정", stack: year,
+        type: "bar", label: year + " 수출 추정", stack: year,
         data: yearQuarters(year).map(row => row?.estimated ? row.estimatedUSD / 1000000 : null),
         backgroundColor: yearColor(year) + "40", borderColor: yearColor(year), borderWidth: 1,
         datalabels: {display: false}
