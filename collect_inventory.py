@@ -208,11 +208,23 @@ def main():
                 continue
         if v.get('value') and v['value'] > 0:
             rev_rows.append(dict(company_id=v['company_id'], period=v['period'], basis=v['basis'], revenue_KRW=v['value'], method=v['method'], source=v['source']))
+    run_ids = {c['id'] for c in companies}
+    rev_path = ROOT / 'company_revenue_kind.csv'
+    if rev_path.exists():
+        with rev_path.open(encoding='utf-8', newline='') as f:
+            rev_rows += [r for r in csv.DictReader(f) if r['company_id'] not in run_ids]
     if rev_rows:
-        with (ROOT / 'company_revenue_kind.csv').open('w', encoding='utf-8', newline='') as f:
+        with rev_path.open('w', encoding='utf-8', newline='') as f:
             w = csv.DictWriter(f, fieldnames=['company_id', 'period', 'basis', 'revenue_KRW', 'method', 'source']); w.writeheader()
             w.writerows(sorted(rev_rows, key=lambda r: (r['company_id'], r['basis'], r['period'])))
-    rows = sorted(out.values(), key=lambda r: (r['company_id'], r['basis'], r['period']))
+    run_ids = {c['id'] for c in companies}
+    # A partial run (company ids given) keeps every other company's existing rows.
+    def keep_old(path):
+        if not path.exists():
+            return []
+        with path.open(encoding='utf-8', newline='') as f:
+            return [r for r in csv.DictReader(f) if r['company_id'] not in run_ids]
+    rows = sorted(list(out.values()) + keep_old(OUT), key=lambda r: (r['company_id'], r['basis'], r['period']))
     if not rows:
         print('no rows'); sys.exit(1)
     with OUT.open('w', encoding='utf-8', newline='') as f:
