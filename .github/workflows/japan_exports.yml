@@ -41,6 +41,7 @@ jobs:
           if ! git diff --cached --quiet; then
             git commit -m "Update Japan exports"
             git pull --rebase origin main
+            git pull --rebase origin main || (git rebase --abort; exit 1)
             git push
           fi
       - name: Request Pages build

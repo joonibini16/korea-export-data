@@ -36,4 +36,5 @@ jobs:
           git config user.email "github-actions@github.com"
           git add export_*.csv summary_*.csv latest.csv
           git commit -m "Update export data" || echo "변경사항 없음"
+          git pull --rebase origin main || (git rebase --abort; exit 1)
           git push

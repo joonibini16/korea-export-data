@@ -1,0 +1,954 @@
+{
+ "summary": {
+  "companies": 51,
+  "rev_gap_companies": 5,
+  "rev_gap_quarters": 10,
+  "inv_gap_companies": 1,
+  "inv_gap_quarters": 1,
+  "regional_gap_series": 8,
+  "regional_gap_months": 278,
+  "national_gaps": {
+   "8486902090": [
+    24,
+    [
+     "2020.01",
+     "2020.02",
+     "2020.03",
+     "2020.04",
+     "2020.05",
+     "2020.06"
+    ]
+   ],
+   "8486902040": [
+    24,
+    [
+     "2020.01",
+     "2020.02",
+     "2020.03",
+     "2020.04",
+     "2020.05",
+     "2020.06"
+    ]
+   ],
+   "8542900000": [
+    24,
+    [
+     "2020.01",
+     "2020.02",
+     "2020.03",
+     "2020.04",
+     "2020.05",
+     "2020.06"
+    ]
+   ],
+   "2841909020": [
+    24,
+    [
+     "2020.01",
+     "2020.02",
+     "2020.03",
+     "2020.04",
+     "2020.05",
+     "2020.06"
+    ]
+   ],
+   "8541430000": [
+    24,
+    [
+     "2020.01",
+     "2020.02",
+     "2020.03",
+     "2020.04",
+     "2020.05",
+     "2020.06"
+    ]
+   ],
+   "300249": [
+    24,
+    [
+     "2020.01",
+     "2020.02",
+     "2020.03",
+     "2020.04",
+     "2020.05",
+     "2020.06"
+    ]
+   ],
+   "3002491000": [
+    24,
+    [
+     "2020.01",
+     "2020.02",
+     "2020.03",
+     "2020.04",
+     "2020.05",
+     "2020.06"
+    ]
+   ],
+   "854231": "no file",
+   "854232": "no file",
+   "854239": "no file"
+  }
+ },
+ "companies": [
+  {
+   "id": "222800",
+   "name": "심텍",
+   "rev_missing": [],
+   "inv_missing": [],
+   "structural": {
+    "rev": [],
+    "inv": [],
+    "note": []
+   },
+   "first": "2020-Q1",
+   "regional_missing": {}
+  },
+  {
+   "id": "353200",
+   "name": "대덕전자",
+   "rev_missing": [],
+   "inv_missing": [],
+   "structural": {
+    "rev": [
+     "2020-Q1"
+    ],
+    "inv": [
+     "2020-Q1"
+    ],
+    "note": [
+     "2020-05 인적분할 신설 전",
+     "2020-05 인적분할 신설 전"
+    ]
+   },
+   "first": "2020-Q2",
+   "regional_missing": {}
+  },
+  {
+   "id": "007660",
+   "name": "이수페타시스",
+   "rev_missing": [],
+   "inv_missing": [],
+   "structural": {
+    "rev": [],
+    "inv": [],
+    "note": []
+   },
+   "first": "2020-Q1",
+   "regional_missing": {}
+  },
+  {
+   "id": "192820",
+   "name": "코스맥스",
+   "rev_missing": [],
+   "inv_missing": [],
+   "structural": {
+    "rev": [],
+    "inv": [],
+    "note": []
+   },
+   "first": "2020-Q1",
+   "regional_missing": {}
+  },
+  {
+   "id": "161890",
+   "name": "한국콜마",
+   "rev_missing": [],
+   "inv_missing": [],
+   "structural": {
+    "rev": [],
+    "inv": [],
+    "note": []
+   },
+   "first": "2020-Q1",
+   "regional_missing": {}
+  },
+  {
+   "id": "007810",
+   "name": "코리아써키트",
+   "rev_missing": [],
+   "inv_missing": [],
+   "structural": {
+    "rev": [],
+    "inv": [],
+    "note": []
+   },
+   "first": "2020-Q1",
+   "regional_missing": {}
+  },
+  {
+   "id": "051370",
+   "name": "인터플렉스",
+   "rev_missing": [],
+   "inv_missing": [],
+   "structural": {
+    "rev": [],
+    "inv": [],
+    "note": []
+   },
+   "first": "2020-Q1",
+   "regional_missing": {}
+  },
+  {
+   "id": "090460",
+   "name": "비에이치",
+   "rev_missing": [],
+   "inv_missing": [],
+   "structural": {
+    "rev": [],
+    "inv": [],
+    "note": []
+   },
+   "first": "2020-Q1",
+   "regional_missing": {}
+  },
+  {
+   "id": "009150",
+   "name": "삼성전기",
+   "rev_missing": [],
+   "inv_missing": [],
+   "structural": {
+    "rev": [],
+    "inv": [],
+    "note": []
+   },
+   "first": "2020-Q1",
+   "regional_missing": {}
+  },
+  {
+   "id": "011070",
+   "name": "LG이노텍",
+   "rev_missing": [],
+   "inv_missing": [],
+   "structural": {
+    "rev": [],
+    "inv": [],
+    "note": []
+   },
+   "first": "2020-Q1",
+   "regional_missing": {}
+  },
+  {
+   "id": "195870",
+   "name": "해성디에스",
+   "rev_missing": [],
+   "inv_missing": [],
+   "structural": {
+    "rev": [],
+    "inv": [],
+    "note": []
+   },
+   "first": "2020-Q1",
+   "regional_missing": {}
+  },
+  {
+   "id": "241710",
+   "name": "코스메카코리아",
+   "rev_missing": [],
+   "inv_missing": [],
+   "structural": {
+    "rev": [],
+    "inv": [],
+    "note": []
+   },
+   "first": "2020-Q1",
+   "regional_missing": {}
+  },
+  {
+   "id": "003350",
+   "name": "한국화장품제조",
+   "rev_missing": [],
+   "inv_missing": [],
+   "structural": {
+    "rev": [],
+    "inv": [],
+    "note": []
+   },
+   "first": "2020-Q1",
+   "regional_missing": {}
+  },
+  {
+   "id": "090430",
+   "name": "아모레퍼시픽",
+   "rev_missing": [],
+   "inv_missing": [],
+   "structural": {
+    "rev": [],
+    "inv": [],
+    "note": []
+   },
+   "first": "2020-Q1",
+   "regional_missing": {}
+  },
+  {
+   "id": "051900",
+   "name": "LG생활건강",
+   "rev_missing": [],
+   "inv_missing": [],
+   "structural": {
+    "rev": [],
+    "inv": [],
+    "note": []
+   },
+   "first": "2020-Q1",
+   "regional_missing": {}
+  },
+  {
+   "id": "005930",
+   "name": "삼성전자",
+   "rev_missing": [
+    "2023-Q4"
+   ],
+   "inv_missing": [],
+   "structural": {
+    "rev": [],
+    "inv": [],
+    "note": []
+   },
+   "first": "2020-Q1",
+   "regional_missing": {}
+  },
+  {
+   "id": "000660",
+   "name": "SK하이닉스",
+   "rev_missing": [
+    "2024-Q1"
+   ],
+   "inv_missing": [],
+   "structural": {
+    "rev": [],
+    "inv": [],
+    "note": []
+   },
+   "first": "2020-Q1",
+   "regional_missing": {}
+  },
+  {
+   "id": "064760",
+   "name": "티씨케이",
+   "rev_missing": [],
+   "inv_missing": [],
+   "structural": {
+    "rev": [],
+    "inv": [],
+    "note": []
+   },
+   "first": "2020-Q1",
+   "regional_missing": {}
+  },
+  {
+   "id": "166090",
+   "name": "하나머티리얼즈",
+   "rev_missing": [],
+   "inv_missing": [],
+   "structural": {
+    "rev": [],
+    "inv": [],
+    "note": []
+   },
+   "first": "2020-Q1",
+   "regional_missing": {}
+  },
+  {
+   "id": "058470",
+   "name": "리노공업",
+   "rev_missing": [],
+   "inv_missing": [],
+   "structural": {
+    "rev": [],
+    "inv": [],
+    "note": []
+   },
+   "first": "2020-Q1",
+   "regional_missing": {}
+  },
+  {
+   "id": "039030",
+   "name": "이오테크닉스",
+   "rev_missing": [],
+   "inv_missing": [],
+   "structural": {
+    "rev": [],
+    "inv": [],
+    "note": []
+   },
+   "first": "2020-Q1",
+   "regional_missing": {}
+  },
+  {
+   "id": "267260",
+   "name": "HD현대일렉트릭",
+   "rev_missing": [],
+   "inv_missing": [],
+   "structural": {
+    "rev": [],
+    "inv": [],
+    "note": []
+   },
+   "first": "2020-Q1",
+   "regional_missing": {
+    "850423/동구": [
+     74,
+     [
+      "2020.02",
+      "2020.03",
+      "2020.04",
+      "2020.05",
+      "2020.06",
+      "2020.07"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "298040",
+   "name": "효성중공업",
+   "rev_missing": [],
+   "inv_missing": [],
+   "structural": {
+    "rev": [],
+    "inv": [],
+    "note": []
+   },
+   "first": "2020-Q1",
+   "regional_missing": {}
+  },
+  {
+   "id": "010120",
+   "name": "LS ELECTRIC",
+   "rev_missing": [
+    "2023-Q4",
+    "2024-Q4",
+    "2025-Q1"
+   ],
+   "inv_missing": [],
+   "structural": {
+    "rev": [],
+    "inv": [],
+    "note": []
+   },
+   "first": "2020-Q1",
+   "regional_missing": {
+    "850423/강서구": [
+     29,
+     [
+      "2020.01",
+      "2020.02",
+      "2020.07",
+      "2020.10",
+      "2020.11",
+      "2021.02"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "103590",
+   "name": "일진전기",
+   "rev_missing": [],
+   "inv_missing": [],
+   "structural": {
+    "rev": [],
+    "inv": [],
+    "note": []
+   },
+   "first": "2020-Q1",
+   "regional_missing": {
+    "850423/홍성군": [
+     75,
+     [
+      "2020.01",
+      "2020.02",
+      "2020.03",
+      "2020.04",
+      "2020.05",
+      "2020.07"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "LS-CABLE",
+   "name": "LS전선",
+   "rev_missing": [],
+   "inv_missing": [],
+   "structural": {
+    "rev": [],
+    "inv": [],
+    "note": []
+   },
+   "first": "9999",
+   "regional_missing": {
+    "854460/동해시": [
+     4,
+     [
+      "2020.01",
+      "2022.11",
+      "2022.12",
+      "2023.01"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "373220",
+   "name": "LG에너지솔루션",
+   "rev_missing": [],
+   "inv_missing": [],
+   "structural": {
+    "rev": [
+     "2020-Q1",
+     "2020-Q2",
+     "2020-Q3",
+     "2020-Q4"
+    ],
+    "inv": [
+     "2020-Q1",
+     "2020-Q2",
+     "2020-Q3"
+    ],
+    "note": [
+     "2020-12 물적분할 신설 · 2020년 분기보고서 없음",
+     "2020-12 물적분할 신설"
+    ]
+   },
+   "first": "2020-Q4",
+   "regional_missing": {}
+  },
+  {
+   "id": "006400",
+   "name": "삼성SDI",
+   "rev_missing": [],
+   "inv_missing": [],
+   "structural": {
+    "rev": [],
+    "inv": [],
+    "note": []
+   },
+   "first": "2020-Q1",
+   "regional_missing": {}
+  },
+  {
+   "id": "247540",
+   "name": "에코프로비엠",
+   "rev_missing": [],
+   "inv_missing": [],
+   "structural": {
+    "rev": [],
+    "inv": [],
+    "note": []
+   },
+   "first": "2020-Q1",
+   "regional_missing": {}
+  },
+  {
+   "id": "066970",
+   "name": "엘앤에프",
+   "rev_missing": [],
+   "inv_missing": [],
+   "structural": {
+    "rev": [],
+    "inv": [],
+    "note": []
+   },
+   "first": "2020-Q1",
+   "regional_missing": {}
+  },
+  {
+   "id": "003670",
+   "name": "포스코퓨처엠",
+   "rev_missing": [],
+   "inv_missing": [],
+   "structural": {
+    "rev": [],
+    "inv": [],
+    "note": []
+   },
+   "first": "2020-Q1",
+   "regional_missing": {}
+  },
+  {
+   "id": "082920",
+   "name": "비츠로셀",
+   "rev_missing": [],
+   "inv_missing": [],
+   "structural": {
+    "rev": [],
+    "inv": [],
+    "note": []
+   },
+   "first": "2020-Q1",
+   "regional_missing": {}
+  },
+  {
+   "id": "086900",
+   "name": "메디톡스",
+   "rev_missing": [],
+   "inv_missing": [],
+   "structural": {
+    "rev": [],
+    "inv": [],
+    "note": []
+   },
+   "first": "2020-Q1",
+   "regional_missing": {
+    "300249/청주시": [
+     24,
+     [
+      "2020.01",
+      "2020.02",
+      "2020.03",
+      "2020.04",
+      "2020.05",
+      "2020.06"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "145020",
+   "name": "휴젤",
+   "rev_missing": [],
+   "inv_missing": [],
+   "structural": {
+    "rev": [],
+    "inv": [],
+    "note": []
+   },
+   "first": "2020-Q1",
+   "regional_missing": {
+    "300249/춘천시": [
+     24,
+     [
+      "2020.01",
+      "2020.02",
+      "2020.03",
+      "2020.04",
+      "2020.05",
+      "2020.06"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "069620",
+   "name": "대웅제약",
+   "rev_missing": [],
+   "inv_missing": [],
+   "structural": {
+    "rev": [],
+    "inv": [],
+    "note": []
+   },
+   "first": "2020-Q1",
+   "regional_missing": {
+    "300249/화성시": [
+     24,
+     [
+      "2020.01",
+      "2020.02",
+      "2020.03",
+      "2020.04",
+      "2020.05",
+      "2020.06"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "041830",
+   "name": "인바디",
+   "rev_missing": [],
+   "inv_missing": [],
+   "structural": {
+    "rev": [],
+    "inv": [],
+    "note": []
+   },
+   "first": "2020-Q1",
+   "regional_missing": {}
+  },
+  {
+   "id": "003230",
+   "name": "삼양식품",
+   "rev_missing": [],
+   "inv_missing": [],
+   "structural": {
+    "rev": [],
+    "inv": [],
+    "note": []
+   },
+   "first": "2020-Q1",
+   "regional_missing": {}
+  },
+  {
+   "id": "004370",
+   "name": "농심",
+   "rev_missing": [],
+   "inv_missing": [],
+   "structural": {
+    "rev": [],
+    "inv": [],
+    "note": []
+   },
+   "first": "2020-Q1",
+   "regional_missing": {}
+  },
+  {
+   "id": "007310",
+   "name": "오뚜기",
+   "rev_missing": [
+    "2024-Q2",
+    "2024-Q3",
+    "2024-Q4",
+    "2025-Q1"
+   ],
+   "inv_missing": [],
+   "structural": {
+    "rev": [],
+    "inv": [],
+    "note": []
+   },
+   "first": "2020-Q1",
+   "regional_missing": {}
+  },
+  {
+   "id": "009830",
+   "name": "한화솔루션",
+   "rev_missing": [],
+   "inv_missing": [],
+   "structural": {
+    "rev": [],
+    "inv": [],
+    "note": []
+   },
+   "first": "2020-Q1",
+   "regional_missing": {
+    "854143/진천군": [
+     24,
+     [
+      "2020.01",
+      "2020.02",
+      "2020.03",
+      "2020.04",
+      "2020.05",
+      "2020.06"
+     ]
+    ]
+   }
+  },
+  {
+   "id": "067310",
+   "name": "하나마이크론",
+   "rev_missing": [
+    "2024-Q4"
+   ],
+   "inv_missing": [],
+   "structural": {
+    "rev": [],
+    "inv": [],
+    "note": []
+   },
+   "first": "2020-Q1",
+   "regional_missing": {}
+  },
+  {
+   "id": "036540",
+   "name": "SFA반도체",
+   "rev_missing": [],
+   "inv_missing": [],
+   "structural": {
+    "rev": [],
+    "inv": [],
+    "note": []
+   },
+   "first": "2020-Q1",
+   "regional_missing": {}
+  },
+  {
+   "id": "061970",
+   "name": "엘비세미콘",
+   "rev_missing": [],
+   "inv_missing": [],
+   "structural": {
+    "rev": [],
+    "inv": [],
+    "note": []
+   },
+   "first": "2020-Q1",
+   "regional_missing": {}
+  },
+  {
+   "id": "131970",
+   "name": "두산테스나",
+   "rev_missing": [],
+   "inv_missing": [],
+   "structural": {
+    "rev": [],
+    "inv": [
+     "2020-Q1",
+     "2020-Q2",
+     "2020-Q3",
+     "2020-Q4",
+     "2021-Q1",
+     "2021-Q2",
+     "2021-Q3",
+     "2021-Q4",
+     "2022-Q1",
+     "2022-Q2",
+     "2022-Q3",
+     "2022-Q4",
+     "2023-Q1",
+     "2023-Q2",
+     "2023-Q3",
+     "2023-Q4"
+    ],
+    "note": [
+     "2020~2023 재무상태표에 재고자산 계정 없음(테스트 전문)"
+    ]
+   },
+   "first": "2020-Q1",
+   "regional_missing": {}
+  },
+  {
+   "id": "033640",
+   "name": "네패스",
+   "rev_missing": [],
+   "inv_missing": [],
+   "structural": {
+    "rev": [],
+    "inv": [],
+    "note": []
+   },
+   "first": "2020-Q1",
+   "regional_missing": {}
+  },
+  {
+   "id": "330860",
+   "name": "네패스아크",
+   "rev_missing": [],
+   "inv_missing": [],
+   "structural": {
+    "rev": [],
+    "inv": [
+     "2020-Q1",
+     "2020-Q2",
+     "2020-Q3"
+    ],
+    "note": [
+     "2020-10 상장 전 분기보고서 없음",
+     "2020-10 상장 전"
+    ]
+   },
+   "first": "2020-Q1",
+   "regional_missing": {}
+  },
+  {
+   "id": "097800",
+   "name": "윈팩",
+   "rev_missing": [],
+   "inv_missing": [],
+   "structural": {
+    "rev": [],
+    "inv": [],
+    "note": []
+   },
+   "first": "2020-Q1",
+   "regional_missing": {}
+  },
+  {
+   "id": "033170",
+   "name": "시그네틱스",
+   "rev_missing": [],
+   "inv_missing": [
+    "2020-Q3"
+   ],
+   "structural": {
+    "rev": [],
+    "inv": [],
+    "note": []
+   },
+   "first": "2020-Q1",
+   "regional_missing": {}
+  },
+  {
+   "id": "172670",
+   "name": "에이엘티",
+   "rev_missing": [],
+   "inv_missing": [],
+   "structural": {
+    "rev": [
+     "2020-Q1",
+     "2020-Q2",
+     "2020-Q3",
+     "2020-Q4",
+     "2021-Q1",
+     "2021-Q2",
+     "2021-Q3",
+     "2021-Q4"
+    ],
+    "inv": [
+     "2020-Q1",
+     "2020-Q2",
+     "2020-Q3",
+     "2020-Q4",
+     "2021-Q1",
+     "2021-Q2",
+     "2021-Q3",
+     "2021-Q4",
+     "2022-Q1",
+     "2022-Q2",
+     "2022-Q3",
+     "2022-Q4",
+     "2023-Q1"
+    ],
+    "note": [
+     "2023-07 상장 전 분기보고서 없음",
+     "2023-07 상장 전 · 2022년부터 증권신고서 기준 매출만 확인"
+    ]
+   },
+   "first": "2022-Q1",
+   "regional_missing": {}
+  },
+  {
+   "id": "200470",
+   "name": "에이팩트",
+   "rev_missing": [],
+   "inv_missing": [],
+   "structural": {
+    "rev": [],
+    "inv": [
+     "2020-Q1",
+     "2020-Q2",
+     "2020-Q3",
+     "2020-Q4",
+     "2021-Q1",
+     "2021-Q2",
+     "2021-Q3",
+     "2021-Q4",
+     "2022-Q1",
+     "2022-Q2",
+     "2022-Q3"
+    ],
+    "note": [
+     "2020~2022-Q3 재고자산 0('-') 공시"
+    ]
+   },
+   "first": "2020-Q1",
+   "regional_missing": {}
+  },
+  {
+   "id": "078350",
+   "name": "한양디지텍",
+   "rev_missing": [],
+   "inv_missing": [],
+   "structural": {
+    "rev": [],
+    "inv": [],
+    "note": []
+   },
+   "first": "2020-Q1",
+   "regional_missing": {}
+  }
+ ]
+}

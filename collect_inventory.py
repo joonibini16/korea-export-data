@@ -64,7 +64,8 @@ def extract(sheet, period):
     if not sheet['unit']:
         raise ValueError('단위 미기재')
     y = period[:4]
-    if y not in sheet['header']:
+    restated = '수정후' in sheet['header'].replace(' ', '')
+    if y not in sheet['header'] and not restated:
         raise ValueError('보고 연도 헤더 없음')
     note = '주석' in sheet['header']
     for r in sheet['rows']:
@@ -74,6 +75,8 @@ def extract(sheet, period):
                 cells = cells[1:]
             vals = [numcell(c) for c in cells if c.strip() not in ('',)]
             vals = [v for v in vals if v is not None]
+            if restated and len(vals) >= 2:
+                vals = vals[len(vals) // 2:]  # 정정 보고서의 '수정전 | 수정후' 표는 뒤쪽 절반이 수정후 값
             if len(vals) < 1:
                 raise ValueError('재고자산 숫자 없음')
             cur = vals[0] * UNIT[sheet['unit']]
@@ -84,7 +87,7 @@ def extract(sheet, period):
     raise ValueError('재고자산 행 없음')
 
 
-REV_LABEL = re.compile(r'^(?:[ⅠⅡⅢⅣ\d]+[.)]?)?(?:매출액|수익\(매출액\)|영업수익|매출|수익|매출액\(주[^)]*\)|수익\(주[^)]*\))$')
+REV_LABEL = re.compile(r'^(?:[ⅠⅡⅢⅣ\d]+[.)]?)?(?:매출액|수익\(매출액\)|영업수익|매출|수익)(?:\((?:주|주석|Note)[^)]*\))?$')
 
 
 def income_statements(doc):
@@ -121,7 +124,10 @@ def revenue_values(st):
     if '주석' in st['header'] and cells and (numcell(cells[0]) is None or len(cells) >= 3):
         cells = cells[1:]
     vals = [numcell(c) for c in cells if c.strip()]
-    return [v * UNIT[st['unit']] for v in vals if v is not None]
+    vals = [v * UNIT[st['unit']] for v in vals if v is not None]
+    if '수정후' in st['header'].replace(' ', '') and len(vals) >= 2:
+        vals = vals[len(vals) // 2:]
+    return vals
 
 
 def main():
@@ -182,6 +188,13 @@ def main():
                     if cc and re.match(r'^(?:[ⅠⅡ\d.()]*)?(유동)?(재고자산|매출액|수익\(매출액\)|영업수익)', h.text(cc[0]).replace(' ', '')):
                         dbg.append('ROW: ' + ' | '.join(h.text(x)[:25] for x in cc[:5]))
                         if sum(x.startswith('ROW') for x in dbg) >= 8: break
+                for t in doc.xpath('//table'):
+                    pv = t.xpath('preceding-sibling::*[1]')
+                    tt = (h.text(t)[:80] if len(h.text(t)) < 600 else '') + ' || ' + (h.text(pv[0])[:80] if pv else '')
+                    if '손익계산서' in tt:
+                        rr = h.rows(t)[:3]
+                        dbg.append('ISCAND: ' + tt + ' :: ' + ' / '.join('|'.join(x[:4]) for x in rr)[:300])
+                        if sum(x.startswith('ISCAND') for x in dbg) >= 6: break
                 dbg += [f"TITLE={r['title']}", f"URL={r['url']}", f"tables={len(doc.xpath('//table'))}"]
                 issues.append(dict(company_id=r['company_id'], period=r['period'], reason='DEBUG', debug=dbg))
             if got and not any(sh['basis'] == '연결' for sh in sheets) and doc.xpath('//p[contains(normalize-space(.),"연결 재무상태표")]'):

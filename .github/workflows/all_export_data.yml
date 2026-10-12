@@ -83,4 +83,5 @@ jobs:
 
           git commit -m "Update all export data" || echo "변경사항 없음"
 
+          git pull --rebase origin main || (git rebase --abort; exit 1)
           git push

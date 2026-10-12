@@ -44,6 +44,7 @@ jobs:
           git commit -m 'Backfill verified quarterly company history from 2020'
           git fetch origin main
           git rebase origin/main
+          git pull --rebase origin main || (git rebase --abort; exit 1)
           git push origin HEAD:main
       - name: Preserve collection diagnostics
         if: always()

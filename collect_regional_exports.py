@@ -108,9 +108,16 @@ def query_code(company, hs):
         raise DataError('invalid reviewed HS6 parent mapping')
     return code
 
+# HS2022 신설 HS6: 2020~2021년은 HS2017 선행 HS6(더 넓은 범위)로 조회해
+# 현재 코드로 저장하되 amount_unit에 선행코드 연결분임을 남긴다.
+PREDECESSOR = {'300249': '300290', '854143': '854140'}
+PREDECESSOR_END = 2021
+
 def first_year(code):
-    # HS2022 codes: do not invent narrower historical city data from broad legacy HS6.
-    return 2022 if code in ('300249', '854143') else 2020
+    return 2020
+
+def predecessor_unit(code):
+    return 'HS2017_PREDECESSOR_' + PREDECESSOR[code]
 
 def period_segments(sido, start, end):
     """Return API province-code segments across the 2026-07 administration change.
@@ -130,6 +137,40 @@ def period_segments(sido, start, end):
     }
     return [(q, max(start, a), min(end, b)) for q, a, b in aliases.get(sido, [(sido, start, end)])
             if max(start, a) <= min(end, b)]
+
+ZERO_UNIT = 'IMPLIED_ZERO_REGION_ABSENT'
+def fill_implied_zero(merged, companies, identity):
+    """If the API answered for a month (other regions of the same 시도·HS are present) but a watched
+    region is absent, that region reported no exports that month: store 0 with an explicit unit flag.
+    Months where the whole 시도·HS response is absent stay missing (failure or non-disclosure)."""
+    by = {}
+    for r in merged.values():
+        by.setdefault((r['hs_code'], r['sido_code']), {}).setdefault(r['month'], set()).add(r['region'])
+    names = {}
+    for r in merged.values():
+        names.setdefault((r['hs_code'], r['sido_code']), set()).add(r['region'])
+    added = 0
+    for c in companies:
+        for hs in c['hs_codes']:
+            code = query_code(c, hs)
+            if not code:
+                continue
+            for site in sites(c, hs):
+                key = (code, site['sido_code'])
+                months = by.get(key, {})
+                full = sorted({n for n in names.get(key, set()) if site['region_keyword'] in n})
+                if len(full) != 1:
+                    continue
+                region = full[0]
+                for month, regions in months.items():
+                    if region in regions:
+                        continue
+                    row = dict(month=month, hs_code=code, sido_code=site['sido_code'], region=region, export_amount_raw='0',
+                               amount_unit=ZERO_UNIT, source=SOURCE, retrieved_at='')
+                    merged[identity(row)] = row
+                    regions.add(region)
+                    added += 1
+    return added
 
 def main():
     now = datetime.now(timezone(timedelta(hours=9)))
@@ -173,8 +214,12 @@ def main():
                 start, finish = f'{year}01', min(f'{year}12',end)
                 for query_sido, seg_start, seg_end in period_segments(sido, start, finish):
                     count += 1
+                    qhs = PREDECESSOR[hs] if hs in PREDECESSOR and year <= PREDECESSOR_END else hs
                     try:
-                        rows = request(hs,query_sido,seg_start,seg_end,key,stamp,sido)
+                        rows = request(qhs,query_sido,seg_start,seg_end,key,stamp,sido)
+                        if qhs != hs:
+                            for r in rows:
+                                r['hs_code'], r['amount_unit'] = hs, predecessor_unit(hs)
                         collected.extend(rows)
                         print(f'{sido}[{query_sido}]/{hs}/{seg_start}-{seg_end}: {len(rows)} rows',flush=True)
                     except DataError as exc:
@@ -184,7 +229,10 @@ def main():
                         fallback_ok = False
                         if str(exc) == 'API_ERROR_99' and query_sido != sido:
                             try:
-                                rows = request(hs,sido,seg_start,seg_end,key,stamp,sido)
+                                rows = request(qhs,sido,seg_start,seg_end,key,stamp,sido)
+                                if qhs != hs:
+                                    for r in rows:
+                                        r['hs_code'], r['amount_unit'] = hs, predecessor_unit(hs)
                                 collected.extend(rows)
                                 print(f'{sido}[fallback]/{hs}/{seg_start}-{seg_end}: {len(rows)} rows',flush=True)
                                 fallback_ok = True
@@ -208,7 +256,8 @@ def main():
                 received += len(rows)
                 failures.extend(errors)
                 requested += count
-    if received:
+    implied = fill_implied_zero(merged, companies, identity)
+    if received or implied:
         import io
         buffer = io.StringIO(newline='')
         writer=csv.DictWriter(buffer,fieldnames=FIELDS);writer.writeheader()
@@ -224,10 +273,10 @@ def main():
                 coverage.append(dict(company=c['id'],hs=hs,query_hs=code,region=site['region_keyword'],sido=site['sido_code'],months=len(present),
                     expected_months=len(expected),missing=[m for m in expected if m not in present],
                     scope='HS6' if code==hs else 'parent_HS6_proxy' if code else 'unsupported_HS4',
-                    historical_note='2020~2021 지역 HS 연결 미확보' if first_year(code)==2022 else ''))
+                    historical_note=('2020~2021은 HS2017 선행코드 '+PREDECESSOR[code]+' 연결(범위가 더 넓음)') if code in PREDECESSOR else ''))
     status=dict(updated_at=stamp,source=SOURCE,requested_ranges=requested,received_rows=received,
         stored_rows=len(merged),failures=failures,coverage=coverage,currency_scale_verified=False,
-        note='지역 원본 HS6 보존. 관리 HS10과 상위 HS6 proxy 구분. HS4 미지원. 2022년 신설 HS의 과거 지역 데이터는 미연결. 절대 USD 배율 미검증.')
+        implied_zero_rows=implied,note='응답에 같은 시도·HS의 다른 지역은 있으나 해당 지역이 없는 달은 수출 0(IMPLIED_ZERO_REGION_ABSENT)으로 저장. 지역 원본 HS6 보존. 관리 HS10과 상위 HS6 proxy 구분. HS4 미지원. 2022년 신설 HS6(300249·854143)의 2020~2021년은 HS2017 선행코드(300290·854140)로 연결하고 amount_unit에 표시. 절대 USD 배율 미검증.')
     save(Path('regional_status.json'),json.dumps(status,ensure_ascii=False,indent=2)+'\n')
     print(json.dumps(status,ensure_ascii=False))
     return 1 if failures or any(c['missing'] for c in coverage) else 0
