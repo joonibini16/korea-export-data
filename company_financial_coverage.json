@@ -926,37 +926,10 @@
       "company_id": "078350",
       "name": "한양디지텍",
       "expected_quarters": 26,
-      "complete_quarters": 0,
+      "complete_quarters": 26,
       "not_applicable_periods": [],
-      "missing_periods": [
-        "2020-Q1",
-        "2020-Q2",
-        "2020-Q3",
-        "2020-Q4",
-        "2021-Q1",
-        "2021-Q2",
-        "2021-Q3",
-        "2021-Q4",
-        "2022-Q1",
-        "2022-Q2",
-        "2022-Q3",
-        "2022-Q4",
-        "2023-Q1",
-        "2023-Q2",
-        "2023-Q3",
-        "2023-Q4",
-        "2024-Q1",
-        "2024-Q2",
-        "2024-Q3",
-        "2024-Q4",
-        "2025-Q1",
-        "2025-Q2",
-        "2025-Q3",
-        "2025-Q4",
-        "2026-Q1",
-        "2026-Q2"
-      ],
-      "status": "not_collected"
+      "missing_periods": [],
+      "status": "complete"
     }
   ],
   "validation_issues": [
@@ -968,6 +941,12 @@
     },
     {
       "company_id": "066970",
+      "basis": "별도",
+      "year": 2021,
+      "error": "Q1–Q3 differs from YTD; review restatement"
+    },
+    {
+      "company_id": "200470",
       "basis": "별도",
       "year": 2021,
       "error": "Q1–Q3 differs from YTD; review restatement"
@@ -1072,6 +1051,12 @@
       "company_id": "036540",
       "basis": "연결",
       "year": 2023,
+      "error": "Q1–Q3 differs from YTD; review restatement"
+    },
+    {
+      "company_id": "200470",
+      "basis": "별도",
+      "year": 2024,
       "error": "Q1–Q3 differs from YTD; review restatement"
     },
     {
