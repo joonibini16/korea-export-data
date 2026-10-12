@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-09",
+  "updated_at": "2026-10-12",
   "start_period": "2020-Q1",
   "end_period": "2026-Q2",
   "reports_reviewed": [
@@ -5052,24 +5052,1100 @@
       "company_id": "009830",
       "period": "2026-Q2",
       "source": "https://kind.krx.co.kr/external/2026/08/14/002512/20260814008746/11012.htm"
+    },
+    {
+      "company_id": "067310",
+      "period": "2020-Q1",
+      "source": "https://kind.krx.co.kr/external/2020/05/15/002431/20200515005386/11013.htm"
+    },
+    {
+      "company_id": "067310",
+      "period": "2020-Q2",
+      "source": "https://kind.krx.co.kr/external/2020/08/14/002721/20200814008231/11012.htm"
+    },
+    {
+      "company_id": "067310",
+      "period": "2020-Q3",
+      "source": "https://kind.krx.co.kr/external/2020/11/16/001460/20201116003234/11013.htm"
+    },
+    {
+      "company_id": "067310",
+      "period": "2020-Q4",
+      "source": "https://kind.krx.co.kr/external/2021/03/22/001531/20210322006178/11011.htm"
+    },
+    {
+      "company_id": "067310",
+      "period": "2021-Q1",
+      "source": "https://kind.krx.co.kr/external/2021/05/17/001497/20210517003410/11013.htm"
+    },
+    {
+      "company_id": "067310",
+      "period": "2021-Q2",
+      "source": "https://kind.krx.co.kr/external/2021/08/17/000466/20210817001404/11012.htm"
+    },
+    {
+      "company_id": "067310",
+      "period": "2021-Q3",
+      "source": "https://kind.krx.co.kr/external/2021/11/09/000459/20211109000962/11013.htm"
+    },
+    {
+      "company_id": "067310",
+      "period": "2021-Q4",
+      "source": "https://kind.krx.co.kr/external/2022/03/22/001559/20220322006192/11011.htm"
+    },
+    {
+      "company_id": "067310",
+      "period": "2022-Q1",
+      "source": "https://kind.krx.co.kr/external/2022/05/16/001708/20220516003720/11013.htm"
+    },
+    {
+      "company_id": "067310",
+      "period": "2022-Q2",
+      "source": "https://kind.krx.co.kr/external/2022/08/16/001217/20220816003844/11012.htm"
+    },
+    {
+      "company_id": "067310",
+      "period": "2022-Q3",
+      "source": "https://kind.krx.co.kr/external/2022/11/14/002221/20221114004762/11013.htm"
+    },
+    {
+      "company_id": "067310",
+      "period": "2022-Q4",
+      "source": "https://kind.krx.co.kr/external/2023/03/27/001259/20230327003489/11011.htm"
+    },
+    {
+      "company_id": "067310",
+      "period": "2023-Q1",
+      "source": "https://kind.krx.co.kr/external/2023/05/15/001289/20230515002707/11013.htm"
+    },
+    {
+      "company_id": "067310",
+      "period": "2023-Q2",
+      "source": "https://kind.krx.co.kr/external/2023/08/14/001533/20230814004829/11012.htm"
+    },
+    {
+      "company_id": "067310",
+      "period": "2023-Q3",
+      "source": "https://kind.krx.co.kr/external/2023/11/14/001915/20231114004138/11013.htm"
+    },
+    {
+      "company_id": "067310",
+      "period": "2023-Q4",
+      "source": "https://kind.krx.co.kr/external/2024/03/20/002091/20240320009625/11011.htm"
+    },
+    {
+      "company_id": "067310",
+      "period": "2024-Q1",
+      "source": "https://kind.krx.co.kr/external/2024/05/31/001283/20240531002488/11013.htm"
+    },
+    {
+      "company_id": "067310",
+      "period": "2024-Q2",
+      "source": "https://kind.krx.co.kr/external/2024/08/14/003381/20240814010752/11012.htm"
+    },
+    {
+      "company_id": "067310",
+      "period": "2024-Q3",
+      "source": "https://kind.krx.co.kr/external/2024/11/14/002288/20241114005140/11013.htm"
+    },
+    {
+      "company_id": "067310",
+      "period": "2024-Q4",
+      "source": "https://kind.krx.co.kr/external/2025/03/20/002459/20250320010132/11011.htm"
+    },
+    {
+      "company_id": "067310",
+      "period": "2025-Q1",
+      "source": "https://kind.krx.co.kr/external/2025/05/15/002779/20250515006519/11013.htm"
+    },
+    {
+      "company_id": "067310",
+      "period": "2025-Q2",
+      "source": "https://kind.krx.co.kr/external/2025/08/14/002412/20250814007359/11012.htm"
+    },
+    {
+      "company_id": "067310",
+      "period": "2025-Q3",
+      "source": "https://kind.krx.co.kr/external/2025/11/14/002100/20251114004749/11013.htm"
+    },
+    {
+      "company_id": "067310",
+      "period": "2025-Q4",
+      "source": "https://kind.krx.co.kr/external/2026/03/19/000062/20260319000347/11011.htm"
+    },
+    {
+      "company_id": "067310",
+      "period": "2026-Q1",
+      "source": "https://kind.krx.co.kr/external/2026/05/14/001312/20260514002860/11013.htm"
+    },
+    {
+      "company_id": "067310",
+      "period": "2026-Q2",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/003199/20260814011260/11012.htm"
+    },
+    {
+      "company_id": "036540",
+      "period": "2020-Q1",
+      "source": "https://kind.krx.co.kr/external/2020/05/15/001099/20200515002311/11013.htm"
+    },
+    {
+      "company_id": "036540",
+      "period": "2020-Q2",
+      "source": "https://kind.krx.co.kr/external/2020/08/14/001010/20200814002906/11012.htm"
+    },
+    {
+      "company_id": "036540",
+      "period": "2020-Q3",
+      "source": "https://kind.krx.co.kr/external/2020/11/16/000905/20201116001982/11013.htm"
+    },
+    {
+      "company_id": "036540",
+      "period": "2020-Q4",
+      "source": "https://kind.krx.co.kr/external/2021/03/19/000911/20210319003436/11011.htm"
+    },
+    {
+      "company_id": "036540",
+      "period": "2021-Q1",
+      "source": "https://kind.krx.co.kr/external/2021/05/14/000639/20210514001294/11013.htm"
+    },
+    {
+      "company_id": "036540",
+      "period": "2021-Q2",
+      "source": "https://kind.krx.co.kr/external/2021/08/13/000999/20210813002855/11012.htm"
+    },
+    {
+      "company_id": "036540",
+      "period": "2021-Q3",
+      "source": "https://kind.krx.co.kr/external/2021/11/12/000206/20211112000376/11013.htm"
+    },
+    {
+      "company_id": "036540",
+      "period": "2021-Q4",
+      "source": "https://kind.krx.co.kr/external/2022/03/18/000930/20220318003397/11011.htm"
+    },
+    {
+      "company_id": "036540",
+      "period": "2022-Q1",
+      "source": "https://kind.krx.co.kr/external/2022/05/24/000339/20220524000892/11013.htm"
+    },
+    {
+      "company_id": "036540",
+      "period": "2022-Q2",
+      "source": "https://kind.krx.co.kr/external/2022/08/12/000632/20220812001608/11012.htm"
+    },
+    {
+      "company_id": "036540",
+      "period": "2022-Q3",
+      "source": "https://kind.krx.co.kr/external/2022/11/11/000996/20221111001921/11013.htm"
+    },
+    {
+      "company_id": "036540",
+      "period": "2022-Q4",
+      "source": "https://kind.krx.co.kr/external/2023/03/20/000659/20230320003256/11011.htm"
+    },
+    {
+      "company_id": "036540",
+      "period": "2023-Q1",
+      "source": "https://kind.krx.co.kr/external/2023/05/12/000904/20230512001892/11013.htm"
+    },
+    {
+      "company_id": "036540",
+      "period": "2023-Q2",
+      "source": "https://kind.krx.co.kr/external/2023/08/14/001843/20230814005794/11012.htm"
+    },
+    {
+      "company_id": "036540",
+      "period": "2023-Q3",
+      "source": "https://kind.krx.co.kr/external/2023/11/10/000559/20231110001360/11013.htm"
+    },
+    {
+      "company_id": "036540",
+      "period": "2023-Q4",
+      "source": "https://kind.krx.co.kr/external/2024/03/20/000942/20240320004633/11011.htm"
+    },
+    {
+      "company_id": "036540",
+      "period": "2024-Q1",
+      "source": "https://kind.krx.co.kr/external/2024/05/13/000039/20240513000056/11013.htm"
+    },
+    {
+      "company_id": "036540",
+      "period": "2024-Q2",
+      "source": "https://kind.krx.co.kr/external/2024/08/12/000399/20240812001043/11012.htm"
+    },
+    {
+      "company_id": "036540",
+      "period": "2024-Q3",
+      "source": "https://kind.krx.co.kr/external/2024/11/13/000533/20241113001171/11013.htm"
+    },
+    {
+      "company_id": "036540",
+      "period": "2024-Q4",
+      "source": "https://kind.krx.co.kr/external/2025/03/21/000378/20250321001672/11011.htm"
+    },
+    {
+      "company_id": "036540",
+      "period": "2025-Q1",
+      "source": "https://kind.krx.co.kr/external/2025/05/15/001229/20250515002891/11013.htm"
+    },
+    {
+      "company_id": "036540",
+      "period": "2025-Q2",
+      "source": "https://kind.krx.co.kr/external/2025/08/14/000464/20250814001302/11012.htm"
+    },
+    {
+      "company_id": "036540",
+      "period": "2025-Q3",
+      "source": "https://kind.krx.co.kr/external/2025/11/13/000597/20251113001482/11013.htm"
+    },
+    {
+      "company_id": "036540",
+      "period": "2025-Q4",
+      "source": "https://kind.krx.co.kr/external/2026/03/23/001039/20260323004733/11011.htm"
+    },
+    {
+      "company_id": "036540",
+      "period": "2026-Q1",
+      "source": "https://kind.krx.co.kr/external/2026/05/15/002777/20260515006322/11013.htm"
+    },
+    {
+      "company_id": "036540",
+      "period": "2026-Q2",
+      "source": "https://kind.krx.co.kr/external/2026/08/12/000273/20260812000750/11012.htm"
+    },
+    {
+      "company_id": "061970",
+      "period": "2020-Q1",
+      "source": "https://kind.krx.co.kr/external/2020/05/15/001120/20200515002369/11013.htm"
+    },
+    {
+      "company_id": "061970",
+      "period": "2020-Q2",
+      "source": "https://kind.krx.co.kr/external/2020/08/14/000609/20200814001666/11012.htm"
+    },
+    {
+      "company_id": "061970",
+      "period": "2020-Q3",
+      "source": "https://kind.krx.co.kr/external/2020/11/16/000411/20201116000846/11013.htm"
+    },
+    {
+      "company_id": "061970",
+      "period": "2020-Q4",
+      "source": "https://kind.krx.co.kr/external/2021/03/18/000262/20210318001300/11011.htm"
+    },
+    {
+      "company_id": "061970",
+      "period": "2021-Q1",
+      "source": "https://kind.krx.co.kr/external/2021/05/17/001577/20210517003603/11013.htm"
+    },
+    {
+      "company_id": "061970",
+      "period": "2021-Q2",
+      "source": "https://kind.krx.co.kr/external/2021/08/17/000267/20210817000719/11012.htm"
+    },
+    {
+      "company_id": "061970",
+      "period": "2021-Q3",
+      "source": "https://kind.krx.co.kr/external/2021/11/15/001944/20211115004110/11013.htm"
+    },
+    {
+      "company_id": "061970",
+      "period": "2021-Q4",
+      "source": "https://kind.krx.co.kr/external/2022/03/18/000784/20220318002922/11011.htm"
+    },
+    {
+      "company_id": "061970",
+      "period": "2022-Q1",
+      "source": "https://kind.krx.co.kr/external/2022/05/17/000118/20220517000252/11013.htm"
+    },
+    {
+      "company_id": "061970",
+      "period": "2022-Q2",
+      "source": "https://kind.krx.co.kr/external/2022/08/16/001404/20220816004451/11012.htm"
+    },
+    {
+      "company_id": "061970",
+      "period": "2022-Q3",
+      "source": "https://kind.krx.co.kr/external/2022/11/14/001787/20221114003807/11013.htm"
+    },
+    {
+      "company_id": "061970",
+      "period": "2022-Q4",
+      "source": "https://kind.krx.co.kr/external/2023/03/17/000094/20230317000273/11011.htm"
+    },
+    {
+      "company_id": "061970",
+      "period": "2023-Q1",
+      "source": "https://kind.krx.co.kr/external/2023/05/15/001712/20230515003622/11013.htm"
+    },
+    {
+      "company_id": "061970",
+      "period": "2023-Q2",
+      "source": "https://kind.krx.co.kr/external/2023/08/14/001440/20230814004530/11012.htm"
+    },
+    {
+      "company_id": "061970",
+      "period": "2023-Q3",
+      "source": "https://kind.krx.co.kr/external/2023/11/14/003277/20231114007365/11013.htm"
+    },
+    {
+      "company_id": "061970",
+      "period": "2023-Q4",
+      "source": "https://kind.krx.co.kr/external/2024/03/19/001094/20240319004616/11011.htm"
+    },
+    {
+      "company_id": "061970",
+      "period": "2024-Q1",
+      "source": "https://kind.krx.co.kr/external/2024/05/16/000764/20240516001743/11013.htm"
+    },
+    {
+      "company_id": "061970",
+      "period": "2024-Q2",
+      "source": "https://kind.krx.co.kr/external/2024/08/14/000393/20240814001100/11012.htm"
+    },
+    {
+      "company_id": "061970",
+      "period": "2024-Q3",
+      "source": "https://kind.krx.co.kr/external/2024/11/13/000369/20241113000846/11013.htm"
+    },
+    {
+      "company_id": "061970",
+      "period": "2024-Q4",
+      "source": "https://kind.krx.co.kr/external/2025/03/20/002349/20250320009737/11011.htm"
+    },
+    {
+      "company_id": "061970",
+      "period": "2025-Q1",
+      "source": "https://kind.krx.co.kr/external/2025/05/15/001059/20250515002456/11013.htm"
+    },
+    {
+      "company_id": "061970",
+      "period": "2025-Q2",
+      "source": "https://kind.krx.co.kr/external/2025/08/14/001604/20250814004819/11012.htm"
+    },
+    {
+      "company_id": "061970",
+      "period": "2025-Q3",
+      "source": "https://kind.krx.co.kr/external/2025/11/14/001642/20251114003664/11013.htm"
+    },
+    {
+      "company_id": "061970",
+      "period": "2025-Q4",
+      "source": "https://kind.krx.co.kr/external/2026/03/20/001004/20260320003822/11011.htm"
+    },
+    {
+      "company_id": "061970",
+      "period": "2026-Q1",
+      "source": "https://kind.krx.co.kr/external/2026/05/15/002000/20260515004431/11013.htm"
+    },
+    {
+      "company_id": "061970",
+      "period": "2026-Q2",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/001509/20260814005033/11012.htm"
+    },
+    {
+      "company_id": "131970",
+      "period": "2020-Q1",
+      "source": "https://kind.krx.co.kr/external/2020/05/15/000675/20200515001384/11013.htm"
+    },
+    {
+      "company_id": "131970",
+      "period": "2020-Q2",
+      "source": "https://kind.krx.co.kr/external/2020/08/14/001890/20200814005640/11012.htm"
+    },
+    {
+      "company_id": "131970",
+      "period": "2020-Q3",
+      "source": "https://kind.krx.co.kr/external/2020/11/04/000364/20201104000909/11013.htm"
+    },
+    {
+      "company_id": "131970",
+      "period": "2020-Q4",
+      "source": "https://kind.krx.co.kr/external/2021/04/19/000136/20210419000269/11011.htm"
+    },
+    {
+      "company_id": "131970",
+      "period": "2021-Q1",
+      "source": "https://kind.krx.co.kr/external/2021/05/17/001692/20210517003884/11013.htm"
+    },
+    {
+      "company_id": "131970",
+      "period": "2021-Q2",
+      "source": "https://kind.krx.co.kr/external/2021/08/13/000747/20210813002161/11012.htm"
+    },
+    {
+      "company_id": "131970",
+      "period": "2021-Q3",
+      "source": "https://kind.krx.co.kr/external/2021/11/15/000696/20211115001426/11013.htm"
+    },
+    {
+      "company_id": "131970",
+      "period": "2021-Q4",
+      "source": "https://kind.krx.co.kr/external/2022/03/21/001321/20220321005683/11011.htm"
+    },
+    {
+      "company_id": "131970",
+      "period": "2022-Q1",
+      "source": "https://kind.krx.co.kr/external/2022/05/16/002127/20220516004702/11013.htm"
+    },
+    {
+      "company_id": "131970",
+      "period": "2022-Q2",
+      "source": "https://kind.krx.co.kr/external/2022/08/16/002080/20220816006587/11012.htm"
+    },
+    {
+      "company_id": "131970",
+      "period": "2022-Q3",
+      "source": "https://kind.krx.co.kr/external/2022/11/10/000539/20221110001143/11013.htm"
+    },
+    {
+      "company_id": "131970",
+      "period": "2022-Q4",
+      "source": "https://kind.krx.co.kr/external/2023/03/21/001201/20230321005291/11011.htm"
+    },
+    {
+      "company_id": "131970",
+      "period": "2023-Q1",
+      "source": "https://kind.krx.co.kr/external/2023/05/15/001750/20230515003714/11013.htm"
+    },
+    {
+      "company_id": "131970",
+      "period": "2023-Q2",
+      "source": "https://kind.krx.co.kr/external/2023/08/14/001201/20230814003744/11012.htm"
+    },
+    {
+      "company_id": "131970",
+      "period": "2023-Q3",
+      "source": "https://kind.krx.co.kr/external/2023/11/14/001795/20231114003865/11013.htm"
+    },
+    {
+      "company_id": "131970",
+      "period": "2023-Q4",
+      "source": "https://kind.krx.co.kr/external/2024/03/20/000842/20240320004206/11011.htm"
+    },
+    {
+      "company_id": "131970",
+      "period": "2024-Q1",
+      "source": "https://kind.krx.co.kr/external/2024/05/16/002431/20240516005754/11013.htm"
+    },
+    {
+      "company_id": "131970",
+      "period": "2024-Q2",
+      "source": "https://kind.krx.co.kr/external/2024/08/14/001340/20240814004121/11012.htm"
+    },
+    {
+      "company_id": "131970",
+      "period": "2024-Q3",
+      "source": "https://kind.krx.co.kr/external/2024/11/14/001390/20241114003019/11013.htm"
+    },
+    {
+      "company_id": "131970",
+      "period": "2024-Q4",
+      "source": "https://kind.krx.co.kr/external/2025/03/18/001615/20250318007525/11011.htm"
+    },
+    {
+      "company_id": "131970",
+      "period": "2025-Q1",
+      "source": "https://kind.krx.co.kr/external/2025/05/15/001348/20250515003169/11013.htm"
+    },
+    {
+      "company_id": "131970",
+      "period": "2025-Q2",
+      "source": "https://kind.krx.co.kr/external/2025/08/14/002669/20250814008214/11012.htm"
+    },
+    {
+      "company_id": "131970",
+      "period": "2025-Q3",
+      "source": "https://kind.krx.co.kr/external/2025/11/14/001667/20251114003720/11013.htm"
+    },
+    {
+      "company_id": "131970",
+      "period": "2025-Q4",
+      "source": "https://kind.krx.co.kr/external/2026/03/23/001554/20260323006637/11011.htm"
+    },
+    {
+      "company_id": "131970",
+      "period": "2026-Q1",
+      "source": "https://kind.krx.co.kr/external/2026/05/15/001941/20260515004301/11013.htm"
+    },
+    {
+      "company_id": "131970",
+      "period": "2026-Q2",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/002324/20260814008053/11012.htm"
+    },
+    {
+      "company_id": "033640",
+      "period": "2020-Q1",
+      "source": "https://kind.krx.co.kr/external/2020/05/15/001524/20200515003235/11013.htm"
+    },
+    {
+      "company_id": "033640",
+      "period": "2020-Q2",
+      "source": "https://kind.krx.co.kr/external/2021/03/17/000931/20210317004112/11012.htm"
+    },
+    {
+      "company_id": "033640",
+      "period": "2020-Q3",
+      "source": "https://kind.krx.co.kr/external/2020/11/16/002104/20201116004771/11013.htm"
+    },
+    {
+      "company_id": "033640",
+      "period": "2020-Q4",
+      "source": "https://kind.krx.co.kr/external/2021/03/22/001739/20210322006996/11011.htm"
+    },
+    {
+      "company_id": "033640",
+      "period": "2021-Q1",
+      "source": "https://kind.krx.co.kr/external/2021/05/17/001652/20210517003785/11013.htm"
+    },
+    {
+      "company_id": "033640",
+      "period": "2021-Q2",
+      "source": "https://kind.krx.co.kr/external/2021/08/17/001978/20210817006070/11012.htm"
+    },
+    {
+      "company_id": "033640",
+      "period": "2021-Q3",
+      "source": "https://kind.krx.co.kr/external/2021/11/15/000973/20211115002002/11013.htm"
+    },
+    {
+      "company_id": "033640",
+      "period": "2021-Q4",
+      "source": "https://kind.krx.co.kr/external/2022/08/16/001580/20220816005005/11011.htm"
+    },
+    {
+      "company_id": "033640",
+      "period": "2022-Q1",
+      "source": "https://kind.krx.co.kr/external/2022/05/16/001415/20220516003071/11013.htm"
+    },
+    {
+      "company_id": "033640",
+      "period": "2022-Q2",
+      "source": "https://kind.krx.co.kr/external/2022/08/16/001981/20220816006290/11012.htm"
+    },
+    {
+      "company_id": "033640",
+      "period": "2022-Q3",
+      "source": "https://kind.krx.co.kr/external/2022/11/14/001941/20221114004137/11013.htm"
+    },
+    {
+      "company_id": "033640",
+      "period": "2022-Q4",
+      "source": "https://kind.krx.co.kr/external/2023/03/23/000251/20230323001083/11011.htm"
+    },
+    {
+      "company_id": "033640",
+      "period": "2023-Q1",
+      "source": "https://kind.krx.co.kr/external/2023/05/15/002091/20230515004533/11013.htm"
+    },
+    {
+      "company_id": "033640",
+      "period": "2023-Q2",
+      "source": "https://kind.krx.co.kr/external/2023/08/14/002119/20230814006605/11012.htm"
+    },
+    {
+      "company_id": "033640",
+      "period": "2023-Q3",
+      "source": "https://kind.krx.co.kr/external/2023/11/14/002183/20231114004757/11013.htm"
+    },
+    {
+      "company_id": "033640",
+      "period": "2023-Q4",
+      "source": "https://kind.krx.co.kr/external/2024/03/27/000150/20240327000669/11011.htm"
+    },
+    {
+      "company_id": "033640",
+      "period": "2024-Q1",
+      "source": "https://kind.krx.co.kr/external/2024/05/16/001898/20240516004451/11013.htm"
+    },
+    {
+      "company_id": "033640",
+      "period": "2024-Q2",
+      "source": "https://kind.krx.co.kr/external/2024/08/14/003477/20240814011074/11012.htm"
+    },
+    {
+      "company_id": "033640",
+      "period": "2024-Q3",
+      "source": "https://kind.krx.co.kr/external/2024/11/14/003160/20241114007246/11013.htm"
+    },
+    {
+      "company_id": "033640",
+      "period": "2024-Q4",
+      "source": "https://kind.krx.co.kr/external/2025/03/20/002354/20250320009744/11011.htm"
+    },
+    {
+      "company_id": "033640",
+      "period": "2025-Q1",
+      "source": "https://kind.krx.co.kr/external/2025/05/15/002581/20250515006048/11013.htm"
+    },
+    {
+      "company_id": "033640",
+      "period": "2025-Q2",
+      "source": "https://kind.krx.co.kr/external/2025/08/14/003468/20250814010915/11012.htm"
+    },
+    {
+      "company_id": "033640",
+      "period": "2025-Q3",
+      "source": "https://kind.krx.co.kr/external/2025/11/14/001080/20251114002347/11013.htm"
+    },
+    {
+      "company_id": "033640",
+      "period": "2025-Q4",
+      "source": "https://kind.krx.co.kr/external/2026/03/18/002439/20260318011385/11011.htm"
+    },
+    {
+      "company_id": "033640",
+      "period": "2026-Q1",
+      "source": "https://kind.krx.co.kr/external/2026/05/15/002271/20260515005064/11013.htm"
+    },
+    {
+      "company_id": "033640",
+      "period": "2026-Q2",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/003158/20260814011104/11012.htm"
+    },
+    {
+      "company_id": "330860",
+      "period": "2020-Q4",
+      "source": "https://kind.krx.co.kr/external/2021/03/17/000903/20210317004001/11011.htm"
+    },
+    {
+      "company_id": "330860",
+      "period": "2021-Q1",
+      "source": "https://kind.krx.co.kr/external/2021/05/17/000921/20210517002159/11013.htm"
+    },
+    {
+      "company_id": "330860",
+      "period": "2021-Q2",
+      "source": "https://kind.krx.co.kr/external/2021/08/13/000724/20210813002094/11012.htm"
+    },
+    {
+      "company_id": "330860",
+      "period": "2021-Q3",
+      "source": "https://kind.krx.co.kr/external/2021/11/15/001203/20211115002497/11013.htm"
+    },
+    {
+      "company_id": "330860",
+      "period": "2021-Q4",
+      "source": "https://kind.krx.co.kr/external/2022/03/16/001030/20220316003023/11011.htm"
+    },
+    {
+      "company_id": "330860",
+      "period": "2022-Q1",
+      "source": "https://kind.krx.co.kr/external/2022/05/16/001036/20220516002255/11013.htm"
+    },
+    {
+      "company_id": "330860",
+      "period": "2022-Q2",
+      "source": "https://kind.krx.co.kr/external/2022/08/16/001743/20220816005521/11012.htm"
+    },
+    {
+      "company_id": "330860",
+      "period": "2022-Q3",
+      "source": "https://kind.krx.co.kr/external/2022/11/14/001542/20221114003272/11013.htm"
+    },
+    {
+      "company_id": "330860",
+      "period": "2022-Q4",
+      "source": "https://kind.krx.co.kr/external/2023/03/17/000821/20230317002932/11011.htm"
+    },
+    {
+      "company_id": "330860",
+      "period": "2023-Q1",
+      "source": "https://kind.krx.co.kr/external/2023/05/15/001771/20230515003765/11013.htm"
+    },
+    {
+      "company_id": "330860",
+      "period": "2023-Q2",
+      "source": "https://kind.krx.co.kr/external/2023/08/14/001404/20230814004412/11012.htm"
+    },
+    {
+      "company_id": "330860",
+      "period": "2023-Q3",
+      "source": "https://kind.krx.co.kr/external/2023/11/14/001986/20231114004311/11013.htm"
+    },
+    {
+      "company_id": "330860",
+      "period": "2023-Q4",
+      "source": "https://kind.krx.co.kr/external/2024/03/20/000829/20240320004155/11011.htm"
+    },
+    {
+      "company_id": "330860",
+      "period": "2024-Q1",
+      "source": "https://kind.krx.co.kr/external/2024/05/16/001083/20240516002560/11013.htm"
+    },
+    {
+      "company_id": "330860",
+      "period": "2024-Q2",
+      "source": "https://kind.krx.co.kr/external/2024/08/14/003362/20240814010706/11012.htm"
+    },
+    {
+      "company_id": "330860",
+      "period": "2024-Q3",
+      "source": "https://kind.krx.co.kr/external/2024/11/14/002149/20241114004807/11013.htm"
+    },
+    {
+      "company_id": "330860",
+      "period": "2024-Q4",
+      "source": "https://kind.krx.co.kr/external/2025/03/20/002374/20250320009831/11011.htm"
+    },
+    {
+      "company_id": "330860",
+      "period": "2025-Q1",
+      "source": "https://kind.krx.co.kr/external/2025/05/15/002395/20250515005605/11013.htm"
+    },
+    {
+      "company_id": "330860",
+      "period": "2025-Q2",
+      "source": "https://kind.krx.co.kr/external/2025/08/14/002693/20250814008283/11012.htm"
+    },
+    {
+      "company_id": "330860",
+      "period": "2025-Q3",
+      "source": "https://kind.krx.co.kr/external/2025/11/14/001091/20251114002368/11013.htm"
+    },
+    {
+      "company_id": "330860",
+      "period": "2025-Q4",
+      "source": "https://kind.krx.co.kr/external/2026/03/18/002345/20260318011003/11011.htm"
+    },
+    {
+      "company_id": "330860",
+      "period": "2026-Q1",
+      "source": "https://kind.krx.co.kr/external/2026/05/15/002309/20260515005166/11013.htm"
+    },
+    {
+      "company_id": "330860",
+      "period": "2026-Q2",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/003189/20260814011221/11012.htm"
+    },
+    {
+      "company_id": "097800",
+      "period": "2020-Q1",
+      "source": "https://kind.krx.co.kr/external/2020/05/15/000099/20200515000142/11013.htm"
+    },
+    {
+      "company_id": "097800",
+      "period": "2020-Q2",
+      "source": "https://kind.krx.co.kr/external/2020/08/13/000176/20200813000484/11012.htm"
+    },
+    {
+      "company_id": "097800",
+      "period": "2020-Q3",
+      "source": "https://kind.krx.co.kr/external/2020/11/16/000198/20201116000381/11013.htm"
+    },
+    {
+      "company_id": "097800",
+      "period": "2020-Q4",
+      "source": "https://kind.krx.co.kr/external/2021/03/15/000336/20210315001058/11011.htm"
+    },
+    {
+      "company_id": "097800",
+      "period": "2021-Q1",
+      "source": "https://kind.krx.co.kr/external/2021/05/17/000472/20210517001049/11013.htm"
+    },
+    {
+      "company_id": "097800",
+      "period": "2021-Q2",
+      "source": "https://kind.krx.co.kr/external/2021/08/13/000879/20210813002524/11012.htm"
+    },
+    {
+      "company_id": "097800",
+      "period": "2021-Q3",
+      "source": "https://kind.krx.co.kr/external/2021/11/15/001436/20211115002983/11013.htm"
+    },
+    {
+      "company_id": "097800",
+      "period": "2021-Q4",
+      "source": "https://kind.krx.co.kr/external/2022/03/15/001189/20220315002949/11011.htm"
+    },
+    {
+      "company_id": "097800",
+      "period": "2022-Q1",
+      "source": "https://kind.krx.co.kr/external/2022/05/16/000611/20220516001284/11013.htm"
+    },
+    {
+      "company_id": "097800",
+      "period": "2022-Q2",
+      "source": "https://kind.krx.co.kr/external/2022/08/16/000414/20220816001309/11012.htm"
+    },
+    {
+      "company_id": "097800",
+      "period": "2022-Q3",
+      "source": "https://kind.krx.co.kr/external/2022/11/14/000209/20221114000401/11013.htm"
+    },
+    {
+      "company_id": "097800",
+      "period": "2022-Q4",
+      "source": "https://kind.krx.co.kr/external/2023/03/14/000811/20230314002220/11011.htm"
+    },
+    {
+      "company_id": "097800",
+      "period": "2023-Q1",
+      "source": "https://kind.krx.co.kr/external/2023/05/15/000534/20230515001059/11013.htm"
+    },
+    {
+      "company_id": "097800",
+      "period": "2023-Q2",
+      "source": "https://kind.krx.co.kr/external/2023/08/14/000111/20230814000225/11012.htm"
+    },
+    {
+      "company_id": "097800",
+      "period": "2023-Q3",
+      "source": "https://kind.krx.co.kr/external/2023/11/14/001055/20231114002202/11013.htm"
+    },
+    {
+      "company_id": "097800",
+      "period": "2023-Q4",
+      "source": "https://kind.krx.co.kr/external/2024/03/20/000956/20240320004698/11011.htm"
+    },
+    {
+      "company_id": "097800",
+      "period": "2024-Q1",
+      "source": "https://kind.krx.co.kr/external/2024/05/14/001165/20240514002524/11013.htm"
+    },
+    {
+      "company_id": "097800",
+      "period": "2024-Q2",
+      "source": "https://kind.krx.co.kr/external/2024/08/14/001538/20240814004765/11012.htm"
+    },
+    {
+      "company_id": "097800",
+      "period": "2024-Q3",
+      "source": "https://kind.krx.co.kr/external/2024/11/14/001498/20241114003263/11013.htm"
+    },
+    {
+      "company_id": "097800",
+      "period": "2024-Q4",
+      "source": "https://kind.krx.co.kr/external/2025/03/18/001646/20250318007708/11011.htm"
+    },
+    {
+      "company_id": "097800",
+      "period": "2025-Q1",
+      "source": "https://kind.krx.co.kr/external/2025/05/15/001998/20250515004693/11013.htm"
+    },
+    {
+      "company_id": "097800",
+      "period": "2025-Q2",
+      "source": "https://kind.krx.co.kr/external/2025/08/14/003738/20250814011785/11012.htm"
+    },
+    {
+      "company_id": "097800",
+      "period": "2025-Q3",
+      "source": "https://kind.krx.co.kr/external/2025/11/14/002836/20251114006524/11013.htm"
+    },
+    {
+      "company_id": "097800",
+      "period": "2025-Q4",
+      "source": "https://kind.krx.co.kr/external/2026/03/19/000032/20260319000288/11011.htm"
+    },
+    {
+      "company_id": "097800",
+      "period": "2026-Q1",
+      "source": "https://kind.krx.co.kr/external/2026/05/15/000748/20260515001597/11013.htm"
+    },
+    {
+      "company_id": "097800",
+      "period": "2026-Q2",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/003448/20260814012133/11012.htm"
+    },
+    {
+      "company_id": "033170",
+      "period": "2020-Q1",
+      "source": "https://kind.krx.co.kr/external/2020/12/24/000596/20201224001489/11013.htm"
+    },
+    {
+      "company_id": "033170",
+      "period": "2020-Q2",
+      "source": "https://kind.krx.co.kr/external/2020/12/24/000606/20201224001513/11012.htm"
+    },
+    {
+      "company_id": "033170",
+      "period": "2020-Q3",
+      "source": "https://kind.krx.co.kr/external/2020/12/24/000623/20201224001542/11013.htm"
+    },
+    {
+      "company_id": "033170",
+      "period": "2020-Q4",
+      "source": "https://kind.krx.co.kr/external/2021/03/19/001381/20210319004945/11011.htm"
+    },
+    {
+      "company_id": "033170",
+      "period": "2021-Q1",
+      "source": "https://kind.krx.co.kr/external/2021/05/13/000306/20210513000660/11013.htm"
+    },
+    {
+      "company_id": "033170",
+      "period": "2021-Q2",
+      "source": "https://kind.krx.co.kr/external/2021/08/11/000367/20210811000880/11012.htm"
+    },
+    {
+      "company_id": "033170",
+      "period": "2021-Q3",
+      "source": "https://kind.krx.co.kr/external/2021/11/15/001733/20211115003643/11013.htm"
+    },
+    {
+      "company_id": "033170",
+      "period": "2021-Q4",
+      "source": "https://kind.krx.co.kr/external/2022/03/18/001077/20220318003820/11011.htm"
+    },
+    {
+      "company_id": "033170",
+      "period": "2022-Q1",
+      "source": "https://kind.krx.co.kr/external/2022/05/16/001934/20220516004266/11013.htm"
+    },
+    {
+      "company_id": "033170",
+      "period": "2022-Q2",
+      "source": "https://kind.krx.co.kr/external/2022/08/16/002177/20220816006865/11012.htm"
+    },
+    {
+      "company_id": "033170",
+      "period": "2022-Q3",
+      "source": "https://kind.krx.co.kr/external/2022/11/14/002016/20221114004301/11013.htm"
+    },
+    {
+      "company_id": "033170",
+      "period": "2022-Q4",
+      "source": "https://kind.krx.co.kr/external/2023/03/17/000907/20230317003144/11011.htm"
+    },
+    {
+      "company_id": "033170",
+      "period": "2023-Q1",
+      "source": "https://kind.krx.co.kr/external/2023/05/15/001911/20230515004095/11013.htm"
+    },
+    {
+      "company_id": "033170",
+      "period": "2023-Q2",
+      "source": "https://kind.krx.co.kr/external/2023/08/14/001644/20230814005176/11012.htm"
+    },
+    {
+      "company_id": "033170",
+      "period": "2023-Q3",
+      "source": "https://kind.krx.co.kr/external/2023/11/14/002274/20231114004980/11013.htm"
+    },
+    {
+      "company_id": "033170",
+      "period": "2023-Q4",
+      "source": "https://kind.krx.co.kr/external/2024/03/15/001028/20240315003500/11011.htm"
+    },
+    {
+      "company_id": "033170",
+      "period": "2024-Q1",
+      "source": "https://kind.krx.co.kr/external/2024/05/16/001335/20240516003158/11013.htm"
+    },
+    {
+      "company_id": "033170",
+      "period": "2024-Q2",
+      "source": "https://kind.krx.co.kr/external/2024/08/14/001992/20240814006245/11012.htm"
+    },
+    {
+      "company_id": "033170",
+      "period": "2024-Q3",
+      "source": "https://kind.krx.co.kr/external/2024/11/14/001782/20241114003931/11013.htm"
+    },
+    {
+      "company_id": "033170",
+      "period": "2024-Q4",
+      "source": "https://kind.krx.co.kr/external/2025/03/20/001290/20250320005373/11011.htm"
+    },
+    {
+      "company_id": "033170",
+      "period": "2025-Q1",
+      "source": "https://kind.krx.co.kr/external/2025/05/14/000908/20250514001925/11013.htm"
+    },
+    {
+      "company_id": "033170",
+      "period": "2025-Q2",
+      "source": "https://kind.krx.co.kr/external/2025/08/14/003405/20250814010712/11012.htm"
+    },
+    {
+      "company_id": "033170",
+      "period": "2025-Q3",
+      "source": "https://kind.krx.co.kr/external/2025/11/14/001946/20251114004391/11013.htm"
+    },
+    {
+      "company_id": "033170",
+      "period": "2025-Q4",
+      "source": "https://kind.krx.co.kr/external/2026/03/19/000876/20260319003819/11011.htm"
+    },
+    {
+      "company_id": "033170",
+      "period": "2026-Q1",
+      "source": "https://kind.krx.co.kr/external/2026/05/15/002793/20260515006360/11013.htm"
+    },
+    {
+      "company_id": "033170",
+      "period": "2026-Q2",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/002374/20260814008230/11012.htm"
+    },
+    {
+      "company_id": "172670",
+      "period": "2023-Q2",
+      "source": "https://kind.krx.co.kr/external/2023/08/14/001544/20230814004868/11012.htm"
+    },
+    {
+      "company_id": "172670",
+      "period": "2023-Q3",
+      "source": "https://kind.krx.co.kr/external/2023/11/14/002848/20231114006375/11013.htm"
+    },
+    {
+      "company_id": "172670",
+      "period": "2023-Q4",
+      "source": "https://kind.krx.co.kr/external/2024/03/21/001080/20240321004603/11011.htm"
+    },
+    {
+      "company_id": "172670",
+      "period": "2024-Q1",
+      "source": "https://kind.krx.co.kr/external/2024/05/16/001686/20240516003956/11013.htm"
+    },
+    {
+      "company_id": "172670",
+      "period": "2024-Q2",
+      "source": "https://kind.krx.co.kr/external/2024/08/14/001655/20240814005165/11012.htm"
+    },
+    {
+      "company_id": "172670",
+      "period": "2024-Q3",
+      "source": "https://kind.krx.co.kr/external/2024/11/14/002242/20241114005040/11013.htm"
+    },
+    {
+      "company_id": "172670",
+      "period": "2024-Q4",
+      "source": "https://kind.krx.co.kr/external/2025/03/21/000512/20250321002134/11011.htm"
+    },
+    {
+      "company_id": "172670",
+      "period": "2025-Q1",
+      "source": "https://kind.krx.co.kr/external/2025/05/15/001587/20250515003707/11013.htm"
+    },
+    {
+      "company_id": "172670",
+      "period": "2025-Q2",
+      "source": "https://kind.krx.co.kr/external/2025/08/14/002430/20250814007423/11012.htm"
+    },
+    {
+      "company_id": "172670",
+      "period": "2025-Q3",
+      "source": "https://kind.krx.co.kr/external/2025/11/14/002068/20251114004669/11013.htm"
+    },
+    {
+      "company_id": "172670",
+      "period": "2025-Q4",
+      "source": "https://kind.krx.co.kr/external/2026/03/23/001049/20260323004766/11011.htm"
+    },
+    {
+      "company_id": "172670",
+      "period": "2026-Q1",
+      "source": "https://kind.krx.co.kr/external/2026/05/15/001930/20260515004287/11013.htm"
+    },
+    {
+      "company_id": "172670",
+      "period": "2026-Q2",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/001725/20260814005825/11012.htm"
     }
   ],
   "failures": [],
   "issues": [
-    {
-      "company_id": "222800",
-      "period": "2020-Q1",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2020/05/13/000405/20200513000907/11013.htm",
-      "reason": "공시 표 금액 산식 불일치"
-    },
-    {
-      "company_id": "222800",
-      "period": "2020-Q2",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2020/08/13/000658/20200813001849/11012.htm",
-      "reason": "공시 표 금액 산식 불일치"
-    },
     {
       "company_id": "007660",
       "period": "2020-Q1",
@@ -5260,181 +6336,6 @@
       "reason": "ambiguous quarterly columns"
     },
     {
-      "company_id": "103590",
-      "period": "2020-Q1",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2020/05/15/001461/20200515003096/11013.htm",
-      "reason": "품목별 잔고 합계 불일치"
-    },
-    {
-      "company_id": "103590",
-      "period": "2020-Q2",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2020/08/14/000323/20200814000775/11012.htm",
-      "reason": "품목별 잔고 합계 불일치"
-    },
-    {
-      "company_id": "103590",
-      "period": "2020-Q3",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2020/11/16/001121/20201116002470/11013.htm",
-      "reason": "품목별 잔고 합계 불일치"
-    },
-    {
-      "company_id": "103590",
-      "period": "2020-Q4",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2021/03/29/001063/20210329002842/11011.htm",
-      "reason": "품목별 잔고 합계 불일치"
-    },
-    {
-      "company_id": "103590",
-      "period": "2021-Q1",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2021/05/17/000068/20210517000115/11013.htm",
-      "reason": "품목별 잔고 합계 불일치"
-    },
-    {
-      "company_id": "103590",
-      "period": "2021-Q2",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2021/08/13/000538/20210813001535/11012.htm",
-      "reason": "품목별 잔고 합계 불일치"
-    },
-    {
-      "company_id": "103590",
-      "period": "2021-Q3",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2021/11/12/000633/20211112001373/11013.htm",
-      "reason": "품목별 잔고 합계 불일치"
-    },
-    {
-      "company_id": "103590",
-      "period": "2021-Q4",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2022/03/17/001692/20220317006575/11011.htm",
-      "reason": "품목별 잔고 합계 불일치"
-    },
-    {
-      "company_id": "103590",
-      "period": "2022-Q1",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2022/05/16/000309/20220516000610/11013.htm",
-      "reason": "품목별 잔고 합계 불일치"
-    },
-    {
-      "company_id": "103590",
-      "period": "2022-Q2",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2022/08/16/000646/20220816002083/11012.htm",
-      "reason": "품목별 잔고 합계 불일치"
-    },
-    {
-      "company_id": "103590",
-      "period": "2022-Q3",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2022/11/14/001027/20221114002153/11013.htm",
-      "reason": "품목별 잔고 합계 불일치"
-    },
-    {
-      "company_id": "103590",
-      "period": "2022-Q4",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2023/03/15/000818/20230315002382/11011.htm",
-      "reason": "품목별 잔고 합계 불일치"
-    },
-    {
-      "company_id": "103590",
-      "period": "2023-Q1",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2023/05/12/000504/20230512001099/11013.htm",
-      "reason": "품목별 잔고 합계 불일치"
-    },
-    {
-      "company_id": "103590",
-      "period": "2023-Q2",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2023/08/11/000397/20230811001069/11012.htm",
-      "reason": "품목별 잔고 합계 불일치"
-    },
-    {
-      "company_id": "103590",
-      "period": "2023-Q3",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2023/11/13/000396/20231113000769/11013.htm",
-      "reason": "품목별 잔고 합계 불일치"
-    },
-    {
-      "company_id": "103590",
-      "period": "2023-Q4",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2024/03/13/002760/20240313006558/11011.htm",
-      "reason": "품목별 잔고 합계 불일치"
-    },
-    {
-      "company_id": "103590",
-      "period": "2024-Q1",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2024/05/14/000236/20240514000449/11013.htm",
-      "reason": "품목별 잔고 합계 불일치"
-    },
-    {
-      "company_id": "103590",
-      "period": "2024-Q2",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2024/08/13/000170/20240813000476/11012.htm",
-      "reason": "품목별 잔고 합계 불일치"
-    },
-    {
-      "company_id": "103590",
-      "period": "2024-Q3",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2024/11/13/000102/20241113000241/11013.htm",
-      "reason": "품목별 잔고 합계 불일치"
-    },
-    {
-      "company_id": "103590",
-      "period": "2024-Q4",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2025/03/12/000750/20250312002052/11011.htm",
-      "reason": "품목별 잔고 합계 불일치"
-    },
-    {
-      "company_id": "103590",
-      "period": "2025-Q1",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2025/05/14/000313/20250514000676/11013.htm",
-      "reason": "품목별 잔고 합계 불일치"
-    },
-    {
-      "company_id": "103590",
-      "period": "2025-Q2",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2025/08/13/000274/20250813000794/11012.htm",
-      "reason": "품목별 잔고 합계 불일치"
-    },
-    {
-      "company_id": "103590",
-      "period": "2025-Q3",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2025/11/13/000194/20251113000419/11013.htm",
-      "reason": "품목별 잔고 합계 불일치"
-    },
-    {
-      "company_id": "103590",
-      "period": "2026-Q1",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2026/05/15/001645/20260515003635/11013.htm",
-      "reason": "품목별 잔고 합계 불일치"
-    },
-    {
-      "company_id": "103590",
-      "period": "2026-Q2",
-      "metric": "backlog",
-      "source": "https://kind.krx.co.kr/external/2026/08/11/000470/20260811001106/11012.htm",
-      "reason": "품목별 잔고 합계 불일치"
-    },
-    {
       "company_id": "373220",
       "period": "2023-Q4",
       "metric": "financial",
@@ -5545,6 +6446,30 @@
     {
       "company_id": "009830",
       "period": "2026-Q2",
+      "metric": "financial",
+      "reason": "report year missing"
+    },
+    {
+      "company_id": "036540",
+      "period": "2025-Q4",
+      "metric": "financial",
+      "reason": "report year missing"
+    },
+    {
+      "company_id": "131970",
+      "period": "2024-Q1",
+      "metric": "financial",
+      "reason": "report year missing"
+    },
+    {
+      "company_id": "033170",
+      "period": "2020-Q3",
+      "metric": "financial",
+      "reason": "report year missing"
+    },
+    {
+      "company_id": "033170",
+      "period": "2020-Q3",
       "metric": "financial",
       "reason": "report year missing"
     }
