@@ -14,7 +14,7 @@
   ['전체 업체 요약',[[byH('서프라이즈 후보'),1],[byH('업체별 상관관계 요약'),1],[byH('지역 · 품목 · 관련 업체 전체 목록'),1],[panels.find(e=>e.querySelector&&e.querySelector('#hsCoverage')),1]]],
   ['데이터·출처',[[byH('비교 데이터'),1],[byH('기준과 출처'),1]]]];
  // 전국 단가·회사 매출 묶음(grid)은 둘로 나눠 각 탭에 넣습니다.
- const g=byH('전국 품목 수출단가')?.closest('.grid');if(g){const [a,b]=g.children;TABS[0][1][3]=[a,0];TABS[2][1][2]=[b,0];}
+ const g=byH('전국 품목 수출단가')?.closest('.grid');if(g){const [a,py,b]=g.children;const yv=TABS[0][1][3][0];TABS[0][1].splice(3,2,[a,0],[py,0],[yv,1]);TABS[2][1][2]=[b,0];}
  const bar=document.createElement('div');bar.id='dashTabs';bar.className='dash-tabs';
  const wrap=document.createElement('div');wrap.className='dash-wrap';
  const sticky=document.createElement('div');sticky.className='dash-sticky';const ctl=controls?.querySelector('.controls');if(controls&&ctl){controls.before(sticky);const box=document.createElement('section');box.className='panel';box.append(ctl);sticky.append(box);sticky.append(bar);}if(cards)sticky.after(cards);

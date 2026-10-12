@@ -399,6 +399,13 @@ function render(){const c=watch.find(c=>c.id===el('company').value),hs=el('hs').
  if(el('domesticAmountNote'))el('domesticAmountNote').textContent=domesticAmounts.some(v=>v!=null)?'국내법인 별도재무제표 기준 매출. 2020년 이후 확인된 분기 공시값을 표시하며, 설립 전·미확인 분기는 공란으로 유지합니다. 연결매출과 혼용하지 않습니다.':'국내법인 별도재무제표 기준. 확인된 별도 공시값이 없어 선은 공란으로 유지됩니다. 연결매출과 혼용하지 않습니다.';
  const nrows=nationwide.filter(r=>r['HS코드']===natHS(c,hs)).sort((a,b)=>a['월'].localeCompare(b['월']));
  chart('price',nrows.map(r=>r['월']),[{label:'전국 USD/KG',data:nrows.map(r=>{const w=num(r['수출중량_KG']),v=num(r['수출금액_USD']);return w>0&&v!=null?v/w:null;}),borderColor:'#b47737',pointRadius:0}],'USD/KG');
+ {// 전국 수출단가 YoY를 1~12월 축에 연도별 선으로(올해 굵은 파랑, 작년 하늘색, 그 이전 회색)
+  const pm=new Map(nrows.map(r=>{const w=num(r['수출중량_KG']),v=num(r['수출금액_USD']);return [r['월'],w>0&&v!=null?v/w:null];}));const by=new Map();
+  for(const [m,v] of pm){const y=m.slice(0,4),k=Number(m.slice(5,7))-1,p=pm.get((Number(y)-1)+m.slice(4));if(!by.has(y))by.set(y,new Array(12).fill(null));by.get(y)[k]=v!=null&&p>0?Math.round((v/p-1)*1000)/10:null;}
+  const years=[...by.keys()].filter(y=>by.get(y).some(v=>v!=null)).sort().slice(-5),st=['#1d6fd8','#8ec5f2','#cbd5e1','#94a3b8','#64748b'];
+  const sets=years.slice().reverse().map((y,k)=>({label:y+'년',data:by.get(y),borderColor:st[k],backgroundColor:st[k],borderWidth:k===0?3.5:k===1?2.5:1.5,pointRadius:k===0?5:k===1?4:3,pointBackgroundColor:'#0f1a33',pointBorderColor:st[k],pointBorderWidth:2,tension:0,order:k}));
+  if(el('priceYoyTitle'))el('priceYoyTitle').textContent='수출단가 연도별 YoY · '+natHS(c,hs);
+  chart('priceYoy',Array.from({length:12},(_,i)=>(i+1)+'월'),sets,'전년 같은 달 대비 (%)',{interaction:{mode:'index',intersect:false},plugins:{legend:{position:'top',align:'end'},tooltip:{callbacks:{label:x=>x.parsed.y==null?'':`${x.dataset.label}: ${x.parsed.y>0?'+':''}${x.parsed.y.toFixed(1)}%`}}},scales:{x:{grid:{display:false}},y:{ticks:{callback:v=>v+'%'},grid:{color:g=>g.tick.value===0?'rgba(226,232,240,0.55)':'rgba(148,163,184,0.14)'}}}});}
  const earningsPeriods=[];const qi=p=>Number(p.slice(0,4))*4+Number(p.at(-1))-1;
  const rangeStart=financialCoverage.start_period||fin[0]?.period,rangeEnd=financialCoverage.end_period||fin.at(-1)?.period;
  if(rangeStart&&rangeEnd)for(let q=qi(rangeStart);q<=qi(rangeEnd);q++)earningsPeriods.push(Math.floor(q/4)+'-Q'+(q%4+1));
