@@ -31,5 +31,5 @@ jobs:
         run: |
           git config user.name github-actions; git config user.email github-actions@github.com
           cp backlog_tables_dump.json /tmp/dump.json
-          git checkout -q --orphan backlog-work; git rm -rq --cached .; cp /tmp/dump.json backlog_tables_dump.json
-          git add backlog_tables_dump.json; git commit -qm "backlog table dump"; git push -qf origin backlog-work
+          git checkout -q --orphan backlog-dump; git rm -rq --cached .; cp /tmp/dump.json backlog_tables_dump.json
+          git add backlog_tables_dump.json; git commit -qm "backlog table dump"; git push -qf origin HEAD:backlog-dump
