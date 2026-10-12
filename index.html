@@ -1509,6 +1509,16 @@ function buildQuarterRows(rows, asOfMonth) {
                 estimatedUSD = mu.reduce((a, b) => a + b, 0) * usd / pu;
                 estimatedKG = mk.reduce((a, b) => a + b, 0) * kg / pk;
                 estimateMethod = "yoy";
+                // 방향 점검: 확보월 평균이 직전 분기 월평균보다 높은데 추정 합계가 직전 분기보다 낮으면(또는 반대) 확보월 평균으로 대신
+                const pq = [0, 1, 2].map(i => { const qi = index - 1, y = Math.floor(qi / 4), m = (qi % 4) * 3 + 1 + i; return value(label(y, m), "수출금액_USD"); });
+                if (pq.every(v => v !== null)) {
+                    const prevSum = pq.reduce((a, b) => a + b, 0), run = usd / validMonths * 3;
+                    if (Math.sign(usd + estimatedUSD - prevSum) !== Math.sign(run - prevSum)) {
+                        estimatedUSD = usd / validMonths * (3 - validMonths);
+                        estimatedKG = kg / validMonths * (3 - validMonths);
+                        estimateMethod = "average";
+                    }
+                }
             } else {
                 estimatedUSD = usd / validMonths * (3 - validMonths);
                 estimatedKG = kg / validMonths * (3 - validMonths);
