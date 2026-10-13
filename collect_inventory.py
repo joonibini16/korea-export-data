@@ -100,7 +100,7 @@ def extract(sheet, period):
     raise ValueError('재고자산 행 없음')
 
 
-REV_LABEL = re.compile(r'^(?:[ⅠⅡⅢⅣ\d]+[.)]?)?(?:매출액|수익\(매출액\)|영업수익|매출|수익)(?:\((?:주|주석|Note)[^)]*\))?$')
+REV_LABEL = re.compile(r'^(?:[ⅠⅡⅢⅣ\d]+[.)]?)?(?:매출액|매출액\(매출액\)|수익\(매출액\)|영업수익|매출|수익)(?:\((?:주|주석|Note)[^)]*\))?$')
 
 
 def income_statements(doc):

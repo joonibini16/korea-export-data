@@ -70,7 +70,7 @@ def process(r):
    basis='연결' if '연결' in title else '별도'
    context=ts[i:i+4]
    rr=[row for tb in context for row in rows(tb)]
-   revenue=next((row for row in rr if row and re.sub(r'\s','',row[0]) in ('수익','수익(매출액)','매출액','영업수익','매출','Ⅰ.매출액')),None)
+   revenue=next((row for row in rr if row and re.sub(r'\s','',row[0]) in ('수익','수익(매출액)','매출액','매출액(매출액)','영업수익','매출','Ⅰ.매출액')),None)
    profit=next((row for row in rr if row and re.sub(r'\s','',row[0]) in ('영업이익','영업이익(손실)','영업손익','영업손실')),None)
    unit=re.search(r'단위\s*:\s*(백만원|천원|원)', ' '.join(text(t) for t in context))
    if revenue and profit and unit:
