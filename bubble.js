@@ -165,7 +165,8 @@ async function init(){try{const [m,f,c,s,kp,ec,vk,kf]=await Promise.all([read('m
  KRM=kp?rows(kp).filter(r=>r['기간구분']==='MONTH'&&num(r['수출YoY_pct'])!=null).map(r=>({k:r['기준월'].replace('.','-'),y:num(r['수출YoY_pct'])})):[];
  window.__lev=KF.length?renderLev():null;document.querySelectorAll('#levRange button').forEach(b=>b.onclick=()=>{levRange=b.dataset.r;document.querySelectorAll('#levRange button').forEach(x=>x.classList.toggle('on',x===b));renderLev();});
  const weak=renderWeak(),liq=renderLiq(),cr=renderCredit();renderOther();renderLights(weak,liq,cr);renderMini();
- const st=s?JSON.parse(s):{};el('asof').textContent=`자료 기준: 주가 ${ser('^GSPC').at(-1)?.d||'—'} · 스프레드 ${fs('BAMLH0A0HYM2').at(-1)?.d||'—'} · 순유동성 ${liq.nl.at(-1)?.d||'—'} · 수집 ${st.updated_at||'—'}`;
+ const st=s?JSON.parse(s):{};await renderBubbleIndicators(st);el('asof').textContent=`자료 기준: 주가 ${ser('^GSPC').at(-1)?.d||'—'} · 스프레드 ${fs('BAMLH0A0HYM2').at(-1)?.d||'—'} · 순유동성 ${liq.nl.at(-1)?.d||'—'} · 수집 ${st.updated_at||'—'}`;
  el('status').textContent=st.failures?.length?`수집 실패 ${st.failures.length}건: `+st.failures.map(x=>x.id).join(', '):'';
  }catch(e){el('err').hidden=false;el('err').textContent='오류: '+e.message;console.error(e);}}
 init();
+

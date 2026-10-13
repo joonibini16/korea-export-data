@@ -1,0 +1,123 @@
+[
+  {
+    "ticker": "MSFT",
+    "metric": "CDS",
+    "date": "2025-11-17",
+    "value_bps": 34,
+    "source": "https://www.reuters.com/business/finance/weinsteins-saba-sells-credit-derivatives-big-tech-as-ai-risks-grow-source-says-2025-11-17/",
+    "instrument": "5Y · 통화 미명시",
+    "date_basis": "보도일 (전주 관측)",
+    "approximate": true,
+    "entity": "MSFT"
+  },
+  {
+    "ticker": "AMZN",
+    "metric": "CDS",
+    "date": "2025-11-17",
+    "value_bps": 38,
+    "source": "https://www.reuters.com/business/finance/weinsteins-saba-sells-credit-derivatives-big-tech-as-ai-risks-grow-source-says-2025-11-17/",
+    "instrument": "5Y · 통화 미명시",
+    "date_basis": "보도일 (전주 관측)",
+    "approximate": true,
+    "entity": "AMZN"
+  },
+  {
+    "ticker": "GOOGL",
+    "metric": "CDS",
+    "date": "2025-11-17",
+    "value_bps": 38,
+    "source": "https://www.reuters.com/business/finance/weinsteins-saba-sells-credit-derivatives-big-tech-as-ai-risks-grow-source-says-2025-11-17/",
+    "instrument": "5Y · 통화 미명시",
+    "date_basis": "보도일 (전주 관측)",
+    "approximate": true,
+    "entity": "GOOGL"
+  },
+  {
+    "ticker": "MSFT",
+    "metric": "CDS",
+    "date": "2026-02-09",
+    "value_bps": 36,
+    "source": "https://www.ubp.com/files/live/sites/ubp/files/documents/investment/weekly/UBP_Weekly_View_09February2026.pdf",
+    "instrument": "CDS · 만기/통화 미명시",
+    "date_basis": "보도일",
+    "approximate": true,
+    "entity": "MSFT"
+  },
+  {
+    "ticker": "AMZN",
+    "metric": "CDS",
+    "date": "2026-02-09",
+    "value_bps": 40,
+    "source": "https://www.ubp.com/files/live/sites/ubp/files/documents/investment/weekly/UBP_Weekly_View_09February2026.pdf",
+    "instrument": "CDS · 만기/통화 미명시",
+    "date_basis": "보도일",
+    "approximate": true,
+    "entity": "AMZN"
+  },
+  {
+    "ticker": "GOOGL",
+    "metric": "CDS",
+    "date": "2026-02-09",
+    "value_bps": 40,
+    "source": "https://www.ubp.com/files/live/sites/ubp/files/documents/investment/weekly/UBP_Weekly_View_09February2026.pdf",
+    "instrument": "CDS · 만기/통화 미명시",
+    "date_basis": "보도일",
+    "approximate": true,
+    "entity": "GOOGL"
+  },
+  {
+    "ticker": "META",
+    "metric": "CDS",
+    "date": "2026-07-29",
+    "value_bps": 93,
+    "source": "https://www.reuters.com/business/finance/global-markets-cds-explainer-2026-07-29/",
+    "instrument": "CDS · 만기/통화 미명시",
+    "date_basis": "보도일",
+    "approximate": true,
+    "entity": "META"
+  },
+  {
+    "ticker": "META",
+    "metric": "CDS",
+    "date": "2026-09-28",
+    "value_bps": 100,
+    "source": "https://www.reuters.com/commentary/reuters-open-interest/are-ai-credit-cracks-warning-or-buy-signal-2026-09-29/",
+    "instrument": "CDS · 만기/통화 미명시",
+    "date_basis": "관측일 (9/29 보도)",
+    "approximate": true,
+    "entity": "META"
+  },
+  {
+    "ticker": "BEIGNET",
+    "metric": "BOND",
+    "date": "2026-09-28",
+    "value_bps": 230,
+    "source": "https://www.reuters.com/commentary/reuters-open-interest/are-ai-credit-cracks-warning-or-buy-signal-2026-09-29/",
+    "instrument": "2049 USD 6.581% · 국채 대비 · 유통시장",
+    "date_basis": "관측일 (9/29 보도)",
+    "approximate": true,
+    "entity": "Beignet Investor (메타 JV)"
+  },
+  {
+    "ticker": "ORCL",
+    "metric": "BOND",
+    "date": "2025-09-24",
+    "value_bps": 75,
+    "source": "https://www.sec.gov/Archives/edgar/data/1341439/000119312525215807/d49252dfwp.htm",
+    "instrument": "2030-09-26 USD · US68389XDH52 · 국채 대비",
+    "date_basis": "발행 가격결정일",
+    "approximate": false,
+    "entity": "ORCL"
+  },
+  {
+    "ticker": "META",
+    "metric": "BOND",
+    "date": "2025-10-30",
+    "value_bps": 50,
+    "source": "https://www.tradingview.com/news/reuters.com,2025:newsml_L1N3WB1H2:0-us-yield-rise-amid-rate-cut-uncertainty-meta-bond-deal/",
+    "instrument": "2030 USD · 발행시 5년물 · 국채 대비",
+    "date_basis": "발행 가격결정일",
+    "approximate": false,
+    "entity": "META"
+  }
+]
