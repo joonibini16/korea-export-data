@@ -1,0 +1,27 @@
+name: Bubble Monitor Data
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['collect_bubble.py', '.github/workflows/bubble.yml']
+  schedule:
+    - cron: '30 22 * * 0-4'
+    - cron: '30 9 * * 1-5'
+permissions:
+  contents: write
+concurrency:
+  group: bubble
+  cancel-in-progress: false
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python collect_bubble.py
+      - run: |
+          git config user.name github-actions; git config user.email github-actions@github.com
+          git add market_daily.csv fred_data.csv bubble_status.json
+          if ! git diff --cached --quiet; then git commit -m "Update bubble monitor data"; git pull --rebase origin main || (git rebase --abort; exit 1); git push; fi
