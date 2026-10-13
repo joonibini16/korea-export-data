@@ -17,6 +17,25 @@ function sma(a,n){return a.map((x,i)=>{const w=a.slice(i-n+1,i+1);return{d:x.d,v
 root.BubbleIndicators={rsi,sma,closedKorean};if(typeof module!=='undefined')module.exports=root.BubbleIndicators;
 })(typeof window!=='undefined'?window:globalThis);
 
+
+// 같은 시장(코스피/코스닥) 그래프끼리 마우스 위치(날짜)를 공유: 세로선 + 툴팁 + 요약 줄
+const SYNC={groups:{},last:{},busy:false};
+function syncGroup(id){return id.endsWith('KOSPI')?'KOSPI':id.endsWith('KOSDAQ')?'KOSDAQ':null;}
+const syncPlugin={id:'syncCross',
+ afterEvent(ch,args){const g=ch.$sg;if(!g||SYNC.busy)return;const e=args.event;
+  if(e.type==='mouseout'){if(SYNC.last[g]!=null)syncSet(g,null);return;}
+  if(e.type!=='mousemove')return;const x=ch.scales.x;if(!x||e.x<ch.chartArea.left||e.x>ch.chartArea.right){return;}
+  const i=Math.round(x.getValueForPixel(e.x));if(SYNC.last[g]===i)return;syncSet(g,i,ch);},
+ afterDatasetsDraw(ch){const i=ch.$si;if(i==null)return;const x=ch.scales.x.getPixelForValue(i),{top,bottom}=ch.chartArea,c=ch.ctx;c.save();c.strokeStyle='rgba(226,232,240,.75)';c.lineWidth=1;c.beginPath();c.moveTo(x,top);c.lineTo(x,bottom);c.stroke();c.restore();}};
+function syncSet(g,i,src){SYNC.busy=true;SYNC.last[g]=i;try{syncSet0(g,i,src);}finally{SYNC.busy=false;}}
+function syncSet0(g,i,src){const list=(SYNC.groups[g]||[]).filter(ch=>ch&&ch.canvas&&ch.canvas.isConnected);SYNC.groups[g]=list;
+ for(const ch of list){if(i==null||i<0||i>=ch.data.labels.length){ch.$si=null;ch.setActiveElements([]);ch.tooltip.setActiveElements([],{x:0,y:0});ch.update('none');continue;}
+  ch.$si=i;const act=ch.data.datasets.map((d,k)=>({datasetIndex:k,index:i})).filter(a=>ch.data.datasets[a.datasetIndex].data[i]!=null&&!/^\d+$/.test(ch.data.datasets[a.datasetIndex].label));
+  if(ch!==src){ch.setActiveElements(act);ch.tooltip.setActiveElements(act,{x:ch.scales.x.getPixelForValue(i),y:(ch.chartArea.top+ch.chartArea.bottom)/2});}ch.update('none');}
+ const note=document.getElementById('syncNote'+g);if(note){if(i==null){note.textContent='그래프 위에 마우스를 올리면 같은 날짜의 지수·Breadth·HLI·RSI가 함께 표시됩니다.';return;}
+  const pick=(id,k=0)=>{const ch=list.find(c=>c.canvas.id===id);const v=ch?.data.datasets[k]?.data[i];return v==null?'—':Number(v).toLocaleString(undefined,{maximumFractionDigits:1});};
+  const d=list[0]?.data.labels[i]||'';note.textContent=`${d} · 지수 ${pick('idx'+g)} · Breadth_60 ${pick('breadth_60'+g)}% (5-SMA ${pick('breadth_60'+g,1)}) · HLI ${pick('hli'+g)}% (10-SMA ${pick('hli'+g,1)}) · RSI ${pick('rsi'+g)}`;}}
+
 async function renderBubbleIndicators(st){
  const val=v=>Number.isFinite(v)?v.toFixed(1):'—',names={KOSPI:'코스피',KOSDAQ:'코스닥'},palette=['#60a5fa','#f472b6','#34d399','#fbbf24','#a78bfa','#fb7185','#22d3ee'];
  let range='1y',breadth=[],credit=[];
@@ -30,7 +49,8 @@ async function renderBubbleIndicators(st){
  function plot(id,sets,bounds,axis){
   // axis: 같은 시장의 그래프들이 같은 날짜축을 쓰도록 지수 거래일을 공유
   const labels=axis&&axis.length?axis:[...new Set(sets.flatMap(s=>s.data.map(x=>x.d)))].sort();
-  chart(id,{type:'line',data:{labels,datasets:sets.map(s=>{const m=new Map(s.data.map(x=>[x.d,x.v]));return{label:s.label,data:labels.map(d=>m.get(d)??null),borderColor:s.color,backgroundColor:s.color,borderWidth:s.w||2,pointRadius:labels.length===1?4:0,pointHoverRadius:4,borderDash:s.dash,spanGaps:false};})},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{position:'bottom'}},scales:{x:{ticks:{maxTicksLimit:6},grid:{display:false}},y:{min:bounds?.[0],max:bounds?.[1],afterFit:a=>{a.width=58;},title:{display:true,text:id.startsWith('rsi')?'RSI (0–100)':id.startsWith('idx')?'지수 (pt)':'비율 (%)'}}}}});
+  const g=syncGroup(id);chart(id,{type:'line',plugins:g?[syncPlugin]:[],data:{labels,datasets:sets.map(s=>{const m=new Map(s.data.map(x=>[x.d,x.v]));return{label:s.label,data:labels.map(d=>m.get(d)??null),borderColor:s.color,backgroundColor:s.color,borderWidth:s.w||2,pointRadius:labels.length===1?4:0,pointHoverRadius:4,borderDash:s.dash,spanGaps:false};})},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{position:'bottom'},tooltip:{filter:x=>!/^\d+$/.test(x.dataset.label),callbacks:{label:x=>`${x.dataset.label}: ${x.parsed.y==null?'—':x.parsed.y.toLocaleString(undefined,{maximumFractionDigits:id.startsWith('idx')?0:1})}`}}},scales:{x:{ticks:{maxTicksLimit:6},grid:{display:false}},y:{min:bounds?.[0],max:bounds?.[1],afterFit:a=>{a.width=58;},title:{display:true,text:id.startsWith('rsi')?'RSI (0–100)':id.startsWith('idx')?'지수 (pt)':'비율 (%)'}}}}});
+  if(g&&typeof charts!=='undefined'&&charts[id]){const ch=charts[id];ch.$sg=g;SYNC.groups[g]=(SYNC.groups[g]||[]).filter(c=>c!==ch&&c.canvas.id!==id);SYNC.groups[g].push(ch);}
  }
  function render(){for(const [market,name]of Object.entries(names)){
   const px=BubbleIndicators.closedKorean(ser(market==='KOSPI'?'^KS11':'^KQ11'),st.updated_at),rs=BubbleIndicators.rsi(px);const a=rs.filter(x=>x.d>=from()),last=rs.filter(x=>Number.isFinite(x.v)).at(-1);
