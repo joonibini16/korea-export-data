@@ -1,4 +1,4 @@
-﻿snapshot_date,company_id,name,period,model,months_collected,export_actual_part,export_estimate_total,export_qoq_pct,forecast_revenue_100m,forecast_low_100m,forecast_high_100m,anchor_period,anchor_revenue_100m,beta,backtest_mape_pct,consensus_revenue_100m,consensus_date,gap_vs_consensus_pct,status_note,prob_beat_pct,sigma_pct
+﻿snapshot_date,company_id,name,period,model,months_collected,export_actual_part,export_estimate_total,export_qoq_pct,forecast_revenue_100m,forecast_low_100m,forecast_high_100m,anchor_period,anchor_revenue_100m,beta,backtest_mape_pct,consensus_revenue_100m,consensus_date,gap_vs_consensus_pct,status_note,prob_beat_pct,sigma_pct,snapshot_time
 2026-10-09,222800,심텍,2026-Q3,qoq-elasticity-v1,2026.07 2026.08,111515,170514,6.2,5408,4995,5855,2026-Q2,5146,0.832,6.8,5582,2026-10-09,-3.1,
 2026-10-09,353200,대덕전자,2026-Q3,qoq-elasticity-v1,2026.07 2026.08,262651,396084,18.3,4674,4164,5246,2026-Q2,4010,0.910,9.5,4164,2026-10-09,12.2,
 2026-10-09,007660,이수페타시스,2026-Q3,qoq-elasticity-v1,2026.07 2026.08,155883,223735,9.6,3989,3644,4368,2026-Q2,3799,0.536,9.1,4309,2026-10-09,-7.4,

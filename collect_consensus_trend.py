@@ -75,7 +75,10 @@ def merge_file(new_path):
     key = lambda r: (r['company_id'], r['freq'], r['period'], r['item'], r['date'])
     old = {key(r): r for r in csv.DictReader(OUT.open(encoding='utf-8'))} if OUT.exists() else {}
     for r in csv.DictReader(Path(new_path).open(encoding='utf-8')):
-        old[key(r)] = r
+        k = key(r)
+        if k in old and old[k]['date'] < r['retrieved'][:10]:
+            continue  # 이미 저장된 과거 시점 값은 덮어쓰지 않음(기록 보존)
+        old[k] = r
     with OUT.open('w', encoding='utf-8', newline='') as f:
         w = csv.DictWriter(f, fieldnames=FIELDS); w.writeheader(); w.writerows(sorted(old.values(), key=key))
     print('merged', len(old))
@@ -100,7 +103,10 @@ def main():
     old = {key(r): r for r in csv.DictReader(OUT.open(encoding='utf-8'))} if OUT.exists() else {}
     for r in got:
         r['retrieved'] = stamp
-        old[key(r)] = {k: r.get(k, '') for k in FIELDS}
+        kk = key(r)
+        if kk in old and old[kk]['date'] < stamp[:10]:
+            continue  # 과거 시점 값은 처음 저장된 그대로 보존
+        old[kk] = {k: r.get(k, '') for k in FIELDS}
     with Path('consensus_trend_new.csv').open('w', encoding='utf-8', newline='') as f:  # 이번 실행분(커밋 단계 재병합용)
         w = csv.DictWriter(f, fieldnames=FIELDS); w.writeheader(); w.writerows(sorted(({k: r.get(k, '') for k in FIELDS} for r in got), key=key))
     with OUT.open('w', encoding='utf-8', newline='') as f:

@@ -1,12 +1,12 @@
 // Freeze today's export-based revenue forecasts and Naver consensus for later error tracking.
 // Runs the same browser code as regional.html (jsdom) so the log matches what the page showed.
-// Rows are append-only: one row per snapshot_date × company × quarter; earlier rows are never edited.
+// Append-only: 기존 행은 절대 지우거나 고치지 않습니다. 같은 날 다시 돌려도 값이 바뀐 행만 snapshot_time과 함께 덧붙입니다.
 const {JSDOM} = require('jsdom'), fs = require('fs'), path = require('path');
 const root = path.resolve(__dirname, '..');
 const OUT = path.join(root, 'forecast_log.csv');
 const FIELDS = ['snapshot_date','company_id','name','period','model','months_collected','export_actual_part','export_estimate_total','export_qoq_pct',
   'forecast_revenue_100m','forecast_low_100m','forecast_high_100m','anchor_period','anchor_revenue_100m','beta','backtest_mape_pct',
-  'consensus_revenue_100m','consensus_date','gap_vs_consensus_pct','status_note','prob_beat_pct','sigma_pct'];
+  'consensus_revenue_100m','consensus_date','gap_vs_consensus_pct','status_note','prob_beat_pct','sigma_pct','snapshot_time'];
 const MODEL = 'qoq-elasticity-v1';
 const esc = v => { const s = v == null ? '' : String(v); return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; };
 (async () => {
@@ -45,12 +45,16 @@ const esc = v => { const s = v == null ? '' : String(v); return /[",\n]/.test(s)
       prob_beat_pct:v.p.toFixed(1),sigma_pct:(v.sig*100).toFixed(1),
       status_note:(v.gap>=0?'상회':'하회')+' 판단 · '+v.use.map(m=>m.name+(m.calibrated?'(실측보정 '+m.liveN+'건)':'')).join('+')};}).filter(Boolean)`);
   rows.push(...vRows);
-  let old = [];
+  let old = [], header = FIELDS;
   if (fs.existsSync(OUT)) {
-    const lines = fs.readFileSync(OUT, 'utf8').replace(/^﻿/, '').trim().split('\n');
-    old = lines.slice(1).filter(l => !l.startsWith(today + ','));
+    const lines = fs.readFileSync(OUT, 'utf8').replace(/^\uFEFF/, '').trim().split('\n');
+    old = lines.slice(1);
   }
-  const fresh = rows.map(r => FIELDS.map(k => esc(k === 'snapshot_date' ? today : k === 'model' ? (r.model || MODEL) : r[k])).join(','));
-  fs.writeFileSync(OUT, '﻿' + [FIELDS.join(','), ...old, ...fresh].join('\n') + '\n');
-  console.log(`snapshot ${today}: ${rows.length} rows (inventory model ${invRows.length}, verdict ${vRows.length})`);
+  // 같은 (날짜·회사·분기·모델)에 내용이 같은 행이 이미 있으면 건너뜀(시각 칸 제외 비교)
+  const stamp = new Date(Date.now() + 9 * 3600e3).toISOString().slice(0, 16).replace('T', ' ');
+  const body = r => FIELDS.slice(0, -1).map(k => esc(k === 'snapshot_date' ? today : k === 'model' ? (r.model || MODEL) : r[k])).join(',');
+  const seen = new Set(old.map(l => l.replace(/,\d{4}-\d{2}-\d{2} \d{2}:\d{2}$/, '')));
+  const fresh = rows.map(r => body(r)).filter(b => !seen.has(b)).map(b => b + ',' + esc(stamp));
+  fs.writeFileSync(OUT, '\uFEFF' + [header.join(','), ...old, ...fresh].join('\n') + '\n');
+  console.log(`snapshot ${today}: ${rows.length} rows computed, ${fresh.length} new appended (inventory model ${invRows.length}, verdict ${vRows.length})`);
 })().catch(e => { console.error(e); process.exit(1); });

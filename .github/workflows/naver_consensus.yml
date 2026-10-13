@@ -29,6 +29,7 @@ jobs:
       - name: Commit
         run: |
           git config user.name github-actions; git config user.email github-actions@github.com
+          python tools/check_history.py naver_consensus.csv:snapshot_date
           git add naver_consensus_status.json
           if test -f naver_consensus.csv; then git add naver_consensus.csv; fi
           if ! git diff --cached --quiet; then git commit -m "Update Naver consensus snapshot"; git pull --rebase origin main; git push; fi

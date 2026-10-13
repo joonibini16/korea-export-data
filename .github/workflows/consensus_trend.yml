@@ -26,6 +26,7 @@ jobs:
           for i in 1 2 3; do
             git fetch -q origin main && git reset -q --hard origin/main
             python collect_consensus_trend.py --merge /tmp/new.csv && cp /tmp/status.json consensus_trend_status.json
+            python tools/check_history.py consensus_trend.csv:date || exit 1
             git add consensus_trend.csv consensus_trend_status.json
             git diff --cached --quiet && exit 0
             git commit -qm "Update consensus trend" && git push -q origin HEAD:main && exit 0

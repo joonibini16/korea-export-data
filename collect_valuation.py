@@ -101,7 +101,8 @@ def main():
             w.writerows(sorted([r for r in old if r['company_id'] not in got] + S, key=lambda r: r['company_id']))
     if C:
         old = [r for r in csv.DictReader(CONS.open(encoding='utf-8'))] if CONS.exists() else []
-        old = [r for r in old if r['snapshot_date'] != today]
+        gotc = {r['company_id'] for r in C}  # 오늘 받은 회사의 오늘 행만 교체 · 과거 스냅샷은 절대 지우지 않음
+        old = [r for r in old if not (r['snapshot_date'] == today and r['company_id'] in gotc)]
         with CONS.open('w', encoding='utf-8', newline='') as f:
             w = csv.DictWriter(f, fieldnames=CFIELDS); w.writeheader()
             w.writerows(sorted(old + C, key=lambda r: (r['snapshot_date'], r['company_id'], r['freq'], r['period'])))

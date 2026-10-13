@@ -24,6 +24,8 @@ jobs:
       - run: npm install --no-save --no-package-lock jsdom@24
       - name: Freeze today's forecasts and consensus
         run: node tools/snapshot_forecasts.cjs
+      - name: Verify no past forecast rows were removed
+        run: python3 tools/check_history.py forecast_log.csv:snapshot_date
       - name: Commit
         run: |
           git config user.name github-actions; git config user.email github-actions@github.com

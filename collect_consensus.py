@@ -130,7 +130,8 @@ def main():
     old = []
     if OUT.exists():
         with OUT.open(encoding='utf-8-sig', newline='') as f:
-            old = [r for r in csv.DictReader(f) if r['snapshot_date'] != today]
+            got = {r['company_id'] for r in rows}  # 오늘 새로 받은 회사의 오늘 행만 교체 · 과거 행과 이번에 실패한 회사의 행은 그대로 보존
+            old = [r for r in csv.DictReader(f) if not (r['snapshot_date'] == today and r['company_id'] in got)]
     if rows:
         allrows = sorted(old + rows, key=lambda r: (r['company_id'], r['period'], r['snapshot_date']))
         with OUT.open('w', encoding='utf-8-sig', newline='') as f:
