@@ -236,7 +236,31 @@ function fperData(c){const px=(pricesM.get(c.id)||[]).filter(r=>r.month>='2020.0
  const cons=px.filter(r=>byMonth.has(r.month)).map(r=>{const d=byMonth.get(r.month),f=fwdConsensusEps(c,d,r.month);return{month:r.month,date:d,price:r.close,eps:f?.eps??null,assumed:f?.assumed,per:f?.eps>0?r.close/f.eps:null};});
  const pa=act.map(x=>x.per).filter(v=>v>0&&v<300),qs=[0.1,0.25,0.5,0.75,0.9],mults=pa.length>=12?qs.map(q=>pctl(pa,q)):null;
  return{px,act,cons,mults,shares:sh,nPer:pa.length};}
-function renderFper(c){const sec=el('fperPanel');if(!sec)return;const d=fperData(c);el('fperTitle').textContent=c.name+' · 12개월 Forward PER 밴드';
+// 증권사 리포트식 Fwd PER 밴드: 과거는 확정 분기 순이익, 아직 안 나온 분기는 회계연도 EPS 컨센서스(최신)로 채운 12M Fwd EPS에
+// 일정 간격 배수(예: 3·6·9·12·15배)를 곱한 선을 미래(컨센서스가 있는 마지막 해의 전년 12월)까지 그립니다.
+async function renderFperBand(c){if(!el('fperBand'))return;if(window.__ctLoad)await window.__ctLoad();
+ const px=(pricesM.get(c.id)||[]).filter(r=>r.month>='2020.01'&&r.close>0),sh=sharesOf(c),nq=niQuarterMap(c);
+ const cons=new Map();for(const r of (window.__ctRows?window.__ctRows():[]).filter(r=>r.company_id===c.id&&r.freq==='Y'&&r.item==='eps')){const y=r.period.slice(0,4),o=cons.get(y);if(!o||r.date>o.date)cons.set(y,{date:r.date,eps:Number(r.avg)});}
+ if(!px.length||!sh){charts.fperBand?.destroy();delete charts.fperBand;el('fperBandNote').textContent='주가·주식수 자료가 없어 밴드를 그릴 수 없습니다.';return;}
+ const qEps=q=>{const v=nq.get(q);if(v!=null)return v/sh;const y=q.slice(0,4),ce=cons.get(y);if(!ce)return null;let r=0,n=0;for(let k=1;k<=4;k++){const a=nq.get(`${y}-Q${k}`);if(a!=null){r+=a/sh;n++;}}return n<4?(ce.eps-r)/(4-n):null;};
+ const fwd=t=>{let s=0,used=false;for(let k=1;k<=12;k++){const m=monthLabel(monthId(t)+k),q=qOfMonth(m);if(nq.get(q)==null)used=true;const e=qEps(q);if(e==null)return null;s+=e/3;}return{eps:s,est:used};};
+ const lastPx=px.at(-1).month,maxFY=Math.max(0,...[...cons.keys()].map(Number)),end=maxFY?`${maxFY-1}.12`:lastPx;
+ const months=[];for(let i=monthId(px[0].month);i<=Math.max(monthId(lastPx),monthId(end));i++)months.push(monthLabel(i));
+ const pm=new Map(px.map(r=>[r.month,r.close])),F=new Map(months.map(t=>[t,fwd(t)]));
+ const hist=months.filter(t=>pm.has(t)&&F.get(t)?.eps>0).map(t=>pm.get(t)/F.get(t).eps).sort((a,b)=>a-b);
+ const q=p=>hist.length?hist[Math.min(hist.length-1,Math.floor(p*(hist.length-1)))]:null;
+ let lo=q(0.1),hi=q(0.9);if(lo==null){lo=5;hi=20;}const raw=Math.max((hi-lo)/4,0.5),steps=[1,2,2.5,3,4,5,6,8,10,15,20,25,30,40,50],st=steps.find(x=>x>=raw)||raw;
+ let base=Math.max(st,Math.round(lo/st)*st);const mults=[0,1,2,3,4].map(i=>+(base+i*st).toFixed(2));
+ const pal=['#1d4ed8','#3b82f6','#9ca3af','#bfdbfe','#1e3a8a'];
+ const sets=[{label:'주가',data:months.map(t=>pm.get(t)??null),borderColor:'#facc15',backgroundColor:'#facc15',borderWidth:2.6,pointRadius:0,order:0},
+  ...mults.map((m,i)=>({label:`${m.toFixed(1)}x`,data:months.map(t=>{const f=F.get(t);return f==null?null:Math.max(0,f.eps*m);}),borderColor:pal[i],backgroundColor:pal[i],borderWidth:2,pointRadius:0,order:1,
+   segment:{borderDash:ctx=>F.get(months[ctx.p1DataIndex])?.est?[6,4]:undefined}}))];
+ const xl=t=>`'${t.slice(2,4)}.${Number(t.slice(5,7))}`;
+ chart('fperBand',months,sets,'(원)',{plugins:{tooltip:{callbacks:{title:x=>x[0].label+(F.get(x[0].label)?.est?' · 컨센서스 포함':' · 확정 실적'),label:x=>`${x.dataset.label}: ${Math.round(x.parsed.y).toLocaleString()}원`}}},scales:{x:{grid:{display:false},ticks:{autoSkip:false,maxRotation:0,callback:function(v){const t=this.getLabelForValue(v);return t.endsWith('.01')?xl(t):'';}}},y:{title:{display:true,text:'(원)'},min:0,ticks:{callback:v=>Number(v).toLocaleString()}}}});
+ const cur=F.get(lastPx),curPer=cur?.eps>0?pm.get(lastPx)/cur.eps:null,fy=[...cons.entries()].sort().map(([y,v])=>`${y} ${Math.round(v.eps).toLocaleString()}`).join(' · ');
+ el('fperBandNote').textContent=`밴드 배수 ${mults.map(m=>m.toFixed(1)+'x').join(' · ')} (과거 Fwd PER 10~90% 구간 ${lo?.toFixed(1)}~${hi?.toFixed(1)}배를 ${st}배 간격으로). 12M Fwd EPS = 다음 12개월에 속한 분기 EPS 합: 실적이 나온 분기는 확정 지배주주 순이익 ÷ 주식수, 아직 안 나온 분기는 회계연도 EPS 컨센서스(${fy||'없음'}원)에서 이미 나온 분기를 뺀 나머지를 균등 배분. 점선 구간은 컨센서스가 들어간 달이며, 선은 컨센서스가 있는 마지막 해의 전년 12월(${end})까지 그립니다. 적자(EPS<0) 구간은 0으로 표시. 현재(${lastPx}) Fwd PER ${curPer?curPer.toFixed(1)+'배':'—'}. 주식수 ${Math.round(sh).toLocaleString()}주(현재 기준).`;}
+
+function renderFper(c){const sec=el('fperPanel');if(!sec)return;const d=fperData(c);el('fperTitle').textContent=c.name+' · Fwd PER Band Chart';renderFperBand(c);
  const colors=['#94a3b8','#60a5fa','#16a34a','#f59e0b','#dc2626'],names=['하위 10%','25%','중앙값','75%','상위 10%'];
  if(!d){['fperActual','fperCons'].forEach(id=>{charts[id]?.destroy();delete charts[id];});el('fperActualNote').textContent='주가 자료를 아직 불러오지 못했습니다.';el('fperConsNote').textContent='';return;}
  const months=d.px.map(r=>r.month),am=new Map(d.act.map(x=>[x.month,x])),fmt=v=>v==null?'—':Number(v).toLocaleString(undefined,{maximumFractionDigits:1});
