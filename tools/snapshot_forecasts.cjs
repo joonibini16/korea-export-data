@@ -6,7 +6,7 @@ const root = path.resolve(__dirname, '..');
 const OUT = path.join(root, 'forecast_log.csv');
 const FIELDS = ['snapshot_date','company_id','name','period','model','months_collected','export_actual_part','export_estimate_total','export_qoq_pct',
   'forecast_revenue_100m','forecast_low_100m','forecast_high_100m','anchor_period','anchor_revenue_100m','beta','backtest_mape_pct',
-  'consensus_revenue_100m','consensus_date','gap_vs_consensus_pct','status_note'];
+  'consensus_revenue_100m','consensus_date','gap_vs_consensus_pct','status_note','prob_beat_pct','sigma_pct'];
 const MODEL = 'qoq-elasticity-v1';
 const esc = v => { const s = v == null ? '' : String(v); return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; };
 (async () => {
@@ -19,7 +19,7 @@ const esc = v => { const s = v == null ? '' : String(v); return /[",\n]/.test(s)
   w.Chart = class { constructor(el, cfg) { this.data = cfg.data; this.options = cfg.options || {}; this.options.scales = this.options.scales || {};
     this.options.scales.x = this.options.scales.x || {}; this.options.scales.y = this.options.scales.y || {}; } destroy() {} update() {} };
   w.addEventListener('error', e => errs.push(e.message));
-  w.eval(fs.readFileSync(path.join(root, 'regional.js'), 'utf8') + '\n;window.__api={get watch(){return watch},companyOutlook,consensusFor,inventorySummary,inventoryForecast};');
+  w.eval(fs.readFileSync(path.join(root, 'regional.js'), 'utf8') + '\n;window.__api={get watch(){return watch},companyOutlook,consensusFor,inventorySummary,inventoryForecast};Object.assign(window,{companyOutlook,consensusFor,inventorySummary,inventoryForecast,revenueMap});Object.defineProperty(window,"watch",{get(){return watch}});');
   for (let i = 0; i < 60 && !w.document.querySelector('#companyList tr'); i++) await new Promise(r => setTimeout(r, 500));
   if (errs.length) throw new Error('page errors: ' + errs.join('; '));
   const today = new Date(Date.now() + 9 * 3600e3).toISOString().slice(0, 10);
@@ -35,6 +35,16 @@ const esc = v => { const s = v == null ? '' : String(v); return /[",\n]/.test(s)
       beta:f.b.toFixed(3),backtest_mape_pct:f.mape!=null?f.mape.toFixed(1):'',consensus_revenue_100m:cs?Math.round(cs.value):'',consensus_date:cs?cs.date:'',
       gap_vs_consensus_pct:cs?((f.value/cs.value-1)*100).toFixed(1):'',status_note:'신뢰도 '+f.grade+' · 재고 QoQ '+f.x0.toFixed(1)+'%'};}).filter(Boolean)`);
   rows.push(...invRows);
+  // 종합 판단(verdict.js와 같은 계산): 상회/하회·상회 확률·합친 추정치. 실적이 나오면 forecast_tracker·결론 패널이 실제와 비교합니다.
+  w.eval(fs.readFileSync(path.join(root, 'verdict.js'), 'utf8'));
+  await w.verdictPrep();
+  const vRows = w.eval(`__api.watch.map(c=>{const v=verdictCalc(c);if(!v.ok)return null;
+    return {company_id:c.id,name:c.name,period:v.period,model:'combined-verdict-v1',forecast_revenue_100m:Math.round(v.F),
+      forecast_low_100m:Math.round(v.F*Math.exp(-v.sig)),forecast_high_100m:Math.round(v.F*Math.exp(v.sig)),
+      consensus_revenue_100m:Math.round(v.cs.value),consensus_date:v.cs.date,gap_vs_consensus_pct:v.gap.toFixed(1),
+      prob_beat_pct:v.p.toFixed(1),sigma_pct:(v.sig*100).toFixed(1),
+      status_note:(v.gap>=0?'상회':'하회')+' 판단 · '+v.use.map(m=>m.name+(m.calibrated?'(실측보정 '+m.liveN+'건)':'')).join('+')};}).filter(Boolean)`);
+  rows.push(...vRows);
   let old = [];
   if (fs.existsSync(OUT)) {
     const lines = fs.readFileSync(OUT, 'utf8').replace(/^﻿/, '').trim().split('\n');
@@ -42,5 +52,5 @@ const esc = v => { const s = v == null ? '' : String(v); return /[",\n]/.test(s)
   }
   const fresh = rows.map(r => FIELDS.map(k => esc(k === 'snapshot_date' ? today : k === 'model' ? (r.model || MODEL) : r[k])).join(','));
   fs.writeFileSync(OUT, '﻿' + [FIELDS.join(','), ...old, ...fresh].join('\n') + '\n');
-  console.log(`snapshot ${today}: ${rows.length} rows (inventory model ${invRows.length})`);
+  console.log(`snapshot ${today}: ${rows.length} rows (inventory model ${invRows.length}, verdict ${vRows.length})`);
 })().catch(e => { console.error(e); process.exit(1); });

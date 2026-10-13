@@ -5,7 +5,7 @@ on:
     workflows: ['Naver Consensus Snapshot', 'Regional Company Exports', 'Quarterly Inventory']
     types: [completed]
   schedule:
-    - cron: '50 23 * * 0'   # Monday 08:50 KST (after consensus refresh)
+    - cron: '10 0 * * 1-5'   # 평일 09:10 KST: 매일 예측·판단 스냅샷(실적과 비교해 오차를 줄이는 데 사용)
 concurrency:
   group: forecast-snapshot
   cancel-in-progress: false

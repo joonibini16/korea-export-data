@@ -15,12 +15,12 @@
  <div class="card">컨센서스 평균 오차<strong id="cCons">—</strong><span class="muted">같은 시점 컨센서스 기준</span></div>
  <div class="card">컨센 괴리 방향 적중률<strong id="cDir">—</strong><span class="muted">예측이 컨센보다 높/낮았을 때 실제도 같은 쪽</span></div>
 </div>
-<section class="panel"><div class="controls"><label>예측 방식<select id="model"><option value="qoq-elasticity-v1">수출 기반 (직전 분기 탄력도)</option><option value="inventory-qoq-v2">재고 기반 (직전 분기 재고 변화 탄력도)</option><option value="inventory-lag1-v1">재고 기반 v1 (YoY 회귀, 폐기)</option></select></label><label>분기<select id="period"></select></label><label>비교 시점<select id="vintage"><option value="last">발표 전 마지막 스냅샷</option><option value="m1">1개월 수집 시점</option><option value="m2">2개월 수집 시점</option><option value="m3">3개월 모두 수집 시점</option></select></label></div>
+<section class="panel"><div class="controls"><label>예측 방식<select id="model"><option value="qoq-elasticity-v1">수출 기반 (직전 분기 탄력도)</option><option value="inventory-qoq-v2">재고 기반 (직전 분기 재고 변화 탄력도)</option><option value="combined-verdict-v1">종합 판단 (수출+재고 가중 · 상회 확률)</option><option value="inventory-lag1-v1">재고 기반 v1 (YoY 회귀, 폐기)</option></select></label><label>분기<select id="period"></select></label><label>비교 시점<select id="vintage"><option value="last">발표 전 마지막 스냅샷</option><option value="m1">1개월 수집 시점</option><option value="m2">2개월 수집 시점</option><option value="m3">3개월 모두 수집 시점</option></select></label></div>
 <p class="muted">실적 발표일은 네이버 데이터에서 해당 분기가 추정치(E)에서 실적으로 바뀐 첫 스냅샷 날짜로 봅니다. 실제 매출은 공시 수집 매출(연결)을 우선 쓰고, 없으면 네이버 실적을 씁니다.</p>
 <div class="table"><table><thead><tr><th>업체</th><th>분기</th><th>스냅샷</th><th>수집 월</th><th>예측</th><th>당시 컨센서스</th><th>예측 vs 컨센</th><th>실제 매출</th><th>예측 오차</th><th>컨센 오차</th><th>더 가까운 쪽</th><th>괴리 방향</th></tr></thead><tbody id="rows"></tbody></table></div></section>
 <section class="panel"><h2>업체별 누적 성적</h2><div class="table"><table><thead><tr><th>업체</th><th>확인 분기 수</th><th>예측 평균 오차</th><th>컨센 평균 오차</th><th>예측이 더 가까운 비율</th><th>괴리 방향 적중</th></tr></thead><tbody id="byCompany"></tbody></table></div></section>
 <section class="panel"><h2 id="tTitle">예측 경로</h2><div class="controls"><label>업체 · 분기<select id="pick"></select></label></div><div class="chart"><canvas id="path"></canvas></div><p class="muted">스냅샷마다 저장된 예측(네모)과 컨센서스(X)가 실적 발표 전까지 어떻게 움직였는지, 실제 매출(가로선)과 비교합니다.</p></section>
-<section class="panel"><h2>기준</h2><p class="muted">예측 모형: 매출(t) = 기준 분기 매출 × (추정 분기 수출 ÷ 기준 분기 수출)^β (qoq-elasticity-v1). 스냅샷: 매주 월요일 컨센서스 갱신 후, 그리고 지역 수출 수집(15·16·20일) 후 자동 저장. 모형이 바뀌면 model 열에 버전이 달라져 구분됩니다. 원자료: <a href="./forecast_log.csv">forecast_log.csv</a></p><p id="status" class="muted"></p></section>
+<section class="panel"><h2>기준</h2><p class="muted">예측 모형: 매출(t) = 기준 분기 매출 × (추정 분기 수출 ÷ 기준 분기 수출)^β (qoq-elasticity-v1). 스냅샷: 평일 매일 09:10 KST(종합 판단 포함), 그리고 지역 수출 수집(15·16·20일) 후 자동 저장. 모형이 바뀌면 model 열에 버전이 달라져 구분됩니다. 원자료: <a href="./forecast_log.csv">forecast_log.csv</a></p><p id="status" class="muted"></p></section>
 </main>
 <script>
 'use strict';
