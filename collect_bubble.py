@@ -36,7 +36,7 @@ def get(url, timeout=90, tries=4, ua=True):
 
 
 def yahoo(sym):
-    j = json.loads(get('https://query1.finance.yahoo.com/v8/finance/chart/' + urllib.parse.quote(sym) + '?range=5y&interval=1d', 40))
+    j = json.loads(get('https://query1.finance.yahoo.com/v8/finance/chart/' + urllib.parse.quote(sym) + '?range=' + ('max' if sym in ('^KS11', '^KQ11') else '5y') + '&interval=1d', 40))
     r = j['chart']['result'][0]
     ts, cl = r.get('timestamp') or [], r['indicators']['quote'][0].get('close') or []
     out = []

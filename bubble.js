@@ -6,7 +6,7 @@ function rows(t){const L=t.replace(/^﻿/,'').trim().split(/\r?\n/);const h=L[0]
 function chart(id,cfg){charts[id]?.destroy();charts[id]=new Chart(el(id),cfg);}
 const C={'^GSPC':['미국 S&P500','US','BOPTEXP'],'^IXIC':['미국 나스닥','US','BOPTEXP'],'^SOX':['미국 반도체(SOX)','US','BOPTEXP'],'^KS11':['한국 코스피','KR','XTEXVA01KRM667S'],'^KQ11':['한국 코스닥','KR','XTEXVA01KRM667S'],'^TWII':['대만 가권','TW',null],'^N225':['일본 닛케이','JP','XTEXVA01JPM667S'],'000001.SS':['중국 상해종합','CN','XTEXVA01CNM667S'],'^HSI':['홍콩 항셍','HK',null],'^GDAXI':['독일 DAX','DE','XTEXVA01DEM667S'],'^FCHI':['프랑스 CAC40','FR','XTEXVA01FRM667S'],'^FTSE':['영국 FTSE100','GB','XTEXVA01GBM667S'],'^STOXX50E':['유로 STOXX50','EU',null],'^NSEI':['인도 니프티50','IN','XTEXVA01INM667S'],'^BVSP':['브라질 보베스파','BR','XTEXVA01BRM667S'],'^GSPTSE':['캐나다 TSX','CA','XTEXVA01CAM667S'],'^AXJO':['호주 ASX200','AU','XTEXVA01AUM667S'],'^JKSE':['인도네시아 JCI','ID','XTEXVA01IDM667S'],'^MXX':['멕시코 IPC','MX','XTEXVA01MXM667S']};
 const AI={ORCL:'오라클',NVDA:'엔비디아',AVGO:'브로드컴',MSFT:'마이크로소프트',META:'메타',AMZN:'아마존',GOOGL:'알파벳',TSM:'TSMC(ADR)',AMD:'AMD',CRWV:'코어위브',HYG:'하이일드 채권 ETF (HYG)',LQD:'투자등급 채권 ETF (LQD)'};
-let M=new Map(),F=new Map(),E=new Map(),VK=[],cds=[],KRM=[];
+let M=new Map(),F=new Map(),E=new Map(),VK=[],KF=[],levRange='ytd',cds=[],KRM=[];
 const ser=s=>M.get(s)||[],fs=s=>F.get(s)||[];
 function at(arr,date){let lo=0,hi=arr.length-1,ans=null;while(lo<=hi){const m=(lo+hi)>>1;if(arr[m].d<=date){ans=arr[m];lo=m+1;}else hi=m-1;}return ans;}
 function back(arr,days){const last=arr.at(-1);if(!last)return null;const d=new Date(last.d);d.setDate(d.getDate()-days);return at(arr,d.toISOString().slice(0,10));}
@@ -107,6 +107,33 @@ function renderMini(){const box=el('mini');box.replaceChildren();const alerts=[]
  el('miniHead').innerHTML='';const h=document.createElement('span');h.style.cssText='font-weight:700;color:'+(alerts.length?'#f87171':'#4ade80');h.textContent=alerts.length?`● 경보 ${alerts.length}개 · ${alerts.join(', ')}`:'● 경보 없음';el('miniHead').append(h);
  const n=document.createElement('span');n.className='muted';n.textContent='  — 경보: 1년 백분위 90% 이상(위험 방향) · 1개월 위험방향 급변 · 절대수준 초과. 회색 점선 = 1년 중앙값, 빨간 점선 = 경보 수준. 카드에 마우스를 올리면 경보 이유가 보입니다.';el('miniHead').append(n);}
 
+// ── 한국 증시 레버리지: 코스피·코스닥별 지수 / 신용융자 / 고객예탁금 / 신용÷예탁금 (금융투자협회 FreeSIS, 백만원)
+const LC={idx:'#4f7ff0',cr:'#ef5b45',dep:'#34b27b',ratio:'#a77be6'};
+function levStart(){const last=KF.at(-1)?.date;if(!last)return '2015-01-01';const y=Number(last.slice(0,4));return levRange==='ytd'?y+'-01-01':levRange==='1y'?(y-1)+last.slice(4):levRange==='3y'?(y-3)+last.slice(4):'2015-01-01';}
+const vline={id:'vline',afterDatasetsDraw(ch,_,o){const i=o?.i;if(i==null||i<0)return;const x=ch.scales.x.getPixelForValue(i),{top,bottom}=ch.chartArea,c=ch.ctx;c.save();c.strokeStyle='rgba(245,158,11,.75)';c.setLineDash([4,4]);c.beginPath();c.moveTo(x,top);c.lineTo(x,bottom);c.stroke();c.restore();}};
+function levChart(id,labels,data,color,unit,dec,mark){const v=data.filter(x=>x!=null),last=v.at(-1);
+ const t=document.getElementById(id+'T');if(t)t.textContent=`${unit} · 최근 ${last==null?'—':last.toLocaleString(undefined,{maximumFractionDigits:dec})}${unit==='조원'?'조':unit==='%'?'%':''}`;
+ chart(id,{type:'line',data:{labels,datasets:[{data,borderColor:color,backgroundColor:color,borderWidth:2,pointRadius:data.map((_,k)=>k===data.length-1?3.5:0),tension:0,spanGaps:true}]},plugins:[vline],
+  options:{responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:'index',intersect:false},plugins:{legend:{display:false},vline:{i:mark},tooltip:{callbacks:{label:x=>`${x.parsed.y.toLocaleString(undefined,{maximumFractionDigits:dec})} ${unit}`}}},
+   scales:{x:{ticks:{maxTicksLimit:8,callback:function(v){const s=this.getLabelForValue(v);return levRange==='ytd'?Number(s.slice(5,7))+'월':s.slice(2,7).replace('-','.');}},grid:{display:false}},y:{afterFit:a=>{a.width=52;},ticks:{maxTicksLimit:5},grid:{color:'rgba(148,163,184,.12)'}}}}});}
+function renderLev(){if(!KF.length){el('levErr').hidden=false;return;}el('levErr').hidden=true;
+ const S=levStart(),R=KF.filter(x=>x.date>=S&&x.deposit!=null),labels=R.map(x=>x.date);
+ for(const [k,sym,ck,nm] of [['k','^KS11','credit_kospi','코스피'],['q','^KQ11','credit_kosdaq','코스닥']]){
+  const ix=ser(sym),idx=labels.map(d=>at(ix,d)?.v??null),cr=R.map(x=>x[ck]!=null?x[ck]/1e6:null),dep=R.map(x=>x.deposit/1e6),ra=R.map((x,i)=>cr[i]!=null?cr[i]/dep[i]*100:null);
+  let hi=-1,hv=-Infinity;idx.forEach((v,i)=>{if(v!=null&&v>hv){hv=v;hi=i;}});const lastI=ix.at(-1);
+  levChart('lev'+k+'I',labels,idx,LC.idx,'pt',0,hi);levChart('lev'+k+'C',labels,cr,LC.cr,'조원',1,hi);levChart('lev'+k+'D',labels,dep,LC.dep,'조원',1,hi);levChart('lev'+k+'R',labels,ra,LC.ratio,'%',1,hi);
+  const L=R.at(-1),li=labels.length-1;el('lev'+k+'H').innerHTML='';const parts=[[L.date,'#e2e8f0'],[nm+' '+(idx[li]??0).toLocaleString(undefined,{maximumFractionDigits:0}),LC.idx],['신용융자 '+cr[li].toFixed(1)+'조',LC.cr],['고객예탁금 '+dep[li].toFixed(1)+'조',LC.dep],['신용 ÷ 예탁금 '+ra[li].toFixed(1)+'%',LC.ratio]];
+  parts.forEach(([t,c],i)=>{const sp=document.createElement('span');sp.textContent=(i?' · ':'')+t;sp.style.color=c;if(!i)sp.style.fontWeight='700';el('lev'+k+'H').append(sp);});
+  el('lev'+k+'N').textContent=`주황 점선 = 구간 ${nm} 고점 (${labels[hi]||'—'})`+(lastI&&lastI.d>L.date?` · ${nm} 최근 ${lastI.d.slice(5).replace('-','/')} ${lastI.v.toLocaleString(undefined,{maximumFractionDigits:0})}`:'');}
+ const fsr=R.map(x=>x.forced_sale!=null?x.forced_sale/100:null),uns=R.map(x=>x.unsettled!=null?x.unsettled/100:null),fr=R.map(x=>x.forced_ratio??null);
+ chart('levF',{data:{labels,datasets:[{type:'bar',label:'반대매매 금액 (억원)',data:fsr,backgroundColor:'rgba(239,91,69,.75)',yAxisID:'y',order:2},{type:'line',label:'미수금 대비 반대매매 비중 (%)',data:fr,borderColor:'rgba(251,191,36,.55)',backgroundColor:'rgba(251,191,36,.55)',borderWidth:1,pointRadius:0,yAxisID:'y1',order:1}]},
+  options:{responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:'index',intersect:false},plugins:{legend:{position:'bottom'}},scales:{x:{ticks:{maxTicksLimit:10},grid:{display:false}},y:{title:{display:true,text:'억원'}},y1:{position:'right',grid:{display:false},title:{display:true,text:'%'}}}}});
+ chart('levU',{type:'line',data:{labels,datasets:[{label:'위탁매매 미수금 (억원)',data:uns,borderColor:'#f59e0b',backgroundColor:'#f59e0b',borderWidth:2,pointRadius:0},{label:'예탁증권담보융자 (억원)',data:R.map(x=>x.secured_loan!=null?x.secured_loan/100:null),borderColor:'#94a3b8',backgroundColor:'#94a3b8',borderWidth:1.5,pointRadius:0,yAxisID:'y1'}]},
+  options:{responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:'index',intersect:false},plugins:{legend:{position:'bottom'}},scales:{x:{ticks:{maxTicksLimit:10},grid:{display:false}},y:{title:{display:true,text:'미수금 억원'}},y1:{position:'right',grid:{display:false},title:{display:true,text:'담보융자 억원'}}}}});
+ const f5=KF.slice(-5).map(x=>x.forced_sale).filter(v=>v!=null),avg=f5.reduce((a,b)=>a+b,0)/(f5.length||1),yr=KF.filter(x=>x.date>=(Number(KF.at(-1).date.slice(0,4))-1)+KF.at(-1).date.slice(4)).map(x=>x.forced_sale).filter(v=>v!=null);
+ el('levFN').textContent=`최근 5거래일 평균 반대매매 ${(avg/100).toFixed(0)}억원 · 1년 백분위 ${Math.round(yr.filter(v=>v<=avg).length/yr.length*100)}%. 반대매매가 급증하면 신용으로 산 주식이 강제로 팔리며 하락을 키웁니다.`;
+ return{avg,pc:yr.filter(v=>v<=avg).length/yr.length*100,ratio:KF.at(-1).credit_total/KF.at(-1).deposit*100};}
+
 function light(name,val,state,sub){const d=document.createElement('div');d.className='light '+state;d.innerHTML='<b></b><strong></strong><span></span>';d.children[0].textContent=name;d.children[1].textContent=val;d.children[2].textContent=sub;el('lights').append(d);return state;}
 function renderLights(weak,liq,cr){el('lights').replaceChildren();const st=[];const L=(...a)=>st.push(light(...a));
  const spx=ser('^GSPC'),sox=ser('^SOX');const a=dd52(spx),b=dd52(sox);
@@ -123,17 +150,20 @@ function renderLights(weak,liq,cr){el('lights').replaceChildren();const st=[];co
  const jp=ser('JPY=X'),j1=ret(jp,30);L('엔화 1개월 (달러/엔)',pct(j1),j1==null?'na':j1<=-5?'bad':j1<=-3?'warn':'ok','−3% 주의 · −5% 경고 (엔캐리 청산)');
  const t3=fs('T10Y3M').at(-1)?.v;L('장단기 금리차 10Y−3M',t3!=null?t3.toFixed(2)+'%p':'—',t3==null?'na':t3<0?'warn':'ok','역전 = 경기 둔화 신호');
  const sahm=fs('SAHMREALTIME').at(-1)?.v;L('삼의 법칙',sahm?.toFixed(2)??'—',sahm==null?'na':sahm>=0.5?'bad':sahm>=0.3?'warn':'ok','0.5 이상 = 침체 진입 신호');
+ if(window.__lev){const v=window.__lev;L('국내 반대매매 (5일 평균)',(v.avg/100).toFixed(0)+'억원',v.pc>=95?'bad':v.pc>=80?'warn':'ok',`1년 백분위 ${Math.round(v.pc)}% · 80 주의 · 95 경고`);}
  const bad=st.filter(s=>s==='bad').length,warn=st.filter(s=>s==='warn').length,tot=st.filter(s=>s!=='na').length;
  el('scoreBig').textContent=`경고 ${bad} · 주의 ${warn} / ${tot}`;el('scoreBig').style.color=bad>=4?'#f87171':bad>=2||warn>=4?'#fbbf24':'#4ade80';
  el('scoreText').textContent=bad>=4?'여러 영역(주가·신용·유동성)이 동시에 경고 — 위험 관리 강화 구간':bad>=2||warn>=4?'일부 영역에서 균열 — 신용·유동성 지표가 따라 움직이는지 주시':'광범위한 스트레스 신호는 아직 제한적';}
-async function init(){try{const [m,f,c,s,kp,ec,vk]=await Promise.all([read('market_daily.csv'),read('fred_data.csv'),read('cds_manual.csv'),read('bubble_status.json'),read('provisional_official.csv'),read('ecos_rates.csv'),read('vkospi.csv')]);
+async function init(){try{const [m,f,c,s,kp,ec,vk,kf]=await Promise.all([read('market_daily.csv'),read('fred_data.csv'),read('cds_manual.csv'),read('bubble_status.json'),read('provisional_official.csv'),read('ecos_rates.csv'),read('vkospi.csv'),read('kofia_daily.csv')]);
  if(!m||!f){el('err').hidden=false;el('err').textContent='데이터를 아직 수집하지 못했습니다. 자동 수집이 끝나면 표시됩니다.';}
  for(const r of rows(m||'symbol,date,close')){const v=num(r.close);if(v==null)continue;if(!M.has(r.symbol))M.set(r.symbol,[]);M.get(r.symbol).push({d:r.date,v});}
  for(const r of rows(f||'series,date,value')){const v=num(r.value);if(v==null)continue;if(!F.has(r.series))F.set(r.series,[]);F.get(r.series).push({d:r.date,v});}
  for(const r of rows(ec||'series,date,value')){const v=num(r.value);if(v==null)continue;if(!E.has(r.series))E.set(r.series,[]);E.get(r.series).push({d:r.date,v});}
+ KF=rows(kf||'date').map(r=>{const o={date:r.date};for(const k in r)if(k!=='date')o[k]=num(r[k]);return o;}).filter(x=>x.date).sort((a,b)=>a.date.localeCompare(b.date));
  VK=rows(vk||'date,close').map(r=>({d:r.date,v:num(r.close)})).filter(x=>x.v!=null);
  for(const a of [...M.values(),...F.values(),...E.values(),VK])a.sort((x,y)=>x.d.localeCompare(y.d));cds=c?rows(c):[];
  KRM=kp?rows(kp).filter(r=>r['기간구분']==='MONTH'&&num(r['수출YoY_pct'])!=null).map(r=>({k:r['기준월'].replace('.','-'),y:num(r['수출YoY_pct'])})):[];
+ window.__lev=KF.length?renderLev():null;document.querySelectorAll('#levRange button').forEach(b=>b.onclick=()=>{levRange=b.dataset.r;document.querySelectorAll('#levRange button').forEach(x=>x.classList.toggle('on',x===b));renderLev();});
  const weak=renderWeak(),liq=renderLiq(),cr=renderCredit();renderOther();renderLights(weak,liq,cr);renderMini();
  const st=s?JSON.parse(s):{};el('asof').textContent=`자료 기준: 주가 ${ser('^GSPC').at(-1)?.d||'—'} · 스프레드 ${fs('BAMLH0A0HYM2').at(-1)?.d||'—'} · 순유동성 ${liq.nl.at(-1)?.d||'—'} · 수집 ${st.updated_at||'—'}`;
  el('status').textContent=st.failures?.length?`수집 실패 ${st.failures.length}건: `+st.failures.map(x=>x.id).join(', '):'';
