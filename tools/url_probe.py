@@ -3,10 +3,11 @@ import json, os, sys, urllib.request, pathlib
 out = []
 for u in (sys.argv[1:] or os.environ.get('URLS', '').split()):
     try:
-        data = None
+        data = None; hdr_ct = None
         if u.startswith('POST::'):
             _, u, body = u.split('::', 2); data = body.encode()
-        req = urllib.request.Request(u, data=data, headers={'User-Agent': 'Mozilla/5.0', 'Referer': 'https://comp.fnguide.com/' if 'fnguide' in u else 'http://data.krx.co.kr/contents/MDC/MDI/mdiLoader/index.cmd' if 'krx' in u else 'https://navercomp.wisereport.co.kr/'})
+            if body.startswith('{'): hdr_ct = 'application/json'
+        req = urllib.request.Request(u, data=data, headers=({'Content-Type': hdr_ct} if hdr_ct else {}) | {'User-Agent': 'Mozilla/5.0', 'Referer': 'https://comp.fnguide.com/' if 'fnguide' in u else 'http://data.krx.co.kr/contents/MDC/MDI/mdiLoader/index.cmd' if 'krx' in u else 'https://navercomp.wisereport.co.kr/'})
         with urllib.request.urlopen(req, timeout=40) as r:
             b = r.read()
         try: t = b.decode('utf-8-sig')
