@@ -76,10 +76,23 @@ def one(cid, dt, today, back_dts=()):
     return rows
 
 
+def merge_file(new_path):
+    """커밋 직전 최신 원격 파일에 이번 실행분(new_path)을 다시 합칩니다(동시 실행 충돌 방지)."""
+    key = lambda r: (r['company_id'], r['freq'], r['period'], r['item'], r['date'])
+    old = {key(r): r for r in csv.DictReader(OUT.open(encoding='utf-8'))} if OUT.exists() else {}
+    for r in csv.DictReader(Path(new_path).open(encoding='utf-8')):
+        old[key(r)] = r
+    with OUT.open('w', encoding='utf-8', newline='') as f:
+        w = csv.DictWriter(f, fieldnames=FIELDS); w.writeheader(); w.writerows(sorted(old.values(), key=key))
+    print('merged', len(old))
+
+
 def main():
+    import sys
+    if '--merge' in sys.argv:
+        return merge_file(sys.argv[sys.argv.index('--merge') + 1])
     now = datetime.now(KST); dt = now.strftime('%Y%m%d'); stamp = now.isoformat(timespec='seconds')
     ids = [c['id'] for c in json.loads(Path('company_watchlist.json').read_text())['companies'] if c['id'].isdigit()]
-    import sys
     back = []
     if '--backfill' in sys.argv:
         back = [(now - timedelta(days=d)).strftime('%Y%m%d') for d in (365, 730)]
@@ -97,6 +110,8 @@ def main():
     for r in got:
         r['retrieved'] = stamp
         old[key(r)] = {k: r.get(k, '') for k in FIELDS}
+    with Path('consensus_trend_new.csv').open('w', encoding='utf-8', newline='') as f:  # 이번 실행분(커밋 단계 재병합용)
+        w = csv.DictWriter(f, fieldnames=FIELDS); w.writeheader(); w.writerows(sorted(({k: r.get(k, '') for k in FIELDS} for r in got), key=key))
     with OUT.open('w', encoding='utf-8', newline='') as f:
         w = csv.DictWriter(f, fieldnames=FIELDS); w.writeheader()
         w.writerows(sorted(old.values(), key=key))

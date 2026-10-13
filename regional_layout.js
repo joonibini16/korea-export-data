@@ -9,7 +9,7 @@
  const TABS=[
   ['수출',[[controls,1],[byH('지역 수출 추세'),1],[byH('연도별 월 수출액'),1],[byH('수출 YoY와 회사 매출 YoY'),0],[byH('전국 품목 수출단가')?.closest('.grid')||byH('전국 품목 수출단가'),0]]],
   ['수출↔매출',[[byH('수출액과 회사 매출액'),0],[byH('수출액 ↔ 연결매출'),0],[byH('수출액과 국내법인'),0],[byH('수출액 ↔ 별도매출'),0]]],
-  ['실적·밸류에이션',[[byId('seasonPanel'),0],[byId('earningsTitle')?.closest('section'),0]]],
+  ['실적·밸류에이션',[[byId('seasonPanel'),0],[byId('earningsTitle')?.closest('section'),0],[byId('consTrendPanel'),1]]],
   ['재고·수주·PER',[[byId('inventoryPanel'),0],[byH('회사 분기 수주잔고'),0],[byId('fperPanel'),1]]],  // PER 밴드는 재고자산(·수주잔고) 바로 아래 전체 폭
   ['전체 업체 요약',[[byH('서프라이즈 후보'),1],[byH('업체별 상관관계 요약'),1],[byH('지역 · 품목 · 관련 업체 전체 목록'),1],[panels.find(e=>e.querySelector&&e.querySelector('#hsCoverage')),1]]],
   ['데이터·출처',[[byH('비교 데이터'),1],[byH('기준과 출처'),1]]]];
