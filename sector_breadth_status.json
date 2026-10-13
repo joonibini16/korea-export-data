@@ -1,0 +1,31 @@
+{
+ "updated_at": "2026-10-14T08:43:45+09:00",
+ "source": "KIND 상장법인목록 + 네이버 fchart 종가",
+ "groups": {
+  "KOSDAQ|소프트웨어 개발 및 공급업": {
+   "market": "KOSDAQ",
+   "sector": "소프트웨어 개발 및 공급업",
+   "target": 176,
+   "success": 176,
+   "members": "e4916eeba39abbbaba61b188735c3914d059a9146df7b9232f50df63ed1912bd",
+   "latest": "2026-10-13",
+   "updated_at": "2026-10-14T08:43:45+09:00",
+   "observations": 358
+  },
+  "KOSDAQ|특수 목적용 기계 제조업": {
+   "market": "KOSDAQ",
+   "sector": "특수 목적용 기계 제조업",
+   "target": 146,
+   "success": 146,
+   "members": "e038722d4cb869f1c04e323daba929220726005a6473a1df294bf8ab19804492",
+   "latest": "2026-10-13",
+   "updated_at": "2026-10-14T08:43:45+09:00",
+   "observations": 358
+  }
+ },
+ "issues": [],
+ "listed": 2647,
+ "industry_total": 262,
+ "industry_done": 2,
+ "stock_done": 322
+}

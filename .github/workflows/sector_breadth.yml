@@ -1,0 +1,34 @@
+name: Korea Sector Breadth
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['collect_sector_breadth.py', '.github/workflows/sector_breadth.yml']
+  schedule:
+    - cron: '55 7 * * 1-5'   # 16:55 KST, 종가 게시 후 2개 업종씩
+    - cron: '55 18 * * 0-4' # 03:55 KST, 2개 업종 추가
+permissions:
+  contents: write
+concurrency:
+  group: breadth-sector
+  cancel-in-progress: false
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: pip install pandas
+      - run: python -m unittest test_sector_breadth.py
+      - run: python collect_sector_breadth.py --groups 2
+      - run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add market_sector_catalog.csv sector_breadth.csv sector_stock_latest.csv sector_breadth_status.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Update sector breadth batches"
+            git pull --rebase origin main
+            git push
+          fi

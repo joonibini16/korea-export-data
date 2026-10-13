@@ -1,0 +1,37 @@
+import unittest
+from collect_sector_breadth import choose,compute_group,members
+
+class SectorTest(unittest.TestCase):
+ def test_choose_unfinished_largest_first(self):
+  groups={'KOSPI|A':[{'code':'1'},{'code':'2'},{'code':'3'}], 'KOSPI|B':[{'code':'1'}], 'KOSPI|C':[{'code':'1'},{'code':'2'}]}
+  status={'groups':{'KOSPI|A':{'updated_at':'2026-10-13'}}}
+  self.assertEqual(choose(groups,status,2),['KOSPI|C','KOSPI|B'])
+ def test_breadth_and_hli(self):
+  from datetime import datetime,timedelta,timezone
+  today=datetime.now(timezone(timedelta(hours=9))).date()
+  dates=[(today-timedelta(days=299-i)).isoformat() for i in range(300)]
+  rows,stock=compute_group('KOSPI','전자부품 제조업',{'A':dict(zip(dates,range(1,301))),'B':dict(zip(dates,range(500,200,-1)))})
+  self.assertEqual(rows[-1]['n60'],2)
+  self.assertEqual(rows[-1]['breadth60'],50)
+  self.assertEqual(rows[-1]['nh'],1)
+  self.assertEqual(rows[-1]['nl'],1)
+  self.assertEqual(rows[-1]['hli'],50)
+  self.assertEqual(len(stock),2)
+ def test_membership_change_is_revisited(self):
+  groups={'KOSPI|A':[{'code':'000001'},{'code':'000002'}], 'KOSPI|B':[{'code':'000003'}]}
+  status={'groups':{'KOSPI|A':{'members':members(groups['KOSPI|A']),'updated_at':'2026-01-01'},'KOSPI|B':{'members':members(groups['KOSPI|B']),'updated_at':'2026-01-01'}}}
+  self.assertEqual(choose(groups,status,1),['KOSPI|A'])
+  groups['KOSPI|B'].append({'code':'000004'})
+  self.assertEqual(choose(groups,status,1),['KOSPI|B'])
+ def test_failed_group_does_not_block_next_batch(self):
+  groups={'KOSPI|A':[{'code':'000001'},{'code':'000002'}], 'KOSPI|B':[{'code':'000003'}]}
+  self.assertEqual(choose(groups,{'groups':{},'attempts':{'KOSPI|A':1}},1),['KOSPI|B'])
+ def test_zero_new_high_is_zero_not_missing(self):
+  from datetime import datetime,timedelta,timezone
+  today=datetime.now(timezone(timedelta(hours=9))).date()
+  dates=[(today-timedelta(days=259-i)).isoformat() for i in range(260)]
+  values=[100+i%20 for i in range(260)];values[-1]=105
+  rows,_=compute_group('KOSDAQ','example',{'A':dict(zip(dates,values))})
+  self.assertEqual(rows[-1]['n250'],1)
+  self.assertEqual(rows[-1]['hli'],0)
+if __name__=='__main__':unittest.main()
