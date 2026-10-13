@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-10-12T13:48:49+09:00",
+  "updated_at": "2026-10-13T21:59:08+09:00",
   "source": "https://www.data.go.kr/data/15134343/openapi.do",
-  "requested_ranges": 121,
-  "received_rows": 11279,
-  "stored_rows": 43399,
+  "requested_ranges": 163,
+  "received_rows": 14924,
+  "stored_rows": 47044,
   "failures": [
     {
       "sido": "31",
@@ -1675,6 +1675,118 @@
         "2026.09"
       ],
       "scope": "parent_HS6_proxy",
+      "historical_note": ""
+    },
+    {
+      "company": "219130",
+      "hs": "853400",
+      "query_hs": "853400",
+      "region": "미추홀구",
+      "sido": "28",
+      "months": 80,
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
+      "scope": "HS6",
+      "historical_note": ""
+    },
+    {
+      "company": "252990",
+      "hs": "9030901000",
+      "query_hs": "903090",
+      "region": "청주시",
+      "sido": "43",
+      "months": 80,
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
+      "scope": "parent_HS6_proxy",
+      "historical_note": ""
+    },
+    {
+      "company": "446540",
+      "hs": "8536909090",
+      "query_hs": "853690",
+      "region": "천안시",
+      "sido": "44",
+      "months": 80,
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
+      "scope": "parent_HS6_proxy",
+      "historical_note": ""
+    },
+    {
+      "company": "131290",
+      "hs": "9030901000",
+      "query_hs": "903090",
+      "region": "천안시",
+      "sido": "44",
+      "months": 80,
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
+      "scope": "parent_HS6_proxy",
+      "historical_note": ""
+    },
+    {
+      "company": "131290",
+      "hs": "8536909090",
+      "query_hs": "853690",
+      "region": "천안시",
+      "sido": "44",
+      "months": 80,
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
+      "scope": "parent_HS6_proxy",
+      "historical_note": ""
+    },
+    {
+      "company": "092870",
+      "hs": "903082",
+      "query_hs": "903082",
+      "region": "천안시",
+      "sido": "44",
+      "months": 80,
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
+      "scope": "HS6",
+      "historical_note": ""
+    },
+    {
+      "company": "064290",
+      "hs": "903141",
+      "query_hs": "903141",
+      "region": "유성구",
+      "sido": "30",
+      "months": 80,
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
+      "scope": "HS6",
+      "historical_note": ""
+    },
+    {
+      "company": "420770",
+      "hs": "903149",
+      "query_hs": "903149",
+      "region": "평택시",
+      "sido": "41",
+      "months": 80,
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
+      "scope": "HS6",
       "historical_note": ""
     }
   ],
