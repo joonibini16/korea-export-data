@@ -110,21 +110,24 @@ KOFIA = {'STATSCU0100000060BO': ['deposit', 'deriv_deposit', 'rp', 'unsettled', 
          'STATSCU0100000070BO': ['credit_total', 'credit_kospi', 'credit_kosdaq', 'short_total', 'short_kospi', 'short_kosdaq', 'ipo_loan', 'secured_loan']}
 
 
-def kofia():
+def kofia(fails):
     end = datetime.now(KST).strftime('%Y%m%d')
-    by = {}
+    path = Path('kofia_daily.csv')
+    by = {r['date']: {k: v for k, v in r.items() if k != 'date' and v != ''} for r in csv.DictReader(path.open(encoding='utf-8'))} if path.exists() else {}
     for obj, cols in KOFIA.items():
         for y in range(2015, int(end[:4]) + 1):
             body = json.dumps({'dmSearch': {'tmpV40': '1000000', 'tmpV41': '1', 'tmpV1': 'D', 'tmpV45': f'{y}0101', 'tmpV46': min(f'{y}1231', end), 'OBJ_NM': obj}}).encode()
             req = urllib.request.Request(KOFIA_URL, data=body, headers={'Content-Type': 'application/json', **UA})
-            for a in range(3):
+            rows = None
+            for a in range(4):
                 try:
                     with urllib.request.urlopen(req, timeout=60) as r:
                         rows = json.loads(r.read().decode('utf-8')).get('ds1') or []
                     break
                 except Exception as e:
-                    if a == 2: raise RuntimeError(f'{obj} {y}: {str(e)[:100]}')
-                    time.sleep(3)
+                    if a == 3: fails.append(dict(id=f'KOFIA {obj[-6:]} {y}', error=str(e)[:100]))  # 그 해는 기존 값 유지
+                    time.sleep(4)
+            rows = rows or []
             for x in rows:
                 t = x['TMPV1']; d = by.setdefault(f'{t[:4]}-{t[4:6]}-{t[6:8]}', {})
                 for i, c in enumerate(cols):
@@ -168,7 +171,7 @@ def main():
         nv = vkospi(os.environ['KRX_API_KEY'], fails)
     nk = None
     try:
-        nk = kofia()
+        nk = kofia(fails)
     except Exception as e:
         fails.append(dict(id='KOFIA', error=str(e)[:150]))
     if Y: merge(Path('market_daily.csv'), Y, 'symbol', ['symbol', 'date', 'close'], {r['symbol'] for r in Y})
