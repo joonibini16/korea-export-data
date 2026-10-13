@@ -9,10 +9,11 @@
  const TABS=[
   ['수출',[[controls,1],[byH('지역 수출 추세'),1],[byH('연도별 월 수출액'),1],[byH('수출 YoY와 회사 매출 YoY'),0],[byH('전국 품목 수출단가')?.closest('.grid')||byH('전국 품목 수출단가'),0]]],
   ['수출↔매출',[[byH('수출액과 회사 매출액'),0],[byH('수출액 ↔ 연결매출'),0],[byH('수출액과 국내법인'),0],[byH('수출액 ↔ 별도매출'),0]]],
-  ['실적·밸류에이션',[[byId('seasonPanel'),0],[byId('earningsTitle')?.closest('section'),0],[byId('fperPanel'),1]]],
+  ['실적·밸류에이션',[[byId('seasonPanel'),0],[byId('earningsTitle')?.closest('section'),0]]],
   ['재고·수주',[[byId('inventoryPanel'),0],[byH('회사 분기 수주잔고'),0]]],
   ['전체 업체 요약',[[byH('서프라이즈 후보'),1],[byH('업체별 상관관계 요약'),1],[byH('지역 · 품목 · 관련 업체 전체 목록'),1],[panels.find(e=>e.querySelector&&e.querySelector('#hsCoverage')),1]]],
-  ['데이터·출처',[[byH('비교 데이터'),1],[byH('기준과 출처'),1]]]];
+  ['데이터·출처',[[byH('비교 데이터'),1],[byH('기준과 출처'),1]]],
+  ['PER 밴드',[[byId('fperPanel'),1]]]];  // 요청에 따라 맨 아래
  // 전국 단가·회사 매출 묶음(grid)은 둘로 나눠 각 탭에 넣습니다.
  const g=byH('전국 품목 수출단가')?.closest('.grid');if(g){const [a,py,b]=g.children;const yv=TABS[0][1][3][0];TABS[0][1].splice(3,2,[a,0],[py,0],[yv,1]);TABS[2][1][1]=[b,0];}
  const bar=document.createElement('div');bar.id='dashTabs';bar.className='dash-tabs';
