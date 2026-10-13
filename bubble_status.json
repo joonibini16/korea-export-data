@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-10-13T15:00:59+09:00",
- "yahoo_rows": 50489,
+ "updated_at": "2026-10-13T15:07:18+09:00",
+ "yahoo_rows": 55587,
  "fred_rows": 34006,
  "ecos_rows": 0,
  "ecos_key": false,
@@ -51,7 +51,7 @@
  "failures": [
   {
    "id": "KOFIA",
-   "error": "STATSCU0100000070BO 2019: Unterminated string starting at: line 1 column 31676 (char 31675)"
+   "error": "STATSCU0100000070BO 2022: Unterminated string starting at: line 1 column 31676 (char 31675)"
   }
  ]
 }
