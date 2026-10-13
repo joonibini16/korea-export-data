@@ -197,6 +197,30 @@ def r_lscable(rep):
     raise ValueError('전선 부문 행 없음')
 
 
+def r_gigavis(rep):
+    # 품목 | 당기수주 | 납품액 | 수주잔고 (단위: 백만원). 작성기준일까지 공시된 단일판매·공급계약 포함.
+    for t in rep['tables']:
+        head = ' '.join(t['rows'][0]).replace(' ', '') if t['rows'] else ''
+        if '수주잔고' in head and re.search(r'당.{0,2}수주', head) and '백만원' in t['before']:
+            row = total_row(t) or t['rows'][-1]
+            g, d, b = [num(v) for v in row[-3:]]
+            if b is None:
+                raise ValueError("balance not disclosed ('-')")
+            if not check(g, d if d is not None else Decimal(0), b):
+                raise ValueError('당기수주−납품액 ≠ 잔고')
+            return b, 'KRW_million', '수주 현황 표(당기수주·납품액·수주잔고). 보고서 작성기준일까지 공시된 단일판매·공급계약을 포함합니다.'
+    raise ValueError('수주 현황 표 없음')
+
+
+def r_intekplus(rep):
+    # 2021-Q2·Q3 표는 합계 행 이름 칸이 비어 있어 마지막 행(빈 이름 + 6개 값)을 합계로 사용
+    t = rep['tables'][0]
+    if not total_row(t) and t['rows'] and t['rows'][-1][0].strip() == '' and len(t['rows'][-1]) == 7:
+        t = dict(t, rows=t['rows'][:-1] + [['합계'] + t['rows'][-1][1:]])
+        rep = dict(rep, tables=[t] + rep['tables'][1:])
+    return r_pcb_amount([('백만원', 'KRW_million')])(rep)
+
+
 RULES = {
     '222800': (r_simmtech, '인쇄회로기판 공시 수주상황'),
     '353200': (r_pcb_amount([('억원', 'KRW_100m')]), 'PCB 공시 수주상황'),
@@ -212,6 +236,10 @@ RULES = {
     '082920': (r_vitzro, '장기공급계약 수주잔고 합계(원화)'),
     '298040': (r_hyosung, '중공업 부문·국내외 주요 종속회사 포함'),
     'LS-CABLE': (r_lscable, 'LS 공시 전선 부문 연결·참고'),
+    '064290': (r_intekplus, '반도체·2차전지 외관검사 장비 수주상황 합계'),
+    '131290': (r_pcb_amount([('백만원', 'KRW_million')]), '프로브카드·인터페이스보드·소켓·검사장비 합계'),
+    '092870': (r_pcb_amount([('백만원', 'KRW_million')]), '공시된 장비 공급계약 합계'),
+    '420770': (r_gigavis, '반도체 기판 검사·수리장비'),
 }
 # ---- 범위가 다른 구간: 본 시계열과 섞지 않고 별도 scope(차트에서 다른 색 시리즈)로 보존 ----
 def a_hdelectric(rep):
