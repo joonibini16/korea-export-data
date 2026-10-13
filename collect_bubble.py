@@ -36,8 +36,10 @@ def get(url, timeout=90, tries=4, ua=True):
 
 
 def yahoo(sym):
-    j = json.loads(get('https://query1.finance.yahoo.com/v8/finance/chart/' + urllib.parse.quote(sym) + '?range=' + ('max' if sym in ('^KS11', '^KQ11') else '5y') + '&interval=1d', 40))
+    j = json.loads(get('https://query1.finance.yahoo.com/v8/finance/chart/' + urllib.parse.quote(sym) + ('?period1=1420070400&period2=' + str(int(time.time())) if sym in ('^KS11', '^KQ11') else '?range=5y') + '&interval=1d', 40))  # range=max는 월간으로 내려와서 2015-01-01부터 기간 지정
     r = j['chart']['result'][0]
+    if r.get('meta', {}).get('dataGranularity', '1d') != '1d':
+        raise RuntimeError('not daily: ' + str(r['meta'].get('dataGranularity')))
     ts, cl = r.get('timestamp') or [], r['indicators']['quote'][0].get('close') or []
     out = []
     for t, c in zip(ts, cl):
