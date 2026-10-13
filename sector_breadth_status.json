@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-14T08:43:45+09:00",
+ "updated_at": "2026-10-14T08:51:14+09:00",
  "source": "KIND 상장법인목록 + 네이버 fchart 종가",
  "groups": {
   "KOSDAQ|소프트웨어 개발 및 공급업": {
@@ -21,11 +21,37 @@
    "latest": "2026-10-13",
    "updated_at": "2026-10-14T08:43:45+09:00",
    "observations": 358
+  },
+  "KOSDAQ|전자부품 제조업": {
+   "market": "KOSDAQ",
+   "sector": "전자부품 제조업",
+   "target": 108,
+   "success": 108,
+   "unavailable": [],
+   "members": "00ff0e8cd2a175d886d4e26d07b8c16da578dce21a97866559a873a35cc2e5fd",
+   "latest": "2026-10-13",
+   "updated_at": "2026-10-14T08:51:14+09:00",
+   "observations": 358
+  },
+  "KOSPI|기타 금융업": {
+   "market": "KOSPI",
+   "sector": "기타 금융업",
+   "target": 69,
+   "success": 69,
+   "unavailable": [],
+   "members": "72d1eaf584c40c68c2110d60df21bf264fbbd3350474eddec49b612578f12b64",
+   "latest": "2026-10-13",
+   "updated_at": "2026-10-14T08:51:14+09:00",
+   "observations": 358
   }
+ },
+ "attempts": {
+  "KOSDAQ|전자부품 제조업": 0,
+  "KOSPI|기타 금융업": 0
  },
  "issues": [],
  "listed": 2647,
  "industry_total": 262,
- "industry_done": 2,
- "stock_done": 322
+ "industry_done": 4,
+ "stock_done": 499
 }
