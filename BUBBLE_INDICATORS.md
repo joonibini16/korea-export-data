@@ -38,3 +38,8 @@ CDS, primary bond issue spread, secondary bond spread and affiliate debt are dis
 `node test_bubble_indicators.cjs`
 
 Tests cover warmup windows, IPO denominator, missing snapshots, zero vs null, numeric/date parsing, Wilder RSI reference, closed-session filtering, range controls and all eight chart bindings.
+
+## Fallback breadth and CDS chart (added 2026-10-13)
+
+- Until `KRX_API_KEY` is registered, `breadth_daily.json` stays empty. The page then shows a fallback from `collect_breadth_naver.py` (workflow `breadth_naver.yml`, 16:50 KST weekdays → `breadth_kr.csv`, `breadth_naver_status.json`), converted to the same definitions above (HLI = new highs ÷ eligible). The fallback uses the current KIND listing plus Naver daily closes, so it has survivorship bias and excludes preferred shares and SPACs; the status line says so. Once KRX data exists, the KRX series is used automatically.
+- 회사별 5년 CDS 추이: one chart per issuer, linear scale, 2025-11 onward. Continuous lines only where a daily series exists (`cds_series.csv`; Nvidia digitized from a user-provided LSEG chart, approximate). Reported observations from `cds_manual.csv` and the CDS rows of `hyperscaler_credit.json` are plotted as unconnected points.

@@ -6,7 +6,7 @@ function rows(t){const L=t.replace(/^﻿/,'').trim().split(/\r?\n/);const h=L[0]
 function chart(id,cfg){charts[id]?.destroy();charts[id]=new Chart(el(id),cfg);}
 const C={'^GSPC':['미국 S&P500','US','BOPTEXP'],'^IXIC':['미국 나스닥','US','BOPTEXP'],'^SOX':['미국 반도체(SOX)','US','BOPTEXP'],'^KS11':['한국 코스피','KR','XTEXVA01KRM667S'],'^KQ11':['한국 코스닥','KR','XTEXVA01KRM667S'],'^TWII':['대만 가권','TW',null],'^N225':['일본 닛케이','JP','XTEXVA01JPM667S'],'000001.SS':['중국 상해종합','CN','XTEXVA01CNM667S'],'^HSI':['홍콩 항셍','HK',null],'^GDAXI':['독일 DAX','DE','XTEXVA01DEM667S'],'^FCHI':['프랑스 CAC40','FR','XTEXVA01FRM667S'],'^FTSE':['영국 FTSE100','GB','XTEXVA01GBM667S'],'^STOXX50E':['유로 STOXX50','EU',null],'^NSEI':['인도 니프티50','IN','XTEXVA01INM667S'],'^BVSP':['브라질 보베스파','BR','XTEXVA01BRM667S'],'^GSPTSE':['캐나다 TSX','CA','XTEXVA01CAM667S'],'^AXJO':['호주 ASX200','AU','XTEXVA01AUM667S'],'^JKSE':['인도네시아 JCI','ID','XTEXVA01IDM667S'],'^MXX':['멕시코 IPC','MX','XTEXVA01MXM667S']};
 const AI={ORCL:'오라클',NVDA:'엔비디아',AVGO:'브로드컴',MSFT:'마이크로소프트',META:'메타',AMZN:'아마존',GOOGL:'알파벳',TSM:'TSMC(ADR)',AMD:'AMD',CRWV:'코어위브',HYG:'하이일드 채권 ETF (HYG)',LQD:'투자등급 채권 ETF (LQD)'};
-let M=new Map(),F=new Map(),E=new Map(),VK=[],KF=[],BR=[],brRange='1y',levRange='ytd',cds=[],KRM=[];
+let CDSS=[],HC=[],M=new Map(),F=new Map(),E=new Map(),VK=[],KF=[],BR=[],brRange='1y',levRange='ytd',cds=[],KRM=[];
 const ser=s=>M.get(s)||[],fs=s=>F.get(s)||[];
 function at(arr,date){let lo=0,hi=arr.length-1,ans=null;while(lo<=hi){const m=(lo+hi)>>1;if(arr[m].d<=date){ans=arr[m];lo=m+1;}else hi=m-1;}return ans;}
 function back(arr,days){const last=arr.at(-1);if(!last)return null;const d=new Date(last.d);d.setDate(d.getDate()-days);return at(arr,d.toISOString().slice(0,10));}
@@ -51,8 +51,24 @@ function renderCredit(){const S='2019-01-01';
  line('oas',[{label:'하이일드',data:since(fs('BAMLH0A0HYM2'),S),color:'#ef4444',w:3},{label:'CCC 이하',data:since(fs('BAMLH0A3HYC'),S),color:'#f59e0b',axis:'y1'},{label:'BBB',data:since(fs('BAMLC0A4CBBB'),S),color:'#60a5fa'},{label:'투자등급 전체',data:since(fs('BAMLC0A0CM'),S),color:'#34d399'}],'%p',{y1:'CCC %p'});
  const by=new Map();cds.forEach(r=>{if(!by.has(r.ticker))by.set(r.ticker,[]);by.get(r.ticker).push({d:r.date,v:num(r.cds_5y_bps),r});});
  const pal=['#ef4444','#60a5fa','#f59e0b','#a78bfa','#34d399','#f472b6','#22d3ee','#facc15','#94a3b8'];let i=0;const labels=[...new Set(cds.map(r=>r.date))].sort();
- const ts=d=>new Date(d+'T00:00:00Z').getTime();
- chart('cds',{type:'line',data:{datasets:[...by].map(([t,a])=>{const c=pal[i++%pal.length];return{label:a[0].r.entity,data:a.slice().sort((x,y)=>x.d.localeCompare(y.d)).map(p=>({x:ts(p.d),y:p.v,d:p.d})),borderColor:c,backgroundColor:c,pointRadius:4.5,borderWidth:2};})},options:{responsive:true,maintainAspectRatio:false,parsing:true,plugins:{legend:{position:'bottom'},tooltip:{callbacks:{title:x=>x[0]?.raw?.d||'',label:x=>`${x.dataset.label}: ${x.parsed.y}bp`}}},scales:{y:{type:'logarithmic',title:{display:true,text:'bp (로그)'},ticks:{callback:v=>[25,50,100,200,400,800].includes(v)?v:''}},x:{type:'linear',grid:{display:false},ticks:{maxTicksLimit:7,callback:v=>new Date(v).toISOString().slice(2,7).replace('-','.')}}}}});
+ const ts=d=>new Date(d+'T00:00:00Z').getTime(),MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+ const dense=new Map();CDSS.forEach(r=>{const v=num(r.cds_5y_bps);if(v==null)return;if(!dense.has(r.ticker))dense.set(r.ticker,{name:r.entity,src:r.source,a:[]});dense.get(r.ticker).a.push({d:r.date,v});});
+ const NM={META:'Meta',MSFT:'Microsoft',AMZN:'Amazon',GOOGL:'Alphabet',ORCL:'Oracle',NVDA:'Nvidia',AVGO:'Broadcom',CRWV:'CoreWeave'},gb=new Map([...by].map(([t,a])=>[t,a.slice()]));
+ for(const r of HC){if(r.metric!=='CDS'||!Number.isFinite(r.value_bps)||!r.ticker)continue;if(!gb.has(r.ticker))gb.set(r.ticker,[]);const a=gb.get(r.ticker);if(!a.some(x=>x.d===r.date&&Math.abs(x.v-r.value_bps)<1))a.push({d:r.date,v:r.value_bps,r:{entity:NM[r.ticker]||r.entity||r.ticker}});}
+ const grid=el('cdsGrid');grid.replaceChildren();const X0=ts('2025-11-10');let X1=X0;for(const r of [...cds,...CDSS,...HC])if(r.date)X1=Math.max(X1,ts(r.date));X1+=3*864e5;
+ const order=[...new Set([...dense.keys(),...gb.keys()])].sort((p,q)=>{const lv=t=>(dense.get(t)?.a.at(-1)?.v)??(gb.get(t)?.slice().sort((x,y)=>x.d.localeCompare(y.d)).at(-1)?.v)??0;return lv(q)-lv(p);});
+ order.forEach((t,k)=>{const pts=(gb.get(t)||[]).slice().sort((x,y)=>x.d.localeCompare(y.d)),dn=(dense.get(t)?.a||[]).sort((x,y)=>x.d.localeCompare(y.d));if(dn.length+pts.length<2)return;
+  const name=(pts[0]?.r.entity||dense.get(t)?.name),last=[...dn,...pts].sort((x,y)=>x.d.localeCompare(y.d)).at(-1);
+  const c=document.createElement('div');c.className='cds-card';c.innerHTML='<b></b><span class="cv"></span><div class="cc"><canvas></canvas></div><small></small>';
+  c.querySelector('b').textContent=`${name.toUpperCase()} — 5Y CDS (bp)`;c.querySelector('.cv').textContent=`최근 ${last.v}bp · ${last.d}`;
+  c.querySelector('small').textContent=dn.length?'일별: '+(dense.get(t).src||''):'보도된 개별 관측치 (점 사이 보간 없음)';grid.append(c);
+  const id='cdsC'+k;c.querySelector('canvas').id=id;const vals=[...dn,...pts].map(x=>x.v),lo=Math.min(...vals),hi=Math.max(...vals),pad=Math.max(5,(hi-lo)*0.12);
+  const ds=[];if(dn.length)ds.push({label:'일별',data:dn.map(x=>({x:ts(x.d),y:x.v})),borderColor:'#4a8fe7',borderWidth:2.2,pointRadius:0,tension:0});
+  if(pts.length)ds.push({label:'보도',data:pts.map(x=>({x:ts(x.d),y:x.v})),borderColor:'#f59e0b',backgroundColor:'#f59e0b',borderWidth:0,pointRadius:5,showLine:false});
+  const ref=[100,200].filter(v=>v>lo-pad&&v<hi+pad);
+  chart(id,{type:'line',data:{datasets:ds},plugins:[hlines(ref.map(v=>[v,v>=200?'rgba(239,68,68,.55)':'rgba(245,158,11,.5)']))],options:{responsive:true,maintainAspectRatio:false,animation:false,plugins:{legend:{display:false},tooltip:{callbacks:{title:x=>new Date(x[0].parsed.x).toISOString().slice(0,10),label:x=>`${x.dataset.label}: ${x.parsed.y}bp`}}},
+   scales:{x:{type:'linear',min:X0,max:X1,grid:{color:'rgba(148,163,184,.08)'},afterBuildTicks:ax=>{const tk=[];const d=new Date(X0);d.setUTCDate(1);d.setUTCMonth(d.getUTCMonth()+1);while(d.getTime()<=X1){tk.push({value:d.getTime()});d.setUTCMonth(d.getUTCMonth()+1);}ax.ticks=tk;},ticks:{autoSkip:true,maxRotation:0,callback:v=>{const d=new Date(v);return MON[d.getUTCMonth()]+' '+String(d.getUTCFullYear()).slice(2);}}},
+    y:{min:Math.max(0,Math.floor((lo-pad)/10)*10),max:Math.ceil((hi+pad)/10)*10,title:{display:true,text:'5Y CDS mid (bp)'},grid:{color:'rgba(148,163,184,.14)'}}}}});});
  const tb=el('cdsTable');tb.replaceChildren();for(const [t,a] of [...by].sort((x,y)=>(num(y[1].at(-1)?.v)||0)-(num(x[1].at(-1)?.v)||0))){a.sort((x,y)=>x.d.localeCompare(y.d));const l=a.at(-1),p=a.at(-2);const tr=document.createElement('tr');const nm=td(tr,a[0].r.entity+' ('+t+')');const notes=[...new Set(a.map(x=>x.r.note).filter(Boolean))];if(notes.length){nm.title=notes.join(' / ');nm.style.textDecoration='underline dotted';}td(tr,l.d);td(tr,l.v.toLocaleString(),l.v>=200?'background:#5b1a1a':l.v>=100?'background:#3b2a12':'');td(tr,p?(l.v-p.v>0?'+':'')+(l.v-p.v).toFixed(0)+'bp':'—');const s=td(tr,'');const aEl=document.createElement('a');aEl.href=l.r.source;aEl.target='_blank';aEl.rel='noopener';aEl.textContent='보도';s.append(aEl);tb.append(tr);}
  const ai=el('ai');ai.replaceChildren();for(const [s,n] of Object.entries(AI)){const a=ser(s);if(!a.length)continue;const tr=document.createElement('tr');td(tr,n+' ('+s+')');td(tr,a.at(-1).d);[ret(a,7),ret(a,30),ret(a,91),dd52(a)].forEach(v=>td(tr,pct(v),heat(v),cls(v)+' h'));ai.append(tr);}
  const hy=fs('BAMLH0A0HYM2');const h3=hy.length>63?hy.at(-1).v-hy.at(-64).v:null;return{hy:hy.at(-1),h3,orcl:by.get('ORCL')?.at(-1)};}
@@ -144,21 +160,9 @@ function hlines(vals){return{id:'hl',beforeDatasetsDraw(ch){const y=ch.scales.y,
 function brChart(id,labels,sets,lines,ymin,ymax){chart(id,{type:'line',data:{labels,datasets:sets.map(s=>({label:s.l,data:s.d,borderColor:s.c,backgroundColor:s.c,borderWidth:s.w||1.6,borderDash:s.dash||[],pointRadius:0,spanGaps:true}))},plugins:[hlines(lines)],
  options:{responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:'index',intersect:false},plugins:{legend:{position:'top',align:'end',labels:{boxHeight:2}},tooltip:{callbacks:{label:x=>`${x.dataset.label}: ${x.parsed.y==null?'—':x.parsed.y.toFixed(1)}`}}},
   scales:{x:{ticks:{maxTicksLimit:7,callback:function(v){return this.getLabelForValue(v).slice(2,7).replace('-','.');}},grid:{display:false}},y:{min:ymin,max:ymax,afterFit:a=>{a.width=40;},ticks:{maxTicksLimit:5},grid:{color:'rgba(148,163,184,.12)'}}}}});}
-function renderBreadth(){const out={};
- for(const [k,mk,sym,nm] of [['k','KOSPI','^KS11','코스피'],['q','KOSDAQ','^KQ11','코스닥']]){
-  const all=BR.filter(r=>r.market===mk),b=all.map(r=>r.breadth60),h=all.map(r=>r.hli),b5=sma(b,5),h10=sma(h,10);
-  const rs=rsi(ser(sym)),last=(all.at(-1)||{}).date||rs.at(-1)?.d;if(!last){continue;}const S=brStart(last);
-  const ix=all.map((r,i)=>i).filter(i=>all[i].date>=S),L=ix.map(i=>all[i].date);
-  if(all.length){brChart('br'+k+'B',L,[{l:'Breadth_60',d:ix.map(i=>b[i]),c:'#60a5fa',w:1.3},{l:'5-SMA',d:ix.map(i=>b5[i]),c:'#f59e0b',w:2.2}],[[50,'rgba(226,232,240,.45)'],[80,'rgba(239,68,68,.5)'],[20,'rgba(52,211,153,.5)']],0,100);
-   brChart('br'+k+'H',L,[{l:'HLI',d:ix.map(i=>h[i]),c:'#a78bfa',w:1.3},{l:'10-SMA',d:ix.map(i=>h10[i]),c:'#f472b6',w:2.2}],[[50,'rgba(226,232,240,.45)'],[70,'rgba(239,68,68,.45)'],[30,'rgba(52,211,153,.45)']],0,100);}
-  const rr=rs.filter(x=>x.d>=S);brChart('br'+k+'R',rr.map(x=>x.d),[{l:'RSI(14)',d:rr.map(x=>x.v),c:'#34d399',w:1.8}],[[70,'rgba(239,68,68,.6)'],[30,'rgba(96,165,250,.6)'],[50,'rgba(226,232,240,.3)']],0,100);
-  const lb=all.at(-1)||{},lr=rs.at(-1),i=all.length-1,f=v=>v==null||v===''?'—':Number(v).toFixed(1);
-  const st=(v,hi,lo)=>v==null?'':v>=hi?' (과열)':v<=lo?' (침체)':'';
-  el('br'+k+'S').textContent=all.length?`${lb.date} · Breadth_60 ${f(b[i])}% (5-SMA ${f(b5[i])}) · 신고가 ${lb.nh??'—'} / 신저가 ${lb.nl??'—'} · HLI ${f(h[i])} (10-SMA ${f(h10[i])}) · 대상 ${lb.n60}종목`:'시장폭 자료 수집 전입니다.';
-  el('br'+k+'RS').textContent=lr?`RSI(14) ${lr.v.toFixed(1)}${st(lr.v,70,30)} · ${lr.d}`:'';
-  out[mk]={b5:b5[i],h10:h10[i],rsi:lr?.v};}
+function renderBreadth(){const out={};// 경고등용 수치만 계산(그래프는 bubble_indicators.js의 '시장 내부 체력' 섹션)
+ for(const [mk,sym] of [['KOSPI','^KS11'],['KOSDAQ','^KQ11']]){const all=BR.filter(r=>r.market===mk),b5=sma(all.map(r=>r.breadth60),5),rs=rsi(ser(sym));out[mk]={b5:b5.at(-1),rsi:rs.at(-1)?.v};}
  return out;}
-
 function light(name,val,state,sub){const d=document.createElement('div');d.className='light '+state;d.innerHTML='<b></b><strong></strong><span></span>';d.children[0].textContent=name;d.children[1].textContent=val;d.children[2].textContent=sub;el('lights').append(d);return state;}
 function renderLights(weak,liq,cr){el('lights').replaceChildren();const st=[];const L=(...a)=>st.push(light(...a));
  const spx=ser('^GSPC'),sox=ser('^SOX');const a=dd52(spx),b=dd52(sox);
@@ -180,7 +184,7 @@ function renderLights(weak,liq,cr){el('lights').replaceChildren();const st=[];co
  const bad=st.filter(s=>s==='bad').length,warn=st.filter(s=>s==='warn').length,tot=st.filter(s=>s!=='na').length;
  el('scoreBig').textContent=`경고 ${bad} · 주의 ${warn} / ${tot}`;el('scoreBig').style.color=bad>=4?'#f87171':bad>=2||warn>=4?'#fbbf24':'#4ade80';
  el('scoreText').textContent=bad>=4?'여러 영역(주가·신용·유동성)이 동시에 경고 — 위험 관리 강화 구간':bad>=2||warn>=4?'일부 영역에서 균열 — 신용·유동성 지표가 따라 움직이는지 주시':'광범위한 스트레스 신호는 아직 제한적';}
-async function init(){try{const [m,f,c,s,kp,ec,vk,kf,br]=await Promise.all([read('market_daily.csv'),read('fred_data.csv'),read('cds_manual.csv'),read('bubble_status.json'),read('provisional_official.csv'),read('ecos_rates.csv'),read('vkospi.csv'),read('kofia_daily.csv'),read('breadth_kr.csv')]);
+async function init(){try{const [m,f,c,s,kp,ec,vk,kf,br,cs,hc]=await Promise.all([read('market_daily.csv'),read('fred_data.csv'),read('cds_manual.csv'),read('bubble_status.json'),read('provisional_official.csv'),read('ecos_rates.csv'),read('vkospi.csv'),read('kofia_daily.csv'),read('breadth_kr.csv'),read('cds_series.csv'),read('hyperscaler_credit.json')]);
  if(!m||!f){el('err').hidden=false;el('err').textContent='데이터를 아직 수집하지 못했습니다. 자동 수집이 끝나면 표시됩니다.';}
  for(const r of rows(m||'symbol,date,close')){const v=num(r.close);if(v==null)continue;if(!M.has(r.symbol))M.set(r.symbol,[]);M.get(r.symbol).push({d:r.date,v});}
  for(const r of rows(f||'series,date,value')){const v=num(r.value);if(v==null)continue;if(!F.has(r.series))F.set(r.series,[]);F.get(r.series).push({d:r.date,v});}
@@ -188,9 +192,9 @@ async function init(){try{const [m,f,c,s,kp,ec,vk,kf,br]=await Promise.all([read
  KF=rows(kf||'date').map(r=>{const o={date:r.date};for(const k in r)if(k!=='date')o[k]=num(r[k]);return o;}).filter(x=>x.date).sort((a,b)=>a.date.localeCompare(b.date));
  BR=rows(br||'date').filter(r=>r.date).map(r=>({date:r.date,market:r.market,n60:num(r.n60),breadth60:num(r.breadth60),nh:num(r.nh),nl:num(r.nl),hli:num(r.hli)})).sort((a,b)=>a.date.localeCompare(b.date));
  VK=rows(vk||'date,close').map(r=>({d:r.date,v:num(r.close)})).filter(x=>x.v!=null);
- for(const a of [...M.values(),...F.values(),...E.values(),VK])a.sort((x,y)=>x.d.localeCompare(y.d));cds=c?rows(c):[];
+ for(const a of [...M.values(),...F.values(),...E.values(),VK])a.sort((x,y)=>x.d.localeCompare(y.d));cds=c?rows(c):[];CDSS=cs?rows(cs):[];try{HC=hc?JSON.parse(hc):[];}catch(e){HC=[];}
  KRM=kp?rows(kp).filter(r=>r['기간구분']==='MONTH'&&num(r['수출YoY_pct'])!=null).map(r=>({k:r['기준월'].replace('.','-'),y:num(r['수출YoY_pct'])})):[];
- window.__lev=KF.length?renderLev():null;window.__br=renderBreadth();document.querySelectorAll('#brRange button').forEach(b=>b.onclick=()=>{brRange=b.dataset.r;document.querySelectorAll('#brRange button').forEach(x=>x.classList.toggle('on',x===b));renderBreadth();});document.querySelectorAll('#levRange button').forEach(b=>b.onclick=()=>{levRange=b.dataset.r;document.querySelectorAll('#levRange button').forEach(x=>x.classList.toggle('on',x===b));renderLev();});
+ window.__lev=KF.length?renderLev():null;window.__br=renderBreadth();document.querySelectorAll('#levRange button').forEach(b=>b.onclick=()=>{levRange=b.dataset.r;document.querySelectorAll('#levRange button').forEach(x=>x.classList.toggle('on',x===b));renderLev();});
  const weak=renderWeak(),liq=renderLiq(),cr=renderCredit();renderOther();renderLights(weak,liq,cr);renderMini();
  const st=s?JSON.parse(s):{};await renderBubbleIndicators(st);el('asof').textContent=`자료 기준: 주가 ${ser('^GSPC').at(-1)?.d||'—'} · 스프레드 ${fs('BAMLH0A0HYM2').at(-1)?.d||'—'} · 순유동성 ${liq.nl.at(-1)?.d||'—'} · 수집 ${st.updated_at||'—'}`;
  el('status').textContent=st.failures?.length?`수집 실패 ${st.failures.length}건: `+st.failures.map(x=>x.id).join(', '):'';

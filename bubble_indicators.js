@@ -22,6 +22,9 @@ async function renderBubbleIndicators(st){
  let range='1y',breadth=[],credit=[];
  try{breadth=JSON.parse(await read('breadth_daily.json')||'[]');}catch(e){el('breadthStatus').textContent='Breadth 자료를 읽지 못했습니다.';}
  let bs={};try{bs=JSON.parse(await read('breadth_status.json')||'{}');}catch(e){}
+ // KRX 키가 없어 breadth_daily.json이 비어 있으면 네이버 일봉 기반 대체 자료(collect_breadth_naver.py → breadth_kr.csv)를 같은 정의로 환산해 씁니다.
+ let fallback=false;if(!breadth.length){try{const t=await read('breadth_kr.csv');if(t){const n=v=>v===''||v==null?null:Number(v);
+  breadth=rows(t).filter(r=>r.date).map(r=>{const n250=n(r.n250),nh=n(r.nh);return{date:r.date,market:r.market,breadth_60:n(r.breadth60),above_60:n(r.above60),eligible_60:n(r.n60),hli:n250&&nh!=null?nh/n250*100:null,new_high:nh,eligible_252:n250,total:n(r.n60)};});fallback=breadth.length>0;}}catch(e){}}
  try{credit=JSON.parse(await read('hyperscaler_credit.json')||'[]');}catch(e){el('hyperStatus').textContent='신용 자료를 읽지 못했습니다.';}
  const from=()=>{const d=new Date();if(range==='all')return'2015-01-01';if(range==='ytd')return d.getFullYear()+'-01-01';d.setFullYear(d.getFullYear()-(range==='3y'?3:1));return d.toISOString().slice(0,10);};
  function plot(id,sets,bounds){
@@ -36,7 +39,7 @@ async function renderBubbleIndicators(st){
   for(const [field,n,title]of [['breadth_60',5,'Breadth_60'],['hli',10,'HLI']]){const raw=b.map(x=>({d:x.date,v:x[field]}));plot(field+market,[{label:title,data:raw.filter(x=>x.d>=from()),color:palette[0],w:1},{label:n+'-SMA',data:BubbleIndicators.sma(raw,n).filter(x=>x.d>=from()),color:palette[3],w:2.5}],[0,100]);}
   const lastB=b.at(-1);el('breadthNote'+market).textContent=lastB?`${lastB.date} · Breadth ${val(lastB.breadth_60)}% (${lastB.above_60}/${lastB.eligible_60}) · HLI ${val(lastB.hli)}% (${lastB.new_high}/${lastB.eligible_252}) · 당일 유효 주권 ${lastB.total}개`:'전 종목 종가 수집 대기 · 결측값은 0으로 표시하지 않습니다.';
  }}
- el('breadthStatus').textContent=bs.message||'KRX 전 종목 종가 수집 상태 확인 중';
+ el('breadthStatus').textContent=(bs.message||'KRX 전 종목 종가 수집 상태 확인 중')+(fallback?' → 그동안 네이버 일봉 기반 대체 자료를 표시합니다(현재 상장 종목 기준이라 상장폐지 종목이 빠지는 생존 편향, 우선주 제외).':'');
  document.querySelectorAll('#technicalRange button').forEach(b=>b.onclick=()=>{range=b.dataset.r;document.querySelectorAll('#technicalRange button').forEach(x=>x.classList.toggle('on',x===b));render();});render();
  const issuers={META:'메타',MSFT:'마이크로소프트',AMZN:'아마존',GOOGL:'알파벳',ORCL:'오라클'};
  const valid=credit.filter(r=>Number.isFinite(r.value_bps)&&r.value_bps>=0&&/^https:\/\//.test(r.source));
