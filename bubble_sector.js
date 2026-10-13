@@ -24,5 +24,6 @@
   const tbody=$('sectorStocks');tbody.replaceChildren();for(const r of members){const q=valid?quotes.get(r.market+'|'+r.code):null,tr=document.createElement('tr');const cells=[r.name,r.code,q?.date||'—',fmt(q?.close),fmt(q?.sma60),q?.above60===''||!q?'—':q.above60==='1'?'예':'아니요',q?.new_high===''||!q?'—':q.new_high==='1'?'예':'아니요'];for(const value of cells){const td=document.createElement('td');td.textContent=value;tr.append(td);}tbody.append(tr);}
  }
  function options(){const entries=[...group.entries()].filter(([k])=>k.startsWith(market.value+'|')).sort((a,b)=>b[1].length-a[1].length||a[0].localeCompare(b[0]));select.replaceChildren();for(const [key,members] of entries){const name=key.split('|').slice(1).join('|'),o=document.createElement('option');o.value=name;o.textContent=`${name} · ${members.length}개 · ${history.has(key)?'수집됨':'대기'}`;select.append(o);}show();}
+ if(![...history.keys()].some(k=>k.startsWith(market.value+'|'))&&[...history.keys()].some(k=>k.startsWith('KOSDAQ|')))market.value='KOSDAQ';
  market.addEventListener('change',options);select.addEventListener('change',show);options();
 })().catch(e=>{document.getElementById('sectorProgress').textContent='업종 자료 표시 오류: '+e.message;});
