@@ -1,4 +1,4 @@
-name: KRW-USD Exchange Rate
+name: KRW/TWD-USD Exchange Rate
 on:
   workflow_dispatch:
   push:
@@ -19,5 +19,5 @@ jobs:
       - run: python collect_fx.py
       - run: |
           git config user.name github-actions; git config user.email github-actions@github.com
-          git add fx_krw_usd.csv
+          git add fx_krw_usd.csv fx_twd_usd.csv
           if ! git diff --cached --quiet; then git commit -m "Update KRW/USD rate"; git pull --rebase origin main || (git rebase --abort; exit 1); git push; fi
