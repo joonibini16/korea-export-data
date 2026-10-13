@@ -6,7 +6,7 @@ function rows(t){const L=t.replace(/^﻿/,'').trim().split(/\r?\n/);const h=L[0]
 function chart(id,cfg){charts[id]?.destroy();charts[id]=new Chart(el(id),cfg);}
 const C={'^GSPC':['미국 S&P500','US','BOPTEXP'],'^IXIC':['미국 나스닥','US','BOPTEXP'],'^SOX':['미국 반도체(SOX)','US','BOPTEXP'],'^KS11':['한국 코스피','KR','XTEXVA01KRM667S'],'^KQ11':['한국 코스닥','KR','XTEXVA01KRM667S'],'^TWII':['대만 가권','TW',null],'^N225':['일본 닛케이','JP','XTEXVA01JPM667S'],'000001.SS':['중국 상해종합','CN','XTEXVA01CNM667S'],'^HSI':['홍콩 항셍','HK',null],'^GDAXI':['독일 DAX','DE','XTEXVA01DEM667S'],'^FCHI':['프랑스 CAC40','FR','XTEXVA01FRM667S'],'^FTSE':['영국 FTSE100','GB','XTEXVA01GBM667S'],'^STOXX50E':['유로 STOXX50','EU',null],'^NSEI':['인도 니프티50','IN','XTEXVA01INM667S'],'^BVSP':['브라질 보베스파','BR','XTEXVA01BRM667S'],'^GSPTSE':['캐나다 TSX','CA','XTEXVA01CAM667S'],'^AXJO':['호주 ASX200','AU','XTEXVA01AUM667S'],'^JKSE':['인도네시아 JCI','ID','XTEXVA01IDM667S'],'^MXX':['멕시코 IPC','MX','XTEXVA01MXM667S']};
 const AI={ORCL:'오라클',NVDA:'엔비디아',AVGO:'브로드컴',MSFT:'마이크로소프트',META:'메타',AMZN:'아마존',GOOGL:'알파벳',TSM:'TSMC(ADR)',AMD:'AMD',CRWV:'코어위브',HYG:'하이일드 채권 ETF (HYG)',LQD:'투자등급 채권 ETF (LQD)'};
-let M=new Map(),F=new Map(),cds=[],KRM=[];
+let M=new Map(),F=new Map(),E=new Map(),VK=[],cds=[],KRM=[];
 const ser=s=>M.get(s)||[],fs=s=>F.get(s)||[];
 function at(arr,date){let lo=0,hi=arr.length-1,ans=null;while(lo<=hi){const m=(lo+hi)>>1;if(arr[m].d<=date){ans=arr[m];lo=m+1;}else hi=m-1;}return ans;}
 function back(arr,days){const last=arr.at(-1);if(!last)return null;const d=new Date(last.d);d.setDate(d.getDate()-days);return at(arr,d.toISOString().slice(0,10));}
@@ -61,6 +61,52 @@ function renderOther(){const S='2020-01-01',p=s=>since(ser(s),S).map(x=>({d:x.d,
  line('fx',[{label:'달러/엔',data:p('JPY=X'),color:'#ef4444',w:2.5},{label:'달러인덱스',data:p('DX-Y.NYB'),color:'#60a5fa',axis:'y1'},{label:'원/달러',data:p('KRW=X').map(x=>({d:x.d,v:x.v/10})),color:'#34d399',axis:'y1',dash:[4,3]}],'엔',{y1:'달러인덱스 · 원/달러÷10'});
  const cu=ser('HG=F'),au=ser('GC=F');const cg=since(cu,S).map(x=>{const g=at(au,x.d);return g?{d:x.d,v:x.v/g.v*1000}:null;}).filter(Boolean);
  line('macro',[{label:'구리/금 ×1000',data:cg,color:'#f59e0b',w:2.5},{label:'신규 실업수당 청구 (만 건)',data:since(fs('ICSA'),S).map(x=>({d:x.d,v:x.v/1e4})),color:'#60a5fa',axis:'y1'},{label:'삼의 법칙 ×10',data:since(fs('SAHMREALTIME'),S).map(x=>({d:x.d,v:x.v*10})),color:'#ef4444',axis:'y1',dash:[5,4]}],'구리/금',{y1:'만 건 · 삼의 법칙×10'});}
+// ── 유동성·신용 한눈에: 최근 1년 소형 그래프 12개. 경보 = 1년 백분위 90% 이상(위험 방향) · 1개월 위험방향 급변 · 절대 수준 초과
+function joinS(a,b,f){const mb=new Map(b.map(x=>[x.d,x.v]));return a.filter(x=>mb.has(x.d)).map(x=>({d:x.d,v:f(x.v,mb.get(x.d))}));}
+const es=k=>E.get(k)||[];
+function miniDefs(){const bp=(a,b)=>joinS(es(a),es(b),(x,y)=>(x-y)*100),need='ECOS 키 등록 후 표시';
+ return[
+ {t:'회사채 AA− − 국고채 3년',s:'한국 우량 신용 스프레드',u:'bp',d:bp('CORP_AA','KTB3Y'),dir:1,jump:15,miss:need},
+ {t:'회사채 BBB− − 국고채 3년',s:'한국 비우량 신용 스프레드',u:'bp',d:bp('CORP_BBB','KTB3Y'),dir:1,jump:30,miss:need},
+ {t:'CP 91일 − CD 91일',s:'한국 단기자금 경색 (레고랜드 때 급등)',u:'bp',d:bp('CP91','CD91'),dir:1,jump:20,miss:need},
+ {t:'국고채 10년 − 3년',s:'한국 장단기 금리차',u:'bp',d:bp('KTB10Y','KTB3Y'),dir:-1,abs:0,miss:need},
+ {t:'미국 하이일드 스프레드',s:'ICE BofA HY OAS',u:'bp',d:fs('BAMLH0A0HYM2').map(x=>({d:x.d,v:x.v*100})),dir:1,jump:75,abs:500},
+ {t:'미국 투자등급 스프레드',s:'ICE BofA IG OAS',u:'bp',d:fs('BAMLC0A0CM').map(x=>({d:x.d,v:x.v*100})),dir:1,jump:20,abs:150},
+ {t:'미국 순유동성',s:'연준자산 − TGA − 역레포 · 십억 달러',u:'',d:netLiq().map(x=>({d:x.d,v:x.v*1000})),dir:-1,jumpPct:5},
+ {t:'미국 10년 − 2년',s:'미국 장단기 금리차',u:'bp',d:fs('T10Y2Y').map(x=>({d:x.d,v:x.v*100})),dir:-1,abs:0},
+ {t:'VIX',s:'S&P500 30일 내재변동성',u:'',d:ser('^VIX'),dir:1,abs:25,dec:1},
+ {t:'VIX / VIX3M',s:'1 초과 = 단기 공포 > 장기 (역전)',u:'x',d:joinS(ser('^VIX'),ser('^VIX3M'),(a,b)=>a/b),dir:1,abs:1,dec:2},
+ {t:'MOVE',s:'미국 국채 내재변동성',u:'',d:ser('^MOVE'),dir:1,abs:130,jumpPct:25,dec:1},
+ {t:'VKOSPI',s:'코스피200 30일 내재변동성',u:'',d:VK,dir:1,abs:30,dec:1,miss:'KRX 키 등록 후 표시 (선택)'}];}
+function miniStat(o){const a=o.d;if(!a.length)return null;const last=a.at(-1),d0=new Date(last.d);const ago=n=>{const d=new Date(d0);d.setDate(d.getDate()-n);return at(a,d.toISOString().slice(0,10));};
+ const y=new Date(d0);y.setFullYear(y.getFullYear()-1);const yr=a.filter(x=>x.d>=y.toISOString().slice(0,10));const w=ago(7),m=ago(30);
+ const pc=yr.filter(x=>x.v<=last.v).length/yr.length*100,sorted=yr.map(x=>x.v).sort((p,q)=>p-q),med=sorted[Math.floor(sorted.length/2)];
+ const ch1m=m?last.v-m.v:null,adv=v=>v==null?null:v*o.dir;const why=[];
+ if((o.dir>0&&pc>=90)||(o.dir<0&&pc<=10))why.push('1년 백분위 '+Math.round(pc)+'%');
+ if(o.jump!=null&&adv(ch1m)>=o.jump)why.push('1개월 '+(ch1m>0?'+':'')+ch1m.toFixed(0)+o.u);
+ if(o.jumpPct!=null&&m&&adv((last.v/m.v-1)*100)>=o.jumpPct)why.push('1개월 '+pct((last.v/m.v-1)*100));
+ if(o.abs!=null&&(o.dir>0?last.v>=o.abs:last.v<o.abs))why.push(o.dir>0?o.abs+' 이상':'역전');
+ return{last,w:w?last.v-w.v:null,m:ch1m,pc,med,yr,why};}
+function renderMini(){const box=el('mini');box.replaceChildren();const alerts=[];
+ const fmt=(o,v)=>v==null?'—':o.u==='bp'?Math.round(v)+'bp':o.u==='x'?v.toFixed(2)+'x':v.toLocaleString(undefined,{maximumFractionDigits:o.dec??0});
+ const sg=(o,v)=>v==null?'—':(v>0?'+':v<0?'−':'')+fmt(o,Math.abs(v)).replace(/x$/,'');
+ miniDefs().forEach((o,i)=>{const st=miniStat(o);const c=document.createElement('div');c.className='mini';
+  c.innerHTML='<b></b><small></small><div class="mv"><strong></strong><span></span></div><div class="mc"><canvas></canvas></div><em></em>';
+  c.querySelector('b').textContent=o.t;c.querySelector('small').textContent=o.s;
+  if(!st){c.querySelector('strong').textContent='—';c.querySelector('em').textContent=o.miss||'데이터 없음';c.classList.add('empty');box.append(c);return;}
+  const bad=st.why.length>0;if(bad){alerts.push(o.t);c.classList.add('bad');c.title='경보: '+st.why.join(' · ');}
+  c.querySelector('strong').textContent=fmt(o,st.last.v);c.querySelector('span').textContent=`1주 ${sg(o,st.w)} · 1개월 ${sg(o,st.m)} · 백분위 ${Math.round(st.pc)}%`;
+  c.querySelector('em').textContent=(bad?'경보: '+st.why.join(' · ')+' · ':'')+'기준일 '+st.last.d.slice(5).replace('-','/');box.append(c);
+  const col=bad?'#f87171':'#cbd5e1',L=st.yr.map(x=>x.d);
+  const ds=[{data:st.yr.map(x=>x.v),borderColor:col,borderWidth:1.6,pointRadius:L.map((_,k)=>k===L.length-1?3:0),pointBackgroundColor:col,tension:0},
+   {data:L.map(()=>st.med),borderColor:'rgba(148,163,184,.6)',borderDash:[4,3],borderWidth:1,pointRadius:0}];
+  const vs=st.yr.map(x=>x.v),hi=Math.max(...vs),lo=Math.min(...vs),rg=(hi-lo)||1;if(o.abs!=null&&o.abs<=hi+rg*0.4&&o.abs>=lo-rg*0.4)ds.push({data:L.map(()=>o.abs),borderColor:'rgba(239,68,68,.55)',borderDash:[2,3],borderWidth:1,pointRadius:0});
+  const id='mini'+i;c.querySelector('canvas').id=id;
+  chart(id,{type:'line',data:{labels:L,datasets:ds},options:{responsive:true,maintainAspectRatio:false,animation:false,plugins:{legend:{display:false},tooltip:{filter:x=>x.datasetIndex===0,callbacks:{label:x=>fmt(o,x.parsed.y)}}},
+   scales:{x:{ticks:{maxTicksLimit:4,callback:function(v){const s=this.getLabelForValue(v);return s.slice(2,7).replace('-','.');},font:{size:10}},grid:{display:false}},y:{ticks:{maxTicksLimit:5,font:{size:10}},grid:{color:'rgba(148,163,184,.1)'}}}}});});
+ el('miniHead').innerHTML='';const h=document.createElement('span');h.style.cssText='font-weight:700;color:'+(alerts.length?'#f87171':'#4ade80');h.textContent=alerts.length?`● 경보 ${alerts.length}개 · ${alerts.join(', ')}`:'● 경보 없음';el('miniHead').append(h);
+ const n=document.createElement('span');n.className='muted';n.textContent='  — 경보: 1년 백분위 90% 이상(위험 방향) · 1개월 위험방향 급변 · 절대수준 초과. 회색 점선 = 1년 중앙값, 빨간 점선 = 경보 수준. 카드에 마우스를 올리면 경보 이유가 보입니다.';el('miniHead').append(n);}
+
 function light(name,val,state,sub){const d=document.createElement('div');d.className='light '+state;d.innerHTML='<b></b><strong></strong><span></span>';d.children[0].textContent=name;d.children[1].textContent=val;d.children[2].textContent=sub;el('lights').append(d);return state;}
 function renderLights(weak,liq,cr){el('lights').replaceChildren();const st=[];const L=(...a)=>st.push(light(...a));
  const spx=ser('^GSPC'),sox=ser('^SOX');const a=dd52(spx),b=dd52(sox);
@@ -80,13 +126,15 @@ function renderLights(weak,liq,cr){el('lights').replaceChildren();const st=[];co
  const bad=st.filter(s=>s==='bad').length,warn=st.filter(s=>s==='warn').length,tot=st.filter(s=>s!=='na').length;
  el('scoreBig').textContent=`경고 ${bad} · 주의 ${warn} / ${tot}`;el('scoreBig').style.color=bad>=4?'#f87171':bad>=2||warn>=4?'#fbbf24':'#4ade80';
  el('scoreText').textContent=bad>=4?'여러 영역(주가·신용·유동성)이 동시에 경고 — 위험 관리 강화 구간':bad>=2||warn>=4?'일부 영역에서 균열 — 신용·유동성 지표가 따라 움직이는지 주시':'광범위한 스트레스 신호는 아직 제한적';}
-async function init(){try{const [m,f,c,s,kp]=await Promise.all([read('market_daily.csv'),read('fred_data.csv'),read('cds_manual.csv'),read('bubble_status.json'),read('provisional_official.csv')]);
+async function init(){try{const [m,f,c,s,kp,ec,vk]=await Promise.all([read('market_daily.csv'),read('fred_data.csv'),read('cds_manual.csv'),read('bubble_status.json'),read('provisional_official.csv'),read('ecos_rates.csv'),read('vkospi.csv')]);
  if(!m||!f){el('err').hidden=false;el('err').textContent='데이터를 아직 수집하지 못했습니다. 자동 수집이 끝나면 표시됩니다.';}
  for(const r of rows(m||'symbol,date,close')){const v=num(r.close);if(v==null)continue;if(!M.has(r.symbol))M.set(r.symbol,[]);M.get(r.symbol).push({d:r.date,v});}
  for(const r of rows(f||'series,date,value')){const v=num(r.value);if(v==null)continue;if(!F.has(r.series))F.set(r.series,[]);F.get(r.series).push({d:r.date,v});}
- for(const a of [...M.values(),...F.values()])a.sort((x,y)=>x.d.localeCompare(y.d));cds=c?rows(c):[];
+ for(const r of rows(ec||'series,date,value')){const v=num(r.value);if(v==null)continue;if(!E.has(r.series))E.set(r.series,[]);E.get(r.series).push({d:r.date,v});}
+ VK=rows(vk||'date,close').map(r=>({d:r.date,v:num(r.close)})).filter(x=>x.v!=null);
+ for(const a of [...M.values(),...F.values(),...E.values(),VK])a.sort((x,y)=>x.d.localeCompare(y.d));cds=c?rows(c):[];
  KRM=kp?rows(kp).filter(r=>r['기간구분']==='MONTH'&&num(r['수출YoY_pct'])!=null).map(r=>({k:r['기준월'].replace('.','-'),y:num(r['수출YoY_pct'])})):[];
- const weak=renderWeak(),liq=renderLiq(),cr=renderCredit();renderOther();renderLights(weak,liq,cr);
+ const weak=renderWeak(),liq=renderLiq(),cr=renderCredit();renderOther();renderLights(weak,liq,cr);renderMini();
  const st=s?JSON.parse(s):{};el('asof').textContent=`자료 기준: 주가 ${ser('^GSPC').at(-1)?.d||'—'} · 스프레드 ${fs('BAMLH0A0HYM2').at(-1)?.d||'—'} · 순유동성 ${liq.nl.at(-1)?.d||'—'} · 수집 ${st.updated_at||'—'}`;
  el('status').textContent=st.failures?.length?`수집 실패 ${st.failures.length}건: `+st.failures.map(x=>x.id).join(', '):'';
  }catch(e){el('err').hidden=false;el('err').textContent='오류: '+e.message;console.error(e);}}
