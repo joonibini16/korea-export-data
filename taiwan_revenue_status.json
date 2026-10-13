@@ -1,17 +1,11 @@
 {
- "updated_at": "2026-10-12T13:37:03+0900",
+ "updated_at": "2026-10-13T10:55:17+0900",
  "range": [
   "2015.01",
   "2026.09"
  ],
  "months_fetched_this_run": 3,
- "failures": [
-  {
-   "month": "2026.09",
-   "market": "sii",
-   "error": "NOT_IN_TABLE 1503,1519,2308,3711"
-  }
- ],
+ "failures": [],
  "coverage": [
   {
    "company_id": "2330",
@@ -61,13 +55,11 @@
   {
    "company_id": "3711",
    "name": "ASE Technology",
-   "months": 101,
+   "months": 102,
    "expected": 102,
    "first": "2018.04",
-   "last": "2026.08",
-   "missing": [
-    "2026.09"
-   ]
+   "last": "2026.09",
+   "missing": []
   },
   {
    "company_id": "6488",
@@ -162,35 +154,29 @@
   {
    "company_id": "2308",
    "name": "Delta Electronics",
-   "months": 140,
+   "months": 141,
    "expected": 141,
    "first": "2015.01",
-   "last": "2026.08",
-   "missing": [
-    "2026.09"
-   ]
+   "last": "2026.09",
+   "missing": []
   },
   {
    "company_id": "1519",
    "name": "Fortune Electric",
-   "months": 140,
+   "months": 141,
    "expected": 141,
    "first": "2015.01",
-   "last": "2026.08",
-   "missing": [
-    "2026.09"
-   ]
+   "last": "2026.09",
+   "missing": []
   },
   {
    "company_id": "1503",
    "name": "Shihlin Electric",
-   "months": 140,
+   "months": 141,
    "expected": 141,
    "first": "2015.01",
-   "last": "2026.08",
-   "missing": [
-    "2026.09"
-   ]
+   "last": "2026.09",
+   "missing": []
   },
   {
    "company_id": "1513",
