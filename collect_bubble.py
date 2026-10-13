@@ -4,6 +4,7 @@ Yahoo Finance chart API (daily close, 3y) → market_daily.csv (symbol,date,clos
 FRED fredgraph CSV (no key)              → fred_data.csv   (series,date,value)
 한국은행 ECOS 시장금리(일별, 817Y002; 환경변수 ECOS_API_KEY) → ecos_rates.csv (series,date,value)
 KRX Open API 파생상품지수(VKOSPI; 환경변수 KRX_API_KEY, 선택)   → vkospi.csv (date,close)
+금융투자협회 FreeSIS 증시자금·신용공여(일별, 키 불필요)          → kofia_daily.csv (백만원)
 Status → bubble_status.json. Unofficial endpoints: failures are recorded and earlier data kept.
 """
 import csv, json, os, time, urllib.request, urllib.parse
@@ -102,6 +103,41 @@ def vkospi(key, fails):
     return len(have)
 
 
+KOFIA_URL = 'https://freesis.kofia.or.kr/meta/getMetaDataList.do'
+KOFIA = {'STATSCU0100000060BO': ['deposit', 'deriv_deposit', 'rp', 'unsettled', 'forced_sale', 'forced_ratio'],
+         'STATSCU0100000070BO': ['credit_total', 'credit_kospi', 'credit_kosdaq', 'short_total', 'short_kospi', 'short_kosdaq', 'ipo_loan', 'secured_loan']}
+
+
+def kofia():
+    end = datetime.now(KST).strftime('%Y%m%d')
+    by = {}
+    for obj, cols in KOFIA.items():
+        for y in range(2015, int(end[:4]) + 1):
+            body = json.dumps({'dmSearch': {'tmpV40': '1000000', 'tmpV41': '1', 'tmpV1': 'D', 'tmpV45': f'{y}0101', 'tmpV46': min(f'{y}1231', end), 'OBJ_NM': obj}}).encode()
+            req = urllib.request.Request(KOFIA_URL, data=body, headers={'Content-Type': 'application/json', **UA})
+            for a in range(3):
+                try:
+                    with urllib.request.urlopen(req, timeout=60) as r:
+                        rows = json.loads(r.read().decode('utf-8')).get('ds1') or []
+                    break
+                except Exception as e:
+                    if a == 2: raise RuntimeError(f'{obj} {y}: {str(e)[:100]}')
+                    time.sleep(3)
+            for x in rows:
+                t = x['TMPV1']; d = by.setdefault(f'{t[:4]}-{t[4:6]}-{t[6:8]}', {})
+                for i, c in enumerate(cols):
+                    v = x.get(f'TMPV{i + 2}')
+                    if v is not None: d[c] = v
+            time.sleep(0.3)
+    if not by:
+        raise RuntimeError('empty')
+    fields = ['date'] + [c for cs in KOFIA.values() for c in cs]
+    with Path('kofia_daily.csv').open('w', encoding='utf-8', newline='') as f:
+        w = csv.DictWriter(f, fieldnames=fields); w.writeheader()
+        for k in sorted(by): w.writerow({'date': k, **by[k]})
+    return len(by)
+
+
 def merge(path, rows, key, fields, got):
     old = [r for r in csv.DictReader(path.open(encoding='utf-8'))] if path.exists() else []
     keep = [r for r in old if r[key] not in got]
@@ -128,11 +164,16 @@ def main():
         if E: merge(Path('ecos_rates.csv'), E, 'series', ['series', 'date', 'value'], {r['series'] for r in E})
     if os.environ.get('KRX_API_KEY'):
         nv = vkospi(os.environ['KRX_API_KEY'], fails)
+    nk = None
+    try:
+        nk = kofia()
+    except Exception as e:
+        fails.append(dict(id='KOFIA', error=str(e)[:150]))
     if Y: merge(Path('market_daily.csv'), Y, 'symbol', ['symbol', 'date', 'close'], {r['symbol'] for r in Y})
     if F: merge(Path('fred_data.csv'), F, 'series', ['series', 'date', 'value'], {r['series'] for r in F})
     last = {}
     for r in F: last[r['series']] = max(last.get(r['series'], ''), r['date'])
-    Path('bubble_status.json').write_text(json.dumps(dict(updated_at=datetime.now(KST).isoformat(timespec='seconds'), yahoo_rows=len(Y), fred_rows=len(F), ecos_rows=len(E), ecos_key=bool(os.environ.get('ECOS_API_KEY')), vkospi_rows=nv, krx_key=bool(os.environ.get('KRX_API_KEY')),
+    Path('bubble_status.json').write_text(json.dumps(dict(updated_at=datetime.now(KST).isoformat(timespec='seconds'), yahoo_rows=len(Y), fred_rows=len(F), ecos_rows=len(E), ecos_key=bool(os.environ.get('ECOS_API_KEY')), vkospi_rows=nv, kofia_rows=nk, krx_key=bool(os.environ.get('KRX_API_KEY')),
         fred_last=last, failures=fails), ensure_ascii=False, indent=1))
     print('yahoo', len(Y), 'fred', len(F), 'fails', len(fails))
 

@@ -26,5 +26,5 @@ jobs:
           KRX_API_KEY: ${{ secrets.KRX_API_KEY }}
       - run: |
           git config user.name github-actions; git config user.email github-actions@github.com
-          for f in market_daily.csv fred_data.csv bubble_status.json ecos_rates.csv vkospi.csv; do if [ -f $f ]; then git add $f; fi; done
+          for f in market_daily.csv fred_data.csv bubble_status.json ecos_rates.csv vkospi.csv kofia_daily.csv; do if [ -f $f ]; then git add $f; fi; done
           if ! git diff --cached --quiet; then git commit -m "Update bubble monitor data"; git pull --rebase origin main || (git rebase --abort; exit 1); git push; fi
