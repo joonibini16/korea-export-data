@@ -21,11 +21,11 @@ FRED = ['WALCL', 'WTREGEN', 'RRPONTSYD', 'WRESBAL', 'TOTBKCR', 'BUSLOANS', 'CONS
         'XTEXVA01INM667S', 'XTEXVA01BRM667S', 'XTEXVA01CAM667S', 'XTEXVA01AUM667S', 'XTEXVA01MXM667S', 'XTEXVA01IDM667S', 'BOPTEXP']
 
 
-def get(url, timeout=90, tries=4):
+def get(url, timeout=90, tries=4, ua=True):
     last = None
     for a in range(tries):
         try:
-            with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=timeout) as r:
+            with urllib.request.urlopen(urllib.request.Request(url, headers=UA if ua else {}), timeout=timeout) as r:
                 return r.read().decode('utf-8', 'replace')
         except Exception as e:
             last = e; time.sleep(3 * (a + 1))
@@ -44,7 +44,7 @@ def yahoo(sym):
 
 
 def fred(sid):
-    t = get(f'https://fred.stlouisfed.org/graph/fredgraph.csv?id={sid}&cosd=2015-01-01', timeout=35, tries=2)
+    t = get(f'https://fred.stlouisfed.org/graph/fredgraph.csv?id={sid}&cosd=2015-01-01', timeout=60, tries=2, ua=False)
     out = []
     for line in t.splitlines()[1:]:
         p = line.split(',')

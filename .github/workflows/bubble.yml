@@ -23,5 +23,5 @@ jobs:
       - run: python collect_bubble.py
       - run: |
           git config user.name github-actions; git config user.email github-actions@github.com
-          git add market_daily.csv fred_data.csv bubble_status.json
+          for f in market_daily.csv fred_data.csv bubble_status.json; do [ -f $f ] && git add $f; done
           if ! git diff --cached --quiet; then git commit -m "Update bubble monitor data"; git pull --rebase origin main || (git rebase --abort; exit 1); git push; fi
