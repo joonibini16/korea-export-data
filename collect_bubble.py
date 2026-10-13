@@ -44,7 +44,7 @@ def yahoo(sym):
 
 
 def fred(sid):
-    t = get(f'https://fred.stlouisfed.org/graph/fredgraph.csv?id={sid}&cosd=2015-01-01')
+    t = get(f'https://fred.stlouisfed.org/graph/fredgraph.csv?id={sid}&cosd=2015-01-01', timeout=35, tries=2)
     out = []
     for line in t.splitlines()[1:]:
         p = line.split(',')
@@ -68,9 +68,13 @@ def main():
     with ThreadPoolExecutor(4) as pool:
         for sym, res in zip(YAHOO, pool.map(lambda s: _safe(yahoo, s, fails), YAHOO)):
             Y += res
-    with ThreadPoolExecutor(3) as pool:
-        for sid, res in zip(FRED, pool.map(lambda s: _safe(fred, s, fails), FRED)):
-            F += res
+    # FRED는 동시 요청에 느려지므로 순차·짧은 제한시간·전체 예산(12분)으로 받고, 못 받은 시리즈는 기존 값을 유지합니다.
+    t0 = time.time()
+    for sid in FRED:
+        if time.time() - t0 > 720:
+            fails.append(dict(id=sid, error='time budget exceeded')); continue
+        F += _safe(fred, sid, fails)
+        time.sleep(0.5)
     if Y: merge(Path('market_daily.csv'), Y, 'symbol', ['symbol', 'date', 'close'], {r['symbol'] for r in Y})
     if F: merge(Path('fred_data.csv'), F, 'series', ['series', 'date', 'value'], {r['series'] for r in F})
     last = {}

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>버블 신호 모니터</title><script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script><script src="./chart_legend.js?v=3"></script><script src="./shell.js?v=4"></script>
+<style>
+:root{font-family:Arial,"Noto Sans KR",sans-serif}*{box-sizing:border-box}body{margin:0}main{max-width:1500px;margin:26px auto;padding:0 22px}h2{font-size:19px;margin:0 0 10px}p{line-height:1.6}.muted{font-size:13px}
+.panel{border-radius:12px;padding:18px 20px;margin-bottom:18px}.chart{height:300px;position:relative}.g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;align-items:start}.g2>.panel{margin:0;min-width:0}.g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.g3>.panel{margin:0;min-width:0}
+.sec{font-size:18px;margin:28px 0 12px;padding-left:10px;border-left:4px solid #3b82f6}
+.lights{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}.light{border-radius:10px;padding:12px 14px;border:1px solid #22314f;background:#111d36}.light b{display:block;font-size:13px;color:#cbd5e1;font-weight:600}.light strong{display:block;font-size:22px;margin:6px 0 2px}.light span{font-size:12px;color:#93a3bd}
+.light.ok{border-left:5px solid #16a34a}.light.warn{border-left:5px solid #f59e0b}.light.bad{border-left:5px solid #dc2626}.light.na{border-left:5px solid #64748b}
+.score{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:14px}.score .big{font-size:34px;font-weight:900}
+.table{overflow:auto}table{border-collapse:collapse;width:100%;font-size:13.5px}th,td{padding:8px 10px;text-align:right;white-space:nowrap}th:first-child,td:first-child,th:nth-child(2),td:nth-child(2){text-align:left}
+td.h{font-weight:700}.flag{font-size:12px;padding:2px 8px;border-radius:999px;background:#7f1d1d;color:#fecaca}.flag.w{background:#713f12;color:#fde68a}
+@media(max-width:1100px){.g2,.g3{grid-template-columns:1fr}}
+</style>
+<link rel="stylesheet" href="./shell.css?v=3">
+</head><body><main>
+<h1>버블 신호 모니터</h1>
+<p class="muted">주가 하락이 약한 나라·업종부터 시작되는지, 유동성이 줄고 있는지, 신용(회사채 스프레드·CDS)이 먼저 흔들리는지를 한 화면에서 점검합니다. 한 지표보다 여러 지표가 같은 방향을 가리키는지가 중요합니다.</p>
+<div id="err" class="notice" hidden></div>
+<section class="panel"><h2>종합 경고등</h2><div class="score"><div class="big" id="scoreBig">—</div><div id="scoreText" class="muted"></div></div><div class="lights" id="lights"></div><p class="muted" id="asof"></p></section>
+
+<h2 class="sec">① 약한 고리 · 국가별 주가 하락률 vs 수출 증감률</h2>
+<div class="g2"><section class="panel"><h2>국가별 주가 기간 수익률 · 수출 YoY</h2><p class="muted">수익률은 각국 대표지수 현지통화 기준. 수출 YoY는 OECD 월간 수출액(미국은 BEA 수출, 3개월 평균 기준). 주가는 크게 빠졌는데 수출도 꺾인 나라(빨간 표시)가 먼저 끊어지는 약한 고리 후보입니다.</p><div class="table"><table><thead><tr><th>국가·지수</th><th>최근일</th><th>1주</th><th>1개월</th><th>3개월</th><th>연초 대비</th><th>52주 고점 대비</th><th>수출 YoY (최근월)</th><th>수출 YoY (3개월)</th><th>판단</th></tr></thead><tbody id="weak"></tbody></table></div></section>
+<section class="panel"><h2>약한 고리 지도</h2><p class="muted">가로 = 수출 YoY(3개월 평균), 세로 = 52주 고점 대비 하락률. 왼쪽 아래(수출 감소 + 주가 급락)일수록 약한 고리입니다.</p><div class="chart" style="height:420px"><canvas id="weakMap"></canvas></div></section></div>
+
+<h2 class="sec">② 유동성 · 정부/중앙은행 · 은행 · 민간</h2>
+<div class="g3">
+<section class="panel"><h2>정부·중앙은행</h2><p class="muted">순유동성 = 연준 자산(WALCL) − 재무부 계좌(TGA) − 역레포(RRP). 줄어들면 시장에 풀린 달러가 빠지는 것.</p><div class="chart"><canvas id="liqGov"></canvas></div><p class="muted" id="liqGovNote"></p></section>
+<section class="panel"><h2>은행</h2><p class="muted">은행 지급준비금, 은행 신용(총여신·증권) YoY, 기업대출(C&I) YoY. 대출이 마이너스로 돌면 신용 수축.</p><div class="chart"><canvas id="liqBank"></canvas></div><p class="muted" id="liqBankNote"></p></section>
+<section class="panel"><h2>민간</h2><p class="muted">M2 YoY, 은행 소비자대출 YoY, 은행 대출태도(대기업 C&I 기준 강화 응답 비율, 분기).</p><div class="chart"><canvas id="liqPriv"></canvas></div><p class="muted" id="liqPrivNote"></p></section>
+</div>
+
+<h2 class="sec">③ 신용 · 회사채 스프레드 · CDS · AI 인프라 기업</h2>
+<div class="g2">
+<section class="panel"><h2>회사채 스프레드 (OAS, %p)</h2><p class="muted">ICE BofA 하이일드·CCC·BBB·투자등급 옵션조정 스프레드. 하이일드 5%p 이상, 3개월 +1%p 이상 확대는 경고.</p><div class="chart"><canvas id="oas"></canvas></div></section>
+<section class="panel"><h2>CDS 5년 (bp) · AI 인프라 기업</h2><p class="muted">기업 CDS는 무료 실시간 자료가 없어 보도된 수치를 출처와 함께 기록합니다(cds_manual.csv). 200bp 이상은 투기등급에 가까운 신용위험으로 봅니다.</p><div class="chart"><canvas id="cds"></canvas></div><div class="table"><table><thead><tr><th>기업</th><th>최근 기록일</th><th>CDS (bp)</th><th>직전 대비</th><th>출처</th></tr></thead><tbody id="cdsTable"></tbody></table></div></section>
+</div>
+<section class="panel"><h2>AI 인프라 기업 주가 · 신용 대리지표</h2><p class="muted">CDS가 넓어지는 기업의 주가 흐름과 하이일드·투자등급 채권 ETF(HYG·LQD)를 함께 봅니다.</p><div class="table"><table><thead><tr><th>기업</th><th>최근일</th><th>1주</th><th>1개월</th><th>3개월</th><th>52주 고점 대비</th></tr></thead><tbody id="ai"></tbody></table></div></section>
+
+<h2 class="sec">④ 그 밖의 위험 신호</h2>
+<div class="g2">
+<section class="panel"><h2>변동성 · 금융여건</h2><p class="muted">VIX, 시카고 연준 금융여건지수(NFCI, 0 이상 = 평균보다 긴축), 세인트루이스 연준 금융스트레스지수.</p><div class="chart"><canvas id="vol"></canvas></div></section>
+<section class="panel"><h2>금리 · 장단기 차이</h2><p class="muted">10년−3개월, 10년−2년 금리차와 10년 실질금리. 역전 후 다시 벌어질 때(재스티프닝) 경기침체가 뒤따른 경우가 많습니다.</p><div class="chart"><canvas id="rates"></canvas></div></section>
+<section class="panel"><h2>엔캐리 · 달러</h2><p class="muted">달러/엔(낮아질수록 엔 강세 = 엔캐리 청산 압력), 달러인덱스, 원/달러.</p><div class="chart"><canvas id="fx"></canvas></div></section>
+<section class="panel"><h2>위험자산 심리 · 경기</h2><p class="muted">구리/금 비율(경기 기대), 비트코인, 신규 실업수당 청구, 삼의 법칙(0.5 이상 = 침체 신호).</p><div class="chart"><canvas id="macro"></canvas></div></section>
+</div>
+<section class="panel"><h2>기준과 출처</h2><p class="muted">주가·환율·원자재: Yahoo Finance 일별 종가(비공식 API). 유동성·스프레드·수출·금리: FRED(세인트루이스 연준). 기업 CDS: 언론 보도 수치를 수동 기록(cds_manual.csv). 평일 하루 두 번(한국 시간 07:30, 18:30) 자동 갱신.</p><p class="muted" id="status"></p></section>
+</main>
+<script src="./bubble.js?v=1"></script>
+</body></html>
