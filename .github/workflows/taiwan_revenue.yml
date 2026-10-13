@@ -15,6 +15,7 @@ on:
 permissions:
   contents: write
   pages: write
+  actions: write
 concurrency:
   group: taiwan-monthly-revenue
   cancel-in-progress: false
@@ -46,6 +47,13 @@ jobs:
             git pull --rebase origin main
             git pull --rebase origin main || (git rebase --abort; exit 1)
             git push
+          fi
+      - name: Continue backfill if pending
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if test -f taiwan_backfill.json && python -c "import json,sys;sys.exit(0 if json.load(open('taiwan_backfill.json')).get('pending') else 1)"; then
+            gh api -X POST "repos/$GITHUB_REPOSITORY/actions/workflows/taiwan_revenue.yml/dispatches" -f ref=main || true
           fi
       - name: Request Pages build
         env:
