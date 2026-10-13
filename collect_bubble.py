@@ -115,8 +115,11 @@ def kofia(fails):
     path = Path('kofia_daily.csv')
     by = {r['date']: {k: v for k, v in r.items() if k != 'date' and v != ''} for r in csv.DictReader(path.open(encoding='utf-8'))} if path.exists() else {}
     for obj, cols in KOFIA.items():
+        # 응답이 약 32KB에서 잘리는 경우가 있어 분기 단위로 나눠 받습니다.
         for y in range(2015, int(end[:4]) + 1):
-            body = json.dumps({'dmSearch': {'tmpV40': '1000000', 'tmpV41': '1', 'tmpV1': 'D', 'tmpV45': f'{y}0101', 'tmpV46': min(f'{y}1231', end), 'OBJ_NM': obj}}).encode()
+          for q0, q1 in (('0101', '0331'), ('0401', '0630'), ('0701', '0930'), ('1001', '1231')):
+            if f'{y}{q0}' > end: break
+            body = json.dumps({'dmSearch': {'tmpV40': '1000000', 'tmpV41': '1', 'tmpV1': 'D', 'tmpV45': f'{y}{q0}', 'tmpV46': min(f'{y}{q1}', end), 'OBJ_NM': obj}}).encode()
             req = urllib.request.Request(KOFIA_URL, data=body, headers={'Content-Type': 'application/json', **UA})
             rows = None
             for a in range(4):
@@ -125,7 +128,7 @@ def kofia(fails):
                         rows = json.loads(r.read().decode('utf-8')).get('ds1') or []
                     break
                 except Exception as e:
-                    if a == 3: fails.append(dict(id=f'KOFIA {obj[-6:]} {y}', error=str(e)[:100]))  # 그 해는 기존 값 유지
+                    if a == 3: fails.append(dict(id=f'KOFIA {obj[-6:]} {y}{q0}', error=str(e)[:100]))  # 그 해는 기존 값 유지
                     time.sleep(4)
             rows = rows or []
             for x in rows:
