@@ -19,22 +19,30 @@ root.BubbleIndicators={rsi,sma,closedKorean};if(typeof module!=='undefined')modu
 
 
 // 같은 시장(코스피/코스닥) 그래프끼리 마우스 위치(날짜)를 공유: 세로선 + 툴팁 + 요약 줄
-const SYNC={groups:{},last:{},busy:false};
+const SYNC={groups:{},last:{},busy:false,pin:{}};
+const EV_ALL=['mousemove','mouseout','click','touchstart','touchmove'];
 function syncGroup(id){return id.endsWith('KOSPI')?'KOSPI':id.endsWith('KOSDAQ')?'KOSDAQ':null;}
 const syncPlugin={id:'syncCross',
  afterEvent(ch,args){const g=ch.$sg;if(!g||SYNC.busy)return;const e=args.event;
+  if(e.type==='click'){const x=ch.scales.x;if(!x||e.x<ch.chartArea.left||e.x>ch.chartArea.right)return;const i=Math.round(x.getValueForPixel(e.x));
+   // 왼쪽 클릭 = 그 날짜에 세로선 고정, 같은 곳을 다시 클릭하면 해제(다른 곳 클릭은 고정 위치 이동)
+   if(SYNC.pin[g]===i)syncPin(g,null);else syncPin(g,i);return;}
+  if(SYNC.pin[g]!=null)return;
   if(e.type==='mouseout'){if(SYNC.last[g]!=null)syncSet(g,null);return;}
   if(e.type!=='mousemove')return;const x=ch.scales.x;if(!x||e.x<ch.chartArea.left||e.x>ch.chartArea.right){return;}
   const i=Math.round(x.getValueForPixel(e.x));if(SYNC.last[g]===i)return;syncSet(g,i,ch);},
- afterDatasetsDraw(ch){const i=ch.$si;if(i==null)return;const x=ch.scales.x.getPixelForValue(i),{top,bottom}=ch.chartArea,c=ch.ctx;c.save();c.strokeStyle='rgba(226,232,240,.75)';c.lineWidth=1;c.beginPath();c.moveTo(x,top);c.lineTo(x,bottom);c.stroke();c.restore();}};
+ afterDatasetsDraw(ch){const i=ch.$si;if(i==null)return;const x=ch.scales.x.getPixelForValue(i),{top,bottom}=ch.chartArea,c=ch.ctx,pinned=SYNC.pin[ch.$sg]!=null;c.save();c.strokeStyle=pinned?'rgba(251,191,36,.95)':'rgba(226,232,240,.75)';c.lineWidth=pinned?2:1;c.beginPath();c.moveTo(x,top);c.lineTo(x,bottom);c.stroke();c.restore();}};
+function syncPin(g,i){SYNC.pin[g]=i;const list=SYNC.groups[g]||[];for(const ch of list){ch.options.events=i==null?EV_ALL:['click'];}syncSet(g,i);}
+if(typeof document!=='undefined'&&document.addEventListener)document.addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight','Escape'].includes(e.key))return;for(const g of Object.keys(SYNC.pin)){const i=SYNC.pin[g];if(i==null)continue;
+ if(e.key==='Escape'){syncPin(g,null);continue;}const n=(SYNC.groups[g]?.[0]?.data.labels.length)||0,j=Math.max(0,Math.min(n-1,i+(e.key==='ArrowRight'?1:-1)));e.preventDefault();syncPin(g,j);}});
 function syncSet(g,i,src){SYNC.busy=true;SYNC.last[g]=i;try{syncSet0(g,i,src);}finally{SYNC.busy=false;}}
 function syncSet0(g,i,src){const list=(SYNC.groups[g]||[]).filter(ch=>ch&&ch.canvas&&ch.canvas.isConnected);SYNC.groups[g]=list;
  for(const ch of list){if(i==null||i<0||i>=ch.data.labels.length){ch.$si=null;ch.setActiveElements([]);ch.tooltip.setActiveElements([],{x:0,y:0});ch.update('none');continue;}
   ch.$si=i;const act=ch.data.datasets.map((d,k)=>({datasetIndex:k,index:i})).filter(a=>ch.data.datasets[a.datasetIndex].data[i]!=null&&!/^\d+$/.test(ch.data.datasets[a.datasetIndex].label));
   if(ch!==src){ch.setActiveElements(act);ch.tooltip.setActiveElements(act,{x:ch.scales.x.getPixelForValue(i),y:(ch.chartArea.top+ch.chartArea.bottom)/2});}ch.update('none');}
- const note=document.getElementById('syncNote'+g);if(note){if(i==null){note.textContent='그래프 위에 마우스를 올리면 같은 날짜의 지수·Breadth·HLI·RSI가 함께 표시됩니다.';return;}
+ const note=document.getElementById('syncNote'+g);if(note){if(i==null){note.classList.remove('pinned');note.textContent='그래프 위에 마우스를 올리면 같은 날짜 값이 함께 표시됩니다. 왼쪽 클릭 = 그 날짜 고정(다시 클릭하면 해제, ←→ 하루씩 이동, Esc 해제).';return;}
   const pick=(id,k=0)=>{const ch=list.find(c=>c.canvas.id===id);const v=ch?.data.datasets[k]?.data[i];return v==null?'—':Number(v).toLocaleString(undefined,{maximumFractionDigits:1});};
-  const d=list[0]?.data.labels[i]||'';note.textContent=`${d} · 지수 ${pick('idx'+g)} · Breadth_60 ${pick('breadth_60'+g)}% (5-SMA ${pick('breadth_60'+g,1)}) · HLI ${pick('hli'+g)}% (10-SMA ${pick('hli'+g,1)}) · RSI ${pick('rsi'+g)}`;}}
+  const d=list[0]?.data.labels[i]||'';note.classList.toggle('pinned',SYNC.pin[g]!=null);note.textContent=(SYNC.pin[g]!=null?'📌 고정 ':'')+`${d} · 지수 ${pick('idx'+g)} · Breadth_60 ${pick('breadth_60'+g)}% (5-SMA ${pick('breadth_60'+g,1)}) · HLI ${pick('hli'+g)}% (10-SMA ${pick('hli'+g,1)}) · RSI ${pick('rsi'+g)}`;}}
 
 async function renderBubbleIndicators(st){
  const val=v=>Number.isFinite(v)?v.toFixed(1):'—',names={KOSPI:'코스피',KOSDAQ:'코스닥'},palette=['#60a5fa','#f472b6','#34d399','#fbbf24','#a78bfa','#fb7185','#22d3ee'];
