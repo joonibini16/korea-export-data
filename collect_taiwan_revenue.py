@@ -26,6 +26,8 @@ HOSTS = ['https://mopsov.twse.com.tw', 'https://mops.twse.com.tw']
 OUT = Path('taiwan_monthly_revenue.csv')
 STATUS = Path('taiwan_revenue_status.json')
 WATCH = Path('taiwan_watchlist.json')
+STATE = Path('taiwan_backfill.json')  # 새 업체 과거 월 백필 진행 상황(여러 번 실행에 나눠 수행)
+BUDGET_SEC = 40 * 60
 FIELDS = ['month', 'company_id', 'name_local', 'market', 'revenue_kNTD', 'prev_month_kNTD',
           'prev_year_kNTD', 'mom_pct', 'yoy_pct', 'cum_kNTD', 'prev_cum_kNTD', 'cum_yoy_pct',
           'note', 'source', 'retrieved_at']
@@ -124,6 +126,15 @@ def months(start, end):
             y, m = y + 1, 1
 
 
+def save(existing):
+    rows = sorted(existing.values(), key=lambda r: (r['company_id'], r['month']))
+    with OUT.open('w', encoding='utf-8-sig', newline='') as f:
+        w = csv.DictWriter(f, fieldnames=FIELDS, extrasaction='ignore')
+        w.writeheader()
+        w.writerows(rows)
+    return rows
+
+
 def main():
     full = '--full' in sys.argv
     watch = json.loads(WATCH.read_text(encoding='utf-8'))
@@ -140,17 +151,28 @@ def main():
                 existing[(r['month'], r['company_id'])] = r
 
     all_months = list(months((sy, sm), (ly, lm)))
-    newcos = {cid for cid in companies if not any(k[1] == cid for k in existing)}  # 새로 추가된 업체는 과거 월을 다시 받음
+    state = json.loads(STATE.read_text(encoding='utf-8')) if STATE.exists() else {}
+    pending = state.get('pending', {})
+    for cid in companies:  # 데이터가 하나도 없는 새 업체 → 시작월부터 백필 대기
+        if cid not in pending and not any(k[1] == cid for k in existing):
+            pending[cid] = f'{sy}.{sm:02d}'
+    for cid in list(pending):
+        if cid not in companies: pending.pop(cid)
     recent = set(all_months[-3:])
+    t0 = time.time()
+    order = [x for x in all_months if x in recent] + [x for x in all_months if x not in recent]  # 최근 월 먼저
     stamp = now.strftime('%Y-%m-%dT%H:%M:%S%z')
     failures, fetched_months = [], 0
 
-    for y, m in all_months:
+    for y, m in order:
         label = f'{y}.{m:02d}'
         have = {cid for (mo, cid) in existing if mo == label}
+        backfill = any(ptr <= label for ptr in pending.values())
         # past months are fetched once; later-listed companies stay absent there
-        if not full and (y, m) not in recent and have and not newcos:
+        if not full and (y, m) not in recent and have and not backfill:
             continue
+        if time.time() - t0 > BUDGET_SEC:
+            print('time budget reached at', label); break
         # 상장 시장을 고정하지 않고 上市(sii)·上櫃(otc) 표를 모두 찾아봅니다(시장 이전 업체 대응).
         found = {}
         for market in ('sii', 'otc'):
@@ -179,12 +201,18 @@ def main():
             failures.append({'month': label, 'market': 'sii+otc',
                              'error': 'NOT_IN_TABLE ' + ','.join(sorted(missing))})
         fetched_months += 1
+        if (y, m) not in recent:
+            nxt = f'{y + (m == 12)}.{(m % 12) + 1:02d}'
+            for cid, ptr in list(pending.items()):
+                if ptr <= label: pending[cid] = nxt
+        if fetched_months % 12 == 0:
+            save(existing)
+            STATE.write_text(json.dumps({'pending': pending}, ensure_ascii=False, indent=1), encoding='utf-8')
+    first_recent = '%d.%02d' % min(recent)  # 최근 3개월은 매번 받으므로 그 전까지 끝나면 백필 완료
+    pending = {cid: ptr for cid, ptr in pending.items() if ptr < first_recent}
+    STATE.write_text(json.dumps({'pending': pending}, ensure_ascii=False, indent=1), encoding='utf-8')
 
-    rows = sorted(existing.values(), key=lambda r: (r['company_id'], r['month']))
-    with OUT.open('w', encoding='utf-8-sig', newline='') as f:
-        w = csv.DictWriter(f, fieldnames=FIELDS, extrasaction='ignore')
-        w.writeheader()
-        w.writerows(rows)
+    rows = save(existing)
 
     coverage = []
     for cid, c in companies.items():
@@ -194,7 +222,7 @@ def main():
                          'first': ms[0] if ms else None, 'last': ms[-1] if ms else None,
                          'missing': [x for x in expected if x not in ms][:24]})
     STATUS.write_text(json.dumps({'updated_at': stamp, 'range': [f'{sy}.{sm:02d}', f'{ly}.{lm:02d}'],
-                                  'months_fetched_this_run': fetched_months, 'failures': failures,
+                                  'months_fetched_this_run': fetched_months, 'backfill_pending': pending, 'failures': failures,
                                   'coverage': coverage}, ensure_ascii=False, indent=1), encoding='utf-8')
     print(f'rows={len(rows)} fetched_months={fetched_months} failures={len(failures)}')
     # fail only when nothing could be fetched for the latest due month

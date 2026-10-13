@@ -21,6 +21,7 @@ concurrency:
 jobs:
   collect:
     runs-on: ubuntu-latest
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
         with:
@@ -38,6 +39,7 @@ jobs:
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add taiwan_revenue_status.json
+          if test -f taiwan_backfill.json; then git add taiwan_backfill.json; fi
           if test -f taiwan_monthly_revenue.csv; then git add taiwan_monthly_revenue.csv; fi
           if ! git diff --cached --quiet; then
             git commit -m "Update Taiwan monthly revenue"
