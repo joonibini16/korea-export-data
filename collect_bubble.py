@@ -2,9 +2,11 @@
 
 Yahoo Finance chart API (daily close, 3y) → market_daily.csv (symbol,date,close)
 FRED fredgraph CSV (no key)              → fred_data.csv   (series,date,value)
+한국은행 ECOS 시장금리(일별, 817Y002; 환경변수 ECOS_API_KEY) → ecos_rates.csv (series,date,value)
+KRX Open API 파생상품지수(VKOSPI; 환경변수 KRX_API_KEY, 선택)   → vkospi.csv (date,close)
 Status → bubble_status.json. Unofficial endpoints: failures are recorded and earlier data kept.
 """
-import csv, json, time, urllib.request, urllib.parse
+import csv, json, os, time, urllib.request, urllib.parse
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor
@@ -13,7 +15,7 @@ KST = timezone(timedelta(hours=9))
 UA = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124 Safari/537.36'}
 YAHOO = ['^GSPC', '^IXIC', '^SOX', '^KS11', '^KQ11', '^TWII', '^N225', '000001.SS', '^HSI', '^GDAXI', '^FCHI', '^FTSE', '^STOXX50E',
          '^NSEI', '^BVSP', '^GSPTSE', '^AXJO', '^JKSE', '^MXX', '^VIX', 'BTC-USD', 'HG=F', 'GC=F', 'CL=F', 'DX-Y.NYB', 'JPY=X', 'KRW=X',
-         'ORCL', 'NVDA', 'MSFT', 'META', 'AMZN', 'GOOGL', 'AVGO', 'TSM', 'CRWV', 'AMD', 'HYG', 'LQD', 'TLT']
+         'ORCL', 'NVDA', 'MSFT', 'META', 'AMZN', 'GOOGL', 'AVGO', 'TSM', 'CRWV', 'AMD', 'HYG', 'LQD', 'TLT', '^MOVE', '^VIX3M']
 FRED = ['WALCL', 'WTREGEN', 'RRPONTSYD', 'WRESBAL', 'TOTBKCR', 'BUSLOANS', 'CONSUMER', 'REALLN', 'M2SL', 'CPFF',
         'BAMLH0A0HYM2', 'BAMLC0A0CM', 'BAMLH0A3HYC', 'BAMLC0A4CBBB', 'VIXCLS', 'T10Y2Y', 'T10Y3M', 'DFII10', 'NFCI', 'STLFSI4',
         'ICSA', 'SAHMREALTIME', 'DTWEXBGS', 'SOFR', 'IORB', 'DRTSCILM',
@@ -55,6 +57,51 @@ def fred(sid):
     return out
 
 
+ECOS = {'010200000': 'KTB3Y', '010210000': 'KTB10Y', '010300000': 'CORP_AA', '010320000': 'CORP_BBB', '010502000': 'CD91', '010503000': 'CP91'}
+
+
+def ecos(key):
+    end = datetime.now(KST).strftime('%Y%m%d')
+    out = []
+    for code, name in ECOS.items():
+        j = json.loads(get(f'https://ecos.bok.or.kr/api/StatisticSearch/{key}/json/kr/1/100000/817Y002/D/20150101/{end}/{code}', timeout=60, tries=3))
+        rows = (j.get('StatisticSearch') or {}).get('row') or []
+        if not rows:
+            raise RuntimeError(f'{name}: ' + json.dumps(j.get('RESULT', j), ensure_ascii=False)[:120])
+        for r in rows:
+            t, v = r['TIME'], r['DATA_VALUE']
+            if v not in ('', None):
+                out.append(dict(series=name, date=f'{t[:4]}-{t[4:6]}-{t[6:8]}', value=v))
+        time.sleep(0.3)
+    return out
+
+
+def vkospi(key, fails):
+    path = Path('vkospi.csv')
+    have = {r['date']: r['close'] for r in csv.DictReader(path.open(encoding='utf-8'))} if path.exists() else {}
+    today = datetime.now(KST).date()
+    days = [today - timedelta(days=i) for i in range(1, 400)]
+    todo = [d for d in days if d.weekday() < 5 and d.isoformat() not in have][:300]
+    miss = 0
+    for d in todo:
+        try:
+            req = urllib.request.Request(f'https://data-dbg.krx.co.kr/svc/apis/idx/drvprod_dd_trd?basDd={d:%Y%m%d}', headers={'AUTH_KEY': key})
+            with urllib.request.urlopen(req, timeout=30) as r:
+                j = json.loads(r.read().decode('utf-8'))
+        except Exception as e:
+            fails.append(dict(id='VKOSPI', error=str(e)[:150])); break
+        for x in j.get('OutBlock_1') or []:
+            if '변동성' in x.get('IDX_NM', '') and '200' in x.get('IDX_NM', '') and x.get('CLSPRC_IDX') not in ('', '-', None):
+                have[d.isoformat()] = x['CLSPRC_IDX'].replace(',', ''); break
+        else:
+            miss += 1  # 휴장일
+        time.sleep(0.15)
+    if have:
+        with path.open('w', encoding='utf-8', newline='') as f:
+            w = csv.writer(f); w.writerow(['date', 'close']); [w.writerow([k, have[k]]) for k in sorted(have)]
+    return len(have)
+
+
 def merge(path, rows, key, fields, got):
     old = [r for r in csv.DictReader(path.open(encoding='utf-8'))] if path.exists() else []
     keep = [r for r in old if r[key] not in got]
@@ -75,11 +122,17 @@ def main():
             fails.append(dict(id=sid, error='time budget exceeded')); continue
         F += _safe(fred, sid, fails)
         time.sleep(0.5)
+    E, nv = [], None
+    if os.environ.get('ECOS_API_KEY'):
+        E = _safe(ecos, os.environ['ECOS_API_KEY'], fails)
+        if E: merge(Path('ecos_rates.csv'), E, 'series', ['series', 'date', 'value'], {r['series'] for r in E})
+    if os.environ.get('KRX_API_KEY'):
+        nv = vkospi(os.environ['KRX_API_KEY'], fails)
     if Y: merge(Path('market_daily.csv'), Y, 'symbol', ['symbol', 'date', 'close'], {r['symbol'] for r in Y})
     if F: merge(Path('fred_data.csv'), F, 'series', ['series', 'date', 'value'], {r['series'] for r in F})
     last = {}
     for r in F: last[r['series']] = max(last.get(r['series'], ''), r['date'])
-    Path('bubble_status.json').write_text(json.dumps(dict(updated_at=datetime.now(KST).isoformat(timespec='seconds'), yahoo_rows=len(Y), fred_rows=len(F),
+    Path('bubble_status.json').write_text(json.dumps(dict(updated_at=datetime.now(KST).isoformat(timespec='seconds'), yahoo_rows=len(Y), fred_rows=len(F), ecos_rows=len(E), ecos_key=bool(os.environ.get('ECOS_API_KEY')), vkospi_rows=nv, krx_key=bool(os.environ.get('KRX_API_KEY')),
         fred_last=last, failures=fails), ensure_ascii=False, indent=1))
     print('yahoo', len(Y), 'fred', len(F), 'fails', len(fails))
 

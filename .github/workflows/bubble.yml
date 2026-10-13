@@ -21,7 +21,10 @@ jobs:
       - uses: actions/setup-python@v5
         with: {python-version: '3.12'}
       - run: python collect_bubble.py
+        env:
+          ECOS_API_KEY: ${{ secrets.ECOS_API_KEY }}
+          KRX_API_KEY: ${{ secrets.KRX_API_KEY }}
       - run: |
           git config user.name github-actions; git config user.email github-actions@github.com
-          for f in market_daily.csv fred_data.csv bubble_status.json; do [ -f $f ] && git add $f; done
+          for f in market_daily.csv fred_data.csv bubble_status.json ecos_rates.csv vkospi.csv; do if [ -f $f ]; then git add $f; fi; done
           if ! git diff --cached --quiet; then git commit -m "Update bubble monitor data"; git pull --rebase origin main || (git rebase --abort; exit 1); git push; fi
