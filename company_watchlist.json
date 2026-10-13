@@ -1464,6 +1464,197 @@
         "8473304060": "847330",
         "8523511000": "852351"
       }
+    },
+    {
+      "id": "219130",
+      "name": "타이거일렉",
+      "category": "반도체 부품·장비",
+      "hs_codes": [
+        "853400"
+      ],
+      "sites": [
+        {
+          "sido_code": "28",
+          "region_keyword": "미추홀구"
+        }
+      ],
+      "sido_code": "28",
+      "region_keyword": "미추홀구",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "인천 미추홀구 도화동 본사·공장. 프로브카드(51%)·로드보드(33%)·소켓보드용 반도체 검사 PCB. 지역 PCB 수출(853400)에는 다른 PCB 업체 물량도 포함.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/14/001670/20260814005614/11012.htm",
+        "https://navercomp.wisereport.co.kr/v2/company/c1020001.aspx?cmp_cd=219130"
+      ],
+      "reviewed_at": "2026-10-13",
+      "regional_hs": {
+        "853400": "853400"
+      }
+    },
+    {
+      "id": "252990",
+      "name": "샘씨엔에스",
+      "category": "반도체 부품·장비",
+      "hs_codes": [
+        "9030901000"
+      ],
+      "sites": [
+        {
+          "sido_code": "43",
+          "region_keyword": "청주시"
+        }
+      ],
+      "sido_code": "43",
+      "region_keyword": "청주시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "프로브카드용 세라믹 STF(NAND 71%·DRAM 27%). 본사는 성남 판교(사무소), 생산은 2024.02 완공한 청주 흥덕구 오송 신공장. 2024년 이전 생산지는 공시에서 확인되지 않아 청주 지역 지표는 2024년 이후 위주로 참고. STF의 세번(HS)은 프로브카드 부분품(9030.90) 기준으로 연결했으며 업체 신고 세번과 다를 수 있음.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/14/001119/20260814003708/11012.htm",
+        "https://navercomp.wisereport.co.kr/v2/company/c1020001.aspx?cmp_cd=252990"
+      ],
+      "reviewed_at": "2026-10-13",
+      "regional_hs": {
+        "9030901000": "903090"
+      }
+    },
+    {
+      "id": "446540",
+      "name": "메가터치",
+      "category": "반도체 부품·장비",
+      "hs_codes": [
+        "8536909090"
+      ],
+      "sites": [
+        {
+          "sido_code": "44",
+          "region_keyword": "천안시"
+        }
+      ],
+      "sido_code": "44",
+      "region_keyword": "천안시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "충남 천안시 서북구 본사·공장. 반도체 테스트용 프로브 핀(63%)·배터리 충방전 테스트 핀(22%). 지역 접속부품(853690) 수출은 업종 전체 물량.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/14/001772/20260814005995/11012.htm",
+        "https://navercomp.wisereport.co.kr/v2/company/c1020001.aspx?cmp_cd=446540"
+      ],
+      "reviewed_at": "2026-10-13",
+      "regional_hs": {
+        "8536909090": "853690"
+      }
+    },
+    {
+      "id": "131290",
+      "name": "티에스이",
+      "category": "반도체 부품·장비",
+      "hs_codes": [
+        "9030901000",
+        "8536909090"
+      ],
+      "sites": [
+        {
+          "sido_code": "44",
+          "region_keyword": "천안시"
+        }
+      ],
+      "sido_code": "44",
+      "region_keyword": "천안시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "충남 천안시 서북구 직산읍 본사·공장. 프로브카드(48%)·인터페이스보드(34%)·테스트소켓(10%)·OLED 검사장비.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/14/002060/20260814007071/11012.htm",
+        "https://navercomp.wisereport.co.kr/v2/company/c1020001.aspx?cmp_cd=131290"
+      ],
+      "reviewed_at": "2026-10-13",
+      "regional_hs": {
+        "9030901000": "903090",
+        "8536909090": "853690"
+      }
+    },
+    {
+      "id": "092870",
+      "name": "엑시콘",
+      "category": "반도체 부품·장비",
+      "hs_codes": [
+        "903082"
+      ],
+      "sites": [
+        {
+          "sido_code": "44",
+          "region_keyword": "천안시"
+        }
+      ],
+      "sido_code": "44",
+      "region_keyword": "천안시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "본사는 성남 판교, 공장은 2010.12 이전한 충남 천안시 서북구 직산읍. 메모리(DDR4·DDR5) 테스터·번인테스터(MBT)·SSD 테스터·CLT.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/14/001022/20260814003364/11012.htm",
+        "https://navercomp.wisereport.co.kr/v2/company/c1020001.aspx?cmp_cd=092870"
+      ],
+      "reviewed_at": "2026-10-13",
+      "regional_hs": {
+        "903082": "903082"
+      }
+    },
+    {
+      "id": "064290",
+      "name": "인텍플러스",
+      "category": "반도체 부품·장비",
+      "hs_codes": [
+        "903141"
+      ],
+      "sites": [
+        {
+          "sido_code": "30",
+          "region_keyword": "유성구"
+        }
+      ],
+      "sido_code": "30",
+      "region_keyword": "유성구",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "대전 유성구 탑립동 본사·공장. 반도체 외관검사(75%)·2차전지 외관검사(25%) 장비.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/14/001934/20260814006611/11012.htm",
+        "https://navercomp.wisereport.co.kr/v2/company/c1020001.aspx?cmp_cd=064290"
+      ],
+      "reviewed_at": "2026-10-13",
+      "regional_hs": {
+        "903141": "903141"
+      }
+    },
+    {
+      "id": "420770",
+      "name": "기가비스",
+      "category": "반도체 부품·장비",
+      "hs_codes": [
+        "903149"
+      ],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "평택시"
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "평택시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "경기 평택시 진위면 본사·공장. 반도체 기판(패키지·PLP) AOI·AOR(자동 광학 검사·수리) 장비. 기판 검사기는 HS 9031.49(기타 광학 검사기)로 연결.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/14/002653/20260814009273/11012.htm",
+        "https://navercomp.wisereport.co.kr/v2/company/c1020001.aspx?cmp_cd=420770"
+      ],
+      "reviewed_at": "2026-10-13",
+      "regional_hs": {
+        "903149": "903149"
+      }
     }
   ],
   "reviewed_at": "2026-10-07",
