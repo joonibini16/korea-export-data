@@ -1,11 +1,11 @@
 {
- "updated_at": "2026-10-13T14:57:43+09:00",
- "yahoo_rows": 52259,
+ "updated_at": "2026-10-13T15:00:59+09:00",
+ "yahoo_rows": 50489,
  "fred_rows": 34006,
  "ecos_rows": 0,
  "ecos_key": false,
  "vkospi_rows": null,
- "kofia_rows": 2898,
+ "kofia_rows": null,
  "krx_key": false,
  "fred_last": {
   "WALCL": "2026-10-07",
@@ -48,5 +48,10 @@
   "XTEXVA01IDM667S": "2026-06-01",
   "BOPTEXP": "2026-08-01"
  },
- "failures": []
+ "failures": [
+  {
+   "id": "KOFIA",
+   "error": "STATSCU0100000070BO 2019: Unterminated string starting at: line 1 column 31676 (char 31675)"
+  }
+ ]
 }
