@@ -1,27 +1,780 @@
 {
-  "reviewed_at": "2026-10-09",
-  "start_month": "2015.01",
-  "note": "대만 상장사 월매출(MOPS 공시, 단위 NT$ 천원)을 한국 품목 수출과 비교하기 위한 후보 목록. 한국 업체 연결은 같은 공급망·제품군이라는 의미이며 거래관계를 뜻하지 않음.",
-  "companies": [
-    {"id": "2330", "name": "TSMC", "name_local": "台積電", "market": "sii", "category": "반도체 제조", "product": "파운드리", "hs_codes": ["8542"], "korean_peers": ["005930"]},
-    {"id": "2303", "name": "UMC", "name_local": "聯電", "market": "sii", "category": "반도체 제조", "product": "성숙공정 파운드리", "hs_codes": ["8542"], "korean_peers": ["005930"]},
-    {"id": "2454", "name": "MediaTek", "name_local": "聯發科", "market": "sii", "category": "반도체 제조", "product": "모바일·AI ASIC 팹리스", "hs_codes": ["8542"], "korean_peers": ["005930"]},
-    {"id": "2408", "name": "Nanya Technology", "name_local": "南亞科", "market": "sii", "category": "메모리", "product": "DRAM", "hs_codes": ["8542", "8542321010"], "korean_peers": ["005930", "000660"]},
-    {"id": "2344", "name": "Winbond", "name_local": "華邦電", "market": "sii", "category": "메모리", "product": "특수 DRAM·NOR/NAND", "hs_codes": ["8542", "8542321030"], "korean_peers": ["005930", "000660"]},
-    {"id": "3711", "name": "ASE Technology", "name_local": "日月光投控", "market": "sii", "category": "반도체 후공정·소재", "product": "패키징·테스트", "hs_codes": ["8542900000"], "korean_peers": ["195870"]},
-    {"id": "6488", "name": "GlobalWafers", "name_local": "環球晶", "market": "otc", "category": "반도체 후공정·소재", "product": "실리콘 웨이퍼", "hs_codes": ["8542"], "korean_peers": ["000660"]},
-    {"id": "3037", "name": "Unimicron", "name_local": "欣興", "market": "sii", "category": "PCB·기판", "product": "ABF·BT 기판, HDI", "hs_codes": ["853400"], "korean_peers": ["222800", "353200", "009150", "195870"]},
-    {"id": "3189", "name": "Kinsus", "name_local": "景碩", "market": "sii", "category": "PCB·기판", "product": "BT·ABF 패키지기판", "hs_codes": ["853400"], "korean_peers": ["222800", "353200", "007810"]},
-    {"id": "8046", "name": "Nan Ya PCB", "name_local": "南電", "market": "sii", "category": "PCB·기판", "product": "ABF 기판", "hs_codes": ["853400"], "korean_peers": ["222800", "009150"]},
-    {"id": "2368", "name": "Gold Circuit", "name_local": "金像電", "market": "sii", "category": "PCB·기판", "product": "서버·네트워크 다층 PCB", "hs_codes": ["853400"], "korean_peers": ["007660"]},
-    {"id": "2383", "name": "Elite Material", "name_local": "台光電", "market": "sii", "category": "PCB·기판", "product": "고속 CCL(동박적층판)", "hs_codes": ["853400"], "korean_peers": ["007660"]},
-    {"id": "2327", "name": "Yageo", "name_local": "國巨", "market": "sii", "category": "수동부품", "product": "MLCC·저항", "hs_codes": ["8532240000"], "korean_peers": ["009150"]},
-    {"id": "2317", "name": "Hon Hai (Foxconn)", "name_local": "鴻海", "market": "sii", "category": "AI 서버·EMS", "product": "AI 서버·전자제품 위탁생산", "hs_codes": ["8542", "853400"], "korean_peers": ["000660", "007660"]},
-    {"id": "2382", "name": "Quanta", "name_local": "廣達", "market": "sii", "category": "AI 서버·EMS", "product": "AI 서버 ODM", "hs_codes": ["8542", "853400"], "korean_peers": ["000660", "007660"]},
-    {"id": "6669", "name": "Wiwynn", "name_local": "緯穎", "market": "sii", "category": "AI 서버·EMS", "product": "클라우드 데이터센터 서버", "hs_codes": ["8542", "853400"], "korean_peers": ["000660", "007660"]},
-    {"id": "2308", "name": "Delta Electronics", "name_local": "台達電", "market": "sii", "category": "전력기기", "product": "전원공급장치·데이터센터 전력", "hs_codes": ["8504"], "korean_peers": ["010120"]},
-    {"id": "1519", "name": "Fortune Electric", "name_local": "華城", "market": "sii", "category": "전력기기", "product": "변압기", "hs_codes": ["8504230000", "8504"], "korean_peers": ["267260", "298040", "103590"]},
-    {"id": "1503", "name": "Shihlin Electric", "name_local": "士林電機", "market": "sii", "category": "전력기기", "product": "변압기·배전기기", "hs_codes": ["8504230000", "8504"], "korean_peers": ["267260", "298040", "010120"]},
-    {"id": "1513", "name": "Chung-Hsin Electric", "name_local": "中興電", "market": "sii", "category": "전력기기", "product": "GIS·변압기", "hs_codes": ["8504230000", "8504"], "korean_peers": ["298040", "267260"]}
-  ]
+ "reviewed_at": "2026-10-13",
+ "start_month": "2015.01",
+ "note": "대만 상장사 월매출(MOPS 공시, 단위 NT$ 천원)을 한국 품목 수출과 비교하기 위한 후보 목록. 한국 업체 연결은 같은 공급망·제품군이라는 의미이며 거래관계를 뜻하지 않음. 시장(sii 상장/otc 상장)은 수집 시 두 표를 모두 찾아 자동 판별.",
+ "companies": [
+  {
+   "id": "2330",
+   "name": "TSMC",
+   "name_local": "台積電",
+   "market": "sii",
+   "category": "반도체 제조",
+   "product": "파운드리",
+   "hs_codes": [
+    "8542"
+   ],
+   "korean_peers": [
+    "005930"
+   ]
+  },
+  {
+   "id": "2303",
+   "name": "UMC",
+   "name_local": "聯電",
+   "market": "sii",
+   "category": "반도체 제조",
+   "product": "성숙공정 파운드리",
+   "hs_codes": [
+    "8542"
+   ],
+   "korean_peers": [
+    "005930"
+   ]
+  },
+  {
+   "id": "2454",
+   "name": "MediaTek",
+   "name_local": "聯發科",
+   "market": "sii",
+   "category": "반도체 제조",
+   "product": "모바일·AI ASIC 팹리스",
+   "hs_codes": [
+    "8542"
+   ],
+   "korean_peers": [
+    "005930"
+   ]
+  },
+  {
+   "id": "2408",
+   "name": "Nanya Technology",
+   "name_local": "南亞科",
+   "market": "sii",
+   "category": "메모리",
+   "product": "DRAM",
+   "hs_codes": [
+    "8542",
+    "8542321010"
+   ],
+   "korean_peers": [
+    "005930",
+    "000660"
+   ]
+  },
+  {
+   "id": "2344",
+   "name": "Winbond",
+   "name_local": "華邦電",
+   "market": "sii",
+   "category": "메모리",
+   "product": "특수 DRAM·NOR/NAND",
+   "hs_codes": [
+    "8542",
+    "8542321030"
+   ],
+   "korean_peers": [
+    "005930",
+    "000660"
+   ]
+  },
+  {
+   "id": "3711",
+   "name": "ASE Technology",
+   "name_local": "日月光投控",
+   "market": "sii",
+   "category": "반도체 후공정·소재",
+   "product": "패키징·테스트",
+   "hs_codes": [
+    "8542900000"
+   ],
+   "korean_peers": [
+    "195870"
+   ]
+  },
+  {
+   "id": "6488",
+   "name": "GlobalWafers",
+   "name_local": "環球晶",
+   "market": "otc",
+   "category": "반도체 후공정·소재",
+   "product": "실리콘 웨이퍼",
+   "hs_codes": [
+    "8542"
+   ],
+   "korean_peers": [
+    "000660"
+   ]
+  },
+  {
+   "id": "3037",
+   "name": "Unimicron",
+   "name_local": "欣興",
+   "market": "sii",
+   "category": "PCB·기판",
+   "product": "ABF·BT 기판, HDI",
+   "hs_codes": [
+    "853400"
+   ],
+   "korean_peers": [
+    "222800",
+    "353200",
+    "009150",
+    "195870"
+   ]
+  },
+  {
+   "id": "3189",
+   "name": "Kinsus",
+   "name_local": "景碩",
+   "market": "sii",
+   "category": "PCB·기판",
+   "product": "BT·ABF 패키지기판",
+   "hs_codes": [
+    "853400"
+   ],
+   "korean_peers": [
+    "222800",
+    "353200",
+    "007810"
+   ]
+  },
+  {
+   "id": "8046",
+   "name": "Nan Ya PCB",
+   "name_local": "南電",
+   "market": "sii",
+   "category": "PCB·기판",
+   "product": "ABF 기판",
+   "hs_codes": [
+    "853400"
+   ],
+   "korean_peers": [
+    "222800",
+    "009150"
+   ]
+  },
+  {
+   "id": "2368",
+   "name": "Gold Circuit",
+   "name_local": "金像電",
+   "market": "sii",
+   "category": "PCB·기판",
+   "product": "서버·네트워크 다층 PCB",
+   "hs_codes": [
+    "853400"
+   ],
+   "korean_peers": [
+    "007660"
+   ]
+  },
+  {
+   "id": "2383",
+   "name": "Elite Material",
+   "name_local": "台光電",
+   "market": "sii",
+   "category": "PCB·기판",
+   "product": "고속 CCL(동박적층판)",
+   "hs_codes": [
+    "853400"
+   ],
+   "korean_peers": [
+    "007660"
+   ]
+  },
+  {
+   "id": "2327",
+   "name": "Yageo",
+   "name_local": "國巨",
+   "market": "sii",
+   "category": "수동부품",
+   "product": "MLCC·저항",
+   "hs_codes": [
+    "8532240000"
+   ],
+   "korean_peers": [
+    "009150"
+   ]
+  },
+  {
+   "id": "2317",
+   "name": "Hon Hai (Foxconn)",
+   "name_local": "鴻海",
+   "market": "sii",
+   "category": "AI 서버·EMS",
+   "product": "AI 서버·전자제품 위탁생산",
+   "hs_codes": [
+    "8542",
+    "853400"
+   ],
+   "korean_peers": [
+    "000660",
+    "007660"
+   ]
+  },
+  {
+   "id": "2382",
+   "name": "Quanta",
+   "name_local": "廣達",
+   "market": "sii",
+   "category": "AI 서버·EMS",
+   "product": "AI 서버 ODM",
+   "hs_codes": [
+    "8542",
+    "853400"
+   ],
+   "korean_peers": [
+    "000660",
+    "007660"
+   ]
+  },
+  {
+   "id": "6669",
+   "name": "Wiwynn",
+   "name_local": "緯穎",
+   "market": "sii",
+   "category": "AI 서버·EMS",
+   "product": "클라우드 데이터센터 서버",
+   "hs_codes": [
+    "8542",
+    "853400"
+   ],
+   "korean_peers": [
+    "000660",
+    "007660"
+   ]
+  },
+  {
+   "id": "2308",
+   "name": "Delta Electronics",
+   "name_local": "台達電",
+   "market": "sii",
+   "category": "전력기기",
+   "product": "전원공급장치·데이터센터 전력",
+   "hs_codes": [
+    "8504"
+   ],
+   "korean_peers": [
+    "010120"
+   ]
+  },
+  {
+   "id": "1519",
+   "name": "Fortune Electric",
+   "name_local": "華城",
+   "market": "sii",
+   "category": "전력기기",
+   "product": "변압기",
+   "hs_codes": [
+    "8504230000",
+    "8504"
+   ],
+   "korean_peers": [
+    "267260",
+    "298040",
+    "103590"
+   ]
+  },
+  {
+   "id": "1503",
+   "name": "Shihlin Electric",
+   "name_local": "士林電機",
+   "market": "sii",
+   "category": "전력기기",
+   "product": "변압기·배전기기",
+   "hs_codes": [
+    "8504230000",
+    "8504"
+   ],
+   "korean_peers": [
+    "267260",
+    "298040",
+    "010120"
+   ]
+  },
+  {
+   "id": "1513",
+   "name": "Chung-Hsin Electric",
+   "name_local": "中興電",
+   "market": "sii",
+   "category": "전력기기",
+   "product": "GIS·변압기",
+   "hs_codes": [
+    "8504230000",
+    "8504"
+   ],
+   "korean_peers": [
+    "298040",
+    "267260"
+   ]
+  },
+  {
+   "id": "2449",
+   "name": "KYEC",
+   "name_local": "京元電子",
+   "market": "sii",
+   "category": "반도체 후공정·소재",
+   "product": "테스트(OSAT)",
+   "hs_codes": [
+    "8542900000",
+    "8542"
+   ],
+   "korean_peers": [
+    "131970",
+    "067310"
+   ]
+  },
+  {
+   "id": "8299",
+   "name": "Phison",
+   "name_local": "群聯",
+   "market": "sii",
+   "category": "메모리",
+   "product": "낸드 컨트롤러",
+   "hs_codes": [
+    "8542321030",
+    "854232"
+   ],
+   "korean_peers": [
+    "000660",
+    "005930"
+   ]
+  },
+  {
+   "id": "5274",
+   "name": "Aspeed",
+   "name_local": "信驊",
+   "market": "sii",
+   "category": "AI 서버·EMS",
+   "product": "서버 BMC 칩",
+   "hs_codes": [
+    "854231",
+    "8542"
+   ],
+   "korean_peers": [
+    "000660"
+   ]
+  },
+  {
+   "id": "6515",
+   "name": "WinWay",
+   "name_local": "穎崴",
+   "market": "sii",
+   "category": "반도체 후공정·소재",
+   "product": "테스트 소켓",
+   "hs_codes": [
+    "8536909090"
+   ],
+   "korean_peers": [
+    "058470"
+   ]
+  },
+  {
+   "id": "2353",
+   "name": "Acer",
+   "name_local": "宏碁",
+   "market": "sii",
+   "category": "PC·네트워크",
+   "product": "PC·노트북",
+   "hs_codes": [
+    "8473304060",
+    "8542321010"
+   ],
+   "korean_peers": [
+    "005930",
+    "000660"
+   ]
+  },
+  {
+   "id": "2357",
+   "name": "Asustek",
+   "name_local": "華碩",
+   "market": "sii",
+   "category": "PC·네트워크",
+   "product": "PC·서버·메인보드",
+   "hs_codes": [
+    "8473304060",
+    "8542321010"
+   ],
+   "korean_peers": [
+    "005930",
+    "000660"
+   ]
+  },
+  {
+   "id": "3231",
+   "name": "Wistron",
+   "name_local": "緯創",
+   "market": "sii",
+   "category": "AI 서버·EMS",
+   "product": "AI 서버·노트북 ODM",
+   "hs_codes": [
+    "8542",
+    "853400"
+   ],
+   "korean_peers": [
+    "000660",
+    "007660"
+   ]
+  },
+  {
+   "id": "2376",
+   "name": "Gigabyte",
+   "name_local": "技嘉",
+   "market": "sii",
+   "category": "AI 서버·EMS",
+   "product": "서버·그래픽카드·메인보드",
+   "hs_codes": [
+    "8542321010",
+    "8473304060"
+   ],
+   "korean_peers": [
+    "000660"
+   ]
+  },
+  {
+   "id": "3017",
+   "name": "AVC (Asia Vital Components)",
+   "name_local": "奇鋐",
+   "market": "sii",
+   "category": "AI 서버·EMS",
+   "product": "서버 냉각(수랭·방열)",
+   "hs_codes": [
+    "8542"
+   ],
+   "korean_peers": [
+    "000660"
+   ]
+  },
+  {
+   "id": "6805",
+   "name": "Fositek",
+   "name_local": "富世達",
+   "market": "sii",
+   "category": "AI 서버·EMS",
+   "product": "AI 서버 수랭 커넥터·힌지",
+   "hs_codes": [
+    "8542"
+   ],
+   "korean_peers": [
+    "000660"
+   ]
+  },
+  {
+   "id": "3044",
+   "name": "Tripod",
+   "name_local": "健鼎",
+   "market": "sii",
+   "category": "PCB·기판",
+   "product": "서버·차량용 다층 PCB",
+   "hs_codes": [
+    "853400"
+   ],
+   "korean_peers": [
+    "007660",
+    "353200"
+   ]
+  },
+  {
+   "id": "5469",
+   "name": "GBM (HannStar Board)",
+   "name_local": "瀚宇博德",
+   "market": "sii",
+   "category": "PCB·기판",
+   "product": "서버 PCB (Lincstech 인수)",
+   "hs_codes": [
+    "853400"
+   ],
+   "korean_peers": [
+    "007660"
+   ]
+  },
+  {
+   "id": "5439",
+   "name": "First Hi-Tec",
+   "name_local": "先豐",
+   "market": "sii",
+   "category": "PCB·기판",
+   "product": "고다층 PCB",
+   "hs_codes": [
+    "853400"
+   ],
+   "korean_peers": [
+    "007660"
+   ]
+  },
+  {
+   "id": "3715",
+   "name": "Dynamic Holdings",
+   "name_local": "定穎投控",
+   "market": "sii",
+   "category": "PCB·기판",
+   "product": "차량·서버 PCB",
+   "hs_codes": [
+    "853400"
+   ],
+   "korean_peers": [
+    "007660",
+    "007810"
+   ]
+  },
+  {
+   "id": "2313",
+   "name": "Compeq",
+   "name_local": "華通",
+   "market": "sii",
+   "category": "PCB·기판",
+   "product": "HDI·위성 PCB",
+   "hs_codes": [
+    "853400",
+    "8534009000"
+   ],
+   "korean_peers": [
+    "007810",
+    "090460"
+   ]
+  },
+  {
+   "id": "4958",
+   "name": "Zhen Ding",
+   "name_local": "臻鼎-KY",
+   "market": "sii",
+   "category": "PCB·기판",
+   "product": "FPCB(세계 1위)",
+   "hs_codes": [
+    "8534002000",
+    "853400"
+   ],
+   "korean_peers": [
+    "090460",
+    "051370"
+   ]
+  },
+  {
+   "id": "6274",
+   "name": "TUC",
+   "name_local": "台燿",
+   "market": "sii",
+   "category": "PCB 소재·장비",
+   "product": "AI 서버용 CCL",
+   "hs_codes": [
+    "853400"
+   ],
+   "korean_peers": [
+    "007660"
+   ]
+  },
+  {
+   "id": "6213",
+   "name": "ITEQ",
+   "name_local": "聯茂",
+   "market": "sii",
+   "category": "PCB 소재·장비",
+   "product": "CCL",
+   "hs_codes": [
+    "853400"
+   ],
+   "korean_peers": [
+    "007660"
+   ]
+  },
+  {
+   "id": "1815",
+   "name": "Fulltech Fiber Glass",
+   "name_local": "富喬",
+   "market": "sii",
+   "category": "PCB 소재·장비",
+   "product": "유리섬유(글라스 클로스)",
+   "hs_codes": [
+    "853400"
+   ],
+   "korean_peers": [
+    "007660"
+   ]
+  },
+  {
+   "id": "5340",
+   "name": "Baotek",
+   "name_local": "建榮",
+   "market": "sii",
+   "category": "PCB 소재·장비",
+   "product": "유리섬유 (Nittobo 자회사)",
+   "hs_codes": [
+    "853400"
+   ],
+   "korean_peers": [
+    "007660"
+   ]
+  },
+  {
+   "id": "8358",
+   "name": "Co-Tech",
+   "name_local": "金居",
+   "market": "sii",
+   "category": "PCB 소재·장비",
+   "product": "HVLP 동박",
+   "hs_codes": [
+    "7410211000",
+    "853400"
+   ],
+   "korean_peers": [
+    "007660"
+   ]
+  },
+  {
+   "id": "8021",
+   "name": "Topoint",
+   "name_local": "尖點",
+   "market": "sii",
+   "category": "PCB 소재·장비",
+   "product": "PCB 드릴비트",
+   "hs_codes": [
+    "853400"
+   ],
+   "korean_peers": [
+    "007660"
+   ]
+  },
+  {
+   "id": "5498",
+   "name": "Keyware",
+   "name_local": "凱崴",
+   "market": "sii",
+   "category": "PCB 소재·장비",
+   "product": "PCB 드릴비트·가공",
+   "hs_codes": [
+    "853400"
+   ],
+   "korean_peers": [
+    "007660"
+   ]
+  },
+  {
+   "id": "3167",
+   "name": "Ta Liang",
+   "name_local": "大量",
+   "market": "sii",
+   "category": "PCB 소재·장비",
+   "product": "PCB 드릴·검사 장비",
+   "hs_codes": [
+    "853400"
+   ],
+   "korean_peers": [
+    "007660"
+   ]
+  },
+  {
+   "id": "2345",
+   "name": "Accton",
+   "name_local": "智邦",
+   "market": "sii",
+   "category": "PC·네트워크",
+   "product": "데이터센터 네트워크 스위치",
+   "hs_codes": [
+    "8542",
+    "853400"
+   ],
+   "korean_peers": [
+    "007660"
+   ]
+  },
+  {
+   "id": "2492",
+   "name": "Walsin Technology",
+   "name_local": "華新科",
+   "market": "sii",
+   "category": "수동부품",
+   "product": "MLCC",
+   "hs_codes": [
+    "8532240000"
+   ],
+   "korean_peers": [
+    "009150"
+   ]
+  },
+  {
+   "id": "3090",
+   "name": "Nichidenbo",
+   "name_local": "日電貿",
+   "market": "sii",
+   "category": "수동부품",
+   "product": "수동부품 유통(삼성전기 포함)",
+   "hs_codes": [
+    "8532240000"
+   ],
+   "korean_peers": [
+    "009150"
+   ]
+  },
+  {
+   "id": "3645",
+   "name": "Taimide",
+   "name_local": "達邁",
+   "market": "sii",
+   "category": "PCB 소재·장비",
+   "product": "PI(폴리이미드) 필름",
+   "hs_codes": [
+    "8534002000"
+   ],
+   "korean_peers": [
+    "090460",
+    "051370"
+   ]
+  },
+  {
+   "id": "3008",
+   "name": "Largan",
+   "name_local": "大立光",
+   "market": "sii",
+   "category": "광학",
+   "product": "스마트폰 카메라 렌즈 (Apple)",
+   "hs_codes": [
+    "8542"
+   ],
+   "korean_peers": [
+    "011070"
+   ]
+  },
+  {
+   "id": "6209",
+   "name": "GESO",
+   "name_local": "今國光",
+   "market": "sii",
+   "category": "광학",
+   "product": "렌즈 (Apple·화웨이·VR)",
+   "hs_codes": [
+    "8542"
+   ],
+   "korean_peers": [
+    "011070"
+   ]
+  },
+  {
+   "id": "8070",
+   "name": "CWTC (Chang Wah Technology)",
+   "name_local": "長華*",
+   "market": "sii",
+   "category": "반도체 후공정·소재",
+   "product": "리드프레임",
+   "hs_codes": [
+    "8542900000"
+   ],
+   "korean_peers": [
+    "195870"
+   ]
+  },
+  {
+   "id": "2351",
+   "name": "SDI Corporation",
+   "name_local": "順德",
+   "market": "sii",
+   "category": "반도체 후공정·소재",
+   "product": "리드프레임",
+   "hs_codes": [
+    "8542900000"
+   ],
+   "korean_peers": [
+    "195870"
+   ]
+  }
+ ]
 }

@@ -140,6 +140,7 @@ def main():
                 existing[(r['month'], r['company_id'])] = r
 
     all_months = list(months((sy, sm), (ly, lm)))
+    newcos = {cid for cid in companies if not any(k[1] == cid for k in existing)}  # 새로 추가된 업체는 과거 월을 다시 받음
     recent = set(all_months[-3:])
     stamp = now.strftime('%Y-%m-%dT%H:%M:%S%z')
     failures, fetched_months = [], 0
@@ -148,10 +149,14 @@ def main():
         label = f'{y}.{m:02d}'
         have = {cid for (mo, cid) in existing if mo == label}
         # past months are fetched once; later-listed companies stay absent there
-        if not full and (y, m) not in recent and have:
+        if not full and (y, m) not in recent and have and not newcos:
             continue
-        for market in sorted({c['market'] for c in companies.values()}):
-            wanted = {cid for cid, c in companies.items() if c['market'] == market}
+        # 상장 시장을 고정하지 않고 上市(sii)·上櫃(otc) 표를 모두 찾아봅니다(시장 이전 업체 대응).
+        found = {}
+        for market in ('sii', 'otc'):
+            wanted = set(companies) - set(found)
+            if not wanted:
+                break
             got = {}
             for kind in (0, 1):
                 try:
@@ -167,11 +172,12 @@ def main():
             for cid, row in got.items():
                 existing[(label, cid)] = {'month': label, 'company_id': cid, 'market': market,
                                           'retrieved_at': stamp, **row}
-            missing = wanted - set(got)
-            # companies listed later than start_month are simply absent in early months
-            if missing and (y, m) in recent and not any(f['month'] == label and f['market'] == market for f in failures):
-                failures.append({'month': label, 'market': market,
-                                 'error': 'NOT_IN_TABLE ' + ','.join(sorted(missing))})
+                found[cid] = market
+        missing = set(companies) - set(found)
+        # companies listed later than start_month are simply absent in early months
+        if missing and (y, m) in recent and not any(f['month'] == label for f in failures):
+            failures.append({'month': label, 'market': 'sii+otc',
+                             'error': 'NOT_IN_TABLE ' + ','.join(sorted(missing))})
         fetched_months += 1
 
     rows = sorted(existing.values(), key=lambda r: (r['company_id'], r['month']))
