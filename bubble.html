@@ -10,7 +10,8 @@
 .score{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:14px}.score .big{font-size:34px;font-weight:900}
 .table{overflow:auto}table{border-collapse:collapse;width:100%;font-size:13.5px}th,td{padding:8px 10px;text-align:right;white-space:nowrap}th:first-child,td:first-child,th:nth-child(2),td:nth-child(2){text-align:left}
 td.h{font-weight:700}.flag{font-size:12px;padding:2px 8px;border-radius:999px;background:#7f1d1d;color:#fecaca}.flag.w{background:#713f12;color:#fde68a}
-@media(max-width:1100px){.g2,.g3{grid-template-columns:1fr}}
+.g2.wk{grid-template-columns:minmax(0,1.75fr) minmax(0,1fr)}.wk table{font-size:12.5px}.wk th,.wk td{padding:7px 6px;white-space:nowrap}.wk td:nth-child(8){font-size:11.5px}
+@media(max-width:1100px){.g2,.g2.wk,.g3{grid-template-columns:1fr}}
 </style>
 <link rel="stylesheet" href="./shell.css?v=3">
 </head><body><main>
@@ -20,7 +21,7 @@ td.h{font-weight:700}.flag{font-size:12px;padding:2px 8px;border-radius:999px;ba
 <section class="panel"><h2>종합 경고등</h2><div class="score"><div class="big" id="scoreBig">—</div><div id="scoreText" class="muted"></div></div><div class="lights" id="lights"></div><p class="muted" id="asof"></p></section>
 
 <h2 class="sec">① 약한 고리 · 국가별 주가 하락률 vs 수출 증감률</h2>
-<div class="g2"><section class="panel"><h2>국가별 주가 기간 수익률 · 수출 YoY</h2><p class="muted">수익률은 각국 대표지수 현지통화 기준. 수출 YoY는 OECD 월간 수출액(미국은 BEA 수출, 3개월 평균 기준). 주가는 크게 빠졌는데 수출도 꺾인 나라(빨간 표시)가 먼저 끊어지는 약한 고리 후보입니다.</p><div class="table"><table><thead><tr><th>국가·지수</th><th>최근일</th><th>1주</th><th>1개월</th><th>3개월</th><th>연초 대비</th><th>52주 고점 대비</th><th>수출 YoY (최근월)</th><th>수출 YoY (3개월)</th><th>판단</th></tr></thead><tbody id="weak"></tbody></table></div></section>
+<div class="g2 wk"><section class="panel"><h2>국가별 주가 기간 수익률 · 수출 YoY</h2><p class="muted">수익률은 각국 대표지수 현지통화 기준. 수출 YoY는 OECD 월간 수출액(미국은 BEA 수출, 한국은 관세청 월간 발표치를 우선 반영) — 최근 3개월 평균 기준. OECD 자료는 2~3개월 늦게 나오므로 표의 '기준월'을 함께 보세요. 대만·홍콩·유로존은 같은 기준의 무료 월간 자료가 없어 비워 둡니다. 이름에 마우스를 올리면 최근 거래일이 보입니다. 주가는 크게 빠졌는데 수출도 꺾인 나라(빨간 표시)가 먼저 끊어지는 약한 고리 후보입니다.</p><div class="table"><table><thead><tr><th>국가·지수</th><th>1주</th><th>1개월</th><th>3개월</th><th>연초 대비</th><th>52주 고점</th><th>수출 YoY<br>(기준월)</th><th>수출 YoY<br>3개월</th></tr></thead><tbody id="weak"></tbody></table></div></section>
 <section class="panel"><h2>약한 고리 지도</h2><p class="muted">가로 = 수출 YoY(3개월 평균), 세로 = 52주 고점 대비 하락률. 왼쪽 아래(수출 감소 + 주가 급락)일수록 약한 고리입니다.</p><div class="chart" style="height:420px"><canvas id="weakMap"></canvas></div></section></div>
 
 <h2 class="sec">② 유동성 · 정부/중앙은행 · 은행 · 민간</h2>
@@ -46,5 +47,5 @@ td.h{font-weight:700}.flag{font-size:12px;padding:2px 8px;border-radius:999px;ba
 </div>
 <section class="panel"><h2>기준과 출처</h2><p class="muted">주가·환율·원자재: Yahoo Finance 일별 종가(비공식 API). 유동성·스프레드·수출·금리: FRED(세인트루이스 연준). 기업 CDS: 언론 보도 수치를 수동 기록(cds_manual.csv). 평일 하루 두 번(한국 시간 07:30, 18:30) 자동 갱신.</p><p class="muted" id="status"></p></section>
 </main>
-<script src="./bubble.js?v=1"></script>
+<script src="./bubble.js?v=2"></script>
 </body></html>
