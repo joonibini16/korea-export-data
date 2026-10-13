@@ -89,6 +89,9 @@
    ],
    "korean_peers": [
     "195870"
+   ],
+   "predecessors": [
+    "2311"
    ]
   },
   {
@@ -490,8 +493,8 @@
   },
   {
    "id": "5439",
-   "name": "First Hi-Tec",
-   "name_local": "先豐",
+   "name": "First Hi-Tec Enterprise",
+   "name_local": "高技",
    "market": "sii",
    "category": "PCB·기판",
    "product": "고다층 PCB",
@@ -515,6 +518,9 @@
    "korean_peers": [
     "007660",
     "007810"
+   ],
+   "predecessors": [
+    "6251"
    ]
   },
   {

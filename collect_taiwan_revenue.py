@@ -139,6 +139,8 @@ def main():
     full = '--full' in sys.argv
     watch = json.loads(WATCH.read_text(encoding='utf-8'))
     companies = {c['id']: c for c in watch['companies']}
+    # 지주사 전환 등으로 코드가 바뀐 업체: 전신 코드의 매출을 현재 코드로 이어 붙임(그 달 현재 코드 값이 없을 때만)
+    pred = {p: c['id'] for c in watch['companies'] for p in c.get('predecessors', [])}
     sy, sm = map(int, watch.get('start_month', '2015.01').split('.'))
     now = datetime.now(KST)
     # month M is due by day 10 of M+1; collect through previous month
@@ -176,7 +178,7 @@ def main():
         # 상장 시장을 고정하지 않고 上市(sii)·上櫃(otc) 표를 모두 찾아봅니다(시장 이전 업체 대응).
         found = {}
         for market in ('sii', 'otc'):
-            wanted = set(companies) - set(found)
+            wanted = (set(companies) | set(pred)) - set(found)
             if not wanted:
                 break
             got = {}
@@ -192,9 +194,18 @@ def main():
                     got[cid] = row
                 time.sleep(1.2)
             for cid, row in got.items():
+                found[cid] = market
+                if cid in pred:
+                    continue
                 existing[(label, cid)] = {'month': label, 'company_id': cid, 'market': market,
                                           'retrieved_at': stamp, **row}
-                found[cid] = market
+            for pid, row in got.items():
+                main_id = pred.get(pid)
+                if main_id and main_id not in got and main_id not in found:
+                    row['note'] = f'[전신 {pid} {row["name_local"]}] ' + ('' if row.get('note') in (None, '', '-') else row['note'])
+                    existing[(label, main_id)] = {'month': label, 'company_id': main_id, 'market': market,
+                                                  'retrieved_at': stamp, **row}
+                    found[main_id] = market
         missing = set(companies) - set(found)
         # companies listed later than start_month are simply absent in early months
         if missing and (y, m) in recent and not any(f['month'] == label for f in failures):
