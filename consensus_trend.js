@@ -11,7 +11,7 @@
  const pct=(a,b)=>a!=null&&b!=null&&b!==0?(a/b-1)*100*(b<0?-1:1):null;
  const fmt=v=>v==null?'—':(v>0?'+':'')+v.toFixed(1)+'%';
  function verdict(p1,p3){if(p3==null&&p1==null)return['—',''];const v=p3??p1;if(v>=3)return[p1!=null&&p1>=1?'상향 · 진행 중':'상향','up'];if(v<=-3)return[p1!=null&&p1<=-1?'하향 · 진행 중':'하향','down'];if(p1!=null&&p1>=3)return['최근 상향 전환','up'];if(p1!=null&&p1<=-3)return['최근 하향 전환','down'];return['유지',''];}
- let seq=0;window.renderConsTrend=async function(c){const sec=document.getElementById('consTrendPanel');if(!sec)return;const my=++seq;await load();if(my!==seq)return;
+ let seq=0;window.__ctLoad=load;window.__ctRows=()=>rows||[];window.renderConsTrend=async function(c){const sec=document.getElementById('consTrendPanel');if(!sec)return;const my=++seq;await load();if(my!==seq)return;
   const item=document.getElementById('ctItem').value,freq=document.getElementById('ctFreq').value;
   document.getElementById('ctTitle').textContent=c.name+' · 컨센서스 추이 (상향·하향)';
   const mine=rows.filter(r=>r.company_id===c.id&&r.freq===freq&&r.item===item);const by=new Map();
@@ -33,4 +33,20 @@
   const xs=ds.flatMap(d=>d.data.map(q=>q.x)),x0=Math.min(...xs),x1=Math.max(...xs),cv=document.getElementById('ctChart');Chart.getChart(cv)?.destroy();ct=new Chart(cv,{type:'line',data:{datasets:ds},options:{responsive:true,maintainAspectRatio:false,animation:false,parsing:true,interaction:{mode:'nearest',intersect:false},plugins:{legend:{position:'bottom'},tooltip:{callbacks:{title:x=>new Date(x[0].parsed.x).toISOString().slice(0,10),label:x=>`${x.dataset.label}: ${x.parsed.y.toLocaleString(undefined,{maximumFractionDigits:0})} ${unit}`}}},
    scales:{x:{type:'linear',min:x0-3*864e5,max:x1+3*864e5,ticks:{maxTicksLimit:8,callback:v=>new Date(v).toISOString().slice(2,7).replace('-','.')},grid:{display:false}},y:{title:{display:true,text:NAMES[item]+' ('+unit+')'}}}}});};
  document.addEventListener('change',e=>{if(e.target&&(e.target.id==='ctItem'||e.target.id==='ctFreq')){const id=document.getElementById('company')?.value;const c=(window.watch||[]).find?.(x=>x.id===id);if(c)window.renderConsTrend(c);else if(typeof watch!=='undefined'){const cc=watch.find(x=>x.id===id);if(cc)window.renderConsTrend(cc);}}});
+})();
+
+// ── 연도별 Forward PER 카드: 최근 종가 ÷ 회계연도별 EPS 컨센서스(올해·내년·내후년)
+(function(){let px=null,pl=null;
+ async function prices(){if(px)return px;if(!pl)pl=fetch('stock_prices_monthly.csv?v='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():'').then(t=>{px=new Map();if(!t)return px;const L=t.trim().split(/\r?\n/).slice(1);for(const l of L){const [id,m,d,c]=l.split(',');const o=px.get(id);if(!o||d>o.date)px.set(id,{date:d,close:Number(c)});}return px;}).catch(()=>px=new Map());return pl;}
+ window.renderPerCards=async function(c){const box=document.getElementById('perCards');if(!box)return;await window.__ctLoad();const P=(await prices()).get(c.id);
+  document.getElementById('perTitle').textContent=c.name+' · 연도별 PER (현재 주가 ÷ EPS 컨센서스)';box.replaceChildren();
+  const y0=new Date().getFullYear(),rows=window.__ctRows().filter(r=>r.company_id===c.id&&r.freq==='Y'&&r.item==='eps');
+  const d=P?`${P.date.slice(0,4)}-${P.date.slice(4,6)}-${P.date.slice(6,8)}`:'';
+  for(const [k,lab] of [[0,'올해'],[1,'내년'],[2,'내후년']]){const per=`${y0+k}/12`,a=rows.filter(r=>r.period===per).sort((x,y)=>x.date.localeCompare(y.date)),last=a.at(-1);
+   const eps=last?Number(last.avg):null,pe=eps>0&&P?P.close/eps:null;
+   const m3=a.filter(r=>r.date<=(()=>{const x=new Date((last?.date||d)+'T00:00:00Z');x.setUTCMonth(x.getUTCMonth()-3);return x.toISOString().slice(0,10);})()).at(-1),ch=m3&&last&&Number(m3.avg)>0?(eps/Number(m3.avg)-1)*100:null;
+   const pe3=m3&&Number(m3.avg)>0&&P?P.close/Number(m3.avg):null;
+   const el=document.createElement('div');el.className='card per-card';
+   el.innerHTML=`<span class="muted">${lab} · ${y0+k}년 PER</span><strong>${pe==null?(eps!=null&&eps<=0?'적자':'—'):pe.toFixed(1)+'배'}</strong><span class="muted">EPS 컨센서스 ${eps==null?'없음':Math.round(eps).toLocaleString()+'원'}${last?' · '+last.date:''}</span><span class="${ch==null?'muted':ch>=0?'pos':'neg'}">${ch==null?'3개월 전 비교 불가':'EPS 3개월 '+(ch>0?'+':'')+ch.toFixed(1)+'% '+(ch>=3?'상향':ch<=-3?'하향':'유지')+(pe3&&pe?` (같은 주가면 PER ${pe3.toFixed(1)}→${pe.toFixed(1)}배)`:'')}</span>`;box.append(el);}
+  document.getElementById('perNote').textContent=P?`주가 ${P.close.toLocaleString()}원 (${d} 종가, 수정주가) ÷ 회계연도별 EPS 컨센서스(네이버 와이즈리포트, 최근 3개월 증권사 추정 평균). 적자 추정이면 PER을 계산하지 않습니다.`:'주가 자료가 없습니다.';};
 })();
