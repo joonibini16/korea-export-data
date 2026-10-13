@@ -1,0 +1,31 @@
+name: Consensus Trend (revisions)
+on:
+  workflow_dispatch:
+    inputs:
+      backfill:
+        description: '1~2년 전 기준일로도 조회해 과거 추이를 채움'
+        type: boolean
+        default: false
+  push:
+    branches: [main]
+    paths: ['collect_consensus_trend.py', '.github/workflows/consensus_trend.yml']
+  schedule:
+    - cron: '40 23 * * 0-4'   # 평일 08:40 KST: 매일 시점 스냅샷을 쌓아 상향·하향 흐름을 추적
+permissions:
+  contents: write
+concurrency:
+  group: consensus-trend
+  cancel-in-progress: false
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python collect_consensus_trend.py ${{ inputs.backfill && '--backfill' || '' }}
+      - run: |
+          git config user.name github-actions; git config user.email github-actions@github.com
+          for f in consensus_trend.csv consensus_trend_status.json; do if [ -f $f ]; then git add $f; fi; done
+          if ! git diff --cached --quiet; then git commit -m "Update consensus trend"; git pull --rebase origin main || (git rebase --abort; exit 1); git push; fi
