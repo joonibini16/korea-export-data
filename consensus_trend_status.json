@@ -1,37 +1,8 @@
 {
- "updated_at": "2026-10-13T23:23:53+09:00",
+ "updated_at": "2026-10-13T23:48:35+09:00",
  "companies": 57,
- "with_data": 46,
- "rows_fetched": 29224,
+ "with_data": 51,
+ "rows_fetched": 24057,
  "rows_stored": 17026,
- "failures": [
-  {
-   "id": "000660",
-   "error": "<urlopen error timed out>"
-  },
-  {
-   "id": "069620",
-   "error": "<urlopen error timed out>"
-  },
-  {
-   "id": "097800",
-   "error": "<urlopen error timed out>"
-  },
-  {
-   "id": "330860",
-   "error": "<urlopen error timed out>"
-  },
-  {
-   "id": "172670",
-   "error": "<urlopen error timed out>"
-  },
-  {
-   "id": "078350",
-   "error": "<urlopen error timed out>"
-  },
-  {
-   "id": "200470",
-   "error": "<urlopen error timed out>"
-  }
- ]
+ "failures": []
 }
