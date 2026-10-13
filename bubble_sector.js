@@ -14,7 +14,7 @@
  for(const row of stocks)quotes.set(row.market+'|'+row.code,row);
  for(const arr of history.values())arr.sort((a,b)=>a.date.localeCompare(b.date));
  $('sectorProgress').textContent=`업종 ${status.industry_done??history.size}/${status.industry_total??group.size}개 · 종목 ${status.stock_done??stocks.length}/${status.listed??catalog.length}개 수집 완료 · KIND 상장 목록 ${status.listed??catalog.length}개 · 갱신 ${status.updated_at??'—'}`;
- const n=v=>v===''?null:Number(v),fmt=v=>v==null||!Number.isFinite(+v)?'—':(+v).toLocaleString('ko-KR',{maximumFractionDigits:2});
+ const n=v=>v===''?null:Number(v),fmt=v=>v===''||v==null||!Number.isFinite(+v)?'—':(+v).toLocaleString('ko-KR',{maximumFractionDigits:2});
  function sma(values,period){return values.map((_,i)=>{const a=values.slice(i-period+1,i+1);return a.length===period&&a.every(v=>v!==null)?Math.round(a.reduce((x,y)=>x+y,0)/period*100)/100:null;});}
  function plot(id,arr,column,period){const values=arr.map(r=>n(r[column]));const avg=sma(values,period);
   chart(id,{type:'line',data:{labels:arr.map(r=>r.date),datasets:[{label:column==='hli'?'250일 신고가 비율 (%)':'60일선 위 비율 (%)',data:values,borderColor:'#60a5fa',pointRadius:0,borderWidth:2,spanGaps:false},{label:period+'일 평균 (%)',data:avg,borderColor:'#f59e0b',pointRadius:0,borderWidth:2,spanGaps:false}]},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{position:'bottom'},tooltip:{callbacks:{afterBody:items=>{const r=arr[items[0]?.dataIndex];return r?`계산 가능 종목 ${column==='hli'?r.n250:r.n60}개`:'';}}}},scales:{x:{ticks:{maxTicksLimit:8},grid:{display:false}},y:{min:0,max:100,title:{display:true,text:'종목 비율 (%)'}}}}});}
