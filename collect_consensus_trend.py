@@ -4,7 +4,7 @@
 - 연간(frq=Y): 회계연도별 최근 약 1년의 월말 시점 컨센서스
 - 분기(frq=Q): 분기별 최근 약 3개월의 주간 시점 컨센서스
 - 항목: 매출액(121000)·영업이익(121500)·순이익(122700) 요청 시 EPS가 함께 옵니다.
-매 실행 결과를 기존 파일과 (회사, 주기, 기간, 항목, 시점) 기준으로 합쳐, 시간이 지날수록 이력이 길어집니다.
+소스는 과거 기준일을 넣어도 항상 최근 약 1년치만 주므로, 매 실행 결과를 기존 파일과 (회사, 주기, 기간, 항목, 시점) 기준으로 합쳐, 시간이 지날수록 이력이 길어집니다.
 비공식 내부 JSON이라 형식이 바뀌면 그 회사만 실패로 기록하고 기존 값은 유지합니다.
 Output: consensus_trend.csv, consensus_trend_status.json
 """
@@ -55,7 +55,7 @@ def series(cid, frq, yymm, acc, dt):
     return out
 
 
-def one(cid, dt, today, back_dts=()):
+def one(cid, dt, today):
     rows = []
     ys = [p for p in periods(cid, 0, dt) if int(p[:4]) >= today.year - 1]
     qs = periods(cid, 1, dt)
@@ -65,12 +65,6 @@ def one(cid, dt, today, back_dts=()):
     for yymm in qs[-6:]:  # 최근·향후 분기
         for acc in ('121000', '121500'):
             rows += series(cid, 'Q', yymm, acc, dt); time.sleep(0.25)
-    # --backfill: 과거 기준일로 다시 조회해 그 시점의 1년 추이(이미 실적이 나온 회계연도 포함)를 채움
-    for bdt in back_dts:
-        y0 = int(bdt[:4])
-        for yymm in [p for p in periods(cid, 0, bdt) if y0 - 1 <= int(p[:4]) <= y0 + 1]:
-            for acc in ('121000', '121500'):
-                rows += series(cid, 'Y', yymm, acc, bdt); time.sleep(0.25)
     for r in rows:
         r['company_id'] = cid
     return rows
@@ -93,13 +87,10 @@ def main():
         return merge_file(sys.argv[sys.argv.index('--merge') + 1])
     now = datetime.now(KST); dt = now.strftime('%Y%m%d'); stamp = now.isoformat(timespec='seconds')
     ids = [c['id'] for c in json.loads(Path('company_watchlist.json').read_text())['companies'] if c['id'].isdigit()]
-    back = []
-    if '--backfill' in sys.argv:
-        back = [(now - timedelta(days=d)).strftime('%Y%m%d') for d in (365, 730)]
     fails, got = [], []
     def job(cid):
         try:
-            return one(cid, dt, now, back)
+            return one(cid, dt, now)
         except Exception as e:
             fails.append(dict(id=cid, error=str(e)[:120])); return []
     with ThreadPoolExecutor(4) as pool:

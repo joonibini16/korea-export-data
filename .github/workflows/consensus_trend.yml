@@ -1,11 +1,6 @@
 name: Consensus Trend (revisions)
 on:
   workflow_dispatch:
-    inputs:
-      backfill:
-        description: '1~2년 전 기준일로도 조회해 과거 추이를 채움'
-        type: boolean
-        default: false
   push:
     branches: [main]
     paths: ['collect_consensus_trend.py', '.github/workflows/consensus_trend.yml']
@@ -19,12 +14,12 @@ concurrency:
 jobs:
   collect:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: {python-version: '3.12'}
-      - run: python collect_consensus_trend.py ${{ inputs.backfill && '--backfill' || '' }}
+      - run: python collect_consensus_trend.py
       - run: |
           git config user.name github-actions; git config user.email github-actions@github.com
           cp consensus_trend_new.csv /tmp/new.csv; cp consensus_trend_status.json /tmp/status.json
