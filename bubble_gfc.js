@@ -8,7 +8,7 @@
  const fmt=(v,d=1)=>v==null?'—':(v>0?'+':'')+v.toFixed(d);
  const num=v=>Math.round(v).toLocaleString();
  let VIEW='path';let charts=[],RAW=null;
- function mk(id,cfg){const c=document.getElementById(id);if(!c)return;charts.push(new Chart(c,cfg));}
+ const byId={};function mk(id,cfg){const c=document.getElementById(id);if(!c)return;const ch=new Chart(c,cfg);charts.push(ch);byId[id]=ch;return ch;}
  function applyView(box){box.querySelectorAll('[data-v]').forEach(e=>{if(e.tagName!=='BUTTON')e.style.display=e.dataset.v===VIEW?'':'none';});box.querySelectorAll('#gfView button').forEach(b=>b.classList.toggle('on',b.dataset.v===VIEW));}
  async function run(){const box=document.getElementById('gfcBox');if(!box)return;
   if(!RAW)try{const [a,b]=await Promise.all([fetch('gfc_index.csv').then(r=>r.text()),fetch('market_daily.csv?v='+Date.now(),{cache:'no-store'}).then(r=>r.text())]);
@@ -33,16 +33,16 @@
    <div><b>100일 이격도 최고치</b><span>현재 코스피 ${fmt(kD?.disp)}% (${kD?.d}) vs 2007 코스피 ${fmt(aD?.disp)}% (${aD?.d}) · 현재 ${fmt(K.at(-1).disp)}%</span></div>
    <div><b>현재 위치</b><span>${kL.d} · ${num(kL.v)} · 고점(${kP.d} ${num(kP.v)}) 대비 ${fmt(kNow.dd)}% · 고점 후 ${Math.round(kNow.t)}일</span></div>
    <div><b>2007 고점 이후 경로</b><span>2007 코스피는 고점 후 같은 ${Math.round(kNow.t)}일째(${aSame.d}) ${fmt(aSame.dd)}%, 현재와 같은 낙폭은 ${aSameDD?aSameDD.d+'('+Math.round(aSameDD.t)+'일째)':'없음'}에 처음 도달. 저점 ${aLow.d} ${fmt(aLow.dd)}%(${Math.round(aLow.t)}일). 나스닥은 ${bLow.d} ${fmt(bLow.dd)}%(${Math.round(bLow.t)}일)</span></div></div>
-   <div class="g3 dc-g" data-v="path"><div><h3>강세장 시작 = 100 (로그)</h3><div class="chart"><canvas id="gfIdx"></canvas></div></div><div><h3>100일 이격도 (%)</h3><div class="chart"><canvas id="gfDisp"></canvas></div></div><div><h3>고점 이후 낙폭 (%) · 고점 후 경과일</h3><div class="chart"><canvas id="gfDD"></canvas></div></div></div>
-   <div class="dc-peak" data-v="peak"><h3>금융위기 비교 ① 정점 정렬 · 현재 코스피 고점 = 2007-10-31 코스피 고점 = 100 (로그)</h3><div class="chart" style="height:340px"><canvas id="gfPeak"></canvas></div><p class="muted" id="gfPeakNote"></p></div>
-   <div class="dc-peak" data-v="mid"><h3>금융위기 비교 ② 중간 조정 정렬 · 현재 코스피 고점 = 2007-07-25 코스피 고점(서브프라임 1차 충격 직전) = 100 (로그)</h3><div class="chart" style="height:340px"><canvas id="gfMid"></canvas></div><p class="muted" id="gfMidNote"></p></div>
+   <div class="dc-g" data-v="path"><h3>강세장 시작 = 100 (로그)</h3><div class="chart" style="height:400px"><canvas id="gfIdx"></canvas></div><div id="gfIdxNav"></div><div class="g2" style="margin-top:16px"><div><h3>100일 이격도 (%) <span class="muted" style="font-weight:400">· 위 기간 조절과 연동</span></h3><div class="chart"><canvas id="gfDisp"></canvas></div></div><div><h3>고점 이후 낙폭(MDD, %) · 고점 후 경과일</h3><div class="chart"><canvas id="gfDD"></canvas></div><div id="gfDDNav"></div></div></div></div>
+   <div class="dc-peak" data-v="peak"><h3>금융위기 비교 ① 정점 정렬 · 현재 코스피 고점 = 2007-10-31 코스피 고점 = 100 (로그)</h3><div class="chart" style="height:340px"><canvas id="gfPeak"></canvas></div><div id="gfPeakNav"></div><p class="muted" id="gfPeakNote"></p></div>
+   <div class="dc-peak" data-v="mid"><h3>금융위기 비교 ② 중간 조정 정렬 · 현재 코스피 고점 = 2007-07-25 코스피 고점(서브프라임 1차 충격 직전) = 100 (로그)</h3><div class="chart" style="height:340px"><canvas id="gfMid"></canvas></div><div id="gfMidNav"></div><p class="muted" id="gfMidNote"></p></div>
    <p class="muted">참고용 비교입니다(예측 아님). 2007 코스피는 2003-03-17 저점(515.2, 카드사태·이라크전), 나스닥 종합은 2002-10-09 저점(1,114.1)을 강세장 시작으로, 현재 코스피는 ${startTxt}을 시작으로 맞췄습니다. 가로축은 시작(또는 고점) 이후 경과 시간이라 실제 날짜가 다릅니다. 2007년은 부채(서브프라임·레버리지) 위기로 실적이 꺾이며 하락했고, 현재는 반도체 이익 증가가 동반된다는 차이가 있습니다. 출처: Yahoo Finance(^KS11·^IXIC 2002~2011), 현재 코스피 market_daily.csv(매일 갱신).</p>`;
   charts.forEach(c=>c.destroy());charts=[];applyView(box);
   const L=(label,data,color,w=2,dash)=>({label,data,borderColor:color,backgroundColor:color,borderWidth:w,borderDash:dash,pointRadius:0,tension:0,parsing:false});
   const now=(p,lab)=>({label:lab,data:[p],borderColor:'#fbbf24',backgroundColor:'#fbbf24',pointRadius:5,showLine:false,parsing:false});
   const base={responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:'nearest',intersect:false},plugins:{legend:{position:'bottom',labels:{boxWidth:10}}}};
   const tY=t=>`${t.dataset.label}: T+${t.parsed.x.toFixed(2)}년 · `;
-  const xY={type:'linear',min:0,max:7,title:{display:true,text:'강세장 시작 후 경과 (년)'},ticks:{callback:v=>'T+'+v+'Y'}};
+  const xY={type:'linear',min:0,max:7,title:{display:true,text:'강세장 시작 후 경과 (년)'},ticks:{callback:v=>'T+'+(+(+v).toFixed(2))+'Y'}};
   const cut=a=>a.filter(x=>x.y<=7);
   mk('gfIdx',{type:'line',data:{datasets:[L('2007 코스피 (2003.3~)',cut(A).map(x=>({x:x.y,y:x.idx})),REF.K.col),L('2007 나스닥 (2002.10~)',cut(B).map(x=>({x:x.y,y:x.idx})),REF.S.col,1.4,[4,3]),L('현재 코스피 ('+KS_START.slice(0,7).replace('-','.')+'~)',K.map(x=>({x:x.y,y:x.idx})),'#ef4444',2.5),now({x:kL.y,y:kL.idx},'현재')]},
    options:{...base,plugins:{...base.plugins,tooltip:{callbacks:{label:t=>tY(t)+t.parsed.y.toFixed(0)}}},scales:{x:xY,y:{type:'logarithmic',min:50,title:{display:true,text:'시작=100'}}}}});
@@ -68,6 +68,11 @@
   const mP=byD(A,REF.K.mid);
   draw('gfMid','gfMidNote',mP,'2007 코스피 (2007-07-25 중간 고점 = 100)','#94a3b8',[23,70,98,200,456],20,130,
    Rp=>{const lo=Rp.filter(x=>x.x>0&&x.x<60).reduce((m,x)=>x.y<m.y?x:m,{y:1e9});const rec=Rp.find(x=>x.x>lo.x&&x.y>=100);return `금융위기 직전 조정과 비교: 현재 코스피 고점을 2007-07-25(${num(mP.v)}, 서브프라임 1차 충격 직전)에 맞춘 그래프입니다. 2007 코스피는 ${lo.d}까지 ${(lo.y-100).toFixed(1)}%(${Math.round(lo.x)}일) 급락 후 ${rec?rec.d+'('+Math.round(rec.x)+'일째)':'—'}에 전고점을 회복해 10-31 최종 고점(${Math.round(aP.v/mP.v*100)})까지 올랐다가, 이후 2008-10-24에는 이 고점 대비 ${Math.round(aLow.v/mP.v*100-100)}%까지 떨어졌습니다.`;});
+  if(window.RangeNav){const ser=ch=>ch.data.datasets.filter(d=>d.data&&d.data.length>5).map(d=>({data:d.data,color:d.borderColor}));
+   const Y={step:1,fmt:(v,f)=>f?'T+'+v.toFixed(2)+'년':'T+'+v+'Y'},D={step:250,fmt:v=>Math.round(v)+'일'};
+   const nv=(id,ids,min,max,log,tick,ms)=>{const cs=ids.map(i=>byId[i]).filter(Boolean);if(cs.length)RangeNav(document.getElementById(id),{charts:cs,min,max,series:ser(cs[0]),log,tick,minSpan:ms});};
+   nv('gfIdxNav',['gfIdx','gfDisp'],0,7,true,Y,.25);nv('gfDDNav',['gfDD'],0,1000,false,D,30);
+   nv('gfPeakNav',['gfPeak'],-1700,1000,true,D,60);nv('gfMidNav',['gfMid'],-1700,1000,true,D,60);}
  }
  document.addEventListener('click',e=>{const b=e.target.closest('#gfStart button');if(!b)return;KS_START=b.dataset.s;run();});
  document.addEventListener('click',e=>{const b=e.target.closest('#gfView button');if(!b)return;VIEW=b.dataset.v;const box=b.closest('section');applyView(box);charts.forEach(c=>c.resize());});
