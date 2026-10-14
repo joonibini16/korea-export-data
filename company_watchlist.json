@@ -1709,6 +1709,348 @@
       "regional_hs": {
         "854370": "854370"
       }
+    },
+    {
+      "id": "003160",
+      "name": "디아이",
+      "category": "반도체 부품·장비",
+      "hs_codes": [
+        "903082"
+      ],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "화성시"
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "화성시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "반도체 검사장비(98%) 중심. 본사는 서울 강남(영업), 메모리 번인·웨이퍼 테스터 제조 자회사(디지털프론티어 등)는 경기 화성시. 반도체 테스터 HS 9030.82로 연결. 같은 화성시 903082에는 다른 테스터 업체 물량도 섞일 수 있음.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/14/000768/20260814002555/11012.htm",
+        "https://navercomp.wisereport.co.kr/v2/company/c1020001.aspx?cmp_cd=003160"
+      ],
+      "reviewed_at": "2026-10-14",
+      "regional_hs": {
+        "903082": "903082"
+      }
+    },
+    {
+      "id": "080580",
+      "name": "오킨스전자",
+      "category": "반도체 부품·장비",
+      "hs_codes": [
+        "8536909090"
+      ],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "의왕시"
+        },
+        {
+          "sido_code": "41",
+          "region_keyword": "화성시"
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "의왕시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "반도체 검사용 소켓(92%)·테스트 서비스. 경기 의왕시 본사 공장(PKG·웨이퍼 테스트 라인), 화성시 송산면 소켓 부품 사업장(프레스·사출). 소켓은 HS 8536.90으로 연결.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/14/000979/20260814003216/11012.htm",
+        "https://navercomp.wisereport.co.kr/v2/company/c1020001.aspx?cmp_cd=080580"
+      ],
+      "reviewed_at": "2026-10-14",
+      "regional_hs": {
+        "8536909090": "853690"
+      }
+    },
+    {
+      "id": "232140",
+      "name": "와이씨",
+      "category": "반도체 부품·장비",
+      "hs_codes": [
+        "903082"
+      ],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "성남시"
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "성남시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "메모리 웨이퍼 테스터·번인 테스터(반도체 98%). 경기 성남시 분당구 본사, 성남시 중원구 상대원동 공장. 반도체 테스터 HS 9030.82로 연결. 성남시 903082에는 ISC 등 다른 업체 물량이 섞일 수 있음.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/14/001220/20260814004030/11012.htm",
+        "https://navercomp.wisereport.co.kr/v2/company/c1020001.aspx?cmp_cd=232140"
+      ],
+      "reviewed_at": "2026-10-14",
+      "regional_hs": {
+        "903082": "903082"
+      }
+    },
+    {
+      "id": "086390",
+      "name": "유니테스트",
+      "category": "반도체 부품·장비",
+      "hs_codes": [
+        "903082"
+      ],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "용인시"
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "용인시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "메모리 컴포넌트 테스트 장비(번인·테스터 90%)·태양광 인버터. 경기 용인시 기흥구 본사·공장. 반도체 테스터 HS 9030.82로 연결.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/14/000457/20260814001427/11012.htm",
+        "https://navercomp.wisereport.co.kr/v2/company/c1020001.aspx?cmp_cd=086390"
+      ],
+      "reviewed_at": "2026-10-14",
+      "regional_hs": {
+        "903082": "903082"
+      }
+    },
+    {
+      "id": "253590",
+      "name": "네오셈",
+      "category": "반도체 부품·장비",
+      "hs_codes": [
+        "903082"
+      ],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "안양시"
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "안양시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "SSD 테스터·번인 테스터(CXL·PCIe 등). 경기 안양시 동안구 본사·공장. 반도체·SSD 테스터 HS 9030.82로 연결. 해외 생산법인 물량은 지역 통계에 잡히지 않음.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/14/000483/20260814001520/11012.htm",
+        "https://navercomp.wisereport.co.kr/v2/company/c1020001.aspx?cmp_cd=253590"
+      ],
+      "reviewed_at": "2026-10-14",
+      "regional_hs": {
+        "903082": "903082"
+      }
+    },
+    {
+      "id": "425420",
+      "name": "티에프이",
+      "category": "반도체 부품·장비",
+      "hs_codes": [
+        "9030901000",
+        "8536909090",
+        "848690"
+      ],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "화성시"
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "화성시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "테스트 보드(41%)·소켓(35%)·COK(24%). 경기 화성시 반월길 본사 공장, 화성시 향남읍 신공장. 보드는 HS 9030.90(검사기 부품), 소켓은 8536.90, COK(핸들러 교체 키트)는 8486.90으로 연결.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/14/000863/20260814002845/11012.htm",
+        "https://navercomp.wisereport.co.kr/v2/company/c1020001.aspx?cmp_cd=425420"
+      ],
+      "reviewed_at": "2026-10-14",
+      "regional_hs": {
+        "9030901000": "903090",
+        "8536909090": "853690",
+        "848690": "848690"
+      }
+    },
+    {
+      "id": "089030",
+      "name": "테크윙",
+      "category": "반도체 부품·장비",
+      "hs_codes": [
+        "848640",
+        "848690"
+      ],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "화성시"
+        },
+        {
+          "sido_code": "41",
+          "region_keyword": "안성시"
+        },
+        {
+          "sido_code": "44",
+          "region_keyword": "아산시"
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "화성시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "메모리 테스트 핸들러(47%)·COK(31%)·디스플레이 검사장비·큐브프로버(HBM 검사). 경기 화성시 동탄 본사, 안성시 원곡면·충남 아산시 음봉면 사업장. 핸들러는 HS 8486.40(반도체 디바이스 취급기계), COK는 8486.90으로 연결. 화성시 848640에는 다른 장비사 물량도 섞일 수 있음.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/14/000790/20260814002628/11012.htm",
+        "https://navercomp.wisereport.co.kr/v2/company/c1020001.aspx?cmp_cd=089030"
+      ],
+      "reviewed_at": "2026-10-14",
+      "regional_hs": {
+        "848640": "848640",
+        "848690": "848690"
+      }
+    },
+    {
+      "id": "095340",
+      "name": "ISC",
+      "category": "반도체 부품·장비",
+      "hs_codes": [
+        "8536909090"
+      ],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "성남시"
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "성남시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "반도체 테스트 소켓(실리콘 러버 소켓 중심). 경기 성남시 수정구 금토동 본사·공장. 소켓은 HS 8536.90으로 연결. 연결 매출에 ISC Vina 등 해외 법인 포함.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/14/000100/20260814000212/11012.htm",
+        "https://navercomp.wisereport.co.kr/v2/company/c1020001.aspx?cmp_cd=095340"
+      ],
+      "reviewed_at": "2026-10-14",
+      "regional_hs": {
+        "8536909090": "853690"
+      }
+    },
+    {
+      "id": "147760",
+      "name": "피엠티",
+      "category": "반도체 부품·장비",
+      "hs_codes": [
+        "9030901000"
+      ],
+      "sites": [
+        {
+          "sido_code": "44",
+          "region_keyword": "아산시"
+        }
+      ],
+      "sido_code": "44",
+      "region_keyword": "아산시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "반도체 검사용 프로브카드(98%). 충남 아산시 음봉면 본사·공장. 프로브카드는 HS 9030.90(검사기 부품)으로 연결.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/13/000193/20260813000457/11012.htm",
+        "https://navercomp.wisereport.co.kr/v2/company/c1020001.aspx?cmp_cd=147760"
+      ],
+      "reviewed_at": "2026-10-14",
+      "regional_hs": {
+        "9030901000": "903090"
+      }
+    },
+    {
+      "id": "025560",
+      "name": "미래산업",
+      "category": "반도체 부품·장비",
+      "hs_codes": [
+        "848640"
+      ],
+      "sites": [
+        {
+          "sido_code": "44",
+          "region_keyword": "천안시"
+        }
+      ],
+      "sido_code": "44",
+      "region_keyword": "천안시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "반도체 테스트 핸들러(91%)·칩마운터. 충남 천안시 서북구 백석동 본사·공장. 핸들러는 HS 8486.40으로 연결.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/13/000514/20260813001327/11012.htm",
+        "https://navercomp.wisereport.co.kr/v2/company/c1020001.aspx?cmp_cd=025560"
+      ],
+      "reviewed_at": "2026-10-14",
+      "regional_hs": {
+        "848640": "848640"
+      }
+    },
+    {
+      "id": "089790",
+      "name": "제이티",
+      "category": "반도체 부품·장비",
+      "hs_codes": [
+        "848640"
+      ],
+      "sites": [
+        {
+          "sido_code": "44",
+          "region_keyword": "천안시"
+        }
+      ],
+      "sido_code": "44",
+      "region_keyword": "천안시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "번인 소터·테스트 핸들러 등 반도체 장비(99%). 충남 천안시 서북구 직산읍 본사·공장. 핸들러·소터는 HS 8486.40으로 연결. 천안시 848640에는 미래산업도 포함.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/19/000168/20260819000453/11012.htm",
+        "https://navercomp.wisereport.co.kr/v2/company/c1020001.aspx?cmp_cd=089790"
+      ],
+      "reviewed_at": "2026-10-14",
+      "regional_hs": {
+        "848640": "848640"
+      }
+    },
+    {
+      "id": "098120",
+      "name": "마이크로컨텍솔",
+      "category": "반도체 부품·장비",
+      "hs_codes": [
+        "8536909090"
+      ],
+      "sites": [
+        {
+          "sido_code": "44",
+          "region_keyword": "천안시"
+        }
+      ],
+      "sido_code": "44",
+      "region_keyword": "천안시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "번인(B/I) 소켓·테스트 소켓(66%)·마그네틱 콘택터(18%). 충남 천안시 서북구 성거읍 본사·공장. 소켓은 HS 8536.90으로 연결. 천안시 853690에는 티에스이·메가터치 물량도 포함.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/14/002670/20260814009330/11012.htm",
+        "https://navercomp.wisereport.co.kr/v2/company/c1020001.aspx?cmp_cd=098120"
+      ],
+      "reviewed_at": "2026-10-14",
+      "regional_hs": {
+        "8536909090": "853690"
+      }
     }
   ],
   "reviewed_at": "2026-10-07",
