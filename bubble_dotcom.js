@@ -5,8 +5,9 @@
  const csv=t=>t.replace(/^﻿/,'').trim().split(/\r?\n/).slice(1).map(l=>l.split(','));
  const ma=(a,n)=>a.map((_,i)=>i+1<n?null:a.slice(i-n+1,i+1).reduce((s,x)=>s+x.v,0)/n);
  const fmt=(v,d=1)=>v==null?'—':(v>0?'+':'')+v.toFixed(d);
- let charts=[];
+ let VIEW='path';let charts=[];
  function mk(id,cfg){const c=document.getElementById(id);if(!c)return;const ch=new Chart(c,cfg);charts.push(ch);}
+ function applyView(box){box.querySelectorAll('[data-v]').forEach(e=>{if(e.tagName!=='BUTTON')e.style.display=e.dataset.v===VIEW?'':'none';});box.querySelectorAll('#dcView button').forEach(b=>b.classList.toggle('on',b.dataset.v===VIEW));}
  let RAW=null;
  async function run(){const box=document.getElementById('dotcomBox');if(!box)return;
   let nq,ks;
@@ -27,18 +28,18 @@
   const kLow1=kA.reduce((m,x)=>x.dd<m.dd?x:m,kA[0]);const kReb=kA.filter(x=>x.t>kLow1.t).reduce((m,x)=>!m||x.dd>m.dd?x:m,null);
   const startTxt={'2023-01-02':'2023-01-02(AI 사이클 시작, 2,225.7)','2020-03-19':'2020-03-19(코로나 저점, 1,457.6)'}[KS_START];
   const nqAtKP=N.reduce((m,x)=>Math.abs(x.y-kP.y)<Math.abs(m.y-kP.y)?x:m,N[0]),nqReach=N.find(x=>x.idx>=kP.idx);
-  box.innerHTML=`<div class="dc-start"><span class="muted">코스피 강세장 시작점</span><div class="seg" id="dcStart"><button data-s="2023-01-02" class="${KS_START==='2023-01-02'?'on':''}">2023.1 AI 사이클</button><button data-s="2020-03-19" class="${KS_START==='2020-03-19'?'on':''}">2020.3 코로나 저점</button></div></div><div class="dc-sum">
+  box.innerHTML=`<div class="dc-start"><span class="muted">코스피 강세장 시작점</span><div class="seg" id="dcStart"><button data-s="2023-01-02" class="${KS_START==='2023-01-02'?'on':''}">2023.1 AI 사이클</button><button data-s="2020-03-19" class="${KS_START==='2020-03-19'?'on':''}">2020.3 코로나 저점</button></div><span class="muted" style="margin-left:14px">비교 방식</span><div class="seg" id="dcView"><button data-v="path" class="${VIEW==='path'?'on':''}">같은 기간</button><button data-v="peak" class="${VIEW==='peak'?'on':''}">정점 정렬</button><button data-v="mid" class="${VIEW==='mid'?'on':''}">중간 조정 정렬</button></div></div><div class="dc-sum">
    <div><b>코스피 현재</b><span>${kL.d} · ${Math.round(kL.v).toLocaleString()} · 시작 대비 ${Math.round(kL.idx)} · 고점 대비 ${fmt(kNow.dd)}% · 고점 후 ${Math.round(kNow.t)}일</span></div>
    <div><b>강세장 속도</b><span>코스피 고점 ${Math.round(kP.idx)}을 T+${kP.y.toFixed(2)}년에 기록 · 나스닥은 같은 시점(T+${nqAtKP.y.toFixed(2)}년, ${nqAtKP.d}) ${Math.round(nqAtKP.idx)}, ${Math.round(kP.idx)} 도달은 ${nqReach?nqReach.d+'(T+'+nqReach.y.toFixed(2)+'년)':'—'} · 나스닥 최종 고점 ${Math.round(nP.idx)}(T+${nP.y.toFixed(1)}년)</span></div>
    <div><b>100일 이격도 최고치</b><span>코스피 ${fmt(kDmax?.disp)}% (${kDmax?.d}) vs 나스닥 ${fmt(nDmax?.disp)}% (${nDmax?.d}) · 1929년 다우 약 +20%(증권사 자료)</span></div>
    <div><b>고점 이후 경로</b><span>코스피 1차 저점 ${fmt(kLow1.dd)}% (${kLow1.d})${kReb&&kReb.d>kLow1.d?` → 반등 ${fmt(kReb.dd)}% (${kReb.d})`:''} → 현재 ${fmt(kNow.dd)}%. 나스닥은 고점 후 같은 ${Math.round(kNow.t)}일째(${nSame.d}) ${fmt(nSame.dd)}%, 같은 낙폭은 ${nSameDD?nSameDD.d+'('+Math.round(nSameDD.t)+'일째)':'없음'}에 처음 도달. 중간 조정 사례: 나스닥 1998년 ${n98P.d} 고점 → ${n98L.d} ${fmt(n98L.dd)}%(${Math.round(n98L.t)}일) 뒤 50일 만에 회복하고 2000년까지 상승</span></div></div>
-   <div class="g3 dc-g"><div><h3>강세장 시작 = 100 (로그)</h3><div class="chart"><canvas id="dcIdx"></canvas></div></div><div><h3>100일 이격도 (%)</h3><div class="chart"><canvas id="dcDisp"></canvas></div></div><div><h3>고점 이후 낙폭 (%) · 고점 후 경과일</h3><div class="chart"><canvas id="dcDD"></canvas></div></div></div>
-   <div class="dc-peak"><h3>닷컴버블 비교 ① 정점 정렬 · 코스피 고점 = 나스닥 2000-03-10 정점 = 100 (로그)</h3><div class="chart" style="height:340px"><canvas id="dcPeak"></canvas></div>
+   <div class="g3 dc-g" data-v="path"><div><h3>강세장 시작 = 100 (로그)</h3><div class="chart"><canvas id="dcIdx"></canvas></div></div><div><h3>100일 이격도 (%)</h3><div class="chart"><canvas id="dcDisp"></canvas></div></div><div><h3>고점 이후 낙폭 (%) · 고점 후 경과일</h3><div class="chart"><canvas id="dcDD"></canvas></div></div></div>
+   <div class="dc-peak" data-v="peak"><h3>닷컴버블 비교 ① 정점 정렬 · 코스피 고점 = 나스닥 2000-03-10 정점 = 100 (로그)</h3><div class="chart" style="height:340px"><canvas id="dcPeak"></canvas></div>
    <p class="muted" id="dcPeakNote"></p></div>
-   <div class="dc-peak"><h3>닷컴버블 비교 ② 중간 조정 정렬 · 코스피 고점 = 닷컴버블 중 1998-07-20 고점(LTCM 조정 직전) = 100 (로그)</h3><div class="chart" style="height:340px"><canvas id="dcMid"></canvas></div>
+   <div class="dc-peak" data-v="mid"><h3>닷컴버블 비교 ② 중간 조정 정렬 · 코스피 고점 = 닷컴버블 중 1998-07-20 고점(LTCM 조정 직전) = 100 (로그)</h3><div class="chart" style="height:340px"><canvas id="dcMid"></canvas></div>
    <p class="muted" id="dcMidNote"></p></div>
    <p class="muted">참고용 비교입니다(예측 아님). 나스닥 종합 1995-01-03, 코스피 ${startTxt}을 강세장 시작으로 맞췄습니다(버튼으로 변경). 가로축은 시작(또는 고점) 이후 경과 시간이라 실제 날짜가 다릅니다. 닷컴은 이익 없는 성장주가 주도했고, 현재 코스피는 반도체 실적 증가가 동반된다는 차이가 있습니다. 출처: 나스닥 Yahoo Finance(^IXIC), 코스피 market_daily.csv(매일 갱신).</p>`;
-  charts.forEach(c=>c.destroy());charts=[];
+  charts.forEach(c=>c.destroy());charts=[];applyView(box);
   const lineDS=(label,data,color,w=2)=>({label,data,borderColor:color,backgroundColor:color,borderWidth:w,pointRadius:0,tension:0,parsing:false});
   const now=(a,key,lab)=>({label:lab,data:[a],borderColor:'#fbbf24',backgroundColor:'#fbbf24',pointRadius:5,showLine:false,parsing:false});
   const base={responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:'nearest',intersect:false},plugins:{legend:{position:'bottom',labels:{boxWidth:10}}}};
@@ -64,5 +65,6 @@
    options:{...base,plugins:{...base.plugins,tooltip:{callbacks:{label:t=>`${t.dataset.label}: ${Math.round(t.parsed.x)}일 · ${t.parsed.y.toFixed(1)}%`}}},scales:{x:{type:'linear',min:0,max:1000,title:{display:true,text:'고점 이후 경과일'}},y:{max:0,title:{display:true,text:'고점 대비 (%)'}}}}});
  }
  document.addEventListener('click',e=>{const b=e.target.closest('#dcStart button');if(!b)return;KS_START=b.dataset.s;run();});
+ document.addEventListener('click',e=>{const b=e.target.closest('#dcView button');if(!b)return;VIEW=b.dataset.v;const box=b.closest('section');applyView(box);charts.forEach(c=>c.resize());});
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();
 })();
