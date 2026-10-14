@@ -12,6 +12,7 @@ on:
     branches: [main]
     paths: ['collect_inventory.py', '.github/workflows/inventory.yml']
   schedule:
+    - cron: '0 23 * * 0'   # 매주 월 08:00 KST: 새 정기보고서 재고 반영
     # quarterly reports due ~May/Aug/Nov 14, annual report ~Mar 31 (KST 10:30)
     - cron: '30 1 16,20 5,8,11 *'
     - cron: '30 1 2,7 4 *'

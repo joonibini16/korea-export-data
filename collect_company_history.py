@@ -7,6 +7,10 @@ from lxml import html
 import threading
 REQUEST_LOCK=threading.Lock()
 LAST_REQUEST=0.0
+import datetime as _dt
+_TODAY=_dt.datetime.now(_dt.timezone(_dt.timedelta(hours=9))).date()
+# 공시될 수 있는 마지막 분기(현재 분기 직전) — 날짜를 코드에 고정하지 않음
+END_Q=(lambda y,q:f'{y}-Q{q}' if q>0 else f'{y-1}-Q4')(_TODAY.year,(_TODAY.month-1)//3)
 ROOT=pathlib.Path(__file__).resolve().parent;CACHE=ROOT/'.history-cache';CACHE.mkdir(exist_ok=True)
 def get(url,data=None):
  p=CACHE/(hashlib.sha256((url+str(data)).encode()).hexdigest()+'.html')
@@ -29,7 +33,7 @@ def get(url,data=None):
 def catalog(c):
  out=[]
  try:
-  for start,end in [(f'{y}-01-01',f'{y}-12-31' if y<2026 else '2026-10-09') for y in range(2020,2027)]:
+  for start,end in [(f'{y}-01-01',f'{y}-12-31' if y<_TODAY.year else _TODAY.isoformat()) for y in range(2020,_TODAY.year+1)]:  # 올해 검색은 날짜가 바뀌면 캐시 키도 바뀌어 매일 새로 조회
    p=dict(method='searchDetailsSub',forward='details_sub',repIsuSrtCd='A'+c['id'],searchCodeType='number',searchCorpName=c['id'],fromDate=start,toDate=end,disclosureType05='0501|0502|0503',currentPageSize='100',pageIndex='1')
    s=get('https://kind.krx.co.kr/disclosure/details.do',p)
    doc=html.fromstring(s)
@@ -37,7 +41,7 @@ def catalog(c):
     title=''.join(a.itertext());m=re.search(r'(사업|반기|분기)보고서.*\((20\d{2})\.(03|06|09|12)\)',title)
     if not m:continue
     y,month=int(m[2]),int(m[3]);period=f'{y}-Q{month//3}'
-    if not '2020-Q1'<=period<='2026-Q2':continue
+    if not '2020-Q1'<=period<=END_Q:continue
     acpt=re.search(r"openDisclsViewer\('(\d+)'",a.get('onclick'))[1]
     out.append(dict(company_id=c['id'],name=c['name'],period=period,acpt=acpt,title=title))
   # Most recently submitted correction for each period.
@@ -119,7 +123,7 @@ def main():
  companies=json.loads((ROOT/'company_watchlist.json').read_text())['companies']
  if args.companies:companies=[c for c in companies if c['id'] in args.companies]
  history_path=ROOT/'company_financial_history_sources.json'
- history=json.loads(history_path.read_text()) if history_path.exists() else dict(start_period='2020-Q1',end_period='2026-Q2',reports=[])
+ history=json.loads(history_path.read_text()) if history_path.exists() else dict(start_period='2020-Q1',end_period=END_Q,reports=[])
  report_map={(r['company_id'],r['year'],r['quarter'],r['basis']):r for r in history['reports']}
  backlog_path=ROOT/'company_backlog_sources.json'
  backlog=json.loads(backlog_path.read_text());observations={(r['company_id'],r['period']):r for r in backlog['observations']}
@@ -173,8 +177,8 @@ def main():
       observations[key]=dict(company_id=cid,period=r['period'],raw_value=str(value),raw_unit=unit,scope=scopes[cid],source=r['url'],status='공시 확인',notes='공시 수주상황의 명시적 잔고 금액 · 품목별 합계 대조')
    print(r['company_id'],r['period'],'statements',len(r['financial']),flush=True)
  history.update(reviewed_at=datetime.date.today().isoformat(),reports=list(report_map.values()),extraction_errors=issues)
- backlog.update(reviewed_at=history['reviewed_at'],start_period='2020-Q1',end_period='2026-Q2',observations=list(observations.values()),history_issues=[x for x in issues if x['metric']=='backlog'])
- for path,data in [(history_path,history),(backlog_path,backlog),(ROOT/'company_history_collection_status.json',dict(updated_at=history['reviewed_at'],start_period='2020-Q1',end_period='2026-Q2',reports_reviewed=reviewed,failures=failures,issues=issues))]:
+ backlog.update(reviewed_at=history['reviewed_at'],start_period='2020-Q1',end_period=END_Q,observations=list(observations.values()),history_issues=[x for x in issues if x['metric']=='backlog'])
+ for path,data in [(history_path,history),(backlog_path,backlog),(ROOT/'company_history_collection_status.json',dict(updated_at=history['reviewed_at'],start_period='2020-Q1',end_period=END_Q,reports_reviewed=reviewed,failures=failures,issues=issues))]:
   tmp=path.with_suffix('.tmp');tmp.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n');os.replace(tmp,path)
  print('Completed',len(reviewed),'reports;',len(failures),'fetch failures;',len(issues),'validation issues')
  if not reviewed:raise SystemExit('No report could be verified; existing data retained')

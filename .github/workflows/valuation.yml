@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths: ['collect_valuation.py', '.github/workflows/valuation.yml']
   schedule:
+    - cron: '30 7 * * 1-5'   # 평일 16:30 KST: 종가·주식수·EPS 컨센서스 매일 갱신
     - cron: '0 8 * * 1'
     - cron: '0 8 1 * *'
 permissions:
