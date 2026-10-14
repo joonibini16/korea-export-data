@@ -53,11 +53,16 @@ function renderCredit(){const S='2019-01-01';
  const pal=['#ef4444','#60a5fa','#f59e0b','#a78bfa','#34d399','#f472b6','#22d3ee','#facc15','#94a3b8'];let i=0;const labels=[...new Set(cds.map(r=>r.date))].sort();
  const ts=d=>new Date(d+'T00:00:00Z').getTime(),MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
  const dense=new Map();CDSS.forEach(r=>{const v=num(r.cds_5y_bps);if(v==null)return;if(!dense.has(r.ticker))dense.set(r.ticker,{name:r.entity,src:r.source,a:[]});dense.get(r.ticker).a.push({d:r.date,v});});
- const NM={META:'Meta',MSFT:'Microsoft',AMZN:'Amazon',GOOGL:'Alphabet',ORCL:'Oracle',NVDA:'Nvidia',AVGO:'Broadcom',CRWV:'CoreWeave'},gb=new Map([...by].map(([t,a])=>[t,a.slice()]));
+ const NM={META:'Meta',MSFT:'Microsoft',AMZN:'Amazon',GOOGL:'Alphabet',ORCL:'Oracle',NVDA:'Nvidia',AVGO:'Broadcom',CRWV:'CoreWeave',NBIS:'Nebius'},gb=new Map([...by].map(([t,a])=>[t,a.slice()]));
  for(const r of HC){if(r.metric!=='CDS'||!Number.isFinite(r.value_bps)||!r.ticker)continue;if(!gb.has(r.ticker))gb.set(r.ticker,[]);const a=gb.get(r.ticker);if(!a.some(x=>x.d===r.date&&Math.abs(x.v-r.value_bps)<1))a.push({d:r.date,v:r.value_bps,r:{entity:NM[r.ticker]||r.entity||r.ticker}});}
  const grid=el('cdsGrid');grid.replaceChildren();const X0=ts('2025-11-10');let X1=X0;for(const r of [...cds,...CDSS,...HC])if(r.date)X1=Math.max(X1,ts(r.date));X1+=3*864e5;
  const order=[...new Set([...dense.keys(),...gb.keys()])].sort((p,q)=>{const lv=t=>(dense.get(t)?.a.at(-1)?.v)??(gb.get(t)?.slice().sort((x,y)=>x.d.localeCompare(y.d)).at(-1)?.v)??0;return lv(q)-lv(p);});
- order.forEach((t,k)=>{const pts=(gb.get(t)||[]).slice().sort((x,y)=>x.d.localeCompare(y.d)),dn=(dense.get(t)?.a||[]).sort((x,y)=>x.d.localeCompare(y.d));if(dn.length+pts.length<1)return;
+ // 데이터가 아직 없는 관심 기업도 빈 카드로 표시(수치 확보 시 cds_manual.csv에 행만 추가)
+ for(const t of ['NBIS'])if(!order.includes(t))order.push(t);
+ order.forEach((t,k)=>{const pts=(gb.get(t)||[]).slice().sort((x,y)=>x.d.localeCompare(y.d)),dn=(dense.get(t)?.a||[]).sort((x,y)=>x.d.localeCompare(y.d));
+  if(dn.length+pts.length<1){const c=document.createElement('div');c.className='cds-card';c.innerHTML='<b></b><span class="cv">공개 수치 없음</span><div class="cc" style="display:flex;align-items:center;justify-content:center;text-align:center;color:#93a3bd;font-size:13px;line-height:1.6;padding:0 18px"></div><small></small>';
+   c.querySelector('b').textContent=`${(NM[t]||t).toUpperCase()} — 5Y CDS (bp)`;c.querySelector('.cc').textContent='아직 공개 보도된 5년 CDS 수치를 찾지 못했습니다. 2026년 10월 하이일드 회사채(30~40억 달러) 발행을 추진 중이라, 발행·CDS 거래가 시작되면 수치를 추가합니다. 차트 이미지를 주시면 판독해 일별 선으로 넣을 수 있습니다.';
+   c.querySelector('small').textContent='관심 기업 · 수치 확보 대기';grid.append(c);return;}
   const name=(pts[0]?.r.entity||dense.get(t)?.name),last=[...dn,...pts].sort((x,y)=>x.d.localeCompare(y.d)).at(-1);
   const c=document.createElement('div');c.className='cds-card';c.innerHTML='<b></b><span class="cv"></span><div class="cc"><canvas></canvas></div><small></small>';
   c.querySelector('b').textContent=`${name.toUpperCase()} — 5Y CDS (bp)`;c.querySelector('.cv').textContent=`최근 ${last.v}bp · ${last.d}`;
