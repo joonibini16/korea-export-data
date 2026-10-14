@@ -1,7 +1,7 @@
 {
- "updated_at": "2026-10-14T06:26:19",
+ "updated_at": "2026-10-14T06:38:15",
  "reports": 2433,
- "rows": 4443,
+ "rows": 4448,
  "coverage": {
   "000660": {
    "별도": [
@@ -74,7 +74,7 @@
    "별도": [
     "2020-Q1",
     "2026-Q2",
-    25
+    26
    ]
   },
   "005420": {
@@ -225,12 +225,12 @@
    "별도": [
     "2020-Q1",
     "2026-Q2",
-    25
+    26
    ],
    "연결": [
     "2020-Q1",
     "2026-Q2",
-    25
+    26
    ]
   },
   "025560": {
@@ -563,12 +563,12 @@
    "별도": [
     "2020-Q1",
     "2026-Q2",
-    25
+    26
    ],
    "연결": [
     "2020-Q1",
     "2026-Q2",
-    25
+    26
    ]
   },
   "092870": {
@@ -1486,21 +1486,5 @@
    "reason": "다음 해 1분기 보고서의 전기말 값과 다름 (16,434,093,480 vs 17,204,521,201) · 재작성 가능성"
   }
  ],
- "failures": [
-  {
-   "company_id": "020150",
-   "period": "2024-Q3",
-   "error": "<urlopen error [Errno 104] Connection reset by peer>"
-  },
-  {
-   "company_id": "091580",
-   "period": "2022-Q1",
-   "error": "<urlopen error [Errno 104] Connection reset by peer>"
-  },
-  {
-   "company_id": "005070",
-   "period": "2022-Q2",
-   "error": "<urlopen error [Errno 104] Connection reset by peer>"
-  }
- ]
+ "failures": []
 }
