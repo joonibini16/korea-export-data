@@ -8,9 +8,8 @@
  // 탭 정의: [이름, [요소, 넓게?]...]
  const TABS=[
   ['수출',[[controls,1],[byH('지역 수출 추세'),1],[byH('연도별 월 수출액'),1],[byH('수출 YoY와 회사 매출 YoY'),0],[byH('전국 품목 수출단가')?.closest('.grid')||byH('전국 품목 수출단가'),0]]],
-  ['수출↔매출',[[byH('수출액과 회사 매출액'),0],[byH('수출액 ↔ 연결매출'),0],[byId('seasonPanel'),0],[byId('earningsTitle')?.closest('section'),0],[byH('수출액과 국내법인'),0],[byH('수출액 ↔ 별도매출'),0]]],  // 계절성·분기 매출·OPM은 수출액↔매출 비교 바로 아래
+  ['수출↔매출·재고',[[byH('수출액과 회사 매출액'),0],[byH('수출액 ↔ 연결매출'),0],[byId('seasonPanel'),0],[byId('earningsTitle')?.closest('section'),0],[byId('inventoryPanel'),0],[byH('회사 분기 수주잔고'),0],[byH('수출액과 국내법인'),0],[byH('수출액 ↔ 별도매출'),0]]],  // 계절성·분기 매출·OPM, 그 아래 재고·수주잔고
   ['실적·밸류에이션',[[byId('perNowPanel'),1],[byId('consTrendPanel'),1],[byId('fperPanel'),1]]],  // 연도별 PER 먼저, PER 밴드 맨 아래
-  ['재고·수주',[[byId('inventoryPanel'),0],[byH('회사 분기 수주잔고'),0]]],
   ['전체 업체 요약',[[byH('서프라이즈 후보'),1],[byH('업체별 상관관계 요약'),1],[byH('지역 · 품목 · 관련 업체 전체 목록'),1],[panels.find(e=>e.querySelector&&e.querySelector('#hsCoverage')),1]]],
   ['데이터·출처',[[byH('비교 데이터'),1],[byH('기준과 출처'),1]]]];
  // 전국 단가·회사 매출 묶음(grid)은 둘로 나눠 각 탭에 넣습니다.
