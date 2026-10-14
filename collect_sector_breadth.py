@@ -101,7 +101,7 @@ def published_during_session(meta):
 
 def main():
     arg=argparse.ArgumentParser();arg.add_argument('--groups',type=int,default=12);args=arg.parse_args()
-    if not 1<=args.groups<=24:arg.error('--groups must be 1..24')
+    if not 1<=args.groups<=48:arg.error('--groups must be 1..48')
     latest=catalog();groups=defaultdict(list)
     for r in latest:groups[r['market']+'|'+r['sector']].append(r)
     prior=json.loads(Path('sector_breadth_status.json').read_text()) if Path('sector_breadth_status.json').exists() else {}
