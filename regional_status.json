@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-10-14T09:04:33+09:00",
+  "updated_at": "2026-10-14T11:21:26+09:00",
   "source": "https://www.data.go.kr/data/15134343/openapi.do",
-  "requested_ranges": 140,
-  "received_rows": 14794,
-  "stored_rows": 49512,
+  "requested_ranges": 170,
+  "received_rows": 20395,
+  "stored_rows": 56965,
   "failures": [
     {
       "sido": "31",
@@ -19,7 +19,7 @@
       "hs": "850423",
       "start": "202301",
       "end": "202312",
-      "error": "URLError"
+      "error": "empty response; not zero"
     },
     {
       "sido": "31",
@@ -43,7 +43,7 @@
       "hs": "850423",
       "start": "202201",
       "end": "202212",
-      "error": "URLError"
+      "error": "empty response; not zero"
     },
     {
       "sido": "44",
@@ -1816,9 +1816,289 @@
       ],
       "scope": "HS6",
       "historical_note": ""
+    },
+    {
+      "company": "003160",
+      "hs": "903082",
+      "query_hs": "903082",
+      "region": "화성시",
+      "sido": "41",
+      "months": 80,
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
+      "scope": "HS6",
+      "historical_note": ""
+    },
+    {
+      "company": "080580",
+      "hs": "8536909090",
+      "query_hs": "853690",
+      "region": "의왕시",
+      "sido": "41",
+      "months": 80,
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
+      "scope": "parent_HS6_proxy",
+      "historical_note": ""
+    },
+    {
+      "company": "080580",
+      "hs": "8536909090",
+      "query_hs": "853690",
+      "region": "화성시",
+      "sido": "41",
+      "months": 80,
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
+      "scope": "parent_HS6_proxy",
+      "historical_note": ""
+    },
+    {
+      "company": "232140",
+      "hs": "903082",
+      "query_hs": "903082",
+      "region": "성남시",
+      "sido": "41",
+      "months": 80,
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
+      "scope": "HS6",
+      "historical_note": ""
+    },
+    {
+      "company": "086390",
+      "hs": "903082",
+      "query_hs": "903082",
+      "region": "용인시",
+      "sido": "41",
+      "months": 80,
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
+      "scope": "HS6",
+      "historical_note": ""
+    },
+    {
+      "company": "253590",
+      "hs": "903082",
+      "query_hs": "903082",
+      "region": "안양시",
+      "sido": "41",
+      "months": 80,
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
+      "scope": "HS6",
+      "historical_note": ""
+    },
+    {
+      "company": "425420",
+      "hs": "9030901000",
+      "query_hs": "903090",
+      "region": "화성시",
+      "sido": "41",
+      "months": 80,
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
+      "scope": "parent_HS6_proxy",
+      "historical_note": ""
+    },
+    {
+      "company": "425420",
+      "hs": "8536909090",
+      "query_hs": "853690",
+      "region": "화성시",
+      "sido": "41",
+      "months": 80,
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
+      "scope": "parent_HS6_proxy",
+      "historical_note": ""
+    },
+    {
+      "company": "425420",
+      "hs": "848690",
+      "query_hs": "848690",
+      "region": "화성시",
+      "sido": "41",
+      "months": 80,
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
+      "scope": "HS6",
+      "historical_note": ""
+    },
+    {
+      "company": "089030",
+      "hs": "848640",
+      "query_hs": "848640",
+      "region": "화성시",
+      "sido": "41",
+      "months": 80,
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
+      "scope": "HS6",
+      "historical_note": ""
+    },
+    {
+      "company": "089030",
+      "hs": "848640",
+      "query_hs": "848640",
+      "region": "안성시",
+      "sido": "41",
+      "months": 80,
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
+      "scope": "HS6",
+      "historical_note": ""
+    },
+    {
+      "company": "089030",
+      "hs": "848640",
+      "query_hs": "848640",
+      "region": "아산시",
+      "sido": "44",
+      "months": 80,
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
+      "scope": "HS6",
+      "historical_note": ""
+    },
+    {
+      "company": "089030",
+      "hs": "848690",
+      "query_hs": "848690",
+      "region": "화성시",
+      "sido": "41",
+      "months": 80,
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
+      "scope": "HS6",
+      "historical_note": ""
+    },
+    {
+      "company": "089030",
+      "hs": "848690",
+      "query_hs": "848690",
+      "region": "안성시",
+      "sido": "41",
+      "months": 80,
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
+      "scope": "HS6",
+      "historical_note": ""
+    },
+    {
+      "company": "089030",
+      "hs": "848690",
+      "query_hs": "848690",
+      "region": "아산시",
+      "sido": "44",
+      "months": 80,
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
+      "scope": "HS6",
+      "historical_note": ""
+    },
+    {
+      "company": "095340",
+      "hs": "8536909090",
+      "query_hs": "853690",
+      "region": "성남시",
+      "sido": "41",
+      "months": 80,
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
+      "scope": "parent_HS6_proxy",
+      "historical_note": ""
+    },
+    {
+      "company": "147760",
+      "hs": "9030901000",
+      "query_hs": "903090",
+      "region": "아산시",
+      "sido": "44",
+      "months": 80,
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
+      "scope": "parent_HS6_proxy",
+      "historical_note": ""
+    },
+    {
+      "company": "025560",
+      "hs": "848640",
+      "query_hs": "848640",
+      "region": "천안시",
+      "sido": "44",
+      "months": 80,
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
+      "scope": "HS6",
+      "historical_note": ""
+    },
+    {
+      "company": "089790",
+      "hs": "848640",
+      "query_hs": "848640",
+      "region": "천안시",
+      "sido": "44",
+      "months": 80,
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
+      "scope": "HS6",
+      "historical_note": ""
+    },
+    {
+      "company": "098120",
+      "hs": "8536909090",
+      "query_hs": "853690",
+      "region": "천안시",
+      "sido": "44",
+      "months": 80,
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
+      "scope": "parent_HS6_proxy",
+      "historical_note": ""
     }
   ],
   "currency_scale_verified": false,
-  "implied_zero_rows": 0,
+  "implied_zero_rows": 4,
   "note": "응답에 같은 시도·HS의 다른 지역은 있으나 해당 지역이 없는 달은 수출 0(IMPLIED_ZERO_REGION_ABSENT)으로 저장. 지역 원본 HS6 보존. 관리 HS10과 상위 HS6 proxy 구분. HS4 미지원. 2022년 신설 HS6(300249·854143)의 2020~2021년은 HS2017 선행코드(300290·854140)로 연결하고 amount_unit에 표시. 절대 USD 배율 미검증."
 }
