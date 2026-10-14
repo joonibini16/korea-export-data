@@ -19,7 +19,7 @@ root.BubbleIndicators={rsi,sma,closedKorean};if(typeof module!=='undefined')modu
 
 
 // 같은 시장(코스피/코스닥) 그래프끼리 마우스 위치(날짜)를 공유: 세로선 + 툴팁 + 요약 줄
-const SYNC={groups:{},last:{},busy:false,pin:{}};
+const SYNC={groups:{},last:{},busy:false,pin:{},noteFn:{}};
 const EV_ALL=['mousemove','mouseout','click','touchstart','touchmove'];
 function syncGroup(id){return id.endsWith('KOSPI')?'KOSPI':id.endsWith('KOSDAQ')?'KOSDAQ':null;}
 const syncPlugin={id:'syncCross',
@@ -40,7 +40,8 @@ function syncSet0(g,i,src){const list=(SYNC.groups[g]||[]).filter(ch=>ch&&ch.can
  for(const ch of list){if(i==null||i<0||i>=ch.data.labels.length){ch.$si=null;ch.setActiveElements([]);ch.tooltip.setActiveElements([],{x:0,y:0});ch.update('none');continue;}
   ch.$si=i;const act=ch.data.datasets.map((d,k)=>({datasetIndex:k,index:i})).filter(a=>ch.data.datasets[a.datasetIndex].data[i]!=null&&!/^\d+$/.test(ch.data.datasets[a.datasetIndex].label));
   if(ch!==src){ch.setActiveElements(act);ch.tooltip.setActiveElements(act,{x:ch.scales.x.getPixelForValue(i),y:(ch.chartArea.top+ch.chartArea.bottom)/2});}ch.update('none');}
- const note=document.getElementById('syncNote'+g);if(note){if(i==null){note.classList.remove('pinned');note.textContent='그래프 위에 마우스를 올리면 같은 날짜 값이 함께 표시됩니다. 왼쪽 클릭 = 그 날짜 고정(다시 클릭하면 해제, ←→ 하루씩 이동, Esc 해제).';return;}
+ const note=document.getElementById('syncNote'+g);if(note&&SYNC.noteFn[g]){if(i==null){note.classList.remove('pinned');note.textContent='그래프 위에 마우스를 올리면 같은 날짜 값이 함께 표시됩니다. 왼쪽 클릭 = 그 날짜 고정(다시 클릭하면 해제, ←→ 하루씩 이동, Esc 해제).';return;}note.classList.toggle('pinned',SYNC.pin[g]!=null);note.textContent=(SYNC.pin[g]!=null?'📌 고정 ':'')+SYNC.noteFn[g](i,list);return;}
+ if(note){if(i==null){note.classList.remove('pinned');note.textContent='그래프 위에 마우스를 올리면 같은 날짜 값이 함께 표시됩니다. 왼쪽 클릭 = 그 날짜 고정(다시 클릭하면 해제, ←→ 하루씩 이동, Esc 해제).';return;}
   const pick=(id,k=0)=>{const ch=list.find(c=>c.canvas.id===id);const v=ch?.data.datasets[k]?.data[i];return v==null?'—':Number(v).toLocaleString(undefined,{maximumFractionDigits:1});};
   const d=list[0]?.data.labels[i]||'';note.classList.toggle('pinned',SYNC.pin[g]!=null);note.textContent=(SYNC.pin[g]!=null?'📌 고정 ':'')+`${d} · 지수 ${pick('idx'+g)} · Breadth_60 ${pick('breadth_60'+g)}% (5-SMA ${pick('breadth_60'+g,1)}) · HLI ${pick('hli'+g)}% (10-SMA ${pick('hli'+g,1)}) · RSI ${pick('rsi'+g)}`;}}
 

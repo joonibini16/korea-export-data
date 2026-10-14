@@ -134,17 +134,20 @@ function renderMini(){const box=el('mini');box.replaceChildren();const alerts=[]
 const LC={idx:'#4f7ff0',cr:'#ef5b45',dep:'#34b27b',ratio:'#a77be6'};
 function levStart(){const last=KF.at(-1)?.date;if(!last)return '2015-01-01';const y=Number(last.slice(0,4));return levRange==='ytd'?y+'-01-01':levRange==='1y'?(y-1)+last.slice(4):levRange==='3y'?(y-3)+last.slice(4):'2015-01-01';}
 const vline={id:'vline',afterDatasetsDraw(ch,_,o){const i=o?.i;if(i==null||i<0)return;const x=ch.scales.x.getPixelForValue(i),{top,bottom}=ch.chartArea,c=ch.ctx;c.save();c.strokeStyle='rgba(245,158,11,.75)';c.setLineDash([4,4]);c.beginPath();c.moveTo(x,top);c.lineTo(x,bottom);c.stroke();c.restore();}};
-function levChart(id,labels,data,color,unit,dec,mark){const v=data.filter(x=>x!=null),last=v.at(-1);
+function levChart(id,labels,data,color,unit,dec,mark,grp){const v=data.filter(x=>x!=null),last=v.at(-1);
  const t=document.getElementById(id+'T');if(t)t.textContent=`${unit} · 최근 ${last==null?'—':last.toLocaleString(undefined,{maximumFractionDigits:dec})}${unit==='조원'?'조':unit==='%'?'%':''}`;
- chart(id,{type:'line',data:{labels,datasets:[{data,borderColor:color,backgroundColor:color,borderWidth:2,pointRadius:data.map((_,k)=>k===data.length-1?3.5:0),tension:0,spanGaps:true}]},plugins:[vline],
+ chart(id,{type:'line',data:{labels,datasets:[{label:unit,data,borderColor:color,backgroundColor:color,borderWidth:2,pointRadius:data.map((_,k)=>k===data.length-1?3.5:0),tension:0,spanGaps:true}]},plugins:grp&&typeof syncPlugin!=='undefined'?[vline,syncPlugin]:[vline],
   options:{responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:'index',intersect:false},plugins:{legend:{display:false},vline:{i:mark},tooltip:{callbacks:{label:x=>`${x.parsed.y.toLocaleString(undefined,{maximumFractionDigits:dec})} ${unit}`}}},
-   scales:{x:{ticks:{maxTicksLimit:8,callback:function(v){const s=this.getLabelForValue(v);return levRange==='ytd'?Number(s.slice(5,7))+'월':s.slice(2,7).replace('-','.');}},grid:{display:false}},y:{afterFit:a=>{a.width=52;},ticks:{maxTicksLimit:5},grid:{color:'rgba(148,163,184,.12)'}}}}});}
+   scales:{x:{ticks:{maxTicksLimit:8,callback:function(v){const s=this.getLabelForValue(v);return levRange==='ytd'?Number(s.slice(5,7))+'월':s.slice(2,7).replace('-','.');}},grid:{display:false}},y:{afterFit:a=>{a.width=52;},ticks:{maxTicksLimit:5},grid:{color:'rgba(148,163,184,.12)'}}}}});
+ if(grp&&typeof SYNC!=='undefined'&&charts[id]){const ch=charts[id];ch.$sg=grp;SYNC.groups[grp]=(SYNC.groups[grp]||[]).filter(c=>c!==ch&&c.canvas.id!==id&&c.canvas.isConnected);SYNC.groups[grp].push(ch);}}
 function renderLev(){if(!KF.length){el('levErr').hidden=false;return;}el('levErr').hidden=true;
  const S=levStart(),R=KF.filter(x=>x.date>=S&&x.deposit!=null),labels=R.map(x=>x.date);
  for(const [k,sym,ck,nm] of [['k','^KS11','credit_kospi','코스피'],['q','^KQ11','credit_kosdaq','코스닥']]){
   const ix=ser(sym),idx=labels.map(d=>at(ix,d)?.v??null),cr=R.map(x=>x[ck]!=null?x[ck]/1e6:null),dep=R.map(x=>x.deposit/1e6),ra=R.map((x,i)=>cr[i]!=null?cr[i]/dep[i]*100:null);
   let hi=-1,hv=-Infinity;idx.forEach((v,i)=>{if(v!=null&&v>hv){hv=v;hi=i;}});const lastI=ix.at(-1);
-  levChart('lev'+k+'I',labels,idx,LC.idx,'pt',0,hi);levChart('lev'+k+'C',labels,cr,LC.cr,'조원',1,hi);levChart('lev'+k+'D',labels,dep,LC.dep,'조원',1,hi);levChart('lev'+k+'R',labels,ra,LC.ratio,'%',1,hi);
+  const G='LEV'+k;if(typeof SYNC!=='undefined'){SYNC.pin[G]=null;SYNC.last[G]=null;SYNC.groups[G]=[];const f=(v,d)=>v==null?'—':v.toLocaleString(undefined,{maximumFractionDigits:d});
+   SYNC.noteFn[G]=i=>`${labels[i]} · ${nm} ${f(idx[i],0)} · 신용융자 ${f(cr[i],2)}조 · 고객예탁금 ${f(dep[i],1)}조 · 신용÷예탁금 ${f(ra[i],2)}%`;const nt=el('syncNote'+G);if(nt){nt.classList.remove('pinned');}}
+  levChart('lev'+k+'I',labels,idx,LC.idx,'pt',0,hi,G);levChart('lev'+k+'C',labels,cr,LC.cr,'조원',1,hi,G);levChart('lev'+k+'D',labels,dep,LC.dep,'조원',1,hi,G);levChart('lev'+k+'R',labels,ra,LC.ratio,'%',1,hi,G);
   const L=R.at(-1),li=labels.length-1;el('lev'+k+'H').innerHTML='';const parts=[[L.date,'#e2e8f0'],[nm+' '+(idx[li]??0).toLocaleString(undefined,{maximumFractionDigits:0}),LC.idx],['신용융자 '+cr[li].toFixed(1)+'조',LC.cr],['고객예탁금 '+dep[li].toFixed(1)+'조',LC.dep],['신용 ÷ 예탁금 '+ra[li].toFixed(1)+'%',LC.ratio]];
   parts.forEach(([t,c],i)=>{const sp=document.createElement('span');sp.textContent=(i?' · ':'')+t;sp.style.color=c;if(!i)sp.style.fontWeight='700';el('lev'+k+'H').append(sp);});
   el('lev'+k+'N').textContent=`주황 점선 = 구간 ${nm} 고점 (${labels[hi]||'—'})`+(lastI&&lastI.d>L.date?` · ${nm} 최근 ${lastI.d.slice(5).replace('-','/')} ${lastI.v.toLocaleString(undefined,{maximumFractionDigits:0})}`:'');}
