@@ -1655,6 +1655,60 @@
       "regional_hs": {
         "903149": "903149"
       }
+    },
+    {
+      "id": "114810",
+      "name": "한솔아이원스",
+      "category": "반도체 부품·장비",
+      "hs_codes": [
+        "848690"
+      ],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "안성시"
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "안성시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "경기 안성시 고삼면 본사·공장(2016년 화성시에서 이전). 반도체 장비 부품 정밀가공(80%)·정밀세정·코팅(20%). 장비 부품은 HS 8486.90으로 연결. 같은 안성시 848690에는 티씨케이(SiC링)도 포함되어 지역 수치는 두 회사 합산 성격.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/13/000672/20260813001790/11012.htm",
+        "https://navercomp.wisereport.co.kr/v2/company/c1020001.aspx?cmp_cd=114810"
+      ],
+      "reviewed_at": "2026-10-14",
+      "regional_hs": {
+        "848690": "848690"
+      }
+    },
+    {
+      "id": "144960",
+      "name": "뉴파워프라즈마",
+      "category": "반도체 부품·장비",
+      "hs_codes": [
+        "854370"
+      ],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "수원시"
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "수원시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "경기 수원시 권선구 본사·공장. 반도체·디스플레이 CVD용 리모트 플라즈마 발생기(RPG)·RF 제너레이터·매처. 플라즈마·RF 전원장치는 HS 8543.70(기타 개별기능 전기기기)으로 연결. 연결 매출에는 종속회사 도우인시스(UTG) 등이 포함되어 수출 연동성은 본업 부분에 한정.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/14/001441/20260814004789/11012.htm",
+        "https://navercomp.wisereport.co.kr/v2/company/c1020001.aspx?cmp_cd=144960"
+      ],
+      "reviewed_at": "2026-10-14",
+      "regional_hs": {
+        "854370": "854370"
+      }
     }
   ],
   "reviewed_at": "2026-10-07",
