@@ -1,6 +1,7 @@
 {
- "updated_at": "2026-10-14T09:27:13+09:00",
- "source": "KIND 상장법인목록 + 네이버 fchart 종가",
+ "updated_at": "2026-10-14T09:31:36+09:00",
+ "source": "KIND 상장법인목록 + 네이버 fchart 확정 종가",
+ "confirmed_through": "2026-10-13",
  "groups": {
   "KOSDAQ|소프트웨어 개발 및 공급업": {
    "market": "KOSDAQ",
@@ -51,9 +52,9 @@
    "success": 68,
    "unavailable": [],
    "members": "67d576d9450a9305b2c32b66aa0b742d6dd844ad81d9419556213f899d913599",
-   "latest": "2026-10-14",
-   "updated_at": "2026-10-14T09:27:13+09:00",
-   "observations": 359
+   "latest": "2026-10-13",
+   "updated_at": "2026-10-14T09:31:36+09:00",
+   "observations": 358
   },
   "KOSDAQ|자연과학 및 공학 연구개발업": {
    "market": "KOSDAQ",
@@ -62,9 +63,9 @@
    "success": 66,
    "unavailable": [],
    "members": "9869c0c01ee3e0fac02e1c3e773ae1e0c3dfacb9d7106f43e540287332e0773b",
-   "latest": "2026-10-14",
-   "updated_at": "2026-10-14T09:27:13+09:00",
-   "observations": 359
+   "latest": "2026-10-13",
+   "updated_at": "2026-10-14T09:31:36+09:00",
+   "observations": 358
   },
   "KOSDAQ|반도체 제조업": {
    "market": "KOSDAQ",
@@ -73,9 +74,9 @@
    "success": 64,
    "unavailable": [],
    "members": "16a94d7028da905dcc8ad05a354a9c63f2d735ca2257d90c572b03695143b12d",
-   "latest": "2026-10-14",
-   "updated_at": "2026-10-14T09:27:13+09:00",
-   "observations": 359
+   "latest": "2026-10-13",
+   "updated_at": "2026-10-14T09:31:36+09:00",
+   "observations": 358
   },
   "KOSDAQ|의료용 기기 제조업": {
    "market": "KOSDAQ",
@@ -84,9 +85,9 @@
    "success": 62,
    "unavailable": [],
    "members": "f26f6017ac1d6ce16f840d3b046a56e5e0b13e067e494a25b74ce0310f1b82e4",
-   "latest": "2026-10-14",
-   "updated_at": "2026-10-14T09:27:13+09:00",
-   "observations": 359
+   "latest": "2026-10-13",
+   "updated_at": "2026-10-14T09:31:36+09:00",
+   "observations": 358
   },
   "KOSDAQ|기타 화학제품 제조업": {
    "market": "KOSDAQ",
@@ -95,9 +96,9 @@
    "success": 61,
    "unavailable": [],
    "members": "1b37a8236d32a1e5338990b21a383fd1ce7068b8954ccfdc1f20c4b1bbe7d30b",
-   "latest": "2026-10-14",
-   "updated_at": "2026-10-14T09:27:13+09:00",
-   "observations": 359
+   "latest": "2026-10-13",
+   "updated_at": "2026-10-14T09:31:36+09:00",
+   "observations": 358
   },
   "KOSDAQ|의약품 제조업": {
    "market": "KOSDAQ",
@@ -106,9 +107,9 @@
    "success": 61,
    "unavailable": [],
    "members": "78643803718c1a9999ea7e4900b8b90755cbe88220de9e7186bccdc142cf0daa",
-   "latest": "2026-10-14",
-   "updated_at": "2026-10-14T09:27:13+09:00",
-   "observations": 359
+   "latest": "2026-10-13",
+   "updated_at": "2026-10-14T09:31:36+09:00",
+   "observations": 358
   },
   "KOSDAQ|통신 및 방송 장비 제조업": {
    "market": "KOSDAQ",
@@ -117,9 +118,9 @@
    "success": 57,
    "unavailable": [],
    "members": "3bd328a84ce28750a90a1d6b431ecfc7df9100ddfd0eedee1612c0a10c7586c5",
-   "latest": "2026-10-14",
-   "updated_at": "2026-10-14T09:27:13+09:00",
-   "observations": 359
+   "latest": "2026-10-13",
+   "updated_at": "2026-10-14T09:31:36+09:00",
+   "observations": 358
   },
   "KOSDAQ|자동차 신품 부품 제조업": {
    "market": "KOSDAQ",
@@ -128,9 +129,9 @@
    "success": 55,
    "unavailable": [],
    "members": "31c77647171ffef43f9c4705ee70eb80d5a7c85d6b71bde0f655ff250c1fd794",
-   "latest": "2026-10-14",
-   "updated_at": "2026-10-14T09:27:13+09:00",
-   "observations": 359
+   "latest": "2026-10-13",
+   "updated_at": "2026-10-14T09:31:36+09:00",
+   "observations": 358
   },
   "KOSPI|자동차 신품 부품 제조업": {
    "market": "KOSPI",
@@ -139,9 +140,9 @@
    "success": 46,
    "unavailable": [],
    "members": "4af0dbed0fc49b168f042c24b703988e8f313273ff0cfc4a35bcf07b07308575",
-   "latest": "2026-10-14",
-   "updated_at": "2026-10-14T09:27:13+09:00",
-   "observations": 359
+   "latest": "2026-10-13",
+   "updated_at": "2026-10-14T09:31:36+09:00",
+   "observations": 358
   },
   "KOSPI|의약품 제조업": {
    "market": "KOSPI",
@@ -150,9 +151,9 @@
    "success": 44,
    "unavailable": [],
    "members": "90555b15562eebd0c56b276e48aeefa801187f0315522b8def7f91480414f062",
-   "latest": "2026-10-14",
-   "updated_at": "2026-10-14T09:27:13+09:00",
-   "observations": 359
+   "latest": "2026-10-13",
+   "updated_at": "2026-10-14T09:31:36+09:00",
+   "observations": 358
   },
   "KOSDAQ|기초 의약물질 제조업": {
    "market": "KOSDAQ",
@@ -161,9 +162,9 @@
    "success": 42,
    "unavailable": [],
    "members": "29e5f405f9bcecfc3f73025348703abcde864f603133c72b3066cdf8360fbe86",
-   "latest": "2026-10-14",
-   "updated_at": "2026-10-14T09:27:13+09:00",
-   "observations": 359
+   "latest": "2026-10-13",
+   "updated_at": "2026-10-14T09:31:36+09:00",
+   "observations": 358
   },
   "KOSPI|1차 철강 제조업": {
    "market": "KOSPI",
@@ -172,9 +173,141 @@
    "success": 38,
    "unavailable": [],
    "members": "42c82990047f7bb750027d194e59fd25b44768234d4eafaa5a1f9f0b1fd97a25",
-   "latest": "2026-10-14",
-   "updated_at": "2026-10-14T09:27:13+09:00",
-   "observations": 359
+   "latest": "2026-10-13",
+   "updated_at": "2026-10-14T09:31:36+09:00",
+   "observations": 358
+  },
+  "KOSDAQ|기타 금융업": {
+   "market": "KOSDAQ",
+   "sector": "기타 금융업",
+   "target": 36,
+   "success": 36,
+   "unavailable": [],
+   "members": "95dff01f2c8f87a29414924241bfdff40a41ba166d1514bf82555e67208f43f2",
+   "latest": "2026-10-13",
+   "updated_at": "2026-10-14T09:31:36+09:00",
+   "observations": 358
+  },
+  "KOSDAQ|일반 목적용 기계 제조업": {
+   "market": "KOSDAQ",
+   "sector": "일반 목적용 기계 제조업",
+   "target": 36,
+   "success": 36,
+   "unavailable": [],
+   "members": "7a82cb368219908d68d31a0f9bb62dba606cf9b63bed44337aead7a80adc9f72",
+   "latest": "2026-10-13",
+   "updated_at": "2026-10-14T09:31:36+09:00",
+   "observations": 358
+  },
+  "KOSPI|기타 화학제품 제조업": {
+   "market": "KOSPI",
+   "sector": "기타 화학제품 제조업",
+   "target": 33,
+   "success": 33,
+   "unavailable": [],
+   "members": "f758243b6acb992bcbf60e055376202fb431a69db84a6a8b2646e4488c2d974a",
+   "latest": "2026-10-13",
+   "updated_at": "2026-10-14T09:31:36+09:00",
+   "observations": 358
+  },
+  "KOSDAQ|의료용품 및 기타 의약 관련제품 제조업": {
+   "market": "KOSDAQ",
+   "sector": "의료용품 및 기타 의약 관련제품 제조업",
+   "target": 30,
+   "success": 30,
+   "unavailable": [],
+   "members": "18315b7301fb9b3850a56b5958c19c702716e190c3abd7804c2e3a6a128847b2",
+   "latest": "2026-10-13",
+   "updated_at": "2026-10-14T09:31:36+09:00",
+   "observations": 358
+  },
+  "KOSDAQ|전동기, 발전기 및 전기 변환 · 공급 · 제어 장치 제조업": {
+   "market": "KOSDAQ",
+   "sector": "전동기, 발전기 및 전기 변환 · 공급 · 제어 장치 제조업",
+   "target": 30,
+   "success": 30,
+   "unavailable": [],
+   "members": "c4cd312f6aa94dd774bbd2a6d9d0cffaed237a90e587579b339b7a3bea08999a",
+   "latest": "2026-10-13",
+   "updated_at": "2026-10-14T09:31:36+09:00",
+   "observations": 358
+  },
+  "KOSDAQ|컴퓨터 프로그래밍, 시스템 통합 및 관리업": {
+   "market": "KOSDAQ",
+   "sector": "컴퓨터 프로그래밍, 시스템 통합 및 관리업",
+   "target": 30,
+   "success": 30,
+   "unavailable": [],
+   "members": "863f0a70da2d67132f3f9f9011c66b44a29363545b407770a76a94ce58f199ea",
+   "latest": "2026-10-13",
+   "updated_at": "2026-10-14T09:31:36+09:00",
+   "observations": 358
+  },
+  "KOSDAQ|영화, 비디오물, 방송프로그램 제작 및 배급업": {
+   "market": "KOSDAQ",
+   "sector": "영화, 비디오물, 방송프로그램 제작 및 배급업",
+   "target": 27,
+   "success": 27,
+   "unavailable": [],
+   "members": "7c442145511ccccfbd0890911da7e8be76e1be02d464e09749fddf1434a0bd2e",
+   "latest": "2026-10-13",
+   "updated_at": "2026-10-14T09:31:36+09:00",
+   "observations": 358
+  },
+  "KOSDAQ|플라스틱제품 제조업": {
+   "market": "KOSDAQ",
+   "sector": "플라스틱제품 제조업",
+   "target": 27,
+   "success": 27,
+   "unavailable": [],
+   "members": "e06a4deb3ecf853e2d176331cc0cd7bbf39a0c6d530293c343d0d47030fc6fca",
+   "latest": "2026-10-13",
+   "updated_at": "2026-10-14T09:31:36+09:00",
+   "observations": 358
+  },
+  "KOSPI|기초 화학물질 제조업": {
+   "market": "KOSPI",
+   "sector": "기초 화학물질 제조업",
+   "target": 27,
+   "success": 27,
+   "unavailable": [],
+   "members": "a171e62032cc5ca42ca67ff389ac2b35cc249382929b5118fb9fee44d0be401f",
+   "latest": "2026-10-13",
+   "updated_at": "2026-10-14T09:31:36+09:00",
+   "observations": 358
+  },
+  "KOSDAQ|측정, 시험, 항해, 제어 및 기타 정밀기기 제조업; 광학기기 제외": {
+   "market": "KOSDAQ",
+   "sector": "측정, 시험, 항해, 제어 및 기타 정밀기기 제조업; 광학기기 제외",
+   "target": 25,
+   "success": 25,
+   "unavailable": [],
+   "members": "993bfb15dff8f59bec9b014394eb8bc94ef4c13cc66631ecac9b37da9bc9db11",
+   "latest": "2026-10-13",
+   "updated_at": "2026-10-14T09:31:36+09:00",
+   "observations": 358
+  },
+  "KOSDAQ|기타 전문 도매업": {
+   "market": "KOSDAQ",
+   "sector": "기타 전문 도매업",
+   "target": 24,
+   "success": 24,
+   "unavailable": [],
+   "members": "8aee4067643574130dac1bbad4c9416ef9cb08c800c7285e575c95515bc1efe8",
+   "latest": "2026-10-13",
+   "updated_at": "2026-10-14T09:31:36+09:00",
+   "observations": 358
+  },
+  "KOSPI|부동산 임대 및 공급업": {
+   "market": "KOSPI",
+   "sector": "부동산 임대 및 공급업",
+   "target": 24,
+   "success": 24,
+   "unavailable": [],
+   "members": "139521b8b05fb032b822cf355ce7d7f28111e7fb199cff20f05b541169e4dd43",
+   "latest": "2026-10-13",
+   "updated_at": "2026-10-14T09:31:36+09:00",
+   "observations": 358
   }
  },
  "attempts": {
@@ -191,11 +324,23 @@
   "KOSPI|자동차 신품 부품 제조업": 0,
   "KOSPI|의약품 제조업": 0,
   "KOSDAQ|기초 의약물질 제조업": 0,
-  "KOSPI|1차 철강 제조업": 0
+  "KOSPI|1차 철강 제조업": 0,
+  "KOSDAQ|기타 금융업": 0,
+  "KOSDAQ|일반 목적용 기계 제조업": 0,
+  "KOSPI|기타 화학제품 제조업": 0,
+  "KOSDAQ|의료용품 및 기타 의약 관련제품 제조업": 0,
+  "KOSDAQ|전동기, 발전기 및 전기 변환 · 공급 · 제어 장치 제조업": 0,
+  "KOSDAQ|컴퓨터 프로그래밍, 시스템 통합 및 관리업": 0,
+  "KOSDAQ|영화, 비디오물, 방송프로그램 제작 및 배급업": 0,
+  "KOSDAQ|플라스틱제품 제조업": 0,
+  "KOSPI|기초 화학물질 제조업": 0,
+  "KOSDAQ|측정, 시험, 항해, 제어 및 기타 정밀기기 제조업; 광학기기 제외": 0,
+  "KOSDAQ|기타 전문 도매업": 0,
+  "KOSPI|부동산 임대 및 공급업": 0
  },
  "issues": [],
  "listed": 2647,
  "industry_total": 262,
- "industry_done": 16,
- "stock_done": 1163
+ "industry_done": 28,
+ "stock_done": 1512
 }
