@@ -1,7 +1,7 @@
 {
   "updated_at": "2026-10-14",
   "start_period": "2020-Q1",
-  "end_period": "2026-Q2",
+  "end_period": "2026-Q3",
   "reports_reviewed": [
     {
       "company_id": "222800",
@@ -5311,7 +5311,7 @@
     {
       "company_id": "036540",
       "period": "2026-Q2",
-      "source": "https://kind.krx.co.kr/external/2026/08/12/000273/20260812000750/11012.htm"
+      "source": "https://kind.krx.co.kr/external/2026/10/13/000158/20261013000467/11012.htm"
     },
     {
       "company_id": "061970",
@@ -11116,7 +11116,7 @@
     {
       "company_id": "222080",
       "period": "2026-Q2",
-      "source": "https://kind.krx.co.kr/external/2026/08/18/000463/20260818001120/11012.htm"
+      "source": "https://kind.krx.co.kr/external/2026/10/13/000219/20261013000597/11012.htm"
     },
     {
       "company_id": "259630",
