@@ -51,13 +51,16 @@
   const last=(per,item)=>{const a=all.filter(r=>r.period===per&&r.item===item).sort((x,y)=>x.date.localeCompare(y.date));return a.at(-1);};
   const back3=d=>{const x=new Date(d+'T00:00:00Z');x.setUTCMonth(x.getUTCMonth()-3);return x.toISOString().slice(0,10);};
   const tbl=document.createElement('table');tbl.className='per-table';
-  tbl.innerHTML='<thead><tr><th>연도</th><th>매출액 (억원)</th><th>영업이익 (억원)</th><th>순이익 (억원)</th><th>OPM</th><th>PER</th><th>영익 컨센 3개월</th></tr></thead>';const tb=document.createElement('tbody');
+  tbl.innerHTML='<thead><tr><th>연도</th><th>매출액 (억원)</th><th>영업이익 (억원)</th><th>영익 YoY</th><th>순이익 (억원)</th><th>OPM</th><th>PER</th><th>영익 컨센 3개월</th></tr></thead>';const tb=document.createElement('tbody');
+  const actOp=y=>{if(typeof financial==='undefined')return null;const q=financial.filter(r=>r.company_id===c.id&&r.period.startsWith(y+'-Q'));if(q.length!==4||q.some(r=>r.operating_profit_KRW===''||!Number.isFinite(Number(r.operating_profit_KRW))))return null;return q.reduce((a,r)=>a+Number(r.operating_profit_KRW),0)/1e8;};
+  const opBase=new Map();{const a=actOp(y0-1);if(a!=null)opBase.set(y0,{v:a,lab:`${y0-1}년 실적`});else{const e=last(`${y0-1}/12`,'op');if(e)opBase.set(y0,{v:Number(e.avg),lab:`${y0-1}년 컨센서스(실적 미집계)`});}}
+  const yoyTxt=(O,b)=>{if(O==null||!b||b.v==null)return[null,'—'];if(b.v<=0)return[null,O>0?'흑전':'적지'];if(O<=0)return[null,'적전'];const g=(O/b.v-1)*100;return[g,(g>0?'+':'')+g.toFixed(1)+'%'];};
   for(let k=0;k<3;k++){const per=`${y0+k}/12`,rv=last(per,'revenue'),op=last(per,'op'),ni=last(per,'ni'),eps=last(per,'eps');
    const R=rv?Number(rv.avg):null,O=op?Number(op.avg):null,N=ni?Number(ni.avg):null,E=eps?Number(eps.avg):null;
    const pe=E>0&&price?price/E:(N>0&&mcap?mcap/N:null);
    const oa=all.filter(r=>r.period===per&&r.item==='op').sort((x,y)=>x.date.localeCompare(y.date)),o3=op?oa.filter(r=>r.date<=back3(op.date)).at(-1):null,ch=o3&&Number(o3.avg)>0&&O!=null?(O/Number(o3.avg)-1)*100:null;
-   const eok=v=>v==null?'—':Math.round(v).toLocaleString();const tr=document.createElement('tr');const cells=[`${y0+k}E`,eok(R),eok(O),eok(N),R>0&&O!=null?(O/R*100).toFixed(1)+'%':'—',pe==null?((E!=null&&E<=0)||(N!=null&&N<=0)?'적자':'—'):pe.toFixed(1)+'배',ch==null?'—':(ch>0?'+':'')+ch.toFixed(1)+'%'];
-   cells.forEach((v,i)=>{const td=document.createElement('td');td.textContent=v;if(i===6&&ch!=null)td.className=ch>=3?'pos':ch<=-3?'neg':'';if(i===5)td.style.fontWeight='700';tr.append(td);});tb.append(tr);}
+   const eok=v=>v==null?'—':Math.round(v).toLocaleString();const tr=document.createElement('tr');const ob=opBase.get(y0+k),[yg,yt]=yoyTxt(O,ob);opBase.set(y0+k+1,{v:O,lab:`${y0+k}E 컨센서스`});const cells=[`${y0+k}E`,eok(R),eok(O),yt,eok(N),R>0&&O!=null?(O/R*100).toFixed(1)+'%':'—',pe==null?((E!=null&&E<=0)||(N!=null&&N<=0)?'적자':'—'):pe.toFixed(1)+'배',ch==null?'—':(ch>0?'+':'')+ch.toFixed(1)+'%'];
+   cells.forEach((v,i)=>{const td=document.createElement('td');td.textContent=v;if(i===7&&ch!=null)td.className=ch>=3?'pos':ch<=-3?'neg':'';if(i===3){if(yg!=null)td.className=yg>=0?'pos':'neg';else if(yt==='흑전')td.className='pos';else if(yt!=='—')td.className='neg';if(ob)td.title='비교 기준: '+ob.lab+(ob.v!=null?' '+Math.round(ob.v).toLocaleString()+'억원':'');}if(i===6)td.style.fontWeight='700';tr.append(td);});tb.append(tr);}
   tbl.append(tb);box.append(tbl);
-  document.getElementById('perNote').textContent=`매출·영업이익·순이익은 회계연도별 컨센서스(네이버 와이즈리포트, 최근 3개월 증권사 추정 평균). OPM = 영업이익 ÷ 매출. PER = 주가 ÷ EPS 컨센서스(EPS가 없으면 시가총액 ÷ 순이익). 순이익은 지배주주 기준이 아닐 수 있습니다. 적자 추정이면 PER을 계산하지 않습니다.`;};
+  document.getElementById('perNote').textContent=`매출·영업이익·순이익은 회계연도별 컨센서스(네이버 와이즈리포트, 최근 3개월 증권사 추정 평균). OPM = 영업이익 ÷ 매출. 영익 YoY = 전년 대비 영업이익 증감률(올해 추정치는 작년 실제 4개 분기 합계와, 이후 연도는 직전 연도 컨센서스와 비교 · 셀에 마우스를 올리면 비교 기준 표시). PER = 주가 ÷ EPS 컨센서스(EPS가 없으면 시가총액 ÷ 순이익). 순이익은 지배주주 기준이 아닐 수 있습니다. 적자 추정이면 PER을 계산하지 않습니다.`;};
 })();
