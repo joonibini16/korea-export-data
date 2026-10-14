@@ -8,8 +8,8 @@
       "ticker": "ASML",
       "currency": "EUR",
       "fiscal_end_month": 12,
-      "financial_source": "https://in.marketscreener.com/quote/stock/ASML-HOLDING-N-V-12002973/valuation/valuation/",
-      "valuation_source": "https://in.marketscreener.com/quote/stock/ASML-HOLDING-N-V-12002973/valuation/valuation/",
+      "financial_source": "https://in.marketscreener.com/quote/stock/ASML-HOLDING-N-V-12002973/valuation/",
+      "valuation_source": "https://in.marketscreener.com/quote/stock/ASML-HOLDING-N-V-12002973/valuation/",
       "years": [
         {
           "year": 2026,
