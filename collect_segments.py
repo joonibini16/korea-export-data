@@ -140,7 +140,15 @@ def scan(r):
                 tot = tot if tot is not None else sum(x['rev'] for x in out if x['role'] != 'total')
                 if all(v is not None for v in ytd) and sum(ytd) > 0 and not (Decimal('0.7') <= tot / sum(ytd) <= Decimal('1.3')):
                     continue  # 연결 매출과 크게 다르면 다른 표(별도·지역 등)로 보고 다음 후보 탐색
-                for x in out: x['segment'] = clean(x['segment']) if x['role'] == 'segment' else x['segment']
+                for x in out: x['segment'] = clean(x['segment']) if x['role'] == 'segment' else ('합계' if x['role'] == 'total' else '조정')
+                agg = {}
+                for x in out:
+                    k = (x['segment'], x['role'])
+                    if k in agg:
+                        if x['role'] == 'total': continue  # 합계 열이 여러 개면 첫 열 사용
+                        agg[k]['rev'] += x['rev']; agg[k]['op'] += x['op']
+                    else: agg[k] = dict(x)
+                out = list(agg.values())
                 if len(segs) >= 2 or (len(segs) == 1 and any(x['role'] != 'segment' for x in out)):
                     if DEBUG: continue
                     return dict(company_id=r['company_id'], period=r['period'], url=u, rows=out, unit=unit)

@@ -25,9 +25,9 @@
    const a=k==='opm'?null:val(s,last,k),b=k==='opm'?null:val(s,qAdd(last,-4),k);let y='—';
    if(k==='opm'){const o1=v.at(-1),r0=val(s,qAdd(last,-4),'rev'),o0=r0>0&&val(s,qAdd(last,-4),'op')!=null?val(s,qAdd(last,-4),'op')/r0*100:null;y=o1!=null&&o0!=null?((o1-o0)>0?'+':'')+(o1-o0).toFixed(1)+'%p':'—';}
    else if(a!=null&&b!=null){y=b>0?((a/b-1)*100>0?'+':'')+((a/b-1)*100).toFixed(1)+'%':(a>0&&b<=0?'흑전':a<=0&&b<0?'적지':'적전');}
-   return `<td>${{rev:'매출',op:'영업이익',opm:'OPM'}[k]}</td>${v.map(x=>`<td class="${k!=='rev'&&x!=null&&x<0?'neg':''}">${k==='opm'?fp(x):f0(x)}</td>`).join('')}<td>${y}</td>`;};
-  let body='';segNames.forEach((s,i)=>{body+=`<tr class="seg-first"><td rowspan="3"><span class="dot" style="background:${PAL[i%PAL.length]}"></span>${s}</td>${line(s,'rev')}</tr><tr>${line(s,'op')}</tr><tr>${line(s,'opm')}</tr>`;});
-  for(const o of others){const [s,role]=o.split('|');body+=`<tr class="seg-first seg-other"><td rowspan="2">${role==='total'?'합계':'조정'} · ${s}</td>${line(s,'rev')}</tr><tr class="seg-other">${line(s,'op')}</tr>`;}
+   return `<td class="sg-k">${{rev:'매출',op:'영업이익',opm:'OPM'}[k]}</td>${v.map(x=>`<td class="${k!=='rev'&&x!=null&&x<0?'neg':''}">${k==='opm'?fp(x):f0(x)}</td>`).join('')}<td>${y}</td>`;};
+  let body='';segNames.forEach((s,i)=>{body+=`<tr class="seg-first"><td class="sg-n" rowspan="3"><span class="dot" style="background:${PAL[i%PAL.length]}"></span>${s}</td>${line(s,'rev')}</tr><tr>${line(s,'op')}</tr><tr>${line(s,'opm')}</tr>`;});
+  for(const o of others){const [s,role]=o.split('|');body+=`<tr class="seg-first seg-other"><td class="sg-n" rowspan="2">${s}</td>${line(s,'rev')}</tr><tr class="seg-other">${line(s,'op')}</tr>`;}
   box.innerHTML=`<div class="chart" style="height:320px"><canvas id="segChart"></canvas></div><div class="table" style="overflow:auto;margin-top:12px"><table class="seg-table"><thead>${head}</thead><tbody>${body}</tbody></table></div>`;
   if(segCh)segCh.destroy();const ctx=document.getElementById('segChart');
   segCh=new Chart(ctx,{data:{labels:periods,datasets:ds},options:{responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:'index',intersect:false},plugins:{legend:{position:'bottom'},tooltip:{callbacks:{label:x=>`${x.dataset.label}: ${mode==='opm'?fp(x.parsed.y):f0(x.parsed.y)+'억'}`}}},
