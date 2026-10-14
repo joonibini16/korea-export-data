@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-10-13T21:59:08+09:00",
+  "updated_at": "2026-10-14T09:04:33+09:00",
   "source": "https://www.data.go.kr/data/15134343/openapi.do",
-  "requested_ranges": 163,
-  "received_rows": 14924,
-  "stored_rows": 47044,
+  "requested_ranges": 140,
+  "received_rows": 14794,
+  "stored_rows": 49512,
   "failures": [
     {
       "sido": "31",
@@ -19,7 +19,7 @@
       "hs": "850423",
       "start": "202301",
       "end": "202312",
-      "error": "empty response; not zero"
+      "error": "URLError"
     },
     {
       "sido": "31",
@@ -43,7 +43,7 @@
       "hs": "850423",
       "start": "202201",
       "end": "202212",
-      "error": "empty response; not zero"
+      "error": "URLError"
     },
     {
       "sido": "44",
@@ -1780,6 +1780,34 @@
       "hs": "903149",
       "query_hs": "903149",
       "region": "평택시",
+      "sido": "41",
+      "months": 80,
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
+      "scope": "HS6",
+      "historical_note": ""
+    },
+    {
+      "company": "114810",
+      "hs": "848690",
+      "query_hs": "848690",
+      "region": "안성시",
+      "sido": "41",
+      "months": 80,
+      "expected_months": 81,
+      "missing": [
+        "2026.09"
+      ],
+      "scope": "HS6",
+      "historical_note": ""
+    },
+    {
+      "company": "144960",
+      "hs": "854370",
+      "query_hs": "854370",
+      "region": "수원시",
       "sido": "41",
       "months": 80,
       "expected_months": 81,
