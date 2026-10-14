@@ -100,13 +100,15 @@ td.h{font-weight:700}.flag{font-size:12px;padding:2px 8px;border-radius:999px;ba
  const main=document.querySelector('main'),nav=window.__bnav;if(!main||!nav)return;
  const isB=t=>/시장 내부 체력|Breadth/.test(t);
  let grp='bubble';const kids=[...main.children];
- for(const e of kids){if(e===nav.nav||e.classList.contains('sh-hero')||e.tagName==='H1'||e.id==='err'||e.classList.contains('ptabs'))continue;if(e.matches('h2.sec'))grp=isB(e.textContent)?'breadth':'bubble';e.dataset.grp=grp;}
+ for(const e of kids){if(e===nav.nav||e.classList.contains('sh-hero')||e.tagName==='H1'||(e.previousElementSibling&&e.previousElementSibling.tagName==='H1')||e.id==='err'||e.classList.contains('ptabs'))continue;if(e.matches('h2.sec'))grp=isB(e.textContent)?'breadth':'bubble';e.dataset.grp=grp;}
  const bar=document.createElement('div');bar.className='ptabs';bar.innerHTML='<button data-g="bubble">버블 신호</button><button data-g="breadth">시장 Breadth (시장 폭·신고가·RSI·규모별·업종별)</button>';
- nav.nav.before(bar);
+ nav.nav.before(bar);bar.style.display='none'; // 탭 버튼 대신 왼쪽 메뉴에서 같은 단계로 이동
+ const h1=document.querySelector('main h1'),sub=h1&&h1.nextElementSibling,H={bubble:[h1?.textContent,sub?.textContent,document.title],breadth:['시장 Breadth 모니터','시장 폭(Breadth_60)·신고가 비율·RSI, 규모별(대형·중형·소형) 60일 신고가−신저가, 업종별 시장 내부 체력을 한 화면에서 봅니다. 지수가 오르는데 폭이 좁아지면(쏠림 랠리) 상승의 질이 나빠지고 있다는 신호입니다.','시장 Breadth 모니터']};
  function show(g,scroll){for(const e of main.querySelectorAll('[data-grp]'))e.style.display=e.dataset.grp===g?'':'none';
   bar.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.g===g));
   nav.links.forEach((a,i)=>{const el=nav.T[i][0];const g2=(el.dataset.grp||el.closest('[data-grp]')?.dataset.grp);a.style.display=g2===g?'':'none';});
   try{const u=new URL(location.href);if(g==='breadth')u.searchParams.set('tab','breadth');else u.searchParams.delete('tab');history.replaceState(null,'',u);}catch(e){}
+  if(h1){h1.textContent=H[g][0];if(sub&&H[g][1])sub.textContent=H[g][1];document.title=H[g][2];}
   document.querySelectorAll('.sh-link').forEach(a=>{const h=a.getAttribute('href')||'';if(h.includes('bubble.html'))a.classList.toggle('active',(h.includes('tab=breadth'))===(g==='breadth'));});
   dispatchEvent(new Event('resize'));setTimeout(nav.mark,50);if(scroll)scrollTo({top:0,behavior:'smooth'});}
  bar.addEventListener('click',e=>{const b=e.target.closest('button');if(b)show(b.dataset.g,true);});
