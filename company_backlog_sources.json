@@ -541,9 +541,377 @@
       "source": "https://kind.krx.co.kr/external/2026/08/14/001441/20260814004789/11012.htm",
       "reviewed_period": "2026-Q2",
       "name": "뉴파워프라즈마"
+    },
+    {
+      "company_id": "003160",
+      "status": "verified",
+      "label": "공시 금액 확보",
+      "reason": "공시된 기말 수주잔고만 표시합니다. 집계 범위와 주의사항은 아래 표를 확인하세요. 공시된 수주상황 표의 기말 수주잔고(반도체 검사장비·검사보드 등). 2026년 들어 메모리 테스터 수주로 잔고가 급증했습니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/000768/20260814002555/11012.htm",
+      "reviewed_period": "2026-Q2",
+      "name": "디아이"
+    },
+    {
+      "company_id": "086390",
+      "status": "verified",
+      "label": "공시 금액 확보",
+      "reason": "공시된 기말 수주잔고만 표시합니다. 집계 범위와 주의사항은 아래 표를 확인하세요. 공시된 공급계약별 수주상황 합계. 반도체 검사장비 외 태양광·ESS 공사 계약이 섞여 있으니 품목은 원문 표를 확인하세요. 2023-Q4·2024-Q1은 표 산식이 맞지 않아 제외했습니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/000457/20260814001427/11012.htm",
+      "reviewed_period": "2026-Q2",
+      "name": "유니테스트"
+    },
+    {
+      "company_id": "232140",
+      "status": "verified",
+      "label": "공시 금액 확보",
+      "reason": "공시된 기말 수주잔고만 표시합니다. 집계 범위와 주의사항은 아래 표를 확인하세요. 공시된 메모리 테스터 공급계약 합계(작성기준일 현재). 2024-Q4~2026-Q1 보고서는 계약 총액만 싣고 기납품·잔고를 비워 제외했습니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/001220/20260814004030/11012.htm",
+      "reviewed_period": "2026-Q2",
+      "name": "와이씨"
+    },
+    {
+      "company_id": "025560",
+      "status": "verified",
+      "label": "공시 금액 확보",
+      "reason": "공시된 기말 수주잔고만 표시합니다. 집계 범위와 주의사항은 아래 표를 확인하세요. 공시된 반도체 검사장비(핸들러) 공급계약 합계. 계약 규모가 작고 단기 납품이라 잔고가 0인 분기가 많습니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/13/000514/20260813001327/11012.htm",
+      "reviewed_period": "2026-Q2",
+      "name": "미래산업"
+    },
+    {
+      "company_id": "089030",
+      "status": "verified",
+      "label": "공시 금액 확보",
+      "reason": "공시된 기말 수주잔고만 표시합니다. 집계 범위와 주의사항은 아래 표를 확인하세요. 장비군(핸들러·디스플레이 장비) 기말 수주잔고만 공시합니다. 수시 공급되는 부품·COK는 포함되지 않습니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/000790/20260814002628/11012.htm",
+      "reviewed_period": "2026-Q2",
+      "name": "테크윙"
+    },
+    {
+      "company_id": "089790",
+      "status": "verified",
+      "label": "공시 금액 확보",
+      "reason": "공시된 기말 수주잔고만 표시합니다. 집계 범위와 주의사항은 아래 표를 확인하세요. 번인 소터 등 장비 수주상황 합계. 정정 공시가 있는 분기는 정정 후(작성기준일 이후 수주 제외) 금액입니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/19/000168/20260819000453/11012.htm",
+      "reviewed_period": "2026-Q2",
+      "name": "제이티"
+    },
+    {
+      "company_id": "253590",
+      "status": "verified",
+      "label": "공시 금액 확보",
+      "reason": "공시된 기말 수주잔고만 표시합니다. 집계 범위와 주의사항은 아래 표를 확인하세요. 외화(K$) 장비 계약 합계만 시계열로 표시합니다(원화 계약 제외). 일부 분기는 USD 합계가 없거나 산식이 맞지 않아 제외했습니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/000483/20260814001520/11012.htm",
+      "reviewed_period": "2026-Q2",
+      "name": "네오셈"
+    },
+    {
+      "company_id": "080580",
+      "status": "not_reported",
+      "label": "점검 공시 금액 미기재",
+      "reason": "2020-Q1~2026-Q2 정기보고서 26건을 모두 점검했으며 기말 수주잔고 금액 표는 없었습니다. 소켓·프로브카드·보드는 고객 발주에 따라 짧게 납품하는 소모성 부품이라 수주잔고 대신 수출·재고 지표로 판단합니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/000979/20260814003216/11012.htm",
+      "reviewed_period": "2026-Q2",
+      "name": "오킨스전자"
+    },
+    {
+      "company_id": "095340",
+      "status": "not_reported",
+      "label": "점검 공시 금액 미기재",
+      "reason": "2020-Q1~2026-Q2 정기보고서 26건을 모두 점검했으며 기말 수주잔고 금액 표는 없었습니다. 소켓·프로브카드·보드는 고객 발주에 따라 짧게 납품하는 소모성 부품이라 수주잔고 대신 수출·재고 지표로 판단합니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/000100/20260814000212/11012.htm",
+      "reviewed_period": "2026-Q2",
+      "name": "ISC"
+    },
+    {
+      "company_id": "098120",
+      "status": "not_reported",
+      "label": "점검 공시 금액 미기재",
+      "reason": "2020-Q1~2026-Q2 정기보고서 26건을 모두 점검했으며 기말 수주잔고 금액 표는 없었습니다. 소켓·프로브카드·보드는 고객 발주에 따라 짧게 납품하는 소모성 부품이라 수주잔고 대신 수출·재고 지표로 판단합니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/002670/20260814009330/11012.htm",
+      "reviewed_period": "2026-Q2",
+      "name": "마이크로컨텍솔"
+    },
+    {
+      "company_id": "147760",
+      "status": "not_reported",
+      "label": "점검 공시 금액 미기재",
+      "reason": "2020-Q1~2026-Q2 정기보고서 26건을 모두 점검했으며 기말 수주잔고 금액 표는 없었습니다. 소켓·프로브카드·보드는 고객 발주에 따라 짧게 납품하는 소모성 부품이라 수주잔고 대신 수출·재고 지표로 판단합니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/13/000193/20260813000457/11012.htm",
+      "reviewed_period": "2026-Q2",
+      "name": "피엠티"
+    },
+    {
+      "company_id": "425420",
+      "status": "not_reported",
+      "label": "점검 공시 금액 미기재",
+      "reason": "상장 이후 정기보고서 15건을 모두 점검했으며 기말 수주잔고 금액 표는 없었습니다. 소켓·프로브카드·보드는 고객 발주에 따라 짧게 납품하는 소모성 부품이라 수주잔고 대신 수출·재고 지표로 판단합니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/000863/20260814002845/11012.htm",
+      "reviewed_period": "2026-Q2",
+      "name": "티에프이"
     }
   ],
   "observations": [
+    {
+      "company_id": "003160",
+      "period": "2020-Q1",
+      "raw_value": "59544",
+      "raw_unit": "KRW_million",
+      "scope": "반도체 검사장비·검사보드 등 공시 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2020/05/15/000378/20200515000718/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "003160",
+      "period": "2020-Q2",
+      "raw_value": "59283",
+      "raw_unit": "KRW_million",
+      "scope": "반도체 검사장비·검사보드 등 공시 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2020/08/13/000282/20200813000805/11012.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "003160",
+      "period": "2020-Q3",
+      "raw_value": "41186",
+      "raw_unit": "KRW_million",
+      "scope": "반도체 검사장비·검사보드 등 공시 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2020/11/16/000300/20201116000604/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "003160",
+      "period": "2020-Q4",
+      "raw_value": "22342",
+      "raw_unit": "KRW_million",
+      "scope": "반도체 검사장비·검사보드 등 공시 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2023/03/09/000549/20230309001588/11011.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "003160",
+      "period": "2021-Q1",
+      "raw_value": "100501",
+      "raw_unit": "KRW_million",
+      "scope": "반도체 검사장비·검사보드 등 공시 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2021/05/17/000388/20210517000882/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "003160",
+      "period": "2021-Q2",
+      "raw_value": "56340",
+      "raw_unit": "KRW_million",
+      "scope": "반도체 검사장비·검사보드 등 공시 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2021/08/12/000510/20210812001236/11012.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "003160",
+      "period": "2021-Q3",
+      "raw_value": "53664",
+      "raw_unit": "KRW_million",
+      "scope": "반도체 검사장비·검사보드 등 공시 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2021/11/15/000421/20211115000840/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "003160",
+      "period": "2021-Q4",
+      "raw_value": "65821",
+      "raw_unit": "KRW_million",
+      "scope": "반도체 검사장비·검사보드 등 공시 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2023/03/09/000560/20230309001616/11011.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "003160",
+      "period": "2022-Q1",
+      "raw_value": "60298",
+      "raw_unit": "KRW_million",
+      "scope": "반도체 검사장비·검사보드 등 공시 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2022/05/16/000635/20220516001340/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "003160",
+      "period": "2022-Q2",
+      "raw_value": "57980",
+      "raw_unit": "KRW_million",
+      "scope": "반도체 검사장비·검사보드 등 공시 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2022/08/16/001903/20220816006050/11012.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "003160",
+      "period": "2022-Q3",
+      "raw_value": "58899",
+      "raw_unit": "KRW_million",
+      "scope": "반도체 검사장비·검사보드 등 공시 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2022/11/14/000719/20221114001498/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "003160",
+      "period": "2022-Q4",
+      "raw_value": "58612",
+      "raw_unit": "KRW_million",
+      "scope": "반도체 검사장비·검사보드 등 공시 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2023/03/16/001602/20230316004208/11011.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "003160",
+      "period": "2023-Q1",
+      "raw_value": "67626",
+      "raw_unit": "KRW_million",
+      "scope": "반도체 검사장비·검사보드 등 공시 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2023/05/15/002168/20230515004710/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "003160",
+      "period": "2023-Q2",
+      "raw_value": "70114",
+      "raw_unit": "KRW_million",
+      "scope": "반도체 검사장비·검사보드 등 공시 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2023/08/11/000580/20230811001572/11012.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "003160",
+      "period": "2023-Q3",
+      "raw_value": "55527",
+      "raw_unit": "KRW_million",
+      "scope": "반도체 검사장비·검사보드 등 공시 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2023/11/14/001869/20231114004034/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "003160",
+      "period": "2023-Q4",
+      "raw_value": "66981",
+      "raw_unit": "KRW_million",
+      "scope": "반도체 검사장비·검사보드 등 공시 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2024/03/14/002349/20240314005332/11011.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "003160",
+      "period": "2024-Q1",
+      "raw_value": "59490",
+      "raw_unit": "KRW_million",
+      "scope": "반도체 검사장비·검사보드 등 공시 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2024/05/16/001334/20240516003155/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "003160",
+      "period": "2024-Q2",
+      "raw_value": "63390",
+      "raw_unit": "KRW_million",
+      "scope": "반도체 검사장비·검사보드 등 공시 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2024/08/14/002471/20240814007837/11012.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "003160",
+      "period": "2024-Q3",
+      "raw_value": "61234",
+      "raw_unit": "KRW_million",
+      "scope": "반도체 검사장비·검사보드 등 공시 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2024/11/14/002806/20241114006365/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "003160",
+      "period": "2024-Q4",
+      "raw_value": "148764",
+      "raw_unit": "KRW_million",
+      "scope": "반도체 검사장비·검사보드 등 공시 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2025/03/13/001757/20250313003942/11011.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "003160",
+      "period": "2025-Q1",
+      "raw_value": "174406",
+      "raw_unit": "KRW_million",
+      "scope": "반도체 검사장비·검사보드 등 공시 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2025/05/15/001095/20250515002536/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "003160",
+      "period": "2025-Q2",
+      "raw_value": "138140",
+      "raw_unit": "KRW_million",
+      "scope": "반도체 검사장비·검사보드 등 공시 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2025/08/14/003746/20250814011808/11012.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "003160",
+      "period": "2025-Q3",
+      "raw_value": "72366",
+      "raw_unit": "KRW_million",
+      "scope": "반도체 검사장비·검사보드 등 공시 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2025/11/14/000271/20251114000537/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "003160",
+      "period": "2025-Q4",
+      "raw_value": "57754",
+      "raw_unit": "KRW_million",
+      "scope": "반도체 검사장비·검사보드 등 공시 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2026/06/05/000490/20260605001249/11011.htm",
+      "status": "공시 확인",
+      "notes": "표 앞 단위 문구가 없어 같은 회사 공시 계열의 단위(백만원)를 적용 · 기납품액이 분기 매출 규모와 일치함을 확인"
+    },
+    {
+      "company_id": "003160",
+      "period": "2026-Q1",
+      "raw_value": "230255",
+      "raw_unit": "KRW_million",
+      "scope": "반도체 검사장비·검사보드 등 공시 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2026/05/15/000700/20260515001482/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "003160",
+      "period": "2026-Q2",
+      "raw_value": "261481",
+      "raw_unit": "KRW_million",
+      "scope": "반도체 검사장비·검사보드 등 공시 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/000768/20260814002555/11012.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
     {
       "company_id": "003670",
       "period": "2022-Q1",
@@ -1441,6 +1809,226 @@
       "raw_unit": "KRW_100m",
       "scope": "LS ELECTRIC 본체 합계·자회사 별도",
       "source": "https://kind.krx.co.kr/external/2026/08/14/002524/20260814008791/11012.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "025560",
+      "period": "2020-Q1",
+      "raw_value": "653",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 반도체 검사장비 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2020/05/15/000561/20200515001140/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "025560",
+      "period": "2020-Q2",
+      "raw_value": "490",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 반도체 검사장비 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2020/08/14/002447/20200814007370/11012.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "025560",
+      "period": "2020-Q3",
+      "raw_value": "2757",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 반도체 검사장비 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2020/11/13/001324/20201113002694/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "025560",
+      "period": "2020-Q4",
+      "raw_value": "2984",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 반도체 검사장비 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2021/03/22/001515/20210322006103/11011.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "025560",
+      "period": "2021-Q2",
+      "raw_value": "3200",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 반도체 검사장비 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2021/08/17/000839/20210817002594/11012.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "025560",
+      "period": "2021-Q3",
+      "raw_value": "1219",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 반도체 검사장비 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2021/11/15/000951/20211115001953/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "025560",
+      "period": "2021-Q4",
+      "raw_value": "4640",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 반도체 검사장비 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2022/10/06/000445/20221006001194/11011.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "025560",
+      "period": "2022-Q1",
+      "raw_value": "3698",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 반도체 검사장비 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2022/05/16/001819/20220516003992/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "025560",
+      "period": "2022-Q2",
+      "raw_value": "2774",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 반도체 검사장비 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2022/08/16/001371/20220816004350/11012.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "025560",
+      "period": "2022-Q3",
+      "raw_value": "0",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 반도체 검사장비 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2022/11/14/001457/20221114003085/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "025560",
+      "period": "2022-Q4",
+      "raw_value": "0",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 반도체 검사장비 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2023/03/20/000617/20230320003104/11011.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "025560",
+      "period": "2023-Q1",
+      "raw_value": "0",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 반도체 검사장비 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2023/05/15/001477/20230515003129/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "025560",
+      "period": "2023-Q2",
+      "raw_value": "0",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 반도체 검사장비 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2023/08/11/000841/20230811002341/11012.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "025560",
+      "period": "2023-Q3",
+      "raw_value": "0",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 반도체 검사장비 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2023/11/14/001462/20231114003126/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "025560",
+      "period": "2023-Q4",
+      "raw_value": "0",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 반도체 검사장비 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2025/02/05/000961/20250205002638/11011.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "025560",
+      "period": "2024-Q1",
+      "raw_value": "0",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 반도체 검사장비 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2025/02/06/000940/20250206002426/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "025560",
+      "period": "2024-Q2",
+      "raw_value": "0",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 반도체 검사장비 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2024/08/14/001390/20240814004272/11012.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "025560",
+      "period": "2024-Q3",
+      "raw_value": "0",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 반도체 검사장비 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2024/10/30/000406/20241030000931/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "025560",
+      "period": "2024-Q4",
+      "raw_value": "0",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 반도체 검사장비 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2025/03/18/001479/20250318006839/11011.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "025560",
+      "period": "2025-Q1",
+      "raw_value": "764",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 반도체 검사장비 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2025/05/14/001169/20250514002548/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "025560",
+      "period": "2025-Q2",
+      "raw_value": "0",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 반도체 검사장비 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2025/08/13/000543/20250813001616/11012.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "025560",
+      "period": "2025-Q3",
+      "raw_value": "0",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 반도체 검사장비 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2025/11/12/000204/20251112000464/11013.htm",
       "status": "공시 확인",
       "notes": ""
     },
@@ -2725,6 +3313,666 @@
       "notes": "개별 주문(수시 발주) 표의 합계 잔고. 장기공급계약 잔고와 범위가 다릅니다."
     },
     {
+      "company_id": "086390",
+      "period": "2021-Q2",
+      "raw_value": "3179",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 반도체 검사장비·태양광 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2021/08/17/001484/20210817004604/11012.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "086390",
+      "period": "2021-Q3",
+      "raw_value": "0",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 반도체 검사장비·태양광 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2021/11/15/002119/20211115004514/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "086390",
+      "period": "2021-Q4",
+      "raw_value": "0",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 반도체 검사장비·태양광 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2022/03/18/000776/20220318002890/11011.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "086390",
+      "period": "2022-Q1",
+      "raw_value": "5968",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 반도체 검사장비·태양광 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2022/05/13/001174/20220513002436/11013.htm",
+      "status": "공시 확인",
+      "notes": "표 앞 단위 문구가 없어 같은 회사 공시 계열의 단위(백만원)를 적용 · 기납품액이 분기 매출 규모와 일치함을 확인"
+    },
+    {
+      "company_id": "086390",
+      "period": "2022-Q2",
+      "raw_value": "5968",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 반도체 검사장비·태양광 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2022/08/16/001845/20220816005879/11012.htm",
+      "status": "공시 확인",
+      "notes": "표 앞 단위 문구가 없어 같은 회사 공시 계열의 단위(백만원)를 적용 · 기납품액이 분기 매출 규모와 일치함을 확인"
+    },
+    {
+      "company_id": "086390",
+      "period": "2022-Q3",
+      "raw_value": "3112",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 반도체 검사장비·태양광 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2022/11/14/001825/20221114003887/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "086390",
+      "period": "2022-Q4",
+      "raw_value": "2237",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 반도체 검사장비·태양광 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2023/03/17/000213/20230317000825/11011.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "086390",
+      "period": "2023-Q1",
+      "raw_value": "52367",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 반도체 검사장비·태양광 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2023/05/15/001335/20230515002818/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "086390",
+      "period": "2023-Q2",
+      "raw_value": "14559",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 반도체 검사장비·태양광 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2023/08/14/001148/20230814003541/11012.htm",
+      "status": "공시 확인",
+      "notes": "표 앞 단위 문구가 없어 같은 회사 공시 계열의 단위(백만원)를 적용 · 기납품액이 분기 매출 규모와 일치함을 확인"
+    },
+    {
+      "company_id": "086390",
+      "period": "2023-Q3",
+      "raw_value": "0",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 반도체 검사장비·태양광 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2023/11/14/002190/20231114004774/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "086390",
+      "period": "2024-Q2",
+      "raw_value": "0",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 반도체 검사장비·태양광 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2024/08/14/002443/20240814007747/11012.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "086390",
+      "period": "2024-Q3",
+      "raw_value": "0",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 반도체 검사장비·태양광 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2024/11/14/002312/20241114005204/11013.htm",
+      "status": "공시 확인",
+      "notes": "표 앞 단위 문구가 없어 같은 회사 공시 계열의 단위(백만원)를 적용 · 기납품액이 분기 매출 규모와 일치함을 확인"
+    },
+    {
+      "company_id": "086390",
+      "period": "2024-Q4",
+      "raw_value": "0",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 반도체 검사장비·태양광 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2025/03/20/002125/20250320008642/11011.htm",
+      "status": "공시 확인",
+      "notes": "표 앞 단위 문구가 없어 같은 회사 공시 계열의 단위(백만원)를 적용 · 기납품액이 분기 매출 규모와 일치함을 확인"
+    },
+    {
+      "company_id": "086390",
+      "period": "2025-Q1",
+      "raw_value": "0",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 반도체 검사장비·태양광 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2025/05/15/001377/20250515003224/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "086390",
+      "period": "2025-Q2",
+      "raw_value": "0",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 반도체 검사장비·태양광 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2025/08/14/002528/20250814007725/11012.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "086390",
+      "period": "2025-Q3",
+      "raw_value": "26867",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 반도체 검사장비·태양광 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2025/11/14/002164/20251114004902/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "086390",
+      "period": "2025-Q4",
+      "raw_value": "0",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 반도체 검사장비·태양광 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2026/03/19/001503/20260319006203/11011.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "086390",
+      "period": "2026-Q1",
+      "raw_value": "26867",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 반도체 검사장비·태양광 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2026/05/15/001749/20260515003874/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "086390",
+      "period": "2026-Q2",
+      "raw_value": "120967",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 반도체 검사장비·태양광 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/000457/20260814001427/11012.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "089030",
+      "period": "2021-Q2",
+      "raw_value": "67208",
+      "raw_unit": "KRW_million",
+      "scope": "장비군(핸들러·디스플레이 장비) 수주잔고",
+      "source": "https://kind.krx.co.kr/external/2021/08/17/001083/20210817003425/11012.htm",
+      "status": "공시 확인",
+      "notes": "장비군(반도체·디스플레이 장비) 기말 수주잔고만 기재. 수시 공급되는 부품·COK는 제외."
+    },
+    {
+      "company_id": "089030",
+      "period": "2021-Q3",
+      "raw_value": "55100",
+      "raw_unit": "KRW_million",
+      "scope": "장비군(핸들러·디스플레이 장비) 수주잔고",
+      "source": "https://kind.krx.co.kr/external/2021/11/15/001000/20211115002050/11013.htm",
+      "status": "공시 확인",
+      "notes": "장비군(반도체·디스플레이 장비) 기말 수주잔고만 기재. 수시 공급되는 부품·COK는 제외."
+    },
+    {
+      "company_id": "089030",
+      "period": "2021-Q4",
+      "raw_value": "44233",
+      "raw_unit": "KRW_million",
+      "scope": "장비군(핸들러·디스플레이 장비) 수주잔고",
+      "source": "https://kind.krx.co.kr/external/2022/03/18/001343/20220318004807/11011.htm",
+      "status": "공시 확인",
+      "notes": "장비군(반도체·디스플레이 장비) 기말 수주잔고만 기재. 수시 공급되는 부품·COK는 제외."
+    },
+    {
+      "company_id": "089030",
+      "period": "2022-Q1",
+      "raw_value": "51232",
+      "raw_unit": "KRW_million",
+      "scope": "장비군(핸들러·디스플레이 장비) 수주잔고",
+      "source": "https://kind.krx.co.kr/external/2022/05/13/000519/20220513001088/11013.htm",
+      "status": "공시 확인",
+      "notes": "장비군(반도체·디스플레이 장비) 기말 수주잔고만 기재. 수시 공급되는 부품·COK는 제외."
+    },
+    {
+      "company_id": "089030",
+      "period": "2022-Q2",
+      "raw_value": "56041",
+      "raw_unit": "KRW_million",
+      "scope": "장비군(핸들러·디스플레이 장비) 수주잔고",
+      "source": "https://kind.krx.co.kr/external/2022/08/16/000290/20220816000855/11012.htm",
+      "status": "공시 확인",
+      "notes": "장비군(반도체·디스플레이 장비) 기말 수주잔고만 기재. 수시 공급되는 부품·COK는 제외."
+    },
+    {
+      "company_id": "089030",
+      "period": "2022-Q3",
+      "raw_value": "69698",
+      "raw_unit": "KRW_million",
+      "scope": "장비군(핸들러·디스플레이 장비) 수주잔고",
+      "source": "https://kind.krx.co.kr/external/2022/11/14/000290/20221114000589/11013.htm",
+      "status": "공시 확인",
+      "notes": "장비군(반도체·디스플레이 장비) 기말 수주잔고만 기재. 수시 공급되는 부품·COK는 제외."
+    },
+    {
+      "company_id": "089030",
+      "period": "2022-Q4",
+      "raw_value": "38927",
+      "raw_unit": "KRW_million",
+      "scope": "장비군(핸들러·디스플레이 장비) 수주잔고",
+      "source": "https://kind.krx.co.kr/external/2023/03/20/000981/20230320004393/11011.htm",
+      "status": "공시 확인",
+      "notes": "장비군(반도체·디스플레이 장비) 기말 수주잔고만 기재. 수시 공급되는 부품·COK는 제외."
+    },
+    {
+      "company_id": "089030",
+      "period": "2023-Q1",
+      "raw_value": "30191",
+      "raw_unit": "KRW_million",
+      "scope": "장비군(핸들러·디스플레이 장비) 수주잔고",
+      "source": "https://kind.krx.co.kr/external/2023/05/15/001689/20230515003574/11013.htm",
+      "status": "공시 확인",
+      "notes": "장비군(반도체·디스플레이 장비) 기말 수주잔고만 기재. 수시 공급되는 부품·COK는 제외."
+    },
+    {
+      "company_id": "089030",
+      "period": "2023-Q2",
+      "raw_value": "28671",
+      "raw_unit": "KRW_million",
+      "scope": "장비군(핸들러·디스플레이 장비) 수주잔고",
+      "source": "https://kind.krx.co.kr/external/2023/08/14/000268/20230814000716/11012.htm",
+      "status": "공시 확인",
+      "notes": "장비군(반도체·디스플레이 장비) 기말 수주잔고만 기재. 수시 공급되는 부품·COK는 제외."
+    },
+    {
+      "company_id": "089030",
+      "period": "2023-Q3",
+      "raw_value": "22685",
+      "raw_unit": "KRW_million",
+      "scope": "장비군(핸들러·디스플레이 장비) 수주잔고",
+      "source": "https://kind.krx.co.kr/external/2023/11/14/001156/20231114002413/11013.htm",
+      "status": "공시 확인",
+      "notes": "장비군(반도체·디스플레이 장비) 기말 수주잔고만 기재. 수시 공급되는 부품·COK는 제외."
+    },
+    {
+      "company_id": "089030",
+      "period": "2023-Q4",
+      "raw_value": "32640",
+      "raw_unit": "KRW_million",
+      "scope": "장비군(핸들러·디스플레이 장비) 수주잔고",
+      "source": "https://kind.krx.co.kr/external/2024/03/18/000432/20240318002148/11011.htm",
+      "status": "공시 확인",
+      "notes": "장비군(반도체·디스플레이 장비) 기말 수주잔고만 기재. 수시 공급되는 부품·COK는 제외."
+    },
+    {
+      "company_id": "089030",
+      "period": "2024-Q1",
+      "raw_value": "28468",
+      "raw_unit": "KRW_million",
+      "scope": "장비군(핸들러·디스플레이 장비) 수주잔고",
+      "source": "https://kind.krx.co.kr/external/2024/05/16/000130/20240516000290/11013.htm",
+      "status": "공시 확인",
+      "notes": "장비군(반도체·디스플레이 장비) 기말 수주잔고만 기재. 수시 공급되는 부품·COK는 제외."
+    },
+    {
+      "company_id": "089030",
+      "period": "2024-Q2",
+      "raw_value": "28449",
+      "raw_unit": "KRW_million",
+      "scope": "장비군(핸들러·디스플레이 장비) 수주잔고",
+      "source": "https://kind.krx.co.kr/external/2024/08/14/000488/20240814001416/11012.htm",
+      "status": "공시 확인",
+      "notes": "장비군(반도체·디스플레이 장비) 기말 수주잔고만 기재. 수시 공급되는 부품·COK는 제외."
+    },
+    {
+      "company_id": "089030",
+      "period": "2024-Q3",
+      "raw_value": "19902",
+      "raw_unit": "KRW_million",
+      "scope": "장비군(핸들러·디스플레이 장비) 수주잔고",
+      "source": "https://kind.krx.co.kr/external/2024/11/14/000161/20241114000310/11013.htm",
+      "status": "공시 확인",
+      "notes": "장비군(반도체·디스플레이 장비) 기말 수주잔고만 기재. 수시 공급되는 부품·COK는 제외."
+    },
+    {
+      "company_id": "089030",
+      "period": "2024-Q4",
+      "raw_value": "26792",
+      "raw_unit": "KRW_million",
+      "scope": "장비군(핸들러·디스플레이 장비) 수주잔고",
+      "source": "https://kind.krx.co.kr/external/2025/03/17/000439/20250317002101/11011.htm",
+      "status": "공시 확인",
+      "notes": "장비군(반도체·디스플레이 장비) 기말 수주잔고만 기재. 수시 공급되는 부품·COK는 제외."
+    },
+    {
+      "company_id": "089030",
+      "period": "2025-Q1",
+      "raw_value": "19417",
+      "raw_unit": "KRW_million",
+      "scope": "장비군(핸들러·디스플레이 장비) 수주잔고",
+      "source": "https://kind.krx.co.kr/external/2025/05/15/000093/20250515000195/11013.htm",
+      "status": "공시 확인",
+      "notes": "장비군(반도체·디스플레이 장비) 기말 수주잔고만 기재. 수시 공급되는 부품·COK는 제외."
+    },
+    {
+      "company_id": "089030",
+      "period": "2025-Q2",
+      "raw_value": "10572",
+      "raw_unit": "KRW_million",
+      "scope": "장비군(핸들러·디스플레이 장비) 수주잔고",
+      "source": "https://kind.krx.co.kr/external/2025/08/14/000421/20250814001145/11012.htm",
+      "status": "공시 확인",
+      "notes": "장비군(반도체·디스플레이 장비) 기말 수주잔고만 기재. 수시 공급되는 부품·COK는 제외."
+    },
+    {
+      "company_id": "089030",
+      "period": "2025-Q3",
+      "raw_value": "9435",
+      "raw_unit": "KRW_million",
+      "scope": "장비군(핸들러·디스플레이 장비) 수주잔고",
+      "source": "https://kind.krx.co.kr/external/2025/11/14/000422/20251114000841/11013.htm",
+      "status": "공시 확인",
+      "notes": "장비군(반도체·디스플레이 장비) 기말 수주잔고만 기재. 수시 공급되는 부품·COK는 제외."
+    },
+    {
+      "company_id": "089030",
+      "period": "2025-Q4",
+      "raw_value": "35940",
+      "raw_unit": "KRW_million",
+      "scope": "장비군(핸들러·디스플레이 장비) 수주잔고",
+      "source": "https://kind.krx.co.kr/external/2026/06/23/000309/20260623000754/11011.htm",
+      "status": "공시 확인",
+      "notes": "장비군(반도체·디스플레이 장비) 기말 수주잔고만 기재. 수시 공급되는 부품·COK는 제외."
+    },
+    {
+      "company_id": "089030",
+      "period": "2026-Q1",
+      "raw_value": "48576",
+      "raw_unit": "KRW_million",
+      "scope": "장비군(핸들러·디스플레이 장비) 수주잔고",
+      "source": "https://kind.krx.co.kr/external/2026/05/15/001510/20260515003309/11013.htm",
+      "status": "공시 확인",
+      "notes": "장비군(반도체·디스플레이 장비) 기말 수주잔고만 기재. 수시 공급되는 부품·COK는 제외."
+    },
+    {
+      "company_id": "089030",
+      "period": "2026-Q2",
+      "raw_value": "60268",
+      "raw_unit": "KRW_million",
+      "scope": "장비군(핸들러·디스플레이 장비) 수주잔고",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/000790/20260814002628/11012.htm",
+      "status": "공시 확인",
+      "notes": "장비군(반도체·디스플레이 장비) 기말 수주잔고만 기재. 수시 공급되는 부품·COK는 제외."
+    },
+    {
+      "company_id": "089790",
+      "period": "2020-Q1",
+      "raw_value": "7600",
+      "raw_unit": "KRW_million",
+      "scope": "번인 소터 등 장비 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2020/05/15/000211/20200515000361/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "089790",
+      "period": "2020-Q2",
+      "raw_value": "3120",
+      "raw_unit": "KRW_million",
+      "scope": "번인 소터 등 장비 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2020/08/14/001749/20200814005183/11012.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "089790",
+      "period": "2020-Q3",
+      "raw_value": "10586",
+      "raw_unit": "KRW_million",
+      "scope": "번인 소터 등 장비 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2020/11/13/000193/20201113000434/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "089790",
+      "period": "2020-Q4",
+      "raw_value": "6336",
+      "raw_unit": "KRW_million",
+      "scope": "번인 소터 등 장비 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2021/03/19/001352/20210319004832/11011.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "089790",
+      "period": "2021-Q1",
+      "raw_value": "16050",
+      "raw_unit": "KRW_million",
+      "scope": "번인 소터 등 장비 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2021/05/17/000354/20210517000799/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "089790",
+      "period": "2021-Q2",
+      "raw_value": "32168",
+      "raw_unit": "KRW_million",
+      "scope": "번인 소터 등 장비 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2021/08/13/001655/20210813004622/11012.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "089790",
+      "period": "2021-Q3",
+      "raw_value": "32714",
+      "raw_unit": "KRW_million",
+      "scope": "번인 소터 등 장비 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2021/11/15/001986/20211115004206/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "089790",
+      "period": "2021-Q4",
+      "raw_value": "21903",
+      "raw_unit": "KRW_million",
+      "scope": "번인 소터 등 장비 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2022/03/17/001185/20220317004629/11011.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "089790",
+      "period": "2022-Q1",
+      "raw_value": "17039",
+      "raw_unit": "KRW_million",
+      "scope": "번인 소터 등 장비 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2022/05/13/000330/20220513000681/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "089790",
+      "period": "2022-Q2",
+      "raw_value": "41657",
+      "raw_unit": "KRW_million",
+      "scope": "번인 소터 등 장비 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2022/08/16/002756/20220816008607/11012.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "089790",
+      "period": "2022-Q3",
+      "raw_value": "50897",
+      "raw_unit": "KRW_million",
+      "scope": "번인 소터 등 장비 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2022/11/14/002217/20221114004751/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "089790",
+      "period": "2022-Q4",
+      "raw_value": "17391",
+      "raw_unit": "KRW_million",
+      "scope": "번인 소터 등 장비 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2023/03/16/002348/20230316006306/11011.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "089790",
+      "period": "2023-Q1",
+      "raw_value": "11795",
+      "raw_unit": "KRW_million",
+      "scope": "번인 소터 등 장비 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2023/05/15/001360/20230515002870/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "089790",
+      "period": "2023-Q2",
+      "raw_value": "19667",
+      "raw_unit": "KRW_million",
+      "scope": "번인 소터 등 장비 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2023/08/11/001188/20230811003321/11012.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "089790",
+      "period": "2023-Q3",
+      "raw_value": "23999",
+      "raw_unit": "KRW_million",
+      "scope": "번인 소터 등 장비 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2023/11/14/001989/20231114004318/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "089790",
+      "period": "2023-Q4",
+      "raw_value": "18855",
+      "raw_unit": "KRW_million",
+      "scope": "번인 소터 등 장비 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2024/03/19/001127/20240319004727/11011.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "089790",
+      "period": "2024-Q1",
+      "raw_value": "19404",
+      "raw_unit": "KRW_million",
+      "scope": "번인 소터 등 장비 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2024/05/14/000716/20240514001542/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "089790",
+      "period": "2024-Q2",
+      "raw_value": "10312",
+      "raw_unit": "KRW_million",
+      "scope": "번인 소터 등 장비 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2024/08/13/000796/20240813002223/11012.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "089790",
+      "period": "2024-Q3",
+      "raw_value": "9723",
+      "raw_unit": "KRW_million",
+      "scope": "번인 소터 등 장비 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2024/11/14/003005/20241114006874/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "089790",
+      "period": "2024-Q4",
+      "raw_value": "2647",
+      "raw_unit": "KRW_million",
+      "scope": "번인 소터 등 장비 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2025/03/20/001859/20250320007527/11011.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "089790",
+      "period": "2025-Q1",
+      "raw_value": "5337",
+      "raw_unit": "KRW_million",
+      "scope": "번인 소터 등 장비 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2025/05/15/001886/20250515004416/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "089790",
+      "period": "2025-Q2",
+      "raw_value": "11785",
+      "raw_unit": "KRW_million",
+      "scope": "번인 소터 등 장비 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2025/08/14/003721/20250814011728/11012.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "089790",
+      "period": "2025-Q3",
+      "raw_value": "16835",
+      "raw_unit": "KRW_million",
+      "scope": "번인 소터 등 장비 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2025/11/14/002170/20251114004915/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "089790",
+      "period": "2025-Q4",
+      "raw_value": "29299",
+      "raw_unit": "KRW_million",
+      "scope": "번인 소터 등 장비 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2026/03/19/002016/20260319008412/11011.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "089790",
+      "period": "2026-Q1",
+      "raw_value": "23479",
+      "raw_unit": "KRW_million",
+      "scope": "번인 소터 등 장비 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2026/05/15/000089/20260515000117/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "089790",
+      "period": "2026-Q2",
+      "raw_value": "21857",
+      "raw_unit": "KRW_million",
+      "scope": "번인 소터 등 장비 수주상황 합계",
+      "source": "https://kind.krx.co.kr/external/2026/08/19/000168/20260819000453/11012.htm",
+      "status": "공시 확인",
+      "notes": "정정 공시가 있으면 정정 후(작성기준일 이후 수주분 제외) 금액."
+    },
+    {
       "company_id": "092870",
       "period": "2023-Q1",
       "raw_value": "3.133E+4",
@@ -3613,6 +4861,356 @@
       "source": "https://kind.krx.co.kr/external/2026/08/13/001043/20260813002788/11012.htm",
       "notes": "",
       "status": "공시 확인"
+    },
+    {
+      "company_id": "232140",
+      "period": "2020-Q1",
+      "raw_value": "0",
+      "raw_unit": "KRW",
+      "scope": "공시된 메모리 테스터 등 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2020/05/15/000125/20200515000188/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "232140",
+      "period": "2020-Q2",
+      "raw_value": "0",
+      "raw_unit": "KRW",
+      "scope": "공시된 메모리 테스터 등 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2020/09/08/000350/20200908000971/11012.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "232140",
+      "period": "2020-Q3",
+      "raw_value": "0",
+      "raw_unit": "KRW",
+      "scope": "공시된 메모리 테스터 등 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2020/11/16/000801/20201116001740/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "232140",
+      "period": "2020-Q4",
+      "raw_value": "0",
+      "raw_unit": "KRW",
+      "scope": "공시된 메모리 테스터 등 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2023/04/19/000566/20230419001642/11011.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "232140",
+      "period": "2021-Q1",
+      "raw_value": "0",
+      "raw_unit": "KRW",
+      "scope": "공시된 메모리 테스터 등 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2021/05/14/000093/20210514000141/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "232140",
+      "period": "2021-Q2",
+      "raw_value": "0",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 메모리 테스터 등 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2021/08/13/001204/20210813003386/11012.htm",
+      "status": "공시 확인",
+      "notes": "표 앞 단위 문구가 없어 같은 회사 공시 계열의 단위(백만원)를 적용 · 기납품액이 분기 매출 규모와 일치함을 확인"
+    },
+    {
+      "company_id": "232140",
+      "period": "2021-Q3",
+      "raw_value": "0",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 메모리 테스터 등 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2021/11/15/000479/20211115000981/11013.htm",
+      "status": "공시 확인",
+      "notes": "표 앞 단위 문구가 없어 같은 회사 공시 계열의 단위(백만원)를 적용 · 기납품액이 분기 매출 규모와 일치함을 확인"
+    },
+    {
+      "company_id": "232140",
+      "period": "2021-Q4",
+      "raw_value": "0",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 메모리 테스터 등 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2023/04/19/000568/20230419001652/11011.htm",
+      "status": "공시 확인",
+      "notes": "표 앞 단위 문구가 없어 같은 회사 공시 계열의 단위(백만원)를 적용 · 기납품액이 분기 매출 규모와 일치함을 확인"
+    },
+    {
+      "company_id": "232140",
+      "period": "2022-Q1",
+      "raw_value": "0",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 메모리 테스터 등 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2022/05/13/000458/20220513000987/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "232140",
+      "period": "2022-Q2",
+      "raw_value": "0",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 메모리 테스터 등 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2022/08/12/001278/20220812003306/11012.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "232140",
+      "period": "2022-Q3",
+      "raw_value": "0",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 메모리 테스터 등 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2022/11/14/000406/20221114000843/11013.htm",
+      "status": "공시 확인",
+      "notes": "표 앞 단위 문구가 없어 같은 회사 공시 계열의 단위(백만원)를 적용 · 기납품액이 분기 매출 규모와 일치함을 확인"
+    },
+    {
+      "company_id": "232140",
+      "period": "2022-Q4",
+      "raw_value": "0",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 메모리 테스터 등 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2023/04/19/000572/20230419001659/11011.htm",
+      "status": "공시 확인",
+      "notes": "표 앞 단위 문구가 없어 같은 회사 공시 계열의 단위(백만원)를 적용 · 기납품액이 분기 매출 규모와 일치함을 확인"
+    },
+    {
+      "company_id": "232140",
+      "period": "2023-Q1",
+      "raw_value": "0",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 메모리 테스터 등 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2023/05/15/001267/20230515002659/11013.htm",
+      "status": "공시 확인",
+      "notes": "표 앞 단위 문구가 없어 같은 회사 공시 계열의 단위(백만원)를 적용 · 기납품액이 분기 매출 규모와 일치함을 확인"
+    },
+    {
+      "company_id": "232140",
+      "period": "2023-Q2",
+      "raw_value": "0",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 메모리 테스터 등 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2023/08/14/000480/20230814001424/11012.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "232140",
+      "period": "2023-Q3",
+      "raw_value": "0",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 메모리 테스터 등 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2023/11/14/002869/20231114006413/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "232140",
+      "period": "2023-Q4",
+      "raw_value": "75888",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 메모리 테스터 등 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2024/03/20/002343/20240320010873/11011.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "232140",
+      "period": "2024-Q1",
+      "raw_value": "75888",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 메모리 테스터 등 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2024/05/14/001034/20240514002220/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "232140",
+      "period": "2024-Q2",
+      "raw_value": "40176",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 메모리 테스터 등 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2024/08/14/000842/20240814002524/11012.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "232140",
+      "period": "2024-Q3",
+      "raw_value": "119556",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 메모리 테스터 등 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2024/11/14/001577/20241114003448/11013.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "232140",
+      "period": "2026-Q2",
+      "raw_value": "214210",
+      "raw_unit": "KRW_million",
+      "scope": "공시된 메모리 테스터 등 공급계약 합계",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/001220/20260814004030/11012.htm",
+      "status": "공시 확인",
+      "notes": ""
+    },
+    {
+      "company_id": "253590",
+      "period": "2021-Q2",
+      "raw_value": "15109",
+      "raw_unit": "USD_thousand",
+      "scope": "외화(K$) 장비 계약 합계",
+      "source": "https://kind.krx.co.kr/external/2021/08/13/001051/20210813003017/11012.htm",
+      "status": "공시 확인",
+      "notes": "외화(K$) 계약 합계. 원화 계약은 제외."
+    },
+    {
+      "company_id": "253590",
+      "period": "2022-Q1",
+      "raw_value": "877",
+      "raw_unit": "USD_thousand",
+      "scope": "외화(K$) 장비 계약 합계",
+      "source": "https://kind.krx.co.kr/external/2022/05/13/001114/20220513002294/11013.htm",
+      "status": "공시 확인",
+      "notes": "외화(K$) 계약 1건."
+    },
+    {
+      "company_id": "253590",
+      "period": "2022-Q4",
+      "raw_value": "0",
+      "raw_unit": "USD_thousand",
+      "scope": "외화(K$) 장비 계약 합계",
+      "source": "https://kind.krx.co.kr/external/2023/03/21/000275/20230321001496/11011.htm",
+      "status": "공시 확인",
+      "notes": "외화 계약 없음(원화 계약만 공시)."
+    },
+    {
+      "company_id": "253590",
+      "period": "2023-Q1",
+      "raw_value": "67871",
+      "raw_unit": "USD_thousand",
+      "scope": "외화(K$) 장비 계약 합계",
+      "source": "https://kind.krx.co.kr/external/2023/05/12/000811/20230512001727/11013.htm",
+      "status": "공시 확인",
+      "notes": "외화(K$) 계약 합계. 원화 계약은 제외."
+    },
+    {
+      "company_id": "253590",
+      "period": "2023-Q2",
+      "raw_value": "43854",
+      "raw_unit": "USD_thousand",
+      "scope": "외화(K$) 장비 계약 합계",
+      "source": "https://kind.krx.co.kr/external/2023/08/11/000772/20230811002139/11012.htm",
+      "status": "공시 확인",
+      "notes": "외화(K$) 계약 합계. 원화 계약은 제외."
+    },
+    {
+      "company_id": "253590",
+      "period": "2023-Q3",
+      "raw_value": "32514",
+      "raw_unit": "USD_thousand",
+      "scope": "외화(K$) 장비 계약 합계",
+      "source": "https://kind.krx.co.kr/external/2023/11/13/000079/20231113000113/11013.htm",
+      "status": "공시 확인",
+      "notes": "외화(K$) 계약 합계. 원화 계약은 제외."
+    },
+    {
+      "company_id": "253590",
+      "period": "2023-Q4",
+      "raw_value": "28176",
+      "raw_unit": "USD_thousand",
+      "scope": "외화(K$) 장비 계약 합계",
+      "source": "https://kind.krx.co.kr/external/2024/03/19/000650/20240319002960/11011.htm",
+      "status": "공시 확인",
+      "notes": "외화(K$) 계약 합계. 원화 계약은 제외."
+    },
+    {
+      "company_id": "253590",
+      "period": "2024-Q1",
+      "raw_value": "12761",
+      "raw_unit": "USD_thousand",
+      "scope": "외화(K$) 장비 계약 합계",
+      "source": "https://kind.krx.co.kr/external/2024/05/13/000134/20240513000269/11013.htm",
+      "status": "공시 확인",
+      "notes": "외화(K$) 계약 합계. 원화 계약은 제외."
+    },
+    {
+      "company_id": "253590",
+      "period": "2024-Q2",
+      "raw_value": "16315",
+      "raw_unit": "USD_thousand",
+      "scope": "외화(K$) 장비 계약 합계",
+      "source": "https://kind.krx.co.kr/external/2024/08/14/002024/20240814006347/11012.htm",
+      "status": "공시 확인",
+      "notes": "외화(K$) 계약 합계. 원화 계약은 제외."
+    },
+    {
+      "company_id": "253590",
+      "period": "2024-Q4",
+      "raw_value": "2573",
+      "raw_unit": "USD_thousand",
+      "scope": "외화(K$) 장비 계약 합계",
+      "source": "https://kind.krx.co.kr/external/2025/03/18/001314/20250318006141/11011.htm",
+      "status": "공시 확인",
+      "notes": "외화(K$) 계약 합계. 원화 계약은 제외."
+    },
+    {
+      "company_id": "253590",
+      "period": "2025-Q1",
+      "raw_value": "1518",
+      "raw_unit": "USD_thousand",
+      "scope": "외화(K$) 장비 계약 합계",
+      "source": "https://kind.krx.co.kr/external/2025/05/15/001020/20250515002351/11013.htm",
+      "status": "공시 확인",
+      "notes": "외화(K$) 계약 합계. 원화 계약은 제외."
+    },
+    {
+      "company_id": "253590",
+      "period": "2025-Q2",
+      "raw_value": "1315",
+      "raw_unit": "USD_thousand",
+      "scope": "외화(K$) 장비 계약 합계",
+      "source": "https://kind.krx.co.kr/external/2025/08/14/001983/20250814006018/11012.htm",
+      "status": "공시 확인",
+      "notes": "외화(K$) 계약 합계. 원화 계약은 제외."
+    },
+    {
+      "company_id": "253590",
+      "period": "2025-Q4",
+      "raw_value": "14152",
+      "raw_unit": "USD_thousand",
+      "scope": "외화(K$) 장비 계약 합계",
+      "source": "https://kind.krx.co.kr/external/2026/03/18/000955/20260318004623/11011.htm",
+      "status": "공시 확인",
+      "notes": "외화(K$) 계약 합계. 원화 계약은 제외."
+    },
+    {
+      "company_id": "253590",
+      "period": "2026-Q1",
+      "raw_value": "26712",
+      "raw_unit": "USD_thousand",
+      "scope": "외화(K$) 장비 계약 합계",
+      "source": "https://kind.krx.co.kr/external/2026/05/15/001374/20260515002991/11013.htm",
+      "status": "공시 확인",
+      "notes": "외화(K$) 계약 합계. 원화 계약은 제외."
+    },
+    {
+      "company_id": "253590",
+      "period": "2026-Q2",
+      "raw_value": "26260",
+      "raw_unit": "USD_thousand",
+      "scope": "외화(K$) 장비 계약 합계",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/000483/20260814001520/11012.htm",
+      "status": "공시 확인",
+      "notes": "외화(K$) 계약 합계. 원화 계약은 제외."
     },
     {
       "company_id": "267260",
@@ -4728,6 +6326,90 @@
       "metric": "backlog",
       "source": "https://kind.krx.co.kr/external/2021/05/17/002285/20210517005351/11013.htm",
       "reason": "non-number '-'"
+    },
+    {
+      "company_id": "025560",
+      "period": "2021-Q1",
+      "source": "https://kind.krx.co.kr/external/2021/05/17/000236/20210517000505/11013.htm",
+      "reason": "no total row"
+    },
+    {
+      "company_id": "086390",
+      "period": "2023-Q4",
+      "source": "https://kind.krx.co.kr/external/2024/03/15/000610/20240315002258/11011.htm",
+      "reason": "수주총액−기납품액 ≠ 잔고"
+    },
+    {
+      "company_id": "086390",
+      "period": "2024-Q1",
+      "source": "https://kind.krx.co.kr/external/2024/05/17/000137/20240517000317/11013.htm",
+      "reason": "수주총액−기납품액 ≠ 잔고"
+    },
+    {
+      "company_id": "232140",
+      "period": "2024-Q4",
+      "source": "https://kind.krx.co.kr/external/2025/03/18/001926/20250318009061/11011.htm",
+      "reason": "balance not disclosed ('-')"
+    },
+    {
+      "company_id": "232140",
+      "period": "2025-Q1",
+      "source": "https://kind.krx.co.kr/external/2025/05/14/000867/20250514001856/11013.htm",
+      "reason": "balance not disclosed ('-')"
+    },
+    {
+      "company_id": "232140",
+      "period": "2025-Q2",
+      "source": "https://kind.krx.co.kr/external/2025/08/14/001545/20250814004626/11012.htm",
+      "reason": "balance not disclosed ('-')"
+    },
+    {
+      "company_id": "232140",
+      "period": "2025-Q3",
+      "source": "https://kind.krx.co.kr/external/2025/11/14/001768/20251114003968/11013.htm",
+      "reason": "balance not disclosed ('-')"
+    },
+    {
+      "company_id": "232140",
+      "period": "2025-Q4",
+      "source": "https://kind.krx.co.kr/external/2026/03/18/001768/20260318008103/11011.htm",
+      "reason": "balance not disclosed ('-')"
+    },
+    {
+      "company_id": "232140",
+      "period": "2026-Q1",
+      "source": "https://kind.krx.co.kr/external/2026/05/15/002024/20260515004490/11013.htm",
+      "reason": "balance not disclosed ('-')"
+    },
+    {
+      "company_id": "253590",
+      "period": "2021-Q3",
+      "source": "https://kind.krx.co.kr/external/2021/11/15/001369/20211115002840/11013.htm",
+      "reason": "USD 합계 산식 불일치"
+    },
+    {
+      "company_id": "253590",
+      "period": "2021-Q4",
+      "source": "https://kind.krx.co.kr/external/2022/08/03/000371/20220803000946/11011.htm",
+      "reason": "USD 합계 산식 불일치"
+    },
+    {
+      "company_id": "253590",
+      "period": "2022-Q2",
+      "source": "https://kind.krx.co.kr/external/2022/08/12/000501/20220812001290/11012.htm",
+      "reason": "USD 합계 없음"
+    },
+    {
+      "company_id": "253590",
+      "period": "2022-Q3",
+      "source": "https://kind.krx.co.kr/external/2022/11/14/000259/20221114000534/11013.htm",
+      "reason": "USD 합계 없음"
+    },
+    {
+      "company_id": "253590",
+      "period": "2024-Q3",
+      "source": "https://kind.krx.co.kr/external/2024/11/14/000522/20241114001065/11013.htm",
+      "reason": "USD 합계 없음"
     }
   ]
 }

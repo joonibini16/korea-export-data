@@ -60,16 +60,22 @@ def r_simmtech(rep):
     return b, 'USD_thousand', note
 
 
-def r_pcb_amount(unit_map, identity=True, default_unit=None):
+def r_pcb_amount(unit_map, identity=True, default_unit=None, zero_ok=False, single_row=False):
     """identity=False: 수주총액 is the period's new orders (balance = opening + orders − sales),
     so the balance is taken as disclosed and checked against the prior year-end instead."""
     def rule(rep):
         t = rep['tables'][0]
         before = ' '.join(x['before'] for x in rep['tables']).replace(' ', '')
         row = total_row(t)
+        if not row and single_row:
+            body = [r for r in t['rows'][1:] if r and r[0].replace(' ', '') not in ('수량', '품목', '구분')]
+            if len(body) == 1 and len(body[0]) >= 9:
+                row = [body[0][0]] + body[0][3:]
         if not row:
             raise ValueError('no total row')
         g, d, b = amount_triplet(row)
+        if b is None and zero_ok and (g == d):
+            b = Decimal(0)
         if b is None:
             raise ValueError("balance not disclosed ('-')")
         unit = next((u for k, u in unit_map if k in before), None)
@@ -221,6 +227,67 @@ def r_intekplus(rep):
     return r_pcb_amount([('백만원', 'KRW_million')])(rep)
 
 
+def r_techwing(rep):
+    """장비군만 기말 수주잔고 기재(부품·COK는 수시 공급이라 미기재)."""
+    t = rep['tables'][0]
+    row = total_row(t)
+    if not row:
+        raise ValueError('no total row')
+    b = num(row[-1])
+    if b is None:
+        raise ValueError('balance not disclosed')
+    return b, 'KRW_million', '장비군(반도체·디스플레이 장비) 기말 수주잔고만 기재. 수시 공급되는 부품·COK는 제외.'
+
+
+def r_jt(rep):
+    """정정 공시가 있으면 '정정 후' 표, 2020~ 일부 표는 합계 행 없이 1행."""
+    ts = rep['tables']
+    after = [i for i, t in enumerate(ts) if '정정후' in t['before'].replace(' ', '')]
+    t = ts[after[-1]] if after else ts[0]
+    row = total_row(t)
+    if not row:
+        body = [r for r in t['rows'][1:] if r and r[0].replace(' ', '') not in ('수량', '품목', '구분')]
+        if len(body) != 1:
+            raise ValueError('no total row')
+        row = body[0]
+    vals = [v for v in row[1:]]
+    if len(vals) >= 6:
+        g, d, b = [num(v) for v in vals[-6:][1::2]]
+    else:
+        g, d, b = [num(v) for v in vals[-3:]]
+    if b is None:
+        raise ValueError('balance not disclosed')
+    if not check(g, d, b):
+        raise ValueError('수주총액−기납품액 ≠ 잔고')
+    return b, 'KRW_million', '정정 공시가 있으면 정정 후(작성기준일 이후 수주분 제외) 금액.' if after else ''
+
+
+def r_neosem(rep):
+    """외화(K$) 계약 합계만 시계열로 사용. 원화 계약(인터페이스보드 등)은 제외."""
+    usd_only = 'K$' in ' '.join(t['before'][-120:] for t in rep['tables']) and '백만원' not in ' '.join(t['before'][-120:] for t in rep['tables'])
+    for t in rep['tables']:
+        for row in t['rows']:
+            lab = row[0].replace(' ', '') if row else ''
+            if not lab.startswith('합계'):
+                continue
+            cur = 'USD' if ('USD' in lab or (len(row) > 1 and row[1] == 'USD')) else 'KRW' if ('KRW' in lab or (len(row) > 1 and row[1] == 'KRW')) else ('USD' if usd_only else None)
+            if cur != 'USD':
+                continue
+            vals = [v for v in row[-3:]]
+            if all(v.strip() == '' for v in vals):
+                return Decimal(0), 'USD_thousand', '외화 계약 없음(원화 계약만 공시).'
+            g, d, b = [num(v) for v in vals]
+            if b is None or not check(g, d, b):
+                raise ValueError('USD 합계 산식 불일치')
+            return b, 'USD_thousand', '외화(K$) 계약 합계. 원화 계약은 제외.'
+    if usd_only:
+        body = [r for t in rep['tables'] for r in t['rows'] if r and re.search(r'\d', r[-1]) and r[0] not in ('수량', '금액')]
+        if len(body) == 1 and len(body[0]) >= 9:
+            g, d, b = [num(v) for v in body[0][-6:][1::2]]
+            if b is not None and check(g, d, b):
+                return b, 'USD_thousand', '외화(K$) 계약 1건.'
+    raise ValueError('USD 합계 없음')
+
 RULES = {
     '222800': (r_simmtech, '인쇄회로기판 공시 수주상황'),
     '353200': (r_pcb_amount([('억원', 'KRW_100m')]), 'PCB 공시 수주상황'),
@@ -240,6 +307,13 @@ RULES = {
     '131290': (r_pcb_amount([('백만원', 'KRW_million')]), '프로브카드·인터페이스보드·소켓·검사장비 합계'),
     '092870': (r_pcb_amount([('백만원', 'KRW_million')]), '공시된 장비 공급계약 합계'),
     '420770': (r_gigavis, '반도체 기판 검사·수리장비'),
+    '003160': (r_pcb_amount([('백만원', 'KRW_million')], default_unit='KRW_million'), '반도체 검사장비·검사보드 등 공시 수주상황 합계'),
+    '086390': (r_pcb_amount([('백만원', 'KRW_million')], default_unit='KRW_million', zero_ok=True), '공시된 반도체 검사장비·태양광 공급계약 합계'),
+    '232140': (r_pcb_amount([('백만원', 'KRW_million'), ('원', 'KRW')], default_unit='KRW_million', zero_ok=True), '공시된 메모리 테스터 등 공급계약 합계'),
+    '025560': (r_pcb_amount([('백만원', 'KRW_million')], zero_ok=True, single_row=True), '공시된 반도체 검사장비 공급계약 합계'),
+    '089030': (r_techwing, '장비군(핸들러·디스플레이 장비) 수주잔고'),
+    '089790': (r_jt, '번인 소터 등 장비 수주상황 합계'),
+    '253590': (r_neosem, '외화(K$) 장비 계약 합계'),
 }
 # ---- 범위가 다른 구간: 본 시계열과 섞지 않고 별도 scope(차트에서 다른 색 시리즈)로 보존 ----
 def a_hdelectric(rep):
@@ -350,7 +424,7 @@ def main():
         if val is None:
             skipped.append(dict(company_id=rep['company_id'], period=rep['period'], source=rep['url'], reason=err))
             continue
-        new = dict(company_id=rep['company_id'], period=rep['period'], raw_value=str(val.normalize() if val == val.to_integral() else val),
+        new = dict(company_id=rep['company_id'], period=rep['period'], raw_value=format(val.normalize(), 'f') if val == val.to_integral() else str(val),
                    raw_unit=unit, scope=scope, source=rep['url'], status='공시 확인', notes=note)
         old = obs.get(key)
         if old:
