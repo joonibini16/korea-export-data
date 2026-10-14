@@ -1,0 +1,83 @@
+{
+  "snapshots": [
+    {
+      "captured_at": "2026-10-14T15:33:00+09:00",
+      "basis": "사용자 제공 DB 화면 · 종가 기준 표시",
+      "history_label": "화면의 최근 5개 관측 순서(각 과거 날짜 미표시)",
+      "markets": [
+        {
+          "market": "KOSPI",
+          "index_at_capture": 6014.73,
+          "breadth60": -54,
+          "breadth5sma": -51.2,
+          "hli": 24,
+          "hli10sma": 39.7,
+          "breadth_recent": [
+            7,
+            -35,
+            -73,
+            -101,
+            -54
+          ],
+          "breadth5sma_recent": [
+            10.8,
+            7.4,
+            -8.4,
+            -33.2,
+            -51.2
+          ],
+          "hli_recent": [
+            54.5,
+            29.4,
+            17.1,
+            11.5,
+            24
+          ],
+          "hli10sma_recent": [
+            47,
+            46.5,
+            45.2,
+            43.8,
+            39.7
+          ]
+        },
+        {
+          "market": "KOSDAQ",
+          "index_at_capture": 822.07,
+          "breadth60": -87,
+          "breadth5sma": -26,
+          "hli": 23.6,
+          "hli10sma": 59.1,
+          "breadth_recent": [
+            85,
+            72,
+            -79,
+            -121,
+            -87
+          ],
+          "breadth5sma_recent": [
+            132.4,
+            139.8,
+            95.8,
+            38.8,
+            -26
+          ],
+          "hli_recent": [
+            78.5,
+            69.1,
+            22,
+            19.6,
+            23.6
+          ],
+          "hli10sma_recent": [
+            71.6,
+            72.2,
+            68.6,
+            63.8,
+            59.1
+          ]
+        }
+      ]
+    }
+  ]
+}
