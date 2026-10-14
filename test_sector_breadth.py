@@ -1,11 +1,16 @@
 import unittest
-from collect_sector_breadth import choose,compute_group,members,last_confirmed,published_during_session
+from collect_sector_breadth import choose,compute_group,members,last_confirmed,published_during_session,batch_limit
 
 class SectorTest(unittest.TestCase):
  def test_choose_unfinished_largest_first(self):
   groups={'KOSPI|A':[{'code':'1'},{'code':'2'},{'code':'3'}], 'KOSPI|B':[{'code':'1'}], 'KOSPI|C':[{'code':'1'},{'code':'2'}]}
   status={'groups':{'KOSPI|A':{'updated_at':'2026-10-13'}}}
   self.assertEqual(choose(groups,status,2),['KOSPI|C','KOSPI|B'])
+ def test_batch_shrinks_after_all_groups_are_collected(self):
+  groups={f'KOSPI|{i}':[{'code':str(i)}] for i in range(138)}
+  self.assertEqual(batch_limit(groups,{'groups':{}},140),138)
+  done={k:{'members':members(v)} for k,v in groups.items()}
+  self.assertEqual(batch_limit(groups,{'groups':done},140),48)
  def test_breadth_and_hli(self):
   from datetime import datetime,timedelta,timezone
   today=datetime.now(timezone(timedelta(hours=9))).date()
