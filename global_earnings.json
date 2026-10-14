@@ -1244,6 +1244,154 @@
           }
         ]
       }
+    },
+    {
+      "ticker": "BESI.AS",
+      "period": "2026 Q2",
+      "date": "2026-07-23",
+      "evidence": "공식 IR 실적발표",
+      "direction": "개선",
+      "headline": "하이브리드 본딩·포토닉스 주문 증가, 3분기 매출 성장 전망",
+      "estimate_signal": "Q2 수주 €292.9m · Q3 매출 10~15% 증가 전망",
+      "call_coverage": "공식 IR 발표문 확인 · 컨콜 Q&A 미확인",
+      "changes": [
+        {
+          "title": "수주와 매출",
+          "direction": "개선",
+          "before": "Q1 매출 €184.9m, 수주 €269.7m.",
+          "now": "Q2 매출 €249.9m, 수주 €292.9m.",
+          "meaning": "수주 확대가 후속 패키징 장비 매출로 이어질지 확인."
+        },
+        {
+          "title": "다음 분기 믹스",
+          "direction": "혼재",
+          "before": "Q2 총이익률 65.7%.",
+          "now": "Q3 매출 10~15% 증가 전망, 총이익률 63~65% 전망.",
+          "meaning": "물량은 증가하지만 마진 믹스는 소폭 낮게 전망."
+        }
+      ],
+      "facts": "Q2 매출 €249.9m(+68.7% YoY), 수주 €292.9m(+128.8% YoY), 총이익률 65.7%.",
+      "guidance": "Q3 매출 Q2 대비 10~15% 증가, 총이익률 63~65%.",
+      "tone": "하이브리드 본딩·광소자·데이터센터 관련 장비가 분기 수주와 매출을 견인.",
+      "interpretation": "후공정 장비 수요는 개선. Q3 제품 믹스 변화에 따른 마진 둔화는 따로 반영.",
+      "watch": "Q3 하이브리드 본딩 인도, 수주 잔고, 총이익률 63~65%.",
+      "source": "https://www.besi.com/investor-relations/press-releases/details/be-semiconductor-industries-nv-announces-q2-26-and-h1-26-results/",
+      "prior_source": "https://www.besi.com/events/events-shows/details/be-semiconductor-industries-nv-announces-q1-26-results/",
+      "call_topics": [
+        {
+          "topic": "수주 구성",
+          "source_part": "공식 IR 발표문",
+          "points": [
+            "Q2 수주 €292.9m, 전분기 대비 8.6% 증가.",
+            "하이브리드 본딩·포토닉스·데이터센터 투자가 주요 동인."
+          ],
+          "implication": "장비 인도까지 시차 확인."
+        },
+        {
+          "topic": "마진",
+          "source_part": "공식 IR 발표문",
+          "points": [
+            "Q3 매출은 더 늘지만 총이익률은 Q2 65.7%에서 63~65%로 전망."
+          ],
+          "implication": "제품 믹스와 수익성을 분리."
+        }
+      ],
+      "call_readthrough": {
+        "scope": "공식 IR 발표 내용을 한국어로 재서술. 컨콜 Q&A 원문 미검증.",
+        "groups": [
+          {
+            "title": "발표 흐름",
+            "items": [
+              {
+                "title": "Q2 결과",
+                "body": "매출 €249.9m, 신규 수주 €292.9m으로 모두 증가했다. 하이브리드 본딩과 포토닉스가 주문을 이끌었다."
+              },
+              {
+                "title": "다음 분기",
+                "body": "Q3 매출은 10~15% 증가할 것으로 예상하지만, 총이익률은 63~65%로 Q2보다 낮게 전망한다."
+              },
+              {
+                "title": "투자 관전점",
+                "body": "신규 수주가 고객 인수와 매출로 바뀌는 시점, 패키징 장비 믹스 변화를 함께 본다."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "ticker": "6146.T",
+      "period": "FY26 Q1",
+      "date": "2026-07-23",
+      "evidence": "공식 IR 실적발표",
+      "direction": "개선",
+      "headline": "후공정 절단·연마 매출 증가, 상반기 전망 상향",
+      "estimate_signal": "Q1 매출 ¥114.308bn · 상반기 ¥242.8bn 전망",
+      "call_coverage": "공식 IR 발표문 확인 · 컨콜 Q&A 미확인",
+      "changes": [
+        {
+          "title": "분기 성장",
+          "direction": "개선",
+          "before": "전년 Q1 매출 ¥89.914bn, 영업이익 ¥34.480bn.",
+          "now": "이번 Q1 매출 ¥114.308bn, 영업이익 ¥49.033bn.",
+          "meaning": "후공정 생산 확대에 장비 실적 증가."
+        },
+        {
+          "title": "상반기 전망",
+          "direction": "개선",
+          "before": "4월 발표 기존 상반기 전망.",
+          "now": "7월 수정 상반기 매출 ¥242.8bn, 영업이익 ¥104.9bn.",
+          "meaning": "고객 검수 시점을 기준으로 매출이 인식됨."
+        }
+      ],
+      "facts": "FY26 Q1 매출 ¥114.308bn(+27.1% YoY), 영업이익 ¥49.033bn(+42.2% YoY).",
+      "guidance": "상반기 매출 ¥242.8bn, 영업이익 ¥104.9bn, 출하액 ¥276.9bn 전망.",
+      "tone": "절단·연마 장비는 고객 검수 시점에 매출 인식. 출하액과 매출액 차이 주의.",
+      "interpretation": "분기 매출과 이익 증가. 출하액을 당기 매출과 혼동하지 않고 수주·고객 인수를 추적.",
+      "watch": "10월 22일 예정된 2분기 확정 실적과 검수·출하 간격.",
+      "source": "https://www.disco.co.jp/eg/ir/library/doc/fr/fr20260723.pdf",
+      "prior_source": "https://www.disco.co.jp/eg/ir/library/doc/fr/fr20260422.pdf",
+      "call_topics": [
+        {
+          "topic": "실적",
+          "source_part": "공식 IR 발표문",
+          "points": [
+            "Q1 매출 ¥114.308bn, 영업이익 ¥49.033bn.",
+            "상반기 출하액 전망 ¥276.9bn과 회계상 매출 전망 ¥242.8bn을 분리."
+          ],
+          "implication": "고객 검수로 인한 인식 지연 가능성 점검."
+        },
+        {
+          "topic": "발표 범위",
+          "source_part": "공식 IR 발표문",
+          "points": [
+            "상반기 회사 가이던스를 제공했으나 연간 숫자를 임의 연장하지 않음."
+          ],
+          "implication": "10월 Q2 발표의 실제 매출 확인."
+        }
+      ],
+      "call_readthrough": {
+        "scope": "공식 IR 발표 내용을 한국어로 재서술. 컨콜 Q&A 원문 미검증.",
+        "groups": [
+          {
+            "title": "발표 흐름",
+            "items": [
+              {
+                "title": "Q1 실적",
+                "body": "매출은 전년 대비 27.1%, 영업이익은 42.2% 증가했다."
+              },
+              {
+                "title": "상반기 전망",
+                "body": "매출 ¥242.8bn, 영업이익 ¥104.9bn과 출하액 ¥276.9bn을 제시했다."
+              },
+              {
+                "title": "검수 시차",
+                "body": "장비 출하 후 고객이 검수해야 매출로 잡힌다. 출하액과 손익계산서 매출을 같은 분기로 보지 않는다."
+              }
+            ]
+          }
+        ]
+      }
     }
   ],
   "upcoming": [
