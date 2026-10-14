@@ -1,6 +1,6 @@
 {
   "updated_at": "2026-10-14",
-  "method": "공식 컨콜 녹취록을 확인한 경우에만 Q&A 요약으로 표시합니다. 그 외 주제별 요약은 공식 IR 발표문을 출처로 명시하며, 투자 해석은 관전점으로 구분합니다.",
+  "method": "공식 컨콜 녹취록을 확인한 경우에만 Q&A 요약으로 표시합니다. 그 외 주제별 요약은 공식 IR 발표문을 출처로 명시하며, 투자 해석은 관전점으로 구분합니다. 반도체 장비 업종은 주요 공정·검사·테스트·패키징 기업을 추적하며 원문 미검증 기업은 분석 대기로 표시합니다.",
   "watchlist": [
     {
       "ticker": "NVDA",
@@ -136,6 +136,51 @@
       "ticker": "NVO",
       "name": "Novo Nordisk",
       "sector": "바이오·의료"
+    },
+    {
+      "ticker": "ASM.AS",
+      "name": "ASM International",
+      "sector": "반도체 장비"
+    },
+    {
+      "ticker": "7735.T",
+      "name": "SCREEN Holdings",
+      "sector": "반도체 장비"
+    },
+    {
+      "ticker": "6525.T",
+      "name": "Kokusai Electric",
+      "sector": "반도체 장비"
+    },
+    {
+      "ticker": "6857.T",
+      "name": "Advantest",
+      "sector": "반도체 장비"
+    },
+    {
+      "ticker": "TER",
+      "name": "Teradyne",
+      "sector": "반도체 장비"
+    },
+    {
+      "ticker": "BESI.AS",
+      "name": "BE Semiconductor Industries",
+      "sector": "반도체 장비"
+    },
+    {
+      "ticker": "6146.T",
+      "name": "DISCO",
+      "sector": "반도체 장비"
+    },
+    {
+      "ticker": "ONTO",
+      "name": "Onto Innovation",
+      "sector": "반도체 장비"
+    },
+    {
+      "ticker": "CAMT",
+      "name": "Camtek",
+      "sector": "반도체 장비"
     }
   ],
   "events": [
@@ -511,6 +556,693 @@
       "call_readthrough": {
         "scope": "공식 컨콜 녹취록·준비 발언을 확인하지 못했습니다. 아래 원문 링크는 실적발표문이며 컨콜 전문의 한국어 해설은 보류합니다.",
         "groups": []
+      }
+    },
+    {
+      "ticker": "ASML",
+      "period": "2026 Q2",
+      "date": "2026-07-15",
+      "evidence": "공식 IR 실적발표",
+      "direction": "개선",
+      "headline": "EUV·설치 장비 수요 확대, 2026년 매출 전망 상향",
+      "estimate_signal": "2026년 매출 전망 €43~45bn으로 상향 · 오늘 Q3 발표는 검증 후 반영",
+      "call_coverage": "공식 Q2 IR 발표문 확인 · Q&A 미확인 · 10월 14일 Q3 공식 원문 확인 대기",
+      "changes": [
+        {
+          "title": "연간 매출 전망",
+          "direction": "개선",
+          "before": "직전 Q1 발표의 2026년 매출 전망 €36~40bn.",
+          "now": "2026년 매출 전망 €43~45bn, 총이익률 54~56%.",
+          "meaning": "고객 증설 계획이 연간 출하·서비스 매출 전망에 반영."
+        },
+        {
+          "title": "분기 수익성",
+          "direction": "개선",
+          "before": "Q2 이전 발표는 매출·마진 확대의 속도 미확정.",
+          "now": "Q2 매출 €9.326bn, 총이익률 54.0%. Q3 전망 매출 €11~12bn, 총이익률 55~57%.",
+          "meaning": "신규 장비와 설치 기반 매출 구성 확인."
+        }
+      ],
+      "facts": "Q2 매출 €9.326bn, 순이익 €2.918bn, 총이익률 54.0%. 설치 기반 관리 매출 €2.762bn.",
+      "guidance": "Q3 매출 €11~12bn, 총이익률 55~57%. 2026년 매출 €43~45bn, 총이익률 54~56%.",
+      "tone": "AI 관련 첨단 로직·메모리 수요로 고객 생산능력 확대가 빨라지고, 2027~2028년 장비 공급능력을 확대하는 방향.",
+      "interpretation": "2027~2028년 고객 주문의 실제 출하·매출 인식과 EUV 생산능력 확충을 점검.",
+      "watch": "Q3 공식 발표 후 수주·EUV 비중·2026년 및 2027년 전망을 갱신.",
+      "source": "https://www.investor.asml.com/news-releases/news-release-details/q2-2026-financial-results",
+      "prior_source": "https://www.investor.asml.com/news-releases/news-release-details/q1-2026-financial-results",
+      "call_topics": [
+        {
+          "topic": "AI·생산능력",
+          "source_part": "공식 IR 발표문",
+          "points": [
+            "EUV와 DUV 고객 확약 증가. 2026년 낮은 NA EUV 생산능력 약 65대와 DUV immersion 약 130대를 기준으로 2027년 각각 30% 확대를 계획.",
+            "2028년에 추가 30% 확대 가능성을 검토. 확정 주문·납품 수치와 구분."
+          ],
+          "implication": "설치 시점과 고객 인수 인식 시차를 확인."
+        },
+        {
+          "topic": "가이던스",
+          "source_part": "공식 IR 발표문",
+          "points": [
+            "연간 매출 범위를 €36~40bn에서 €43~45bn으로 높임.",
+            "Q3 매출 €11~12bn·총이익률 55~57% 예상."
+          ],
+          "implication": "오늘 Q3 새 발표 수치와 재대조 필요."
+        }
+      ],
+      "call_readthrough": {
+        "scope": "공식 Q2 IR 발표문을 한국어로 재서술. 오늘 Q3 공식 원문 확인 전이며 Q&A 내용은 포함하지 않음.",
+        "groups": [
+          {
+            "title": "발표 흐름",
+            "items": [
+              {
+                "title": "분기 결론",
+                "body": "Q2 매출과 마진이 회사 전망을 웃돌았다. 설치 장비 서비스가 예상보다 강했고, 연간 매출 전망도 상향됐다."
+              },
+              {
+                "title": "장비 공급",
+                "body": "고객은 AI 연산을 위한 로직·메모리 생산능력을 늘리고 있다. EUV·DUV 장비 증산 계획을 2027~2028년으로 넓히되, 2028년 추가 확대는 검토 단계다."
+              },
+              {
+                "title": "확인할 변수",
+                "body": "매출의 선행지표인 수주가 실제 장비 출하와 매출로 이어지는 시점, 설치 기반 서비스 성장, 중국 규제 영향을 따로 확인한다."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "ticker": "AMAT",
+      "period": "FY26 Q3",
+      "date": "2026-08-13",
+      "evidence": "공식 IR 실적발표",
+      "direction": "개선",
+      "headline": "DRAM·선단 로직 투자 확대, 다음 분기 매출 성장 전망",
+      "estimate_signal": "Q3 매출 $9.115bn → Q4 전망 $10.25bn · 2027 성장 톤 강화",
+      "call_coverage": "공식 IR·준비 발언 확인 · Q&A 미확인",
+      "changes": [
+        {
+          "title": "매출 가이던스",
+          "direction": "개선",
+          "before": "Q2 발표 당시 Q3 매출 중심값 $8.95bn.",
+          "now": "Q3 실제 $9.115bn; Q4 전망 $10.25bn ±$0.5bn.",
+          "meaning": "장비 매출의 분기 성장 전망 연장."
+        },
+        {
+          "title": "제품 믹스",
+          "direction": "개선",
+          "before": "Q2 장비 부문 매출 $5.965bn.",
+          "now": "Q3 장비 부문 $7.040bn; DRAM 비중 26%, 파운드리·로직 67%.",
+          "meaning": "HBM 관련 DRAM 투자와 첨단 로직 투자 실적 연결."
+        }
+      ],
+      "facts": "Q3 매출 $9.115bn, GAAP 영업이익률 33.7%, 장비 $7.040bn, 서비스 $1.781bn.",
+      "guidance": "Q4 매출 $10.25bn ±$0.5bn, 비GAAP EPS $4.02 ±$0.20.",
+      "tone": "2026년 반도체 장비 매출 기대를 높였으며 2027년에도 강한 성장 예상.",
+      "interpretation": "매출 추정 상향 압력. 차기 분기 수익률은 제품·지역 구성과 비용으로 별도 확인.",
+      "watch": "Q4 실제 매출·DRAM 및 선단 로직 비중, 마진, 중국 노출.",
+      "source": "https://ir.appliedmaterials.com/news-releases/news-release-details/applied-materials-announces-third-quarter-2026-results",
+      "prior_source": "https://ir.appliedmaterials.com/news-releases/news-release-details/applied-materials-announces-second-quarter-2026-results",
+      "call_topics": [
+        {
+          "topic": "수요 원천",
+          "source_part": "IR·준비 발언",
+          "points": [
+            "DRAM, 선단 파운드리·로직 및 첨단 패키징에서 성장 예상.",
+            "장비 부문 Q3 매출은 $7.040bn으로 Q2 $5.965bn 대비 확대."
+          ],
+          "implication": "고객 투자 계획이 서비스보다 장비 출하에 얼마나 반영되는지 확인."
+        },
+        {
+          "topic": "수익성",
+          "source_part": "공식 IR 발표문",
+          "points": [
+            "Q3 비GAAP 영업이익률 34.0%, 장비 부문 38.0%.",
+            "Q4 회사 전망은 매출과 EPS 중심이며 영업이익률 상향을 별도로 제시하지 않음."
+          ],
+          "implication": "마진 개선을 자동 가정하지 않음."
+        }
+      ],
+      "call_readthrough": {
+        "scope": "공식 IR·준비 발언 확인 · Q&A 미확인 · 핵심 발언을 한국어로 재서술하며 원문 전문의 번역·복제는 포함하지 않음.",
+        "groups": [
+          {
+            "title": "발표 흐름",
+            "items": [
+              {
+                "title": "결과와 다음 분기",
+                "body": "Q3 매출 $9.115bn은 직전 회사 전망 중심값 $8.95bn을 상회했다. 다음 Q4에는 $10.25bn ±$0.5bn을 전망한다."
+              },
+              {
+                "title": "수요·제품",
+                "body": "AI가 재료 공정 투자를 밀어 올리는 가운데 DRAM, 선단 로직, 첨단 패키징이 향후 출하 동력이다. 장비 매출의 큰 폭 증가를 서비스 수익과 나누어 살핀다."
+              },
+              {
+                "title": "2027년 방향",
+                "body": "경영진은 2027년에도 강한 성장을 예상한다. 다만 이 수치가 구체적 매출 가이던스로 확정된 것은 아니다."
+              }
+            ]
+          }
+        ]
+      },
+      "call_source": "https://ir.appliedmaterials.com/static-files/e9985149-77c2-4cf3-aaad-a579178cbfe4",
+      "call_source_label": "공식 컨콜 원문"
+    },
+    {
+      "ticker": "LRCX",
+      "period": "June 2026",
+      "date": "2026-07-29",
+      "evidence": "공식 IR 실적발표",
+      "direction": "개선",
+      "headline": "식각·증착 장비 실적 기록, 9월 분기 매출 추가 증가 전망",
+      "estimate_signal": "매출 $6.72bn → 다음 분기 $8.10bn 중심값",
+      "call_coverage": "공식 IR 발표문 확인 · 컨콜 Q&A 미확인",
+      "changes": [
+        {
+          "title": "직전 전망 대비",
+          "direction": "개선",
+          "before": "3월 발표 당시 6월 분기 매출 전망 $6.60bn ±$0.40bn.",
+          "now": "실제 $6.722bn; 9월 분기 매출 전망 $8.10bn ±$0.40bn.",
+          "meaning": "다음 분기 출하 확대로 매출 추정 상향 압력."
+        },
+        {
+          "title": "영업 레버리지",
+          "direction": "개선",
+          "before": "3월 분기 비GAAP OPM 35.0%.",
+          "now": "6월 분기 비GAAP OPM 38.4%; 9월 전망 39.5% ±1%p.",
+          "meaning": "가동률·제품 믹스 개선의 지속성 확인."
+        }
+      ],
+      "facts": "6월 분기 매출 $6.722bn, 비GAAP 매출총이익률 52.0%, 비GAAP OPM 38.4%. 시스템 $4.250bn, 고객 지원 $2.472bn.",
+      "guidance": "9월 분기 매출 $8.10bn ±$0.40bn, 비GAAP OPM 39.5% ±1%p.",
+      "tone": "AI 수요가 반도체 제조 복잡도를 높이며 장비 수요를 밀어 올리는 방향.",
+      "interpretation": "매출과 OPM 동시 상승의 강한 전망. 출하·고객 인수 시차 및 지역 믹스 점검.",
+      "watch": "9월 분기 매출 달성, 시스템·서비스 성장, 중국 매출 비중.",
+      "source": "https://investor.lamresearch.com/2026-07-29-Lam-Research-Corporation-Reports-Financial-Results-for-the-Quarter-Ended-June-28,-2026",
+      "prior_source": "https://investor.lamresearch.com/2026-04-22-Lam-Research-Corporation-Reports-Financial-Results-for-the-Quarter-Ended-March-29,-2026",
+      "call_topics": [
+        {
+          "topic": "제품·지역",
+          "source_part": "공식 IR 발표문",
+          "points": [
+            "시스템 매출 $4.250bn, 지원·업그레이드 $2.472bn.",
+            "지역별로 대만 27%, 중국 26%, 한국 20%."
+          ],
+          "implication": "한국·대만 고객의 출하와 중국 규제 영향을 따로 점검."
+        },
+        {
+          "topic": "다음 전망",
+          "source_part": "공식 IR 발표문",
+          "points": [
+            "9월 분기 매출 전망 $8.10bn, 비GAAP OPM 39.5%."
+          ],
+          "implication": "큰 폭의 분기 증가 전망이 실제 고객 인수까지 이어지는지 확인."
+        }
+      ],
+      "call_readthrough": {
+        "scope": "공식 IR 발표문 확인 · 컨콜 Q&A 미확인 · 핵심 발언을 한국어로 재서술하며 원문 전문의 번역·복제는 포함하지 않음.",
+        "groups": [
+          {
+            "title": "발표 흐름",
+            "items": [
+              {
+                "title": "실적",
+                "body": "6월 분기 매출 $6.722bn, 비GAAP 영업이익률 38.4%로 분기 기준 기록을 경신했다."
+              },
+              {
+                "title": "제품과 고객",
+                "body": "신규 장비 시스템 매출과 고객 지원·업그레이드 매출이 함께 증가했다. 대만·한국·중국의 매출 기여를 분리해 추적한다."
+              },
+              {
+                "title": "다음 분기",
+                "body": "9월 분기 매출 중심값은 $8.10bn, 비GAAP 영업이익률은 39.5%다. 전망 달성 여부와 장비 인식 시차가 다음 판단의 핵심이다."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "ticker": "KLAC",
+      "period": "FY26 Q4",
+      "date": "2026-07-28",
+      "evidence": "공식 IR 실적발표",
+      "direction": "개선",
+      "headline": "공정 검사 매출 상회, 다음 분기 $4.0bn 제시",
+      "estimate_signal": "Q4 매출 $3.658bn → FY27 Q1 $4.0bn 중심값",
+      "call_coverage": "공식 IR 발표문 확인 · 컨콜 Q&A 미확인",
+      "changes": [
+        {
+          "title": "매출·전망",
+          "direction": "개선",
+          "before": "직전 FY26 Q4 가이던스 $3.575bn ±$0.20bn.",
+          "now": "Q4 실제 $3.658bn; FY27 Q1 전망 $4.0bn ±$0.20bn.",
+          "meaning": "공정 제어 투자의 분기 확대 가능성."
+        },
+        {
+          "title": "검사 수요",
+          "direction": "개선",
+          "before": "직전 분기 $3.415bn 매출.",
+          "now": "Q4 $3.658bn; AI 관련 선단 로직·메모리·패키징 검사 필요성 강조.",
+          "meaning": "공정 복잡도 상승에 대한 투자 노출."
+        }
+      ],
+      "facts": "FY26 Q4 매출 $3.658bn, 전분기 $3.415bn, 전년 동기 $3.175bn.",
+      "guidance": "FY27 Q1 매출 $4.0bn ±$0.20bn; 비GAAP 매출총이익률 62.5% ±1%p.",
+      "tone": "첨단 로직·메모리·첨단 패키징 공정 제어 수요가 증가하는 방향.",
+      "interpretation": "매출 중심값 상승과 공정 복잡도 수혜. 검사 장비 투자 순서를 고객 증설과 대조.",
+      "watch": "FY27 Q1 실제 매출·총이익률, 공정 제어·패키징 투자.",
+      "source": "https://ir.kla.com/news-events/press-releases/detail/518/kla-corporation-reports-fiscal-2026-fourth-quarter-and-full",
+      "prior_source": "https://ir.kla.com/news-events/press-releases/detail/514/kla-corporation-reports-fiscal-2026-third-quarter-results",
+      "call_topics": [
+        {
+          "topic": "공정 제어",
+          "source_part": "공식 IR 발표문",
+          "points": [
+            "AI용 선단 로직과 메모리의 설계 복잡도 증가가 공정 제어 수요를 키우는 논리.",
+            "첨단 패키징에서도 검사 기회를 강조."
+          ],
+          "implication": "실제 고객 투자 속도와 제품 매출을 확인."
+        },
+        {
+          "topic": "마진",
+          "source_part": "공식 IR 발표문",
+          "points": [
+            "FY27 Q1 비GAAP 매출총이익률 전망 62.5% ±1%p."
+          ],
+          "implication": "매출 증가가 제품 믹스에 따라 마진으로 이어지는지 확인."
+        }
+      ],
+      "call_readthrough": {
+        "scope": "공식 IR 발표문 확인 · 컨콜 Q&A 미확인 · 핵심 발언을 한국어로 재서술하며 원문 전문의 번역·복제는 포함하지 않음.",
+        "groups": [
+          {
+            "title": "발표 흐름",
+            "items": [
+              {
+                "title": "분기 실적",
+                "body": "Q4 매출 $3.658bn으로 직전 중심 전망 $3.575bn을 넘겼다."
+              },
+              {
+                "title": "다음 분기",
+                "body": "FY27 Q1 매출 중심값은 $4.0bn이다. AI용 로직과 메모리 미세화로 검사 단계가 늘어나는 수혜를 예상한다."
+              },
+              {
+                "title": "관전점",
+                "body": "첨단 패키징 검사 성장과 비GAAP 총이익률 62.5%의 달성을 분리해 확인한다."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "ticker": "8035.T",
+      "period": "FY27 Q1",
+      "date": "2026-07-30",
+      "evidence": "공식 IR 실적발표",
+      "direction": "개선",
+      "headline": "반도체 장비 투자 확대에 상반기 전망 상향",
+      "estimate_signal": "상반기 매출 ¥1.57tn → ¥1.62tn · 영업이익 ¥431bn → ¥458bn",
+      "call_coverage": "공식 결산·컨콜 원문·Q&A 확인",
+      "changes": [
+        {
+          "title": "상반기 전망",
+          "direction": "개선",
+          "before": "직전 FY27 상반기 매출 ¥1.57tn, 영업이익 ¥431bn.",
+          "now": "매출 ¥1.62tn, 영업이익 ¥458bn으로 상향.",
+          "meaning": "전망 매출 +3.2%, 영업이익 +6.3%."
+        },
+        {
+          "title": "1분기 실제",
+          "direction": "개선",
+          "before": "전년 동기 매출 ¥549.586bn, 영업이익 ¥144.694bn.",
+          "now": "FY27 Q1 매출 ¥732.388bn, 영업이익 ¥211.407bn.",
+          "meaning": "AI용 장비 투자 확대가 실적에 반영."
+        }
+      ],
+      "facts": "FY27 Q1 매출 ¥732.388bn(+33.3% YoY), 영업이익 ¥211.407bn(+46.1% YoY).",
+      "guidance": "FY27 상반기 매출 ¥1.62tn, 영업이익 ¥458bn. 연간 가이던스는 Q2 발표 때 공개 예정.",
+      "tone": "고객 반도체 투자 계획을 반영해 상반기 전망을 상향. 공식 Q&A는 적용 수요와 공급능력 논의.",
+      "interpretation": "상반기 상향을 연간 확정 가이던스로 과장하지 않고 Q2 발표의 연간 전망을 확인.",
+      "watch": "하반기 수요·연간 전망, 식각·성막·세정 장비별 고객 투자.",
+      "source": "https://www.tel.com/ir/library/report/i242su0000000goz-att/fy27q1tanshin-e.pdf",
+      "prior_source": "https://www.tel.com/ir/library/report/pjuomj00000000tf-att/fy26q4tanshin-e.pdf",
+      "call_topics": [
+        {
+          "topic": "상반기 매출·영업이익",
+          "source_part": "공식 결산",
+          "points": [
+            "매출 ¥1.62tn, 영업이익 ¥458bn으로 이전 전망에서 상향.",
+            "Q1 매출은 전년 대비 33.3%, 영업이익은 46.1% 증가."
+          ],
+          "implication": "하반기까지의 전망 확정은 Q2 발표 대기."
+        },
+        {
+          "topic": "수요와 생산",
+          "source_part": "공식 컨콜 Q&A",
+          "points": [
+            "DRAM·NAND와 첨단 패키징 투자 증가를 점검하는 문답.",
+            "회사 장비 생산능력·납기·공급망에 관한 질의응답이 공개돼 있다."
+          ],
+          "implication": "고객 투자 증가가 실제 장비 인도로 전환되는 속도 확인."
+        }
+      ],
+      "call_readthrough": {
+        "scope": "공식 결산·컨콜 원문·Q&A 확인 · 핵심 발언을 한국어로 재서술하며 원문 전문의 번역·복제는 포함하지 않음.",
+        "groups": [
+          {
+            "title": "발표 흐름",
+            "items": [
+              {
+                "title": "분기 실적",
+                "body": "FY27 Q1 매출 ¥732.388bn, 영업이익 ¥211.407bn. 모두 전년 대비 큰 폭 증가했다."
+              },
+              {
+                "title": "가이던스 수정",
+                "body": "FY27 상반기 매출 ¥1.57tn에서 ¥1.62tn, 영업이익 ¥431bn에서 ¥458bn으로 상향됐다."
+              },
+              {
+                "title": "Q&A 수요 논점",
+                "body": "DRAM 투자가 장비 시장을 이끌고 NAND·첨단 패키징 투자 확대도 예상한다. 다만 구체적 연간 회사 전망은 Q2 실적 발표에서 공개될 예정이다."
+              },
+              {
+                "title": "Q&A 공급 논점",
+                "body": "장비 생산을 늘리는 데 필요한 인력·부지와 협력사 준비에 관한 질문이 나왔다. 실제 납기와 하반기 출하 여부를 확인한다."
+              }
+            ]
+          }
+        ]
+      },
+      "call_source": "https://www.tel.com/ir/library/report/i242su0000000goz-att/fy27q1transcript-e.pdf",
+      "call_source_label": "공식 컨콜 원문"
+    },
+    {
+      "ticker": "ASM.AS",
+      "period": "2026 Q2",
+      "date": "2026-07-28",
+      "evidence": "공식 IR 실적발표",
+      "direction": "개선",
+      "headline": "ALD·Epi 성장으로 2027 매출이 기존 목표 상단을 넘을 전망",
+      "estimate_signal": "Q3 €1.10bn ±5% · 2027 매출 €4.6bn 초과 예상",
+      "call_coverage": "공식 IR 발표문 확인 · 컨콜 Q&A 미확인",
+      "changes": [
+        {
+          "title": "장기 전망",
+          "direction": "개선",
+          "before": "2025 투자자의 날 제시 2027년 매출 목표 €3.7~4.6bn.",
+          "now": "현재 2027년 매출이 기존 상단 €4.6bn을 넘을 것으로 예상.",
+          "meaning": "선단 공정 신규 투자에 대한 중기 매출 추정 상향 압력."
+        },
+        {
+          "title": "분기 매출",
+          "direction": "개선",
+          "before": "직전 Q2 매출 가이던스 €980m ±5%(환율 일정 기준).",
+          "now": "Q2 실제 €1.003bn; Q3 전망 €1.10bn ±5%(환율 일정 기준).",
+          "meaning": "하반기 선단 로직·HBM 투자 지속."
+        }
+      ],
+      "facts": "Q2 매출 €1.003bn, 총이익률 51.9%, 조정 OPM 33.0%.",
+      "guidance": "Q3 매출 €1.10bn ±5%(고정환율), H2 매출 H1 대비 20% 초과 성장(고정환율). 2027년 매출 기존 목표 €4.6bn 초과 예상.",
+      "tone": "2nm·1.4nm 로직과 HBM용 DRAM에서 ALD·Epi 수요 확대.",
+      "interpretation": "2027년 전망 상향 신호가 분명하나 정식 수치 범위는 후속 공개 예정.",
+      "watch": "1.4nm 초기 매출 인식, DRAM 고객사 확대, 장비 출하와 고정환율 기준 가이던스.",
+      "source": "https://www.asm.com/downloads/25242322-quarterly-reports/2026-q2-quarterly-report",
+      "prior_source": "https://www.asm.com/downloads/25242322-quarterly-reports/2026-q1-quarterly-report",
+      "call_topics": [
+        {
+          "topic": "공정 전환",
+          "source_part": "공식 IR 발표문",
+          "points": [
+            "2nm 수요 확대와 1.4nm ALD·Epi 공정의 하반기 매출 기여 예상.",
+            "HBM 관련 DRAM 투자 증가와 다른 DRAM 고객사 Epi 채택 언급."
+          ],
+          "implication": "신규 공정 채택이 출하로 이어지는지 추적."
+        },
+        {
+          "topic": "2027년 톤",
+          "source_part": "공식 IR 발표문",
+          "points": [
+            "기존 2027 매출 목표 상단 €4.6bn을 넘는다는 예상."
+          ],
+          "implication": "장기 전망을 분기 확정 실적으로 환산하지 않음."
+        }
+      ],
+      "call_readthrough": {
+        "scope": "공식 IR 발표문 확인 · 컨콜 Q&A 미확인 · 핵심 발언을 한국어로 재서술하며 원문 전문의 번역·복제는 포함하지 않음.",
+        "groups": [
+          {
+            "title": "발표 흐름",
+            "items": [
+              {
+                "title": "분기 결과",
+                "body": "Q2 매출 €1.003bn으로 직전 회사 전망 중심값을 넘었다. 조정 영업이익률은 33.0%다."
+              },
+              {
+                "title": "제품 전환",
+                "body": "선단 로직 2nm 투자와 1.4nm 공정의 초기 매출, HBM DRAM의 장비 채택 확대가 하반기 성장의 핵심이다."
+              },
+              {
+                "title": "장기 전망",
+                "body": "2027년 매출이 기존 목표 범위 상단 €4.6bn을 넘을 것으로 예상한다. 상세 수치 가이던스는 아직 발표되지 않았다."
+              }
+            ]
+          }
+        ]
+      },
+      "prior_source_label": "과거 공식 IR 자료"
+    },
+    {
+      "ticker": "6525.T",
+      "period": "FY27 Q1",
+      "date": "2026-08-06",
+      "evidence": "공식 IR 실적발표",
+      "direction": "개선",
+      "headline": "성막 장비 매출 증가와 연간 전망 상향",
+      "estimate_signal": "FY27 연간 매출 ¥340bn · 영업이익 ¥79.4bn",
+      "call_coverage": "공식 결산·Q&A 확인",
+      "changes": [
+        {
+          "title": "분기 성장",
+          "direction": "개선",
+          "before": "전년 Q1 매출 ¥51.789bn, 영업이익 ¥9.717bn.",
+          "now": "Q1 매출 ¥75.414bn(+45.6%), 영업이익 ¥15.926bn(+63.9%).",
+          "meaning": "메모리 투자 개선의 실적 반영."
+        },
+        {
+          "title": "연간 전망",
+          "direction": "개선",
+          "before": "직전 연간 전망보다 상향됐음을 공식 공시.",
+          "now": "FY27 연간 매출 ¥340bn, 영업이익 ¥79.4bn.",
+          "meaning": "Q&A에서 2026 WFE 성장 전망 15%에서 25% 초과로 상향."
+        }
+      ],
+      "facts": "FY27 Q1 매출 ¥75.414bn, 영업이익 ¥15.926bn.",
+      "guidance": "FY27 연간 매출 ¥340bn, 영업이익 ¥79.4bn. FY27 상반기 매출 ¥161bn.",
+      "tone": "공식 Q&A에서 2026 장비 투자(WFE) 성장 전망을 25% 초과로 상향하고 2027년도 성장 전망을 제시.",
+      "interpretation": "고객 DRAM·NAND 증설 기대가 연간 전망에 반영. 주문·장비 인도 일정 확인 필요.",
+      "watch": "연간 전망 달성, DRAM·NAND 구성, 장비 공급능력.",
+      "source": "https://ssl4.eir-parts.net/doc/6525/tdnet/2864407/00.pdf",
+      "prior_source": "https://www.kokusai-electric.com/en/ir",
+      "call_topics": [
+        {
+          "topic": "분기 실적",
+          "source_part": "공식 결산",
+          "points": [
+            "매출과 영업이익 각각 전년 대비 45.6%, 63.9% 증가.",
+            "연간 매출 ¥340bn, 영업이익 ¥79.4bn 전망."
+          ],
+          "implication": "연간 전망의 분기별 이행 점검."
+        },
+        {
+          "topic": "Q&A 업황",
+          "source_part": "공식 Q&A",
+          "points": [
+            "2026년 WFE 성장 전망을 15%에서 25% 초과로 상향.",
+            "2027년 WFE 약 20% 증가 가능성에 대한 회사 관측."
+          ],
+          "implication": "장비시장 전망과 회사 매출을 동일시하지 않음."
+        }
+      ],
+      "call_readthrough": {
+        "scope": "공식 결산·Q&A 확인 · 핵심 발언을 한국어로 재서술하며 원문 전문의 번역·복제는 포함하지 않음.",
+        "groups": [
+          {
+            "title": "발표 흐름",
+            "items": [
+              {
+                "title": "결과",
+                "body": "FY27 Q1 매출 ¥75.414bn, 영업이익 ¥15.926bn으로 성장했다."
+              },
+              {
+                "title": "가이던스",
+                "body": "연간 매출 ¥340bn과 영업이익 ¥79.4bn을 전망한다."
+              },
+              {
+                "title": "Q&A 업황",
+                "body": "2026년 반도체 장비 투자 성장 전망을 15%에서 25% 초과로 높였다. 2027년에도 시장 성장 전망은 있으나 실적 확정치가 아니다."
+              },
+              {
+                "title": "Q&A 공급",
+                "body": "장비 증산을 위해 생산 인력과 협력업체의 사전 준비를 추진한다. 물량 확대와 비용 증가를 함께 점검한다."
+              }
+            ]
+          }
+        ]
+      },
+      "call_source": "https://ssl4.eir-parts.net/doc/6525/ir_material_for_fiscal_ym8/210230/00.pdf",
+      "call_source_label": "공식 컨콜 원문",
+      "prior_source_label": "과거 공식 IR 목록"
+    },
+    {
+      "ticker": "6857.T",
+      "period": "FY26 Q1",
+      "date": "2026-07-29",
+      "evidence": "공식 IR 실적발표",
+      "direction": "개선",
+      "headline": "AI 추론 반도체 테스트 수요로 연간 전망 대폭 상향",
+      "estimate_signal": "연간 매출 ¥1.420tn → ¥1.714tn · 영업이익 ¥627.5bn → ¥846bn",
+      "call_coverage": "공식 IR 실적·전망 확인 · 컨콜 Q&A 미확인",
+      "changes": [
+        {
+          "title": "연간 전망",
+          "direction": "개선",
+          "before": "4월 발표 연간 매출 ¥1.420tn, 영업이익 ¥627.5bn.",
+          "now": "7월 발표 연간 매출 ¥1.714tn, 영업이익 ¥846bn.",
+          "meaning": "AI 테스트 장비 매출과 이익 추정의 큰 폭 상향 신호."
+        },
+        {
+          "title": "마진 전망",
+          "direction": "개선",
+          "before": "직전 연간 영업이익률 44.2% 예상.",
+          "now": "현재 연간 영업이익률 49.4% 예상.",
+          "meaning": "테스터 수요와 생산 확대가 비용 증가를 웃도는지 확인."
+        }
+      ],
+      "facts": "FY26 Q1 매출 ¥367.5bn, 영업이익 ¥190.0bn, OPM 51.7%.",
+      "guidance": "FY26 연간 매출 ¥1.714tn, 영업이익 ¥846bn, OPM 49.4%.",
+      "tone": "AI 추론 반도체 테스트 수요가 4월 예상보다 크게 증가했고 생산능력을 앞당겨 확대.",
+      "interpretation": "매출·영업이익 추정 상향 압력이 가장 강한 장비주 중 하나. 조기 증설의 이행이 핵심.",
+      "watch": "Q2 테스터 출하, 연간 전망 유지·추가 상향, 테스트 시간과 구성.",
+      "source": "https://www.advantest.com/en/investors/financial-highlights/forecast/",
+      "prior_source": "https://www.advantest.com/en/investors/ir-library/result/",
+      "call_topics": [
+        {
+          "topic": "AI 테스트 시장",
+          "source_part": "공식 IR 전망",
+          "points": [
+            "AI 추론 반도체 테스트 수요가 4월 계획을 유의미하게 상회.",
+            "테스터 생산능력을 예정보다 앞당겨 확대."
+          ],
+          "implication": "수요를 실제 출하와 실적으로 연결."
+        },
+        {
+          "topic": "가이던스",
+          "source_part": "공식 IR 전망",
+          "points": [
+            "연간 매출 ¥1.714tn, 영업이익 ¥846bn으로 상향."
+          ],
+          "implication": "영업이익 추정 변경 폭과 마진 지속성 확인."
+        }
+      ],
+      "call_readthrough": {
+        "scope": "공식 IR 실적·전망 확인 · 컨콜 Q&A 미확인 · 핵심 발언을 한국어로 재서술하며 원문 전문의 번역·복제는 포함하지 않음.",
+        "groups": [
+          {
+            "title": "발표 흐름",
+            "items": [
+              {
+                "title": "분기와 연간",
+                "body": "Q1 매출 ¥367.5bn, 영업이익 ¥190.0bn. 연간 전망은 매출 ¥1.714tn, 영업이익 ¥846bn으로 상향됐다."
+              },
+              {
+                "title": "수요 동인",
+                "body": "AI 관련 고성능 반도체 생산 증가와 테스트 복잡도 상승이 테스트 장비 수요를 키운다. 추론 반도체 수요가 직전 전망보다 강하다."
+              },
+              {
+                "title": "공급 실행",
+                "body": "생산능력 확장 시점을 앞당겼다. 실제 장비 인도와 부품 공급이 전망 달성의 관건이다."
+              }
+            ]
+          }
+        ]
+      },
+      "prior_source_label": "과거 공식 IR 목록"
+    },
+    {
+      "ticker": "TER",
+      "period": "2026 Q2",
+      "date": "2026-07-28",
+      "evidence": "공식 IR 실적발표",
+      "direction": "혼재",
+      "headline": "기록적 테스트 매출에도 다음 분기 매출 전망은 낮게 제시",
+      "estimate_signal": "Q2 $1.329bn → Q3 $1.20~1.30bn · 연간 성장 전망 유지",
+      "call_coverage": "공식 IR 발표문 확인 · 컨콜 Q&A 미확인",
+      "changes": [
+        {
+          "title": "직전 전망 초과",
+          "direction": "개선",
+          "before": "Q1 발표 당시 Q2 매출 전망 $1.15~1.25bn.",
+          "now": "Q2 실제 $1.329bn으로 상단 초과.",
+          "meaning": "메모리 테스트 수요 개선 확인."
+        },
+        {
+          "title": "다음 분기",
+          "direction": "관찰",
+          "before": "Q2 실제 매출 $1.329bn.",
+          "now": "Q3 매출 전망 $1.20~1.30bn.",
+          "meaning": "직전 분기보다 낮은 중심값; 단기 연속 증가로 단정하지 않음."
+        }
+      ],
+      "facts": "Q2 매출 $1.329bn(+104% YoY), 반도체 테스트 $1.122bn, 제품 테스트 $107m, 로보틱스 $100m.",
+      "guidance": "Q3 매출 $1.20~1.30bn, 비GAAP EPS $1.85~2.15.",
+      "tone": "DRAM 및 NAND 테스트가 강하고 AI 관련 수요가 이어질 전망. 2027년 이후 성장에 긍정적.",
+      "interpretation": "Q2 전망 초과와 Q3 매출 중심값의 하락을 함께 반영한 혼재 신호.",
+      "watch": "Q3 테스트 장비 매출, 메모리 최종 검사와 비메모리 AI 테스트 구성.",
+      "source": "https://investors.teradyne.com/news-events/press-releases/detail/445/teradyne-reports-second-quarter-2026-results",
+      "prior_source": "https://investors.teradyne.com/news-events/press-releases/detail/440/teradyne-reports-first-quarter-2026-results",
+      "call_topics": [
+        {
+          "topic": "메모리 테스트",
+          "source_part": "공식 IR 발표문",
+          "points": [
+            "DRAM 강세에 NAND 최종 테스트 회복이 더해짐.",
+            "Q2 전체 매출 $1.329bn으로 직전 회사 전망 상단을 초과."
+          ],
+          "implication": "테스트 장비 주문이 다음 분기에도 유지되는지 확인."
+        },
+        {
+          "topic": "Q3 방향",
+          "source_part": "공식 IR 발표문",
+          "points": [
+            "Q3 매출 범위 $1.20~1.30bn은 Q2 실제보다 낮음."
+          ],
+          "implication": "성장 톤과 분기 매출 경로를 구분."
+        }
+      ],
+      "call_readthrough": {
+        "scope": "공식 IR 발표문 확인 · 컨콜 Q&A 미확인 · 핵심 발언을 한국어로 재서술하며 원문 전문의 번역·복제는 포함하지 않음.",
+        "groups": [
+          {
+            "title": "발표 흐름",
+            "items": [
+              {
+                "title": "Q2 결과",
+                "body": "매출 $1.329bn으로 두 분기 연속 기록을 세웠다. 반도체 테스트 부문 $1.122bn이 대부분을 차지한다."
+              },
+              {
+                "title": "다음 분기",
+                "body": "Q3 매출 전망은 $1.20~1.30bn으로 Q2 실제보다 낮다. 단기 매출은 조정될 수 있다."
+              },
+              {
+                "title": "중기 판단",
+                "body": "AI 연산과 메모리 테스트 복잡도가 증가하는 방향이다. 2027년 수요 기대와 당장 Q3 매출 둔화를 동시에 반영한다."
+              }
+            ]
+          }
+        ]
       }
     }
   ],
