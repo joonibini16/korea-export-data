@@ -523,6 +523,24 @@
       "source": "https://kind.krx.co.kr/external/2026/08/14/001772/20260814005995/11012.htm",
       "reviewed_period": "2026-Q2",
       "name": "메가터치"
+    },
+    {
+      "company_id": "114810",
+      "status": "not_reported",
+      "label": "점검 공시 금액 미기재",
+      "reason": "2020-Q1~2026-Q2 정기보고서 26건을 모두 점검했으며 기말 수주잔고 금액 표는 없었습니다. 장비사 발주에 따라 단기 납품하는 부품 구조라 수주잔고 대신 수출·재고 지표로 판단합니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/13/000672/20260813001790/11012.htm",
+      "reviewed_period": "2026-Q2",
+      "name": "한솔아이원스"
+    },
+    {
+      "company_id": "144960",
+      "status": "not_reported",
+      "label": "점검 공시 금액 미기재",
+      "reason": "2020-Q1~2026-Q2 정기보고서 26건을 모두 점검했으며 기말 수주잔고 금액 표는 없었습니다. 장비사 발주에 따라 단기 납품하는 부품 구조라 수주잔고 대신 수출·재고 지표로 판단합니다.",
+      "source": "https://kind.krx.co.kr/external/2026/08/14/001441/20260814004789/11012.htm",
+      "reviewed_period": "2026-Q2",
+      "name": "뉴파워프라즈마"
     }
   ],
   "observations": [
