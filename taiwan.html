@@ -8,6 +8,10 @@
 <nav><a href="./">모니터링</a><a href="./provisional.html">10일 잠정수출</a><a href="./regional.html">지역 · 업체 추적</a><b>대만 테크 월매출</b><a href="./japan.html">일본 테크 수출</a><a href="./forecast_tracker.html">매출 예측 추적</a></nav>
 <h1>대만 테크 월매출 · 한국 수출과 비교</h1>
 <p class="muted">대만 상장사는 매월 10일까지 전월 매출을 공시합니다. 한국 기업 분기 실적보다 먼저 나오기 때문에, 같은 공급망의 업황 선행지표로 봅니다. 아래 한국 업체 연결은 제품군이 같다는 뜻이며 거래관계나 점유율을 뜻하지 않습니다.</p>
+<style>#twGroups .seg{display:inline-flex;gap:6px;margin:0 0 12px}#twGroups .seg button{background:#0f1a31;color:#cbd5e1;border:1px solid #2a3a5c;border-radius:999px;padding:5px 13px;font-size:13px;cursor:pointer}#twGroups .seg button.on{background:#e2e8f0;color:#0b1220;font-weight:700}
+.twg-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.twg-card{background:#0f1a31;border:1px solid #22314f;border-radius:10px;padding:10px 12px;min-width:0}.twg-card.wide{grid-column:1/-1}.twg-h{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;align-items:baseline;margin-bottom:6px}.twg-h b{font-size:14.5px}.twg-h span{font-size:12.5px;color:#93a3bd}.twg-h em{font-style:normal;font-weight:700}.twg-h em.up{color:#f87171}.twg-h em.dn{color:#60a5fa}.twg-card small{font-size:11px;color:#7c8aa3}
+@media(max-width:900px){.twg-grid{grid-template-columns:1fr}}</style>
+<section class="panel" id="twGroups"><h2>업종별 합산 월매출 · YoY</h2><div class="seg" id="twgRange"><button data-r="2022" class="on">2022.1~</button><button data-r="13m">최근 13개월</button></div><div class="twg-grid" id="twGroupGrid"></div><p class="muted" id="twGroupNote"></p></section>
 <div id="notice" class="notice" hidden></div>
 
 
@@ -87,4 +91,4 @@ async function init(){const [w,t,s,h,kw,fxt]=await Promise.all([read('taiwan_wat
  [...new Set(meta.companies.map(c=>c.category))].forEach(c=>opt(el('category'),c,c));el('category').onchange=fillCo;el('company').onchange=fillHS;el('hs').onchange=render;el('range').onchange=render;el('basis').onchange=render;el('qcur').onchange=render;renderList();fillCo();}
 init().catch(e=>{el('notice').hidden=false;el('notice').textContent='불러오기 실패: '+e.message;});
 </script><script>window.__pairs=[['t1','t2'],['tq','tqt']];</script><script>(function(){const P=window.__pairs||[];for(const [a,b] of P){const A=document.getElementById(a)?.closest('section'),B=document.getElementById(b)?.closest('section');if(!A||!B)continue;const row=document.createElement('div');row.className='yc-pair';A.before(row);row.append(A,B);}const yc=document.getElementById('ycTitle')?.closest('section'),first=document.querySelector('.yc-pair');if(yc&&first)first.before(yc);})();</script>
-</body></html>
+<script src="./taiwan_groups.js?v=1"></script></body></html>
