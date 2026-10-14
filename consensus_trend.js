@@ -40,7 +40,58 @@
  async function prices(){if(px)return px;if(!pl)pl=fetch('stock_prices_monthly.csv?v='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():'').then(t=>{px=new Map();if(!t)return px;const L=t.trim().split(/\r?\n/).slice(1);for(const l of L){const [id,m,d,c]=l.split(',');const o=px.get(id);if(!o||d>o.date)px.set(id,{date:d,close:Number(c)});}return px;}).catch(()=>px=new Map());return pl;}
  let sh=null,sl=null;
  async function shares(){if(sh)return sh;if(!sl)sl=fetch('stock_shares.csv?v='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():'').then(t=>{sh=new Map();for(const l of (t||'').trim().split(/\r?\n/).slice(1)){const [id,n,mc,p,d]=l.split(',');if(id)sh.set(id,{shares:Number(n),mcap:Number(mc),price:Number(p),date:d});}return sh;}).catch(()=>sh=new Map());return sl;}
- window.renderPerCards=async function(c){const box=document.getElementById('perCards');if(!box)return;await window.__ctLoad();const P=(await prices()).get(c.id),S=(await shares()).get(c.id);
+
+ // 가장 빨리 도래하는(실적 미발표) 분기의 영업이익 컨센서스 상향·하향 흐름
+ // 출처 1: 와이즈리포트 분기 컨센서스 추이(주간·최저/최고 포함, 해당 분기 시작 전후 약 3개월 창만 제공)
+ // 출처 2: 매일 저장하는 네이버 분기 컨센서스 스냅샷(naver_consensus.csv) → 최근 구간을 이어 붙임
+ let nqChart=null,nc=null,ncl=null,pseq=0;
+ async function ncLoad(){if(nc)return nc;if(!ncl)ncl=fetch('naver_consensus.csv?v='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():'').then(t=>{nc=new Map();const L=(t||'').replace(/^﻿/,'').trim().split(/\r?\n/);const h=L.shift()?.split(',')||[],ix=k=>h.indexOf(k);
+   for(const l of L){const f=l.split(',');if(f[ix('is_estimate')]!=='1')continue;const v=f[ix('operating_profit_100m')];if(v===''||!Number.isFinite(Number(v)))continue;const k=f[ix('company_id')]+'|'+f[ix('period')];if(!nc.has(k))nc.set(k,[]);nc.get(k).push({date:f[ix('snapshot_date')],avg:Number(v),src:'d'});}return nc;}).catch(()=>nc=new Map());return ncl;}
+ async function renderNextQ(c,box){
+  const D=await ncLoad();
+  const q=window.__ctRows().filter(r=>r.company_id===c.id&&r.freq==='Q'&&r.item==='op');
+  const today=new Date().toISOString().slice(0,10);
+  const qid=per=>`${per.slice(0,4)}-Q${Math.ceil(Number(per.slice(5,7))/3)}`;
+  const qEnd=id=>{const y=Number(id.slice(0,4)),m=Number(id.slice(-1))*3;return new Date(Date.UTC(y,m,0)).toISOString().slice(0,10);};
+  const hasAct=id=>typeof financial!=='undefined'&&financial.some(r=>r.company_id===c.id&&r.period===id&&r.operating_profit_KRW!=='');
+  const old=new Date(Date.now()-150*864e5).toISOString().slice(0,10);
+  const ids=new Set(q.map(r=>qid(r.period)));for(const k of D.keys()){const [cid,per]=k.split('|');if(cid===c.id&&/^\d{4}-Q[1-4]$/.test(per))ids.add(per);}
+  const pers=[...ids].sort().filter(id=>qEnd(id)>=old&&!hasAct(id));
+  const wrap=document.createElement('div');wrap.className='nq';box.append(wrap);
+  if(nqChart){nqChart.destroy();nqChart=null;}
+  if(!pers.length){wrap.innerHTML='<div class="nq-title">가장 가까운 분기 영업이익 컨센서스</div><div class="muted">분기 컨센서스가 없습니다(커버 증권사 없음).</div>';return;}
+  const id=pers[0],m=new Map();
+  for(const r of q.filter(r=>qid(r.period)===id))m.set(r.date,{date:r.date,avg:Number(r.avg),min:Number(r.min),max:Number(r.max),src:'w'});
+  for(const r of D.get(c.id+'|'+id)||[])m.set(r.date,{...(m.get(r.date)||{}),...r});
+  const rows=[...m.values()].filter(r=>Number.isFinite(r.avg)).sort((a,b)=>a.date.localeCompare(b.date));
+  if(!rows.length){wrap.innerHTML='<div class="muted">분기 컨센서스 값이 없습니다.</div>';return;}
+  const cur=rows.at(-1),V=cur.avg,lastW=[...rows].reverse().find(r=>r.min!=null&&Number.isFinite(r.min));
+  const before=days=>{const d=new Date(cur.date+'T00:00:00Z');d.setUTCDate(d.getUTCDate()-days);const t=d.toISOString().slice(0,10);return rows.filter(r=>r.date<=t).at(-1);};
+  const chg=r=>r&&r.avg>0?(V/r.avg-1)*100:null;
+  const b1=before(30),b3=before(90),c1=chg(b1),c3=chg(b3),c0=rows.length>1?chg(rows[0]):null;
+  const fmt=v=>v==null?'—':(v>0?'+':'')+v.toFixed(1)+'%',cls=v=>v==null?'':v>=3?'pos':v<=-3?'neg':'';
+  const ref=c1??c3??c0,trend=ref==null?'판단 불가':ref>=3?'상향':ref<=-3?'하향':'보합';
+  const stale=Math.round((Date.parse(today)-Date.parse(cur.date))/864e5);
+  const [y,qq]=id.split('-Q'),ly=`${Number(y)-1}-Q${qq}`;let la=null;if(typeof financial!=='undefined'){const r=financial.find(r=>r.company_id===c.id&&r.period===ly);if(r&&r.operating_profit_KRW!=='')la=Number(r.operating_profit_KRW)/1e8;}
+  const yoy=la==null?'—':la<=0?(V>0?'흑전':'적지'):V<=0?'적전':fmt((V/la-1)*100);
+  const eok=v=>Math.round(v).toLocaleString(),first=rows[0];
+  wrap.innerHTML=`<div class="nq-title">가장 가까운 분기 영업이익 컨센서스 · <b>${id}</b> <span class="muted">(실적 미발표)</span> <span class="nq-badge ${trend==='상향'?'pos':trend==='하향'?'neg':''}">${trend}</span></div>
+  <div class="nq-grid"><div><span class="muted">현재 평균</span><b>${eok(V)}억</b><span class="muted">${lastW?'범위 '+eok(lastW.min)+'~'+eok(lastW.max)+'억('+lastW.date.slice(5)+')':''}</span></div>
+  <div><span class="muted">1개월 전 대비</span><b class="${cls(c1)}">${fmt(c1)}</b><span class="muted">${b1?'기준 '+b1.date+' '+eok(b1.avg)+'억':''}</span></div><div><span class="muted">3개월 전 대비</span><b class="${cls(c3)}">${fmt(c3)}</b><span class="muted">${b3?'기준 '+b3.date+' '+eok(b3.avg)+'억':''}</span></div>
+  <div><span class="muted">최초 기록(${first.date}) 대비</span><b class="${cls(c0)}">${fmt(c0)}</b><span class="muted">${eok(first.avg)}억</span></div>
+  <div><span class="muted">전년동기(${ly}) 실적 대비</span><b>${yoy}</b><span class="muted">${la==null?'':eok(la)+'억'}</span></div>
+  <div><span class="muted">마지막 값</span><b>${cur.date}</b><span class="muted ${stale>30?'neg':''}">${stale>30?stale+'일째 새 값 없음':stale+'일 전'}</span></div></div>
+  <div class="nq-chart"><canvas id="nqCanvas"></canvas></div>`;
+  if(typeof Chart==='undefined')return;
+  nqChart=new Chart(document.getElementById('nqCanvas'),{type:'line',data:{labels:rows.map(r=>r.date.slice(2)),datasets:[
+   {label:'최고',data:rows.map(r=>r.max??null),borderColor:'rgba(148,163,184,.35)',pointRadius:0,borderWidth:1,fill:false,spanGaps:false},
+   {label:'최저',data:rows.map(r=>r.min??null),borderColor:'rgba(148,163,184,.35)',backgroundColor:'rgba(148,163,184,.12)',pointRadius:0,borderWidth:1,fill:'-1',spanGaps:false},
+   {label:'평균',data:rows.map(r=>r.avg),borderColor:'#f59e0b',borderWidth:2,fill:false,spanGaps:true,pointRadius:2.5,
+    pointBackgroundColor:rows.map(r=>r.src==='d'?'#38bdf8':'#f59e0b'),pointBorderColor:rows.map(r=>r.src==='d'?'#38bdf8':'#f59e0b')}]},
+   options:{animation:false,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#94a3b8',boxWidth:10}},tooltip:{mode:'index',intersect:false,callbacks:{label:t=>t.parsed.y==null?null:`${t.dataset.label} ${Math.round(t.parsed.y).toLocaleString()}억${t.datasetIndex===2?(rows[t.dataIndex].src==='d'?' (매일 저장분)':' (와이즈리포트 주간)'):''}`}}},
+   scales:{x:{ticks:{color:'#94a3b8',maxTicksLimit:8},grid:{color:'#1e293b'}},y:{ticks:{color:'#94a3b8',callback:v=>Number(v).toLocaleString()},grid:{color:'#1e293b'},title:{display:true,text:'억원',color:'#94a3b8'}}}}});
+ }
+ window.renderPerCards=async function(c){const box=document.getElementById('perCards');if(!box)return;const my=++pseq;await window.__ctLoad();await ncLoad();const P=(await prices()).get(c.id),S=(await shares()).get(c.id);if(my!==pseq)return;
   document.getElementById('perTitle').textContent=c.name+' · 시가총액과 연도별 실적 컨센서스';box.replaceChildren();
   const y0=new Date().getFullYear(),all=window.__ctRows().filter(r=>r.company_id===c.id&&r.freq==='Y');
   const price=P?.close??S?.price,pdate=P?`${P.date.slice(0,4)}-${P.date.slice(4,6)}-${P.date.slice(6,8)}`:S?.date;
@@ -62,5 +113,6 @@
    const eok=v=>v==null?'—':Math.round(v).toLocaleString();const tr=document.createElement('tr');const ob=opBase.get(y0+k),[yg,yt]=yoyTxt(O,ob);opBase.set(y0+k+1,{v:O,lab:`${y0+k}E 컨센서스`});const cells=[`${y0+k}E`,eok(R),eok(O),yt,eok(N),R>0&&O!=null?(O/R*100).toFixed(1)+'%':'—',pe==null?((E!=null&&E<=0)||(N!=null&&N<=0)?'적자':'—'):pe.toFixed(1)+'배',ch==null?'—':(ch>0?'+':'')+ch.toFixed(1)+'%'];
    cells.forEach((v,i)=>{const td=document.createElement('td');td.textContent=v;if(i===7&&ch!=null)td.className=ch>=3?'pos':ch<=-3?'neg':'';if(i===3){if(yg!=null)td.className=yg>=0?'pos':'neg';else if(yt==='흑전')td.className='pos';else if(yt!=='—')td.className='neg';if(ob)td.title='비교 기준: '+ob.lab+(ob.v!=null?' '+Math.round(ob.v).toLocaleString()+'억원':'');}if(i===6)td.style.fontWeight='700';tr.append(td);});tb.append(tr);}
   tbl.append(tb);box.append(tbl);
-  document.getElementById('perNote').textContent=`매출·영업이익·순이익은 회계연도별 컨센서스(네이버 와이즈리포트, 최근 3개월 증권사 추정 평균). OPM = 영업이익 ÷ 매출. 영익 YoY = 전년 대비 영업이익 증감률(올해 추정치는 작년 실제 4개 분기 합계와, 이후 연도는 직전 연도 컨센서스와 비교 · 셀에 마우스를 올리면 비교 기준 표시). PER = 주가 ÷ EPS 컨센서스(EPS가 없으면 시가총액 ÷ 순이익). 순이익은 지배주주 기준이 아닐 수 있습니다. 적자 추정이면 PER을 계산하지 않습니다.`;};
+  await renderNextQ(c,box);
+  document.getElementById('perNote').textContent=`매출·영업이익·순이익은 회계연도별 컨센서스(네이버 와이즈리포트, 최근 3개월 증권사 추정 평균). OPM = 영업이익 ÷ 매출. 영익 YoY = 전년 대비 영업이익 증감률(올해 추정치는 작년 실제 4개 분기 합계와, 이후 연도는 직전 연도 컨센서스와 비교 · 셀에 마우스를 올리면 비교 기준 표시). PER = 주가 ÷ EPS 컨센서스(EPS가 없으면 시가총액 ÷ 순이익). 순이익은 지배주주 기준이 아닐 수 있습니다. 적자 추정이면 PER을 계산하지 않습니다. 가까운 분기 영익 컨센서스: 실적이 아직 발표되지 않은 가장 이른 분기. 와이즈리포트 주간 추이(주황 점, 최저~최고 음영)는 분기 시작 전후 약 3개월만 제공되어, 그 뒤는 매일 저장하는 네이버 분기 컨센서스(파란 점)로 이어 붙였습니다. 1개월 전 대비 ±3% 이상이면 상향·하향(1개월치가 없으면 3개월·최초 대비).`;};
 })();
