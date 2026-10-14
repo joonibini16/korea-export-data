@@ -1,5 +1,5 @@
 import unittest
-from collect_sector_breadth import choose,compute_group,members
+from collect_sector_breadth import choose,compute_group,members,last_confirmed,published_during_session
 
 class SectorTest(unittest.TestCase):
  def test_choose_unfinished_largest_first(self):
@@ -26,6 +26,13 @@ class SectorTest(unittest.TestCase):
  def test_failed_group_does_not_block_next_batch(self):
   groups={'KOSPI|A':[{'code':'000001'},{'code':'000002'}], 'KOSPI|B':[{'code':'000003'}]}
   self.assertEqual(choose(groups,{'groups':{},'attempts':{'KOSPI|A':1}},1),['KOSPI|B'])
+ def test_intraday_bar_excluded_and_old_session_detected(self):
+  from datetime import datetime,timezone,timedelta
+  k=timezone(timedelta(hours=9))
+  self.assertEqual(last_confirmed(datetime(2026,10,14,9,30,tzinfo=k)),'2026-10-13')
+  self.assertEqual(last_confirmed(datetime(2026,10,14,16,30,tzinfo=k)),'2026-10-14')
+  self.assertTrue(published_during_session({'latest':'2026-10-14','updated_at':'2026-10-14T09:27:13+09:00'}))
+  self.assertFalse(published_during_session({'latest':'2026-10-14','updated_at':'2026-10-14T16:50:13+09:00'}))
  def test_zero_new_high_is_zero_not_missing(self):
   from datetime import datetime,timedelta,timezone
   today=datetime.now(timezone(timedelta(hours=9))).date()

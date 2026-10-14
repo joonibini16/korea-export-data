@@ -86,21 +86,40 @@ def choose(groups,status,limit):
 def members(records):
     return hashlib.sha256(','.join(sorted(r['code'] for r in records)).encode()).hexdigest()
 
+def last_confirmed(now=None):
+    """Do not treat the live Naver fchart bar as a final daily close before 16:30 KST."""
+    now=now or datetime.now(KST)
+    day=now.date() if (now.hour,now.minute)>=(16,30) else now.date()-timedelta(days=1)
+    return day.isoformat()
+
+def published_during_session(meta):
+    """Identify same-day bars saved by older collector revisions during market hours."""
+    try:
+        at=datetime.fromisoformat(meta['updated_at']).astimezone(KST)
+        return meta.get('latest')==at.date().isoformat() and (at.hour,at.minute)<(16,30)
+    except (KeyError,ValueError,TypeError):return False
+
 def main():
-    arg=argparse.ArgumentParser();arg.add_argument('--groups',type=int,default=2);args=arg.parse_args()
-    if not 1<=args.groups<=12:arg.error('--groups must be 1..12')
+    arg=argparse.ArgumentParser();arg.add_argument('--groups',type=int,default=12);args=arg.parse_args()
+    if not 1<=args.groups<=24:arg.error('--groups must be 1..24')
     latest=catalog();groups=defaultdict(list)
     for r in latest:groups[r['market']+'|'+r['sector']].append(r)
     prior=json.loads(Path('sector_breadth_status.json').read_text()) if Path('sector_breadth_status.json').exists() else {}
-    status={'updated_at':datetime.now(KST).isoformat(timespec='seconds'),'source':'KIND 상장법인목록 + 네이버 fchart 종가','groups':prior.get('groups',{}),'attempts':prior.get('attempts',{}),'issues':[], 'listed':len(latest)}
-    stored={(r['market'],r['sector'],r['date']):r for r in readcsv('sector_breadth.csv')}
-    stocks={(r['market'],r['code']):r for r in readcsv('sector_stock_latest.csv')}
+    confirmed=last_confirmed()
+    status={'updated_at':datetime.now(KST).isoformat(timespec='seconds'),'source':'KIND 상장법인목록 + 네이버 fchart 확정 종가','confirmed_through':confirmed,'groups':prior.get('groups',{}),'attempts':prior.get('attempts',{}),'issues':[], 'listed':len(latest)}
+    invalid={k for k,v in status['groups'].items() if v.get('latest','')>confirmed or published_during_session(v)}
+    stored={(r['market'],r['sector'],r['date']):r for r in readcsv('sector_breadth.csv') if r['date']<=confirmed and not (r['market']+'|'+r['sector'] in invalid and r['date']>=status['groups'][r['market']+'|'+r['sector']]['latest'])}
+    stocks={(r['market'],r['code']):r for r in readcsv('sector_stock_latest.csv') if r['date']<=confirmed and not (r['market']+'|'+r['sector'] in invalid and r['date']>=status['groups'][r['market']+'|'+r['sector']]['latest'])}
     writecsv('market_sector_catalog.csv',CATALOG_FIELDS,latest)
-    for key in choose(groups,status,args.groups):
+    selected=sorted(invalid & set(groups),key=lambda k:(-len(groups[k]),k))[:args.groups]
+    if len(selected)<args.groups:
+        selected+= [k for k in choose(groups,status,len(groups)) if k not in selected and k not in invalid][:args.groups-len(selected)]
+    for key in invalid:status['groups'].pop(key,None)
+    for key in selected:
         records=groups[key];market,sector=key.split('|',1);fetched={};errors=[]
         status['attempts'][key]=status['attempts'].get(key,0)+1
         def one(r):
-            try:return r['code'],closes(r['code']),None
+            try:return r['code'],{d:v for d,v in closes(r['code']).items() if d<=confirmed},None
             except Exception as e:return r['code'],{},type(e).__name__
         with ThreadPoolExecutor(max_workers=6) as pool:
             for code,series,error in pool.map(one,records):
