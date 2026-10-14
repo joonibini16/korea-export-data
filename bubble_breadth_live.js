@@ -10,7 +10,7 @@
   const prepared=markets.map(market=>{
    const m=data.markets?.[market],bucket=m?.buckets?.find(b=>b.name==='종합');
    const trend=bucket?.trend;
-   if(!Array.isArray(trend)||trend.length<5||!trend.every(p=>/^\\d{4}-\\d{2}-\\d{2}$/.test(p.date)&&Number.isFinite(p.breadth)))throw Error(market+' 추이 자료 부족');
+   if(!Array.isArray(trend)||trend.length<5||!trend.every(p=>/^\d{4}-\d{2}-\d{2}$/.test(p.date)&&Number.isFinite(p.breadth)))throw Error(market+' 추이 자료 부족');
    if(trend.at(-1).date!==data.live_day||!Number.isFinite(bucket.nh)||!Number.isFinite(bucket.nl)||!Number.isFinite(bucket.n))throw Error(market+' 기준일 불일치');
    return {market,m,bucket,trend};
   });
