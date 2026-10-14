@@ -18,6 +18,9 @@ td.h{font-weight:700}.flag{font-size:12px;padding:2px 8px;border-radius:999px;ba
 .sector-controls{display:flex;gap:10px;flex-wrap:wrap}.sector-controls select{background:#0f1a31;color:#e2e8f0;border:1px solid #51607a;border-radius:8px;padding:8px;max-width:100%;font-size:14px}.sector-controls select:last-child{min-width:min(260px,100%)}.sector-source{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}.sector-source span{border:1px solid #51607a;border-radius:16px;padding:4px 9px;font-size:12px}
 @media(max-width:1300px){.mini-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:900px){.mini-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:560px){.mini-grid{grid-template-columns:1fr}}
 @media(max-width:1100px){.g2,.g2.wk,.g3{grid-template-columns:1fr}}
+.bnav{position:sticky;top:0;z-index:30;display:flex;gap:6px;overflow-x:auto;white-space:nowrap;padding:8px 10px;margin:0 0 14px;background:rgba(11,19,36,.96);border:1px solid #22314f;border-radius:10px;backdrop-filter:blur(4px);scrollbar-width:thin}
+.bnav a{flex:0 0 auto;padding:6px 12px;border-radius:999px;border:1px solid #2a3a5c;background:#0f1a31;color:#cbd5e1;font-size:13px;text-decoration:none}.bnav a.on{background:#e2e8f0;color:#0b1220;border-color:#e2e8f0;font-weight:700}
+.bnav::-webkit-scrollbar{height:6px}.bnav::-webkit-scrollbar-thumb{background:#33476e;border-radius:3px}.sync-note{top:52px!important}h2.sec,.bnav-t{scroll-margin-top:64px}
 .scroll-box{max-height:440px;overflow:auto;border:1px solid #22314f;border-radius:8px}.scroll-box thead th{position:sticky;top:0;z-index:1;background:#16213a}
 </style>
 <link rel="stylesheet" href="./shell.css?v=3">
@@ -51,7 +54,7 @@ td.h{font-weight:700}.flag{font-size:12px;padding:2px 8px;border-radius:999px;ba
 <section class="panel"><h2>CDS 5년 (bp) · 하이퍼스케일러·AI 인프라</h2><p class="muted">메타·알파벳·아마존·MS·오라클·코어위브·엔비디아·브로드컴. 기업 CDS는 무료 실시간 자료가 없어 보도된 수치를 출처와 함께 기록합니다(cds_manual.csv, 로그 눈금 · 점선 밑줄 기업명에 마우스를 올리면 비고). 100bp를 넘으면 A등급 우량 기업으로는 이례적이고, 200bp 이상은 투기등급에 가까운 신용위험입니다. 개별 회사채 스프레드는 유료 자료(TRACE·블룸버그)라 업계 전체 투자등급·BBB 스프레드(왼쪽)를 대리 지표로 씁니다.</p><div class="table"><table><thead><tr><th>기업</th><th>최근 기록일</th><th>CDS (bp)</th><th>직전 대비</th><th>출처</th></tr></thead><tbody id="cdsTable"></tbody></table></div></section>
 </div>
 <section class="panel" id="hyperscalerTitle"><h2>하이퍼스케일러 · 회사채 스프레드와 CDS</h2><p class="muted">메타 · 마이크로소프트 · 아마존 · 알파벳 · 오라클. 회사채 스프레드는 특정 채권과 기준금리의 차이, CDS는 부도위험 보장 프리미엄입니다. 둘 다 bp(100bp = 1%p)로 표시하되 서로 대체하지 않습니다. 채권 만기·통화·기준금리가 다른 수치는 단순 비교할 수 없습니다.</p><div class="g2"><div><h2>CDS · 만기별 보도 관측치</h2><div class="chart"><canvas id="hyperCds"></canvas></div></div><div><h2>채권 스프레드 · 발행시/유통 관측치</h2><div class="chart"><canvas id="hyperBond"></canvas></div></div></div><p class="muted" id="hyperStatus"></p><div class="table"><table><thead><tr><th>회사</th><th>지표</th><th>최근 확보값</th><th>기준일 / 보도일</th><th>대상·만기</th><th>출처·시차</th></tr></thead><tbody id="hyperTable"></tbody></table></div></section>
-<section class="panel"><h2>회사별 5년 CDS 추이 (bp) · 2025.11 ~</h2><p class="muted">회사마다 눈금을 따로 둔 그래프입니다. 연속선은 일별 자료(엔비디아: LSEG 데이터 차트 판독)이고, 점은 보도된 개별 수치로 점 사이를 잇지 않습니다(보간하지 않음). 점선 = 100bp(우량 기업으로는 이례적), 200bp(투기등급 근접).</p><div class="cds-grid" id="cdsGrid"></div></section>
+<section class="panel"><h2>회사별 5년 CDS 추이 (bp) · 2025.11 ~</h2><p class="muted">회사마다 눈금을 따로 둔 그래프입니다. 연속선은 일별 자료(엔비디아: LSEG 데이터 차트 판독)이고, 주황 점은 보도된 개별 수치이고, 일별 자료가 없는 회사는 그 점들을 직선으로 이은 꺾은선입니다(점 사이 구간은 실제 일별 시세가 아님). 점선 = 100bp(우량 기업으로는 이례적), 200bp(투기등급 근접).</p><div class="cds-grid" id="cdsGrid"></div></section>
 <section class="panel"><h2>AI 인프라 기업 주가 · 신용 대리지표</h2><p class="muted">CDS가 넓어지는 기업의 주가 흐름과 하이일드·투자등급 채권 ETF(HYG·LQD)를 함께 봅니다.</p><div class="table"><table><thead><tr><th>기업</th><th>최근일</th><th>1주</th><th>1개월</th><th>3개월</th><th>52주 고점 대비</th></tr></thead><tbody id="ai"></tbody></table></div></section>
 
 <h2 class="sec">④ 그 밖의 위험 신호</h2>
@@ -64,9 +67,16 @@ td.h{font-weight:700}.flag{font-size:12px;padding:2px 8px;border-radius:999px;ba
 <section class="panel"><h2>기준과 출처</h2><p class="muted">주가·환율·원자재: Yahoo Finance 일별 종가(비공식 API). 유동성·스프레드·수출·금리: FRED(세인트루이스 연준). 기업 CDS: 언론 보도 수치를 수동 기록(cds_manual.csv). 한국 금리·스프레드: 한국은행 ECOS 시장금리(일별). VKOSPI: KRX Open API. 신용융자·예탁금·반대매매: 금융투자협회 FreeSIS. 시장폭: KRX Open API(키 등록 시) · 미등록 동안 KIND 상장법인목록 + 네이버 일봉 대체 계산. MOVE·VIX3M: Yahoo Finance(ICE·CBOE). 평일 하루 두 번(한국 시간 07:30, 18:30) 자동 갱신.</p><p class="muted" id="status"></p></section>
 </main>
 <script src="./bubble_indicators.js?v=5"></script>
-<script src="./bubble.js?v=7"></script>
+<script src="./bubble.js?v=8"></script>
 <script src="./bubble_sector_grouped.js?v=1"></script>
 <script>(function(){const b=document.getElementById('sectorStocks'),c=document.getElementById('sectorStocksCount');if(!b||!c)return;new MutationObserver(()=>{c.textContent=b.children.length?'· '+b.children.length+'종목 (표 안에서 스크롤)':'';const box=b.closest('.scroll-box');if(box)box.scrollTop=0;}).observe(b,{childList:true});})();</script>
+<script>(function(){const main=document.querySelector('main');if(!main)return;const nav=document.createElement('div');nav.setAttribute('role','navigation');nav.className='bnav';nav.setAttribute('aria-label','섹션 바로가기');
+ const T=[];const first=main.querySelector('section.panel');if(first){first.classList.add('bnav-t');T.push([first,'종합 경고등']);}
+ main.querySelectorAll('h2.sec').forEach(h=>{let t=h.textContent.trim().replace(/^[①-⑩]\s*/,'');t=t.split(' · ')[0];T.push([h,t]);if(/CDS/.test(h.textContent)){const g=document.getElementById('cdsGrid');const sec=g&&g.closest('section');if(sec){sec.classList.add('bnav-t');T.push([sec,'AI 기업 CDS']);}}});
+ const links=T.map(([el,t],i)=>{const a=document.createElement('a');a.href='#';a.textContent=t;a.onclick=e=>{e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});};nav.append(a);return a;});
+ const hero=main.querySelector('.sh-hero')||main.querySelector('h1');const err=document.getElementById('err');(err||hero).after(nav);
+ const mark=()=>{const y=nav.getBoundingClientRect().bottom+12;let k=0;T.forEach(([el],i)=>{if(el.getBoundingClientRect().top<=y+40)k=i;});links.forEach((a,i)=>a.classList.toggle('on',i===k));const a=links[k];if(a){const l=a.offsetLeft-nav.offsetLeft,r=l+a.offsetWidth;if(l<nav.scrollLeft||r>nav.scrollLeft+nav.clientWidth)nav.scrollTo({left:l-20,behavior:'smooth'});}};
+ addEventListener('scroll',()=>requestAnimationFrame(mark),{passive:true});setTimeout(mark,500);})();</script>
 </body></html>
 
 

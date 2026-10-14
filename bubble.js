@@ -57,14 +57,15 @@ function renderCredit(){const S='2019-01-01';
  for(const r of HC){if(r.metric!=='CDS'||!Number.isFinite(r.value_bps)||!r.ticker)continue;if(!gb.has(r.ticker))gb.set(r.ticker,[]);const a=gb.get(r.ticker);if(!a.some(x=>x.d===r.date&&Math.abs(x.v-r.value_bps)<1))a.push({d:r.date,v:r.value_bps,r:{entity:NM[r.ticker]||r.entity||r.ticker}});}
  const grid=el('cdsGrid');grid.replaceChildren();const X0=ts('2025-11-10');let X1=X0;for(const r of [...cds,...CDSS,...HC])if(r.date)X1=Math.max(X1,ts(r.date));X1+=3*864e5;
  const order=[...new Set([...dense.keys(),...gb.keys()])].sort((p,q)=>{const lv=t=>(dense.get(t)?.a.at(-1)?.v)??(gb.get(t)?.slice().sort((x,y)=>x.d.localeCompare(y.d)).at(-1)?.v)??0;return lv(q)-lv(p);});
- order.forEach((t,k)=>{const pts=(gb.get(t)||[]).slice().sort((x,y)=>x.d.localeCompare(y.d)),dn=(dense.get(t)?.a||[]).sort((x,y)=>x.d.localeCompare(y.d));if(dn.length+pts.length<2)return;
+ order.forEach((t,k)=>{const pts=(gb.get(t)||[]).slice().sort((x,y)=>x.d.localeCompare(y.d)),dn=(dense.get(t)?.a||[]).sort((x,y)=>x.d.localeCompare(y.d));if(dn.length+pts.length<1)return;
   const name=(pts[0]?.r.entity||dense.get(t)?.name),last=[...dn,...pts].sort((x,y)=>x.d.localeCompare(y.d)).at(-1);
   const c=document.createElement('div');c.className='cds-card';c.innerHTML='<b></b><span class="cv"></span><div class="cc"><canvas></canvas></div><small></small>';
   c.querySelector('b').textContent=`${name.toUpperCase()} — 5Y CDS (bp)`;c.querySelector('.cv').textContent=`최근 ${last.v}bp · ${last.d}`;
-  c.querySelector('small').textContent=dn.length?'일별: '+(dense.get(t).src||''):'보도된 개별 관측치 (점 사이 보간 없음)';grid.append(c);
+  c.querySelector('small').textContent=dn.length?'일별: '+(dense.get(t).src||''):`보도 관측치 ${pts.length}개(주황 점)를 이은 꺾은선 · 점 사이는 직선 연결이며 일별 시세가 아닙니다 · ${pts[0].d} ~ ${pts.at(-1).d}`;grid.append(c);
   const id='cdsC'+k;c.querySelector('canvas').id=id;const vals=[...dn,...pts].map(x=>x.v),lo=Math.min(...vals),hi=Math.max(...vals),pad=Math.max(5,(hi-lo)*0.12);
   const ds=[];if(dn.length)ds.push({label:'일별',data:dn.map(x=>({x:ts(x.d),y:x.v})),borderColor:'#4a8fe7',borderWidth:2.2,pointRadius:0,tension:0});
-  if(pts.length)ds.push({label:'보도',data:pts.map(x=>({x:ts(x.d),y:x.v})),borderColor:'#f59e0b',backgroundColor:'#f59e0b',borderWidth:0,pointRadius:5,showLine:false});
+  if(!dn.length&&pts.length)ds.push({label:'5Y CDS',data:pts.map(x=>({x:ts(x.d),y:x.v})),borderColor:'#4a8fe7',borderWidth:2.2,pointRadius:0,tension:0});
+  if(pts.length)ds.push({label:'보도',data:pts.map(x=>({x:ts(x.d),y:x.v})),borderColor:'#f59e0b',backgroundColor:'#f59e0b',borderWidth:0,pointRadius:5,pointHoverRadius:7,showLine:false});
   const ref=[100,200].filter(v=>v>lo-pad&&v<hi+pad);
   chart(id,{type:'line',data:{datasets:ds},plugins:[hlines(ref.map(v=>[v,v>=200?'rgba(239,68,68,.55)':'rgba(245,158,11,.5)']))],options:{responsive:true,maintainAspectRatio:false,animation:false,plugins:{legend:{display:false},tooltip:{callbacks:{title:x=>new Date(x[0].parsed.x).toISOString().slice(0,10),label:x=>`${x.dataset.label}: ${x.parsed.y}bp`}}},
    scales:{x:{type:'linear',min:X0,max:X1,grid:{color:'rgba(148,163,184,.08)'},afterBuildTicks:ax=>{const tk=[];const d=new Date(X0);d.setUTCDate(1);d.setUTCMonth(d.getUTCMonth()+1);while(d.getTime()<=X1){tk.push({value:d.getTime()});d.setUTCMonth(d.getUTCMonth()+1);}ax.ticks=tk;},ticks:{autoSkip:true,maxRotation:0,callback:v=>{const d=new Date(v);return MON[d.getUTCMonth()]+' '+String(d.getUTCFullYear()).slice(2);}}},
