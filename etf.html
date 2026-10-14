@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>테마 ETF 보드</title><script src="./shell.js?v=5"></script>
+<style>
+:root{font-family:Arial,"Noto Sans KR",sans-serif}*{box-sizing:border-box}body{margin:0}main{max-width:1500px;margin:26px auto;padding:0 22px}
+.muted{font-size:13px;color:#93a3bd}.bar{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin:0 0 14px}
+.seg{display:inline-flex;gap:6px}.seg button{background:#0f1a31;color:#cbd5e1;border:1px solid #2a3a5c;border-radius:999px;padding:6px 14px;font-size:13px;cursor:pointer}.seg button.on{background:#e2e8f0;color:#0b1220;border-color:#e2e8f0;font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.card{background:#111d36;border:1px solid #22314f;border-radius:12px;padding:10px 12px 10px;min-width:0}
+.card .hd{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:6px}.card .hd b{font-size:14px;color:#f1f5f9;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card .bd{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:8px;align-items:center}
+.card svg{width:100%;height:84px;display:block}
+.hl{list-style:none;margin:0;padding:0;font-size:12.5px}.hl li{display:flex;justify-content:space-between;gap:6px;padding:1px 4px;border-radius:4px;line-height:1.45}.hl li span:first-child{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#cbd5e1}
+.up{color:#f87171}.dn{color:#60a5fa}.z{color:#cbd5e1}.chg{font-variant-numeric:tabular-nums;font-weight:700;white-space:nowrap}
+.hl li.bigup{background:rgba(248,113,113,.22)}.hl li.bigdn{background:rgba(52,211,153,.22)}.hl li.bigdn .chg{color:#6ee7b7}
+.card .ft{display:flex;gap:10px;font-size:11.5px;color:#93a3bd;margin-top:6px;flex-wrap:wrap}.stale{color:#f59e0b}
+.sum{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:14px}.sum .panel{background:#111d36;border:1px solid #22314f;border-radius:12px;padding:12px 14px}.sum h3{margin:0 0 8px;font-size:14px}.sum .rk{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13px}
+@media(max-width:1250px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:900px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.sum{grid-template-columns:1fr}}@media(max-width:560px){.grid{grid-template-columns:1fr}main{padding:0 16px}}
+</style>
+<link rel="stylesheet" href="./shell.css?v=3">
+</head><body><main>
+<h1>테마 ETF 보드</h1>
+<p class="muted">국내 테마 ETF의 최근 흐름(선)과 당일 등락률, 상위 5개 구성종목의 당일 등락률을 한 화면에 모았습니다. 가로선은 선택 기간 첫날 종가입니다. 등락률이 ±5% 이상인 종목은 색으로 강조합니다(상승 빨강·하락 초록 배경).</p>
+<div class="bar"><span class="muted">기간</span><div class="seg" id="per"><button data-d="20">1개월</button><button data-d="60">3개월</button><button data-d="120" class="on">6개월</button></div>
+<span class="muted">정렬</span><div class="seg" id="sort"><button data-s="def" class="on">기본</button><button data-s="chg">당일 등락률</button><button data-s="ret">기간 수익률</button></div><span class="muted" id="asof"></span></div>
+<div class="sum"><div class="panel"><h3>당일 강한 테마</h3><div class="rk" id="topUp"></div></div><div class="panel"><h3>당일 약한 테마</h3><div class="rk" id="topDn"></div></div></div>
+<div class="grid" id="grid"></div>
+<p class="muted" id="foot"></p>
+</main>
+<script>
+(function(){
+ let D=null,days=120,sort='def';
+ const fmt=v=>v==null?'—':v>0?v.toFixed(2):v<0?'('+Math.abs(v).toFixed(2)+')':'0.00';
+ const cls=v=>v==null||v===0?'z':v>0?'up':'dn';
+ const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+ function spark(cl){const s=cl.slice(-(days+1));if(s.length<2)return '<svg></svg>';const v=s.map(x=>x[1]),mn=Math.min(...v),mx=Math.max(...v),W=200,H=84,p=3,r=mx-mn||1;
+  const X=i=>p+i*(W-2*p)/(s.length-1),Y=y=>H-p-(y-mn)/r*(H-2*p);const d=v.map((y,i)=>(i?'L':'M')+X(i).toFixed(1)+' '+Y(y).toFixed(1)).join('');
+  const ret=(v.at(-1)/v[0]-1)*100;return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none"><title>${s[0][0]} ${v[0].toLocaleString()} → ${s.at(-1)[0]} ${v.at(-1).toLocaleString()} (${ret>0?'+':''}${ret.toFixed(1)}%)</title><line x1="0" x2="${W}" y1="${Y(v[0]).toFixed(1)}" y2="${Y(v[0]).toFixed(1)}" stroke="#94a3b8" stroke-width="1"/><path d="${d}" fill="none" stroke="#e2e8f0" stroke-width="1.4" vector-effect="non-scaling-stroke"/></svg>`;}
+ const pret=e=>{const s=(e.closes||[]).slice(-(days+1));return s.length>1?(s.at(-1)[1]/s[0][1]-1)*100:null;};
+ function render(){if(!D)return;const g=document.getElementById('grid');let L=D.etfs.slice();
+  if(sort==='chg')L.sort((a,b)=>(b.chg??-1e9)-(a.chg??-1e9));if(sort==='ret')L.sort((a,b)=>(pret(b)??-1e9)-(pret(a)??-1e9));
+  g.innerHTML=L.map(e=>{const r=pret(e),hs=(e.holdings||[]).slice(0,5);
+   return `<div class="card"><div class="hd"><b title="${esc(e.name)} (${e.code})">${esc(e.name)}</b><span class="chg ${cls(e.chg)}">${fmt(e.chg)}</span></div>
+   <div class="bd">${spark(e.closes||[])}<ul class="hl">${hs.map(h=>`<li class="${h.chg>=5?'bigup':h.chg<=-5?'bigdn':''}" title="${esc(h.name)} · 비중 ${h.weight??'—'}%${h.close?' · 종가 '+h.close.toLocaleString():''}"><span>${esc(h.name)}</span><span class="chg ${cls(h.chg)}">${fmt(h.chg)}</span></li>`).join('')}</ul></div>
+   <div class="ft"><span>기간 <b class="${cls(r)}">${r==null?'—':(r>0?'+':'')+r.toFixed(1)+'%'}</b></span>${e.info?.flow_1m?`<span>1개월 순유입 ${esc(e.info.flow_1m)}</span>`:''}${e.info?.market_value?`<span>시총 ${esc(e.info.market_value)}</span>`:''}${e.stale?'<span class="stale">이번 수집 실패 · 직전 값</span>':''}</div></div>`;}).join('');
+  const ok=D.etfs.filter(e=>e.chg!=null).sort((a,b)=>b.chg-a.chg);const chip=e=>`<span>${esc(e.name)} <b class="chg ${cls(e.chg)}">${fmt(e.chg)}</b></span>`;
+  document.getElementById('topUp').innerHTML=ok.slice(0,5).map(chip).join('');document.getElementById('topDn').innerHTML=ok.slice(-5).reverse().map(chip).join('');}
+ for(const b of document.querySelectorAll('#per button'))b.onclick=()=>{days=Number(b.dataset.d);document.querySelectorAll('#per button').forEach(x=>x.classList.toggle('on',x===b));render();};
+ for(const b of document.querySelectorAll('#sort button'))b.onclick=()=>{sort=b.dataset.s;document.querySelectorAll('#sort button').forEach(x=>x.classList.toggle('on',x===b));render();};
+ fetch('etf_board.json?v='+Date.now(),{cache:'no-store'}).then(r=>r.json()).then(j=>{D=j;
+  document.getElementById('asof').textContent=`기준일 ${j.asof||'—'} · 수집 ${String(j.updated_at||'').replace('T',' ').slice(0,16)}`;
+  document.getElementById('foot').textContent=`등락률은 전일 종가 대비(%). 괄호는 하락. 장중 수집분은 수집 시점 가격 기준이며, 평일 15:45 수집으로 종가가 확정됩니다. 구성종목은 운용사 공시 상위 비중 순(네이버 증권 ETF 분석). 종목에 마우스를 올리면 비중이 보입니다.${j.failures?.length?' · 수집 실패: '+j.failures.map(f=>f.name).join(', '):''}`;render();})
+ .catch(()=>{document.getElementById('grid').innerHTML='<p class="muted">ETF 데이터를 아직 수집하지 못했습니다.</p>';});
+})();
+</script></body></html>
