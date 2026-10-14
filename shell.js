@@ -3,6 +3,7 @@
  const GROUPS=[['수출 모니터링',[['./','수출확정치',['','index.html']],['./provisional.html','10일 잠정수출',['provisional.html']]]],
   ['업체·실적',[['./regional.html','지역 수출 · 업체 실적 추적',['regional.html']],['./forecast_tracker.html','매출 예측 추적',['forecast_tracker.html']]]],
   ['해외 테크',[['./taiwan.html','대만 테크 월매출',['taiwan.html']],['./japan.html','일본 테크 수출',['japan.html']],['./global_earnings.html','해외 실적·컨콜 변곡점',['global_earnings.html']]]],
+  ['산업 지표',[['./ess.html','ESS 배터리 설치량',['ess.html']]]],
   ['시장',[['./etf.html','테마 ETF 보드',['etf.html']],['./bubble.html','버블 신호 모니터',['bubble.html']],['./bubble.html?tab=breadth','시장 Breadth',['bubble.html']]]]];
  const page=(location.pathname.split('/').pop()||'');
  function build(){if(document.querySelector('.sh-side'))return;const side=document.createElement('aside');side.className='sh-side';

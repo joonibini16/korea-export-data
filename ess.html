@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ESS 배터리 설치량</title><script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script><script src="./shell.js?v=7"></script>
+<style>:root{font-family:Arial,"Noto Sans KR",sans-serif}*{box-sizing:border-box}body{margin:0}main{max-width:1500px;margin:26px auto;padding:0 22px}.muted{font-size:13px;color:#93a3bd}
+.panel{border-radius:12px;padding:18px 20px;margin-bottom:18px}h2{font-size:19px;margin:0 0 10px}.g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.g2>.panel{margin:0;min-width:0}.chart{height:340px;position:relative}
+.seg{display:inline-flex;gap:6px;margin:0 8px 10px 0}.seg button{background:#0f1a31;color:#cbd5e1;border:1px solid #2a3a5c;border-radius:999px;padding:5px 13px;font-size:13px;cursor:pointer}.seg button.on{background:#e2e8f0;color:#0b1220;font-weight:700}
+.et{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}.et th,.et td{border:1px solid #2a3a5c;padding:6px 10px;text-align:right}.et thead th{background:#16213a;text-align:center}.et td.l,.et th.l{text-align:center}.et td.side{background:#1a2440;text-align:center;font-weight:700;width:90px}.et .up{color:#f87171}.et .dn{color:#60a5fa}.tbl{overflow:auto}
+@media(max-width:1000px){.g2{grid-template-columns:1fr}}</style>
+<link rel="stylesheet" href="./shell.css?v=3"></head><body><main>
+<h1>ESS 배터리 신규 설치량</h1>
+<p class="muted">지역별(북미·유럽·중국·기타)과 전력망(Grid) 연계 유형별 ESS 배터리 신규 설치량(GWh)입니다. Grid = 발전소·송배전망 등 전력회사 측(FTM), BTM(Behind The Meter) = 가정·건물·공장 등 고객 측 분산 에너지 자원.</p>
+<div class="g2"><section class="panel"><h2>지역별 설치량</h2><div><span class="seg" id="rSpan"><button data-v="month" class="on">월간</button><button data-v="ytd">연누적</button></span><span class="seg" id="rSeg"><button data-v="total" class="on">Total</button><button data-v="grid">Grid</button><button data-v="btm">BTM</button></span></div><div class="chart"><canvas id="cReg"></canvas></div></section>
+<section class="panel"><h2>Grid 연계 유형별 설치량</h2><div><span class="seg" id="gSpan"><button data-v="month" class="on">월간</button><button data-v="ytd">연누적</button></span></div><div class="chart"><canvas id="cGrid"></canvas></div></section></div>
+<p class="muted" id="coverNote"></p>
+<section class="panel"><h2>지역별 ESS 배터리 신규 설치량 <span class="muted">(단위: GWh, %)</span></h2><div class="tbl"><table class="et" id="tReg"></table></div><p class="muted">자료: Benchmark Mineral Intelligence, 하나증권. 주) BTM(Behind The Meter): 전력량계를 기준으로 고객 측에 위치한 분산 에너지 자원(가정·건물·공장의 태양광, ESS 등). 발전소·송배전망 등 전력회사가 관리하는 FTM(Front The Meter)과 대비되는 개념.</p></section>
+<section class="panel"><h2>전력망(Grid) 시장 내 연계 유형별 ESS 배터리 신규 설치량 <span class="muted">(단위: GWh, %)</span></h2><div class="tbl"><table class="et" id="tGrid"></table></div><p class="muted">자료: Benchmark Mineral Intelligence, 하나증권.</p></section>
+</main>
+<script>
+(function(){
+ const REG=['북미','유럽','중국','기타'],RC={'북미':'#60a5fa','유럽':'#34d399','중국':'#f87171','기타':'#a78bfa'};
+ const GL=['Stand-alone','Solar','Wind','Wind+Solar','기타'],GC={'Stand-alone':'#60a5fa','Solar':'#f59e0b','Wind':'#34d399','Wind+Solar':'#22d3ee','기타':'#94a3b8'};
+ let R=[],st={rSpan:'month',rSeg:'total',gSpan:'month'},ch={};
+ const n=v=>v===''||v==null?null:Number(v),f1=v=>v==null?'-':v.toFixed(1),yo=v=>v==null?'-':`<span class="${v>0?'up':v<0?'dn':''}">${v.toFixed(1)}</span>`;
+ const get=(t,span,p,c,s)=>R.find(r=>r.table===t&&r.span===span&&r.period===p&&r.category===c&&r.segment===s);
+ function periods(t,span){return [...new Set(R.filter(r=>r.table===t&&r.span===span&&r.gwh!=='').map(r=>r.period))].sort();}
+ function lab(p,span){return span==='ytd'?p.slice(0,4)+' 1~'+Number(p.slice(-2))+'월':p.replace('-','.');}
+ function draw(){const opt=(y)=>({responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:'index',intersect:false},plugins:{legend:{position:'bottom'},tooltip:{callbacks:{label:x=>`${x.dataset.label}: ${x.parsed.y==null?'—':x.parsed.y.toFixed(1)} GWh`}}},scales:{x:{stacked:true},y:{stacked:true,title:{display:true,text:y}}}});
+  const pr=periods('region',st.rSpan);Object.values(ch).forEach(c=>c.destroy());
+  ch.r=new Chart(document.getElementById('cReg'),{type:'bar',data:{labels:pr.map(p=>lab(p,st.rSpan)),datasets:REG.map(g=>({label:g,data:pr.map(p=>n(get('region',st.rSpan,p,g,st.rSeg)?.gwh)),backgroundColor:RC[g]}))},options:opt('GWh')});
+  const pg=periods('grid_link',st.gSpan);
+  ch.g=new Chart(document.getElementById('cGrid'),{type:'bar',data:{labels:pg.map(p=>lab(p,st.gSpan)),datasets:GL.map(g=>({label:g,data:pg.map(p=>n(get('grid_link',st.gSpan,p,g,'grid')?.gwh)),backgroundColor:GC[g]}))},options:opt('GWh')});
+  const all=[...new Set(R.map(r=>r.period))].filter(p=>!p.includes('~')).sort();
+  document.getElementById('coverNote').textContent=`현재 확보 기간: 월간 ${all.join(', ')} · 연누적 ${[...new Set(R.filter(r=>r.span==='ytd').map(r=>r.period))].sort().join(', ')}. 2025년 값은 보고서의 전년 대비 증감률로 역산한 값입니다(설치량 ÷ (1+YoY)). 원자료(Benchmark Mineral Intelligence)는 유료 데이터라 자동 수집이 되지 않으며, 증권사 월간 자료를 받을 때마다 ess_installs.csv에 추가하면 그래프가 2020년부터 순서대로 채워집니다.`;}
+ function tables(){const pm=periods('region','month').filter(p=>R.some(r=>r.table==='region'&&r.span==='month'&&r.period===p&&r.basis==='reported')).at(-1),py=periods('region','ytd').filter(p=>R.some(r=>r.table==='region'&&r.span==='ytd'&&r.period===p&&r.basis==='reported')).at(-1);
+  const mLab=Number(pm.slice(-2))+'월',yLab='누적<br>('+py.slice(5).replace('~','-').replace(/^0/,'').replace('-0','-')+'월)';
+  let h=`<thead><tr><th rowspan="2"></th><th rowspan="2">지역</th><th colspan="2">Grid</th><th colspan="2">BTM</th><th colspan="2">Total</th><th rowspan="2"></th><th colspan="2">Grid</th><th colspan="2">BTM</th><th colspan="2">Total</th></tr><tr>${'<th>설치량</th><th>YoY</th>'.repeat(3)}${'<th>설치량</th><th>YoY</th>'.repeat(3)}</tr></thead><tbody>`;
+  ['글로벌',...REG].forEach((g,i)=>{h+='<tr>'+(i===0?`<td class="side" rowspan="5">${mLab}</td>`:'')+`<td class="l">${g}</td>`;for(const s of ['grid','btm','total']){const r=get('region','month',pm,g,s);h+=`<td>${f1(n(r?.gwh))}</td><td>${yo(n(r?.yoy_pct))}</td>`;}
+   if(i===0)h+=`<td class="side" rowspan="5">${yLab}</td>`;for(const s of ['grid','btm','total']){const r=get('region','ytd',py,g,s);h+=`<td>${f1(n(r?.gwh))}</td><td>${yo(n(r?.yoy_pct))}</td>`;}h+='</tr>';});
+  document.getElementById('tReg').innerHTML=h+'</tbody>';
+  let g=`<thead><tr><th></th><th>연계 유형</th><th>설치량(GWh)</th><th>YoY(%)</th><th></th><th>설치량(GWh)</th><th>YoY(%)</th></tr></thead><tbody>`;
+  const GO=['Stand-alone','Wind+Solar','Wind','Solar','기타'];GO.forEach((t,i)=>{const a=get('grid_link','month',pm,t,'grid'),b=get('grid_link','ytd',py,t,'grid');g+='<tr>'+(i===0?`<td class="side" rowspan="5">${mLab}</td>`:'')+`<td class="l">${t}</td><td>${f1(n(a?.gwh))}</td><td>${yo(n(a?.yoy_pct))}</td>`+(i===0?`<td class="side" rowspan="5">${yLab}</td>`:'')+`<td>${f1(n(b?.gwh))}</td><td>${yo(n(b?.yoy_pct))}</td></tr>`;});
+  document.getElementById('tGrid').innerHTML=g+'</tbody>';}
+ document.addEventListener('click',e=>{const b=e.target.closest('.seg button');if(!b)return;const k=b.parentElement.id;st[k]=b.dataset.v;b.parentElement.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));draw();});
+ fetch('ess_installs.csv?v='+Date.now(),{cache:'no-store'}).then(r=>r.text()).then(t=>{const L=t.trim().split(/\r?\n/),h=L.shift().split(',');R=L.map(l=>{const f=l.split(',');return Object.fromEntries(h.map((k,i)=>[k,f[i]??'']));});draw();tables();});
+})();
+</script></body></html>
