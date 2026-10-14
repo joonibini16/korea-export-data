@@ -1,88 +1,386 @@
 {
   "updated_at": "2026-10-14",
-  "method": "공식 IR 발표문·가이던스를 우선 비교합니다. 컨콜 발언은 공식 녹취록·준비 발언을 별도로 확인한 경우에만 컨콜로 표시합니다. 방향은 분석자의 해석이며 투자 권유가 아닙니다.",
+  "method": "공식 컨콜 녹취록을 확인한 경우에만 Q&A 요약으로 표시합니다. 그 외 주제별 요약은 공식 IR 발표문을 출처로 명시하며, 투자 해석은 관전점으로 구분합니다.",
   "watchlist": [
-    {"ticker":"NVDA","name":"NVIDIA","sector":"AI 인프라·반도체"},
-    {"ticker":"AMD","name":"AMD","sector":"AI 인프라·반도체"},
-    {"ticker":"AVGO","name":"Broadcom","sector":"AI 인프라·반도체"},
-    {"ticker":"QCOM","name":"Qualcomm","sector":"AI 인프라·반도체"},
-    {"ticker":"TSM","name":"TSMC","sector":"파운드리·메모리"},
-    {"ticker":"MU","name":"Micron","sector":"파운드리·메모리"},
-    {"ticker":"ASML","name":"ASML","sector":"반도체 장비"},
-    {"ticker":"AMAT","name":"Applied Materials","sector":"반도체 장비"},
-    {"ticker":"LRCX","name":"Lam Research","sector":"반도체 장비"},
-    {"ticker":"KLAC","name":"KLA","sector":"반도체 장비"},
-    {"ticker":"8035.T","name":"Tokyo Electron","sector":"반도체 장비"},
-    {"ticker":"MSFT","name":"Microsoft","sector":"하이퍼스케일러"},
-    {"ticker":"GOOGL","name":"Alphabet","sector":"하이퍼스케일러"},
-    {"ticker":"AMZN","name":"Amazon","sector":"하이퍼스케일러"},
-    {"ticker":"META","name":"Meta","sector":"하이퍼스케일러"},
-    {"ticker":"ORCL","name":"Oracle","sector":"하이퍼스케일러"},
-    {"ticker":"ETN","name":"Eaton","sector":"전력·데이터센터"},
-    {"ticker":"VRT","name":"Vertiv","sector":"전력·데이터센터"},
-    {"ticker":"SU.PA","name":"Schneider Electric","sector":"전력·데이터센터"},
-    {"ticker":"GEV","name":"GE Vernova","sector":"전력·데이터센터"},
-    {"ticker":"CATL","name":"CATL","sector":"배터리·소재"},
-    {"ticker":"6752.T","name":"Panasonic","sector":"배터리·소재"},
-    {"ticker":"OR.PA","name":"L'Oréal","sector":"소비재·화장품"},
-    {"ticker":"EL","name":"Estée Lauder","sector":"소비재·화장품"},
-    {"ticker":"2897.T","name":"Nissin Foods","sector":"식품"},
-    {"ticker":"LLY","name":"Eli Lilly","sector":"바이오·의료"},
-    {"ticker":"NVO","name":"Novo Nordisk","sector":"바이오·의료"}
+    {
+      "ticker": "NVDA",
+      "name": "NVIDIA",
+      "sector": "AI 인프라·반도체"
+    },
+    {
+      "ticker": "AMD",
+      "name": "AMD",
+      "sector": "AI 인프라·반도체"
+    },
+    {
+      "ticker": "AVGO",
+      "name": "Broadcom",
+      "sector": "AI 인프라·반도체"
+    },
+    {
+      "ticker": "QCOM",
+      "name": "Qualcomm",
+      "sector": "AI 인프라·반도체"
+    },
+    {
+      "ticker": "TSM",
+      "name": "TSMC",
+      "sector": "파운드리·메모리"
+    },
+    {
+      "ticker": "MU",
+      "name": "Micron",
+      "sector": "파운드리·메모리"
+    },
+    {
+      "ticker": "ASML",
+      "name": "ASML",
+      "sector": "반도체 장비"
+    },
+    {
+      "ticker": "AMAT",
+      "name": "Applied Materials",
+      "sector": "반도체 장비"
+    },
+    {
+      "ticker": "LRCX",
+      "name": "Lam Research",
+      "sector": "반도체 장비"
+    },
+    {
+      "ticker": "KLAC",
+      "name": "KLA",
+      "sector": "반도체 장비"
+    },
+    {
+      "ticker": "8035.T",
+      "name": "Tokyo Electron",
+      "sector": "반도체 장비"
+    },
+    {
+      "ticker": "MSFT",
+      "name": "Microsoft",
+      "sector": "하이퍼스케일러"
+    },
+    {
+      "ticker": "GOOGL",
+      "name": "Alphabet",
+      "sector": "하이퍼스케일러"
+    },
+    {
+      "ticker": "AMZN",
+      "name": "Amazon",
+      "sector": "하이퍼스케일러"
+    },
+    {
+      "ticker": "META",
+      "name": "Meta",
+      "sector": "하이퍼스케일러"
+    },
+    {
+      "ticker": "ORCL",
+      "name": "Oracle",
+      "sector": "하이퍼스케일러"
+    },
+    {
+      "ticker": "ETN",
+      "name": "Eaton",
+      "sector": "전력·데이터센터"
+    },
+    {
+      "ticker": "VRT",
+      "name": "Vertiv",
+      "sector": "전력·데이터센터"
+    },
+    {
+      "ticker": "SU.PA",
+      "name": "Schneider Electric",
+      "sector": "전력·데이터센터"
+    },
+    {
+      "ticker": "GEV",
+      "name": "GE Vernova",
+      "sector": "전력·데이터센터"
+    },
+    {
+      "ticker": "CATL",
+      "name": "CATL",
+      "sector": "배터리·소재"
+    },
+    {
+      "ticker": "6752.T",
+      "name": "Panasonic",
+      "sector": "배터리·소재"
+    },
+    {
+      "ticker": "OR.PA",
+      "name": "L'Oréal",
+      "sector": "소비재·화장품"
+    },
+    {
+      "ticker": "EL",
+      "name": "Estée Lauder",
+      "sector": "소비재·화장품"
+    },
+    {
+      "ticker": "2897.T",
+      "name": "Nissin Foods",
+      "sector": "식품"
+    },
+    {
+      "ticker": "LLY",
+      "name": "Eli Lilly",
+      "sector": "바이오·의료"
+    },
+    {
+      "ticker": "NVO",
+      "name": "Novo Nordisk",
+      "sector": "바이오·의료"
+    }
   ],
   "events": [
     {
-      "ticker":"NVDA", "period":"FY27 Q2", "date":"2026-08-26", "evidence":"공식 IR·컨콜 녹취", "direction":"혼재", "tone":"컨콜에서 FY28 매출이 전년 대비 약 70% 성장할 수 있다는 잠정 전망을 제시. 수요보다 공급 제약이 크다고 설명. 동시에 메모리 가격 상승으로 총이익률 전망을 낮춤.",
-      "headline":"매출 전망은 높아졌지만 메모리 원가로 마진 전망은 낮아짐",
-      "estimate_signal":"매출 추정 상향 압력 · 이익률 추정 하향 압력",
-      "call_coverage":"공식 컨콜 녹취록의 준비 발언과 Q&A 확인",
-      "changes":[
-        {"title":"수요·매출 톤","direction":"개선","before":"직전 발표: FY27 Q2 매출 전망 $91.0bn. 장기 수치 제시는 없었음.","now":"FY27 Q2 실제 $96.221bn. 다음 Q3 전망 $108.0bn. 컨콜에서 FY28 매출 약 +70% YoY 잠정 전망과 공급 제약을 명시.","meaning":"차기 및 다음 회계연도 매출 추정에는 상향 압력. FY28 수치는 잠정 전망이며 확정 가이던스와 구분."},
-        {"title":"메모리 원가·마진","direction":"악화","before":"FY27 Q2 총이익률 실제 75.0%.","now":"Q3 전망 74.0% ±0.5%p, Q4 예상 71~72%. 컨콜에서 메모리 가격 상승폭이 이전 예상보다 크다고 설명.","meaning":"매출 증가를 이익 증가로 그대로 연결하기 어려움. 공급사의 가격 신호와 엔비디아의 비용 부담을 분리해 확인."},
-        {"title":"공급 병목","direction":"관찰","before":"수요 확대와 Rubin 도입 기대.","now":"컨콜에서 FY28 말까지 공급이 병목일 수 있다고 설명. Rubin 공급 증가 시 하이퍼스케일 수요 재가속 전망.","meaning":"다음 분기의 핵심 검증은 주문 증가보다 실제 공급 확대 속도."}
+      "ticker": "NVDA",
+      "period": "FY27 Q2",
+      "date": "2026-08-26",
+      "evidence": "공식 IR·컨콜 녹취",
+      "direction": "혼재",
+      "tone": "컨콜에서 FY28 매출이 전년 대비 약 70% 성장할 수 있다는 잠정 전망을 제시. 수요보다 공급 제약이 크다고 설명. 동시에 메모리 가격 상승으로 총이익률 전망을 낮춤.",
+      "headline": "매출 전망은 높아졌지만 메모리 원가로 마진 전망은 낮아짐",
+      "estimate_signal": "매출 추정 상향 압력 · 이익률 추정 하향 압력",
+      "call_coverage": "공식 컨콜 녹취록의 준비 발언과 Q&A 확인",
+      "changes": [
+        {
+          "title": "수요·매출 톤",
+          "direction": "개선",
+          "before": "직전 발표: FY27 Q2 매출 전망 $91.0bn. 장기 수치 제시는 없었음.",
+          "now": "FY27 Q2 실제 $96.221bn. 다음 Q3 전망 $108.0bn. 컨콜에서 FY28 매출 약 +70% YoY 잠정 전망과 공급 제약을 명시.",
+          "meaning": "차기 및 다음 회계연도 매출 추정에는 상향 압력. FY28 수치는 잠정 전망이며 확정 가이던스와 구분."
+        },
+        {
+          "title": "메모리 원가·마진",
+          "direction": "악화",
+          "before": "FY27 Q2 총이익률 실제 75.0%.",
+          "now": "Q3 전망 74.0% ±0.5%p, Q4 예상 71~72%. 컨콜에서 메모리 가격 상승폭이 이전 예상보다 크다고 설명.",
+          "meaning": "매출 증가를 이익 증가로 그대로 연결하기 어려움. 공급사의 가격 신호와 엔비디아의 비용 부담을 분리해 확인."
+        },
+        {
+          "title": "공급 병목",
+          "direction": "관찰",
+          "before": "수요 확대와 Rubin 도입 기대.",
+          "now": "컨콜에서 FY28 말까지 공급이 병목일 수 있다고 설명. Rubin 공급 증가 시 하이퍼스케일 수요 재가속 전망.",
+          "meaning": "다음 분기의 핵심 검증은 주문 증가보다 실제 공급 확대 속도."
+        }
       ],
-      "facts":"Q2 매출 $96.221bn, 데이터센터 $89.0bn. 직전 Q1 발표의 Q2 매출 전망 중심값 $91.0bn을 상회.",
-      "guidance":"FY27 Q3 매출 $108.0bn ±2%, 총이익률 74.0% ±0.5%p. 컨콜에서 Q4 총이익률 71~72%, FY28 72~73%, FY28 매출 약 +70% YoY 잠정 전망. 중국 데이터센터 컴퓨트 매출 미반영.",
-      "interpretation":"매출과 장기 수요 가시성은 개선되지만, 메모리 원가 상승으로 마진 경로는 악화. 한국 HBM 공급사에는 가격 신호가 될 수 있으나 엔비디아의 마진 하락을 그대로 공급사 실적으로 환산하면 안 됨.",
-      "watch":"FY27 Q3 매출 $108bn, Q4 총이익률 71~72%, Vera Rubin 공급 확대, 공급 제약 완화 속도.",
-      "source":"https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Second-Quarter-Fiscal-2027/",
-      "prior_source":"https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-First-Quarter-Fiscal-2027/default.aspx",
-      "call_source":"https://investor.nvidia.com/files/content_files/TRANSCRIPT_-NVIDIA-Corp-NVDA-US-Q2-2027-Earnings-Call-26-August-2026-5_00-PM-ET.pdf"
+      "facts": "Q2 매출 $96.221bn, 데이터센터 $89.0bn. 직전 Q1 발표의 Q2 매출 전망 중심값 $91.0bn을 상회.",
+      "guidance": "FY27 Q3 매출 $108.0bn ±2%, 총이익률 74.0% ±0.5%p. 컨콜에서 Q4 총이익률 71~72%, FY28 72~73%, FY28 매출 약 +70% YoY 잠정 전망. 중국 데이터센터 컴퓨트 매출 미반영.",
+      "interpretation": "매출과 장기 수요 가시성은 개선되지만, 메모리 원가 상승으로 마진 경로는 악화. 한국 HBM 공급사에는 가격 신호가 될 수 있으나 엔비디아의 마진 하락을 그대로 공급사 실적으로 환산하면 안 됨.",
+      "watch": "FY27 Q3 매출 $108bn, Q4 총이익률 71~72%, Vera Rubin 공급 확대, 공급 제약 완화 속도.",
+      "source": "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Second-Quarter-Fiscal-2027/",
+      "prior_source": "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-First-Quarter-Fiscal-2027/default.aspx",
+      "call_source": "https://investor.nvidia.com/files/content_files/TRANSCRIPT_-NVIDIA-Corp-NVDA-US-Q2-2027-Earnings-Call-26-August-2026-5_00-PM-ET.pdf",
+      "call_topics": [
+        {
+          "topic": "수요와 공급 간극",
+          "source_part": "Q&A",
+          "points": [
+            "경영진은 FY28 매출 약 70% 성장 잠정 전망을 실제 공급 가능한 물량에 맞춘 수치라고 설명했다. 관측 수요는 이보다 높다고 답했다.",
+            "토지·전력·냉각과 반도체 공급망을 함께 확보해야 하므로, 수요 확대가 매출로 반영되는 속도에는 제약이 있다."
+          ],
+          "implication": "FY28 매출 상향 가능성은 공급능력 확대 여부로 확인."
+        },
+        {
+          "topic": "고객 구성과 AI 설비투자",
+          "source_part": "준비 발언·Q&A",
+          "points": [
+            "하이퍼스케일러 외의 기업·네오클라우드·소버린 AI 수요가 성장의 또 다른 축이라고 설명했다. Q&A에서는 이 고객군이 개별 칩보다 완성형 AI 플랫폼을 필요로 한다고 강조했다.",
+            "데이터센터 매출 중 하이퍼스케일러 약 $49bn, 그 밖의 ACIE 부문 약 $40bn으로 설명했다."
+          ],
+          "implication": "대형 클라우드 투자뿐 아니라 비하이퍼스케일 고객의 매출 증가도 추적."
+        },
+        {
+          "topic": "Vera Rubin 전환",
+          "source_part": "준비 발언",
+          "points": [
+            "Rubin 제품 공급이 늘면서 FY27 Q3 데이터센터 매출에서 약 20%를 차지할 것으로 봤다. 하이퍼스케일러 수요는 Q4와 FY28에 재가속할 것으로 예상했다."
+          ],
+          "implication": "제품 전환기에 실제 출하 속도와 공급능력 확장을 확인."
+        },
+        {
+          "topic": "메모리 가격과 총이익률",
+          "source_part": "준비 발언",
+          "points": [
+            "메모리 가격 상승폭이 이전 예상보다 컸다고 밝혔다. FY27 Q3 총이익률 74% ±0.5%p, Q4 71~72%, FY28 72~73%를 예상했다.",
+            "FY28 Q1의 판매가격 인상 효과를 반영한 마진 회복을 기대하지만, 공급 병목은 FY28 말까지 지속될 수 있다고 했다."
+          ],
+          "implication": "매출 상향과 마진 하향을 따로 모델에 반영."
+        },
+        {
+          "topic": "공급망 투자와 약정",
+          "source_part": "Q&A",
+          "points": [
+            "CFO는 공급 약정의 큰 부분이 초기 3년에 집중되어 Rubin 생산과 증설을 뒷받침한다고 설명했다. CEO는 특정 한 부품보다 공급망 전반의 증산과 수율 개선이 필요하다고 답했다."
+          ],
+          "implication": "약정 규모를 확정 매출로 보지 않고 실제 증설·수율·고객 출하를 점검."
+        }
+      ]
     },
     {
-      "ticker":"MU", "period":"FY26 Q4", "date":"2026-09-30", "evidence":"공식 IR 실적발표", "direction":"개선", "tone":"경영진이 FY27 실적이 FY26보다 더 강할 것으로 전망. 공식 컨콜 Q&A 확인 전이므로 Q&A 톤 평가는 보류.",
-      "headline":"메모리 매출 전망 초과와 차기 분기 성장 지속, 마진은 소폭 낮게 제시",
-      "estimate_signal":"매출 추정 상향 압력 · 마진 추가 확대는 보류",
-      "call_coverage":"공식 IR 발표문 확인 · 컨콜 Q&A 미확인",
-      "changes":[
-        {"title":"매출·가이던스","direction":"개선","before":"직전 발표의 FY26 Q4 매출 전망 중심값 $50.0bn.","now":"FY26 Q4 실제 $54.229bn. FY27 Q1 매출 전망 중심값 $61.5bn.","meaning":"직전 전망 초과와 다음 분기 매출 증가 전망으로 매출 추정 상향 압력."},
-        {"title":"경영진 전망의 기간","direction":"개선","before":"직전 발표는 Q4의 더 강한 전망과 다년 고객 계약을 강조.","now":"이번 IR 발표는 FY27 전체가 FY26보다 더 강할 것으로 예상한다고 명시.","meaning":"분기 호조를 다음 회계연도까지 이어가는 톤. 컨콜 Q&A 발언 변화는 확인 전."},
-        {"title":"총이익률","direction":"관찰","before":"FY26 Q4 비GAAP 실제 총이익률 87.0%.","now":"FY27 Q1 비GAAP 전망 약 86.25%.","meaning":"매출 상승에도 마진은 소폭 낮게 제시. 메모리 가격과 증설 비용을 분리해 점검."}
+      "ticker": "MU",
+      "period": "FY26 Q4",
+      "date": "2026-09-30",
+      "evidence": "공식 IR 실적발표",
+      "direction": "개선",
+      "tone": "경영진이 FY27 실적이 FY26보다 더 강할 것으로 전망. 공식 컨콜 Q&A 확인 전이므로 Q&A 톤 평가는 보류.",
+      "headline": "메모리 매출 전망 초과와 차기 분기 성장 지속, 마진은 소폭 낮게 제시",
+      "estimate_signal": "매출 추정 상향 압력 · 마진 추가 확대는 보류",
+      "call_coverage": "공식 IR 발표문 확인 · 컨콜 Q&A 미확인",
+      "changes": [
+        {
+          "title": "매출·가이던스",
+          "direction": "개선",
+          "before": "직전 발표의 FY26 Q4 매출 전망 중심값 $50.0bn.",
+          "now": "FY26 Q4 실제 $54.229bn. FY27 Q1 매출 전망 중심값 $61.5bn.",
+          "meaning": "직전 전망 초과와 다음 분기 매출 증가 전망으로 매출 추정 상향 압력."
+        },
+        {
+          "title": "경영진 전망의 기간",
+          "direction": "개선",
+          "before": "직전 발표는 Q4의 더 강한 전망과 다년 고객 계약을 강조.",
+          "now": "이번 IR 발표는 FY27 전체가 FY26보다 더 강할 것으로 예상한다고 명시.",
+          "meaning": "분기 호조를 다음 회계연도까지 이어가는 톤. 컨콜 Q&A 발언 변화는 확인 전."
+        },
+        {
+          "title": "총이익률",
+          "direction": "관찰",
+          "before": "FY26 Q4 비GAAP 실제 총이익률 87.0%.",
+          "now": "FY27 Q1 비GAAP 전망 약 86.25%.",
+          "meaning": "매출 상승에도 마진은 소폭 낮게 제시. 메모리 가격과 증설 비용을 분리해 점검."
+        }
       ],
-      "facts":"Q4 매출 $54.229bn. 직전 Q3 발표의 Q4 매출 전망 중심값 $50.0bn을 상회.",
-      "guidance":"다음 FY27 Q1 매출 전망 $61.5bn ±$1.5bn, 비GAAP 총이익률 약 86.25%.",
-      "interpretation":"전망 초과 실적과 차기 분기 매출 증가 전망은 메모리 업황 개선 신호. 다음 분기 총이익률은 Q4 비GAAP 실제 87.0%보다 낮아 수익성 변곡 여부는 별도 확인.",
-      "watch":"FY27 Q1 매출 가이던스, HBM 공급 계약·생산능력, 비GAAP 총이익률 변화.",
-      "source":"https://investors.micron.com/news/press-release/2026/Micron-Technology-Inc--Reports-Record-Fiscal-Fourth-Quarter-and-Full-Year-2026-Results/default.aspx",
-      "prior_source":"https://investors.micron.com/news/press-release/2026/Micron-Technology-Inc--Reports-Record-Results-for-the-Third-Quarter-of-Fiscal-2026/default.aspx"
+      "facts": "Q4 매출 $54.229bn. 직전 Q3 발표의 Q4 매출 전망 중심값 $50.0bn을 상회.",
+      "guidance": "다음 FY27 Q1 매출 전망 $61.5bn ±$1.5bn, 비GAAP 총이익률 약 86.25%.",
+      "interpretation": "전망 초과 실적과 차기 분기 매출 증가 전망은 메모리 업황 개선 신호. 다음 분기 총이익률은 Q4 비GAAP 실제 87.0%보다 낮아 수익성 변곡 여부는 별도 확인.",
+      "watch": "FY27 Q1 매출 가이던스, HBM 공급 계약·생산능력, 비GAAP 총이익률 변화.",
+      "source": "https://investors.micron.com/news/press-release/2026/Micron-Technology-Inc--Reports-Record-Fiscal-Fourth-Quarter-and-Full-Year-2026-Results/default.aspx",
+      "prior_source": "https://investors.micron.com/news/press-release/2026/Micron-Technology-Inc--Reports-Record-Results-for-the-Third-Quarter-of-Fiscal-2026/default.aspx",
+      "call_topics": [
+        {
+          "topic": "메모리 매출과 성장",
+          "source_part": "공식 IR 발표문",
+          "points": [
+            "FY26 Q4 매출은 $54.229bn으로 직전 분기의 $41.456bn에서 증가했다. FY27 Q1 매출 전망은 $61.5bn ±$1.5bn이다."
+          ],
+          "implication": "다음 분기 매출 증가 전망의 실현 여부 확인."
+        },
+        {
+          "topic": "데이터센터 수요",
+          "source_part": "공식 IR 발표문",
+          "points": [
+            "코어 데이터센터 사업부 매출은 $18.002bn으로 직전 분기 $11.524bn에서 증가했다. 클라우드 메모리 사업부는 $16.283bn을 기록했다."
+          ],
+          "implication": "AI 관련 메모리 수요가 두 사업부의 매출에 어떻게 반영되는지 추적."
+        },
+        {
+          "topic": "제품과 공급 확대",
+          "source_part": "공식 IR 발표문",
+          "points": [
+            "서버용 DDR5 모듈의 고객 검증을 완료했고, 데이터센터의 KV-cache 용 SSD 제품을 고객에게 출하하기 시작했다. 서버 LPDDR SOCAMM 매출은 전분기 대비 두 배 이상이었다."
+          ],
+          "implication": "제품 검증과 출하가 다음 분기 매출에 이어지는지 점검."
+        },
+        {
+          "topic": "수익성 경로",
+          "source_part": "공식 IR 발표문",
+          "points": [
+            "FY26 Q4 비GAAP 총이익률은 87.0%였고 FY27 Q1 전망은 약 86.25%다. 매출 확대 전망과 별도로 마진은 소폭 낮게 제시됐다."
+          ],
+          "implication": "매출 증가율만으로 이익 증가율을 추정하지 않음."
+        }
+      ]
     },
     {
-      "ticker":"AVGO", "period":"FY26 Q3", "date":"2026-09-02", "evidence":"공식 IR 실적발표", "direction":"개선", "tone":"맞춤형 AI 가속기·네트워킹 수요가 강하며 Q4 성장 가속을 예상한다는 경영진 발언. 컨콜 Q&A의 별도 변화는 미평가.",
-      "headline":"AI 반도체 수요가 직전 전망을 넘어서며 다음 분기 성장 가속 전망",
-      "estimate_signal":"AI 반도체 매출 추정 상향 압력 · 이익률은 유지",
-      "call_coverage":"공식 IR 발표문 확인 · 컨콜 Q&A 미확인",
-      "changes":[
-        {"title":"AI 반도체 가이던스","direction":"개선","before":"직전 발표의 FY26 Q3 AI 반도체 매출 전망 $16.0bn.","now":"FY26 Q3 실제 $16.7bn. 다음 Q4 전망 $21.7bn.","meaning":"맞춤형 가속기·네트워크 매출 추정 상향 압력. 다음 분기 $21.7bn 달성 여부가 핵심."},
-        {"title":"성장 톤의 확장","direction":"개선","before":"직전 발표는 Q3 AI 반도체 $16.0bn 및 전년 대비 200% 초과 성장 기대.","now":"이번 발표는 Q3 AI 매출 $16.7bn과 Q4 $21.7bn 전망, 강한 수요 지속을 강조.","meaning":"수요 호조가 한 분기 더 연장된 전망. 컨콜 Q&A의 신규 고객·주문 변화는 미확인."},
-        {"title":"수익성","direction":"관찰","before":"전체 매출 성장과 AI 비중 증가 전망.","now":"FY26 Q4 비GAAP 영업이익률 전망 약 66%, 전년 동기와 같은 수준.","meaning":"매출 추정 상향을 영업이익률 상향으로 자동 연결하지 않음."}
+      "ticker": "AVGO",
+      "period": "FY26 Q3",
+      "date": "2026-09-02",
+      "evidence": "공식 IR 실적발표",
+      "direction": "개선",
+      "tone": "맞춤형 AI 가속기·네트워킹 수요가 강하며 Q4 성장 가속을 예상한다는 경영진 발언. 컨콜 Q&A의 별도 변화는 미평가.",
+      "headline": "AI 반도체 수요가 직전 전망을 넘어서며 다음 분기 성장 가속 전망",
+      "estimate_signal": "AI 반도체 매출 추정 상향 압력 · 이익률은 유지",
+      "call_coverage": "공식 IR 발표문 확인 · 컨콜 Q&A 미확인",
+      "changes": [
+        {
+          "title": "AI 반도체 가이던스",
+          "direction": "개선",
+          "before": "직전 발표의 FY26 Q3 AI 반도체 매출 전망 $16.0bn.",
+          "now": "FY26 Q3 실제 $16.7bn. 다음 Q4 전망 $21.7bn.",
+          "meaning": "맞춤형 가속기·네트워크 매출 추정 상향 압력. 다음 분기 $21.7bn 달성 여부가 핵심."
+        },
+        {
+          "title": "성장 톤의 확장",
+          "direction": "개선",
+          "before": "직전 발표는 Q3 AI 반도체 $16.0bn 및 전년 대비 200% 초과 성장 기대.",
+          "now": "이번 발표는 Q3 AI 매출 $16.7bn과 Q4 $21.7bn 전망, 강한 수요 지속을 강조.",
+          "meaning": "수요 호조가 한 분기 더 연장된 전망. 컨콜 Q&A의 신규 고객·주문 변화는 미확인."
+        },
+        {
+          "title": "수익성",
+          "direction": "관찰",
+          "before": "전체 매출 성장과 AI 비중 증가 전망.",
+          "now": "FY26 Q4 비GAAP 영업이익률 전망 약 66%, 전년 동기와 같은 수준.",
+          "meaning": "매출 추정 상향을 영업이익률 상향으로 자동 연결하지 않음."
+        }
       ],
-      "facts":"Q3 매출 $29.591bn, AI 반도체 매출 $16.7bn. 직전 Q2 발표 당시 Q3 AI 반도체 전망 $16.0bn을 상회.",
-      "guidance":"FY26 Q4 매출 전망 약 $34.8bn, AI 반도체 약 $21.7bn, 비GAAP 영업이익률 약 66%.",
-      "interpretation":"AI 반도체 수요 전망이 전분기 대비 확대. 전체 매출 성장 전망과 달리 비GAAP 영업이익률은 전년 동기 수준의 66%로 제시돼 믹스 변화를 확인할 필요.",
-      "watch":"Q4 AI 반도체 $21.7bn, 비GAAP 영업이익률 66%, 신규 고객 수주 확대 여부.",
-      "source":"https://investors.broadcom.com/news-releases/news-release-details/broadcom-inc-announces-third-quarter-fiscal-year-2026-financial",
-      "prior_source":"https://investors.broadcom.com/news-releases/news-release-details/broadcom-inc-announces-second-quarter-fiscal-year-2026-financial"
+      "facts": "Q3 매출 $29.591bn, AI 반도체 매출 $16.7bn. 직전 Q2 발표 당시 Q3 AI 반도체 전망 $16.0bn을 상회.",
+      "guidance": "FY26 Q4 매출 전망 약 $34.8bn, AI 반도체 약 $21.7bn, 비GAAP 영업이익률 약 66%.",
+      "interpretation": "AI 반도체 수요 전망이 전분기 대비 확대. 전체 매출 성장 전망과 달리 비GAAP 영업이익률은 전년 동기 수준의 66%로 제시돼 믹스 변화를 확인할 필요.",
+      "watch": "Q4 AI 반도체 $21.7bn, 비GAAP 영업이익률 66%, 신규 고객 수주 확대 여부.",
+      "source": "https://investors.broadcom.com/news-releases/news-release-details/broadcom-inc-announces-third-quarter-fiscal-year-2026-financial",
+      "prior_source": "https://investors.broadcom.com/news-releases/news-release-details/broadcom-inc-announces-second-quarter-fiscal-year-2026-financial",
+      "call_topics": [
+        {
+          "topic": "맞춤형 AI 가속기·네트워킹",
+          "source_part": "공식 IR 발표문",
+          "points": [
+            "경영진은 맞춤형 AI 가속기와 네트워킹 수요가 강하다고 밝혔다. Q3 AI 반도체 매출은 $16.7bn으로 전년 대비 221% 증가했다."
+          ],
+          "implication": "가속기와 네트워크를 합한 AI 매출의 지속성 확인."
+        },
+        {
+          "topic": "다음 분기 AI 전망",
+          "source_part": "공식 IR 발표문",
+          "points": [
+            "FY26 Q4 AI 반도체 매출을 $21.7bn으로 예상했다. Q3 실제 $16.7bn보다 약 $5bn 높은 수준이다."
+          ],
+          "implication": "Q4 전망 달성과 이후 고객 투자 지속 여부 확인."
+        },
+        {
+          "topic": "전체 매출과 비AI 사업",
+          "source_part": "공식 IR 발표문",
+          "points": [
+            "Q3 전체 매출 $29.591bn 중 인프라 소프트웨어는 $8.752bn이었다. 다음 Q4 전체 매출 전망은 약 $34.8bn이다."
+          ],
+          "implication": "AI 성장과 소프트웨어 사업의 기여를 별도로 추적."
+        },
+        {
+          "topic": "영업이익률",
+          "source_part": "공식 IR 발표문",
+          "points": [
+            "FY26 Q4 비GAAP 영업이익률을 매출의 약 66%로 제시했다. 이는 전년 동기와 같은 수준이라는 설명이다."
+          ],
+          "implication": "AI 매출 확대를 마진 상승으로 자동 환산하지 않음."
+        }
+      ]
     }
   ],
-  "upcoming": [{"ticker":"TSM","date":"2026-10-15","time":"14:00 Asia/Taipei","event":"FY26 Q3 실적 발표·컨퍼런스콜","source":"https://investor.tsmc.com/english/financial-calendar"}]
+  "upcoming": [
+    {
+      "ticker": "TSM",
+      "date": "2026-10-15",
+      "time": "14:00 Asia/Taipei",
+      "event": "FY26 Q3 실적 발표·컨퍼런스콜",
+      "source": "https://investor.tsmc.com/english/financial-calendar"
+    }
+  ]
 }
