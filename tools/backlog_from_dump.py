@@ -288,6 +288,20 @@ def r_neosem(rep):
                 return b, 'USD_thousand', '외화(K$) 계약 1건.'
     raise ValueError('USD 합계 없음')
 
+def r_last_total(labels, unit, note=''):
+    """합계(또는 '계') 행의 마지막 칸 = 기말 수주잔고."""
+    def rule(rep):
+        t = rep['tables'][0]
+        rows = [r for r in t['rows'] if r and r[0].replace(' ', '') in labels]
+        if not rows:
+            raise ValueError('no total row')
+        b = num(rows[-1][-1])
+        if b is None:
+            raise ValueError('balance not disclosed')
+        return b, unit, note
+    return rule
+
+
 RULES = {
     '222800': (r_simmtech, '인쇄회로기판 공시 수주상황'),
     '353200': (r_pcb_amount([('억원', 'KRW_100m')]), 'PCB 공시 수주상황'),
@@ -314,6 +328,16 @@ RULES = {
     '089030': (r_techwing, '장비군(핸들러·디스플레이 장비) 수주잔고'),
     '089790': (r_jt, '번인 소터 등 장비 수주상황 합계'),
     '253590': (r_neosem, '외화(K$) 장비 계약 합계'),
+    '005070': (r_pcb_amount([('억원', 'KRW_100m'), ('백만원', 'KRW_million')], zero_ok=True), '공시된 양극활물질 등 공급계약 합계'),
+    '005420': (r_pcb_amount([('억원', 'KRW_100m'), ('백만원', 'KRW_million')], zero_ok=True), '공시된 양극활물질(코스모신소재) 등 공급계약 합계'),
+    '006110': (r_pcb_amount([('백만원', 'KRW_million')], default_unit='KRW_million', zero_ok=True), '압연·가공박 등 연간 수주상황 합계'),
+    '121600': (r_last_total(('합계',), 'KRW_thousand', '해외·국내 수주 합계'), '소재별 수주잔고 합계(2020~2021)'),
+    '222080': (r_last_total(('계',), 'KRW', '국내+국외 기말 수주잔고'), '전극공정 장비 등 기말 수주잔고(국내+국외)'),
+    '259630': (r_pcb_amount([('억원', 'KRW_100m'), ('백만원', 'KRW_million')], zero_ok=True), '이차전지 조립장비 수주상황 합계'),
+    '277880': (r_pcb_amount([('백만원', 'KRW_million')], zero_ok=True), '믹싱 시스템·공사 수주상황 합계'),
+    '290670': (r_pcb_amount([('백만원', 'KRW_million')], zero_ok=True), '전자석 탈철기 등 수주상황 합계'),
+    '299030': (r_pcb_amount([('백만원', 'KRW_million')], zero_ok=True), '이차전지 제조장비 수주상황 합계'),
+    '372170': (r_pcb_amount([('백만원', 'KRW_million')], zero_ok=True), '믹싱장비 및 시스템 수주상황 합계'),
 }
 # ---- 범위가 다른 구간: 본 시계열과 섞지 않고 별도 scope(차트에서 다른 색 시리즈)로 보존 ----
 def a_hdelectric(rep):
