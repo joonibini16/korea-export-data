@@ -19,7 +19,15 @@ OUT, STATUS = ROOT / 'company_segments.csv', ROOT / 'company_segments_status.jso
 REV = ['매출액', '매출', '수익(매출액)', '매출액(수익)', '영업수익', '외부고객으로부터의수익', '외부수익', '수익', '순매출액', '매출액(외부)', '외부매출', '총매출액', '총부문수익', '부문수익']
 OP = ['영업이익', '영업이익(손실)', '영업손익', '부문영업이익', '부문영업손익', '부문이익', '부문손익', '부문이익(손실)', '계속영업이익(손실)', '영업손실', '보고부문영업이익(손실)', '부문영업이익(손실)']
 UNIT = {'원': Decimal(1), '천원': Decimal(1000), '백만원': Decimal(10**6), '억원': Decimal(10**8)}
-TOTAL = re.compile(r'^(부문합계|합계|계|총계|연결|연결합계|연결후금액|연결재무제표|부문의합계합계|합계금액)$')
+TOTAL = re.compile(r'^(부문합계|합계|계|총계|연결|연결합계|연결후금액|연결재무제표|부문의합계합계|합계금액|기업전체총계|기업전체총계합계|소계|보고부문합계|보고부문계|부문계|부문의합계|연결후)$')
+BADNAME = re.compile(r'~|\d+년\d+월|^\(.*\d.*\)$|^3개월$|^누적$|비중|비율|이전하는재화|이전시기|^-$|^[\d,.]+$|기간에|^(당|전)(반|분)?기(말)?$|\((당|전)\)|^금액$')
+
+
+def clean(name):
+    n = re.sub(r'\(\*\d*\)|\(\*\)|\*\d*$', '', name)
+    n = re.sub(r'\((계속|중단)(영업)?\)', '', n)
+    n = re.sub(r'(사업부문|사업부|부문|사업)$', '', n) or n
+    return n
 ADJ = re.compile(r'조정|제거|내부거래|연결조정|중요한조정사항|상계')
 FIELDS = ['company_id', 'period', 'segment', 'role', 'cum_revenue', 'cum_op', 'q_revenue', 'q_op', 'unit', 'source', 'check']
 
@@ -90,6 +98,7 @@ def parse_table(rows, before):
         name = adj or next((c for c in reversed(cells) if c not in SKIPH), None)
         if not name: return None
         cols.append(name)
+    if any(BADNAME.search(x) and not TOTAL.match(x) and not ADJ.search(x) for x in cols): return None
     if any(len(x) > 25 or re.fullmatch(r'(당|전)?(기|반기|분기)(말)?|20\d\d.*|제\d+.*기.*|.*\((당|전)\)기.*|금액|비중|비율.*|[\d,.]+', x) for x in cols): return None
     idx = cum_idx if cum_idx else list(range(n))
     return [(cols[i], rv[i], ov[i]) for i in idx]
@@ -101,6 +110,7 @@ def unit_of(before):
 
 
 DEBUG = '--debug' in sys.argv
+FIN = {}
 
 
 def scan(r):
@@ -124,6 +134,13 @@ def scan(r):
                 out.append(dict(segment=name, role=role, rev=a * UNIT[unit], op=b * UNIT[unit]))
             else:
                 segs = [x for x in out if x['role'] == 'segment']
+                y, q = r['period'][:4], int(r['period'][-1])
+                ytd = [FIN.get((r['company_id'], f'{y}-Q{k}')) for k in range(1, q + 1)]
+                tot = next((x['rev'] for x in out if x['role'] == 'total'), None)
+                tot = tot if tot is not None else sum(x['rev'] for x in out if x['role'] != 'total')
+                if all(v is not None for v in ytd) and sum(ytd) > 0 and not (Decimal('0.7') <= tot / sum(ytd) <= Decimal('1.3')):
+                    continue  # 연결 매출과 크게 다르면 다른 표(별도·지역 등)로 보고 다음 후보 탐색
+                for x in out: x['segment'] = clean(x['segment']) if x['role'] == 'segment' else x['segment']
                 if len(segs) >= 2 or (len(segs) == 1 and any(x['role'] != 'segment' for x in out)):
                     if DEBUG: continue
                     return dict(company_id=r['company_id'], period=r['period'], url=u, rows=out, unit=unit)
@@ -138,6 +155,9 @@ def main():
     comps = [c for c in watch if (c['id'] in ids if ids else c['id'].isdigit())]
     with concurrent.futures.ThreadPoolExecutor(3) as pool:
         cats = list(pool.map(h.catalog, comps))
+    for x in csv.DictReader((ROOT / 'company_financials.csv').open(encoding='utf-8-sig')):
+        try: FIN[(x['company_id'], x['period'])] = Decimal(x['revenue_KRW'])
+        except Exception: pass
     todo = [r for c in cats for r in c.get('reports', [])]
     if DEBUG:
         todo = [r for c in cats for r in sorted(c.get('reports', []), key=lambda r: r['period'])[-1:] + sorted(c.get('reports', []), key=lambda r: r['period'])[-3:-2]]
