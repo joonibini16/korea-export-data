@@ -1,0 +1,64 @@
+{
+  "updated_at": "2026-10-14",
+  "method": "공식 IR 발표문·가이던스를 우선 비교합니다. 컨콜 발언은 공식 녹취록·준비 발언을 별도로 확인한 경우에만 컨콜로 표시합니다. 방향은 분석자의 해석이며 투자 권유가 아닙니다.",
+  "watchlist": [
+    {"ticker":"NVDA","name":"NVIDIA","sector":"AI 인프라·반도체"},
+    {"ticker":"AMD","name":"AMD","sector":"AI 인프라·반도체"},
+    {"ticker":"AVGO","name":"Broadcom","sector":"AI 인프라·반도체"},
+    {"ticker":"QCOM","name":"Qualcomm","sector":"AI 인프라·반도체"},
+    {"ticker":"TSM","name":"TSMC","sector":"파운드리·메모리"},
+    {"ticker":"MU","name":"Micron","sector":"파운드리·메모리"},
+    {"ticker":"ASML","name":"ASML","sector":"반도체 장비"},
+    {"ticker":"AMAT","name":"Applied Materials","sector":"반도체 장비"},
+    {"ticker":"LRCX","name":"Lam Research","sector":"반도체 장비"},
+    {"ticker":"KLAC","name":"KLA","sector":"반도체 장비"},
+    {"ticker":"8035.T","name":"Tokyo Electron","sector":"반도체 장비"},
+    {"ticker":"MSFT","name":"Microsoft","sector":"하이퍼스케일러"},
+    {"ticker":"GOOGL","name":"Alphabet","sector":"하이퍼스케일러"},
+    {"ticker":"AMZN","name":"Amazon","sector":"하이퍼스케일러"},
+    {"ticker":"META","name":"Meta","sector":"하이퍼스케일러"},
+    {"ticker":"ORCL","name":"Oracle","sector":"하이퍼스케일러"},
+    {"ticker":"ETN","name":"Eaton","sector":"전력·데이터센터"},
+    {"ticker":"VRT","name":"Vertiv","sector":"전력·데이터센터"},
+    {"ticker":"SU.PA","name":"Schneider Electric","sector":"전력·데이터센터"},
+    {"ticker":"GEV","name":"GE Vernova","sector":"전력·데이터센터"},
+    {"ticker":"CATL","name":"CATL","sector":"배터리·소재"},
+    {"ticker":"6752.T","name":"Panasonic","sector":"배터리·소재"},
+    {"ticker":"OR.PA","name":"L'Oréal","sector":"소비재·화장품"},
+    {"ticker":"EL","name":"Estée Lauder","sector":"소비재·화장품"},
+    {"ticker":"2897.T","name":"Nissin Foods","sector":"식품"},
+    {"ticker":"LLY","name":"Eli Lilly","sector":"바이오·의료"},
+    {"ticker":"NVO","name":"Novo Nordisk","sector":"바이오·의료"}
+  ],
+  "events": [
+    {
+      "ticker":"NVDA", "period":"FY27 Q2", "date":"2026-08-26", "evidence":"공식 IR·컨콜 녹취", "direction":"혼재", "tone":"컨콜에서 FY28 매출이 전년 대비 약 70% 성장할 수 있다는 잠정 전망을 제시. 수요보다 공급 제약이 크다고 설명. 동시에 메모리 가격 상승으로 총이익률 전망을 낮춤.",
+      "facts":"Q2 매출 $96.221bn, 데이터센터 $89.0bn. 직전 Q1 발표의 Q2 매출 전망 중심값 $91.0bn을 상회.",
+      "guidance":"FY27 Q3 매출 $108.0bn ±2%, 총이익률 74.0% ±0.5%p. 컨콜에서 Q4 총이익률 71~72%, FY28 72~73%, FY28 매출 약 +70% YoY 잠정 전망. 중국 데이터센터 컴퓨트 매출 미반영.",
+      "interpretation":"매출과 장기 수요 가시성은 개선되지만, 메모리 원가 상승으로 마진 경로는 악화. 한국 HBM 공급사에는 가격 신호가 될 수 있으나 엔비디아의 마진 하락을 그대로 공급사 실적으로 환산하면 안 됨.",
+      "watch":"FY27 Q3 매출 $108bn, Q4 총이익률 71~72%, Vera Rubin 공급 확대, 공급 제약 완화 속도.",
+      "source":"https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Second-Quarter-Fiscal-2027/",
+      "prior_source":"https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-First-Quarter-Fiscal-2027/default.aspx",
+      "call_source":"https://investor.nvidia.com/files/content_files/TRANSCRIPT_-NVIDIA-Corp-NVDA-US-Q2-2027-Earnings-Call-26-August-2026-5_00-PM-ET.pdf"
+    },
+    {
+      "ticker":"MU", "period":"FY26 Q4", "date":"2026-09-30", "evidence":"공식 IR 실적발표", "direction":"개선", "tone":"경영진이 FY27 실적이 FY26보다 더 강할 것으로 전망. 공식 컨콜 Q&A 확인 전이므로 Q&A 톤 평가는 보류.",
+      "facts":"Q4 매출 $54.229bn. 직전 Q3 발표의 Q4 매출 전망 중심값 $50.0bn을 상회.",
+      "guidance":"다음 FY27 Q1 매출 전망 $61.5bn ±$1.5bn, 비GAAP 총이익률 약 86.25%.",
+      "interpretation":"전망 초과 실적과 차기 분기 매출 증가 전망은 메모리 업황 개선 신호. 다음 분기 총이익률은 Q4 비GAAP 실제 87.0%보다 낮아 수익성 변곡 여부는 별도 확인.",
+      "watch":"FY27 Q1 매출 가이던스, HBM 공급 계약·생산능력, 비GAAP 총이익률 변화.",
+      "source":"https://investors.micron.com/news/press-release/2026/Micron-Technology-Inc--Reports-Record-Fiscal-Fourth-Quarter-and-Full-Year-2026-Results/default.aspx",
+      "prior_source":"https://investors.micron.com/news/press-release/2026/Micron-Technology-Inc--Reports-Record-Results-for-the-Third-Quarter-of-Fiscal-2026/default.aspx"
+    },
+    {
+      "ticker":"AVGO", "period":"FY26 Q3", "date":"2026-09-02", "evidence":"공식 IR 실적발표", "direction":"개선", "tone":"맞춤형 AI 가속기·네트워킹 수요가 강하며 Q4 성장 가속을 예상한다는 경영진 발언. 컨콜 Q&A의 별도 변화는 미평가.",
+      "facts":"Q3 매출 $29.591bn, AI 반도체 매출 $16.7bn. 직전 Q2 발표 당시 Q3 AI 반도체 전망 $16.0bn을 상회.",
+      "guidance":"FY26 Q4 매출 전망 약 $34.8bn, AI 반도체 약 $21.7bn, 비GAAP 영업이익률 약 66%.",
+      "interpretation":"AI 반도체 수요 전망이 전분기 대비 확대. 전체 매출 성장 전망과 달리 비GAAP 영업이익률은 전년 동기 수준의 66%로 제시돼 믹스 변화를 확인할 필요.",
+      "watch":"Q4 AI 반도체 $21.7bn, 비GAAP 영업이익률 66%, 신규 고객 수주 확대 여부.",
+      "source":"https://investors.broadcom.com/news-releases/news-release-details/broadcom-inc-announces-third-quarter-fiscal-year-2026-financial",
+      "prior_source":"https://investors.broadcom.com/news-releases/news-release-details/broadcom-inc-announces-second-quarter-fiscal-year-2026-financial"
+    }
+  ],
+  "upcoming": [{"ticker":"TSM","date":"2026-10-15","time":"14:00 Asia/Taipei","event":"FY26 Q3 실적 발표·컨퍼런스콜","source":"https://investor.tsmc.com/english/financial-calendar"}]
+}
