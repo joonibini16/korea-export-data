@@ -74,7 +74,8 @@ def compute_group(market, sector, prices, window=540):
         if code not in data or not prices[code]:continue
         ds=data[code].dropna();d=ds.index[-1];c=float(ds.iloc[-1]);m=sma.at[d,code];h=high.at[d,code];l=low.at[d,code]
         stock.append(dict(market=market,sector=sector,code=code,name='',date=d,close=c,sma60=round(float(m),3) if math.isfinite(m) else '',above60=int(c>m) if math.isfinite(m) else '',high250=round(float(h),3) if math.isfinite(h) else '',low250=round(float(l),3) if math.isfinite(l) else '',new_high=int(c>=h) if math.isfinite(h) else '',new_low=int(c<=l and c<h) if math.isfinite(l) and math.isfinite(h) else ''))
-    if not out:raise ValueError('no eligible 60-day observations')
+    # Newly listed sectors can have valid closes before any member has 55 sessions.
+    # Keep their stock snapshots; the historical breadth series begins when eligible.
     return out,stock
 
 def choose(groups,status,limit):
@@ -140,7 +141,7 @@ def main():
         for r in records:
             item=next((s for s in individual if s['code']==r['code']),None)
             if item:item['name']=r['name'];stocks[market,r['code']]=item
-        status['groups'][key]={'market':market,'sector':sector,'target':total,'success':verified,'unavailable':no_history,'members':members(records),'latest':observations[-1]['date'],'updated_at':status['updated_at'],'observations':len(observations)}
+        status['groups'][key]={'market':market,'sector':sector,'target':total,'success':verified,'unavailable':no_history,'members':members(records),'latest':observations[-1]['date'] if observations else max(item['date'] for item in individual),'updated_at':status['updated_at'],'observations':len(observations)}
         status['attempts'][key]=0
         print('OK',market,sector,verified,total,flush=True)
     # Delete delisted company from the *current* constituents table; retain historical sector series.

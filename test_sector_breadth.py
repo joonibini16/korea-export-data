@@ -41,4 +41,12 @@ class SectorTest(unittest.TestCase):
   rows,_=compute_group('KOSDAQ','example',{'A':dict(zip(dates,values))})
   self.assertEqual(rows[-1]['n250'],1)
   self.assertEqual(rows[-1]['hli'],0)
+ def test_new_listing_keeps_price_without_a_breadth_denominator(self):
+  from datetime import datetime,timedelta,timezone
+  today=datetime.now(timezone(timedelta(hours=9))).date()
+  dates=[(today-timedelta(days=29-i)).isoformat() for i in range(30)]
+  rows,stocks=compute_group('KOSDAQ','new industry',{'A':dict(zip(dates,range(100,130)))})
+  self.assertEqual(rows,[])
+  self.assertEqual(len(stocks),1)
+  self.assertEqual(stocks[0]['sma60'],'')
 if __name__=='__main__':unittest.main()
