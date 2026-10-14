@@ -16,7 +16,7 @@
  <div class="card">컨센 괴리 방향 적중률<strong id="cDir">—</strong><span class="muted">예측이 컨센보다 높/낮았을 때 실제도 같은 쪽</span></div>
 </div>
 <section class="panel"><div class="controls"><label>예측 방식<select id="model"><option value="qoq-elasticity-v1">수출 기반 (직전 분기 탄력도)</option><option value="inventory-qoq-v2">재고 기반 (직전 분기 재고 변화 탄력도)</option><option value="combined-verdict-v1">종합 판단 (수출+재고 가중 · 상회 확률)</option><option value="inventory-lag1-v1">재고 기반 v1 (YoY 회귀, 폐기)</option></select></label><label>분기<select id="period"></select></label><label>비교 시점<select id="vintage"><option value="last">발표 전 마지막 스냅샷</option><option value="m1">1개월 수집 시점</option><option value="m2">2개월 수집 시점</option><option value="m3">3개월 모두 수집 시점</option></select></label></div>
-<p class="muted">실적 발표일은 네이버 데이터에서 해당 분기가 추정치(E)에서 실적으로 바뀐 첫 스냅샷 날짜로 봅니다. 실제 매출은 공시 수집 매출(연결)을 우선 쓰고, 없으면 네이버 실적을 씁니다.</p>
+<p class="muted">목록은 발표 대기 기업 중 실적 상회 가능성이 높은 순(통합 판단은 상회 확률, 다른 예측 방식은 예측 ÷ 당시 컨센서스 괴리가 큰 순)으로 정렬하고, 실적이 확인된 건은 그 아래 오차가 작은 순으로 둡니다. 실적 발표일은 네이버 데이터에서 해당 분기가 추정치(E)에서 실적으로 바뀐 첫 스냅샷 날짜로 봅니다. 실제 매출은 공시 수집 매출(연결)을 우선 쓰고, 없으면 네이버 실적을 씁니다.</p>
 <div class="table"><table><thead><tr><th>업체</th><th>분기</th><th>스냅샷</th><th>수집 월</th><th>예측</th><th>당시 컨센서스</th><th>예측 vs 컨센</th><th>실제 매출</th><th>예측 오차</th><th>컨센 오차</th><th>더 가까운 쪽</th><th>괴리 방향</th></tr></thead><tbody id="rows"></tbody></table></div></section>
 <section class="panel"><h2>업체별 누적 성적</h2><div class="table"><table><thead><tr><th>업체</th><th>확인 분기 수</th><th>예측 평균 오차</th><th>컨센 평균 오차</th><th>예측이 더 가까운 비율</th><th>괴리 방향 적중</th></tr></thead><tbody id="byCompany"></tbody></table></div></section>
 <section class="panel"><h2 id="tTitle">예측 경로</h2><div class="controls"><label>업체 · 분기<select id="pick"></select></label></div><div class="chart"><canvas id="path"></canvas></div><p class="muted">스냅샷마다 저장된 예측(네모)과 컨센서스(X)가 실적 발표 전까지 어떻게 움직였는지, 실제 매출(가로선)과 비교합니다.</p></section>
@@ -42,9 +42,12 @@ function evaluate(r){const a=actual.get(r.company_id+'|'+r.period),f=num(r.forec
 function render(){const period=el('period').value,mode=el('vintage').value;el('rows').replaceChildren();
  const model=el('model').value;const groups=new Map();for(const r of log.filter(r=>(r.model||'qoq-elasticity-v1')===model)){const k=r.company_id+'|'+r.period;if(!groups.has(k))groups.set(k,[]);groups.get(k).push(r);}
  const all=[];for(const [k,rows] of groups){rows.sort((a,b)=>a.snapshot_date.localeCompare(b.snapshot_date));const s=pickSnapshot(rows,mode);if(s)all.push({s,e:evaluate(s)});}
- const shown=all.filter(x=>period==='all'||x.s.period===period).sort((a,b)=>(b.e.ef??-1)-(a.e.ef??-1));
+ const shown=all.filter(x=>period==='all'||x.s.period===period).sort((a,b)=>{// 발표 대기 먼저, 실적 상회 가능성 높은 순(상회 확률 → 없으면 예측÷컨센 괴리), 그다음 실적 확인 건
+  const pend=x=>x.e.a==null?0:1;if(pend(a)!==pend(b))return pend(a)-pend(b);
+  const sc=x=>{const p=num(x.s.prob_beat_pct);if(p!=null)return p;return x.e.f!=null&&x.e.c?(x.e.f/x.e.c-1)*100:-1e9;};
+  return pend(a)===0?sc(b)-sc(a):(a.e.ef??1e9)-(b.e.ef??1e9);});
  for(const {s,e} of shown){const tr=document.createElement('tr');td(tr,s.name);td(tr,s.period);td(tr,s.snapshot_date);td(tr,s.months_collected.split(' ').length+'개월');
-  td(tr,e.f!=null?e.f.toLocaleString()+'억':(s.status_note||'—'));td(tr,e.c!=null?e.c.toLocaleString()+'억':'—');td(tr,e.f!=null&&e.c?pct((e.f/e.c-1)*100):'—');
+  td(tr,e.f!=null?e.f.toLocaleString()+'억':(s.status_note||'—'));td(tr,e.c!=null?e.c.toLocaleString()+'억':'—');td(tr,(e.f!=null&&e.c?pct((e.f/e.c-1)*100):'—')+(num(s.prob_beat_pct)!=null?' · 상회 '+Math.round(num(s.prob_beat_pct))+'%':''));
   td(tr,e.a!=null?Math.round(e.a).toLocaleString()+'억':'발표 대기','' + (e.a==null?'pending':''));td(tr,e.ef!=null?e.ef.toFixed(1)+'%':'—');td(tr,e.ec!=null?e.ec.toFixed(1)+'%':'—');
   td(tr,e.closer||'—',e.closer==='예측'?'win':e.closer==='컨센'?'lose':'');td(tr,e.dir==null?'—':e.dir?'적중':'빗나감',e.dir?'win':e.dir===false?'lose':'');el('rows').append(tr);}
  const done=shown.filter(x=>x.e.ef!=null&&x.e.ec!=null),avg=a=>a.length?a.reduce((s,v)=>s+v,0)/a.length:null,dirs=shown.filter(x=>x.e.dir!=null);
