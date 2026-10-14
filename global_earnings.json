@@ -229,12 +229,12 @@
       "ticker": "MU",
       "period": "FY26 Q4",
       "date": "2026-09-30",
-      "evidence": "공식 IR 실적발표",
+      "evidence": "공식 IR·컨콜 준비 발언",
       "direction": "개선",
       "tone": "경영진이 FY27 실적이 FY26보다 더 강할 것으로 전망. 공식 컨콜 Q&A 확인 전이므로 Q&A 톤 평가는 보류.",
       "headline": "메모리 매출 전망 초과와 차기 분기 성장 지속, 마진은 소폭 낮게 제시",
       "estimate_signal": "매출 추정 상향 압력 · 마진 추가 확대는 보류",
-      "call_coverage": "공식 IR 발표문 확인 · 컨콜 Q&A 미확인",
+      "call_coverage": "공식 컨콜 준비 발언 확인 · Q&A 미확인",
       "changes": [
         {
           "title": "매출·가이던스",
@@ -266,38 +266,52 @@
       "prior_source": "https://investors.micron.com/news/press-release/2026/Micron-Technology-Inc--Reports-Record-Results-for-the-Third-Quarter-of-Fiscal-2026/default.aspx",
       "call_topics": [
         {
-          "topic": "메모리 매출과 성장",
-          "source_part": "공식 IR 발표문",
+          "topic": "수요·공급의 장기 전망",
+          "source_part": "준비 발언",
           "points": [
-            "FY26 Q4 매출은 $54.229bn으로 직전 분기의 $41.456bn에서 증가했다. FY27 Q1 매출 전망은 $61.5bn ±$1.5bn이다."
+            "경영진은 직전 컨콜보다 업계 수요가 강해졌으며 2027~2028년 메모리와 스토리지의 수급이 2026년보다 더 빠듯해질 것으로 봤다.",
+            "DRAM과 NAND 모두 2027~2028년에 공급 제약을 예상했고, 언제 균형을 되찾을지는 보이지 않는다고 설명했다."
           ],
-          "implication": "다음 분기 매출 증가 전망의 실현 여부 확인."
+          "implication": "수요 강화의 지속 기간과 신규 공급이 실제 출하로 이어지는 시점 확인."
         },
         {
-          "topic": "데이터센터 수요",
-          "source_part": "공식 IR 발표문",
+          "topic": "HBM 계약과 가격",
+          "source_part": "준비 발언",
           "points": [
-            "코어 데이터센터 사업부 매출은 $18.002bn으로 직전 분기 $11.524bn에서 증가했다. 클라우드 메모리 사업부는 $16.283bn을 기록했다."
+            "2027년 HBM 비트 공급의 대부분에 대한 계약을 마쳤고, 전년 대비 상당한 가격 인상을 반영했다고 밝혔다. HBM4 증산을 진행하며 NVIDIA와 차세대 맞춤형 HBM4E를 협업 중이라고 설명했다."
           ],
-          "implication": "AI 관련 메모리 수요가 두 사업부의 매출에 어떻게 반영되는지 추적."
+          "implication": "HBM 물량 계약의 인도와 가격·마진 반영을 분리해 추적."
         },
         {
-          "topic": "제품과 공급 확대",
-          "source_part": "공식 IR 발표문",
+          "topic": "장기 고객계약·선수금",
+          "source_part": "준비 발언",
           "points": [
-            "서버용 DDR5 모듈의 고객 검증을 완료했고, 데이터센터의 KV-cache 용 SSD 제품을 고객에게 출하하기 시작했다. 서버 LPDDR SOCAMM 매출은 전분기 대비 두 배 이상이었다."
+            "다년간 구매 의무가 있는 전략적 고객계약 26건을 체결했다. 회사 추정으로 2030년까지 매출의 35%를 넘는 부분에 해당하며 고객의 금전적 약정은 $32bn으로 늘었다.",
+            "CFO는 확정 가격 틀이 있는 계약만 집계한 잔여이행의무(RPO)가 약 $150bn이라고 밝혔다. 전체 예상 매출과 같은 개념은 아니다."
           ],
-          "implication": "제품 검증과 출하가 다음 분기 매출에 이어지는지 점검."
+          "implication": "계약 금액을 해당 분기 매출로 곧바로 환산하지 않고 계약 이행과 가격 조건을 확인."
         },
         {
-          "topic": "수익성 경로",
-          "source_part": "공식 IR 발표문",
+          "topic": "생산능력과 투자 시점",
+          "source_part": "준비 발언",
           "points": [
-            "FY26 Q4 비GAAP 총이익률은 87.0%였고 FY27 Q1 전망은 약 86.25%다. 매출 확대 전망과 별도로 마진은 소폭 낮게 제시됐다."
+            "미국 Idaho 첫 공장 웨이퍼 생산은 2027년 중반, 싱가포르 HBM 후공정 초기 생산은 2027년 초로 예상했다. 새 생산시설은 첫 웨이퍼 생산 이후 몇 분기에 걸쳐 점진적으로 매출 기여가 커진다.",
+            "FY27 상반기 설비투자는 약 $25bn을 전망했고, 하반기는 더 높을 것으로 봤다. 증가분의 다수는 후반기 클린룸 확보를 위한 건설 투자다."
           ],
-          "implication": "매출 증가율만으로 이익 증가율을 추정하지 않음."
+          "implication": "착공·초기 생산·실제 수율과 양산 출하 시점을 각각 확인."
+        },
+        {
+          "topic": "DRAM·NAND 가격과 마진",
+          "source_part": "준비 발언",
+          "points": [
+            "Q4 DRAM 매출은 $39.8bn, NAND는 $14.1bn이었다. 전분기 대비 DRAM 가격은 10%대 후반, NAND 가격은 약 30% 올랐다는 CFO 설명이다.",
+            "Q1 비GAAP 총이익률 약 86.25%를 FY27의 저점으로 예상했다. Q4에 결정한 성과급 일부가 재고 원가를 거쳐 Q1 비용에 반영된다는 설명이다."
+          ],
+          "implication": "Q1 이후 마진 개선 여부와 가격 상승 둔화·원가 변동을 함께 확인."
         }
-      ]
+      ],
+      "call_source": "https://s25.q4cdn.com/621799436/files/doc_financials/2026/q4/Q4-FY26-Prepared-Remarks.pdf",
+      "call_source_label": "공식 컨콜 준비 발언"
     },
     {
       "ticker": "AVGO",
