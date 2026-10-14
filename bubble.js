@@ -140,17 +140,34 @@ function levChart(id,labels,data,color,unit,dec,mark,grp){const v=data.filter(x=
   options:{responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:'index',intersect:false},plugins:{legend:{display:false},vline:{i:mark},tooltip:{callbacks:{label:x=>`${x.parsed.y.toLocaleString(undefined,{maximumFractionDigits:dec})} ${unit}`}}},
    scales:{x:{ticks:{maxTicksLimit:8,callback:function(v){const s=this.getLabelForValue(v);return levRange==='ytd'?Number(s.slice(5,7))+'월':s.slice(2,7).replace('-','.');}},grid:{display:false}},y:{afterFit:a=>{a.width=52;},ticks:{maxTicksLimit:5},grid:{color:'rgba(148,163,184,.12)'}}}}});
  if(grp&&typeof SYNC!=='undefined'&&charts[id]){const ch=charts[id];ch.$sg=grp;SYNC.groups[grp]=(SYNC.groups[grp]||[]).filter(c=>c!==ch&&c.canvas.id!==id&&c.canvas.isConnected);SYNC.groups[grp].push(ch);}}
-function renderLev(){if(!KF.length){el('levErr').hidden=false;return;}el('levErr').hidden=true;
+
+// 여러 계열 레버리지 차트(오실레이터 막대·MDD 비교선), 같은 세로선 연동 그룹에 등록
+function levMulti(id,labels,sets,unit,grp,yopt){chart(id,{data:{labels,datasets:sets.map(x=>({type:x.type||'line',label:x.label,data:x.data,borderColor:x.color,backgroundColor:x.bg||x.color,borderWidth:x.w??1.8,pointRadius:0,tension:0,spanGaps:true,fill:x.fill??false}))},plugins:grp&&typeof syncPlugin!=='undefined'?[syncPlugin]:[],
+  options:{responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:'index',intersect:false},plugins:{legend:{display:false},tooltip:{callbacks:{label:x=>`${x.dataset.label} ${x.parsed.y==null?'—':x.parsed.y.toFixed(1)}${unit}`}}},
+   scales:{x:{ticks:{maxTicksLimit:8,callback:function(v){const s=this.getLabelForValue(v);return levRange==='ytd'?Number(s.slice(5,7))+'월':s.slice(2,7).replace('-','.');}},grid:{display:false}},y:Object.assign({afterFit:a=>{a.width=52;},ticks:{maxTicksLimit:5,callback:v=>v+unit},grid:{color:'rgba(148,163,184,.12)'}},yopt||{})}}});
+ if(grp&&typeof SYNC!=='undefined'&&charts[id]){const ch=charts[id];ch.$sg=grp;SYNC.groups[grp]=(SYNC.groups[grp]||[]).filter(c=>c!==ch&&c.canvas.id!==id&&c.canvas.isConnected);SYNC.groups[grp].push(ch);}}
+// 신용잔고 오실레이터 = (5일 평균 ÷ 20일 평균 − 1)×100, MDD = 전체 기간 최고치 대비 하락률(%)
+function levDerived(ck,sym){const all=KF.filter(x=>x[ck]!=null),cv=all.map(x=>x[ck]/1e6),out=new Map(),ix=ser(sym);let pc=-Infinity,pi=-Infinity;
+ const ma=(i,n)=>i+1<n?null:cv.slice(i-n+1,i+1).reduce((a,b)=>a+b,0)/n;
+ all.forEach((x,i)=>{const m5=ma(i,5),m20=ma(i,20);pc=Math.max(pc,cv[i]);const iv=at(ix,x.date)?.v??null;if(iv!=null)pi=Math.max(pi,iv);
+  out.set(x.date,{osc:m5!=null&&m20?(m5/m20-1)*100:null,cmdd:(cv[i]/pc-1)*100,imdd:iv!=null&&pi>0?(iv/pi-1)*100:null});});return out;}
+const lvX={};function renderLev(){if(!KF.length){el('levErr').hidden=false;return;}el('levErr').hidden=true;
  const S=levStart(),R=KF.filter(x=>x.date>=S&&x.deposit!=null),labels=R.map(x=>x.date);
  for(const [k,sym,ck,nm] of [['k','^KS11','credit_kospi','코스피'],['q','^KQ11','credit_kosdaq','코스닥']]){
   const ix=ser(sym),idx=labels.map(d=>at(ix,d)?.v??null),cr=R.map(x=>x[ck]!=null?x[ck]/1e6:null),dep=R.map(x=>x.deposit/1e6),ra=R.map((x,i)=>cr[i]!=null?cr[i]/dep[i]*100:null);
   let hi=-1,hv=-Infinity;idx.forEach((v,i)=>{if(v!=null&&v>hv){hv=v;hi=i;}});const lastI=ix.at(-1);
   const G='LEV'+k;if(typeof SYNC!=='undefined'){SYNC.pin[G]=null;SYNC.last[G]=null;SYNC.groups[G]=[];const f=(v,d)=>v==null?'—':v.toLocaleString(undefined,{maximumFractionDigits:d});
-   SYNC.noteFn[G]=i=>`${labels[i]} · ${nm} ${f(idx[i],0)} · 신용융자 ${f(cr[i],2)}조 · 고객예탁금 ${f(dep[i],1)}조 · 신용÷예탁금 ${f(ra[i],2)}%`;const nt=el('syncNote'+G);if(nt){nt.classList.remove('pinned');}}
+   SYNC.noteFn[G]=i=>{const dv=levDerived.__c?.[G]?.get(labels[i]);const p=v=>v==null?'—':(v>0?'+':'')+v.toFixed(1)+'%';return `${labels[i]} · ${nm} ${f(idx[i],0)} · 신용융자 ${f(cr[i],2)}조 · 고객예탁금 ${f(dep[i],1)}조 · 신용÷예탁금 ${f(ra[i],2)}% · 오실레이터 ${p(dv?.osc)} · MDD 지수 ${p(dv?.imdd)} / 신용 ${p(dv?.cmdd)}`;};const nt=el('syncNote'+G);if(nt){nt.classList.remove('pinned');}}
   levChart('lev'+k+'I',labels,idx,LC.idx,'pt',0,hi,G);levChart('lev'+k+'C',labels,cr,LC.cr,'조원',1,hi,G);levChart('lev'+k+'D',labels,dep,LC.dep,'조원',1,hi,G);levChart('lev'+k+'R',labels,ra,LC.ratio,'%',1,hi,G);
+  const DV=levDerived(ck,sym);(levDerived.__c=levDerived.__c||{})[G]=DV;const osc=labels.map(d=>DV.get(d)?.osc??null),cm=labels.map(d=>DV.get(d)?.cmdd??null),im=labels.map(d=>DV.get(d)?.imdd??null);
+  levMulti('lev'+k+'O',labels,[{type:'bar',label:'오실레이터',data:osc,color:'#f59e0b',bg:osc.map(v=>v>=0?'rgba(239,91,69,.8)':'rgba(79,127,240,.8)'),w:0}],'%',G);
+  levMulti('lev'+k+'M',labels,[{label:nm+' MDD',data:im,color:LC.idx,w:2},{label:'신용잔고 MDD',data:cm,color:LC.cr,w:2}],'%',G,{max:0});
+  {const lo=osc.filter(v=>v!=null).at(-1),li2=im.filter(v=>v!=null).at(-1),lc=cm.filter(v=>v!=null).at(-1),f1=v=>v==null?'—':(v>0?'+':'')+v.toFixed(1)+'%';
+   const minI=Math.min(...im.filter(v=>v!=null)),minC=Math.min(...cm.filter(v=>v!=null));
+   el('lev'+k+'OT').textContent=`5일÷20일 평균 −1 · 최근 ${f1(lo)}`;el('lev'+k+'MT').textContent=`최근 지수 ${f1(li2)} · 신용 ${f1(lc)}`;el('lev'+k+'MT').title=`구간 최저 지수 ${f1(minI)} / 신용 ${f1(minC)}`;lvX[k]=`오실레이터 = 신용잔고 5일 평균 ÷ 20일 평균 − 1(+면 빚투 증가 속도가 빨라지는 중, −면 상환·반대매매로 줄어드는 중). MDD = 2015년 이후 최고치 대비 하락률. 구간 최저: 지수 ${f1(minI)} · 신용 ${f1(minC)}. 지수보다 신용잔고 MDD가 덜 빠졌으면 레버리지가 아직 덜 정리된 것, 더 빠졌으면 디레버리징이 진행된 것.`;}
   const L=R.at(-1),li=labels.length-1;el('lev'+k+'H').innerHTML='';const parts=[[L.date,'#e2e8f0'],[nm+' '+(idx[li]??0).toLocaleString(undefined,{maximumFractionDigits:0}),LC.idx],['신용융자 '+cr[li].toFixed(1)+'조',LC.cr],['고객예탁금 '+dep[li].toFixed(1)+'조',LC.dep],['신용 ÷ 예탁금 '+ra[li].toFixed(1)+'%',LC.ratio]];
   parts.forEach(([t,c],i)=>{const sp=document.createElement('span');sp.textContent=(i?' · ':'')+t;sp.style.color=c;if(!i)sp.style.fontWeight='700';el('lev'+k+'H').append(sp);});
-  el('lev'+k+'N').textContent=`주황 점선 = 구간 ${nm} 고점 (${labels[hi]||'—'})`+(lastI&&lastI.d>L.date?` · ${nm} 최근 ${lastI.d.slice(5).replace('-','/')} ${lastI.v.toLocaleString(undefined,{maximumFractionDigits:0})}`:'');}
+  el('lev'+k+'N').textContent=(lvX[k]?lvX[k]+' ':'')+`주황 점선 = 구간 ${nm} 고점 (${labels[hi]||'—'})`+(lastI&&lastI.d>L.date?` · ${nm} 최근 ${lastI.d.slice(5).replace('-','/')} ${lastI.v.toLocaleString(undefined,{maximumFractionDigits:0})}`:'');}
  const fsr=R.map(x=>x.forced_sale!=null?x.forced_sale/100:null),uns=R.map(x=>x.unsettled!=null?x.unsettled/100:null),fr=R.map(x=>x.forced_ratio??null);
  chart('levF',{data:{labels,datasets:[{type:'bar',label:'반대매매 금액 (억원)',data:fsr,backgroundColor:'rgba(239,91,69,.75)',yAxisID:'y',order:2},{type:'line',label:'미수금 대비 반대매매 비중 (%)',data:fr,borderColor:'rgba(251,191,36,.55)',backgroundColor:'rgba(251,191,36,.55)',borderWidth:1,pointRadius:0,yAxisID:'y1',order:1}]},
   options:{responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:'index',intersect:false},plugins:{legend:{position:'bottom'}},scales:{x:{ticks:{maxTicksLimit:10},grid:{display:false}},y:{title:{display:true,text:'억원'}},y1:{position:'right',grid:{display:false},title:{display:true,text:'%'}}}}});
