@@ -184,8 +184,9 @@ def main():
                   segments=sorted({x['segment'] for p in got for x in by[(cid, p)]['rows'] if x['role'] == 'segment'}))
         if not got:
             st['reason'] = next((r.get('reason') or r.get('error') for r in res if r['company_id'] == cid), '보고서 없음')
-            # 이번에 못 읽으면 기존 값 유지
-            rows += old.get(cid, []); status[cid] = st; continue
+            # 보고서를 읽다 오류가 난 경우에만 기존 값 유지(표가 없다고 확인된 경우는 비움)
+            if any(r.get('error') for r in res if r['company_id'] == cid): rows += old.get(cid, [])
+            status[cid] = st; continue
         for p in got:
             rep = by[(cid, p)]; y, q = p[:4], int(p[-1])
             prev = by.get((cid, f'{y}-Q{q-1}')) if q > 1 else None
