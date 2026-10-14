@@ -37,7 +37,7 @@
    <p class="muted" id="dcPeakNote"></p></div>
    <div class="dc-peak"><h3>닷컴버블 비교 ② 중간 조정 정렬 · 코스피 고점 = 닷컴버블 중 1998-07-20 고점(LTCM 조정 직전) = 100 (로그)</h3><div class="chart" style="height:340px"><canvas id="dcMid"></canvas></div>
    <p class="muted" id="dcMidNote"></p></div>
-   <p class="muted">참고용 비교입니다(예측 아님). 나스닥 종합 1995-01-03, 코스피 ${startTxt}을 강세장 시작으로 맞췄습니다(버튼으로 변경). 낙폭 그래프의 회색 선은 1998년 LTCM 사태 때 나스닥 중간 조정(−30%)으로, 현재 하락이 '버블 정점 이후'(2000년형)인지 '상승 중간 조정'(1998년형)인지 함께 비교하기 위한 것입니다. 가로축은 시작(또는 고점) 이후 경과 시간이라 실제 날짜가 다릅니다. 닷컴은 이익 없는 성장주가 주도했고, 현재 코스피는 반도체 실적 증가가 동반된다는 차이가 있습니다. 출처: 나스닥 Yahoo Finance(^IXIC), 코스피 market_daily.csv(매일 갱신).</p>`;
+   <p class="muted">참고용 비교입니다(예측 아님). 나스닥 종합 1995-01-03, 코스피 ${startTxt}을 강세장 시작으로 맞췄습니다(버튼으로 변경). 가로축은 시작(또는 고점) 이후 경과 시간이라 실제 날짜가 다릅니다. 닷컴은 이익 없는 성장주가 주도했고, 현재 코스피는 반도체 실적 증가가 동반된다는 차이가 있습니다. 출처: 나스닥 Yahoo Finance(^IXIC), 코스피 market_daily.csv(매일 갱신).</p>`;
   charts.forEach(c=>c.destroy());charts=[];
   const lineDS=(label,data,color,w=2)=>({label,data,borderColor:color,backgroundColor:color,borderWidth:w,pointRadius:0,tension:0,parsing:false});
   const now=(a,key,lab)=>({label:lab,data:[a],borderColor:'#fbbf24',backgroundColor:'#fbbf24',pointRadius:5,showLine:false,parsing:false});
@@ -60,7 +60,7 @@
      options:{...base,plugins:{...base.plugins,tooltip:{callbacks:{label:t=>`${t.dataset.label}: 고점 ${t.parsed.x>=0?'+':''}${Math.round(t.parsed.x)}일 · ${t.parsed.y.toFixed(1)}`}}},scales:{x:{type:'linear',min:-1500,max:1000,title:{display:true,text:'고점 대비 경과일 (음수 = 고점 전)'}},y:{type:'logarithmic',min:15,max:300,title:{display:true,text:'고점 = 100'}}}}});}
    mk('dcPeak',{type:'line',data:{datasets:[lineDS('닷컴버블 나스닥 (2000-03-10 정점 = 100)',Np.filter(x=>x.x>=-1500&&x.x<=1000).map(x=>({x:x.x,y:x.y})),'#d4a017'),lineDS('코스피 (고점 '+kP.d+')',Kp.filter(x=>x.x>=-1500).map(x=>({x:x.x,y:x.y})),'#ef4444',2.5),now({x:kN.x,y:kN.y},'','현재')]},
     options:{...base,plugins:{...base.plugins,tooltip:{callbacks:{label:t=>`${t.dataset.label}: 고점 ${t.parsed.x>=0?'+':''}${Math.round(t.parsed.x)}일 · ${t.parsed.y.toFixed(1)}`}}},scales:{x:{type:'linear',min:-1500,max:1000,title:{display:true,text:'고점 대비 경과일 (음수 = 고점 전)'}},y:{type:'logarithmic',min:10,max:110,title:{display:true,text:'고점 = 100'}}}}});}
-  mk('dcDD',{type:'line',data:{datasets:[lineDS('나스닥 (2000.3.10 고점)',nA.map(x=>({x:x.t,y:x.dd})),'#d4a017'),lineDS('닷컴버블 중 1998 중간 조정 ('+n98P.d+')',n98.map(x=>({x:x.t,y:x.dd})),'#94a3b8',1.8),lineDS('코스피 ('+kP.d+' 고점)',kA.map(x=>({x:x.t,y:x.dd})),'#ef4444',2.5),now({x:kNow.t,y:kNow.dd},'','현재')]},
+  mk('dcDD',{type:'line',data:{datasets:[lineDS('나스닥 (2000.3.10 고점)',nA.map(x=>({x:x.t,y:x.dd})),'#d4a017'),lineDS('코스피 ('+kP.d+' 고점)',kA.map(x=>({x:x.t,y:x.dd})),'#ef4444',2.5),now({x:kNow.t,y:kNow.dd},'','현재')]},
    options:{...base,plugins:{...base.plugins,tooltip:{callbacks:{label:t=>`${t.dataset.label}: ${Math.round(t.parsed.x)}일 · ${t.parsed.y.toFixed(1)}%`}}},scales:{x:{type:'linear',min:0,max:1000,title:{display:true,text:'고점 이후 경과일'}},y:{max:0,title:{display:true,text:'고점 대비 (%)'}}}}});
  }
  document.addEventListener('click',e=>{const b=e.target.closest('#dcStart button');if(!b)return;KS_START=b.dataset.s;run();});
