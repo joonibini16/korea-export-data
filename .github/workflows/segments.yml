@@ -3,6 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       companies: {description: 'space-separated ids (empty = all)', default: ''}
+      debug: {description: 'dump candidate grids (yes/no)', default: 'no'}
       commit: {description: 'commit results (yes/no)', default: 'yes'}
   schedule:
     - cron: '30 22 * * 1'   # 매주 화 07:30 KST (새 정기보고서 반영)
@@ -26,7 +27,7 @@ jobs:
           path: .history-cache
           key: company-history-segments-${{ github.run_id }}
           restore-keys: company-history-
-      - run: python collect_segments.py ${{ inputs.companies }}
+      - run: python collect_segments.py ${{ inputs.companies }} ${{ inputs.debug == 'yes' && '--debug' || '' }}
       - uses: actions/cache/save@v4
         if: always()
         with:
@@ -35,9 +36,9 @@ jobs:
       - name: Publish for review
         run: |
           git config user.name github-actions; git config user.email github-actions@github.com
-          mkdir -p /tmp/o; cp company_segments.csv company_segments_status.json /tmp/o/
+          mkdir -p /tmp/o; cp company_segments.csv company_segments_status.json /tmp/o/; [ -f segment_debug.json ] && cp segment_debug.json /tmp/o/ || true
           if [ "${{ inputs.commit }}" = "no" ]; then
-            git checkout -q --orphan segment-out; git rm -rq --cached .; cp /tmp/o/* .; git add company_segments.csv company_segments_status.json; git commit -qm "segments review"; git push -qf origin HEAD:segment-out; exit 0
+            git checkout -q --orphan segment-out; git rm -rq --cached .; cp /tmp/o/* .; git add company_segments.csv company_segments_status.json; [ -f segment_debug.json ] && git add segment_debug.json; git commit -qm "segments review"; git push -qf origin HEAD:segment-out; exit 0
           fi
           for i in 1 2 3; do
             git fetch -q origin main && git reset -q --hard origin/main; cp /tmp/o/* .

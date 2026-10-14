@@ -96,15 +96,19 @@ def unit_of(before):
     return m[-1] if m else None
 
 
+DEBUG = '--debug' in sys.argv
+
+
 def scan(r):
     try:
-        u = doc_url(r); d = html.fromstring(h.get(u))
+        u = doc_url(r); d = html.fromstring(h.get(u)); cand = []
         for t in d.xpath('//table'):
             tx = norm(h.text(t))
             if len(tx) > 20000 or not re.search(r'영업이익|영업손익|부문이익|부문손익|계속영업이익', tx): continue
             before = ' '.join(h.text(e) for e in t.xpath('preceding-sibling::*[position()<=3]'))[-500:]
             if not re.search(r'부문', before + tx[:400]): continue
             unit = unit_of(before)
+            if DEBUG: cand.append(dict(before=before[-300:], unit=unit, grid=[[c[:40] for c in row[:16]] for row in grid(t)[:14]]))
             if not unit: continue
             p = parse_table(grid(t), before)
             if not p: continue
@@ -117,8 +121,9 @@ def scan(r):
             else:
                 segs = [x for x in out if x['role'] == 'segment']
                 if len(segs) >= 2 or (len(segs) == 1 and any(x['role'] != 'segment' for x in out)):
+                    if DEBUG: continue
                     return dict(company_id=r['company_id'], period=r['period'], url=u, rows=out, unit=unit)
-        return dict(company_id=r['company_id'], period=r['period'], url=u, rows=[], reason='부문 표 없음(단일 부문 또는 형식 불일치)')
+        return dict(company_id=r['company_id'], period=r['period'], url=u, rows=[], cand=cand, reason='부문 표 없음(단일 부문 또는 형식 불일치)')
     except Exception as e:
         return dict(company_id=r['company_id'], period=r['period'], error=str(e)[:160])
 
@@ -130,6 +135,12 @@ def main():
     with concurrent.futures.ThreadPoolExecutor(3) as pool:
         cats = list(pool.map(h.catalog, comps))
     todo = [r for c in cats for r in c.get('reports', [])]
+    if DEBUG:
+        todo = [r for c in cats for r in sorted(c.get('reports', []), key=lambda r: r['period'])[-1:] + sorted(c.get('reports', []), key=lambda r: r['period'])[-3:-2]]
+        with concurrent.futures.ThreadPoolExecutor(3) as pool:
+            res = list(pool.map(scan, todo))
+        (ROOT / 'segment_debug.json').write_text(json.dumps(res, ensure_ascii=False))
+        Path(OUT).write_text(''); STATUS.write_text('{}'); return
     with concurrent.futures.ThreadPoolExecutor(3) as pool:
         res = list(pool.map(scan, todo))
     fin = {}
