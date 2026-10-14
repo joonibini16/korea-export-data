@@ -4,7 +4,7 @@
 - 규모 구분: 그날 네이버 시가총액 순위. 코스피 1~100 대형·101~300 중형·301~ 소형(거래소 규모별 지수 기준),
   코스닥 1~100 K100·101~400 MID·401~ SMALL. 보통주(ETF·ETN·스팩·우선주 제외).
 - 60일 신고가: 현재가 ≥ 직전 59거래일 포함 60일 최고 종가 / 신저가: ≤ 60일 최저 종가 (60일 이력 있는 종목만).
-- Breadth = (신고가 수 − 신저가 수) ÷ 대상 종목 수 × 100  (−100 ~ +100)
+- Breadth = (신고가 수 − 신저가 수) ÷ max(신고가 수 + 신저가 수, 10) × 100  (−100 ~ +100, 신고가·신저가 중 어느 쪽이 우세한지. 표본이 10개 미만이면 10으로 나눠 과장을 막음)
 - 구간 지수 등락률 = 구간 종목 시가총액 가중 등락률(전일 시총 가중). 종합은 실제 코스피·코스닥 지수 등락률.
 - 과거 10거래일 막대는 각 날짜 종가 기준으로 같은 방식으로 계산(오늘은 수집 시점 현재가).
 
@@ -76,7 +76,7 @@ def ranking(mkt):
 
 
 def grade(b):
-    return '매우강세' if b >= 40 else '강세' if b >= 10 else '중립' if b > -10 else '약세' if b > -40 else '매우약세'
+    return '매우강세' if b >= 50 else '강세' if b >= 15 else '중립' if b > -15 else '약세' if b > -50 else '매우약세'
 
 
 def stat(members, hist, day, price_of):
@@ -89,7 +89,7 @@ def stat(members, hist, day, price_of):
         n += 1
         if p >= max(h): nh += 1
         elif p <= min(h): nl += 1
-    return dict(n=n, nh=nh, nl=nl, breadth=round((nh - nl) / n * 100, 1) if n else None)
+    return dict(n=n, nh=nh, nl=nl, breadth=round((nh - nl) / max(nh + nl, 10) * 100, 1) if n else None)
 
 
 def main():
@@ -142,8 +142,8 @@ def main():
             g = grade(cur['breadth']) if cur['breadth'] is not None else None
             badge = None
             if cur['breadth'] is not None and chg is not None:
-                if chg > 0 and cur['breadth'] <= -10: badge = '쏠림 랠리'
-                elif chg < 0 and cur['breadth'] >= 10: badge = '저가매수 유입'
+                if chg > 0 and cur['breadth'] <= -15: badge = '쏠림 랠리'
+                elif chg < 0 and cur['breadth'] >= 15: badge = '저가매수 유입'
             mk['buckets'].append(dict(name=nm, idx_chg=chg, grade=g, badge=badge, members=len(mem), trend=trend, **cur))
             log_rows.append(dict(ts=ts, date=live_day, market=m, bucket=nm, breadth=cur['breadth'], nh=cur['nh'], nl=cur['nl'], n=cur['n'], idx_chg=chg, grade=g))
         res['markets'][m] = mk
