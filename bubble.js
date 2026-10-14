@@ -139,13 +139,13 @@ function levChart(id,labels,data,color,unit,dec,mark,grp){const v=data.filter(x=
  chart(id,{type:'line',data:{labels,datasets:[{label:unit,data,borderColor:color,backgroundColor:color,borderWidth:2,pointRadius:data.map((_,k)=>k===data.length-1?3.5:0),tension:0,spanGaps:true}]},plugins:grp&&typeof syncPlugin!=='undefined'?[vline,syncPlugin]:[vline],
   options:{responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:'index',intersect:false},plugins:{legend:{display:false},vline:{i:mark},tooltip:{callbacks:{label:x=>`${x.parsed.y.toLocaleString(undefined,{maximumFractionDigits:dec})} ${unit}`}}},
    scales:{x:{ticks:{maxTicksLimit:8,callback:function(v){const s=this.getLabelForValue(v);return levRange==='ytd'?Number(s.slice(5,7))+'월':s.slice(2,7).replace('-','.');}},grid:{display:false}},y:{afterFit:a=>{a.width=52;},ticks:{maxTicksLimit:5},grid:{color:'rgba(148,163,184,.12)'}}}}});
- if(grp&&typeof SYNC!=='undefined'&&charts[id]){const ch=charts[id];ch.$sg=grp;SYNC.groups[grp]=(SYNC.groups[grp]||[]).filter(c=>c!==ch&&c.canvas.id!==id&&c.canvas.isConnected);SYNC.groups[grp].push(ch);}}
+ if(grp&&typeof SYNC!=='undefined'&&charts[id]){const ch=charts[id];ch.$sg=grp;SYNC.groups[grp]=(SYNC.groups[grp]||[]).filter(c=>c!==ch&&c.canvas&&c.canvas.id!==id&&c.canvas.isConnected);SYNC.groups[grp].push(ch);}}
 
 // 여러 계열 레버리지 차트(오실레이터 막대·MDD 비교선), 같은 세로선 연동 그룹에 등록
 function levMulti(id,labels,sets,unit,grp,yopt){chart(id,{data:{labels,datasets:sets.map(x=>({type:x.type||'line',label:x.label,data:x.data,borderColor:x.color,backgroundColor:x.bg||x.color,borderWidth:x.w??1.8,pointRadius:0,tension:0,spanGaps:true,fill:x.fill??false}))},plugins:grp&&typeof syncPlugin!=='undefined'?[syncPlugin]:[],
   options:{responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:'index',intersect:false},plugins:{legend:{display:false},tooltip:{callbacks:{label:x=>`${x.dataset.label} ${x.parsed.y==null?'—':x.parsed.y.toFixed(1)}${unit}`}}},
    scales:{x:{ticks:{maxTicksLimit:8,callback:function(v){const s=this.getLabelForValue(v);return levRange==='ytd'?Number(s.slice(5,7))+'월':s.slice(2,7).replace('-','.');}},grid:{display:false}},y:Object.assign({afterFit:a=>{a.width=52;},ticks:{maxTicksLimit:5,callback:v=>v+unit},grid:{color:'rgba(148,163,184,.12)'}},yopt||{})}}});
- if(grp&&typeof SYNC!=='undefined'&&charts[id]){const ch=charts[id];ch.$sg=grp;SYNC.groups[grp]=(SYNC.groups[grp]||[]).filter(c=>c!==ch&&c.canvas.id!==id&&c.canvas.isConnected);SYNC.groups[grp].push(ch);}}
+ if(grp&&typeof SYNC!=='undefined'&&charts[id]){const ch=charts[id];ch.$sg=grp;SYNC.groups[grp]=(SYNC.groups[grp]||[]).filter(c=>c!==ch&&c.canvas&&c.canvas.id!==id&&c.canvas.isConnected);SYNC.groups[grp].push(ch);}}
 // 신용잔고 오실레이터 = (5일 평균 ÷ 20일 평균 − 1)×100, MDD = 전체 기간 최고치 대비 하락률(%)
 function levDerived(ck,sym){const all=KF.filter(x=>x[ck]!=null),cv=all.map(x=>x[ck]/1e6),out=new Map(),ix=ser(sym);let pc=-Infinity,pi=-Infinity;
  const ma=(i,n)=>i+1<n?null:cv.slice(i-n+1,i+1).reduce((a,b)=>a+b,0)/n;

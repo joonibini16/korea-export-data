@@ -77,8 +77,8 @@ td.h{font-weight:700}.flag{font-size:12px;padding:2px 8px;border-radius:999px;ba
 </div>
 <section class="panel"><h2>기준과 출처</h2><p class="muted">주가·환율·원자재: Yahoo Finance 일별 종가(비공식 API). 유동성·스프레드·수출·금리: FRED(세인트루이스 연준). 기업 CDS: 언론 보도 수치를 수동 기록(cds_manual.csv). 한국 금리·스프레드: 한국은행 ECOS 시장금리(일별). VKOSPI: KRX Open API. 신용융자·예탁금·반대매매: 금융투자협회 FreeSIS. 시장폭: KRX Open API(키 등록 시) · 미등록 동안 KIND 상장법인목록 + 네이버 일봉 대체 계산. MOVE·VIX3M: Yahoo Finance(ICE·CBOE). 평일 하루 두 번(한국 시간 07:30, 18:30) 자동 갱신.</p><p class="muted" id="status"></p></section>
 </main>
-<script src="./bubble_indicators.js?v=6"></script>
-<script src="./bubble.js?v=12"></script><script src="./bubble_size.js?v=1"></script>
+<script src="./bubble_indicators.js?v=7"></script>
+<script src="./bubble.js?v=13"></script><script src="./bubble_size.js?v=1"></script>
 <script src="./bubble_sector_grouped.js?v=1"></script>
 <script>(function(){const b=document.getElementById('sectorStocks'),c=document.getElementById('sectorStocksCount');if(!b||!c)return;new MutationObserver(()=>{c.textContent=b.children.length?'· '+b.children.length+'종목 (표 안에서 스크롤)':'';const box=b.closest('.scroll-box');if(box)box.scrollTop=0;}).observe(b,{childList:true});})();</script>
 <script>(function(){const main=document.querySelector('main');if(!main)return;const nav=document.createElement('div');nav.setAttribute('role','navigation');nav.className='bnav';nav.setAttribute('aria-label','섹션 바로가기');

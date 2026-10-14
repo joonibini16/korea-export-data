@@ -59,9 +59,9 @@ async function renderBubbleIndicators(st){
   // axis: 같은 시장의 그래프들이 같은 날짜축을 쓰도록 지수 거래일을 공유
   const labels=axis&&axis.length?axis:[...new Set(sets.flatMap(s=>s.data.map(x=>x.d)))].sort();
   const g=syncGroup(id);chart(id,{type:'line',plugins:g?[syncPlugin]:[],data:{labels,datasets:sets.map(s=>{const m=new Map(s.data.map(x=>[x.d,x.v]));return{label:s.label,data:labels.map(d=>m.get(d)??null),borderColor:s.color,backgroundColor:s.color,borderWidth:s.w||2,pointRadius:labels.length===1?4:0,pointHoverRadius:4,borderDash:s.dash,spanGaps:false};})},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{position:'bottom'},tooltip:{filter:x=>!/^\d+$/.test(x.dataset.label),callbacks:{label:x=>`${x.dataset.label}: ${x.parsed.y==null?'—':x.parsed.y.toLocaleString(undefined,{maximumFractionDigits:id.startsWith('idx')?0:1})}`}}},scales:{x:{ticks:{maxTicksLimit:6},grid:{display:false}},y:{min:bounds?.[0],max:bounds?.[1],afterFit:a=>{a.width=58;},title:{display:true,text:id.startsWith('rsi')?'RSI (0–100)':id.startsWith('idx')?'지수 (pt)':'비율 (%)'}}}}});
-  if(g&&typeof charts!=='undefined'&&charts[id]){const ch=charts[id];ch.$sg=g;SYNC.groups[g]=(SYNC.groups[g]||[]).filter(c=>c!==ch&&c.canvas.id!==id);SYNC.groups[g].push(ch);}
+  if(g&&typeof charts!=='undefined'&&charts[id]){const ch=charts[id];ch.$sg=g;SYNC.groups[g]=(SYNC.groups[g]||[]).filter(c=>c!==ch&&c.canvas&&c.canvas.id!==id);SYNC.groups[g].push(ch);}
  }
- function render(){for(const [market,name]of Object.entries(names)){
+ function render(){for(const g of ['KOSPI','KOSDAQ']){SYNC.pin[g]=null;SYNC.last[g]=null;}for(const [market,name]of Object.entries(names)){
   const px=BubbleIndicators.closedKorean(ser(market==='KOSPI'?'^KS11':'^KQ11'),st.updated_at),rs=BubbleIndicators.rsi(px);const a=rs.filter(x=>x.d>=from()),last=rs.filter(x=>Number.isFinite(x.v)).at(-1);
   const ma60=BubbleIndicators.sma(px,60),axis=px.filter(x=>x.d>=from()).map(x=>x.d);
   plot('idx'+market,[{label:name+' 종가',data:px.filter(x=>x.d>=from()),color:'#e2e8f0',w:2},{label:'60일 이동평균',data:ma60.filter(x=>x.d>=from()),color:'#f59e0b',w:1.5,dash:[5,4]}],null,axis);
