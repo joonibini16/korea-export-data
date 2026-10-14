@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>버블 신호 모니터</title><script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script><script src="./chart_legend.js?v=3"></script><script src="./shell.js?v=5"></script>
+<title>버블 신호 모니터</title><script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script><script src="./chart_legend.js?v=3"></script><script src="./shell.js?v=6"></script>
 <style>
 :root{font-family:Arial,"Noto Sans KR",sans-serif}*{box-sizing:border-box}body{margin:0}main{max-width:1500px;margin:26px auto;padding:0 22px}h2{font-size:19px;margin:0 0 10px}p{line-height:1.6}.muted{font-size:13px}
 .panel{border-radius:12px;padding:18px 20px;margin-bottom:18px}.chart{height:300px;position:relative}.g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;align-items:start}.g2>.panel{margin:0;min-width:0}.g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.g3>.panel{margin:0;min-width:0}
@@ -30,6 +30,7 @@ td.h{font-weight:700}.flag{font-size:12px;padding:2px 8px;border-radius:999px;ba
 .sb-bars{width:100%;height:46px;display:block}.sb-card small{font-size:11px;color:#93a3bd}
 .sb-note{margin-top:16px;border-top:3px solid #c9a227;background:#0f1a31;border-radius:0 0 10px 10px;padding:12px 16px}.sb-note h3{margin:2px 0 8px;font-size:19px}.sb-note ul{margin:0;padding-left:18px;line-height:1.75;font-size:14px}.sb-note em{font-style:normal;color:#fbbf24;font-weight:700}
 @media(max-width:760px){.sb-cards{grid-template-columns:1fr}.sb-head{font-size:18px}}
+.ptabs{display:flex;gap:8px;margin:0 0 10px;flex-wrap:wrap}.ptabs button{background:#0f1a31;color:#cbd5e1;border:1px solid #2a3a5c;border-radius:10px;padding:9px 18px;font-size:14.5px;font-weight:700;cursor:pointer}.ptabs button.on{background:#3b82f6;border-color:#3b82f6;color:#fff}
 .bnav{position:sticky;top:0;z-index:30;display:flex;gap:6px;overflow-x:auto;white-space:nowrap;padding:8px 10px;margin:0 0 14px;background:rgba(11,19,36,.96);border:1px solid #22314f;border-radius:10px;backdrop-filter:blur(4px);scrollbar-width:thin}
 .bnav a{flex:0 0 auto;padding:6px 12px;border-radius:999px;border:1px solid #2a3a5c;background:#0f1a31;color:#cbd5e1;font-size:13px;text-decoration:none}.bnav a.on{background:#e2e8f0;color:#0b1220;border-color:#e2e8f0;font-weight:700}
 .bnav::-webkit-scrollbar{height:6px}.bnav::-webkit-scrollbar-thumb{background:#33476e;border-radius:3px}.sync-note{top:52px!important}h2.sec,.bnav-t{scroll-margin-top:64px}
@@ -93,8 +94,23 @@ td.h{font-weight:700}.flag{font-size:12px;padding:2px 8px;border-radius:999px;ba
  main.querySelectorAll('h2.sec').forEach(h=>{let t=h.textContent.trim().replace(/^[①-⑩]\s*/,'');t=t.split(' · ')[0];T.push([h,t]);if(/CDS/.test(h.textContent)){const g=document.getElementById('cdsGrid');const sec=g&&g.closest('section');if(sec){sec.classList.add('bnav-t');T.push([sec,'AI 기업 CDS']);}}});
  const links=T.map(([el,t],i)=>{const a=document.createElement('a');a.href='#';a.textContent=t;a.onclick=e=>{e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});};nav.append(a);return a;});
  const hero=main.querySelector('.sh-hero')||main.querySelector('h1');const err=document.getElementById('err');(err||hero).after(nav);
- const mark=()=>{const y=nav.getBoundingClientRect().bottom+12;let k=0;T.forEach(([el],i)=>{if(el.getBoundingClientRect().top<=y+40)k=i;});links.forEach((a,i)=>a.classList.toggle('on',i===k));const a=links[k];if(a){const l=a.offsetLeft-nav.offsetLeft,r=l+a.offsetWidth;if(l<nav.scrollLeft||r>nav.scrollLeft+nav.clientWidth)nav.scrollTo({left:l-20,behavior:'smooth'});}};
- addEventListener('scroll',()=>requestAnimationFrame(mark),{passive:true});setTimeout(mark,500);})();</script>
+ const mark=()=>{const y=nav.getBoundingClientRect().bottom+12;let k=-1;T.forEach(([el],i)=>{if(el.offsetParent===null)return;if(k<0||el.getBoundingClientRect().top<=y+40)k=i;});links.forEach((a,i)=>a.classList.toggle('on',i===k));const a=links[k];if(a){const l=a.offsetLeft-nav.offsetLeft,r=l+a.offsetWidth;if(l<nav.scrollLeft||r>nav.scrollLeft+nav.clientWidth)nav.scrollTo({left:l-20,behavior:'smooth'});}};
+ addEventListener('scroll',()=>requestAnimationFrame(mark),{passive:true});setTimeout(mark,500);window.__bnav={T,links,nav,mark};})();</script>
+<script>(function(){// 페이지 안 탭: 버블 신호 / 시장 Breadth
+ const main=document.querySelector('main'),nav=window.__bnav;if(!main||!nav)return;
+ const isB=t=>/시장 내부 체력|Breadth/.test(t);
+ let grp='bubble';const kids=[...main.children];
+ for(const e of kids){if(e===nav.nav||e.classList.contains('sh-hero')||e.tagName==='H1'||e.id==='err'||e.classList.contains('ptabs'))continue;if(e.matches('h2.sec'))grp=isB(e.textContent)?'breadth':'bubble';e.dataset.grp=grp;}
+ const bar=document.createElement('div');bar.className='ptabs';bar.innerHTML='<button data-g="bubble">버블 신호</button><button data-g="breadth">시장 Breadth (시장 폭·신고가·RSI·규모별·업종별)</button>';
+ nav.nav.before(bar);
+ function show(g,scroll){for(const e of main.querySelectorAll('[data-grp]'))e.style.display=e.dataset.grp===g?'':'none';
+  bar.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.g===g));
+  nav.links.forEach((a,i)=>{const el=nav.T[i][0];const g2=(el.dataset.grp||el.closest('[data-grp]')?.dataset.grp);a.style.display=g2===g?'':'none';});
+  try{const u=new URL(location.href);if(g==='breadth')u.searchParams.set('tab','breadth');else u.searchParams.delete('tab');history.replaceState(null,'',u);}catch(e){}
+  document.querySelectorAll('.sh-link').forEach(a=>{const h=a.getAttribute('href')||'';if(h.includes('bubble.html'))a.classList.toggle('active',(h.includes('tab=breadth'))===(g==='breadth'));});
+  dispatchEvent(new Event('resize'));setTimeout(nav.mark,50);if(scroll)scrollTo({top:0,behavior:'smooth'});}
+ bar.addEventListener('click',e=>{const b=e.target.closest('button');if(b)show(b.dataset.g,true);});
+ show(new URLSearchParams(location.search).get('tab')==='breadth'?'breadth':'bubble',false);})();</script>
 </body></html>
 
 
