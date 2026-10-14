@@ -3,10 +3,22 @@ grid_link,month,2024-09,Solar,grid,2.83,,derived_from_yoy,하나증권 9월 ESS 
 grid_link,month,2024-09,Stand-alone,grid,9.85,,derived_from_yoy,하나증권 9월 ESS Battery(2025.10.15) · BMI
 grid_link,month,2024-09,Wind,grid,0.68,,derived_from_yoy,하나증권 9월 ESS Battery(2025.10.15) · BMI
 grid_link,month,2024-09,Wind+Solar,grid,0.67,,derived_from_yoy,하나증권 9월 ESS Battery(2025.10.15) · BMI
+grid_link,month,2025-01,Solar,grid,3.11,,derived_from_yoy,하나증권 1월 ESS Battery 텔레그램(2026.3.2) · BMI
+grid_link,month,2025-01,Stand-alone,grid,8.7,,derived_from_yoy,하나증권 1월 ESS Battery 텔레그램(2026.3.2) · BMI
+grid_link,month,2025-01,Wind,grid,2.46,,derived_from_yoy,하나증권 1월 ESS Battery 텔레그램(2026.3.2) · BMI
 grid_link,month,2025-02,Solar,grid,2.3,,derived_from_yoy,하나증권 2차전지 Weekly 2026.3.23 · Rho Motion(BMI)
 grid_link,month,2025-02,Stand-alone,grid,6.03,,derived_from_yoy,하나증권 2차전지 Weekly 2026.3.23 · Rho Motion(BMI)
 grid_link,month,2025-02,Wind,grid,1.15,,derived_from_yoy,하나증권 2차전지 Weekly 2026.3.23 · Rho Motion(BMI)
+grid_link,month,2025-03,Solar,grid,4.39,,derived_from_yoy,하나증권 3월 ESS Battery 텔레그램(2026.4.15) · BMI
+grid_link,month,2025-03,Stand-alone,grid,7.78,,derived_from_yoy,하나증권 3월 ESS Battery 텔레그램(2026.4.15) · BMI
+grid_link,month,2025-03,Wind,grid,0.17,,derived_from_yoy,하나증권 3월 ESS Battery 텔레그램(2026.4.15) · BMI
+grid_link,month,2025-04,Solar,grid,3.69,,derived_from_yoy,하나증권 4월 ESS Battery 텔레그램(2026.5.20) · BMI
+grid_link,month,2025-04,Stand-alone,grid,5.11,,derived_from_yoy,하나증권 4월 ESS Battery 텔레그램(2026.5.20) · BMI
+grid_link,month,2025-04,Wind,grid,1.06,,derived_from_yoy,하나증권 4월 ESS Battery 텔레그램(2026.5.20) · BMI
 grid_link,month,2025-05,Solar,grid,3.52,,derived_from_yoy,이투데이 2026.6.26 (하나증권 5월 ESS Battery 인용)
+grid_link,month,2025-05,Stand-alone,grid,15.11,,derived_from_yoy,하나증권 5월 ESS Battery 텔레그램(2026.6.25) · BMI
+grid_link,month,2025-05,Wind,grid,0.48,,derived_from_yoy,하나증권 5월 ESS Battery 텔레그램(2026.6.25) · BMI
+grid_link,month,2025-05,Wind+Solar,grid,2.23,,derived_from_yoy,하나증권 5월 ESS Battery 텔레그램(2026.6.25) · BMI
 grid_link,month,2025-08,Solar,grid,1.49,,derived_from_yoy,Benchmark Mineral Intelligence · 하나증권 (사용자 제공 2026년 8월 자료)
 grid_link,month,2025-08,Stand-alone,grid,8.53,,derived_from_yoy,Benchmark Mineral Intelligence · 하나증권 (사용자 제공 2026년 8월 자료)
 grid_link,month,2025-08,Wind,grid,0.48,,derived_from_yoy,Benchmark Mineral Intelligence · 하나증권 (사용자 제공 2026년 8월 자료)
@@ -16,36 +28,87 @@ grid_link,month,2025-09,Stand-alone,grid,8.8,-10.7,reported,하나증권 9월 ES
 grid_link,month,2025-09,Wind,grid,0.4,-41.3,reported,하나증권 9월 ESS Battery(2025.10.15) · BMI
 grid_link,month,2025-09,Wind+Solar,grid,0.3,-55.1,reported,하나증권 9월 ESS Battery(2025.10.15) · BMI
 grid_link,month,2025-09,기타,grid,0.5,,reported,하나증권 9월 ESS Battery(2025.10.15) · BMI
+grid_link,month,2026-01,Solar,grid,0.8,-74.3,reported,하나증권 1월 ESS Battery 텔레그램(2026.3.2) · BMI
+grid_link,month,2026-01,Stand-alone,grid,8.9,2.3,reported,하나증권 1월 ESS Battery 텔레그램(2026.3.2) · BMI
+grid_link,month,2026-01,Wind,grid,0.3,-87.8,reported,하나증권 1월 ESS Battery 텔레그램(2026.3.2) · BMI
+grid_link,month,2026-01,Wind+Solar,grid,0.0,,reported,하나증권 1월 ESS Battery 텔레그램(2026.3.2) · BMI
+grid_link,month,2026-01,기타,grid,0.5,,reported,하나증권 1월 ESS Battery 텔레그램(2026.3.2) · BMI
 grid_link,month,2026-02,Solar,grid,2.1,-8.6,reported,하나증권 2차전지 Weekly 2026.3.23 · Rho Motion(BMI)
 grid_link,month,2026-02,Stand-alone,grid,14.5,140.6,reported,하나증권 2차전지 Weekly 2026.3.23 · Rho Motion(BMI)
 grid_link,month,2026-02,Wind,grid,0.4,-65.3,reported,하나증권 2차전지 Weekly 2026.3.23 · Rho Motion(BMI)
 grid_link,month,2026-02,Wind+Solar,grid,0,,reported,하나증권 2차전지 Weekly 2026.3.23 · Rho Motion(BMI)
 grid_link,month,2026-02,기타,grid,0.2,,reported,하나증권 2차전지 Weekly 2026.3.23 · Rho Motion(BMI)
+grid_link,month,2026-03,Solar,grid,3.8,-13.5,reported,하나증권 3월 ESS Battery 텔레그램(2026.4.15) · BMI
+grid_link,month,2026-03,Stand-alone,grid,12.6,62.0,reported,하나증권 3월 ESS Battery 텔레그램(2026.4.15) · BMI
+grid_link,month,2026-03,Wind,grid,0.3,79.7,reported,하나증권 3월 ESS Battery 텔레그램(2026.4.15) · BMI
+grid_link,month,2026-03,Wind+Solar,grid,0.8,,reported,하나증권 3월 ESS Battery 텔레그램(2026.4.15) · BMI
+grid_link,month,2026-04,Solar,grid,3.8,3,reported,하나증권 4월 ESS Battery 텔레그램(2026.5.20) · BMI
+grid_link,month,2026-04,Stand-alone,grid,8.5,66.5,reported,하나증권 4월 ESS Battery 텔레그램(2026.5.20) · BMI
+grid_link,month,2026-04,Wind,grid,0.5,-53.0,reported,하나증권 4월 ESS Battery 텔레그램(2026.5.20) · BMI
+grid_link,month,2026-04,Wind+Solar,grid,0.0,,reported,하나증권 4월 ESS Battery 텔레그램(2026.5.20) · BMI
 grid_link,month,2026-05,Solar,grid,7.5,113.3,reported,이투데이 2026.6.26 (하나증권 5월 ESS Battery 인용)
+grid_link,month,2026-05,Stand-alone,grid,6.0,-60.3,reported,하나증권 5월 ESS Battery 텔레그램(2026.6.25) · BMI
+grid_link,month,2026-05,Wind,grid,0.8,65.7,reported,하나증권 5월 ESS Battery 텔레그램(2026.6.25) · BMI
+grid_link,month,2026-05,Wind+Solar,grid,0.4,-82.1,reported,하나증권 5월 ESS Battery 텔레그램(2026.6.25) · BMI
 grid_link,month,2026-08,Solar,grid,5.2,248.3,reported,Benchmark Mineral Intelligence · 하나증권 (사용자 제공 2026년 8월 자료)
 grid_link,month,2026-08,Stand-alone,grid,21.7,154.3,reported,Benchmark Mineral Intelligence · 하나증권 (사용자 제공 2026년 8월 자료)
 grid_link,month,2026-08,Wind,grid,0.3,-37.7,reported,Benchmark Mineral Intelligence · 하나증권 (사용자 제공 2026년 8월 자료)
 grid_link,month,2026-08,Wind+Solar,grid,,,reported,Benchmark Mineral Intelligence · 하나증권 (사용자 제공 2026년 8월 자료)
 grid_link,month,2026-08,기타,grid,0.3,-77.7,reported,Benchmark Mineral Intelligence · 하나증권 (사용자 제공 2026년 8월 자료)
+grid_link,ytd,2024-01~08,Solar,grid,27.84,,derived_from_yoy,하나증권 8월 ESS Battery 텔레그램(2025.9.22) · BMI
+grid_link,ytd,2024-01~08,Stand-alone,grid,50.16,,derived_from_yoy,하나증권 8월 ESS Battery 텔레그램(2025.9.22) · BMI
+grid_link,ytd,2024-01~08,Wind,grid,7.09,,derived_from_yoy,하나증권 8월 ESS Battery 텔레그램(2025.9.22) · BMI
+grid_link,ytd,2024-01~08,Wind+Solar,grid,2.36,,derived_from_yoy,하나증권 8월 ESS Battery 텔레그램(2025.9.22) · BMI
+grid_link,ytd,2024-01~08,기타,grid,0.14,,derived_from_yoy,하나증권 8월 ESS Battery 텔레그램(2025.9.22) · BMI
 grid_link,ytd,2024-01~09,Solar,grid,30.7,,derived_from_yoy,하나증권 9월 ESS Battery(2025.10.15) · BMI
 grid_link,ytd,2024-01~09,Stand-alone,grid,58.37,,derived_from_yoy,하나증권 9월 ESS Battery(2025.10.15) · BMI
 grid_link,ytd,2024-01~09,Wind,grid,7.8,,derived_from_yoy,하나증권 9월 ESS Battery(2025.10.15) · BMI
 grid_link,ytd,2024-01~09,Wind+Solar,grid,3.01,,derived_from_yoy,하나증권 9월 ESS Battery(2025.10.15) · BMI
 grid_link,ytd,2024-01~09,기타,grid,0.14,,derived_from_yoy,하나증권 9월 ESS Battery(2025.10.15) · BMI
+grid_link,ytd,2024-01~10,Solar,grid,35.05,,derived_from_yoy,하나증권 10월 ESS Battery 텔레그램(2025.11.20) · BMI
+grid_link,ytd,2024-01~10,Stand-alone,grid,60.42,,derived_from_yoy,하나증권 10월 ESS Battery 텔레그램(2025.11.20) · BMI
+grid_link,ytd,2024-01~10,Wind,grid,9.38,,derived_from_yoy,하나증권 10월 ESS Battery 텔레그램(2025.11.20) · BMI
+grid_link,ytd,2024-01~10,Wind+Solar,grid,3.01,,derived_from_yoy,하나증권 10월 ESS Battery 텔레그램(2025.11.20) · BMI
+grid_link,ytd,2024-01~10,기타,grid,0.32,,derived_from_yoy,하나증권 10월 ESS Battery 텔레그램(2025.11.20) · BMI
+grid_link,ytd,2024-01~11,Solar,grid,37.59,,derived_from_yoy,하나증권 11월 ESS Battery 텔레그램(2025.12.29) · BMI
+grid_link,ytd,2024-01~11,Stand-alone,grid,80.41,,derived_from_yoy,하나증권 11월 ESS Battery 텔레그램(2025.12.29) · BMI
+grid_link,ytd,2024-01~11,Wind,grid,10.17,,derived_from_yoy,하나증권 11월 ESS Battery 텔레그램(2025.12.29) · BMI
+grid_link,ytd,2024-01~11,Wind+Solar,grid,4.12,,derived_from_yoy,하나증권 11월 ESS Battery 텔레그램(2025.12.29) · BMI
+grid_link,ytd,2024-01~11,기타,grid,0.57,,derived_from_yoy,하나증권 11월 ESS Battery 텔레그램(2025.12.29) · BMI
+grid_link,ytd,2024-01~12,Solar,grid,48.45,,derived_from_yoy,하나증권 12월 ESS Battery 텔레그램(2026.1.21) · BMI
+grid_link,ytd,2024-01~12,Stand-alone,grid,99.27,,derived_from_yoy,하나증권 12월 ESS Battery 텔레그램(2026.1.21) · BMI
+grid_link,ytd,2024-01~12,Wind,grid,13.7,,derived_from_yoy,하나증권 12월 ESS Battery 텔레그램(2026.1.21) · BMI
+grid_link,ytd,2024-01~12,Wind+Solar,grid,5.15,,derived_from_yoy,하나증권 12월 ESS Battery 텔레그램(2026.1.21) · BMI
+grid_link,ytd,2024-01~12,기타,grid,0.99,,derived_from_yoy,하나증권 12월 ESS Battery 텔레그램(2026.1.21) · BMI
 grid_link,ytd,2025-01~02,Solar,grid,5.48,,derived_from_yoy,하나증권 2차전지 Weekly 2026.3.23 · Rho Motion(BMI)
 grid_link,ytd,2025-01~02,Stand-alone,grid,14.88,,derived_from_yoy,하나증권 2차전지 Weekly 2026.3.23 · Rho Motion(BMI)
 grid_link,ytd,2025-01~02,Wind,grid,3.56,,derived_from_yoy,하나증권 2차전지 Weekly 2026.3.23 · Rho Motion(BMI)
 grid_link,ytd,2025-01~02,Wind+Solar,grid,1.01,,derived_from_yoy,하나증권 2차전지 Weekly 2026.3.23 · Rho Motion(BMI)
-grid_link,ytd,2025-01~08,Solar,grid,27.79,,derived_from_yoy,Benchmark Mineral Intelligence · 하나증권 (사용자 제공 2026년 8월 자료)
-grid_link,ytd,2025-01~08,Stand-alone,grid,85.09,,derived_from_yoy,Benchmark Mineral Intelligence · 하나증권 (사용자 제공 2026년 8월 자료)
-grid_link,ytd,2025-01~08,Wind,grid,8.63,,derived_from_yoy,Benchmark Mineral Intelligence · 하나증권 (사용자 제공 2026년 8월 자료)
-grid_link,ytd,2025-01~08,Wind+Solar,grid,8.45,,derived_from_yoy,Benchmark Mineral Intelligence · 하나증권 (사용자 제공 2026년 8월 자료)
-grid_link,ytd,2025-01~08,기타,grid,1.87,,derived_from_yoy,Benchmark Mineral Intelligence · 하나증권 (사용자 제공 2026년 8월 자료)
+grid_link,ytd,2025-01~08,Solar,grid,24.3,-12.7,reported,하나증권 8월 ESS Battery 텔레그램(2025.9.22) · BMI
+grid_link,ytd,2025-01~08,Stand-alone,grid,80.1,59.7,reported,하나증권 8월 ESS Battery 텔레그램(2025.9.22) · BMI
+grid_link,ytd,2025-01~08,Wind,grid,6.3,-11.2,reported,하나증권 8월 ESS Battery 텔레그램(2025.9.22) · BMI
+grid_link,ytd,2025-01~08,Wind+Solar,grid,10.0,324.3,reported,하나증권 8월 ESS Battery 텔레그램(2025.9.22) · BMI
+grid_link,ytd,2025-01~08,기타,grid,1.3,830.0,reported,하나증권 8월 ESS Battery 텔레그램(2025.9.22) · BMI
 grid_link,ytd,2025-01~09,Solar,grid,26.4,-14.0,reported,하나증권 9월 ESS Battery(2025.10.15) · BMI
 grid_link,ytd,2025-01~09,Stand-alone,grid,90.3,54.7,reported,하나증권 9월 ESS Battery(2025.10.15) · BMI
 grid_link,ytd,2025-01~09,Wind,grid,6.7,-14.1,reported,하나증권 9월 ESS Battery(2025.10.15) · BMI
 grid_link,ytd,2025-01~09,Wind+Solar,grid,10.8,259.0,reported,하나증권 9월 ESS Battery(2025.10.15) · BMI
 grid_link,ytd,2025-01~09,기타,grid,2.3,1552.3,reported,하나증권 9월 ESS Battery(2025.10.15) · BMI
+grid_link,ytd,2025-01~10,Solar,grid,31.3,-10.7,reported,하나증권 10월 ESS Battery 텔레그램(2025.11.20) · BMI
+grid_link,ytd,2025-01~10,Stand-alone,grid,100.9,67.0,reported,하나증권 10월 ESS Battery 텔레그램(2025.11.20) · BMI
+grid_link,ytd,2025-01~10,Wind,grid,9.4,0.2,reported,하나증권 10월 ESS Battery 텔레그램(2025.11.20) · BMI
+grid_link,ytd,2025-01~10,Wind+Solar,grid,12.7,322.5,reported,하나증권 10월 ESS Battery 텔레그램(2025.11.20) · BMI
+grid_link,ytd,2025-01~10,기타,grid,2.3,628.6,reported,하나증권 10월 ESS Battery 텔레그램(2025.11.20) · BMI
+grid_link,ytd,2025-01~11,Solar,grid,36.2,-3.7,reported,하나증권 11월 ESS Battery 텔레그램(2025.12.29) · BMI
+grid_link,ytd,2025-01~11,Stand-alone,grid,112.9,40.4,reported,하나증권 11월 ESS Battery 텔레그램(2025.12.29) · BMI
+grid_link,ytd,2025-01~11,Wind,grid,9.6,-5.6,reported,하나증권 11월 ESS Battery 텔레그램(2025.12.29) · BMI
+grid_link,ytd,2025-01~11,Wind+Solar,grid,12.6,205.6,reported,하나증권 11월 ESS Battery 텔레그램(2025.12.29) · BMI
+grid_link,ytd,2025-01~11,기타,grid,2.4,319.3,reported,하나증권 11월 ESS Battery 텔레그램(2025.12.29) · BMI
+grid_link,ytd,2025-01~12,Solar,grid,40.6,-16.2,reported,하나증권 12월 ESS Battery 텔레그램(2026.1.21) · BMI
+grid_link,ytd,2025-01~12,Stand-alone,grid,176.7,78.0,reported,하나증권 12월 ESS Battery 텔레그램(2026.1.21) · BMI
+grid_link,ytd,2025-01~12,Wind,grid,12.8,-6.6,reported,하나증권 12월 ESS Battery 텔레그램(2026.1.21) · BMI
+grid_link,ytd,2025-01~12,Wind+Solar,grid,13.8,167.8,reported,하나증권 12월 ESS Battery 텔레그램(2026.1.21) · BMI
+grid_link,ytd,2025-01~12,기타,grid,2.6,162.7,reported,하나증권 12월 ESS Battery 텔레그램(2026.1.21) · BMI
 grid_link,ytd,2026-01~02,Solar,grid,3.6,-34.3,reported,하나증권 2차전지 Weekly 2026.3.23 · Rho Motion(BMI)
 grid_link,ytd,2026-01~02,Stand-alone,grid,24.8,66.7,reported,하나증권 2차전지 Weekly 2026.3.23 · Rho Motion(BMI)
 grid_link,ytd,2026-01~02,Wind,grid,0.8,-77.5,reported,하나증권 2차전지 Weekly 2026.3.23 · Rho Motion(BMI)
@@ -56,6 +119,9 @@ grid_link,ytd,2026-01~08,Stand-alone,grid,133.5,56.9,reported,Benchmark Mineral 
 grid_link,ytd,2026-01~08,Wind,grid,3.9,-54.8,reported,Benchmark Mineral Intelligence · 하나증권 (사용자 제공 2026년 8월 자료)
 grid_link,ytd,2026-01~08,Wind+Solar,grid,3.7,-56.2,reported,Benchmark Mineral Intelligence · 하나증권 (사용자 제공 2026년 8월 자료)
 grid_link,ytd,2026-01~08,기타,grid,1.7,-9,reported,Benchmark Mineral Intelligence · 하나증권 (사용자 제공 2026년 8월 자료)
+region,month,2024-08,글로벌,btm,4.06,,derived_from_yoy,하나증권 8월 ESS Battery 텔레그램(2025.9.22) · BMI
+region,month,2024-08,글로벌,grid,10.96,,derived_from_yoy,하나증권 8월 ESS Battery 텔레그램(2025.9.22) · BMI
+region,month,2024-08,글로벌,total,14.92,,derived_from_yoy,하나증권 8월 ESS Battery 텔레그램(2025.9.22) · BMI
 region,month,2024-09,글로벌,btm,4.25,,derived_from_yoy,하나증권 9월 ESS Battery(2025.10.15) · BMI
 region,month,2024-09,글로벌,grid,14.27,,derived_from_yoy,하나증권 9월 ESS Battery(2025.10.15) · BMI
 region,month,2024-09,글로벌,total,18.51,,derived_from_yoy,하나증권 9월 ESS Battery(2025.10.15) · BMI
@@ -71,6 +137,18 @@ region,month,2024-09,유럽,total,1.7,,derived_from_yoy,하나증권 9월 ESS Ba
 region,month,2024-09,중국,btm,1.23,,derived_from_yoy,하나증권 9월 ESS Battery(2025.10.15) · BMI
 region,month,2024-09,중국,grid,7.49,,derived_from_yoy,하나증권 9월 ESS Battery(2025.10.15) · BMI
 region,month,2024-09,중국,total,8.82,,derived_from_yoy,하나증권 9월 ESS Battery(2025.10.15) · BMI
+region,month,2024-10,글로벌,btm,3.8,,derived_from_yoy,하나증권 10월 ESS Battery 텔레그램(2025.11.20) · BMI
+region,month,2024-10,글로벌,grid,9.84,,derived_from_yoy,하나증권 10월 ESS Battery 텔레그램(2025.11.20) · BMI
+region,month,2024-10,글로벌,total,13.66,,derived_from_yoy,하나증권 10월 ESS Battery 텔레그램(2025.11.20) · BMI
+region,month,2024-11,글로벌,btm,3.84,,derived_from_yoy,하나증권 11월 ESS Battery 텔레그램(2025.12.29) · BMI
+region,month,2024-11,글로벌,grid,19.86,,derived_from_yoy,하나증권 11월 ESS Battery 텔레그램(2025.12.29) · BMI
+region,month,2024-11,글로벌,total,23.54,,derived_from_yoy,하나증권 11월 ESS Battery 텔레그램(2025.12.29) · BMI
+region,month,2024-12,글로벌,btm,3.68,,derived_from_yoy,하나증권 12월 ESS Battery 텔레그램(2026.1.21) · BMI
+region,month,2024-12,글로벌,grid,35.73,,derived_from_yoy,하나증권 12월 ESS Battery 텔레그램(2026.1.21) · BMI
+region,month,2024-12,글로벌,total,39.48,,derived_from_yoy,하나증권 12월 ESS Battery 텔레그램(2026.1.21) · BMI
+region,month,2025-01,글로벌,btm,5.4,,derived_from_yoy,하나증권 1월 ESS Battery 텔레그램(2026.3.2) · BMI
+region,month,2025-01,글로벌,grid,14.58,,derived_from_yoy,하나증권 1월 ESS Battery 텔레그램(2026.3.2) · BMI
+region,month,2025-01,글로벌,total,19.95,,derived_from_yoy,하나증권 1월 ESS Battery 텔레그램(2026.3.2) · BMI
 region,month,2025-02,글로벌,btm,4.5,,derived_from_yoy,하나증권 2차전지 Weekly 2026.3.23 · Rho Motion(BMI)
 region,month,2025-02,글로벌,grid,10.3,,derived_from_yoy,하나증권 2차전지 Weekly 2026.3.23 · Rho Motion(BMI)
 region,month,2025-02,글로벌,total,14.79,,derived_from_yoy,하나증권 2차전지 Weekly 2026.3.23 · Rho Motion(BMI)
@@ -86,15 +164,24 @@ region,month,2025-02,유럽,total,1.88,,derived_from_yoy,하나증권 2차전지
 region,month,2025-02,중국,btm,1.6,,derived_from_yoy,하나증권 2차전지 Weekly 2026.3.23 · Rho Motion(BMI)
 region,month,2025-02,중국,grid,7.4,,derived_from_yoy,하나증권 2차전지 Weekly 2026.3.23 · Rho Motion(BMI)
 region,month,2025-02,중국,total,8.99,,derived_from_yoy,하나증권 2차전지 Weekly 2026.3.23 · Rho Motion(BMI)
+region,month,2025-03,글로벌,btm,5.9,,derived_from_yoy,하나증권 3월 ESS Battery 텔레그램(2026.4.15) · BMI
+region,month,2025-03,글로벌,grid,12.35,,derived_from_yoy,하나증권 3월 ESS Battery 텔레그램(2026.4.15) · BMI
+region,month,2025-03,글로벌,total,18.21,,derived_from_yoy,하나증권 3월 ESS Battery 텔레그램(2026.4.15) · BMI
+region,month,2025-04,글로벌,btm,4.9,,derived_from_yoy,하나증권 4월 ESS Battery 텔레그램(2026.5.20) · BMI
+region,month,2025-04,글로벌,grid,10.08,,derived_from_yoy,하나증권 4월 ESS Battery 텔레그램(2026.5.20) · BMI
+region,month,2025-04,글로벌,total,14.96,,derived_from_yoy,하나증권 4월 ESS Battery 텔레그램(2026.5.20) · BMI
+region,month,2025-05,글로벌,btm,5.1,,derived_from_yoy,하나증권 5월 ESS Battery 텔레그램(2026.6.25) · BMI
+region,month,2025-05,글로벌,grid,21.47,,derived_from_yoy,하나증권 5월 ESS Battery 텔레그램(2026.6.25) · BMI
 region,month,2025-05,글로벌,total,26.69,,derived_from_yoy,이투데이 2026.6.26 (하나증권 5월 ESS Battery 인용)
 region,month,2025-05,유럽,total,1.9,,derived_from_yoy,이투데이 2026.6.26 (하나증권 5월 ESS Battery 인용)
+region,month,2025-06,글로벌,grid,28.53,,derived_from_yoy,하나증권 6월(재발간) ESS Battery 텔레그램(2026.8.20) · BMI
 region,month,2025-06,글로벌,total,33.64,,derived_from_yoy,이투데이 2026.9.7 (하나증권 인용)
 region,month,2025-06,북미,total,7.39,,derived_from_yoy,이투데이 2026.9.7 (하나증권 인용)
 region,month,2025-06,유럽,total,1.2,,derived_from_yoy,이투데이 2026.9.7 (하나증권 인용)
 region,month,2025-06,중국,total,14.94,,derived_from_yoy,이투데이 2026.9.7 (하나증권 인용)
-region,month,2025-08,글로벌,btm,5.04,,derived_from_yoy,Benchmark Mineral Intelligence · 하나증권 (사용자 제공 2026년 8월 자료)
-region,month,2025-08,글로벌,grid,11.6,,derived_from_yoy,Benchmark Mineral Intelligence · 하나증권 (사용자 제공 2026년 8월 자료)
-region,month,2025-08,글로벌,total,16.69,,derived_from_yoy,Benchmark Mineral Intelligence · 하나증권 (사용자 제공 2026년 8월 자료)
+region,month,2025-08,글로벌,btm,5.8,43,reported,하나증권 8월 ESS Battery 텔레그램(2025.9.22) · BMI
+region,month,2025-08,글로벌,grid,12.5,14,reported,하나증권 8월 ESS Battery 텔레그램(2025.9.22) · BMI
+region,month,2025-08,글로벌,total,18.2,22.0,reported,하나증권 8월 ESS Battery 텔레그램(2025.9.22) · BMI
 region,month,2025-08,기타,btm,1.36,,derived_from_yoy,Benchmark Mineral Intelligence · 하나증권 (사용자 제공 2026년 8월 자료)
 region,month,2025-08,기타,grid,1.67,,derived_from_yoy,Benchmark Mineral Intelligence · 하나증권 (사용자 제공 2026년 8월 자료)
 region,month,2025-08,기타,total,3.03,,derived_from_yoy,Benchmark Mineral Intelligence · 하나증권 (사용자 제공 2026년 8월 자료)
@@ -122,6 +209,18 @@ region,month,2025-09,유럽,total,3.0,76.9,reported,하나증권 9월 ESS Batter
 region,month,2025-09,중국,btm,2.2,79.0,reported,하나증권 9월 ESS Battery(2025.10.15) · BMI
 region,month,2025-09,중국,grid,4.5,-39.9,reported,하나증권 9월 ESS Battery(2025.10.15) · BMI
 region,month,2025-09,중국,total,6.8,-22.9,reported,하나증권 9월 ESS Battery(2025.10.15) · BMI
+region,month,2025-10,글로벌,btm,6.0,58,reported,하나증권 10월 ESS Battery 텔레그램(2025.11.20) · BMI
+region,month,2025-10,글로벌,grid,12.7,29,reported,하나증권 10월 ESS Battery 텔레그램(2025.11.20) · BMI
+region,month,2025-10,글로벌,total,18.7,36.9,reported,하나증권 10월 ESS Battery 텔레그램(2025.11.20) · BMI
+region,month,2025-11,글로벌,btm,6.1,59,reported,하나증권 11월 ESS Battery 텔레그램(2025.12.29) · BMI
+region,month,2025-11,글로벌,grid,14.1,-29,reported,하나증권 11월 ESS Battery 텔레그램(2025.12.29) · BMI
+region,month,2025-11,글로벌,total,20.2,-14.2,reported,하나증권 11월 ESS Battery 텔레그램(2025.12.29) · BMI
+region,month,2025-12,글로벌,btm,6.0,63,reported,하나증권 12월 ESS Battery 텔레그램(2026.1.21) · BMI
+region,month,2025-12,글로벌,grid,71.1,99,reported,하나증권 12월 ESS Battery 텔레그램(2026.1.21) · BMI
+region,month,2025-12,글로벌,total,77.1,95.3,reported,하나증권 12월 ESS Battery 텔레그램(2026.1.21) · BMI
+region,month,2026-01,글로벌,btm,5.4,0,reported,하나증권 1월 ESS Battery 텔레그램(2026.3.2) · BMI
+region,month,2026-01,글로벌,grid,10.5,-28,reported,하나증권 1월 ESS Battery 텔레그램(2026.3.2) · BMI
+region,month,2026-01,글로벌,total,15.9,-20.3,reported,하나증권 1월 ESS Battery 텔레그램(2026.3.2) · BMI
 region,month,2026-02,글로벌,btm,4.5,0,reported,하나증권 2차전지 Weekly 2026.3.23 · Rho Motion(BMI)
 region,month,2026-02,글로벌,grid,17.1,66,reported,하나증권 2차전지 Weekly 2026.3.23 · Rho Motion(BMI)
 region,month,2026-02,글로벌,total,21.6,46,reported,하나증권 2차전지 Weekly 2026.3.23 · Rho Motion(BMI)
@@ -137,7 +236,15 @@ region,month,2026-02,유럽,total,2.1,12,reported,하나증권 2차전지 Weekly
 region,month,2026-02,중국,btm,1.6,0,reported,하나증권 2차전지 Weekly 2026.3.23 · Rho Motion(BMI)
 region,month,2026-02,중국,grid,9.1,23,reported,하나증권 2차전지 Weekly 2026.3.23 · Rho Motion(BMI)
 region,month,2026-02,중국,total,10.7,19,reported,하나증권 2차전지 Weekly 2026.3.23 · Rho Motion(BMI)
-region,month,2026-05,글로벌,total,19.7,-26.2,reported,이투데이 2026.6.26 (하나증권 5월 ESS Battery 인용)
+region,month,2026-03,글로벌,btm,5.9,0,reported,하나증권 3월 ESS Battery 텔레그램(2026.4.15) · BMI
+region,month,2026-03,글로벌,grid,18.4,49,reported,하나증권 3월 ESS Battery 텔레그램(2026.4.15) · BMI
+region,month,2026-03,글로벌,total,24.2,32.9,reported,하나증권 3월 ESS Battery 텔레그램(2026.4.15) · BMI
+region,month,2026-04,글로벌,btm,4.9,0,reported,하나증권 4월 ESS Battery 텔레그램(2026.5.20) · BMI
+region,month,2026-04,글로벌,grid,12.8,27,reported,하나증권 4월 ESS Battery 텔레그램(2026.5.20) · BMI
+region,month,2026-04,글로벌,total,17.7,18.3,reported,하나증권 4월 ESS Battery 텔레그램(2026.5.20) · BMI
+region,month,2026-05,글로벌,btm,5.1,0,reported,하나증권 5월 ESS Battery 텔레그램(2026.6.25) · BMI
+region,month,2026-05,글로벌,grid,14.6,-32,reported,하나증권 5월 ESS Battery 텔레그램(2026.6.25) · BMI
+region,month,2026-05,글로벌,total,19.7,-26.7,reported,이투데이 2026.6.26 (하나증권 5월 ESS Battery 인용)
 region,month,2026-05,유럽,total,2.8,47.7,reported,이투데이 2026.6.26 (하나증권 5월 ESS Battery 인용)
 region,month,2026-06,글로벌,btm,8.0,,reported,이투데이 2026.9.7 (하나증권 인용)
 region,month,2026-06,글로벌,grid,42.8,,reported,이투데이 2026.9.7 (하나증권 인용)
@@ -161,6 +268,8 @@ region,month,2026-08,유럽,total,4.7,162.7,reported,Benchmark Mineral Intellige
 region,month,2026-08,중국,btm,2.3,12.8,reported,Benchmark Mineral Intelligence · 하나증권 (사용자 제공 2026년 8월 자료)
 region,month,2026-08,중국,grid,12.9,206.4,reported,Benchmark Mineral Intelligence · 하나증권 (사용자 제공 2026년 8월 자료)
 region,month,2026-08,중국,total,15.2,143.7,reported,Benchmark Mineral Intelligence · 하나증권 (사용자 제공 2026년 8월 자료)
+region,ytd,2024-01~08,글로벌,grid,87.77,,derived_from_yoy,하나증권 8월 ESS Battery 텔레그램(2025.9.22) · BMI
+region,ytd,2024-01~08,글로벌,total,119.04,,derived_from_yoy,하나증권 8월 ESS Battery 텔레그램(2025.9.22) · BMI
 region,ytd,2024-01~09,글로벌,btm,35.37,,derived_from_yoy,하나증권 9월 ESS Battery(2025.10.15) · BMI
 region,ytd,2024-01~09,글로벌,grid,100.22,,derived_from_yoy,하나증권 9월 ESS Battery(2025.10.15) · BMI
 region,ytd,2024-01~09,글로벌,total,135.67,,derived_from_yoy,하나증권 9월 ESS Battery(2025.10.15) · BMI
@@ -176,6 +285,15 @@ region,ytd,2024-01~09,유럽,total,14.04,,derived_from_yoy,하나증권 9월 ESS
 region,ytd,2024-01~09,중국,btm,10.06,,derived_from_yoy,하나증권 9월 ESS Battery(2025.10.15) · BMI
 region,ytd,2024-01~09,중국,grid,61.6,,derived_from_yoy,하나증권 9월 ESS Battery(2025.10.15) · BMI
 region,ytd,2024-01~09,중국,total,71.69,,derived_from_yoy,하나증권 9월 ESS Battery(2025.10.15) · BMI
+region,ytd,2024-01~10,글로벌,btm,35.0,,derived_from_yoy,하나증권 10월 ESS Battery 텔레그램(2025.11.20) · BMI
+region,ytd,2024-01~10,글로벌,grid,112.73,,derived_from_yoy,하나증권 10월 ESS Battery 텔레그램(2025.11.20) · BMI
+region,ytd,2024-01~10,글로벌,total,147.74,,derived_from_yoy,하나증권 10월 ESS Battery 텔레그램(2025.11.20) · BMI
+region,ytd,2024-01~11,글로벌,btm,38.92,,derived_from_yoy,하나증권 11월 ESS Battery 텔레그램(2025.12.29) · BMI
+region,ytd,2024-01~11,글로벌,grid,133.54,,derived_from_yoy,하나증권 11월 ESS Battery 텔레그램(2025.12.29) · BMI
+region,ytd,2024-01~11,글로벌,total,171.98,,derived_from_yoy,하나증권 11월 ESS Battery 텔레그램(2025.12.29) · BMI
+region,ytd,2024-01~12,글로벌,btm,42.45,,derived_from_yoy,하나증권 12월 ESS Battery 텔레그램(2026.1.21) · BMI
+region,ytd,2024-01~12,글로벌,grid,167.69,,derived_from_yoy,하나증권 12월 ESS Battery 텔레그램(2026.1.21) · BMI
+region,ytd,2024-01~12,글로벌,total,210.31,,derived_from_yoy,하나증권 12월 ESS Battery 텔레그램(2026.1.21) · BMI
 region,ytd,2025-01~02,글로벌,btm,9.9,,derived_from_yoy,하나증권 2차전지 Weekly 2026.3.23 · Rho Motion(BMI)
 region,ytd,2025-01~02,글로벌,grid,25.04,,derived_from_yoy,하나증권 2차전지 Weekly 2026.3.23 · Rho Motion(BMI)
 region,ytd,2025-01~02,글로벌,total,34.96,,derived_from_yoy,하나증권 2차전지 Weekly 2026.3.23 · Rho Motion(BMI)
@@ -191,13 +309,16 @@ region,ytd,2025-01~02,유럽,total,3.09,,derived_from_yoy,하나증권 2차전�
 region,ytd,2025-01~02,중국,btm,4.0,,derived_from_yoy,하나증권 2차전지 Weekly 2026.3.23 · Rho Motion(BMI)
 region,ytd,2025-01~02,중국,grid,17.28,,derived_from_yoy,하나증권 2차전지 Weekly 2026.3.23 · Rho Motion(BMI)
 region,ytd,2025-01~02,중국,total,21.4,,derived_from_yoy,하나증권 2차전지 Weekly 2026.3.23 · Rho Motion(BMI)
+region,ytd,2025-01~03,글로벌,total,53.1,,derived_from_yoy,하나증권 3월 ESS Battery 텔레그램(2026.4.15) · BMI
+region,ytd,2025-01~04,글로벌,total,67.25,,derived_from_yoy,하나증권 4월 ESS Battery 텔레그램(2026.5.20) · BMI
 region,ytd,2025-01~05,글로벌,grid,69.51,,derived_from_yoy,이투데이 2026.6.26 (하나증권 5월 ESS Battery 인용)
 region,ytd,2025-01~05,글로벌,total,94.41,,derived_from_yoy,이투데이 2026.6.26 (하나증권 5월 ESS Battery 인용)
 region,ytd,2025-01~05,유럽,total,7.94,,derived_from_yoy,이투데이 2026.6.26 (하나증권 5월 ESS Battery 인용)
+region,ytd,2025-01~06,글로벌,grid,99.64,,derived_from_yoy,하나증권 6월(재발간) ESS Battery 텔레그램(2026.8.20) · BMI
 region,ytd,2025-01~06,글로벌,total,129.22,,derived_from_yoy,이투데이 2026.9.7 (하나증권 인용)
 region,ytd,2025-01~08,글로벌,btm,40.0,,derived_from_yoy,Benchmark Mineral Intelligence · 하나증권 (사용자 제공 2026년 8월 자료)
-region,ytd,2025-01~08,글로벌,grid,131.61,,derived_from_yoy,Benchmark Mineral Intelligence · 하나증권 (사용자 제공 2026년 8월 자료)
-region,ytd,2025-01~08,글로벌,total,171.66,,derived_from_yoy,Benchmark Mineral Intelligence · 하나증권 (사용자 제공 2026년 8월 자료)
+region,ytd,2025-01~08,글로벌,grid,122.0,39,reported,하나증권 8월 ESS Battery 텔레그램(2025.9.22) · BMI
+region,ytd,2025-01~08,글로벌,total,166.9,40.2,reported,하나증권 8월 ESS Battery 텔레그램(2025.9.22) · BMI
 region,ytd,2025-01~08,기타,btm,11.2,,derived_from_yoy,Benchmark Mineral Intelligence · 하나증권 (사용자 제공 2026년 8월 자료)
 region,ytd,2025-01~08,기타,grid,20.08,,derived_from_yoy,Benchmark Mineral Intelligence · 하나증권 (사용자 제공 2026년 8월 자료)
 region,ytd,2025-01~08,기타,total,31.28,,derived_from_yoy,Benchmark Mineral Intelligence · 하나증권 (사용자 제공 2026년 8월 자료)
@@ -225,6 +346,15 @@ region,ytd,2025-01~09,유럽,total,18.1,28.9,reported,하나증권 9월 ESS Batt
 region,ytd,2025-01~09,중국,btm,18.0,79.0,reported,하나증권 9월 ESS Battery(2025.10.15) · BMI
 region,ytd,2025-01~09,중국,grid,76.2,23.7,reported,하나증권 9월 ESS Battery(2025.10.15) · BMI
 region,ytd,2025-01~09,중국,total,94.2,31.4,reported,하나증권 9월 ESS Battery(2025.10.15) · BMI
+region,ytd,2025-01~10,글로벌,btm,55.3,58,reported,하나증권 10월 ESS Battery 텔레그램(2025.11.20) · BMI
+region,ytd,2025-01~10,글로벌,grid,156.7,39,reported,하나증권 10월 ESS Battery 텔레그램(2025.11.20) · BMI
+region,ytd,2025-01~10,글로벌,total,212.0,43.5,reported,하나증권 10월 ESS Battery 텔레그램(2025.11.20) · BMI
+region,ytd,2025-01~11,글로벌,btm,61.5,58,reported,하나증권 11월 ESS Battery 텔레그램(2025.12.29) · BMI
+region,ytd,2025-01~11,글로벌,grid,173.6,30,reported,하나증권 11월 ESS Battery 텔레그램(2025.12.29) · BMI
+region,ytd,2025-01~11,글로벌,total,235.1,36.7,reported,하나증권 11월 ESS Battery 텔레그램(2025.12.29) · BMI
+region,ytd,2025-01~12,글로벌,btm,67.5,59,reported,하나증권 12월 ESS Battery 텔레그램(2026.1.21) · BMI
+region,ytd,2025-01~12,글로벌,grid,246.5,47,reported,하나증권 12월 ESS Battery 텔레그램(2026.1.21) · BMI
+region,ytd,2025-01~12,글로벌,total,314.0,49.3,reported,하나증권 12월 ESS Battery 텔레그램(2026.1.21) · BMI
 region,ytd,2026-01~02,글로벌,btm,9.9,0,reported,하나증권 2차전지 Weekly 2026.3.23 · Rho Motion(BMI)
 region,ytd,2026-01~02,글로벌,grid,30.3,21,reported,하나증권 2차전지 Weekly 2026.3.23 · Rho Motion(BMI)
 region,ytd,2026-01~02,글로벌,total,40.2,15,reported,하나증권 2차전지 Weekly 2026.3.23 · Rho Motion(BMI)
@@ -240,9 +370,12 @@ region,ytd,2026-01~02,유럽,total,4.2,36,reported,하나증권 2차전지 Weekl
 region,ytd,2026-01~02,중국,btm,4.0,0,reported,하나증권 2차전지 Weekly 2026.3.23 · Rho Motion(BMI)
 region,ytd,2026-01~02,중국,grid,15.9,-8,reported,하나증권 2차전지 Weekly 2026.3.23 · Rho Motion(BMI)
 region,ytd,2026-01~02,중국,total,19.9,-7,reported,하나증권 2차전지 Weekly 2026.3.23 · Rho Motion(BMI)
+region,ytd,2026-01~03,글로벌,total,68.5,29,reported,하나증권 3월 ESS Battery 텔레그램(2026.4.15) · BMI
+region,ytd,2026-01~04,글로벌,total,88.1,31,reported,하나증권 4월 ESS Battery 텔레그램(2026.5.20) · BMI
 region,ytd,2026-01~05,글로벌,grid,86.4,24.3,reported,이투데이 2026.6.26 (하나증권 5월 ESS Battery 인용)
 region,ytd,2026-01~05,글로벌,total,113.2,19.9,reported,이투데이 2026.6.26 (하나증권 5월 ESS Battery 인용)
 region,ytd,2026-01~05,유럽,total,13.8,73.8,reported,이투데이 2026.6.26 (하나증권 5월 ESS Battery 인용)
+region,ytd,2026-01~06,글로벌,grid,136.5,37,reported,하나증권 6월(재발간) ESS Battery 텔레그램(2026.8.20) · BMI
 region,ytd,2026-01~06,글로벌,total,182.2,41,reported,이투데이 2026.9.7 (하나증권 인용)
 region,ytd,2026-01~08,글로벌,btm,61.2,53.0,reported,Benchmark Mineral Intelligence · 하나증권 (사용자 제공 2026년 8월 자료)
 region,ytd,2026-01~08,글로벌,grid,185.3,40.8,reported,Benchmark Mineral Intelligence · 하나증권 (사용자 제공 2026년 8월 자료)
