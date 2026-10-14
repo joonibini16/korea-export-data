@@ -7,6 +7,7 @@ on:
   schedule:
     - cron: '25 0-5 * * 1-5'   # 평일 09:25~14:25 KST 매시
     - cron: '10 7 * * 1-5'     # 평일 16:10 KST 종가 확정
+    - cron: '10 9 * * 1-5'     # 평일 18:10 KST 종가 누락 보완
 permissions:
   contents: write
   pages: write
