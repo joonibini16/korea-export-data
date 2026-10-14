@@ -1,8 +1,8 @@
 {
- "updated_at": "2026-10-14T08:46:40+09:00",
- "companies": 57,
- "price_rows": 6333,
- "shares": 57,
- "consensus_rows": 570,
+ "updated_at": "2026-10-14T09:05:24+09:00",
+ "companies": 59,
+ "price_rows": 6573,
+ "shares": 59,
+ "consensus_rows": 590,
  "failures": []
 }
