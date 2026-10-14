@@ -1,5 +1,5 @@
 {
-  "reviewed_at": "2026-10-13",
+  "reviewed_at": "2026-10-14",
   "start_period": "2020-Q1",
   "end_period": "2026-Q2",
   "companies": [
@@ -1124,6 +1124,702 @@
         "2024-Q2"
       ],
       "status": "incomplete"
+    },
+    {
+      "company_id": "114810",
+      "name": "한솔아이원스",
+      "expected_quarters": 26,
+      "complete_quarters": 14,
+      "not_applicable_periods": [],
+      "missing_periods": [
+        "2020-Q1",
+        "2020-Q2",
+        "2020-Q3",
+        "2020-Q4",
+        "2021-Q1",
+        "2021-Q2",
+        "2021-Q3",
+        "2021-Q4",
+        "2022-Q1",
+        "2022-Q2",
+        "2022-Q3",
+        "2022-Q4"
+      ],
+      "status": "incomplete"
+    },
+    {
+      "company_id": "144960",
+      "name": "뉴파워프라즈마",
+      "expected_quarters": 26,
+      "complete_quarters": 19,
+      "not_applicable_periods": [],
+      "missing_periods": [
+        "2021-Q1",
+        "2021-Q2",
+        "2021-Q3",
+        "2021-Q4",
+        "2025-Q4",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "status": "incomplete"
+    },
+    {
+      "company_id": "003160",
+      "name": "디아이",
+      "expected_quarters": 26,
+      "complete_quarters": 26,
+      "not_applicable_periods": [],
+      "missing_periods": [],
+      "status": "complete"
+    },
+    {
+      "company_id": "080580",
+      "name": "오킨스전자",
+      "expected_quarters": 26,
+      "complete_quarters": 26,
+      "not_applicable_periods": [],
+      "missing_periods": [],
+      "status": "complete"
+    },
+    {
+      "company_id": "232140",
+      "name": "와이씨",
+      "expected_quarters": 26,
+      "complete_quarters": 26,
+      "not_applicable_periods": [],
+      "missing_periods": [],
+      "status": "complete"
+    },
+    {
+      "company_id": "086390",
+      "name": "유니테스트",
+      "expected_quarters": 26,
+      "complete_quarters": 26,
+      "not_applicable_periods": [],
+      "missing_periods": [],
+      "status": "complete"
+    },
+    {
+      "company_id": "253590",
+      "name": "네오셈",
+      "expected_quarters": 26,
+      "complete_quarters": 26,
+      "not_applicable_periods": [],
+      "missing_periods": [],
+      "status": "complete"
+    },
+    {
+      "company_id": "425420",
+      "name": "티에프이",
+      "expected_quarters": 26,
+      "complete_quarters": 18,
+      "not_applicable_periods": [],
+      "missing_periods": [
+        "2020-Q1",
+        "2020-Q2",
+        "2020-Q3",
+        "2020-Q4",
+        "2021-Q1",
+        "2021-Q2",
+        "2021-Q3",
+        "2021-Q4"
+      ],
+      "status": "incomplete"
+    },
+    {
+      "company_id": "089030",
+      "name": "테크윙",
+      "expected_quarters": 26,
+      "complete_quarters": 25,
+      "not_applicable_periods": [],
+      "missing_periods": [
+        "2026-Q2"
+      ],
+      "status": "incomplete"
+    },
+    {
+      "company_id": "095340",
+      "name": "ISC",
+      "expected_quarters": 26,
+      "complete_quarters": 19,
+      "not_applicable_periods": [],
+      "missing_periods": [
+        "2024-Q4",
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "status": "incomplete"
+    },
+    {
+      "company_id": "147760",
+      "name": "피엠티",
+      "expected_quarters": 26,
+      "complete_quarters": 0,
+      "not_applicable_periods": [],
+      "missing_periods": [
+        "2020-Q1",
+        "2020-Q2",
+        "2020-Q3",
+        "2020-Q4",
+        "2021-Q1",
+        "2021-Q2",
+        "2021-Q3",
+        "2021-Q4",
+        "2022-Q1",
+        "2022-Q2",
+        "2022-Q3",
+        "2022-Q4",
+        "2023-Q1",
+        "2023-Q2",
+        "2023-Q3",
+        "2023-Q4",
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3",
+        "2024-Q4",
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "status": "not_collected"
+    },
+    {
+      "company_id": "025560",
+      "name": "미래산업",
+      "expected_quarters": 26,
+      "complete_quarters": 22,
+      "not_applicable_periods": [],
+      "missing_periods": [
+        "2022-Q1",
+        "2022-Q2",
+        "2022-Q3",
+        "2022-Q4"
+      ],
+      "status": "incomplete"
+    },
+    {
+      "company_id": "089790",
+      "name": "제이티",
+      "expected_quarters": 26,
+      "complete_quarters": 26,
+      "not_applicable_periods": [],
+      "missing_periods": [],
+      "status": "complete"
+    },
+    {
+      "company_id": "098120",
+      "name": "마이크로컨텍솔",
+      "expected_quarters": 26,
+      "complete_quarters": 26,
+      "not_applicable_periods": [],
+      "missing_periods": [],
+      "status": "complete"
+    },
+    {
+      "company_id": "006110",
+      "name": "삼아알미늄",
+      "expected_quarters": 26,
+      "complete_quarters": 6,
+      "not_applicable_periods": [],
+      "missing_periods": [
+        "2020-Q1",
+        "2020-Q2",
+        "2020-Q3",
+        "2020-Q4",
+        "2021-Q1",
+        "2021-Q2",
+        "2021-Q3",
+        "2021-Q4",
+        "2022-Q1",
+        "2022-Q2",
+        "2023-Q2",
+        "2024-Q2",
+        "2024-Q3",
+        "2024-Q4",
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "status": "incomplete"
+    },
+    {
+      "company_id": "020150",
+      "name": "롯데에너지머티리얼즈",
+      "expected_quarters": 26,
+      "complete_quarters": 14,
+      "not_applicable_periods": [],
+      "missing_periods": [
+        "2023-Q3",
+        "2023-Q4",
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3",
+        "2024-Q4",
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "status": "incomplete"
+    },
+    {
+      "company_id": "078600",
+      "name": "대주전자재료",
+      "expected_quarters": 26,
+      "complete_quarters": 23,
+      "not_applicable_periods": [],
+      "missing_periods": [
+        "2025-Q4",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "status": "incomplete"
+    },
+    {
+      "company_id": "091580",
+      "name": "상신이디피",
+      "expected_quarters": 26,
+      "complete_quarters": 17,
+      "not_applicable_periods": [],
+      "missing_periods": [
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3",
+        "2024-Q4",
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4",
+        "2026-Q2"
+      ],
+      "status": "incomplete"
+    },
+    {
+      "company_id": "033790",
+      "name": "피노",
+      "expected_quarters": 26,
+      "complete_quarters": 18,
+      "not_applicable_periods": [],
+      "missing_periods": [
+        "2023-Q3",
+        "2023-Q4",
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3",
+        "2024-Q4",
+        "2025-Q3",
+        "2025-Q4"
+      ],
+      "status": "incomplete"
+    },
+    {
+      "company_id": "086520",
+      "name": "에코프로",
+      "expected_quarters": 26,
+      "complete_quarters": 22,
+      "not_applicable_periods": [],
+      "missing_periods": [
+        "2021-Q1",
+        "2021-Q2",
+        "2021-Q3",
+        "2021-Q4"
+      ],
+      "status": "incomplete"
+    },
+    {
+      "company_id": "450080",
+      "name": "에코프로머티",
+      "expected_quarters": 26,
+      "complete_quarters": 4,
+      "not_applicable_periods": [],
+      "missing_periods": [
+        "2020-Q1",
+        "2020-Q2",
+        "2020-Q3",
+        "2020-Q4",
+        "2021-Q1",
+        "2021-Q2",
+        "2021-Q3",
+        "2021-Q4",
+        "2022-Q1",
+        "2022-Q2",
+        "2022-Q3",
+        "2022-Q4",
+        "2023-Q1",
+        "2023-Q2",
+        "2023-Q3",
+        "2023-Q4",
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3",
+        "2024-Q4",
+        "2025-Q3",
+        "2025-Q4"
+      ],
+      "status": "incomplete"
+    },
+    {
+      "company_id": "005070",
+      "name": "코스모신소재",
+      "expected_quarters": 26,
+      "complete_quarters": 0,
+      "not_applicable_periods": [],
+      "missing_periods": [
+        "2020-Q1",
+        "2020-Q2",
+        "2020-Q3",
+        "2020-Q4",
+        "2021-Q1",
+        "2021-Q2",
+        "2021-Q3",
+        "2021-Q4",
+        "2022-Q1",
+        "2022-Q2",
+        "2022-Q3",
+        "2022-Q4",
+        "2023-Q1",
+        "2023-Q2",
+        "2023-Q3",
+        "2023-Q4",
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3",
+        "2024-Q4",
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "status": "not_collected"
+    },
+    {
+      "company_id": "005420",
+      "name": "코스모화학",
+      "expected_quarters": 26,
+      "complete_quarters": 26,
+      "not_applicable_periods": [],
+      "missing_periods": [],
+      "status": "complete"
+    },
+    {
+      "company_id": "278280",
+      "name": "천보",
+      "expected_quarters": 26,
+      "complete_quarters": 22,
+      "not_applicable_periods": [],
+      "missing_periods": [
+        "2023-Q1",
+        "2023-Q2",
+        "2023-Q3",
+        "2023-Q4"
+      ],
+      "status": "incomplete"
+    },
+    {
+      "company_id": "348370",
+      "name": "엔켐",
+      "expected_quarters": 26,
+      "complete_quarters": 18,
+      "not_applicable_periods": [],
+      "missing_periods": [
+        "2020-Q1",
+        "2020-Q2",
+        "2020-Q3",
+        "2020-Q4",
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4"
+      ],
+      "status": "incomplete"
+    },
+    {
+      "company_id": "093370",
+      "name": "후성",
+      "expected_quarters": 26,
+      "complete_quarters": 23,
+      "not_applicable_periods": [],
+      "missing_periods": [
+        "2025-Q4",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "status": "incomplete"
+    },
+    {
+      "company_id": "457190",
+      "name": "이수스페셜티케미컬",
+      "expected_quarters": 26,
+      "complete_quarters": 4,
+      "not_applicable_periods": [],
+      "missing_periods": [
+        "2020-Q1",
+        "2020-Q2",
+        "2020-Q3",
+        "2020-Q4",
+        "2021-Q1",
+        "2021-Q2",
+        "2021-Q3",
+        "2021-Q4",
+        "2022-Q1",
+        "2022-Q2",
+        "2022-Q3",
+        "2022-Q4",
+        "2023-Q1",
+        "2023-Q2",
+        "2023-Q3",
+        "2023-Q4",
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q4",
+        "2025-Q2",
+        "2025-Q4",
+        "2026-Q2"
+      ],
+      "status": "incomplete"
+    },
+    {
+      "company_id": "121600",
+      "name": "나노신소재",
+      "expected_quarters": 26,
+      "complete_quarters": 23,
+      "not_applicable_periods": [],
+      "missing_periods": [
+        "2025-Q4",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "status": "incomplete"
+    },
+    {
+      "company_id": "361610",
+      "name": "SK아이이테크놀로지",
+      "expected_quarters": 26,
+      "complete_quarters": 16,
+      "not_applicable_periods": [],
+      "missing_periods": [
+        "2024-Q1",
+        "2024-Q2",
+        "2024-Q3",
+        "2024-Q4",
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "status": "incomplete"
+    },
+    {
+      "company_id": "393890",
+      "name": "더블유씨피",
+      "expected_quarters": 26,
+      "complete_quarters": 20,
+      "not_applicable_periods": [],
+      "missing_periods": [
+        "2020-Q1",
+        "2020-Q2",
+        "2020-Q3",
+        "2020-Q4",
+        "2021-Q1",
+        "2021-Q2"
+      ],
+      "status": "incomplete"
+    },
+    {
+      "company_id": "137400",
+      "name": "피엔티",
+      "expected_quarters": 26,
+      "complete_quarters": 26,
+      "not_applicable_periods": [],
+      "missing_periods": [],
+      "status": "complete"
+    },
+    {
+      "company_id": "299030",
+      "name": "하나기술",
+      "expected_quarters": 26,
+      "complete_quarters": 24,
+      "not_applicable_periods": [],
+      "missing_periods": [
+        "2025-Q4",
+        "2026-Q2"
+      ],
+      "status": "incomplete"
+    },
+    {
+      "company_id": "222080",
+      "name": "SFA넥셀",
+      "expected_quarters": 26,
+      "complete_quarters": 25,
+      "not_applicable_periods": [],
+      "missing_periods": [
+        "2026-Q2"
+      ],
+      "status": "incomplete"
+    },
+    {
+      "company_id": "259630",
+      "name": "엠플러스",
+      "expected_quarters": 26,
+      "complete_quarters": 17,
+      "not_applicable_periods": [],
+      "missing_periods": [
+        "2020-Q2",
+        "2020-Q3",
+        "2020-Q4",
+        "2021-Q1",
+        "2021-Q2",
+        "2021-Q3",
+        "2021-Q4",
+        "2022-Q1",
+        "2022-Q2"
+      ],
+      "status": "incomplete"
+    },
+    {
+      "company_id": "372170",
+      "name": "윤성에프앤씨",
+      "expected_quarters": 26,
+      "complete_quarters": 11,
+      "not_applicable_periods": [],
+      "missing_periods": [
+        "2020-Q1",
+        "2020-Q2",
+        "2020-Q3",
+        "2020-Q4",
+        "2021-Q1",
+        "2021-Q2",
+        "2021-Q3",
+        "2021-Q4",
+        "2022-Q3",
+        "2022-Q4",
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q4",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "status": "incomplete"
+    },
+    {
+      "company_id": "277880",
+      "name": "티에스아이",
+      "expected_quarters": 26,
+      "complete_quarters": 26,
+      "not_applicable_periods": [],
+      "missing_periods": [],
+      "status": "complete"
+    },
+    {
+      "company_id": "243840",
+      "name": "신흥에스이씨",
+      "expected_quarters": 26,
+      "complete_quarters": 20,
+      "not_applicable_periods": [],
+      "missing_periods": [
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4",
+        "2026-Q1",
+        "2026-Q2"
+      ],
+      "status": "incomplete"
+    },
+    {
+      "company_id": "089980",
+      "name": "상아프론테크",
+      "expected_quarters": 26,
+      "complete_quarters": 26,
+      "not_applicable_periods": [],
+      "missing_periods": [],
+      "status": "complete"
+    },
+    {
+      "company_id": "365340",
+      "name": "성일하이텍",
+      "expected_quarters": 26,
+      "complete_quarters": 16,
+      "not_applicable_periods": [],
+      "missing_periods": [
+        "2020-Q1",
+        "2020-Q2",
+        "2020-Q3",
+        "2020-Q4",
+        "2021-Q1",
+        "2021-Q2",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4",
+        "2026-Q2"
+      ],
+      "status": "incomplete"
+    },
+    {
+      "company_id": "290670",
+      "name": "대보마그네틱",
+      "expected_quarters": 26,
+      "complete_quarters": 18,
+      "not_applicable_periods": [],
+      "missing_periods": [
+        "2020-Q1",
+        "2020-Q2",
+        "2020-Q3",
+        "2020-Q4",
+        "2021-Q1",
+        "2021-Q2",
+        "2021-Q3",
+        "2021-Q4"
+      ],
+      "status": "incomplete"
+    },
+    {
+      "company_id": "011790",
+      "name": "SKC",
+      "expected_quarters": 26,
+      "complete_quarters": 14,
+      "not_applicable_periods": [],
+      "missing_periods": [
+        "2021-Q1",
+        "2021-Q2",
+        "2021-Q3",
+        "2021-Q4",
+        "2022-Q1",
+        "2022-Q2",
+        "2022-Q3",
+        "2022-Q4",
+        "2025-Q1",
+        "2025-Q2",
+        "2025-Q3",
+        "2025-Q4"
+      ],
+      "status": "incomplete"
+    },
+    {
+      "company_id": "262260",
+      "name": "에이프로",
+      "expected_quarters": 26,
+      "complete_quarters": 26,
+      "not_applicable_periods": [],
+      "missing_periods": [],
+      "status": "complete"
     }
   ],
   "validation_issues": [
@@ -1152,6 +1848,30 @@
       "error": "Q1–Q3 differs from YTD; review restatement"
     },
     {
+      "company_id": "144960",
+      "basis": "연결",
+      "year": 2021,
+      "error": "Q1–Q3 differs from YTD; review restatement"
+    },
+    {
+      "company_id": "086520",
+      "basis": "연결",
+      "year": 2021,
+      "error": "Q1–Q3 differs from YTD; review restatement"
+    },
+    {
+      "company_id": "011790",
+      "basis": "연결",
+      "year": 2021,
+      "error": "Q1–Q3 differs from YTD; review restatement"
+    },
+    {
+      "company_id": "011790",
+      "basis": "별도",
+      "year": 2021,
+      "error": "Q1–Q3 differs from YTD; review restatement"
+    },
+    {
       "company_id": "103590",
       "basis": "연결",
       "year": 2022,
@@ -1166,6 +1886,24 @@
     {
       "company_id": "066970",
       "basis": "별도",
+      "year": 2022,
+      "error": "Q1–Q3 differs from YTD; review restatement"
+    },
+    {
+      "company_id": "025560",
+      "basis": "연결",
+      "year": 2022,
+      "error": "Q1–Q3 differs from YTD; review restatement"
+    },
+    {
+      "company_id": "033790",
+      "basis": "별도",
+      "year": 2022,
+      "error": "Q1–Q3 differs from YTD; review restatement"
+    },
+    {
+      "company_id": "011790",
+      "basis": "연결",
       "year": 2022,
       "error": "Q1–Q3 differs from YTD; review restatement"
     },
@@ -1195,6 +1933,24 @@
     },
     {
       "company_id": "082920",
+      "basis": "별도",
+      "year": 2023,
+      "error": "Q1–Q3 differs from YTD; review restatement"
+    },
+    {
+      "company_id": "089030",
+      "basis": "별도",
+      "year": 2023,
+      "error": "Q1–Q3 differs from YTD; review restatement"
+    },
+    {
+      "company_id": "278280",
+      "basis": "연결",
+      "year": 2023,
+      "error": "Q1–Q3 differs from YTD; review restatement"
+    },
+    {
+      "company_id": "137400",
       "basis": "별도",
       "year": 2023,
       "error": "Q1–Q3 differs from YTD; review restatement"
@@ -1260,6 +2016,12 @@
       "error": "Q1–Q3 differs from YTD; review restatement"
     },
     {
+      "company_id": "091580",
+      "basis": "연결",
+      "year": 2024,
+      "error": "Q1–Q3 differs from YTD; review restatement"
+    },
+    {
       "company_id": "011070",
       "basis": "연결",
       "year": 2025,
@@ -1280,6 +2042,42 @@
     {
       "company_id": "009830",
       "basis": "별도",
+      "year": 2025,
+      "error": "Q1–Q3 differs from YTD; review restatement"
+    },
+    {
+      "company_id": "253590",
+      "basis": "별도",
+      "year": 2025,
+      "error": "Q1–Q3 differs from YTD; review restatement"
+    },
+    {
+      "company_id": "091580",
+      "basis": "연결",
+      "year": 2025,
+      "error": "Q1–Q3 differs from YTD; review restatement"
+    },
+    {
+      "company_id": "348370",
+      "basis": "연결",
+      "year": 2025,
+      "error": "Q1–Q3 differs from YTD; review restatement"
+    },
+    {
+      "company_id": "457190",
+      "basis": "별도",
+      "year": 2025,
+      "error": "Q1–Q3 differs from YTD; review restatement"
+    },
+    {
+      "company_id": "222080",
+      "basis": "별도",
+      "year": 2025,
+      "error": "Q1–Q3 differs from YTD; review restatement"
+    },
+    {
+      "company_id": "011790",
+      "basis": "연결",
       "year": 2025,
       "error": "Q1–Q3 differs from YTD; review restatement"
     }
