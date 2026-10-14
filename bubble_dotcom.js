@@ -25,9 +25,9 @@
   const kDmax=K.reduce((m,x)=>x.disp!=null&&x.disp>(m?.disp??-1e9)?x:m,null),nDmax=N.reduce((m,x)=>x.disp!=null&&x.disp>(m?.disp??-1e9)?x:m,null);
   // 고점 이후 1차 저점·반등(코스피)
   const kLow1=kA.reduce((m,x)=>x.dd<m.dd?x:m,kA[0]);const kReb=kA.filter(x=>x.t>kLow1.t).reduce((m,x)=>!m||x.dd>m.dd?x:m,null);
-  const startTxt=KS_START==='2023-01-02'?'2023-01-02(AI 사이클 시작, 2,225.7)':'2025-04-09(직전 저점 2,293.7)';
+  const startTxt={'2023-01-02':'2023-01-02(AI 사이클 시작, 2,225.7)','2020-03-19':'2020-03-19(코로나 저점, 1,457.6)'}[KS_START]||'2025-04-09(직전 저점 2,293.7)';
   const nqAtKP=N.reduce((m,x)=>Math.abs(x.y-kP.y)<Math.abs(m.y-kP.y)?x:m,N[0]),nqReach=N.find(x=>x.idx>=kP.idx);
-  box.innerHTML=`<div class="dc-start"><span class="muted">코스피 강세장 시작점</span><div class="seg" id="dcStart"><button data-s="2025-04-09" class="${KS_START==='2025-04-09'?'on':''}">2025.4 저점</button><button data-s="2023-01-02" class="${KS_START==='2023-01-02'?'on':''}">2023.1 AI 사이클</button></div></div><div class="dc-sum">
+  box.innerHTML=`<div class="dc-start"><span class="muted">코스피 강세장 시작점</span><div class="seg" id="dcStart"><button data-s="2025-04-09" class="${KS_START==='2025-04-09'?'on':''}">2025.4 저점</button><button data-s="2023-01-02" class="${KS_START==='2023-01-02'?'on':''}">2023.1 AI 사이클</button><button data-s="2020-03-19" class="${KS_START==='2020-03-19'?'on':''}">2020.3 코로나 저점</button></div></div><div class="dc-sum">
    <div><b>코스피 현재</b><span>${kL.d} · ${Math.round(kL.v).toLocaleString()} · 시작 대비 ${Math.round(kL.idx)} · 고점 대비 ${fmt(kNow.dd)}% · 고점 후 ${Math.round(kNow.t)}일</span></div>
    <div><b>강세장 속도</b><span>코스피 고점 ${Math.round(kP.idx)}을 T+${kP.y.toFixed(2)}년에 기록 · 나스닥은 같은 시점(T+${nqAtKP.y.toFixed(2)}년, ${nqAtKP.d}) ${Math.round(nqAtKP.idx)}, ${Math.round(kP.idx)} 도달은 ${nqReach?nqReach.d+'(T+'+nqReach.y.toFixed(2)+'년)':'—'} · 나스닥 최종 고점 ${Math.round(nP.idx)}(T+${nP.y.toFixed(1)}년)</span></div>
    <div><b>100일 이격도 최고치</b><span>코스피 ${fmt(kDmax?.disp)}% (${kDmax?.d}) vs 나스닥 ${fmt(nDmax?.disp)}% (${nDmax?.d}) · 1929년 다우 약 +20%(증권사 자료)</span></div>
