@@ -2051,6 +2051,897 @@
       "regional_hs": {
         "8536909090": "853690"
       }
+    },
+    {
+      "id": "006110",
+      "name": "삼아알미늄",
+      "category": "배터리·소재",
+      "hs_codes": [
+        "760711"
+      ],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "평택시",
+          "hs_codes": [
+            "760711"
+          ]
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "평택시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "경기 평택시 포승읍 본사·공장. 압연(62%)·가공 — 2차전지 양극용 알루미늄박·포장용 박. 알루미늄박 HS 7607.11로 연결.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/14/002675/20260814009354/11012.htm",
+        "https://navercomp.wisereport.co.kr/v2/company/c1020001.aspx?cmp_cd=006110"
+      ],
+      "reviewed_at": "2026-10-14",
+      "regional_hs": {
+        "760711": "760711"
+      }
+    },
+    {
+      "id": "020150",
+      "name": "롯데에너지머티리얼즈",
+      "category": "배터리·소재",
+      "hs_codes": [
+        "741011"
+      ],
+      "sites": [
+        {
+          "sido_code": "52",
+          "region_keyword": "익산시",
+          "hs_codes": [
+            "741011"
+          ]
+        }
+      ],
+      "sido_code": "52",
+      "region_keyword": "익산시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "전북 익산시 공장(국내 동박 생산). 2차전지용 전지박(Elecfoil)·회로박. 말레이시아 공장 물량은 지역 통계에 잡히지 않음. 동박 HS 7410.11로 연결.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/14/000209/20260814000547/11012.htm",
+        "https://navercomp.wisereport.co.kr/v2/company/c1020001.aspx?cmp_cd=020150"
+      ],
+      "reviewed_at": "2026-10-14",
+      "regional_hs": {
+        "741011": "741011"
+      }
+    },
+    {
+      "id": "078600",
+      "name": "대주전자재료",
+      "category": "배터리·소재",
+      "hs_codes": [
+        "320730"
+      ],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "시흥시",
+          "hs_codes": [
+            "320730"
+          ]
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "시흥시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "경기 시흥시 본사·공장. 전도성·태양전지 페이스트(66%)·실리콘 음극재(15%). 페이스트는 HS 3207.30으로 연결(음극재는 별도 HS가 불명확해 미연결). 같은 지역·품목에는 다른 업체 물량이 섞일 수 있어 방향성 참고용.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/14/000335/20260814000969/11012.htm",
+        "https://navercomp.wisereport.co.kr/v2/company/c1020001.aspx?cmp_cd=078600"
+      ],
+      "reviewed_at": "2026-10-14",
+      "regional_hs": {
+        "320730": "320730"
+      }
+    },
+    {
+      "id": "091580",
+      "name": "상신이디피",
+      "category": "배터리·부품",
+      "hs_codes": [
+        "850790"
+      ],
+      "sites": [
+        {
+          "sido_code": "44",
+          "region_keyword": "천안시",
+          "hs_codes": [
+            "850790"
+          ]
+        }
+      ],
+      "sido_code": "44",
+      "region_keyword": "천안시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "충남 천안시 서북구 직산읍 본사·공장. 2차전지 중대형·원형 캔(89%). 축전지 부품 HS 8507.90으로 연결. 같은 지역·품목에는 다른 업체 물량이 섞일 수 있어 방향성 참고용.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/14/002712/20260814009491/11012.htm",
+        "https://navercomp.wisereport.co.kr/v2/company/c1020001.aspx?cmp_cd=091580"
+      ],
+      "reviewed_at": "2026-10-14",
+      "regional_hs": {
+        "850790": "850790"
+      }
+    },
+    {
+      "id": "033790",
+      "name": "피노",
+      "category": "배터리·소재",
+      "hs_codes": [
+        "282590"
+      ],
+      "sites": [
+        {
+          "sido_code": "47",
+          "region_keyword": "포항시",
+          "hs_codes": [
+            "282590"
+          ]
+        }
+      ],
+      "sido_code": "47",
+      "region_keyword": "포항시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "신에너지사업(전구체) 99.9% — 종속회사 씨앤피신소재테크놀로지(경북 포항시 북구 흥해읍) 전구체 제조. 전구체 HS는 2825.90(기타 금속 수산화물)으로 추정 연결 · 분류 확인 필요.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/14/000949/20260814003133/11012.htm",
+        "https://navercomp.wisereport.co.kr/v2/company/c1020001.aspx?cmp_cd=033790"
+      ],
+      "reviewed_at": "2026-10-14",
+      "regional_hs": {
+        "282590": "282590"
+      }
+    },
+    {
+      "id": "086520",
+      "name": "에코프로",
+      "category": "배터리·소재",
+      "hs_codes": [
+        "2841909020"
+      ],
+      "sites": [
+        {
+          "sido_code": "47",
+          "region_keyword": "포항시",
+          "hs_codes": [
+            "2841909020"
+          ]
+        },
+        {
+          "sido_code": "43",
+          "region_keyword": "청주시",
+          "hs_codes": [
+            "2841909020"
+          ]
+        }
+      ],
+      "sido_code": "47",
+      "region_keyword": "포항시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "지주사(에코프로비엠 72% 등 연결). 양극재 생산은 경북 포항·충북 청주 오창. 양극재 NCM HS로 연결(에코프로비엠과 같은 지역 수치). 같은 지역·품목에는 다른 업체 물량이 섞일 수 있어 방향성 참고용.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/09/17/000485/20260917001242/11012.htm",
+        "https://navercomp.wisereport.co.kr/v2/company/c1020001.aspx?cmp_cd=086520"
+      ],
+      "reviewed_at": "2026-10-14",
+      "regional_hs": {
+        "2841909020": "284190"
+      }
+    },
+    {
+      "id": "450080",
+      "name": "에코프로머티",
+      "category": "배터리·소재",
+      "hs_codes": [
+        "282590"
+      ],
+      "sites": [
+        {
+          "sido_code": "47",
+          "region_keyword": "포항시",
+          "hs_codes": [
+            "282590"
+          ]
+        }
+      ],
+      "sido_code": "47",
+      "region_keyword": "포항시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "경북 포항시 북구 흥해읍 공장. 메탈(49%)·전구체(40%). 전구체 HS는 2825.90으로 추정 연결 · 분류 확인 필요. 피노와 같은 지역 수치.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/14/001106/20260814003653/11012.htm",
+        "https://navercomp.wisereport.co.kr/v2/company/c1020001.aspx?cmp_cd=450080"
+      ],
+      "reviewed_at": "2026-10-14",
+      "regional_hs": {
+        "282590": "282590"
+      }
+    },
+    {
+      "id": "005070",
+      "name": "코스모신소재",
+      "category": "배터리·소재",
+      "hs_codes": [
+        "2841909020"
+      ],
+      "sites": [
+        {
+          "sido_code": "43",
+          "region_keyword": "충주시",
+          "hs_codes": [
+            "2841909020"
+          ]
+        }
+      ],
+      "sido_code": "43",
+      "region_keyword": "충주시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "충북 충주시 본사·공장. 양극활물질(67%)·기능성 필름. 양극재 NCM HS로 연결. 같은 지역·품목에는 다른 업체 물량이 섞일 수 있어 방향성 참고용.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/09/30/001067/20260930002326/11012.htm",
+        "https://navercomp.wisereport.co.kr/v2/company/c1020001.aspx?cmp_cd=005070"
+      ],
+      "reviewed_at": "2026-10-14",
+      "regional_hs": {
+        "2841909020": "284190"
+      }
+    },
+    {
+      "id": "005420",
+      "name": "코스모화학",
+      "category": "배터리·소재",
+      "hs_codes": [
+        "2841909020",
+        "282300"
+      ],
+      "sites": [
+        {
+          "sido_code": "43",
+          "region_keyword": "충주시",
+          "hs_codes": [
+            "2841909020"
+          ]
+        },
+        {
+          "sido_code": "31",
+          "region_keyword": "울주군",
+          "hs_codes": [
+            "282300"
+          ]
+        }
+      ],
+      "sido_code": "43",
+      "region_keyword": "충주시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "연결 신소재(코스모신소재, 충주 양극재) 67%·이산화티타늄(울산 울주군 온산) 18%·전지소재(황산코발트 등). 양극재 NCM·이산화티타늄 HS로 연결. 같은 지역·품목에는 다른 업체 물량이 섞일 수 있어 방향성 참고용.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/09/30/000549/20260930001449/11012.htm",
+        "https://navercomp.wisereport.co.kr/v2/company/c1020001.aspx?cmp_cd=005420"
+      ],
+      "reviewed_at": "2026-10-14",
+      "regional_hs": {
+        "2841909020": "284190",
+        "282300": "282300"
+      }
+    },
+    {
+      "id": "278280",
+      "name": "천보",
+      "category": "배터리·소재",
+      "hs_codes": [
+        "282690"
+      ],
+      "sites": [
+        {
+          "sido_code": "43",
+          "region_keyword": "충주시",
+          "hs_codes": [
+            "282690"
+          ]
+        },
+        {
+          "sido_code": "52",
+          "region_keyword": "군산시",
+          "hs_codes": [
+            "282690"
+          ]
+        }
+      ],
+      "sido_code": "43",
+      "region_keyword": "충주시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "충북 충주시 주덕읍·대소원면 공장, 전북 군산(새만금) 신공장. 2차전지 전해질(LiFSI·LiPF6 등) 56%·전자소재 32%. 불화염 HS 2826.90으로 연결.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/14/000984/20260814003227/11012.htm",
+        "https://navercomp.wisereport.co.kr/v2/company/c1020001.aspx?cmp_cd=278280"
+      ],
+      "reviewed_at": "2026-10-14",
+      "regional_hs": {
+        "282690": "282690"
+      }
+    },
+    {
+      "id": "348370",
+      "name": "엔켐",
+      "category": "배터리·소재",
+      "hs_codes": [
+        "382499"
+      ],
+      "sites": [
+        {
+          "sido_code": "43",
+          "region_keyword": "제천시",
+          "hs_codes": [
+            "382499"
+          ]
+        }
+      ],
+      "sido_code": "43",
+      "region_keyword": "제천시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "충북 제천시 본사·공장. 전해액 99%(미국·중국·헝가리 해외 공장 비중 큼 → 국내 수출은 일부). 전해액 HS 3824.99로 연결. 같은 지역·품목에는 다른 업체 물량이 섞일 수 있어 방향성 참고용.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/14/003583/20260814012612/11012.htm",
+        "https://navercomp.wisereport.co.kr/v2/company/c1020001.aspx?cmp_cd=348370"
+      ],
+      "reviewed_at": "2026-10-14",
+      "regional_hs": {
+        "382499": "382499"
+      }
+    },
+    {
+      "id": "093370",
+      "name": "후성",
+      "category": "배터리·소재",
+      "hs_codes": [
+        "282690"
+      ],
+      "sites": [
+        {
+          "sido_code": "31",
+          "region_keyword": "울주군",
+          "hs_codes": [
+            "282690"
+          ]
+        }
+      ],
+      "sido_code": "31",
+      "region_keyword": "울주군",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "경기 화성시 팔탄면 본사·공장(냉매·화공기기), 울산 울주군 온산 LiPF6 공장. 기초화합물 72%(냉매·LiPF6). LiPF6는 불화염 HS 2826.90으로 연결(냉매는 미연결). 같은 지역·품목에는 다른 업체 물량이 섞일 수 있어 방향성 참고용.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/14/002786/20260814009761/11012.htm",
+        "https://navercomp.wisereport.co.kr/v2/company/c1020001.aspx?cmp_cd=093370"
+      ],
+      "reviewed_at": "2026-10-14",
+      "regional_hs": {
+        "282690": "282690"
+      }
+    },
+    {
+      "id": "457190",
+      "name": "이수스페셜티케미컬",
+      "category": "배터리·소재",
+      "hs_codes": [
+        "293090"
+      ],
+      "sites": [
+        {
+          "sido_code": "31",
+          "region_keyword": "울주군",
+          "hs_codes": [
+            "293090"
+          ]
+        }
+      ],
+      "sido_code": "31",
+      "region_keyword": "울주군",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "울산 울주군 온산읍 공장. 정밀화학(TDM 등 유기황화합물)·황화리튬(전고체 전해질 원료). 유기황화합물 HS 2930.90으로 연결. 같은 지역·품목에는 다른 업체 물량이 섞일 수 있어 방향성 참고용.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/14/001551/20260814005172/11012.htm",
+        "https://navercomp.wisereport.co.kr/v2/company/c1020001.aspx?cmp_cd=457190"
+      ],
+      "reviewed_at": "2026-10-14",
+      "regional_hs": {
+        "293090": "293090"
+      }
+    },
+    {
+      "id": "121600",
+      "name": "나노신소재",
+      "category": "배터리·소재",
+      "hs_codes": [
+        "382499"
+      ],
+      "sites": [
+        {
+          "sido_code": "36",
+          "region_keyword": "세종",
+          "hs_codes": [
+            "382499"
+          ]
+        }
+      ],
+      "sido_code": "36",
+      "region_keyword": "세종",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "세종시 부강면 본사·공장. 이차전지 소재(CNT 도전재) 58%·반도체·디스플레이 소재. 도전재 페이스트는 HS 3824.99로 연결. 같은 지역·품목에는 다른 업체 물량이 섞일 수 있어 방향성 참고용.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/14/000873/20260814002876/11012.htm",
+        "https://navercomp.wisereport.co.kr/v2/company/c1020001.aspx?cmp_cd=121600"
+      ],
+      "reviewed_at": "2026-10-14",
+      "regional_hs": {
+        "382499": "382499"
+      }
+    },
+    {
+      "id": "361610",
+      "name": "SK아이이테크놀로지",
+      "category": "배터리·소재",
+      "hs_codes": [
+        "392010"
+      ],
+      "sites": [
+        {
+          "sido_code": "43",
+          "region_keyword": "증평군",
+          "hs_codes": [
+            "392010"
+          ]
+        }
+      ],
+      "sido_code": "43",
+      "region_keyword": "증평군",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "충북 증평 생산공장(분리막 LiBS 100%). 중국·폴란드 해외 공장 물량은 제외. 폴리에틸렌 필름 HS 3920.10으로 연결.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/14/002629/20260814009182/11012.htm",
+        "https://navercomp.wisereport.co.kr/v2/company/c1020001.aspx?cmp_cd=361610"
+      ],
+      "reviewed_at": "2026-10-14",
+      "regional_hs": {
+        "392010": "392010"
+      }
+    },
+    {
+      "id": "393890",
+      "name": "더블유씨피",
+      "category": "배터리·소재",
+      "hs_codes": [
+        "392010"
+      ],
+      "sites": [
+        {
+          "sido_code": "43",
+          "region_keyword": "충주시",
+          "hs_codes": [
+            "392010"
+          ]
+        }
+      ],
+      "sido_code": "43",
+      "region_keyword": "충주시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "충북 충주시 대소원면 본사·공장. 분리막 100%. 폴리에틸렌 필름 HS 3920.10으로 연결. 같은 지역·품목에는 다른 업체 물량이 섞일 수 있어 방향성 참고용.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/14/002956/20260814010420/11012.htm",
+        "https://navercomp.wisereport.co.kr/v2/company/c1020001.aspx?cmp_cd=393890"
+      ],
+      "reviewed_at": "2026-10-14",
+      "regional_hs": {
+        "392010": "392010"
+      }
+    },
+    {
+      "id": "137400",
+      "name": "피엔티",
+      "category": "배터리·장비",
+      "hs_codes": [
+        "847989",
+        "842010"
+      ],
+      "sites": [
+        {
+          "sido_code": "47",
+          "region_keyword": "구미시",
+          "hs_codes": [
+            "847989",
+            "842010"
+          ]
+        }
+      ],
+      "sido_code": "47",
+      "region_keyword": "구미시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "경북 구미시 본사·공장. 2차전지 롤투롤 전극 코터·캘린더·슬리터(72%)·소재. 기타 기계 HS 8479.89와 캘린더 8420.10으로 연결. 같은 지역·품목에는 다른 업체 물량이 섞일 수 있어 방향성 참고용.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/12/000386/20260812001043/11012.htm",
+        "https://navercomp.wisereport.co.kr/v2/company/c1020001.aspx?cmp_cd=137400"
+      ],
+      "reviewed_at": "2026-10-14",
+      "regional_hs": {
+        "847989": "847989",
+        "842010": "842010"
+      }
+    },
+    {
+      "id": "299030",
+      "name": "하나기술",
+      "category": "배터리·장비",
+      "hs_codes": [
+        "847989"
+      ],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "용인시",
+          "hs_codes": [
+            "847989"
+          ]
+        },
+        {
+          "sido_code": "41",
+          "region_keyword": "화성시",
+          "hs_codes": [
+            "847989"
+          ]
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "용인시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "경기 용인시 처인구 남사면 본사·공장, 화성시 팔탄면 공장. 2차전지 조립·활성화 장비. 기타 기계 HS 8479.89로 연결. 같은 지역·품목에는 다른 업체 물량이 섞일 수 있어 방향성 참고용.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/14/002900/20260814010197/11012.htm",
+        "https://navercomp.wisereport.co.kr/v2/company/c1020001.aspx?cmp_cd=299030"
+      ],
+      "reviewed_at": "2026-10-14",
+      "regional_hs": {
+        "847989": "847989"
+      }
+    },
+    {
+      "id": "222080",
+      "name": "SFA넥셀",
+      "category": "배터리·장비",
+      "hs_codes": [
+        "842010",
+        "847989"
+      ],
+      "sites": [
+        {
+          "sido_code": "27",
+          "region_keyword": "동구",
+          "hs_codes": [
+            "842010",
+            "847989"
+          ]
+        },
+        {
+          "sido_code": "27",
+          "region_keyword": "달성군",
+          "hs_codes": [
+            "842010",
+            "847989"
+          ]
+        }
+      ],
+      "sido_code": "27",
+      "region_keyword": "동구",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "(구 씨아이에스) 대구 동구 본사·공장, 달성군 유가면 공장. 전극공정 장비(캘린더·코터) 49%·증착·검사장비 31%. 캘린더 HS 8420.10·기타 기계 8479.89로 연결. 같은 지역·품목에는 다른 업체 물량이 섞일 수 있어 방향성 참고용.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/18/000463/20260818001120/11012.htm",
+        "https://navercomp.wisereport.co.kr/v2/company/c1020001.aspx?cmp_cd=222080"
+      ],
+      "reviewed_at": "2026-10-14",
+      "regional_hs": {
+        "842010": "842010",
+        "847989": "847989"
+      }
+    },
+    {
+      "id": "259630",
+      "name": "엠플러스",
+      "category": "배터리·장비",
+      "hs_codes": [
+        "847989"
+      ],
+      "sites": [
+        {
+          "sido_code": "43",
+          "region_keyword": "청주시",
+          "hs_codes": [
+            "847989"
+          ]
+        }
+      ],
+      "sido_code": "43",
+      "region_keyword": "청주시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "충북 청주시 흥덕구 옥산면 본사·공장. 2차전지 자동화 조립장비(88%). 기타 기계 HS 8479.89로 연결. 같은 지역·품목에는 다른 업체 물량이 섞일 수 있어 방향성 참고용.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/14/002615/20260814009132/11012.htm",
+        "https://navercomp.wisereport.co.kr/v2/company/c1020001.aspx?cmp_cd=259630"
+      ],
+      "reviewed_at": "2026-10-14",
+      "regional_hs": {
+        "847989": "847989"
+      }
+    },
+    {
+      "id": "372170",
+      "name": "윤성에프앤씨",
+      "category": "배터리·장비",
+      "hs_codes": [
+        "847982"
+      ],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "안성시",
+          "hs_codes": [
+            "847982"
+          ]
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "안성시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "경기 안성시 공도읍 본사·공장. 2차전지 전극 슬러리 믹서(84%)·바이오. 혼합기 HS 8479.82로 연결. 같은 지역·품목에는 다른 업체 물량이 섞일 수 있어 방향성 참고용.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/14/000381/20260814001134/11012.htm",
+        "https://navercomp.wisereport.co.kr/v2/company/c1020001.aspx?cmp_cd=372170"
+      ],
+      "reviewed_at": "2026-10-14",
+      "regional_hs": {
+        "847982": "847982"
+      }
+    },
+    {
+      "id": "277880",
+      "name": "티에스아이",
+      "category": "배터리·장비",
+      "hs_codes": [
+        "847982"
+      ],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "화성시",
+          "hs_codes": [
+            "847982"
+          ]
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "화성시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "경기 화성시 동탄·향남 본사·공장. 2차전지 믹싱 시스템(82%). 혼합기 HS 8479.82로 연결. 같은 지역·품목에는 다른 업체 물량이 섞일 수 있어 방향성 참고용.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/14/001253/20260814004156/11012.htm",
+        "https://navercomp.wisereport.co.kr/v2/company/c1020001.aspx?cmp_cd=277880"
+      ],
+      "reviewed_at": "2026-10-14",
+      "regional_hs": {
+        "847982": "847982"
+      }
+    },
+    {
+      "id": "243840",
+      "name": "신흥에스이씨",
+      "category": "배터리·부품",
+      "hs_codes": [
+        "850790"
+      ],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "오산시",
+          "hs_codes": [
+            "850790"
+          ]
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "오산시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "경기 오산시 본사·공장. 중대형 각형 Cap Assy(69%)·원형 CID. 축전지 부품 HS 8507.90으로 연결. 같은 지역·품목에는 다른 업체 물량이 섞일 수 있어 방향성 참고용.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/14/002797/20260814009793/11012.htm",
+        "https://navercomp.wisereport.co.kr/v2/company/c1020001.aspx?cmp_cd=243840"
+      ],
+      "reviewed_at": "2026-10-14",
+      "regional_hs": {
+        "850790": "850790"
+      }
+    },
+    {
+      "id": "089980",
+      "name": "상아프론테크",
+      "category": "배터리·부품",
+      "hs_codes": [
+        "392690"
+      ],
+      "sites": [
+        {
+          "sido_code": "28",
+          "region_keyword": "남동구",
+          "hs_codes": [
+            "392690"
+          ]
+        }
+      ],
+      "sido_code": "28",
+      "region_keyword": "남동구",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "인천 남동구 본사·1~3공장, 경남 양산 공장. 2차전지·반도체·디스플레이용 불소수지 부품(부품 51%·소재 36%). 기타 플라스틱 제품 HS 3926.90으로 연결. 같은 지역·품목에는 다른 업체 물량이 섞일 수 있어 방향성 참고용.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/13/000808/20260813002168/11012.htm",
+        "https://navercomp.wisereport.co.kr/v2/company/c1020001.aspx?cmp_cd=089980"
+      ],
+      "reviewed_at": "2026-10-14",
+      "regional_hs": {
+        "392690": "392690"
+      }
+    },
+    {
+      "id": "365340",
+      "name": "성일하이텍",
+      "category": "배터리·소재",
+      "hs_codes": [
+        "283324"
+      ],
+      "sites": [
+        {
+          "sido_code": "52",
+          "region_keyword": "군산시",
+          "hs_codes": [
+            "283324"
+          ]
+        }
+      ],
+      "sido_code": "52",
+      "region_keyword": "군산시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "전북 군산시 새만금 본사·하이드로센터. 폐배터리 재활용 → 황산니켈·코발트 등 2차전지 소재(77%). 황산니켈 HS 2833.24로 연결.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/14/000297/20260814000852/11012.htm",
+        "https://navercomp.wisereport.co.kr/v2/company/c1020001.aspx?cmp_cd=365340"
+      ],
+      "reviewed_at": "2026-10-14",
+      "regional_hs": {
+        "283324": "283324"
+      }
+    },
+    {
+      "id": "290670",
+      "name": "대보마그네틱",
+      "category": "배터리·장비",
+      "hs_codes": [
+        "850590"
+      ],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "화성시",
+          "hs_codes": [
+            "850590"
+          ]
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "화성시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "경기 화성시 팔탄면 본사·공장, 충북 음성 공장. 2차전지 소재용 전자석 탈철기(장비 100%). 전자석·자기 분리기 HS 8505.90으로 연결. 같은 지역·품목에는 다른 업체 물량이 섞일 수 있어 방향성 참고용.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/14/000479/20260814001497/11012.htm",
+        "https://navercomp.wisereport.co.kr/v2/company/c1020001.aspx?cmp_cd=290670"
+      ],
+      "reviewed_at": "2026-10-14",
+      "regional_hs": {
+        "850590": "850590"
+      }
+    },
+    {
+      "id": "011790",
+      "name": "SKC",
+      "category": "배터리·소재",
+      "hs_codes": [
+        "741011"
+      ],
+      "sites": [
+        {
+          "sido_code": "52",
+          "region_keyword": "정읍시",
+          "hs_codes": [
+            "741011"
+          ]
+        }
+      ],
+      "sido_code": "52",
+      "region_keyword": "정읍시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "지주형 소재사(화학 52%·2차전지 소재 41%). 2차전지 동박은 종속회사 SK넥실리스 전북 정읍 공장(말레이시아 공장 별도). 동박 HS 7410.11로 연결. 같은 지역·품목에는 다른 업체 물량이 섞일 수 있어 방향성 참고용.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/14/002766/20260814009686/11012.htm",
+        "https://navercomp.wisereport.co.kr/v2/company/c1020001.aspx?cmp_cd=011790"
+      ],
+      "reviewed_at": "2026-10-14",
+      "regional_hs": {
+        "741011": "741011"
+      }
+    },
+    {
+      "id": "262260",
+      "name": "에이프로",
+      "category": "배터리·장비",
+      "hs_codes": [
+        "850440"
+      ],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "안양시",
+          "hs_codes": [
+            "850440"
+          ]
+        },
+        {
+          "sido_code": "41",
+          "region_keyword": "군포시",
+          "hs_codes": [
+            "850440"
+          ]
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "안양시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "rationale": "경기 안양시 동안구 본사, 군포시 사업장. 2차전지 활성화(충방전) 장비 100%. 충방전기는 정지형 변환기 HS 8504.40으로 연결. 같은 지역·품목에는 다른 업체 물량이 섞일 수 있어 방향성 참고용.",
+      "sources": [
+        "https://kind.krx.co.kr/external/2026/08/14/003619/20260814012740/11012.htm",
+        "https://navercomp.wisereport.co.kr/v2/company/c1020001.aspx?cmp_cd=262260"
+      ],
+      "reviewed_at": "2026-10-14",
+      "regional_hs": {
+        "850440": "850440"
+      }
     }
   ],
   "reviewed_at": "2026-10-07",
