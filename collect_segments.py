@@ -16,7 +16,7 @@ import collect_company_history as h
 
 ROOT = Path(__file__).resolve().parent
 OUT, STATUS = ROOT / 'company_segments.csv', ROOT / 'company_segments_status.json'
-REV = ['매출액', '매출', '영업수익', '외부고객으로부터의수익', '외부수익', '수익', '순매출액', '매출액(외부)', '외부매출', '총매출액', '총부문수익', '부문수익']
+REV = ['매출액', '매출', '수익(매출액)', '매출액(수익)', '영업수익', '외부고객으로부터의수익', '외부수익', '수익', '순매출액', '매출액(외부)', '외부매출', '총매출액', '총부문수익', '부문수익']
 OP = ['영업이익', '영업이익(손실)', '영업손익', '부문영업이익', '부문영업손익', '부문이익', '부문손익', '부문이익(손실)', '계속영업이익(손실)', '영업손실', '보고부문영업이익(손실)', '부문영업이익(손실)']
 UNIT = {'원': Decimal(1), '천원': Decimal(1000), '백만원': Decimal(10**6), '억원': Decimal(10**8)}
 TOTAL = re.compile(r'^(부문합계|합계|계|총계|연결|연결합계|연결후금액|연결재무제표|부문의합계합계|합계금액)$')
@@ -73,7 +73,10 @@ def parse_table(rows, before):
     first = min(ri, oi)
     rv, ov = rows[ri][1:], rows[oi][1:]
     if len(rv) != len(ov) or len(rv) < 2: return None
-    n = len(rv); heads = rows[:first]
+    n = len(rv)
+    isnum = lambda r: sum(1 for c in r[1:] if num(c) is not None and norm(c) not in ('', '-')) >= max(1, (len(r) - 1) // 2)
+    first = next((i for i, r in enumerate(rows) if len(r) > 1 and isnum(r)), first)
+    heads = rows[:first]
     if not heads: return None
     cols = []
     cum_idx = None
@@ -83,10 +86,11 @@ def parse_table(rows, before):
             cum_idx = cum_idx or []
             if cells[-1] == '누적': cum_idx.append(j - 1)
             cells = cells[:-1]
-        name = next((c for c in reversed(cells) if c not in SKIPH), None)
+        adj = next((c for c in reversed(cells) if ADJ.search(c)), None)
+        name = adj or next((c for c in reversed(cells) if c not in SKIPH), None)
         if not name: return None
         cols.append(name)
-    if any(len(x) > 25 or re.fullmatch(r'(당|전)?(기|반기|분기)(말)?|20\d\d.*|제\d+기.*|금액|비중|비율.*|\d+.*', x) for x in cols): return None
+    if any(len(x) > 25 or re.fullmatch(r'(당|전)?(기|반기|분기)(말)?|20\d\d.*|제\d+.*기.*|.*\((당|전)\)기.*|금액|비중|비율.*|[\d,.]+', x) for x in cols): return None
     idx = cum_idx if cum_idx else list(range(n))
     return [(cols[i], rv[i], ov[i]) for i in idx]
 
