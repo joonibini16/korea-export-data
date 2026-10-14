@@ -33,6 +33,8 @@
    <div><b>100일 이격도 최고치</b><span>코스피 ${fmt(kDmax?.disp)}% (${kDmax?.d}) vs 나스닥 ${fmt(nDmax?.disp)}% (${nDmax?.d}) · 1929년 다우 약 +20%(증권사 자료)</span></div>
    <div><b>고점 이후 경로</b><span>코스피 1차 저점 ${fmt(kLow1.dd)}% (${kLow1.d})${kReb&&kReb.d>kLow1.d?` → 반등 ${fmt(kReb.dd)}% (${kReb.d})`:''} → 현재 ${fmt(kNow.dd)}%. 나스닥은 고점 후 같은 ${Math.round(kNow.t)}일째(${nSame.d}) ${fmt(nSame.dd)}%, 같은 낙폭은 ${nSameDD?nSameDD.d+'('+Math.round(nSameDD.t)+'일째)':'없음'}에 처음 도달. 중간 조정 사례: 나스닥 1998년 ${n98P.d} 고점 → ${n98L.d} ${fmt(n98L.dd)}%(${Math.round(n98L.t)}일) 뒤 50일 만에 회복하고 2000년까지 상승</span></div></div>
    <div class="g3 dc-g"><div><h3>강세장 시작 = 100 (로그)</h3><div class="chart"><canvas id="dcIdx"></canvas></div></div><div><h3>100일 이격도 (%)</h3><div class="chart"><canvas id="dcDisp"></canvas></div></div><div><h3>고점 이후 낙폭 (%) · 고점 후 경과일</h3><div class="chart"><canvas id="dcDD"></canvas></div></div></div>
+   <div class="dc-peak"><h3>고점 시점 정렬 · 고점 = 100 (로그) · 고점 전후 경과일</h3><div class="chart" style="height:340px"><canvas id="dcPeak"></canvas></div>
+   <p class="muted" id="dcPeakNote"></p></div>
    <p class="muted">참고용 비교입니다(예측 아님). 나스닥 종합 1995-01-03, 코스피 ${startTxt}을 강세장 시작으로 맞췄습니다(버튼으로 변경). 낙폭 그래프의 회색 선은 1998년 LTCM 사태 때 나스닥 중간 조정(−30%)으로, 현재 하락이 '버블 정점 이후'(2000년형)인지 '상승 중간 조정'(1998년형)인지 함께 비교하기 위한 것입니다. 가로축은 시작(또는 고점) 이후 경과 시간이라 실제 날짜가 다릅니다. 닷컴은 이익 없는 성장주가 주도했고, 현재 코스피는 반도체 실적 증가가 동반된다는 차이가 있습니다. 출처: 나스닥 Yahoo Finance(^IXIC), 코스피 market_daily.csv(매일 갱신).</p>`;
   charts.forEach(c=>c.destroy());charts=[];
   const lineDS=(label,data,color,w=2)=>({label,data,borderColor:color,backgroundColor:color,borderWidth:w,pointRadius:0,tension:0,parsing:false});
@@ -43,6 +45,13 @@
   mk('dcDisp',{type:'line',data:{datasets:[lineDS('닷컴 나스닥',N.filter(x=>x.disp!=null&&x.y<=8).map(x=>({x:x.y,y:x.disp})),'#d4a017',1.2),lineDS('코스피',K.filter(x=>x.disp!=null).map(x=>({x:x.y,y:x.disp})),'#ef4444',1.8),
     lineDS('나스닥 최고 +'+nDmax.disp.toFixed(0)+'%',[{x:0,y:nDmax.disp},{x:8,y:nDmax.disp}],'rgba(212,160,23,.55)',1),lineDS('1929 다우 약 +20%',[{x:0,y:20},{x:8,y:20}],'rgba(148,163,184,.6)',1)]},
    options:{...base,plugins:{...base.plugins,tooltip:{callbacks:{label:t=>`${t.dataset.label}: T+${t.parsed.x.toFixed(2)}년 · ${t.parsed.y.toFixed(1)}%`}}},scales:{x:{type:'linear',min:0,max:8,title:{display:true,text:'강세장 시작 후 경과 (년)'},ticks:{callback:v=>'T+'+v+'Y'}},y:{title:{display:true,text:'종가 ÷ 100일 평균 − 1 (%)'}}}}});
+  {const pkRel=(arr,p)=>arr.map(x=>({x:(ts(x.d)-ts(p.d))/DAY,y:x.v/p.v*100,d:x.d}));const Np=pkRel(nq,nP),Kp=pkRel(ks,kP);
+   const at=(a,t)=>a.reduce((m,x)=>Math.abs(x.x-t)<Math.abs(m.x-t)?x:m,a[0]);const kN=Kp.at(-1),nN=at(Np,kN.x);
+   const rows=[-365,-180,-90,-30].map(t=>`${t}일: 코스피 ${at(Kp,t).y.toFixed(0)} / 나스닥 ${at(Np,t).y.toFixed(0)}`).join(' · ');
+   const proj=[180,270,365,945].map(t=>{const n=at(Np,t);return `+${t}일 ${n.d} 나스닥 ${n.y.toFixed(0)} → 코스피 환산 ${Math.round(kP.v*n.y/100).toLocaleString()}`;}).join(' · ');
+   const el=document.getElementById('dcPeakNote');if(el)el.textContent=`고점(코스피 ${kP.d} ${Math.round(kP.v).toLocaleString()}, 나스닥 2000-03-10 5,049)을 같은 날로 맞춘 그래프입니다. 고점 전: ${rows}. 현재 고점 후 ${Math.round(kN.x)}일 코스피 ${kN.y.toFixed(0)} vs 같은 날짜 나스닥 ${nN.y.toFixed(0)}(${nN.d}). 나스닥 경로를 그대로 따른다고 가정한 단순 환산(예측 아님): ${proj}.`;
+   mk('dcPeak',{type:'line',data:{datasets:[lineDS('닷컴 나스닥 (고점 2000-03-10)',Np.filter(x=>x.x>=-1500&&x.x<=1000).map(x=>({x:x.x,y:x.y})),'#d4a017'),lineDS('코스피 (고점 '+kP.d+')',Kp.filter(x=>x.x>=-1500).map(x=>({x:x.x,y:x.y})),'#ef4444',2.5),now({x:kN.x,y:kN.y},'','현재')]},
+    options:{...base,plugins:{...base.plugins,tooltip:{callbacks:{label:t=>`${t.dataset.label}: 고점 ${t.parsed.x>=0?'+':''}${Math.round(t.parsed.x)}일 · ${t.parsed.y.toFixed(1)}`}}},scales:{x:{type:'linear',min:-1500,max:1000,title:{display:true,text:'고점 대비 경과일 (음수 = 고점 전)'}},y:{type:'logarithmic',min:10,max:110,title:{display:true,text:'고점 = 100'}}}}});}
   mk('dcDD',{type:'line',data:{datasets:[lineDS('나스닥 (2000.3.10 고점)',nA.map(x=>({x:x.t,y:x.dd})),'#d4a017'),lineDS('나스닥 1998 중간 조정 ('+n98P.d+')',n98.map(x=>({x:x.t,y:x.dd})),'#94a3b8',1.8),lineDS('코스피 ('+kP.d+' 고점)',kA.map(x=>({x:x.t,y:x.dd})),'#ef4444',2.5),now({x:kNow.t,y:kNow.dd},'','현재')]},
    options:{...base,plugins:{...base.plugins,tooltip:{callbacks:{label:t=>`${t.dataset.label}: ${Math.round(t.parsed.x)}일 · ${t.parsed.y.toFixed(1)}%`}}},scales:{x:{type:'linear',min:0,max:1000,title:{display:true,text:'고점 이후 경과일'}},y:{max:0,title:{display:true,text:'고점 대비 (%)'}}}}});
  }
