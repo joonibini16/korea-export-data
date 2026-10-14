@@ -1,0 +1,512 @@
+{
+  "as_of": "2026-10-14",
+  "provider": "MarketScreener 공개 재무전망·기업가치 표",
+  "unit": "현지 통화 백만",
+  "method": "매출·EBIT·순이익은 회계연도 연간 수치, OPM=EBIT/매출×100. PER은 자료 제공자의 회계연도별 P/E 값이며 완료 연도에는 연도 기준주가, 전망 연도에는 조회 시점 기준주가가 적용될 수 있습니다. 예측치와 주가가 바뀌면 수치도 바뀝니다.",
+  "companies": [
+    {
+      "ticker": "ASML",
+      "currency": "EUR",
+      "fiscal_end_month": 12,
+      "financial_source": "https://in.marketscreener.com/quote/stock/ASML-HOLDING-N-V-12002973/valuation/valuation/",
+      "valuation_source": "https://in.marketscreener.com/quote/stock/ASML-HOLDING-N-V-12002973/valuation/valuation/",
+      "years": [
+        {
+          "year": 2026,
+          "type": "consensus",
+          "revenue": 42929,
+          "operating_income": 17048,
+          "net_income": 14807,
+          "opm": 39.7,
+          "per": 40.6
+        },
+        {
+          "year": 2027,
+          "type": "consensus",
+          "revenue": 54732,
+          "operating_income": 23273,
+          "net_income": 19531,
+          "opm": 42.5,
+          "per": 29.9
+        },
+        {
+          "year": 2028,
+          "type": "consensus",
+          "revenue": 65605,
+          "operating_income": 29570,
+          "net_income": 24704,
+          "opm": 45.1,
+          "per": 22.6
+        }
+      ]
+    },
+    {
+      "ticker": "AMAT",
+      "currency": "USD",
+      "fiscal_end_month": 10,
+      "financial_source": "https://www.marketscreener.com/quote/stock/APPLIED-MATERIALS-INC-438370/finances/",
+      "valuation_source": "https://www.marketscreener.com/quote/stock/APPLIED-MATERIALS-INC-438370/valuation/",
+      "years": [
+        {
+          "year": 2026,
+          "type": "consensus",
+          "revenue": 34259,
+          "operating_income": 11338,
+          "net_income": 10530,
+          "opm": 33.1,
+          "per": 37.2
+        },
+        {
+          "year": 2027,
+          "type": "consensus",
+          "revenue": 46312,
+          "operating_income": 16493,
+          "net_income": 14617,
+          "opm": 35.6,
+          "per": 26.8
+        },
+        {
+          "year": 2028,
+          "type": "consensus",
+          "revenue": 55857,
+          "operating_income": 20525,
+          "net_income": 18489,
+          "opm": 36.7,
+          "per": 20.7
+        }
+      ]
+    },
+    {
+      "ticker": "LRCX",
+      "currency": "USD",
+      "fiscal_end_month": 6,
+      "financial_source": "https://www.marketscreener.com/quote/stock/LAM-RESEARCH-CORPORATION-4877/finances/",
+      "valuation_source": "https://www.marketscreener.com/quote/stock/LAM-RESEARCH-CORPORATION-4877/valuation/",
+      "years": [
+        {
+          "year": 2026,
+          "type": "actual",
+          "revenue": 23233,
+          "operating_income": 8320,
+          "net_income": 7265,
+          "opm": 35.8,
+          "per": 65.8
+        },
+        {
+          "year": 2027,
+          "type": "consensus",
+          "revenue": 34924,
+          "operating_income": 13881,
+          "net_income": 11787,
+          "opm": 39.7,
+          "per": 32.9
+        },
+        {
+          "year": 2028,
+          "type": "consensus",
+          "revenue": 41570,
+          "operating_income": 17019,
+          "net_income": 14897,
+          "opm": 40.9,
+          "per": 26
+        }
+      ]
+    },
+    {
+      "ticker": "KLAC",
+      "currency": "USD",
+      "fiscal_end_month": 6,
+      "financial_source": "https://www.marketscreener.com/quote/stock/KLA-CORPORATION-40328827/finances/",
+      "valuation_source": "https://www.marketscreener.com/quote/stock/KLA-CORPORATION-40328827/valuation/",
+      "years": [
+        {
+          "year": 2026,
+          "type": "actual",
+          "revenue": 13579,
+          "operating_income": 5839,
+          "net_income": 4831,
+          "opm": 43,
+          "per": 82.4
+        },
+        {
+          "year": 2027,
+          "type": "consensus",
+          "revenue": 18142,
+          "operating_income": 8436,
+          "net_income": 7063,
+          "opm": 46.5,
+          "per": 35.3
+        },
+        {
+          "year": 2028,
+          "type": "consensus",
+          "revenue": 21575,
+          "operating_income": 10163,
+          "net_income": 8626,
+          "opm": 47.1,
+          "per": 28.4
+        }
+      ]
+    },
+    {
+      "ticker": "8035.T",
+      "currency": "JPY",
+      "fiscal_end_month": 3,
+      "financial_source": "https://www.marketscreener.com/quote/stock/TOKYO-ELECTRON-LIMITED-6491071/finances/",
+      "valuation_source": "https://www.marketscreener.com/quote/stock/TOKYO-ELECTRON-LIMITED-6491071/valuation/",
+      "years": [
+        {
+          "year": 2026,
+          "type": "actual",
+          "revenue": 2443533,
+          "operating_income": 624936,
+          "net_income": 574454,
+          "opm": 25.6,
+          "per": 29.7
+        },
+        {
+          "year": 2027,
+          "type": "consensus",
+          "revenue": 3416782,
+          "operating_income": 1023881,
+          "net_income": 784687,
+          "opm": 30,
+          "per": 33.5
+        },
+        {
+          "year": 2028,
+          "type": "consensus",
+          "revenue": 4277438,
+          "operating_income": 1427232,
+          "net_income": 1090403,
+          "opm": 33.4,
+          "per": 23.5
+        }
+      ]
+    },
+    {
+      "ticker": "ASM.AS",
+      "currency": "EUR",
+      "fiscal_end_month": 12,
+      "financial_source": "https://www.marketscreener.com/quote/stock/ASM-INTERNATIONAL-N-V-6312/finances/",
+      "valuation_source": "https://www.marketscreener.com/quote/stock/ASM-INTERNATIONAL-N-V-6312/valuation/",
+      "years": [
+        {
+          "year": 2026,
+          "type": "consensus",
+          "revenue": 4163,
+          "operating_income": 1357,
+          "net_income": 1131,
+          "opm": 32.6,
+          "per": 35.3
+        },
+        {
+          "year": 2027,
+          "type": "consensus",
+          "revenue": 5424,
+          "operating_income": 1876,
+          "net_income": 1538,
+          "opm": 34.6,
+          "per": 25.4
+        },
+        {
+          "year": 2028,
+          "type": "consensus",
+          "revenue": 6451,
+          "operating_income": 2291,
+          "net_income": 1864,
+          "opm": 35.5,
+          "per": 20.5
+        }
+      ]
+    },
+    {
+      "ticker": "7735.T",
+      "currency": "JPY",
+      "fiscal_end_month": 3,
+      "financial_source": "https://www.marketscreener.com/quote/stock/SCREEN-HOLDINGS-CO-LTD-6491440/finances/",
+      "valuation_source": "https://www.marketscreener.com/quote/stock/SCREEN-HOLDINGS-CO-LTD-6491440/valuation/",
+      "years": [
+        {
+          "year": 2026,
+          "type": "actual",
+          "revenue": 605748,
+          "operating_income": 122522,
+          "net_income": 92003,
+          "opm": 20.2,
+          "per": 18.4
+        },
+        {
+          "year": 2027,
+          "type": "consensus",
+          "revenue": 750295,
+          "operating_income": 160858,
+          "net_income": 118704,
+          "opm": 21.4,
+          "per": 25.4
+        },
+        {
+          "year": 2028,
+          "type": "consensus",
+          "revenue": 900899,
+          "operating_income": 213125,
+          "net_income": 158269,
+          "opm": 23.7,
+          "per": 19.1
+        }
+      ]
+    },
+    {
+      "ticker": "6525.T",
+      "currency": "JPY",
+      "fiscal_end_month": 3,
+      "financial_source": "https://www.marketscreener.com/quote/stock/KOKUSAI-ELECTRIC-CORPORAT-159798680/finances/",
+      "valuation_source": "https://www.marketscreener.com/quote/stock/KOKUSAI-ELECTRIC-CORPORAT-159798680/valuation/",
+      "years": [
+        {
+          "year": 2026,
+          "type": "actual",
+          "revenue": 235079,
+          "operating_income": 41836,
+          "net_income": 30099,
+          "opm": 17.8,
+          "per": 38.9
+        },
+        {
+          "year": 2027,
+          "type": "consensus",
+          "revenue": 342740,
+          "operating_income": 81328,
+          "net_income": 58328,
+          "opm": 23.7,
+          "per": 40.3
+        },
+        {
+          "year": 2028,
+          "type": "consensus",
+          "revenue": 441426,
+          "operating_income": 120317,
+          "net_income": 86385,
+          "opm": 27.3,
+          "per": 27.2
+        }
+      ]
+    },
+    {
+      "ticker": "6857.T",
+      "currency": "JPY",
+      "fiscal_end_month": 3,
+      "financial_source": "https://www.marketscreener.com/quote/stock/ADVANTEST-CORPORATION-6492081/finances/",
+      "valuation_source": "https://www.marketscreener.com/quote/stock/ADVANTEST-CORPORATION-6492081/valuation/",
+      "years": [
+        {
+          "year": 2026,
+          "type": "actual",
+          "revenue": 1128610,
+          "operating_income": 499120,
+          "net_income": 375353,
+          "opm": 44.2,
+          "per": 39.5
+        },
+        {
+          "year": 2027,
+          "type": "consensus",
+          "revenue": 1763345,
+          "operating_income": 886377,
+          "net_income": 676272,
+          "opm": 50.3,
+          "per": 44.6
+        },
+        {
+          "year": 2028,
+          "type": "consensus",
+          "revenue": 2247226,
+          "operating_income": 1168551,
+          "net_income": 869341,
+          "opm": 52,
+          "per": 34.6
+        }
+      ]
+    },
+    {
+      "ticker": "TER",
+      "currency": "USD",
+      "fiscal_end_month": 12,
+      "financial_source": "https://www.marketscreener.com/quote/stock/TERADYNE-INC-47342162/finances/",
+      "valuation_source": "https://www.marketscreener.com/quote/stock/TERADYNE-INC-47342162/valuation/",
+      "years": [
+        {
+          "year": 2026,
+          "type": "consensus",
+          "revenue": 5142,
+          "operating_income": 1664,
+          "net_income": 1406,
+          "opm": 32.4,
+          "per": 42.8
+        },
+        {
+          "year": 2027,
+          "type": "consensus",
+          "revenue": 6264,
+          "operating_income": 2126,
+          "net_income": 1835,
+          "opm": 33.9,
+          "per": 32.4
+        },
+        {
+          "year": 2028,
+          "type": "consensus",
+          "revenue": 7762,
+          "operating_income": 2662,
+          "net_income": 2405,
+          "opm": 34.3,
+          "per": 24.4
+        }
+      ]
+    },
+    {
+      "ticker": "BESI.AS",
+      "currency": "EUR",
+      "fiscal_end_month": 12,
+      "financial_source": "https://www.marketscreener.com/quote/stock/BE-SEMICONDUCTOR-INDUSTRI-6318/finances/",
+      "valuation_source": "https://www.marketscreener.com/quote/stock/BE-SEMICONDUCTOR-INDUSTRI-6318/valuation/",
+      "years": [
+        {
+          "year": 2026,
+          "type": "consensus",
+          "revenue": 1004,
+          "operating_income": 425.3,
+          "net_income": 344.1,
+          "opm": 42.4,
+          "per": 40.5
+        },
+        {
+          "year": 2027,
+          "type": "consensus",
+          "revenue": 1345,
+          "operating_income": 624.2,
+          "net_income": 510.3,
+          "opm": 46.4,
+          "per": 27.2
+        },
+        {
+          "year": 2028,
+          "type": "consensus",
+          "revenue": 1649,
+          "operating_income": 808.7,
+          "net_income": 667.9,
+          "opm": 49,
+          "per": 20.7
+        }
+      ]
+    },
+    {
+      "ticker": "6146.T",
+      "currency": "JPY",
+      "fiscal_end_month": 3,
+      "financial_source": "https://www.marketscreener.com/quote/stock/DISCO-CORPORATION-6491471/finances/",
+      "valuation_source": "https://www.marketscreener.com/quote/stock/DISCO-CORPORATION-6491471/valuation/",
+      "years": [
+        {
+          "year": 2026,
+          "type": "actual",
+          "revenue": 436889,
+          "operating_income": 184989,
+          "net_income": 135521,
+          "opm": 42.3,
+          "per": 49
+        },
+        {
+          "year": 2027,
+          "type": "consensus",
+          "revenue": 564962,
+          "operating_income": 257601,
+          "net_income": 190102,
+          "opm": 45.6,
+          "per": 34.9
+        },
+        {
+          "year": 2028,
+          "type": "consensus",
+          "revenue": 671912,
+          "operating_income": 318722,
+          "net_income": 235326,
+          "opm": 47.4,
+          "per": 28.3
+        }
+      ]
+    },
+    {
+      "ticker": "ONTO",
+      "currency": "USD",
+      "fiscal_end_month": 1,
+      "financial_source": "https://www.marketscreener.com/quote/stock/ONTO-INNOVATION-INC-10148/finances/",
+      "valuation_source": "https://www.marketscreener.com/quote/stock/ONTO-INNOVATION-INC-10148/valuation/",
+      "years": [
+        {
+          "year": 2026,
+          "type": "actual",
+          "revenue": 1439,
+          "operating_income": 444.2,
+          "net_income": 305.8,
+          "opm": 30.9,
+          "per": 48.5
+        },
+        {
+          "year": 2027,
+          "type": "consensus",
+          "revenue": 1882,
+          "operating_income": 660.7,
+          "net_income": 495.1,
+          "opm": 35.1,
+          "per": 28.7
+        },
+        {
+          "year": 2028,
+          "type": "consensus",
+          "revenue": 2182,
+          "operating_income": 790.9,
+          "net_income": 617.7,
+          "opm": 36.2,
+          "per": 24.2
+        }
+      ]
+    },
+    {
+      "ticker": "CAMT",
+      "currency": "USD",
+      "fiscal_end_month": 12,
+      "financial_source": "https://www.marketscreener.com/quote/stock/CAMTEK-LTD-8665/finances/",
+      "valuation_source": "https://www.marketscreener.com/quote/stock/CAMTEK-LTD-8665/valuation/",
+      "years": [
+        {
+          "year": 2026,
+          "type": "consensus",
+          "revenue": 593.2,
+          "operating_income": 173.6,
+          "net_income": 153.8,
+          "opm": 29.3,
+          "per": 50
+        },
+        {
+          "year": 2027,
+          "type": "consensus",
+          "revenue": 744.3,
+          "operating_income": 238.2,
+          "net_income": 230,
+          "opm": 32,
+          "per": 34.8
+        },
+        {
+          "year": 2028,
+          "type": "consensus",
+          "revenue": 851.1,
+          "operating_income": 254.5,
+          "net_income": null,
+          "opm": 29.9,
+          "per": 33.9
+        }
+      ]
+    }
+  ]
+}
