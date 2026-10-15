@@ -48,7 +48,7 @@
   const L2=mode==='m'?'MoM':'QoQ',L1=mode==='m'?'전년 동월':'전년 동기';
   const tYoY=pct(tot,totY),tMoM=totP==null?null:pct(tot,totP);
   box.innerHTML=`<h2 class="chart-title">${item} · 국가별 ${mode==='m'?'월별':'분기별'} 증감 (${p.lab})</h2>
-  <div class="control-row cg-ctl"><span class="cg-tg">${[['m','월별'],['q','분기별']].map(([k,t])=>`<button data-mode="${k}" class="${mode===k?'on':''}">${t}</button>`).join('')}</span>
+  <div class="control-row cg-ctl"><span class="cg-tg">${[['m','월별'],['q','분기별']].map(([k,t])=>`<button data-mode="${k}" class="period${mode===k?' active':''}">${t}</button>`).join('')}</span>
    <label for="cgPeriod">기간</label><select id="cgPeriod">${P.map(x=>`<option value="${x.id}"${x.id===p.id?' selected':''}>${x.lab}</option>`).join('')}</select></div>
   <div class="table-wrapper"><table class="cg-t"><thead><tr><th>순위</th><th>국가</th><th>수출액</th><th>비중</th><th>비중 변화<div class="cg-s">${L1} 대비 %p</div></th><th>YoY</th><th>${L2}</th><th>YoY 기여도<div class="cg-s">전체 증감 중 %p</div></th><th>단가 YoY<div class="cg-s">$/kg</div></th><th>${L1} 금액</th><th>추이<div class="cg-s">${mode==='m'?'최근 12개월':'최근 8분기'}</div></th></tr></thead><tbody>
   ${R.map((r,i)=>`<tr${r.k==='기타'?' class="cg-etc"':''}><td class="center">${r.k==='기타'?'—':i+1}</td><td>${r.k} <span class="cg-s">${r.code||''}</span></td><td class="number">${money(r.v)}</td>
