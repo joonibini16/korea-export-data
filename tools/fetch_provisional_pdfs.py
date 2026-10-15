@@ -1,7 +1,7 @@
-"""관세청 '수출입 현황 [잠정치]' 발표문의 첨부 PDF를 내려받아 텍스트로 저장 (품목별 표 파싱용).
+"""관세청 '수출입 현황 [잠정치]'·'월간 수출입 현황 [확정치]' 발표문의 첨부 PDF를 내려받아 텍스트로 저장 (품목별 표 파싱용).
 
 - 게시판(bbsId=1362) 목록을 넘기며 잠정치 발표(1~10일, 1~20일, 월 전체)를 찾고,
-  아직 저장하지 않은 발표의 PDF를 받아 pdftotext -layout 결과를 provisional_text/{YYYY.MM}_{D10|D20|MONTH}.txt 로 저장.
+  아직 저장하지 않은 발표의 PDF를 받아 pdftotext -layout 결과를 provisional_text/{YYYY.MM}_{D10|D20|MONTH|FINAL}.txt 로 저장.
 - 원문 PDF 자체는 저장하지 않음(텍스트만).
 """
 import json, pathlib, re, subprocess, sys, tempfile, time
@@ -20,6 +20,9 @@ def key_of(title):
     m = re.search(r'(\d{4})년\s*(\d{1,2})월\s*1일\s*~\s*\d{1,2}월\s*(10|20)일\s*수출입\s*현황', title)
     if m:
         return f'{m.group(1)}.{int(m.group(2)):02d}', 'D10' if m.group(3) == '10' else 'D20'
+    m = re.search(r'(\d{4})년\s*(\d{1,2})월\s*월간\s*수출입\s*현황', title)
+    if m and '확정' in title:
+        return f'{m.group(1)}.{int(m.group(2)):02d}', 'FINAL'
     m = re.search(r'(\d{4})년\s*(\d{1,2})월\s*수출입\s*현황', title)
     if m and '잠정' in title:
         return f'{m.group(1)}.{int(m.group(2)):02d}', 'MONTH'
@@ -45,7 +48,7 @@ for page in range(1, MAX_PAGES + 1):
         continue
     for a in links:
         title = ' '.join((a.get('title') or a.get_text(' ', strip=True)).split())
-        if '잠정치' not in title:
+        if '잠정치' not in title and '확정치' not in title:
             continue
         k = key_of(title)
         if not k:
