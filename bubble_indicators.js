@@ -67,15 +67,15 @@ async function renderBubbleIndicators(st){
   const n=v=>Number.isFinite(v)?v.toFixed(1):'—',dateSet=a=>new Set(a.map(x=>x.d||x.date));
   const markets=['KOSPI','KOSDAQ'],bs=markets.map(m=>breadth.filter(x=>x.market===m).sort((a,b)=>a.date.localeCompare(b.date)));
   const px=markets.map((m,i)=>BubbleIndicators.closedKorean(ser(i?'^KQ11':'^KS11'),st.updated_at));
-  const sets=[...bs,...px].map(dateSet);
+  const sets=bs.map(dateSet);
   const common=bs[0].map(x=>x.date).filter(d=>sets.every(s=>s.has(d))).at(-1);
   metrics.replaceChildren();card.classList.remove('red','orange','green','neutral');
-  if(!common){card.classList.add('neutral');title.textContent='시장 Breadth · 판정 대기';dateEl.textContent='공통 확정 종가 없음';summary.textContent='두 시장의 Breadth와 지수 종가가 같은 날짜로 확인되면 판정합니다.';return;}
+  if(!common){card.classList.add('neutral');title.textContent='시장 Breadth · 판정 대기';dateEl.textContent='공통 확정 종가 없음';summary.textContent='두 시장의 Breadth가 같은 날짜로 확인되면 판정합니다.';return;}
   const sample=markets.map((market,i)=>{
    const rows=bs[i].filter(x=>x.date<=common),b=rows.at(-1);
    const b5=BubbleIndicators.sma(rows.map(x=>({d:x.date,v:x.breadth_60})),5).at(-1)?.v;
    const h10=BubbleIndicators.sma(rows.map(x=>({d:x.date,v:x.hli})),10).at(-1)?.v;
-   const r=BubbleIndicators.rsi(px[i].filter(x=>x.d<=common)).at(-1)?.v;
+   const rp=BubbleIndicators.rsi(px[i].filter(x=>x.d<=common)).at(-1),r=rp?.d===common?rp.v:null;
    return {market,b,b5,h10,r,delta:Number.isFinite(b5)?b.breadth_60-b5:null};
   });
   const valid=sample.every(x=>Number.isFinite(x.b?.breadth_60)&&x.b.eligible_60>0&&Number.isFinite(x.b5));
@@ -88,7 +88,7 @@ async function renderBubbleIndicators(st){
   card.classList.add(color);
   const label={red:'빨강 · 약세',orange:'주황 · 주의',green:'초록 · 확산',neutral:'판정 대기'}[color];
   title.textContent='시장 Breadth · '+label;
-  dateEl.textContent=common+' 확정 종가 · '+(fallback?'네이버 일봉 대체':'KRX')+' 기준';
+  dateEl.textContent=common+' Breadth 확정 종가 · '+(fallback?'네이버 일봉 대체':'KRX')+' 기준 · RSI는 동일일만 표시';
   const [a,b]=sample;
   summary.textContent=color==='red'?`코스피 ${n(a.b.breadth_60)}%·코스닥 ${n(b.b.breadth_60)}%. 상승 참여가 좁거나 두 시장이 5일 평균 아래로 약화됐습니다. 확산 회복 전까지 주의가 필요합니다.`:
    color==='green'?`코스피 ${n(a.b.breadth_60)}%·코스닥 ${n(b.b.breadth_60)}%. 두 시장의 상승 참여와 신고가 비율이 함께 회복됐습니다.`:
@@ -98,7 +98,7 @@ async function renderBubbleIndicators(st){
    const article=document.createElement('article'),head=document.createElement('b'),detail=document.createElement('span'),support=document.createElement('span');
    head.textContent=x.market;
    detail.textContent=`Breadth_60 ${n(x.b.breadth_60)}% (${x.b.above_60??'—'}/${x.b.eligible_60??'—'}) · 5일 평균 ${n(x.b5)}% (${x.delta==null?'—':(x.delta>=0?'+':'')+n(x.delta)}%p)`;
-   support.textContent=`HLI ${n(x.b.hli)}% (${x.b.new_high??'—'}/${x.b.eligible_252??'—'}) · 10일 평균 ${n(x.h10)}% · RSI(14) ${n(x.r)}`;
+   support.textContent=`HLI ${n(x.b.hli)}% (${x.b.new_high??'—'}/${x.b.eligible_252??'—'}) · 10일 평균 ${n(x.h10)}% · RSI(14) ${n(x.r)}${x.r==null?' (동일일 지수 종가 미확보)':''}`;
    article.append(head,detail,support);metrics.append(article);
   }
  }
