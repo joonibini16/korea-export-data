@@ -112,7 +112,7 @@ for b in cfg:
             st["state"] = "no matching traded issue"
     except Exception as e:
         st["state"] = "error"
-        status["errors"].append(f"{ticker}: {str(e)[:160]}")
+        status["errors"].append(f"{ticker}: {str(e)[:160]} " + (e.read().decode("utf-8", "replace")[:400] if hasattr(e, "read") else ""))
 
 with out.open("w", encoding="utf-8", newline="") as f:
     writer = csv.DictWriter(f, fieldnames=fields, lineterminator="\n")
