@@ -1,12 +1,9 @@
 name: Korea Sector Breadth
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths: ['collect_sector_breadth.py', '.github/workflows/sector_breadth.yml']
   schedule:
-    - cron: '55 7 * * 1-5'   # 16:55 KST, 종가 게시 후 미완료 우선 최대 140개, 완료 후 48개
-    - cron: '55 18 * * 0-4' # 03:55 KST, 미완료 우선 최대 140개, 완료 후 48개
+    - cron: '55 7 * * 1-5'   # 16:55 KST, 확정 종가를 확보한 모든 업종 갱신
+    - cron: '55 18 * * 0-4' # 03:55 KST, 전일 종가 누락 업종 재시도
 permissions:
   contents: write
 concurrency:
@@ -15,14 +12,14 @@ concurrency:
 jobs:
   collect:
     runs-on: ubuntu-latest
-    timeout-minutes: 35
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: {python-version: '3.12'}
       - run: pip install pandas
       - run: python -m unittest test_sector_breadth.py
-      - run: python collect_sector_breadth.py --groups 140
+      - run: python collect_sector_breadth.py --groups 1000
       - run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
