@@ -18,7 +18,7 @@ concurrency:
 jobs:
   collect:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -32,5 +32,5 @@ jobs:
           KRX_PW: ${{ secrets.KRX_PW }}
       - run: |
           git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add foreign_buy.json foreign_buy_hist.csv foreign_buy_status.json foreign_buy_periods.json foreign_buy_series.json foreign_buy_days 2>/dev/null || git add foreign_buy_status.json
+          git add foreign_buy.json foreign_buy_hist.csv foreign_buy_status.json foreign_buy_periods.json foreign_buy_series.json foreign_buy_days invest_days inst_buy_periods.json inst_buy_series.json trust_buy_periods.json trust_buy_series.json pe_buy_periods.json pe_buy_series.json 2>/dev/null || git add foreign_buy_status.json
           git diff --cached --quiet || (git commit -qm "Update foreign buy ranking" && git pull -q --rebase origin main && git push -q origin main)

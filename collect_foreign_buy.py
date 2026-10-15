@@ -100,14 +100,46 @@ def load_day(d):
     return json.loads(gzip.decompress(f.read_bytes())) if f.exists() else None
 
 
-def build(asof):
-    """기간별 순위(foreign_buy_periods.json)·종목별 일별 추이(foreign_buy_series.json)·당일(foreign_buy.json)."""
+# 투자자 구분: KRX 투자자 코드 · 이름 · 출력 파일 접두어
+INV = {'F': ('9000', '외국인', 'foreign_buy'), 'I': ('7050', '기관 합계', 'inst_buy'), 'T': ('3000', '투신', 'trust_buy'), 'P': ('3100', '사모', 'pe_buy')}
+IDAYS = pathlib.Path('invest_days')
+
+
+def fetch_inv(day, key):
+    """기관·투신·사모 하루치: 시장별 [코드, 매수, 매도](원). 휴장일이면 None."""
+    out = {}
+    for m, (mid, _) in MKT.items():
+        j = krx('dbms/MDC/STAT/standard/MDCSTAT02401', mktId=mid, invstTpCd=INV[key][0], strtDd=day, endDd=day, share='1', money='1', csvxls_isNo='false')
+        rows = j.get('output') or j.get('OutBlock_1') or []
+        time.sleep(0.35)
+        out[m] = [[r['ISU_SRT_CD'], int(num(r.get('BID_TRDVAL'))), int(num(r.get('ASK_TRDVAL')))] for r in rows]
+    return out if any(out.values()) else None
+
+
+def load_inv(key, d):
+    f = IDAYS / key / f'{d}.json.gz'
+    return json.loads(gzip.decompress(f.read_bytes())) if f.exists() else None
+
+
+def build(asof, inv='F'):
+    """투자자별 기간 순위({접두어}_periods.json)·종목별 일별 추이({접두어}_series.json). 외국인은 당일 파일(foreign_buy.json)도."""
     files = sorted(f.name[:10] for f in DAYS.glob('*.json.gz'))
     files = [d for d in files if d <= asof]
     end = dt.date.fromisoformat(asof)
     data = {d: load_day(d) for d in files if d > (end - dt.timedelta(days=92)).isoformat()}
+    if inv != 'F':
+        # 시총·종가·등락률은 외국인 일별 파일(전 종목 시세)을 쓰고 매수·매도만 해당 투자자 값으로 교체
+        for d in list(data):
+            iv = load_inv(inv, d)
+            if not iv:
+                del data[d]; continue
+            bs = {r[0]: r for m in iv.values() for r in m}
+            data[d] = {m: [[r[0], r[1], bs.get(r[0], [0, 0, 0])[1], bs.get(r[0], [0, 0, 0])[2], *r[4:]] for r in rows] for m, rows in data[d].items()}
     dates = sorted(data)
-    res = {'asof': asof, 'updated_at': status['run'], 'source': 'KRX 정보데이터시스템 투자자별 거래실적(외국인) · 전종목 시세(시가총액)', 'periods': {}}
+    if asof not in data and dates:
+        asof = dates[-1]
+    pre = INV[inv][2]
+    res = {'asof': asof, 'investor': INV[inv][1], 'updated_at': status['run'], 'source': f'KRX 정보데이터시스템 투자자별 거래실적({INV[inv][1]}) · 전종목 시세(시가총액)', 'periods': {}}
     names, mk = {}, {}
     for d in dates:
         for m, rows in data[d].items():
@@ -133,7 +165,7 @@ def build(asof):
         rows.sort(key=lambda x: -x[6])
         res['periods'][key] = {'label': lab, 'from': ds[0] if ds else None, 'to': ds[-1] if ds else None, 'days': len(ds), 'rows': rows}
     res['cols'] = ['code', 'name', 'market', 'buy_eok', 'sell_eok', 'avgcap_eok', 'ratio_pct', 'ret_pct', 'close', 'buy_share_pct', 'days']
-    pathlib.Path('foreign_buy_periods.json').write_text(json.dumps(res, ensure_ascii=False, separators=(',', ':')))
+    pathlib.Path(f'{pre}_periods.json').write_text(json.dumps(res, ensure_ascii=False, separators=(',', ':')))
     # 종목별 일별 추이: 3달 평균 시총 300억 이상 종목만(용량 관리)
     keep = {r[0] for r in res['periods']['3m']['rows'] if r[5] >= 300}
     ser = {'dates': dates, 'cols': ['buy_eok', 'net_eok', 'ratio_pct'], 's': {}}
@@ -144,9 +176,9 @@ def build(asof):
             r = idx[d].get(code)
             a.append(None if not r else [round(r[2] / 1e8, 1), round((r[2] - r[3]) / 1e8, 1), round(r[2] / r[4] * 100, 3) if r[4] else None])
         ser['s'][code] = a
-    pathlib.Path('foreign_buy_series.json').write_text(json.dumps(ser, ensure_ascii=False, separators=(',', ':')))
+    pathlib.Path(f'{pre}_series.json').write_text(json.dumps(ser, ensure_ascii=False, separators=(',', ':')))
     # 당일(기존 화면 호환)
-    today = data.get(asof)
+    today = data.get(asof) if inv == 'F' else None
     if today:
         out = {'asof': asof, 'updated_at': status['run'], 'source': res['source'], 'markets': {}}
         for m, rws in today.items():
@@ -159,7 +191,7 @@ def build(asof):
                for m, M in out['markets'].items() for i, x in enumerate(M['rows'][:100], 1)]
         with HIST.open('w', encoding='utf-8', newline='') as f:
             w = csv.DictWriter(f, fieldnames=list(new[0].keys())); w.writeheader(); w.writerows(old + new)
-    log(step='build', days=len(dates), series=len(ser['s']))
+    log(step='build', investor=inv, days=len(dates), series=len(ser['s']))
 
 
 def main():
@@ -194,8 +226,24 @@ def main():
     HOL.write_text(json.dumps(sorted(hol)))
     have = sorted(f.name[:10] for f in DAYS.glob('*.json.gz'))
     log(step='days', fetched=got, total=len(have), latest=have[-1] if have else None)
+    # 기관 합계·투신·사모: 외국인 파일이 있는 거래일 기준으로 없는 날 + 최근 2거래일을 받음
+    for key in ('I', 'T', 'P'):
+        (IDAYS / key).mkdir(parents=True, exist_ok=True)
+        hk = {f.name[:10] for f in (IDAYS / key).glob('*.json.gz')}
+        need = [d for d in have if d not in hk] + have[-2:]
+        need = sorted(set(need), reverse=True)[:int(os.environ.get('MAX_DAYS', '70'))]
+        n = 0
+        for d in need:
+            try:
+                r = fetch_inv(d.replace('-', ''), key)
+            except Exception as e:
+                log(step='inv_day', investor=key, day=d, error=str(e)[:200]); break
+            if r:
+                (IDAYS / key / f'{d}.json.gz').write_bytes(gzip.compress(json.dumps(r, separators=(',', ':')).encode(), 9)); n += 1
+        log(step='inv_days', investor=key, fetched=n)
     if have:
-        build(have[-1])
+        for key in INV:
+            build(have[-1], key)
         status['ok'] = True
     STATUS.write_text(json.dumps(status, ensure_ascii=False, indent=1))
     return 0
