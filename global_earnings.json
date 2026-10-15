@@ -1927,11 +1927,109 @@
   ],
   "upcoming": [
     {
-      "ticker": "TSM",
-      "date": "2026-10-15",
-      "time": "14:00 Asia/Taipei",
-      "event": "FY26 Q3 실적 발표·컨퍼런스콜",
-      "source": "https://investor.tsmc.com/english/financial-calendar"
+      "ticker": "SU.PA",
+      "date": "2026-10-16",
+      "time": "시간 미공지(파리)",
+      "event": "2026 Q3 매출 발표",
+      "source": "https://www.se.com/ww/en/about-us/investor-relations/financial-calendar-and-events/"
+    },
+    {
+      "ticker": "CATL",
+      "date": "2026-10-20",
+      "time": "이사회 승인 후 공시(중국 시간)",
+      "event": "2026 Q3(누적 9개월) 실적 이사회",
+      "source": "https://www3.hkexnews.hk/reports/bmn/ebmn.htm"
+    },
+    {
+      "ticker": "LRCX",
+      "date": "2026-10-21",
+      "time": "14:00 America/Los_Angeles(컨콜)",
+      "event": "2026년 9월 분기 실적·컨퍼런스콜",
+      "source": "https://newsroom.lamresearch.com/2026-09-30-Lam-Research-Corporation-Announces-September-Quarter-Financial-Conference-Call"
+    },
+    {
+      "ticker": "META",
+      "date": "2026-10-21",
+      "time": "장 마감 후 · 13:30 America/Los_Angeles(컨콜)",
+      "event": "2026 Q3 실적·컨퍼런스콜",
+      "source": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-to-Announce-Third-Quarter-2026-Results/default.aspx"
+    },
+    {
+      "ticker": "BESI.AS",
+      "date": "2026-10-22",
+      "time": "07:00 Europe/Amsterdam",
+      "event": "2026 Q3 실적 발표",
+      "source": "https://www.besi.com/investor-relations/financial-calendar/details/besis-2026-third-quarter-results/"
+    },
+    {
+      "ticker": "OR.PA",
+      "date": "2026-10-22",
+      "time": "18:00 Europe/Paris(장 마감 후) · 18:30 컨콜",
+      "event": "2026 Q3(9월 말 누적) 매출 발표",
+      "source": "https://www.loreal-finance.com/eng/sales-september-30-2026-after-market"
+    },
+    {
+      "ticker": "6146.T",
+      "date": "2026-10-22",
+      "time": "16:00 Asia/Tokyo",
+      "event": "FY26 Q2 실적 발표",
+      "source": "https://www.disco.co.jp/eg/ir/calendar/"
+    },
+    {
+      "ticker": "TER",
+      "date": "2026-10-27",
+      "time": "16:30 America/New_York 이후 · 10/28 08:30 컨콜",
+      "event": "2026 Q3 실적·컨퍼런스콜",
+      "source": "https://investors.teradyne.com/news-events/press-releases/detail/454/teradyne-to-announce-third-quarter-2026-results"
+    },
+    {
+      "ticker": "ASM.AS",
+      "date": "2026-10-27",
+      "time": "18:00 Europe/Amsterdam · 10/28 15:00 컨콜",
+      "event": "2026 Q3 실적 발표",
+      "source": "https://www.asm.com/calendar"
+    },
+    {
+      "ticker": "GEV",
+      "date": "2026-10-28",
+      "time": "장 시작 전 · 07:30 America/New_York(웹캐스트)",
+      "event": "2026 Q3 실적 발표",
+      "source": "https://www.gevernova.com/news/press-releases/ge-vernova-announce-third-quarter-2026-financial-results-october-28"
+    },
+    {
+      "ticker": "KLAC",
+      "date": "2026-10-28",
+      "time": "장 마감 후 · 14:00 America/Los_Angeles(컨콜)",
+      "event": "FY27 Q1 실적·컨퍼런스콜",
+      "source": "https://ir.kla.com/news-events/press-releases/detail/522/kla-announces-first-quarter-fiscal-year-2027-earnings-date"
+    },
+    {
+      "ticker": "MSFT",
+      "date": "2026-10-28",
+      "time": "장 마감 후 · 14:30 America/Los_Angeles(웹캐스트)",
+      "event": "FY27 Q1 실적 발표",
+      "source": "https://news.microsoft.com/source/2026/10/07/microsoft-announces-quarterly-earnings-release-date-69/"
+    },
+    {
+      "ticker": "GOOGL",
+      "date": "2026-10-28",
+      "time": "13:30 America/Los_Angeles(컨콜)",
+      "event": "2026 Q3 실적·컨퍼런스콜",
+      "source": "https://abc.xyz/investor/news/news-details/2026/Alphabet-Announces-Date-of-Third-Quarter-2026-Financial-Results-Conference-Call-2026-8tpGZsLS6v/default.aspx"
+    },
+    {
+      "ticker": "6857.T",
+      "date": "2026-10-28",
+      "time": "15:30 Asia/Tokyo(예정)",
+      "event": "FY26 Q2 실적 발표",
+      "source": "https://www.advantest.com/en/investors/ir-calendar/"
+    },
+    {
+      "ticker": "LLY",
+      "date": "2026-10-29",
+      "time": "10:00 America/New_York(컨콜)",
+      "event": "2026 Q3 실적·컨퍼런스콜",
+      "source": "https://investor.lilly.com/events/event-details/q3-2026-earnings-call"
     }
   ]
 }
