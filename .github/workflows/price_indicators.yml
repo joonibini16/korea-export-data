@@ -26,11 +26,11 @@ jobs:
         continue-on-error: true
       - run: |
           git config user.name github-actions; git config user.email github-actions@github.com
-          cp price_indicators_log.csv price_indicators_status.json /tmp/; cp bigtech_bonds_log.csv bigtech_bonds_status.json /tmp/ 2>/dev/null || true
+          cp price_indicators_log.csv price_indicators_status.json /tmp/; cp bigtech_bonds_hist.csv bigtech_bonds_status.json /tmp/ 2>/dev/null || true
           for i in 1 2 3; do
             git fetch -q origin main && git reset -q --hard origin/main
-            cp /tmp/price_indicators_log.csv /tmp/price_indicators_status.json .; cp /tmp/bigtech_bonds_log.csv /tmp/bigtech_bonds_status.json . 2>/dev/null || true
-            git add price_indicators_log.csv price_indicators_status.json; git add bigtech_bonds_log.csv bigtech_bonds_status.json 2>/dev/null || true
+            cp /tmp/price_indicators_log.csv /tmp/price_indicators_status.json .; cp /tmp/bigtech_bonds_hist.csv /tmp/bigtech_bonds_status.json . 2>/dev/null || true
+            git add price_indicators_log.csv price_indicators_status.json; git add bigtech_bonds_hist.csv bigtech_bonds_status.json 2>/dev/null || true
             git diff --cached --quiet && exit 0
             git commit -qm "Update price indicators" && git push -q origin HEAD:main && exit 0
             sleep 10

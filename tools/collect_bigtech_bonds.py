@@ -1,119 +1,151 @@
-"""빅테크 회사채 수익률·국채 대비 스프레드 일별 수집 (GitHub Actions).
+"""빅테크 회사채 수익률·국채 대비 스프레드 — 원본 출처에서 일별 수집 (GitHub Actions).
 
-- 회사채: divvydiary 채권 페이지의 현재수익률(Current yield)로 가격을 역산(가격 = 쿠폰 ÷ 현재수익률)한 뒤
-  반기 이표·만기 상환 기준 만기수익률(YTM)을 직접 계산. 페이지의 YTM 표기도 함께 기록.
-- 국채: FRED 미 국채 고정만기 수익률(DGS1·2·3·5·7·10·20)을 남은 만기로 선형 보간.
-- 스프레드 = 회사채 YTM − 같은 만기 국채, 5년 내 부도확률 = 1 − exp(−5 × 스프레드 ÷ (1 − 회수율 40%)).
-결과: bigtech_bonds_log.csv(date,ticker,price,ytm,ytm_page,ust,spread_bp,pd5y,source) — 날짜·종목별로 덮어쓰기, 과거 행 보존.
-수동 기록(bigtech_bonds_manual.csv: date,ticker,ytm,ust,source)이 있으면 같은 날짜 자동값보다 우선.
+- 회사채: FINRA Fixed Income Data(TRACE) 'End-of-Day Prices and Yields' — 채권별 일별 마지막 체결 가격·수익률(최근 5년).
+  FINRA Data 웹 화면과 같은 공개 조회 경로(XSRF 토큰 쿠키 → POST)를 사용. 비상업적 이용.
+- 국채: FRED 미 국채 고정만기 수익률(DGS1·2·3·5·7·10·20)을 날짜별 남은 만기로 선형 보간(같은 만기 국채).
+- 스프레드 = 회사채 수익률 − 같은 만기 국채, 5년 내 부도확률 = 1 − exp(−5 × 스프레드 ÷ (1 − 회수율 40%)).
+결과: bigtech_bonds_hist.csv(date,ticker,price,ytm,ust,spread_bp,pd5y,trades) — 매 실행 시 FINRA 5년 이력으로 갱신하되 기존 행은 보존(합집합).
+진단: bigtech_bonds_status.json
 """
-import csv, datetime as dt, json, math, pathlib, re, urllib.request
+import csv, datetime as dt, http.cookiejar, json, math, pathlib, urllib.parse, urllib.request
 
 META = json.loads(pathlib.Path('bigtech_bonds.json').read_text(encoding='utf-8'))['bonds']
-LOG = pathlib.Path('bigtech_bonds_log.csv')
-MAN = pathlib.Path('bigtech_bonds_manual.csv')
-FIELDS = ['date', 'ticker', 'price', 'ytm', 'ytm_page', 'ust', 'spread_bp', 'pd5y', 'source']
-KST = dt.timezone(dt.timedelta(hours=9))
-today = dt.datetime.now(KST).date()
+OUT = pathlib.Path('bigtech_bonds_hist.csv')
+FIELDS = ['date', 'ticker', 'price', 'ytm', 'ust', 'spread_bp', 'pd5y', 'source']
+BASE = 'https://services-dynarep.ddwa.finra.org/'
+TEMPLATE = 'template-b3232ls-8h326-4355-8240-2ks8ka01kz0'  # End-of-Day Prices and Yields
+today = dt.date.today()
+status = dict(updated=dt.datetime.now(dt.timezone.utc).isoformat(timespec='seconds'), bonds={}, errors=[], notes=[])
+
+cj = http.cookiejar.CookieJar()
+op = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cj))
+UA = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126 Safari/537.36'
 
 
-def get(url, ua=True):
-    h = {'User-Agent': 'Mozilla/5.0 (compatible; korea-export-data/1.0; +https://joonibini16.github.io/korea-export-data/)'} if ua else {}
-    with urllib.request.urlopen(urllib.request.Request(url, headers=h), timeout=60) as r:
-        return r.read().decode('utf-8', 'replace')
+def req(url, body=None, extra=None):
+    h = {'User-Agent': UA, 'Accept': 'application/json, text/plain, */*', 'Origin': 'https://www.finra.org', 'Referer': 'https://www.finra.org/'}
+    tok = next((c.value for c in cj if c.name.upper().startswith('XSRF')), None)
+    if tok:
+        h['X-XSRF-TOKEN'] = tok
+    if body is not None:
+        h['Content-Type'] = 'application/json'
+        body = json.dumps(body).encode()
+    h.update(extra or {})
+    with op.open(urllib.request.Request(url, data=body, headers=h), timeout=60) as r:
+        return json.loads(r.read().decode('utf-8'))
 
 
-def ust_curve():
-    pts = {}
-    for sid, yrs in [('DGS1', 1), ('DGS2', 2), ('DGS3', 3), ('DGS5', 5), ('DGS7', 7), ('DGS10', 10), ('DGS20', 20)]:
-        start = (today - dt.timedelta(days=20)).isoformat()
-        rows = [l.split(',') for l in get(f'https://fred.stlouisfed.org/graph/fredgraph.csv?id={sid}&cosd={start}', ua=False).strip().splitlines()[1:]]
-        rows = [(d, float(v)) for d, v in rows if v not in ('', '.')]
-        if rows:
-            pts[yrs] = rows[-1]
-    return pts
+def finra_data(dataset, body):
+    r = req(BASE + f'public/reporting/v2/data/group/FixedIncomeMarket/name/{dataset}', body)
+    rb = r.get('returnBody') or {}
+    data = rb.get('data')
+    return json.loads(data) if isinstance(data, str) else (data or [])
 
 
-def interp(curve, yrs):
-    ks = sorted(curve)
-    if yrs <= ks[0]:
-        return curve[ks[0]][1]
-    for a, b in zip(ks, ks[1:]):
+# 1) 세션·토큰
+try:
+    req(BASE + f'public/reporting/v2/template/{TEMPLATE}/composite')
+except Exception as e:
+    status['errors'].append(f'template: {e}')
+status['cookies'] = sorted(c.name for c in cj)
+
+
+# 2) 국채 곡선 이력 (FRED)
+def fred(sid):
+    url = f'https://fred.stlouisfed.org/graph/fredgraph.csv?id={sid}&cosd={(today - dt.timedelta(days=5 * 366 + 30)).isoformat()}'
+    with urllib.request.urlopen(url, timeout=60) as r:
+        rows = r.read().decode().strip().splitlines()[1:]
+    return {d: float(v) for d, v in (l.split(',') for l in rows) if v not in ('', '.')}
+
+
+TEN = [(1, 'DGS1'), (2, 'DGS2'), (3, 'DGS3'), (5, 'DGS5'), (7, 'DGS7'), (10, 'DGS10'), (20, 'DGS20')]
+UST = {}
+for yrs, sid in TEN:
+    try:
+        UST[yrs] = fred(sid)
+    except Exception as e:
+        status['errors'].append(f'fred {sid}: {e}')
+dates_ust = sorted(set().union(*[set(v) for v in UST.values()])) if UST else []
+
+
+def ust_on(d, yrs):
+    pts = []
+    for y, _ in TEN:
+        s = UST.get(y) or {}
+        v = s.get(d)
+        if v is None:  # 직전 영업일 값
+            prev = [k for k in s if k <= d]
+            v = s[max(prev)] if prev else None
+        if v is not None:
+            pts.append((y, v))
+    if not pts:
+        return None
+    if yrs <= pts[0][0]:
+        return pts[0][1]
+    for (a, va), (b, vb) in zip(pts, pts[1:]):
         if yrs <= b:
-            return curve[a][1] + (curve[b][1] - curve[a][1]) * (yrs - a) / (b - a)
-    return curve[ks[-1]][1]
+            return va + (vb - va) * (yrs - a) / (b - a)
+    return pts[-1][1]
 
 
-def ytm_from_price(price, coupon, maturity, settle):
-    """반기 이표, 경과이자 반영(가격 = 클린가격 가정)."""
-    m = dt.date.fromisoformat(maturity)
-    cds = []
-    d = m
-    while d > settle:
-        cds.append(d)
-        y, mo = (d.year, d.month - 6) if d.month > 6 else (d.year - 1, d.month + 6)
-        d = d.replace(year=y, month=mo, day=min(d.day, 28)) if d.day > 28 else d.replace(year=y, month=mo)
-    cds = sorted(cds)
-    prev = d
-    accr = coupon / 2 * (settle - prev).days / max(1, (cds[0] - prev).days)
-    dirty = price + accr
-
-    def pv(y):
-        s = 0.0
-        for i, cd in enumerate(cds):
-            t = (cd - settle).days / 365.25 * 2
-            cf = coupon / 2 + (100 if i == len(cds) - 1 else 0)
-            s += cf / (1 + y / 2) ** t
-        return s
-    lo, hi = -0.05, 0.6
-    for _ in range(200):
-        mid = (lo + hi) / 2
-        if pv(mid) > dirty:
-            lo = mid
-        else:
-            hi = mid
-    return mid * 100
-
-
+# 3) 회사채 이력 (FINRA TRACE)
 rows = {}
-if LOG.exists():
-    for r in csv.DictReader(LOG.open(encoding='utf-8')):
+if OUT.exists():
+    for r in csv.DictReader(OUT.open(encoding='utf-8')):
         rows[(r['date'], r['ticker'])] = r
-
-curve = ust_curve()
-ust_date = max(v[0] for v in curve.values())
-print('UST', ust_date, {k: v[1] for k, v in curve.items()})
-errors = []
+start = (today - dt.timedelta(days=1825)).isoformat() + ' 00:00:00.000'
+end = today.isoformat() + ' 23:59:00.000'
 for b in META:
-    if not b.get('url'):
+    cusips = b.get('cusips') or [b['isin'][2:11]]
+    got = []
+    for cu in cusips:
+        try:
+            body = {'fields': ['cusip', 'productType', 'lastSalePrice', 'lastSaleYield', 'tradeDate'],
+                    'orFilters': [{'compareFilters': [{'fieldName': 'cusip', 'fieldValue': cu, 'compareType': 'EQUAL'},
+                                                      {'fieldName': 'issueSymbolIdentifier', 'fieldValue': cu, 'compareType': 'EQUAL'}]}],
+                    'dateRangeFilters': [{'startDate': start, 'endDate': end, 'fieldName': 'tradeDate'}],
+                    'sortFields': ['tradeDate'], 'offset': 0, 'limit': 5000}
+            got = finra_data('EndOfDayPriceYield', body)
+            if got:
+                status['bonds'][b['t']] = dict(cusip=cu, n=len(got), first=str(got[0].get('tradeDate'))[:10], last=str(got[-1].get('tradeDate'))[:10], sample=got[-1])
+                break
+        except Exception as e:
+            status['errors'].append(f"{b['t']} {cu}: {e}")
+    if not got:
+        status['bonds'].setdefault(b['t'], dict(cusip=cusips, n=0))
+        continue
+    mat = dt.date.fromisoformat(b['maturity'])
+    for r in got:
+        d = str(r.get('tradeDate'))[:10]
+        y, p = r.get('lastSaleYield'), r.get('lastSalePrice')
+        if y is None or d < '2015':
+            continue
+        y = float(y)
+        yrs = (mat - dt.date.fromisoformat(d)).days / 365.25
+        u = ust_on(d, yrs)
+        if u is None or not (0 < y < 40):
+            continue
+        s = (y - u) * 100
+        rows[(d, b['t'])] = dict(date=d, ticker=b['t'], price='' if p is None else f'{float(p):.3f}', ytm=f'{y:.3f}', ust=f'{u:.3f}', spread_bp=f'{s:.0f}',
+                                 pd5y=f'{(1 - math.exp(-5 * max(s, 0) / 1e4 / 0.6)) * 100:.1f}', source='FINRA TRACE EOD · FRED CMT 보간')
+
+# 4) 코어위브 등 CUSIP 미확인 종목: 발행사명으로 FINRA 채권 검색(진단용)
+for b in META:
+    if status['bonds'].get(b['t'], {}).get('n'):
         continue
     try:
-        h = get(b['url'])
-        t = re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', re.sub(r'<script[^>]*>.*?</script>', ' ', h, flags=re.S)))
-        cy = float(re.search(r'Current yield\s*([\d.]+)\s*%', t).group(1))
-        yp = re.search(r'Yield to maturity\s*([\d.]+)\s*%', t)
-        price = b['coupon'] / cy * 100
-        y = ytm_from_price(price, b['coupon'], b['maturity'], today + dt.timedelta(days=1))
-        yrs = (dt.date.fromisoformat(b['maturity']) - today).days / 365.25
-        u = interp(curve, yrs)
-        s = (y - u) * 100
-        pd = (1 - math.exp(-5 * (s / 1e4) / 0.6)) * 100 if s > 0 else 0.0
-        rows[(today.isoformat(), b['t'])] = dict(date=today.isoformat(), ticker=b['t'], price=f'{price:.2f}', ytm=f'{y:.3f}', ytm_page=yp.group(1) if yp else '',
-                                                 ust=f'{u:.3f}', spread_bp=f'{s:.0f}', pd5y=f'{pd:.1f}', source=f'divvydiary 현재수익률 {cy}% → 가격 역산 · FRED 국채({ust_date}) 보간')
-        print(b['t'], rows[(today.isoformat(), b['t'])])
+        res = finra_data('CorporateAndAgencySecurities', {'fields': ['cusip', 'issueSymbolIdentifier', 'issuerName', 'couponRate', 'maturityDate'],
+                                                          'compareFilters': [{'fieldName': 'issuerName', 'fieldValue': b.get('issuer', b['name']), 'compareType': 'CONTAINS'}], 'limit': 50})
+        status['bonds'][b['t']]['search'] = res[:50]
     except Exception as e:
-        errors.append(f"{b['t']}: {e}")
+        status['errors'].append(f"search {b['t']}: {e}")
 
-if MAN.exists():
-    for r in csv.DictReader(MAN.open(encoding='utf-8')):
-        y, u = float(r['ytm']), float(r['ust'])
-        s = (y - u) * 100
-        rows[(r['date'], r['ticker'])] = dict(date=r['date'], ticker=r['ticker'], price='', ytm=f'{y:.3f}', ytm_page='', ust=f'{u:.3f}', spread_bp=f'{s:.0f}',
-                                              pd5y=f'{(1 - math.exp(-5 * (s / 1e4) / 0.6)) * 100:.1f}', source=r.get('source') or '수동 기록')
-
-with LOG.open('w', encoding='utf-8', newline='') as f:
+with OUT.open('w', encoding='utf-8', newline='') as f:
     w = csv.DictWriter(f, fieldnames=FIELDS, lineterminator='\n')
     w.writeheader()
-    w.writerows(sorted(rows.values(), key=lambda r: (r['date'], r['ticker'])))
-pathlib.Path('bigtech_bonds_status.json').write_text(json.dumps(dict(updated=dt.datetime.now(dt.timezone.utc).isoformat(timespec='seconds'), ust_date=ust_date, errors=errors), ensure_ascii=False, indent=1))
-print('errors', errors)
+    w.writerows(sorted(rows.values(), key=lambda r: (r['ticker'], r['date'])))
+status['rows'] = len(rows)
+pathlib.Path('bigtech_bonds_status.json').write_text(json.dumps(status, ensure_ascii=False, indent=1, default=str))
+print(json.dumps({k: v for k, v in status.items() if k != 'bonds'}, ensure_ascii=False))
+for k, v in status['bonds'].items():
+    print(k, {kk: vv for kk, vv in v.items() if kk != 'search'})
