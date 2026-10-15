@@ -154,7 +154,11 @@ function levDerived(ck,sym){const all=KF.filter(x=>x[ck]!=null),cv=all.map(x=>x[
 const lvX={};function renderLev(){if(!KF.length){el('levErr').hidden=false;return;}el('levErr').hidden=true;
  const S=levStart(),R=KF.filter(x=>x.date>=S&&x.deposit!=null),labels=R.map(x=>x.date);
  for(const [k,sym,ck,nm] of [['k','^KS11','credit_kospi','코스피'],['q','^KQ11','credit_kosdaq','코스닥']]){
-  const ix=ser(sym),idx=labels.map(d=>at(ix,d)?.v??null),cr=R.map(x=>x[ck]!=null?x[ck]/1e6:null),dep=R.map(x=>x.deposit/1e6),ra=R.map((x,i)=>cr[i]!=null?cr[i]/dep[i]*100:null);
+  const ix=ser(sym),labels=[...new Set([...R.map(x=>x.date),...ix.filter(x=>x.d>=S).map(x=>x.d)])].sort();
+  const indexByDate=new Map(ix.map(x=>[x.d,x.v])),financeByDate=new Map(R.map(x=>[x.date,x]));
+  const idx=labels.map(d=>indexByDate.get(d)??null),cr=labels.map(d=>{const v=financeByDate.get(d)?.[ck];return v!=null?v/1e6:null;});
+  const dep=labels.map(d=>{const v=financeByDate.get(d)?.deposit;return v!=null?v/1e6:null;});
+  const ra=labels.map((_,i)=>cr[i]!=null&&dep[i]>0?cr[i]/dep[i]*100:null);
   let hi=-1,hv=-Infinity;idx.forEach((v,i)=>{if(v!=null&&v>hv){hv=v;hi=i;}});const lastI=ix.at(-1);
   const G='LEV'+k;if(typeof SYNC!=='undefined'){SYNC.pin[G]=null;SYNC.last[G]=null;SYNC.groups[G]=[];const f=(v,d)=>v==null?'—':v.toLocaleString(undefined,{maximumFractionDigits:d});
    SYNC.noteFn[G]=i=>{const dv=levDerived.__c?.[G]?.get(labels[i]);const p=v=>v==null?'—':(v>0?'+':'')+v.toFixed(1)+'%';return `${labels[i]} · ${nm} ${f(idx[i],0)} · 신용융자 ${f(cr[i],2)}조 · 고객예탁금 ${f(dep[i],1)}조 · 신용÷예탁금 ${f(ra[i],2)}% · 오실레이터 ${p(dv?.osc)} · MDD 지수 ${p(dv?.imdd)} / 신용 ${p(dv?.cmdd)}`;};const nt=el('syncNote'+G);if(nt){nt.classList.remove('pinned');}}
@@ -165,7 +169,8 @@ const lvX={};function renderLev(){if(!KF.length){el('levErr').hidden=false;retur
   {const lo=osc.filter(v=>v!=null).at(-1),li2=im.filter(v=>v!=null).at(-1),lc=cm.filter(v=>v!=null).at(-1),f1=v=>v==null?'—':(v>0?'+':'')+v.toFixed(1)+'%';
    const minI=Math.min(...im.filter(v=>v!=null)),minC=Math.min(...cm.filter(v=>v!=null));
    el('lev'+k+'OT').textContent=`5일÷20일 평균 −1 · 최근 ${f1(lo)}`;el('lev'+k+'MT').textContent=`최근 지수 ${f1(li2)} · 신용 ${f1(lc)}`;el('lev'+k+'MT').title=`구간 최저 지수 ${f1(minI)} / 신용 ${f1(minC)}`;lvX[k]=`오실레이터 = 신용잔고 5일 평균 ÷ 20일 평균 − 1(+면 빚투 증가 속도가 빨라지는 중, −면 상환·반대매매로 줄어드는 중). MDD = 2015년 이후 최고치 대비 하락률. 구간 최저: 지수 ${f1(minI)} · 신용 ${f1(minC)}. 지수보다 신용잔고 MDD가 덜 빠졌으면 레버리지가 아직 덜 정리된 것, 더 빠졌으면 디레버리징이 진행된 것.`;}
-  const L=R.at(-1),li=labels.length-1;el('lev'+k+'H').innerHTML='';const parts=[[L.date,'#e2e8f0'],[nm+' '+(idx[li]??0).toLocaleString(undefined,{maximumFractionDigits:0}),LC.idx],['신용융자 '+cr[li].toFixed(1)+'조',LC.cr],['고객예탁금 '+dep[li].toFixed(1)+'조',LC.dep],['신용 ÷ 예탁금 '+ra[li].toFixed(1)+'%',LC.ratio]];
+  const L=R.at(-1),li=labels.indexOf(L.date),latestIndex=ix.filter(x=>x.d>=S).at(-1)||lastI;
+  el('lev'+k+'H').innerHTML='';const parts=[['지수 '+(latestIndex?.d||'—')+' · 신용/예탁금 '+L.date,'#e2e8f0'],[nm+' '+(latestIndex?.v==null?'—':latestIndex.v.toLocaleString(undefined,{maximumFractionDigits:0})),LC.idx],['신용융자 '+(cr[li]?.toFixed(1)??'—')+'조',LC.cr],['고객예탁금 '+(dep[li]?.toFixed(1)??'—')+'조',LC.dep],['신용 ÷ 예탁금 '+(ra[li]?.toFixed(1)??'—')+'%',LC.ratio]];
   parts.forEach(([t,c],i)=>{const sp=document.createElement('span');sp.textContent=(i?' · ':'')+t;sp.style.color=c;if(!i)sp.style.fontWeight='700';el('lev'+k+'H').append(sp);});
   el('lev'+k+'N').textContent=(lvX[k]?lvX[k]+' ':'')+`주황 점선 = 구간 ${nm} 고점 (${labels[hi]||'—'})`+(lastI&&lastI.d>L.date?` · ${nm} 최근 ${lastI.d.slice(5).replace('-','/')} ${lastI.v.toLocaleString(undefined,{maximumFractionDigits:0})}`:'');}
  const fsr=R.map(x=>x.forced_sale!=null?x.forced_sale/100:null),uns=R.map(x=>x.unsettled!=null?x.unsettled/100:null),fr=R.map(x=>x.forced_ratio??null);
