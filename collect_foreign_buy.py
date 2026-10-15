@@ -128,7 +128,7 @@ def build(asof):
             if buy <= 0 or cap <= 0:
                 continue
             # 금액은 억원(소수 1자리), 비율 %
-            rows.append([code, names[code], mk[code], round(buy / 1e8, 1), round(sell / 1e8, 1), round(cap / 1e8), round(buy / cap * 100, 4),
+            rows.append([code, names[code], mk[code], round(buy / 1e8, 1), round(sell / 1e8, 1), round(cap / 1e8), round(buy / cap * 100 / k, 4),  # 일평균 매수/시총 = 기간 누적 매수 ÷ 평균 시총 ÷ 거래일수
                          round((g - 1) * 100, 2), close, round(buy / val * 100, 1) if val else None, k])
         rows.sort(key=lambda x: -x[6])
         res['periods'][key] = {'label': lab, 'from': ds[0] if ds else None, 'to': ds[-1] if ds else None, 'days': len(ds), 'rows': rows}

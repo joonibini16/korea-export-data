@@ -14,7 +14,7 @@
 <p class="muted">당일 외국인 <b>매수 금액</b>(순매수가 아닌 총매수)을 시가총액으로 나눈 비율이 높은 순서입니다. 시가총액 대비 외국인이 얼마나 많이 사들였는지(손바뀜 강도)를 보여 주며, 매도도 많을 수 있으므로 순매수·매수 비중을 함께 봅니다.</p>
 <section class="panel"><h2 data-upd="foreign_buy_periods.json">시총 대비 외국인 매수금액 순위</h2><p class="muted" id="sub"></p>
 <div class="ctl" id="ptab"></div><div class="ctl" id="ctl"></div><div class="tw"><table class="kt" id="kt"></table></div>
-<p class="muted">· 매수/시총 = 외국인 매수 거래대금 ÷ 시가총액(기간 탭은 기간 누적 매수 ÷ 기간 평균 시가총액). 기간은 달력 기준(1주 7일·2주 14일·1달 30일·3달 91일) 안의 거래일. 종목을 누르면 기간 중 일별 매수금액·매수/시총 그래프(순매수는 범례 클릭으로 표시). · 거래대금 중 외국인 매수 = 외국인 매수 ÷ 당일 전체 거래대금(거래된 금액 중 외국인이 산 몫). · 순매수 = 외국인 매수 − 매도. 출처: KRX 정보데이터시스템(투자자별 거래실적, 외국인 = 외국인 + 기타외국인 합계), 시가총액 KRX. 평일 장 마감 후 15:50·16:20·18:10·20:40(KST) 수집, 날짜별 전 종목 자료는 foreign_buy_days 폴더에 누적(삭제하지 않음)되며 최근 3달로 기간 순위를 계산합니다.</p></section>
+<p class="muted">· 매수/시총 = 외국인 매수 거래대금 ÷ 시가총액(기간 탭은 일평균: 기간 누적 매수 ÷ 기간 평균 시가총액 ÷ 거래일수). 기간은 달력 기준(1주 7일·2주 14일·1달 30일·3달 91일) 안의 거래일. 종목을 누르면 기간 중 일별 매수금액·매수/시총 그래프(순매수는 범례 클릭으로 표시). · 거래대금 중 외국인 매수 = 외국인 매수 ÷ 당일 전체 거래대금(거래된 금액 중 외국인이 산 몫). · 순매수 = 외국인 매수 − 매도. 출처: KRX 정보데이터시스템(투자자별 거래실적, 외국인 = 외국인 + 기타외국인 합계), 시가총액 KRX. 평일 장 마감 후 15:50·16:20·18:10·20:40(KST) 수집, 날짜별 전 종목 자료는 foreign_buy_days 폴더에 누적(삭제하지 않음)되며 최근 3달로 기간 순위를 계산합니다.</p></section>
 </main>
 <script>
 (async()=>{
@@ -32,7 +32,7 @@
    `<label>시가총액 하한</label>`+[[0,'제한 없음'],[1000,'1천억↑'],[10000,'1조↑'],[50000,'5조↑']].map(([v,t])=>`<button class="period${minCap===v?' active':''}" data-c="${v}">${t}</button>`).join('')+
    `<label>표시</label>`+[50,100,300].map(n=>`<button class="period${showN===n?' active':''}" data-n="${n}">${n}</button>`).join('');
   const one=per==='1d';
-  $('kt').innerHTML=`<thead><tr><th>순위</th><th class="l">종목</th><th>매수/시총${one?'':'<div class="s">기간 누적 ÷ 평균 시총</div>'}</th><th>외국인 매수<div class="s">억원${one?'':' · 기간 누적'}</div></th><th>${one?'시가총액':'평균 시가총액'}<div class="s">억원</div></th><th>거래대금 중<br>외국인 매수</th><th>외국인 순매수<div class="s">억원</div></th><th>외국인 매도<div class="s">억원</div></th><th>${one?'등락률':'기간 등락률'}</th><th>종가</th></tr></thead><tbody>`+
+  $('kt').innerHTML=`<thead><tr><th>순위</th><th class="l">종목</th><th>매수/시총${one?'':'<div class="s">일평균 = 누적 ÷ 평균 시총 ÷ 거래일</div>'}</th><th>외국인 매수<div class="s">억원${one?'':' · 기간 누적'}</div></th><th>${one?'시가총액':'평균 시가총액'}<div class="s">억원</div></th><th>거래대금 중<br>외국인 매수</th><th>외국인 순매수<div class="s">억원</div></th><th>외국인 매도<div class="s">억원</div></th><th>${one?'등락률':'기간 등락률'}</th><th>종가</th></tr></thead><tbody>`+
    L.map((r,i)=>{const net=r[3]-r[4];return `<tr class="row${openCode===r[0]?' on':''}" data-code="${r[0]}"><td>${i+1}</td><td class="l"><b>${r[1]}</b><span class="mk">${r[2]==='KOSPI'?'코스피':'코스닥'}</span> <span class="s">${r[0]}</span></td>
     <td><div class="bar"><i style="width:${(r[6]/mx*100).toFixed(1)}%"></i><span>${r[6].toFixed(2)}%</span></div></td><td>${eok(r[3])}</td><td>${eok(r[5])}</td>
     <td>${r[9]==null?'—':r[9].toFixed(1)+'%'}</td><td class="${net>0?'up':net<0?'dn':''}">${(net>0?'+':'')+eok(net)}</td><td>${eok(r[4])}</td>
@@ -52,7 +52,7 @@
   if(!a){$('dh').innerHTML=`<b>${r[1]}</b> — 3개월 평균 시가총액 300억 미만 종목은 일별 추이를 저장하지 않습니다.`;return;}
   const pts=idx.map(([d,i])=>[d,a[i]]);
   const sum=pts.reduce((s,[,v])=>s+(v?v[0]:0),0),net=pts.reduce((s,[,v])=>s+(v?v[1]:0),0);
-  $('dh').innerHTML=`<b>${r[1]}</b> <span class="s">${r[0]}</span> · ${from} ~ ${to} · 기간 외국인 매수 <b>${Math.round(sum).toLocaleString()}억</b> · 순매수 <b class="${net>0?'up':'dn'}">${(net>0?'+':'')+Math.round(net).toLocaleString()}억</b> · 기간 매수/평균시총 <b>${r[6].toFixed(2)}%</b>${per==='1d'?' (그래프는 최근 1달)':''}`;
+  $('dh').innerHTML=`<b>${r[1]}</b> <span class="s">${r[0]}</span> · ${from} ~ ${to} · 기간 외국인 매수 <b>${Math.round(sum).toLocaleString()}억</b> · 순매수 <b class="${net>0?'up':'dn'}">${(net>0?'+':'')+Math.round(net).toLocaleString()}억</b> · 일평균 매수/시총 <b>${r[6].toFixed(2)}%</b> (${r[10]}거래일)${per==='1d'?' (그래프는 최근 1달)':''}`;
   chart=new Chart($('dc'),{data:{labels:pts.map(([d])=>d.slice(5)),datasets:[
    {type:'bar',label:'외국인 매수금액(억원)',data:pts.map(([,v])=>v?v[0]:null),backgroundColor:'rgba(239,68,68,.55)',yAxisID:'y',order:2},
    {type:'bar',label:'외국인 순매수(억원)',data:pts.map(([,v])=>v?v[1]:null),backgroundColor:'rgba(96,165,250,.6)',yAxisID:'y',order:3,hidden:true},
