@@ -1,7 +1,134 @@
 {
-  "updated": null,
+  "updated": "2026-10-15T07:50:29+00:00",
   "targets": 25,
-  "bonds": {},
-  "errors": [],
+  "bonds": {
+    "CORZ": {
+      "name": "코어 사이언티픽",
+      "state": "error"
+    },
+    "APLD": {
+      "name": "어플라이드 디지털",
+      "state": "error"
+    },
+    "CIFR": {
+      "name": "사이퍼 마이닝",
+      "state": "error"
+    },
+    "WULF": {
+      "name": "테라울프",
+      "state": "error"
+    },
+    "BEIGNET": {
+      "name": "메타 하이페리온 SPV",
+      "state": "error"
+    },
+    "HUT": {
+      "name": "헛에이트",
+      "state": "error"
+    },
+    "STX": {
+      "name": "씨게이트",
+      "state": "error"
+    },
+    "HPE": {
+      "name": "HPE",
+      "state": "error"
+    },
+    "MU": {
+      "name": "마이크론",
+      "state": "error"
+    },
+    "DELL": {
+      "name": "델",
+      "state": "error"
+    },
+    "INTC": {
+      "name": "인텔",
+      "state": "error"
+    },
+    "AMD": {
+      "name": "AMD",
+      "state": "error"
+    },
+    "QCOM": {
+      "name": "퀄컴",
+      "state": "error"
+    },
+    "TSM": {
+      "name": "TSMC",
+      "state": "error"
+    },
+    "IRM": {
+      "name": "아이언 마운틴",
+      "state": "error"
+    },
+    "EQIX": {
+      "name": "에퀴닉스",
+      "state": "error"
+    },
+    "DLR": {
+      "name": "디지털 리얼티",
+      "state": "error"
+    },
+    "TLN": {
+      "name": "탈렌",
+      "state": "error"
+    },
+    "NRG": {
+      "name": "NRG",
+      "state": "error"
+    },
+    "VST": {
+      "name": "비스트라",
+      "state": "error"
+    },
+    "CEG": {
+      "name": "컨스텔레이션",
+      "state": "error"
+    },
+    "SOFTBANK": {
+      "name": "소프트뱅크그룹",
+      "state": "error"
+    },
+    "OTF": {
+      "name": "블루아울 테크놀로지 파이낸스",
+      "state": "error"
+    },
+    "OBDC": {
+      "name": "블루아울 캐피털",
+      "state": "error"
+    },
+    "ARCC": {
+      "name": "아레스 캐피털",
+      "state": "error"
+    }
+  },
+  "errors": [
+    "CORZ: HTTP Error 400: Bad Request",
+    "APLD: HTTP Error 400: Bad Request",
+    "CIFR: HTTP Error 400: Bad Request",
+    "WULF: HTTP Error 400: Bad Request",
+    "BEIGNET: HTTP Error 400: Bad Request",
+    "HUT: HTTP Error 400: Bad Request",
+    "STX: HTTP Error 400: Bad Request",
+    "HPE: HTTP Error 400: Bad Request",
+    "MU: HTTP Error 400: Bad Request",
+    "DELL: HTTP Error 400: Bad Request",
+    "INTC: HTTP Error 400: Bad Request",
+    "AMD: HTTP Error 400: Bad Request",
+    "QCOM: HTTP Error 400: Bad Request",
+    "TSM: HTTP Error 400: Bad Request",
+    "IRM: HTTP Error 400: Bad Request",
+    "EQIX: HTTP Error 400: Bad Request",
+    "DLR: HTTP Error 400: Bad Request",
+    "TLN: HTTP Error 400: Bad Request",
+    "NRG: HTTP Error 400: Bad Request",
+    "VST: HTTP Error 400: Bad Request",
+    "CEG: HTTP Error 400: Bad Request",
+    "SOFTBANK: HTTP Error 400: Bad Request",
+    "OTF: HTTP Error 400: Bad Request",
+    "OBDC: HTTP Error 400: Bad Request",
+    "ARCC: HTTP Error 400: Bad Request"
+  ],
   "rows": 0
 }
