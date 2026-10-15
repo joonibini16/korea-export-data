@@ -8,11 +8,13 @@
  let sel='CRWV',mode='all',charts={};
  const tAx=(mn,mx)=>({type:'linear',min:mn,max:mx,ticks:{maxTicksLimit:9,callback:v=>{const d=new Date(v);return String(d.getUTCFullYear()).slice(2)+'.'+String(d.getUTCMonth()+1).padStart(2,'0');}}});
  Promise.all([fetch('bigtech_bonds.json').then(r=>r.json()),fetch('bigtech_bonds_hist.csv?v='+Date.now(),{cache:'no-store'}).then(r=>r.text()),
-  Promise.resolve('date,ticker\n')]).then(([M,a,b])=>{
-  const B=M.bonds,ref=parse(a),own=parse(b);
+  fetch('bigtech_bonds_ref.csv',{cache:'no-store'}).then(r=>r.ok?r.text():'date,ticker\n').catch(()=>'date,ticker\n')]).then(([M,a,b])=>{
+  const B=M.bonds,ref=parse(a),own=parse(b); // ref = FINRA 원본, own = 판독 참고치(대체용)
   const S={};B.forEach(x=>S[x.t]={ref:[],own:[]});
   ref.forEach(r=>{if(S[r.ticker])S[r.ticker].ref.push({d:r.date,y:+r.ytm,u:+r.ust,s:(+r.ytm-+r.ust)*100});});
-  own.forEach(r=>{if(S[r.ticker]&&r.ytm)S[r.ticker].own.push({d:r.date,y:+r.ytm,u:+r.ust,s:+r.spread_bp,p:r.price?+r.price:null,src:r.source});});
+  // 원본(FINRA) 우선: 원본이 없는 종목·기간에만 판독 참고치(bigtech_bonds_ref.csv)를 채움
+  const FB={};own.forEach(r=>{if(!r.ytm)return;(FB[r.ticker]=FB[r.ticker]||[]).push({d:r.date,y:+r.ytm,u:+r.ust,s:(+r.ytm-+r.ust)*100,fb:true});});
+  B.forEach(x=>{const s=S[x.t];const d0=s.ref.length?s.ref.map(p=>p.d).sort()[0]:'9999';const fill=(FB[x.t]||[]).filter(p=>!s.ref.length||p.d<d0||p.d>s.ref.map(q=>q.d).sort().at(-1));s.ref.push(...fill);s.fb=fill.length;});
   const med=a=>{const b=[...a].sort((p,q)=>p-q),n=b.length;return n%2?b[(n-1)/2]:(b[n/2-1]+b[n/2])/2;};
   B.forEach(x=>{const s=S[x.t];s.ref.sort((p,q)=>p.d.localeCompare(q.d));s.ref=s.ref.map((p,i,a)=>{const w=a.slice(Math.max(0,i-4),i+1).map(q=>q.y);const y=med(w);return {...p,raw:p.y,y,s:(y-p.u)*100};});s.own.sort((p,q)=>p.d.localeCompare(q.d));const lr=s.ref.at(-1);s.own=s.own.filter(o=>!lr||o.d>lr.d);
    // 연결 보정: 첫 자체 수집일의 스프레드를 판독 마지막 값에 맞춤(이후 일별 변화만 반영)

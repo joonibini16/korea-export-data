@@ -37,8 +37,12 @@
    const l=all.at(-1);document.getElementById('f2').textContent=l?`최근 ${l.d}: ${l.v.toFixed(2)}조 토큰 · 30일 전 대비 ${sg(pct(l.v,(all.find(x=>ts(x.d)>=ts(l.d)-30*DAY)||{}).v))}`:'';}
   // 3) GPU
   {const K=[['a100','A100',C.bl,'y'],['h100','H100',C.cy,'y1'],['b200','B200 (NonHPS)',C.pu,'y2']];const ds=[],bd=[];
-   K.forEach(([k,n,c,ax])=>{const ref=ser(R,'ref_gpu_'+k),own=ser(G,`gpu_${k}_vast`);ds.push(L(n,pts(ref),c,{yAxisID:ax}));
-    bd.push(`${n.split(' ')[0]} <span class="${col(wow(ref))}">${sg(wow(ref))}</span>`);});
+   K.forEach(([k,n,c,ax])=>{const ref=ser(R,'ref_gpu_'+k),own=ser(G,`gpu_${k}_vast`);
+    // 원본(Vast.ai 중앙값) 우선: 원본이 있는 날부터는 원본의 일별 변화율로 이어 붙임(지수 수준은 판독 마지막 값 기준)
+    let cont=[];if(own.length&&ref.length){const k0=ref.at(-1).v/own[0].v;cont=[ref.at(-1),...own.filter(x=>x.d>ref.at(-1).d).map(x=>({d:x.d,v:x.v*k0}))];}
+    else if(own.length)cont=own;
+    ds.push(L(n+(own.length?' (판독)':''),pts(ref),c,{yAxisID:ax}));if(cont.length)ds.push(L(n+' (원본 Vast.ai 연결)',pts(cont),c,{yAxisID:ax,borderDash:[5,3],pointRadius:cont.length<8?3:0}));
+    const all=[...ref,...cont.slice(1)];bd.push(`${n.split(' ')[0]} <span class="${col(wow(all))}">${sg(wow(all))}</span>`);});
    document.getElementById('n3').textContent='일별 임대 지수 · 축 독립(왼쪽 A100 · 오른쪽 H100 · 맨 오른쪽 B200)';
    document.getElementById('b3').innerHTML=bd.join(' | ');
    const ax=(c,t,pos,grid)=>({position:pos,grid:{drawOnChartArea:grid},ticks:{color:c},title:{display:true,text:t,color:c}});
