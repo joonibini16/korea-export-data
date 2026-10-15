@@ -42,20 +42,21 @@
   const trendIds=mode==='m'?M.filter(m=>m<=p.id).slice(-12).map(m=>[m]):(()=>{const qs=P.filter(x=>x.full&&x.id<=p.id).map(x=>x.id).reverse().slice(-8);return qs.map(qMonths);})();
   const R=names.map(k=>{const v=val(k,p.ms)||0,y=val(k,p.yago),pv=p.prev?val(k,p.prev):null,w=wt(k,p.ms),wy=wt(k,p.yago);
    const sh=tot?v/tot*100:0,shY=totY&&y!=null?y/totY*100:null;
-   return {k,code:C[k],v,y,pv,sh,dsh:shY==null?null:sh-shY,yoy:pct(v,y),mom:pv==null?null:pct(v,pv),up:w&&wy&&y?pct(v/w,y/wy):null,
+   return {k,code:C[k],v,y,pv,sh,dsh:shY==null?null:sh-shY,yoy:pct(v,y),mom:pv==null?null:pct(v,pv),up:w&&wy&&y?pct(v/w,y/wy):null,pr:w?v/w:null,pry:wy&&y?y/wy:null,
     contrib:totY&&y!=null?(v-y)/totY*100:null,tr:trendIds.map(ms=>val(k,ms))};});
   R.sort((a,b)=>(a.k==='기타')-(b.k==='기타')||b.v-a.v);
   const L2=mode==='m'?'MoM':'QoQ',L1=mode==='m'?'전년 동월':'전년 동기';
+  const tw=names.reduce((a,k)=>a+(wt(k,p.ms)||0),0),twy=names.reduce((a,k)=>a+(wt(k,p.yago)||0),0),tUp=tw&&twy&&totY?pct(tot/tw,totY/twy):null;
   const tYoY=pct(tot,totY),tMoM=totP==null?null:pct(tot,totP);
   box.innerHTML=`<h2 class="chart-title">${item} · 국가별 ${mode==='m'?'월별':'분기별'} 증감 (${p.lab})</h2>
   <div class="control-row cg-ctl"><span class="cg-tg">${[['m','월별'],['q','분기별']].map(([k,t])=>`<button data-mode="${k}" class="period${mode===k?' active':''}">${t}</button>`).join('')}</span>
    <label for="cgPeriod">기간</label><select id="cgPeriod">${P.map(x=>`<option value="${x.id}"${x.id===p.id?' selected':''}>${x.lab}</option>`).join('')}</select></div>
-  <div class="table-wrapper"><table class="cg-t"><thead><tr><th>순위</th><th>국가</th><th>수출액</th><th>비중</th><th>비중 변화<div class="cg-s">${L1} 대비 %p</div></th><th>YoY</th><th>${L2}</th><th>YoY 기여도<div class="cg-s">전체 증감 중 %p</div></th><th>단가 YoY<div class="cg-s">$/kg</div></th><th>${L1} 금액</th><th>추이<div class="cg-s">${mode==='m'?'최근 12개월':'최근 8분기'}</div></th></tr></thead><tbody>
+  <div class="table-wrapper"><table class="cg-t"><thead><tr><th>순위</th><th>국가</th><th>수출액</th><th>비중</th><th>비중 변화<div class="cg-s">${L1} 대비 %p</div></th><th>YoY</th><th>${L2}</th><th>YoY 기여도<div class="cg-s">전체 증감 중 %p</div></th><th>단가<div class="cg-s">$/kg · ${L1}</div></th><th>단가 YoY<div class="cg-s">$/kg</div></th><th>${L1} 금액</th><th>추이<div class="cg-s">${mode==='m'?'최근 12개월':'최근 8분기'}</div></th></tr></thead><tbody>
   ${R.map((r,i)=>`<tr${r.k==='기타'?' class="cg-etc"':''}><td class="center">${r.k==='기타'?'—':i+1}</td><td>${r.k} <span class="cg-s">${r.code||''}</span></td><td class="number">${money(r.v)}</td>
    <td class="number"><div class="cg-bar"><i style="width:${Math.min(100,r.sh).toFixed(1)}%"></i><span>${r.sh.toFixed(1)}%</span></div></td>
    <td class="number ${cls(r.dsh)}">${r.dsh==null?'—':(r.dsh>0?'+':'')+r.dsh.toFixed(1)}</td><td class="number ${cls(r.yoy)}"><b>${fp(r.yoy)}</b></td><td class="number ${cls(r.mom)}">${fp(r.mom)}</td>
-   <td class="number ${cls(r.contrib)}">${r.contrib==null?'—':(r.contrib>0?'+':'')+r.contrib.toFixed(1)}</td><td class="number ${cls(r.up)}">${fp(r.up)}</td><td class="number">${r.y==null?'—':money(r.y)}</td><td>${spark(r.tr,r.yoy==null||r.yoy>=0?'#f87171':'#60a5fa')}</td></tr>`).join('')}
-  <tr class="cg-tot"><td></td><td><b>합계</b></td><td class="number"><b>${money(tot)}</b></td><td class="number">100%</td><td></td><td class="number ${cls(tYoY)}"><b>${fp(tYoY)}</b></td><td class="number ${cls(tMoM)}">${fp(tMoM)}</td><td class="number ${cls(tYoY)}">${tYoY==null?'—':(tYoY>0?'+':'')+tYoY.toFixed(1)}</td><td></td><td class="number">${totY==null?'—':money(totY)}</td><td></td></tr></tbody></table></div>
+   <td class="number ${cls(r.contrib)}">${r.contrib==null?'—':(r.contrib>0?'+':'')+r.contrib.toFixed(1)}</td><td class="number">${r.pr==null?'—':'$'+r.pr.toFixed(2)}<div class="cg-s">${r.pry==null?'':'$'+r.pry.toFixed(2)}</div></td><td class="number ${cls(r.up)}">${fp(r.up)}</td><td class="number">${r.y==null?'—':money(r.y)}</td><td>${spark(r.tr,r.yoy==null||r.yoy>=0?'#f87171':'#60a5fa')}</td></tr>`).join('')}
+  <tr class="cg-tot"><td></td><td><b>합계</b></td><td class="number"><b>${money(tot)}</b></td><td class="number">100%</td><td></td><td class="number ${cls(tYoY)}"><b>${fp(tYoY)}</b></td><td class="number ${cls(tMoM)}">${fp(tMoM)}</td><td class="number ${cls(tYoY)}">${tYoY==null?'—':(tYoY>0?'+':'')+tYoY.toFixed(1)}</td><td class="number">${tw?'$'+(tot/tw).toFixed(2):'—'}<div class="cg-s">${twy&&totY?'$'+(totY/twy).toFixed(2):''}</div></td><td class="number ${cls(tUp)}">${fp(tUp)}</td><td class="number">${totY==null?'—':money(totY)}</td><td></td></tr></tbody></table></div>
   <p class="selection-hint">비중 높은 순(기타는 맨 아래). YoY 기여도 = (해당 국가 증감액 ÷ 전년 ${mode==='m'?'동월':'동기'} 전체 수출액), 국가별 기여도를 더하면 전체 YoY가 됩니다. ${mode==='q'?'분기는 3개월 합계이며, 진행 중 분기는 확보된 달만 전년 같은 달과 비교하고 QoQ는 표시하지 않습니다. ':''}출처: 관세청 수출입무역통계(확정치, 품목·국가별).</p>`;
   box.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>{mode=b.dataset.mode;period=null;render();});
   box.querySelector('#cgPeriod').onchange=e=>{period=e.target.value;render();};
