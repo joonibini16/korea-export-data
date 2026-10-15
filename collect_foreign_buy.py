@@ -4,7 +4,7 @@
 - 외국인 매수·매도 거래대금: KRX 정보데이터시스템 '투자자별 순매수상위종목'(MDCSTAT02401, 투자자=외국인)
 - 시가총액: KRX Open API 일별매매정보(stk_bydd_trd / ksq_bydd_trd, KRX_API_KEY) — 실패 시 KRX 정보데이터시스템 전종목 시세(MDCSTAT01501)
 """
-import csv, datetime as dt, json, os, pathlib, sys, time, urllib.request
+import csv, datetime as dt, gzip, json, os, pathlib, sys, time, urllib.request
 import requests
 
 KST = dt.timezone(dt.timedelta(hours=9))
@@ -71,59 +71,133 @@ def login():
     return code in ('CD001', None) and r.status_code == 200
 
 
+DAYS = pathlib.Path('foreign_buy_days'); HOL = DAYS / '_holidays.json'
+PERIODS = [('1d', '당일', 0), ('1w', '최근 1주', 7), ('2w', '최근 2주', 14), ('1m', '최근 1달', 30), ('3m', '최근 3달', 91)]
+
+
+def fetch_day(day):
+    """하루치: 시장별 [코드, 이름, 외국인매수, 외국인매도, 시총, 종가, 등락률, 거래대금] (금액 원). 휴장일이면 None."""
+    out = {}
+    for m, (mid, _) in MKT.items():
+        j = krx('dbms/MDC/STAT/standard/MDCSTAT02401', mktId=mid, invstTpCd='9000', strtDd=day, endDd=day, share='1', money='1', csvxls_isNo='false')
+        inv = j.get('output') or j.get('OutBlock_1') or []
+        if not inv:
+            return None
+        time.sleep(0.4)
+        caps = caps_krx(m, day); time.sleep(0.4)
+        rows = []
+        for r in inv:
+            c = caps.get(r.get('ISU_SRT_CD'))
+            if not c or not c['cap']:
+                continue
+            rows.append([r['ISU_SRT_CD'], r.get('ISU_NM') or c['name'], int(num(r.get('BID_TRDVAL'))), int(num(r.get('ASK_TRDVAL'))), int(c['cap']), c['close'], c['chg'], int(c['val'])])
+        out[m] = rows
+    return out
+
+
+def load_day(d):
+    f = DAYS / f'{d}.json.gz'
+    return json.loads(gzip.decompress(f.read_bytes())) if f.exists() else None
+
+
+def build(asof):
+    """기간별 순위(foreign_buy_periods.json)·종목별 일별 추이(foreign_buy_series.json)·당일(foreign_buy.json)."""
+    files = sorted(f.name[:10] for f in DAYS.glob('*.json.gz'))
+    files = [d for d in files if d <= asof]
+    end = dt.date.fromisoformat(asof)
+    data = {d: load_day(d) for d in files if d > (end - dt.timedelta(days=92)).isoformat()}
+    dates = sorted(data)
+    res = {'asof': asof, 'updated_at': status['run'], 'source': 'KRX 정보데이터시스템 투자자별 거래실적(외국인) · 전종목 시세(시가총액)', 'periods': {}}
+    names, mk = {}, {}
+    for d in dates:
+        for m, rows in data[d].items():
+            for r in rows: names[r[0]] = r[1]; mk[r[0]] = m
+    for key, lab, n in PERIODS:
+        ds = [asof] if n == 0 else [d for d in dates if d > (end - dt.timedelta(days=n)).isoformat()]
+        ds = [d for d in ds if d in data]
+        acc = {}
+        for d in ds:
+            for m, rows in data[d].items():
+                for code, nm, buy, sell, cap, close, chg, val in rows:
+                    a = acc.setdefault(code, [0, 0, 0, 0, 0, 1.0, close, 0])
+                    a[0] += buy; a[1] += sell; a[2] += cap; a[3] += 1; a[4] += val
+                    a[5] *= 1 + (chg or 0) / 100; a[6] = close
+        rows = []
+        for code, (buy, sell, capsum, k, val, g, close, _) in acc.items():
+            cap = capsum / k
+            if buy <= 0 or cap <= 0:
+                continue
+            # 금액은 억원(소수 1자리), 비율 %
+            rows.append([code, names[code], mk[code], round(buy / 1e8, 1), round(sell / 1e8, 1), round(cap / 1e8), round(buy / cap * 100, 4),
+                         round((g - 1) * 100, 2), close, round(buy / val * 100, 1) if val else None, k])
+        rows.sort(key=lambda x: -x[6])
+        res['periods'][key] = {'label': lab, 'from': ds[0] if ds else None, 'to': ds[-1] if ds else None, 'days': len(ds), 'rows': rows}
+    res['cols'] = ['code', 'name', 'market', 'buy_eok', 'sell_eok', 'avgcap_eok', 'ratio_pct', 'ret_pct', 'close', 'buy_share_pct', 'days']
+    pathlib.Path('foreign_buy_periods.json').write_text(json.dumps(res, ensure_ascii=False, separators=(',', ':')))
+    # 종목별 일별 추이: 3달 평균 시총 300억 이상 종목만(용량 관리)
+    keep = {r[0] for r in res['periods']['3m']['rows'] if r[5] >= 300}
+    ser = {'dates': dates, 'cols': ['buy_eok', 'net_eok', 'ratio_pct'], 's': {}}
+    idx = {d: {r[0]: r for m in data[d].values() for r in m} for d in dates}
+    for code in keep:
+        a = []
+        for d in dates:
+            r = idx[d].get(code)
+            a.append(None if not r else [round(r[2] / 1e8, 1), round((r[2] - r[3]) / 1e8, 1), round(r[2] / r[4] * 100, 3) if r[4] else None])
+        ser['s'][code] = a
+    pathlib.Path('foreign_buy_series.json').write_text(json.dumps(ser, ensure_ascii=False, separators=(',', ':')))
+    # 당일(기존 화면 호환)
+    today = data.get(asof)
+    if today:
+        out = {'asof': asof, 'updated_at': status['run'], 'source': res['source'], 'markets': {}}
+        for m, rws in today.items():
+            L = [dict(code=r[0], name=r[1], buy=r[2], sell=r[3], net=r[2] - r[3], cap=r[4], close=r[5], chg=r[6], val=r[7], ratio=round(r[2] / r[4] * 100, 4), buy_share=round(r[2] / r[7] * 100, 1) if r[7] else None) for r in rws if r[2] > 0]
+            L.sort(key=lambda x: -x['ratio']); out['markets'][m] = {'n': len(L), 'rows': L}
+        OUT.write_text(json.dumps(out, ensure_ascii=False, separators=(',', ':')))
+        old = list(csv.DictReader(HIST.open(encoding='utf-8'))) if HIST.exists() else []
+        old = [r for r in old if r.get('date') != asof]
+        new = [{'date': asof, 'market': m, 'rank': i, 'code': x['code'], 'name': x['name'], 'buy_krw': x['buy'], 'net_krw': x['net'], 'mktcap_krw': x['cap'], 'ratio_pct': x['ratio']}
+               for m, M in out['markets'].items() for i, x in enumerate(M['rows'][:100], 1)]
+        with HIST.open('w', encoding='utf-8', newline='') as f:
+            w = csv.DictWriter(f, fieldnames=list(new[0].keys())); w.writeheader(); w.writerows(old + new)
+    log(step='build', days=len(dates), series=len(ser['s']))
+
+
 def main():
     try:
-        g = S.get(LOADER, timeout=30); log(step='loader', status=g.status_code, cookies=list(S.cookies.keys()))
+        g = S.get(LOADER, timeout=30); log(step='loader', status=g.status_code)
     except Exception as e:
         log(step='loader', error=str(e)[:200])
-    login()
-    res = None
-    for day in trade_days():
-        mk = {}
+    if not login():
+        STATUS.write_text(json.dumps(status, ensure_ascii=False, indent=1)); return 1
+    DAYS.mkdir(exist_ok=True)
+    hol = set(json.loads(HOL.read_text())) if HOL.exists() else set()
+    today = dt.datetime.now(KST).date()
+    cand = [today - dt.timedelta(days=i) for i in range(0, 95)]
+    cand = [d for d in cand if d.weekday() < 5 and d.isoformat() not in hol]
+    have = {f.name[:10] for f in DAYS.glob('*.json.gz')}
+    latest_have = max(have) if have else ''
+    # 최근 2거래일은 매번 다시 받음(장중·지연 확정 반영), 나머지는 없는 날만
+    todo = [d for d in cand if d.isoformat() not in have] + [d for d in cand[:2] if d.isoformat() in have]
+    todo = sorted(set(todo), reverse=True)[:int(os.environ.get('MAX_DAYS', '70'))]
+    got = 0
+    for d in todo:
+        ds = d.strftime('%Y%m%d')
         try:
-            for m, (mid, _) in MKT.items():
-                j = krx('dbms/MDC/STAT/standard/MDCSTAT02401', mktId=mid, invstTpCd='9000', strtDd=day, endDd=day, share='1', money='1', csvxls_isNo='false')
-                rows = j.get('output') or j.get('OutBlock_1') or []
-                mk[m] = rows
-            log(step='investor', day=day, n={m: len(v) for m, v in mk.items()}, keys=list(mk['KOSPI'][0].keys()) if mk.get('KOSPI') else None)
+            r = fetch_day(ds)
         except Exception as e:
-            log(step='investor', day=day, error=str(e)[:300]); break
-        if not any(mk.values()):
+            log(step='day', day=d.isoformat(), error=str(e)[:200]); break
+        if r is None:
+            if d < today: hol.add(d.isoformat())
             continue
-        res = (day, mk); break
-    if not res:
-        STATUS.write_text(json.dumps(status, ensure_ascii=False, indent=1)); print('no data'); return 1
-    day, mk = res
-    out = {'asof': f'{day[:4]}-{day[4:6]}-{day[6:]}', 'updated_at': status['run'], 'source': 'KRX 정보데이터시스템 투자자별 거래(외국인) · 시가총액 KRX', 'markets': {}}
-    hist_rows = []
-    for m, rows in mk.items():
-        try:
-            caps = caps_openapi(m, day); src = 'openapi'
-            # Open API ISU_CD는 표준코드일 수 있어 단축코드로 맞춤
-            if caps and len(next(iter(caps))) == 12:
-                caps = {k[3:9]: v for k, v in caps.items()}
-        except Exception as e:
-            log(step='cap_openapi', market=m, error=str(e)[:200])
-            caps = caps_krx(m, day); src = 'krx'
-        L = []
-        for r in rows:
-            code = r.get('ISU_SRT_CD'); c = caps.get(code)
-            buy = num(r.get('BID_TRDVAL')); sell = num(r.get('ASK_TRDVAL'))
-            if not c or not c['cap'] or buy <= 0: continue
-            L.append(dict(code=code, name=r.get('ISU_NM') or c['name'], buy=buy, sell=sell, net=buy - sell, cap=c['cap'], close=c['close'], chg=c['chg'], val=c['val'],
-                          ratio=round(buy / c['cap'] * 100, 4), buy_share=round(buy / c['val'] * 100, 1) if c['val'] else None))
-        L.sort(key=lambda x: -x['ratio'])
-        out['markets'][m] = {'cap_source': src, 'n': len(L), 'rows': L}
-        log(step='merge', market=m, n=len(L), cap_source=src)
-        for i, x in enumerate(L[:100], 1):
-            hist_rows.append({'date': out['asof'], 'market': m, 'rank': i, 'code': x['code'], 'name': x['name'], 'buy_krw': int(x['buy']), 'net_krw': int(x['net']), 'mktcap_krw': int(x['cap']), 'ratio_pct': x['ratio']})
-    OUT.write_text(json.dumps(out, ensure_ascii=False, separators=(',', ':')))
-    # 날짜별 상위 100 누적(같은 날짜는 최신 값으로 교체, 과거는 보존)
-    old = list(csv.DictReader(HIST.open(encoding='utf-8'))) if HIST.exists() else []
-    old = [r for r in old if r['date'] != out['asof']]
-    with HIST.open('w', encoding='utf-8', newline='') as f:
-        w = csv.DictWriter(f, fieldnames=list(hist_rows[0].keys()) if hist_rows else ['date']); w.writeheader(); w.writerows(old + hist_rows)
-    status['ok'] = True; STATUS.write_text(json.dumps(status, ensure_ascii=False, indent=1))
+        (DAYS / f'{d.isoformat()}.json.gz').write_bytes(gzip.compress(json.dumps(r, ensure_ascii=False, separators=(',', ':')).encode(), 9))
+        got += 1
+    HOL.write_text(json.dumps(sorted(hol)))
+    have = sorted(f.name[:10] for f in DAYS.glob('*.json.gz'))
+    log(step='days', fetched=got, total=len(have), latest=have[-1] if have else None)
+    if have:
+        build(have[-1])
+        status['ok'] = True
+    STATUS.write_text(json.dumps(status, ensure_ascii=False, indent=1))
     return 0
 
 
