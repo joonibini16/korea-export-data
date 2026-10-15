@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-15",
+  "updated_at": "2026-10-16",
   "method": "공식 컨콜 녹취록을 확인한 경우에만 Q&A 요약으로 표시합니다. 그 외 주제별 요약은 공식 IR 발표문을 출처로 명시하며, 투자 해석은 관전점으로 구분합니다. 반도체 장비 업종은 주요 공정·검사·테스트·패키징 기업을 추적하며 원문 미검증 기업은 분석 대기로 표시합니다.",
   "watchlist": [
     {
@@ -1955,6 +1955,13 @@
       "source": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-to-Announce-Third-Quarter-2026-Results/default.aspx"
     },
     {
+      "ticker": "6146.T",
+      "date": "2026-10-22",
+      "time": "16:00 Asia/Tokyo",
+      "event": "FY26 Q2 실적 발표",
+      "source": "https://www.disco.co.jp/eg/ir/calendar/"
+    },
+    {
       "ticker": "BESI.AS",
       "date": "2026-10-22",
       "time": "07:00 Europe/Amsterdam",
@@ -1969,11 +1976,11 @@
       "source": "https://www.loreal-finance.com/eng/sales-september-30-2026-after-market"
     },
     {
-      "ticker": "6146.T",
-      "date": "2026-10-22",
-      "time": "16:00 Asia/Tokyo",
-      "event": "FY26 Q2 실적 발표",
-      "source": "https://www.disco.co.jp/eg/ir/calendar/"
+      "ticker": "ASM.AS",
+      "date": "2026-10-27",
+      "time": "18:00 Europe/Amsterdam · 10/28 15:00 컨콜",
+      "event": "2026 Q3 실적 발표",
+      "source": "https://www.asm.com/calendar"
     },
     {
       "ticker": "TER",
@@ -1983,11 +1990,11 @@
       "source": "https://investors.teradyne.com/news-events/press-releases/detail/454/teradyne-to-announce-third-quarter-2026-results"
     },
     {
-      "ticker": "ASM.AS",
-      "date": "2026-10-27",
-      "time": "18:00 Europe/Amsterdam · 10/28 15:00 컨콜",
-      "event": "2026 Q3 실적 발표",
-      "source": "https://www.asm.com/calendar"
+      "ticker": "6857.T",
+      "date": "2026-10-28",
+      "time": "15:30 Asia/Tokyo(예정)",
+      "event": "FY26 Q2 실적 발표",
+      "source": "https://www.advantest.com/en/investors/ir-calendar/"
     },
     {
       "ticker": "GEV",
@@ -1995,6 +2002,13 @@
       "time": "장 시작 전 · 07:30 America/New_York(웹캐스트)",
       "event": "2026 Q3 실적 발표",
       "source": "https://www.gevernova.com/news/press-releases/ge-vernova-announce-third-quarter-2026-financial-results-october-28"
+    },
+    {
+      "ticker": "GOOGL",
+      "date": "2026-10-28",
+      "time": "13:30 America/Los_Angeles(컨콜)",
+      "event": "2026 Q3 실적·컨퍼런스콜",
+      "source": "https://abc.xyz/investor/news/news-details/2026/Alphabet-Announces-Date-of-Third-Quarter-2026-Financial-Results-Conference-Call-2026-8tpGZsLS6v/default.aspx"
     },
     {
       "ticker": "KLAC",
@@ -2011,18 +2025,11 @@
       "source": "https://news.microsoft.com/source/2026/10/07/microsoft-announces-quarterly-earnings-release-date-69/"
     },
     {
-      "ticker": "GOOGL",
-      "date": "2026-10-28",
-      "time": "13:30 America/Los_Angeles(컨콜)",
+      "ticker": "AMZN",
+      "date": "2026-10-29",
+      "time": "14:00 America/Los_Angeles(컨콜·웹캐스트)",
       "event": "2026 Q3 실적·컨퍼런스콜",
-      "source": "https://abc.xyz/investor/news/news-details/2026/Alphabet-Announces-Date-of-Third-Quarter-2026-Financial-Results-Conference-Call-2026-8tpGZsLS6v/default.aspx"
-    },
-    {
-      "ticker": "6857.T",
-      "date": "2026-10-28",
-      "time": "15:30 Asia/Tokyo(예정)",
-      "event": "FY26 Q2 실적 발표",
-      "source": "https://www.advantest.com/en/investors/ir-calendar/"
+      "source": "https://www.businesswire.com/news/home/20261015676873/en/Amazon.com-to-Webcast-Third-Quarter-2026-Financial-Results-Conference-Call"
     },
     {
       "ticker": "LLY",
@@ -2030,6 +2037,27 @@
       "time": "10:00 America/New_York(컨콜)",
       "event": "2026 Q3 실적·컨퍼런스콜",
       "source": "https://investor.lilly.com/events/event-details/q3-2026-earnings-call"
+    },
+    {
+      "ticker": "6752.T",
+      "date": "2026-10-30",
+      "time": "시간 미공지(Asia/Tokyo)",
+      "event": "FY27 Q2 실적 발표",
+      "source": "https://holdings.panasonic/global/corporate/investors/calendar.html"
+    },
+    {
+      "ticker": "7735.T",
+      "date": "2026-10-30",
+      "time": "15:35 Asia/Tokyo(예정)",
+      "event": "FY27 Q2 실적 발표",
+      "source": "https://www.screen.co.jp/en/ir/calendar"
+    },
+    {
+      "ticker": "8035.T",
+      "date": "2026-10-30",
+      "time": "시간 미공지(Asia/Tokyo, 예정)",
+      "event": "FY27 Q2 실적 발표",
+      "source": "https://www.tel.co.jp/ir/calendar/index.html"
     }
   ]
 }
