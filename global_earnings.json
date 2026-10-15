@@ -1671,10 +1671,10 @@
       "ticker": "ASML",
       "period": "2026 Q3",
       "date": "2026-10-14",
-      "evidence": "공식 IR 실적발표·투자자 콜 준비 발언 게시",
+      "evidence": "공식 IR 실적발표·투자자 콜 준비 발언 및 CEO·CFO 영상 녹취록 본문 확인",
       "direction": "개선",
-      "headline": "2026년 전망 하단 상향·2027~2028년 장비 공급 부족 가시화",
-      "estimate_signal": "2026 매출 €44~45bn(기존 €43~45bn) · 2027~2028년 증설 상방 검토",
+      "headline": "2026년 전망 상향·2027~2028년 공급 부족에 가격 협의 효과까지 추가",
+      "estimate_signal": "2026 매출 €44~45bn(기존 €43~45bn) · 2027년 가격 효과 일부, 2028년 이후 본격 · 증설 상방 검토",
       "call_coverage": "공식 Q3 투자자 콜 준비 발언 본문 및 CEO·CFO 영상 인터뷰 녹취록 확인 · 투자자 콜 Q&A 공식 녹취록 미확인; Q&A 톤 평가 없음",
       "changes": [
         {
@@ -1713,8 +1713,8 @@
       "watch": "Q4 매출·총이익률 실현, 2028년 증설 확정 규모, 고객 주문의 장비 출하·인식 전환, 중국 수요·수출규제. 가치기반 가격 효과가 2027~2028년 실현 마진에 얼마나 반영되는지.",
       "source": "https://www.investor.asml.com/news-releases/news-release-details/asml-reports-eu11.7-billion-total-net-sales-and-eu5.0-billion-net-income-q3-2026",
       "prior_source": "https://www.investor.asml.com/news-releases/news-release-details/q2-2026-financial-results",
-      "call_source": "https://www.investor.asml.com/static-files/40c56a6b-1460-4f69-9340-6a869560d24b",
-      "call_source_label": "공식 투자자 콜 준비 발언 PDF",
+      "call_source": "https://www.investor.asml.com/static-files/7ec38683-352c-4cc9-923e-c2af8199e876",
+      "call_source_label": "공식 CEO·CFO 영상 인터뷰 녹취록 PDF",
       "call_topics": [
         {
           "topic": "고객 수요·증설",
@@ -1770,7 +1770,8 @@
           }
         ]
       },
-      "video_source": "https://www.investor.asml.com/static-files/7ec38683-352c-4cc9-923e-c2af8199e876"
+      "video_source": "https://www.investor.asml.com/static-files/7ec38683-352c-4cc9-923e-c2af8199e876",
+      "prepared_source": "https://www.investor.asml.com/static-files/40c56a6b-1460-4f69-9340-6a869560d24b"
     },
     {
       "ticker": "AMAT",
