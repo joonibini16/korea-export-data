@@ -270,7 +270,11 @@ button:focus-visible {outline:3px solid #2563eb;outline-offset:3px;}
 .quarter-metric span {display:block;font-size:13px;color:#64748b;}
 .quarter-metric strong {display:block;margin-top:8px;font-size:23px;}
 #selectionTitle {margin:24px 0 12px;}
-.ix-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-bottom:20px}.ix-pair>.chart-box{margin:0;min-width:0}.ix-pair .main-chart,.ix-pair .seasonal-chart{height:360px}.ix-pair .change-chart{height:360px}@media(max-width:1100px){.ix-pair{grid-template-columns:1fr}}</style>
+.ix-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-bottom:20px}.ix-pair>.chart-box{margin:0;min-width:0}.ix-pair .main-chart,.ix-pair .seasonal-chart{height:360px}.ix-pair .change-chart{height:360px}@media(max-width:1100px){.ix-pair{grid-template-columns:1fr}}.cg-ctl{gap:10px;flex-wrap:wrap}.cg-tg{display:inline-flex;gap:4px;margin-right:10px}.cg-tg button{border:1px solid #475569;background:transparent;color:inherit;border-radius:8px;padding:6px 14px;cursor:pointer;font-weight:700}.cg-tg button.on{background:#2563eb!important;border-color:#2563eb!important;color:#fff!important}.cg-t td b{color:inherit}
+.cg-t th{white-space:nowrap;vertical-align:bottom}.cg-s{font-size:11px;opacity:.65;font-weight:400}.cg-t td.cg-up{color:#f87171}.cg-t td.cg-dn{color:#60a5fa}
+.cg-bar{position:relative;min-width:90px;height:18px;background:rgba(148,163,184,.12);border-radius:4px;overflow:hidden}.cg-bar i{position:absolute;left:0;top:0;bottom:0;background:rgba(59,130,246,.45)}.cg-bar span{position:relative;padding:0 6px;font-size:12px;line-height:18px}
+.cg-etc td{opacity:.75}.cg-tot td{border-top:2px solid rgba(148,163,184,.4)}
+</style>
 <link rel="stylesheet" href="./shell.css?v=3">
 </head>
 
@@ -379,6 +383,7 @@ button:focus-visible {outline:3px solid #2563eb;outline-offset:3px;}
 
 <p id="countryEmpty" hidden>이 품목은 국가별 자료가 아직 없습니다.</p>
 <section id="countryDetails">
+<div class="chart-box" id="cgBox" hidden></div>
 <div class="country-grid">
 
     <div class="chart-box">
@@ -2662,5 +2667,6 @@ loadData();
 </script>
 
 <script src="./index_layout.js?v=1"></script>
+<script src="./country_growth.js?v=1"></script>
 </body>
 </html>
