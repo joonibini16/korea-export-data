@@ -20,3 +20,5 @@
   const dark=c=>{if(typeof c!=='string')return false;const m=c.match(/^#([0-9a-f]{6})/i);if(!m)return false;const n=parseInt(m[1],16),r=n>>16,g=(n>>8)&255,b=n&255;return (0.2126*r+0.7152*g+0.0722*b)<45;};
   Chart.register({id:'shDarkFix',beforeUpdate(ch){(ch.data.datasets||[]).forEach((ds,i)=>{if(ds.borderColor==null&&ds.backgroundColor==null){const c=PAL[i%PAL.length];ds.borderColor=c;ds.backgroundColor=(ds.type||ch.config.type)==='bar'?c+'cc':c;}});for(const ds of ch.data.datasets||[]){if(dark(ds.borderColor))ds.borderColor='#e5e7eb';if(dark(ds.pointBorderColor))ds.pointBorderColor='#e5e7eb';if(ds.pointBackgroundColor==='#fff'||ds.pointBackgroundColor==='#ffffff')ds.pointBackgroundColor='#0f1a33';if(Array.isArray(ds.pointBackgroundColor))ds.pointBackgroundColor=ds.pointBackgroundColor.map(c=>c==='#fff'||c==='#ffffff'?'#0f1a33':c);}}});}
 })();
+// 모든 차트에 기간 조절 바(내비게이터) 자동 부착
+(function(){if(window.RangeNav&&window.RangeNav.v>=2)return;const s=document.createElement('script');s.src='./rangenav.js?v=1';(document.head||document.documentElement).appendChild(s);})();

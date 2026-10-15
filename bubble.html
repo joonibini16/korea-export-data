@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>버블 신호 모니터</title><script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script><script src="./chart_legend.js?v=3"></script><script src="./shell.js?v=7"></script>
+<title>버블 신호 모니터</title><script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script><script src="./chart_legend.js?v=3"></script><script src="./shell.js?v=8"></script>
 <style>
 :root{font-family:Arial,"Noto Sans KR",sans-serif}*{box-sizing:border-box}body{margin:0}main{max-width:1500px;margin:26px auto;padding:0 22px}h2{font-size:19px;margin:0 0 10px}p{line-height:1.6}.muted{font-size:13px}
 .panel{border-radius:12px;padding:18px 20px;margin-bottom:18px}.chart{height:300px;position:relative}.g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;align-items:start}.g2>.panel{margin:0;min-width:0}.g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.g3>.panel{margin:0;min-width:0}
@@ -87,7 +87,7 @@ td.h{font-weight:700}.flag{font-size:12px;padding:2px 8px;border-radius:999px;ba
 </main>
 <script src="./bubble_indicators.js?v=7"></script>
 <script src="./bubble.js?v=13"></script><script src="./bubble_breadth_live.js?v=2"></script>
-<script src="./bubble_breadth_reference.js?v=2"></script><script src="./bubble_size.js?v=1"></script><script src="./bubble_rangenav.js?v=2"></script><script src="./bubble_dotcom.js?v=12"></script><script src="./bubble_gfc.js?v=5"></script>
+<script src="./bubble_breadth_reference.js?v=2"></script><script src="./bubble_size.js?v=1"></script><script src="./rangenav.js?v=1"></script><script src="./bubble_dotcom.js?v=12"></script><script src="./bubble_gfc.js?v=5"></script>
 <script src="./bubble_sector_grouped.js?v=1"></script>
 <script>(function(){const b=document.getElementById('sectorStocks'),c=document.getElementById('sectorStocksCount');if(!b||!c)return;new MutationObserver(()=>{c.textContent=b.children.length?'· '+b.children.length+'종목 (표 안에서 스크롤)':'';const box=b.closest('.scroll-box');if(box)box.scrollTop=0;}).observe(b,{childList:true});})();</script>
 <script>(function(){const main=document.querySelector('main');if(!main)return;const nav=document.createElement('div');nav.setAttribute('role','navigation');nav.className='bnav';nav.setAttribute('aria-label','섹션 바로가기');
