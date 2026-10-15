@@ -5,8 +5,9 @@ on:
     branches: [main]
     paths: ['tools/collect_price_indicators.py', 'tools/collect_bigtech_bonds.py', 'bigtech_bonds.json', 'bigtech_bonds_manual.csv', '.github/workflows/price_indicators.yml']
   schedule:
-    - cron: '37 1 * * *'     # 매일 10:37 KST (OpenRouter 전일 확정·GPU 시세)
-    - cron: '47 7 * * *'     # 매일 16:47 KST (DRAMeXchange 오후 세션 반영)
+    # 예약 실행 누락 대비로 여러 번 겹쳐 둠(결과는 날짜별 덮어쓰기라 중복 무해)
+    - cron: '37 1,3,5 * * *'   # 매일 10:37·12:37·14:37 KST (OpenRouter 전일 확정·GPU 시세)
+    - cron: '47 7,10,14 * * *' # 매일 16:47·19:47·23:47 KST (DRAMeXchange 오후 세션·FINRA 갱신)
 permissions:
   contents: write
   pages: write
