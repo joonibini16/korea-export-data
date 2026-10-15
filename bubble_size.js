@@ -37,7 +37,7 @@
    <div class="sb-sub"><span>종합 Breadth · 10거래일 추이 (신고가 ${c.nh} · 신저가 ${c.nl} · ${c.n}종목)</span><span>${tr[0]?.date.slice(5)} → ${tr.at(-1)?.date.slice(5)}</span></div>${blocks(tr)}
    <div class="sb-cards">${M.buckets.slice(1).map(card).join('')}</div></div>`;}
   const ns=notes(D,log);html+=`<div class="sb-note"><h3>Desk Note <small>breadth desk view</small></h3><ul>${ns.map(n=>`<li>${n}</li>`).join('')}</ul></div>
-  <p class="muted">Breadth = (60일 신고가 종목 수 − 60일 신저가 종목 수) ÷ (신고가 + 신저가, 최소 10) × 100 — 신고가와 신저가 중 어느 쪽이 우세한지(−100~+100). 등급: +50 이상 매우강세 · +15 이상 강세 · ±15 미만 중립 · −15 이하 약세 · −50 이하 매우약세. <b>쏠림 랠리</b> = 지수는 오르는데 Breadth가 약세 이하(소수 대형주가 지수를 끌어올림). <b>저가매수 유입</b> = 지수는 내리는데 Breadth가 강세 이상. 규모 구분은 수집 시점 시가총액 순위(코스피 1~100 대형·101~300 중형·301~ 소형, 코스닥 1~100 K100·101~400 MID·401~ SMALL, 보통주만)이며 과거 10거래일 막대도 현재 순위로 계산합니다. 구간 지수는 시가총액 가중 등락률, 종합은 실제 지수. 평일 장중 매시 25분과 16:10에 갱신되며 모든 갱신 기록은 size_breadth_log.csv에 누적됩니다. 출처: 네이버 증권.</p>`;
+  <p class="muted">Breadth = (60일 신고가 종목 수 − 60일 신저가 종목 수) ÷ (신고가 + 신저가, 최소 10) × 100 — 신고가와 신저가 중 어느 쪽이 우세한지(−100~+100). 등급: +50 이상 매우강세 · +15 이상 강세 · ±15 미만 중립 · −15 이하 약세 · −50 이하 매우약세. <b>쏠림 랠리</b> = 지수는 오르는데 Breadth가 약세 이하(소수 대형주가 지수를 끌어올림). <b>저가매수 유입</b> = 지수는 내리는데 Breadth가 강세 이상. 규모 구분은 수집 시점 시가총액 순위(코스피 1~100 대형·101~300 중형·301~ 소형, 코스닥 1~100 K100·101~400 MID·401~ SMALL, 보통주만)이며 과거 10거래일 막대도 현재 순위로 계산합니다. 구간 지수는 시가총액 가중 등락률, 종합은 실제 지수. 평일 한국시간 09:30·10:30·13:00·15:40·21:30에 수집 예약되며 모든 갱신 기록은 size_breadth_log.csv에 누적됩니다. 출처: 네이버 증권.</p>`;
   box.innerHTML=html;}
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();
 })();
