@@ -1,0 +1,10 @@
+{"note":"빅테크 대표 회사채 1종씩. url = divvydiary 채권 페이지(현재수익률로 가격 역산). CRWV는 무료 시세 페이지가 없어 판독치·수동 기록만.",
+ "bonds":[
+  {"t":"CRWV","name":"코어위브","bond":"9.25% 2030","coupon":9.25,"maturity":"2030-06-01","isin":"USU2069EAA83","url":null},
+  {"t":"ORCL","name":"오라클","bond":"6.25% 2032","coupon":6.25,"maturity":"2032-11-09","isin":"US68389XCJ28","url":"https://divvydiary.com/en/oracle-corp-6-25-22-32-bond-US68389XCJ28"},
+  {"t":"META","name":"메타","bond":"3.85% 2032","coupon":3.85,"maturity":"2032-08-15","isin":"US30303M8H84","url":"https://divvydiary.com/en/meta-platforms-inc-3-85-22-32-bond-US30303M8H84"},
+  {"t":"AMZN","name":"아마존","bond":"2.1% 2031","coupon":2.1,"maturity":"2031-05-12","isin":"US023135BZ81","url":"https://divvydiary.com/en/amazon-com-inc-2-1-21-31-bond-US023135BZ81"},
+  {"t":"NVDA","name":"엔비디아","bond":"2.85% 2030","coupon":2.85,"maturity":"2030-04-01","isin":"US67066GAF19","url":"https://divvydiary.com/en/nvidia-corp-2-85-20-30-bond-US67066GAF19"},
+  {"t":"GOOGL","name":"알파벳","bond":"1.1% 2030","coupon":1.1,"maturity":"2030-08-15","isin":"US02079KAD90","url":"https://divvydiary.com/en/alphabet-inc-1-1-20-30-bond-US02079KAD90"},
+  {"t":"MSFT","name":"마이크로소프트","bond":"3.5% 2035","coupon":3.5,"maturity":"2035-02-12","isin":"US594918BC73","url":"https://divvydiary.com/en/microsoft-corp-3-5-15-35-US594918BC73"},
+  {"t":"AAPL","name":"애플","bond":"3.35% 2032","coupon":3.35,"maturity":"2032-08-08","isin":"US037833EP10","url":"https://divvydiary.com/en/apple-inc-3-35-22-32-bond-US037833EP10"}]}
