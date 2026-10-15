@@ -3,24 +3,25 @@
 <title>가격 지표</title><script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script><script src="./shell.js?v=9"></script>
 <style>:root{font-family:Arial,"Noto Sans KR",sans-serif}*{box-sizing:border-box}body{margin:0}main{max-width:1500px;margin:26px auto;padding:0 22px}.muted{font-size:13px;color:#93a3bd}
 .panel{border-radius:12px;padding:18px 20px;margin-bottom:18px}h2{font-size:19px;margin:0 0 4px}.g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.g2>.panel{margin:0;min-width:0}
-.chart{height:380px;position:relative}.ph{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}.badge{font-size:13px;font-weight:700;color:#2dd4bf;white-space:nowrap}.badge .dn{color:#f87171}.badge .up{color:#2dd4bf}
+.chart{height:380px;position:relative}.ph{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}.pbadge{font-size:13px;font-weight:700;color:#2dd4bf;white-space:nowrap}.pbadge .dn{color:#f87171}.pbadge .up{color:#2dd4bf}
 .kt{border-collapse:collapse;width:100%;font-size:13.5px;font-variant-numeric:tabular-nums}.kt th,.kt td{border-bottom:1px solid #22314f;padding:6px 8px;text-align:right}.kt th:first-child,.kt td:first-child{text-align:left}.kt thead th{color:#93a3bd;font-weight:600}
 @media(max-width:1100px){.g2{grid-template-columns:1fr}}</style>
 <link rel="stylesheet" href="./shell.css?v=3"></head><body><main>
 <h1>가격 지표</h1>
 <p class="muted">AI 수요의 가격 신호를 한곳에서 봅니다: LLM 토큰 지출·사용량(OpenRouter), GPU 임대 가격(A100·H100·B200), 서버 D램(DDR5 RDIMM) 가격. 매일 자동 수집하며 과거 구간은 BADONION RESEARCH 차트 이미지를 판독한 참고치입니다.</p>
 <div class="g2">
-<section class="panel"><div class="ph"><div><h2>LLM Token Expenditure Index</h2><p class="muted" id="n1"></p></div><div class="badge" id="b1"></div></div><div class="chart"><canvas id="c1"></canvas></div><p class="muted" id="f1"></p></section>
-<section class="panel"><div class="ph"><div><h2>Token Usage (OpenRouter)</h2><p class="muted" id="n2"></p></div><div class="badge" id="b2"></div></div><div class="chart"><canvas id="c2"></canvas></div><p class="muted" id="f2"></p></section>
-<section class="panel"><div class="ph"><div><h2>GPU Rental Index</h2><p class="muted" id="n3"></p></div><div class="badge" id="b3"></div></div><div class="chart"><canvas id="c3"></canvas></div><p class="muted" id="f3"></p></section>
-<section class="panel"><div class="ph"><div><h2>DDR5 RDIMM Prices &amp; 64GB Spread</h2><p class="muted" id="n4"></p></div><div class="badge" id="b4"></div></div><div class="chart"><canvas id="c4"></canvas></div><p class="muted" id="f4"></p></section>
+<section class="panel"><div class="ph"><div><h2>LLM Token Expenditure Index</h2><p class="muted" id="n1"></p></div><div class="pbadge" id="b1"></div></div><div class="chart"><canvas id="c1"></canvas></div><p class="muted" id="f1"></p></section>
+<section class="panel"><div class="ph"><div><h2>Token Usage (OpenRouter)</h2><p class="muted" id="n2"></p></div><div class="pbadge" id="b2"></div></div><div class="chart"><canvas id="c2"></canvas></div><p class="muted" id="f2"></p></section>
+<section class="panel"><div class="ph"><div><h2>GPU Rental Index</h2><p class="muted" id="n3"></p></div><div class="pbadge" id="b3"></div></div><div class="chart"><canvas id="c3"></canvas></div><p class="muted" id="f3"></p></section>
+<section class="panel"><div class="ph"><div><h2>DDR5 RDIMM Prices &amp; 64GB Spread</h2><p class="muted" id="n4"></p></div><div class="pbadge" id="b4"></div></div><div class="chart"><canvas id="c4"></canvas></div><p class="muted" id="f4"></p></section>
 </div>
+<section class="panel" style="margin-top:18px"><div class="ph"><div><h2>GPU 임대 시세 · 자체 수집</h2><p class="muted">Vast.ai 대여 가능 on-demand 매물의 GPU 1장당 시간당 가격 중앙값(실선)과 RunPod 공시가(Secure, 점선). 매일 누적됩니다.</p></div></div><div class="chart" style="height:320px"><canvas id="c5"></canvas></div></section>
 <section class="panel"><h2>최근 수집값</h2><p class="muted">GitHub Actions가 매일 10:37·16:47(KST)에 수집해 price_indicators_log.csv에 누적합니다(과거 행은 지우지 않음).</p><div style="overflow:auto"><table class="kt" id="kt"></table></div><p class="muted" id="st"></p></section>
 <section class="panel"><h2>기준과 출처</h2><p class="muted" id="src">
 · <b>LLM 토큰 지출 지수</b>: BADONION 지수(판독, ~2026-10-13)에 이어, OpenRouter 전 모델 일별 토큰 × 모델 공시 단가로 계산한 가중평균 단가(USD/백만 토큰)를 첫 수집일에 BADONION 값과 같게 맞춘 연결 지수로 이어 붙입니다(방법이 달라 수준은 참고용).<br>
 · <b>토큰 사용량</b>: OpenRouter 랭킹 API(view=day)의 전 모델 입력+출력 토큰 합(조 토큰). 과거 구간은 BADONION 차트 막대 판독치.<br>
-· <b>GPU 임대</b>: 실선 = BADONION GPU Rental Index 판독치, 점선 = 자체 수집 Vast.ai 대여 가능 on-demand 매물의 GPU 1장당 시간당 가격 중앙값(A100 SXM4·H100 SXM·B200). 매물 호가라 지수와 수준이 다릅니다. RunPod 공시가는 표에 함께 기록합니다.<br>
+· <b>GPU 임대</b>: 위 지수 차트 = BADONION GPU Rental Index 판독치. 아래 '자체 수집' 차트 = Vast.ai 대여 가능 on-demand 매물의 GPU 1장당 시간당 가격 중앙값(A100 SXM4·H100 SXM·B200). 매물 호가라 지수와 수준이 다릅니다. RunPod 공시가는 표에 함께 기록합니다.<br>
 · <b>DDR5 RDIMM</b>: 32GB 현물가는 DRAMeXchange(TrendForce) 모듈 현물 세션 평균(주간 갱신)으로 매일 이어 붙입니다. 64GB 현물가·계약가와 스프레드 막대는 무료 공개 자료가 없어 BADONION 차트 판독치(~2026-10-05)만 표시합니다.<br>
 · 판독치는 차트 픽셀을 읽은 근사값이라 원 자료와 ±1~2% 차이가 날 수 있습니다.</p></section>
 </main>
-<script src="./prices.js?v=1"></script></body></html>
+<script src="./prices.js?v=2"></script></body></html>
