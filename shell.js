@@ -22,7 +22,7 @@
 })();
 // 모든 차트에 기간 조절 바(내비게이터) 자동 부착
 (function(){if(window.RangeNav&&window.RangeNav.v>=2)return;const s=document.createElement('script');s.src='./rangenav.js?v=1';(document.head||document.documentElement).appendChild(s);})();
-// 제목 옆 '업데이트 날짜·시간' 표시: 페이지가 읽는 데이터 파일의 마지막 갱신(커밋) 시각(data_updated.json)
+// 제목 옆 '기준일 · 수집' 표시: 데이터 파일 안의 마지막 날짜(기준일)와 마지막 갱신(커밋) 시각(data_updated.json)
 (function(){
  const used=new Set(),DATA=/\.(csv|json)(\?|#|$)/i;
  const of=window.fetch&&window.fetch.bind(window);
@@ -31,9 +31,10 @@
  const css=document.createElement('style');css.textContent='.upd-stamp{margin-left:10px;font-size:12px;font-weight:500;color:#7dd3fc;white-space:nowrap;vertical-align:middle;letter-spacing:0}h1 .upd-stamp{font-size:13px}';
  (document.head||document.documentElement).appendChild(css);
  let M=null;const fmt=s=>s.slice(0,10)+' '+s.slice(11,16);
- function stamp(el,files){const fs=files.filter(f=>M[f]);if(!fs.length)return;const mx=fs.map(f=>M[f]).sort().at(-1);
+ const C=f=>typeof M[f]==='string'?M[f]:M[f].c,A=f=>typeof M[f]==='string'?null:M[f].a;
+ function stamp(el,files){const fs=files.filter(f=>M[f]);if(!fs.length)return;const AUX=/status|watchlist|hs_codes|_items|catalog|_map|^fx_|config|^bigtech_bonds\.json|_manual|_ref\b|ref_history/i;const core=fs.filter(f=>!AUX.test(f));const mx=fs.map(C).sort().at(-1),as=(core.length?core:fs).map(A).filter(Boolean).sort().at(-1);
   let sp=[...el.children].find(c=>c.classList&&c.classList.contains('upd-stamp'));if(!sp){sp=document.createElement('span');sp.className='upd-stamp';el.append(sp);}
-  const t='업데이트 '+fmt(mx);if(sp.textContent!==t)sp.textContent=t;sp.title=fs.map(f=>f+' · '+fmt(M[f])).join('\n');}
+  const t=(as?'기준일 '+as+' · ':'')+'수집 '+fmt(mx);if(sp.textContent!==t)sp.textContent=t;sp.title=fs.map(f=>f+' · '+(A(f)?'기준일 '+A(f)+' · ':'')+'수집 '+fmt(C(f))).join('\n');}
  function run(){if(!M)return;const main=document.querySelector('main')||document.body;if(!main)return;
   const h1=[...main.querySelectorAll('h1')].find(h=>!h.closest('aside,nav,.sh-side,.sh-brand'));if(h1&&used.size)stamp(h1,[...used]);
   const tagged=main.querySelectorAll('[data-upd]');tagged.forEach(el=>stamp(el,el.dataset.upd.split(',').map(x=>x.trim())));
