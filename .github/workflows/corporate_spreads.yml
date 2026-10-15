@@ -1,0 +1,44 @@
+name: Corporate Credit Spread Matrix
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['collect_corporate_spreads.py', 'corporate_spread_targets.json', '.github/workflows/corporate_spreads.yml']
+  schedule:
+    # 한국시간 평일 09:30, 10:30, 13:00, 15:40, 21:30. FINRA는 미국 영업일 EOD 자료.
+    - cron: '30 0,1 * * 1-5'
+    - cron: '0 4 * * 1-5'
+    - cron: '40 6 * * 1-5'
+    - cron: '30 12 * * 1-5'
+permissions:
+  contents: write
+  pages: write
+concurrency:
+  group: corporate-spreads
+  cancel-in-progress: false
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m py_compile collect_corporate_spreads.py
+      - run: python collect_corporate_spreads.py
+      - run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          cp corporate_spread_resolved.json corporate_spreads_hist.csv corporate_spreads_status.json /tmp/
+          for i in 1 2 3; do
+            git fetch -q origin main && git reset -q --hard origin/main
+            cp /tmp/corporate_spread_resolved.json /tmp/corporate_spreads_hist.csv /tmp/corporate_spreads_status.json .
+            git add corporate_spread_resolved.json corporate_spreads_hist.csv corporate_spreads_status.json
+            git diff --cached --quiet && exit 0
+            git commit -qm "Update verified company credit spreads" && git push -q origin HEAD:main && exit 0
+            sleep 10
+          done
+          exit 1
+      - name: Request Pages build
+        env: {GH_TOKEN: '${{ github.token }}'}
+        run: gh api --method POST "repos/$GITHUB_REPOSITORY/pages/builds" || true
