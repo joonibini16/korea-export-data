@@ -104,9 +104,9 @@ async function renderBubbleIndicators(st){
  }
  function render(){for(const g of ['KOSPI','KOSDAQ']){SYNC.pin[g]=null;SYNC.last[g]=null;}for(const [market,name]of Object.entries(names)){
   const px=BubbleIndicators.closedKorean(ser(market==='KOSPI'?'^KS11':'^KQ11'),st.updated_at),rs=BubbleIndicators.rsi(px);const a=rs.filter(x=>x.d>=from()),last=rs.filter(x=>Number.isFinite(x.v)).at(-1);
-  const ma60=BubbleIndicators.sma(px,60),axis=px.filter(x=>x.d>=from()).map(x=>x.d);
-  plot('idx'+market,[{label:name+' 종가',data:px.filter(x=>x.d>=from()),color:'#e2e8f0',w:2},{label:'60일 이동평균',data:ma60.filter(x=>x.d>=from()),color:'#f59e0b',w:1.5,dash:[5,4]}],null,axis);
-  const lp=px.at(-1),lm=ma60.at(-1);el('idxNote'+market).textContent=lp?`${lp.d} 종가 ${lp.v.toLocaleString(undefined,{maximumFractionDigits:2})} · 60일선 ${lm?.v!=null?lm.v.toLocaleString(undefined,{maximumFractionDigits:0}):'—'} (${lm?.v?((lp.v/lm.v-1)*100).toFixed(1)+'%':'—'}) · 구간 고점 대비 ${(()=>{const w=px.filter(x=>x.d>=from());const h=Math.max(...w.map(x=>x.v));return ((lp.v/h-1)*100).toFixed(1)+'%';})()}`:'';
+  const ma60=BubbleIndicators.sma(px,60),ma200=BubbleIndicators.sma(px,200),axis=px.filter(x=>x.d>=from()).map(x=>x.d);
+  plot('idx'+market,[{label:name+' 종가',data:px.filter(x=>x.d>=from()),color:'#e2e8f0',w:2},{label:'60일 이동평균',data:ma60.filter(x=>x.d>=from()),color:'#f59e0b',w:1.5,dash:[5,4]},{label:'200일 이동평균',data:ma200.filter(x=>x.d>=from()),color:'#a78bfa',w:1.8}],null,axis);
+  const lp=px.at(-1),lm=ma60.at(-1),l2=ma200.at(-1);el('idxNote'+market).textContent=lp?`${lp.d} 종가 ${lp.v.toLocaleString(undefined,{maximumFractionDigits:2})} · 60일선 ${lm?.v!=null?lm.v.toLocaleString(undefined,{maximumFractionDigits:0}):'—'} (${lm?.v?((lp.v/lm.v-1)*100).toFixed(1)+'%':'—'}) · 200일선 ${l2?.v!=null?l2.v.toLocaleString(undefined,{maximumFractionDigits:0}):'—'} (${l2?.v?((lp.v/l2.v-1)*100).toFixed(1)+'%':'—'}) · 구간 고점 대비 ${(()=>{const w=px.filter(x=>x.d>=from());const h=Math.max(...w.map(x=>x.v));return ((lp.v/h-1)*100).toFixed(1)+'%';})()}`:'';
   plot('rsi'+market,[{label:name+' RSI(14)',data:a,color:market==='KOSPI'?palette[0]:palette[1],w:2.5},...[70,50,30].map(v=>({label:String(v),data:a.map(x=>({d:x.d,v})),color:v===50?'#64748b':v===70?'#ef4444':'#34d399',w:1,dash:[4,4]}))],[0,100],axis);
   el('rsiNote'+market).textContent=last?`${last.d} 확정 종가 기준 · RSI ${val(last.v)} · ${last.v>=70?'과열 구간':last.v<=30?'과매도 구간':'중립 구간'}`:'확정 종가 자료 부족';
   const b=breadth.filter(x=>x.market===market).sort((x,y)=>x.date.localeCompare(y.date));
