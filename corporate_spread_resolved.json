@@ -1,1 +1,155 @@
-{}
+{
+  "CORZ": {
+    "cusip": "U2062LAA9",
+    "coupon": 7.75,
+    "maturity": "2031-05-15",
+    "issuer": "CORE SCIENTIFIC FIN I LLC",
+    "rating_sp": "BB",
+    "rating_moody": null,
+    "coupon_type": "FXPV"
+  },
+  "BEIGNET": {
+    "cusip": "U06930AA6",
+    "coupon": 6.581,
+    "maturity": "2049-05-30",
+    "issuer": "BEIGNET INV LLC",
+    "rating_sp": "A+",
+    "rating_moody": null,
+    "coupon_type": "FXPV"
+  },
+  "HUT": {
+    "cusip": "U43898AA0",
+    "coupon": 6.192,
+    "maturity": "2042-11-15",
+    "issuer": "HUT 8 DC LLC",
+    "rating_sp": "BBB-",
+    "rating_moody": null,
+    "coupon_type": "FXPV"
+  },
+  "STX": {
+    "cusip": "81180LAS4",
+    "coupon": 5.75,
+    "maturity": "2034-12-01",
+    "issuer": "SEAGATE DATA STORAGE TECHNOLOGY PTE LTD",
+    "rating_sp": "NR",
+    "rating_moody": "Ba2",
+    "coupon_type": "FXPV"
+  },
+  "HPE": {
+    "cusip": "U42832AJ1",
+    "coupon": 6.2,
+    "maturity": "2035-10-15",
+    "issuer": "HEWLETT PACKARD ENTERPRISE CO",
+    "rating_sp": "BBB",
+    "rating_moody": null,
+    "coupon_type": "FXPV"
+  },
+  "MU": {
+    "cusip": "595112BZ5",
+    "coupon": 5.875,
+    "maturity": "2033-02-09",
+    "issuer": "MICRON TECHNOLOGY INC",
+    "rating_sp": "BBB+",
+    "rating_moody": "Baa1",
+    "coupon_type": "FXPV"
+  },
+  "DELL": {
+    "cusip": "24703DBL4",
+    "coupon": 5.75,
+    "maturity": "2033-02-01",
+    "issuer": "DELL INTL L L C / EMC CORP",
+    "rating_sp": "BBB+",
+    "rating_moody": "Baa2",
+    "coupon_type": "FXPV"
+  },
+  "INTC": {
+    "cusip": "458140BH2",
+    "coupon": 2.45,
+    "maturity": "2029-11-15",
+    "issuer": "INTEL CORP",
+    "rating_sp": "BBB",
+    "rating_moody": "Baa2",
+    "coupon_type": "FXPV"
+  },
+  "AMD": {
+    "cusip": "007903BF3",
+    "coupon": 3.924,
+    "maturity": "2032-06-01",
+    "issuer": "ADVANCED MICRO DEVICES INC",
+    "rating_sp": "A",
+    "rating_moody": "A1",
+    "coupon_type": "FXPV"
+  },
+  "QCOM": {
+    "cusip": "747525BM4",
+    "coupon": 1.65,
+    "maturity": "2032-05-20",
+    "issuer": "QUALCOMM INC",
+    "rating_sp": "A",
+    "rating_moody": "A2",
+    "coupon_type": "FXPV"
+  },
+  "EQIX": {
+    "cusip": "29444UBE5",
+    "coupon": 3.2,
+    "maturity": "2029-11-18",
+    "issuer": "EQUINIX INC",
+    "rating_sp": "BBB+",
+    "rating_moody": "Baa1",
+    "coupon_type": "FXPV"
+  },
+  "TLN": {
+    "cusip": "U8302WAJ3",
+    "coupon": 6.25,
+    "maturity": "2034-02-01",
+    "issuer": "TALEN ENERGY SUPPLY LLC",
+    "rating_sp": "B+",
+    "rating_moody": "B1",
+    "coupon_type": "FXPV"
+  },
+  "NRG": {
+    "cusip": "U66962AW8",
+    "coupon": 3.625,
+    "maturity": "2031-02-15",
+    "issuer": "NRG ENERGY INC",
+    "rating_sp": "BB",
+    "rating_moody": null,
+    "coupon_type": "FXPV"
+  },
+  "VST": {
+    "cusip": "U9226VAM9",
+    "coupon": 7.75,
+    "maturity": "2031-10-15",
+    "issuer": "VISTRA OPERATIONS CO LLC",
+    "rating_sp": "BBB-",
+    "rating_moody": "Ba1",
+    "coupon_type": "FXPV"
+  },
+  "CEG": {
+    "cusip": "210385AC4",
+    "coupon": 5.8,
+    "maturity": "2033-03-01",
+    "issuer": "CONSTELLATION ENERGY GENERATION LLC",
+    "rating_sp": "BBB+",
+    "rating_moody": "Baa1",
+    "coupon_type": "FXPV"
+  },
+  "SOFTBANK": {
+    "cusip": "J7600PAC7",
+    "coupon": 9.75,
+    "maturity": "2034-04-01",
+    "issuer": "SOFTBANK GROUP CORP",
+    "rating_sp": "BB+",
+    "rating_moody": null,
+    "coupon_type": "FXPV"
+  },
+  "OTF": {
+    "cusip": "095924AD8",
+    "coupon": 6.5,
+    "maturity": "2029-10-15",
+    "issuer": "BLUE OWL TECHNOLOGY FIN CORP",
+    "rating_sp": "BBB-",
+    "rating_moody": "Baa3",
+    "coupon_type": "FXPV"
+  }
+}

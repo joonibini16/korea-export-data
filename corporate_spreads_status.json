@@ -1,134 +1,218 @@
 {
-  "updated": "2026-10-15T07:56:20+00:00",
+  "updated": "2026-10-15T08:04:47+00:00",
   "targets": 25,
   "bonds": {
     "CORZ": {
       "name": "코어 사이언티픽",
-      "state": "error"
+      "state": "collected",
+      "matches": 2,
+      "cusip": "U2062LAA9",
+      "coupon": 7.75,
+      "maturity": "2031-05-15",
+      "n": 24,
+      "latest": "2026-10-09"
     },
     "APLD": {
       "name": "어플라이드 디지털",
-      "state": "error"
+      "state": "no matching traded issue",
+      "matches": 0
     },
     "CIFR": {
       "name": "사이퍼 마이닝",
-      "state": "error"
+      "state": "no matching traded issue",
+      "matches": 0
     },
     "WULF": {
       "name": "테라울프",
-      "state": "error"
+      "state": "no matching traded issue",
+      "matches": 0
     },
     "BEIGNET": {
       "name": "메타 하이페리온 SPV",
-      "state": "error"
+      "state": "collected",
+      "matches": 2,
+      "cusip": "U06930AA6",
+      "coupon": 6.581,
+      "maturity": "2049-05-30",
+      "n": 84,
+      "latest": "2026-10-13"
     },
     "HUT": {
       "name": "헛에이트",
-      "state": "error"
+      "state": "collected",
+      "matches": 2,
+      "cusip": "U43898AA0",
+      "coupon": 6.192,
+      "maturity": "2042-11-15",
+      "n": 16,
+      "latest": "2026-09-29"
     },
     "STX": {
       "name": "씨게이트",
-      "state": "error"
+      "state": "collected",
+      "matches": 5,
+      "cusip": "81180LAS4",
+      "coupon": 5.75,
+      "maturity": "2034-12-01",
+      "n": 215,
+      "latest": "2026-07-10"
     },
     "HPE": {
       "name": "HPE",
-      "state": "error"
+      "state": "collected",
+      "matches": 3,
+      "cusip": "U42832AJ1",
+      "coupon": 6.2,
+      "maturity": "2035-10-15",
+      "n": 3,
+      "latest": "2023-12-18"
     },
     "MU": {
       "name": "마이크론",
-      "state": "error"
+      "state": "collected",
+      "matches": 2,
+      "cusip": "595112BZ5",
+      "coupon": 5.875,
+      "maturity": "2033-02-09",
+      "n": 873,
+      "latest": "2026-10-13"
     },
     "DELL": {
       "name": "델",
-      "state": "error"
+      "state": "collected",
+      "matches": 1,
+      "cusip": "24703DBL4",
+      "coupon": 5.75,
+      "maturity": "2033-02-01",
+      "n": 921,
+      "latest": "2026-10-13"
     },
     "INTC": {
       "name": "인텔",
-      "state": "error"
+      "state": "collected",
+      "matches": 1,
+      "cusip": "458140BH2",
+      "coupon": 2.45,
+      "maturity": "2029-11-15",
+      "n": 1226,
+      "latest": "2026-10-13"
     },
     "AMD": {
       "name": "AMD",
-      "state": "error"
+      "state": "collected",
+      "matches": 1,
+      "cusip": "007903BF3",
+      "coupon": 3.924,
+      "maturity": "2032-06-01",
+      "n": 1039,
+      "latest": "2026-10-13"
     },
     "QCOM": {
       "name": "퀄컴",
-      "state": "error"
+      "state": "collected",
+      "matches": 3,
+      "cusip": "747525BM4",
+      "coupon": 1.65,
+      "maturity": "2032-05-20",
+      "n": 1,
+      "latest": "2022-11-18"
     },
     "TSM": {
       "name": "TSMC",
-      "state": "error"
+      "state": "no matching traded issue",
+      "matches": 0
     },
     "IRM": {
       "name": "아이언 마운틴",
-      "state": "error"
+      "state": "no matching traded issue",
+      "matches": 0
     },
     "EQIX": {
       "name": "에퀴닉스",
-      "state": "error"
+      "state": "collected",
+      "matches": 1,
+      "cusip": "29444UBE5",
+      "coupon": 3.2,
+      "maturity": "2029-11-18",
+      "n": 1224,
+      "latest": "2026-10-13"
     },
     "DLR": {
       "name": "디지털 리얼티",
-      "state": "error"
+      "state": "no matching traded issue",
+      "matches": 0
     },
     "TLN": {
       "name": "탈렌",
-      "state": "error"
+      "state": "collected",
+      "matches": 2,
+      "cusip": "U8302WAJ3",
+      "coupon": 6.25,
+      "maturity": "2034-02-01",
+      "n": 12,
+      "latest": "2026-09-30"
     },
     "NRG": {
       "name": "NRG",
-      "state": "error"
+      "state": "collected",
+      "matches": 3,
+      "cusip": "U66962AW8",
+      "coupon": 3.625,
+      "maturity": "2031-02-15",
+      "n": 204,
+      "latest": "2026-10-09"
     },
     "VST": {
       "name": "비스트라",
-      "state": "error"
+      "state": "collected",
+      "matches": 3,
+      "cusip": "U9226VAM9",
+      "coupon": 7.75,
+      "maturity": "2031-10-15",
+      "n": 103,
+      "latest": "2026-09-25"
     },
     "CEG": {
       "name": "컨스텔레이션",
-      "state": "error"
+      "state": "collected",
+      "matches": 1,
+      "cusip": "210385AC4",
+      "coupon": 5.8,
+      "maturity": "2033-03-01",
+      "n": 875,
+      "latest": "2026-10-13"
     },
     "SOFTBANK": {
       "name": "소프트뱅크그룹",
-      "state": "error"
+      "state": "collected",
+      "matches": 2,
+      "cusip": "J7600PAC7",
+      "coupon": 9.75,
+      "maturity": "2034-04-01",
+      "n": 12,
+      "latest": "2026-10-13"
     },
     "OTF": {
       "name": "블루아울 테크놀로지 파이낸스",
-      "state": "error"
+      "state": "collected",
+      "matches": 1,
+      "cusip": "095924AD8",
+      "coupon": 6.5,
+      "maturity": "2029-10-15",
+      "n": 92,
+      "latest": "2026-10-13"
     },
     "OBDC": {
       "name": "블루아울 캐피털",
-      "state": "error"
+      "state": "no matching traded issue",
+      "matches": 0
     },
     "ARCC": {
       "name": "아레스 캐피털",
-      "state": "error"
+      "state": "no matching traded issue",
+      "matches": 0
     }
   },
-  "errors": [
-    "CORZ: HTTP Error 400: Bad Request {\"status\":\"failure\",\"statusMessage\":\"Bad Request.\"}",
-    "APLD: HTTP Error 400: Bad Request {\"status\":\"failure\",\"statusMessage\":\"Bad Request.\"}",
-    "CIFR: HTTP Error 400: Bad Request {\"status\":\"failure\",\"statusMessage\":\"Bad Request.\"}",
-    "WULF: HTTP Error 400: Bad Request {\"status\":\"failure\",\"statusMessage\":\"Bad Request.\"}",
-    "BEIGNET: HTTP Error 400: Bad Request {\"status\":\"failure\",\"statusMessage\":\"Bad Request.\"}",
-    "HUT: HTTP Error 400: Bad Request {\"status\":\"failure\",\"statusMessage\":\"Bad Request.\"}",
-    "STX: HTTP Error 400: Bad Request {\"status\":\"failure\",\"statusMessage\":\"Bad Request.\"}",
-    "HPE: HTTP Error 400: Bad Request {\"status\":\"failure\",\"statusMessage\":\"Bad Request.\"}",
-    "MU: HTTP Error 400: Bad Request {\"status\":\"failure\",\"statusMessage\":\"Bad Request.\"}",
-    "DELL: HTTP Error 400: Bad Request {\"status\":\"failure\",\"statusMessage\":\"Bad Request.\"}",
-    "INTC: HTTP Error 400: Bad Request {\"status\":\"failure\",\"statusMessage\":\"Bad Request.\"}",
-    "AMD: HTTP Error 400: Bad Request {\"status\":\"failure\",\"statusMessage\":\"Bad Request.\"}",
-    "QCOM: HTTP Error 400: Bad Request {\"status\":\"failure\",\"statusMessage\":\"Bad Request.\"}",
-    "TSM: HTTP Error 400: Bad Request {\"status\":\"failure\",\"statusMessage\":\"Bad Request.\"}",
-    "IRM: HTTP Error 400: Bad Request {\"status\":\"failure\",\"statusMessage\":\"Bad Request.\"}",
-    "EQIX: HTTP Error 400: Bad Request {\"status\":\"failure\",\"statusMessage\":\"Bad Request.\"}",
-    "DLR: HTTP Error 400: Bad Request {\"status\":\"failure\",\"statusMessage\":\"Bad Request.\"}",
-    "TLN: HTTP Error 400: Bad Request {\"status\":\"failure\",\"statusMessage\":\"Bad Request.\"}",
-    "NRG: HTTP Error 400: Bad Request {\"status\":\"failure\",\"statusMessage\":\"Bad Request.\"}",
-    "VST: HTTP Error 400: Bad Request {\"status\":\"failure\",\"statusMessage\":\"Bad Request.\"}",
-    "CEG: HTTP Error 400: Bad Request {\"status\":\"failure\",\"statusMessage\":\"Bad Request.\"}",
-    "SOFTBANK: HTTP Error 400: Bad Request {\"status\":\"failure\",\"statusMessage\":\"Bad Request.\"}",
-    "OTF: HTTP Error 400: Bad Request {\"status\":\"failure\",\"statusMessage\":\"Bad Request.\"}",
-    "OBDC: HTTP Error 400: Bad Request {\"status\":\"failure\",\"statusMessage\":\"Bad Request.\"}",
-    "ARCC: HTTP Error 400: Bad Request {\"status\":\"failure\",\"statusMessage\":\"Bad Request.\"}"
-  ],
-  "rows": 0
+  "errors": [],
+  "rows": 6924
 }
