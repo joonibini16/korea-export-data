@@ -5,6 +5,10 @@ on:
       urls:
         description: 'space-separated URLs'
         required: true
+      maxlen:
+        description: 'max chars kept per body'
+        required: false
+        default: '300000'
 permissions:
   contents: write
 jobs:
@@ -18,6 +22,7 @@ jobs:
       - run: python tools/url_probe.py
         env:
           URLS: ${{ inputs.urls }}
+          MAXLEN: ${{ inputs.maxlen }}
       - run: |
           git config user.name github-actions; git config user.email github-actions@github.com
           cp url_probe.json /tmp/p.json; git checkout -q --orphan probe-output; git rm -rq --cached .; cp /tmp/p.json url_probe.json

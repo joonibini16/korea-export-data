@@ -12,7 +12,7 @@ for u in (sys.argv[1:] or os.environ.get('URLS', '').split()):
             b = r.read()
         try: t = b.decode('utf-8-sig')
         except UnicodeDecodeError: t = b.decode('euc-kr', 'replace')
-        out.append(dict(url=u, status=200, length=len(b), head=t[:300000]))
+        out.append(dict(url=u, status=200, length=len(b), head=t[:int(os.environ.get('MAXLEN','300000'))]))
     except Exception as e:
         out.append(dict(url=u, error=str(e)[:300]))
     print(u, out[-1].get('status'), out[-1].get('length'), out[-1].get('error', ''), flush=True)
