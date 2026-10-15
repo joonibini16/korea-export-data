@@ -54,7 +54,7 @@ def caps_krx(mkt, day):
 
 def login():
     """KRX 정보데이터시스템은 2025년부터 조회에 로그인이 필요. 사용자 본인 계정(GitHub Secrets KRX_ID/KRX_PW)으로 로그인."""
-    uid, pw = os.environ.get('KRX_ID'), os.environ.get('KRX_PW')
+    uid, pw = (os.environ.get('KRX_ID') or '').strip(), (os.environ.get('KRX_PW') or '').strip()
     if not uid or not pw:
         log(step='login', skipped='KRX_ID/KRX_PW 시크릿 없음'); return False
     S.get('https://data.krx.co.kr/contents/MDC/COMS/client/MDCCOMS001.cmd', timeout=30)
@@ -67,7 +67,7 @@ def login():
     if code == 'CD011':  # 중복 로그인 → 기존 세션 종료 후 재시도
         r = S.post(url, data=form | {'skipDup': 'Y'}, timeout=30); j = r.json() if r.text.strip().startswith('{') else {'raw': r.text[:120]}
         code = j.get('_error_code')
-    log(step='login', status=r.status_code, code=code, msg=str(j.get('_error_message') or j.get('raw') or '')[:80])
+    log(step='login', id_len=len(uid), status=r.status_code, code=code, msg=str(j.get('_error_message') or j.get('raw') or '')[:80])
     return code in ('CD001', None) and r.status_code == 200
 
 
