@@ -84,10 +84,12 @@ def choose(groups,status,limit):
     attempts=status.get('attempts',{})
     return sorted(groups,key=lambda k:(1 if last.get(k,{}).get('members')==members(groups[k]) else 0,attempts.get(k,0),last.get(k,{}).get('updated_at',''),-len(groups[k]),k))[:limit]
 
-def batch_limit(groups,status,requested,invalid=()):
-    """Finish missing groups promptly, then refresh a smaller rotating batch."""
-    pending=sum(status.get('groups',{}).get(k,{}).get('members')!=members(v) for k,v in groups.items())
-    return min(requested,max(48,pending,len(invalid)))
+def batch_limit(groups,status,requested,confirmed,invalid=()):
+    """Collect every group missing the latest confirmed close, then stop."""
+    known=status.get('groups',{})
+    due=sum(k in invalid or known.get(k,{}).get('members')!=members(v)
+            or known.get(k,{}).get('latest','')<confirmed for k,v in groups.items())
+    return min(requested,due)
 
 def members(records):
     return hashlib.sha256(','.join(sorted(r['code'] for r in records)).encode()).hexdigest()
@@ -107,20 +109,20 @@ def published_during_session(meta):
 
 def main():
     arg=argparse.ArgumentParser();arg.add_argument('--groups',type=int,default=12);args=arg.parse_args()
-    if not 1<=args.groups<=140:arg.error('--groups must be 1..140')
+    if not 1<=args.groups<=1000:arg.error('--groups must be 1..1000')
     latest=catalog();groups=defaultdict(list)
     for r in latest:groups[r['market']+'|'+r['sector']].append(r)
     prior=json.loads(Path('sector_breadth_status.json').read_text()) if Path('sector_breadth_status.json').exists() else {}
     confirmed=last_confirmed()
     status={'updated_at':datetime.now(KST).isoformat(timespec='seconds'),'source':'KIND 상장법인목록 + 네이버 fchart 확정 종가','confirmed_through':confirmed,'groups':prior.get('groups',{}),'attempts':prior.get('attempts',{}),'issues':[], 'listed':len(latest)}
     invalid={k for k,v in status['groups'].items() if v.get('latest','')>confirmed or published_during_session(v)}
-    limit=batch_limit(groups,status,args.groups,invalid)
+    limit=batch_limit(groups,status,args.groups,confirmed,invalid)
     stored={(r['market'],r['sector'],r['date']):r for r in readcsv('sector_breadth.csv') if r['date']<=confirmed and not (r['market']+'|'+r['sector'] in invalid and r['date']>=status['groups'][r['market']+'|'+r['sector']]['latest'])}
     stocks={(r['market'],r['code']):r for r in readcsv('sector_stock_latest.csv') if r['date']<=confirmed and not (r['market']+'|'+r['sector'] in invalid and r['date']>=status['groups'][r['market']+'|'+r['sector']]['latest'])}
     writecsv('market_sector_catalog.csv',CATALOG_FIELDS,latest)
     selected=sorted(invalid & set(groups),key=lambda k:(-len(groups[k]),k))[:limit]
     if len(selected)<limit:
-        selected+= [k for k in choose(groups,status,len(groups)) if k not in selected and k not in invalid][:limit-len(selected)]
+        selected+= [k for k in choose(groups,status,len(groups)) if k not in selected and k not in invalid and (status['groups'].get(k,{}).get('members')!=members(groups[k]) or status['groups'].get(k,{}).get('latest','')<confirmed)][:limit-len(selected)]
     for key in invalid:status['groups'].pop(key,None)
     for key in selected:
         records=groups[key];market,sector=key.split('|',1);fetched={};errors=[]
