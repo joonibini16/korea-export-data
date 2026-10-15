@@ -50,7 +50,9 @@ def matching_issues(b):
             if (abs(coupon - b["coupon"]) <= 0.005 and year == b["year"]
                     and len(cusip) == 9 and maturity > today.isoformat()):
                 matches.append({"cusip": cusip, "coupon": coupon, "maturity": maturity,
-                                "issuer": str(r.get("issuerName") or ""),\n                                "rating_sp": r.get("standardAndPoorsRating"), "rating_moody": r.get("moodysRating"),\n                                "coupon_type": r.get("couponType")})
+                                "issuer": str(r.get("issuerName") or ""),
+                                "rating_sp": r.get("standardAndPoorsRating"), "rating_moody": r.get("moodysRating"),
+                                "coupon_type": r.get("couponType")})
         except (TypeError, ValueError, KeyError):
             continue
     return sorted(matches, key=lambda x: x["maturity"])
