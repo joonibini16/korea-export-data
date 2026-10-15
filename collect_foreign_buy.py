@@ -52,11 +52,31 @@ def caps_krx(mkt, day):
     return {r['ISU_SRT_CD']: dict(name=r['ISU_ABBRV'], cap=num(r['MKTCAP']), close=num(r['TDD_CLSPRC']), chg=float(r['FLUC_RT']) if r.get('FLUC_RT', '').replace('-', '').replace('.', '').isdigit() else None, val=num(r['ACC_TRDVAL'])) for r in j.get('OutBlock_1', [])}
 
 
+def login():
+    """KRX 정보데이터시스템은 2025년부터 조회에 로그인이 필요. 사용자 본인 계정(GitHub Secrets KRX_ID/KRX_PW)으로 로그인."""
+    uid, pw = os.environ.get('KRX_ID'), os.environ.get('KRX_PW')
+    if not uid or not pw:
+        log(step='login', skipped='KRX_ID/KRX_PW 시크릿 없음'); return False
+    S.get('https://data.krx.co.kr/contents/MDC/COMS/client/MDCCOMS001.cmd', timeout=30)
+    url = 'https://data.krx.co.kr/contents/MDC/COMS/client/MDCCOMS001D1.cmd'
+    form = {'mbrNm': '', 'telNo': '', 'di': '', 'certType': '', 'mbrId': uid, 'pw': pw}
+    r = S.post(url, data=form, timeout=30, headers={'Referer': 'https://data.krx.co.kr/contents/MDC/COMS/client/MDCCOMS001.cmd'})
+    try: j = r.json()
+    except Exception: j = {'raw': r.text[:120]}
+    code = j.get('_error_code') or j.get('error_code')
+    if code == 'CD011':  # 중복 로그인 → 기존 세션 종료 후 재시도
+        r = S.post(url, data=form | {'skipDup': 'Y'}, timeout=30); j = r.json() if r.text.strip().startswith('{') else {'raw': r.text[:120]}
+        code = j.get('_error_code')
+    log(step='login', status=r.status_code, code=code, msg=str(j.get('_error_message') or j.get('raw') or '')[:80])
+    return code in ('CD001', None) and r.status_code == 200
+
+
 def main():
     try:
         g = S.get(LOADER, timeout=30); log(step='loader', status=g.status_code, cookies=list(S.cookies.keys()))
     except Exception as e:
         log(step='loader', error=str(e)[:200])
+    login()
     res = None
     for day in trade_days():
         mk = {}

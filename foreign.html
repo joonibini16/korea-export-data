@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>외국인 매수 강도</title><script src="./shell.js?v=19"></script>
+<style>:root{font-family:Arial,"Noto Sans KR",sans-serif}*{box-sizing:border-box}body{margin:0}main{max-width:1500px;margin:26px auto;padding:0 22px}.muted{font-size:13px;color:#93a3bd;line-height:1.6}
+.panel{border-radius:12px;padding:18px 20px;margin-bottom:18px}h2{font-size:19px;margin:0 0 6px}
+.ctl{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:10px 0 14px}.ctl label{font-size:13px;color:#93a3bd;margin-left:8px}
+.kt{border-collapse:collapse;width:100%;font-size:13.5px;font-variant-numeric:tabular-nums}.kt th,.kt td{border-bottom:1px solid #22314f;padding:7px 8px;text-align:right;white-space:nowrap}.kt th{color:#93a3bd;font-weight:600;vertical-align:bottom}.kt td.l,.kt th.l{text-align:left}
+.kt .s{font-size:11px;color:#93a3bd;font-weight:400}.up{color:#f87171}.dn{color:#60a5fa}.bar{position:relative;min-width:120px;height:18px;background:rgba(148,163,184,.12);border-radius:4px;overflow:hidden}.bar i{position:absolute;left:0;top:0;bottom:0;background:rgba(239,68,68,.45)}.bar span{position:absolute;inset:0;display:flex;align-items:center;justify-content:flex-end;padding:0 6px;font-size:12px}
+.wait{padding:22px;border:1px dashed #334155;border-radius:10px;line-height:1.7}.mk{font-size:11px;padding:1px 6px;border-radius:5px;background:rgba(148,163,184,.15);color:#cbd5e1;margin-left:4px}
+</style><link rel="stylesheet" href="./shell.css?v=3"></head><body><main>
+<h1>외국인 매수 강도</h1>
+<p class="muted">당일 외국인 <b>매수 금액</b>(순매수가 아닌 총매수)을 시가총액으로 나눈 비율이 높은 순서입니다. 시가총액 대비 외국인이 얼마나 많이 사들였는지(손바뀜 강도)를 보여 주며, 매도도 많을 수 있으므로 순매수·매수 비중을 함께 봅니다.</p>
+<section class="panel"><h2 data-upd="foreign_buy.json">시총 대비 외국인 매수금액 순위</h2><p class="muted" id="sub"></p>
+<div class="ctl" id="ctl"></div><div style="overflow:auto"><table class="kt" id="kt"></table></div>
+<p class="muted">· 매수/시총 = 외국인 매수 거래대금 ÷ 시가총액. · 거래대금 중 외국인 매수 = 외국인 매수 ÷ 당일 전체 거래대금(거래된 금액 중 외국인이 산 몫). · 순매수 = 외국인 매수 − 매도. 출처: KRX 정보데이터시스템(투자자별 거래실적, 외국인 = 외국인 + 기타외국인 합계), 시가총액 KRX. 평일 장 마감 후 15:50·16:20·18:10·20:40(KST) 수집, 날짜별 상위 100종목은 foreign_buy_hist.csv에 누적됩니다.</p></section>
+</main>
+<script>
+(async()=>{
+ const $=id=>document.getElementById(id);
+ let D=null,mkt='전체',minCap=1000e8,showN=100;
+ try{const r=await fetch('foreign_buy.json?v='+Date.now(),{cache:'no-store'});if(r.ok)D=await r.json();}catch(e){}
+ if(!D){let st={};try{st=await (await fetch('foreign_buy_status.json?v='+Date.now(),{cache:'no-store'})).json();}catch(e){}
+  const err=(st.steps||[]).map(s=>s.error||s.skipped).filter(Boolean).join(' / ');
+  $('kt').outerHTML=`<div class="wait"><b>데이터 수집 대기 중</b><br>KRX 정보데이터시스템이 비로그인 조회를 막아(응답 'LOGOUT'), 본인 KRX 회원 계정으로 로그인해야 종목별 외국인 매수금액을 받을 수 있습니다. GitHub 저장소 Settings → Secrets에 <code>KRX_ID</code>, <code>KRX_PW</code>를 등록하면 다음 수집부터 자동으로 표시됩니다.<br><span class="muted">마지막 시도 ${st.run||'—'} · ${err||''}</span></div>`;return;}
+ const eok=v=>(v/1e8).toLocaleString(undefined,{maximumFractionDigits:0});
+ function draw(){
+  let L=[];for(const [m,M] of Object.entries(D.markets))if(mkt==='전체'||mkt===m)L.push(...M.rows.map(r=>({...r,m})));
+  L=L.filter(r=>r.cap>=minCap).sort((a,b)=>b.ratio-a.ratio).slice(0,showN);const mx=Math.max(...L.map(r=>r.ratio),0.01);
+  $('sub').textContent=`기준일 ${D.asof} · ${D.source} · 표시 ${L.length}종목`;
+  $('ctl').innerHTML=['전체','KOSPI','KOSDAQ'].map(k=>`<button class="period${mkt===k?' active':''}" data-m="${k}">${k==='전체'?'전체':k==='KOSPI'?'코스피':'코스닥'}</button>`).join('')+
+   `<label>시가총액 하한</label>`+[[0,'제한 없음'],[1000e8,'1천억↑'],[1e12,'1조↑'],[5e12,'5조↑']].map(([v,t])=>`<button class="period${minCap===v?' active':''}" data-c="${v}">${t}</button>`).join('')+
+   `<label>표시</label>`+[50,100,300].map(n=>`<button class="period${showN===n?' active':''}" data-n="${n}">${n}</button>`).join('');
+  $('kt').innerHTML=`<thead><tr><th>순위</th><th class="l">종목</th><th>매수/시총</th><th>외국인 매수<div class="s">억원</div></th><th>시가총액<div class="s">억원</div></th><th>거래대금 중<br>외국인 매수</th><th>외국인 순매수<div class="s">억원</div></th><th>외국인 매도<div class="s">억원</div></th><th>등락률</th><th>종가</th></tr></thead><tbody>`+
+   L.map((r,i)=>`<tr><td>${i+1}</td><td class="l"><b>${r.name}</b><span class="mk">${r.m==='KOSPI'?'코스피':'코스닥'}</span> <span class="s">${r.code}</span></td>
+    <td><div class="bar"><i style="width:${(r.ratio/mx*100).toFixed(1)}%"></i><span>${r.ratio.toFixed(2)}%</span></div></td><td>${eok(r.buy)}</td><td>${eok(r.cap)}</td>
+    <td>${r.buy_share==null?'—':r.buy_share.toFixed(1)+'%'}</td><td class="${r.net>0?'up':r.net<0?'dn':''}">${(r.net>0?'+':'')+eok(r.net)}</td><td>${eok(r.sell)}</td>
+    <td class="${r.chg>0?'up':r.chg<0?'dn':''}">${r.chg==null?'—':(r.chg>0?'+':'')+r.chg.toFixed(2)+'%'}</td><td>${r.close.toLocaleString()}</td></tr>`).join('')+'</tbody>';
+  $('ctl').querySelectorAll('[data-m]').forEach(b=>b.onclick=()=>{mkt=b.dataset.m;draw();});
+  $('ctl').querySelectorAll('[data-c]').forEach(b=>b.onclick=()=>{minCap=+b.dataset.c;draw();});
+  $('ctl').querySelectorAll('[data-n]').forEach(b=>b.onclick=()=>{showN=+b.dataset.n;draw();});
+ }
+ draw();
+})();
+</script></body></html>
