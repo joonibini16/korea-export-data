@@ -36,7 +36,7 @@
    const count=document.createElement('span');count.textContent='60일선 위 '+(latest.above_60??'—')+'/'+(latest.eligible_60??'—');
    head.append(h3,count);card.append(head);
    const defs=[
-    {label:'Breadth_60',ma:'5-SMA',values:breadth,mean:b5,color:'#fb784e'},
+    {label:'Breadth_60',ma:'5-SMA',values:breadth,mean:b5,color:'#fb784e',full:true},
     {label:'HLI (252일 신고가 비율)',ma:'10-SMA',values:hli,mean:h10,color:'#22d3ee'}
    ];
    for(const d of defs){
@@ -51,9 +51,9 @@
      {label:d.ma,data:d.mean.slice(offset),borderColor:'#34d399',backgroundColor:'#34d399',borderWidth:2,pointRadius:1,pointHoverRadius:4,tension:0,spanGaps:false}
     ]},options:{responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:'index',intersect:false,axis:'x'},
      plugins:{legend:{labels:{color:'#cbd5e1'}},tooltip:{mode:'index',intersect:false,callbacks:{title:items=>items[0]?.label||'',label:item=>item.dataset.label+': '+fmt(item.parsed.y)+'%'}}},
-     scales:{x:{ticks:{color:'#94a3b8',maxTicksLimit:6},grid:{display:false}},y:{min:0,max:100,ticks:{color:'#94a3b8',callback:v=>v+'%'},grid:{color:'rgba(148,163,184,.13)'}}}}});
+     scales:{x:{ticks:{color:'#94a3b8',maxTicksLimit:6},grid:{display:false}},y:{min:0,max:d.full?100:(()=>{const v=[...d.values.slice(offset),...d.mean.slice(offset)].filter(Number.isFinite),mx=Math.max(1,...v)*1.3;const st=mx<=5?1:mx<=10?2:mx<=25?5:10;return Math.ceil(mx/st)*st;})(),ticks:{color:'#94a3b8',callback:v=>v+'%'},grid:{color:'rgba(148,163,184,.13)'}}}}});
    }
-   const detail=document.createElement('details'),sum=document.createElement('summary');sum.textContent='최근 5거래일 수치 표로 확인';
+   const detail=document.createElement('details');detail.open=true;const sum=document.createElement('summary');sum.textContent='최근 5거래일 수치 표로 확인';
    const table=document.createElement('table');table.className='db-data-table';
    const thead=document.createElement('thead'),tr=document.createElement('tr');
    ['거래일','Breadth_60','5-SMA','HLI','10-SMA'].forEach(s=>{const th=document.createElement('th');th.textContent=s;tr.append(th)});

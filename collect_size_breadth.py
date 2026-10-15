@@ -96,7 +96,7 @@ def main():
     now = datetime.now(KST); today = now.date().isoformat(); ts = now.isoformat(timespec='seconds')
     CACHE.mkdir(exist_ok=True)
     hist = json.loads(gzip.decompress(HIST.read_bytes())) if HIST.exists() else {}
-    idx = {m: daily(m, 15) for m in ('KOSPI', 'KOSDAQ')}
+    idx = {m: daily(m, 25) for m in ('KOSPI', 'KOSDAQ')}
     tdays = [d for d, _ in idx['KOSPI']]
     live_day = tdays[-1]  # 오늘(장중 포함) 또는 마지막 거래일
     prev_day = tdays[-2]
@@ -120,7 +120,7 @@ def main():
 
     res = dict(updated_at=ts, live_day=live_day, markets={})
     log_rows = []
-    days10 = tdays[-10:]
+    days10 = tdays[-20:]  # 화면에서 날짜별로 넘겨볼 수 있도록 20거래일(앞쪽은 60일 이력이 부족하면 빈칸)
     for m, bks in BUCKETS.items():
         R = rank[m]
         ich = round((idx[m][-1][1] / idx[m][-2][1] - 1) * 100, 2)
@@ -134,11 +134,29 @@ def main():
             trend = []
             for d in days10:
                 s = cur if d == live_day else stat(mem, hist, d, price_on(d))
-                trend.append(dict(date=d, breadth=s['breadth']))
+                if s['breadth'] is None:
+                    continue
+                # 그날 지수 등락: 종합 = 지수, 규모별 = 구성종목 시총가중 일간 등락(현재 시총 가중, 원종가)
+                if nm == '종합':
+                    k = tdays.index(d)
+                    dch = round((idx[m][k][1] / idx[m][k - 1][1] - 1) * 100, 2) if k > 0 else None
+                elif d == live_day:
+                    dch = None
+                else:
+                    num_ = den_ = 0.0
+                    for r in mem:
+                        hh = hist.get(r['code'], [])
+                        pi = next((q for q, x in enumerate(hh) if x[0] == d), None)
+                        if pi and hh[pi - 1][1]:
+                            num_ += r['cap'] * (hh[pi][1] / hh[pi - 1][1] - 1) * 100; den_ += r['cap']
+                    dch = round(num_ / den_, 2) if den_ else None
+                trend.append(dict(date=d, breadth=s['breadth'], nh=s['nh'], nl=s['nl'], n=s['n'], grade=grade(s['breadth']), idx_chg=dch))
             if nm == '종합': chg = ich
             else:
                 w = sum(r['cap'] / (1 + r['chg'] / 100) for r in mem)
                 chg = round(sum(r['cap'] / (1 + r['chg'] / 100) * r['chg'] for r in mem) / w, 2) if w else None
+            if trend and trend[-1]['date'] == live_day:
+                trend[-1]['idx_chg'] = chg if nm != '종합' else ich
             g = grade(cur['breadth']) if cur['breadth'] is not None else None
             badge = None
             if cur['breadth'] is not None and chg is not None:
