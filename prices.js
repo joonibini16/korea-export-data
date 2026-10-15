@@ -9,7 +9,7 @@
  const wow=s=>{if(!s.length)return null;const l=s.at(-1),t=ts(l.d)-7*DAY;let p=null;for(const x of s){if(ts(x.d)<=t)p=x;}return p?pct(l.v,p.v):null;};
  const ser=(rows,name)=>rows.filter(r=>r.series===name&&r.value!=='').map(r=>({d:r.date,v:+r.value})).sort((a,b)=>a.d.localeCompare(b.d));
  const lab=d=>d.slice(2,7).replace('-','.');
- const timeAxis=(ds)=>{let mn=Infinity,mx=-Infinity;(ds||[]).forEach(d=>(d.data||[]).forEach(p=>{if(p&&p.x!=null){if(p.x<mn)mn=p.x;if(p.x>mx)mx=p.x;}}));return {type:'linear',min:mn<Infinity?mn:undefined,max:mx>-Infinity?mx:undefined,ticks:{callback:v=>{const d=new Date(v);return String(d.getUTCFullYear()).slice(2)+'.'+String(d.getUTCMonth()+1).padStart(2,'0');},maxTicksLimit:10}};};
+ const timeAxis=(ds)=>{let mn=Infinity,mx=-Infinity;(ds||[]).forEach(d=>(d.data||[]).forEach(p=>{if(p&&p.x!=null){if(p.x<mn)mn=p.x;if(p.x>mx)mx=p.x;}}));const D=864e5;if(mn<Infinity&&mx-mn<10*D){const c=(mn+mx)/2;mn=c-5*D;mx=c+5*D;}const short=mx-mn<90*D;return {type:'linear',min:mn<Infinity?mn:undefined,max:mx>-Infinity?mx:undefined,ticks:{stepSize:short?D:undefined,callback:v=>{const d=new Date(v);return short?String(d.getUTCMonth()+1).padStart(2,'0')+'.'+String(d.getUTCDate()).padStart(2,'0'):String(d.getUTCFullYear()).slice(2)+'.'+String(d.getUTCMonth()+1).padStart(2,'0');},maxTicksLimit:10}};};
  const pts=s=>s.map(x=>({x:ts(x.d),y:x.v}));
  const base=()=>({responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:'nearest',intersect:false,axis:'x'},plugins:{legend:{position:'top',align:'start',labels:{boxWidth:12}},
   tooltip:{callbacks:{title:it=>new Date(it[0].parsed.x).toISOString().slice(0,10),label:t=>`${t.dataset.label}: ${t.parsed.y==null?'—':t.parsed.y.toLocaleString(undefined,{maximumFractionDigits:3})}`}}}});
@@ -64,7 +64,8 @@
    document.getElementById('f4').textContent=`DRAMeXchange 자체 수집: DDR5 RDIMM 32GB ${own32.at(-1)?'$'+own32.at(-1).v.toLocaleString()+' ('+own32.at(-1).d+')':'(다음 실행부터)'} · DDR5 UDIMM 16GB ${u?'$'+u.v+' ('+u.d+')':'—'} · DDR5 16Gb 칩 현물 ${c?'$'+c.v+' ('+c.d+')':'—'}`;}
   // 5) 자체 수집 GPU
   {const K=[['a100','A100',C.bl],['h100','H100',C.cy],['b200','B200',C.pu]];const D5=[];
-   K.forEach(([k,n,c])=>{const v=ser(G,`gpu_${k}_vast`),r=ser(G,`gpu_${k}_runpod_secure`);D5.push(L(n+' Vast 중앙값',pts(v),c,{pointRadius:v.length<8?3:0}));D5.push(L(n+' RunPod Secure',pts(r),c,{borderDash:[5,3],borderWidth:1.5,pointRadius:r.length<8?2:0}));});
+   K.forEach(([k,n,c])=>{const v=ser(G,`gpu_${k}_vast`),r=ser(G,`gpu_${k}_runpod_secure`);D5.push(L(n+' Vast 중앙값',pts(v),c,{pointRadius:v.length<8?5:0}));D5.push(L(n+' RunPod Secure',pts(r),c,{borderDash:[5,3],borderWidth:1.5,pointRadius:r.length<8?4:0,pointStyle:'rectRot'}));});
+   {const nd=new Set(K.flatMap(([k])=>ser(G,`gpu_${k}_vast`).map(x=>x.d))).size;const h=document.getElementById('c5').closest('section').querySelector('p.muted');if(h&&!h.dataset.n){h.dataset.n=1;h.innerHTML+=` <b>수집 ${nd}일째</b>${nd<3?' (2026-10-15 시작 · 날마다 점이 하나씩 늘어나 선이 됩니다)':''}.`;}}
    new Chart(document.getElementById('c5'),{type:'line',data:{datasets:D5},options:{...base(),scales:{x:timeAxis(D5),y:{type:'logarithmic',title:{display:true,text:'USD / GPU·시간 (로그)'}}}}});}
   // 최근 수집값 표
   {const last={};G.forEach(r=>{if(!last[r.series]||r.date>=last[r.series].date)last[r.series]=r;});
