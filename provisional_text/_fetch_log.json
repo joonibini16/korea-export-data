@@ -1,21 +1,6 @@
 {
  "found": 50,
- "saved": [
-  "2026.09_FINAL.txt",
-  "2026.08_FINAL.txt",
-  "2026.07_FINAL.txt",
-  "2026.06_FINAL.txt",
-  "2026.05_FINAL.txt",
-  "2026.04_FINAL.txt",
-  "2026.03_FINAL.txt",
-  "2026.02_FINAL.txt",
-  "2026.01_FINAL.txt",
-  "2025.12_FINAL.txt",
-  "2025.11_FINAL.txt",
-  "2025.10_FINAL.txt",
-  "2025.09_FINAL.txt",
-  "2025.08_FINAL.txt"
- ],
+ "saved": [],
  "errors": [],
  "pages": 60
 }
