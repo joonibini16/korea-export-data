@@ -17,7 +17,7 @@
   catch(e){box.innerHTML='<p class="muted">비교 자료를 읽지 못했습니다.</p>';return;}
   const {k7,s7,ks}=RAW;
   const prep=(s,start)=>{const i0=s.findIndex(x=>x.d>=start),m=ma(s,100),b=s[i0];return s.map((x,i)=>({d:x.d,v:x.v,y:(ts(x.d)-ts(b.d))/365.25/DAY,idx:x.v/b.v*100,disp:m[i]?(x.v/m[i]-1)*100:null})).filter(x=>x.y>=0);};
-  const A=prep(k7,REF.K.start),B=prep(s7,REF.S.start),K=prep(ks,KS_START);
+  const A=prep(k7,REF.K.start),B=prep(s7,REF.S.start),K=prep(ks,KS_START);window.__ksLD=K.at(-1).d;
   const byD=(a,d)=>a.find(x=>x.d>=d);
   const aP=byD(A,REF.K.peak),bP=byD(B,REF.S.peak),kP=K.reduce((m,x)=>x.v>m.v?x:m,K[0]),kL=K.at(-1);
   const after=(a,p)=>a.filter(x=>x.d>=p.d).map(x=>({d:x.d,t:(ts(x.d)-ts(p.d))/DAY,dd:(x.v/p.v-1)*100,v:x.v}));
@@ -39,7 +39,7 @@
    <p class="muted">참고용 비교입니다(예측 아님). 2007 코스피는 2003-03-17 저점(515.2, 카드사태·이라크전), 나스닥 종합은 2002-10-09 저점(1,114.1)을 강세장 시작으로, 현재 코스피는 ${startTxt}을 시작으로 맞췄습니다. 가로축은 시작(또는 고점) 이후 경과 시간이라 실제 날짜가 다릅니다. 2007년은 부채(서브프라임·레버리지) 위기로 실적이 꺾이며 하락했고, 현재는 반도체 이익 증가가 동반된다는 차이가 있습니다. 출처: Yahoo Finance(^KS11·^IXIC 2002~2011), 현재 코스피 market_daily.csv(매일 갱신).</p>`;
   charts.forEach(c=>c.destroy());charts=[];applyView(box);
   const L=(label,data,color,w=2,dash)=>({label,data,borderColor:color,backgroundColor:color,borderWidth:w,borderDash:dash,pointRadius:0,tension:0,parsing:false});
-  const now=(p,lab)=>({label:lab,data:[p],borderColor:'#fbbf24',backgroundColor:'#fbbf24',pointRadius:5,showLine:false,parsing:false});
+  const now=(p,lab)=>({label:(lab||'현재')+(window.__ksLD?' ('+window.__ksLD+')':''),data:[p],borderColor:'#fbbf24',backgroundColor:'#fbbf24',pointRadius:5,showLine:false,parsing:false});
   const base={responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:'nearest',intersect:false},plugins:{legend:{position:'bottom',labels:{boxWidth:10}}}};
   const tY=t=>`${t.dataset.label}: T+${t.parsed.x.toFixed(2)}년 · `;
   const xY={type:'linear',min:0,max:7,title:{display:true,text:'강세장 시작 후 경과 (년)'},ticks:{callback:v=>'T+'+(+(+v).toFixed(2))+'Y'}};

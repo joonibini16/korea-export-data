@@ -15,7 +15,7 @@
    nq=csv(a).map(([d,c])=>({d,v:+c}));ks=csv(b).filter(r=>r[0]==='^KS11').map(r=>({d:r[1],v:+r[2]})).filter(x=>x.v>0).sort((x,y)=>x.d.localeCompare(y.d));RAW=[nq,ks];}
   catch(e){box.innerHTML='<p class="muted">비교 자료를 읽지 못했습니다.</p>';return;}
   const prep=(s,start)=>{const i0=s.findIndex(x=>x.d>=start),b=s[i0].v,m=ma(s,100);return s.map((x,i)=>({d:x.d,v:x.v,y:(ts(x.d)-ts(s[i0].d))/365.25/DAY,idx:x.v/b*100,disp:m[i]?(x.v/m[i]-1)*100:null})).filter(x=>x.y>=-0.25);};
-  const N=prep(nq,NQ_START),K=prep(ks,KS_START);
+  const N=prep(nq,NQ_START),K=prep(ks,KS_START);window.__ksLD=K.at(-1).d;
   const pk=a=>a.reduce((m,x)=>x.v>m.v?x:m,a[0]);const nP=pk(N),kP=pk(K),kL=K.at(-1);
   const after=(a,p)=>a.filter(x=>x.d>=p.d).map(x=>({d:x.d,t:(ts(x.d)-ts(p.d))/DAY,dd:(x.v/p.v-1)*100}));
   const nA=after(N,nP).filter(x=>x.t<=1000),kA=after(K,kP);
@@ -41,7 +41,7 @@
    <p class="muted">참고용 비교입니다(예측 아님). 나스닥 종합 1995-01-03, 코스피 ${startTxt}을 강세장 시작으로 맞췄습니다(버튼으로 변경). 가로축은 시작(또는 고점) 이후 경과 시간이라 실제 날짜가 다릅니다. 닷컴은 이익 없는 성장주가 주도했고, 현재 코스피는 반도체 실적 증가가 동반된다는 차이가 있습니다. 출처: 나스닥 Yahoo Finance(^IXIC), 코스피 market_daily.csv(매일 갱신).</p>`;
   charts.forEach(c=>c.destroy());charts=[];applyView(box);
   const lineDS=(label,data,color,w=2)=>({label,data,borderColor:color,backgroundColor:color,borderWidth:w,pointRadius:0,tension:0,parsing:false});
-  const now=(a,key,lab)=>({label:lab,data:[a],borderColor:'#fbbf24',backgroundColor:'#fbbf24',pointRadius:5,showLine:false,parsing:false});
+  const now=(a,key,lab)=>({label:(lab||'현재')+(window.__ksLD?' ('+window.__ksLD+')':''),data:[a],borderColor:'#fbbf24',backgroundColor:'#fbbf24',pointRadius:5,showLine:false,parsing:false});
   const base={responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:'nearest',intersect:false},plugins:{legend:{position:'bottom',labels:{boxWidth:10}}}};
   mk('dcIdx',{type:'line',data:{datasets:[lineDS('닷컴 나스닥 (1995.1~)',N.filter(x=>x.y<=8).map(x=>({x:x.y,y:x.idx})),'#d4a017'),lineDS('코스피 ('+KS_START.slice(0,7).replace('-','.')+'~)',K.map(x=>({x:x.y,y:x.idx})),'#ef4444',2.5),now({x:kL.y,y:kL.idx},'','현재')]},
    options:{...base,plugins:{...base.plugins,tooltip:{callbacks:{label:t=>`${t.dataset.label}: T+${t.parsed.x.toFixed(2)}년 · ${t.parsed.y.toFixed(0)}`}}},scales:{x:{type:'linear',min:0,max:8,title:{display:true,text:'강세장 시작 후 경과 (년)'},ticks:{callback:v=>'T+'+(+(+v).toFixed(2))+'Y'}},y:{type:'logarithmic',min:80,title:{display:true,text:'시작=100'}}}}});
