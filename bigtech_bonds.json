@@ -80,6 +80,17 @@
    "isin": "US037833EP10",
    "url": "https://divvydiary.com/en/apple-inc-3-35-22-32-bond-US037833EP10",
    "issuer": "APPLE"
+  },
+  {
+   "t": "AVGO",
+   "name": "브로드컴",
+   "bond": "검색 중",
+   "coupon": 0,
+   "maturity": "2031-01-01",
+   "isin": "",
+   "url": null,
+   "issuer": "BROADCOM",
+   "search_only": true
   }
  ]
 }

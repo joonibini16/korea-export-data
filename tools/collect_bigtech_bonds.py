@@ -118,6 +118,9 @@ if OUT.exists():
 start = (today - dt.timedelta(days=1825)).isoformat() + ' 00:00:00.000'
 end = today.isoformat() + ' 23:59:00.000'
 for b in META:
+    if b.get('search_only'):
+        status['bonds'][b['t']] = dict(n=0)
+        continue
     cusips = b.get('cusips') or [b['isin'][2:11]]
     got = []
     for cu in cusips:
