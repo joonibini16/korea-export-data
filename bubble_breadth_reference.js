@@ -25,7 +25,7 @@
   if(groups.some(rows=>rows.length<10||!Number.isFinite(rows.at(-1).breadth_60)))throw Error('시장별 추이 자료가 부족합니다');
   root.replaceChildren();
   const lastDates=groups.map(rows=>rows.at(-1).date);
-  status.textContent='자동 갱신 · '+source+' 기준 · 코스피 '+lastDates[0]+' / 코스닥 '+lastDates[1]+' 최근 확정 수집일. 20거래일 추이를 표시합니다. 네이버 대체 자료는 평일 16:50 KST 이후 수집하며 실행 시간에 따라 반영이 지연될 수 있습니다. 종전 DB 화면의 음수 Breadth와 계산식·표본이 달라 값이 이어지지 않습니다.';
+  status.textContent='자동 갱신 · '+source+' 기준 · 코스피 '+lastDates[0]+' / 코스닥 '+lastDates[1]+' 자료. 20거래일 추이를 표시합니다. 평일 한국시간 09:30·10:30·13:00·15:40·21:30 수집 예약(실제 실행·배포는 지연될 수 있음). 장중 수치는 잠정치이며 15:40 이후 수집 자료를 종가 기준으로 확인하세요. 종전 DB 화면의 음수 Breadth와 계산식·표본이 달라 값이 이어지지 않습니다.';
   for(let m=0;m<2;m++){
    const rows=groups[m],name=names[m],latest=rows.at(-1);
    const breadth=rows.map(x=>x.breadth_60),hli=rows.map(x=>x.hli);
