@@ -38,7 +38,9 @@ status = {"updated": dt.datetime.now(dt.timezone.utc).isoformat(timespec="second
 def matching_issues(b):
     raw = finra_data("corporateAndAgencySecurities", {
         "fields": ["cusip", "issueSymbolIdentifier", "issuerName", "couponRate", "maturityDate", "standardAndPoorsRating", "moodysRating", "couponType", "lastTradeDate"],
-        "compareFilters": [{"fieldName": "issuerName", "fieldValue": b["issuer"], "compareType": "CONTAINS"}],
+        "multiFieldMatchFilters": [{"searchValue": word, "fuzzy": False, "synonym": False,
+                                    "fields": [{"name": "issuerName", "boost": 1}]}
+                                   for word in b["issuer"].split()],
         "limit": 500})
     matches = []
     for r in raw:
