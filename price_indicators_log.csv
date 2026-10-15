@@ -2,22 +2,22 @@ date,series,value,unit,source
 2026-10-05,ddr5_rdimm32_spot,2176,USD/모듈,DRAMeXchange(TrendForce) 현물가 세션 평균
 2026-10-05,ddr5_udimm16_spot,239,USD/모듈,DRAMeXchange(TrendForce) 현물가 세션 평균
 2026-10-14,or_models,613,개,OpenRouter rankings(view=day) · api/v1/models 가격
-2026-10-14,or_price_per_m,0.517469,USD/백만 토큰,OpenRouter rankings(view=day) · api/v1/models 가격
+2026-10-14,or_price_per_m,0.517468,USD/백만 토큰,OpenRouter rankings(view=day) · api/v1/models 가격
 2026-10-14,or_priced_cover,97.3149,%,OpenRouter rankings(view=day) · api/v1/models 가격
-2026-10-14,or_prompt_share,97.7465,%,OpenRouter rankings(view=day) · api/v1/models 가격
+2026-10-14,or_prompt_share,97.7464,%,OpenRouter rankings(view=day) · api/v1/models 가격
 2026-10-14,or_spend_musd,13.6478,백만 달러(추정),OpenRouter rankings(view=day) · api/v1/models 가격
-2026-10-14,or_tokens_t,26.3741,조 토큰,OpenRouter rankings(view=day) · api/v1/models 가격
+2026-10-14,or_tokens_t,26.3742,조 토큰,OpenRouter rankings(view=day) · api/v1/models 가격
 2026-10-15,ddr4_16gb_chip_spot,83.66,USD/칩,DRAMeXchange(TrendForce) 현물가 세션 평균
 2026-10-15,ddr5_16gb_chip_spot,60.433,USD/칩,DRAMeXchange(TrendForce) 현물가 세션 평균
 2026-10-15,gpu_a100_runpod_comm,1.39,USD/GPU·시간,RunPod 공시가(Community Cloud)
 2026-10-15,gpu_a100_runpod_secure,1.79,USD/GPU·시간,RunPod 공시가(Secure Cloud)
-2026-10-15,gpu_a100_vast,0.802222,USD/GPU·시간,Vast.ai 대여 가능 on-demand 매물 GPU당 시간당 가격 중앙값
-2026-10-15,gpu_a100_vast_n,38,매물 수,Vast.ai 대여 가능 on-demand 매물 GPU당 시간당 가격 중앙값
+2026-10-15,gpu_a100_vast,0.868889,USD/GPU·시간,Vast.ai 대여 가능 on-demand 매물 GPU당 시간당 가격 중앙값
+2026-10-15,gpu_a100_vast_n,35,매물 수,Vast.ai 대여 가능 on-demand 매물 GPU당 시간당 가격 중앙값
 2026-10-15,gpu_b200_runpod_comm,5.98,USD/GPU·시간,RunPod 공시가(Community Cloud)
 2026-10-15,gpu_b200_runpod_secure,7.99,USD/GPU·시간,RunPod 공시가(Secure Cloud)
-2026-10-15,gpu_b200_vast,8.12656,USD/GPU·시간,Vast.ai 대여 가능 on-demand 매물 GPU당 시간당 가격 중앙값
-2026-10-15,gpu_b200_vast_n,10,매물 수,Vast.ai 대여 가능 on-demand 매물 GPU당 시간당 가격 중앙값
+2026-10-15,gpu_b200_vast,8.12552,USD/GPU·시간,Vast.ai 대여 가능 on-demand 매물 GPU당 시간당 가격 중앙값
+2026-10-15,gpu_b200_vast_n,9,매물 수,Vast.ai 대여 가능 on-demand 매물 GPU당 시간당 가격 중앙값
 2026-10-15,gpu_h100_runpod_comm,2.69,USD/GPU·시간,RunPod 공시가(Community Cloud)
 2026-10-15,gpu_h100_runpod_secure,3.99,USD/GPU·시간,RunPod 공시가(Secure Cloud)
-2026-10-15,gpu_h100_vast,2.93417,USD/GPU·시간,Vast.ai 대여 가능 on-demand 매물 GPU당 시간당 가격 중앙값
+2026-10-15,gpu_h100_vast,2.93389,USD/GPU·시간,Vast.ai 대여 가능 on-demand 매물 GPU당 시간당 가격 중앙값
 2026-10-15,gpu_h100_vast_n,34,매물 수,Vast.ai 대여 가능 on-demand 매물 GPU당 시간당 가격 중앙값

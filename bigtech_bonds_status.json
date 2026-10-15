@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-15T06:54:23+00:00",
+ "updated": "2026-10-15T07:09:57+00:00",
  "bonds": {
   "CRWV": {
    "cusip": "U2069EAA8",
@@ -104,9 +104,14 @@
     "productType": "CA",
     "lastSalePrice": 90.96
    }
+  },
+  "AVGO": {
+   "n": 0
   }
  },
- "errors": [],
+ "errors": [
+  "search AVGO: HTTP Error 400: Bad Request"
+ ],
  "notes": [],
  "cookies": [
   "XSRF-TOKEN",
