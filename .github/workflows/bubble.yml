@@ -5,8 +5,11 @@ on:
     branches: [main]
     paths: ['collect_bubble.py', '.github/workflows/bubble.yml']
   schedule:
-    - cron: '30 22 * * 0-4'
-    - cron: '30 9 * * 1-5'
+    # GitHub 예약 실행 지연·누락 대비로 겹쳐 둠(같은 날 여러 번 돌아도 덮어쓰기라 무해)
+    - cron: '30 22 * * 0-4'          # 07:30 KST (미국 장 마감 반영)
+    - cron: '40 2 * * 1-5'           # 11:40 KST (장중)
+    - cron: '42 6,7 * * 1-5'         # 15:42·16:42 KST (국내 장 마감 종가)
+    - cron: '30 9,12 * * 1-5'        # 18:30·21:30 KST (재시도)
 permissions:
   contents: write
 concurrency:
