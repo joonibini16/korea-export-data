@@ -1,0 +1,30 @@
+{
+  "note": "화면 참조 쿠폰/만기는 채권 탐색 조건일 뿐입니다. FINRA 종목 원장과 실제 체결이 모두 확인된 경우에만 공개합니다.",
+  "targets": [
+    {"t":"CORZ","name":"코어 사이언티픽","group":"AI 클라우드·데이터센터 개발","issuer":"CORE SCIENTIFIC","coupon":7.75,"year":2031},
+    {"t":"APLD","name":"어플라이드 디지털","group":"AI 클라우드·데이터센터 개발","issuer":"APPLIED DIGITAL","coupon":9.25,"year":2030},
+    {"t":"CIFR","name":"사이퍼 마이닝","group":"AI 클라우드·데이터센터 개발","issuer":"CIPHER MINING","coupon":7.125,"year":2030},
+    {"t":"WULF","name":"테라울프","group":"AI 클라우드·데이터센터 개발","issuer":"TERAWULF","coupon":7.75,"year":2030},
+    {"t":"BEIGNET","name":"메타 하이페리온 SPV","group":"AI 클라우드·데이터센터 개발","issuer":"BEIGNET","coupon":6.581,"year":2049},
+    {"t":"HUT","name":"헛에이트","group":"AI 클라우드·데이터센터 개발","issuer":"HUT 8","coupon":6.192,"year":2042},
+    {"t":"STX","name":"씨게이트","group":"반도체·하드웨어","issuer":"SEAGATE","coupon":5.75,"year":2034},
+    {"t":"HPE","name":"HPE","group":"반도체·하드웨어","issuer":"HEWLETT PACKARD ENTERPRISE","coupon":6.2,"year":2035},
+    {"t":"MU","name":"마이크론","group":"반도체·하드웨어","issuer":"MICRON TECHNOLOGY","coupon":5.875,"year":2033},
+    {"t":"DELL","name":"델","group":"반도체·하드웨어","issuer":"DELL","coupon":5.75,"year":2033},
+    {"t":"INTC","name":"인텔","group":"반도체·하드웨어","issuer":"INTEL","coupon":2.45,"year":2029},
+    {"t":"AMD","name":"AMD","group":"반도체·하드웨어","issuer":"ADVANCED MICRO DEVICES","coupon":3.924,"year":2032},
+    {"t":"QCOM","name":"퀄컴","group":"반도체·하드웨어","issuer":"QUALCOMM","coupon":1.65,"year":2032},
+    {"t":"TSM","name":"TSMC","group":"반도체·하드웨어","issuer":"TAIWAN SEMICONDUCTOR","coupon":2.5,"year":2031},
+    {"t":"IRM","name":"아이언 마운틴","group":"데이터센터 리츠·인프라","issuer":"IRON MOUNTAIN","coupon":5.25,"year":2030},
+    {"t":"EQIX","name":"에퀴닉스","group":"데이터센터 리츠·인프라","issuer":"EQUINIX","coupon":3.2,"year":2029},
+    {"t":"DLR","name":"디지털 리얼티","group":"데이터센터 리츠·인프라","issuer":"DIGITAL REALTY","coupon":4.45,"year":2028},
+    {"t":"TLN","name":"탈렌","group":"전력","issuer":"TALEN ENERGY","coupon":6.25,"year":2034},
+    {"t":"NRG","name":"NRG","group":"전력","issuer":"NRG ENERGY","coupon":3.625,"year":2031},
+    {"t":"VST","name":"비스트라","group":"전력","issuer":"VISTRA","coupon":7.75,"year":2031},
+    {"t":"CEG","name":"컨스텔레이션","group":"전력","issuer":"CONSTELLATION ENERGY","coupon":5.8,"year":2033},
+    {"t":"SOFTBANK","name":"소프트뱅크그룹","group":"자금조달 (사모신용·투자자)","issuer":"SOFTBANK GROUP","coupon":9.75,"year":2034},
+    {"t":"OTF","name":"블루아울 테크놀로지 파이낸스","group":"자금조달 (사모신용·투자자)","issuer":"BLUE OWL TECHNOLOGY","coupon":6.5,"year":2029},
+    {"t":"OBDC","name":"블루아울 캐피털","group":"자금조달 (사모신용·투자자)","issuer":"BLUE OWL CAPITAL","coupon":6.2,"year":2030},
+    {"t":"ARCC","name":"아레스 캐피털","group":"자금조달 (사모신용·투자자)","issuer":"ARES CAPITAL","coupon":3.2,"year":2031}
+  ]
+}
