@@ -88,6 +88,28 @@ def ust_on(d, yrs):
     return pts[-1][1]
 
 
+
+def ytm_from_price(price, coupon, maturity, settle):
+    """반기 이표·클린가격 가정 만기수익률(%) — FINRA가 수익률을 비워 둔 체결(예: RegS 채권)에 사용."""
+    m = dt.date.fromisoformat(maturity)
+    cds, d = [], m
+    while d > settle:
+        cds.append(d)
+        y, mo = (d.year, d.month - 6) if d.month > 6 else (d.year - 1, d.month + 6)
+        d = dt.date(y, mo, min(d.day, 28))
+    cds.sort()
+    accr = coupon / 2 * (settle - d).days / max(1, (cds[0] - d).days)
+    dirty = price + accr
+
+    def pv(r):
+        return sum((coupon / 2 + (100 if i == len(cds) - 1 else 0)) / (1 + r / 2) ** ((cd - settle).days / 365.25 * 2) for i, cd in enumerate(cds))
+    lo, hi = -0.05, 0.8
+    for _ in range(100):
+        mid = (lo + hi) / 2
+        lo, hi = (mid, hi) if pv(mid) > dirty else (lo, mid)
+    return mid * 100
+
+
 # 3) 회사채 이력 (FINRA TRACE)
 rows = {}
 if OUT.exists():
@@ -118,16 +140,17 @@ for b in META:
     for r in got:
         d = str(r.get('tradeDate'))[:10]
         y, p = r.get('lastSaleYield'), r.get('lastSalePrice')
-        if y is None or d < '2015':
+        if d < '2015' or (y is None and p is None):
             continue
-        y = float(y)
+        calc = y is None
+        y = ytm_from_price(float(p), b['coupon'], b['maturity'], dt.date.fromisoformat(d)) if calc else float(y)
         yrs = (mat - dt.date.fromisoformat(d)).days / 365.25
         u = ust_on(d, yrs)
         if u is None or not (0 < y < 40):
             continue
         s = (y - u) * 100
         rows[(d, b['t'])] = dict(date=d, ticker=b['t'], price='' if p is None else f'{float(p):.3f}', ytm=f'{y:.3f}', ust=f'{u:.3f}', spread_bp=f'{s:.0f}',
-                                 pd5y=f'{(1 - math.exp(-5 * max(s, 0) / 1e4 / 0.6)) * 100:.1f}', source='FINRA TRACE EOD · FRED CMT 보간')
+                                 pd5y=f'{(1 - math.exp(-5 * max(s, 0) / 1e4 / 0.6)) * 100:.1f}', source='FINRA TRACE EOD 가격→수익률 계산 · FRED CMT 보간' if calc else 'FINRA TRACE EOD · FRED CMT 보간')
 
 # 4) 코어위브 등 CUSIP 미확인 종목: 발행사명으로 FINRA 채권 검색(진단용)
 for b in META:

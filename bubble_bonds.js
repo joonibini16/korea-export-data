@@ -7,8 +7,8 @@
  const COL={CRWV:'#ef4444',ORCL:'#f97316',META:'#60a5fa',AMZN:'#f59e0b',NVDA:'#22c55e',GOOGL:'#a78bfa',MSFT:'#2dd4bf',AAPL:'#e2e8f0'};
  let sel='CRWV',mode='all',charts={};
  const tAx=(mn,mx)=>({type:'linear',min:mn,max:mx,ticks:{maxTicksLimit:9,callback:v=>{const d=new Date(v);return String(d.getUTCFullYear()).slice(2)+'.'+String(d.getUTCMonth()+1).padStart(2,'0');}}});
- Promise.all([fetch('bigtech_bonds.json').then(r=>r.json()),fetch('bigtech_bonds_ref.csv?v='+Date.now(),{cache:'no-store'}).then(r=>r.text()),
-  fetch('bigtech_bonds_log.csv?v='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():'date,ticker\n').catch(()=>'date,ticker\n')]).then(([M,a,b])=>{
+ Promise.all([fetch('bigtech_bonds.json').then(r=>r.json()),fetch('bigtech_bonds_hist.csv?v='+Date.now(),{cache:'no-store'}).then(r=>r.text()),
+  Promise.resolve('date,ticker\n')]).then(([M,a,b])=>{
   const B=M.bonds,ref=parse(a),own=parse(b);
   const S={};B.forEach(x=>S[x.t]={ref:[],own:[]});
   ref.forEach(r=>{if(S[r.ticker])S[r.ticker].ref.push({d:r.date,y:+r.ytm,u:+r.ust,s:(+r.ytm-+r.ust)*100});});
@@ -38,7 +38,7 @@
    <p class="muted" style="margin-top:6px">행을 누르면 아래에 그 회사 차트가 나옵니다. 부도확률 = 1 − exp(−5 × 스프레드 ÷ (1 − 회수율 40%)).</p></div></div>
    <div class="g2 bb-g"><div><div class="bb-h"><h3>스프레드 추이 (bp, 로그)</h3><div class="seg" id="bbMode"><button data-m="all" class="${mode==='all'?'on':''}">전체</button><button data-m="big" class="${mode==='big'?'on':''}">빅테크만(코어위브 제외)</button></div></div><div class="chart" style="height:360px"><canvas id="bbTrend"></canvas></div></div>
    <div><div class="bb-h"><h3 id="bbOneT"></h3></div><div class="chart" style="height:360px"><canvas id="bbOne"></canvas></div><p class="muted" id="bbOneN"></p></div></div>
-   <p class="muted">회사별 대표 회사채 1종 기준. 과거 구간(~2026-10-14)은 나쁜양파(badonion.co.kr/credit) 차트 이미지를 판독한 근사치이고(±2bp 수준), 이후는 매일 자동 수집합니다: 회사채 = divvydiary 채권 페이지의 현재수익률로 역산한 가격 → 만기수익률 직접 계산(유럽 거래소 시세 기반이라 미국 장외 TRACE 체결 수익률과 수~수십 bp 다를 수 있음), 국채 = FRED 미 국채 고정만기 수익률을 남은 만기로 보간. 코어위브 채권은 무료 시세가 없어 판독치까지만 있으며 bigtech_bonds_manual.csv에 수동 기록하면 반영됩니다. 점선 = 자체 수집 구간. 출처가 달라 수준 차이(메타 약 +20bp 등)가 있으므로, 첫 자체 수집일(10/15)의 스프레드를 판독치(10/14)에 맞추고 그 이후의 일별 변화만 이어 붙인 연결값으로 표시합니다(회사별 보정 폭은 개별 차트 아래 표기, 원값은 bigtech_bonds_log.csv).</p>`;
+   <p class="muted">회사별 대표 회사채 1종 기준. 원본 출처: 회사채 = FINRA Fixed Income Data(TRACE) 일별 마지막 체결 가격·수익률(최근 5년, 장외 체결이 없는 날은 빈칸), 국채 = FRED 미 국채 고정만기 수익률(DGS1~20)을 날짜별 남은 만기로 보간한 같은 만기 국채. 코어위브(RegS)는 FINRA가 수익률을 비워 둬 체결 가격으로 만기수익률을 직접 계산합니다. 매일 10:37·16:47(KST) 자동 갱신(FINRA는 미국 전 영업일 기준).</p>`;
   Object.values(charts).forEach(c=>c.destroy());charts={};
   charts.bar=new Chart(document.getElementById('bbBar'),{type:'bar',data:{labels:rows.map(r=>r.x.name),datasets:[{data:rows.map(r=>r.l.s),backgroundColor:'#d9582b',borderRadius:2,barPercentage:.7}]},
    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,animation:false,layout:{padding:{right:230}},plugins:{legend:{display:false},rangeNav:false,tooltip:{callbacks:{label:t=>{const r=rows[t.dataIndex];return `${Math.round(r.l.s)}bp · 부도확률 ${PD(r.l.s).toFixed(1)}% · 수익률 ${r.l.y.toFixed(2)}%`;}}}},
