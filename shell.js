@@ -22,3 +22,21 @@
 })();
 // 모든 차트에 기간 조절 바(내비게이터) 자동 부착
 (function(){if(window.RangeNav&&window.RangeNav.v>=2)return;const s=document.createElement('script');s.src='./rangenav.js?v=1';(document.head||document.documentElement).appendChild(s);})();
+// 제목 옆 '업데이트 날짜·시간' 표시: 페이지가 읽는 데이터 파일의 마지막 갱신(커밋) 시각(data_updated.json)
+(function(){
+ const used=new Set(),DATA=/\.(csv|json)(\?|#|$)/i;
+ const of=window.fetch&&window.fetch.bind(window);
+ if(of)window.fetch=function(u,...a){try{const s=typeof u==='string'?u:(u&&u.url)||'';const loc=s.startsWith(location.origin)?s.slice(location.origin.length):s;
+  if(DATA.test(loc)&&!/^[a-z]+:\/\//i.test(loc)){const f=loc.split(/[?#]/)[0].replace(/^.*\//,'');if(f&&f!=='data_updated.json')used.add(f);}}catch(e){}return of(u,...a);};
+ const css=document.createElement('style');css.textContent='.upd-stamp{margin-left:10px;font-size:12px;font-weight:500;color:#7dd3fc;white-space:nowrap;vertical-align:middle;letter-spacing:0}h1 .upd-stamp{font-size:13px}';
+ (document.head||document.documentElement).appendChild(css);
+ let M=null;const fmt=s=>s.slice(0,10)+' '+s.slice(11,16);
+ function stamp(el,files){const fs=files.filter(f=>M[f]);if(!fs.length)return;const mx=fs.map(f=>M[f]).sort().at(-1);
+  let sp=[...el.children].find(c=>c.classList&&c.classList.contains('upd-stamp'));if(!sp){sp=document.createElement('span');sp.className='upd-stamp';el.append(sp);}
+  const t='업데이트 '+fmt(mx);if(sp.textContent!==t)sp.textContent=t;sp.title=fs.map(f=>f+' · '+fmt(M[f])).join('\n');}
+ function run(){if(!M)return;const main=document.querySelector('main')||document.body;if(!main)return;
+  const h1=[...main.querySelectorAll('h1')].find(h=>!h.closest('aside,nav,.sh-side,.sh-brand'));if(h1&&used.size)stamp(h1,[...used]);
+  const tagged=main.querySelectorAll('[data-upd]');tagged.forEach(el=>stamp(el,el.dataset.upd.split(',').map(x=>x.trim())));
+  if(!tagged.length&&used.size)main.querySelectorAll('h2').forEach(h=>{if(!h.closest('aside,nav,.sh-side,.bnav,.ptabs'))stamp(h,[...used]);});}
+ fetch('data_updated.json?v='+Math.floor(Date.now()/3e5),{cache:'no-store'}).then(r=>r.ok?r.json():null).then(j=>{if(!j)return;M=j.files||{};run();setInterval(run,2000);}).catch(()=>{});
+})();
