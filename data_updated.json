@@ -128,8 +128,20 @@
 "c": "2026-10-15T10:52+09:00",
 "a": null
 },
+"corporate_spread_resolved.json": {
+"c": "2026-10-15T16:53+09:00",
+"a": null
+},
 "corporate_spread_targets.json": {
 "c": "2026-10-15T16:48+09:00",
+"a": null
+},
+"corporate_spreads_hist.csv": {
+"c": "2026-10-15T16:53+09:00",
+"a": null
+},
+"corporate_spreads_status.json": {
+"c": "2026-10-15T16:53+09:00",
 "a": null
 },
 "country_1902301010.csv": {
