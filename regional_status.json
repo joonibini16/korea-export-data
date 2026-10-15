@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-10-15T11:58:45+09:00",
+  "updated_at": "2026-10-15T18:48:42+09:00",
   "source": "https://www.data.go.kr/data/15134343/openapi.do",
-  "requested_ranges": 214,
-  "received_rows": 21386,
-  "stored_rows": 78525,
+  "requested_ranges": 221,
+  "received_rows": 23045,
+  "stored_rows": 80184,
   "failures": [
     {
       "sido": "31",
@@ -933,6 +933,18 @@
         "2022.12",
         "2023.01"
       ],
+      "scope": "parent_HS6_proxy",
+      "historical_note": ""
+    },
+    {
+      "company": "000500",
+      "hs": "8544603010",
+      "query_hs": "854460",
+      "region": "군포시",
+      "sido": "41",
+      "months": 81,
+      "expected_months": 81,
+      "missing": [],
       "scope": "parent_HS6_proxy",
       "historical_note": ""
     },
@@ -2403,6 +2415,6 @@
     }
   ],
   "currency_scale_verified": false,
-  "implied_zero_rows": 7,
+  "implied_zero_rows": 0,
   "note": "응답에 같은 시도·HS의 다른 지역은 있으나 해당 지역이 없는 달은 수출 0(IMPLIED_ZERO_REGION_ABSENT)으로 저장. 지역 원본 HS6 보존. 관리 HS10과 상위 HS6 proxy 구분. HS4 미지원. 2022년 신설 HS6(300249·854143)의 2020~2021년은 HS2017 선행코드(300290·854140)로 연결하고 amount_unit에 표시. 절대 USD 배율 미검증."
 }
