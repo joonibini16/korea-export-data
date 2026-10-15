@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>버블 신호 모니터</title><script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script><script src="./chart_legend.js?v=3"></script><script src="./shell.js?v=9"></script>
+<title>버블 신호 모니터</title><script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script><script src="./chart_legend.js?v=3"></script><script src="./shell.js?v=10"></script>
 <style>
 :root{font-family:Arial,"Noto Sans KR",sans-serif}*{box-sizing:border-box}body{margin:0}main{max-width:1500px;margin:26px auto;padding:0 22px}h2{font-size:19px;margin:0 0 10px}p{line-height:1.6}.muted{font-size:13px}
 .panel{border-radius:12px;padding:18px 20px;margin-bottom:18px}.chart{height:300px;position:relative}.g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;align-items:start}.g2>.panel{margin:0;min-width:0}.g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.g3>.panel{margin:0;min-width:0}
@@ -68,7 +68,7 @@ td.h{font-weight:700}.flag{font-size:12px;padding:2px 8px;border-radius:999px;ba
 <section class="panel"><h2>민간</h2><p class="muted">M2 YoY, 은행 소비자대출 YoY, 은행 대출태도(대기업 C&I 기준 강화 응답 비율, 분기).</p><div class="chart"><canvas id="liqPriv"></canvas></div><p class="muted" id="liqPrivNote"></p></section>
 </div>
 
-<h2 class="sec">③ 신용 · 회사채 스프레드 · CDS · AI 인프라 기업</h2>
+<h2 class="sec">회사채 스프레드 · OAS · 하이퍼스케일러</h2>
 <div class="g2">
 <section class="panel"><h2>회사채 스프레드 (OAS, %p)</h2><p class="muted">ICE BofA 하이일드·CCC·BBB·투자등급 옵션조정 스프레드. 하이일드 5%p 이상, 3개월 +1%p 이상 확대는 경고.</p><div class="chart"><canvas id="oas"></canvas></div></section>
 <section class="panel"><h2>CDS 5년 (bp) · 하이퍼스케일러·AI 인프라</h2><p class="muted">메타·알파벳·아마존·MS·오라클·코어위브·엔비디아·브로드컴. 기업 CDS는 무료 실시간 자료가 없어 보도된 수치를 출처와 함께 기록합니다(cds_manual.csv, 로그 눈금 · 점선 밑줄 기업명에 마우스를 올리면 비고). 100bp를 넘으면 A등급 우량 기업으로는 이례적이고, 200bp 이상은 투기등급에 가까운 신용위험입니다. 개별 회사채 스프레드는 유료 자료(TRACE·블룸버그)라 업계 전체 투자등급·BBB 스프레드(왼쪽)를 대리 지표로 씁니다.</p><div class="table"><table><thead><tr><th>기업</th><th>최근 기록일</th><th>CDS (bp)</th><th>직전 대비</th><th>출처</th></tr></thead><tbody id="cdsTable"></tbody></table></div></section>
@@ -78,7 +78,7 @@ td.h{font-weight:700}.flag{font-size:12px;padding:2px 8px;border-radius:999px;ba
 <section class="panel" id="btBondsSec"><h2>빅테크 회사채 · 국채보다 얼마나 더 얹어 주나 (bp)</h2><p class="muted" style="margin:0 0 10px">회사별 대표 회사채 1종의 같은 만기 미 국채 대비 스프레드. 스프레드가 클수록 시장이 보는 부도 위험이 큽니다.</p><div id="btBonds"><p class="muted">불러오는 중…</p></div></section>
 <section class="panel"><h2>AI 인프라 기업 주가 · 신용 대리지표</h2><p class="muted">CDS가 넓어지는 기업의 주가 흐름과 하이일드·투자등급 채권 ETF(HYG·LQD)를 함께 봅니다.</p><div class="table"><table><thead><tr><th>기업</th><th>최근일</th><th>1주</th><th>1개월</th><th>3개월</th><th>52주 고점 대비</th></tr></thead><tbody id="ai"></tbody></table></div></section>
 
-<h2 class="sec">④ 그 밖의 위험 신호</h2>
+<h2 class="sec">③ 그 밖의 위험 신호</h2>
 <div class="g2">
 <section class="panel"><h2>변동성 · 금융여건</h2><p class="muted">VIX, 시카고 연준 금융여건지수(NFCI, 0 이상 = 평균보다 긴축), 세인트루이스 연준 금융스트레스지수.</p><div class="chart"><canvas id="vol"></canvas></div></section>
 <section class="panel"><h2>금리 · 장단기 차이</h2><p class="muted">10년−3개월, 10년−2년 금리차와 10년 실질금리. 역전 후 다시 벌어질 때(재스티프닝) 경기침체가 뒤따른 경우가 많습니다.</p><div class="chart"><canvas id="rates"></canvas></div></section>
@@ -94,28 +94,28 @@ td.h{font-weight:700}.flag{font-size:12px;padding:2px 8px;border-radius:999px;ba
 <script>(function(){const b=document.getElementById('sectorStocks'),c=document.getElementById('sectorStocksCount');if(!b||!c)return;new MutationObserver(()=>{c.textContent=b.children.length?'· '+b.children.length+'종목 (표 안에서 스크롤)':'';const box=b.closest('.scroll-box');if(box)box.scrollTop=0;}).observe(b,{childList:true});})();</script>
 <script>(function(){const main=document.querySelector('main');if(!main)return;const nav=document.createElement('div');nav.setAttribute('role','navigation');nav.className='bnav';nav.setAttribute('aria-label','섹션 바로가기');
  const T=[];const first=main.querySelector('section.panel');if(first){first.classList.add('bnav-t');T.push([first,'종합 경고등']);}
- main.querySelectorAll('h2.sec').forEach(h=>{let t=h.textContent.trim().replace(/^[①-⑩]\s*/,'');t=t.split(' · ')[0];T.push([h,t]);if(/CDS/.test(h.textContent)){const g=document.getElementById('cdsGrid');const sec=g&&g.closest('section');if(sec){sec.classList.add('bnav-t');T.push([sec,'AI 기업 CDS']);}}if(/CDS/.test(h.textContent)){const bs=document.getElementById('btBondsSec');if(bs){bs.classList.add('bnav-t');T.push([bs,'빅테크 회사채']);}}});
+ main.querySelectorAll('h2.sec').forEach(h=>{let t=h.textContent.trim().replace(/^[①-⑩]\s*/,'');t=t.split(' · ')[0];T.push([h,t]);if(/CDS|회사채 스프레드 · OAS/.test(h.textContent)){const g=document.getElementById('cdsGrid');const sec=g&&g.closest('section');if(sec){sec.classList.add('bnav-t');T.push([sec,'AI 기업 CDS']);}}if(/CDS|회사채 스프레드 · OAS/.test(h.textContent)){const bs=document.getElementById('btBondsSec');if(bs){bs.classList.add('bnav-t');T.push([bs,'빅테크 회사채']);}}});
  const links=T.map(([el,t],i)=>{const a=document.createElement('a');a.href='#';a.textContent=t;a.onclick=e=>{e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});};nav.append(a);return a;});
  const hero=main.querySelector('.sh-hero')||main.querySelector('h1');const err=document.getElementById('err');(err||hero).after(nav);
  const mark=()=>{const y=nav.getBoundingClientRect().bottom+12;let k=-1;T.forEach(([el],i)=>{if(el.offsetParent===null)return;if(k<0||el.getBoundingClientRect().top<=y+40)k=i;});links.forEach((a,i)=>a.classList.toggle('on',i===k));const a=links[k];if(a){const l=a.offsetLeft-nav.offsetLeft,r=l+a.offsetWidth;if(l<nav.scrollLeft||r>nav.scrollLeft+nav.clientWidth)nav.scrollTo({left:l-20,behavior:'smooth'});}};
  addEventListener('scroll',()=>requestAnimationFrame(mark),{passive:true});setTimeout(mark,500);window.__bnav={T,links,nav,mark};})();</script>
 <script>(function(){// 페이지 안 탭: 버블 신호 / 시장 Breadth
  const main=document.querySelector('main'),nav=window.__bnav;if(!main||!nav)return;
- const isB=t=>/시장 내부 체력|Breadth/.test(t);
+ const isB=t=>/시장 내부 체력|Breadth/.test(t),isC=t=>/^\s*회사채 스프레드 · OAS/.test(t);
  let grp='bubble';const kids=[...main.children];
- for(const e of kids){if(e===nav.nav||e.classList.contains('sh-hero')||e.tagName==='H1'||(e.previousElementSibling&&e.previousElementSibling.tagName==='H1')||e.id==='err'||e.classList.contains('ptabs'))continue;if(e.matches('h2.sec'))grp=isB(e.textContent)?'breadth':'bubble';e.dataset.grp=grp;}
+ for(const e of kids){if(e===nav.nav||e.classList.contains('sh-hero')||e.tagName==='H1'||(e.previousElementSibling&&e.previousElementSibling.tagName==='H1')||e.id==='err'||e.classList.contains('ptabs'))continue;if(e.matches('h2.sec'))grp=isB(e.textContent)?'breadth':isC(e.textContent)?'credit':'bubble';e.dataset.grp=grp;}
  const bar=document.createElement('div');bar.className='ptabs';bar.innerHTML='<button data-g="bubble">버블 신호</button><button data-g="breadth">시장 Breadth (시장 폭·신고가·RSI·규모별·업종별)</button>';
  nav.nav.before(bar);bar.style.display='none'; // 탭 버튼 대신 왼쪽 메뉴에서 같은 단계로 이동
- const h1=document.querySelector('main h1'),sub=h1&&h1.nextElementSibling,H={bubble:[h1?.textContent,sub?.textContent,document.title],breadth:['시장 Breadth 모니터','시장 폭(Breadth_60)·신고가 비율·RSI, 규모별(대형·중형·소형) 60일 신고가−신저가, 업종별 시장 내부 체력을 한 화면에서 봅니다. 지수가 오르는데 폭이 좁아지면(쏠림 랠리) 상승의 질이 나빠지고 있다는 신호입니다.','시장 Breadth 모니터']};
+ const h1=document.querySelector('main h1'),sub=h1&&h1.nextElementSibling,H={bubble:[h1?.textContent,sub?.textContent,document.title],breadth:['시장 Breadth 모니터','시장 폭(Breadth_60)·신고가 비율·RSI, 규모별(대형·중형·소형) 60일 신고가−신저가, 업종별 시장 내부 체력을 한 화면에서 봅니다. 지수가 오르는데 폭이 좁아지면(쏠림 랠리) 상승의 질이 나빠지고 있다는 신호입니다.','시장 Breadth 모니터'],credit:['신용 스프레드 모니터','회사채 스프레드(하이일드·투자등급 OAS), AI 인프라·빅테크 기업 CDS, 빅테크 대표 회사채의 같은 만기 국채 대비 스프레드를 한 화면에서 봅니다. 스프레드가 벌어지면 시장이 보는 부도 위험과 차입 비용이 올라간다는 뜻입니다.','신용 스프레드 모니터']};
  function show(g,scroll){for(const e of main.querySelectorAll('[data-grp]'))e.style.display=e.dataset.grp===g?'':'none';
   bar.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.g===g));
   nav.links.forEach((a,i)=>{const el=nav.T[i][0];const g2=(el.dataset.grp||el.closest('[data-grp]')?.dataset.grp);a.style.display=g2===g?'':'none';});
-  try{const u=new URL(location.href);if(g==='breadth')u.searchParams.set('tab','breadth');else u.searchParams.delete('tab');history.replaceState(null,'',u);}catch(e){}
+  try{const u=new URL(location.href);if(g!=='bubble')u.searchParams.set('tab',g);else u.searchParams.delete('tab');history.replaceState(null,'',u);}catch(e){}
   if(h1){h1.textContent=H[g][0];if(sub&&H[g][1])sub.textContent=H[g][1];document.title=H[g][2];}
-  document.querySelectorAll('.sh-link').forEach(a=>{const h=a.getAttribute('href')||'';if(h.includes('bubble.html'))a.classList.toggle('active',(h.includes('tab=breadth'))===(g==='breadth'));});
+  document.querySelectorAll('.sh-link').forEach(a=>{const h=a.getAttribute('href')||'';if(h.includes('bubble.html'))a.classList.toggle('active',((h.match(/tab=(\w+)/)||[])[1]||'bubble')===g);});
   dispatchEvent(new Event('resize'));setTimeout(nav.mark,50);if(scroll)scrollTo({top:0,behavior:'smooth'});}
  bar.addEventListener('click',e=>{const b=e.target.closest('button');if(b)show(b.dataset.g,true);});
- show(new URLSearchParams(location.search).get('tab')==='breadth'?'breadth':'bubble',false);})();</script>
+ show(({breadth:'breadth',credit:'credit'})[new URLSearchParams(location.search).get('tab')]||'bubble',false);})();</script>
 </body></html>
 
 

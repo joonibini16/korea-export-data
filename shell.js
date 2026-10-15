@@ -4,7 +4,7 @@
   ['업체·실적',[['./regional.html','지역 수출 · 업체 실적 추적',['regional.html']],['./forecast_tracker.html','매출 예측 추적',['forecast_tracker.html']]]],
   ['해외 테크',[['./taiwan.html','대만 테크 월매출',['taiwan.html']],['./japan.html','일본 테크 수출',['japan.html']],['./global_earnings.html','해외 실적·컨콜 변곡점',['global_earnings.html']]]],
   ['산업 지표',[['./ess.html','ESS 배터리 설치량',['ess.html']],['./prices.html','가격 지표 (토큰·GPU·D램)',['prices.html']]]],
-  ['시장',[['./etf.html','테마 ETF 보드',['etf.html']],['./bubble.html','버블 신호 모니터',['bubble.html']],['./bubble.html?tab=breadth','시장 Breadth',['bubble.html']]]]];
+  ['시장',[['./etf.html','테마 ETF 보드',['etf.html']],['./bubble.html','버블 신호 모니터',['bubble.html']],['./bubble.html?tab=breadth','시장 Breadth',['bubble.html']],['./bubble.html?tab=credit','신용 스프레드',['bubble.html']]]]];
  const page=(location.pathname.split('/').pop()||'');
  function build(){if(document.querySelector('.sh-side'))return;const side=document.createElement('aside');side.className='sh-side';
   side.innerHTML='<div class="sh-brand">수출·실적 모니터</div><div class="sh-sub">Korea Export & Earnings Dashboard</div><p class="sh-note">관세청 수출·지역 통계와 공시 실적, 컨센서스를 한곳에서 점검합니다. 하나의 지표보다 여러 데이터가 같은 방향을 가리키는지 확인하세요.</p>';
