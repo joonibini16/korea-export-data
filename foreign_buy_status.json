@@ -1,5 +1,5 @@
 {
- "run": "2026-10-15T18:08:30+09:00",
+ "run": "2026-10-15T18:11:37+09:00",
  "steps": [
   {
    "step": "loader",
@@ -8,6 +8,10 @@
     "__smVisitorID",
     "JSESSIONID"
    ]
+  },
+  {
+   "step": "login",
+   "skipped": "KRX_ID/KRX_PW 시크릿 없음"
   },
   {
    "step": "investor",
