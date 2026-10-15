@@ -1,11 +1,11 @@
 {
-  "updated": "2026-10-15T08:04:47+00:00",
+  "updated": "2026-10-15T17:18:19+00:00",
   "targets": 25,
   "bonds": {
     "CORZ": {
       "name": "코어 사이언티픽",
       "state": "collected",
-      "matches": 2,
+      "matches": 1,
       "cusip": "U2062LAA9",
       "coupon": 7.75,
       "maturity": "2031-05-15",
@@ -30,17 +30,17 @@
     "BEIGNET": {
       "name": "메타 하이페리온 SPV",
       "state": "collected",
-      "matches": 2,
+      "matches": 1,
       "cusip": "U06930AA6",
       "coupon": 6.581,
       "maturity": "2049-05-30",
-      "n": 84,
-      "latest": "2026-10-13"
+      "n": 85,
+      "latest": "2026-10-14"
     },
     "HUT": {
       "name": "헛에이트",
       "state": "collected",
-      "matches": 2,
+      "matches": 1,
       "cusip": "U43898AA0",
       "coupon": 6.192,
       "maturity": "2042-11-15",
@@ -50,7 +50,7 @@
     "STX": {
       "name": "씨게이트",
       "state": "collected",
-      "matches": 5,
+      "matches": 1,
       "cusip": "81180LAS4",
       "coupon": 5.75,
       "maturity": "2034-12-01",
@@ -60,7 +60,7 @@
     "HPE": {
       "name": "HPE",
       "state": "collected",
-      "matches": 3,
+      "matches": 1,
       "cusip": "U42832AJ1",
       "coupon": 6.2,
       "maturity": "2035-10-15",
@@ -70,12 +70,12 @@
     "MU": {
       "name": "마이크론",
       "state": "collected",
-      "matches": 2,
+      "matches": 1,
       "cusip": "595112BZ5",
       "coupon": 5.875,
       "maturity": "2033-02-09",
-      "n": 873,
-      "latest": "2026-10-13"
+      "n": 874,
+      "latest": "2026-10-14"
     },
     "DELL": {
       "name": "델",
@@ -84,8 +84,8 @@
       "cusip": "24703DBL4",
       "coupon": 5.75,
       "maturity": "2033-02-01",
-      "n": 921,
-      "latest": "2026-10-13"
+      "n": 922,
+      "latest": "2026-10-14"
     },
     "INTC": {
       "name": "인텔",
@@ -94,8 +94,8 @@
       "cusip": "458140BH2",
       "coupon": 2.45,
       "maturity": "2029-11-15",
-      "n": 1226,
-      "latest": "2026-10-13"
+      "n": 1227,
+      "latest": "2026-10-14"
     },
     "AMD": {
       "name": "AMD",
@@ -104,13 +104,13 @@
       "cusip": "007903BF3",
       "coupon": 3.924,
       "maturity": "2032-06-01",
-      "n": 1039,
-      "latest": "2026-10-13"
+      "n": 1040,
+      "latest": "2026-10-14"
     },
     "QCOM": {
       "name": "퀄컴",
       "state": "collected",
-      "matches": 3,
+      "matches": 1,
       "cusip": "747525BM4",
       "coupon": 1.65,
       "maturity": "2032-05-20",
@@ -134,8 +134,8 @@
       "cusip": "29444UBE5",
       "coupon": 3.2,
       "maturity": "2029-11-18",
-      "n": 1224,
-      "latest": "2026-10-13"
+      "n": 1225,
+      "latest": "2026-10-14"
     },
     "DLR": {
       "name": "디지털 리얼티",
@@ -145,7 +145,7 @@
     "TLN": {
       "name": "탈렌",
       "state": "collected",
-      "matches": 2,
+      "matches": 1,
       "cusip": "U8302WAJ3",
       "coupon": 6.25,
       "maturity": "2034-02-01",
@@ -155,7 +155,7 @@
     "NRG": {
       "name": "NRG",
       "state": "collected",
-      "matches": 3,
+      "matches": 1,
       "cusip": "U66962AW8",
       "coupon": 3.625,
       "maturity": "2031-02-15",
@@ -165,7 +165,7 @@
     "VST": {
       "name": "비스트라",
       "state": "collected",
-      "matches": 3,
+      "matches": 1,
       "cusip": "U9226VAM9",
       "coupon": 7.75,
       "maturity": "2031-10-15",
@@ -179,18 +179,18 @@
       "cusip": "210385AC4",
       "coupon": 5.8,
       "maturity": "2033-03-01",
-      "n": 875,
-      "latest": "2026-10-13"
+      "n": 876,
+      "latest": "2026-10-14"
     },
     "SOFTBANK": {
       "name": "소프트뱅크그룹",
       "state": "collected",
-      "matches": 2,
+      "matches": 1,
       "cusip": "J7600PAC7",
       "coupon": 9.75,
       "maturity": "2034-04-01",
-      "n": 12,
-      "latest": "2026-10-13"
+      "n": 13,
+      "latest": "2026-10-14"
     },
     "OTF": {
       "name": "블루아울 테크놀로지 파이낸스",
@@ -199,8 +199,8 @@
       "cusip": "095924AD8",
       "coupon": 6.5,
       "maturity": "2029-10-15",
-      "n": 92,
-      "latest": "2026-10-13"
+      "n": 93,
+      "latest": "2026-10-14"
     },
     "OBDC": {
       "name": "블루아울 캐피털",
@@ -214,5 +214,5 @@
     }
   },
   "errors": [],
-  "rows": 6924
+  "rows": 6933
 }
