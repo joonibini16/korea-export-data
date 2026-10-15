@@ -36,8 +36,8 @@ status = {"updated": dt.datetime.now(dt.timezone.utc).isoformat(timespec="second
 
 
 def matching_issues(b):
-    raw = finra_data("CorporateAndAgencySecurities", {
-        "fields": ["cusip", "issueSymbolIdentifier", "issuerName", "couponRate", "maturityDate"],
+    raw = finra_data("corporateAndAgencySecurities", {
+        "fields": ["cusip", "issueSymbolIdentifier", "issuerName", "couponRate", "maturityDate", "standardAndPoorsRating", "moodysRating", "couponType", "lastTradeDate"],
         "compareFilters": [{"fieldName": "issuerName", "fieldValue": b["issuer"], "compareType": "CONTAINS"}],
         "limit": 500})
     matches = []
@@ -50,7 +50,7 @@ def matching_issues(b):
             if (abs(coupon - b["coupon"]) <= 0.005 and year == b["year"]
                     and len(cusip) == 9 and maturity > today.isoformat()):
                 matches.append({"cusip": cusip, "coupon": coupon, "maturity": maturity,
-                                "issuer": str(r.get("issuerName") or "")})
+                                "issuer": str(r.get("issuerName") or ""),\n                                "rating_sp": r.get("standardAndPoorsRating"), "rating_moody": r.get("moodysRating"),\n                                "coupon_type": r.get("couponType")})
         except (TypeError, ValueError, KeyError):
             continue
     return sorted(matches, key=lambda x: x["maturity"])
