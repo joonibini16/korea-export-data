@@ -84,13 +84,12 @@
   {
    "t": "AVGO",
    "name": "브로드컴",
-   "bond": "검색 중",
-   "coupon": 0,
-   "maturity": "2031-01-01",
-   "isin": "",
+   "bond": "4.2% 2030",
+   "coupon": 4.2,
+   "maturity": "2030-10-15",
+   "isin": "US11135FCW95",
    "url": null,
-   "issuer": "BROADCOM",
-   "search_only": true
+   "issuer": "BROADCOM"
   }
  ]
 }
