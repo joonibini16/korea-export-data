@@ -1,13 +1,9 @@
 {
- "run": "2026-10-15T18:43:22+09:00",
+ "run": "2026-10-15T19:07:13+09:00",
  "steps": [
   {
    "step": "loader",
-   "status": 200,
-   "cookies": [
-    "__smVisitorID",
-    "JSESSIONID"
-   ]
+   "status": 200
   },
   {
    "step": "login",
@@ -17,44 +13,15 @@
    "msg": "정상"
   },
   {
-   "step": "investor",
-   "day": "20261015",
-   "n": {
-    "KOSPI": 885,
-    "KOSDAQ": 1713
-   },
-   "keys": [
-    "ISU_SRT_CD",
-    "ISU_NM",
-    "ASK_TRDVOL",
-    "BID_TRDVOL",
-    "NETBID_TRDVOL",
-    "ASK_TRDVAL",
-    "BID_TRDVAL",
-    "NETBID_TRDVAL"
-   ]
+   "step": "days",
+   "fetched": 63,
+   "total": 63,
+   "latest": "2026-10-15"
   },
   {
-   "step": "cap_openapi",
-   "market": "KOSPI",
-   "error": "KRX_API_KEY 없음"
-  },
-  {
-   "step": "merge",
-   "market": "KOSPI",
-   "n": 881,
-   "cap_source": "krx"
-  },
-  {
-   "step": "cap_openapi",
-   "market": "KOSDAQ",
-   "error": "KRX_API_KEY 없음"
-  },
-  {
-   "step": "merge",
-   "market": "KOSDAQ",
-   "n": 1691,
-   "cap_source": "krx"
+   "step": "build",
+   "days": 60,
+   "series": 2202
   }
  ],
  "ok": true
