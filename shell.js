@@ -7,7 +7,7 @@
   ['시장',[['./etf.html','테마 ETF 보드',['etf.html']],['./bubble.html','버블 신호 모니터',['bubble.html']],['./bubble.html?tab=breadth','시장 Breadth',['bubble.html']],['./bubble.html?tab=credit','신용 스프레드',['bubble.html']]]]];
  const page=(location.pathname.split('/').pop()||'');
  function build(){if(document.querySelector('.sh-side'))return;const side=document.createElement('aside');side.className='sh-side';
-  side.innerHTML='<div class="sh-brand">수출·실적 모니터</div><div class="sh-sub">Korea Export & Earnings Dashboard</div><p class="sh-note">관세청 수출·지역 통계와 공시 실적, 컨센서스를 한곳에서 점검합니다. 하나의 지표보다 여러 데이터가 같은 방향을 가리키는지 확인하세요.</p>';
+  side.innerHTML='<div class="sh-brand">수출·실적 모니터</div><div class="sh-sub">Korea Export & Earnings Dashboard</div>';
   for(const [g,links] of GROUPS){const h=document.createElement('div');h.className='sh-group';h.textContent=g;side.append(h);const box=document.createElement('div');box.className='sh-links';
    for(const [href,label,files] of links){const a=document.createElement('a');const tabQ=(href.split('?tab=')[1]||''),curTab=new URLSearchParams(location.search).get('tab')||'';a.className='sh-link'+(files.includes(page)&&tabQ===curTab?' active':'');a.href=href;a.textContent=label;box.append(a);}side.append(box);}
   document.body.prepend(side);
