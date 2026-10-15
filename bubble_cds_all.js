@@ -32,6 +32,20 @@
    plugins:{legend:{position:'top',labels:{boxWidth:14,filter:i=>!/보도$|추정$/.test(i.text)}},
     tooltip:{itemSort:(a,b)=>b.parsed.y-a.parsed.y,callbacks:{title:it=>new Date(it[0].parsed.x).toISOString().slice(0,10),label:t=>{const d=t.dataset;if(d._dots){const p=d._dots[t.dataIndex];return `${d.label}: ${t.parsed.y}bp (${p.src||''})`;}return `${d._n||d.label}: ${Math.round(t.parsed.y)}bp`;}}}},
    scales:{x:{type:'linear',min:mn,max:mx,ticks:{maxTicksLimit:12,callback:tick}},y:{beginAtZero:true,title:{display:true,text:'5Y CDS (bp)'}},...(ds.some(d=>d.yAxisID==='y1')?{y1:{position:'right',min:0,grid:{drawOnChartArea:false},ticks:{color:'#60a5fa'},title:{display:true,text:'코어위브 5Y CDS (bp, 우)',color:'#60a5fa'}}}:{})}}});
+  // 오른쪽 'CDS 5년' 표도 같은 일별 이력(판독 → FINRA 매일 추정)으로 최신화
+  {const NM={ORCL:'Oracle',SPCX:'SpaceX',AVGO:'Broadcom',META:'Meta',NVDA:'Nvidia',AMZN:'Amazon',GOOGL:'Alphabet',MSFT:'Microsoft',AAPL:'Apple',CRWV:'CoreWeave'};
+   const patch=()=>{const tb=document.getElementById('cdsTable');if(!tb||!tb.rows.length)return false;
+    const have={};[...tb.rows].forEach(tr=>{const m=(tr.cells[0]?.textContent||'').match(/\(([A-Z]+)\)/);if(m)have[m[1]]=tr;});
+    Object.entries(S).forEach(([t,s])=>{const l=s.line.at(-1);if(!l)return;const p=s.line.at(-2);let tr=have[t];
+     if(!tr){tr=document.createElement('tr');for(let i=0;i<5;i++)tr.insertCell();tr.cells[0].textContent=(NM[t]||t)+' ('+t+')';tb.append(tr);}
+     const old=tr.cells[1].textContent;if(old&&old>l.d)return; // 보도 기록이 더 최신이면 유지
+     tr.cells[1].textContent=l.d;tr.cells[2].textContent=Math.round(l.v).toLocaleString();tr.cells[2].style.background=l.v>=200?'#5b1a1a':l.v>=100?'#3b2a12':'';
+     tr.cells[3].textContent=p?((l.v-p.v>0?'+':'')+Math.round(l.v-p.v)+'bp'):'—';
+     const src=l.o===3?'FINRA 추정':l.o===2?'보도':'판독';const a=tr.cells[4].querySelector('a');tr.cells[4].replaceChildren(document.createTextNode(src+(a?' · ':'')));if(a){a.textContent='보도';tr.cells[4].append(a);}});
+    [...tb.rows].sort((x,y)=>(+y.cells[2].textContent.replace(/,/g,'')||0)-(+x.cells[2].textContent.replace(/,/g,'')||0)).forEach(r=>tb.append(r));
+    const h=tb.closest('section')?.querySelector('p.muted');if(h&&!h.dataset.daily){h.dataset.daily=1;h.insertAdjacentHTML('beforeend',' <b>최근 기록일·CDS·직전 대비는 아래 통합 차트와 같은 일별 이력(Bloomberg 차트 판독 → 이후 FINRA 회사채로 매일 추정)으로 갱신되며, 출처 칸에 기준을 표시합니다.</b>');}
+    return true;};
+   let k=0;const iv=setInterval(()=>{if(patch()||++k>40)clearInterval(iv);},250);}
   // 표
   const at=(a,d)=>{let p=null;for(const x of a){if(x.d<=d)p=x;else break;}return p;};const sh=(d,n)=>new Date(ts(d)-n*DAY).toISOString().slice(0,10);
   const rows=T.map(([t,n])=>{const s=S[t];const l=s.line.at(-1);if(!l)return null;const m1=at(s.line,sh(l.d,30)),m3=at(s.line,sh(l.d,91)),y0=s.line.find(p=>p.d>='2025-01-01'),pk=s.line.reduce((m,p)=>p.v>m.v?p:m,s.line[0]);
