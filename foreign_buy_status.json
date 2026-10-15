@@ -1,0 +1,18 @@
+{
+ "run": "2026-10-15T18:08:30+09:00",
+ "steps": [
+  {
+   "step": "loader",
+   "status": 200,
+   "cookies": [
+    "__smVisitorID",
+    "JSESSIONID"
+   ]
+  },
+  {
+   "step": "investor",
+   "day": "20261015",
+   "error": "400 'LOGOUT'"
+  }
+ ]
+}
