@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-15T07:09:57+00:00",
+ "updated": "2026-10-15T07:14:14+00:00",
  "bonds": {
   "CRWV": {
    "cusip": "U2069EAA8",
@@ -106,17 +106,25 @@
    }
   },
   "AVGO": {
-   "n": 0
+   "cusip": "11135FCW9",
+   "n": 264,
+   "first": "2025-09-22",
+   "last": "2026-10-13",
+   "sample": {
+    "cusip": "11135FCW9",
+    "tradeDate": "2026-10-13",
+    "lastSaleYield": 5.72,
+    "productType": "CA",
+    "lastSalePrice": 94.622
+   }
   }
  },
- "errors": [
-  "search AVGO: HTTP Error 400: Bad Request"
- ],
+ "errors": [],
  "notes": [],
  "cookies": [
   "XSRF-TOKEN",
   "__cf_bm",
   "_cfuvid"
  ],
- "rows": 8147
+ "rows": 8411
 }
