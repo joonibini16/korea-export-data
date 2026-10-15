@@ -88,7 +88,7 @@ def parse_title(title):
 
 
 def parse_five(text, label):
-    pat = rf"{label}\s*(?:\(전년동기대비 증감률\))?\s*([\-0-9,]+)\s+([\-0-9,]+)\s+([\-0-9,]+)\s+([\-0-9,]+)\s+([\-0-9,]+)"
+    pat = rf"{label}\s*(?:\(\s*전년동기대비\s*증감률\s*\))?\s*([\-0-9,]+)\s+([\-0-9,]+)\s+([\-0-9,]+)\s+([\-0-9,]+)\s+([\-0-9,]+)"
     m = re.search(pat, text)
     if not m:
         return None
@@ -96,7 +96,7 @@ def parse_five(text, label):
 
 
 def parse_rates_after(text, label):
-    pat = rf"{label}\s*(?:\(전년동기대비 증감률\))?\s*[\-0-9,]+\s+[\-0-9,]+\s+[\-0-9,]+\s+[\-0-9,]+\s+[\-0-9,]+\s*" + \
+    pat = rf"{label}\s*(?:\(\s*전년동기대비\s*증감률\s*\))?\s*[\-0-9,]+\s+[\-0-9,]+\s+[\-0-9,]+\s+[\-0-9,]+\s+[\-0-9,]+\s*" + \
           r"\(([^)]+)\)\s*\(([^)]+)\)\s*\(([^)]+)\)\s*\(([^)]+)\)\s*\(([^)]+)\)"
     m = re.search(pat, text)
     if not m:
@@ -125,10 +125,12 @@ def parse_detail(url, title):
     if not exports or not imports or not balances or not export_rates or not import_rates:
         return None
 
+    # 발표문 띄어쓰기 변화에 견디도록 공백을 제거한 본문으로 조업일수·일평균·반도체를 찾음
+    tight = re.sub(r"\s+", "", text)
     work = re.search(
         r"조업일수\[\(.’?\d{2}\)([0-9.]+)\s*일,\(.’?\d{2}\)([0-9.]+)\s*일\].*?"
         r"일평균수출액\[\(.’?\d{2}\.\d{1,2}\.\)([0-9.]+),\(.’?\d{2}\.\d{1,2}\.\)([0-9.]+)\s*억\s*달러\]\s*([△0-9.\-]+)%",
-        text,
+        tight,
     )
     # fallback for curly apostrophes / spacing variants
     if not work:
@@ -138,7 +140,7 @@ def parse_detail(url, title):
             text,
         )
 
-    semi = re.search(r"반도체\(([0-9,.]+)\s*억\s*달러\)", text)
+    semi = re.search(r"반도체\(([0-9,.]+)억달러\)", tight)
     base_month, period, end = meta
 
     row = {
@@ -196,12 +198,13 @@ def main():
             changed = True
             print("added", row["기준월"], row["기간구분"], row["발표일"])
 
-    if failures:
-        raise RuntimeError("; ".join(failures))
+    # 읽은 발표분은 먼저 저장하고(일부 실패해도 정상 건은 반영), 실패가 있으면 그 뒤에 오류로 알림
     if changed:
         write_rows(list(by_key.values()))
     else:
         print("no new provisional release")
+    if failures:
+        raise RuntimeError("; ".join(failures))
 
 
 if __name__ == "__main__":

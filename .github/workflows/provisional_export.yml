@@ -32,6 +32,7 @@ jobs:
         run: python -m pip install requests beautifulsoup4
       - name: Collect official provisional releases
         run: python collect_provisional_official.py
+        continue-on-error: true
       - name: Commit new provisional data
         run: |
           git config user.name "github-actions[bot]"
