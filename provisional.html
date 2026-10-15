@@ -19,6 +19,11 @@ h1{margin:0 0 6px}.sub{color:var(--muted);line-height:1.6}.nav{display:flex;gap:
 h2{margin:0 0 14px}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse}th,td{padding:11px;border-bottom:1px solid var(--border);white-space:nowrap}th{background:#f9fafb;text-align:center}td.num{text-align:right}
 .empty{padding:28px;text-align:center;color:var(--muted);border:1px dashed #cbd5e1;border-radius:10px;background:#fafafa}
 @media(max-width:900px){.grid{grid-template-columns:1fr}.chart,.wide{height:330px}}
+.sg-top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin:12px 0}.sg-tg{display:flex;gap:6px}
+.sg th{font-size:13px;vertical-align:bottom}.sg td{padding:7px 10px;vertical-align:middle}.sg-h{font-size:11px;color:var(--muted);font-weight:400}
+.sg-b{display:inline-block;padding:3px 9px;border-radius:999px;font-size:12px;font-weight:700;white-space:nowrap}.sg-tot td{background:rgba(127,127,127,.08)}.sg-x td{white-space:normal}
+.sg-d{border:1px solid #d0d5dd;background:#fff;border-radius:7px;padding:4px 10px;cursor:pointer}.sg-dt{padding:6px 2px;white-space:normal}.sg-why{margin-bottom:10px;line-height:1.6}
+.sg-mini th,.sg-mini td{padding:4px 6px;font-size:12px}.sg-note{margin-top:12px;color:#475467;font-size:13px;line-height:1.7}.sg-note li{margin:3px 0}
 </style>
 <link rel="stylesheet" href="./shell.css?v=3">
 </head>
@@ -47,11 +52,10 @@ h2{margin:0 0 14px}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:
 </div>
 <div class="box"><h2>발표 이력</h2><div class="table-wrap"><table><thead><tr><th>기준</th><th>기간</th><th>수출</th><th>YoY</th><th>일평균 YoY</th><th>반도체</th><th>무역수지</th><th>발표일</th></tr></thead><tbody id="history"></tbody></table></div></div>
 <div class="box">
-  <h2>품목별 10일 잠정수출</h2>
-  <div class="sub">현재 월간 대시보드의 36개 HS 품목을 동일하게 연결할 영역입니다.</div>
-  <div id="hsArea" class="empty">TRASS/Aicel 정식 10일 데이터 피드를 연결하면 품목별 수출액·중량·단가·YoY가 이곳에 표시됩니다.</div>
-</div>
-</div>
+  <h2 data-upd="provisional_items.csv">품목별 10일 수출 시그널 보드</h2>
+  <div class="sub">관세청 잠정치(1~10일·1~20일) 붙임 표와 월간 확정치를 10일 구간(①1~10일 ②11~20일 ③21일~말일)으로 나눠 전년동기 대비 증가율의 <b>수준</b>과 <b>속도 변화(모멘텀)</b>로 판정합니다. 모멘텀 순 정렬.</div>
+  <div id="sigArea"><div class="empty">불러오는 중…</div></div>
+</div></div>
 <script>
 let official=[], hs=[], filterPeriod="ALL", exportChart, yoyChart;
 function parseCSV(text){
@@ -84,6 +88,7 @@ function render(){
  document.getElementById("history").innerHTML=[...data].reverse().map(r=>`<tr><td>${r["기준월"]}</td><td>${periodLabel(r)}</td><td class="num">${money(r["수출_USD_mn"])}</td><td class="num ${pclass(r["수출YoY_pct"])}">${pct(r["수출YoY_pct"])}</td><td class="num ${pclass(r["일평균YoY_pct"])}">${pct(r["일평균YoY_pct"])}</td><td class="num">${r["반도체수출_USD_mn"]?money(r["반도체수출_USD_mn"]):"-"}</td><td class="num">${money(r["무역수지_USD_mn"])}</td><td>${r["발표일"]}</td></tr>`).join("");
 }
 document.querySelectorAll(".period").forEach(b=>b.onclick=()=>{document.querySelectorAll(".period").forEach(x=>x.classList.toggle("active",x===b));filterPeriod=b.dataset.period;render()});
-Promise.all([csv("provisional_official.csv"),csv("provisional_hs.csv")]).then(([a,b])=>{official=a;hs=b;render();if(hs.length){document.getElementById("hsArea").textContent=hs.length+"개 품목 잠정 데이터 연결됨";}}).catch(e=>{document.getElementById("latest").textContent="데이터 로딩 오류: "+e.message});
+csv("provisional_official.csv").then(a=>{official=a;render();}).catch(e=>{document.getElementById("latest").textContent="데이터 로딩 오류: "+e.message});
 </script>
+<script src="./provisional_signal.js?v=2"></script>
 </body></html>
