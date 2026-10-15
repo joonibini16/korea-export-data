@@ -15,6 +15,8 @@
    return {market,m,bucket,trend};
   });
   const age=Math.floor((Date.now()-new Date(data.updated_at).getTime())/86400000);
+  const preview=document.getElementById('breadthSignalLive');
+  if(preview)preview.textContent='최신 자동 수집 참고 · '+data.live_day+' · '+data.updated_at.replace('T',' ').slice(11,16)+' KST · '+prepared.map(({market,bucket})=>market+' 신고가−신저가 Breadth '+bucket.breadth.toFixed(1)+' (신고가 '+bucket.nh+' / 신저가 '+bucket.nl+')').join(' · ')+' · 확정 종가 Breadth_60 신호등과 산식·표본이 달라 판정에는 미반영';
   status.textContent='네이버 증권 자료 · '+data.updated_at.replace('T',' ').slice(0,16)+' KST 갱신 · '+data.live_day+' 기준. 평일 09:25~14:25 매시, 16:10 KST 자동 수집. '+(age>3?'자료 갱신 지연 여부를 확인하세요. ':'')+'DB 화면과 계산식·표본이 달라 수치가 일치하지 않습니다. 평일 장중 값은 확정 종가가 아닙니다.';
   for(const {market,m,bucket,trend} of prepared){
    const card=document.createElement('article');card.className='db-card';
