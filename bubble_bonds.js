@@ -13,7 +13,10 @@
   const S={};B.forEach(x=>S[x.t]={ref:[],own:[]});
   ref.forEach(r=>{if(S[r.ticker])S[r.ticker].ref.push({d:r.date,y:+r.ytm,u:+r.ust,s:(+r.ytm-+r.ust)*100});});
   own.forEach(r=>{if(S[r.ticker]&&r.ytm)S[r.ticker].own.push({d:r.date,y:+r.ytm,u:+r.ust,s:+r.spread_bp,p:r.price?+r.price:null,src:r.source});});
-  B.forEach(x=>{const s=S[x.t];s.ref.sort((p,q)=>p.d.localeCompare(q.d));s.own.sort((p,q)=>p.d.localeCompare(q.d));const lr=s.ref.at(-1);s.own=s.own.filter(o=>!lr||o.d>lr.d);s.all=[...s.ref,...s.own];});
+  B.forEach(x=>{const s=S[x.t];s.ref.sort((p,q)=>p.d.localeCompare(q.d));s.own.sort((p,q)=>p.d.localeCompare(q.d));const lr=s.ref.at(-1);s.own=s.own.filter(o=>!lr||o.d>lr.d);
+   // 연결 보정: 첫 자체 수집일의 스프레드를 판독 마지막 값에 맞춤(이후 일별 변화만 반영)
+   s.adj=0;if(lr&&s.own.length&&!/수동/.test(s.own[0].src||'')){s.adj=lr.s-s.own[0].s;s.own=s.own.map(o=>({...o,raw:o.s,s:o.s+s.adj,y:o.u+(o.s+s.adj)/100}));}
+   s.all=[...s.ref,...s.own];});
   const at=(arr,d)=>{let p=null;for(const x of arr){if(x.d<=d)p=x;else break;}return p;};
   const shift=(d,days)=>new Date(ts(d)-days*DAY).toISOString().slice(0,10);
   const rows=B.map(x=>{const s=S[x.t],l=s.all.at(-1);if(!l)return null;const y1=at(s.all,shift(l.d,365)),m1=at(s.all,shift(l.d,30)),m3=at(s.all,shift(l.d,91));
@@ -35,7 +38,7 @@
    <p class="muted" style="margin-top:6px">행을 누르면 아래에 그 회사 차트가 나옵니다. 부도확률 = 1 − exp(−5 × 스프레드 ÷ (1 − 회수율 40%)).</p></div></div>
    <div class="g2 bb-g"><div><div class="bb-h"><h3>스프레드 추이 (bp, 로그)</h3><div class="seg" id="bbMode"><button data-m="all" class="${mode==='all'?'on':''}">전체</button><button data-m="big" class="${mode==='big'?'on':''}">빅테크만(코어위브 제외)</button></div></div><div class="chart" style="height:360px"><canvas id="bbTrend"></canvas></div></div>
    <div><div class="bb-h"><h3 id="bbOneT"></h3></div><div class="chart" style="height:360px"><canvas id="bbOne"></canvas></div><p class="muted" id="bbOneN"></p></div></div>
-   <p class="muted">회사별 대표 회사채 1종 기준. 과거 구간(~2026-10-14)은 나쁜양파(badonion.co.kr/credit) 차트 이미지를 판독한 근사치이고(±2bp 수준), 이후는 매일 자동 수집합니다: 회사채 = divvydiary 채권 페이지의 현재수익률로 역산한 가격 → 만기수익률 직접 계산(유럽 거래소 시세 기반이라 미국 장외 TRACE 체결 수익률과 수~수십 bp 다를 수 있음), 국채 = FRED 미 국채 고정만기 수익률을 남은 만기로 보간. 코어위브 채권은 무료 시세가 없어 판독치까지만 있으며 bigtech_bonds_manual.csv에 수동 기록하면 반영됩니다. 점선 = 자체 수집 구간.</p>`;
+   <p class="muted">회사별 대표 회사채 1종 기준. 과거 구간(~2026-10-14)은 나쁜양파(badonion.co.kr/credit) 차트 이미지를 판독한 근사치이고(±2bp 수준), 이후는 매일 자동 수집합니다: 회사채 = divvydiary 채권 페이지의 현재수익률로 역산한 가격 → 만기수익률 직접 계산(유럽 거래소 시세 기반이라 미국 장외 TRACE 체결 수익률과 수~수십 bp 다를 수 있음), 국채 = FRED 미 국채 고정만기 수익률을 남은 만기로 보간. 코어위브 채권은 무료 시세가 없어 판독치까지만 있으며 bigtech_bonds_manual.csv에 수동 기록하면 반영됩니다. 점선 = 자체 수집 구간. 출처가 달라 수준 차이(메타 약 +20bp 등)가 있으므로, 첫 자체 수집일(10/15)의 스프레드를 판독치(10/14)에 맞추고 그 이후의 일별 변화만 이어 붙인 연결값으로 표시합니다(회사별 보정 폭은 개별 차트 아래 표기, 원값은 bigtech_bonds_log.csv).</p>`;
   Object.values(charts).forEach(c=>c.destroy());charts={};
   charts.bar=new Chart(document.getElementById('bbBar'),{type:'bar',data:{labels:rows.map(r=>r.x.name),datasets:[{data:rows.map(r=>r.l.s),backgroundColor:'#d9582b',borderRadius:2,barPercentage:.7}]},
    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,animation:false,layout:{padding:{right:230}},plugins:{legend:{display:false},rangeNav:false,tooltip:{callbacks:{label:t=>{const r=rows[t.dataIndex];return `${Math.round(r.l.s)}bp · 부도확률 ${PD(r.l.s).toFixed(1)}% · 수익률 ${r.l.y.toFixed(2)}%`;}}}},
@@ -60,7 +63,7 @@
     options:{responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:'index',intersect:false},plugins:{legend:{position:'top',align:'start',labels:{boxWidth:12}},
      tooltip:{callbacks:{title:it=>new Date(it[0].parsed.x).toISOString().slice(0,10),afterBody:it=>{const c=it.find(i=>i.datasetIndex===1),u=it.find(i=>i.datasetIndex===0);return c&&u?`스프레드 ${Math.round((c.parsed.y-u.parsed.y)*100)}bp`:'';},label:t=>`${t.dataset.label}: ${t.parsed.y.toFixed(2)}%`}}},
      scales:{x:tAx(C[0]&&C[0].x,C.at(-1)&&C.at(-1).x),y:{ticks:{callback:v=>v.toFixed(1)+'%'}}}}});
-   document.getElementById('bbOneN').innerHTML=r?`수익률 ${r.l.y.toFixed(2)}% · 국채 ${r.l.u.toFixed(2)}% · 국채 대비 <b>+${Math.round(r.l.s)}bp</b>${r.l.p?' · 가격 '+r.l.p.toFixed(1):''} · 5년 내 부도확률 ${PD(r.l.s).toFixed(1)}% · 기준 ${r.l.d}${r.own?' (자체 수집)':' (판독)'}`:'';};
+   document.getElementById('bbOneN').innerHTML=r?`수익률 ${r.l.y.toFixed(2)}% · 국채 ${r.l.u.toFixed(2)}% · 국채 대비 <b>+${Math.round(r.l.s)}bp</b>${r.l.p?' · 가격 '+r.l.p.toFixed(1):''} · 5년 내 부도확률 ${PD(r.l.s).toFixed(1)}% · 기준 ${r.l.d}${r.own?` (자체 수집, 연결 보정 ${S[sel].adj>=0?'+':''}${Math.round(S[sel].adj)}bp · 원값 ${Math.round(r.l.raw)}bp)`:' (판독)'}`:'';};
   trend();one();
   box.addEventListener('click',e=>{const tr=e.target.closest('tr[data-t]');if(tr){sel=tr.dataset.t;box.querySelectorAll('tr[data-t]').forEach(q=>q.classList.toggle('on',q===tr));one();return;}
    const b=e.target.closest('#bbMode button');if(b){mode=b.dataset.m;b.parentElement.querySelectorAll('button').forEach(q=>q.classList.toggle('on',q===b));trend();}});
