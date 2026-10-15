@@ -26,7 +26,7 @@
   }
   const rows=Object.keys(series).map(t=>{
    const s=series[t].sort((a,b)=>a.date.localeCompare(b.date)),last=s.at(-1);
-   if(s.length<2)return null;
+   
    const prior=(days,window)=>{
     const target=Date.parse(last.date+'T00:00:00Z')-days*86400000;
     return s.filter(p=>Date.parse(p.date+'T00:00:00Z')<=target).at(-1)??null;
@@ -35,7 +35,7 @@
     const target=Date.parse(last.date+'T00:00:00Z')-days*86400000;
     if(target-Date.parse(p.date+'T00:00:00Z')>window*86400000)return null;
     return last.s-p.s;};
-   return {m:meta[t],s,last,d1:delta(30,15),d3:delta(91,20),dy:delta(365,30)};
+   return {m:meta[t],s,last,d1:delta(30,15),d3:delta(91,20),dy:delta(365,30),stale:Date.now()-Date.parse(last.date+'T00:00:00Z')>14*86400000};
   }).filter(Boolean).sort((a,b)=>b.last.s-a.last.s);
   const total=base.bonds.length+targets.targets.length;
   let selected='전체',opened='',chart=null;
@@ -49,8 +49,8 @@
    root.innerHTML=`<p class="muted">FINRA TRACE 실제 체결 + FRED 동일 만기 미 국채 보간 · 확보 ${rows.length}/${total}개 회사 · 신규 후보 미확보 ${esc(missing.join(', ')||'없음')}. 수익률과 스프레드는 대표 채권 1종의 최종 거래일 기준입니다. 등급은 FINRA 채권 원장에 있는 경우에만 표시합니다.</p>
    <div class="cm-tabs">${groups.map(g=>`<button data-g="${esc(g)}" class="${g===selected?'on':''}">${esc(g)}</button>`).join('')}</div>
    <div class="cm-scroller"><table class="cm-table"><thead><tr><th>회사 · 대표 채권</th><th>등급</th><th>수익률</th><th>국채</th><th>스프레드 bp</th><th>1개월</th><th>3개월</th><th>1년</th><th>5년 위험모형</th><th>거래일</th></tr></thead><tbody>
-   ${groups.slice(1).filter(g=>selected==='전체'||g===selected).map(g=>{const items=visible.filter(x=>x.m.group===g);return items.length?`<tr class="cm-group"><td colspan="10">${esc(g)} · ${items.length}개</td></tr>${items.map(r=>`<tr data-t="${esc(r.m.ticker)}" class="${r.m.ticker===opened?'active':''}"><td><b>${esc(r.m.name)}</b> <span class="muted">${esc(r.m.ticker)}</span><br><small class="muted">${esc(r.m.bond)} · ${esc(r.last.cusip)}</small></td><td>${esc(r.m.rating||'—')}</td><td>${fmt(r.last.y)}%</td><td>${fmt(r.last.u)}%</td><td><b>${bp(r.last.s)}</b><i class="cm-bar" style="width:${Math.min(58,Math.max(2,r.last.s/9))}px"></i></td><td>${change(r.d1)}</td><td>${change(r.d3)}</td><td>${change(r.dy)}</td><td>${pd(r.last.s).toFixed(1)}%</td><td>${esc(r.last.date)}</td></tr>`).join('')}`:''}).join('')}
-   </tbody></table></div><p class="muted">행 클릭: 채권 스프레드 추이. 1개월·3개월·1년은 각각 해당 시점과 비교한 bp 변화입니다. 5년 위험모형 = 1−exp[−5×max(스프레드,0)/(10,000×0.6)]; 회수율 40% 가정의 단순 환산치이며 실제 CDS·신용평가사의 부도확률이 아닙니다. 무거래·미식별 채권은 값으로 채우지 않습니다.</p><div class="cm-detail" id="cmDetail"></div>`;
+   ${groups.slice(1).filter(g=>selected==='전체'||g===selected).map(g=>{const items=visible.filter(x=>x.m.group===g);return items.length?`<tr class="cm-group"><td colspan="10">${esc(g)} · ${items.length}개</td></tr>${items.map(r=>`<tr data-t="${esc(r.m.ticker)}" class="${r.m.ticker===opened?'active':''}"><td><b>${esc(r.m.name)}</b> <span class="muted">${esc(r.m.ticker)}</span><br><small class="muted">${esc(r.m.bond)} · ${esc(r.last.cusip)}</small></td><td>${esc(r.m.rating||'—')}</td><td>${fmt(r.last.y)}%</td><td>${fmt(r.last.u)}%</td><td><b>${bp(r.last.s)}</b><i class="cm-bar" style="width:${Math.min(58,Math.max(2,r.last.s/9))}px"></i></td><td>${change(r.d1)}</td><td>${change(r.d3)}</td><td>${change(r.dy)}</td><td>${pd(r.last.s).toFixed(1)}%</td><td class="${r.stale?'up':''}">${esc(r.last.date)}${r.stale?' · 지연':''}</td></tr>`).join('')}`:''}).join('')}
+   </tbody></table></div><p class="muted">행 클릭: 채권 스프레드 추이. 1개월·3개월·1년은 각각 해당 시점과 비교한 bp 변화입니다. 5년 위험모형 = 1−exp[−5×max(스프레드,0)/(10,000×0.6)]; 회수율 40% 가정의 단순 환산치이며 실제 CDS·신용평가사의 부도확률이 아닙니다. 최종 거래일이 14일 넘은 채권은 지연으로 표시합니다. 무거래·미식별 채권은 값으로 채우지 않습니다.</p><div class="cm-detail" id="cmDetail"></div>`;
    draw();
   }
   function draw(){
@@ -59,7 +59,7 @@
    if(!r||!el)return;
    el.innerHTML=`<h3>${esc(r.m.name)} · ${esc(r.m.bond)} 스프레드 추이</h3><p class="muted">CUSIP ${esc(r.last.cusip)} · 최신 체결 ${esc(r.last.date)} · ${esc(r.last.source)}</p><div class="cm-plot"><canvas id="cmCanvas" aria-label="${esc(r.m.name)} 회사채 스프레드 추이"></canvas></div>`;
    const tail=r.s.slice(-260);
-   chart=new Chart(document.getElementById('cmCanvas'),{type:'line',data:{labels:tail.map(p=>p.date),datasets:[{label:'스프레드 bp',data:tail.map(p=>p.s),borderColor:'#f97316',pointRadius:0,borderWidth:2,fill:false,tension:0}]},options:{responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:'index',intersect:false},plugins:{tooltip:{callbacks:{label:item=>'스프레드 '+Math.round(item.parsed.y)+'bp'}}},scales:{x:{ticks:{maxTicksLimit:8}},y:{title:{display:true,text:'bp'}}}}});
+   chart=new Chart(document.getElementById('cmCanvas'),{type:'line',data:{labels:tail.map(p=>p.date),datasets:[{label:'스프레드 bp',data:tail.map(p=>p.s),borderColor:'#f97316',pointRadius:tail.length===1?4:0,borderWidth:2,fill:false,tension:0}]},options:{responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:'index',intersect:false},plugins:{tooltip:{callbacks:{label:item=>'스프레드 '+Math.round(item.parsed.y)+'bp'}}},scales:{x:{ticks:{maxTicksLimit:8}},y:{title:{display:true,text:'bp'}}}}});
   }
   root.addEventListener('click',e=>{const b=e.target.closest('button[data-g]');if(b){selected=b.dataset.g;render();return}
    const tr=e.target.closest('tr[data-t]');if(tr){opened=opened===tr.dataset.t?'':tr.dataset.t;render();}});
