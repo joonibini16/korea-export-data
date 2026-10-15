@@ -1,6 +1,6 @@
 // 공통 셸: 왼쪽 메뉴를 만들고, 첫 제목을 히어로 카드로 감싸며, 그래프 기본색을 어두운 배경에 맞춥니다.
 (function(){
- const GROUPS=[['수출 모니터링',[['./','수출확정치',['','index.html']],['./provisional.html','10일 잠정수출',['provisional.html']]]],
+ const GROUPS=[['수출',[['./','수출확정치',['','index.html']],['./provisional.html','10일 잠정수출',['provisional.html']]]],
   ['업체·실적',[['./regional.html','지역 수출 · 업체 실적 추적',['regional.html']],['./forecast_tracker.html','매출 예측 추적',['forecast_tracker.html']]]],
   ['해외 테크',[['./taiwan.html','대만 테크 월매출',['taiwan.html']],['./japan.html','일본 테크 수출',['japan.html']],['./global_earnings.html','해외 실적·컨콜 변곡점',['global_earnings.html']]]],
   ['산업 지표',[['./ess.html','ESS 배터리 설치량',['ess.html']],['./prices.html','가격 지표 (토큰·GPU·D램)',['prices.html']]]],
