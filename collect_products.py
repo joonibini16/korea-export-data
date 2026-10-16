@@ -47,8 +47,8 @@ def header_rows(g):
 def parse_products(g, unit):
     if len(g) < 2: return None
     hn = header_rows(g); heads = [' '.join(norm(g[r][c]) for r in range(hn)) if c < len(g[0]) else '' for c in range(len(g[0]))]
-    amt = next((c for c, t in enumerate(heads) if '매출' in t and '비' not in t.replace('매출액(비율)', '매출액')), None)
-    if amt is None: amt = next((c for c, t in enumerate(heads) if '매출' in t), None)
+    amt = next((c for c, t in enumerate(heads) if '매출액' in t and '비중' not in t.replace('매출액(비율)', '매출액').replace('매출액(비중)', '매출액')), None)
+    if amt is None: amt = next((c for c, t in enumerate(heads) if '매출' in t and '유형' not in t and '비중' not in t and '비율' not in t), None)
     if amt is None: return None
     namec = None
     for pat in NAMECOL:
@@ -95,18 +95,34 @@ def scan(r):
     except Exception as e:
         return dict(company_id=r['company_id'], period=r['period'], error=str(e)[:200])
     prod = price = None
-    for t in d.xpath('//table'):
-        before = ' '.join(h.text(e) for e in t.xpath('preceding::*[self::p or self::table or self::div or self::span][position()<=6]'))[-600:]
+    # 문서 순서대로 걸으며 각 최상위 표 바로 앞의 본문(최근 600자)을 기록(preceding 축 탐색보다 빠름)
+    ctx, buf = [], ['']
+    def add(x):
+        if x:
+            buf[0] = (buf[0] + ' ' + x)[-2000:]
+    def walk(el):
+        if not isinstance(el.tag, str): add(el.tail); return
+        if el.tag == 'table':
+            ctx.append((el, buf[0][-600:])); add(h.text(el)); add(el.tail); return
+        add(el.text)
+        for ch in el: walk(ch)
+        add(el.tail)
+    walk(d)
+    for t, before in ctx:
+        before = re.sub(r'\s+', ' ', before)
         near = before[-320:]
-        if '원재료' in near or '원 재 료' in near: continue
+        if '원재료' in near[-160:] or '원 재 료' in near[-160:]: continue
+        want_p = prod is None and re.search(r'주요\s*제품|제품\s*등의\s*(현황|매출)|품목별\s*매출|매출\s*현황', near) and not re.search(r'가격\s*변동', near[-160:])
+        want_pr = price is None and re.search(r'가격\s*변동', near[-160:])
+        if not (want_p or want_pr): continue
         g = s.grid(t)
-        if prod is None and re.search(r'주요\s*제품|제품\s*등의\s*(현황|매출)|품목별\s*매출|매출\s*현황', near) and not re.search(r'가격\s*변동', near):
+        if want_p and re.search(r'주요\s*제품|제품\s*등의\s*(현황|매출)|품목별\s*매출|매출\s*현황', near) and not re.search(r'가격\s*변동', near):
             unit = unit_of(before) or unit_of(' '.join(' '.join(x) for x in g[:2]))
             p = parse_products(g, unit) if unit else None
             if p: prod = p
             elif DEBUG and len(dbg.setdefault(r['company_id'], [])) < 6:
                 dbg[r['company_id']].append({'period': r['period'], 'unit': unit, 'near': near[-200:], 'grid': g[:6]})
-        if price is None and re.search(r'가격\s*변동', near):
+        if want_pr:
             um = re.search(r'단위\s*[:：]?\s*([^)\]]{1,20})', before)
             p = parse_prices(g, um[1].strip() if um else '')
             if p: price = p
@@ -123,7 +139,7 @@ def main():
     todo = []
     for c, cat in zip(comps, cats):
         for r in cat.get('reports', []): todo.append(dict(r, company_id=c['id']))
-    with concurrent.futures.ThreadPoolExecutor(3) as pool:
+    with concurrent.futures.ThreadPoolExecutor(6) as pool:
         res = list(pool.map(scan, todo))
     old_p = list(csv.DictReader(OUT_P.open(encoding='utf-8-sig'))) if OUT_P.exists() else []
     old_pr = list(csv.DictReader(OUT_PR.open(encoding='utf-8-sig'))) if OUT_PR.exists() else []
