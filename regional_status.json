@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-10-16T13:13:10+09:00",
+  "updated_at": "2026-10-16T13:32:51+09:00",
   "source": "https://www.data.go.kr/data/15134343/openapi.do",
-  "requested_ranges": 1139,
-  "received_rows": 122850,
-  "stored_rows": 208927,
+  "requested_ranges": 651,
+  "received_rows": 59108,
+  "stored_rows": 208935,
   "failures": [
     {
       "sido": "31",
@@ -163,7 +163,7 @@
       "hs": "850423",
       "start": "202601",
       "end": "202609",
-      "error": "URLError"
+      "error": "empty response; not zero"
     },
     {
       "sido": "47",
@@ -3085,15 +3085,11 @@
       "query_hs": "850422",
       "region": "종로구",
       "sido": "11",
-      "months": 75,
+      "months": 79,
       "expected_months": 81,
       "missing": [
         "2020.03",
-        "2021.07",
-        "2022.02",
-        "2022.08",
-        "2022.10",
-        "2023.06"
+        "2021.07"
       ],
       "scope": "basket_HS6",
       "historical_note": ""
@@ -4746,15 +4742,11 @@
       "query_hs": "850422",
       "region": "광진구",
       "sido": "11",
-      "months": 75,
+      "months": 79,
       "expected_months": 81,
       "missing": [
         "2020.03",
-        "2021.07",
-        "2022.02",
-        "2022.08",
-        "2022.10",
-        "2023.06"
+        "2021.07"
       ],
       "scope": "basket_HS6",
       "historical_note": ""
@@ -6028,6 +6020,6 @@
     }
   ],
   "currency_scale_verified": false,
-  "implied_zero_rows": 780,
+  "implied_zero_rows": 4,
   "note": "응답에 같은 시도·HS의 다른 지역은 있으나 해당 지역이 없는 달은 수출 0(IMPLIED_ZERO_REGION_ABSENT)으로 저장. 지역 원본 HS6 보존. 관리 HS10과 상위 HS6 proxy 구분. HS4 미지원. 2022년 신설 HS6(300249·854143)의 2020~2021년은 HS2017 선행코드(300290·854140)로 연결하고 amount_unit에 표시. 절대 USD 배율 미검증."
 }
