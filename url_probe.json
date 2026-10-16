@@ -1,0 +1,10 @@
+[
+ {
+  "url": "https://investor.tsmc.com/english/quarterly-results/2026/q3",
+  "error": "HTTP Error 403: Forbidden"
+ },
+ {
+  "url": "https://investor.tsmc.com/english/quarterly-results/2019/q1",
+  "error": "HTTP Error 403: Forbidden"
+ }
+]
