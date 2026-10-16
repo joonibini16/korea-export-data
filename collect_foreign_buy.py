@@ -223,7 +223,7 @@ def main():
         if r is None:
             if d < today: hol.add(d.isoformat())
             continue
-        (DAYS / f'{d.isoformat()}.json.gz').write_bytes(gzip.compress(json.dumps(r, ensure_ascii=False, separators=(',', ':')).encode(), 9))
+        (DAYS / f'{d.isoformat()}.json.gz').write_bytes(gzip.compress(json.dumps(r, ensure_ascii=False, separators=(',', ':')).encode(), 9, mtime=0))
         got += 1
     HOL.write_text(json.dumps(sorted(hol)))
     have = sorted(f.name[:10] for f in DAYS.glob('*.json.gz'))
@@ -241,7 +241,7 @@ def main():
             except Exception as e:
                 log(step='inv_day', investor=key, day=d, error=str(e)[:200]); break
             if r:
-                (IDAYS / key / f'{d}.json.gz').write_bytes(gzip.compress(json.dumps(r, separators=(',', ':')).encode(), 9)); n += 1
+                (IDAYS / key / f'{d}.json.gz').write_bytes(gzip.compress(json.dumps(r, separators=(',', ':')).encode(), 9, mtime=0)); n += 1
         log(step='inv_days', investor=key, fetched=n)
     if have:
         for key in INV:

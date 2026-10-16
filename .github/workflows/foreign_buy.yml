@@ -45,7 +45,7 @@ jobs:
           if ! git diff --cached --quiet; then
             git commit -qm "Update foreign buy ranking"
             for attempt in 1 2 3 4 5; do
-              git pull -q --rebase origin main || { git rebase --abort || true; exit 1; }
+              git pull -q --rebase -X theirs origin main || { git rebase --abort || true; exit 1; }
               if git push -q origin HEAD:main; then exit 0; fi
               sleep $((attempt * 2))
             done
