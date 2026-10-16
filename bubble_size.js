@@ -34,8 +34,19 @@
   return out.join(' · ');}
  function netRow(S,sd){const mx=Math.max(5,...S.map(x=>Math.abs(x.net||0)),...S.map(x=>Math.abs(x.sma||0))),N=S.length,y=v=>(50-v/mx*44).toFixed(1);
   const pts=S.map((x,i)=>x.sma==null?null:`${(i+.5).toFixed(2)},${y(x.sma)}`).filter(Boolean).join(' ');
-  return `<div class="sb-net">${S.map(x=>{const v=x.net||0,h=Math.abs(v)/mx*44;return `<div class="sb-col${x.date===sd?' sb-now':''}" data-d="${x.date}" title="${x.date} · 신고가 ${x.nh} − 신저가 ${x.nl} = ${sg(x.net)} · 5일 평균 ${sg(x.sma)} · 극단 종목 ${x.ext==null?'—':x.ext.toFixed(1)+'%'}"><div class="sb-nb" style="height:${h.toFixed(1)}%;${v>=0?'bottom:50%':'top:50%'};background:${v>=0?'#e0675c':'#4f86d4'}"></div><span class="sb-nv ${v>=0?'t':'b'}" style="${v>=0?`bottom:calc(50% + ${h.toFixed(1)}%)`:`top:calc(50% + ${h.toFixed(1)}%)`}">${sg(x.net)}</span></div>`;}).join('')}
+  return `<div class="sb-net">${S.map(x=>{const v=x.net||0,h=Math.abs(v)/mx*44;return `<div class="sb-col${x.date===sd?' sb-now':''}" data-d="${x.date}" title="${x.date} · 신고가 ${x.nh} − 신저가 ${x.nl} = ${sg(x.net)} · 5일 평균 ${sg(x.sma)} · 극단 종목 ${x.ext==null?'—':x.ext.toFixed(1)+'%'}"><div class="sb-nb" style="height:${h.toFixed(1)}%;${v>=0?'bottom:50%':'top:50%'};background:${v>=0?'#e0675c':'#4f86d4'}"></div><span class="sb-nv ${v>=0?'t':'b'}" style="${v>=0?`bottom:calc(50% + ${h.toFixed(1)}%)`:`top:calc(50% + ${h.toFixed(1)}%)`}">${sg(x.net)}</span>${x.sma==null?'':`<span class="sb-sv" style="top:calc(${y(x.sma)}% ${x.sma>=v?'- 15px':'+ 3px'})">${x.sma.toFixed(1)}</span>`}</div>`;}).join('')}
    <svg viewBox="0 0 ${N} 100" preserveAspectRatio="none"><polyline points="${pts}" fill="none" stroke="#34d399" stroke-width="2" vector-effect="non-scaling-stroke"/></svg></div>`;}
+ function lamp(S,i){const x=S[i];if(!x||x.net==null)return null;const n=x.n||1,np=x.net/n*100;
+  if(np<=-15)return {c:'red',t:'약세 확산',d:`신저가 순비중 ${np.toFixed(0)}% — 투매성 하락`};
+  if(x.sma==null)return {c:'orange',t:'판단 보류',d:'5일 평균 산출 전'};
+  if(x.sma<0&&x.net<x.sma)return {c:'red',t:'약세 지속',d:`순수치 ${sg(x.net)} < 5일 평균 ${x.sma.toFixed(1)} (평균도 0 아래)`};
+  if(x.sma>0&&x.net>=x.sma)return {c:'green',t:'확산 강세',d:`순수치 ${sg(x.net)} ≥ 5일 평균 ${x.sma.toFixed(1)} (평균도 0 위)`};
+  if(x.sma<0)return {c:'orange',t:'반등 시도',d:`순수치 ${sg(x.net)}가 5일 평균 ${x.sma.toFixed(1)} 위 — 평균이 0을 넘어야 전환 확인`};
+  return {c:'orange',t:'상승 둔화',d:`순수치 ${sg(x.net)}가 5일 평균 ${x.sma.toFixed(1)} 아래 — 평균은 아직 0 위`};}
+ function lightBox(D,sd){const NM={KOSPI:'코스피',KOSDAQ:'코스닥'};const L=Object.entries(D.markets).map(([m,M])=>{const S=netSeries(M.buckets[0].trend),i=sd?S.findIndex(x=>x.date===sd):S.length-1;return [m,lamp(S,i<0?S.length-1:i)];}).filter(x=>x[1]);
+  if(!L.length)return '';const cs=L.map(x=>x[1].c),all=c=>cs.every(v=>v===c);const c=all('green')?'green':all('red')?'red':'orange';
+  const head=c==='green'?'두 시장 모두 신고가 확산 — 추세 강세':c==='red'?'두 시장 모두 신저가 우위 — 매수 신중':cs.includes('red')&&cs.includes('green')?'시장 간 엇갈림 — 강한 쪽 중심으로 선별':cs.includes('red')?'한쪽 시장은 아직 약세 — 반등 확인 필요':'반등 시도·둔화 구간 — 추세 확인 필요';
+  return `<div class="sb-light ${c}"><span class="sb-lamps"><i class="red"></i><i class="orange"></i><i class="green"></i></span><div><b>결론 · ${head}</b>${sd?` <small>${sd}</small>`:''}<div class="sb-lm">${L.map(([m,l])=>`<span class="sb-lc ${l.c}"><i></i>${NM[m]} <b>${l.t}</b> — ${l.d}</span>`).join('')}</div></div></div>`;}
  function atDate(b,sd){const t=b.trend.find(x=>x.date===sd);if(!t||t===b.trend.at(-1))return b;
   const chg=t.idx_chg??null,g=t.grade||(t.breadth!=null?G2(t.breadth):null);
   const badge=t.breadth!=null&&chg!=null?(chg>0&&t.breadth<=-15?'쏠림 랠리':chg<0&&t.breadth>=15?'저가매수 유입':null):null;
@@ -56,18 +67,19 @@
   try{D=await (await fetch('size_breadth.json?v='+Date.now(),{cache:'no-store'})).json();}catch(e){box.innerHTML='<p class="muted">규모별 Breadth 자료를 아직 수집하지 못했습니다.</p>';return;}
   try{const t=await (await fetch('size_breadth_log.csv?v='+Date.now(),{cache:'no-store'})).text();const L=t.trim().split(/\r?\n/),h=L.shift().split(',');log=L.map(l=>{const f=l.split(',');return Object.fromEntries(h.map((k,i)=>[k,f[i]]));});}catch(e){}
   const at=String(D.updated_at||'').replace('T',' ').slice(0,16);
-  let html=`<div class="sb-top"><span>${esc(at)} KST 갱신 · 기준일 ${esc(D.live_day)}</span><span>KOSPI · KOSDAQ 규모별 · 60일 신고가/신저가 기준</span></div>`;
+  const hm=String(D.updated_at||'').slice(11,16),closed=String(D.updated_at||'').slice(0,10)>D.live_day||hm>='15:35';
+  let html=`<div id="sbLight"></div><div class="sb-top"><span>${esc(at)} KST 갱신 · 기준일 ${esc(D.live_day)} · <b style="color:${closed?'#34d399':'#fbbf24'}">${closed?'종가 확정':'장중 '+hm+' 기준(종가 반영 전)'}</b></span><span>KOSPI · KOSDAQ 규모별 · 60일 신고가/신저가 기준</span></div>`;
   const mk=(m,M,sd)=>{const c0=M.buckets[0],c=atDate(c0,sd),tr=c0.trend;const last=tr.at(-1)?.date;
    return `<h3>${m} <small>size breadth</small>${sd&&sd!==last?` <span class="sb-sel">${sd} 기준</span>`:''}</h3><div class="sb-head">지수 <b class="${pcls(c.idx_chg)}">${pct(c.idx_chg)}</b> · <span class="${gi(c.grade)>=3?'sb-r':gi(c.grade)<=1?'sb-b':''}">Breadth ${num(c.breadth)} ${esc(c.grade)} ${arrow(c.grade)}</span> ${badge(c.badge)}</div>
    <div class="sb-sub"><span>종합 Breadth · ${tr.length}거래일 추이 (신고가 ${c.nh} · 신저가 ${c.nl} · ${c.n}종목) — 막대에 마우스를 올리면 그 날짜, 클릭하면 고정</span><span>${tr[0]?.date.slice(5)} → ${tr.at(-1)?.date.slice(5)}</span></div>${blocks(tr,sd)}${(()=>{const S=netSeries(tr),i=Math.max(0,S.findIndex(x=>x.date===(sd||last))),x=S[i];
-    return `<div class="sb-sub"><span>순수치(신고가 − 신저가, 종목 수) 막대 · <span style="color:#34d399">5일 평균</span> 선 — 지금 ${sg(x?.net)} / 5일 평균 ${sg(x?.sma)} / 극단 종목 ${x?.ext==null?'—':x.ext.toFixed(1)+'%'}</span></div>${netRow(S,sd)}<div class="sb-interp"><b>해석</b> ${interp(S,i)}</div>`;})()}
+    return `<div class="sb-sub"><span>순수치(신고가 − 신저가, 종목 수) 막대 · <span style="color:#34d399">5일 평균</span> 선(초록 숫자) — 지금 ${sg(x?.net)} / 5일 평균 ${sg(x?.sma)} / 극단 종목 ${x?.ext==null?'—':x.ext.toFixed(1)+'%'}</span></div>${netRow(S,sd)}<div class="sb-interp"><b>해석</b> ${interp(S,i)}</div>`;})()}
    <div class="sb-cards">${M.buckets.slice(1).map(b=>card(atDate(b,sd),sd)).join('')}</div>`;};
   for(const [m,M] of Object.entries(D.markets))html+=`<div class="sb-mkt" data-mkt="${m}"></div>`;
   const ns=[...Object.entries(D.markets).map(([m,M])=>{const S=netSeries(M.buckets[0].trend);return `<b>${m==='KOSPI'?'코스피':'코스닥'} 순수치</b>: ${interp(S,S.length-1)}.`;}),...notes(D,log)];html+=`<div class="sb-note"><h3>Desk Note <small>breadth desk view</small></h3><ul>${ns.map(n=>`<li>${n}</li>`).join('')}</ul></div>
-  <p class="muted"><b>순수치</b> = 60일 신고가 종목 수 − 신저가 종목 수(실제 몇 종목이 움직였는지, 시장 규모에 따라 크기가 다름), <b>5일 평균</b>으로 방향을 보고, <b>극단 종목 비율</b> = (신고가 + 신저가) ÷ 전체 종목 — 이 비율이 낮으면(8% 미만) Breadth 비율 값은 표본이 작아 과장될 수 있습니다. 해석 문구의 기준(신저가 순비중 −15% 이하 = 투매성, 신고가 순비중 +10% 이상 = 확산)은 경험적 기준입니다. Breadth = (60일 신고가 종목 수 − 60일 신저가 종목 수) ÷ (신고가 + 신저가, 최소 10) × 100 — 신고가와 신저가 중 어느 쪽이 우세한지(−100~+100). 등급: +50 이상 매우강세 · +15 이상 강세 · ±15 미만 중립 · −15 이하 약세 · −50 이하 매우약세. <b>쏠림 랠리</b> = 지수는 오르는데 Breadth가 약세 이하(소수 대형주가 지수를 끌어올림). <b>저가매수 유입</b> = 지수는 내리는데 Breadth가 강세 이상. 규모 구분은 수집 시점 시가총액 순위(코스피 1~100 대형·101~300 중형·301~ 소형, 코스닥 1~100 K100·101~400 MID·401~ SMALL, 보통주만)이며 과거 막대도 현재 순위로 계산합니다. 구간 지수는 시가총액 가중 등락률, 종합은 실제 지수. 평일 한국시간 09:30·10:30·13:00·15:40·21:30에 수집 예약되며 모든 갱신 기록은 size_breadth_log.csv에 누적됩니다. 출처: 네이버 증권.</p>`;
+  <p class="muted"><b>순수치</b> = 60일 신고가 종목 수 − 신저가 종목 수(실제 몇 종목이 움직였는지, 시장 규모에 따라 크기가 다름), <b>5일 평균</b>으로 방향을 보고, <b>극단 종목 비율</b> = (신고가 + 신저가) ÷ 전체 종목 — 이 비율이 낮으면(8% 미만) Breadth 비율 값은 표본이 작아 과장될 수 있습니다. 해석 문구의 기준(신저가 순비중 −15% 이하 = 투매성, 신고가 순비중 +10% 이상 = 확산)은 경험적 기준입니다. Breadth = (60일 신고가 종목 수 − 60일 신저가 종목 수) ÷ (신고가 + 신저가, 최소 10) × 100 — 신고가와 신저가 중 어느 쪽이 우세한지(−100~+100). 등급: +50 이상 매우강세 · +15 이상 강세 · ±15 미만 중립 · −15 이하 약세 · −50 이하 매우약세. <b>쏠림 랠리</b> = 지수는 오르는데 Breadth가 약세 이하(소수 대형주가 지수를 끌어올림). <b>저가매수 유입</b> = 지수는 내리는데 Breadth가 강세 이상. 규모 구분은 수집 시점 시가총액 순위(코스피 1~100 대형·101~300 중형·301~ 소형, 코스닥 1~100 K100·101~400 MID·401~ SMALL, 보통주만)이며 과거 막대도 현재 순위로 계산합니다. 구간 지수는 시가총액 가중 등락률, 종합은 실제 지수. 장중 20분마다 수집하고, 장 마감 뒤 15:40·16:20·18:05·21:30에 종가로 다시 수집합니다(마감 전 값은 상단에 '장중' 표시). 신호등: 초록 = 순수치 ≥ 5일 평균이고 평균 > 0, 빨강 = 순수치 < 5일 평균이고 평균 < 0 또는 신저가 순비중 15% 이상, 그 밖은 주황. 모든 갱신 기록은 size_breadth_log.csv에 누적됩니다. 출처: 네이버 증권.</p>`;
   box.innerHTML=html;
   const lastD=Object.values(D.markets)[0].buckets[0].trend.at(-1)?.date;let pin=lastD;
-  const draw=sd=>{for(const [m,M] of Object.entries(D.markets)){const el=box.querySelector(`[data-mkt="${m}"]`);el.innerHTML=mk(m,M,sd);}};
+  const draw=sd=>{const lb=box.querySelector('#sbLight');if(lb)lb.innerHTML=lightBox(D,sd);for(const [m,M] of Object.entries(D.markets)){const el=box.querySelector(`[data-mkt="${m}"]`);el.innerHTML=mk(m,M,sd);}};
   draw(pin);
   box.addEventListener('mouseover',e=>{const b=e.target.closest('.sb-col[data-d]');if(b&&b.dataset.d)draw(b.dataset.d);});
   box.addEventListener('mouseleave',()=>draw(pin));

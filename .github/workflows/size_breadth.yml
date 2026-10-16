@@ -10,6 +10,8 @@ on:
     - cron: '0 4 * * 1-5'
     - cron: '40 6 * * 1-5'
     - cron: '30 12 * * 1-5'
+    - cron: '20 7 * * 1-5'   # 16:20 KST 종가 확정 반영
+    - cron: '5 9 * * 1-5'    # 18:05 KST 종가 재확인
 permissions:
   contents: write
   pages: write
@@ -29,7 +31,10 @@ jobs:
           path: .sb-cache
           key: sb-hist-${{ github.run_id }}
           restore-keys: sb-hist-
-      - run: python collect_size_breadth.py
+      - run: |
+          n0=$( [ -f size_breadth_log.csv ] && wc -l < size_breadth_log.csv || echo 1 )
+          echo "N0=$n0" >> $GITHUB_ENV
+          python collect_size_breadth.py
       - uses: actions/cache/save@v4
         if: always()
         with:
@@ -37,11 +42,12 @@ jobs:
           key: sb-hist-${{ github.run_id }}
       - run: |
           git config user.name github-actions; git config user.email github-actions@github.com
-          cp size_breadth.json /tmp/sb.json; tail -n +2 size_breadth_log.csv > /tmp/sblog.csv
+          cp size_breadth.json /tmp/sb.json; tail -n +$((N0+1)) size_breadth_log.csv | grep -v "^ts," > /tmp/sblog.csv  # 이번 실행에서 새로 붙은 행만
           for i in 1 2 3; do
             git fetch -q origin main && git reset -q --hard origin/main
             cp /tmp/sb.json size_breadth.json
             if [ -f size_breadth_log.csv ]; then cat /tmp/sblog.csv >> size_breadth_log.csv; else { echo "ts,date,market,bucket,breadth,nh,nl,n,idx_chg,grade"; cat /tmp/sblog.csv; } > size_breadth_log.csv; fi
+            awk '!s[$0]++' size_breadth_log.csv > /tmp/sbdedup.csv && mv /tmp/sbdedup.csv size_breadth_log.csv  # 완전히 같은 행 중복만 제거
             python tools/check_history.py size_breadth_log.csv:ts || exit 1
             git add size_breadth.json size_breadth_log.csv
             git diff --cached --quiet && exit 0
