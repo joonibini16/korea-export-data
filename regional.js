@@ -20,16 +20,22 @@ function series(rows){if(!rows.length)return[];const map=new Map();for(const r o
 function quarterly(rows){const groups=new Map();for(const r of rows){const q=`${r.month.slice(0,4)}-Q${Math.ceil(Number(r.month.slice(5))/3)}`;if(!groups.has(q))groups.set(q,[]);groups.get(q).push(r);}return [...groups].map(([period,rs])=>{const valid=rs.filter(r=>r.value!=null);return{period,months:valid.length,value:valid.length===3?valid.reduce((s,r)=>s+r.value,0):null,actual:valid.reduce((s,r)=>s+r.value,0),rows:rs};});}
 function average(rows,i){if(i<2)return null;const part=rows.slice(i-2,i+1);return part.every(x=>x.value!=null)?part.reduce((s,r)=>s+r.value,0)/3:null;}
 function populateCompany(){el('company').replaceChildren();watch.filter(c=>c.category===el('category').value).forEach(c=>option(el('company'),c.id,c.name));populateHS();}
-function populateHS(){const c=watch.find(c=>c.id===el('company').value);el('hs').replaceChildren();{const a=allSitesHS(c);if(a)option(el('hs'),a,'업체 전체 · 사업장 합산 (HS '+a.slice(4)+')');}c.hs_codes.forEach(h=>option(el('hs'),h,`${c.regional_labels?.[h]||hsNames[h]} · ${h}`));{const q=[...(el('hs').options||[])].find(o=>queryHS(c,o.value));if(q)el('hs').value=q.value;}populateRegions();}
+function populateHS(){const c=watch.find(c=>c.id===el('company').value);el('hs').replaceChildren();const B=c.basket||[];if(B.length){const ns=new Set(B.flatMap(b=>b.sites.map(s=>s.region_keyword)));option(el('hs'),'BASKET',`★ 업체 전체 · 전 품목 합산 (${B.length}개 품목 · ${[...ns].join('·')})`);B.forEach(b=>option(el('hs'),'B:'+b.hs6,`품목 · ${b.label} · HS ${b.hs6} (${b.sites.map(s=>s.region_keyword).join('·')})`));}{const a=allSitesHS(c);if(a)option(el('hs'),a,'업체 전체 · 사업장 합산 (HS '+a.slice(4)+')');}c.hs_codes.forEach(h=>option(el('hs'),h,`관리품목 · ${c.regional_labels?.[h]||hsNames[h]} · ${h}${B.length?' (전국 비교용)':''}`));{const q=[...(el('hs').options||[])].find(o=>!isB(o.value)&&queryHS(c,o.value))||[...(el('hs').options||[])].find(o=>o.value.startsWith('B:'));if(q)el('hs').value=q.value;}if(B.length&&basketOK(c))el('hs').value='BASKET';populateRegions();}
 function allSitesHS(c){const qs=c.hs_codes.map(h=>c.regional_hs?c.regional_hs[h]:(h.length===6?h:null)).filter(Boolean),u=[...new Set(qs)];const multi=(c.sites||[]).length>1&&(c.sites||[]).some(s=>s.hs_codes);return u.length===1&&multi?'ALL:'+u[0]:null;}
-function natHS(c,h){return h.startsWith('ALL:')?c.hs_codes[0]:h;}
-function queryHS(c,h){if(h.startsWith('ALL:'))return h.slice(4);return c.regional_hs?c.regional_hs[h]:(h.length===6?h:null);}
+const isB=h=>h==='BASKET'||h.startsWith('B:');
+// 바스켓 합계를 기본 보기로 쓸 수 있는지: 비공개로 빠지는 항목이 없고 합계 시계열이 24개월 이상
+const _bok=new Map();function basketOK(c){if(!(c.basket||[]).length)return false;if(!_bok.has(c.id)){const cr=comboRows(c,'BASKET');_bok.set(c.id,!cr.dropped.length&&cr.keys.length>0&&cr.rows.filter(r=>r.value!=null).length>=24);}return _bok.get(c.id);}
+function bPairs(c,h){const B=c.basket||[];return (h==='BASKET'?B:B.filter(b=>'B:'+b.hs6===h)).flatMap(b=>b.sites.map(s=>({hs:b.hs6,label:b.label,sido:s.sido_code,kw:s.region_keyword})));}
+function natHS(c,h){return isB(h)?'':h.startsWith('ALL:')?c.hs_codes[0]:h;}
+function queryHS(c,h){if(h==='BASKET')return 'BASKET';if(h.startsWith('B:'))return h.slice(2);if(h.startsWith('ALL:'))return h.slice(4);return c.regional_hs?c.regional_hs[h]:(h.length===6?h:null);}
 function sites(c,h){return (c.sites||[c]).filter(s=>!h||h.startsWith('ALL:')||!s.hs_codes||s.hs_codes.includes(h));}
 function nationalSeries(c,h){return series(nationwide.filter(r=>r['HS코드']===natHS(c,h)).map(r=>({month:r['월'],value:num(r['수출금액_USD'])})));}
 // 지역 API가 시도 전체를 비공개(빈 응답)로 돌려준 달이 절반 이상이면 지역 시계열로 추정하지 않고 전국 관리품목으로 대체한다.
 function sparseRegional(c,h){if(c.regional_proxy_only)return false;const rows=regionRows(c,h),keys=new Set(rows.map(r=>r.sido_code+'|'+r.region));if(keys.size!==1||h.startsWith('ALL:'))return false;const nat=nationalSeries(c,h);if(!nat.length)return false;const real=new Set(rows.filter(r=>(r.amount_unit||'').startsWith('API')||(r.amount_unit||'').startsWith('HS2017')).map(r=>r.month));const exp=nat.filter(r=>r.month>='2020.01').length;return exp>0&&real.size/exp<0.5;}
-function regionRows(c,h){const q=queryHS(c,h);return regional.filter(r=>r.hs_code===q&&sites(c,h).some(s=>s.sido_code===r.sido_code&&r.region.includes(s.region_keyword)));}
-function comboRows(c,h){const rs=regionRows(c,h),keys=[...new Set(rs.map(r=>r.sido_code+'|'+r.region))],by=new Map();for(const r of rs){if(!by.has(r.month))by.set(r.month,new Map());by.get(r.month).set(r.sido_code+'|'+r.region,num(r.export_amount_raw));}return{keys,rows:[...by].map(([month,m])=>({month,value:keys.every(k=>m.get(k)!=null)?keys.reduce((s,k)=>s+m.get(k),0):null})).sort((a,b)=>a.month.localeCompare(b.month))};}
+function regionRows(c,h){if(isB(h)){const P=bPairs(c,h);return regional.filter(r=>P.some(p=>p.hs===r.hs_code&&p.sido===r.sido_code&&r.region.includes(p.kw)));}const q=queryHS(c,h);return regional.filter(r=>r.hs_code===q&&sites(c,h).some(s=>s.sido_code===r.sido_code&&r.region.includes(s.region_keyword)));}
+function comboRows(c,h){const rs=regionRows(c,h),kf=r=>r.sido_code+'|'+r.region+(isB(h)?'|'+r.hs_code:'');let keys=[...new Set(rs.map(kf))],by=new Map();for(const r of rs){if(!by.has(r.month))by.set(r.month,new Map());by.get(r.month).set(kf(r),num(r.export_amount_raw));}// 바스켓 합계: 비공개(빈 응답) 달이 많은 품목·사업장(확보월이 최다 대비 60% 미만)은 합계에서 빼고 따로 알림
+ let dropped=[];if(h==='BASKET'){const cnt=new Map(keys.map(k=>[k,[...by.values()].filter(m=>m.get(k)!=null).length])),mx=Math.max(0,...cnt.values());dropped=keys.filter(k=>cnt.get(k)<mx*0.6);keys=keys.filter(k=>!dropped.includes(k));}
+ return{keys,dropped,rows:[...by].map(([month,m])=>({month,value:keys.length&&keys.every(k=>m.get(k)!=null)?keys.reduce((s,k)=>s+m.get(k),0):null})).sort((a,b)=>a.month.localeCompare(b.month))};}
 
 // 진행 중인 분기의 미수집 월을 같은 분기 확보월의 전년 대비 증감률로 추정합니다.
 // 분기 3개월 수출이 모두 확보됐지만 그 분기 매출이 아직 발표 전이면, 확정 수출로 매출을 예상합니다.
@@ -90,10 +96,10 @@ function revenueMap(c,basis){const kind=b=>kindRevenue.filter(r=>r.company_id===
  const m=new Map(domesticFinancial.filter(r=>r.company_id===c.id&&num(r.domestic_revenue_KRW)!=null).map(r=>[r.period,num(r.domestic_revenue_KRW)/1e8]));for(const r of kind('별도'))if(!m.has(r.period))m.set(r.period,num(r.revenue_KRW)/1e8);
  if(basis!=='별도'){for(const [k,v] of naverActual){const [id,p]=k.split('|');if(id===c.id&&!m.has(p))m.set(p,v.value);}}return m;}
 function consensusFor(c,period){return consensus.get(c.id+'|'+period)||null;}
-function companyOutlook(c){const h=allSitesHS(c)||c.hs_codes.find(x=>queryHS(c,x));if(!h)return{note:'지역 조회 품목 없음'};
+function companyOutlook(c){const h=basketOK(c)?'BASKET':allSitesHS(c)||c.hs_codes.find(x=>queryHS(c,x));if(!h)return{note:'지역 조회 품목 없음'};
  const cr=comboRows(c,h);let sel,natFallback=false;
  if(sparseRegional(c,h)){sel=nationalSeries(c,h);natFallback=true;}
- else if(cr.keys.length>1){sel=series(cr.rows);const all=sel.at(-1)?.month;while(sel.length&&sel.at(-1).value==null)sel.pop();}
+ else if(cr.keys.length>1||(isB(h)&&cr.keys.length)){sel=series(cr.rows);const all=sel.at(-1)?.month;while(sel.length&&sel.at(-1).value==null)sel.pop();}
  else if(cr.keys.length===1){const [sd,rg]=cr.keys[0].split('|'),q=queryHS(c,h);sel=series(regional.filter(r=>r.hs_code===q&&r.sido_code===sd&&r.region===rg).map(r=>{const b=breaks.find(x=>x.hs_code===r.hs_code&&x.region===r.region&&r.month<=x.excluded_through);return{month:r.month,value:b?null:num(r.export_amount_raw)};}));}
  else return{note:'지역 자료 미확보'};
  if(!sel.length)return{note:'지역 자료 미확보'};
@@ -105,7 +111,7 @@ function companyOutlook(c){const h=allSitesHS(c)||c.hs_codes.find(x=>queryHS(c,x
  if(est){out.period=est.period;out.exportYoy=growth(est.total,qv.get(prevQ(est.period)));const fc=revenueForecastQoQ(new Map(quarter.filter(q=>q.value!=null).map(q=>[q.period,q.value])),revenueMap(c),est.period,est.total);out.cons=consensusFor(c,est.period);if(fc&&!fc.fail){out.fc=fc;if(out.cons)out.gap=growth(fc.value,out.cons.value);const pr=fin.get(prevQ(est.period));out.revYoy=pr?growth(fc.value,pr/1e8):null;}else out.note=fc?fc.fail:'자료 부족';}
  else{const lastQ=quarter.filter(q=>q.value!=null).at(-1);out.period=lastQ?.period;out.exportYoy=lastQ?growth(lastQ.value,qv.get(prevQ(lastQ.period))):null;out.note='진행 분기 추정 대상 아님(최신 분기 완결 또는 자료 부족)';}
  return out;}
-function populateRegions(){const c=watch.find(c=>c.id===el('company').value),h=el('hs').value;el('region').replaceChildren();const rows=regionRows(c,h),seen=new Set();const names=[...new Set(rows.map(r=>r.sido_code+'|'+r.region))];if(names.length>1)option(el('region'),'combo','사업장 합계 · '+names.map(k=>k.split('|')[1].split(' ').at(-1)).join(' + '));for(const r of rows){const key=r.sido_code+'|'+r.region;if(!seen.has(key)){option(el('region'),key,r.region);seen.add(key);}}if(!seen.size)option(el('region'),'missing',queryHS(c,h)?'대상 지역 데이터 미확보':'HS4 지역 조회 미지원');option(el('region'),'national',c.regional_proxy_only?'전국 · 별도 관리 HS10 (지역 HS6과 범위 다름)':'전국 · 관리 품목 비교용');if(sparseRegional(c,h))el('region').value='national';render();}
+function populateRegions(){const c=watch.find(c=>c.id===el('company').value),h=el('hs').value;el('region').replaceChildren();if(h==='BASKET'){option(el('region'),'combo','전 품목 · 전 사업장 합계');render();return;}const rows=regionRows(c,h),seen=new Set();const names=[...new Set(rows.map(r=>r.sido_code+'|'+r.region))];if(names.length>1||(isB(h)&&false))option(el('region'),'combo','사업장 합계 · '+names.map(k=>k.split('|')[1].split(' ').at(-1)).join(' + '));for(const r of rows){const key=r.sido_code+'|'+r.region;if(!seen.has(key)){option(el('region'),key,r.region);seen.add(key);}}if(!seen.size)option(el('region'),'missing',queryHS(c,h)?'대상 지역 데이터 미확보':'HS4 지역 조회 미지원');if(!isB(h))option(el('region'),'national',c.regional_proxy_only?'전국 · 별도 관리 HS10 (지역 HS6과 범위 다름)':'전국 · 관리 품목 비교용');if(sparseRegional(c,h))el('region').value='national';render();}
 
 function backlogReview(id){return backlogCoverage.companies?.find(r=>r.company_id===id);}
 function backlogStatus(id){const review=backlogReview(id),count=backlog.filter(r=>r.company_id===id&&num(r.value)!=null).length;return (count?'금액 '+count+'개 분기 · ':'')+(review?.label||'공시 확인 필요')+(review?.reviewed_period?' · '+review.reviewed_period:'');}
@@ -344,7 +350,7 @@ function render(){const c=watch.find(c=>c.id===el('company').value),hs=el('hs').
  const cut=rows=>rows.map(r=>{const b=breaks.find(x=>x.hs_code===r.hs_code&&x.region===r.region&&r.month<=x.excluded_through);if(b&&!isCombo){breakNote=b.region+' '+b.excluded_through+' 이전 제외: '+b.reason;return{...r,value:null};}return r;});
  let selected;
  if(isNational)selected=national;
- else if(isCombo){const cr=comboRows(c,hs),keys=cr.keys;selected=series(cr.rows);const allLast=selected.at(-1)?.month;while(selected.length&&selected.at(-1).value==null)selected.pop();if(selected.length&&selected.at(-1).month!==allLast)breakNote='일부 사업장의 '+allLast+'까지 자료가 아직 없어 합계는 '+selected.at(-1).month+'까지 표시합니다. 지역별 최신 값은 지역 선택에서 확인하세요.';regionName=keys.map(k=>k.split('|')[1]).join(' + ');sido=keys[0].split('|')[0];}
+ else if(isCombo){const cr=comboRows(c,hs),keys=cr.keys;selected=series(cr.rows);const allLast=selected.at(-1)?.month;while(selected.length&&selected.at(-1).value==null)selected.pop();if(selected.length&&selected.at(-1).month!==allLast)breakNote='일부 사업장의 '+allLast+'까지 자료가 아직 없어 합계는 '+selected.at(-1).month+'까지 표시합니다. 지역별 최신 값은 지역 선택에서 확인하세요.';regionName=[...new Set(keys.map(k=>k.split('|')[1]))].join(' + ');sido=keys[0]?.split('|')[0];}
  else selected=series(cut(regional.filter(r=>r.hs_code===query&&r.sido_code===sido&&r.region===regionName).map(r=>({month:r.month,hs_code:r.hs_code,region:r.region,value:num(r.export_amount_raw)}))));
  const quarter=quarterly(selected),qm=new Map(quarter.map(r=>[r.period,r]));
  const natFallback=isNational&&sparseRegional(c,hs);const est=isNational&&!natFallback?null:(estimateQuarter(selected)||completeQuarter(selected,revenueMap(c)));
@@ -356,8 +362,9 @@ function render(){const c=watch.find(c=>c.id===el('company').value),hs=el('hs').
  el('scopeNotice').textContent=isNational?'전국 비교: 관리 품목 '+hs+' 데이터입니다. 지역 상위품목 지표와 범위가 다를 수 있습니다.':!query?'HS 4자리 총괄은 이 지역 API에서 조회할 수 없습니다. 관련 세부 관리 품목을 선택하세요.':query!==hs?'관리 HS '+hs+' → 지역 조회 HS '+query+' 상위 품목군 참고지표. 세부 품목 전용 수출이 아닙니다.':'지역 조회 HS '+query+' · 해당 지역 품목군 전체. 개별 업체 수출액이 아닙니다.';
  if(natFallback)el('scopeNotice').textContent='전국 대체: 이 업체 사업장 지역('+sites(c,hs).map(t=>t.region_keyword).join('·')+')의 HS '+(query||hs)+' 통계는 관세청이 비공개(빈 응답)로 처리한 달이 절반 이상이라, 전국 관리품목 '+hs+' 수출로 분기 추정·매출 예상을 계산합니다. 전국 값에는 다른 업체 수출이 포함됩니다.';
  if(isCombo)el('scopeNotice').textContent='사업장 합계: '+regionName+'의 HS '+query+' 지역 수출을 월별로 더한 값입니다. 모든 사업장 값이 있는 달만 계산합니다. 각 지역에는 다른 업체 수출도 포함됩니다.';
+ if(isB(hs)){const P=bPairs(c,hs);el('scopeNotice').textContent=(hs==='BASKET'?'업체 전체 품목 합산: ':'개별 품목: ')+[...new Set(P.map(p=>p.label+'(HS '+p.hs+')'))].join(', ')+' × 사업장 '+[...new Set(P.map(p=>p.kw))].join('·')+'의 지역 수출을 월별로 더한 값입니다. 모든 조합의 값이 있는 달만 합산합니다.'+(hs==='BASKET'&&comboRows(c,hs).dropped.length?' ⚠ 관세청 비공개 달이 많아 합계에서 뺀 항목: '+comboRows(c,hs).dropped.map(k=>{const [,rg,h6]=k.split('|');return (c.basket.find(b=>b.hs6===h6)?.label||h6)+'('+rg.split(' ').at(-1)+')';}).join(', ')+' — 아래 품목 구성 표에서 따로 확인하세요.':'')+' 각 시군구에는 같은 품목을 수출하는 다른 업체도 포함되므로 업체 단독 실적이 아닙니다.';}
  if(breakNote)el('scopeNotice').textContent+=isCombo?' ⚠ '+breakNote:' ⚠ 시계열 단절 구간 제외 — '+breakNote;
- const peers=watch.filter(x=>x.id!==c.id&&x.hs_codes.some(h=>queryHS(x,h)===query&&sites(x,h).some(t=>t.sido_code===sido&&regionName?.includes(t.region_keyword))));el('sharedCandidates').textContent=isNational?'':peers.length?'동일 지역·HS 통계를 공유하는 후보: '+peers.map(x=>x.name).join(', ')+' — 업체별 기여도 분리 불가.':'목록 내 동일 지역·HS 후보가 없더라도 해당 업체의 독점 수출을 뜻하지 않습니다.';
+ const peers=isB(hs)?watch.filter(x=>x.id!==c.id&&bPairs(x,'BASKET').some(p=>bPairs(c,hs).some(q=>q.hs===p.hs&&q.sido===p.sido&&q.kw===p.kw))):watch.filter(x=>x.id!==c.id&&x.hs_codes.some(h=>queryHS(x,h)===query&&sites(x,h).some(t=>t.sido_code===sido&&regionName?.includes(t.region_keyword))));el('sharedCandidates').textContent=isNational?'':peers.length?'동일 지역·HS 통계를 공유하는 후보: '+peers.map(x=>x.name).join(', ')+' — 업체별 기여도 분리 불가.':'목록 내 동일 지역·HS 후보가 없더라도 해당 업체의 독점 수출을 뜻하지 않습니다.';
  el('mapping').textContent=`${c.name} (${c.id}) · ${c.region_basis}. ${c.rationale}`;
  el('coverage').textContent=`선택 지역: ${isNational?'전국':reg==='missing'?sites(c,hs).map(t=>t.region_keyword).join(' · '):regionName} | 확보 ${selected.filter(r=>r.value!=null).length}개월 | 수집 확인: ${status.updated_at??'아직 실행 결과 없음'}${status.failures?.length?' | 수집 실패 '+status.failures.length+'구간 · 기존 정상 데이터 유지':''}`;
  const i=selected.length-1,last=selected[i],map=new Map(selected.map(r=>[r.month,r.value]));
@@ -371,7 +378,7 @@ function render(){const c=watch.find(c=>c.id===el('company').value),hs=el('hs').
  el('pairs').textContent=`동일 분기 YoY ${pairs.length}쌍 · 3쌍부터 초기 신호, 8쌍부터 참고 가능`;
  el('validation').textContent=pairs.length<3?`${pairs.length}개 비교 분기 확보. 방향 일치율을 표시하기에는 표본이 부족합니다.`:pairs.length<8?`${pairs.length}개 비교 분기의 초기 신호입니다. 방향 일치율은 참고용으로만 표시하며 매출 예측에는 사용하지 않습니다.`:`${pairs.length}개 비교 분기의 과거 동행성 지표입니다. 표본 외 예측 검증 전에는 매출 전망을 산출하지 않습니다.`;
  const base=selected.find(r=>r.value>0)?.value;const scale=v=>v==null||!base?null:v/base*100;
- el('trendTitle').textContent=(isNational?'전국':reg==='missing'?sites(c,hs).map(t=>t.region_keyword).join(' · '):regionName)+' · '+(isNational?hs:query||hs)+' 수출 추세';
+ el('trendTitle').textContent=isB(hs)?c.name+' · '+(hs==='BASKET'?'전 품목 합산':bPairs(c,hs)[0]?.label+' (HS '+hs.slice(2)+')')+' 수출 추세':(isNational?'전국':reg==='missing'?sites(c,hs).map(t=>t.region_keyword).join(' · '):regionName)+' · '+(isNational?hs:query||hs)+' 수출 추세';
  el('trendEmpty').hidden=!!selected.length;el('trendEmpty').textContent='지역 데이터가 아직 확보되지 않았습니다. 수집 상태를 확인하거나 지역 선택에서 전국 비교를 볼 수 있습니다.';
  if(el('frequency').value==='month'){
  el('trendNote').textContent='월별 수출액(백만 USD, 신고 미화금액). 지역 API 금액은 천 USD 단위입니다(수집 지역 합계가 전국 같은 HS6 수출의 95~99%로 일치함을 확인). 월별 변동은 연속 3개월 이동평균으로 함께 확인합니다.';
@@ -461,3 +468,30 @@ async function init(){try{const pr=await read('stock_prices_monthly.csv',true);p
 fetch('company_domestic_financials.csv?v='+Date.now()).then(r=>r.ok?r.text():'').then(t=>{if(t){domesticFinancial=records(t);fillDomestic();if(el('company')?.value)render();}}).catch(()=>{});
 init().catch(e=>{el('error').hidden=false;el('error').textContent='데이터를 불러오지 못했습니다: '+e.message;});
 
+
+// ── 업체 품목 바스켓 구성: 품목별(또는 사업장별) 월 수출을 쌓은 막대 + 품목 표 ──
+function renderBasket(){const box=el('basketPanel');if(!box)return;const c=watch.find(x=>x.id===el('company').value),hs=el('hs').value,B=c?.basket||[];
+ if(!B.length||!isB(hs)){box.hidden=true;return;}box.hidden=false;
+ const P=bPairs(c,hs),byItem=hs==='BASKET';
+ const grp=p=>byItem?p.hs:p.kw, glab=k=>byItem?(B.find(b=>b.hs6===k)?.label+' · '+k):k;
+ const groups=[...new Set(P.map(grp))];
+ const val=new Map();for(const r of regional){const p=P.find(p=>p.hs===r.hs_code&&p.sido===r.sido_code&&r.region.includes(p.kw));if(!p)continue;const v=num(r.export_amount_raw);if(v==null)continue;const k=grp(p)+'|'+r.month;val.set(k,(val.get(k)||0)+v);}
+ const months=[...new Set([...val.keys()].map(k=>k.split('|')[1]))].sort();const show=months.slice(-36);
+ const pal=['#3b82f6','#f59e0b','#10b981','#ef4444','#a855f7','#06b6d4','#f97316','#84cc16','#ec4899','#64748b'];
+ const M=v=>v==null?null:Math.round(v/1e4)/100;
+ charts.basketChart?.destroy();
+ charts.basketChart=new Chart(el('basketChart'),{type:'bar',data:{labels:show,datasets:groups.map((g,i)=>({label:glab(g),data:show.map(m=>M(val.get(g+'|'+m))),backgroundColor:pal[i%pal.length],stack:'s'}))},
+  options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{position:'bottom'},tooltip:{callbacks:{footer:it=>'합계 '+(it.reduce((s,x)=>s+(x.parsed.y||0),0)).toFixed(2)+' 백만 USD'}}},scales:{x:{stacked:true,ticks:{maxTicksLimit:18},grid:{display:false}},y:{stacked:true,title:{display:true,text:'백만 USD'}}}}});
+ const last=months.at(-1),ago=m=>monthLabel(monthId(m)-12),sumK=(g,ms)=>{let s=0;for(const m of ms){const v=val.get(g+'|'+m);if(v==null)return null;s+=v;}return s;};
+ const back=k=>Array.from({length:k},(_,i)=>monthLabel(monthId(last)-i));
+ const rows=groups.map(g=>{const v=val.get(g+'|'+last),p=val.get(g+'|'+ago(last)),q3=sumK(g,back(3)),q3p=sumK(g,back(3).map(ago)),t12=sumK(g,back(12)),t12p=sumK(g,back(12).map(ago));return{g,v,yoy:growth(v,p),q3,q3y:growth(q3,q3p),t12,t12y:growth(t12,t12p)};});
+ const tot=rows.reduce((s,r)=>s+(r.t12||0),0);rows.sort((a,b)=>(b.t12||0)-(a.t12||0));
+ const tv=rows.reduce((s,r)=>s+(r.v||0),0),tp=groups.reduce((s,g)=>s+(val.get(g+'|'+ago(last))||0),0),T=k=>rows.reduce((s,r)=>s+(r[k]||0),0);
+ const f=v=>v==null?'—':(v/1e6).toLocaleString(undefined,{maximumFractionDigits:2}),cls=v=>v==null?'':v>=0?'pos':'neg';
+ el('basketTitle').textContent=c.name+' · '+(byItem?'품목별 구성 ('+groups.length+'개 품목)':(bPairs(c,hs)[0]?.label+' · 사업장별 구성'));
+ el('basketNote').textContent=(byItem?'막대 색 = 품목(사업장 합산)':'막대 색 = 사업장(시군구)')+' · 최근 36개월 · 단위 백만 USD · 최신 '+last+'. 표의 행을 누르면 해당 품목만 따로 봅니다. 각 시군구 값에는 같은 품목의 다른 업체 수출이 포함됩니다.';
+ const tb=el('basketTable');tb.innerHTML='<thead><tr><th>'+(byItem?'품목':'사업장')+'</th><th>'+last+'<br>(백만$)</th><th>YoY</th><th>최근 3개월 YoY</th><th>최근 12개월<br>(백만$)</th><th>12개월 YoY</th><th>비중</th></tr></thead><tbody>'+
+  rows.map(r=>`<tr data-g="${r.g}" style="${byItem?'cursor:pointer':''}"><td>${glab(r.g)}${byItem?' <span class="muted">('+bPairs(c,'B:'+r.g).map(p=>p.kw).join('·')+')</span>':''}</td><td class="num">${f(r.v)}</td><td class="num ${cls(r.yoy)}">${pct(r.yoy)}</td><td class="num ${cls(r.q3y)}">${pct(r.q3y)}</td><td class="num">${f(r.t12)}</td><td class="num ${cls(r.t12y)}">${pct(r.t12y)}</td><td class="num">${tot?(r.t12/tot*100).toFixed(1)+'%':'—'}</td></tr>`).join('')+
+  `<tr style="font-weight:700"><td>합계</td><td class="num">${f(tv)}</td><td class="num ${cls(growth(tv,tp))}">${pct(growth(tv,tp))}</td><td></td><td class="num">${f(T('t12'))}</td><td></td><td class="num">100%</td></tr></tbody>`;
+ if(byItem)tb.querySelectorAll('tr[data-g]').forEach(tr=>tr.onclick=()=>{el('hs').value='B:'+tr.dataset.g;populateRegions();});}
+{const _r=render;render=function(){_r();try{renderBasket();}catch(e){console.error(e);}};}
