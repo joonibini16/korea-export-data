@@ -857,19 +857,49 @@
       "sites": [
         {
           "sido_code": "41",
-          "region_keyword": "평택시"
+          "region_keyword": "평택시",
+          "hs_codes": [
+            "8542",
+            "8542321010",
+            "8542321030"
+          ]
+        },
+        {
+          "sido_code": "41",
+          "region_keyword": "화성시",
+          "hs_codes": [
+            "8542",
+            "8542321010",
+            "8542321030"
+          ]
+        },
+        {
+          "sido_code": "41",
+          "region_keyword": "용인시",
+          "hs_codes": [
+            "8542",
+            "8542321010",
+            "8542321030"
+          ]
+        },
+        {
+          "sido_code": "47",
+          "region_keyword": "구미시",
+          "hs_codes": []
         }
       ],
       "sido_code": "41",
       "region_keyword": "평택시",
       "region_basis": "제조장소 우편번호 기준 시군구",
       "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
-      "rationale": "평택 D램·낸드 생산. HS 854232는 메모리 전체로 DRAM/NAND를 나눌 수 없으며 완제품·해외 생산을 대표하지 않음. 8542는 지역 API 직접 조회 불가.",
+      "rationale": "평택·화성·기흥(용인) 반도체, 구미 스마트폰 생산거점 참고. HS6 854232는 DRAM/NAND/HBM을 구분하지 못하고 854231은 시스템반도체 전체, 851713은 2022년 신설 스마트폰 코드임. 사업장 지역 수출은 삼성전자 단독 실적이 아님.",
       "sources": [
         "https://news.samsung.com/kr/삼성전자-세계-최대규모-평택-2라인-가동",
-        "https://www.samsung.com/sec/about-us/company-info/"
+        "https://www.samsung.com/sec/about-us/company-info/",
+        "https://news.samsung.com/kr/%ED%8F%AC%ED%86%A0%EC%97%90%EC%84%B8%EC%9D%B4-1%ED%8E%B8-%EC%B2%A8%EB%8B%A8%EA%B8%B0%EC%88%A0-%EC%A7%84%EC%9B%90%EC%A7%80-%EC%82%BC%EC%84%B1%EC%9D%98-%EB%B0%98%EB%8F%84%EC%B2%B4",
+        "https://news.samsung.com/kr/%EC%82%BC%EC%84%B1-%EC%A7%80%EC%97%AD-%EA%B7%A0%ED%98%95-%EB%B0%9C%EC%A0%84-%EC%9C%84%ED%95%B4-60-1%EC%A1%B0%EC%9B%90-%ED%88%AC%EC%9E%90"
       ],
-      "reviewed_at": "2026-10-07",
+      "reviewed_at": "2026-10-16",
       "regional_hs": {
         "8542": null,
         "8542321010": "854232",
@@ -878,25 +908,52 @@
       "basket": [
         {
           "hs6": "854232",
-          "label": "메모리 반도체",
+          "label": "메모리 집적회로",
           "sites": [
             {
               "sido_code": "41",
               "region_keyword": "평택시"
+            },
+            {
+              "sido_code": "41",
+              "region_keyword": "화성시"
+            },
+            {
+              "sido_code": "41",
+              "region_keyword": "용인시"
             }
           ],
-          "origin": "기존 관리품목 연결"
+          "origin": "2026-10-16 국내 반도체 생산거점 확장"
         },
         {
           "hs6": "854231",
-          "label": "프로세서·컨트롤러(시스템반도체)",
+          "label": "프로세서·컨트롤러 집적회로",
           "sites": [
             {
               "sido_code": "41",
               "region_keyword": "평택시"
+            },
+            {
+              "sido_code": "41",
+              "region_keyword": "화성시"
+            },
+            {
+              "sido_code": "41",
+              "region_keyword": "용인시"
             }
           ],
-          "origin": "2026-10-16 바스켓 재검토 추가"
+          "origin": "2026-10-16 국내 반도체 생산거점 확장"
+        },
+        {
+          "hs6": "851713",
+          "label": "스마트폰(HS2022, 2022년 이후)",
+          "sites": [
+            {
+              "sido_code": "47",
+              "region_keyword": "구미시"
+            }
+          ],
+          "origin": "2026-10-16 국내 모바일 생산거점 추가"
         }
       ]
     },
@@ -5152,9 +5209,208 @@
           "origin": "기존 관리품목 연결"
         }
       ]
+    },
+    {
+      "id": "000990",
+      "name": "DB하이텍",
+      "category": "반도체",
+      "hs_codes": [
+        "854239"
+      ],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "부천시"
+        },
+        {
+          "sido_code": "43",
+          "region_keyword": "음성군"
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "부천시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "reviewed_at": "2026-10-16",
+      "rationale": "부천 Fab1·음성 상우 Fab2의 아날로그·전력반도체 파운드리. HS 854239는 메모리·프로세서·증폭기 이외의 집적회로를 포함하는 광의 품목군이며 파운드리 매출이나 업체 단독 수출과 다름.",
+      "sources": [
+        "https://www.dbhitek.com/kr/customer-support/network",
+        "https://www.dbhitek.com/en/company/history"
+      ],
+      "regional_hs": {
+        "854239": "854239"
+      },
+      "basket": [
+        {
+          "hs6": "854239",
+          "label": "기타 집적회로(아날로그·전력 IC 후보)",
+          "sites": [
+            {
+              "sido_code": "41",
+              "region_keyword": "부천시"
+            },
+            {
+              "sido_code": "43",
+              "region_keyword": "음성군"
+            }
+          ],
+          "origin": "2026-10-16 공식 생산거점 확인"
+        }
+      ]
+    },
+    {
+      "id": "034220",
+      "name": "LG디스플레이",
+      "category": "디스플레이·IT하드웨어",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "파주시"
+        },
+        {
+          "sido_code": "47",
+          "region_keyword": "구미시"
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "파주시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "reviewed_at": "2026-10-16",
+      "rationale": "파주·구미 OLED 생산거점. HS 852412·852492는 구동회로 유무로 나뉜 OLED 평판 모듈이며 2022년부터 비교. LCD와 해외 생산, 기타 수출품은 포함하지 않음.",
+      "sources": [
+        "https://www.lgdisplay.com/kor/company/info/place",
+        "https://www.lgdisplay.com/eng/company/info/history"
+      ],
+      "basket": [
+        {
+          "hs6": "852412",
+          "label": "OLED 모듈(구동회로 없음·2022년 이후)",
+          "sites": [
+            {
+              "sido_code": "41",
+              "region_keyword": "파주시"
+            },
+            {
+              "sido_code": "47",
+              "region_keyword": "구미시"
+            }
+          ],
+          "origin": "2026-10-16 공식 생산거점·HS2022 분류 확인"
+        },
+        {
+          "hs6": "852492",
+          "label": "OLED 모듈(구동회로 있음·2022년 이후)",
+          "sites": [
+            {
+              "sido_code": "41",
+              "region_keyword": "파주시"
+            },
+            {
+              "sido_code": "47",
+              "region_keyword": "구미시"
+            }
+          ],
+          "origin": "2026-10-16 공식 생산거점·HS2022 분류 확인"
+        }
+      ]
+    },
+    {
+      "id": "SAMSUNG-DISPLAY",
+      "name": "삼성디스플레이",
+      "category": "디스플레이·IT하드웨어",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "44",
+          "region_keyword": "아산시"
+        },
+        {
+          "sido_code": "44",
+          "region_keyword": "천안시"
+        }
+      ],
+      "sido_code": "44",
+      "region_keyword": "아산시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "reviewed_at": "2026-10-16",
+      "rationale": "아산·천안 OLED 생산거점. HS 852412·852492는 OLED 모듈 품목군 전체로 같은 지역 다른 업체가 포함됨. 비상장 기업이므로 별도 상장사 매출 비교 대상 아님.",
+      "sources": [
+        "https://news.samsungdisplay.com/6086/",
+        "https://news.samsungdisplay.com/34177"
+      ],
+      "basket": [
+        {
+          "hs6": "852412",
+          "label": "OLED 모듈(구동회로 없음·2022년 이후)",
+          "sites": [
+            {
+              "sido_code": "44",
+              "region_keyword": "아산시"
+            },
+            {
+              "sido_code": "44",
+              "region_keyword": "천안시"
+            }
+          ],
+          "origin": "2026-10-16 공식 생산거점·HS2022 분류 확인"
+        },
+        {
+          "hs6": "852492",
+          "label": "OLED 모듈(구동회로 있음·2022년 이후)",
+          "sites": [
+            {
+              "sido_code": "44",
+              "region_keyword": "아산시"
+            },
+            {
+              "sido_code": "44",
+              "region_keyword": "천안시"
+            }
+          ],
+          "origin": "2026-10-16 공식 생산거점·HS2022 분류 확인"
+        }
+      ]
+    },
+    {
+      "id": "066570",
+      "name": "LG전자",
+      "category": "디스플레이·IT하드웨어",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "47",
+          "region_keyword": "구미시"
+        }
+      ],
+      "sido_code": "47",
+      "region_keyword": "구미시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "생산거점·제품 확인 / 개별 업체 수출 미확인",
+      "reviewed_at": "2026-10-16",
+      "rationale": "구미 TV 완제품 생산거점. HS 852872는 컬러 화면이 있는 TV 수상기 전체이며 LCD/OLED, 타 업체, 해외 생산을 분리하지 못함.",
+      "sources": [
+        "https://www.lg.com/global/newsroom/news/media-entertainment-solution/lg-to-further-diversify-tv-production-for-a-more-efficient-global-footprint/",
+        "https://www.lg.com/global/newsroom/news/media-entertainment-solution/commercial-launch-of-lgs-long-awaited-rollable-oled-tv-marks-turning-point-in-tv-history/"
+      ],
+      "basket": [
+        {
+          "hs6": "852872",
+          "label": "컬러 텔레비전 수상기",
+          "sites": [
+            {
+              "sido_code": "47",
+              "region_keyword": "구미시"
+            }
+          ],
+          "origin": "2026-10-16 공식 생산거점 확인"
+        }
+      ]
     }
   ],
-  "reviewed_at": "2026-10-07",
+  "reviewed_at": "2026-10-16",
   "scope_note": "hs_codes.csv 전체를 조사 대상으로 표시. 공식 제품·생산지역 근거를 확인한 후보 목록이며 국내 모든 기업의 누락 없는 전수명부나 개별 업체 수출 추정 모델이 아님.",
   "unmapped_notes": {
     "3005904000": "창상피복재 제조공장·수출 신고코드 근거 추가 확인 필요",
@@ -5168,5 +5424,5 @@
     "7410211000": "관리명은 원본 유지. 전지용 동박과 해당 세부 HS의 일치 확인 필요"
   },
   "region_code_note": "강원 51·전북 52: 특별자치도 현행 코드. API 응답의 실제 지역명·기간을 검증하며 과거 자료를 임의 생성하지 않음.",
-  "basket_note": "basket = 기업 사업장(시군구) × 주요 수출 HS6. 지역 통계는 같은 시군구의 다른 업체 수출을 포함하므로 업체 단독 실적이 아니라 생산거점 지역의 품목군 지표입니다. 2026-10-16 전체 기업 재검토: 주력 수출품목·사업장을 추가(예: 가온전선 전주 광·통신케이블, LS전선 구미 광통신, HD현대일렉트릭 배전반·중형변압기, 화장품 색조, 식품 소스·과자, 배터리 부분품)."
+  "basket_note": "basket = 기업 사업장(시군구) × 주요 수출 HS6. 지역 통계는 같은 시군구의 다른 업체 수출을 포함하므로 업체 단독 실적이 아니라 생산거점 지역의 품목군 지표입니다. 2026-10-16 전체 기업 재검토: 주력 수출품목·사업장을 추가(예: 가온전선 전주 광·통신케이블, LS전선 구미 광통신, HD현대일렉트릭 배전반·중형변압기, 화장품 색조, 식품 소스·과자, 배터리 부분품). 2026-10-16 반도체·IT하드웨어 확대: 삼성전자 평택·화성·용인 및 구미, DB하이텍 부천·음성, LG디스플레이 파주·구미, 삼성디스플레이 아산·천안, LG전자 구미. 852412·852492·851713은 2022년 신설 코드로 2020~2021년은 공백이며 임의 연속 처리하지 않음."
 }
