@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>분기 매출 상향·하향 예상</title><script src="./shell.js?v=23"></script>
+<style>
+:root{font-family:Arial,"Noto Sans KR",sans-serif;color:#e8eef7;background:#081326}*{box-sizing:border-box}
+body{margin:0}main{max-width:1450px;margin:28px auto;padding:0 24px}h1{font-size:30px;margin:0 0 10px}h2{font-size:19px;margin:0 0 14px}
+a{color:#93c5fd}nav{display:flex;flex-wrap:wrap;gap:17px;margin:0 0 24px}.muted{color:#9aaec9;font-size:14px;line-height:1.6}
+.panel,.card{background:#111f38;border:1px solid #29405f;border-radius:12px;padding:20px;margin:0 0 18px}
+.controls{display:flex;gap:14px;flex-wrap:wrap;align-items:end}.controls label{display:grid;gap:7px;font-size:13px}
+select,input{padding:10px 12px;background:#0c1a30;color:#e8eef7;border:1px solid #385273;border-radius:7px;min-width:170px}
+input[type=search]{min-width:235px}.tabs{display:flex;gap:9px;flex-wrap:wrap;margin:18px 0 6px}
+.tabs button{background:#152846;color:#b9cbe3;border:1px solid #3b5577;border-radius:7px;padding:9px 15px;cursor:pointer}
+.tabs button.on{background:#245bb0;color:#fff;border-color:#60a5fa}.summary{display:flex;gap:12px;flex-wrap:wrap}
+.card{flex:1 1 190px;margin:0}.card strong{display:block;font-size:25px;margin-top:7px}.up{color:#fb8d8d}.down{color:#85b8ff}
+.table{overflow:auto;max-height:68vh}table{width:100%;border-collapse:collapse;font-size:14px}
+thead{position:sticky;top:0;background:#1c3150;z-index:1}th,td{padding:11px 12px;border-bottom:1px solid #29405f;text-align:right;white-space:nowrap}
+th:first-child,td:first-child,th:nth-child(2),td:nth-child(2){text-align:left}.empty{text-align:center;padding:36px;color:#a6b8ce}
+.tag{border-radius:5px;padding:4px 8px;background:#243650;color:#b9cee5;font-size:12px}
+.tag.strong{background:#5a292b;color:#ffb3b3}.tag.known{background:#164a3b;color:#b2f3cf}
+@media(max-width:600px){main{padding:0 12px}.panel{padding:15px}h1{font-size:24px}}
+</style><link rel="stylesheet" href="./shell.css?v=3"></head>
+<body><main>
+<nav><a href="./">모니터링</a><a href="./regional.html">지역 · 업체 추적</a><a href="./forecast_tracker.html">매출 예측 추적</a><b>매출 상향·하향 예상</b></nav>
+<h1>분기 매출 상향·하향 예상</h1>
+<p class="muted">지역 수출 기반 예상 매출과 동일 분기의 연결 매출 컨센서스를 비교합니다. 매출 예상이 컨센서스보다 높으면 상향, 낮으면 하향으로 분류합니다. 투자 의견이나 증권사 추정치 변경을 뜻하지 않습니다.</p>
+<section class="panel"><div class="controls">
+<label>분기<select id="period"></select></label>
+<label>예측 방식<select id="model"><option value="qoq-elasticity-v1">지역 수출 기반</option><option value="combined-verdict-v1">종합 판단 (수출·재고)</option><option value="inventory-qoq-v2">재고 기반</option></select></label>
+<label>업종<select id="industry"><option value="">전체 업종</option></select></label>
+<label>기업 검색<input type="search" id="search" placeholder="기업명 · 종목코드"></label>
+</div><div class="tabs" id="direction"><button type="button" data-dir="up" class="on">상향 예상</button><button type="button" data-dir="down">하향 예상</button><button type="button" data-dir="all">전체</button></div>
+<p id="coverage" class="muted">예측 자료를 읽는 중입니다.</p></section>
+<div class="summary" id="summary"></div>
+<section class="panel"><h2 id="listTitle">상향 예상 기업</h2><div class="table"><table><thead><tr><th>기업</th><th>업종</th><th>분기</th><th>예상 매출</th><th>당시 컨센서스</th><th>괴리</th><th>오차·확률</th><th>판단</th><th>실제 발표</th><th>예측 기준일</th></tr></thead><tbody id="list"></tbody></table></div></section>
+<section class="panel"><h2>해석 기준</h2><p class="muted">괴리 = (예상 매출 ÷ 당시 컨센서스 − 1) × 100. 양수·음수 방향에 따라 목록을 나누며, 백테스트 오차 안의 차이는 신호가 약할 수 있습니다. 종합 판단의 상회 확률은 모형 산출치이며 확정 확률이 아닙니다. 지역 통계에는 다른 업체 수출이 포함되고 내수·해외 생산은 빠질 수 있습니다. 발표 확인 시 실제 매출은 공시 연결 매출을 우선 표시하고 예측 기준일은 발표 전 스냅샷을 사용합니다. 매 분기 새로운 예측이 저장되면 새 분기를 기본 선택합니다. <a href="./forecast_tracker.html">예측·실적 추적</a>에서 과거 오차를 확인할 수 있습니다.</p></section>
+</main><script>
+'use strict';
+const el=id=>document.getElementById(id),n=v=>v==null||String(v).trim()===''||!Number.isFinite(Number(v))?null:Number(v);
+const fmt=v=>v==null?'—':Math.round(v).toLocaleString('ko-KR')+'억',pct=v=>v==null?'—':(v>0?'+':'')+v.toFixed(1)+'%';
+function csv(text){const rows=[],line=[];let cell='',quoted=false;for(let i=0;i<text.length;i++){const c=text[i];if(c==='"'){if(quoted&&text[i+1]==='"'){cell+='"';i++;}else quoted=!quoted;}else if(c===','&&!quoted){line.push(cell);cell='';}else if((c==='\n'||c==='\r')&&!quoted){if(c==='\r'&&text[i+1]==='\n')i++;line.push(cell);if(line.some(Boolean))rows.push(line.splice(0));cell='';}else cell+=c;}line.push(cell);if(line.some(Boolean))rows.push(line);const [header,...data]=rows;header[0]=header[0].replace(/^\ufeff/,'');return data.map(row=>Object.fromEntries(header.map((k,i)=>[k,row[i]||''])));}
+async function get(path){const r=await fetch(path+'?v='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error(path+' HTTP '+r.status);return r.text();}
+let log=[],watch=[],actual=new Map(),announce=new Map(),direction='up',manualPeriod=false;
+function cell(tr,text,cls){const td=document.createElement('td');td.textContent=text;if(cls)td.className=cls;tr.append(td);return td;}
+function option(select,value,text){const o=document.createElement('option');o.value=value;o.textContent=text;select.append(o);}
+function modelRows(){return log.filter(r=>r.model===el('model').value&&n(r.forecast_revenue_100m)!=null&&n(r.consensus_revenue_100m)>0);}
+function periods(){return [...new Set(modelRows().map(r=>r.period))].sort().reverse();}
+function populatePeriods(){const select=el('period'),keep=manualPeriod?select.value:null,ps=periods();select.replaceChildren();ps.forEach(p=>option(select,p,p));if(keep&&ps.includes(keep))select.value=keep;else manualPeriod=false;}
+function latestRows(){const period=el('period').value,groups=new Map(),companies=new Map(watch.map(c=>[c.id,c]));for(const r of modelRows()){if(r.period!==period||!companies.has(r.company_id))continue;const published=announce.get(r.company_id+'|'+period);if(published&&r.snapshot_date>=published)continue;const old=groups.get(r.company_id),stamp=x=>x.snapshot_date+' '+(x.snapshot_time||'');if(!old||stamp(r)>stamp(old))groups.set(r.company_id,r);}
+return [...groups.values()].map(r=>{const company=companies.get(r.company_id),forecast=n(r.forecast_revenue_100m),consensus=n(r.consensus_revenue_100m),gap=(forecast/consensus-1)*100,mape=n(r.backtest_mape_pct),prob=n(r.prob_beat_pct);return{r,company,forecast,consensus,gap,mape,prob,actual:actual.get(r.company_id+'|'+period)};}).filter(x=>Number.isFinite(x.gap));}
+function render(){const all=latestRows(),industry=el('industry').value,search=el('search').value.trim().toLowerCase(),filtered=all.filter(x=>(!industry||x.company.category===industry)&&(!search||(x.company.name+' '+x.company.id).toLowerCase().includes(search))),up=filtered.filter(x=>x.gap>0),down=filtered.filter(x=>x.gap<0),neutral=filtered.length-up.length-down.length,visible=direction==='up'?up:direction==='down'?down:filtered;
+el('listTitle').textContent=direction==='up'?'상향 예상 기업':direction==='down'?'하향 예상 기업':'전체 비교 기업';
+el('summary').replaceChildren();for(const [label,value,cls] of [['상향 예상',up.length,'up'],['하향 예상',down.length,'down'],['비교 가능',filtered.length,'']]){const d=document.createElement('div');d.className='card';const t=document.createElement('span');t.textContent=label;const b=document.createElement('strong');b.className=cls;b.textContent=value+'개';d.append(t,b);el('summary').append(d);}
+el('coverage').textContent=(el('period').value||'대상 분기 없음')+' · 관리업체 '+watch.length+'개 · 선택 모형 비교 가능 '+all.length+'개 · 표시 '+filtered.length+'개'+(neutral?' · 괴리 0% '+neutral+'개':'')+' · 분기별 신규 예측 스냅샷이 들어오면 최신 분기를 자동 선택';
+el('list').replaceChildren();visible.sort((a,b)=>Math.abs(b.gap)-Math.abs(a.gap)||a.company.name.localeCompare(b.company.name,'ko'));
+for(const x of visible){const tr=document.createElement('tr'),name=cell(tr,'');const link=document.createElement('a');link.href='./regional.html?company='+encodeURIComponent(x.company.id);link.textContent=x.company.name+' ('+x.company.id+')';name.append(link);cell(tr,x.company.category||'—');cell(tr,x.r.period);cell(tr,fmt(x.forecast));cell(tr,fmt(x.consensus));cell(tr,pct(x.gap),x.gap>0?'up':'down');cell(tr,x.mape!=null?'백테스트 오차 '+pct(x.mape):x.prob!=null?'상회 확률 '+pct(x.prob):'—');const verdict=cell(tr,''),tag=document.createElement('span');tag.className='tag'+(x.mape!=null&&Math.abs(x.gap)>x.mape?' strong':'');tag.textContent=x.mape!=null?(Math.abs(x.gap)>x.mape?'오차 범위 밖':'오차 범위 안'):'참고 신호';verdict.append(tag);cell(tr,x.actual!=null?fmt(x.actual):'발표 대기',x.actual!=null?'known':'muted');cell(tr,x.r.snapshot_date||'—');el('list').append(tr);}
+if(!visible.length){const tr=document.createElement('tr'),td=document.createElement('td');td.colSpan=10;td.className='empty';td.textContent='해당 조건에서 비교 가능한 기업이 없습니다.';tr.append(td);el('list').append(tr);}}
+async function load(){try{const [raw,w,f,naver]=await Promise.all([get('forecast_log.csv'),get('company_watchlist.json'),get('company_financials.csv'),get('naver_consensus.csv')]);log=csv(raw);watch=JSON.parse(w).companies||[];const financial=csv(f),ns=csv(naver);actual=new Map();announce=new Map();for(const r of ns){if(r.is_estimate!=='0'||n(r.revenue_100m)==null)continue;const key=r.company_id+'|'+r.period,old=announce.get(key);if(!old||r.snapshot_date<old)announce.set(key,r.snapshot_date);actual.set(key,n(r.revenue_100m));}for(const r of financial){const value=n(r.revenue_KRW);if(value==null||value<0)continue;const key=r.company_id+'|'+r.period,old=actual.get(key);if(old==null||r.basis==='연결')actual.set(key,value/1e8);}
+const select=el('industry'),selected=select.value;select.replaceChildren();option(select,'','전체 업종');[...new Set(watch.map(c=>c.category).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'ko')).forEach(c=>option(select,c,c));select.value=selected;populatePeriods();render();}catch(e){el('coverage').textContent='자료를 읽지 못했습니다: '+e.message;}}
+el('period').addEventListener('change',()=>{manualPeriod=true;render();});el('model').addEventListener('change',()=>{manualPeriod=false;populatePeriods();render();});el('industry').addEventListener('change',render);el('search').addEventListener('input',render);
+el('direction').addEventListener('click',e=>{const b=e.target.closest('button[data-dir]');if(!b)return;direction=b.dataset.dir;el('direction').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));render();});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)load();});setInterval(()=>{if(!document.hidden)load();},15*60*1000);load();
+</script></body></html>
