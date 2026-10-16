@@ -1,8 +1,8 @@
 {
-  "updated_at": "2026-10-16T10:05:30+09:00",
+  "updated_at": "2026-10-16T11:20:14+09:00",
   "source": "https://www.data.go.kr/data/15134343/openapi.do",
-  "requested_ranges": 536,
-  "received_rows": 56758,
+  "requested_ranges": 347,
+  "received_rows": 32119,
   "stored_rows": 115322,
   "failures": [
     {
@@ -3508,6 +3508,6 @@
     }
   ],
   "currency_scale_verified": false,
-  "implied_zero_rows": 270,
+  "implied_zero_rows": 0,
   "note": "응답에 같은 시도·HS의 다른 지역은 있으나 해당 지역이 없는 달은 수출 0(IMPLIED_ZERO_REGION_ABSENT)으로 저장. 지역 원본 HS6 보존. 관리 HS10과 상위 HS6 proxy 구분. HS4 미지원. 2022년 신설 HS6(300249·854143)의 2020~2021년은 HS2017 선행코드(300290·854140)로 연결하고 amount_unit에 표시. 절대 USD 배율 미검증."
 }
