@@ -18,7 +18,8 @@ OUT_P, OUT_PR, STATUS = ROOT / 'company_products.csv', ROOT / 'company_prices.cs
 FP = ['company_id', 'period', 'product', 'cum_revenue_KRW', 'q_revenue_KRW', 'share_pct', 'source', 'check']
 FPR = ['company_id', 'period', 'product', 'price', 'unit', 'source']
 UNIT = {'원': 1, '천원': 10**3, '백만원': 10**6, '억원': 10**8, '십억원': 10**9}
-TOTAL = re.compile(r'^(합계|총합계|총계|계|소계|합|매출합계|총매출|내부거래제거|내부거래|연결조정|조정|기타조정|부문간내부거래제거등)$')
+TOTAL = re.compile(r'^(합계|총합계|총계|계|소계|합|매출합계|총매출|내부거래제거|내부거래|연결조정|조정|기타조정|부문간내부거래제거등)$|합계|소계|총계|내부거래|연결조정')
+BADPRICE = re.compile(r'기초|기말|손익|매도|매수|취득|처분|평가|대체|환율|금리|상각|증가|감소|합계|소계')
 NAMECOL = [r'품목', r'주요제품', r'제품명', r'제품', r'부문', r'사업부문', r'구분']
 norm = s.norm
 
@@ -61,8 +62,8 @@ def parse_products(g, unit):
         nm = norm(r[namec]); v = num(r[amt])
         raw = norm(r[amt])
         if v is None or (raw.endswith('%') and '(' not in raw): continue
-        if TOTAL.match(nm) or nm in ('',):
-            if TOTAL.match(nm) and nm in ('합계', '총합계', '총계', '계', '매출합계'): total = v * unit
+        if TOTAL.search(nm) or nm in ('',):
+            if nm in ('합계', '총합계', '총계', '계', '매출합계', '총합'): total = v * unit
             continue
         if any(TOTAL.match(norm(c)) for c in r[:amt]) and nm != norm(r[0]): continue
         rows[nm] = rows.get(nm, 0) + v * unit
@@ -83,7 +84,7 @@ def parse_prices(g, unit_txt):
         if first >= len(r): continue
         nm = norm(r[namec]); raw = norm(r[first])
         v = num(raw)
-        if not nm or v is None or TOTAL.match(nm): continue
+        if not nm or v is None or TOTAL.search(nm) or BADPRICE.search(nm): continue
         u = re.sub(r'[\d,.\-()△]', '', raw) or unit_txt
         out[nm] = (v, u)
     return out or None
@@ -123,7 +124,7 @@ def scan(r):
             elif DEBUG and len(dbg.setdefault(r['company_id'], [])) < 6:
                 dbg[r['company_id']].append({'period': r['period'], 'unit': unit, 'near': near[-200:], 'grid': g[:6]})
         if want_pr:
-            um = re.search(r'단위\s*[:：]?\s*([^)\]]{1,20})', before)
+            um = re.search(r'단위\s*[:：]?\s*([^)\]]{1,20})', near[-160:])
             p = parse_prices(g, um[1].strip() if um else '')
             if p: price = p
         if prod and price: break
