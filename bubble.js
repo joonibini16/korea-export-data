@@ -149,8 +149,11 @@ function levMulti(id,labels,sets,unit,grp,yopt){chart(id,{data:{labels,datasets:
 // 신용잔고 오실레이터 = (5일 평균 ÷ 20일 평균 − 1)×100, MDD = 전체 기간 최고치 대비 하락률(%)
 function levDerived(ck,sym){const all=KF.filter(x=>x[ck]!=null),cv=all.map(x=>x[ck]/1e6),out=new Map(),ix=ser(sym);let pc=-Infinity,pi=-Infinity;
  const ma=(i,n)=>i+1<n?null:cv.slice(i-n+1,i+1).reduce((a,b)=>a+b,0)/n;
- all.forEach((x,i)=>{const m5=ma(i,5),m20=ma(i,20);pc=Math.max(pc,cv[i]);const iv=at(ix,x.date)?.v??null;if(iv!=null)pi=Math.max(pi,iv);
-  out.set(x.date,{osc:m5!=null&&m20?(m5/m20-1)*100:null,cmdd:(cv[i]/pc-1)*100,imdd:iv!=null&&pi>0?(iv/pi-1)*100:null});});return out;}
+ all.forEach((x,i)=>{const m5=ma(i,5),m20=ma(i,20);pc=Math.max(pc,cv[i]);
+  out.set(x.date,{osc:m5!=null&&m20?(m5/m20-1)*100:null,cmdd:(cv[i]/pc-1)*100});});
+ // 지수와 신용융자의 발표일은 다르다. 각 계열의 실제 관측일과 최고치로 MDD를 계산한다.
+ ix.forEach(x=>{if(x.v==null||!Number.isFinite(x.v)||x.v<=0)return;pi=Math.max(pi,x.v);
+  out.set(x.d,{...out.get(x.d),imdd:(x.v/pi-1)*100});});return out;}
 const lvX={};function renderLev(){if(!KF.length){el('levErr').hidden=false;return;}el('levErr').hidden=true;
  const S=levStart(),R=KF.filter(x=>x.date>=S&&x.deposit!=null),labels=R.map(x=>x.date);
  for(const [k,sym,ck,nm] of [['k','^KS11','credit_kospi','코스피'],['q','^KQ11','credit_kosdaq','코스닥']]){
@@ -168,7 +171,8 @@ const lvX={};function renderLev(){if(!KF.length){el('levErr').hidden=false;retur
   levMulti('lev'+k+'M',labels,[{label:nm+' MDD',data:im,color:LC.idx,w:2},{label:'신용잔고 MDD',data:cm,color:LC.cr,w:2}],'%',G,{max:0});
   {const lo=osc.filter(v=>v!=null).at(-1),li2=im.filter(v=>v!=null).at(-1),lc=cm.filter(v=>v!=null).at(-1),f1=v=>v==null?'—':(v>0?'+':'')+v.toFixed(1)+'%';
    const minI=Math.min(...im.filter(v=>v!=null)),minC=Math.min(...cm.filter(v=>v!=null));
-   el('lev'+k+'OT').textContent=`5일÷20일 평균 −1 · 최근 ${f1(lo)}`;el('lev'+k+'MT').textContent=`최근 지수 ${f1(li2)} · 신용 ${f1(lc)}`;el('lev'+k+'MT').title=`구간 최저 지수 ${f1(minI)} / 신용 ${f1(minC)}`;lvX[k]=`오실레이터 = 신용잔고 5일 평균 ÷ 20일 평균 − 1(+면 빚투 증가 속도가 빨라지는 중, −면 상환·반대매매로 줄어드는 중). MDD = 2015년 이후 최고치 대비 하락률. 구간 최저: 지수 ${f1(minI)} · 신용 ${f1(minC)}. 지수보다 신용잔고 MDD가 덜 빠졌으면 레버리지가 아직 덜 정리된 것, 더 빠졌으면 디레버리징이 진행된 것.`;}
+   const indexDate=labels[im.findLastIndex(v=>v!=null)]||'—',creditDate=labels[cm.findLastIndex(v=>v!=null)]||'—';
+   el('lev'+k+'OT').textContent=`5일÷20일 평균 −1 · 최근 ${f1(lo)}`;el('lev'+k+'MT').textContent=`지수 ${indexDate} ${f1(li2)} · 신용 ${creditDate} ${f1(lc)}`;el('lev'+k+'MT').title=`구간 최저 지수 ${f1(minI)} / 신용 ${f1(minC)}`;lvX[k]=`오실레이터 = 신용잔고 5일 평균 ÷ 20일 평균 − 1(+면 빚투 증가 속도가 빨라지는 중, −면 상환·반대매매로 줄어드는 중). MDD = 2015년 이후 각 계열 최고치 대비 하락률(지수 ${indexDate}, 신용 ${creditDate}). 구간 최저: 지수 ${f1(minI)} · 신용 ${f1(minC)}. 지수보다 신용잔고 MDD가 덜 빠졌으면 레버리지가 아직 덜 정리된 것, 더 빠졌으면 디레버리징이 진행된 것.`;}
   const L=R.at(-1),li=labels.indexOf(L.date),latestIndex=ix.filter(x=>x.d>=S).at(-1)||lastI;
   el('lev'+k+'H').innerHTML='';const parts=[['지수 '+(latestIndex?.d||'—')+' · 신용/예탁금 '+L.date,'#e2e8f0'],[nm+' '+(latestIndex?.v==null?'—':latestIndex.v.toLocaleString(undefined,{maximumFractionDigits:0})),LC.idx],['신용융자 '+(cr[li]?.toFixed(1)??'—')+'조',LC.cr],['고객예탁금 '+(dep[li]?.toFixed(1)??'—')+'조',LC.dep],['신용 ÷ 예탁금 '+(ra[li]?.toFixed(1)??'—')+'%',LC.ratio]];
   parts.forEach(([t,c],i)=>{const sp=document.createElement('span');sp.textContent=(i?' · ':'')+t;sp.style.color=c;if(!i)sp.style.fontWeight='700';el('lev'+k+'H').append(sp);});
