@@ -9,7 +9,7 @@
  const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
  const badge=b=>!b?'':`<span class="sb-badge ${b==='저가매수 유입'?'sb-badge-b':''}">${b==='쏠림 랠리'?'⚠ ':''}${esc(b)}</span>`;
  const blockColor=v=>v==null?'#334155':v>=50?'#c2453a':v>=15?'#e07b72':v>-15?'#9aa3b2':v>-50?'#5b8fd0':'#2f62a8';
- function blocks(tr,sd){const mx=Math.max(10,...tr.map(t=>Math.abs(t.breadth||0)));return `<div class="sb-blocks">${tr.map((t,i)=>`<div class="sb-blk${t.date===sd?' sb-now':''}" data-d="${t.date}" title="${t.date} · Breadth ${num(t.breadth)}" style="height:${(14+22*Math.abs(t.breadth||0)/mx).toFixed(0)}px;background:${blockColor(t.breadth)}"></div>`).join('')}</div>`;}
+ function blocks(tr,sd){const mx=Math.max(10,...tr.map(t=>Math.abs(t.breadth||0)));return `<div class="sb-blocks">${tr.map(t=>{const v=t.breadth||0,h=Math.max(2,Math.abs(v)/mx*30);return `<div class="sb-col${t.date===sd?' sb-now':''}" data-d="${t.date}" title="${t.date} · Breadth ${num(t.breadth)}"><div class="sb-blk" style="height:${h.toFixed(0)}px;${v>=0?'bottom:50%':'top:50%'};background:${blockColor(t.breadth)}"></div></div>`;}).join('')}</div>`;}
  function bars(tr,sd){const W=220,H=46,mid=H/2,mx=Math.max(10,...tr.map(t=>Math.abs(t.breadth||0))),bw=W/tr.length;
   return `<svg class="sb-bars" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none"><line x1="0" x2="${W}" y1="${mid}" y2="${mid}" stroke="#64748b" stroke-width=".6"/>${tr.map((t,i)=>{const v=t.breadth||0,h=Math.max(1.5,Math.abs(v)/mx*(mid-3));return `<rect x="${(i*bw+bw*.18).toFixed(1)}" width="${(bw*.64).toFixed(1)}" y="${(v>=0?mid-h:mid).toFixed(1)}" height="${h.toFixed(1)}" fill="${v>=0?'#e0675c':'#4f86d4'}" opacity="${!sd||t.date===sd?1:.35}"><title>${t.date} ${num(v)}</title></rect>`;}).join('')}</svg>`;}
  function card(b,sd){return `<div class="sb-card ${tone(b.grade)}"><div class="sb-cn">${esc(b.name)}</div><div class="sb-ci">지수 <b class="${pcls(b.idx_chg)}">${pct(b.idx_chg)}</b></div>
@@ -49,9 +49,9 @@
   const lastD=Object.values(D.markets)[0].buckets[0].trend.at(-1)?.date;let pin=lastD;
   const draw=sd=>{for(const [m,M] of Object.entries(D.markets)){const el=box.querySelector(`[data-mkt="${m}"]`);el.innerHTML=mk(m,M,sd);}};
   draw(pin);
-  box.addEventListener('mouseover',e=>{const b=e.target.closest('.sb-blk[data-d]');if(b&&b.dataset.d)draw(b.dataset.d);});
+  box.addEventListener('mouseover',e=>{const b=e.target.closest('.sb-col[data-d]');if(b&&b.dataset.d)draw(b.dataset.d);});
   box.addEventListener('mouseleave',()=>draw(pin));
-  box.addEventListener('click',e=>{const b=e.target.closest('.sb-blk[data-d]');if(b){pin=pin===b.dataset.d?lastD:b.dataset.d;draw(pin);}});
+  box.addEventListener('click',e=>{const b=e.target.closest('.sb-col[data-d]');if(b){pin=pin===b.dataset.d?lastD:b.dataset.d;draw(pin);}});
   box.querySelectorAll('.sb-mkt').forEach(el=>el.addEventListener('mouseleave',()=>draw(pin)));}
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();
 })();
