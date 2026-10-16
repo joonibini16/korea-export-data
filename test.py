@@ -490,8 +490,21 @@ print(f"등록품목: {len(HS_ITEMS)}개")
 all_summary_rows = []
 all_failed_rows = []
 
+# 실행 시간 예산(분): 넘으면 남은 품목은 조회하지 않고 기존 summary 파일 값을 그대로 씀(다음 실행에서 이어서 수집)
+BUDGET = float(os.environ.get("TIME_BUDGET_MIN") or 0) * 60
+T0 = time.time()
+skipped = 0
+
 for idx, item in enumerate(HS_ITEMS, start=1):
     print(f"\n######## 품목 {idx}/{len(HS_ITEMS)} ########")
+
+    if BUDGET and time.time() - T0 > BUDGET:
+        skipped += 1
+        fn = f"summary_{item['hs_code']}.csv"
+        if os.path.exists(fn):
+            with open(fn, "r", encoding="utf-8-sig") as f:
+                all_summary_rows.extend(csv.DictReader(f))
+        continue
 
     summary_rows, failed_rows = update_one_item(
         item["hs_code"],
@@ -540,6 +553,10 @@ with open(
     writer = csv.DictWriter(f, fieldnames=FAILED_FIELDS)
     writer.writeheader()
     writer.writerows(all_failed_rows)
+
+with open("export_progress.txt", "w") as f:
+    f.write("incomplete" if skipped else "complete")
+print(f"시간 예산으로 건너뛴 품목: {skipped}개")
 
 print("\n" + "=" * 75)
 if all_failed_rows:

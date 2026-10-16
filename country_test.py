@@ -533,8 +533,16 @@ print(f"등록품목: {len(HS_ITEMS)}개")
 
 all_failed_rows = []
 
+BUDGET = float(os.environ.get("TIME_BUDGET_MIN") or 0) * 60
+T0 = time.time()
+skipped = 0
+
 for idx, item in enumerate(HS_ITEMS, start=1):
     print(f"\n######## 품목 {idx}/{len(HS_ITEMS)} ########")
+
+    if BUDGET and time.time() - T0 > BUDGET:
+        skipped += 1
+        continue
 
     _, failed_rows = update_one_item(
         item["hs_code"],
@@ -555,6 +563,10 @@ with open(
     writer = csv.DictWriter(f, fieldnames=FAILED_FIELDS)
     writer.writeheader()
     writer.writerows(all_failed_rows)
+
+with open("country_progress.txt", "w") as f:
+    f.write("incomplete" if skipped else "complete")
+print(f"시간 예산으로 건너뛴 품목: {skipped}개")
 
 print("\n" + "=" * 75)
 if all_failed_rows:

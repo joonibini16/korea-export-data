@@ -8,10 +8,16 @@ on:
 
 permissions:
   contents: write
+  actions: write
+
+concurrency:
+  group: all-export-data
+  cancel-in-progress: false
 
 jobs:
   update:
     runs-on: ubuntu-latest
+    timeout-minutes: 350
 
     steps:
 
@@ -50,8 +56,17 @@ jobs:
       - name: 전체 품목 수출데이터 수집
         env:
           CUSTOMS_API_KEY: ${{ secrets.CUSTOMS_API_KEY }}
+          TIME_BUDGET_MIN: '150'
         run: |
           python test.py
+
+      - name: 품목 수집분 중간 저장
+        if: always()
+        run: |
+          git config user.name "github-actions"; git config user.email "github-actions@github.com"
+          git add export_*.csv summary_*.csv latest.csv country_*.csv *_progress.txt 2>/dev/null || true
+          git commit -qm "Update all export data" || echo "변경사항 없음"
+          for i in 1 2 3 4 5; do git pull -q --rebase -X theirs origin main && git push -q && exit 0; sleep $((i*5)); done; exit 1
 
 
       # =====================================================
@@ -62,6 +77,7 @@ jobs:
       - name: 국가별 수출데이터 수집
         env:
           CUSTOMS_API_KEY: ${{ secrets.CUSTOMS_API_KEY }}
+          TIME_BUDGET_MIN: '150'
         run: |
           python country_test.py
 
@@ -70,18 +86,18 @@ jobs:
       # 6. 생성된 CSV 파일 GitHub에 저장
       # =====================================================
 
-      - name: CSV 파일 GitHub에 저장
+      - name: CSV 파일 GitHub에 저장 (최종)
+        if: always()
         run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
+          git config user.name "github-actions"; git config user.email "github-actions@github.com"
+          git add export_*.csv summary_*.csv latest.csv country_*.csv *_progress.txt 2>/dev/null || true
+          git commit -qm "Update all export data" || echo "변경사항 없음"
+          for i in 1 2 3 4 5; do git pull -q --rebase -X theirs origin main && git push -q && exit 0; sleep $((i*5)); done; exit 1
 
-          git add export_*.csv
-          git add summary_*.csv
-          git add latest.csv
-
-          git add country_*.csv
-
-          git commit -m "Update all export data" || echo "변경사항 없음"
-
-          git pull --rebase origin main || (git rebase --abort; exit 1)
-          git push
+      - name: 남은 품목이 있으면 이어서 다시 실행
+        if: always()
+        env: {GH_TOKEN: '${{ github.token }}'}
+        run: |
+          if grep -qs incomplete export_progress.txt country_progress.txt; then
+            gh workflow run all_export_data.yml --repo "$GITHUB_REPOSITORY" --ref main && echo "다음 실행 예약"
+          fi
