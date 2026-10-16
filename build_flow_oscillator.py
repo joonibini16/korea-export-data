@@ -38,6 +38,7 @@ def oscillator(points):
     signal = ema(macd, 9)
     return [[p['date'], round(r, 5), round(m, 5), round(s, 5), round(m-s, 5),
              round(p['foreign_eok'], 1), round(p['institution_eok'], 1), round(p['cap_eok']), p['n']]
+            + ([p['close_krw']] if 'close_krw' in p else [])
             for p,r,m,s in zip(points, rates, macd, signal)]
 
 
@@ -58,7 +59,8 @@ def build():
             inst = {r[0]: (r[1]-r[2]) / 1e8 for r in i[market]}
             for code, name, buy, sell, cap, close, change, val in f[market]:
                 if cap > 0:
-                    raw[day][code] = (market, name, cap / 1e8, (buy-sell) / 1e8, inst.get(code, 0))
+                    raw[day][code] = (market, name, cap / 1e8, (buy-sell) / 1e8, inst.get(code, 0),
+                                      close if isinstance(close, (int, float)) and close > 0 else None)
     days = sorted(raw)
     if len(days) < 30 or days[-1] != latest:
         raise ValueError('최신일 또는 30거래일 자료가 불완전함')
@@ -113,14 +115,14 @@ def build():
         for day in days:
             if code not in raw[day]:
                 continue
-            market, name, cap, foreign, institution = raw[day][code]
+            market, name, cap, foreign, institution, close = raw[day][code]
             points.append({'date':day,'foreign_eok':foreign,'institution_eok':institution,
-                           'net_eok':foreign+institution,'cap_eok':cap,'n':1})
+                           'net_eok':foreign+institution,'cap_eok':cap,'n':1,'close_krw':close})
         if len(points) >= 30:
             market, name, *_ = current[code]
             stocks[code] = {'name':name,'market':market,'sector':sectors.get(code,'기타'),
                             'rank':rank,'rows':oscillator(points)}
-    stock_result = {'asof':latest,'columns':result['columns'],'stocks':stocks}
+    stock_result = {'asof':latest,'columns':result['columns']+['close_krw'],'stocks':stocks}
     if OUTPUT.exists() and STOCK_OUTPUT.exists():
         try:
             old = json.loads(OUTPUT.read_text(encoding='utf-8'))
