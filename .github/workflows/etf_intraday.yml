@@ -1,0 +1,48 @@
+name: Theme ETF Board (intraday loop)
+# GitHub 예약 실행은 혼잡 시 몇 시간씩 밀리거나 건너뛰므로, 한 번 시작되면 장 마감 후까지
+# 작업 안에서 20분 간격으로 직접 반복 수집한다. 예약은 시작용으로만 여러 개 겹쳐 둔다.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '50 23 * * 0-4'  # 평일 08:50 KST 시작
+    - cron: '13 0 * * 1-5'   # 09:13 KST (앞선 시작이 누락됐을 때)
+    - cron: '41 1 * * 1-5'   # 10:41 KST
+    - cron: '7 3 * * 1-5'    # 12:07 KST
+    - cron: '33 4 * * 1-5'   # 13:33 KST
+permissions:
+  contents: write
+  pages: write
+concurrency:
+  group: etf-intraday
+  cancel-in-progress: false
+jobs:
+  loop:
+    runs-on: ubuntu-latest
+    timeout-minutes: 355
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Collect every 20 minutes until 16:00 KST
+        env: {GH_TOKEN: '${{ github.token }}'}
+        run: |
+          git config user.name github-actions; git config user.email github-actions@github.com
+          end=$(TZ=Asia/Seoul date -d 'today 16:00' +%s)
+          while :; do
+            now=$(date +%s)
+            # 이미 장 마감 이후에 시작됐으면(밀린 예약) 한 번만 수집하고 끝냄
+            git fetch -q origin main && git reset -q --hard origin/main
+            if python collect_etf.py; then
+              cp etf_board.json /tmp/etf_board.json
+              for i in 1 2 3; do
+                git fetch -q origin main && git reset -q --hard origin/main
+                cp /tmp/etf_board.json etf_board.json
+                git add etf_board.json
+                git diff --cached --quiet && break
+                git commit -qm "Update theme ETF board (intraday $(TZ=Asia/Seoul date +%H:%M))" && git push -q origin HEAD:main && { gh api --method POST "repos/$GITHUB_REPOSITORY/pages/builds" >/dev/null 2>&1 || true; break; }
+                sleep 10
+              done
+            fi
+            [ "$now" -ge "$end" ] && break
+            sleep 1200
+          done
