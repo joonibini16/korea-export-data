@@ -1,4 +1,4 @@
-month,hs_code,sido_code,region,export_amount_raw,amount_unit,source,retrieved_at
+﻿month,hs_code,sido_code,region,export_amount_raw,amount_unit,source,retrieved_at
 2020.01,190230,26,부산광역시 강서구,22,API_EXP_USD_AMT_UNVERIFIED_SCALE,https://www.data.go.kr/data/15134343/openapi.do,2026-10-07T13:25:48+09:00
 2020.01,190230,26,부산광역시 금정구,0,API_EXP_USD_AMT_UNVERIFIED_SCALE,https://www.data.go.kr/data/15134343/openapi.do,2026-10-07T13:25:48+09:00
 2020.01,190230,26,부산광역시 기장군,16,API_EXP_USD_AMT_UNVERIFIED_SCALE,https://www.data.go.kr/data/15134343/openapi.do,2026-10-07T13:25:48+09:00
@@ -59498,6 +59498,7 @@ month,hs_code,sido_code,region,export_amount_raw,amount_unit,source,retrieved_at
 2022.02,850421,44,충청남도 아산시,0,API_EXP_USD_AMT_UNVERIFIED_SCALE,https://www.data.go.kr/data/15134343/openapi.do,2026-10-16T13:13:10+09:00
 2022.02,850421,44,충청남도 천안시,3,API_EXP_USD_AMT_UNVERIFIED_SCALE,https://www.data.go.kr/data/15134343/openapi.do,2026-10-16T13:13:10+09:00
 2022.02,850421,44,충청남도 홍성군,0,IMPLIED_ZERO_REGION_ABSENT,https://www.data.go.kr/data/15134343/openapi.do,
+2022.02,850422,11,서울특별시 광진구,0.0,REF_USER_XLSX_2026-09,사용자 제공 참고 파일(수출데이터 9월 기업별 시트: 제룡전기 (2)),2026-10-16
 2022.02,850422,26,부산광역시 강서구,0,IMPLIED_ZERO_REGION_ABSENT,https://www.data.go.kr/data/15134343/openapi.do,
 2022.02,850422,26,부산광역시 기장군,2838,API_EXP_USD_AMT_UNVERIFIED_SCALE,https://www.data.go.kr/data/15134343/openapi.do,2026-10-16T10:05:30+09:00
 2022.02,850422,41,경기도 성남시,0,IMPLIED_ZERO_REGION_ABSENT,https://www.data.go.kr/data/15134343/openapi.do,
@@ -74619,6 +74620,7 @@ month,hs_code,sido_code,region,export_amount_raw,amount_unit,source,retrieved_at
 2022.08,850421,48,경상남도 김해시,3,API_EXP_USD_AMT_UNVERIFIED_SCALE,https://www.data.go.kr/data/15134343/openapi.do,2026-10-16T13:13:10+09:00
 2022.08,850421,48,경상남도 창원시,0,IMPLIED_ZERO_REGION_ABSENT,https://www.data.go.kr/data/15134343/openapi.do,
 2022.08,850421,48,경상남도 하동군,0,API_EXP_USD_AMT_UNVERIFIED_SCALE,https://www.data.go.kr/data/15134343/openapi.do,2026-10-16T13:13:10+09:00
+2022.08,850422,11,서울특별시 광진구,0.0,REF_USER_XLSX_2026-09,사용자 제공 참고 파일(수출데이터 9월 기업별 시트: 제룡전기 (2)),2026-10-16
 2022.08,850422,26,부산광역시 강서구,0,IMPLIED_ZERO_REGION_ABSENT,https://www.data.go.kr/data/15134343/openapi.do,
 2022.08,850422,26,부산광역시 기장군,4605,API_EXP_USD_AMT_UNVERIFIED_SCALE,https://www.data.go.kr/data/15134343/openapi.do,2026-10-16T10:05:30+09:00
 2022.08,850422,41,경기도 성남시,0,IMPLIED_ZERO_REGION_ABSENT,https://www.data.go.kr/data/15134343/openapi.do,
@@ -79746,6 +79748,7 @@ month,hs_code,sido_code,region,export_amount_raw,amount_unit,source,retrieved_at
 2022.10,850421,48,경상남도 김해시,7,API_EXP_USD_AMT_UNVERIFIED_SCALE,https://www.data.go.kr/data/15134343/openapi.do,2026-10-16T13:13:10+09:00
 2022.10,850421,48,경상남도 창원시,0,API_EXP_USD_AMT_UNVERIFIED_SCALE,https://www.data.go.kr/data/15134343/openapi.do,2026-10-16T13:13:10+09:00
 2022.10,850421,48,경상남도 합천군,0,API_EXP_USD_AMT_UNVERIFIED_SCALE,https://www.data.go.kr/data/15134343/openapi.do,2026-10-16T13:13:10+09:00
+2022.10,850422,11,서울특별시 광진구,0.0,REF_USER_XLSX_2026-09,사용자 제공 참고 파일(수출데이터 9월 기업별 시트: 제룡전기 (2)),2026-10-16
 2022.10,850422,26,부산광역시 강서구,0,IMPLIED_ZERO_REGION_ABSENT,https://www.data.go.kr/data/15134343/openapi.do,
 2022.10,850422,26,부산광역시 기장군,2781,API_EXP_USD_AMT_UNVERIFIED_SCALE,https://www.data.go.kr/data/15134343/openapi.do,2026-10-16T10:05:30+09:00
 2022.10,850422,41,경기도 성남시,0,IMPLIED_ZERO_REGION_ABSENT,https://www.data.go.kr/data/15134343/openapi.do,
@@ -100443,6 +100446,7 @@ month,hs_code,sido_code,region,export_amount_raw,amount_unit,source,retrieved_at
 2023.06,850421,48,경상남도 창원시,145,API_EXP_USD_AMT_UNVERIFIED_SCALE,https://www.data.go.kr/data/15134343/openapi.do,2026-10-16T13:13:10+09:00
 2023.06,850421,48,경상남도 통영시,0,API_EXP_USD_AMT_UNVERIFIED_SCALE,https://www.data.go.kr/data/15134343/openapi.do,2026-10-16T13:13:10+09:00
 2023.06,850421,48,경상남도 함안군,0,API_EXP_USD_AMT_UNVERIFIED_SCALE,https://www.data.go.kr/data/15134343/openapi.do,2026-10-16T13:13:10+09:00
+2023.06,850422,11,서울특별시 광진구,0.0,REF_USER_XLSX_2026-09,사용자 제공 참고 파일(수출데이터 9월 기업별 시트: 제룡전기 (2)),2026-10-16
 2023.06,850422,26,부산광역시 강서구,0,IMPLIED_ZERO_REGION_ABSENT,https://www.data.go.kr/data/15134343/openapi.do,
 2023.06,850422,26,부산광역시 기장군,12115,API_EXP_USD_AMT_UNVERIFIED_SCALE,https://www.data.go.kr/data/15134343/openapi.do,2026-10-16T10:05:30+09:00
 2023.06,850422,41,경기도 성남시,0,IMPLIED_ZERO_REGION_ABSENT,https://www.data.go.kr/data/15134343/openapi.do,
