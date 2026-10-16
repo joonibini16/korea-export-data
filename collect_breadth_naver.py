@@ -87,8 +87,29 @@ def compute(series, dates):
     return rows
 
 
+def compute_db_proxy(series, dates):
+    """DB 화면에서 추론한 별도 지표. DB 원본 산식·모집단은 미확인."""
+    import pandas as pd
+    df = pd.DataFrame({i: pd.Series(x) for i, x in enumerate(series)}).reindex(dates)
+    hi = df.rolling(60, min_periods=60).max()
+    lo = df.rolling(60, min_periods=60).min()
+    valid = df.notna() & hi.notna()
+    high = (df >= hi) & valid
+    low = (df <= lo) & valid & ~high  # 정체 종목을 이중 집계하지 않음
+    nh, nl, n = high.sum(axis=1), low.sum(axis=1), valid.sum(axis=1)
+    breadth = (nh - nl).where(n >= 50)
+    hli = (100 * nh / (nh + nl).replace(0, float('nan'))).where(n >= 50)
+    sma5, sma10 = breadth.rolling(5, min_periods=5).mean(), hli.rolling(10, min_periods=10).mean()
+    def number(x):
+        return round(float(x), 2) if pd.notna(x) else None
+    return [dict(date=d, n=int(n[d]), nh60=int(nh[d]), nl60=int(nl[d]),
+                 breadth60=int(breadth[d]), breadth5sma=number(sma5[d]),
+                 hli=number(hli[d]), hli10sma=number(sma10[d]))
+            for d in dates if pd.notna(breadth[d])]
+
+
 def main():
-    fails, out, info = [], [], {}
+    fails, out, info, proxy = [], [], {}, {}
     for mkt, name in (('stockMkt', 'KOSPI'), ('kosdaqMkt', 'KOSDAQ')):
         lst = listing(mkt)
         res = {}
@@ -103,12 +124,38 @@ def main():
             for d in s: cnt[d] = cnt.get(d, 0) + 1
         dates = sorted(d for d, k in cnt.items() if k >= len(series) * 0.5)  # 거래일만
         rows = compute(series, dates)
+        proxy[name] = compute_db_proxy(series, dates)
+        if len(series) < len(lst) * 0.95 or not rows or not proxy[name]:
+            raise RuntimeError(f'{name}: insufficient coverage; keep existing output')
         for r in rows: r['market'] = name
         out += rows
         info[name] = dict(listed=len(lst), with_prices=len(series), first=rows[0]['date'] if rows else None, last=rows[-1]['date'] if rows else None)
         print(name, info[name], flush=True)
     if not out:
         raise SystemExit('no breadth rows')
+    proxy_path = Path('breadth_db_proxy.json')
+    old = json.loads(proxy_path.read_text()) if proxy_path.exists() else {}
+    for market, rows in proxy.items():
+        existing = {r['date']: r for r in old.get('markets', {}).get(market, [])}
+        if existing and rows[-1]['date'] < max(existing):
+            raise RuntimeError(f'{market}: stale response; keep existing output')
+        existing.update({r['date']: r for r in rows})
+        proxy[market] = sorted(existing.values(), key=lambda r: r['date'])
+    comparisons = []
+    snapshots = Path('breadth_external_snapshots.json')
+    if snapshots.exists():
+        for snapshot in json.loads(snapshots.read_text()).get('snapshots', []):
+            day = snapshot['captured_at'][:10]
+            for observed in snapshot['markets']:
+                calculated = next((r for r in proxy.get(observed['market'], []) if r['date'] == day), None)
+                if calculated:
+                    comparisons.append(dict(date=day, market=observed['market'],
+                        differences={k: round(calculated[k] - observed[k], 2)
+                            for k in ('breadth60', 'breadth5sma', 'hli', 'hli10sma')
+                            if calculated.get(k) is not None and observed.get(k) is not None}))
+    proxy_path.write_text(json.dumps(dict(updated_at=datetime.now(KST).isoformat(timespec='seconds'),
+        method='추정: 60일 종가 신고가 수−신저가 수; HLI=신고가 수/(신고가 수+신저가 수)*100',
+        verified_db_method=False, markets=proxy, snapshot_comparisons=comparisons), ensure_ascii=False, indent=1))
     with Path('breadth_kr.csv').open('w', encoding='utf-8', newline='') as f:
         w = csv.DictWriter(f, fieldnames=['date', 'market', 'n60', 'above60', 'breadth60', 'n250', 'nh', 'nl', 'hli']); w.writeheader()
         w.writerows(sorted(out, key=lambda r: (r['market'], r['date'])))
@@ -118,3 +165,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
