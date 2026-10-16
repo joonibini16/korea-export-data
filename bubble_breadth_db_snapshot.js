@@ -9,7 +9,7 @@
  const snapshots=results[1].status==='fulfilled'?results[1].value.snapshots||[]:[];
  const latest=snapshots.filter(x=>x.captured_at).sort((a,b)=>a.captured_at.localeCompare(b.captured_at)).at(-1);
  document.getElementById('dbSnapshotTitle').textContent='DB 산식 추정 · 매일 자동 계산';
- status.textContent='Breadth_60 = 60일 종가 신고가 수 − 신저가 수 · HLI = 신고가 수 ÷ (신고가 수 + 신저가 수) × 100. DB 원본 산식·모집단은 미확인으로 실제 DB 값과 차이가 날 수 있습니다. '+(data?'수집 시각 '+data.updated_at.replace('T',' ')+' · 거래일별 종가 기반, 장중 값은 잠정.':'첫 자동 계산 결과를 기다리는 중입니다. 아래는 기존 사진 참고값입니다.');
+ status.textContent='Breadth_60 = 60일 종가 신고가 수 − 신저가 수 · HLI = 신고가 수 ÷ (신고가 수 + 신저가 수) × 100. KIND 상장법인·네이버 일봉 기준, 당일 거래량 0인 종목은 제외합니다. DB 원본 산식·모집단은 미확인으로 실제 DB 값과 차이가 날 수 있습니다. 평일 09:30·10:30·13:00·15:40·20:40·21:30 수집 예약(실제 완료·배포는 지연될 수 있음). '+(data?'수집 시각 '+data.updated_at.replace('T',' ')+' · 거래일별 종가 기반, 장중 값은 잠정.':'첫 자동 계산 결과를 기다리는 중입니다. 아래는 기존 사진 참고값입니다.');
  root.replaceChildren();
  for(const market of ['KOSPI','KOSDAQ']){
   const rows=data?.markets?.[market]||[],x=rows.at(-1);
