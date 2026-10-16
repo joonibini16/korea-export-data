@@ -1,6 +1,9 @@
 name: Forecast Snapshot
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['company_watchlist.json']
   workflow_run:
     workflows: ['Naver Consensus Snapshot', 'Regional Company Exports', 'Quarterly Inventory']
     types: [completed]
