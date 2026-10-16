@@ -17,7 +17,8 @@
    const items=[...new Set(rs.map(r=>r.product))];
    const rev={},sh={};rs.forEach(r=>{(rev[r.product]=rev[r.product]||{})[r.period]=Number(r.q_revenue_KRW)/1e8;(sh[r.product]=sh[r.product]||{})[r.period]=r.share_pct===''?null:Number(r.share_pct);});
    const pr={},pu={};PR.filter(r=>r.company_id===id).forEach(r=>{(pr[r.product]=pr[r.product]||{})[r.period]=Number(r.price);pu[r.product]=r.unit;});
-   return {per,items,rev,sh,pr,pu,unit:'억원',src:'정기보고서 II. 사업의 내용 「주요 제품 등의 현황」(누적 매출 → 분기 차이) · 「주요 제품 등의 가격변동추이」(기간 평균, 보고서 기재 단위)',vol:{}};
+   const bad=rs.filter(r=>r.check==='mismatch').length;
+   return {warn:bad>rs.length*0.3?`⚠ 이 회사는 보고서의 합계와 품목 합이 다른 분기가 많습니다(${bad}/${rs.length}행) — 품목명 변경·부문 중복 가능성이 있어 참고용으로 보세요.`:'',per,items,rev,sh,pr,pu,unit:'억원',src:'정기보고서 II. 사업의 내용 「주요 제품 등의 현황」(누적 매출 → 분기 차이) · 「주요 제품 등의 가격변동추이」(기간 평균, 보고서 기재 단위)',vol:{}};
   }
   const rs=G.filter(r=>r.company===id),per=[...new Set(rs.map(r=>r.period))].sort();
   const rev={},sh={},pr={},pu={},vol={},vu={};
@@ -36,7 +37,7 @@
   const lastP=d.per.at(-1),yago=lastP?`${Number(lastP.slice(0,4))-1}${lastP.slice(4)}`:null;
   const cleanU=u=>(u||'').replace(/[,\s]*%$/,'').trim();Object.keys(d.pu).forEach(k=>d.pu[k]=cleanU(d.pu[k]));
   const priceKeys=Object.keys(d.pr).filter(k=>Object.keys(d.pr[k]).length>=2).slice(0,8);
-  sec.innerHTML=`<h2>${name} · 제품별 매출 구성·비중·단가</h2><p class="muted">${d.src}</p>
+  sec.innerHTML=`<h2>${name} · 제품별 매출 구성·비중·단가</h2><p class="muted">${d.src}</p>${d.warn?`<p class="muted" style="color:#fbbf24">${d.warn}</p>`:''}
    <div class="pd-grid"><div><h3>제품별 분기 매출 (${d.unit})</h3><div class="pd-c"><canvas id="pdRev"></canvas></div></div>
    <div><h3>매출 비중 추이 (%)</h3><div class="pd-c"><canvas id="pdShare"></canvas></div></div></div>
    ${priceKeys.length?`<h3>제품 단가 추이 ${priceKeys.length>1?'(첫 값 = 100 지수, 툴팁에 실제 값)':''}</h3><div class="pd-c" style="height:300px"><canvas id="pdPrice"></canvas></div>`:''}
