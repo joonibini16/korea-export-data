@@ -78,6 +78,29 @@
           ]
         }
       ]
+    },
+    {
+      "captured_at": "2026-10-16T15:33:00+09:00",
+      "basis": "사용자 제공 DB 화면 · 종가 기준 표시",
+      "history_label": "화면의 최근 5개 관측일은 미표기 · 최신 값만 확정 기록",
+      "markets": [
+        {
+          "market": "KOSPI",
+          "index_at_capture": 5684.36,
+          "breadth60": -5,
+          "breadth5sma": -74.8,
+          "hli": 41.4,
+          "hli10sma": 37.7
+        },
+        {
+          "market": "KOSDAQ",
+          "index_at_capture": 794.52,
+          "breadth60": 5,
+          "breadth5sma": -104,
+          "hli": 53.6,
+          "hli10sma": 53.1
+        }
+      ]
     }
   ]
 }
