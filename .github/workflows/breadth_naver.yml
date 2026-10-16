@@ -5,10 +5,11 @@ on:
     branches: [main]
     paths: ['collect_breadth_naver.py', '.github/workflows/breadth_naver.yml']
   schedule:
-    # 한국시간 평일 09:30, 10:30, 13:00, 15:40, 21:30 (UTC 기준)
+    # 한국시간 평일 09:30, 10:30, 13:00, 15:40, 20:40, 21:30 (UTC 기준)
     - cron: '30 0,1 * * 1-5'
     - cron: '0 4 * * 1-5'
     - cron: '40 6 * * 1-5'
+    - cron: '40 11 * * 1-5'
     - cron: '30 12 * * 1-5'
 permissions:
   contents: write
@@ -27,5 +28,5 @@ jobs:
       - run: python collect_breadth_naver.py
       - run: |
           git config user.name github-actions; git config user.email github-actions@github.com
-          for f in breadth_kr.csv breadth_naver_status.json; do if [ -f $f ]; then git add $f; fi; done
+          for f in breadth_kr.csv breadth_naver_status.json breadth_db_proxy.json; do if [ -f $f ]; then git add $f; fi; done
           if ! git diff --cached --quiet; then git commit -m "Update Korea market breadth"; git pull --rebase origin main || (git rebase --abort; exit 1); git push; fi
