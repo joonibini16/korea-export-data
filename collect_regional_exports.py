@@ -114,7 +114,9 @@ PREDECESSOR = {'300249': '300290', '854143': '854140'}
 PREDECESSOR_END = 2021
 
 def first_year(code):
-    return 2020
+    # HS2022 introduced these distinct product subheadings; no reliable HS2017
+    # one-to-one counterpart exists, so keep 2020–2021 genuinely unavailable.
+    return 2022 if code in {'851713', '852412', '852492'} else 2020
 
 def predecessor_unit(code):
     return 'HS2017_PREDECESSOR_' + PREDECESSOR[code]
@@ -287,9 +289,10 @@ def main():
                 continue
             for site in it['sites']:
                 present={r['month'] for r in merged.values() if r['hs_code']==it['hs6'] and r['sido_code']==site['sido_code'] and site['region_keyword'] in r['region']}
-                expected=[f'{y}.{m:02}' for y in range(2020,int(end[:4])+1) for m in range(1,13) if f'{y}{m:02}'<=end]
+                expected=[f'{y}.{m:02}' for y in range(first_year(it['hs6']),int(end[:4])+1) for m in range(1,13) if f'{y}{m:02}'<=end]
                 coverage.append(dict(company=c['id'],hs=it['hs6'],query_hs=it['hs6'],region=site['region_keyword'],sido=site['sido_code'],months=len(present),
-                    expected_months=len(expected),missing=[m for m in expected if m not in present],scope='basket_HS6',historical_note=''))
+                    expected_months=len(expected),missing=[m for m in expected if m not in present],scope='basket_HS6',
+                    historical_note='2022년 HS 신설: 2020~2021 비교 불가' if first_year(it['hs6'])==2022 else ''))
     status=dict(updated_at=stamp,source=SOURCE,requested_ranges=requested,received_rows=received,
         stored_rows=len(merged),failures=failures,coverage=coverage,currency_scale_verified=False,
         implied_zero_rows=implied,note='응답에 같은 시도·HS의 다른 지역은 있으나 해당 지역이 없는 달은 수출 0(IMPLIED_ZERO_REGION_ABSENT)으로 저장. 지역 원본 HS6 보존. 관리 HS10과 상위 HS6 proxy 구분. HS4 미지원. 2022년 신설 HS6(300249·854143)의 2020~2021년은 HS2017 선행코드(300290·854140)로 연결하고 amount_unit에 표시. 절대 USD 배율 미검증.')
