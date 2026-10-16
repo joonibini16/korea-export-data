@@ -138,6 +138,20 @@ def period_segments(sido, start, end):
     return [(q, max(start, a), min(end, b)) for q, a, b in aliases.get(sido, [(sido, start, end)])
             if max(start, a) <= min(end, b)]
 
+def triples(companies):
+    """(회사, 조회 HS6, 사업장) 목록: 기존 관리품목 연결 + 2026-10 바스켓(사업장×주요 수출 HS6)."""
+    out = []
+    for c in companies:
+        for hs in c['hs_codes']:
+            code = query_code(c, hs)
+            if code:
+                out += [(c, code, s) for s in sites(c, hs)]
+        for it in c.get('basket', []):
+            if not re.fullmatch(r'\d{6}', it['hs6']):
+                raise DataError('invalid basket HS6')
+            out += [(c, it['hs6'], s) for s in it['sites']]
+    return out
+
 ZERO_UNIT = 'IMPLIED_ZERO_REGION_ABSENT'
 def fill_implied_zero(merged, companies, identity):
     """If the API answered for a month (other regions of the same 시도·HS are present) but a watched
@@ -150,12 +164,7 @@ def fill_implied_zero(merged, companies, identity):
     for r in merged.values():
         names.setdefault((r['hs_code'], r['sido_code']), set()).add(r['region'])
     added = 0
-    for c in companies:
-        for hs in c['hs_codes']:
-            code = query_code(c, hs)
-            if not code:
-                continue
-            for site in sites(c, hs):
+    for c, code, site in triples(companies):
                 key = (code, site['sido_code'])
                 months = by.get(key, {})
                 full = sorted({n for n in names.get(key, set()) if site['region_keyword'] in n})
@@ -183,8 +192,7 @@ def main():
     companies = json.loads(Path('company_watchlist.json').read_text())['companies']
     if any(hs not in allowed for c in companies for hs in c['hs_codes']):
         raise DataError('watchlist logical HS must exist in hs_codes.csv')
-    targets = sorted({(s['sido_code'], query_code(c, hs)) for c in companies
-        for hs in c['hs_codes'] if query_code(c, hs) for s in sites(c, hs)})
+    targets = sorted({(s['sido_code'], code) for c, code, s in triples(companies)})
     path = Path('regional_exports.csv')
     old = list(csv.DictReader(path.open(encoding='utf-8-sig'))) if path.exists() else []
     def identity(r): return tuple(r[k] for k in ['month','hs_code','sido_code','region'])
@@ -202,8 +210,7 @@ def main():
         def collect_target(target):
             sido, hs = target
             collected, errors, count = [], [], 0
-            keywords = {s['region_keyword'] for c in companies for logical in c['hs_codes']
-                if query_code(c, logical) == hs for s in sites(c, logical) if s['sido_code'] == sido}
+            keywords = {s['region_keyword'] for c, code, s in triples(companies) if code == hs and s['sido_code'] == sido}
             # Retry missing years; refresh current and prior year for corrections.
             for year in range(first_year(hs),int(end[:4])+1):
                 if stop.is_set(): break
@@ -274,6 +281,15 @@ def main():
                     expected_months=len(expected),missing=[m for m in expected if m not in present],
                     scope='HS6' if code==hs else 'parent_HS6_proxy' if code else 'unsupported_HS4',
                     historical_note=('2020~2021은 HS2017 선행코드 '+PREDECESSOR[code]+' 연결(범위가 더 넓음)') if code in PREDECESSOR else ''))
+    for c in companies:
+        for it in c.get('basket', []):
+            if any(x['company']==c['id'] and x['query_hs']==it['hs6'] for x in coverage):
+                continue
+            for site in it['sites']:
+                present={r['month'] for r in merged.values() if r['hs_code']==it['hs6'] and r['sido_code']==site['sido_code'] and site['region_keyword'] in r['region']}
+                expected=[f'{y}.{m:02}' for y in range(2020,int(end[:4])+1) for m in range(1,13) if f'{y}{m:02}'<=end]
+                coverage.append(dict(company=c['id'],hs=it['hs6'],query_hs=it['hs6'],region=site['region_keyword'],sido=site['sido_code'],months=len(present),
+                    expected_months=len(expected),missing=[m for m in expected if m not in present],scope='basket_HS6',historical_note=''))
     status=dict(updated_at=stamp,source=SOURCE,requested_ranges=requested,received_rows=received,
         stored_rows=len(merged),failures=failures,coverage=coverage,currency_scale_verified=False,
         implied_zero_rows=implied,note='응답에 같은 시도·HS의 다른 지역은 있으나 해당 지역이 없는 달은 수출 0(IMPLIED_ZERO_REGION_ABSENT)으로 저장. 지역 원본 HS6 보존. 관리 HS10과 상위 HS6 proxy 구분. HS4 미지원. 2022년 신설 HS6(300249·854143)의 2020~2021년은 HS2017 선행코드(300290·854140)로 연결하고 amount_unit에 표시. 절대 USD 배율 미검증.')
