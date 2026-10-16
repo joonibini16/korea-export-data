@@ -74,6 +74,15 @@ def build():
         for r in csv.DictReader(f):
             if r['code'] in current and r['market'] == current[r['code']][0]:
                 sectors[r['code']] = sector_map.get(r['sector'], '기타')
+    # KIND's legal-manufacturer category puts Samsung Electronics in telecom
+    # equipment, while the broad broker sector grouping used by this dashboard
+    # tracks its share as a semiconductor name.
+    if '005930' in current:
+        sectors['005930'] = '반도체와반도체장비'
+    for code in current:
+        common = code[:-1] + '0'
+        if code not in sectors and code.endswith('5') and common in sectors:
+            sectors[code] = sectors[common]
     groups = {'top700': ('시가총액 상위 700', top), 'next700': ('시가총액 701~1400', next_700),
               'KOSPI': ('코스피 전체', {c for c in current if current[c][0] == 'KOSPI'}),
               'KOSDAQ': ('코스닥 전체', {c for c in current if current[c][0] == 'KOSDAQ'})}
