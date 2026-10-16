@@ -144,6 +144,10 @@
             {
               "sido_code": "41",
               "region_keyword": "화성시"
+            },
+            {
+              "sido_code": "41",
+              "region_keyword": "성남시"
             }
           ],
           "origin": "기존 관리품목 연결"
@@ -211,6 +215,10 @@
             {
               "sido_code": "36",
               "region_keyword": "세종"
+            },
+            {
+              "sido_code": "41",
+              "region_keyword": "부천시"
             }
           ],
           "origin": "기존 관리품목 연결"
@@ -441,6 +449,10 @@
             {
               "sido_code": "26",
               "region_keyword": "강서구"
+            },
+            {
+              "sido_code": "41",
+              "region_keyword": "수원시"
             }
           ],
           "origin": "기존 관리품목 연결"
@@ -495,6 +507,17 @@
             }
           ],
           "origin": "2026-10-16 바스켓 재검토 추가"
+        },
+        {
+          "hs6": "850110",
+          "label": "OIS 액추에이터(소형 모터)",
+          "sites": [
+            {
+              "sido_code": "47",
+              "region_keyword": "구미시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
         }
       ]
     },
@@ -1156,6 +1179,17 @@
             }
           ],
           "origin": "2026-10-16 바스켓 재검토 추가"
+        },
+        {
+          "hs6": "853669",
+          "label": "플러그소켓",
+          "sites": [
+            {
+              "sido_code": "26",
+              "region_keyword": "강서구"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
         }
       ]
     },
@@ -1206,6 +1240,17 @@
             }
           ],
           "origin": "2026-10-16 바스켓 재검토 추가"
+        },
+        {
+          "hs6": "848610",
+          "label": "어닐링 장비",
+          "sites": [
+            {
+              "sido_code": "41",
+              "region_keyword": "안양시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
         }
       ]
     },
@@ -1244,6 +1289,14 @@
             {
               "sido_code": "31",
               "region_keyword": "동구"
+            },
+            {
+              "sido_code": "41",
+              "region_keyword": "성남시"
+            },
+            {
+              "sido_code": "11",
+              "region_keyword": "종로구"
             }
           ],
           "origin": "기존 관리품목 연결"
@@ -1255,6 +1308,14 @@
             {
               "sido_code": "31",
               "region_keyword": "동구"
+            },
+            {
+              "sido_code": "41",
+              "region_keyword": "성남시"
+            },
+            {
+              "sido_code": "11",
+              "region_keyword": "종로구"
             }
           ],
           "origin": "2026-10-16 바스켓 재검토 추가"
@@ -1266,6 +1327,14 @@
             {
               "sido_code": "31",
               "region_keyword": "동구"
+            },
+            {
+              "sido_code": "41",
+              "region_keyword": "성남시"
+            },
+            {
+              "sido_code": "11",
+              "region_keyword": "종로구"
             }
           ],
           "origin": "2026-10-16 바스켓 재검토 추가"
@@ -1280,6 +1349,44 @@
             }
           ],
           "origin": "2026-10-16 바스켓 재검토 추가"
+        },
+        {
+          "hs6": "850421",
+          "label": "변압기(650kVA 이하)",
+          "sites": [
+            {
+              "sido_code": "31",
+              "region_keyword": "동구"
+            },
+            {
+              "sido_code": "41",
+              "region_keyword": "성남시"
+            },
+            {
+              "sido_code": "11",
+              "region_keyword": "종로구"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        },
+        {
+          "hs6": "853710",
+          "label": "배전반·제어반(1kV 이하)",
+          "sites": [
+            {
+              "sido_code": "31",
+              "region_keyword": "동구"
+            },
+            {
+              "sido_code": "41",
+              "region_keyword": "성남시"
+            },
+            {
+              "sido_code": "11",
+              "region_keyword": "종로구"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
         }
       ]
     },
@@ -1355,6 +1462,17 @@
             }
           ],
           "origin": "2026-10-16 바스켓 재검토 추가"
+        },
+        {
+          "hs6": "850421",
+          "label": "변압기(650kVA 이하)",
+          "sites": [
+            {
+              "sido_code": "48",
+              "region_keyword": "창원시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
         }
       ]
     },
@@ -1393,6 +1511,18 @@
             {
               "sido_code": "26",
               "region_keyword": "강서구"
+            },
+            {
+              "sido_code": "41",
+              "region_keyword": "안양시"
+            },
+            {
+              "sido_code": "44",
+              "region_keyword": "천안시"
+            },
+            {
+              "sido_code": "43",
+              "region_keyword": "청주시"
             }
           ],
           "origin": "기존 관리품목 연결"
@@ -1404,6 +1534,18 @@
             {
               "sido_code": "26",
               "region_keyword": "강서구"
+            },
+            {
+              "sido_code": "41",
+              "region_keyword": "안양시"
+            },
+            {
+              "sido_code": "44",
+              "region_keyword": "천안시"
+            },
+            {
+              "sido_code": "43",
+              "region_keyword": "청주시"
             }
           ],
           "origin": "2026-10-16 바스켓 재검토 추가"
@@ -1415,6 +1557,18 @@
             {
               "sido_code": "26",
               "region_keyword": "강서구"
+            },
+            {
+              "sido_code": "41",
+              "region_keyword": "안양시"
+            },
+            {
+              "sido_code": "44",
+              "region_keyword": "천안시"
+            },
+            {
+              "sido_code": "43",
+              "region_keyword": "청주시"
             }
           ],
           "origin": "2026-10-16 바스켓 재검토 추가"
@@ -1437,6 +1591,18 @@
             {
               "sido_code": "43",
               "region_keyword": "청주시"
+            },
+            {
+              "sido_code": "41",
+              "region_keyword": "안양시"
+            },
+            {
+              "sido_code": "44",
+              "region_keyword": "천안시"
+            },
+            {
+              "sido_code": "26",
+              "region_keyword": "강서구"
             }
           ],
           "origin": "2026-10-16 바스켓 재검토 추가"
@@ -1451,6 +1617,29 @@
             }
           ],
           "origin": "2026-10-16 바스켓 재검토 추가"
+        },
+        {
+          "hs6": "850421",
+          "label": "변압기(650kVA 이하)",
+          "sites": [
+            {
+              "sido_code": "41",
+              "region_keyword": "안양시"
+            },
+            {
+              "sido_code": "44",
+              "region_keyword": "천안시"
+            },
+            {
+              "sido_code": "26",
+              "region_keyword": "강서구"
+            },
+            {
+              "sido_code": "43",
+              "region_keyword": "청주시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
         }
       ]
     },
@@ -1511,10 +1700,32 @@
           "sites": [
             {
               "sido_code": "41",
-              "region_keyword": "안산시"
+              "region_keyword": "화성시"
             }
           ],
           "origin": "2026-10-16 바스켓 재검토 추가"
+        },
+        {
+          "hs6": "850421",
+          "label": "변압기(650kVA 이하)",
+          "sites": [
+            {
+              "sido_code": "44",
+              "region_keyword": "홍성군"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        },
+        {
+          "hs6": "854449",
+          "label": "절연전선(1kV 이하)",
+          "sites": [
+            {
+              "sido_code": "41",
+              "region_keyword": "화성시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
         }
       ]
     },
@@ -2011,6 +2222,17 @@
             }
           ],
           "origin": "기존 관리품목 연결"
+        },
+        {
+          "hs6": "330499",
+          "label": "필러",
+          "sites": [
+            {
+              "sido_code": "43",
+              "region_keyword": "청주시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
         }
       ]
     },
@@ -2053,6 +2275,17 @@
             }
           ],
           "origin": "기존 관리품목 연결"
+        },
+        {
+          "hs6": "330499",
+          "label": "필러",
+          "sites": [
+            {
+              "sido_code": "51",
+              "region_keyword": "춘천시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
         }
       ]
     },
@@ -2143,6 +2376,10 @@
             {
               "sido_code": "44",
               "region_keyword": "천안시"
+            },
+            {
+              "sido_code": "11",
+              "region_keyword": "강남구"
             }
           ],
           "origin": "기존 관리품목 연결"
@@ -3447,6 +3684,10 @@
             {
               "sido_code": "41",
               "region_keyword": "성남시"
+            },
+            {
+              "sido_code": "44",
+              "region_keyword": "아산시"
             }
           ],
           "origin": "기존 관리품목 연결"
@@ -5255,6 +5496,17 @@
             }
           ],
           "origin": "2026-10-16 공식 생산거점 확인"
+        },
+        {
+          "hs6": "854231",
+          "label": "프로세서·컨트롤러(파운드리)",
+          "sites": [
+            {
+              "sido_code": "41",
+              "region_keyword": "부천시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
         }
       ]
     },
@@ -5406,6 +5658,3671 @@
             }
           ],
           "origin": "2026-10-16 공식 생산거점 확인"
+        }
+      ]
+    },
+    {
+      "id": "000150",
+      "name": "두산",
+      "category": "전자부품",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "43",
+          "region_keyword": "증평군",
+          "hs_codes": []
+        },
+        {
+          "sido_code": "47",
+          "region_keyword": "김천시",
+          "hs_codes": []
+        },
+        {
+          "sido_code": "52",
+          "region_keyword": "익산시",
+          "hs_codes": []
+        },
+        {
+          "sido_code": "52",
+          "region_keyword": "김제시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "43",
+      "region_keyword": "증평군",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "741021",
+          "label": "동박적층판(CCL)",
+          "sites": [
+            {
+              "sido_code": "43",
+              "region_keyword": "증평군"
+            },
+            {
+              "sido_code": "47",
+              "region_keyword": "김천시"
+            },
+            {
+              "sido_code": "52",
+              "region_keyword": "익산시"
+            },
+            {
+              "sido_code": "52",
+              "region_keyword": "김제시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "080220",
+      "name": "제주반도체",
+      "category": "반도체",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "50",
+          "region_keyword": "제주시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "50",
+      "region_keyword": "제주시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "854239",
+          "label": "기타 집적회로(MCP 등)",
+          "sites": [
+            {
+              "sido_code": "50",
+              "region_keyword": "제주시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "183300",
+      "name": "코미코",
+      "category": "반도체 부품·장비",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "안성시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "안성시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "848690",
+          "label": "반도체 장비 부분품(히터·척)",
+          "sites": [
+            {
+              "sido_code": "41",
+              "region_keyword": "안성시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "240810",
+      "name": "원익IPS",
+      "category": "반도체 부품·장비",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "평택시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "평택시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "848620",
+          "label": "반도체 제조장비(증착)",
+          "sites": [
+            {
+              "sido_code": "41",
+              "region_keyword": "평택시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "036930",
+      "name": "주성엔지니어링",
+      "category": "반도체 부품·장비",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "광주시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "광주시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "848620",
+          "label": "반도체 제조장비(증착)",
+          "sites": [
+            {
+              "sido_code": "41",
+              "region_keyword": "광주시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "084370",
+      "name": "유진테크",
+      "category": "반도체 부품·장비",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "용인시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "용인시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "848620",
+          "label": "반도체 제조장비(증착)",
+          "sites": [
+            {
+              "sido_code": "41",
+              "region_keyword": "용인시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "098460",
+      "name": "고영",
+      "category": "반도체 부품·장비",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "11",
+          "region_keyword": "금천구",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "11",
+      "region_keyword": "금천구",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "903149",
+          "label": "3D 검사장비",
+          "sites": [
+            {
+              "sido_code": "11",
+              "region_keyword": "금천구"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "348210",
+      "name": "넥스틴",
+      "category": "반도체 부품·장비",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "화성시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "화성시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "903141",
+          "label": "반도체 웨이퍼 검사장비",
+          "sites": [
+            {
+              "sido_code": "41",
+              "region_keyword": "화성시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "319660",
+      "name": "피에스케이",
+      "category": "반도체 부품·장비",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "화성시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "화성시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "848620",
+          "label": "반도체 제조장비(세정·스트립)",
+          "sites": [
+            {
+              "sido_code": "41",
+              "region_keyword": "화성시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "077360",
+      "name": "덕산하이메탈",
+      "category": "반도체 소재",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "31",
+          "region_keyword": "북구",
+          "hs_codes": []
+        },
+        {
+          "sido_code": "31",
+          "region_keyword": "북구",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "31",
+      "region_keyword": "북구",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "710610",
+          "label": "은 분말(솔더볼)",
+          "sites": [
+            {
+              "sido_code": "31",
+              "region_keyword": "북구"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        },
+        {
+          "hs6": "710691",
+          "label": "은 기타(솔더)",
+          "sites": [
+            {
+              "sido_code": "31",
+              "region_keyword": "북구"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "005290",
+      "name": "동진쎄미켐",
+      "category": "반도체 소재",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "28",
+          "region_keyword": "서구",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "28",
+      "region_keyword": "서구",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "370790",
+          "label": "포토레지스트 등 사진용 화학품",
+          "sites": [
+            {
+              "sido_code": "28",
+              "region_keyword": "서구"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "260970",
+      "name": "에스앤디",
+      "category": "식품",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "51",
+          "region_keyword": "원주시",
+          "hs_codes": []
+        },
+        {
+          "sido_code": "48",
+          "region_keyword": "밀양시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "51",
+      "region_keyword": "원주시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "210390",
+          "label": "소스(복합조미료)",
+          "sites": [
+            {
+              "sido_code": "51",
+              "region_keyword": "원주시"
+            },
+            {
+              "sido_code": "48",
+              "region_keyword": "밀양시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "101160",
+      "name": "월덱스",
+      "category": "반도체 부품·장비",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "47",
+          "region_keyword": "구미시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "47",
+      "region_keyword": "구미시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "848690",
+          "label": "반도체 장비 부분품(실리콘 파츠)",
+          "sites": [
+            {
+              "sido_code": "47",
+              "region_keyword": "구미시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "101490",
+      "name": "에스앤에스텍",
+      "category": "반도체 소재",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "27",
+          "region_keyword": "달서구",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "27",
+      "region_keyword": "달서구",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "370199",
+          "label": "블랭크마스크",
+          "sites": [
+            {
+              "sido_code": "27",
+              "region_keyword": "달서구"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "214450",
+      "name": "파마리서치",
+      "category": "바이오·의료",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "51",
+          "region_keyword": "강릉시",
+          "hs_codes": []
+        },
+        {
+          "sido_code": "51",
+          "region_keyword": "강릉시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "51",
+      "region_keyword": "강릉시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "300490",
+          "label": "의약품(리쥬란 등)",
+          "sites": [
+            {
+              "sido_code": "51",
+              "region_keyword": "강릉시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        },
+        {
+          "hs6": "330499",
+          "label": "화장품",
+          "sites": [
+            {
+              "sido_code": "51",
+              "region_keyword": "강릉시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "214150",
+      "name": "클래시스",
+      "category": "의료기기",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "11",
+          "region_keyword": "강남구",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "11",
+      "region_keyword": "강남구",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "901890",
+          "label": "미용 의료기기(HIFU 등)",
+          "sites": [
+            {
+              "sido_code": "11",
+              "region_keyword": "강남구"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "336570",
+      "name": "원텍",
+      "category": "의료기기",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "30",
+          "region_keyword": "유성구",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "30",
+      "region_keyword": "유성구",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "901890",
+          "label": "미용 의료기기(레이저)",
+          "sites": [
+            {
+              "sido_code": "30",
+              "region_keyword": "유성구"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "062040",
+      "name": "산일전기",
+      "category": "전력기기·전선",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "안산시",
+          "hs_codes": []
+        },
+        {
+          "sido_code": "41",
+          "region_keyword": "안산시",
+          "hs_codes": []
+        },
+        {
+          "sido_code": "41",
+          "region_keyword": "안산시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "안산시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "850421",
+          "label": "변압기(650kVA 이하)",
+          "sites": [
+            {
+              "sido_code": "41",
+              "region_keyword": "안산시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        },
+        {
+          "hs6": "850422",
+          "label": "변압기(650kVA~10MVA)",
+          "sites": [
+            {
+              "sido_code": "41",
+              "region_keyword": "안산시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        },
+        {
+          "hs6": "850423",
+          "label": "변압기(10MVA 초과)",
+          "sites": [
+            {
+              "sido_code": "41",
+              "region_keyword": "안산시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "033100",
+      "name": "제룡전기",
+      "category": "전력기기·전선",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "11",
+          "region_keyword": "광진구",
+          "hs_codes": []
+        },
+        {
+          "sido_code": "11",
+          "region_keyword": "광진구",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "11",
+      "region_keyword": "광진구",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "850421",
+          "label": "변압기(650kVA 이하)",
+          "sites": [
+            {
+              "sido_code": "11",
+              "region_keyword": "광진구"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        },
+        {
+          "hs6": "850422",
+          "label": "변압기(650kVA~10MVA)",
+          "sites": [
+            {
+              "sido_code": "11",
+              "region_keyword": "광진구"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "012450",
+      "name": "한화에어로스페이스",
+      "category": "조선·방산·항공",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "48",
+          "region_keyword": "창원시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "48",
+      "region_keyword": "창원시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "871000",
+          "label": "전차·장갑차",
+          "sites": [
+            {
+              "sido_code": "48",
+              "region_keyword": "창원시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "064350",
+      "name": "현대로템",
+      "category": "조선·방산·항공",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "48",
+          "region_keyword": "창원시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "48",
+      "region_keyword": "창원시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "871000",
+          "label": "전차·장갑차",
+          "sites": [
+            {
+              "sido_code": "48",
+              "region_keyword": "창원시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "483650",
+      "name": "달바글로벌",
+      "category": "화장품",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "11",
+          "region_keyword": "마포구",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "11",
+      "region_keyword": "마포구",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "330499",
+          "label": "기초화장품",
+          "sites": [
+            {
+              "sido_code": "11",
+              "region_keyword": "마포구"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "047810",
+      "name": "한국항공우주",
+      "category": "조선·방산·항공",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "48",
+          "region_keyword": "사천시",
+          "hs_codes": []
+        },
+        {
+          "sido_code": "48",
+          "region_keyword": "사천시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "48",
+      "region_keyword": "사천시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "880240",
+          "label": "항공기(15톤 초과)",
+          "sites": [
+            {
+              "sido_code": "48",
+              "region_keyword": "사천시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        },
+        {
+          "hs6": "880730",
+          "label": "항공기 부분품",
+          "sites": [
+            {
+              "sido_code": "48",
+              "region_keyword": "사천시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "475960",
+      "name": "토모큐브",
+      "category": "의료기기",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "30",
+          "region_keyword": "유성구",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "30",
+      "region_keyword": "유성구",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "901180",
+          "label": "생물현미경",
+          "sites": [
+            {
+              "sido_code": "30",
+              "region_keyword": "유성구"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "082740",
+      "name": "한화엔진",
+      "category": "조선·방산·항공",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "48",
+          "region_keyword": "창원시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "48",
+      "region_keyword": "창원시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "840810",
+          "label": "선박용 디젤엔진",
+          "sites": [
+            {
+              "sido_code": "48",
+              "region_keyword": "창원시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "071970",
+      "name": "HD현대마린엔진",
+      "category": "조선·방산·항공",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "48",
+          "region_keyword": "창원시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "48",
+      "region_keyword": "창원시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "840810",
+          "label": "선박용 디젤엔진",
+          "sites": [
+            {
+              "sido_code": "48",
+              "region_keyword": "창원시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "267270",
+      "name": "HD건설기계",
+      "category": "기계·플랜트",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "28",
+          "region_keyword": "동구",
+          "hs_codes": []
+        },
+        {
+          "sido_code": "28",
+          "region_keyword": "동구",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "28",
+      "region_keyword": "동구",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "840820",
+          "label": "차량용 디젤엔진",
+          "sites": [
+            {
+              "sido_code": "28",
+              "region_keyword": "동구"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        },
+        {
+          "hs6": "840890",
+          "label": "기타 디젤엔진",
+          "sites": [
+            {
+              "sido_code": "28",
+              "region_keyword": "동구"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "083650",
+      "name": "비에이치아이",
+      "category": "기계·플랜트",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "48",
+          "region_keyword": "함안군",
+          "hs_codes": []
+        },
+        {
+          "sido_code": "48",
+          "region_keyword": "함안군",
+          "hs_codes": []
+        },
+        {
+          "sido_code": "48",
+          "region_keyword": "함안군",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "48",
+      "region_keyword": "함안군",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "840211",
+          "label": "수관보일러(대형)",
+          "sites": [
+            {
+              "sido_code": "48",
+              "region_keyword": "함안군"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        },
+        {
+          "hs6": "840219",
+          "label": "기타 증기보일러(HRSG 등)",
+          "sites": [
+            {
+              "sido_code": "48",
+              "region_keyword": "함안군"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        },
+        {
+          "hs6": "840290",
+          "label": "보일러 부분품",
+          "sites": [
+            {
+              "sido_code": "48",
+              "region_keyword": "함안군"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "100840",
+      "name": "SNT에너지",
+      "category": "기계·플랜트",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "48",
+          "region_keyword": "창원시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "48",
+      "region_keyword": "창원시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "841950",
+          "label": "열교환기(에어쿨러)",
+          "sites": [
+            {
+              "sido_code": "48",
+              "region_keyword": "창원시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "340570",
+      "name": "티앤엘",
+      "category": "의료기기",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "안성시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "안성시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "300590",
+          "label": "창상피복재",
+          "sites": [
+            {
+              "sido_code": "41",
+              "region_keyword": "안성시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "068270",
+      "name": "셀트리온",
+      "category": "바이오·의료",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "28",
+          "region_keyword": "연수구",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "28",
+      "region_keyword": "연수구",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "300214",
+          "label": "바이오의약품(면역제품)",
+          "sites": [
+            {
+              "sido_code": "28",
+              "region_keyword": "연수구"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "207940",
+      "name": "삼성바이오로직스",
+      "category": "바이오·의료",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "28",
+          "region_keyword": "연수구",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "28",
+      "region_keyword": "연수구",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "300214",
+          "label": "바이오의약품(면역제품)",
+          "sites": [
+            {
+              "sido_code": "28",
+              "region_keyword": "연수구"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "043150",
+      "name": "바텍",
+      "category": "의료기기",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "화성시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "화성시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "902213",
+          "label": "치과용 X선 장비",
+          "sites": [
+            {
+              "sido_code": "41",
+              "region_keyword": "화성시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "228670",
+      "name": "레이",
+      "category": "의료기기",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "성남시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "성남시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "902213",
+          "label": "치과용 X선 장비",
+          "sites": [
+            {
+              "sido_code": "41",
+              "region_keyword": "성남시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "194700",
+      "name": "노바렉스",
+      "category": "식품",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "43",
+          "region_keyword": "청주시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "43",
+      "region_keyword": "청주시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "210690",
+          "label": "건강기능식품",
+          "sites": [
+            {
+              "sido_code": "43",
+              "region_keyword": "청주시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "145720",
+      "name": "덴티움",
+      "category": "의료기기",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "수원시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "수원시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "902129",
+          "label": "치과 임플란트",
+          "sites": [
+            {
+              "sido_code": "41",
+              "region_keyword": "수원시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "039840",
+      "name": "디오",
+      "category": "의료기기",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "26",
+          "region_keyword": "해운대구",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "26",
+      "region_keyword": "해운대구",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "902129",
+          "label": "치과 임플란트",
+          "sites": [
+            {
+              "sido_code": "26",
+              "region_keyword": "해운대구"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "261200",
+      "name": "덴티스",
+      "category": "의료기기",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "27",
+          "region_keyword": "달서구",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "27",
+      "region_keyword": "달서구",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "902129",
+          "label": "치과 임플란트",
+          "sites": [
+            {
+              "sido_code": "27",
+              "region_keyword": "달서구"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "200670",
+      "name": "휴메딕스",
+      "category": "바이오·의료",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "성남시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "성남시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "330499",
+          "label": "필러 등",
+          "sites": [
+            {
+              "sido_code": "41",
+              "region_keyword": "성남시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "240550",
+      "name": "동방메디컬",
+      "category": "바이오·의료",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "용인시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "용인시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "330499",
+          "label": "필러 등",
+          "sites": [
+            {
+              "sido_code": "41",
+              "region_keyword": "용인시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "257720",
+      "name": "실리콘투",
+      "category": "화장품",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "광주시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "광주시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "330499",
+          "label": "기초화장품",
+          "sites": [
+            {
+              "sido_code": "41",
+              "region_keyword": "광주시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "352480",
+      "name": "씨앤씨인터내셔널",
+      "category": "화장품",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "화성시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "화성시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "330499",
+          "label": "화장품",
+          "sites": [
+            {
+              "sido_code": "41",
+              "region_keyword": "화성시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "114840",
+      "name": "아이패밀리에스씨",
+      "category": "화장품",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "11",
+          "region_keyword": "송파구",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "11",
+      "region_keyword": "송파구",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "330499",
+          "label": "화장품",
+          "sites": [
+            {
+              "sido_code": "11",
+              "region_keyword": "송파구"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "226400",
+      "name": "오스테오닉",
+      "category": "의료기기",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "11",
+          "region_keyword": "구로구",
+          "hs_codes": []
+        },
+        {
+          "sido_code": "11",
+          "region_keyword": "구로구",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "11",
+      "region_keyword": "구로구",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "902190",
+          "label": "CMF·생체 이식기기",
+          "sites": [
+            {
+              "sido_code": "11",
+              "region_keyword": "구로구"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        },
+        {
+          "hs6": "901890",
+          "label": "트라우마 의료기기",
+          "sites": [
+            {
+              "sido_code": "11",
+              "region_keyword": "구로구"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "149980",
+      "name": "하이로닉",
+      "category": "의료기기",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "용인시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "용인시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "901890",
+          "label": "미용 의료기기",
+          "sites": [
+            {
+              "sido_code": "41",
+              "region_keyword": "용인시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "009450",
+      "name": "경동나비엔",
+      "category": "기계·플랜트",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "평택시",
+          "hs_codes": []
+        },
+        {
+          "sido_code": "41",
+          "region_keyword": "평택시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "평택시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "840310",
+          "label": "가정용 보일러",
+          "sites": [
+            {
+              "sido_code": "41",
+              "region_keyword": "평택시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        },
+        {
+          "hs6": "841911",
+          "label": "가스 온수기",
+          "sites": [
+            {
+              "sido_code": "41",
+              "region_keyword": "평택시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "033240",
+      "name": "자화전자",
+      "category": "IT·통신",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "47",
+          "region_keyword": "구미시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "47",
+      "region_keyword": "구미시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "850110",
+          "label": "OIS 액추에이터(소형 모터)",
+          "sites": [
+            {
+              "sido_code": "47",
+              "region_keyword": "구미시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "213420",
+      "name": "덕산네오룩스",
+      "category": "디스플레이",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "44",
+          "region_keyword": "천안시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "44",
+      "region_keyword": "천안시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "320490",
+          "label": "OLED 유기재료",
+          "sites": [
+            {
+              "sido_code": "44",
+              "region_keyword": "천안시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "054950",
+      "name": "제이브이엠",
+      "category": "기계·플랜트",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "11",
+          "region_keyword": "서초구",
+          "hs_codes": []
+        },
+        {
+          "sido_code": "27",
+          "region_keyword": "달서구",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "11",
+      "region_keyword": "서초구",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "847989",
+          "label": "자동 조제·포장기",
+          "sites": [
+            {
+              "sido_code": "11",
+              "region_keyword": "서초구"
+            },
+            {
+              "sido_code": "27",
+              "region_keyword": "달서구"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "103840",
+      "name": "우양",
+      "category": "식품",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "44",
+          "region_keyword": "서천군",
+          "hs_codes": []
+        },
+        {
+          "sido_code": "11",
+          "region_keyword": "강남구",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "44",
+      "region_keyword": "서천군",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "190590",
+          "label": "핫도그 등 조제식품",
+          "sites": [
+            {
+              "sido_code": "44",
+              "region_keyword": "서천군"
+            },
+            {
+              "sido_code": "11",
+              "region_keyword": "강남구"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "189300",
+      "name": "인텔리안테크",
+      "category": "IT·통신",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "평택시",
+          "hs_codes": []
+        },
+        {
+          "sido_code": "41",
+          "region_keyword": "평택시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "평택시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "851779",
+          "label": "위성통신 안테나 시스템",
+          "sites": [
+            {
+              "sido_code": "41",
+              "region_keyword": "평택시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        },
+        {
+          "hs6": "852990",
+          "label": "위성방송 수신 안테나",
+          "sites": [
+            {
+              "sido_code": "41",
+              "region_keyword": "평택시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "216080",
+      "name": "제테마",
+      "category": "바이오·의료",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "용인시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "용인시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "330499",
+          "label": "필러 등",
+          "sites": [
+            {
+              "sido_code": "41",
+              "region_keyword": "용인시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "025540",
+      "name": "한국단자",
+      "category": "자동차",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "28",
+          "region_keyword": "연수구",
+          "hs_codes": []
+        },
+        {
+          "sido_code": "41",
+          "region_keyword": "화성시",
+          "hs_codes": []
+        },
+        {
+          "sido_code": "28",
+          "region_keyword": "남동구",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "28",
+      "region_keyword": "연수구",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "854430",
+          "label": "자동차용 와이어링 세트",
+          "sites": [
+            {
+              "sido_code": "28",
+              "region_keyword": "연수구"
+            },
+            {
+              "sido_code": "41",
+              "region_keyword": "화성시"
+            },
+            {
+              "sido_code": "28",
+              "region_keyword": "남동구"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "083310",
+      "name": "엘오티베큠",
+      "category": "반도체 부품·장비",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "오산시",
+          "hs_codes": []
+        },
+        {
+          "sido_code": "41",
+          "region_keyword": "안성시",
+          "hs_codes": []
+        },
+        {
+          "sido_code": "44",
+          "region_keyword": "아산시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "오산시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "841410",
+          "label": "건식 진공펌프",
+          "sites": [
+            {
+              "sido_code": "41",
+              "region_keyword": "오산시"
+            },
+            {
+              "sido_code": "41",
+              "region_keyword": "안성시"
+            },
+            {
+              "sido_code": "44",
+              "region_keyword": "아산시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "099190",
+      "name": "아이센스",
+      "category": "의료기기",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "11",
+          "region_keyword": "서초구",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "11",
+      "region_keyword": "서초구",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "382219",
+          "label": "혈당 스트립 등 진단시약",
+          "sites": [
+            {
+              "sido_code": "11",
+              "region_keyword": "서초구"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "206640",
+      "name": "바디텍메드",
+      "category": "의료기기",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "51",
+          "region_keyword": "춘천시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "51",
+      "region_keyword": "춘천시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "300212",
+          "label": "면역진단 제품",
+          "sites": [
+            {
+              "sido_code": "51",
+              "region_keyword": "춘천시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "140860",
+      "name": "파크시스템스",
+      "category": "반도체 부품·장비",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "수원시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "수원시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "901210",
+          "label": "원자현미경",
+          "sites": [
+            {
+              "sido_code": "41",
+              "region_keyword": "수원시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "156100",
+      "name": "엘앤케이바이오",
+      "category": "의료기기",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "용인시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "용인시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "902190",
+          "label": "척추 임플란트",
+          "sites": [
+            {
+              "sido_code": "41",
+              "region_keyword": "용인시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "059210",
+      "name": "메타바이오메드",
+      "category": "의료기기",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "43",
+          "region_keyword": "청주시",
+          "hs_codes": []
+        },
+        {
+          "sido_code": "43",
+          "region_keyword": "청주시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "43",
+      "region_keyword": "청주시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "300610",
+          "label": "봉합재",
+          "sites": [
+            {
+              "sido_code": "43",
+              "region_keyword": "청주시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        },
+        {
+          "hs6": "300640",
+          "label": "치과용 충전재",
+          "sites": [
+            {
+              "sido_code": "43",
+              "region_keyword": "청주시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "214370",
+      "name": "케어젠",
+      "category": "바이오·의료",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "화성시",
+          "hs_codes": []
+        },
+        {
+          "sido_code": "41",
+          "region_keyword": "안양시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "화성시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "210690",
+          "label": "펩타이드 조제품",
+          "sites": [
+            {
+              "sido_code": "41",
+              "region_keyword": "화성시"
+            },
+            {
+              "sido_code": "41",
+              "region_keyword": "안양시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "052330",
+      "name": "코텍",
+      "category": "디스플레이",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "28",
+          "region_keyword": "연수구",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "28",
+      "region_keyword": "연수구",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "852859",
+          "label": "카지노·산업용 모니터",
+          "sites": [
+            {
+              "sido_code": "28",
+              "region_keyword": "연수구"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "051360",
+      "name": "토비스",
+      "category": "디스플레이",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "28",
+          "region_keyword": "연수구",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "28",
+      "region_keyword": "연수구",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "852859",
+          "label": "카지노·산업용 모니터",
+          "sites": [
+            {
+              "sido_code": "28",
+              "region_keyword": "연수구"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "210540",
+      "name": "디와이파워",
+      "category": "기계·플랜트",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "48",
+          "region_keyword": "창원시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "48",
+      "region_keyword": "창원시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "841221",
+          "label": "유압 실린더",
+          "sites": [
+            {
+              "sido_code": "48",
+              "region_keyword": "창원시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "119610",
+      "name": "인터로조",
+      "category": "의료기기",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "평택시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "평택시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "900130",
+          "label": "콘택트렌즈",
+          "sites": [
+            {
+              "sido_code": "41",
+              "region_keyword": "평택시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "010170",
+      "name": "대한광통신",
+      "category": "전력기기·전선",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "안산시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "안산시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "854470",
+          "label": "광섬유 케이블",
+          "sites": [
+            {
+              "sido_code": "41",
+              "region_keyword": "안산시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "002710",
+      "name": "TCC스틸",
+      "category": "배터리·소재",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "47",
+          "region_keyword": "포항시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "47",
+      "region_keyword": "포항시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "721250",
+          "label": "니켈도금강판",
+          "sites": [
+            {
+              "sido_code": "47",
+              "region_keyword": "포항시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "019210",
+      "name": "와이지-원",
+      "category": "기계·플랜트",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "28",
+          "region_keyword": "연수구",
+          "hs_codes": []
+        },
+        {
+          "sido_code": "28",
+          "region_keyword": "연수구",
+          "hs_codes": []
+        },
+        {
+          "sido_code": "28",
+          "region_keyword": "연수구",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "28",
+      "region_keyword": "연수구",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "820740",
+          "label": "탭 공구",
+          "sites": [
+            {
+              "sido_code": "28",
+              "region_keyword": "연수구"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        },
+        {
+          "hs6": "820750",
+          "label": "드릴 공구",
+          "sites": [
+            {
+              "sido_code": "28",
+              "region_keyword": "연수구"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        },
+        {
+          "hs6": "820770",
+          "label": "밀링 공구",
+          "sites": [
+            {
+              "sido_code": "28",
+              "region_keyword": "연수구"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "100120",
+      "name": "뷰웍스",
+      "category": "의료기기",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "안양시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "안양시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "902290",
+          "label": "X선 디텍터 등",
+          "sites": [
+            {
+              "sido_code": "41",
+              "region_keyword": "안양시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "230240",
+      "name": "에치에프알",
+      "category": "IT·통신",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "성남시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "성남시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "851762",
+          "label": "통신장비(광전송)",
+          "sites": [
+            {
+              "sido_code": "41",
+              "region_keyword": "성남시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "001530",
+      "name": "DI동일",
+      "category": "배터리·소재",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "44",
+          "region_keyword": "천안시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "44",
+      "region_keyword": "천안시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "760711",
+          "label": "알루미늄박",
+          "sites": [
+            {
+              "sido_code": "44",
+              "region_keyword": "천안시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "014820",
+      "name": "동원시스템즈",
+      "category": "배터리·소재",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "안산시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "안산시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "760711",
+          "label": "알루미늄박",
+          "sites": [
+            {
+              "sido_code": "41",
+              "region_keyword": "안산시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "108320",
+      "name": "LX세미콘",
+      "category": "반도체",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "30",
+          "region_keyword": "유성구",
+          "hs_codes": []
+        },
+        {
+          "sido_code": "30",
+          "region_keyword": "유성구",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "30",
+      "region_keyword": "유성구",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "854239",
+          "label": "DDI 등 기타 집적회로",
+          "sites": [
+            {
+              "sido_code": "30",
+              "region_keyword": "유성구"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        },
+        {
+          "hs6": "854231",
+          "label": "T-CON 등 프로세서",
+          "sites": [
+            {
+              "sido_code": "30",
+              "region_keyword": "유성구"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "003720",
+      "name": "삼영",
+      "category": "화학·소재",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "43",
+          "region_keyword": "청주시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "43",
+      "region_keyword": "청주시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "392020",
+          "label": "폴리프로필렌 필름(콘덴서용)",
+          "sites": [
+            {
+              "sido_code": "43",
+              "region_keyword": "청주시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "014830",
+      "name": "유니드",
+      "category": "화학·소재",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "31",
+          "region_keyword": "남구",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "31",
+      "region_keyword": "남구",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "281520",
+          "label": "수산화칼륨",
+          "sites": [
+            {
+              "sido_code": "31",
+              "region_keyword": "남구"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "273640",
+      "name": "와이엠텍",
+      "category": "전력기기·전선",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "43",
+          "region_keyword": "청주시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "43",
+      "region_keyword": "청주시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "853641",
+          "label": "EV 릴레이",
+          "sites": [
+            {
+              "sido_code": "43",
+              "region_keyword": "청주시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "015230",
+      "name": "대창단조",
+      "category": "기계·플랜트",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "48",
+          "region_keyword": "김해시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "48",
+      "region_keyword": "김해시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "843149",
+          "label": "굴착기 부분품(트랙)",
+          "sites": [
+            {
+              "sido_code": "48",
+              "region_keyword": "김해시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "065510",
+      "name": "휴비츠",
+      "category": "의료기기",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "안양시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "안양시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "901850",
+          "label": "안과용 기기",
+          "sites": [
+            {
+              "sido_code": "41",
+              "region_keyword": "안양시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "005010",
+      "name": "휴스틸",
+      "category": "철강·섬유",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "44",
+          "region_keyword": "당진시",
+          "hs_codes": []
+        },
+        {
+          "sido_code": "44",
+          "region_keyword": "당진시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "44",
+      "region_keyword": "당진시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "730619",
+          "label": "송유·가스 강관(용접)",
+          "sites": [
+            {
+              "sido_code": "44",
+              "region_keyword": "당진시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        },
+        {
+          "hs6": "730630",
+          "label": "기타 용접 강관",
+          "sites": [
+            {
+              "sido_code": "44",
+              "region_keyword": "당진시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "093190",
+      "name": "빅솔론",
+      "category": "IT·통신",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "성남시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "성남시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "844332",
+          "label": "모바일·영수증 프린터",
+          "sites": [
+            {
+              "sido_code": "41",
+              "region_keyword": "성남시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "058610",
+      "name": "에스피지",
+      "category": "기계·플랜트",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "28",
+          "region_keyword": "남동구",
+          "hs_codes": []
+        },
+        {
+          "sido_code": "28",
+          "region_keyword": "남동구",
+          "hs_codes": []
+        },
+        {
+          "sido_code": "28",
+          "region_keyword": "남동구",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "28",
+      "region_keyword": "남동구",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "850110",
+          "label": "소형 모터",
+          "sites": [
+            {
+              "sido_code": "28",
+              "region_keyword": "남동구"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        },
+        {
+          "hs6": "850140",
+          "label": "교류 모터",
+          "sites": [
+            {
+              "sido_code": "28",
+              "region_keyword": "남동구"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        },
+        {
+          "hs6": "850151",
+          "label": "교류 다상 모터",
+          "sites": [
+            {
+              "sido_code": "28",
+              "region_keyword": "남동구"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "000490",
+      "name": "대동",
+      "category": "기계·플랜트",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "27",
+          "region_keyword": "달성군",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "27",
+      "region_keyword": "달성군",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "870192",
+          "label": "트랙터",
+          "sites": [
+            {
+              "sido_code": "27",
+              "region_keyword": "달성군"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "002900",
+      "name": "TYM",
+      "category": "기계·플랜트",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "52",
+          "region_keyword": "익산시",
+          "hs_codes": []
+        },
+        {
+          "sido_code": "43",
+          "region_keyword": "옥천군",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "52",
+      "region_keyword": "익산시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "870192",
+          "label": "트랙터",
+          "sites": [
+            {
+              "sido_code": "52",
+              "region_keyword": "익산시"
+            },
+            {
+              "sido_code": "43",
+              "region_keyword": "옥천군"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        }
+      ]
+    },
+    {
+      "id": "122310",
+      "name": "제노레이",
+      "category": "의료기기",
+      "hs_codes": [],
+      "sites": [
+        {
+          "sido_code": "41",
+          "region_keyword": "성남시",
+          "hs_codes": []
+        },
+        {
+          "sido_code": "41",
+          "region_keyword": "성남시",
+          "hs_codes": []
+        }
+      ],
+      "sido_code": "41",
+      "region_keyword": "성남시",
+      "region_basis": "제조장소 우편번호 기준 시군구",
+      "mapping_status": "사업장 시군구 × 주요 수출 HS6 바스켓 / 개별 업체 수출 아님",
+      "rationale": "참고 파일(기업별 수출데이터 시트)의 사업장 시군구·HS 기준을 따름. 시군구 통계에는 같은 지역의 다른 업체 수출이 포함될 수 있음.",
+      "sources": [
+        "https://www.data.go.kr/data/15134343/openapi.do"
+      ],
+      "reviewed_at": "2026-10-16",
+      "regional_hs": {},
+      "regional_labels": {},
+      "regional_proxy_only": true,
+      "mapping_source": "사용자 제공 참고 파일(수출데이터 9월 기업별 시트·HSCODE 목록) 기반 매핑, 금액은 관세청 지역 API 원본으로 수집",
+      "basket": [
+        {
+          "hs6": "902212",
+          "label": "X선 CT 장비",
+          "sites": [
+            {
+              "sido_code": "41",
+              "region_keyword": "성남시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
+        },
+        {
+          "hs6": "902214",
+          "label": "기타 X선 기기",
+          "sites": [
+            {
+              "sido_code": "41",
+              "region_keyword": "성남시"
+            }
+          ],
+          "origin": "2026-10-16 참고 파일 반영"
         }
       ]
     }

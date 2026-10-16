@@ -116,7 +116,7 @@ PREDECESSOR_END = 2021
 def first_year(code):
     # HS2022 introduced these distinct product subheadings; no reliable HS2017
     # one-to-one counterpart exists, so keep 2020–2021 genuinely unavailable.
-    return 2022 if code in {'851713', '852412', '852492'} else 2020
+    return 2022 if code in {'851713', '852412', '852492', '300212', '300214', '382219', '880730'} else 2020
 
 def predecessor_unit(code):
     return 'HS2017_PREDECESSOR_' + PREDECESSOR[code]
