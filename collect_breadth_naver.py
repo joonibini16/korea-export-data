@@ -59,13 +59,16 @@ def listing(mkt):
     return out
 
 
-def closes(code):
+def closes(code, with_volumes=False):
     t = get(f'https://fchart.stock.naver.com/sise.nhn?symbol={code}&timeframe=day&count={COUNT}&requestType=0').decode('euc-kr', 'replace')
-    out = {}
+    out, volumes = {}, {}
     for m in re.finditer(r'data="(\d{8})\|[^|]*\|[^|]*\|[^|]*\|([0-9.]+)\|(\d+)"', t):
         d, c = m.group(1), float(m.group(2))
-        if c > 0: out[f'{d[:4]}-{d[4:6]}-{d[6:]}'] = c
-    return out
+        if c > 0:
+            day = f'{d[:4]}-{d[4:6]}-{d[6:]}'
+            out[day] = c
+            volumes[day] = int(m.group(3))
+    return (out, volumes) if with_volumes else out
 
 
 def compute(series, dates):
@@ -87,13 +90,16 @@ def compute(series, dates):
     return rows
 
 
-def compute_db_proxy(series, dates):
+def compute_db_proxy(series, dates, volume_series=None):
     """DB 화면에서 추론한 별도 지표. DB 원본 산식·모집단은 미확인."""
     import pandas as pd
     df = pd.DataFrame({i: pd.Series(x) for i, x in enumerate(series)}).reindex(dates)
     hi = df.rolling(60, min_periods=60).max()
     lo = df.rolling(60, min_periods=60).min()
     valid = df.notna() & hi.notna()
+    if volume_series is not None:
+        volumes = pd.DataFrame({i: pd.Series(x) for i, x in enumerate(volume_series)}).reindex(dates)
+        valid &= volumes.gt(0)  # 거래정지·무거래 종목의 고정 종가를 신고가로 세지 않음
     high = (df >= hi) & valid
     low = (df <= lo) & valid & ~high  # 정체 종목을 이중 집계하지 않음
     nh, nl, n = high.sum(axis=1), low.sum(axis=1), valid.sum(axis=1)
@@ -112,19 +118,23 @@ def main():
     fails, out, info, proxy = [], [], {}, {}
     for mkt, name in (('stockMkt', 'KOSPI'), ('kosdaqMkt', 'KOSDAQ')):
         lst = listing(mkt)
-        res = {}
+        res, volumes = {}, {}
         def one(cn):
-            try: return cn[0], closes(cn[0])
-            except Exception as e: fails.append(dict(code=cn[0], error=str(e)[:80])); return cn[0], {}
+            try:
+                prices, volume = closes(cn[0], with_volumes=True)
+                return cn[0], prices, volume
+            except Exception as e: fails.append(dict(code=cn[0], error=str(e)[:80])); return cn[0], {}, {}
         with ThreadPoolExecutor(6) as pool:
-            for code, s in pool.map(one, lst): res[code] = s
-        series = [s for s in res.values() if len(s) >= 20]
+            for code, s, v in pool.map(one, lst):
+                res[code], volumes[code] = s, v
+        codes = [code for code, s in res.items() if len(s) >= 20]
+        series = [res[code] for code in codes]
         cnt = {}
         for s in series:
             for d in s: cnt[d] = cnt.get(d, 0) + 1
         dates = sorted(d for d, k in cnt.items() if k >= len(series) * 0.5)  # 거래일만
         rows = compute(series, dates)
-        proxy[name] = compute_db_proxy(series, dates)
+        proxy[name] = compute_db_proxy(series, dates, [volumes[code] for code in codes])
         if len(series) < len(lst) * 0.95 or not rows or not proxy[name]:
             raise RuntimeError(f'{name}: insufficient coverage; keep existing output')
         for r in rows: r['market'] = name
@@ -154,7 +164,7 @@ def main():
                             for k in ('breadth60', 'breadth5sma', 'hli', 'hli10sma')
                             if calculated.get(k) is not None and observed.get(k) is not None}))
     proxy_path.write_text(json.dumps(dict(updated_at=datetime.now(KST).isoformat(timespec='seconds'),
-        method='추정: 60일 종가 신고가 수−신저가 수; HLI=신고가 수/(신고가 수+신저가 수)*100',
+        method='추정: 60일 종가 신고가 수−신저가 수; HLI=신고가 수/(신고가 수+신저가 수)*100; 당일 거래량 0 제외',
         verified_db_method=False, markets=proxy, snapshot_comparisons=comparisons), ensure_ascii=False, indent=1))
     with Path('breadth_kr.csv').open('w', encoding='utf-8', newline='') as f:
         w = csv.DictWriter(f, fieldnames=['date', 'market', 'n60', 'above60', 'breadth60', 'n250', 'nh', 'nl', 'hli']); w.writeheader()
