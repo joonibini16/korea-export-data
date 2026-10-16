@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: ['collect_foreign_buy.py', '.github/workflows/foreign_buy.yml']
+    paths: ['collect_foreign_buy.py', 'build_flow_oscillator.py', '.github/workflows/foreign_buy.yml']
   schedule:
     # 한국시간 평일 15:50, 16:20, 18:10, 20:40 (장 마감 후 확정치, 지연 대비 중복)
     - cron: '50 6 * * 1-5'
@@ -30,7 +30,8 @@ jobs:
           KRX_API_KEY: ${{ secrets.KRX_API_KEY }}
           KRX_ID: ${{ secrets.KRX_ID }}
           KRX_PW: ${{ secrets.KRX_PW }}
+      - run: python build_flow_oscillator.py
       - run: |
           git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add foreign_buy.json foreign_buy_hist.csv foreign_buy_status.json foreign_buy_periods.json foreign_buy_series.json foreign_buy_days invest_days inst_buy_periods.json inst_buy_series.json trust_buy_periods.json trust_buy_series.json pe_buy_periods.json pe_buy_series.json 2>/dev/null || git add foreign_buy_status.json
+          git add foreign_buy.json foreign_buy_hist.csv foreign_buy_status.json foreign_buy_periods.json foreign_buy_series.json foreign_buy_days invest_days inst_buy_periods.json inst_buy_series.json trust_buy_periods.json trust_buy_series.json pe_buy_periods.json pe_buy_series.json flow_oscillator.json flow_stocks.json 2>/dev/null || git add foreign_buy_status.json
           git diff --cached --quiet || (git commit -qm "Update foreign buy ranking" && git pull -q --rebase origin main && git push -q origin main)
