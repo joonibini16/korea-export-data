@@ -1,5 +1,5 @@
 {
- "run": "2026-10-16T15:40:38+09:00",
+ "run": "2026-10-16T15:56:07+09:00",
  "steps": [
   {
    "step": "loader",
@@ -14,9 +14,9 @@
   },
   {
    "step": "days",
-   "fetched": 1,
-   "total": 63,
-   "latest": "2026-10-15"
+   "fetched": 2,
+   "total": 64,
+   "latest": "2026-10-16"
   },
   {
    "step": "inv_days",
@@ -37,25 +37,25 @@
    "step": "build",
    "investor": "F",
    "days": 60,
-   "series": 2202
+   "series": 2203
   },
   {
    "step": "build",
    "investor": "I",
    "days": 60,
-   "series": 2193
+   "series": 2197
   },
   {
    "step": "build",
    "investor": "T",
    "days": 60,
-   "series": 1522
+   "series": 1523
   },
   {
    "step": "build",
    "investor": "P",
    "days": 60,
-   "series": 1667
+   "series": 1671
   }
  ],
  "ok": true
