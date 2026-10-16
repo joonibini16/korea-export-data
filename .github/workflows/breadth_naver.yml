@@ -32,7 +32,14 @@ jobs:
           if ! git diff --cached --quiet; then
             git commit -m "Update Korea market breadth"
             for attempt in 1 2 3 4 5; do
-              git pull --rebase origin main || { git rebase --abort; exit 1; }
+              git fetch origin main
+              if python -c 'import json,subprocess,sys; from pathlib import Path; remote=json.loads(subprocess.check_output(["git","show","origin/main:breadth_naver_status.json"])); local=json.loads(Path("breadth_naver_status.json").read_text()); sys.exit(0 if remote.get("updated_at","") > local.get("updated_at","") else 1)'; then
+                echo "Newer breadth data already published; keeping remote."
+                exit 0
+              fi
+              # This commit changes generated breadth files only. Keep the newer
+              # collection when their data/status lines overlap during rebase.
+              git rebase -X theirs origin/main || { git rebase --abort; exit 1; }
               if git push origin HEAD:main; then exit 0; fi
               sleep $((attempt * 3))
             done
