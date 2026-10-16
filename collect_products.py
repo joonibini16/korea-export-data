@@ -12,6 +12,8 @@ import collect_company_history as h
 import collect_segments as s
 
 ROOT = Path(__file__).resolve().parent
+DEBUG = '--debug' in sys.argv
+dbg = {}
 OUT_P, OUT_PR, STATUS = ROOT / 'company_products.csv', ROOT / 'company_prices.csv', ROOT / 'company_products_status.json'
 FP = ['company_id', 'period', 'product', 'cum_revenue_KRW', 'q_revenue_KRW', 'share_pct', 'source', 'check']
 FPR = ['company_id', 'period', 'product', 'price', 'unit', 'source']
@@ -94,15 +96,16 @@ def scan(r):
         return dict(company_id=r['company_id'], period=r['period'], error=str(e)[:200])
     prod = price = None
     for t in d.xpath('//table'):
-        before = ' '.join(h.text(e) for e in t.xpath('preceding-sibling::*[position()<=3]'))[-260:]
-        near = before[-160:]
+        before = ' '.join(h.text(e) for e in t.xpath('preceding::*[self::p or self::table or self::div or self::span][position()<=6]'))[-600:]
+        near = before[-320:]
         if '원재료' in near or '원 재 료' in near: continue
         g = s.grid(t)
         if prod is None and re.search(r'주요\s*제품|제품\s*등의\s*(현황|매출)|품목별\s*매출|매출\s*현황', near) and not re.search(r'가격\s*변동', near):
             unit = unit_of(before) or unit_of(' '.join(' '.join(x) for x in g[:2]))
-            if unit:
-                p = parse_products(g, unit)
-                if p: prod = p
+            p = parse_products(g, unit) if unit else None
+            if p: prod = p
+            elif DEBUG and len(dbg.setdefault(r['company_id'], [])) < 6:
+                dbg[r['company_id']].append({'period': r['period'], 'unit': unit, 'near': near[-200:], 'grid': g[:6]})
         if price is None and re.search(r'가격\s*변동', near):
             um = re.search(r'단위\s*[:：]?\s*([^)\]]{1,20})', before)
             p = parse_prices(g, um[1].strip() if um else '')
@@ -161,6 +164,7 @@ def main():
     with OUT_PR.open('w', encoding='utf-8-sig', newline='') as f:
         w = csv.DictWriter(f, fieldnames=FPR); w.writeheader(); w.writerows(sorted(PR.values(), key=lambda x: (x['company_id'], x['period'], x['product'])))
     STATUS.write_text(json.dumps(st, ensure_ascii=False, indent=1))
+    if DEBUG: (ROOT / 'segment_debug.json').write_text(json.dumps(dbg, ensure_ascii=False, indent=1))
     print(sum(v['products'] for v in st.values()), 'product tables;', sum(v['prices'] for v in st.values()), 'price tables')
 
 
