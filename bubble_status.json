@@ -1,7 +1,7 @@
 {
- "updated_at": "2026-10-16T13:01:40+09:00",
- "yahoo_rows": 55605,
- "fred_rows": 33922,
+ "updated_at": "2026-10-16T13:22:22+09:00",
+ "yahoo_rows": 55601,
+ "fred_rows": 34062,
  "ecos_rows": 0,
  "ecos_key": false,
  "vkospi_rows": null,
@@ -43,14 +43,10 @@
   "XTEXVA01INM667S": "2026-08-01",
   "XTEXVA01BRM667S": "2026-09-01",
   "XTEXVA01CAM667S": "2026-08-01",
+  "XTEXVA01AUM667S": "2026-08-01",
   "XTEXVA01MXM667S": "2026-08-01",
   "XTEXVA01IDM667S": "2026-08-01",
   "BOPTEXP": "2026-08-01"
  },
- "failures": [
-  {
-   "id": "XTEXVA01AUM667S",
-   "error": "HTTP Error 404: Not Found"
-  }
- ]
+ "failures": []
 }
