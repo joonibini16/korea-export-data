@@ -101,7 +101,7 @@ def load_day(d):
 
 
 # 투자자 구분: KRX 투자자 코드 · 이름 · 출력 파일 접두어
-INV = {'F': ('9000', '외국인', 'foreign_buy'), 'I': ('7050', '기관 합계', 'inst_buy'), 'T': ('3000', '투신', 'trust_buy'), 'P': ('3100', '사모', 'pe_buy')}
+INV = {'F': ('9000', '외국인', 'foreign_buy'), 'I': ('7050', '기관 합계', 'inst_buy'), 'T': ('3000', '투신', 'trust_buy'), 'P': ('3100', '사모', 'pe_buy'), 'B': ('1000', '금융투자', 'fi_buy'), 'O': ('7100', '기타법인', 'corp_buy')}
 IDAYS = pathlib.Path('invest_days')
 
 
@@ -204,7 +204,9 @@ def main():
     DAYS.mkdir(exist_ok=True)
     hol = set(json.loads(HOL.read_text())) if HOL.exists() else set()
     today = dt.datetime.now(KST).date()
-    cand = [today - dt.timedelta(days=i) for i in range(0, 95)]
+    back = os.environ.get('BACKFILL_FROM', '').strip()  # 예: 2026-01-02 → 그날까지 과거 일별 자료를 채움(이미 있는 날은 건너뜀)
+    span = (today - dt.date.fromisoformat(back)).days + 1 if back else 95
+    cand = [today - dt.timedelta(days=i) for i in range(0, max(95, span))]
     cand = [d for d in cand if d.weekday() < 5 and d.isoformat() not in hol]
     have = {f.name[:10] for f in DAYS.glob('*.json.gz')}
     latest_have = max(have) if have else ''
@@ -227,7 +229,7 @@ def main():
     have = sorted(f.name[:10] for f in DAYS.glob('*.json.gz'))
     log(step='days', fetched=got, total=len(have), latest=have[-1] if have else None)
     # 기관 합계·투신·사모: 외국인 파일이 있는 거래일 기준으로 없는 날 + 최근 2거래일을 받음
-    for key in ('I', 'T', 'P'):
+    for key in ('I', 'T', 'P', 'B', 'O'):
         (IDAYS / key).mkdir(parents=True, exist_ok=True)
         hk = {f.name[:10] for f in (IDAYS / key).glob('*.json.gz')}
         need = [d for d in have if d not in hk] + have[-2:]
