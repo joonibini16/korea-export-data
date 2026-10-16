@@ -29,4 +29,13 @@ jobs:
       - run: |
           git config user.name github-actions; git config user.email github-actions@github.com
           for f in breadth_kr.csv breadth_naver_status.json breadth_db_proxy.json; do if [ -f $f ]; then git add $f; fi; done
-          if ! git diff --cached --quiet; then git commit -m "Update Korea market breadth"; git pull --rebase origin main || (git rebase --abort; exit 1); git push; fi
+          if ! git diff --cached --quiet; then
+            git commit -m "Update Korea market breadth"
+            for attempt in 1 2 3 4 5; do
+              git pull --rebase origin main || { git rebase --abort; exit 1; }
+              if git push origin HEAD:main; then exit 0; fi
+              sleep $((attempt * 3))
+            done
+            echo "Push contention persisted; collected data were not published."
+            exit 1
+          fi
