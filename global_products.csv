@@ -1,0 +1,421 @@
+﻿company,period,kind,item,value,unit,source
+TSM,2018-Q1,revenue,매출(합계),8460.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/english/2019/Q1/1Q19ManagementReport.pdf
+TSM,2018-Q1,share,HPC,32,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/english/2019/Q1/1Q19ManagementReport.pdf
+TSM,2018-Q1,segment_revenue,HPC,2707.2,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/english/2019/Q1/1Q19ManagementReport.pdf (매출×비중으로 계산)
+TSM,2018-Q1,share,스마트폰,46,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/english/2019/Q1/1Q19ManagementReport.pdf
+TSM,2018-Q1,segment_revenue,스마트폰,3891.6,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/english/2019/Q1/1Q19ManagementReport.pdf (매출×비중으로 계산)
+TSM,2018-Q1,share,IoT,6,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/english/2019/Q1/1Q19ManagementReport.pdf
+TSM,2018-Q1,segment_revenue,IoT,507.6,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/english/2019/Q1/1Q19ManagementReport.pdf (매출×비중으로 계산)
+TSM,2018-Q1,share,자동차,5,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/english/2019/Q1/1Q19ManagementReport.pdf
+TSM,2018-Q1,segment_revenue,자동차,423.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/english/2019/Q1/1Q19ManagementReport.pdf (매출×비중으로 계산)
+TSM,2018-Q1,share,DCE(가전),6,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/english/2019/Q1/1Q19ManagementReport.pdf
+TSM,2018-Q1,segment_revenue,DCE(가전),507.6,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/english/2019/Q1/1Q19ManagementReport.pdf (매출×비중으로 계산)
+TSM,2018-Q1,share,기타,5,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/english/2019/Q1/1Q19ManagementReport.pdf
+TSM,2018-Q1,segment_revenue,기타,423.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/english/2019/Q1/1Q19ManagementReport.pdf (매출×비중으로 계산)
+TSM,2018-Q1,volume,웨이퍼 출하(12인치 환산),2680,천 장,https://investor.tsmc.com/english/encrypt/files/encrypt_file/english/2019/Q1/1Q19ManagementReport.pdf
+TSM,2018-Q1,price,웨이퍼 ASP(12인치 환산),3157,USD/장,https://investor.tsmc.com/english/encrypt/files/encrypt_file/english/2019/Q1/1Q19ManagementReport.pdf (매출÷출하량으로 계산)
+TSM,2018-Q4,revenue,매출(합계),9400.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/english/2019/Q1/1Q19ManagementReport.pdf
+TSM,2018-Q4,share,HPC,29,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/english/2019/Q1/1Q19ManagementReport.pdf
+TSM,2018-Q4,segment_revenue,HPC,2726.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/english/2019/Q1/1Q19ManagementReport.pdf (매출×비중으로 계산)
+TSM,2018-Q4,share,스마트폰,53,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/english/2019/Q1/1Q19ManagementReport.pdf
+TSM,2018-Q4,segment_revenue,스마트폰,4982.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/english/2019/Q1/1Q19ManagementReport.pdf (매출×비중으로 계산)
+TSM,2018-Q4,share,IoT,6,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/english/2019/Q1/1Q19ManagementReport.pdf
+TSM,2018-Q4,segment_revenue,IoT,564.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/english/2019/Q1/1Q19ManagementReport.pdf (매출×비중으로 계산)
+TSM,2018-Q4,share,자동차,4,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/english/2019/Q1/1Q19ManagementReport.pdf
+TSM,2018-Q4,segment_revenue,자동차,376.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/english/2019/Q1/1Q19ManagementReport.pdf (매출×비중으로 계산)
+TSM,2018-Q4,share,DCE(가전),4,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/english/2019/Q1/1Q19ManagementReport.pdf
+TSM,2018-Q4,segment_revenue,DCE(가전),376.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/english/2019/Q1/1Q19ManagementReport.pdf (매출×비중으로 계산)
+TSM,2018-Q4,share,기타,4,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/english/2019/Q1/1Q19ManagementReport.pdf
+TSM,2018-Q4,segment_revenue,기타,376.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/english/2019/Q1/1Q19ManagementReport.pdf (매출×비중으로 계산)
+TSM,2018-Q4,volume,웨이퍼 출하(12인치 환산),2686,천 장,https://investor.tsmc.com/english/encrypt/files/encrypt_file/english/2019/Q1/1Q19ManagementReport.pdf
+TSM,2018-Q4,price,웨이퍼 ASP(12인치 환산),3500,USD/장,https://investor.tsmc.com/english/encrypt/files/encrypt_file/english/2019/Q1/1Q19ManagementReport.pdf (매출÷출하량으로 계산)
+TSM,2019-Q1,revenue,매출(합계),7100.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/english/2019/Q1/1Q19ManagementReport.pdf
+TSM,2019-Q1,share,HPC,29,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/english/2019/Q1/1Q19ManagementReport.pdf
+TSM,2019-Q1,segment_revenue,HPC,2059.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/english/2019/Q1/1Q19ManagementReport.pdf (매출×비중으로 계산)
+TSM,2019-Q1,share,스마트폰,47,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/english/2019/Q1/1Q19ManagementReport.pdf
+TSM,2019-Q1,segment_revenue,스마트폰,3337.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/english/2019/Q1/1Q19ManagementReport.pdf (매출×비중으로 계산)
+TSM,2019-Q1,share,IoT,7,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/english/2019/Q1/1Q19ManagementReport.pdf
+TSM,2019-Q1,segment_revenue,IoT,497.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/english/2019/Q1/1Q19ManagementReport.pdf (매출×비중으로 계산)
+TSM,2019-Q1,share,자동차,5,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/english/2019/Q1/1Q19ManagementReport.pdf
+TSM,2019-Q1,segment_revenue,자동차,355.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/english/2019/Q1/1Q19ManagementReport.pdf (매출×비중으로 계산)
+TSM,2019-Q1,share,DCE(가전),7,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/english/2019/Q1/1Q19ManagementReport.pdf
+TSM,2019-Q1,segment_revenue,DCE(가전),497.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/english/2019/Q1/1Q19ManagementReport.pdf (매출×비중으로 계산)
+TSM,2019-Q1,share,기타,5,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/english/2019/Q1/1Q19ManagementReport.pdf
+TSM,2019-Q1,segment_revenue,기타,355.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/english/2019/Q1/1Q19ManagementReport.pdf (매출×비중으로 계산)
+TSM,2019-Q1,volume,웨이퍼 출하(12인치 환산),2205,천 장,https://investor.tsmc.com/english/encrypt/files/encrypt_file/english/2019/Q1/1Q19ManagementReport.pdf
+TSM,2019-Q1,price,웨이퍼 ASP(12인치 환산),3220,USD/장,https://investor.tsmc.com/english/encrypt/files/encrypt_file/english/2019/Q1/1Q19ManagementReport.pdf (매출÷출하량으로 계산)
+TSM,2019-Q4,revenue,매출(합계),10390.0,USD mn,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/qr/phase5_support/1Q20ManagementReport.pdf
+TSM,2019-Q4,share,HPC,29,%,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/qr/phase5_support/1Q20ManagementReport.pdf
+TSM,2019-Q4,segment_revenue,HPC,3013.1,USD mn,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/qr/phase5_support/1Q20ManagementReport.pdf (매출×비중으로 계산)
+TSM,2019-Q4,share,스마트폰,53,%,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/qr/phase5_support/1Q20ManagementReport.pdf
+TSM,2019-Q4,segment_revenue,스마트폰,5506.7,USD mn,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/qr/phase5_support/1Q20ManagementReport.pdf (매출×비중으로 계산)
+TSM,2019-Q4,share,IoT,8,%,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/qr/phase5_support/1Q20ManagementReport.pdf
+TSM,2019-Q4,segment_revenue,IoT,831.2,USD mn,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/qr/phase5_support/1Q20ManagementReport.pdf (매출×비중으로 계산)
+TSM,2019-Q4,share,자동차,4,%,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/qr/phase5_support/1Q20ManagementReport.pdf
+TSM,2019-Q4,segment_revenue,자동차,415.6,USD mn,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/qr/phase5_support/1Q20ManagementReport.pdf (매출×비중으로 계산)
+TSM,2019-Q4,share,DCE(가전),3,%,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/qr/phase5_support/1Q20ManagementReport.pdf
+TSM,2019-Q4,segment_revenue,DCE(가전),311.7,USD mn,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/qr/phase5_support/1Q20ManagementReport.pdf (매출×비중으로 계산)
+TSM,2019-Q4,share,기타,3,%,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/qr/phase5_support/1Q20ManagementReport.pdf
+TSM,2019-Q4,segment_revenue,기타,311.7,USD mn,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/qr/phase5_support/1Q20ManagementReport.pdf (매출×비중으로 계산)
+TSM,2019-Q4,volume,웨이퍼 출하(12인치 환산),2823,천 장,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/qr/phase5_support/1Q20ManagementReport.pdf
+TSM,2019-Q4,price,웨이퍼 ASP(12인치 환산),3680,USD/장,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/qr/phase5_support/1Q20ManagementReport.pdf (매출÷출하량으로 계산)
+TSM,2020-Q1,revenue,매출(합계),10310.0,USD mn,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/qr/phase5_support/1Q20ManagementReport.pdf
+TSM,2020-Q1,share,HPC,30,%,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/qr/phase5_support/1Q20ManagementReport.pdf
+TSM,2020-Q1,segment_revenue,HPC,3093.0,USD mn,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/qr/phase5_support/1Q20ManagementReport.pdf (매출×비중으로 계산)
+TSM,2020-Q1,share,스마트폰,49,%,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/qr/phase5_support/1Q20ManagementReport.pdf
+TSM,2020-Q1,segment_revenue,스마트폰,5051.9,USD mn,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/qr/phase5_support/1Q20ManagementReport.pdf (매출×비중으로 계산)
+TSM,2020-Q1,share,IoT,9,%,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/qr/phase5_support/1Q20ManagementReport.pdf
+TSM,2020-Q1,segment_revenue,IoT,927.9,USD mn,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/qr/phase5_support/1Q20ManagementReport.pdf (매출×비중으로 계산)
+TSM,2020-Q1,share,자동차,4,%,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/qr/phase5_support/1Q20ManagementReport.pdf
+TSM,2020-Q1,segment_revenue,자동차,412.4,USD mn,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/qr/phase5_support/1Q20ManagementReport.pdf (매출×비중으로 계산)
+TSM,2020-Q1,share,DCE(가전),5,%,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/qr/phase5_support/1Q20ManagementReport.pdf
+TSM,2020-Q1,segment_revenue,DCE(가전),515.5,USD mn,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/qr/phase5_support/1Q20ManagementReport.pdf (매출×비중으로 계산)
+TSM,2020-Q1,share,기타,3,%,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/qr/phase5_support/1Q20ManagementReport.pdf
+TSM,2020-Q1,segment_revenue,기타,309.3,USD mn,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/qr/phase5_support/1Q20ManagementReport.pdf (매출×비중으로 계산)
+TSM,2020-Q1,volume,웨이퍼 출하(12인치 환산),2925,천 장,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/qr/phase5_support/1Q20ManagementReport.pdf
+TSM,2020-Q1,price,웨이퍼 ASP(12인치 환산),3525,USD/장,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/qr/phase5_support/1Q20ManagementReport.pdf (매출÷출하량으로 계산)
+TSM,2020-Q4,revenue,매출(합계),12680.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-01/f7c72d6d88b224476ab812fc3ba28169ec091a86/4Q21ManagementReport.pdf
+TSM,2020-Q4,share,HPC,31,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-01/f7c72d6d88b224476ab812fc3ba28169ec091a86/4Q21ManagementReport.pdf
+TSM,2020-Q4,segment_revenue,HPC,3930.8,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-01/f7c72d6d88b224476ab812fc3ba28169ec091a86/4Q21ManagementReport.pdf (매출×비중으로 계산)
+TSM,2020-Q4,share,스마트폰,51,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-01/f7c72d6d88b224476ab812fc3ba28169ec091a86/4Q21ManagementReport.pdf
+TSM,2020-Q4,segment_revenue,스마트폰,6466.8,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-01/f7c72d6d88b224476ab812fc3ba28169ec091a86/4Q21ManagementReport.pdf (매출×비중으로 계산)
+TSM,2020-Q4,share,IoT,7,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-01/f7c72d6d88b224476ab812fc3ba28169ec091a86/4Q21ManagementReport.pdf
+TSM,2020-Q4,segment_revenue,IoT,887.6,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-01/f7c72d6d88b224476ab812fc3ba28169ec091a86/4Q21ManagementReport.pdf (매출×비중으로 계산)
+TSM,2020-Q4,share,자동차,3,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-01/f7c72d6d88b224476ab812fc3ba28169ec091a86/4Q21ManagementReport.pdf
+TSM,2020-Q4,segment_revenue,자동차,380.4,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-01/f7c72d6d88b224476ab812fc3ba28169ec091a86/4Q21ManagementReport.pdf (매출×비중으로 계산)
+TSM,2020-Q4,share,DCE(가전),4,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-01/f7c72d6d88b224476ab812fc3ba28169ec091a86/4Q21ManagementReport.pdf
+TSM,2020-Q4,segment_revenue,DCE(가전),507.2,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-01/f7c72d6d88b224476ab812fc3ba28169ec091a86/4Q21ManagementReport.pdf (매출×비중으로 계산)
+TSM,2020-Q4,share,기타,4,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-01/f7c72d6d88b224476ab812fc3ba28169ec091a86/4Q21ManagementReport.pdf
+TSM,2020-Q4,segment_revenue,기타,507.2,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-01/f7c72d6d88b224476ab812fc3ba28169ec091a86/4Q21ManagementReport.pdf (매출×비중으로 계산)
+TSM,2020-Q4,volume,웨이퍼 출하(12인치 환산),3246,천 장,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-01/f7c72d6d88b224476ab812fc3ba28169ec091a86/4Q21ManagementReport.pdf
+TSM,2020-Q4,price,웨이퍼 ASP(12인치 환산),3906,USD/장,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-01/f7c72d6d88b224476ab812fc3ba28169ec091a86/4Q21ManagementReport.pdf (매출÷출하량으로 계산)
+TSM,2021-Q1,revenue,매출(합계),12920.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-07/433cc369bbdb0bbfa43a7d23c05b197249117990/1Q22ManagementReport.pdf
+TSM,2021-Q1,share,HPC,35,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-07/433cc369bbdb0bbfa43a7d23c05b197249117990/1Q22ManagementReport.pdf
+TSM,2021-Q1,segment_revenue,HPC,4522.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-07/433cc369bbdb0bbfa43a7d23c05b197249117990/1Q22ManagementReport.pdf (매출×비중으로 계산)
+TSM,2021-Q1,share,스마트폰,45,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-07/433cc369bbdb0bbfa43a7d23c05b197249117990/1Q22ManagementReport.pdf
+TSM,2021-Q1,segment_revenue,스마트폰,5814.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-07/433cc369bbdb0bbfa43a7d23c05b197249117990/1Q22ManagementReport.pdf (매출×비중으로 계산)
+TSM,2021-Q1,share,IoT,9,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-07/433cc369bbdb0bbfa43a7d23c05b197249117990/1Q22ManagementReport.pdf
+TSM,2021-Q1,segment_revenue,IoT,1162.8,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-07/433cc369bbdb0bbfa43a7d23c05b197249117990/1Q22ManagementReport.pdf (매출×비중으로 계산)
+TSM,2021-Q1,share,자동차,4,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-07/433cc369bbdb0bbfa43a7d23c05b197249117990/1Q22ManagementReport.pdf
+TSM,2021-Q1,segment_revenue,자동차,516.8,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-07/433cc369bbdb0bbfa43a7d23c05b197249117990/1Q22ManagementReport.pdf (매출×비중으로 계산)
+TSM,2021-Q1,share,DCE(가전),4,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-07/433cc369bbdb0bbfa43a7d23c05b197249117990/1Q22ManagementReport.pdf
+TSM,2021-Q1,segment_revenue,DCE(가전),516.8,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-07/433cc369bbdb0bbfa43a7d23c05b197249117990/1Q22ManagementReport.pdf (매출×비중으로 계산)
+TSM,2021-Q1,share,기타,3,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-07/433cc369bbdb0bbfa43a7d23c05b197249117990/1Q22ManagementReport.pdf
+TSM,2021-Q1,segment_revenue,기타,387.6,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-07/433cc369bbdb0bbfa43a7d23c05b197249117990/1Q22ManagementReport.pdf (매출×비중으로 계산)
+TSM,2021-Q1,volume,웨이퍼 출하(12인치 환산),3359,천 장,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-07/433cc369bbdb0bbfa43a7d23c05b197249117990/1Q22ManagementReport.pdf
+TSM,2021-Q1,price,웨이퍼 ASP(12인치 환산),3846,USD/장,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-07/433cc369bbdb0bbfa43a7d23c05b197249117990/1Q22ManagementReport.pdf (매출÷출하량으로 계산)
+TSM,2021-Q3,revenue,매출(합계),14880.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-01/f7c72d6d88b224476ab812fc3ba28169ec091a86/4Q21ManagementReport.pdf
+TSM,2021-Q3,share,HPC,37,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-01/f7c72d6d88b224476ab812fc3ba28169ec091a86/4Q21ManagementReport.pdf
+TSM,2021-Q3,segment_revenue,HPC,5505.6,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-01/f7c72d6d88b224476ab812fc3ba28169ec091a86/4Q21ManagementReport.pdf (매출×비중으로 계산)
+TSM,2021-Q3,share,스마트폰,44,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-01/f7c72d6d88b224476ab812fc3ba28169ec091a86/4Q21ManagementReport.pdf
+TSM,2021-Q3,segment_revenue,스마트폰,6547.2,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-01/f7c72d6d88b224476ab812fc3ba28169ec091a86/4Q21ManagementReport.pdf (매출×비중으로 계산)
+TSM,2021-Q3,share,IoT,9,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-01/f7c72d6d88b224476ab812fc3ba28169ec091a86/4Q21ManagementReport.pdf
+TSM,2021-Q3,segment_revenue,IoT,1339.2,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-01/f7c72d6d88b224476ab812fc3ba28169ec091a86/4Q21ManagementReport.pdf (매출×비중으로 계산)
+TSM,2021-Q3,share,자동차,4,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-01/f7c72d6d88b224476ab812fc3ba28169ec091a86/4Q21ManagementReport.pdf
+TSM,2021-Q3,segment_revenue,자동차,595.2,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-01/f7c72d6d88b224476ab812fc3ba28169ec091a86/4Q21ManagementReport.pdf (매출×비중으로 계산)
+TSM,2021-Q3,share,DCE(가전),3,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-01/f7c72d6d88b224476ab812fc3ba28169ec091a86/4Q21ManagementReport.pdf
+TSM,2021-Q3,segment_revenue,DCE(가전),446.4,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-01/f7c72d6d88b224476ab812fc3ba28169ec091a86/4Q21ManagementReport.pdf (매출×비중으로 계산)
+TSM,2021-Q3,share,기타,3,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-01/f7c72d6d88b224476ab812fc3ba28169ec091a86/4Q21ManagementReport.pdf
+TSM,2021-Q3,segment_revenue,기타,446.4,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-01/f7c72d6d88b224476ab812fc3ba28169ec091a86/4Q21ManagementReport.pdf (매출×비중으로 계산)
+TSM,2021-Q3,volume,웨이퍼 출하(12인치 환산),3646,천 장,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-01/f7c72d6d88b224476ab812fc3ba28169ec091a86/4Q21ManagementReport.pdf
+TSM,2021-Q3,price,웨이퍼 ASP(12인치 환산),4081,USD/장,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-01/f7c72d6d88b224476ab812fc3ba28169ec091a86/4Q21ManagementReport.pdf (매출÷출하량으로 계산)
+TSM,2021-Q4,revenue,매출(합계),15740.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-01/f7c72d6d88b224476ab812fc3ba28169ec091a86/4Q21ManagementReport.pdf
+TSM,2021-Q4,share,HPC,37,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-01/f7c72d6d88b224476ab812fc3ba28169ec091a86/4Q21ManagementReport.pdf
+TSM,2021-Q4,segment_revenue,HPC,5823.8,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-01/f7c72d6d88b224476ab812fc3ba28169ec091a86/4Q21ManagementReport.pdf (매출×비중으로 계산)
+TSM,2021-Q4,share,스마트폰,44,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-01/f7c72d6d88b224476ab812fc3ba28169ec091a86/4Q21ManagementReport.pdf
+TSM,2021-Q4,segment_revenue,스마트폰,6925.6,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-01/f7c72d6d88b224476ab812fc3ba28169ec091a86/4Q21ManagementReport.pdf (매출×비중으로 계산)
+TSM,2021-Q4,share,IoT,9,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-01/f7c72d6d88b224476ab812fc3ba28169ec091a86/4Q21ManagementReport.pdf
+TSM,2021-Q4,segment_revenue,IoT,1416.6,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-01/f7c72d6d88b224476ab812fc3ba28169ec091a86/4Q21ManagementReport.pdf (매출×비중으로 계산)
+TSM,2021-Q4,share,자동차,4,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-01/f7c72d6d88b224476ab812fc3ba28169ec091a86/4Q21ManagementReport.pdf
+TSM,2021-Q4,segment_revenue,자동차,629.6,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-01/f7c72d6d88b224476ab812fc3ba28169ec091a86/4Q21ManagementReport.pdf (매출×비중으로 계산)
+TSM,2021-Q4,share,DCE(가전),3,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-01/f7c72d6d88b224476ab812fc3ba28169ec091a86/4Q21ManagementReport.pdf
+TSM,2021-Q4,segment_revenue,DCE(가전),472.2,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-01/f7c72d6d88b224476ab812fc3ba28169ec091a86/4Q21ManagementReport.pdf (매출×비중으로 계산)
+TSM,2021-Q4,share,기타,3,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-01/f7c72d6d88b224476ab812fc3ba28169ec091a86/4Q21ManagementReport.pdf
+TSM,2021-Q4,segment_revenue,기타,472.2,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-01/f7c72d6d88b224476ab812fc3ba28169ec091a86/4Q21ManagementReport.pdf (매출×비중으로 계산)
+TSM,2021-Q4,volume,웨이퍼 출하(12인치 환산),3725,천 장,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-01/f7c72d6d88b224476ab812fc3ba28169ec091a86/4Q21ManagementReport.pdf
+TSM,2021-Q4,price,웨이퍼 ASP(12인치 환산),4226,USD/장,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-01/f7c72d6d88b224476ab812fc3ba28169ec091a86/4Q21ManagementReport.pdf (매출÷출하량으로 계산)
+TSM,2022-Q1,revenue,매출(합계),17570.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-07/433cc369bbdb0bbfa43a7d23c05b197249117990/1Q22ManagementReport.pdf
+TSM,2022-Q1,share,HPC,41,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-07/433cc369bbdb0bbfa43a7d23c05b197249117990/1Q22ManagementReport.pdf
+TSM,2022-Q1,segment_revenue,HPC,7203.7,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-07/433cc369bbdb0bbfa43a7d23c05b197249117990/1Q22ManagementReport.pdf (매출×비중으로 계산)
+TSM,2022-Q1,share,스마트폰,40,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-07/433cc369bbdb0bbfa43a7d23c05b197249117990/1Q22ManagementReport.pdf
+TSM,2022-Q1,segment_revenue,스마트폰,7028.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-07/433cc369bbdb0bbfa43a7d23c05b197249117990/1Q22ManagementReport.pdf (매출×비중으로 계산)
+TSM,2022-Q1,share,IoT,8,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-07/433cc369bbdb0bbfa43a7d23c05b197249117990/1Q22ManagementReport.pdf
+TSM,2022-Q1,segment_revenue,IoT,1405.6,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-07/433cc369bbdb0bbfa43a7d23c05b197249117990/1Q22ManagementReport.pdf (매출×비중으로 계산)
+TSM,2022-Q1,share,자동차,5,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-07/433cc369bbdb0bbfa43a7d23c05b197249117990/1Q22ManagementReport.pdf
+TSM,2022-Q1,segment_revenue,자동차,878.5,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-07/433cc369bbdb0bbfa43a7d23c05b197249117990/1Q22ManagementReport.pdf (매출×비중으로 계산)
+TSM,2022-Q1,share,DCE(가전),3,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-07/433cc369bbdb0bbfa43a7d23c05b197249117990/1Q22ManagementReport.pdf
+TSM,2022-Q1,segment_revenue,DCE(가전),527.1,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-07/433cc369bbdb0bbfa43a7d23c05b197249117990/1Q22ManagementReport.pdf (매출×비중으로 계산)
+TSM,2022-Q1,share,기타,3,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-07/433cc369bbdb0bbfa43a7d23c05b197249117990/1Q22ManagementReport.pdf
+TSM,2022-Q1,segment_revenue,기타,527.1,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-07/433cc369bbdb0bbfa43a7d23c05b197249117990/1Q22ManagementReport.pdf (매출×비중으로 계산)
+TSM,2022-Q1,volume,웨이퍼 출하(12인치 환산),3778,천 장,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-07/433cc369bbdb0bbfa43a7d23c05b197249117990/1Q22ManagementReport.pdf
+TSM,2022-Q1,price,웨이퍼 ASP(12인치 환산),4651,USD/장,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2022-07/433cc369bbdb0bbfa43a7d23c05b197249117990/1Q22ManagementReport.pdf (매출÷출하량으로 계산)
+TSM,2022-Q2,revenue,매출(합계),18160.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-07/d0aea5e175f63c90dcd121adcd38da8b520537ef/2Q23ManagementReport.pdf
+TSM,2022-Q2,share,HPC,43,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-07/d0aea5e175f63c90dcd121adcd38da8b520537ef/2Q23ManagementReport.pdf
+TSM,2022-Q2,segment_revenue,HPC,7808.8,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-07/d0aea5e175f63c90dcd121adcd38da8b520537ef/2Q23ManagementReport.pdf (매출×비중으로 계산)
+TSM,2022-Q2,share,스마트폰,38,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-07/d0aea5e175f63c90dcd121adcd38da8b520537ef/2Q23ManagementReport.pdf
+TSM,2022-Q2,segment_revenue,스마트폰,6900.8,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-07/d0aea5e175f63c90dcd121adcd38da8b520537ef/2Q23ManagementReport.pdf (매출×비중으로 계산)
+TSM,2022-Q2,share,IoT,8,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-07/d0aea5e175f63c90dcd121adcd38da8b520537ef/2Q23ManagementReport.pdf
+TSM,2022-Q2,segment_revenue,IoT,1452.8,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-07/d0aea5e175f63c90dcd121adcd38da8b520537ef/2Q23ManagementReport.pdf (매출×비중으로 계산)
+TSM,2022-Q2,share,자동차,5,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-07/d0aea5e175f63c90dcd121adcd38da8b520537ef/2Q23ManagementReport.pdf
+TSM,2022-Q2,segment_revenue,자동차,908.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-07/d0aea5e175f63c90dcd121adcd38da8b520537ef/2Q23ManagementReport.pdf (매출×비중으로 계산)
+TSM,2022-Q2,share,DCE(가전),3,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-07/d0aea5e175f63c90dcd121adcd38da8b520537ef/2Q23ManagementReport.pdf
+TSM,2022-Q2,segment_revenue,DCE(가전),544.8,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-07/d0aea5e175f63c90dcd121adcd38da8b520537ef/2Q23ManagementReport.pdf (매출×비중으로 계산)
+TSM,2022-Q2,share,기타,3,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-07/d0aea5e175f63c90dcd121adcd38da8b520537ef/2Q23ManagementReport.pdf
+TSM,2022-Q2,segment_revenue,기타,544.8,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-07/d0aea5e175f63c90dcd121adcd38da8b520537ef/2Q23ManagementReport.pdf (매출×비중으로 계산)
+TSM,2022-Q2,volume,웨이퍼 출하(12인치 환산),3799,천 장,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-07/d0aea5e175f63c90dcd121adcd38da8b520537ef/2Q23ManagementReport.pdf
+TSM,2022-Q2,price,웨이퍼 ASP(12인치 환산),4780,USD/장,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-07/d0aea5e175f63c90dcd121adcd38da8b520537ef/2Q23ManagementReport.pdf (매출÷출하량으로 계산)
+TSM,2022-Q3,revenue,매출(합계),20230.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-01/91107cbb4214c395a1a26e73edb31f5c1813c599/4Q22ManagementReport.pdf
+TSM,2022-Q3,share,HPC,39,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-01/91107cbb4214c395a1a26e73edb31f5c1813c599/4Q22ManagementReport.pdf
+TSM,2022-Q3,segment_revenue,HPC,7889.7,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-01/91107cbb4214c395a1a26e73edb31f5c1813c599/4Q22ManagementReport.pdf (매출×비중으로 계산)
+TSM,2022-Q3,share,스마트폰,41,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-01/91107cbb4214c395a1a26e73edb31f5c1813c599/4Q22ManagementReport.pdf
+TSM,2022-Q3,segment_revenue,스마트폰,8294.3,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-01/91107cbb4214c395a1a26e73edb31f5c1813c599/4Q22ManagementReport.pdf (매출×비중으로 계산)
+TSM,2022-Q3,share,IoT,10,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-01/91107cbb4214c395a1a26e73edb31f5c1813c599/4Q22ManagementReport.pdf
+TSM,2022-Q3,segment_revenue,IoT,2023.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-01/91107cbb4214c395a1a26e73edb31f5c1813c599/4Q22ManagementReport.pdf (매출×비중으로 계산)
+TSM,2022-Q3,share,자동차,5,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-01/91107cbb4214c395a1a26e73edb31f5c1813c599/4Q22ManagementReport.pdf
+TSM,2022-Q3,segment_revenue,자동차,1011.5,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-01/91107cbb4214c395a1a26e73edb31f5c1813c599/4Q22ManagementReport.pdf (매출×비중으로 계산)
+TSM,2022-Q3,share,DCE(가전),2,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-01/91107cbb4214c395a1a26e73edb31f5c1813c599/4Q22ManagementReport.pdf
+TSM,2022-Q3,segment_revenue,DCE(가전),404.6,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-01/91107cbb4214c395a1a26e73edb31f5c1813c599/4Q22ManagementReport.pdf (매출×비중으로 계산)
+TSM,2022-Q3,share,기타,3,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-01/91107cbb4214c395a1a26e73edb31f5c1813c599/4Q22ManagementReport.pdf
+TSM,2022-Q3,segment_revenue,기타,606.9,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-01/91107cbb4214c395a1a26e73edb31f5c1813c599/4Q22ManagementReport.pdf (매출×비중으로 계산)
+TSM,2022-Q3,volume,웨이퍼 출하(12인치 환산),3974,천 장,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-01/91107cbb4214c395a1a26e73edb31f5c1813c599/4Q22ManagementReport.pdf
+TSM,2022-Q3,price,웨이퍼 ASP(12인치 환산),5091,USD/장,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-01/91107cbb4214c395a1a26e73edb31f5c1813c599/4Q22ManagementReport.pdf (매출÷출하량으로 계산)
+TSM,2022-Q4,revenue,매출(합계),19930.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-01/91107cbb4214c395a1a26e73edb31f5c1813c599/4Q22ManagementReport.pdf
+TSM,2022-Q4,share,HPC,42,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-01/91107cbb4214c395a1a26e73edb31f5c1813c599/4Q22ManagementReport.pdf
+TSM,2022-Q4,segment_revenue,HPC,8370.6,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-01/91107cbb4214c395a1a26e73edb31f5c1813c599/4Q22ManagementReport.pdf (매출×비중으로 계산)
+TSM,2022-Q4,share,스마트폰,38,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-01/91107cbb4214c395a1a26e73edb31f5c1813c599/4Q22ManagementReport.pdf
+TSM,2022-Q4,segment_revenue,스마트폰,7573.4,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-01/91107cbb4214c395a1a26e73edb31f5c1813c599/4Q22ManagementReport.pdf (매출×비중으로 계산)
+TSM,2022-Q4,share,IoT,8,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-01/91107cbb4214c395a1a26e73edb31f5c1813c599/4Q22ManagementReport.pdf
+TSM,2022-Q4,segment_revenue,IoT,1594.4,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-01/91107cbb4214c395a1a26e73edb31f5c1813c599/4Q22ManagementReport.pdf (매출×비중으로 계산)
+TSM,2022-Q4,share,자동차,6,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-01/91107cbb4214c395a1a26e73edb31f5c1813c599/4Q22ManagementReport.pdf
+TSM,2022-Q4,segment_revenue,자동차,1195.8,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-01/91107cbb4214c395a1a26e73edb31f5c1813c599/4Q22ManagementReport.pdf (매출×비중으로 계산)
+TSM,2022-Q4,share,DCE(가전),2,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-01/91107cbb4214c395a1a26e73edb31f5c1813c599/4Q22ManagementReport.pdf
+TSM,2022-Q4,segment_revenue,DCE(가전),398.6,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-01/91107cbb4214c395a1a26e73edb31f5c1813c599/4Q22ManagementReport.pdf (매출×비중으로 계산)
+TSM,2022-Q4,share,기타,4,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-01/91107cbb4214c395a1a26e73edb31f5c1813c599/4Q22ManagementReport.pdf
+TSM,2022-Q4,segment_revenue,기타,797.2,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-01/91107cbb4214c395a1a26e73edb31f5c1813c599/4Q22ManagementReport.pdf (매출×비중으로 계산)
+TSM,2022-Q4,volume,웨이퍼 출하(12인치 환산),3702,천 장,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-01/91107cbb4214c395a1a26e73edb31f5c1813c599/4Q22ManagementReport.pdf
+TSM,2022-Q4,price,웨이퍼 ASP(12인치 환산),5384,USD/장,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-01/91107cbb4214c395a1a26e73edb31f5c1813c599/4Q22ManagementReport.pdf (매출÷출하량으로 계산)
+TSM,2023-Q1,revenue,매출(합계),16720.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-07/d0aea5e175f63c90dcd121adcd38da8b520537ef/2Q23ManagementReport.pdf
+TSM,2023-Q1,share,HPC,44,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-07/d0aea5e175f63c90dcd121adcd38da8b520537ef/2Q23ManagementReport.pdf
+TSM,2023-Q1,segment_revenue,HPC,7356.8,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-07/d0aea5e175f63c90dcd121adcd38da8b520537ef/2Q23ManagementReport.pdf (매출×비중으로 계산)
+TSM,2023-Q1,share,스마트폰,34,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-07/d0aea5e175f63c90dcd121adcd38da8b520537ef/2Q23ManagementReport.pdf
+TSM,2023-Q1,segment_revenue,스마트폰,5684.8,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-07/d0aea5e175f63c90dcd121adcd38da8b520537ef/2Q23ManagementReport.pdf (매출×비중으로 계산)
+TSM,2023-Q1,share,IoT,9,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-07/d0aea5e175f63c90dcd121adcd38da8b520537ef/2Q23ManagementReport.pdf
+TSM,2023-Q1,segment_revenue,IoT,1504.8,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-07/d0aea5e175f63c90dcd121adcd38da8b520537ef/2Q23ManagementReport.pdf (매출×비중으로 계산)
+TSM,2023-Q1,share,자동차,7,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-07/d0aea5e175f63c90dcd121adcd38da8b520537ef/2Q23ManagementReport.pdf
+TSM,2023-Q1,segment_revenue,자동차,1170.4,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-07/d0aea5e175f63c90dcd121adcd38da8b520537ef/2Q23ManagementReport.pdf (매출×비중으로 계산)
+TSM,2023-Q1,share,DCE(가전),2,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-07/d0aea5e175f63c90dcd121adcd38da8b520537ef/2Q23ManagementReport.pdf
+TSM,2023-Q1,segment_revenue,DCE(가전),334.4,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-07/d0aea5e175f63c90dcd121adcd38da8b520537ef/2Q23ManagementReport.pdf (매출×비중으로 계산)
+TSM,2023-Q1,share,기타,4,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-07/d0aea5e175f63c90dcd121adcd38da8b520537ef/2Q23ManagementReport.pdf
+TSM,2023-Q1,segment_revenue,기타,668.8,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-07/d0aea5e175f63c90dcd121adcd38da8b520537ef/2Q23ManagementReport.pdf (매출×비중으로 계산)
+TSM,2023-Q1,volume,웨이퍼 출하(12인치 환산),3227,천 장,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-07/d0aea5e175f63c90dcd121adcd38da8b520537ef/2Q23ManagementReport.pdf
+TSM,2023-Q1,price,웨이퍼 ASP(12인치 환산),5181,USD/장,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-07/d0aea5e175f63c90dcd121adcd38da8b520537ef/2Q23ManagementReport.pdf (매출÷출하량으로 계산)
+TSM,2023-Q2,revenue,매출(합계),15680.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-07/d0aea5e175f63c90dcd121adcd38da8b520537ef/2Q23ManagementReport.pdf
+TSM,2023-Q2,share,HPC,44,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-07/d0aea5e175f63c90dcd121adcd38da8b520537ef/2Q23ManagementReport.pdf
+TSM,2023-Q2,segment_revenue,HPC,6899.2,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-07/d0aea5e175f63c90dcd121adcd38da8b520537ef/2Q23ManagementReport.pdf (매출×비중으로 계산)
+TSM,2023-Q2,share,스마트폰,33,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-07/d0aea5e175f63c90dcd121adcd38da8b520537ef/2Q23ManagementReport.pdf
+TSM,2023-Q2,segment_revenue,스마트폰,5174.4,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-07/d0aea5e175f63c90dcd121adcd38da8b520537ef/2Q23ManagementReport.pdf (매출×비중으로 계산)
+TSM,2023-Q2,share,IoT,8,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-07/d0aea5e175f63c90dcd121adcd38da8b520537ef/2Q23ManagementReport.pdf
+TSM,2023-Q2,segment_revenue,IoT,1254.4,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-07/d0aea5e175f63c90dcd121adcd38da8b520537ef/2Q23ManagementReport.pdf (매출×비중으로 계산)
+TSM,2023-Q2,share,자동차,8,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-07/d0aea5e175f63c90dcd121adcd38da8b520537ef/2Q23ManagementReport.pdf
+TSM,2023-Q2,segment_revenue,자동차,1254.4,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-07/d0aea5e175f63c90dcd121adcd38da8b520537ef/2Q23ManagementReport.pdf (매출×비중으로 계산)
+TSM,2023-Q2,share,DCE(가전),3,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-07/d0aea5e175f63c90dcd121adcd38da8b520537ef/2Q23ManagementReport.pdf
+TSM,2023-Q2,segment_revenue,DCE(가전),470.4,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-07/d0aea5e175f63c90dcd121adcd38da8b520537ef/2Q23ManagementReport.pdf (매출×비중으로 계산)
+TSM,2023-Q2,share,기타,4,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-07/d0aea5e175f63c90dcd121adcd38da8b520537ef/2Q23ManagementReport.pdf
+TSM,2023-Q2,segment_revenue,기타,627.2,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-07/d0aea5e175f63c90dcd121adcd38da8b520537ef/2Q23ManagementReport.pdf (매출×비중으로 계산)
+TSM,2023-Q2,volume,웨이퍼 출하(12인치 환산),2916,천 장,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-07/d0aea5e175f63c90dcd121adcd38da8b520537ef/2Q23ManagementReport.pdf
+TSM,2023-Q2,price,웨이퍼 ASP(12인치 환산),5377,USD/장,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2023-07/d0aea5e175f63c90dcd121adcd38da8b520537ef/2Q23ManagementReport.pdf (매출÷출하량으로 계산)
+TSM,2023-Q3,revenue,매출(합계),17280.0,USD mn,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/reports/2024-01/894c1f6b900634fd7f369ef213bdfbf11c617297/4Q23ManagementReport.pdf
+TSM,2023-Q3,share,HPC,42,%,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/reports/2024-01/894c1f6b900634fd7f369ef213bdfbf11c617297/4Q23ManagementReport.pdf
+TSM,2023-Q3,segment_revenue,HPC,7257.6,USD mn,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/reports/2024-01/894c1f6b900634fd7f369ef213bdfbf11c617297/4Q23ManagementReport.pdf (매출×비중으로 계산)
+TSM,2023-Q3,share,스마트폰,39,%,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/reports/2024-01/894c1f6b900634fd7f369ef213bdfbf11c617297/4Q23ManagementReport.pdf
+TSM,2023-Q3,segment_revenue,스마트폰,6739.2,USD mn,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/reports/2024-01/894c1f6b900634fd7f369ef213bdfbf11c617297/4Q23ManagementReport.pdf (매출×비중으로 계산)
+TSM,2023-Q3,share,IoT,9,%,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/reports/2024-01/894c1f6b900634fd7f369ef213bdfbf11c617297/4Q23ManagementReport.pdf
+TSM,2023-Q3,segment_revenue,IoT,1555.2,USD mn,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/reports/2024-01/894c1f6b900634fd7f369ef213bdfbf11c617297/4Q23ManagementReport.pdf (매출×비중으로 계산)
+TSM,2023-Q3,share,자동차,5,%,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/reports/2024-01/894c1f6b900634fd7f369ef213bdfbf11c617297/4Q23ManagementReport.pdf
+TSM,2023-Q3,segment_revenue,자동차,864.0,USD mn,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/reports/2024-01/894c1f6b900634fd7f369ef213bdfbf11c617297/4Q23ManagementReport.pdf (매출×비중으로 계산)
+TSM,2023-Q3,share,DCE(가전),2,%,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/reports/2024-01/894c1f6b900634fd7f369ef213bdfbf11c617297/4Q23ManagementReport.pdf
+TSM,2023-Q3,segment_revenue,DCE(가전),345.6,USD mn,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/reports/2024-01/894c1f6b900634fd7f369ef213bdfbf11c617297/4Q23ManagementReport.pdf (매출×비중으로 계산)
+TSM,2023-Q3,share,기타,3,%,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/reports/2024-01/894c1f6b900634fd7f369ef213bdfbf11c617297/4Q23ManagementReport.pdf
+TSM,2023-Q3,segment_revenue,기타,518.4,USD mn,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/reports/2024-01/894c1f6b900634fd7f369ef213bdfbf11c617297/4Q23ManagementReport.pdf (매출×비중으로 계산)
+TSM,2023-Q3,volume,웨이퍼 출하(12인치 환산),2902,천 장,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/reports/2024-01/894c1f6b900634fd7f369ef213bdfbf11c617297/4Q23ManagementReport.pdf
+TSM,2023-Q3,price,웨이퍼 ASP(12인치 환산),5955,USD/장,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/reports/2024-01/894c1f6b900634fd7f369ef213bdfbf11c617297/4Q23ManagementReport.pdf (매출÷출하량으로 계산)
+TSM,2023-Q4,revenue,매출(합계),19620.0,USD mn,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/reports/2024-01/894c1f6b900634fd7f369ef213bdfbf11c617297/4Q23ManagementReport.pdf
+TSM,2023-Q4,share,HPC,43,%,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/reports/2024-01/894c1f6b900634fd7f369ef213bdfbf11c617297/4Q23ManagementReport.pdf
+TSM,2023-Q4,segment_revenue,HPC,8436.6,USD mn,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/reports/2024-01/894c1f6b900634fd7f369ef213bdfbf11c617297/4Q23ManagementReport.pdf (매출×비중으로 계산)
+TSM,2023-Q4,share,스마트폰,43,%,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/reports/2024-01/894c1f6b900634fd7f369ef213bdfbf11c617297/4Q23ManagementReport.pdf
+TSM,2023-Q4,segment_revenue,스마트폰,8436.6,USD mn,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/reports/2024-01/894c1f6b900634fd7f369ef213bdfbf11c617297/4Q23ManagementReport.pdf (매출×비중으로 계산)
+TSM,2023-Q4,share,IoT,5,%,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/reports/2024-01/894c1f6b900634fd7f369ef213bdfbf11c617297/4Q23ManagementReport.pdf
+TSM,2023-Q4,segment_revenue,IoT,981.0,USD mn,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/reports/2024-01/894c1f6b900634fd7f369ef213bdfbf11c617297/4Q23ManagementReport.pdf (매출×비중으로 계산)
+TSM,2023-Q4,share,자동차,5,%,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/reports/2024-01/894c1f6b900634fd7f369ef213bdfbf11c617297/4Q23ManagementReport.pdf
+TSM,2023-Q4,segment_revenue,자동차,981.0,USD mn,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/reports/2024-01/894c1f6b900634fd7f369ef213bdfbf11c617297/4Q23ManagementReport.pdf (매출×비중으로 계산)
+TSM,2023-Q4,share,DCE(가전),2,%,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/reports/2024-01/894c1f6b900634fd7f369ef213bdfbf11c617297/4Q23ManagementReport.pdf
+TSM,2023-Q4,segment_revenue,DCE(가전),392.4,USD mn,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/reports/2024-01/894c1f6b900634fd7f369ef213bdfbf11c617297/4Q23ManagementReport.pdf (매출×비중으로 계산)
+TSM,2023-Q4,share,기타,2,%,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/reports/2024-01/894c1f6b900634fd7f369ef213bdfbf11c617297/4Q23ManagementReport.pdf
+TSM,2023-Q4,segment_revenue,기타,392.4,USD mn,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/reports/2024-01/894c1f6b900634fd7f369ef213bdfbf11c617297/4Q23ManagementReport.pdf (매출×비중으로 계산)
+TSM,2023-Q4,volume,웨이퍼 출하(12인치 환산),2957,천 장,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/reports/2024-01/894c1f6b900634fd7f369ef213bdfbf11c617297/4Q23ManagementReport.pdf
+TSM,2023-Q4,price,웨이퍼 ASP(12인치 환산),6635,USD/장,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/reports/2024-01/894c1f6b900634fd7f369ef213bdfbf11c617297/4Q23ManagementReport.pdf (매출÷출하량으로 계산)
+TSM,2024-Q1,revenue,매출(합계),18870.0,USD mn,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/reports/2024-04/9581a862df11956db366e0f18aa0f859e7e0b6db/1Q24ManagementReport.pdf
+TSM,2024-Q1,share,HPC,46,%,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/reports/2024-04/9581a862df11956db366e0f18aa0f859e7e0b6db/1Q24ManagementReport.pdf
+TSM,2024-Q1,segment_revenue,HPC,8680.2,USD mn,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/reports/2024-04/9581a862df11956db366e0f18aa0f859e7e0b6db/1Q24ManagementReport.pdf (매출×비중으로 계산)
+TSM,2024-Q1,share,스마트폰,38,%,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/reports/2024-04/9581a862df11956db366e0f18aa0f859e7e0b6db/1Q24ManagementReport.pdf
+TSM,2024-Q1,segment_revenue,스마트폰,7170.6,USD mn,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/reports/2024-04/9581a862df11956db366e0f18aa0f859e7e0b6db/1Q24ManagementReport.pdf (매출×비중으로 계산)
+TSM,2024-Q1,share,IoT,6,%,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/reports/2024-04/9581a862df11956db366e0f18aa0f859e7e0b6db/1Q24ManagementReport.pdf
+TSM,2024-Q1,segment_revenue,IoT,1132.2,USD mn,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/reports/2024-04/9581a862df11956db366e0f18aa0f859e7e0b6db/1Q24ManagementReport.pdf (매출×비중으로 계산)
+TSM,2024-Q1,share,자동차,6,%,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/reports/2024-04/9581a862df11956db366e0f18aa0f859e7e0b6db/1Q24ManagementReport.pdf
+TSM,2024-Q1,segment_revenue,자동차,1132.2,USD mn,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/reports/2024-04/9581a862df11956db366e0f18aa0f859e7e0b6db/1Q24ManagementReport.pdf (매출×비중으로 계산)
+TSM,2024-Q1,share,DCE(가전),2,%,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/reports/2024-04/9581a862df11956db366e0f18aa0f859e7e0b6db/1Q24ManagementReport.pdf
+TSM,2024-Q1,segment_revenue,DCE(가전),377.4,USD mn,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/reports/2024-04/9581a862df11956db366e0f18aa0f859e7e0b6db/1Q24ManagementReport.pdf (매출×비중으로 계산)
+TSM,2024-Q1,share,기타,2,%,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/reports/2024-04/9581a862df11956db366e0f18aa0f859e7e0b6db/1Q24ManagementReport.pdf
+TSM,2024-Q1,segment_revenue,기타,377.4,USD mn,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/reports/2024-04/9581a862df11956db366e0f18aa0f859e7e0b6db/1Q24ManagementReport.pdf (매출×비중으로 계산)
+TSM,2024-Q1,volume,웨이퍼 출하(12인치 환산),3030,천 장,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/reports/2024-04/9581a862df11956db366e0f18aa0f859e7e0b6db/1Q24ManagementReport.pdf
+TSM,2024-Q1,price,웨이퍼 ASP(12인치 환산),6228,USD/장,https://investor.tsmc.com/chinese/encrypt/files/encrypt_file/reports/2024-04/9581a862df11956db366e0f18aa0f859e7e0b6db/1Q24ManagementReport.pdf (매출÷출하량으로 계산)
+TSM,2024-Q2,revenue,매출(합계),20820.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2024-10/a4e7bb7392eb95e242cf1bef89bee75a6ddbde3a/3Q24ManagementReport.pdf
+TSM,2024-Q2,share,HPC,52,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2024-10/a4e7bb7392eb95e242cf1bef89bee75a6ddbde3a/3Q24ManagementReport.pdf
+TSM,2024-Q2,segment_revenue,HPC,10826.4,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2024-10/a4e7bb7392eb95e242cf1bef89bee75a6ddbde3a/3Q24ManagementReport.pdf (매출×비중으로 계산)
+TSM,2024-Q2,share,스마트폰,33,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2024-10/a4e7bb7392eb95e242cf1bef89bee75a6ddbde3a/3Q24ManagementReport.pdf
+TSM,2024-Q2,segment_revenue,스마트폰,6870.6,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2024-10/a4e7bb7392eb95e242cf1bef89bee75a6ddbde3a/3Q24ManagementReport.pdf (매출×비중으로 계산)
+TSM,2024-Q2,share,IoT,6,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2024-10/a4e7bb7392eb95e242cf1bef89bee75a6ddbde3a/3Q24ManagementReport.pdf
+TSM,2024-Q2,segment_revenue,IoT,1249.2,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2024-10/a4e7bb7392eb95e242cf1bef89bee75a6ddbde3a/3Q24ManagementReport.pdf (매출×비중으로 계산)
+TSM,2024-Q2,share,자동차,5,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2024-10/a4e7bb7392eb95e242cf1bef89bee75a6ddbde3a/3Q24ManagementReport.pdf
+TSM,2024-Q2,segment_revenue,자동차,1041.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2024-10/a4e7bb7392eb95e242cf1bef89bee75a6ddbde3a/3Q24ManagementReport.pdf (매출×비중으로 계산)
+TSM,2024-Q2,share,DCE(가전),2,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2024-10/a4e7bb7392eb95e242cf1bef89bee75a6ddbde3a/3Q24ManagementReport.pdf
+TSM,2024-Q2,segment_revenue,DCE(가전),416.4,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2024-10/a4e7bb7392eb95e242cf1bef89bee75a6ddbde3a/3Q24ManagementReport.pdf (매출×비중으로 계산)
+TSM,2024-Q2,share,기타,2,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2024-10/a4e7bb7392eb95e242cf1bef89bee75a6ddbde3a/3Q24ManagementReport.pdf
+TSM,2024-Q2,segment_revenue,기타,416.4,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2024-10/a4e7bb7392eb95e242cf1bef89bee75a6ddbde3a/3Q24ManagementReport.pdf (매출×비중으로 계산)
+TSM,2024-Q2,volume,웨이퍼 출하(12인치 환산),3125,천 장,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2024-10/a4e7bb7392eb95e242cf1bef89bee75a6ddbde3a/3Q24ManagementReport.pdf
+TSM,2024-Q2,price,웨이퍼 ASP(12인치 환산),6662,USD/장,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2024-10/a4e7bb7392eb95e242cf1bef89bee75a6ddbde3a/3Q24ManagementReport.pdf (매출÷출하량으로 계산)
+TSM,2024-Q3,revenue,매출(합계),23500.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2024-10/a4e7bb7392eb95e242cf1bef89bee75a6ddbde3a/3Q24ManagementReport.pdf
+TSM,2024-Q3,share,HPC,51,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2024-10/a4e7bb7392eb95e242cf1bef89bee75a6ddbde3a/3Q24ManagementReport.pdf
+TSM,2024-Q3,segment_revenue,HPC,11985.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2024-10/a4e7bb7392eb95e242cf1bef89bee75a6ddbde3a/3Q24ManagementReport.pdf (매출×비중으로 계산)
+TSM,2024-Q3,share,스마트폰,34,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2024-10/a4e7bb7392eb95e242cf1bef89bee75a6ddbde3a/3Q24ManagementReport.pdf
+TSM,2024-Q3,segment_revenue,스마트폰,7990.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2024-10/a4e7bb7392eb95e242cf1bef89bee75a6ddbde3a/3Q24ManagementReport.pdf (매출×비중으로 계산)
+TSM,2024-Q3,share,IoT,7,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2024-10/a4e7bb7392eb95e242cf1bef89bee75a6ddbde3a/3Q24ManagementReport.pdf
+TSM,2024-Q3,segment_revenue,IoT,1645.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2024-10/a4e7bb7392eb95e242cf1bef89bee75a6ddbde3a/3Q24ManagementReport.pdf (매출×비중으로 계산)
+TSM,2024-Q3,share,자동차,5,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2024-10/a4e7bb7392eb95e242cf1bef89bee75a6ddbde3a/3Q24ManagementReport.pdf
+TSM,2024-Q3,segment_revenue,자동차,1175.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2024-10/a4e7bb7392eb95e242cf1bef89bee75a6ddbde3a/3Q24ManagementReport.pdf (매출×비중으로 계산)
+TSM,2024-Q3,share,DCE(가전),1,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2024-10/a4e7bb7392eb95e242cf1bef89bee75a6ddbde3a/3Q24ManagementReport.pdf
+TSM,2024-Q3,segment_revenue,DCE(가전),235.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2024-10/a4e7bb7392eb95e242cf1bef89bee75a6ddbde3a/3Q24ManagementReport.pdf (매출×비중으로 계산)
+TSM,2024-Q3,share,기타,2,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2024-10/a4e7bb7392eb95e242cf1bef89bee75a6ddbde3a/3Q24ManagementReport.pdf
+TSM,2024-Q3,segment_revenue,기타,470.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2024-10/a4e7bb7392eb95e242cf1bef89bee75a6ddbde3a/3Q24ManagementReport.pdf (매출×비중으로 계산)
+TSM,2024-Q3,volume,웨이퍼 출하(12인치 환산),3338,천 장,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2024-10/a4e7bb7392eb95e242cf1bef89bee75a6ddbde3a/3Q24ManagementReport.pdf
+TSM,2024-Q3,price,웨이퍼 ASP(12인치 환산),7040,USD/장,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2024-10/a4e7bb7392eb95e242cf1bef89bee75a6ddbde3a/3Q24ManagementReport.pdf (매출÷출하량으로 계산)
+TSM,2024-Q4,revenue,매출(합계),26880.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-01/2d8b2bb6fc3b5887d24ae0635f639c1cdca834f3/4Q24ManagementReport.pdf
+TSM,2024-Q4,share,HPC,53,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-01/2d8b2bb6fc3b5887d24ae0635f639c1cdca834f3/4Q24ManagementReport.pdf
+TSM,2024-Q4,segment_revenue,HPC,14246.4,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-01/2d8b2bb6fc3b5887d24ae0635f639c1cdca834f3/4Q24ManagementReport.pdf (매출×비중으로 계산)
+TSM,2024-Q4,share,스마트폰,35,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-01/2d8b2bb6fc3b5887d24ae0635f639c1cdca834f3/4Q24ManagementReport.pdf
+TSM,2024-Q4,segment_revenue,스마트폰,9408.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-01/2d8b2bb6fc3b5887d24ae0635f639c1cdca834f3/4Q24ManagementReport.pdf (매출×비중으로 계산)
+TSM,2024-Q4,share,IoT,5,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-01/2d8b2bb6fc3b5887d24ae0635f639c1cdca834f3/4Q24ManagementReport.pdf
+TSM,2024-Q4,segment_revenue,IoT,1344.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-01/2d8b2bb6fc3b5887d24ae0635f639c1cdca834f3/4Q24ManagementReport.pdf (매출×비중으로 계산)
+TSM,2024-Q4,share,자동차,4,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-01/2d8b2bb6fc3b5887d24ae0635f639c1cdca834f3/4Q24ManagementReport.pdf
+TSM,2024-Q4,segment_revenue,자동차,1075.2,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-01/2d8b2bb6fc3b5887d24ae0635f639c1cdca834f3/4Q24ManagementReport.pdf (매출×비중으로 계산)
+TSM,2024-Q4,share,DCE(가전),1,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-01/2d8b2bb6fc3b5887d24ae0635f639c1cdca834f3/4Q24ManagementReport.pdf
+TSM,2024-Q4,segment_revenue,DCE(가전),268.8,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-01/2d8b2bb6fc3b5887d24ae0635f639c1cdca834f3/4Q24ManagementReport.pdf (매출×비중으로 계산)
+TSM,2024-Q4,share,기타,2,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-01/2d8b2bb6fc3b5887d24ae0635f639c1cdca834f3/4Q24ManagementReport.pdf
+TSM,2024-Q4,segment_revenue,기타,537.6,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-01/2d8b2bb6fc3b5887d24ae0635f639c1cdca834f3/4Q24ManagementReport.pdf (매출×비중으로 계산)
+TSM,2024-Q4,volume,웨이퍼 출하(12인치 환산),3418,천 장,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-01/2d8b2bb6fc3b5887d24ae0635f639c1cdca834f3/4Q24ManagementReport.pdf
+TSM,2024-Q4,price,웨이퍼 ASP(12인치 환산),7864,USD/장,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-01/2d8b2bb6fc3b5887d24ae0635f639c1cdca834f3/4Q24ManagementReport.pdf (매출÷출하량으로 계산)
+TSM,2025-Q1,revenue,매출(합계),25530.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-07/1fec9df3de99e6e9f190e1eda7179449381ce6d8/2Q25ManagementReport.pdf
+TSM,2025-Q1,share,HPC,59,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-07/1fec9df3de99e6e9f190e1eda7179449381ce6d8/2Q25ManagementReport.pdf
+TSM,2025-Q1,segment_revenue,HPC,15062.7,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-07/1fec9df3de99e6e9f190e1eda7179449381ce6d8/2Q25ManagementReport.pdf (매출×비중으로 계산)
+TSM,2025-Q1,share,스마트폰,28,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-07/1fec9df3de99e6e9f190e1eda7179449381ce6d8/2Q25ManagementReport.pdf
+TSM,2025-Q1,segment_revenue,스마트폰,7148.4,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-07/1fec9df3de99e6e9f190e1eda7179449381ce6d8/2Q25ManagementReport.pdf (매출×비중으로 계산)
+TSM,2025-Q1,share,IoT,5,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-07/1fec9df3de99e6e9f190e1eda7179449381ce6d8/2Q25ManagementReport.pdf
+TSM,2025-Q1,segment_revenue,IoT,1276.5,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-07/1fec9df3de99e6e9f190e1eda7179449381ce6d8/2Q25ManagementReport.pdf (매출×비중으로 계산)
+TSM,2025-Q1,share,자동차,5,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-07/1fec9df3de99e6e9f190e1eda7179449381ce6d8/2Q25ManagementReport.pdf
+TSM,2025-Q1,segment_revenue,자동차,1276.5,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-07/1fec9df3de99e6e9f190e1eda7179449381ce6d8/2Q25ManagementReport.pdf (매출×비중으로 계산)
+TSM,2025-Q1,share,DCE(가전),1,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-07/1fec9df3de99e6e9f190e1eda7179449381ce6d8/2Q25ManagementReport.pdf
+TSM,2025-Q1,segment_revenue,DCE(가전),255.3,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-07/1fec9df3de99e6e9f190e1eda7179449381ce6d8/2Q25ManagementReport.pdf (매출×비중으로 계산)
+TSM,2025-Q1,share,기타,2,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-07/1fec9df3de99e6e9f190e1eda7179449381ce6d8/2Q25ManagementReport.pdf
+TSM,2025-Q1,segment_revenue,기타,510.6,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-07/1fec9df3de99e6e9f190e1eda7179449381ce6d8/2Q25ManagementReport.pdf (매출×비중으로 계산)
+TSM,2025-Q1,volume,웨이퍼 출하(12인치 환산),3259,천 장,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-07/1fec9df3de99e6e9f190e1eda7179449381ce6d8/2Q25ManagementReport.pdf
+TSM,2025-Q1,price,웨이퍼 ASP(12인치 환산),7834,USD/장,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-07/1fec9df3de99e6e9f190e1eda7179449381ce6d8/2Q25ManagementReport.pdf (매출÷출하량으로 계산)
+TSM,2025-Q2,revenue,매출(합계),30070.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-07/1fec9df3de99e6e9f190e1eda7179449381ce6d8/2Q25ManagementReport.pdf
+TSM,2025-Q2,share,HPC,60,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-07/1fec9df3de99e6e9f190e1eda7179449381ce6d8/2Q25ManagementReport.pdf
+TSM,2025-Q2,segment_revenue,HPC,18042.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-07/1fec9df3de99e6e9f190e1eda7179449381ce6d8/2Q25ManagementReport.pdf (매출×비중으로 계산)
+TSM,2025-Q2,share,스마트폰,27,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-07/1fec9df3de99e6e9f190e1eda7179449381ce6d8/2Q25ManagementReport.pdf
+TSM,2025-Q2,segment_revenue,스마트폰,8118.9,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-07/1fec9df3de99e6e9f190e1eda7179449381ce6d8/2Q25ManagementReport.pdf (매출×비중으로 계산)
+TSM,2025-Q2,share,IoT,5,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-07/1fec9df3de99e6e9f190e1eda7179449381ce6d8/2Q25ManagementReport.pdf
+TSM,2025-Q2,segment_revenue,IoT,1503.5,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-07/1fec9df3de99e6e9f190e1eda7179449381ce6d8/2Q25ManagementReport.pdf (매출×비중으로 계산)
+TSM,2025-Q2,share,자동차,5,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-07/1fec9df3de99e6e9f190e1eda7179449381ce6d8/2Q25ManagementReport.pdf
+TSM,2025-Q2,segment_revenue,자동차,1503.5,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-07/1fec9df3de99e6e9f190e1eda7179449381ce6d8/2Q25ManagementReport.pdf (매출×비중으로 계산)
+TSM,2025-Q2,share,DCE(가전),1,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-07/1fec9df3de99e6e9f190e1eda7179449381ce6d8/2Q25ManagementReport.pdf
+TSM,2025-Q2,segment_revenue,DCE(가전),300.7,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-07/1fec9df3de99e6e9f190e1eda7179449381ce6d8/2Q25ManagementReport.pdf (매출×비중으로 계산)
+TSM,2025-Q2,share,기타,2,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-07/1fec9df3de99e6e9f190e1eda7179449381ce6d8/2Q25ManagementReport.pdf
+TSM,2025-Q2,segment_revenue,기타,601.4,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-07/1fec9df3de99e6e9f190e1eda7179449381ce6d8/2Q25ManagementReport.pdf (매출×비중으로 계산)
+TSM,2025-Q2,volume,웨이퍼 출하(12인치 환산),3718,천 장,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-07/1fec9df3de99e6e9f190e1eda7179449381ce6d8/2Q25ManagementReport.pdf
+TSM,2025-Q2,price,웨이퍼 ASP(12인치 환산),8088,USD/장,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-07/1fec9df3de99e6e9f190e1eda7179449381ce6d8/2Q25ManagementReport.pdf (매출÷출하량으로 계산)
+TSM,2025-Q3,revenue,매출(합계),33100.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-01/00fe50f72b38d74e6b9b066398f020f337cd4e9d/4Q25%20Management%20Report.pdf
+TSM,2025-Q3,share,HPC,57,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-01/00fe50f72b38d74e6b9b066398f020f337cd4e9d/4Q25%20Management%20Report.pdf
+TSM,2025-Q3,segment_revenue,HPC,18867.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-01/00fe50f72b38d74e6b9b066398f020f337cd4e9d/4Q25%20Management%20Report.pdf (매출×비중으로 계산)
+TSM,2025-Q3,share,스마트폰,30,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-01/00fe50f72b38d74e6b9b066398f020f337cd4e9d/4Q25%20Management%20Report.pdf
+TSM,2025-Q3,segment_revenue,스마트폰,9930.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-01/00fe50f72b38d74e6b9b066398f020f337cd4e9d/4Q25%20Management%20Report.pdf (매출×비중으로 계산)
+TSM,2025-Q3,share,IoT,5,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-01/00fe50f72b38d74e6b9b066398f020f337cd4e9d/4Q25%20Management%20Report.pdf
+TSM,2025-Q3,segment_revenue,IoT,1655.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-01/00fe50f72b38d74e6b9b066398f020f337cd4e9d/4Q25%20Management%20Report.pdf (매출×비중으로 계산)
+TSM,2025-Q3,share,자동차,5,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-01/00fe50f72b38d74e6b9b066398f020f337cd4e9d/4Q25%20Management%20Report.pdf
+TSM,2025-Q3,segment_revenue,자동차,1655.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-01/00fe50f72b38d74e6b9b066398f020f337cd4e9d/4Q25%20Management%20Report.pdf (매출×비중으로 계산)
+TSM,2025-Q3,share,DCE(가전),1,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-01/00fe50f72b38d74e6b9b066398f020f337cd4e9d/4Q25%20Management%20Report.pdf
+TSM,2025-Q3,segment_revenue,DCE(가전),331.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-01/00fe50f72b38d74e6b9b066398f020f337cd4e9d/4Q25%20Management%20Report.pdf (매출×비중으로 계산)
+TSM,2025-Q3,share,기타,2,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-01/00fe50f72b38d74e6b9b066398f020f337cd4e9d/4Q25%20Management%20Report.pdf
+TSM,2025-Q3,segment_revenue,기타,662.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-01/00fe50f72b38d74e6b9b066398f020f337cd4e9d/4Q25%20Management%20Report.pdf (매출×비중으로 계산)
+TSM,2025-Q3,volume,웨이퍼 출하(12인치 환산),4085,천 장,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-01/00fe50f72b38d74e6b9b066398f020f337cd4e9d/4Q25%20Management%20Report.pdf
+TSM,2025-Q3,price,웨이퍼 ASP(12인치 환산),8103,USD/장,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-01/00fe50f72b38d74e6b9b066398f020f337cd4e9d/4Q25%20Management%20Report.pdf (매출÷출하량으로 계산)
+TSM,2025-Q4,revenue,매출(합계),33730.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-01/00fe50f72b38d74e6b9b066398f020f337cd4e9d/4Q25%20Management%20Report.pdf
+TSM,2025-Q4,share,HPC,55,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-01/00fe50f72b38d74e6b9b066398f020f337cd4e9d/4Q25%20Management%20Report.pdf
+TSM,2025-Q4,segment_revenue,HPC,18551.5,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-01/00fe50f72b38d74e6b9b066398f020f337cd4e9d/4Q25%20Management%20Report.pdf (매출×비중으로 계산)
+TSM,2025-Q4,share,스마트폰,32,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-01/00fe50f72b38d74e6b9b066398f020f337cd4e9d/4Q25%20Management%20Report.pdf
+TSM,2025-Q4,segment_revenue,스마트폰,10793.6,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-01/00fe50f72b38d74e6b9b066398f020f337cd4e9d/4Q25%20Management%20Report.pdf (매출×비중으로 계산)
+TSM,2025-Q4,share,IoT,5,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-01/00fe50f72b38d74e6b9b066398f020f337cd4e9d/4Q25%20Management%20Report.pdf
+TSM,2025-Q4,segment_revenue,IoT,1686.5,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-01/00fe50f72b38d74e6b9b066398f020f337cd4e9d/4Q25%20Management%20Report.pdf (매출×비중으로 계산)
+TSM,2025-Q4,share,자동차,5,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-01/00fe50f72b38d74e6b9b066398f020f337cd4e9d/4Q25%20Management%20Report.pdf
+TSM,2025-Q4,segment_revenue,자동차,1686.5,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-01/00fe50f72b38d74e6b9b066398f020f337cd4e9d/4Q25%20Management%20Report.pdf (매출×비중으로 계산)
+TSM,2025-Q4,share,DCE(가전),1,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-01/00fe50f72b38d74e6b9b066398f020f337cd4e9d/4Q25%20Management%20Report.pdf
+TSM,2025-Q4,segment_revenue,DCE(가전),337.3,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-01/00fe50f72b38d74e6b9b066398f020f337cd4e9d/4Q25%20Management%20Report.pdf (매출×비중으로 계산)
+TSM,2025-Q4,share,기타,2,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-01/00fe50f72b38d74e6b9b066398f020f337cd4e9d/4Q25%20Management%20Report.pdf
+TSM,2025-Q4,segment_revenue,기타,674.6,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-01/00fe50f72b38d74e6b9b066398f020f337cd4e9d/4Q25%20Management%20Report.pdf (매출×비중으로 계산)
+TSM,2025-Q4,volume,웨이퍼 출하(12인치 환산),3961,천 장,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-01/00fe50f72b38d74e6b9b066398f020f337cd4e9d/4Q25%20Management%20Report.pdf
+TSM,2025-Q4,price,웨이퍼 ASP(12인치 환산),8516,USD/장,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-01/00fe50f72b38d74e6b9b066398f020f337cd4e9d/4Q25%20Management%20Report.pdf (매출÷출하량으로 계산)
+TSM,2026-Q1,revenue,매출(합계),35900.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/qr/phase4_reports/2026-04/9f060092ba29ff3630cfdaefd67774026195e135/1Q26ManagementReport.pdf
+TSM,2026-Q1,share,HPC,61,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/qr/phase4_reports/2026-04/9f060092ba29ff3630cfdaefd67774026195e135/1Q26ManagementReport.pdf
+TSM,2026-Q1,segment_revenue,HPC,21899.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/qr/phase4_reports/2026-04/9f060092ba29ff3630cfdaefd67774026195e135/1Q26ManagementReport.pdf (매출×비중으로 계산)
+TSM,2026-Q1,share,스마트폰,26,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/qr/phase4_reports/2026-04/9f060092ba29ff3630cfdaefd67774026195e135/1Q26ManagementReport.pdf
+TSM,2026-Q1,segment_revenue,스마트폰,9334.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/qr/phase4_reports/2026-04/9f060092ba29ff3630cfdaefd67774026195e135/1Q26ManagementReport.pdf (매출×비중으로 계산)
+TSM,2026-Q1,share,IoT,6,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/qr/phase4_reports/2026-04/9f060092ba29ff3630cfdaefd67774026195e135/1Q26ManagementReport.pdf
+TSM,2026-Q1,segment_revenue,IoT,2154.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/qr/phase4_reports/2026-04/9f060092ba29ff3630cfdaefd67774026195e135/1Q26ManagementReport.pdf (매출×비중으로 계산)
+TSM,2026-Q1,share,자동차,4,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/qr/phase4_reports/2026-04/9f060092ba29ff3630cfdaefd67774026195e135/1Q26ManagementReport.pdf
+TSM,2026-Q1,segment_revenue,자동차,1436.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/qr/phase4_reports/2026-04/9f060092ba29ff3630cfdaefd67774026195e135/1Q26ManagementReport.pdf (매출×비중으로 계산)
+TSM,2026-Q1,share,DCE(가전),1,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/qr/phase4_reports/2026-04/9f060092ba29ff3630cfdaefd67774026195e135/1Q26ManagementReport.pdf
+TSM,2026-Q1,segment_revenue,DCE(가전),359.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/qr/phase4_reports/2026-04/9f060092ba29ff3630cfdaefd67774026195e135/1Q26ManagementReport.pdf (매출×비중으로 계산)
+TSM,2026-Q1,share,기타,2,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/qr/phase4_reports/2026-04/9f060092ba29ff3630cfdaefd67774026195e135/1Q26ManagementReport.pdf
+TSM,2026-Q1,segment_revenue,기타,718.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/qr/phase4_reports/2026-04/9f060092ba29ff3630cfdaefd67774026195e135/1Q26ManagementReport.pdf (매출×비중으로 계산)
+TSM,2026-Q1,volume,웨이퍼 출하(12인치 환산),4174,천 장,https://investor.tsmc.com/english/encrypt/files/encrypt_file/qr/phase4_reports/2026-04/9f060092ba29ff3630cfdaefd67774026195e135/1Q26ManagementReport.pdf
+TSM,2026-Q1,price,웨이퍼 ASP(12인치 환산),8601,USD/장,https://investor.tsmc.com/english/encrypt/files/encrypt_file/qr/phase4_reports/2026-04/9f060092ba29ff3630cfdaefd67774026195e135/1Q26ManagementReport.pdf (매출÷출하량으로 계산)
+TSM,2026-Q2,revenue,매출(합계),40200.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-10/f83780000ddc0c3b48e57a87eab6814c4ab35058/3Q26%20ManagementReport.pdf
+TSM,2026-Q2,share,HPC,66,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-10/f83780000ddc0c3b48e57a87eab6814c4ab35058/3Q26%20ManagementReport.pdf
+TSM,2026-Q2,segment_revenue,HPC,26532.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-10/f83780000ddc0c3b48e57a87eab6814c4ab35058/3Q26%20ManagementReport.pdf (매출×비중으로 계산)
+TSM,2026-Q2,share,스마트폰,22,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-10/f83780000ddc0c3b48e57a87eab6814c4ab35058/3Q26%20ManagementReport.pdf
+TSM,2026-Q2,segment_revenue,스마트폰,8844.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-10/f83780000ddc0c3b48e57a87eab6814c4ab35058/3Q26%20ManagementReport.pdf (매출×비중으로 계산)
+TSM,2026-Q2,share,IoT,5,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-10/f83780000ddc0c3b48e57a87eab6814c4ab35058/3Q26%20ManagementReport.pdf
+TSM,2026-Q2,segment_revenue,IoT,2010.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-10/f83780000ddc0c3b48e57a87eab6814c4ab35058/3Q26%20ManagementReport.pdf (매출×비중으로 계산)
+TSM,2026-Q2,share,자동차,4,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-10/f83780000ddc0c3b48e57a87eab6814c4ab35058/3Q26%20ManagementReport.pdf
+TSM,2026-Q2,segment_revenue,자동차,1608.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-10/f83780000ddc0c3b48e57a87eab6814c4ab35058/3Q26%20ManagementReport.pdf (매출×비중으로 계산)
+TSM,2026-Q2,share,DCE(가전),1,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-10/f83780000ddc0c3b48e57a87eab6814c4ab35058/3Q26%20ManagementReport.pdf
+TSM,2026-Q2,segment_revenue,DCE(가전),402.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-10/f83780000ddc0c3b48e57a87eab6814c4ab35058/3Q26%20ManagementReport.pdf (매출×비중으로 계산)
+TSM,2026-Q2,share,기타,2,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-10/f83780000ddc0c3b48e57a87eab6814c4ab35058/3Q26%20ManagementReport.pdf
+TSM,2026-Q2,segment_revenue,기타,804.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-10/f83780000ddc0c3b48e57a87eab6814c4ab35058/3Q26%20ManagementReport.pdf (매출×비중으로 계산)
+TSM,2026-Q2,volume,웨이퍼 출하(12인치 환산),4336,천 장,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-10/f83780000ddc0c3b48e57a87eab6814c4ab35058/3Q26%20ManagementReport.pdf
+TSM,2026-Q2,price,웨이퍼 ASP(12인치 환산),9271,USD/장,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-10/f83780000ddc0c3b48e57a87eab6814c4ab35058/3Q26%20ManagementReport.pdf (매출÷출하량으로 계산)
+TSM,2026-Q3,revenue,매출(합계),46720.0,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-10/f83780000ddc0c3b48e57a87eab6814c4ab35058/3Q26%20ManagementReport.pdf
+TSM,2026-Q3,share,HPC,68,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-10/f83780000ddc0c3b48e57a87eab6814c4ab35058/3Q26%20ManagementReport.pdf
+TSM,2026-Q3,segment_revenue,HPC,31769.6,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-10/f83780000ddc0c3b48e57a87eab6814c4ab35058/3Q26%20ManagementReport.pdf (매출×비중으로 계산)
+TSM,2026-Q3,share,스마트폰,21,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-10/f83780000ddc0c3b48e57a87eab6814c4ab35058/3Q26%20ManagementReport.pdf
+TSM,2026-Q3,segment_revenue,스마트폰,9811.2,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-10/f83780000ddc0c3b48e57a87eab6814c4ab35058/3Q26%20ManagementReport.pdf (매출×비중으로 계산)
+TSM,2026-Q3,share,IoT,4,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-10/f83780000ddc0c3b48e57a87eab6814c4ab35058/3Q26%20ManagementReport.pdf
+TSM,2026-Q3,segment_revenue,IoT,1868.8,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-10/f83780000ddc0c3b48e57a87eab6814c4ab35058/3Q26%20ManagementReport.pdf (매출×비중으로 계산)
+TSM,2026-Q3,share,자동차,4,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-10/f83780000ddc0c3b48e57a87eab6814c4ab35058/3Q26%20ManagementReport.pdf
+TSM,2026-Q3,segment_revenue,자동차,1868.8,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-10/f83780000ddc0c3b48e57a87eab6814c4ab35058/3Q26%20ManagementReport.pdf (매출×비중으로 계산)
+TSM,2026-Q3,share,DCE(가전),1,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-10/f83780000ddc0c3b48e57a87eab6814c4ab35058/3Q26%20ManagementReport.pdf
+TSM,2026-Q3,segment_revenue,DCE(가전),467.2,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-10/f83780000ddc0c3b48e57a87eab6814c4ab35058/3Q26%20ManagementReport.pdf (매출×비중으로 계산)
+TSM,2026-Q3,share,기타,2,%,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-10/f83780000ddc0c3b48e57a87eab6814c4ab35058/3Q26%20ManagementReport.pdf
+TSM,2026-Q3,segment_revenue,기타,934.4,USD mn,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-10/f83780000ddc0c3b48e57a87eab6814c4ab35058/3Q26%20ManagementReport.pdf (매출×비중으로 계산)
+TSM,2026-Q3,volume,웨이퍼 출하(12인치 환산),4476,천 장,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-10/f83780000ddc0c3b48e57a87eab6814c4ab35058/3Q26%20ManagementReport.pdf
+TSM,2026-Q3,price,웨이퍼 ASP(12인치 환산),10438,USD/장,https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-10/f83780000ddc0c3b48e57a87eab6814c4ab35058/3Q26%20ManagementReport.pdf (매출÷출하량으로 계산)
