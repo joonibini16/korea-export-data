@@ -5,11 +5,14 @@ on:
     branches: [main]
     paths: ['collect_foreign_buy.py', 'build_flow_oscillator.py', '.github/workflows/foreign_buy.yml']
   schedule:
-    # 한국시간 평일 15:50, 16:20, 18:10, 20:40 (장 마감 후 확정치, 지연 대비 중복)
+    # 한국시간 평일 15:50, 16:20, 18:10, 20:40, 21:30, 22:30
+    # 20시 장 종료 이후 KRX 최종치 지연에 대비해 21:30/22:30 재조회
     - cron: '50 6 * * 1-5'
     - cron: '20 7 * * 1-5'
     - cron: '10 9 * * 1-5'
     - cron: '40 11 * * 1-5'
+    - cron: '30 12 * * 1-5'
+    - cron: '30 13 * * 1-5'
 permissions:
   contents: write
 concurrency:
