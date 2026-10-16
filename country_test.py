@@ -537,7 +537,10 @@ BUDGET = float(os.environ.get("TIME_BUDGET_MIN") or 0) * 60
 T0 = time.time()
 skipped = 0
 
-for idx, item in enumerate(HS_ITEMS, start=1):
+# 아직 국가별 파일이 없는 품목을 먼저 수집(기존 품목의 최근 3개월 갱신이 시간 예산을 다 쓰지 않도록)
+ORDERED = sorted(HS_ITEMS, key=lambda it: os.path.exists(f"country_{it['hs_code']}.csv"))
+
+for idx, item in enumerate(ORDERED, start=1):
     print(f"\n######## 품목 {idx}/{len(HS_ITEMS)} ########")
 
     if BUDGET and time.time() - T0 > BUDGET:
