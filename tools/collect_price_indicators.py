@@ -6,7 +6,7 @@
 
 결과는 price_indicators_log.csv(date,series,value,unit,source)에 날짜·계열별로 덮어쓰기/추가하며 과거 행은 지우지 않습니다.
 """
-import csv, datetime as dt, html, json, pathlib, re, statistics as st, sys, urllib.parse, urllib.request
+import csv, datetime as dt, html, json, math, pathlib, re, statistics as st, sys, urllib.parse, urllib.request
 
 LOG = pathlib.Path('price_indicators_log.csv')
 UA = {'User-Agent': 'Mozilla/5.0 (compatible; korea-export-data/1.0; +https://joonibini16.github.io/korea-export-data/)'}
@@ -75,16 +75,30 @@ except Exception as e:
 today = dt.datetime.now(dt.timezone(dt.timedelta(hours=9))).date().isoformat()
 
 # ---------- GPU: Vast.ai ----------
-VAST = {'a100': ['A100 SXM4'], 'h100': ['H100 SXM'], 'b200': ['B200']}
+VAST = {'a100': ['A100 SXM4'], 'h100': ['H100 SXM'], 'h200': ['H200'], 'b200': ['B200'], 'rtx5090': ['RTX 5090']}
+
+def valid_gpu_prices(offers):
+    prices = []
+    for offer in offers:
+        try:
+            cost, count = float(offer['dph_total']), float(offer['num_gpus'])
+            if math.isfinite(cost) and math.isfinite(count) and cost > 0 and count > 0:
+                prices.append(cost / count)
+        except (KeyError, TypeError, ValueError):
+            continue
+    return prices
+
 for key, names in VAST.items():
     try:
         q = {'gpu_name': {'in': names} if len(names) > 1 else {'eq': names[0]}, 'rentable': {'eq': True}, 'type': 'on-demand', 'limit': 1000}
         o = json.loads(get('https://console.vast.ai/api/v0/search/asks/?q=' + urllib.parse.quote(json.dumps(q, separators=(',', ':')))))['offers']
-        pp = sorted(r['dph_total'] / max(1, r['num_gpus']) for r in o if r.get('dph_total'))
+        pp = valid_gpu_prices(o)
         if pp:
             src = 'Vast.ai 대여 가능 on-demand 매물 GPU당 시간당 가격 중앙값'
             put(today, f'gpu_{key}_vast', st.median(pp), 'USD/GPU·시간', src)
             put(today, f'gpu_{key}_vast_n', len(pp), '매물 수', src)
+        else:
+            errors.append(f'vast {key}: 유효 매물 없음(기존값 보존)')
     except Exception as e:
         errors.append(f'vast {key}: {e}')
 
@@ -92,7 +106,7 @@ for key, names in VAST.items():
 try:
     body = json.dumps({'query': 'query{gpuTypes{id,displayName,securePrice,communityPrice}}'}).encode()
     g = json.loads(get('https://api.runpod.io/graphql', data=body, headers={'Content-Type': 'application/json'}))['data']['gpuTypes']
-    RP = {'a100': 'A100 SXM', 'h100': 'H100 SXM', 'b200': 'B200'}
+    RP = {'a100': 'A100 SXM', 'h100': 'H100 SXM', 'h200': 'H200', 'b200': 'B200', 'rtx5090': 'RTX 5090'}
     print('  runpod types:', [(x['id'], x['displayName']) for x in g if any(k in (x['displayName'] or '') for k in ('A100', 'H100', 'B200'))])
     for key, dn in RP.items():
         r = next((x for x in g if (x.get('displayName') or '') == dn), None)
@@ -133,3 +147,4 @@ pathlib.Path('price_indicators_status.json').write_text(json.dumps(dict(updated=
 print('rows', len(out), 'errors', errors)
 if len(errors) >= 4:
     sys.exit(1)
+
