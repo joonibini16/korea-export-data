@@ -62,18 +62,13 @@
     options:{...base(),scales:{x:timeAxis(D4),y:{beginAtZero:true,title:{display:true,text:'Price (USD/module)'}},y1:{position:'right',beginAtZero:true,grid:{drawOnChartArea:false},title:{display:true,text:'64GB Spot - Contract (USD/module)'}}}}});
    const c=ser(G,'ddr5_16gb_chip_spot').at(-1),u=ser(G,'ddr5_udimm16_spot').at(-1);
    document.getElementById('f4').textContent=`DRAMeXchange 자체 수집: DDR5 RDIMM 32GB ${own32.at(-1)?'$'+own32.at(-1).v.toLocaleString()+' ('+own32.at(-1).d+')':'(다음 실행부터)'} · DDR5 UDIMM 16GB ${u?'$'+u.v+' ('+u.d+')':'—'} · DDR5 16Gb 칩 현물 ${c?'$'+c.v+' ('+c.d+')':'—'}`;}
-  // 5) 자체 수집 GPU
-  {const K=[['a100','A100',C.bl],['h100','H100',C.cy],['b200','B200',C.pu]];const D5=[];
-   K.forEach(([k,n,c])=>{const v=ser(G,`gpu_${k}_vast`),r=ser(G,`gpu_${k}_runpod_secure`);D5.push(L(n+' Vast 중앙값',pts(v),c,{pointRadius:v.length<8?5:0}));D5.push(L(n+' RunPod Secure',pts(r),c,{borderDash:[5,3],borderWidth:1.5,pointRadius:r.length<8?4:0,pointStyle:'rectRot'}));});
-   {const nd=new Set(K.flatMap(([k])=>ser(G,`gpu_${k}_vast`).map(x=>x.d))).size;const h=document.getElementById('c5').closest('section').querySelector('p.muted');if(h&&!h.dataset.n){h.dataset.n=1;h.innerHTML+=` <b>수집 ${nd}일째</b>${nd<3?' (2026-10-15 시작 · 날마다 점이 하나씩 늘어나 선이 됩니다)':''}.`;}}
-   new Chart(document.getElementById('c5'),{type:'line',data:{datasets:D5},options:{...base(),scales:{x:timeAxis(D5),y:{type:'logarithmic',title:{display:true,text:'USD / GPU·시간 (로그)'}}}}});}
   // 최근 수집값 표
   {const last={};G.forEach(r=>{if(!last[r.series]||r.date>=last[r.series].date)last[r.series]=r;});
    const NM={or_tokens_t:'OpenRouter 일별 토큰',or_price_per_m:'OpenRouter 가중평균 단가',or_spend_musd:'OpenRouter 추정 일 지출',or_priced_cover:'가격 매칭 토큰 비중',or_prompt_share:'입력(prompt) 토큰 비중',or_models:'집계 모델 수',
     gpu_a100_vast:'A100 SXM4 · Vast 중앙값',gpu_h100_vast:'H100 SXM · Vast 중앙값',gpu_b200_vast:'B200 · Vast 중앙값',gpu_a100_vast_n:'A100 · Vast 매물 수',gpu_h100_vast_n:'H100 · Vast 매물 수',gpu_b200_vast_n:'B200 · Vast 매물 수',
     gpu_a100_runpod_secure:'A100 SXM · RunPod Secure',gpu_h100_runpod_secure:'H100 SXM · RunPod Secure',gpu_b200_runpod_secure:'B200 · RunPod Secure',gpu_a100_runpod_comm:'A100 SXM · RunPod Community',gpu_h100_runpod_comm:'H100 SXM · RunPod Community',gpu_b200_runpod_comm:'B200 · RunPod Community',
     ddr5_rdimm32_spot:'DDR5 RDIMM 32GB 현물',ddr5_udimm16_spot:'DDR5 UDIMM 16GB 현물',ddr5_16gb_chip_spot:'DDR5 16Gb 칩 현물',ddr4_16gb_chip_spot:'DDR4 16Gb 칩 현물'};
-   const ks=Object.keys(NM).filter(k=>last[k]);
+   const ks=Object.keys(NM).filter(k=>last[k]&&!k.startsWith("gpu_"));
    document.getElementById('kt').innerHTML=ks.length?'<thead><tr><th>항목</th><th>기준일</th><th>값</th><th>단위</th><th>전주 대비</th><th>출처</th></tr></thead><tbody>'+ks.map(k=>{const r=last[k],w=wow(ser(G,k));return `<tr><td>${NM[k]}</td><td>${r.date}</td><td>${(+r.value).toLocaleString(undefined,{maximumFractionDigits:3})}</td><td>${r.unit}</td><td class="${col(w)}">${w==null?'—':sg(w)}</td><td style="text-align:left;color:#93a3bd">${r.source}</td></tr>`;}).join('')+'</tbody>':'<tbody><tr><td>첫 자동 수집 전입니다.</td></tr></tbody>';
    document.getElementById('st').textContent=stj?`마지막 수집: ${stj.updated} · 누적 ${stj.rows}행${stj.errors&&stj.errors.length?' · 오류: '+stj.errors.join(' / '):''}`:'';}
  });
