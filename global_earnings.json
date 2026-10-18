@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-17",
+  "updated_at": "2026-10-19",
   "method": "공식 컨콜 녹취록을 확인한 경우에만 Q&A 요약으로 표시합니다. 그 외 주제별 요약은 공식 IR 발표문을 출처로 명시하며, 투자 해석은 관전점으로 구분합니다. 반도체 장비 업종은 주요 공정·검사·테스트·패키징 기업을 추적하며 원문 미검증 기업은 분석 대기로 표시합니다.",
   "watchlist": [
     {
@@ -2336,6 +2336,13 @@
       "time": "시간 미공지(Asia/Tokyo, 예정)",
       "event": "FY27 Q2 실적 발표",
       "source": "https://www.tel.co.jp/ir/calendar/index.html"
+    },
+    {
+      "ticker": "EL",
+      "date": "2026-11-02",
+      "time": "08:30 America/New_York(실적 발표·컨콜)",
+      "event": "FY27 Q1 실적·컨퍼런스콜",
+      "source": "https://www.elcompanies.com/en/investors/events-and-presentations"
     }
   ]
 }
