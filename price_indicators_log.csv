@@ -60,10 +60,10 @@ date,series,value,unit,source
 2026-10-17,gpu_h100_vast,2.70835,USD/GPU·시간,Vast.ai 대여 가능 on-demand 매물 GPU당 시간당 가격 중앙값
 2026-10-17,gpu_h100_vast_n,16,매물 수,Vast.ai 대여 가능 on-demand 매물 GPU당 시간당 가격 중앙값
 2026-10-17,or_models,620,개,OpenRouter rankings(view=day) · api/v1/models 가격
-2026-10-17,or_price_per_m,0.403973,USD/백만 토큰,OpenRouter rankings(view=day) · api/v1/models 가격
+2026-10-17,or_price_per_m,0.401148,USD/백만 토큰,OpenRouter rankings(view=day) · api/v1/models 가격
 2026-10-17,or_priced_cover,96.6751,%,OpenRouter rankings(view=day) · api/v1/models 가격
 2026-10-17,or_prompt_share,97.3079,%,OpenRouter rankings(view=day) · api/v1/models 가격
-2026-10-17,or_spend_musd,7.40815,백만 달러(추정),OpenRouter rankings(view=day) · api/v1/models 가격
+2026-10-17,or_spend_musd,7.35635,백만 달러(추정),OpenRouter rankings(view=day) · api/v1/models 가격
 2026-10-17,or_tokens_t,18.3382,조 토큰,OpenRouter rankings(view=day) · api/v1/models 가격
 2026-10-18,gpu_a100_runpod_comm,1.39,USD/GPU·시간,RunPod 공시가(Community Cloud)
 2026-10-18,gpu_a100_runpod_secure,1.79,USD/GPU·시간,RunPod 공시가(Secure Cloud)
@@ -77,9 +77,9 @@ date,series,value,unit,source
 2026-10-18,gpu_h100_runpod_secure,3.99,USD/GPU·시간,RunPod 공시가(Secure Cloud)
 2026-10-18,gpu_h100_vast,2.40074,USD/GPU·시간,Vast.ai 대여 가능 on-demand 매물 GPU당 시간당 가격 중앙값
 2026-10-18,gpu_h100_vast_n,26,매물 수,Vast.ai 대여 가능 on-demand 매물 GPU당 시간당 가격 중앙값
-2026-10-18,gpu_h200_vast,6.54683,USD/GPU·시간,Vast.ai 대여 가능 on-demand 매물 GPU당 시간당 가격 중앙값
+2026-10-18,gpu_h200_vast,6.48104,USD/GPU·시간,Vast.ai 대여 가능 on-demand 매물 GPU당 시간당 가격 중앙값
 2026-10-18,gpu_h200_vast_n,8,매물 수,Vast.ai 대여 가능 on-demand 매물 GPU당 시간당 가격 중앙값
 2026-10-18,gpu_rtx5090_runpod_comm,0.69,USD/GPU·시간,RunPod 공시가(Community Cloud)
 2026-10-18,gpu_rtx5090_runpod_secure,1.19,USD/GPU·시간,RunPod 공시가(Secure Cloud)
-2026-10-18,gpu_rtx5090_vast,0.613981,USD/GPU·시간,Vast.ai 대여 가능 on-demand 매물 GPU당 시간당 가격 중앙값
+2026-10-18,gpu_rtx5090_vast,0.612037,USD/GPU·시간,Vast.ai 대여 가능 on-demand 매물 GPU당 시간당 가격 중앙값
 2026-10-18,gpu_rtx5090_vast_n,64,매물 수,Vast.ai 대여 가능 on-demand 매물 GPU당 시간당 가격 중앙값
