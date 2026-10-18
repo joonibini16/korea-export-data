@@ -21,6 +21,8 @@
  const monthRate=(c,p,mo,k)=>{if(c==null||!Number.isFinite(c)||!Number.isFinite(p)||!(p>0)||c<0)return null;if(!adj)return (c/p-1)*100;const a=segDays(mo,k,false),b=segDays(prevMonth(mo),k,false);return a&&b?((c/a)/(p/b)-1)*100:null;};
  const SEGL=['1~10일','11~20일','21~말일'];
  let mode='item',adj=true,R=[],chart=null;
+ const selected={item:'',country:''};
+ const esc=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  // 관세청 조업일수: 평일 1, 토요일 0.5, 일요일·공휴일 0 (근로자의날 포함, 설·추석이 토요일과 겹칠 때 대체휴일 없음) — 발표문 조업일수와 대조 검증
  const HOL={2024:'0101 0209 0210 0211 0212 0301 0410 0415 0501 0506 0515 0606 0815 0916 0917 0918 1001 1003 1009 1225',
   2025:'0101 0127 0128 0129 0130 0301 0303 0501 0505 0506 0603 0606 0815 1003 1005 1006 1007 1008 1009 1225',
@@ -74,10 +76,14 @@
   return `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" style="display:block"><line x1="0" x2="${W}" y1="${Y(0)}" y2="${Y(0)}" stroke="#d0d5dd" stroke-dasharray="2 2"/><path d="${d}" fill="none" stroke="${col}" stroke-width="1.8"/>${dots}<circle cx="${X(end[1])}" cy="${Y(end[0])}" r="2.6" fill="${col}"/></svg>`;}
 
  function render(){
-  const L=build(R).sort((a,b)=>(b.mom??-1e9)-(a.mom??-1e9));
+  if(chart){chart.destroy();chart=null;}
+  const all=build(R).sort((a,b)=>(b.mom??-1e9)-(a.mom??-1e9));
+  if(selected[mode]&&!all.some(x=>x.n===selected[mode]))selected[mode]='';
+  const L=all.filter(x=>!selected[mode]||x.n===selected[mode]);
   const cnt={};L.forEach(x=>cnt[x.sig]=(cnt[x.sig]||0)+1);
   const latest=L[0]?.last9.at(-1);
   host.innerHTML=`<div class="sg-top"><div class="sg-tg">${[['item','수출 품목'],['country','수출 국가']].map(([k,t])=>`<button class="period${mode===k?' active':''}" data-m="${k}">${t}</button>`).join('')}<span style="width:14px"></span>${[[1,'일평균(조업일수 보정)'],[0,'금액 그대로']].map(([k,t])=>`<button class="period${+adj===k?' active':''}" data-a="${k}">${t}</button>`).join('')}</div>
+   <label style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">${mode==='item'?'품목 선택':'국가 선택'} <select id="sg-select" aria-label="${mode==='item'?'품목 선택':'국가 선택'}" style="padding:9px 12px;border:1px solid #94a3b8;border-radius:8px;background:#0f1a33;color:#e5e7eb;min-width:220px;max-width:100%"><option value="">전체 ${mode==='item'?'품목':'국가'}</option>${[...all].sort((a,b)=>a.n.localeCompare(b.n,'ko')).map(x=>`<option value="${esc(x.n)}"${selected[mode]===x.n?' selected':''}>${esc(x.n)}</option>`).join('')}</select><span class="sg-h">${L.length} / ${all.length}개 표시 · 선택하면 상세 그래프가 열립니다</span></label>
    <div class="sg-sum">${Object.keys(SIG).filter(k=>cnt[k]).map(k=>`<span class="sg-b" style="color:${SIG[k].c};background:${SIG[k].bg}">${k} ${cnt[k]}</span>`).join(' ')}</div></div>
    <div class="table-wrap"><table class="sg"><thead><tr><th>${mode==='item'?'품목':'국가'}</th><th>시그널</th><th>최신구간 YoY${adj?'<div class="sg-h">일평균 기준</div>':''}<div class="sg-h">${latest?latest.m.slice(2).replace('.','.')+' '+SEGL[latest.k-1]:''}</div></th><th>최신구간 MoM<div class="sg-h">전월 동일 구간${adj?' · 일평균':''}</div></th><th>3개월 추세<div class="sg-h">10일 구간 YoY · 9구간</div></th><th>모멘텀<div class="sg-h">최근3−직전3 (%p)</div></th><th>당월누적 YoY<div class="sg-h">${L[0]?L[0].cumLbl+'일':''}</div></th><th>당월누적 MoM<div class="sg-h">전월 동일 누적기간</div></th><th>TTM YoY<div class="sg-h">확정치 12개월</div></th><th>TTM (억$)</th><th></th></tr></thead><tbody>`+
    L.map((x,i)=>{const s=SIG[x.sig],tot=/^총계/.test(x.n);return `<tr class="${tot?'sg-tot':''}"><td><b>${x.n}</b></td><td><span class="sg-b" style="color:${s.c};background:${s.bg}" title="${s.d}">${x.sig}</span></td>
@@ -94,7 +100,9 @@
     <li>컴퓨터주변기기·정밀기기는 월간 확정치 표에 같은 분류가 없어 21일~말일 구간(③)이 빈칸(회색 점)이며, 모멘텀은 있는 구간만으로 계산합니다. TTM은 확정치에 같은 품목이 있을 때만 표시합니다.</li>
     <li>국가는 각 발표의 상위 10개국이라 일부 구간이 빠질 수 있습니다(말레이시아·인도 등은 확정치 표에 없어 ③ 빈칸).</li></ul></details>`;
   host.querySelectorAll('[data-m]').forEach(b=>b.onclick=()=>{mode=b.dataset.m;render();});host.querySelectorAll('[data-a]').forEach(b=>b.onclick=()=>{adj=b.dataset.a==='1';render();});
+  host.querySelector('#sg-select').onchange=e=>{selected[mode]=e.target.value;render();};
   host.querySelectorAll('.sg-d').forEach(b=>b.onclick=()=>detail(L[+b.dataset.i],+b.dataset.i));
+  if(selected[mode]&&L.length)detail(L[0],0);
  }
 
  function detail(x,i){

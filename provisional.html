@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <title>10일 잠정수출 모니터링</title>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script><script src="./chart_legend.js?v=3"></script><script src="./shell.js?v=24"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script><script src="./chart_legend.js?v=3"></script><script src="./shell.js?v=25"></script>
 <style>
 :root{--bg:#f5f6f8;--card:#fff;--text:#20242a;--muted:#667085;--border:#e5e7eb;--pos:#d92d20;--neg:#1570ef}
 *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,"Noto Sans KR",sans-serif}
@@ -100,5 +100,5 @@ function render(){
 document.querySelectorAll(".period").forEach(b=>b.onclick=()=>{document.querySelectorAll(".period").forEach(x=>x.classList.toggle("active",x===b));filterPeriod=b.dataset.period;render()});
 csv("provisional_official.csv").then(a=>{official=a;render();}).catch(e=>{document.getElementById("latest").textContent="데이터 로딩 오류: "+e.message});
 </script>
-<script src="./provisional_signal.js?v=3"></script>
+<script src="./provisional_signal.js?v=4"></script>
 </body></html>
