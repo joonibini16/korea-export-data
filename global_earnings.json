@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-19",
+  "updated_at": "2026-10-18",
   "method": "공식 컨콜 녹취록을 확인한 경우에만 Q&A 요약으로 표시합니다. 그 외 주제별 요약은 공식 IR 발표문을 출처로 명시하며, 투자 해석은 관전점으로 구분합니다. 반도체 장비 업종은 주요 공정·검사·테스트·패키징 기업을 추적하며 원문 미검증 기업은 분석 대기로 표시합니다.",
   "watchlist": [
     {
@@ -181,6 +181,206 @@
       "ticker": "CAMT",
       "name": "Camtek",
       "sector": "반도체 장비"
+    },
+    {
+      "ticker": "TSLA",
+      "name": "Tesla",
+      "sector": "자동차·모빌리티"
+    },
+    {
+      "ticker": "GM",
+      "name": "General Motors",
+      "sector": "자동차·모빌리티"
+    },
+    {
+      "ticker": "F",
+      "name": "Ford",
+      "sector": "자동차·모빌리티"
+    },
+    {
+      "ticker": "VOW3.DE",
+      "name": "Volkswagen",
+      "sector": "자동차·모빌리티"
+    },
+    {
+      "ticker": "BMW.DE",
+      "name": "BMW",
+      "sector": "자동차·모빌리티"
+    },
+    {
+      "ticker": "MBG.DE",
+      "name": "Mercedes-Benz",
+      "sector": "자동차·모빌리티"
+    },
+    {
+      "ticker": "STLA",
+      "name": "Stellantis",
+      "sector": "자동차·모빌리티"
+    },
+    {
+      "ticker": "AAPL",
+      "name": "Apple",
+      "sector": "IT 기기·네트워크"
+    },
+    {
+      "ticker": "DELL",
+      "name": "Dell Technologies",
+      "sector": "IT 기기·네트워크"
+    },
+    {
+      "ticker": "ANET",
+      "name": "Arista Networks",
+      "sector": "IT 기기·네트워크"
+    },
+    {
+      "ticker": "INTC",
+      "name": "Intel",
+      "sector": "AI 인프라·반도체"
+    },
+    {
+      "ticker": "TXN",
+      "name": "Texas Instruments",
+      "sector": "차량·산업용 반도체"
+    },
+    {
+      "ticker": "NXPI",
+      "name": "NXP Semiconductors",
+      "sector": "차량·산업용 반도체"
+    },
+    {
+      "ticker": "STM",
+      "name": "STMicroelectronics",
+      "sector": "차량·산업용 반도체"
+    },
+    {
+      "ticker": "IFX.DE",
+      "name": "Infineon",
+      "sector": "차량·산업용 반도체"
+    },
+    {
+      "ticker": "SAP.DE",
+      "name": "SAP",
+      "sector": "소프트웨어"
+    },
+    {
+      "ticker": "ENR.DE",
+      "name": "Siemens Energy",
+      "sector": "전력·데이터센터"
+    },
+    {
+      "ticker": "ABBN.SW",
+      "name": "ABB",
+      "sector": "전력·데이터센터"
+    },
+    {
+      "ticker": "PRY.MI",
+      "name": "Prysmian",
+      "sector": "전력·데이터센터"
+    },
+    {
+      "ticker": "SIE.DE",
+      "name": "Siemens",
+      "sector": "기계·산업재"
+    },
+    {
+      "ticker": "CAT",
+      "name": "Caterpillar",
+      "sector": "기계·산업재"
+    },
+    {
+      "ticker": "BA",
+      "name": "Boeing",
+      "sector": "항공·방산"
+    },
+    {
+      "ticker": "GE",
+      "name": "GE Aerospace",
+      "sector": "항공·방산"
+    },
+    {
+      "ticker": "LMT",
+      "name": "Lockheed Martin",
+      "sector": "항공·방산"
+    },
+    {
+      "ticker": "RTX",
+      "name": "RTX",
+      "sector": "항공·방산"
+    },
+    {
+      "ticker": "AIR.PA",
+      "name": "Airbus",
+      "sector": "항공·방산"
+    },
+    {
+      "ticker": "RHM.DE",
+      "name": "Rheinmetall",
+      "sector": "항공·방산"
+    },
+    {
+      "ticker": "XOM",
+      "name": "ExxonMobil",
+      "sector": "에너지"
+    },
+    {
+      "ticker": "CVX",
+      "name": "Chevron",
+      "sector": "에너지"
+    },
+    {
+      "ticker": "SHEL",
+      "name": "Shell",
+      "sector": "에너지"
+    },
+    {
+      "ticker": "TTE.PA",
+      "name": "TotalEnergies",
+      "sector": "에너지"
+    },
+    {
+      "ticker": "MAERSK-B.CO",
+      "name": "A.P. Møller-Mærsk",
+      "sector": "해운·물류"
+    },
+    {
+      "ticker": "JPM",
+      "name": "JPMorgan Chase",
+      "sector": "금융"
+    },
+    {
+      "ticker": "WMT",
+      "name": "Walmart",
+      "sector": "소비재·화장품"
+    },
+    {
+      "ticker": "MC.PA",
+      "name": "LVMH",
+      "sector": "소비재·화장품"
+    },
+    {
+      "ticker": "NESN.SW",
+      "name": "Nestlé",
+      "sector": "식품"
+    },
+    {
+      "ticker": "JNJ",
+      "name": "Johnson & Johnson",
+      "sector": "바이오·의료"
+    },
+    {
+      "ticker": "NOVN.SW",
+      "name": "Novartis",
+      "sector": "바이오·의료"
+    },
+    {
+      "ticker": "ROG.SW",
+      "name": "Roche",
+      "sector": "바이오·의료"
+    },
+    {
+      "ticker": "AZN",
+      "name": "AstraZeneca",
+      "sector": "바이오·의료"
     }
   ],
   "events": [
@@ -2205,11 +2405,39 @@
   ],
   "upcoming": [
     {
+      "ticker": "ABBN.SW",
+      "date": "2026-10-20",
+      "time": "07:00 Europe/Zurich · 10:00 웹캐스트",
+      "event": "2026 Q3 실적 발표",
+      "source": "https://global.abb/group/en/investors/financial-calendar"
+    },
+    {
       "ticker": "CATL",
       "date": "2026-10-20",
       "time": "이사회 승인 후 공시(중국 시간)",
       "event": "2026 Q3(누적 9개월) 실적 이사회",
       "source": "https://www3.hkexnews.hk/reports/bmn/ebmn.htm"
+    },
+    {
+      "ticker": "GE",
+      "date": "2026-10-20",
+      "time": "07:30 America/New_York(웹캐스트)",
+      "event": "2026 Q3 실적·웹캐스트",
+      "source": "https://www.geaerospace.com/investor-relations/events-reports/ge-aerospace-3rd-quarter-2026-earnings-webcast"
+    },
+    {
+      "ticker": "GM",
+      "date": "2026-10-20",
+      "time": "장 시작 전 06:30 · 08:30 America/New_York(컨콜)",
+      "event": "2026 Q3 실적·컨퍼런스콜",
+      "source": "https://investor.gm.com/news-releases/news-release-details/gm-announces-third-quarter-2026-earnings-conference-call-details"
+    },
+    {
+      "ticker": "RTX",
+      "date": "2026-10-20",
+      "time": "장 시작 전 · 08:30 America/New_York(컨콜)",
+      "event": "2026 Q3 실적·컨퍼런스콜",
+      "source": "https://www.rtx.com/news/news-center/2026/09/29/rtx-to-release-third-quarter-earnings-results-on-october-20-2026"
     },
     {
       "ticker": "LRCX",
@@ -2226,6 +2454,27 @@
       "source": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-to-Announce-Third-Quarter-2026-Results/default.aspx"
     },
     {
+      "ticker": "SAP.DE",
+      "date": "2026-10-21",
+      "time": "22:05 Europe/Berlin · 23:00 컨콜",
+      "event": "2026 Q3 실적 발표",
+      "source": "https://www.sap.com/investors/en/financial-documents-and-events/events.html"
+    },
+    {
+      "ticker": "TSLA",
+      "date": "2026-10-21",
+      "time": "장 마감 후 · 16:30 America/Chicago(Q&A 웹캐스트)",
+      "event": "2026 Q3 실적·Q&A 웹캐스트",
+      "source": "https://ir.tesla.com/press-release/tesla-third-quarter-2026-production-deliveries-and-deployments"
+    },
+    {
+      "ticker": "TXN",
+      "date": "2026-10-21",
+      "time": "15:30 America/Chicago(컨콜)",
+      "event": "2026 Q3 실적·컨퍼런스콜",
+      "source": "https://www.ti.com/about-ti/newsroom/news-releases/2026/2026-10-01-texas-instruments-to-webcast-q3-2026-earnings-conference-call.html"
+    },
+    {
       "ticker": "6146.T",
       "date": "2026-10-22",
       "time": "16:00 Asia/Tokyo",
@@ -2240,6 +2489,20 @@
       "source": "https://www.besi.com/investor-relations/financial-calendar/details/besis-2026-third-quarter-results/"
     },
     {
+      "ticker": "LMT",
+      "date": "2026-10-22",
+      "time": "장 시작 전 · 08:30 America/New_York(웹캐스트)",
+      "event": "2026 Q3 실적·웹캐스트",
+      "source": "https://news.lockheedmartin.com/2026-10-01-Lockheed-Martin-Announces-Third-Quarter-2026-Earnings-Results-Webcast"
+    },
+    {
+      "ticker": "NESN.SW",
+      "date": "2026-10-22",
+      "time": "07:00 Europe/Zurich · 09:30 투자자 콜",
+      "event": "2026 9개월 누적 매출 발표",
+      "source": "https://www.nestle.com/media/mediaeventscalendar/allevents/2026-nine-month-sales"
+    },
+    {
       "ticker": "OR.PA",
       "date": "2026-10-22",
       "time": "18:00 Europe/Paris(장 마감 후) · 18:30 컨콜",
@@ -2247,11 +2510,39 @@
       "source": "https://www.loreal-finance.com/eng/sales-september-30-2026-after-market"
     },
     {
+      "ticker": "ROG.SW",
+      "date": "2026-10-22",
+      "time": "07:00 Europe/Zurich · 14:00 프레젠테이션",
+      "event": "2026 Q3 매출 발표",
+      "source": "https://www.roche.com/investors"
+    },
+    {
       "ticker": "ASM.AS",
       "date": "2026-10-27",
       "time": "18:00 Europe/Amsterdam · 10/28 15:00 컨콜",
       "event": "2026 Q3 실적 발표",
       "source": "https://www.asm.com/calendar"
+    },
+    {
+      "ticker": "BA",
+      "date": "2026-10-27",
+      "time": "10:30 America/New_York(컨콜)",
+      "event": "2026 Q3 실적·컨퍼런스콜",
+      "source": "https://boeing.mediaroom.com/2026-09-30-Boeing-to-Release-Third-Quarter-Results-on-October-27"
+    },
+    {
+      "ticker": "NOVN.SW",
+      "date": "2026-10-27",
+      "time": "13:00 Europe/Zurich(웹캐스트)",
+      "event": "2026 Q3 실적 발표",
+      "source": "https://www.novartis.com/investors/event-calendar"
+    },
+    {
+      "ticker": "NXPI",
+      "date": "2026-10-27",
+      "time": "장 마감 후 · 16:30 America/New_York(컨콜)",
+      "event": "2026 Q3 실적·컨퍼런스콜",
+      "source": "https://www.globenewswire.com/news-release/2026/10/06/3375444/0/en/nxp-semiconductors-announces-conference-call-to-review-third-quarter-2026-financial-results.html"
     },
     {
       "ticker": "TER",
@@ -2266,6 +2557,20 @@
       "time": "15:30 Asia/Tokyo(예정)",
       "event": "FY26 Q2 실적 발표",
       "source": "https://www.advantest.com/en/investors/ir-calendar/"
+    },
+    {
+      "ticker": "AIR.PA",
+      "date": "2026-10-28",
+      "time": "19:30 Europe/Paris(애널리스트 콜)",
+      "event": "2026 9개월 누적 실적 발표",
+      "source": "https://www.airbus.com/en/investors/upcoming-events-presentations"
+    },
+    {
+      "ticker": "F",
+      "date": "2026-10-28",
+      "time": "16:05 America/New_York · 17:00 컨콜",
+      "event": "2026 Q3 실적·컨퍼런스콜",
+      "source": "https://s205.q4cdn.com/882619693/files/content_files/Ford-Q3-2026-Earnings-Call-Advisory-10-1-26.pdf"
     },
     {
       "ticker": "GEV",
@@ -2289,11 +2594,25 @@
       "source": "https://ir.kla.com/news-events/press-releases/detail/522/kla-announces-first-quarter-fiscal-year-2027-earnings-date"
     },
     {
+      "ticker": "MBG.DE",
+      "date": "2026-10-28",
+      "time": "시간 미공지(Europe/Berlin)",
+      "event": "2026 Q3 중간보고서·애널리스트 콜",
+      "source": "https://group.mercedes-benz.com/investors/events/"
+    },
+    {
       "ticker": "MSFT",
       "date": "2026-10-28",
       "time": "장 마감 후 · 14:30 America/Los_Angeles(웹캐스트)",
       "event": "FY27 Q1 실적 발표",
       "source": "https://news.microsoft.com/source/2026/10/07/microsoft-announces-quarterly-earnings-release-date-69/"
+    },
+    {
+      "ticker": "STLA",
+      "date": "2026-10-28",
+      "time": "08:00 Europe/Amsterdam · 13:00 컨콜",
+      "event": "2026 Q3 실적 발표",
+      "source": "https://www.stellantis.com/en/news/press-releases/2026/october/stellantis-to-announce-third-quarter-2026-financial-results-on-october-28"
     },
     {
       "ticker": "VRT",
@@ -2310,11 +2629,60 @@
       "source": "https://www.businesswire.com/news/home/20261015676873/en/Amazon.com-to-Webcast-Third-Quarter-2026-Financial-Results-Conference-Call"
     },
     {
+      "ticker": "CAT",
+      "date": "2026-10-29",
+      "time": "장 시작 전 05:30 · 07:30 America/Chicago(컨콜)",
+      "event": "2026 Q3 실적·컨퍼런스콜",
+      "source": "https://www.caterpillar.com/en/news/corporate-press-releases/h/caterpillar-to-announce-3Q-2026-financial-results-on-oct-29.html"
+    },
+    {
+      "ticker": "INTC",
+      "date": "2026-10-29",
+      "time": "장 마감 후 · 14:00 America/Los_Angeles(컨콜)",
+      "event": "2026 Q3 실적·컨퍼런스콜",
+      "source": "https://www.intc.com/news-events/press-releases/detail/1782/intel-to-report-third-quarter-2026-financial-results"
+    },
+    {
       "ticker": "LLY",
       "date": "2026-10-29",
       "time": "10:00 America/New_York(컨콜)",
       "event": "2026 Q3 실적·컨퍼런스콜",
       "source": "https://investor.lilly.com/events/event-details/q3-2026-earnings-call"
+    },
+    {
+      "ticker": "PRY.MI",
+      "date": "2026-10-29",
+      "time": "시간 미공지(Europe/Rome)",
+      "event": "2026 Q3 실적 발표",
+      "source": "https://www.prysmian.com/en/investors/financial-calendar"
+    },
+    {
+      "ticker": "SHEL",
+      "date": "2026-10-29",
+      "time": "07:00 Europe/London",
+      "event": "2026 Q3 실적·중간배당 발표",
+      "source": "https://www.shell.com/news-and-insights/newsroom/news-and-media-releases/2026/advance-notice-of-third-quarter-2026-results-and-third-quarter-2026-interim-dividend-announcement.html"
+    },
+    {
+      "ticker": "STM",
+      "date": "2026-10-29",
+      "time": "유럽 장 시작 전 · 09:30 Europe/Paris(컨콜)",
+      "event": "2026 Q3 실적·컨퍼런스콜",
+      "source": "https://investors.st.com/events/event-details/q3-2026-financial-results"
+    },
+    {
+      "ticker": "TTE.PA",
+      "date": "2026-10-29",
+      "time": "시간 미공지(Europe/Paris)",
+      "event": "2026 Q3 실적 발표",
+      "source": "https://totalenergies.com/news/calendar"
+    },
+    {
+      "ticker": "VOW3.DE",
+      "date": "2026-10-29",
+      "time": "시간 미공지(Europe/Berlin)",
+      "event": "2026 1~9월 중간보고서(Q3 실적)",
+      "source": "https://www.volkswagen-group.com/en/events"
     },
     {
       "ticker": "6752.T",
@@ -2336,6 +2704,27 @@
       "time": "시간 미공지(Asia/Tokyo, 예정)",
       "event": "FY27 Q2 실적 발표",
       "source": "https://www.tel.co.jp/ir/calendar/index.html"
+    },
+    {
+      "ticker": "AZN",
+      "date": "2026-10-30",
+      "time": "시간 미공지(Europe/London)",
+      "event": "2026 9개월·Q3 실적 발표",
+      "source": "https://www.astrazeneca.com/investor-relations/shareholder-information.html"
+    },
+    {
+      "ticker": "CVX",
+      "date": "2026-10-30",
+      "time": "11:00 America/New_York(컨콜)",
+      "event": "2026 Q3 실적·컨퍼런스콜",
+      "source": "https://chevroncorp.gcs-web.com/news-releases/news-release-details/advisory-chevron-corporations-3q-2026-earnings-conference-call"
+    },
+    {
+      "ticker": "XOM",
+      "date": "2026-10-30",
+      "time": "05:30 America/Chicago · 08:30 컨콜",
+      "event": "2026 Q3 실적·컨퍼런스콜",
+      "source": "https://investor.exxonmobil.com/company-information/press-releases/detail/1212/exxonmobil-to-release-third-quarter-2026-financial-results"
     },
     {
       "ticker": "EL",
