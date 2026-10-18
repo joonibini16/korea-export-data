@@ -17,6 +17,8 @@
  const avg=a=>{a=a.filter(v=>v!=null&&isFinite(v));return a.length?a.reduce((s,v)=>s+v,0)/a.length:null;};
  const f1=v=>v==null?'—':(v>0?'+':'')+v.toFixed(1);
  const cls=v=>v==null?'':v>=0?'pos':'neg';
+ const prevMonth=mo=>{const [y,m]=mo.split('.').map(Number);return m===1?(y-1)+'.12':y+'.'+String(m-1).padStart(2,'0');};
+ const monthRate=(c,p,mo,k)=>{if(c==null||!Number.isFinite(c)||!Number.isFinite(p)||!(p>0)||c<0)return null;if(!adj)return (c/p-1)*100;const a=segDays(mo,k,false),b=segDays(prevMonth(mo),k,false);return a&&b?((c/a)/(p/b)-1)*100:null;};
  const SEGL=['1~10일','11~20일','21~말일'];
  let mode='item',adj=true,R=[],chart=null;
  // 관세청 조업일수: 평일 1, 토요일 0.5, 일요일·공휴일 0 (근로자의날 포함, 설·추석이 토요일과 겹칠 때 대체휴일 없음) — 발표문 조업일수와 대조 검증
@@ -29,7 +31,7 @@
  const yoyOf=(c,p,mo,k)=>{if(c==null||!(p>0)||c<0)return null;if(!adj)return (c/p-1)*100;const a=segDays(mo,k,false),b=segDays(mo,k,true);return a&&b?((c/a)/(p/b)-1)*100:(c/p-1)*100;};
 
  function build(rows){
-  const V={};rows.forEach(r=>{V[[r.month,r.release,r.kind,r.flow,r.name].join('|')]={c:+r.usd_mn,p:r.prev_usd_mn===''?null:+r.prev_usd_mn};});
+  const V={};rows.forEach(r=>{V[[r.month,r.release,r.kind,r.flow,r.name].join('|')]={c:r.usd_mn===''?null:+r.usd_mn,p:r.prev_usd_mn===''?null:+r.prev_usd_mn};});
   const months=[...new Set(rows.map(r=>r.month))].sort();
   const g=(m,rel,kind,name)=>{
    if(name==='총계(반도체 제외)'){const t=g(m,rel,'total','총계'),s=g(m,rel,'item','반도체');return t&&s&&t.p!=null&&s.p!=null?{c:t.c-s.c,p:t.p-s.p}:null;}
@@ -44,19 +46,21 @@
   const kind=mode==='item'?'item':'country';
   return names.map(n=>{
    const seg=slots.map(([m,k])=>{let c=null,p=null;const a=g(m,'D10',kind,n),b=g(m,'D20',kind,n),f=g(m,'FINAL',kind,n);
-    if(k===1&&a){c=a.c;p=a.p;}else if(k===2&&a&&b&&a.p!=null&&b.p!=null){c=b.c-a.c;p=b.p-a.p;}else if(k===3&&b&&f&&b.p!=null&&f.p!=null){c=f.c-b.c;p=f.p-b.p;}
+    if(k===1&&a&&a.c!=null){c=a.c;p=a.p;}else if(k===2&&a&&b&&a.c!=null&&b.c!=null&&a.p!=null&&b.p!=null){c=b.c-a.c;p=b.p-a.p;}else if(k===3&&b&&f&&b.c!=null&&f.c!=null&&b.p!=null&&f.p!=null){c=f.c-b.c;p=f.p-b.p;}
     const y=yoyOf(c,p,m,k),yr=c!=null&&p>0&&c>=0?(c/p-1)*100:null;return {m,k,c,p,y,yr,da:segDays(m,k,false),db:segDays(m,k,true)};});
+   seg.forEach(q=>{const prior=seg.find(v=>v.m===prevMonth(q.m)&&v.k===q.k);q.monthRaw=prior&&Number.isFinite(q.c)&&Number.isFinite(prior.c)&&q.c!=null&&prior.c>0&&q.c>=0?(q.c/prior.c-1)*100:null;q.monthChange=prior?monthRate(q.c,prior.c,q.m,q.k):null;});
    const last9=seg.slice(-9),ys=seg.map(s=>s.y);
    const r3=avg(ys.slice(-3)),p3=avg(ys.slice(-6,-3)),mom=r3!=null&&p3!=null?r3-p3:null;
    const lastY=[...seg].reverse().find(s=>s.y!=null);
    // 당월 누적(최신 잠정치 발표 기준)
    const lm=latestD.slice(0,7),lr=latestD.endsWith('1')?'D10':'D20',cum=g(lm,lr,kind,n);
    const cumY=cum?yoyOf(cum.c,cum.p,lm,lr==='D10'?'10d':'20d'):null;
+   const prevCum=g(prevMonth(lm),lr,kind,n),cumMoM=cum&&prevCum?monthRate(cum.c,prevCum.c,lm,lr==='D10'?'10d':'20d'):null;
    // TTM: 확정치 최근 12개월
    const fm=months.filter(m=>g(m,'FINAL',kind,n)).slice(-12);let ttm=null,ttmY=null,ttmEnd=null;
    if(fm.length===12){const s=fm.map(m=>g(m,'FINAL',kind,n));ttm=s.reduce((a,v)=>a+v.c,0);const pp=s.reduce((a,v)=>a+(v.p||0),0);ttmY=pp>0&&s.every(v=>v.p!=null)?(ttm/pp-1)*100:null;ttmEnd=fm.at(-1);}
    const miss3=seg.slice(-9).filter(s=>s.k===3&&s.y==null&&s.m<lm).length;
-   return {n,seg,last9,r3,p3,mom,lastY,cumY,cumLbl:lm+' '+(lr==='D10'?'1~10':'1~20'),ttm,ttmY,ttmEnd,sig:judge(r3,p3),miss3};
+   return {n,seg,last9,r3,p3,mom,lastY,cumY,cumMoM,cumLbl:lm+' '+(lr==='D10'?'1~10':'1~20'),ttm,ttmY,ttmEnd,sig:judge(r3,p3),miss3};
   }).filter(x=>x.last9.some(s=>s.y!=null));
  }
 
@@ -75,16 +79,16 @@
   const latest=L[0]?.last9.at(-1);
   host.innerHTML=`<div class="sg-top"><div class="sg-tg">${[['item','수출 품목'],['country','수출 국가']].map(([k,t])=>`<button class="period${mode===k?' active':''}" data-m="${k}">${t}</button>`).join('')}<span style="width:14px"></span>${[[1,'일평균(조업일수 보정)'],[0,'금액 그대로']].map(([k,t])=>`<button class="period${+adj===k?' active':''}" data-a="${k}">${t}</button>`).join('')}</div>
    <div class="sg-sum">${Object.keys(SIG).filter(k=>cnt[k]).map(k=>`<span class="sg-b" style="color:${SIG[k].c};background:${SIG[k].bg}">${k} ${cnt[k]}</span>`).join(' ')}</div></div>
-   <div class="table-wrap"><table class="sg"><thead><tr><th>${mode==='item'?'품목':'국가'}</th><th>시그널</th><th>최신구간 YoY${adj?'<div class="sg-h">일평균 기준</div>':''}<div class="sg-h">${latest?latest.m.slice(2).replace('.','.')+' '+SEGL[latest.k-1]:''}</div></th><th>3개월 추세<div class="sg-h">10일 구간 YoY · 9구간</div></th><th>모멘텀<div class="sg-h">최근3−직전3 (%p)</div></th><th>당월누적 YoY<div class="sg-h">${L[0]?L[0].cumLbl+'일':''}</div></th><th>TTM YoY<div class="sg-h">확정치 12개월</div></th><th>TTM (억$)</th><th></th></tr></thead><tbody>`+
+   <div class="table-wrap"><table class="sg"><thead><tr><th>${mode==='item'?'품목':'국가'}</th><th>시그널</th><th>최신구간 YoY${adj?'<div class="sg-h">일평균 기준</div>':''}<div class="sg-h">${latest?latest.m.slice(2).replace('.','.')+' '+SEGL[latest.k-1]:''}</div></th><th>최신구간 MoM<div class="sg-h">전월 동일 구간${adj?' · 일평균':''}</div></th><th>3개월 추세<div class="sg-h">10일 구간 YoY · 9구간</div></th><th>모멘텀<div class="sg-h">최근3−직전3 (%p)</div></th><th>당월누적 YoY<div class="sg-h">${L[0]?L[0].cumLbl+'일':''}</div></th><th>당월누적 MoM<div class="sg-h">전월 동일 누적기간</div></th><th>TTM YoY<div class="sg-h">확정치 12개월</div></th><th>TTM (억$)</th><th></th></tr></thead><tbody>`+
    L.map((x,i)=>{const s=SIG[x.sig],tot=/^총계/.test(x.n);return `<tr class="${tot?'sg-tot':''}"><td><b>${x.n}</b></td><td><span class="sg-b" style="color:${s.c};background:${s.bg}" title="${s.d}">${x.sig}</span></td>
     <td class="num ${cls(x.lastY&&x.lastY.y)}">${x.lastY?f1(x.lastY.y)+'%':'—'}${x.lastY&&x.lastY!==x.last9.at(-1)?'<div class="sg-h">'+x.lastY.m.slice(2)+' '+SEGL[x.lastY.k-1]+'</div>':''}</td>
-    <td>${spark(x.last9,s.c)}</td><td class="num ${cls(x.mom)}"><b>${f1(x.mom)}</b></td><td class="num ${cls(x.cumY)}">${x.cumY==null?'—':f1(x.cumY)+'%'}</td>
-    <td class="num ${cls(x.ttmY)}">${x.ttmY==null?'—':f1(x.ttmY)+'%'}</td><td class="num">${x.ttm==null?'—':Math.round(x.ttm/100).toLocaleString()}</td>
-    <td><button class="sg-d" data-i="${i}">상세</button></td></tr><tr class="sg-x" id="sgx${i}" hidden><td colspan="9"></td></tr>`;}).join('')+'</tbody></table></div>'+
+    <td class="num ${cls(x.last9.at(-1)?.monthChange)}">${x.last9.at(-1)?.monthChange==null?'—':f1(x.last9.at(-1).monthChange)+'%'}</td><td>${spark(x.last9,s.c)}</td><td class="num ${cls(x.mom)}"><b>${f1(x.mom)}</b></td><td class="num ${cls(x.cumY)}">${x.cumY==null?'—':f1(x.cumY)+'%'}</td>
+    <td class="num ${cls(x.cumMoM)}">${x.cumMoM==null?'—':f1(x.cumMoM)+'%'}</td><td class="num ${cls(x.ttmY)}">${x.ttmY==null?'—':f1(x.ttmY)+'%'}</td><td class="num">${x.ttm==null?'—':Math.round(x.ttm/100).toLocaleString()}</td>
+    <td><button class="sg-d" data-i="${i}">상세</button></td></tr><tr class="sg-x" id="sgx${i}" hidden><td colspan="11"></td></tr>`;}).join('')+'</tbody></table></div>'+
    `<details class="sg-note"><summary>판단 기준·자료 설명</summary><ul>
     <li><b>구간</b>: 관세청 잠정치 1~10일(①), 1~20일−1~10일(②), 월간 확정치−1~20일(③ 21일~말일). 전년동기 금액은 발표 증감률로 역산해 같은 방식으로 뺍니다. 모든 수치는 관세청 원문(보도자료 첨부 PDF) 기준입니다.</li>
     <li><b>일평균(조업일수 보정)</b>: 10일 구간은 명절·공휴일 위치에 따라 조업일수가 크게 달라집니다(예: 2026.10 1~10일 5.5일 vs 전년 3.5일, 2025년 추석이 10월). 기본값은 구간별 조업일수(평일 1, 토 0.5, 일·공휴일 0 — 관세청 방식)로 나눈 일평균 증가율이며, '금액 그대로'를 누르면 발표 증감률 방식으로 바뀝니다. TTM은 금액 기준.</li>
-    <li><b>모멘텀</b> = 최근 3구간 YoY 평균 − 직전 3구간 YoY 평균. 시그널은 최근 3구간 평균(수준)과 모멘텀(속도)으로 판정합니다.</li>
+    <li><b>MoM</b> = 당해 금액 ÷ 전월 동일 구간 금액 − 1. ①끼리·②끼리·③끼리 비교하며, 당월누적은 D10끼리·D20끼리 비교합니다. 일평균 모드에서는 양쪽 모두 각 구간 조업일수로 나눕니다. 전월 누락·0·음수이면 비워둡니다. 월말 구간 길이 차이·계절성은 남을 수 있습니다.</li><li><b>모멘텀</b> = 최근 3구간 YoY 평균 − 직전 3구간 YoY 평균. 시그널은 최근 3구간 평균(수준)과 모멘텀(속도)으로 판정합니다.</li>
     ${Object.entries(SIG).map(([k,v])=>`<li><span class="sg-b" style="color:${v.c};background:${v.bg}">${k}</span> ${v.d}</li>`).join('')}
     <li>10일 구간은 조업일수·선적 몰림(선박 인도, 월말 집중)에 따라 크게 흔들립니다. 단일 구간보다 3구간 평균과 TTM을 함께 보세요.</li>
     <li>컴퓨터주변기기·정밀기기는 월간 확정치 표에 같은 분류가 없어 21일~말일 구간(③)이 빈칸(회색 점)이며, 모멘텀은 있는 구간만으로 계산합니다. TTM은 확정치에 같은 품목이 있을 때만 표시합니다.</li>
@@ -101,7 +105,8 @@
   chart=new Chart(tr.querySelector('canvas'),{data:{labels:seg.map(q=>q.m.slice(2)+' '+['①','②','③'][q.k-1]),datasets:[
    {type:'bar',label:'전년동기',data:seg.map(q=>q.p==null?null:q.p/100),backgroundColor:'#cbd5e1',yAxisID:'y'},
    {type:'bar',label:'당해',data:seg.map(q=>q.c==null?null:q.c/100),backgroundColor:s.c+'cc',yAxisID:'y'},
-   {type:'line',label:(adj?'일평균 ':'')+'YoY(%, 우)',data:seg.map(q=>q.y),borderColor:'#111827',backgroundColor:'#111827',pointRadius:3,spanGaps:true,yAxisID:'y1'}]},
+   {type:'line',label:(adj?'일평균 ':'')+'YoY(%, 우)',data:seg.map(q=>q.y),borderColor:'#111827',backgroundColor:'#111827',pointRadius:3,spanGaps:true,yAxisID:'y1'},
+   {type:'line',label:(adj?'일평균 ':'')+'MoM(%, 우)',data:seg.map(q=>q.monthChange),borderColor:'#f59e0b',backgroundColor:'#f59e0b',borderDash:[5,3],pointRadius:3,spanGaps:false,yAxisID:'y1'}]},
    options:{responsive:true,maintainAspectRatio:false,animation:false,plugins:{rangeNav:false,tooltip:{mode:'index',intersect:false}},scales:{y:{beginAtZero:true,title:{display:true,text:'억 달러'}},y1:{position:'right',grid:{drawOnChartArea:false},ticks:{callback:v=>v+'%'}}}}});
  }
 
