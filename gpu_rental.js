@@ -25,8 +25,9 @@
     return all.filter(r => r.length === head.length).map(r => Object.fromEntries(head.map((k, i) => [k.replace(/^\uFEFF/, ''), r[i]])));
   }
   try {
-    const [res, status] = await Promise.all([
+    const [res, refText, status] = await Promise.all([
       fetch('price_indicators_log.csv?v=' + Date.now(), {cache:'no-store'}),
+      fetch('price_ref_history.csv?v=' + Date.now(), {cache:'no-store'}).then(r => r.ok ? r.text() : '').catch(() => ''),
       fetch('price_indicators_status.json?v=' + Date.now(), {cache:'no-store'}).then(r => r.ok ? r.json() : null).catch(() => null)
     ]);
     if (!res.ok) throw Error('가격 파일 응답 ' + res.status);
@@ -39,6 +40,9 @@
       });
       return [...seen.values()].sort((a, b) => a.d.localeCompare(b.d));
     };
+    // 과거 이력: BADONION 차트 판독 참고치(A100·H100·B200, 2024.09~). 집계 방식이 Vast.ai 호가 중앙값과 달라 별도 선으로 표시
+    const refRows = refText ? csv(refText) : [];
+    const refSeries = key => refRows.filter(r => r.series === 'ref_gpu_' + key && Number(r.value) > 0).map(r => ({d:r.date, v:Number(r.value)})).sort((a, b) => a.d.localeCompare(b.d));
     const sets = specs.map(([key, name, color]) => ({key, name, color, data:series('gpu_' + key + '_vast')}));
     const latestDate = sets.flatMap(s => s.data.map(x => x.d)).sort().at(-1);
     const fmtTime = value => value && Number.isFinite(Date.parse(value)) ? new Intl.DateTimeFormat('ko-KR', {timeZone:'Asia/Seoul', dateStyle:'medium', timeStyle:'short', hour12:false}).format(new Date(value)) + ' KST' : '확인 불가';
@@ -68,6 +72,17 @@
         const values = mode === 'index' ? s.data.filter(x => base && x.d >= common).map(x => ({x:stamp(x.d), y:x.v / base * 100})) : s.data.map(x => ({x:stamp(x.d), y:x.v}));
         return {label:s.name, data:values, borderColor:s.color, backgroundColor:s.color, borderWidth:2.3, pointRadius:values.length < 8 ? 4 : 0, pointHitRadius:12, parsing:false, spanGaps:false};
       });
+      const hist = document.getElementById('gpu-hist').checked;
+      if (hist) {
+        const lastAll = Math.max(...sets.flatMap(s => s.data.map(x => stamp(x.d))), 0);
+        specs.forEach(([key, name, color]) => {
+          let r = refSeries(key).filter(x => stamp(x.d) >= cutoff);
+          if (!r.length) return;
+          let data = r.map(x => ({x:stamp(x.d), y:x.v}));
+          if (mode === 'index') { const b = data[0].y; data = data.map(p => ({x:p.x, y:p.y / b * 100})); }
+          datasets.push({label:name + ' 과거(판독 참고)', data, borderColor:color + 'aa', backgroundColor:color + 'aa', borderWidth:1.4, pointRadius:0, pointHitRadius:6, parsing:false, spanGaps:true, order:10});
+        });
+      }
       if (mode === 'price' && document.getElementById('gpu-runpod').checked) {
         specs.forEach(([key, name, color]) => {
           const data = series('gpu_' + key + '_runpod_secure').filter(x => stamp(x.d) >= cutoff).map(x => ({x:stamp(x.d), y:x.v}));
@@ -75,18 +90,18 @@
         });
       }
       document.getElementById('gpu-runpod').disabled = mode !== 'price';
-      const times = datasets.flatMap(s => s.data.map(x => x.x)), min = Math.min(...times), max = Math.max(...times);
+      const times = datasets.flatMap(s => s.data.map(x => x.x)), min = Math.min(...times), max = Math.max(...times), longSpan = max - min > 120 * day;
       if (chart) chart.destroy();
       chart = new Chart(document.getElementById('gpu-trend'), {
         type:'line', data:{datasets}, options:{responsive:true, maintainAspectRatio:false, animation:false,
           interaction:{mode:'nearest', intersect:false, axis:'x'},
           plugins:{legend:{position:'top'}, tooltip:{callbacks:{title:items => new Date(items[0].parsed.x).toISOString().slice(0,10), label:c => c.dataset.label + ': ' + (mode === 'price' ? money(c.parsed.y) + ' / GPU·시간' : c.parsed.y.toFixed(2))}}},
-          scales:{x:{type:'linear', min:Number.isFinite(min) && max - min < 2 * day ? min - day : undefined, max:Number.isFinite(max) && max - min < 2 * day ? max + day : undefined, ticks:{stepSize:max - min < 90 * day ? day : undefined, maxTicksLimit:8, callback:v => new Date(v).toISOString().slice(0,10)}}, y:{beginAtZero:false, title:{display:true, text:mode === 'price' ? 'USD / GPU·시간 (호가 중앙값)' : `공통 첫 관측일 ${common || '없음'} = 100`}}}}
+          scales:{x:{type:'linear', min:Number.isFinite(min) && max - min < 2 * day ? min - day : undefined, max:Number.isFinite(max) && max - min < 2 * day ? max + day : undefined, ticks:{stepSize:max - min < 90 * day ? day : undefined, maxTicksLimit:8, callback:v => longSpan ? new Date(v).toISOString().slice(2,7).replace('-', '.') : new Date(v).toISOString().slice(0,10)}}, y:{beginAtZero:false, title:{display:true, text:mode === 'price' ? 'USD / GPU·시간' : (hist ? '각 선의 첫 값 = 100' : `공통 첫 관측일 ${common || '없음'} = 100`)}}}}
       });
-      document.getElementById('gpu-note').textContent = (mode === 'index' ? common ? `5종 공통 관측일 ${common}부터 비교합니다. ` : '5종 공통 관측일이 아직 없어 지수 비교를 보류합니다. ' : '호가와 공시가는 실제 체결가가 아닙니다. ') + '마우스를 올리면 해당 날짜·가격을 확인할 수 있습니다. 전일·7일·30일 값이 없으면 변동률은 비워둡니다. H200·RTX 5090은 이번 수집부터 누적합니다.';
+      document.getElementById('gpu-note').textContent = (mode === 'index' ? common ? `5종 공통 관측일 ${common}부터 비교합니다. ` : '5종 공통 관측일이 아직 없어 지수 비교를 보류합니다. ' : '호가와 공시가는 실제 체결가가 아닙니다. ') + (hist ? '옅은 선은 2024년 9월부터의 과거 이력(BADONION 차트 판독 참고치, A100·H100·B200)으로, Vast.ai 호가 중앙값과 집계 방식이 달라 수준 차이가 있습니다(예: A100 판독 $1.5 vs Vast 중앙값 $0.8). 방향·추세 비교용으로 보세요. ' : '') + '마우스를 올리면 해당 날짜·가격을 확인할 수 있습니다. 전일·7일·30일 값이 없으면 변동률은 비워둡니다. H200·RTX 5090은 이번 수집부터 누적합니다.';
     }
     draw();
-    ['gpu-mode','gpu-range','gpu-runpod'].forEach(id => document.getElementById(id).addEventListener('change', draw));
+    ['gpu-mode','gpu-range','gpu-runpod','gpu-hist'].forEach(id => document.getElementById(id).addEventListener('change', draw));
   } catch (e) {
     document.getElementById('gpu-time').textContent = 'GPU 가격을 불러오지 못했습니다: ' + e.message;
   }

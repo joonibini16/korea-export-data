@@ -13,7 +13,7 @@
 <div class="ph"><div><h2>GPU 임대가격</h2><p class="muted" id="gpu-time">수집값 확인 중…</p></div><a href="https://temperature2.com/gpu/" target="_blank" rel="noopener noreferrer">temperature2 GPU 지수 원문 ↗</a></div>
 <p class="muted">Vast.ai 대여 가능 on-demand 매물의 GPU 1장·1시간당 호가 중앙값입니다. temperature2의 거래 기반 Ornn OCPI와 집계 방식이 다릅니다.</p>
 <div style="overflow:auto"><table class="kt" id="gpu-board" aria-label="GPU 임대가격 비교"></table></div>
-<div class="ph" style="margin:18px 0 8px"><label>표시 방식 <select id="gpu-mode"><option value="price">임대가격 (USD/GPU·시간)</option><option value="index">추이 비교 (공통 첫 관측일=100)</option></select></label><label><input type="checkbox" id="gpu-runpod"> RunPod 공시가 함께 보기</label><label>기간 <select id="gpu-range"><option value="all">전체</option><option value="30">최근 30일</option><option value="90">최근 90일</option></select></label></div>
+<div class="ph" style="margin:18px 0 8px"><label>표시 방식 <select id="gpu-mode"><option value="price">임대가격 (USD/GPU·시간)</option><option value="index">추이 비교 (공통 첫 관측일=100)</option></select></label><label><input type="checkbox" id="gpu-hist" checked> 과거 이력(2024.09~, 판독 참고치) 함께 보기</label><label><input type="checkbox" id="gpu-runpod"> RunPod 공시가 함께 보기</label><label>기간 <select id="gpu-range"><option value="all">전체</option><option value="30">최근 30일</option><option value="90">최근 90일</option><option value="365">최근 1년</option></select></label></div>
 <div class="chart"><canvas id="gpu-trend" aria-label="GPU 5종 임대가격 추이" role="img"></canvas></div><p class="muted" id="gpu-note"></p>
 <p class="muted">원문 지수: <a href="https://temperature2.com/gpu/" target="_blank" rel="noopener noreferrer">temperature2</a> · <a href="https://data.ornn.com/" target="_blank" rel="noopener noreferrer">Ornn Data</a>. Ornn 지수의 공개 재게시에는 별도 허락이 필요하여 원문에서 확인하도록 연결합니다. 매물 없는 날은 0으로 채우지 않습니다.</p>
 </section>
@@ -31,5 +31,5 @@
 · <b>DDR5 RDIMM</b>: 32GB 현물가는 DRAMeXchange(TrendForce) 모듈 현물 세션 평균(주간 갱신)으로 매일 이어 붙입니다. 64GB 현물가·계약가와 스프레드 막대는 무료 공개 자료가 없어 BADONION 차트 판독치(~2026-10-05)만 표시합니다.<br>
 · 판독치는 차트 픽셀을 읽은 근사값이라 원 자료와 ±1~2% 차이가 날 수 있습니다.</p></section>
 </main>
-<script src="./prices.js?v=6"></script><script src="./gpu_rental.js?v=2"></script></body></html>
+<script src="./prices.js?v=6"></script><script src="./gpu_rental.js?v=3"></script></body></html>
 
