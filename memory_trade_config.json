@@ -1,0 +1,8 @@
+{
+  "country_code": "VN",
+  "country_name": "베트남",
+  "items": [
+    {"hs_code": "8473304060", "name": "메모리모듈(DRAM)"},
+    {"hs_code": "8523511000", "name": "SSD"}
+  ]
+}
