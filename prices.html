@@ -10,12 +10,14 @@
 <h1>가격 지표</h1>
 <p class="muted">AI 수요의 가격 신호를 한곳에서 봅니다: GPU 임대 가격 5종, LLM 토큰 지출·사용량, 서버 D램 가격. 매일 자동 수집하며 과거 구간은 BADONION RESEARCH 차트를 판독한 참고치입니다.</p>
 <section class="panel" id="nebius-spot" aria-labelledby="nebius-title">
-<div class="ph"><div><h2 id="nebius-title">Nebius GPU Spot 가격 · 공식 실시간 화면</h2><p class="muted">GPU·지역별 USD/GPU·시간. 중단 가능한 Preemptible VM 요금으로, 아래 Vast.ai on-demand 호가와 계약 조건이 다릅니다.</p></div><a id="nebius-source" href="https://nebius.com/spot-prices?historyGpus=B300&amp;historyRange=7d&amp;period=7d#price-history" target="_blank" rel="noopener noreferrer">Nebius 공식 가격 열기 ↗</a></div>
-<div class="ph" style="margin:12px 0"><label>GPU <select id="nebius-gpu"><option>B300</option><option>B200</option><option>H200</option><option>H100</option><option>RTX PRO 6000</option></select></label><label>가격 이력 <select id="nebius-range"><option value="7d">최근 7일</option><option value="1d">최근 1일</option></select></label><label><input type="checkbox" id="nebius-auto" checked> 열어둔 동안 15분 자동갱신</label><button type="button" id="nebius-refresh">지금 새로고침</button></div>
-<p class="muted" id="nebius-status" role="status">공식 가격 화면을 요청합니다.</p>
-<iframe id="nebius-frame" title="Nebius 공식 GPU Spot 가격·지역별 이력" style="display:block;width:100%;height:1050px;border:1px solid #334560;border-radius:10px;background:#fff" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-<p class="muted">원문 안에서 지역·GPU를 선택하고 그래프에 마우스를 올려 시각별 가격을 볼 수 있습니다. 가격 기준 시각은 공식 화면의 Updated / Effective since(UTC)를 확인하세요. 위 요청 시각은 가격의 변경 시각이 아닙니다. 자동 새로고침 시 원문 내부 선택은 상단 GPU·기간 설정으로 돌아옵니다.</p>
-<p class="muted">공식 화면을 직접 표시합니다. 서버 API 자동 수집은 현재 접근 제한으로 누적 저장하지 않습니다. 화면이 표시되지 않으면 위 원문 링크에서 확인하세요.</p>
+<div class="ph"><div><h2 id="nebius-title">Nebius GPU Spot 가격 · 지역별 추이</h2><p class="muted">중단 가능한 Preemptible VM 공시 요금 · USD/GPU·시간. 기존 on-demand 호가와 계약 조건이 다릅니다.</p></div><a id="nebius-source" href="https://nebius.com/spot-prices?historyGpus=B300&amp;historyRange=7d&amp;period=7d#price-history" target="_blank" rel="noopener noreferrer">Nebius 공식 실시간 가격 ↗</a></div>
+<div class="ph" style="margin:12px 0"><label>GPU <select id="nebius-gpu" aria-label="Nebius GPU"></select></label><label>지역 <select id="nebius-region" aria-label="Nebius 지역"></select></label><label>기간 <select id="nebius-range"><option value="7">최근 7일</option><option value="1">최근 1일</option><option value="30">최근 30일</option><option value="all">전체 누적</option></select></label><label><input type="checkbox" id="nebius-auto" checked> 새 수집값 15분마다 화면 반영</label><button type="button" id="nebius-refresh">최신 저장값 확인</button></div>
+<p class="muted" id="nebius-status" role="status">가격을 읽는 중입니다.</p>
+<div class="ph" style="margin:12px 0"><b id="nebius-summary"></b><span class="muted" id="nebius-growth"></span></div>
+<div class="chart"><canvas id="nebius-trend" role="img" aria-label="Nebius GPU 지역별 Spot 가격 추이"></canvas></div>
+<div style="overflow:auto"><table class="kt" id="nebius-board" aria-label="Nebius GPU 지역별 가격"></table></div>
+<p class="muted">Work가 공식 공개 화면을 매시간 확인해 가격을 저장합니다. 가격 적용 시각(UTC)과 수집 시각(KST)을 구분해 표시합니다. 과거 관측값이 쌓이면 지역별 추이가 이어지며, 확인하지 못한 과거값과 빈 값은 만들지 않습니다. 가격 적용 시각이 오래됐더라도 이번에 다시 확인한 동일 요금일 수 있습니다.</p>
+<p class="muted">실시간 현재값은 위 공식 원문에서 확인할 수 있습니다. API 자동수집·외부 화면 삽입은 현재 제공처가 제한해 Work의 정상 공개 화면 조회를 사용합니다.</p>
 </section>
 <section class="panel" id="gpu-rental">
 <div class="ph"><div><h2>GPU 임대가격</h2><p class="muted" id="gpu-time">수집값 확인 중…</p></div><a href="https://temperature2.com/gpu/" target="_blank" rel="noopener noreferrer">temperature2 GPU 지수 원문 ↗</a></div>
@@ -40,6 +42,6 @@
 · <b>DDR5 RDIMM</b>: 32GB 현물가는 DRAMeXchange(TrendForce) 모듈 현물 세션 평균(주간 갱신)으로 매일 이어 붙입니다. 64GB 현물가·계약가와 스프레드 막대는 무료 공개 자료가 없어 BADONION 차트 판독치(~2026-10-05)만 표시합니다.<br>
 · 판독치는 차트 픽셀을 읽은 근사값이라 원 자료와 ±1~2% 차이가 날 수 있습니다.</p></section>
 </main>
-<script src="./prices.js?v=6"></script><script src="./gpu_rental.js?v=5"></script><script src="./nebius_spot.js?v=1"></script></body></html>
+<script src="./prices.js?v=6"></script><script src="./gpu_rental.js?v=5"></script><script src="./nebius_spot.js?v=2"></script></body></html>
 
 
