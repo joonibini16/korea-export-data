@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-19T08:45:57",
+ "updated": "2026-10-19T08:47:03",
  "companies": {
   "NVDA": "27 quarters · profit 81 · seg-op 4 · axes ProductOrServiceAxis(27)",
   "AMD": "25 quarters · profit 102 · seg-op 11 · axes StatementBusinessSegmentsAxis(25)",
@@ -10,10 +10,10 @@
   "ASML": "0 filings, no segment facts",
   "AMAT": "27 quarters · profit 102 · seg-op 7 · axes StatementBusinessSegmentsAxis(27)",
   "LRCX": "29 quarters · profit 108 · seg-op 0 · axes ProductOrServiceAxis(29)",
-  "KLAC": "32 quarters · profit 44 · seg-op 0 · axes StatementBusinessSegmentsAxis(28), ProductOrServiceAxis(4)",
+  "KLAC": "32 quarters · profit 44 · seg-op 0 · axes ProductOrServiceAxis(32)",
   "MSFT": "28 quarters · profit 84 · seg-op 3 · axes ProductOrServiceAxis(24), StatementBusinessSegmentsAxis(4)",
   "GOOGL": "16 quarters · profit 32 · seg-op 3 · axes StatementBusinessSegmentsAxis(16)",
-  "AMZN": "27 quarters · profit 60 · seg-op 3 · axes ProductOrServiceAxis(21), StatementBusinessSegmentsAxis(6)",
+  "AMZN": "27 quarters · profit 60 · seg-op 3 · axes ProductOrServiceAxis(25), StatementBusinessSegmentsAxis(2)",
   "META": "12 quarters · profit 24 · seg-op 2 · axes StatementBusinessSegmentsAxis(12)",
   "ORCL": "29 quarters · profit 66 · seg-op 4 · axes StatementBusinessSegmentsAxis(14), ProductOrServiceAxis(15)",
   "ETN": "34 quarters · profit 32 · seg-op 15 · axes StatementBusinessSegmentsAxis(34)",
@@ -30,7 +30,7 @@
   "GM": "19 quarters · profit 66 · seg-op 0 · axes BusinessGroupAxis(12), StatementBusinessSegmentsAxis(7)",
   "F": "32 quarters · profit 45 · seg-op 0 · axes ProductOrServiceAxis(32)",
   "STLA": "0 filings, no segment facts",
-  "AAPL": "33 quarters · profit 103 · seg-op 5 · axes StatementBusinessSegmentsAxis(33)",
+  "AAPL": "33 quarters · profit 103 · seg-op 5 · axes ProductOrServiceAxis(33)",
   "DELL": "14 quarters · profit 42 · seg-op 3 · axes StatementBusinessSegmentsAxis(12), ProductOrServiceAxis(2)",
   "ANET": "22 quarters · profit 66 · seg-op 0 · axes ProductOrServiceAxis(22)",
   "INTC": "33 quarters · profit 102 · seg-op 17 · axes ProductOrServiceAxis(16), ConsolidatedEntitiesAxis(4), StatementBusinessSegmentsAxis(13)",
