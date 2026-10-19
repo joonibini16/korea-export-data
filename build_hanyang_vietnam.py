@@ -131,7 +131,7 @@ def build():
         r['opm_pct']=round(r['operating_profit_krw']/r['revenue_krw']*100,6) if r['revenue_krw'] and r['operating_profit_krw'] is not None else None
     for data,key in [(monthly,lambda r:(r['month'],r['hs_code'])),(quarterly,lambda r:(r['period'],r['hs_code']))]:
         if len({key(r) for r in data}) != len(data): raise ValueError('Duplicate output')
-    for name in ['company_financials.csv','hs_codes.csv','hanyang_vietnam_config.json']:
+    for name in ['company_financials.csv','hs_codes.csv','hanyang_vietnam_config.json','build_hanyang_vietnam.py']:
         sources[name]={'sha256':hashlib.sha256((ROOT/name).read_bytes()).hexdigest()}
     target=ROOT/'hanyang_vietnam.json'
     if target.exists() and json.loads(target.read_text(encoding='utf-8')).get('source_files')==sources:
