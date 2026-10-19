@@ -15,6 +15,7 @@ UA = {'User-Agent': 'korea-export-data research dashboard knwy26@gmail.com', 'Ac
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / 'global_segments_sec.csv'
 CACHE = ROOT / '.secseg-cache'; CACHE.mkdir(exist_ok=True)
+PROFIT = {'OperatingIncomeLoss': 'op_income', 'GrossProfit': 'gross_profit', 'NetIncomeLoss': 'net_income'}
 REV = {'Revenues', 'RevenueFromContractWithCustomerExcludingAssessedTax', 'RevenueFromContractWithCustomerIncludingAssessedTax', 'SalesRevenueNet', 'RevenuesNetOfInterestExpense'}
 GENERIC = {'product', 'products', 'service', 'services', 'productandservice', 'productsandservices', 'serviceandother', 'serviceother', 'productother'}
 PS = re.compile(r'^(Products?|Services?|Product.*Excluding|Services? And|Subscriptions? ?and Services|Product And Service)', re.I)
@@ -67,7 +68,7 @@ def parse(html):
         nm = re.search(r'\bname="([^"]+)"', attrs); cr = re.search(r'\bcontextRef="([^"]+)"', attrs)
         if not nm or not cr: continue
         concept = nm.group(1).split(':')[-1]
-        if concept not in REV or cr.group(1) not in ctx: continue
+        if (concept not in REV and concept not in PROFIT) or cr.group(1) not in ctx: continue
         t = txt.strip().replace(',', '')
         if not re.fullmatch(r'-?[\d.]+', t or ''): continue
         sc = re.search(r'\bscale="(-?\d+)"', attrs)
@@ -96,9 +97,9 @@ def main():
         fl = [dict(form=rec['form'][i], acc=rec['accessionNumber'][i], date=rec['reportDate'][i], doc=rec['primaryDocument'][i], filed=rec['filingDate'][i])
               for i in range(len(rec['form'])) if rec['form'][i] in ('10-Q', '10-K') and rec['reportDate'][i] >= START and rec['primaryDocument'][i].endswith('.htm')]
         # 회사별: (axis, member) → {(start,end): value}, 총매출 {(start,end): value}
-        seg = defaultdict(dict); tot = {}; src = {}; geo_parts = {}
+        seg = defaultdict(dict); tot = {}; src = {}; geo_parts = {}; ptot = defaultdict(dict); pseg = defaultdict(dict)
         for f in fl:
-            cf = CACHE / f"{t}_{f['acc']}.json"
+            cf = CACHE / f"{t}_{f['acc']}_v2.json"
             if cf.exists():
                 facts = json.loads(cf.read_text())
             else:
@@ -112,6 +113,14 @@ def main():
             for concept, dims, s, e, v in facts:
                 span = (dt.date.fromisoformat(e) - dt.date.fromisoformat(s)).days
                 if not (80 <= span <= 100 or 350 <= span <= 380): continue
+                if concept in PROFIT:
+                    k = PROFIT[concept]
+                    if not dims: ptot[k].setdefault((s, e), v); src.setdefault((s, e), url)
+                    elif k == 'op_income':
+                        d2 = [d for d in dims if not (d[0].endswith('ConsolidationItemsAxis') and d[1].endswith('OperatingSegmentsMember'))]
+                        if len(d2) == 1 and d2[0][0].endswith('StatementBusinessSegmentsAxis'):
+                            pseg[d2[0][1]].setdefault((s, e), v)
+                    continue
                 if not dims:
                     tot.setdefault((s, e), v); src.setdefault((s, e), url); continue
                 # 운영부문 표시(ConsolidationItemsAxis=OperatingSegmentsMember)는 의미 없는 보조 축이라 제거
@@ -200,7 +209,15 @@ def main():
                 rows.append(dict(company=t, period=per, kind='segment_revenue', item=it, value=round(v / 1e6, 1), unit='USD mn', source=u + f" (SEC XBRL {ax.replace('#geo', ', 지역 합산')})"))
                 rows.append(dict(company=t, period=per, kind='share', item=it, value=round(v / ssum * 100, 2), unit='%', source=u + ' (항목 합 대비)'))
             n += 1
-        status[t] = f'{n} quarters · axes ' + ', '.join(f'{a}({c})' for a, c in used.items())
+        # 이익(회사 전체: 매출총이익·영업이익·순이익, 사업부문 영업이익)
+        npf = 0
+        for k, ser in ptot.items():
+            for e, (v, span) in quarters(ser).items():
+                rows.append(dict(company=t, period=qlabel(span), kind=k, item={'op_income': '영업이익', 'gross_profit': '매출총이익', 'net_income': '순이익'}[k], value=round(v / 1e6, 1), unit='USD mn', source=src.get(span, '') + ' (SEC XBRL)')); npf += 1
+        for mem, ser in pseg.items():
+            for e, (v, span) in quarters(ser).items():
+                rows.append(dict(company=t, period=qlabel(span), kind='seg_op_income', item=label(mem), value=round(v / 1e6, 1), unit='USD mn', source=src.get(span, '') + ' (SEC XBRL 사업부문 영업이익)'))
+        status[t] = f'{n} quarters · profit {npf} · seg-op {len(pseg)} · axes ' + ', '.join(f'{a}({c})' for a, c in used.items())
         print(t, status[t], flush=True)
     with OUT.open('w', encoding='utf-8-sig', newline='') as f:
         w = csv.DictWriter(f, fieldnames=['company', 'period', 'kind', 'item', 'value', 'unit', 'source']); w.writeheader()
