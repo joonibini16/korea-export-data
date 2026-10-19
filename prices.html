@@ -16,7 +16,7 @@
 <div class="ph" style="margin:12px 0"><b id="nebius-summary"></b><span class="muted" id="nebius-growth"></span></div>
 <div class="chart"><canvas id="nebius-trend" role="img" aria-label="Nebius GPU 지역별 Spot 가격 추이"></canvas></div>
 <div style="overflow:auto"><table class="kt" id="nebius-board" aria-label="Nebius GPU 지역별 가격"></table></div>
-<p class="muted">Work가 공식 공개 화면을 매시간 확인해 가격을 저장합니다. 가격 적용 시각(UTC)과 수집 시각(KST)을 구분해 표시합니다. 과거 관측값이 쌓이면 지역별 추이가 이어지며, 확인하지 못한 과거값과 빈 값은 만들지 않습니다. 가격 적용 시각이 오래됐더라도 이번에 다시 확인한 동일 요금일 수 있습니다.</p>
+<p class="muted">공식 7일 차트의 시간별 이력을 표시하고, Work가 매시간 확인하는 새 가격을 누적합니다. 차트는 가격 이력 시각(KST), 표는 최신 관측 가격과 적용 시각(UTC)·수집 시각(KST)을 구분합니다. 실제 데이터 범위를 위에 표시하며 누락된 과거값은 만들지 않습니다.</p>
 <p class="muted">실시간 현재값은 위 공식 원문에서 확인할 수 있습니다. API 자동수집·외부 화면 삽입은 현재 제공처가 제한해 Work의 정상 공개 화면 조회를 사용합니다.</p>
 </section>
 <section class="panel" id="gpu-rental">
@@ -42,6 +42,6 @@
 · <b>DDR5 RDIMM</b>: 32GB 현물가는 DRAMeXchange(TrendForce) 모듈 현물 세션 평균(주간 갱신)으로 매일 이어 붙입니다. 64GB 현물가·계약가와 스프레드 막대는 무료 공개 자료가 없어 BADONION 차트 판독치(~2026-10-05)만 표시합니다.<br>
 · 판독치는 차트 픽셀을 읽은 근사값이라 원 자료와 ±1~2% 차이가 날 수 있습니다.</p></section>
 </main>
-<script src="./prices.js?v=6"></script><script src="./gpu_rental.js?v=5"></script><script src="./nebius_spot.js?v=2"></script></body></html>
+<script src="./prices.js?v=6"></script><script src="./gpu_rental.js?v=5"></script><script src="./nebius_spot.js?v=3"></script></body></html>
 
 
