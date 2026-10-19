@@ -20,7 +20,7 @@
  const prevMonth=mo=>{const [y,m]=mo.split('.').map(Number);return m===1?(y-1)+'.12':y+'.'+String(m-1).padStart(2,'0');};
  const monthRate=(c,p,mo,k,daily=adj)=>{if(c==null||!Number.isFinite(c)||!Number.isFinite(p)||!(p>0)||c<0)return null;if(!daily)return (c/p-1)*100;const a=segDays(mo,k,false),b=segDays(prevMonth(mo),k,false);return a&&b?((c/a)/(p/b)-1)*100:null;};
  const SEGL=['1~10일','11~20일','21~말일'];
- let mode='item',adj=true,R=[],chart=null,focusCharts=[],focusPeriod='D10',focusRange='12';
+ let pageView='overall',mode='item',adj=true,R=[],chart=null,focusCharts=[],focusPeriod='D10',focusRange='12';
  const selected={item:'',country:''};
  const esc=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  // 관세청 조업일수: 평일 1, 토요일 0.5, 일요일·공휴일 0 (근로자의날 포함, 설·추석이 토요일과 겹칠 때 대체휴일 없음) — 발표문 조업일수와 대조 검증
@@ -77,7 +77,23 @@ for(const rel of ['D10','D20']){const k=rel==='D10'?'10d':'20d';releases[rel]=mo
   const end=ys.map((y,i)=>[y,i]).filter(a=>a[0]!=null).at(-1);
   return `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" style="display:block"><line x1="0" x2="${W}" y1="${Y(0)}" y2="${Y(0)}" stroke="#d0d5dd" stroke-dasharray="2 2"/><path d="${d}" fill="none" stroke="${col}" stroke-width="1.8"/>${dots}<circle cx="${X(end[1])}" cy="${Y(end[0])}" r="2.6" fill="${col}"/></svg>`;}
 
+ function renderPicker(){
+  const picker=document.getElementById('provisional-item-select'),buttons=document.getElementById('provisional-item-buttons'),overview=document.getElementById('provisional-overview');
+  if(!picker||!buttons)return;
+  const names=[...new Set(R.filter(r=>r.kind==='item'&&r.flow==='export'&&['D10','D20'].includes(r.release)).map(r=>r.name))].sort((a,b)=>a.localeCompare(b,'ko')).concat(['총계','총계(반도체 제외)']);
+  const value=pageView==='overall'?'__overall':mode==='item'?selected.item:'';
+  picker.innerHTML='<option value="__overall">총괄 잠정수출</option><option value="">전체 품목 비교</option>'+names.map(n=>`<option value="${esc(n)}">${esc(n)}</option>`).join('');
+  picker.value=value;
+  const choose=n=>{pageView=n==='__overall'?'overall':'items';mode='item';selected.item=n==='__overall'?'':n;render();};
+  picker.onchange=e=>choose(e.target.value);
+  buttons.innerHTML=[['__overall','총괄'],...names.map(n=>[n,n])].map(([n,t])=>`<button type="button" data-item="${esc(n)}" aria-pressed="${value===n}">${esc(t)}</button>`).join('');
+  buttons.querySelectorAll('button').forEach(b=>b.onclick=()=>choose(b.dataset.item));
+  if(overview)overview.hidden=pageView!=='overall';
+  const status=document.getElementById('provisional-picker-status');
+  if(status)status.textContent=pageView==='overall'?'아래 버튼 또는 선택창에서 품목을 고르면 해당 품목의 수출액·YoY·MoM 차트와 표가 표시됩니다.':(mode==='item'&&selected.item?selected.item:mode==='country'?'국가별':'전체 품목')+' 조회 중 · 총괄 버튼으로 돌아갈 수 있습니다.';
+ }
  function render(){
+  renderPicker();
   focusCharts.forEach(c=>c.destroy());focusCharts=[];
   if(chart){chart.destroy();chart=null;}
   const all=build(R).sort((a,b)=>(b.mom??-1e9)-(a.mom??-1e9));
@@ -103,9 +119,9 @@ for(const rel of ['D10','D20']){const k=rel==='D10'?'10d':'20d';releases[rel]=mo
     <li>10일 구간은 조업일수·선적 몰림(선박 인도, 월말 집중)에 따라 크게 흔들립니다. 단일 구간보다 3구간 평균과 TTM을 함께 보세요.</li>
     <li>컴퓨터주변기기·정밀기기는 월간 확정치 표에 같은 분류가 없어 21일~말일 구간(③)이 빈칸(회색 점)이며, 모멘텀은 있는 구간만으로 계산합니다. TTM은 확정치에 같은 품목이 있을 때만 표시합니다.</li>
     <li>국가는 각 발표의 상위 10개국이라 일부 구간이 빠질 수 있습니다(말레이시아·인도 등은 확정치 표에 없어 ③ 빈칸).</li></ul></details>`;
-  host.querySelectorAll('[data-m]').forEach(b=>b.onclick=()=>{mode=b.dataset.m;render();});host.querySelectorAll('[data-a]').forEach(b=>b.onclick=()=>{adj=b.dataset.a==='1';render();});
-  host.querySelector('#sg-select').onchange=e=>{selected[mode]=e.target.value;render();};
-  host.querySelectorAll('.sg-d').forEach(b=>b.onclick=()=>{selected[mode]=L[+b.dataset.i].n;render();});
+  host.querySelectorAll('[data-m]').forEach(b=>b.onclick=()=>{pageView='items';mode=b.dataset.m;render();});host.querySelectorAll('[data-a]').forEach(b=>b.onclick=()=>{adj=b.dataset.a==='1';render();});
+  host.querySelector('#sg-select').onchange=e=>{pageView='items';selected[mode]=e.target.value;render();};
+  host.querySelectorAll('.sg-d').forEach(b=>b.onclick=()=>{pageView='items';selected[mode]=L[+b.dataset.i].n;render();});
   if(selected[mode]&&L.length)focus(L[0]);
  }
 
@@ -145,6 +161,6 @@ for(const rel of ['D10','D20']){const k=rel==='D10'?'10d':'20d';releases[rel]=mo
 
 
  fetch('provisional_items.csv?t='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():Promise.reject(r.status)).then(t=>{R=parse(t);render();})
-  .catch(e=>{host.innerHTML='<div class="empty">품목 데이터를 불러오지 못했습니다 ('+e+')</div>';});
+  .catch(e=>{const status=document.getElementById('provisional-picker-status');if(status)status.textContent='품목 목록을 불러오지 못했습니다. 페이지를 새로고침해 주세요.';host.innerHTML='<div class="empty">품목 데이터를 불러오지 못했습니다 ('+e+')</div>';});
 })();
 
