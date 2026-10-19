@@ -9,6 +9,14 @@
 <link rel="stylesheet" href="./shell.css?v=3"></head><body><main>
 <h1>가격 지표</h1>
 <p class="muted">AI 수요의 가격 신호를 한곳에서 봅니다: GPU 임대 가격 5종, LLM 토큰 지출·사용량, 서버 D램 가격. 매일 자동 수집하며 과거 구간은 BADONION RESEARCH 차트를 판독한 참고치입니다.</p>
+<section class="panel" id="nebius-spot" aria-labelledby="nebius-title">
+<div class="ph"><div><h2 id="nebius-title">Nebius GPU Spot 가격 · 공식 실시간 화면</h2><p class="muted">GPU·지역별 USD/GPU·시간. 중단 가능한 Preemptible VM 요금으로, 아래 Vast.ai on-demand 호가와 계약 조건이 다릅니다.</p></div><a id="nebius-source" href="https://nebius.com/spot-prices?historyGpus=B300&amp;historyRange=7d&amp;period=7d#price-history" target="_blank" rel="noopener noreferrer">Nebius 공식 가격 열기 ↗</a></div>
+<div class="ph" style="margin:12px 0"><label>GPU <select id="nebius-gpu"><option>B300</option><option>B200</option><option>H200</option><option>H100</option><option>RTX PRO 6000</option></select></label><label>가격 이력 <select id="nebius-range"><option value="7d">최근 7일</option><option value="1d">최근 1일</option></select></label><label><input type="checkbox" id="nebius-auto" checked> 열어둔 동안 15분 자동갱신</label><button type="button" id="nebius-refresh">지금 새로고침</button></div>
+<p class="muted" id="nebius-status" role="status">공식 가격 화면을 요청합니다.</p>
+<iframe id="nebius-frame" title="Nebius 공식 GPU Spot 가격·지역별 이력" style="display:block;width:100%;height:1050px;border:1px solid #334560;border-radius:10px;background:#fff" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+<p class="muted">원문 안에서 지역·GPU를 선택하고 그래프에 마우스를 올려 시각별 가격을 볼 수 있습니다. 가격 기준 시각은 공식 화면의 Updated / Effective since(UTC)를 확인하세요. 위 요청 시각은 가격의 변경 시각이 아닙니다. 자동 새로고침 시 원문 내부 선택은 상단 GPU·기간 설정으로 돌아옵니다.</p>
+<p class="muted">공식 화면을 직접 표시합니다. 서버 API 자동 수집은 현재 접근 제한으로 누적 저장하지 않습니다. 화면이 표시되지 않으면 위 원문 링크에서 확인하세요.</p>
+</section>
 <section class="panel" id="gpu-rental">
 <div class="ph"><div><h2>GPU 임대가격</h2><p class="muted" id="gpu-time">수집값 확인 중…</p></div><a href="https://temperature2.com/gpu/" target="_blank" rel="noopener noreferrer">temperature2 GPU 지수 원문 ↗</a></div>
 <div class="ornn-links"><span>Ornn 체결 기반 지수(OCPI) 원문 바로가기:</span><a href="https://data.ornn.com/markets/h100-sxm" target="_blank" rel="noopener noreferrer">H100 SXM ↗</a><a href="https://data.ornn.com/markets/h200" target="_blank" rel="noopener noreferrer">H200 ↗</a><a href="https://data.ornn.com/markets/b200" target="_blank" rel="noopener noreferrer">B200 ↗</a><a href="https://data.ornn.com/markets/a100-sxm4" target="_blank" rel="noopener noreferrer">A100 SXM4 ↗</a><a href="https://data.ornn.com/markets/tokens/anthropic" target="_blank" rel="noopener noreferrer">토큰 지수 · Anthropic ↗</a><a href="https://data.ornn.com/markets/tokens/openai" target="_blank" rel="noopener noreferrer">토큰 지수 · OpenAI ↗</a><a href="https://data.ornn.com/markets/compare/h100-sxm-vs-b200" target="_blank" rel="noopener noreferrer">H100 vs B200 비교 ↗</a></div>
@@ -32,5 +40,6 @@
 · <b>DDR5 RDIMM</b>: 32GB 현물가는 DRAMeXchange(TrendForce) 모듈 현물 세션 평균(주간 갱신)으로 매일 이어 붙입니다. 64GB 현물가·계약가와 스프레드 막대는 무료 공개 자료가 없어 BADONION 차트 판독치(~2026-10-05)만 표시합니다.<br>
 · 판독치는 차트 픽셀을 읽은 근사값이라 원 자료와 ±1~2% 차이가 날 수 있습니다.</p></section>
 </main>
-<script src="./prices.js?v=6"></script><script src="./gpu_rental.js?v=5"></script></body></html>
+<script src="./prices.js?v=6"></script><script src="./gpu_rental.js?v=5"></script><script src="./nebius_spot.js?v=1"></script></body></html>
+
 
