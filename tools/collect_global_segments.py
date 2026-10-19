@@ -194,7 +194,7 @@ def main():
                 if f2 and len(f2) >= 2:
                     # '제품/서비스'처럼 정보가 적은 구분보다 사업부문·제품군 구분을 우선
                     gen = sum(1 for m in f2 if PS.search(label(m))) / len(f2)
-                    hasg = any(label(m).replace(' ', '').lower() in GENERIC for m in f2)
+                    hasg = any(label(m).replace(' ', '').lower() in {'product', 'products', 'serviceother', 'productother', 'productandservice', 'productsandservices'} for m in f2)
                     cands.append(((hasg, gen >= 0.5, len(f2) < 3, pref(ax), -len(f2)), ax, f2))
             if not cands: continue
             _, ax, items = min(cands, key=lambda c: c[0]); used[ax] += 1
