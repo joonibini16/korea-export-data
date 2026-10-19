@@ -28,7 +28,11 @@
  }
  function render(id,name){
   cur=id;destroy();const d=data(id);
-  if(!d.per.length&&!Object.keys(d.pr).length){sec.hidden=true;return;}sec.hidden=false;
+  if(!d.per.length&&!Object.keys(d.pr).length){if(SRC==='kr'){sec.hidden=true;return;}
+   const have=[...new Set(G.filter(r=>r.kind==='segment_revenue').map(r=>r.company))].sort();const sel=document.getElementById('companyPick');const nm=t=>{const o=[...(sel?.options||[])].find(o=>o.value===t);return o?o.textContent.replace(/\s*·.*$/,''):t;};
+   sec.hidden=false;sec.innerHTML=`<h2>${name} · 제품별 매출 구성·비중·단가</h2><p class="muted">이 기업은 아직 제품·사업부문별 매출 자료가 없습니다. 미국 SEC 공시(10-Q·10-K) 기업은 자동 수집되고, 그 밖의 해외 기업은 회사 IR 자료를 정리하는 대로 추가됩니다. 아래 기업을 누르면 바로 볼 수 있습니다(${have.length}곳).</p><div class="pd-have">${have.map(t=>`<button data-t="${t}">${nm(t)}</button>`).join('')}</div>`;
+   sec.querySelectorAll('[data-t]').forEach(b=>b.onclick=()=>{if(sel){sel.value=b.dataset.t;sel.dispatchEvent(new Event('change'));}});return;}
+  sec.hidden=false;
   // 상위 6개 품목(최근 4분기 매출 합) + 나머지는 기타로 묶음
   const recent=d.per.slice(-4),tot=k=>recent.reduce((s,p)=>s+(d.rev[k]?.[p]||0),0);
   const items=[...d.items].sort((a,b)=>tot(b)-tot(a)),top=items.slice(0,6),rest=items.slice(6);
