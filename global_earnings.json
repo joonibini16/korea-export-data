@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-19",
+  "updated_at": "2026-10-20",
   "method": "공식 컨콜 녹취록을 확인한 경우에만 Q&A 요약으로 표시합니다. 그 외 주제별 요약은 공식 IR 발표문을 출처로 명시하며, 투자 해석은 관전점으로 구분합니다. 반도체 장비 업종은 주요 공정·검사·테스트·패키징 기업을 추적하며 원문 미검증 기업은 분석 대기로 표시합니다.",
   "watchlist": [
     {
@@ -3065,6 +3065,20 @@
       "time": "08:30 America/New_York(실적 발표·컨콜)",
       "event": "FY27 Q1 실적·컨퍼런스콜",
       "source": "https://www.elcompanies.com/en/investors/events-and-presentations"
+    },
+    {
+      "ticker": "AMD",
+      "date": "2026-11-03",
+      "time": "장 마감 후 · 17:00 America/New_York(컨콜)",
+      "event": "2026 Q3 실적·컨퍼런스콜",
+      "source": "https://ir.amd.com/news-events/press-releases/detail/1300/amd-to-report-fiscal-third-quarter-2026-financial-results"
+    },
+    {
+      "ticker": "ANET",
+      "date": "2026-11-03",
+      "time": "장 마감 후 · 13:30 America/Los_Angeles(컨콜)",
+      "event": "2026 Q3 실적·컨퍼런스콜",
+      "source": "https://www.arista.com/company/news/press-release/24817-pr-20261006"
     }
   ]
 }
