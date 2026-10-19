@@ -1,0 +1,29 @@
+name: Global EPS vs consensus (Yahoo Finance)
+on:
+  workflow_dispatch:
+    inputs:
+      tickers: {description: '비우면 전체, 예: NVDA AMD', required: false, default: ''}
+  schedule:
+    - cron: '40 22 * * 1-5'   # 평일 07:40 KST (미국 장 마감 후 발표분 반영)
+permissions:
+  contents: write
+concurrency:
+  group: eps-surprise
+  cancel-in-progress: false
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: pip install -q yfinance lxml
+      - run: python tools/collect_eps_surprise.py ${{ github.event.inputs.tickers }}
+      - name: Save
+        run: |
+          git config user.name github-actions; git config user.email github-actions@github.com
+          git add global_eps_surprise.json
+          git diff --cached --quiet && exit 0
+          git commit -qm "Update global EPS vs consensus"
+          for i in 1 2 3 4 5; do git pull -q --rebase -X theirs origin main && git push -q origin HEAD:main && exit 0; sleep $((i*5)); done; exit 1
