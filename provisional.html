@@ -126,5 +126,5 @@ function render(){
 document.querySelectorAll(".period").forEach(b=>b.onclick=()=>{document.querySelectorAll(".period").forEach(x=>x.classList.toggle("active",x===b));filterPeriod=b.dataset.period;render()});
 csv("provisional_official.csv").then(a=>{official=a;render();}).catch(e=>{document.getElementById("latest").textContent="데이터 로딩 오류: "+e.message});
 </script>
-<script src="./provisional_signal.js?v=7"></script>
+<script src="./provisional_signal.js?v=8"></script>
 </body></html>
