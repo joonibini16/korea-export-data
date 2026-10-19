@@ -2121,7 +2121,7 @@
 "a": "2019-12"
 },
 "global_segments_sec_status.json": {
-"c": "2026-10-19T17:56+09:00",
+"c": "2026-10-19T17:58+09:00",
 "a": null
 },
 "hs_codes.csv": {
@@ -3227,6 +3227,10 @@
 "trust_buy_series.json": {
 "c": "2026-10-19T16:26+09:00",
 "a": "2026-10-19"
+},
+"tsmc_margins_status.json": {
+"c": "2026-10-19T17:58+09:00",
+"a": "2026-10-15"
 },
 "valuation_consensus.csv": {
 "c": "2026-10-19T16:28+09:00",
