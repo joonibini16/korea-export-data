@@ -20,6 +20,22 @@
  const opts=(title,yFmt)=>({responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:'index',intersect:false},
   plugins:{title:{display:true,text:title,color:'#e2e8f0',font:{size:13}},legend:{labels:{color:C.tick,boxWidth:12}},tooltip:{callbacks:{label:ctx=>`${ctx.dataset.label}: ${yFmt(ctx.parsed.y)}`}}},
   scales:{x:{ticks:{color:C.tick},grid:{display:false}},y:{ticks:{color:C.tick,callback:v=>yFmt(v)},grid:{color:C.grid}}}});
+ // 컨센서스 EPS 추정치 리비전: 90일 전 대비 % 변화(공통 기준), 기간별 선
+ const RP=[['0q','이번 분기','#3987e5',[]],['+1q','다음 분기','#d95926',[6,4]],['0y','올해(회계)','#199e70',[2,3]],['+1y','내년(회계)','#c98500',[10,3,2,3]]];
+ const RX=[['d90','90일 전'],['d60','60일 전'],['d30','30일 전'],['d7','7일 전'],['now','현재']];
+ const revChg=(r,from='d90')=>{const a=r?.[from],b=r?.now;if(a===null||a===undefined||b===null||b===undefined||Math.abs(a)<0.05||a*b<0)return null;return (b-a)/Math.abs(a)*100;};
+ function drawRevision(c){
+  const R=c.revision||{},note=$('epsRevNote');
+  const sets=RP.filter(([k])=>R[k]&&revChg(R[k])!==null).map(([k,name,col,dash])=>({label:`${name} ${pct(revChg(R[k]))}`,_n:name,data:RX.map(([f])=>{const a=R[k].d90,v=R[k][f];return v===null||v===undefined?null:(v-a)/Math.abs(a)*100;}),borderColor:col,backgroundColor:col,borderDash:dash,borderWidth:2,pointRadius:3,pointHoverRadius:6,tension:0,spanGaps:true,_k:k}));
+  const cnt=RP.filter(([k])=>R[k]&&(R[k].up30!==undefined||R[k].down30!==undefined)).map(([k,name])=>`${name} ↑${R[k].up30??0}·↓${R[k].down30??0}`);
+  const skipped=RP.filter(([k])=>R[k]&&revChg(R[k])===null).map(([,n])=>n);
+  note.textContent=(cnt.length?'최근 30일 추정치 상향·하향 애널리스트 수: '+cnt.join(' / '):'')+(skipped.length?` · ${skipped.join('·')}: 기준값이 0 근처이거나 부호가 바뀌어 % 변화 생략`:'');
+  if(!sets.length){note.textContent='컨센서스 추정치 변화 자료가 없습니다.'+(note.textContent?' '+note.textContent:'');return;}
+  const o=opts('컨센서스 EPS 추정치 변화 (90일 전 대비 %, 범례 = 현재값)',v=>pct(v));
+  o.plugins.legend.labels.boxWidth=24;o.plugins.legend.labels.boxHeight=2;o.plugins.tooltip.callbacks.label=ctx=>{const d=ctx.dataset,r=R[d._k],f=RX[ctx.dataIndex][0];return `${d._n}: ${pct(ctx.parsed.y)} (EPS ${fmt(r?.[f])})`;};
+  o.scales.y.grace='12%';
+  charts.push(new Chart($('epsSurprise'),{type:'line',data:{labels:RX.map(x=>x[1]),datasets:sets},options:o}));
+ }
  function draw(t){
   if(t===cur)return;cur=t;charts.forEach(c=>c.destroy());charts=[];const body=$('epsRows');body.replaceChildren();
   const c=byT.get(t),w=info.get(t),name=w?`${w.name} (${t})`:t;
@@ -43,9 +59,7 @@
     {label:'컨센서스 EPS',data:q.map(x=>x.eps_estimate),backgroundColor:C.est,borderRadius:4,maxBarThickness:30,order:2,pointStyle:'rect'},
     {type:'line',label:'실제 EPS (빨강 상회·파랑 하회)',data:q.map(x=>x.eps_actual),showLine:false,pointRadius:6,pointHoverRadius:8,pointBackgroundColor:pc,pointBorderColor:'#0b1426',pointBorderWidth:2,backgroundColor:C.beat,borderColor:C.beat,order:1,pointStyle:'circle'}]},
     options:o,plugins:[surpLabel]}));
-   const sp=q.map(x=>x.surprise_pct);
-   charts.push(new Chart($('epsSurprise'),{type:'bar',data:{labels:L,datasets:[{label:'EPS 서프라이즈(%)',data:sp,backgroundColor:sp.map(v=>v>=0?C.beat:C.miss),borderRadius:4,maxBarThickness:22}]},
-    options:Object.assign(opts('컨센서스 대비 서프라이즈(%) · 빨강 상회 / 파랑 하회',v=>pct(v)),{plugins:{title:{display:true,text:'컨센서스 대비 서프라이즈(%) · 빨강 상회 / 파랑 하회',color:'#e2e8f0',font:{size:13}},legend:{display:false},tooltip:{callbacks:{label:ctx=>'서프라이즈: '+pct(ctx.parsed.y)}}}})}));
+   drawRevision(c);
   }
   for(const x of [...q].reverse()){const tr=document.createElement('tr');
    for(const [v,k] of [[x.date,''],[fmt(x.eps_estimate),''],[fmt(x.eps_actual),''],[pct(x.surprise_pct),cls(x.surprise_pct)],[x.result||'—',cls(x.surprise_pct)]]){const td=document.createElement('td');td.textContent=v;if(k)td.className=k;tr.append(td);}
@@ -57,8 +71,8 @@
    .sort((a,b)=>(b.s?.n?1:0)-(a.s?.n?1:0)||((b.s?.n||0)>=4)-((a.s?.n||0)>=4)||(b.s?.med??-1e9)-(a.s?.med??-1e9));
   $('epsSummaryTitle').textContent=`${s||'전체 업종'} · 기업별 EPS 컨센서스 상회 이력 (최근 2년)`;
   for(const {x,c,s:st} of rows){const tr=document.createElement('tr');tr.tabIndex=0;tr.dataset.t=x.ticker;if(x.ticker===cur)tr.setAttribute('aria-selected','true');
-   const cells=st&&st.n?[[`${x.name} (${x.ticker})`,''],[x.sector,''],[`${st.beat}/${st.n}`,''],[fmt(st.n?st.beat/st.n*100:null,0)+'%',''],[pct(st.med),cls(st.med)],[st.last?pct(st.last.surprise_pct):'—',cls(st.last?.surprise_pct)],[st.last?.date||'—','']]
-    :[[`${x.name} (${x.ticker})`,''],[x.sector,''],['—','wait'],['—','wait'],['자료 없음','wait'],['—','wait'],['—','wait']];
+   const cells=st&&st.n?[[`${x.name} (${x.ticker})`,''],[x.sector,''],[`${st.beat}/${st.n}`,''],[fmt(st.n?st.beat/st.n*100:null,0)+'%',''],[pct(st.med),cls(st.med)],[st.last?pct(st.last.surprise_pct):'—',cls(st.last?.surprise_pct)],[st.last?.date||'—',''],[pct(revChg(c?.revision?.['+1y'],'d30')),cls(revChg(c?.revision?.['+1y'],'d30'))]]
+    :[[`${x.name} (${x.ticker})`,''],[x.sector,''],['—','wait'],['—','wait'],['자료 없음','wait'],['—','wait'],['—','wait'],['—','wait']];
    for(const [v,k] of cells){const td=document.createElement('td');td.textContent=v;if(k)td.className=k;tr.append(td);}
    body.append(tr);}
  }
