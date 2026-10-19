@@ -80,7 +80,7 @@ def main():
     status=dict(checked_at=now.isoformat(),end_month=end,expected=2*((int(end[:4])-2020)*12+int(end[4:])),
                 rows=len(rows),received=received,missing=missing,failures=failures,
                 source='https://www.data.go.kr/data/15100475/openapi.do',
-                note='韓国の輸入統計・相手国VN。空応答はゼロ補完しない。金額CIF・純重量KG。')
+                note='한국 수입통계·상대국 VN. 빈 응답을 0으로 보완하지 않음. 금액 CIF·순중량 KG.')
     (ROOT/'hanyang_vietnam_import_status.json').write_text(json.dumps(status,ensure_ascii=False,indent=2)+'\n')
     print('rows',len(rows),'missing',len(missing),'failed',len(failures))
 
