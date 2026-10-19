@@ -2116,6 +2116,14 @@
 "c": "2026-10-16T16:02+09:00",
 "a": null
 },
+"global_segments_sec.csv": {
+"c": "2026-10-19T16:48+09:00",
+"a": "2019-12"
+},
+"global_segments_sec_status.json": {
+"c": "2026-10-19T16:48+09:00",
+"a": null
+},
 "hs_codes.csv": {
 "c": "2026-10-16T13:10+09:00",
 "a": null
