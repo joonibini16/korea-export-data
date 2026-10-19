@@ -41,9 +41,20 @@ def filings():
 
 def main():
     res = {}; fl = filings(); dbg = {'n6k': len(fl), 'sample': fl[:15], 'matched': []}
-    for acc, doc, fdate in fl:
-        if not re.search(r'\dq\d\de', doc, re.I):
+    for acc, doc0, fdate in fl:
+        if fdate[5:7] not in ('01', '04', '07', '10'):
             continue
+        if re.search(r'\dq\d\de', doc0, re.I):
+            doc = doc0
+        else:
+            try:
+                idx = json.loads(get(f'https://www.sec.gov/Archives/edgar/data/{CIK}/{acc.replace("-", "")}/index.json'))
+            except Exception:
+                continue
+            names = [it['name'] for it in idx.get('directory', {}).get('item', []) if re.search(r'\dq\d\de.*\.htm', it['name'], re.I)]
+            if not names: continue
+            names.sort(key=lambda x: ('guid' not in x.lower(), len(x)))
+            doc = names[0]
         m = re.search(r'(\d)q(\d\d)e', doc, re.I)
         per = f'20{m.group(2)}-Q{m.group(1)}'; dbg['matched'].append(doc)
         if per in res: continue
