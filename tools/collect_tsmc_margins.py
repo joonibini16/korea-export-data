@@ -74,4 +74,8 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    import traceback
+    try:
+        main()
+    except Exception:
+        (ROOT / 'tsmc_margins_status.json').write_text(json.dumps({'error': traceback.format_exc()[-1500:]}, indent=1)); raise
