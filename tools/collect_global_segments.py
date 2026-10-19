@@ -154,8 +154,12 @@ def main():
         pref = lambda ax: (0 if 'Product' in ax else 1 if 'Segment' in ax else 2) + (0.5 if ax.endswith('#geo') else 0)
 
         def fit(items, total):
+            spec = {k: v for k, v in items.items() if label(k).replace(' ', '').lower() not in GENERIC}
+            r = fit0(spec, total) if len(spec) >= 2 else None
+            return r if r else fit0(items, total)
+
+        def fit0(items, total):
             """항목 합이 총매출과 맞는 가장 많은 항목 조합(상위·하위 항목 중복 제거)."""
-            items = {k: v for k, v in items.items() if label(k).replace(' ', '').lower() not in GENERIC}
             if not total: return items
             ks = list(items)
             if abs(sum(v[0] for v in items.values()) / total - 1) < 0.02: return items
