@@ -39,7 +39,7 @@ jobs:
             cp global_segments_sec.csv global_segments_sec_status.json global_products.csv tsmc_margins_status.json /tmp/; git checkout -q --orphan probe-output; git rm -rq --cached .; cp /tmp/global_segments_sec.csv /tmp/global_segments_sec_status.json /tmp/global_products.csv /tmp/tsmc_margins_status.json .
             git add global_segments_sec.csv global_segments_sec_status.json global_products.csv tsmc_margins_status.json; git commit -qm probe; git push -qf origin HEAD:probe-output; exit 0
           fi
-          git add global_segments_sec.csv global_segments_sec_status.json global_products.csv
+          git add global_segments_sec.csv global_segments_sec_status.json global_products.csv; git add tsmc_margins_status.json 2>/dev/null || true
           git diff --cached --quiet && exit 0
           git commit -qm "Update global segment revenue (SEC XBRL)"
           for i in 1 2 3 4 5; do git pull -q --rebase -X theirs origin main && git push -q origin HEAD:main && exit 0; sleep $((i*5)); done; exit 1
