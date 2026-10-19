@@ -36,8 +36,8 @@ jobs:
         run: |
           git config user.name github-actions; git config user.email github-actions@github.com
           if [ "${{ github.event.inputs.commit }}" = "no" ]; then
-            cp global_segments_sec.csv global_segments_sec_status.json global_products.csv /tmp/; git checkout -q --orphan probe-output; git rm -rq --cached .; cp /tmp/global_segments_sec.csv /tmp/global_segments_sec_status.json /tmp/global_products.csv .
-            git add global_segments_sec.csv global_segments_sec_status.json global_products.csv; git commit -qm probe; git push -qf origin HEAD:probe-output; exit 0
+            cp global_segments_sec.csv global_segments_sec_status.json global_products.csv tsmc_margins_status.json /tmp/; git checkout -q --orphan probe-output; git rm -rq --cached .; cp /tmp/global_segments_sec.csv /tmp/global_segments_sec_status.json /tmp/global_products.csv /tmp/tsmc_margins_status.json .
+            git add global_segments_sec.csv global_segments_sec_status.json global_products.csv tsmc_margins_status.json; git commit -qm probe; git push -qf origin HEAD:probe-output; exit 0
           fi
           git add global_segments_sec.csv global_segments_sec_status.json global_products.csv
           git diff --cached --quiet && exit 0

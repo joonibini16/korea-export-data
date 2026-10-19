@@ -40,12 +40,12 @@ def filings():
 
 
 def main():
-    res = {}
-    for acc, doc, fdate in filings():
+    res = {}; fl = filings(); dbg = {'n6k': len(fl), 'sample': fl[:15], 'matched': []}
+    for acc, doc, fdate in fl:
         if not re.search(r'\dq\d\de', doc, re.I):
             continue
         m = re.search(r'(\d)q(\d\d)e', doc, re.I)
-        per = f'20{m.group(2)}-Q{m.group(1)}'
+        per = f'20{m.group(2)}-Q{m.group(1)}'; dbg['matched'].append(doc)
         if per in res: continue
         url = f'https://www.sec.gov/Archives/edgar/data/{CIK}/{acc.replace("-", "")}/{doc}'
         try:
@@ -70,6 +70,7 @@ def main():
     with CSV.open('w', encoding='utf-8-sig', newline='') as f:
         w = csv.DictWriter(f, fieldnames=['company', 'period', 'kind', 'item', 'value', 'unit', 'source']); w.writeheader(); w.writerows(keep)
     print(len(res), 'quarters with margins')
+    dbg['res'] = len(res); (ROOT / 'tsmc_margins_status.json').write_text(json.dumps(dbg, indent=1))
 
 
 if __name__ == '__main__':
