@@ -79,7 +79,7 @@
     "DRAM과 플래시를 가중치 없이 합쳐 회사 매출로 환산하거나, MCP·상위 HS와 중복 합산하지 않습니다.",
     "제시된 상관계수는 과거 YoY의 단순 상관이며 인과관계·예측력 검증 결과가 아닙니다. 이 데이터만으로 영업이익을 산출하지 않습니다."
   ],
-  "built_at": "2026-10-19T06:10:08.138382+00:00",
+  "built_at": "2026-10-19T06:11:39.228730+00:00",
   "coverage": [
     {
       "hs_code": "8542321010",
@@ -178,6 +178,9 @@
     },
     "hanyang_vietnam_config.json": {
       "sha256": "ccbf5b1ee4a96cf79fe0db75e68084f17f79b6ffb7a1fc57bd229482360a0b00"
+    },
+    "build_hanyang_vietnam.py": {
+      "sha256": "eb81c64a11026fe6b73dd3dab27184e51051ca589267b559a0cd3cbb2d4947ab"
     }
   },
   "monthly": [
@@ -12473,262 +12476,288 @@
     {
       "period": "2020-Q1",
       "revenue_krw": 23511000000,
-      "operating_profit_krw": null,
+      "operating_profit_krw": 756042999.0,
       "basis": "연결",
       "source": "https://kind.krx.co.kr/external/2020/05/15/000877/20200515001836/11013.htm",
+      "operating_profit_source": "https://kind.krx.co.kr/external/2021/08/13/000838/20210813002398/11012.htm",
       "precision": "사업의 내용 매출표·백만원 반올림; Q2~Q4는 누적 차감",
       "revenue_yoy_pct": null,
-      "opm_pct": null
+      "opm_pct": 3.215699
     },
     {
       "period": "2020-Q2",
       "revenue_krw": 42684000000,
-      "operating_profit_krw": null,
+      "operating_profit_krw": 3811334276.0,
       "basis": "연결",
       "source": "https://kind.krx.co.kr/external/2020/08/14/000989/20200814002846/11012.htm",
+      "operating_profit_source": "https://kind.krx.co.kr/external/2021/08/13/000838/20210813002398/11012.htm",
       "precision": "사업의 내용 매출표·백만원 반올림; Q2~Q4는 누적 차감",
       "revenue_yoy_pct": null,
-      "opm_pct": null
+      "opm_pct": 8.929187
     },
     {
       "period": "2020-Q3",
       "revenue_krw": 46110000000,
-      "operating_profit_krw": null,
+      "operating_profit_krw": 2678861152.0,
       "basis": "연결",
       "source": "https://kind.krx.co.kr/external/2020/11/13/000364/20201113000882/11013.htm",
+      "operating_profit_source": "https://kind.krx.co.kr/external/2021/11/15/000300/20211115000603/11013.htm",
       "precision": "사업의 내용 매출표·백만원 반올림; Q2~Q4는 누적 차감",
       "revenue_yoy_pct": null,
-      "opm_pct": null
+      "opm_pct": 5.809718
     },
     {
       "period": "2020-Q4",
       "revenue_krw": 47436000000,
-      "operating_profit_krw": null,
+      "operating_profit_krw": -320735935.0,
       "basis": "연결",
       "source": "https://kind.krx.co.kr/external/2021/03/15/001701/20210315003877/11011.htm",
+      "operating_profit_source": "https://kind.krx.co.kr/external/2022/03/15/001639/20220315003885/11011.htm",
       "precision": "사업의 내용 매출표·백만원 반올림; Q2~Q4는 누적 차감",
       "revenue_yoy_pct": null,
-      "opm_pct": null
+      "opm_pct": -0.676145
     },
     {
       "period": "2021-Q1",
       "revenue_krw": 51422000000,
-      "operating_profit_krw": null,
+      "operating_profit_krw": 3878939254.0,
       "basis": "연결",
       "source": "https://kind.krx.co.kr/external/2021/05/14/000330/20210514000631/11013.htm",
+      "operating_profit_source": "https://kind.krx.co.kr/external/2022/08/16/001037/20220816003327/11012.htm",
       "precision": "사업의 내용 매출표·백만원 반올림; Q2~Q4는 누적 차감",
       "revenue_yoy_pct": 118.714644,
-      "opm_pct": null
+      "opm_pct": 7.543346
     },
     {
       "period": "2021-Q2",
       "revenue_krw": 68959000000,
-      "operating_profit_krw": null,
+      "operating_profit_krw": 5746144626.0,
       "basis": "연결",
       "source": "https://kind.krx.co.kr/external/2021/08/13/000838/20210813002398/11012.htm",
+      "operating_profit_source": "https://kind.krx.co.kr/external/2022/08/16/001037/20220816003327/11012.htm",
       "precision": "사업의 내용 매출표·백만원 반올림; Q2~Q4는 누적 차감",
       "revenue_yoy_pct": 61.557024,
-      "opm_pct": null
+      "opm_pct": 8.332697
     },
     {
       "period": "2021-Q3",
       "revenue_krw": 85007000000,
-      "operating_profit_krw": null,
+      "operating_profit_krw": 11118408358.0,
       "basis": "연결",
       "source": "https://kind.krx.co.kr/external/2021/11/15/000300/20211115000603/11013.htm",
+      "operating_profit_source": "https://kind.krx.co.kr/external/2022/11/11/000480/20221111000943/11013.htm",
       "precision": "사업의 내용 매출표·백만원 반올림; Q2~Q4는 누적 차감",
       "revenue_yoy_pct": 84.356972,
-      "opm_pct": null
+      "opm_pct": 13.079403
     },
     {
       "period": "2021-Q4",
       "revenue_krw": 98011000000,
-      "operating_profit_krw": null,
+      "operating_profit_krw": 9272298078.0,
       "basis": "연결",
       "source": "https://kind.krx.co.kr/external/2022/03/15/001639/20220315003885/11011.htm",
+      "operating_profit_source": "https://kind.krx.co.kr/external/2023/03/20/000918/20230320004134/11011.htm",
       "precision": "사업의 내용 매출표·백만원 반올림; Q2~Q4는 누적 차감",
       "revenue_yoy_pct": 106.617337,
-      "opm_pct": null
+      "opm_pct": 9.460467
     },
     {
       "period": "2022-Q1",
       "revenue_krw": 100330000000,
-      "operating_profit_krw": null,
+      "operating_profit_krw": 11227677694.0,
       "basis": "연결",
       "source": "https://kind.krx.co.kr/external/2022/05/16/000418/20220516000865/11013.htm",
+      "operating_profit_source": "https://kind.krx.co.kr/external/2023/08/14/000820/20230814002495/11012.htm",
       "precision": "사업의 내용 매출표·백만원 반올림; Q2~Q4는 누적 차감",
       "revenue_yoy_pct": 95.111042,
-      "opm_pct": null
+      "opm_pct": 11.190748
     },
     {
       "period": "2022-Q2",
       "revenue_krw": 117045000000,
-      "operating_profit_krw": null,
+      "operating_profit_krw": 14386608652.0,
       "basis": "연결",
       "source": "https://kind.krx.co.kr/external/2022/08/16/001037/20220816003327/11012.htm",
+      "operating_profit_source": "https://kind.krx.co.kr/external/2023/08/14/000820/20230814002495/11012.htm",
       "precision": "사업의 내용 매출표·백만원 반올림; Q2~Q4는 누적 차감",
       "revenue_yoy_pct": 69.73129,
-      "opm_pct": null
+      "opm_pct": 12.291519
     },
     {
       "period": "2022-Q3",
       "revenue_krw": 129689000000,
-      "operating_profit_krw": null,
+      "operating_profit_krw": 17744901191.0,
       "basis": "연결",
       "source": "https://kind.krx.co.kr/external/2022/11/11/000480/20221111000943/11013.htm",
+      "operating_profit_source": "https://kind.krx.co.kr/external/2023/11/14/000605/20231114001220/11013.htm",
       "precision": "사업의 내용 매출표·백만원 반올림; Q2~Q4는 누적 차감",
       "revenue_yoy_pct": 52.56273,
-      "opm_pct": null
+      "opm_pct": 13.682657
     },
     {
       "period": "2022-Q4",
       "revenue_krw": 137706000000,
-      "operating_profit_krw": null,
+      "operating_profit_krw": 9463625097.0,
       "basis": "연결",
       "source": "https://kind.krx.co.kr/external/2023/03/20/000918/20230320004134/11011.htm",
+      "operating_profit_source": "https://kind.krx.co.kr/external/2024/03/18/000709/20240318003166/11011.htm",
       "precision": "사업의 내용 매출표·백만원 반올림; Q2~Q4는 누적 차감",
       "revenue_yoy_pct": 40.500556,
-      "opm_pct": null
+      "opm_pct": 6.87234
     },
     {
       "period": "2023-Q1",
       "revenue_krw": 109450000000,
-      "operating_profit_krw": null,
+      "operating_profit_krw": 3642779475.0,
       "basis": "연결",
       "source": "https://kind.krx.co.kr/external/2023/05/15/000373/20230515000724/11013.htm",
+      "operating_profit_source": "https://kind.krx.co.kr/external/2024/08/14/001522/20240814004711/11012.htm",
       "precision": "사업의 내용 매출표·백만원 반올림; Q2~Q4는 누적 차감",
       "revenue_yoy_pct": 9.090003,
-      "opm_pct": null
+      "opm_pct": 3.328259
     },
     {
       "period": "2023-Q2",
       "revenue_krw": 109097000000,
-      "operating_profit_krw": null,
+      "operating_profit_krw": 3942369983.0,
       "basis": "연결",
       "source": "https://kind.krx.co.kr/external/2023/08/14/000820/20230814002495/11012.htm",
+      "operating_profit_source": "https://kind.krx.co.kr/external/2024/08/14/001522/20240814004711/11012.htm",
       "precision": "사업의 내용 매출표·백만원 반올림; Q2~Q4는 누적 차감",
       "revenue_yoy_pct": -6.790551,
-      "opm_pct": null
+      "opm_pct": 3.613637
     },
     {
       "period": "2023-Q3",
       "revenue_krw": 131932000000,
-      "operating_profit_krw": null,
+      "operating_profit_krw": 4167702820.0,
       "basis": "연결",
       "source": "https://kind.krx.co.kr/external/2023/11/14/000605/20231114001220/11013.htm",
+      "operating_profit_source": "https://kind.krx.co.kr/external/2024/11/14/000551/20241114001123/11013.htm",
       "precision": "사업의 내용 매출표·백만원 반올림; Q2~Q4는 누적 차감",
       "revenue_yoy_pct": 1.729522,
-      "opm_pct": null
+      "opm_pct": 3.158978
     },
     {
       "period": "2023-Q4",
       "revenue_krw": 128359000000,
-      "operating_profit_krw": null,
+      "operating_profit_krw": 7343993997.0,
       "basis": "연결",
       "source": "https://kind.krx.co.kr/external/2024/03/18/000709/20240318003166/11011.htm",
+      "operating_profit_source": "https://kind.krx.co.kr/external/2025/03/17/000494/20250317002315/11011.htm",
       "precision": "사업의 내용 매출표·백만원 반올림; Q2~Q4는 누적 차감",
       "revenue_yoy_pct": -6.787649,
-      "opm_pct": null
+      "opm_pct": 5.721448
     },
     {
       "period": "2024-Q1",
       "revenue_krw": 167530000000,
-      "operating_profit_krw": null,
+      "operating_profit_krw": 11156279603.0,
       "basis": "연결",
       "source": "https://kind.krx.co.kr/external/2024/05/14/000695/20240514001497/11013.htm",
+      "operating_profit_source": "https://kind.krx.co.kr/external/2025/08/14/000799/20250814002310/11012.htm",
       "precision": "사업의 내용 매출표·백만원 반올림; Q2~Q4는 누적 차감",
       "revenue_yoy_pct": 53.065327,
-      "opm_pct": null
+      "opm_pct": 6.659273
     },
     {
       "period": "2024-Q2",
       "revenue_krw": 155679000000,
-      "operating_profit_krw": null,
+      "operating_profit_krw": 9897807245.0,
       "basis": "연결",
       "source": "https://kind.krx.co.kr/external/2024/08/14/001522/20240814004711/11012.htm",
+      "operating_profit_source": "https://kind.krx.co.kr/external/2025/08/14/000799/20250814002310/11012.htm",
       "precision": "사업의 내용 매출표·백만원 반올림; Q2~Q4는 누적 차감",
       "revenue_yoy_pct": 42.697783,
-      "opm_pct": null
+      "opm_pct": 6.357831
     },
     {
       "period": "2024-Q3",
       "revenue_krw": 129061000000,
-      "operating_profit_krw": null,
+      "operating_profit_krw": 4333268901.0,
       "basis": "연결",
       "source": "https://kind.krx.co.kr/external/2024/11/14/000551/20241114001123/11013.htm",
+      "operating_profit_source": "https://kind.krx.co.kr/external/2025/11/13/000153/20251113000304/11013.htm",
       "precision": "사업의 내용 매출표·백만원 반올림; Q2~Q4는 누적 차감",
       "revenue_yoy_pct": -2.176121,
-      "opm_pct": null
+      "opm_pct": 3.357536
     },
     {
       "period": "2024-Q4",
       "revenue_krw": 142897000000,
-      "operating_profit_krw": null,
+      "operating_profit_krw": 9655735398.0,
       "basis": "연결",
       "source": "https://kind.krx.co.kr/external/2025/03/17/000494/20250317002315/11011.htm",
+      "operating_profit_source": "https://kind.krx.co.kr/external/2026/03/16/002658/20260316007471/11011.htm",
       "precision": "사업의 내용 매출표·백만원 반올림; Q2~Q4는 누적 차감",
       "revenue_yoy_pct": 11.326046,
-      "opm_pct": null
+      "opm_pct": 6.75713
     },
     {
       "period": "2025-Q1",
       "revenue_krw": 149448000000,
-      "operating_profit_krw": null,
+      "operating_profit_krw": 4726393217.0,
       "basis": "연결",
       "source": "https://kind.krx.co.kr/external/2025/05/14/001051/20250514002257/11013.htm",
+      "operating_profit_source": "https://kind.krx.co.kr/external/2026/08/13/000590/20260813001569/11012.htm",
       "precision": "사업의 내용 매출표·백만원 반올림; Q2~Q4는 누적 차감",
       "revenue_yoy_pct": -10.793291,
-      "opm_pct": null
+      "opm_pct": 3.162567
     },
     {
       "period": "2025-Q2",
       "revenue_krw": 155195000000,
-      "operating_profit_krw": null,
+      "operating_profit_krw": -92214679.0,
       "basis": "연결",
       "source": "https://kind.krx.co.kr/external/2025/08/14/000799/20250814002310/11012.htm",
+      "operating_profit_source": "https://kind.krx.co.kr/external/2026/08/13/000590/20260813001569/11012.htm",
       "precision": "사업의 내용 매출표·백만원 반올림; Q2~Q4는 누적 차감",
       "revenue_yoy_pct": -0.310896,
-      "opm_pct": null
+      "opm_pct": -0.059419
     },
     {
       "period": "2025-Q3",
       "revenue_krw": 178414000000,
-      "operating_profit_krw": null,
+      "operating_profit_krw": 9770149131.0,
       "basis": "연결",
       "source": "https://kind.krx.co.kr/external/2025/11/13/000153/20251113000304/11013.htm",
+      "operating_profit_source": "https://kind.krx.co.kr/external/2025/11/13/000153/20251113000304/11013.htm",
       "precision": "사업의 내용 매출표·백만원 반올림; Q2~Q4는 누적 차감",
       "revenue_yoy_pct": 38.240057,
-      "opm_pct": null
+      "opm_pct": 5.476111
     },
     {
       "period": "2025-Q4",
       "revenue_krw": 167994000000,
-      "operating_profit_krw": null,
+      "operating_profit_krw": 9466673815.0,
       "basis": "연결",
       "source": "https://kind.krx.co.kr/external/2026/03/16/002658/20260316007471/11011.htm",
+      "operating_profit_source": "https://kind.krx.co.kr/external/2026/03/16/002658/20260316007471/11011.htm",
       "precision": "사업의 내용 매출표·백만원 반올림; Q2~Q4는 누적 차감",
       "revenue_yoy_pct": 17.563,
-      "opm_pct": null
+      "opm_pct": 5.635126
     },
     {
       "period": "2026-Q1",
       "revenue_krw": 191987000000,
-      "operating_profit_krw": null,
+      "operating_profit_krw": 6764537999.0,
       "basis": "연결",
       "source": "https://kind.krx.co.kr/external/2026/05/14/000548/20260514001234/11013.htm",
+      "operating_profit_source": "https://kind.krx.co.kr/external/2026/08/13/000590/20260813001569/11012.htm",
       "precision": "사업의 내용 매출표·백만원 반올림; Q2~Q4는 누적 차감",
       "revenue_yoy_pct": 28.464081,
-      "opm_pct": null
+      "opm_pct": 3.523435
     },
     {
       "period": "2026-Q2",
       "revenue_krw": 258011000000,
-      "operating_profit_krw": null,
+      "operating_profit_krw": 15383354253.0,
       "basis": "연결",
       "source": "https://kind.krx.co.kr/external/2026/08/13/000590/20260813001569/11012.htm",
+      "operating_profit_source": "https://kind.krx.co.kr/external/2026/08/13/000590/20260813001569/11012.htm",
       "precision": "사업의 내용 매출표·백만원 반올림; Q2~Q4는 누적 차감",
       "revenue_yoy_pct": 66.249557,
-      "opm_pct": null
+      "opm_pct": 5.962286
     }
   ]
 }
