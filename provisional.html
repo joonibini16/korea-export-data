@@ -24,6 +24,15 @@ h2{margin:0 0 14px}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:
 .sg-b{display:inline-block;padding:3px 9px;border-radius:999px;font-size:12px;font-weight:700;white-space:nowrap}.sg-tot td{background:rgba(127,127,127,.08)}.sg-x td{white-space:normal}
 .sg-d{border:1px solid #d0d5dd;background:#fff;border-radius:7px;padding:4px 10px;cursor:pointer}.sg-dt{padding:6px 2px;white-space:normal}.sg-why{margin-bottom:10px;line-height:1.6}
 .sg-mini th,.sg-mini td{padding:4px 6px;font-size:12px}.sg-note{margin-top:12px;color:#475467;font-size:13px;line-height:1.7}.sg-note li{margin:3px 0}
+
+#sigArea{min-width:0}.sg-tg{flex-wrap:wrap}
+#sg-focus:empty{display:none}#sg-focus{margin:18px 0 26px;padding:20px;border:1px solid #3b5280;border-radius:12px;background:rgba(96,165,250,.045)}
+.sg-focus-head,.sg-focus-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.sg-focus-head h3{margin:0}.sg-focus-controls{justify-content:flex-start;margin:18px 0}
+.sg-focus-controls select{padding:9px 12px;border:1px solid #64748b;border-radius:8px;background:#0f1a33;color:#e5e7eb;margin-left:6px}
+.sg-focus-cards{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}.sg-focus-cards .value{font-size:24px}
+.sg-focus-table{max-height:440px;overflow:auto}.sg-focus-table th{position:sticky;top:0;z-index:1}.sg-focus-table caption{text-align:left;padding:12px 0;font-weight:700}
+@media(max-width:650px){#sg-focus{padding:12px}.sg-focus-cards{grid-template-columns:1fr 1fr}.sg-focus-controls label{width:100%}.sg-focus-controls select{max-width:100%}}
 </style>
 <link rel="stylesheet" href="./shell.css?v=3">
 </head>
@@ -100,5 +109,5 @@ function render(){
 document.querySelectorAll(".period").forEach(b=>b.onclick=()=>{document.querySelectorAll(".period").forEach(x=>x.classList.toggle("active",x===b));filterPeriod=b.dataset.period;render()});
 csv("provisional_official.csv").then(a=>{official=a;render();}).catch(e=>{document.getElementById("latest").textContent="데이터 로딩 오류: "+e.message});
 </script>
-<script src="./provisional_signal.js?v=4"></script>
+<script src="./provisional_signal.js?v=5"></script>
 </body></html>

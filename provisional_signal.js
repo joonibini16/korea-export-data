@@ -18,9 +18,9 @@
  const f1=v=>v==null?'—':(v>0?'+':'')+v.toFixed(1);
  const cls=v=>v==null?'':v>=0?'pos':'neg';
  const prevMonth=mo=>{const [y,m]=mo.split('.').map(Number);return m===1?(y-1)+'.12':y+'.'+String(m-1).padStart(2,'0');};
- const monthRate=(c,p,mo,k)=>{if(c==null||!Number.isFinite(c)||!Number.isFinite(p)||!(p>0)||c<0)return null;if(!adj)return (c/p-1)*100;const a=segDays(mo,k,false),b=segDays(prevMonth(mo),k,false);return a&&b?((c/a)/(p/b)-1)*100:null;};
+ const monthRate=(c,p,mo,k,daily=adj)=>{if(c==null||!Number.isFinite(c)||!Number.isFinite(p)||!(p>0)||c<0)return null;if(!daily)return (c/p-1)*100;const a=segDays(mo,k,false),b=segDays(prevMonth(mo),k,false);return a&&b?((c/a)/(p/b)-1)*100:null;};
  const SEGL=['1~10일','11~20일','21~말일'];
- let mode='item',adj=true,R=[],chart=null;
+ let mode='item',adj=true,R=[],chart=null,focusCharts=[],focusPeriod='D10',focusRange='12';
  const selected={item:'',country:''};
  const esc=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  // 관세청 조업일수: 평일 1, 토요일 0.5, 일요일·공휴일 0 (근로자의날 포함, 설·추석이 토요일과 겹칠 때 대체휴일 없음) — 발표문 조업일수와 대조 검증
@@ -50,7 +50,7 @@
    const seg=slots.map(([m,k])=>{let c=null,p=null;const a=g(m,'D10',kind,n),b=g(m,'D20',kind,n),f=g(m,'FINAL',kind,n);
     if(k===1&&a&&a.c!=null){c=a.c;p=a.p;}else if(k===2&&a&&b&&a.c!=null&&b.c!=null&&a.p!=null&&b.p!=null){c=b.c-a.c;p=b.p-a.p;}else if(k===3&&b&&f&&b.c!=null&&f.c!=null&&b.p!=null&&f.p!=null){c=f.c-b.c;p=f.p-b.p;}
     const y=yoyOf(c,p,m,k),yr=c!=null&&p>0&&c>=0?(c/p-1)*100:null;return {m,k,c,p,y,yr,da:segDays(m,k,false),db:segDays(m,k,true)};});
-   seg.forEach(q=>{const prior=seg.find(v=>v.m===prevMonth(q.m)&&v.k===q.k);q.monthRaw=prior&&Number.isFinite(q.c)&&Number.isFinite(prior.c)&&q.c!=null&&prior.c>0&&q.c>=0?(q.c/prior.c-1)*100:null;q.monthChange=prior?monthRate(q.c,prior.c,q.m,q.k):null;});
+   seg.forEach(q=>{const prior=seg.find(v=>v.m===prevMonth(q.m)&&v.k===q.k);q.monthRaw=prior&&Number.isFinite(q.c)&&Number.isFinite(prior.c)&&q.c!=null&&prior.c>0&&q.c>=0?(q.c/prior.c-1)*100:null;q.monthChange=prior?monthRate(q.c,prior.c,q.m,q.k):null;q.monthDaily=prior?monthRate(q.c,prior.c,q.m,q.k,true):null;});
    const last9=seg.slice(-9),ys=seg.map(s=>s.y);
    const r3=avg(ys.slice(-3)),p3=avg(ys.slice(-6,-3)),mom=r3!=null&&p3!=null?r3-p3:null;
    const lastY=[...seg].reverse().find(s=>s.y!=null);
@@ -62,7 +62,9 @@
    const fm=months.filter(m=>g(m,'FINAL',kind,n)).slice(-12);let ttm=null,ttmY=null,ttmEnd=null;
    if(fm.length===12){const s=fm.map(m=>g(m,'FINAL',kind,n));ttm=s.reduce((a,v)=>a+v.c,0);const pp=s.reduce((a,v)=>a+(v.p||0),0);ttmY=pp>0&&s.every(v=>v.p!=null)?(ttm/pp-1)*100:null;ttmEnd=fm.at(-1);}
    const miss3=seg.slice(-9).filter(s=>s.k===3&&s.y==null&&s.m<lm).length;
-   return {n,seg,last9,r3,p3,mom,lastY,cumY,cumMoM,cumLbl:lm+' '+(lr==='D10'?'1~10':'1~20'),ttm,ttmY,ttmEnd,sig:judge(r3,p3),miss3};
+   const releases={};
+for(const rel of ['D10','D20']){const k=rel==='D10'?'10d':'20d';releases[rel]=months.filter(m=>m<=lm).map(m=>{const v=g(m,rel,kind,n),pv=g(prevMonth(m),rel,kind,n);const c=v?.c??null,p=v?.p??null,da=segDays(m,k,false),db=segDays(m,k,true);return {m,k:rel,c,p,da,db,y:yoyOf(c,p,m,k),yr:c!=null&&p>0&&c>=0?(c/p-1)*100:null,monthChange:pv?monthRate(c,pv.c,m,k):null,monthDaily:pv?monthRate(c,pv.c,m,k,true):null,monthRaw:c!=null&&pv?.c>0&&c>=0?(c/pv.c-1)*100:null};});}
+   return {n,seg,releases,last9,r3,p3,mom,lastY,cumY,cumMoM,cumLbl:lm+' '+(lr==='D10'?'1~10':'1~20'),ttm,ttmY,ttmEnd,sig:judge(r3,p3),miss3};
   }).filter(x=>x.last9.some(s=>s.y!=null));
  }
 
@@ -76,6 +78,7 @@
   return `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" style="display:block"><line x1="0" x2="${W}" y1="${Y(0)}" y2="${Y(0)}" stroke="#d0d5dd" stroke-dasharray="2 2"/><path d="${d}" fill="none" stroke="${col}" stroke-width="1.8"/>${dots}<circle cx="${X(end[1])}" cy="${Y(end[0])}" r="2.6" fill="${col}"/></svg>`;}
 
  function render(){
+  focusCharts.forEach(c=>c.destroy());focusCharts=[];
   if(chart){chart.destroy();chart=null;}
   const all=build(R).sort((a,b)=>(b.mom??-1e9)-(a.mom??-1e9));
   if(selected[mode]&&!all.some(x=>x.n===selected[mode]))selected[mode]='';
@@ -85,6 +88,7 @@
   host.innerHTML=`<div class="sg-top"><div class="sg-tg">${[['item','수출 품목'],['country','수출 국가']].map(([k,t])=>`<button class="period${mode===k?' active':''}" data-m="${k}">${t}</button>`).join('')}<span style="width:14px"></span>${[[1,'일평균(조업일수 보정)'],[0,'금액 그대로']].map(([k,t])=>`<button class="period${+adj===k?' active':''}" data-a="${k}">${t}</button>`).join('')}</div>
    <label style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">${mode==='item'?'품목 선택':'국가 선택'} <select id="sg-select" aria-label="${mode==='item'?'품목 선택':'국가 선택'}" style="padding:9px 12px;border:1px solid #94a3b8;border-radius:8px;background:#0f1a33;color:#e5e7eb;min-width:220px;max-width:100%"><option value="">전체 ${mode==='item'?'품목':'국가'}</option>${[...all].sort((a,b)=>a.n.localeCompare(b.n,'ko')).map(x=>`<option value="${esc(x.n)}"${selected[mode]===x.n?' selected':''}>${esc(x.n)}</option>`).join('')}</select><span class="sg-h">${L.length} / ${all.length}개 표시 · 선택하면 상세 그래프가 열립니다</span></label>
    <div class="sg-sum">${Object.keys(SIG).filter(k=>cnt[k]).map(k=>`<span class="sg-b" style="color:${SIG[k].c};background:${SIG[k].bg}">${k} ${cnt[k]}</span>`).join(' ')}</div></div>
+   <section id="sg-focus" aria-label="선택 항목 상세"></section>
    <div class="table-wrap"><table class="sg"><thead><tr><th>${mode==='item'?'품목':'국가'}</th><th>시그널</th><th>최신구간 YoY${adj?'<div class="sg-h">일평균 기준</div>':''}<div class="sg-h">${latest?latest.m.slice(2).replace('.','.')+' '+SEGL[latest.k-1]:''}</div></th><th>최신구간 MoM<div class="sg-h">전월 동일 구간${adj?' · 일평균':''}</div></th><th>3개월 추세<div class="sg-h">10일 구간 YoY · 9구간</div></th><th>모멘텀<div class="sg-h">최근3−직전3 (%p)</div></th><th>당월누적 YoY<div class="sg-h">${L[0]?L[0].cumLbl+'일':''}</div></th><th>당월누적 MoM<div class="sg-h">전월 동일 누적기간</div></th><th>TTM YoY<div class="sg-h">확정치 12개월</div></th><th>TTM (억$)</th><th></th></tr></thead><tbody>`+
    L.map((x,i)=>{const s=SIG[x.sig],tot=/^총계/.test(x.n);return `<tr class="${tot?'sg-tot':''}"><td><b>${x.n}</b></td><td><span class="sg-b" style="color:${s.c};background:${s.bg}" title="${s.d}">${x.sig}</span></td>
     <td class="num ${cls(x.lastY&&x.lastY.y)}">${x.lastY?f1(x.lastY.y)+'%':'—'}${x.lastY&&x.lastY!==x.last9.at(-1)?'<div class="sg-h">'+x.lastY.m.slice(2)+' '+SEGL[x.lastY.k-1]+'</div>':''}</td>
@@ -101,23 +105,46 @@
     <li>국가는 각 발표의 상위 10개국이라 일부 구간이 빠질 수 있습니다(말레이시아·인도 등은 확정치 표에 없어 ③ 빈칸).</li></ul></details>`;
   host.querySelectorAll('[data-m]').forEach(b=>b.onclick=()=>{mode=b.dataset.m;render();});host.querySelectorAll('[data-a]').forEach(b=>b.onclick=()=>{adj=b.dataset.a==='1';render();});
   host.querySelector('#sg-select').onchange=e=>{selected[mode]=e.target.value;render();};
-  host.querySelectorAll('.sg-d').forEach(b=>b.onclick=()=>detail(L[+b.dataset.i],+b.dataset.i));
-  if(selected[mode]&&L.length)detail(L[0],0);
+  host.querySelectorAll('.sg-d').forEach(b=>b.onclick=()=>{selected[mode]=L[+b.dataset.i].n;render();});
+  if(selected[mode]&&L.length)focus(L[0]);
  }
 
- function detail(x,i){
-  const tr=document.getElementById('sgx'+i);const open=!tr.hidden;host.querySelectorAll('.sg-x').forEach(t=>{t.hidden=true;t.cells[0].innerHTML='';});if(chart){chart.destroy();chart=null;}if(open)return;
-  tr.hidden=false;const seg=x.seg.slice(-18),s=SIG[x.sig];
-  tr.cells[0].innerHTML=`<div class="sg-dt"><div class="sg-why"><b style="color:${s.c}">${x.sig}</b> — 최근 3구간 평균 <b>${f1(x.r3)}%</b>, 직전 3구간 평균 <b>${f1(x.p3)}%</b> → 모멘텀 <b>${f1(x.mom)}%p</b>. ${s.d}.${x.ttm!=null?` TTM ${Math.round(x.ttm/100).toLocaleString()}억$ (${x.ttmEnd}까지, ${f1(x.ttmY)}%)`:''}</div><div style="height:260px"><canvas></canvas></div>
-   <div class="table-wrap"><table class="sg-mini"><tr><th>구간</th>${seg.map(q=>`<th>${q.m.slice(2)} ${['①','②','③'][q.k-1]}</th>`).join('')}</tr><tr><td>금액(억$)</td>${seg.map(q=>`<td class="num">${q.c==null?'—':(q.c/100).toFixed(1)}</td>`).join('')}</tr><tr><td>전년(억$)</td>${seg.map(q=>`<td class="num">${q.p==null?'—':(q.p/100).toFixed(1)}</td>`).join('')}</tr><tr><td>조업일수(당해/전년)</td>${seg.map(q=>`<td class="num">${q.da??'—'}/${q.db??'—'}</td>`).join('')}</tr><tr><td>YoY 금액</td>${seg.map(q=>`<td class="num ${cls(q.yr)}">${q.yr==null?'—':f1(q.yr)}</td>`).join('')}</tr><tr><td>YoY 일평균</td>${seg.map(q=>{const v=q.yr==null||!q.da||!q.db?null:((1+q.yr/100)*q.db/q.da-1)*100;return `<td class="num ${cls(v)}">${v==null?'—':f1(v)}</td>`;}).join('')}</tr></table></div></div>`;
-  chart=new Chart(tr.querySelector('canvas'),{data:{labels:seg.map(q=>q.m.slice(2)+' '+['①','②','③'][q.k-1]),datasets:[
-   {type:'bar',label:'전년동기',data:seg.map(q=>q.p==null?null:q.p/100),backgroundColor:'#cbd5e1',yAxisID:'y'},
-   {type:'bar',label:'당해',data:seg.map(q=>q.c==null?null:q.c/100),backgroundColor:s.c+'cc',yAxisID:'y'},
-   {type:'line',label:(adj?'일평균 ':'')+'YoY(%, 우)',data:seg.map(q=>q.y),borderColor:'#111827',backgroundColor:'#111827',pointRadius:3,spanGaps:true,yAxisID:'y1'},
-   {type:'line',label:(adj?'일평균 ':'')+'MoM(%, 우)',data:seg.map(q=>q.monthChange),borderColor:'#f59e0b',backgroundColor:'#f59e0b',borderDash:[5,3],pointRadius:3,spanGaps:false,yAxisID:'y1'}]},
-   options:{responsive:true,maintainAspectRatio:false,animation:false,plugins:{rangeNav:false,tooltip:{mode:'index',intersect:false}},scales:{y:{beginAtZero:true,title:{display:true,text:'억 달러'}},y1:{position:'right',grid:{drawOnChartArea:false},ticks:{callback:v=>v+'%'}}}}});
+ function focus(x){
+  const box=host.querySelector('#sg-focus'),s=SIG[x.sig];
+  const label=q=>q.m+' '+(q.k==='D10'?'1~10일':q.k==='D20'?'1~20일':SEGL[q.k-1]);
+  const rate=v=>v==null||!Number.isFinite(v)?'—':f1(v)+'%';
+  const amount=v=>v==null||!Number.isFinite(v)||v<0?'—':(v/100).toLocaleString('ko-KR',{minimumFractionDigits:1,maximumFractionDigits:1});
+  const dailyY=q=>q.yr==null||!(q.da>0&&q.db>0)?null:((1+q.yr/100)*q.db/q.da-1)*100;
+  let data=focusPeriod==='SEG'?x.seg:x.releases[focusPeriod];
+  if(focusPeriod!=='SEG'){const end=R.filter(r=>r.release===focusPeriod&&r.flow==='export').map(r=>r.month).sort().at(-1);data=data.filter(q=>q.m<=end);}
+  const limit=focusRange==='ALL'?null:+focusRange;
+  if(limit){const months=[...new Set(data.map(q=>q.m))].slice(-limit);data=data.filter(q=>months.includes(q.m));}
+  const latest=data.at(-1),modeLabel=adj?'일평균':'수출액';
+  box.innerHTML=`<div class="sg-focus-head"><h3>${esc(x.n)} · 수출 상세</h3><button class="sg-d" id="sg-all">전체 목록 보기</button></div>
+   <div class="sg-focus-controls"><label>조회 기준 <select id="sg-focus-period" aria-label="상세 조회 기준">${[['D10','1~10일 누적 (D10)'],['D20','1~20일 누적 (D20)'],['SEG','10일 개별 구간']].map(([k,t])=>`<option value="${k}"${focusPeriod===k?' selected':''}>${t}</option>`).join('')}</select></label>
+   <label>조회 기간 <select id="sg-focus-range" aria-label="상세 조회 기간">${[['6','최근 6개월'],['12','최근 12개월'],['ALL','전체 기간']].map(([k,t])=>`<option value="${k}"${focusRange===k?' selected':''}>${t}</option>`).join('')}</select></label><span class="sub">${latest?label(latest):'조회 자료 없음'} · 차트 증감률: ${modeLabel} 기준</span></div>
+   <div class="cards sg-focus-cards">${[
+    ['수출액 (억 달러)',amount(latest?.c),latest?label(latest):'',null],
+    ['수출액 YoY',rate(latest?.yr),'전년 동일기간 대비',latest?.yr],
+    ['수출액 MoM',rate(latest?.monthRaw),'전월 동일기간 대비',latest?.monthRaw],
+    ['일평균 YoY',rate(latest?dailyY(latest):null),'조업일수 보정',latest?dailyY(latest):null],
+    ['일평균 MoM',rate(latest?.monthDaily),'조업일수 보정',latest?.monthDaily]
+   ].map(([t,v,d,r])=>`<div class="card"><div class="label">${t}</div><div class="value ${cls(r)}">${v}</div><div class="detail">${d}</div></div>`).join('')}</div>
+   <div class="grid"><div><h3>수출액 · 전년동기 비교</h3><div class="chart"><canvas id="sg-amount-chart" role="img" aria-label="${esc(x.n)} 수출액 비교"></canvas></div></div>
+   <div><h3>${modeLabel} YoY · MoM</h3><div class="chart"><canvas id="sg-rate-chart" role="img" aria-label="${esc(x.n)} YoY MoM 추이"></canvas></div></div></div>
+   <p class="sub">D10은 D10끼리, D20은 D20끼리 비교합니다. 개별 구간은 1~10일·11~20일·21일~말일로 나누며 MoM은 전월의 같은 구간 대비입니다. 빈칸은 자료 미확보 또는 비교 불가입니다.</p>
+   <div class="table-wrap sg-focus-table"><table><caption>${esc(x.n)} 기간별 수출액·YoY·MoM</caption><thead><tr><th>기준기간</th><th>수출액 (억 달러)</th><th>전년동기 (억 달러)</th><th>YoY (%)</th><th>MoM (%)</th><th>일평균 YoY (%)</th><th>일평균 MoM (%)</th><th>조업일수 (당해/전년)</th></tr></thead><tbody>${[...data].reverse().map(q=>`<tr><td>${label(q)}</td><td class="num">${amount(q.c)}</td><td class="num">${amount(q.p)}</td><td class="num ${cls(q.yr)}">${rate(q.yr)}</td><td class="num ${cls(q.monthRaw)}">${rate(q.monthRaw)}</td><td class="num ${cls(dailyY(q))}">${rate(dailyY(q))}</td><td class="num ${cls(q.monthDaily)}">${rate(q.monthDaily)}</td><td>${q.da??'—'} / ${q.db??'—'}</td></tr>`).join('')}</tbody></table></div>
+   <p class="sub"><span class="sg-b" style="color:${s.c};background:${s.bg}">${x.sig}</span> 10일 개별 구간 시그널 · 모멘텀 ${f1(x.mom)}%p${x.ttm==null?'':` · TTM ${Math.round(x.ttm/100).toLocaleString()}억 달러 (${x.ttmEnd}까지)`}</p>`;
+  box.querySelector('#sg-all').onclick=()=>{selected[mode]='';render();};
+  box.querySelector('#sg-focus-period').onchange=e=>{focusPeriod=e.target.value;render();};
+  box.querySelector('#sg-focus-range').onchange=e=>{focusRange=e.target.value;render();};
+  const common={responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:'index',intersect:false},plugins:{rangeNav:false}};
+  focusCharts.push(new Chart(box.querySelector('#sg-amount-chart'),{type:'bar',data:{labels:data.map(label),datasets:[{label:'전년동기',data:data.map(q=>q.p==null||q.p<0?null:q.p/100),backgroundColor:'#64748b'},{label:'당해 수출',data:data.map(q=>q.c==null||q.c<0?null:q.c/100),backgroundColor:'#60a5fa'}]},options:{...common,scales:{y:{beginAtZero:true,title:{display:true,text:'억 달러 (USD)'}}},plugins:{...common.plugins,tooltip:{callbacks:{label:c=>c.dataset.label+': '+c.parsed.y?.toLocaleString('ko-KR',{maximumFractionDigits:2})+'억 달러'}}}}}));
+  focusCharts.push(new Chart(box.querySelector('#sg-rate-chart'),{type:'line',data:{labels:data.map(label),datasets:[{label:modeLabel+' YoY',data:data.map(q=>adj?dailyY(q):q.yr),borderColor:'#f87171',backgroundColor:'#f87171',borderWidth:3,pointRadius:3,spanGaps:false},{label:modeLabel+' MoM',data:data.map(q=>adj?q.monthDaily:q.monthRaw),borderColor:'#fbbf24',backgroundColor:'#fbbf24',borderDash:[5,3],borderWidth:2,pointRadius:3,spanGaps:false}]},options:{...common,scales:{y:{title:{display:true,text:'증감률 (%)'},ticks:{callback:v=>v+'%'}}},plugins:{...common.plugins,tooltip:{callbacks:{label:c=>c.dataset.label+': '+rate(c.parsed.y)}}}}}));
  }
+
 
  fetch('provisional_items.csv?t='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():Promise.reject(r.status)).then(t=>{R=parse(t);render();})
   .catch(e=>{host.innerHTML='<div class="empty">품목 데이터를 불러오지 못했습니다 ('+e+')</div>';});
 })();
+
