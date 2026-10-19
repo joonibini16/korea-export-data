@@ -16,6 +16,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / 'global_segments_sec.csv'
 CACHE = ROOT / '.secseg-cache'; CACHE.mkdir(exist_ok=True)
 REV = {'Revenues', 'RevenueFromContractWithCustomerExcludingAssessedTax', 'RevenueFromContractWithCustomerIncludingAssessedTax', 'SalesRevenueNet', 'RevenuesNetOfInterestExpense'}
+GENERIC = {'product', 'products', 'service', 'services', 'productandservice', 'productsandservices', 'serviceandother'}
 EXCL = re.compile(r'Geograph|LegalEntity|ConsolidationItems|Range|Scenario|Concentration|Customer|Restatement|Adjustment|Currency|Country|Region|Statement(Equity|ClassOfStock)|Counterparty|Maturity|FinancialInstrument|Hedg|Derivative|Location|Market(s)?Axis')
 START = '2018-01-01'
 last = [0.0]
@@ -94,7 +95,7 @@ def main():
         fl = [dict(form=rec['form'][i], acc=rec['accessionNumber'][i], date=rec['reportDate'][i], doc=rec['primaryDocument'][i], filed=rec['filingDate'][i])
               for i in range(len(rec['form'])) if rec['form'][i] in ('10-Q', '10-K') and rec['reportDate'][i] >= START and rec['primaryDocument'][i].endswith('.htm')]
         # 회사별: (axis, member) → {(start,end): value}, 총매출 {(start,end): value}
-        seg = defaultdict(dict); tot = {}; src = {}
+        seg = defaultdict(dict); tot = {}; src = {}; geo_parts = {}
         for f in fl:
             cf = CACHE / f"{t}_{f['acc']}.json"
             if cf.exists():
@@ -112,10 +113,27 @@ def main():
                 if not (80 <= span <= 100 or 350 <= span <= 380): continue
                 if not dims:
                     tot.setdefault((s, e), v); src.setdefault((s, e), url); continue
+                # 운영부문 표시(ConsolidationItemsAxis=OperatingSegmentsMember)는 의미 없는 보조 축이라 제거
+                dims = [d for d in dims if not (d[0].endswith('ConsolidationItemsAxis') and d[1].endswith('OperatingSegmentsMember'))]
+                if not dims:
+                    tot.setdefault((s, e), v); src.setdefault((s, e), url); continue
+                if len(dims) == 2:
+                    geo = [d for d in dims if 'Geograph' in d[0]]
+                    oth = [d for d in dims if 'Geograph' not in d[0]]
+                    if len(geo) == 1 and len(oth) == 1 and not EXCL.search(oth[0][0].split(':')[-1]):
+                        key = (oth[0][0].split(':')[-1] + '#geo', oth[0][1])
+                        g = geo_parts.setdefault((key, (s, e)), {})
+                        g.setdefault(geo[0][1], v); src.setdefault((s, e), url)
+                    continue
                 if len(dims) != 1: continue
                 axis, mem = dims[0][0].split(':')[-1], dims[0][1]
                 if EXCL.search(axis): continue
                 seg[(axis, mem)].setdefault((s, e), v); src.setdefault((s, e), url)
+        # 지역별로만 나뉜 제품 매출은 지역 합으로 제품 값을 만듦(같은 제품의 단일 축 값이 없을 때만)
+        for (key, span), parts in geo_parts.items():
+            base = (key[0][:-4], key[1])
+            if span in seg.get(base, {}): continue
+            seg[key][span] = sum(parts.values())
         if not seg:
             status[t] = f'{len(fl)} filings, no segment facts'; continue
 
@@ -133,10 +151,11 @@ def main():
         for (axis, mem), ser in seg.items():
             for e, vs in quarters(ser).items():
                 if vs[0] > 0: q_axis[axis][e][mem] = vs
-        pref = lambda ax: 0 if 'Product' in ax else 1 if 'Segment' in ax else 2
+        pref = lambda ax: (0 if 'Product' in ax else 1 if 'Segment' in ax else 2) + (0.5 if ax.endswith('#geo') else 0)
 
         def fit(items, total):
             """항목 합이 총매출과 맞는 가장 많은 항목 조합(상위·하위 항목 중복 제거)."""
+            items = {k: v for k, v in items.items() if label(k).replace(' ', '').lower() not in GENERIC}
             if not total: return items
             ks = list(items)
             if abs(sum(v[0] for v in items.values()) / total - 1) < 0.02: return items
@@ -157,6 +176,7 @@ def main():
                 items = q_axis[ax].get(e, {})
                 if len(items) < 2: continue
                 f2 = fit(items, total)
+                if f2 and ax.endswith('#geo') and len(f2) != len(items): f2 = None
                 if f2 and len(f2) >= 2: choice = (ax, f2); break
             if not choice: continue
             ax, items = choice; used[ax] += 1
@@ -166,7 +186,7 @@ def main():
             if total: rows.append(dict(company=t, period=per, kind='revenue', item='매출(합계)', value=round(total / 1e6, 1), unit='USD mn', source=u))
             for m, (v, _) in items.items():
                 it = label(m)
-                rows.append(dict(company=t, period=per, kind='segment_revenue', item=it, value=round(v / 1e6, 1), unit='USD mn', source=u + f' (SEC XBRL {ax})'))
+                rows.append(dict(company=t, period=per, kind='segment_revenue', item=it, value=round(v / 1e6, 1), unit='USD mn', source=u + f" (SEC XBRL {ax.replace('#geo', ', 지역 합산')})"))
                 rows.append(dict(company=t, period=per, kind='share', item=it, value=round(v / ssum * 100, 2), unit='%', source=u + ' (항목 합 대비)'))
             n += 1
         status[t] = f'{n} quarters · axes ' + ', '.join(f'{a}({c})' for a, c in used.items())
