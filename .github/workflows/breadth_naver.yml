@@ -25,7 +25,7 @@ jobs:
       - uses: actions/setup-python@v5
         with: {python-version: '3.12'}
       - run: pip install pandas
-      - run: python collect_breadth_naver.py
+      - run: python collect_breadth_naver.py || { sleep 60; python collect_breadth_naver.py; }
       - run: |
           git config user.name github-actions; git config user.email github-actions@github.com
           for f in breadth_kr.csv breadth_naver_status.json breadth_db_proxy.json; do if [ -f $f ]; then git add $f; fi; done
