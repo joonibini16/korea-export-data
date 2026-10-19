@@ -1,0 +1,4745 @@
+{
+  "updated_at": "2026-10-20T07:36:51+09:00",
+  "provider": "Yahoo Finance (yfinance) EPS 추정·실적",
+  "method": "발표일 기준 최근 2년. EPS·컨센서스는 자료 제공자 기준(대개 조정 EPS, ADR은 ADR 1주 기준)으로 회사 공시 GAAP EPS와 다를 수 있습니다. 서프라이즈 = (실제−컨센서스)/|컨센서스|. 반기 보고 기업은 반기 실적만 표시됩니다.",
+  "companies": [
+    {
+      "ticker": "NVDA",
+      "yahoo": "NVDA",
+      "currency": "USD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-11-20",
+          "eps_estimate": 0.75,
+          "eps_actual": 0.81,
+          "surprise_pct": 8.52,
+          "result": "상회"
+        },
+        {
+          "date": "2025-02-26",
+          "eps_estimate": 0.85,
+          "eps_actual": 0.89,
+          "surprise_pct": 5.25,
+          "result": "상회"
+        },
+        {
+          "date": "2025-05-28",
+          "eps_estimate": 0.75,
+          "eps_actual": 0.81,
+          "surprise_pct": 8.02,
+          "result": "상회"
+        },
+        {
+          "date": "2025-08-27",
+          "eps_estimate": 1.01,
+          "eps_actual": 1.05,
+          "surprise_pct": 4.1,
+          "result": "상회"
+        },
+        {
+          "date": "2025-11-19",
+          "eps_estimate": 1.26,
+          "eps_actual": 1.3,
+          "surprise_pct": 3.46,
+          "result": "상회"
+        },
+        {
+          "date": "2026-02-25",
+          "eps_estimate": 1.54,
+          "eps_actual": 1.62,
+          "surprise_pct": 5.32,
+          "result": "상회"
+        },
+        {
+          "date": "2026-05-20",
+          "eps_estimate": 1.77,
+          "eps_actual": 1.87,
+          "surprise_pct": 5.54,
+          "result": "상회"
+        },
+        {
+          "date": "2026-08-26",
+          "eps_estimate": 2.09,
+          "eps_actual": 2.22,
+          "surprise_pct": 6.16,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "AMD",
+      "yahoo": "AMD",
+      "currency": "USD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-10-29",
+          "eps_estimate": 0.92,
+          "eps_actual": 0.92,
+          "surprise_pct": 0.46,
+          "result": "부합"
+        },
+        {
+          "date": "2025-02-04",
+          "eps_estimate": 1.09,
+          "eps_actual": 1.09,
+          "surprise_pct": 0.38,
+          "result": "부합"
+        },
+        {
+          "date": "2025-05-06",
+          "eps_estimate": 0.93,
+          "eps_actual": 0.96,
+          "surprise_pct": 2.84,
+          "result": "상회"
+        },
+        {
+          "date": "2025-08-05",
+          "eps_estimate": 0.5,
+          "eps_actual": 0.48,
+          "surprise_pct": -3.48,
+          "result": "하회"
+        },
+        {
+          "date": "2025-11-04",
+          "eps_estimate": 1.18,
+          "eps_actual": 1.2,
+          "surprise_pct": 2.1,
+          "result": "상회"
+        },
+        {
+          "date": "2026-02-03",
+          "eps_estimate": 1.32,
+          "eps_actual": 1.53,
+          "surprise_pct": 15.53,
+          "result": "상회"
+        },
+        {
+          "date": "2026-05-05",
+          "eps_estimate": 1.29,
+          "eps_actual": 1.37,
+          "surprise_pct": 5.82,
+          "result": "상회"
+        },
+        {
+          "date": "2026-08-04",
+          "eps_estimate": 1.61,
+          "eps_actual": 1.66,
+          "surprise_pct": 3.21,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "AVGO",
+      "yahoo": "AVGO",
+      "currency": "USD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-12-12",
+          "eps_estimate": 1.39,
+          "eps_actual": 1.42,
+          "surprise_pct": 2.04,
+          "result": "상회"
+        },
+        {
+          "date": "2025-03-06",
+          "eps_estimate": 1.51,
+          "eps_actual": 1.6,
+          "surprise_pct": 6.11,
+          "result": "상회"
+        },
+        {
+          "date": "2025-06-05",
+          "eps_estimate": 1.57,
+          "eps_actual": 1.58,
+          "surprise_pct": 0.59,
+          "result": "상회"
+        },
+        {
+          "date": "2025-09-04",
+          "eps_estimate": 1.66,
+          "eps_actual": 1.69,
+          "surprise_pct": 1.6,
+          "result": "상회"
+        },
+        {
+          "date": "2025-12-11",
+          "eps_estimate": 1.87,
+          "eps_actual": 1.95,
+          "surprise_pct": 4.38,
+          "result": "상회"
+        },
+        {
+          "date": "2026-03-04",
+          "eps_estimate": 2.02,
+          "eps_actual": 2.05,
+          "surprise_pct": 1.32,
+          "result": "상회"
+        },
+        {
+          "date": "2026-06-03",
+          "eps_estimate": 2.4,
+          "eps_actual": 2.44,
+          "surprise_pct": 1.74,
+          "result": "상회"
+        },
+        {
+          "date": "2026-09-02",
+          "eps_estimate": 3.24,
+          "eps_actual": 3.32,
+          "surprise_pct": 2.53,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "QCOM",
+      "yahoo": "QCOM",
+      "currency": "USD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-11-06",
+          "eps_estimate": 2.57,
+          "eps_actual": 2.69,
+          "surprise_pct": 4.74,
+          "result": "상회"
+        },
+        {
+          "date": "2025-02-05",
+          "eps_estimate": 2.99,
+          "eps_actual": 3.41,
+          "surprise_pct": 14.2,
+          "result": "상회"
+        },
+        {
+          "date": "2025-04-30",
+          "eps_estimate": 2.82,
+          "eps_actual": 2.85,
+          "surprise_pct": 1.19,
+          "result": "상회"
+        },
+        {
+          "date": "2025-07-30",
+          "eps_estimate": 2.71,
+          "eps_actual": 2.77,
+          "surprise_pct": 2.05,
+          "result": "상회"
+        },
+        {
+          "date": "2025-11-05",
+          "eps_estimate": 2.88,
+          "eps_actual": 3.0,
+          "surprise_pct": 4.32,
+          "result": "상회"
+        },
+        {
+          "date": "2026-02-04",
+          "eps_estimate": 3.4,
+          "eps_actual": 3.5,
+          "surprise_pct": 2.87,
+          "result": "상회"
+        },
+        {
+          "date": "2026-04-29",
+          "eps_estimate": 2.56,
+          "eps_actual": 2.65,
+          "surprise_pct": 3.34,
+          "result": "상회"
+        },
+        {
+          "date": "2026-07-29",
+          "eps_estimate": 2.23,
+          "eps_actual": 2.21,
+          "surprise_pct": -0.74,
+          "result": "하회"
+        }
+      ]
+    },
+    {
+      "ticker": "TSM",
+      "yahoo": "TSM",
+      "currency": "TWD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-10-17",
+          "eps_estimate": 1.79,
+          "eps_actual": 1.94,
+          "surprise_pct": 8.44,
+          "result": "상회"
+        },
+        {
+          "date": "2025-01-16",
+          "eps_estimate": 2.22,
+          "eps_actual": 2.24,
+          "surprise_pct": 0.68,
+          "result": "상회"
+        },
+        {
+          "date": "2025-04-17",
+          "eps_estimate": 2.05,
+          "eps_actual": 2.12,
+          "surprise_pct": 3.21,
+          "result": "상회"
+        },
+        {
+          "date": "2025-07-17",
+          "eps_estimate": 2.31,
+          "eps_actual": 2.47,
+          "surprise_pct": 6.79,
+          "result": "상회"
+        },
+        {
+          "date": "2025-10-15",
+          "eps_estimate": 2.63,
+          "eps_actual": 2.92,
+          "surprise_pct": 11.23,
+          "result": "상회"
+        },
+        {
+          "date": "2026-01-15",
+          "eps_estimate": 2.98,
+          "eps_actual": 3.14,
+          "surprise_pct": 5.53,
+          "result": "상회"
+        },
+        {
+          "date": "2026-04-15",
+          "eps_estimate": 3.33,
+          "eps_actual": 3.49,
+          "surprise_pct": 4.68,
+          "result": "상회"
+        },
+        {
+          "date": "2026-07-16",
+          "eps_estimate": 3.89,
+          "eps_actual": 4.31,
+          "surprise_pct": 10.89,
+          "result": "상회"
+        },
+        {
+          "date": "2026-10-15",
+          "eps_estimate": 4.52,
+          "eps_actual": 4.6,
+          "surprise_pct": 1.67,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "MU",
+      "yahoo": "MU",
+      "currency": "USD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-09-25",
+          "eps_estimate": 1.11,
+          "eps_actual": 1.18,
+          "surprise_pct": 5.88,
+          "result": "상회"
+        },
+        {
+          "date": "2024-12-18",
+          "eps_estimate": 1.77,
+          "eps_actual": 1.79,
+          "surprise_pct": 1.36,
+          "result": "상회"
+        },
+        {
+          "date": "2025-03-20",
+          "eps_estimate": 1.42,
+          "eps_actual": 1.56,
+          "surprise_pct": 9.49,
+          "result": "상회"
+        },
+        {
+          "date": "2025-06-25",
+          "eps_estimate": 1.59,
+          "eps_actual": 1.91,
+          "surprise_pct": 19.75,
+          "result": "상회"
+        },
+        {
+          "date": "2025-09-23",
+          "eps_estimate": 2.86,
+          "eps_actual": 3.03,
+          "surprise_pct": 5.94,
+          "result": "상회"
+        },
+        {
+          "date": "2025-12-17",
+          "eps_estimate": 3.96,
+          "eps_actual": 4.78,
+          "surprise_pct": 20.58,
+          "result": "상회"
+        },
+        {
+          "date": "2026-03-18",
+          "eps_estimate": 9.16,
+          "eps_actual": 12.2,
+          "surprise_pct": 33.21,
+          "result": "상회"
+        },
+        {
+          "date": "2026-06-24",
+          "eps_estimate": 20.69,
+          "eps_actual": 25.11,
+          "surprise_pct": 21.39,
+          "result": "상회"
+        },
+        {
+          "date": "2026-09-30",
+          "eps_estimate": 31.82,
+          "eps_actual": 33.42,
+          "surprise_pct": 5.03,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "ASML",
+      "yahoo": "ASML",
+      "currency": "EUR",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-10-15",
+          "eps_estimate": 4.86,
+          "eps_actual": 5.28,
+          "surprise_pct": 8.61,
+          "result": "상회"
+        },
+        {
+          "date": "2025-01-29",
+          "eps_estimate": 6.73,
+          "eps_actual": 6.84,
+          "surprise_pct": 1.57,
+          "result": "상회"
+        },
+        {
+          "date": "2025-04-16",
+          "eps_estimate": 5.79,
+          "eps_actual": 6.0,
+          "surprise_pct": 3.71,
+          "result": "상회"
+        },
+        {
+          "date": "2025-07-16",
+          "eps_estimate": 5.25,
+          "eps_actual": 5.9,
+          "surprise_pct": 12.36,
+          "result": "상회"
+        },
+        {
+          "date": "2025-10-15",
+          "eps_estimate": 5.37,
+          "eps_actual": 5.49,
+          "surprise_pct": 2.14,
+          "result": "상회"
+        },
+        {
+          "date": "2026-01-27",
+          "eps_estimate": 7.55,
+          "eps_actual": 7.34,
+          "surprise_pct": -2.72,
+          "result": "하회"
+        },
+        {
+          "date": "2026-04-14",
+          "eps_estimate": 6.62,
+          "eps_actual": 7.15,
+          "surprise_pct": 7.99,
+          "result": "상회"
+        },
+        {
+          "date": "2026-07-13",
+          "eps_estimate": 6.95,
+          "eps_actual": 7.58,
+          "surprise_pct": 9.09,
+          "result": "상회"
+        },
+        {
+          "date": "2026-10-14",
+          "eps_estimate": 10.76,
+          "eps_actual": 11.82,
+          "surprise_pct": 9.86,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "AMAT",
+      "yahoo": "AMAT",
+      "currency": "USD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-11-14",
+          "eps_estimate": 2.19,
+          "eps_actual": 2.32,
+          "surprise_pct": 5.71,
+          "result": "상회"
+        },
+        {
+          "date": "2025-02-13",
+          "eps_estimate": 2.3,
+          "eps_actual": 2.38,
+          "surprise_pct": 3.67,
+          "result": "상회"
+        },
+        {
+          "date": "2025-05-15",
+          "eps_estimate": 2.31,
+          "eps_actual": 2.39,
+          "surprise_pct": 3.45,
+          "result": "상회"
+        },
+        {
+          "date": "2025-08-14",
+          "eps_estimate": 2.36,
+          "eps_actual": 2.48,
+          "surprise_pct": 5.13,
+          "result": "상회"
+        },
+        {
+          "date": "2025-11-13",
+          "eps_estimate": 2.09,
+          "eps_actual": 2.17,
+          "surprise_pct": 3.65,
+          "result": "상회"
+        },
+        {
+          "date": "2026-02-12",
+          "eps_estimate": 2.21,
+          "eps_actual": 2.38,
+          "surprise_pct": 7.89,
+          "result": "상회"
+        },
+        {
+          "date": "2026-05-14",
+          "eps_estimate": 2.69,
+          "eps_actual": 2.86,
+          "surprise_pct": 6.5,
+          "result": "상회"
+        },
+        {
+          "date": "2026-08-13",
+          "eps_estimate": 3.39,
+          "eps_actual": 3.5,
+          "surprise_pct": 3.11,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "LRCX",
+      "yahoo": "LRCX",
+      "currency": "USD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-10-23",
+          "eps_estimate": 0.81,
+          "eps_actual": 0.86,
+          "surprise_pct": 6.51,
+          "result": "상회"
+        },
+        {
+          "date": "2025-01-29",
+          "eps_estimate": 0.88,
+          "eps_actual": 0.91,
+          "surprise_pct": 3.51,
+          "result": "상회"
+        },
+        {
+          "date": "2025-04-23",
+          "eps_estimate": 1.0,
+          "eps_actual": 1.04,
+          "surprise_pct": 4.06,
+          "result": "상회"
+        },
+        {
+          "date": "2025-07-30",
+          "eps_estimate": 1.21,
+          "eps_actual": 1.33,
+          "surprise_pct": 10.36,
+          "result": "상회"
+        },
+        {
+          "date": "2025-10-22",
+          "eps_estimate": 1.22,
+          "eps_actual": 1.26,
+          "surprise_pct": 3.27,
+          "result": "상회"
+        },
+        {
+          "date": "2026-01-28",
+          "eps_estimate": 1.17,
+          "eps_actual": 1.27,
+          "surprise_pct": 8.7,
+          "result": "상회"
+        },
+        {
+          "date": "2026-04-22",
+          "eps_estimate": 1.36,
+          "eps_actual": 1.47,
+          "surprise_pct": 7.87,
+          "result": "상회"
+        },
+        {
+          "date": "2026-07-29",
+          "eps_estimate": 1.68,
+          "eps_actual": 1.82,
+          "surprise_pct": 8.1,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "KLAC",
+      "yahoo": "KLAC",
+      "currency": "USD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-10-30",
+          "eps_estimate": 0.7,
+          "eps_actual": 0.73,
+          "surprise_pct": 4.03,
+          "result": "상회"
+        },
+        {
+          "date": "2025-01-30",
+          "eps_estimate": 0.78,
+          "eps_actual": 0.82,
+          "surprise_pct": 5.73,
+          "result": "상회"
+        },
+        {
+          "date": "2025-04-30",
+          "eps_estimate": 0.81,
+          "eps_actual": 0.84,
+          "surprise_pct": 4.03,
+          "result": "상회"
+        },
+        {
+          "date": "2025-07-31",
+          "eps_estimate": 0.86,
+          "eps_actual": 0.94,
+          "surprise_pct": 9.67,
+          "result": "상회"
+        },
+        {
+          "date": "2025-10-29",
+          "eps_estimate": 0.86,
+          "eps_actual": 0.88,
+          "surprise_pct": 2.24,
+          "result": "상회"
+        },
+        {
+          "date": "2026-01-29",
+          "eps_estimate": 0.88,
+          "eps_actual": 0.89,
+          "surprise_pct": 0.59,
+          "result": "상회"
+        },
+        {
+          "date": "2026-04-29",
+          "eps_estimate": 0.92,
+          "eps_actual": 0.94,
+          "surprise_pct": 2.5,
+          "result": "상회"
+        },
+        {
+          "date": "2026-07-28",
+          "eps_estimate": 1.0,
+          "eps_actual": 1.05,
+          "surprise_pct": 5.14,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "8035.T",
+      "yahoo": "8035.T",
+      "currency": "JPY",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-11-12",
+          "eps_estimate": 45.09,
+          "eps_actual": 51.09,
+          "surprise_pct": 13.3,
+          "result": "상회"
+        },
+        {
+          "date": "2025-02-06",
+          "eps_estimate": 55.2,
+          "eps_actual": 68.35,
+          "surprise_pct": 23.83,
+          "result": "상회"
+        },
+        {
+          "date": "2025-04-30",
+          "eps_estimate": 56.69,
+          "eps_actual": 62.4,
+          "surprise_pct": 10.08,
+          "result": "상회"
+        },
+        {
+          "date": "2025-07-31",
+          "eps_estimate": 54.2,
+          "eps_actual": 51.43,
+          "surprise_pct": -5.11,
+          "result": "하회"
+        },
+        {
+          "date": "2025-10-31",
+          "eps_estimate": 54.14,
+          "eps_actual": 54.04,
+          "surprise_pct": -0.2,
+          "result": "하회"
+        },
+        {
+          "date": "2026-02-06",
+          "eps_estimate": 54.12,
+          "eps_actual": 51.72,
+          "surprise_pct": -4.44,
+          "result": "하회"
+        },
+        {
+          "date": "2026-04-29",
+          "eps_estimate": 81.82,
+          "eps_actual": 93.73,
+          "surprise_pct": 14.56,
+          "result": "상회"
+        },
+        {
+          "date": "2026-07-30",
+          "eps_estimate": 69.64,
+          "eps_actual": 72.27,
+          "surprise_pct": 3.78,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "MSFT",
+      "yahoo": "MSFT",
+      "currency": "USD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-10-30",
+          "eps_estimate": 3.11,
+          "eps_actual": 3.3,
+          "surprise_pct": 6.13,
+          "result": "상회"
+        },
+        {
+          "date": "2025-01-29",
+          "eps_estimate": 3.12,
+          "eps_actual": 3.23,
+          "surprise_pct": 3.47,
+          "result": "상회"
+        },
+        {
+          "date": "2025-04-30",
+          "eps_estimate": 3.22,
+          "eps_actual": 3.46,
+          "surprise_pct": 7.4,
+          "result": "상회"
+        },
+        {
+          "date": "2025-07-30",
+          "eps_estimate": 3.38,
+          "eps_actual": 3.65,
+          "surprise_pct": 8.09,
+          "result": "상회"
+        },
+        {
+          "date": "2025-10-29",
+          "eps_estimate": 3.66,
+          "eps_actual": 4.13,
+          "surprise_pct": 12.73,
+          "result": "상회"
+        },
+        {
+          "date": "2026-01-28",
+          "eps_estimate": 3.92,
+          "eps_actual": 4.14,
+          "surprise_pct": 5.69,
+          "result": "상회"
+        },
+        {
+          "date": "2026-04-29",
+          "eps_estimate": 4.07,
+          "eps_actual": 4.27,
+          "surprise_pct": 4.9,
+          "result": "상회"
+        },
+        {
+          "date": "2026-07-29",
+          "eps_estimate": 4.24,
+          "eps_actual": 4.74,
+          "surprise_pct": 11.81,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "GOOGL",
+      "yahoo": "GOOGL",
+      "currency": "USD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-10-29",
+          "eps_estimate": 1.85,
+          "eps_actual": 2.12,
+          "surprise_pct": 14.83,
+          "result": "상회"
+        },
+        {
+          "date": "2025-02-04",
+          "eps_estimate": 2.13,
+          "eps_actual": 2.15,
+          "surprise_pct": 1.18,
+          "result": "상회"
+        },
+        {
+          "date": "2025-04-24",
+          "eps_estimate": 2.01,
+          "eps_actual": 2.81,
+          "surprise_pct": 40.1,
+          "result": "상회"
+        },
+        {
+          "date": "2025-07-23",
+          "eps_estimate": 2.19,
+          "eps_actual": 2.31,
+          "surprise_pct": 5.67,
+          "result": "상회"
+        },
+        {
+          "date": "2025-10-29",
+          "eps_estimate": 2.26,
+          "eps_actual": 2.87,
+          "surprise_pct": 26.88,
+          "result": "상회"
+        },
+        {
+          "date": "2026-02-04",
+          "eps_estimate": 2.64,
+          "eps_actual": 2.82,
+          "surprise_pct": 7.01,
+          "result": "상회"
+        },
+        {
+          "date": "2026-04-29",
+          "eps_estimate": 2.67,
+          "eps_actual": 5.11,
+          "surprise_pct": 91.59,
+          "result": "상회"
+        },
+        {
+          "date": "2026-07-22",
+          "eps_estimate": 2.9,
+          "eps_actual": 9.11,
+          "surprise_pct": 214.23,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "AMZN",
+      "yahoo": "AMZN",
+      "currency": "USD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-10-31",
+          "eps_estimate": 1.14,
+          "eps_actual": 1.43,
+          "surprise_pct": 25.17,
+          "result": "상회"
+        },
+        {
+          "date": "2025-02-06",
+          "eps_estimate": 1.48,
+          "eps_actual": 1.86,
+          "surprise_pct": 25.36,
+          "result": "상회"
+        },
+        {
+          "date": "2025-05-01",
+          "eps_estimate": 1.36,
+          "eps_actual": 1.59,
+          "surprise_pct": 17.08,
+          "result": "상회"
+        },
+        {
+          "date": "2025-07-31",
+          "eps_estimate": 1.33,
+          "eps_actual": 1.68,
+          "surprise_pct": 26.13,
+          "result": "상회"
+        },
+        {
+          "date": "2025-10-30",
+          "eps_estimate": 1.56,
+          "eps_actual": 1.95,
+          "surprise_pct": 25.2,
+          "result": "상회"
+        },
+        {
+          "date": "2026-02-05",
+          "eps_estimate": 1.95,
+          "eps_actual": 1.95,
+          "surprise_pct": 0.22,
+          "result": "부합"
+        },
+        {
+          "date": "2026-04-29",
+          "eps_estimate": 1.65,
+          "eps_actual": 2.78,
+          "surprise_pct": 68.18,
+          "result": "상회"
+        },
+        {
+          "date": "2026-07-30",
+          "eps_estimate": 1.83,
+          "eps_actual": 5.75,
+          "surprise_pct": 214.89,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "META",
+      "yahoo": "META",
+      "currency": "USD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-10-30",
+          "eps_estimate": 5.29,
+          "eps_actual": 6.03,
+          "surprise_pct": 13.94,
+          "result": "상회"
+        },
+        {
+          "date": "2025-01-29",
+          "eps_estimate": 6.76,
+          "eps_actual": 8.02,
+          "surprise_pct": 18.67,
+          "result": "상회"
+        },
+        {
+          "date": "2025-04-30",
+          "eps_estimate": 5.22,
+          "eps_actual": 6.43,
+          "surprise_pct": 23.11,
+          "result": "상회"
+        },
+        {
+          "date": "2025-07-30",
+          "eps_estimate": 5.9,
+          "eps_actual": 7.14,
+          "surprise_pct": 20.96,
+          "result": "상회"
+        },
+        {
+          "date": "2025-10-29",
+          "eps_estimate": 6.71,
+          "eps_actual": 1.05,
+          "surprise_pct": -84.34,
+          "result": "하회"
+        },
+        {
+          "date": "2026-01-28",
+          "eps_estimate": 8.22,
+          "eps_actual": 8.88,
+          "surprise_pct": 8.0,
+          "result": "상회"
+        },
+        {
+          "date": "2026-04-29",
+          "eps_estimate": 6.66,
+          "eps_actual": 10.44,
+          "surprise_pct": 56.79,
+          "result": "상회"
+        },
+        {
+          "date": "2026-07-29",
+          "eps_estimate": 7.22,
+          "eps_actual": 6.18,
+          "surprise_pct": -14.42,
+          "result": "하회"
+        }
+      ]
+    },
+    {
+      "ticker": "ORCL",
+      "yahoo": "ORCL",
+      "currency": "USD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-12-09",
+          "eps_estimate": 1.48,
+          "eps_actual": 1.47,
+          "surprise_pct": -0.77,
+          "result": "하회"
+        },
+        {
+          "date": "2025-03-10",
+          "eps_estimate": 1.49,
+          "eps_actual": 1.47,
+          "surprise_pct": -1.35,
+          "result": "하회"
+        },
+        {
+          "date": "2025-06-11",
+          "eps_estimate": 1.64,
+          "eps_actual": 1.7,
+          "surprise_pct": 3.37,
+          "result": "상회"
+        },
+        {
+          "date": "2025-09-09",
+          "eps_estimate": 1.48,
+          "eps_actual": 1.47,
+          "surprise_pct": -0.62,
+          "result": "하회"
+        },
+        {
+          "date": "2025-12-10",
+          "eps_estimate": 1.64,
+          "eps_actual": 2.26,
+          "surprise_pct": 38.04,
+          "result": "상회"
+        },
+        {
+          "date": "2026-03-10",
+          "eps_estimate": 1.69,
+          "eps_actual": 1.79,
+          "surprise_pct": 5.69,
+          "result": "상회"
+        },
+        {
+          "date": "2026-06-10",
+          "eps_estimate": 1.96,
+          "eps_actual": 2.11,
+          "surprise_pct": 7.52,
+          "result": "상회"
+        },
+        {
+          "date": "2026-09-10",
+          "eps_estimate": 1.74,
+          "eps_actual": 1.92,
+          "surprise_pct": 10.45,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "ETN",
+      "yahoo": "ETN",
+      "currency": "USD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-10-31",
+          "eps_estimate": 2.81,
+          "eps_actual": 2.84,
+          "surprise_pct": 1.18,
+          "result": "상회"
+        },
+        {
+          "date": "2025-01-31",
+          "eps_estimate": 2.81,
+          "eps_actual": 2.83,
+          "surprise_pct": 0.72,
+          "result": "상회"
+        },
+        {
+          "date": "2025-05-02",
+          "eps_estimate": 2.71,
+          "eps_actual": 2.72,
+          "surprise_pct": 0.55,
+          "result": "상회"
+        },
+        {
+          "date": "2025-08-05",
+          "eps_estimate": 2.92,
+          "eps_actual": 2.95,
+          "surprise_pct": 0.95,
+          "result": "상회"
+        },
+        {
+          "date": "2025-11-04",
+          "eps_estimate": 3.05,
+          "eps_actual": 3.07,
+          "surprise_pct": 0.51,
+          "result": "상회"
+        },
+        {
+          "date": "2026-02-03",
+          "eps_estimate": 3.32,
+          "eps_actual": 3.33,
+          "surprise_pct": 0.34,
+          "result": "상회"
+        },
+        {
+          "date": "2026-05-05",
+          "eps_estimate": 2.73,
+          "eps_actual": 2.81,
+          "surprise_pct": 2.9,
+          "result": "상회"
+        },
+        {
+          "date": "2026-07-31",
+          "eps_estimate": 3.08,
+          "eps_actual": 3.15,
+          "surprise_pct": 2.39,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "VRT",
+      "yahoo": "VRT",
+      "currency": "USD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-10-23",
+          "eps_estimate": 0.69,
+          "eps_actual": 0.76,
+          "surprise_pct": 10.19,
+          "result": "상회"
+        },
+        {
+          "date": "2025-02-12",
+          "eps_estimate": 0.82,
+          "eps_actual": 0.99,
+          "surprise_pct": 20.6,
+          "result": "상회"
+        },
+        {
+          "date": "2025-04-23",
+          "eps_estimate": 0.62,
+          "eps_actual": 0.64,
+          "surprise_pct": 3.92,
+          "result": "상회"
+        },
+        {
+          "date": "2025-07-30",
+          "eps_estimate": 0.83,
+          "eps_actual": 0.95,
+          "surprise_pct": 13.89,
+          "result": "상회"
+        },
+        {
+          "date": "2025-10-22",
+          "eps_estimate": 0.99,
+          "eps_actual": 1.24,
+          "surprise_pct": 25.02,
+          "result": "상회"
+        },
+        {
+          "date": "2026-02-11",
+          "eps_estimate": 1.3,
+          "eps_actual": 1.36,
+          "surprise_pct": 4.9,
+          "result": "상회"
+        },
+        {
+          "date": "2026-04-22",
+          "eps_estimate": 1.01,
+          "eps_actual": 1.17,
+          "surprise_pct": 15.67,
+          "result": "상회"
+        },
+        {
+          "date": "2026-07-29",
+          "eps_estimate": 1.43,
+          "eps_actual": 1.52,
+          "surprise_pct": 6.42,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "GEV",
+      "yahoo": "GEV",
+      "currency": "USD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-10-23",
+          "eps_estimate": 0.26,
+          "eps_actual": -0.35,
+          "surprise_pct": -232.71,
+          "result": "하회"
+        },
+        {
+          "date": "2025-01-22",
+          "eps_estimate": 2.49,
+          "eps_actual": 1.73,
+          "surprise_pct": -30.6,
+          "result": "하회"
+        },
+        {
+          "date": "2025-04-23",
+          "eps_estimate": 0.61,
+          "eps_actual": 0.91,
+          "surprise_pct": 49.13,
+          "result": "상회"
+        },
+        {
+          "date": "2025-07-23",
+          "eps_estimate": 1.64,
+          "eps_actual": 1.86,
+          "surprise_pct": 13.44,
+          "result": "상회"
+        },
+        {
+          "date": "2025-10-22",
+          "eps_estimate": 1.86,
+          "eps_actual": 1.64,
+          "surprise_pct": -11.67,
+          "result": "하회"
+        },
+        {
+          "date": "2026-01-28",
+          "eps_estimate": 3.22,
+          "eps_actual": 13.39,
+          "surprise_pct": 316.08,
+          "result": "상회"
+        },
+        {
+          "date": "2026-04-22",
+          "eps_estimate": 2.0,
+          "eps_actual": 17.44,
+          "surprise_pct": 771.56,
+          "result": "상회"
+        },
+        {
+          "date": "2026-07-22",
+          "eps_estimate": 3.18,
+          "eps_actual": 2.47,
+          "surprise_pct": -22.44,
+          "result": "하회"
+        }
+      ]
+    },
+    {
+      "ticker": "CATL",
+      "yahoo": "300750.SZ",
+      "currency": "CNY",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-10-18",
+          "eps_estimate": 2.36,
+          "eps_actual": 2.76,
+          "surprise_pct": 16.74,
+          "result": "상회"
+        },
+        {
+          "date": "2025-03-14",
+          "eps_estimate": 3.34,
+          "eps_actual": 2.95,
+          "surprise_pct": -11.45,
+          "result": "하회"
+        },
+        {
+          "date": "2025-04-14",
+          "eps_estimate": 2.55,
+          "eps_actual": 2.69,
+          "surprise_pct": 5.65,
+          "result": "상회"
+        },
+        {
+          "date": "2025-07-30",
+          "eps_estimate": 3.28,
+          "eps_actual": 3.48,
+          "surprise_pct": 6.26,
+          "result": "상회"
+        },
+        {
+          "date": "2025-10-20",
+          "eps_estimate": 3.68,
+          "eps_actual": 3.63,
+          "surprise_pct": -1.45,
+          "result": "하회"
+        },
+        {
+          "date": "2026-03-09",
+          "eps_estimate": 4.01,
+          "eps_actual": 4.62,
+          "surprise_pct": 15.03,
+          "result": "상회"
+        },
+        {
+          "date": "2026-04-15",
+          "eps_estimate": 3.39,
+          "eps_actual": 4.0,
+          "surprise_pct": 17.99,
+          "result": "상회"
+        },
+        {
+          "date": "2026-07-24",
+          "eps_estimate": 4.7,
+          "eps_actual": 4.61,
+          "surprise_pct": -1.81,
+          "result": "하회"
+        }
+      ]
+    },
+    {
+      "ticker": "6752.T",
+      "yahoo": "6752.T",
+      "currency": "JPY",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-10-31",
+          "eps_estimate": 31.97,
+          "eps_actual": 50.66,
+          "surprise_pct": 58.46,
+          "result": "상회"
+        },
+        {
+          "date": "2025-02-04",
+          "eps_estimate": 37.06,
+          "eps_actual": 42.62,
+          "surprise_pct": 14.99,
+          "result": "상회"
+        },
+        {
+          "date": "2025-05-09",
+          "eps_estimate": 17.19,
+          "eps_actual": 33.33,
+          "surprise_pct": 93.93,
+          "result": "상회"
+        },
+        {
+          "date": "2025-07-30",
+          "eps_estimate": 29.08,
+          "eps_actual": 30.61,
+          "surprise_pct": 5.27,
+          "result": "상회"
+        },
+        {
+          "date": "2025-10-30",
+          "eps_estimate": 39.72,
+          "eps_actual": 30.39,
+          "surprise_pct": -23.49,
+          "result": "하회"
+        },
+        {
+          "date": "2026-02-04",
+          "eps_estimate": 29.31,
+          "eps_actual": -7.33,
+          "surprise_pct": -125.01,
+          "result": "하회"
+        },
+        {
+          "date": "2026-05-12",
+          "eps_estimate": 55.11,
+          "eps_actual": 35.87,
+          "surprise_pct": -34.91,
+          "result": "하회"
+        },
+        {
+          "date": "2026-07-30",
+          "eps_estimate": 45.38,
+          "eps_actual": 57.9,
+          "surprise_pct": 27.59,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "EL",
+      "yahoo": "EL",
+      "currency": "USD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-10-31",
+          "eps_estimate": 0.1,
+          "eps_actual": 0.14,
+          "surprise_pct": 46.83,
+          "result": "상회"
+        },
+        {
+          "date": "2025-02-04",
+          "eps_estimate": 0.32,
+          "eps_actual": 0.62,
+          "surprise_pct": 93.85,
+          "result": "상회"
+        },
+        {
+          "date": "2025-05-01",
+          "eps_estimate": 0.31,
+          "eps_actual": 0.65,
+          "surprise_pct": 108.8,
+          "result": "상회"
+        },
+        {
+          "date": "2025-08-20",
+          "eps_estimate": 0.09,
+          "eps_actual": 0.09,
+          "surprise_pct": 1.07,
+          "result": "부합"
+        },
+        {
+          "date": "2025-10-30",
+          "eps_estimate": 0.18,
+          "eps_actual": 0.32,
+          "surprise_pct": 81.88,
+          "result": "상회"
+        },
+        {
+          "date": "2026-02-05",
+          "eps_estimate": 0.83,
+          "eps_actual": 0.89,
+          "surprise_pct": 6.6,
+          "result": "상회"
+        },
+        {
+          "date": "2026-05-01",
+          "eps_estimate": 0.65,
+          "eps_actual": 0.91,
+          "surprise_pct": 40.2,
+          "result": "상회"
+        },
+        {
+          "date": "2026-08-19",
+          "eps_estimate": 0.32,
+          "eps_actual": 0.39,
+          "surprise_pct": 22.12,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "2897.T",
+      "yahoo": "2897.T",
+      "currency": "JPY",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-11-10",
+          "eps_estimate": 62.17,
+          "eps_actual": 44.08,
+          "surprise_pct": -29.1,
+          "result": "하회"
+        },
+        {
+          "date": "2025-02-04",
+          "eps_estimate": 61.83,
+          "eps_actual": 48.79,
+          "surprise_pct": -21.09,
+          "result": "하회"
+        },
+        {
+          "date": "2025-05-08",
+          "eps_estimate": 35.98,
+          "eps_actual": 39.08,
+          "surprise_pct": 8.61,
+          "result": "상회"
+        },
+        {
+          "date": "2025-08-04",
+          "eps_estimate": 51.04,
+          "eps_actual": 38.37,
+          "surprise_pct": -24.82,
+          "result": "하회"
+        },
+        {
+          "date": "2025-11-09",
+          "eps_estimate": 43.68,
+          "eps_actual": 39.6,
+          "surprise_pct": -9.34,
+          "result": "하회"
+        },
+        {
+          "date": "2026-02-02",
+          "eps_estimate": 47.48,
+          "eps_actual": 57.14,
+          "surprise_pct": 20.35,
+          "result": "상회"
+        },
+        {
+          "date": "2026-05-13",
+          "eps_estimate": 23.09,
+          "eps_actual": 22.22,
+          "surprise_pct": -3.75,
+          "result": "하회"
+        },
+        {
+          "date": "2026-08-04",
+          "eps_estimate": 36.87,
+          "eps_actual": 46.24,
+          "surprise_pct": 25.42,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "LLY",
+      "yahoo": "LLY",
+      "currency": "USD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-10-30",
+          "eps_estimate": 1.47,
+          "eps_actual": 1.18,
+          "surprise_pct": -19.52,
+          "result": "하회"
+        },
+        {
+          "date": "2025-02-06",
+          "eps_estimate": 5.07,
+          "eps_actual": 5.32,
+          "surprise_pct": 5.0,
+          "result": "상회"
+        },
+        {
+          "date": "2025-05-01",
+          "eps_estimate": 3.46,
+          "eps_actual": 3.34,
+          "surprise_pct": -3.39,
+          "result": "하회"
+        },
+        {
+          "date": "2025-08-07",
+          "eps_estimate": 5.59,
+          "eps_actual": 6.31,
+          "surprise_pct": 12.89,
+          "result": "상회"
+        },
+        {
+          "date": "2025-10-30",
+          "eps_estimate": 5.89,
+          "eps_actual": 7.02,
+          "surprise_pct": 19.15,
+          "result": "상회"
+        },
+        {
+          "date": "2026-02-04",
+          "eps_estimate": 6.91,
+          "eps_actual": 7.54,
+          "surprise_pct": 9.14,
+          "result": "상회"
+        },
+        {
+          "date": "2026-04-30",
+          "eps_estimate": 6.79,
+          "eps_actual": 8.55,
+          "surprise_pct": 25.9,
+          "result": "상회"
+        },
+        {
+          "date": "2026-08-05",
+          "eps_estimate": 6.58,
+          "eps_actual": 8.38,
+          "surprise_pct": 27.27,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "NVO",
+      "yahoo": "NVO",
+      "currency": "DKK",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-11-06",
+          "eps_estimate": 5.92,
+          "eps_actual": 6.12,
+          "surprise_pct": 3.44,
+          "result": "상회"
+        },
+        {
+          "date": "2025-02-04",
+          "eps_estimate": 5.97,
+          "eps_actual": 6.34,
+          "surprise_pct": 6.15,
+          "result": "상회"
+        },
+        {
+          "date": "2025-05-07",
+          "eps_estimate": 6.07,
+          "eps_actual": 6.53,
+          "surprise_pct": 7.51,
+          "result": "상회"
+        },
+        {
+          "date": "2025-08-06",
+          "eps_estimate": 6.0,
+          "eps_actual": 5.96,
+          "surprise_pct": -0.74,
+          "result": "하회"
+        },
+        {
+          "date": "2025-11-05",
+          "eps_estimate": 4.24,
+          "eps_actual": 4.5,
+          "surprise_pct": 6.05,
+          "result": "상회"
+        },
+        {
+          "date": "2026-02-03",
+          "eps_estimate": 5.9,
+          "eps_actual": 6.04,
+          "surprise_pct": 2.34,
+          "result": "상회"
+        },
+        {
+          "date": "2026-05-05",
+          "eps_estimate": 6.96,
+          "eps_actual": 6.63,
+          "surprise_pct": -4.75,
+          "result": "하회"
+        },
+        {
+          "date": "2026-08-04",
+          "eps_estimate": 4.98,
+          "eps_actual": 6.18,
+          "surprise_pct": 24.01,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "ASM.AS",
+      "yahoo": "ASM.AS",
+      "currency": "EUR",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-10-29",
+          "eps_estimate": 3.62,
+          "eps_actual": 2.71,
+          "surprise_pct": -25.13,
+          "result": "하회"
+        },
+        {
+          "date": "2025-02-25",
+          "eps_estimate": 3.69,
+          "eps_actual": 4.69,
+          "surprise_pct": 27.05,
+          "result": "상회"
+        },
+        {
+          "date": "2025-04-29",
+          "eps_estimate": 4.03,
+          "eps_actual": 3.91,
+          "surprise_pct": -3.06,
+          "result": "하회"
+        },
+        {
+          "date": "2025-07-21",
+          "eps_estimate": 4.16,
+          "eps_actual": 3.5,
+          "surprise_pct": -15.85,
+          "result": "하회"
+        },
+        {
+          "date": "2025-10-28",
+          "eps_estimate": 3.76,
+          "eps_actual": 4.2,
+          "surprise_pct": 11.79,
+          "result": "상회"
+        },
+        {
+          "date": "2026-03-03",
+          "eps_estimate": 3.06,
+          "eps_actual": 3.45,
+          "surprise_pct": 12.99,
+          "result": "상회"
+        },
+        {
+          "date": "2026-04-20",
+          "eps_estimate": 4.24,
+          "eps_actual": 5.01,
+          "surprise_pct": 18.19,
+          "result": "상회"
+        },
+        {
+          "date": "2026-07-28",
+          "eps_estimate": 5.65,
+          "eps_actual": 5.96,
+          "surprise_pct": 5.5,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "7735.T",
+      "yahoo": "7735.T",
+      "currency": "JPY",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-10-31",
+          "eps_estimate": 114.74,
+          "eps_actual": 105.95,
+          "surprise_pct": -7.66,
+          "result": "하회"
+        },
+        {
+          "date": "2025-01-31",
+          "eps_estimate": 105.53,
+          "eps_actual": 157.6,
+          "surprise_pct": 49.34,
+          "result": "상회"
+        },
+        {
+          "date": "2025-05-08",
+          "eps_estimate": 122.93,
+          "eps_actual": 154.42,
+          "surprise_pct": 25.61,
+          "result": "상회"
+        },
+        {
+          "date": "2025-07-25",
+          "eps_estimate": 122.01,
+          "eps_actual": 88.26,
+          "surprise_pct": -27.66,
+          "result": "하회"
+        },
+        {
+          "date": "2025-10-30",
+          "eps_estimate": 139.61,
+          "eps_actual": 80.25,
+          "surprise_pct": -42.52,
+          "result": "하회"
+        },
+        {
+          "date": "2026-01-30",
+          "eps_estimate": 127.65,
+          "eps_actual": 122.13,
+          "surprise_pct": -4.33,
+          "result": "하회"
+        },
+        {
+          "date": "2026-05-13",
+          "eps_estimate": 173.29,
+          "eps_actual": 196.0,
+          "surprise_pct": 13.1,
+          "result": "상회"
+        },
+        {
+          "date": "2026-07-28",
+          "eps_estimate": 111.18,
+          "eps_actual": 55.47,
+          "surprise_pct": -50.11,
+          "result": "하회"
+        }
+      ]
+    },
+    {
+      "ticker": "6525.T",
+      "yahoo": "6525.T",
+      "currency": "JPY",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-11-11",
+          "eps_estimate": 27.44,
+          "eps_actual": 20.3,
+          "surprise_pct": -26.01,
+          "result": "하회"
+        },
+        {
+          "date": "2025-02-07",
+          "eps_estimate": 35.95,
+          "eps_actual": 34.65,
+          "surprise_pct": -3.62,
+          "result": "하회"
+        },
+        {
+          "date": "2025-05-13",
+          "eps_estimate": 38.87,
+          "eps_actual": 42.89,
+          "surprise_pct": 10.36,
+          "result": "상회"
+        },
+        {
+          "date": "2025-08-06",
+          "eps_estimate": 33.48,
+          "eps_actual": 29.08,
+          "surprise_pct": -13.15,
+          "result": "하회"
+        },
+        {
+          "date": "2025-11-11",
+          "eps_estimate": 28.88,
+          "eps_actual": 37.64,
+          "surprise_pct": 30.33,
+          "result": "상회"
+        },
+        {
+          "date": "2026-02-11",
+          "eps_estimate": 26.59,
+          "eps_actual": 31.12,
+          "surprise_pct": 17.04,
+          "result": "상회"
+        },
+        {
+          "date": "2026-05-13",
+          "eps_estimate": 28.78,
+          "eps_actual": 31.16,
+          "surprise_pct": 8.26,
+          "result": "상회"
+        },
+        {
+          "date": "2026-08-05",
+          "eps_estimate": 46.41,
+          "eps_actual": 49.47,
+          "surprise_pct": 6.59,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "6857.T",
+      "yahoo": "6857.T",
+      "currency": "JPY",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-10-30",
+          "eps_estimate": 38.28,
+          "eps_actual": 61.57,
+          "surprise_pct": 60.85,
+          "result": "상회"
+        },
+        {
+          "date": "2025-01-28",
+          "eps_estimate": 60.7,
+          "eps_actual": 70.3,
+          "surprise_pct": 15.82,
+          "result": "상회"
+        },
+        {
+          "date": "2025-04-24",
+          "eps_estimate": 77.96,
+          "eps_actual": 54.46,
+          "surprise_pct": -30.14,
+          "result": "하회"
+        },
+        {
+          "date": "2025-07-29",
+          "eps_estimate": 94.31,
+          "eps_actual": 123.14,
+          "surprise_pct": 30.56,
+          "result": "상회"
+        },
+        {
+          "date": "2025-10-28",
+          "eps_estimate": 107.21,
+          "eps_actual": 109.03,
+          "surprise_pct": 1.7,
+          "result": "상회"
+        },
+        {
+          "date": "2026-01-28",
+          "eps_estimate": 76.73,
+          "eps_actual": 108.41,
+          "surprise_pct": 41.28,
+          "result": "상회"
+        },
+        {
+          "date": "2026-04-27",
+          "eps_estimate": 138.74,
+          "eps_actual": 174.55,
+          "surprise_pct": 25.81,
+          "result": "상회"
+        },
+        {
+          "date": "2026-07-29",
+          "eps_estimate": 168.82,
+          "eps_actual": 241.27,
+          "surprise_pct": 42.91,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "TER",
+      "yahoo": "TER",
+      "currency": "USD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-10-23",
+          "eps_estimate": 0.79,
+          "eps_actual": 0.9,
+          "surprise_pct": 14.24,
+          "result": "상회"
+        },
+        {
+          "date": "2025-01-29",
+          "eps_estimate": 0.91,
+          "eps_actual": 0.95,
+          "surprise_pct": 4.54,
+          "result": "상회"
+        },
+        {
+          "date": "2025-04-28",
+          "eps_estimate": 0.62,
+          "eps_actual": 0.75,
+          "surprise_pct": 21.74,
+          "result": "상회"
+        },
+        {
+          "date": "2025-07-29",
+          "eps_estimate": 0.54,
+          "eps_actual": 0.57,
+          "surprise_pct": 4.94,
+          "result": "상회"
+        },
+        {
+          "date": "2025-10-28",
+          "eps_estimate": 0.79,
+          "eps_actual": 0.85,
+          "surprise_pct": 7.45,
+          "result": "상회"
+        },
+        {
+          "date": "2026-02-02",
+          "eps_estimate": 1.38,
+          "eps_actual": 1.8,
+          "surprise_pct": 30.11,
+          "result": "상회"
+        },
+        {
+          "date": "2026-04-28",
+          "eps_estimate": 2.12,
+          "eps_actual": 2.56,
+          "surprise_pct": 20.93,
+          "result": "상회"
+        },
+        {
+          "date": "2026-07-28",
+          "eps_estimate": 2.05,
+          "eps_actual": 2.47,
+          "surprise_pct": 20.28,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "BESI.AS",
+      "yahoo": "BESI.AS",
+      "currency": "EUR",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-10-24",
+          "eps_estimate": 0.54,
+          "eps_actual": 0.59,
+          "surprise_pct": 8.49,
+          "result": "상회"
+        },
+        {
+          "date": "2025-02-20",
+          "eps_estimate": 0.59,
+          "eps_actual": 0.74,
+          "surprise_pct": 25.17,
+          "result": "상회"
+        },
+        {
+          "date": "2025-04-23",
+          "eps_estimate": 0.39,
+          "eps_actual": 0.4,
+          "surprise_pct": 1.3,
+          "result": "상회"
+        },
+        {
+          "date": "2025-07-24",
+          "eps_estimate": 0.46,
+          "eps_actual": 0.4,
+          "surprise_pct": -12.6,
+          "result": "하회"
+        },
+        {
+          "date": "2025-10-23",
+          "eps_estimate": 0.31,
+          "eps_actual": 0.32,
+          "surprise_pct": 1.9,
+          "result": "상회"
+        },
+        {
+          "date": "2026-02-19",
+          "eps_estimate": 0.51,
+          "eps_actual": 0.54,
+          "surprise_pct": 5.74,
+          "result": "상회"
+        },
+        {
+          "date": "2026-04-23",
+          "eps_estimate": 0.65,
+          "eps_actual": 0.65,
+          "surprise_pct": -0.37,
+          "result": "부합"
+        },
+        {
+          "date": "2026-07-23",
+          "eps_estimate": 1.14,
+          "eps_actual": 1.11,
+          "surprise_pct": -2.38,
+          "result": "하회"
+        }
+      ]
+    },
+    {
+      "ticker": "6146.T",
+      "yahoo": "6146.T",
+      "currency": "JPY",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-10-16",
+          "eps_estimate": 281.56,
+          "eps_actual": 274.35,
+          "surprise_pct": -2.56,
+          "result": "하회"
+        },
+        {
+          "date": "2025-01-23",
+          "eps_estimate": 300.17,
+          "eps_actual": 293.54,
+          "surprise_pct": -2.21,
+          "result": "하회"
+        },
+        {
+          "date": "2025-04-16",
+          "eps_estimate": 332.54,
+          "eps_actual": 356.52,
+          "surprise_pct": 7.21,
+          "result": "상회"
+        },
+        {
+          "date": "2025-07-17",
+          "eps_estimate": 203.94,
+          "eps_actual": 219.23,
+          "surprise_pct": 7.5,
+          "result": "상회"
+        },
+        {
+          "date": "2025-10-29",
+          "eps_estimate": 305.33,
+          "eps_actual": 296.47,
+          "surprise_pct": -2.9,
+          "result": "하회"
+        },
+        {
+          "date": "2026-01-21",
+          "eps_estimate": 287.01,
+          "eps_actual": 338.72,
+          "surprise_pct": 18.02,
+          "result": "상회"
+        },
+        {
+          "date": "2026-04-22",
+          "eps_estimate": 335.4,
+          "eps_actual": 395.42,
+          "surprise_pct": 17.89,
+          "result": "상회"
+        },
+        {
+          "date": "2026-07-23",
+          "eps_estimate": 323.24,
+          "eps_actual": 315.51,
+          "surprise_pct": -2.39,
+          "result": "하회"
+        }
+      ]
+    },
+    {
+      "ticker": "ONTO",
+      "yahoo": "ONTO",
+      "currency": "USD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-10-31",
+          "eps_estimate": 1.32,
+          "eps_actual": 1.34,
+          "surprise_pct": 1.52,
+          "result": "상회"
+        },
+        {
+          "date": "2025-02-06",
+          "eps_estimate": 1.41,
+          "eps_actual": 1.51,
+          "surprise_pct": 7.35,
+          "result": "상회"
+        },
+        {
+          "date": "2025-05-08",
+          "eps_estimate": 1.47,
+          "eps_actual": 1.51,
+          "surprise_pct": 2.9,
+          "result": "상회"
+        },
+        {
+          "date": "2025-08-07",
+          "eps_estimate": 1.28,
+          "eps_actual": 1.25,
+          "surprise_pct": -2.15,
+          "result": "하회"
+        },
+        {
+          "date": "2025-11-06",
+          "eps_estimate": 0.87,
+          "eps_actual": 0.92,
+          "surprise_pct": 5.92,
+          "result": "상회"
+        },
+        {
+          "date": "2026-02-19",
+          "eps_estimate": 1.26,
+          "eps_actual": 1.26,
+          "surprise_pct": -0.23,
+          "result": "부합"
+        },
+        {
+          "date": "2026-05-05",
+          "eps_estimate": 1.42,
+          "eps_actual": 1.42,
+          "surprise_pct": 0.3,
+          "result": "부합"
+        },
+        {
+          "date": "2026-08-06",
+          "eps_estimate": 1.69,
+          "eps_actual": 1.93,
+          "surprise_pct": 14.15,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "CAMT",
+      "yahoo": "CAMT",
+      "currency": "USD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-11-12",
+          "eps_estimate": 0.69,
+          "eps_actual": 0.75,
+          "surprise_pct": 8.38,
+          "result": "상회"
+        },
+        {
+          "date": "2025-02-12",
+          "eps_estimate": 0.75,
+          "eps_actual": 0.77,
+          "surprise_pct": 3.14,
+          "result": "상회"
+        },
+        {
+          "date": "2025-05-13",
+          "eps_estimate": 0.77,
+          "eps_actual": 0.79,
+          "surprise_pct": 2.38,
+          "result": "상회"
+        },
+        {
+          "date": "2025-08-05",
+          "eps_estimate": 0.79,
+          "eps_actual": 0.79,
+          "surprise_pct": -0.57,
+          "result": "부합"
+        },
+        {
+          "date": "2025-11-10",
+          "eps_estimate": 0.8,
+          "eps_actual": 0.82,
+          "surprise_pct": 2.09,
+          "result": "상회"
+        },
+        {
+          "date": "2026-02-18",
+          "eps_estimate": 0.81,
+          "eps_actual": 0.81,
+          "surprise_pct": -0.4,
+          "result": "부합"
+        },
+        {
+          "date": "2026-05-12",
+          "eps_estimate": 0.68,
+          "eps_actual": 0.7,
+          "surprise_pct": 2.24,
+          "result": "상회"
+        },
+        {
+          "date": "2026-08-10",
+          "eps_estimate": 0.76,
+          "eps_actual": 0.78,
+          "surprise_pct": 2.8,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "TSLA",
+      "yahoo": "TSLA",
+      "currency": "USD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-10-23",
+          "eps_estimate": 0.6,
+          "eps_actual": 0.72,
+          "surprise_pct": 20.49,
+          "result": "상회"
+        },
+        {
+          "date": "2025-01-29",
+          "eps_estimate": 0.77,
+          "eps_actual": 0.73,
+          "surprise_pct": -5.11,
+          "result": "하회"
+        },
+        {
+          "date": "2025-04-22",
+          "eps_estimate": 0.41,
+          "eps_actual": 0.27,
+          "surprise_pct": -34.89,
+          "result": "하회"
+        },
+        {
+          "date": "2025-07-23",
+          "eps_estimate": 0.4,
+          "eps_actual": 0.4,
+          "surprise_pct": -1.11,
+          "result": "부합"
+        },
+        {
+          "date": "2025-10-22",
+          "eps_estimate": 0.56,
+          "eps_actual": 0.5,
+          "surprise_pct": -10.53,
+          "result": "하회"
+        },
+        {
+          "date": "2026-01-28",
+          "eps_estimate": 0.45,
+          "eps_actual": 0.5,
+          "surprise_pct": 10.96,
+          "result": "상회"
+        },
+        {
+          "date": "2026-04-22",
+          "eps_estimate": 0.35,
+          "eps_actual": 0.41,
+          "surprise_pct": 17.15,
+          "result": "상회"
+        },
+        {
+          "date": "2026-07-22",
+          "eps_estimate": 0.54,
+          "eps_actual": 0.33,
+          "surprise_pct": -39.15,
+          "result": "하회"
+        }
+      ]
+    },
+    {
+      "ticker": "GM",
+      "yahoo": "GM",
+      "currency": "USD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-10-22",
+          "eps_estimate": 2.39,
+          "eps_actual": 2.96,
+          "surprise_pct": 23.78,
+          "result": "상회"
+        },
+        {
+          "date": "2025-01-28",
+          "eps_estimate": 1.84,
+          "eps_actual": 1.92,
+          "surprise_pct": 4.3,
+          "result": "상회"
+        },
+        {
+          "date": "2025-04-29",
+          "eps_estimate": 2.67,
+          "eps_actual": 2.78,
+          "surprise_pct": 4.28,
+          "result": "상회"
+        },
+        {
+          "date": "2025-07-22",
+          "eps_estimate": 2.48,
+          "eps_actual": 2.53,
+          "surprise_pct": 2.15,
+          "result": "상회"
+        },
+        {
+          "date": "2025-10-21",
+          "eps_estimate": 2.32,
+          "eps_actual": 2.8,
+          "surprise_pct": 20.55,
+          "result": "상회"
+        },
+        {
+          "date": "2026-01-27",
+          "eps_estimate": 2.27,
+          "eps_actual": 2.51,
+          "surprise_pct": 10.65,
+          "result": "상회"
+        },
+        {
+          "date": "2026-04-28",
+          "eps_estimate": 2.64,
+          "eps_actual": 3.7,
+          "surprise_pct": 40.19,
+          "result": "상회"
+        },
+        {
+          "date": "2026-07-21",
+          "eps_estimate": 3.19,
+          "eps_actual": 3.57,
+          "surprise_pct": 12.0,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "F",
+      "yahoo": "F",
+      "currency": "USD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-10-28",
+          "eps_estimate": 0.47,
+          "eps_actual": 0.49,
+          "surprise_pct": 3.47,
+          "result": "상회"
+        },
+        {
+          "date": "2025-02-05",
+          "eps_estimate": 0.32,
+          "eps_actual": 0.39,
+          "surprise_pct": 20.36,
+          "result": "상회"
+        },
+        {
+          "date": "2025-05-05",
+          "eps_estimate": 0.02,
+          "eps_actual": 0.14,
+          "surprise_pct": 556.97,
+          "result": "상회"
+        },
+        {
+          "date": "2025-07-30",
+          "eps_estimate": 0.33,
+          "eps_actual": 0.37,
+          "surprise_pct": 11.11,
+          "result": "상회"
+        },
+        {
+          "date": "2025-10-23",
+          "eps_estimate": 0.36,
+          "eps_actual": 0.45,
+          "surprise_pct": 25.41,
+          "result": "상회"
+        },
+        {
+          "date": "2026-02-10",
+          "eps_estimate": 0.19,
+          "eps_actual": 0.13,
+          "surprise_pct": -32.87,
+          "result": "하회"
+        },
+        {
+          "date": "2026-04-29",
+          "eps_estimate": 0.19,
+          "eps_actual": 0.66,
+          "surprise_pct": 256.64,
+          "result": "상회"
+        },
+        {
+          "date": "2026-07-28",
+          "eps_estimate": 0.35,
+          "eps_actual": 0.42,
+          "surprise_pct": 21.27,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "VOW3.DE",
+      "yahoo": "VOW3.DE",
+      "currency": "EUR",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-10-30",
+          "eps_estimate": 2.88,
+          "eps_actual": 2.42,
+          "surprise_pct": -15.97,
+          "result": "하회"
+        },
+        {
+          "date": "2025-03-11",
+          "eps_estimate": 7.1,
+          "eps_actual": 6.24,
+          "surprise_pct": -12.05,
+          "result": "하회"
+        },
+        {
+          "date": "2025-04-30",
+          "eps_estimate": 3.04,
+          "eps_actual": 3.69,
+          "surprise_pct": 21.38,
+          "result": "상회"
+        },
+        {
+          "date": "2025-07-25",
+          "eps_estimate": 3.63,
+          "eps_actual": 4.34,
+          "surprise_pct": 19.56,
+          "result": "상회"
+        },
+        {
+          "date": "2025-10-30",
+          "eps_estimate": -3.91,
+          "eps_actual": -0.96,
+          "surprise_pct": 75.45,
+          "result": "상회"
+        },
+        {
+          "date": "2026-03-10",
+          "eps_estimate": 4.22,
+          "eps_actual": 6.29,
+          "surprise_pct": 49.05,
+          "result": "상회"
+        },
+        {
+          "date": "2026-04-30",
+          "eps_estimate": 3.44,
+          "eps_actual": 2.61,
+          "surprise_pct": -24.2,
+          "result": "하회"
+        },
+        {
+          "date": "2026-07-23",
+          "eps_estimate": 4.83,
+          "eps_actual": 2.56,
+          "surprise_pct": -47.0,
+          "result": "하회"
+        }
+      ]
+    },
+    {
+      "ticker": "BMW.DE",
+      "yahoo": "BMW.DE",
+      "currency": "EUR",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-11-06",
+          "eps_estimate": 1.42,
+          "eps_actual": 0.64,
+          "surprise_pct": -54.93,
+          "result": "하회"
+        },
+        {
+          "date": "2025-03-14",
+          "eps_estimate": 2.13,
+          "eps_actual": 2.41,
+          "surprise_pct": 13.03,
+          "result": "상회"
+        },
+        {
+          "date": "2025-05-07",
+          "eps_estimate": 3.22,
+          "eps_actual": 3.38,
+          "surprise_pct": 5.08,
+          "result": "상회"
+        },
+        {
+          "date": "2025-07-31",
+          "eps_estimate": 3.37,
+          "eps_actual": 2.85,
+          "surprise_pct": -15.43,
+          "result": "하회"
+        },
+        {
+          "date": "2025-11-05",
+          "eps_estimate": 2.74,
+          "eps_actual": 2.74,
+          "surprise_pct": 0.18,
+          "result": "부합"
+        },
+        {
+          "date": "2026-03-12",
+          "eps_estimate": 1.37,
+          "eps_actual": 2.92,
+          "surprise_pct": 113.14,
+          "result": "상회"
+        },
+        {
+          "date": "2026-05-05",
+          "eps_estimate": 2.4,
+          "eps_actual": 2.68,
+          "surprise_pct": 11.67,
+          "result": "상회"
+        },
+        {
+          "date": "2026-07-30",
+          "eps_estimate": 1.95,
+          "eps_actual": 2.05,
+          "surprise_pct": 5.13,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "MBG.DE",
+      "yahoo": "MBG.DE",
+      "currency": "EUR",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-10-25",
+          "eps_estimate": 1.96,
+          "eps_actual": 1.82,
+          "surprise_pct": -7.14,
+          "result": "하회"
+        },
+        {
+          "date": "2025-02-20",
+          "eps_estimate": 2.54,
+          "eps_actual": 2.82,
+          "surprise_pct": 10.92,
+          "result": "상회"
+        },
+        {
+          "date": "2025-04-30",
+          "eps_estimate": 2.17,
+          "eps_actual": 1.93,
+          "surprise_pct": -10.9,
+          "result": "하회"
+        },
+        {
+          "date": "2025-07-28",
+          "eps_estimate": 1.48,
+          "eps_actual": 1.46,
+          "surprise_pct": -1.78,
+          "result": "하회"
+        },
+        {
+          "date": "2025-10-27",
+          "eps_estimate": 1.28,
+          "eps_actual": 2.62,
+          "surprise_pct": 105.22,
+          "result": "상회"
+        },
+        {
+          "date": "2026-02-12",
+          "eps_estimate": 1.11,
+          "eps_actual": 1.43,
+          "surprise_pct": 28.76,
+          "result": "상회"
+        },
+        {
+          "date": "2026-04-29",
+          "eps_estimate": 1.43,
+          "eps_actual": 1.39,
+          "surprise_pct": -3.01,
+          "result": "하회"
+        },
+        {
+          "date": "2026-07-26",
+          "eps_estimate": 1.24,
+          "eps_actual": 1.67,
+          "surprise_pct": 35.02,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "STLA",
+      "yahoo": "STLA",
+      "currency": "EUR",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2026-04-30",
+          "eps_estimate": 0.08,
+          "eps_actual": 0.25,
+          "surprise_pct": 195.92,
+          "result": "상회"
+        },
+        {
+          "date": "2026-07-30",
+          "eps_estimate": 0.4,
+          "eps_actual": 0.14,
+          "surprise_pct": -65.77,
+          "result": "하회"
+        }
+      ]
+    },
+    {
+      "ticker": "AAPL",
+      "yahoo": "AAPL",
+      "currency": "USD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-10-31",
+          "eps_estimate": 0.95,
+          "eps_actual": 0.97,
+          "surprise_pct": 2.48,
+          "result": "상회"
+        },
+        {
+          "date": "2025-01-30",
+          "eps_estimate": 2.34,
+          "eps_actual": 2.4,
+          "surprise_pct": 2.52,
+          "result": "상회"
+        },
+        {
+          "date": "2025-05-01",
+          "eps_estimate": 1.62,
+          "eps_actual": 1.65,
+          "surprise_pct": 1.69,
+          "result": "상회"
+        },
+        {
+          "date": "2025-07-31",
+          "eps_estimate": 1.43,
+          "eps_actual": 1.57,
+          "surprise_pct": 10.12,
+          "result": "상회"
+        },
+        {
+          "date": "2025-10-30",
+          "eps_estimate": 1.77,
+          "eps_actual": 1.85,
+          "surprise_pct": 4.52,
+          "result": "상회"
+        },
+        {
+          "date": "2026-01-29",
+          "eps_estimate": 2.67,
+          "eps_actual": 2.84,
+          "surprise_pct": 6.34,
+          "result": "상회"
+        },
+        {
+          "date": "2026-04-30",
+          "eps_estimate": 1.94,
+          "eps_actual": 2.01,
+          "surprise_pct": 3.46,
+          "result": "상회"
+        },
+        {
+          "date": "2026-07-30",
+          "eps_estimate": 1.89,
+          "eps_actual": 2.02,
+          "surprise_pct": 6.74,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "DELL",
+      "yahoo": "DELL",
+      "currency": "USD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-11-26",
+          "eps_estimate": 2.06,
+          "eps_actual": 2.15,
+          "surprise_pct": 4.25,
+          "result": "상회"
+        },
+        {
+          "date": "2025-02-27",
+          "eps_estimate": 2.52,
+          "eps_actual": 2.68,
+          "surprise_pct": 6.42,
+          "result": "상회"
+        },
+        {
+          "date": "2025-05-29",
+          "eps_estimate": 1.69,
+          "eps_actual": 1.55,
+          "surprise_pct": -8.38,
+          "result": "하회"
+        },
+        {
+          "date": "2025-08-28",
+          "eps_estimate": 2.29,
+          "eps_actual": 2.32,
+          "surprise_pct": 1.24,
+          "result": "상회"
+        },
+        {
+          "date": "2025-11-25",
+          "eps_estimate": 2.48,
+          "eps_actual": 2.59,
+          "surprise_pct": 4.55,
+          "result": "상회"
+        },
+        {
+          "date": "2026-02-26",
+          "eps_estimate": 3.51,
+          "eps_actual": 3.89,
+          "surprise_pct": 10.74,
+          "result": "상회"
+        },
+        {
+          "date": "2026-05-28",
+          "eps_estimate": 2.96,
+          "eps_actual": 4.86,
+          "surprise_pct": 63.99,
+          "result": "상회"
+        },
+        {
+          "date": "2026-09-01",
+          "eps_estimate": 4.92,
+          "eps_actual": 7.04,
+          "surprise_pct": 43.14,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "ANET",
+      "yahoo": "ANET",
+      "currency": "USD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-11-07",
+          "eps_estimate": 0.52,
+          "eps_actual": 0.6,
+          "surprise_pct": 15.31,
+          "result": "상회"
+        },
+        {
+          "date": "2025-02-18",
+          "eps_estimate": 0.57,
+          "eps_actual": 0.65,
+          "surprise_pct": 13.96,
+          "result": "상회"
+        },
+        {
+          "date": "2025-05-06",
+          "eps_estimate": 0.59,
+          "eps_actual": 0.65,
+          "surprise_pct": 9.98,
+          "result": "상회"
+        },
+        {
+          "date": "2025-08-05",
+          "eps_estimate": 0.65,
+          "eps_actual": 0.73,
+          "surprise_pct": 12.38,
+          "result": "상회"
+        },
+        {
+          "date": "2025-11-04",
+          "eps_estimate": 0.71,
+          "eps_actual": 0.75,
+          "surprise_pct": 4.98,
+          "result": "상회"
+        },
+        {
+          "date": "2026-02-12",
+          "eps_estimate": 0.76,
+          "eps_actual": 0.82,
+          "surprise_pct": 8.17,
+          "result": "상회"
+        },
+        {
+          "date": "2026-05-05",
+          "eps_estimate": 0.81,
+          "eps_actual": 0.87,
+          "surprise_pct": 7.73,
+          "result": "상회"
+        },
+        {
+          "date": "2026-08-04",
+          "eps_estimate": 0.89,
+          "eps_actual": 1.02,
+          "surprise_pct": 15.18,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "INTC",
+      "yahoo": "INTC",
+      "currency": "USD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-10-31",
+          "eps_estimate": -0.03,
+          "eps_actual": -0.46,
+          "surprise_pct": -1533.52,
+          "result": "하회"
+        },
+        {
+          "date": "2025-01-30",
+          "eps_estimate": 0.12,
+          "eps_actual": 0.13,
+          "surprise_pct": 8.71,
+          "result": "상회"
+        },
+        {
+          "date": "2025-04-24",
+          "eps_estimate": null,
+          "eps_actual": 0.13,
+          "surprise_pct": 2769.76,
+          "result": null
+        },
+        {
+          "date": "2025-07-24",
+          "eps_estimate": 0.01,
+          "eps_actual": -0.1,
+          "surprise_pct": -1169.52,
+          "result": "하회"
+        },
+        {
+          "date": "2025-10-23",
+          "eps_estimate": 0.01,
+          "eps_actual": 0.23,
+          "surprise_pct": 3162.41,
+          "result": "상회"
+        },
+        {
+          "date": "2026-01-22",
+          "eps_estimate": 0.08,
+          "eps_actual": 0.15,
+          "surprise_pct": 81.51,
+          "result": "상회"
+        },
+        {
+          "date": "2026-04-23",
+          "eps_estimate": 0.01,
+          "eps_actual": 0.29,
+          "surprise_pct": 2108.68,
+          "result": "상회"
+        },
+        {
+          "date": "2026-07-23",
+          "eps_estimate": 0.22,
+          "eps_actual": 0.42,
+          "surprise_pct": 94.59,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "TXN",
+      "yahoo": "TXN",
+      "currency": "USD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-10-22",
+          "eps_estimate": 1.37,
+          "eps_actual": 1.47,
+          "surprise_pct": 7.12,
+          "result": "상회"
+        },
+        {
+          "date": "2025-01-23",
+          "eps_estimate": 1.2,
+          "eps_actual": 1.3,
+          "surprise_pct": 8.29,
+          "result": "상회"
+        },
+        {
+          "date": "2025-04-23",
+          "eps_estimate": 1.06,
+          "eps_actual": 1.28,
+          "surprise_pct": 20.21,
+          "result": "상회"
+        },
+        {
+          "date": "2025-07-22",
+          "eps_estimate": 1.33,
+          "eps_actual": 1.41,
+          "surprise_pct": 5.81,
+          "result": "상회"
+        },
+        {
+          "date": "2025-10-21",
+          "eps_estimate": 1.49,
+          "eps_actual": 1.48,
+          "surprise_pct": -0.4,
+          "result": "하회"
+        },
+        {
+          "date": "2026-01-27",
+          "eps_estimate": 1.31,
+          "eps_actual": 1.27,
+          "surprise_pct": -2.89,
+          "result": "하회"
+        },
+        {
+          "date": "2026-04-22",
+          "eps_estimate": 1.37,
+          "eps_actual": 1.68,
+          "surprise_pct": 22.76,
+          "result": "상회"
+        },
+        {
+          "date": "2026-07-22",
+          "eps_estimate": 1.94,
+          "eps_actual": 2.14,
+          "surprise_pct": 10.48,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "NXPI",
+      "yahoo": "NXPI",
+      "currency": "USD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-11-04",
+          "eps_estimate": 3.43,
+          "eps_actual": 3.45,
+          "surprise_pct": 0.71,
+          "result": "상회"
+        },
+        {
+          "date": "2025-02-03",
+          "eps_estimate": 3.14,
+          "eps_actual": 3.18,
+          "surprise_pct": 1.4,
+          "result": "상회"
+        },
+        {
+          "date": "2025-04-28",
+          "eps_estimate": 2.6,
+          "eps_actual": 2.64,
+          "surprise_pct": 1.39,
+          "result": "상회"
+        },
+        {
+          "date": "2025-07-21",
+          "eps_estimate": 2.66,
+          "eps_actual": 2.72,
+          "surprise_pct": 2.31,
+          "result": "상회"
+        },
+        {
+          "date": "2025-10-27",
+          "eps_estimate": 3.12,
+          "eps_actual": 3.11,
+          "surprise_pct": -0.27,
+          "result": "하회"
+        },
+        {
+          "date": "2026-02-02",
+          "eps_estimate": 3.31,
+          "eps_actual": 3.35,
+          "surprise_pct": 1.18,
+          "result": "상회"
+        },
+        {
+          "date": "2026-04-28",
+          "eps_estimate": 2.98,
+          "eps_actual": 3.05,
+          "surprise_pct": 2.2,
+          "result": "상회"
+        },
+        {
+          "date": "2026-07-28",
+          "eps_estimate": 3.53,
+          "eps_actual": 3.61,
+          "surprise_pct": 2.35,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "STM",
+      "yahoo": "STM",
+      "currency": "USD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-10-31",
+          "eps_estimate": 0.32,
+          "eps_actual": 0.37,
+          "surprise_pct": 14.55,
+          "result": "상회"
+        },
+        {
+          "date": "2025-01-29",
+          "eps_estimate": 0.37,
+          "eps_actual": 0.37,
+          "surprise_pct": -0.16,
+          "result": "부합"
+        },
+        {
+          "date": "2025-04-24",
+          "eps_estimate": 0.05,
+          "eps_actual": 0.07,
+          "surprise_pct": 48.62,
+          "result": "상회"
+        },
+        {
+          "date": "2025-07-24",
+          "eps_estimate": 0.09,
+          "eps_actual": 0.06,
+          "surprise_pct": -30.77,
+          "result": "하회"
+        },
+        {
+          "date": "2025-10-23",
+          "eps_estimate": 0.22,
+          "eps_actual": 0.29,
+          "surprise_pct": 33.52,
+          "result": "상회"
+        },
+        {
+          "date": "2026-01-29",
+          "eps_estimate": 0.28,
+          "eps_actual": 0.11,
+          "surprise_pct": -61.4,
+          "result": "하회"
+        },
+        {
+          "date": "2026-04-23",
+          "eps_estimate": 0.18,
+          "eps_actual": 0.04,
+          "surprise_pct": -77.57,
+          "result": "하회"
+        },
+        {
+          "date": "2026-07-23",
+          "eps_estimate": 0.27,
+          "eps_actual": 0.24,
+          "surprise_pct": -10.83,
+          "result": "하회"
+        }
+      ]
+    },
+    {
+      "ticker": "IFX.DE",
+      "yahoo": "IFX.DE",
+      "currency": "EUR",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-11-11",
+          "eps_estimate": 0.47,
+          "eps_actual": 0.49,
+          "surprise_pct": 4.46,
+          "result": "상회"
+        },
+        {
+          "date": "2025-02-04",
+          "eps_estimate": 0.25,
+          "eps_actual": 0.33,
+          "surprise_pct": 30.37,
+          "result": "상회"
+        },
+        {
+          "date": "2025-05-08",
+          "eps_estimate": 0.33,
+          "eps_actual": 0.35,
+          "surprise_pct": 7.05,
+          "result": "상회"
+        },
+        {
+          "date": "2025-08-05",
+          "eps_estimate": 0.34,
+          "eps_actual": 0.37,
+          "surprise_pct": 10.17,
+          "result": "상회"
+        },
+        {
+          "date": "2025-11-11",
+          "eps_estimate": 0.43,
+          "eps_actual": 0.34,
+          "surprise_pct": -21.08,
+          "result": "하회"
+        },
+        {
+          "date": "2026-02-03",
+          "eps_estimate": 0.33,
+          "eps_actual": 0.35,
+          "surprise_pct": 4.54,
+          "result": "상회"
+        },
+        {
+          "date": "2026-05-05",
+          "eps_estimate": 0.37,
+          "eps_actual": 0.34,
+          "surprise_pct": -7.04,
+          "result": "하회"
+        },
+        {
+          "date": "2026-08-04",
+          "eps_estimate": 0.44,
+          "eps_actual": 0.44,
+          "surprise_pct": -0.59,
+          "result": "부합"
+        }
+      ]
+    },
+    {
+      "ticker": "SAP.DE",
+      "yahoo": "SAP.DE",
+      "currency": "EUR",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-10-21",
+          "eps_estimate": 1.21,
+          "eps_actual": 1.23,
+          "surprise_pct": 1.83,
+          "result": "상회"
+        },
+        {
+          "date": "2025-01-28",
+          "eps_estimate": 1.45,
+          "eps_actual": 1.4,
+          "surprise_pct": -3.52,
+          "result": "하회"
+        },
+        {
+          "date": "2025-04-21",
+          "eps_estimate": 1.29,
+          "eps_actual": 1.44,
+          "surprise_pct": 11.88,
+          "result": "상회"
+        },
+        {
+          "date": "2025-07-22",
+          "eps_estimate": 1.45,
+          "eps_actual": 1.5,
+          "surprise_pct": 3.77,
+          "result": "상회"
+        },
+        {
+          "date": "2025-10-22",
+          "eps_estimate": 1.5,
+          "eps_actual": 1.59,
+          "surprise_pct": 5.65,
+          "result": "상회"
+        },
+        {
+          "date": "2026-01-29",
+          "eps_estimate": 1.51,
+          "eps_actual": 1.62,
+          "surprise_pct": 7.6,
+          "result": "상회"
+        },
+        {
+          "date": "2026-04-23",
+          "eps_estimate": 1.66,
+          "eps_actual": 1.72,
+          "surprise_pct": 3.66,
+          "result": "상회"
+        },
+        {
+          "date": "2026-07-22",
+          "eps_estimate": 1.75,
+          "eps_actual": 1.59,
+          "surprise_pct": -9.29,
+          "result": "하회"
+        }
+      ]
+    },
+    {
+      "ticker": "ENR.DE",
+      "yahoo": "ENR.DE",
+      "currency": "EUR",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-11-12",
+          "eps_estimate": 0.41,
+          "eps_actual": -0.2,
+          "surprise_pct": -149.4,
+          "result": "하회"
+        },
+        {
+          "date": "2025-02-11",
+          "eps_estimate": 0.05,
+          "eps_actual": 0.24,
+          "surprise_pct": 364.27,
+          "result": "상회"
+        },
+        {
+          "date": "2025-05-07",
+          "eps_estimate": 0.34,
+          "eps_actual": 0.76,
+          "surprise_pct": 125.74,
+          "result": "상회"
+        },
+        {
+          "date": "2025-08-06",
+          "eps_estimate": 0.3,
+          "eps_actual": 0.21,
+          "surprise_pct": -30.16,
+          "result": "하회"
+        },
+        {
+          "date": "2025-11-12",
+          "eps_estimate": 0.33,
+          "eps_actual": 0.32,
+          "surprise_pct": -2.4,
+          "result": "하회"
+        },
+        {
+          "date": "2026-02-10",
+          "eps_estimate": 0.82,
+          "eps_actual": 0.92,
+          "surprise_pct": 12.32,
+          "result": "상회"
+        },
+        {
+          "date": "2026-05-11",
+          "eps_estimate": 0.97,
+          "eps_actual": 0.93,
+          "surprise_pct": -4.63,
+          "result": "하회"
+        },
+        {
+          "date": "2026-08-04",
+          "eps_estimate": 1.19,
+          "eps_actual": 1.31,
+          "surprise_pct": 10.61,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "ABBN.SW",
+      "yahoo": "ABBN.SW",
+      "currency": "USD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-10-17",
+          "eps_estimate": 0.58,
+          "eps_actual": 0.68,
+          "surprise_pct": 17.61,
+          "result": "상회"
+        },
+        {
+          "date": "2025-01-30",
+          "eps_estimate": 0.61,
+          "eps_actual": 0.65,
+          "surprise_pct": 6.58,
+          "result": "상회"
+        },
+        {
+          "date": "2025-04-17",
+          "eps_estimate": 0.55,
+          "eps_actual": 0.61,
+          "surprise_pct": 11.15,
+          "result": "상회"
+        },
+        {
+          "date": "2025-07-17",
+          "eps_estimate": 0.65,
+          "eps_actual": 0.7,
+          "surprise_pct": 8.64,
+          "result": "상회"
+        },
+        {
+          "date": "2025-10-16",
+          "eps_estimate": 0.7,
+          "eps_actual": 0.69,
+          "surprise_pct": -1.4,
+          "result": "하회"
+        },
+        {
+          "date": "2026-01-29",
+          "eps_estimate": 0.7,
+          "eps_actual": 0.73,
+          "surprise_pct": 3.85,
+          "result": "상회"
+        },
+        {
+          "date": "2026-04-22",
+          "eps_estimate": 0.8,
+          "eps_actual": 0.84,
+          "surprise_pct": 5.89,
+          "result": "상회"
+        },
+        {
+          "date": "2026-07-15",
+          "eps_estimate": 0.75,
+          "eps_actual": 0.8,
+          "surprise_pct": 6.34,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "PRY.MI",
+      "yahoo": "PRY.MI",
+      "currency": "EUR",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-10-30",
+          "eps_estimate": 0.93,
+          "eps_actual": 0.75,
+          "surprise_pct": -18.99,
+          "result": "하회"
+        },
+        {
+          "date": "2025-02-26",
+          "eps_estimate": 0.91,
+          "eps_actual": 0.62,
+          "surprise_pct": -32.42,
+          "result": "하회"
+        },
+        {
+          "date": "2025-05-07",
+          "eps_estimate": 0.87,
+          "eps_actual": 0.75,
+          "surprise_pct": -13.33,
+          "result": "하회"
+        },
+        {
+          "date": "2025-07-31",
+          "eps_estimate": 0.92,
+          "eps_actual": 0.96,
+          "surprise_pct": 4.0,
+          "result": "상회"
+        },
+        {
+          "date": "2025-10-29",
+          "eps_estimate": 1.24,
+          "eps_actual": 1.23,
+          "surprise_pct": -0.67,
+          "result": "하회"
+        },
+        {
+          "date": "2026-03-01",
+          "eps_estimate": 0.99,
+          "eps_actual": 0.93,
+          "surprise_pct": -6.4,
+          "result": "하회"
+        },
+        {
+          "date": "2026-04-30",
+          "eps_estimate": 1.02,
+          "eps_actual": 0.84,
+          "surprise_pct": -18.12,
+          "result": "하회"
+        },
+        {
+          "date": "2026-07-30",
+          "eps_estimate": 1.24,
+          "eps_actual": 1.14,
+          "surprise_pct": -7.66,
+          "result": "하회"
+        }
+      ]
+    },
+    {
+      "ticker": "SIE.DE",
+      "yahoo": "SIE.DE",
+      "currency": "EUR",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-11-13",
+          "eps_estimate": 2.51,
+          "eps_actual": 2.6,
+          "surprise_pct": 3.98,
+          "result": "상회"
+        },
+        {
+          "date": "2025-02-13",
+          "eps_estimate": 2.12,
+          "eps_actual": 4.86,
+          "surprise_pct": 128.85,
+          "result": "상회"
+        },
+        {
+          "date": "2025-05-15",
+          "eps_estimate": 2.49,
+          "eps_actual": 3.0,
+          "surprise_pct": 20.52,
+          "result": "상회"
+        },
+        {
+          "date": "2025-08-07",
+          "eps_estimate": 2.41,
+          "eps_actual": 2.78,
+          "surprise_pct": 15.45,
+          "result": "상회"
+        },
+        {
+          "date": "2025-11-12",
+          "eps_estimate": 2.63,
+          "eps_actual": 2.3,
+          "surprise_pct": -12.53,
+          "result": "하회"
+        },
+        {
+          "date": "2026-02-12",
+          "eps_estimate": 2.22,
+          "eps_actual": 2.8,
+          "surprise_pct": 26.01,
+          "result": "상회"
+        },
+        {
+          "date": "2026-05-12",
+          "eps_estimate": 2.68,
+          "eps_actual": 2.81,
+          "surprise_pct": 5.03,
+          "result": "상회"
+        },
+        {
+          "date": "2026-08-06",
+          "eps_estimate": 2.75,
+          "eps_actual": 3.14,
+          "surprise_pct": 14.16,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "CAT",
+      "yahoo": "CAT",
+      "currency": "USD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-10-30",
+          "eps_estimate": 5.35,
+          "eps_actual": 5.17,
+          "surprise_pct": -3.44,
+          "result": "하회"
+        },
+        {
+          "date": "2025-01-30",
+          "eps_estimate": 5.03,
+          "eps_actual": 5.14,
+          "surprise_pct": 2.25,
+          "result": "상회"
+        },
+        {
+          "date": "2025-04-30",
+          "eps_estimate": 4.34,
+          "eps_actual": 4.25,
+          "surprise_pct": -2.19,
+          "result": "하회"
+        },
+        {
+          "date": "2025-08-05",
+          "eps_estimate": 4.9,
+          "eps_actual": 4.72,
+          "surprise_pct": -3.73,
+          "result": "하회"
+        },
+        {
+          "date": "2025-10-29",
+          "eps_estimate": 4.52,
+          "eps_actual": 4.95,
+          "surprise_pct": 9.43,
+          "result": "상회"
+        },
+        {
+          "date": "2026-01-29",
+          "eps_estimate": 4.71,
+          "eps_actual": 5.16,
+          "surprise_pct": 9.51,
+          "result": "상회"
+        },
+        {
+          "date": "2026-04-30",
+          "eps_estimate": 4.64,
+          "eps_actual": 5.54,
+          "surprise_pct": 19.3,
+          "result": "상회"
+        },
+        {
+          "date": "2026-08-04",
+          "eps_estimate": 6.2,
+          "eps_actual": 8.17,
+          "surprise_pct": 31.83,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "BA",
+      "yahoo": "BA",
+      "currency": "USD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-10-23",
+          "eps_estimate": -8.72,
+          "eps_actual": -10.44,
+          "surprise_pct": -19.66,
+          "result": "하회"
+        },
+        {
+          "date": "2025-01-28",
+          "eps_estimate": -3.78,
+          "eps_actual": -5.9,
+          "surprise_pct": -56.1,
+          "result": "하회"
+        },
+        {
+          "date": "2025-04-23",
+          "eps_estimate": -1.3,
+          "eps_actual": -0.49,
+          "surprise_pct": 62.39,
+          "result": "상회"
+        },
+        {
+          "date": "2025-07-29",
+          "eps_estimate": -1.27,
+          "eps_actual": -1.24,
+          "surprise_pct": 2.35,
+          "result": "상회"
+        },
+        {
+          "date": "2025-10-29",
+          "eps_estimate": -2.38,
+          "eps_actual": -7.47,
+          "surprise_pct": -214.44,
+          "result": "하회"
+        },
+        {
+          "date": "2026-01-27",
+          "eps_estimate": -0.41,
+          "eps_actual": 9.92,
+          "surprise_pct": 2525.31,
+          "result": "상회"
+        },
+        {
+          "date": "2026-04-22",
+          "eps_estimate": -0.67,
+          "eps_actual": -0.2,
+          "surprise_pct": 70.26,
+          "result": "상회"
+        },
+        {
+          "date": "2026-07-28",
+          "eps_estimate": -0.31,
+          "eps_actual": -0.76,
+          "surprise_pct": -141.48,
+          "result": "하회"
+        }
+      ]
+    },
+    {
+      "ticker": "GE",
+      "yahoo": "GE",
+      "currency": "USD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-10-22",
+          "eps_estimate": 1.13,
+          "eps_actual": 1.15,
+          "surprise_pct": 1.34,
+          "result": "상회"
+        },
+        {
+          "date": "2025-01-23",
+          "eps_estimate": 1.04,
+          "eps_actual": 1.32,
+          "surprise_pct": 26.9,
+          "result": "상회"
+        },
+        {
+          "date": "2025-04-22",
+          "eps_estimate": 1.27,
+          "eps_actual": 1.49,
+          "surprise_pct": 17.51,
+          "result": "상회"
+        },
+        {
+          "date": "2025-07-17",
+          "eps_estimate": 1.43,
+          "eps_actual": 1.66,
+          "surprise_pct": 15.97,
+          "result": "상회"
+        },
+        {
+          "date": "2025-10-21",
+          "eps_estimate": 1.47,
+          "eps_actual": 1.66,
+          "surprise_pct": 13.01,
+          "result": "상회"
+        },
+        {
+          "date": "2026-01-22",
+          "eps_estimate": 1.43,
+          "eps_actual": 1.57,
+          "surprise_pct": 9.81,
+          "result": "상회"
+        },
+        {
+          "date": "2026-04-21",
+          "eps_estimate": 1.6,
+          "eps_actual": 1.86,
+          "surprise_pct": 16.31,
+          "result": "상회"
+        },
+        {
+          "date": "2026-07-16",
+          "eps_estimate": 1.86,
+          "eps_actual": 2.02,
+          "surprise_pct": 8.62,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "LMT",
+      "yahoo": "LMT",
+      "currency": "USD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-10-22",
+          "eps_estimate": 6.48,
+          "eps_actual": 6.8,
+          "surprise_pct": 5.0,
+          "result": "상회"
+        },
+        {
+          "date": "2025-01-28",
+          "eps_estimate": 6.6,
+          "eps_actual": 2.22,
+          "surprise_pct": -66.39,
+          "result": "하회"
+        },
+        {
+          "date": "2025-04-22",
+          "eps_estimate": 6.35,
+          "eps_actual": 7.28,
+          "surprise_pct": 14.69,
+          "result": "상회"
+        },
+        {
+          "date": "2025-07-22",
+          "eps_estimate": 6.42,
+          "eps_actual": 1.46,
+          "surprise_pct": -77.27,
+          "result": "하회"
+        },
+        {
+          "date": "2025-10-21",
+          "eps_estimate": 6.36,
+          "eps_actual": 6.95,
+          "surprise_pct": 9.31,
+          "result": "상회"
+        },
+        {
+          "date": "2026-01-29",
+          "eps_estimate": 5.96,
+          "eps_actual": 5.8,
+          "surprise_pct": -2.71,
+          "result": "하회"
+        },
+        {
+          "date": "2026-04-23",
+          "eps_estimate": 6.69,
+          "eps_actual": 6.44,
+          "surprise_pct": -3.78,
+          "result": "하회"
+        },
+        {
+          "date": "2026-07-23",
+          "eps_estimate": 7.2,
+          "eps_actual": 7.94,
+          "surprise_pct": 10.29,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "RTX",
+      "yahoo": "RTX",
+      "currency": "USD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-10-22",
+          "eps_estimate": 1.34,
+          "eps_actual": 1.45,
+          "surprise_pct": 8.31,
+          "result": "상회"
+        },
+        {
+          "date": "2025-01-28",
+          "eps_estimate": 1.38,
+          "eps_actual": 1.54,
+          "surprise_pct": 11.8,
+          "result": "상회"
+        },
+        {
+          "date": "2025-04-22",
+          "eps_estimate": 1.37,
+          "eps_actual": 1.47,
+          "surprise_pct": 7.52,
+          "result": "상회"
+        },
+        {
+          "date": "2025-07-22",
+          "eps_estimate": 1.43,
+          "eps_actual": 1.56,
+          "surprise_pct": 9.47,
+          "result": "상회"
+        },
+        {
+          "date": "2025-10-21",
+          "eps_estimate": 1.41,
+          "eps_actual": 1.7,
+          "surprise_pct": 20.64,
+          "result": "상회"
+        },
+        {
+          "date": "2026-01-27",
+          "eps_estimate": 1.47,
+          "eps_actual": 1.55,
+          "surprise_pct": 5.34,
+          "result": "상회"
+        },
+        {
+          "date": "2026-04-21",
+          "eps_estimate": 1.52,
+          "eps_actual": 1.78,
+          "surprise_pct": 16.95,
+          "result": "상회"
+        },
+        {
+          "date": "2026-07-23",
+          "eps_estimate": 1.66,
+          "eps_actual": 1.89,
+          "surprise_pct": 13.71,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "AIR.PA",
+      "yahoo": "AIR.PA",
+      "currency": "EUR",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-10-30",
+          "eps_estimate": 1.01,
+          "eps_actual": 1.33,
+          "surprise_pct": 31.11,
+          "result": "상회"
+        },
+        {
+          "date": "2025-02-20",
+          "eps_estimate": 2.63,
+          "eps_actual": 2.34,
+          "surprise_pct": -11.04,
+          "result": "하회"
+        },
+        {
+          "date": "2025-04-30",
+          "eps_estimate": 0.55,
+          "eps_actual": 0.67,
+          "surprise_pct": 21.82,
+          "result": "상회"
+        },
+        {
+          "date": "2025-07-30",
+          "eps_estimate": 1.38,
+          "eps_actual": 1.48,
+          "surprise_pct": 7.24,
+          "result": "상회"
+        },
+        {
+          "date": "2025-10-29",
+          "eps_estimate": 1.63,
+          "eps_actual": 1.82,
+          "surprise_pct": 11.88,
+          "result": "상회"
+        },
+        {
+          "date": "2026-02-18",
+          "eps_estimate": 2.61,
+          "eps_actual": 2.92,
+          "surprise_pct": 12.0,
+          "result": "상회"
+        },
+        {
+          "date": "2026-04-28",
+          "eps_estimate": 0.42,
+          "eps_actual": 0.33,
+          "surprise_pct": -20.61,
+          "result": "하회"
+        },
+        {
+          "date": "2026-07-28",
+          "eps_estimate": 1.97,
+          "eps_actual": 2.28,
+          "surprise_pct": 15.72,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "RHM.DE",
+      "yahoo": "RHM.DE",
+      "currency": "EUR",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-11-07",
+          "eps_estimate": 4.21,
+          "eps_actual": 3.05,
+          "surprise_pct": -27.58,
+          "result": "하회"
+        },
+        {
+          "date": "2025-03-12",
+          "eps_estimate": 13.23,
+          "eps_actual": 10.23,
+          "surprise_pct": -22.64,
+          "result": "하회"
+        },
+        {
+          "date": "2025-05-08",
+          "eps_estimate": 2.55,
+          "eps_actual": 1.91,
+          "surprise_pct": -25.15,
+          "result": "하회"
+        },
+        {
+          "date": "2025-08-07",
+          "eps_estimate": 4.21,
+          "eps_actual": 3.91,
+          "surprise_pct": -7.05,
+          "result": "하회"
+        },
+        {
+          "date": "2025-11-05",
+          "eps_estimate": 4.4,
+          "eps_actual": 3.3,
+          "surprise_pct": -24.92,
+          "result": "하회"
+        },
+        {
+          "date": "2026-03-11",
+          "eps_estimate": 18.69,
+          "eps_actual": 16.6,
+          "surprise_pct": -11.18,
+          "result": "하회"
+        },
+        {
+          "date": "2026-05-06",
+          "eps_estimate": 2.83,
+          "eps_actual": 2.89,
+          "surprise_pct": 2.05,
+          "result": "상회"
+        },
+        {
+          "date": "2026-08-05",
+          "eps_estimate": 6.6,
+          "eps_actual": 7.52,
+          "surprise_pct": 14.02,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "XOM",
+      "yahoo": "XOM",
+      "currency": "USD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-11-01",
+          "eps_estimate": 1.87,
+          "eps_actual": 1.92,
+          "surprise_pct": 2.6,
+          "result": "상회"
+        },
+        {
+          "date": "2025-01-31",
+          "eps_estimate": 1.55,
+          "eps_actual": 1.67,
+          "surprise_pct": 7.87,
+          "result": "상회"
+        },
+        {
+          "date": "2025-05-02",
+          "eps_estimate": 1.74,
+          "eps_actual": 1.76,
+          "surprise_pct": 1.16,
+          "result": "상회"
+        },
+        {
+          "date": "2025-08-01",
+          "eps_estimate": 1.56,
+          "eps_actual": 1.64,
+          "surprise_pct": 4.93,
+          "result": "상회"
+        },
+        {
+          "date": "2025-10-31",
+          "eps_estimate": 1.82,
+          "eps_actual": 1.88,
+          "surprise_pct": 3.03,
+          "result": "상회"
+        },
+        {
+          "date": "2026-01-30",
+          "eps_estimate": 1.69,
+          "eps_actual": 1.71,
+          "surprise_pct": 1.12,
+          "result": "상회"
+        },
+        {
+          "date": "2026-05-01",
+          "eps_estimate": 1.01,
+          "eps_actual": 1.16,
+          "surprise_pct": 15.14,
+          "result": "상회"
+        },
+        {
+          "date": "2026-07-31",
+          "eps_estimate": 3.63,
+          "eps_actual": 4.11,
+          "surprise_pct": 13.26,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "CVX",
+      "yahoo": "CVX",
+      "currency": "USD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-11-01",
+          "eps_estimate": 2.42,
+          "eps_actual": 2.51,
+          "surprise_pct": 3.86,
+          "result": "상회"
+        },
+        {
+          "date": "2025-01-31",
+          "eps_estimate": 2.11,
+          "eps_actual": 2.06,
+          "surprise_pct": -2.28,
+          "result": "하회"
+        },
+        {
+          "date": "2025-05-02",
+          "eps_estimate": 2.15,
+          "eps_actual": 2.18,
+          "surprise_pct": 1.31,
+          "result": "상회"
+        },
+        {
+          "date": "2025-08-01",
+          "eps_estimate": 1.74,
+          "eps_actual": 1.77,
+          "surprise_pct": 1.71,
+          "result": "상회"
+        },
+        {
+          "date": "2025-10-31",
+          "eps_estimate": 1.71,
+          "eps_actual": 1.85,
+          "surprise_pct": 8.39,
+          "result": "상회"
+        },
+        {
+          "date": "2026-01-30",
+          "eps_estimate": 1.44,
+          "eps_actual": 1.52,
+          "surprise_pct": 5.2,
+          "result": "상회"
+        },
+        {
+          "date": "2026-05-01",
+          "eps_estimate": 0.97,
+          "eps_actual": 1.41,
+          "surprise_pct": 45.56,
+          "result": "상회"
+        },
+        {
+          "date": "2026-07-31",
+          "eps_estimate": 5.57,
+          "eps_actual": 6.06,
+          "surprise_pct": 8.84,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "SHEL",
+      "yahoo": "SHEL",
+      "currency": "USD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-10-31",
+          "eps_estimate": 1.7,
+          "eps_actual": 1.92,
+          "surprise_pct": 12.83,
+          "result": "상회"
+        },
+        {
+          "date": "2025-01-30",
+          "eps_estimate": 1.49,
+          "eps_actual": 1.2,
+          "surprise_pct": -19.65,
+          "result": "하회"
+        },
+        {
+          "date": "2025-05-02",
+          "eps_estimate": 1.61,
+          "eps_actual": 1.84,
+          "surprise_pct": 14.38,
+          "result": "상회"
+        },
+        {
+          "date": "2025-07-31",
+          "eps_estimate": 1.27,
+          "eps_actual": 1.44,
+          "surprise_pct": 13.72,
+          "result": "상회"
+        },
+        {
+          "date": "2025-10-30",
+          "eps_estimate": 1.74,
+          "eps_actual": 1.86,
+          "surprise_pct": 7.08,
+          "result": "상회"
+        },
+        {
+          "date": "2026-02-05",
+          "eps_estimate": 1.29,
+          "eps_actual": 1.14,
+          "surprise_pct": -11.83,
+          "result": "하회"
+        },
+        {
+          "date": "2026-05-07",
+          "eps_estimate": 2.21,
+          "eps_actual": 2.44,
+          "surprise_pct": 10.18,
+          "result": "상회"
+        },
+        {
+          "date": "2026-07-30",
+          "eps_estimate": 3.18,
+          "eps_actual": 3.52,
+          "surprise_pct": 10.63,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "TTE.PA",
+      "yahoo": "TTE.PA",
+      "currency": "USD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-10-31",
+          "eps_estimate": 1.85,
+          "eps_actual": 1.74,
+          "surprise_pct": -5.8,
+          "result": "하회"
+        },
+        {
+          "date": "2025-02-05",
+          "eps_estimate": 1.87,
+          "eps_actual": 1.9,
+          "surprise_pct": 1.81,
+          "result": "상회"
+        },
+        {
+          "date": "2025-04-30",
+          "eps_estimate": 1.92,
+          "eps_actual": 1.83,
+          "surprise_pct": -4.65,
+          "result": "하회"
+        },
+        {
+          "date": "2025-07-24",
+          "eps_estimate": 1.61,
+          "eps_actual": 1.57,
+          "surprise_pct": -2.39,
+          "result": "하회"
+        },
+        {
+          "date": "2025-10-30",
+          "eps_estimate": 1.75,
+          "eps_actual": 1.77,
+          "surprise_pct": 0.93,
+          "result": "상회"
+        },
+        {
+          "date": "2026-02-11",
+          "eps_estimate": 1.78,
+          "eps_actual": 1.73,
+          "surprise_pct": -2.63,
+          "result": "하회"
+        },
+        {
+          "date": "2026-04-28",
+          "eps_estimate": 2.4,
+          "eps_actual": 2.45,
+          "surprise_pct": 2.1,
+          "result": "상회"
+        },
+        {
+          "date": "2026-07-23",
+          "eps_estimate": 2.71,
+          "eps_actual": 2.68,
+          "surprise_pct": -1.09,
+          "result": "하회"
+        }
+      ]
+    },
+    {
+      "ticker": "MAERSK-B.CO",
+      "yahoo": "MAERSK-B.CO",
+      "currency": "USD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-10-31",
+          "eps_estimate": 167.65,
+          "eps_actual": 194.01,
+          "surprise_pct": 15.72,
+          "result": "상회"
+        },
+        {
+          "date": "2025-02-05",
+          "eps_estimate": 93.87,
+          "eps_actual": 135.48,
+          "surprise_pct": 44.34,
+          "result": "상회"
+        },
+        {
+          "date": "2025-05-07",
+          "eps_estimate": 60.81,
+          "eps_actual": 70.5,
+          "surprise_pct": 15.94,
+          "result": "상회"
+        },
+        {
+          "date": "2025-08-07",
+          "eps_estimate": 28.37,
+          "eps_actual": 36.38,
+          "surprise_pct": 28.22,
+          "result": "상회"
+        },
+        {
+          "date": "2025-11-06",
+          "eps_estimate": 55.26,
+          "eps_actual": 58.65,
+          "surprise_pct": 6.13,
+          "result": "상회"
+        },
+        {
+          "date": "2026-02-05",
+          "eps_estimate": 5.24,
+          "eps_actual": 1.86,
+          "surprise_pct": -64.56,
+          "result": "하회"
+        },
+        {
+          "date": "2026-05-07",
+          "eps_estimate": 0.92,
+          "eps_actual": 9.36,
+          "surprise_pct": 914.21,
+          "result": "상회"
+        },
+        {
+          "date": "2026-08-13",
+          "eps_estimate": 32.79,
+          "eps_actual": 85.97,
+          "surprise_pct": 162.19,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "JPM",
+      "yahoo": "JPM",
+      "currency": "USD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-10-11",
+          "eps_estimate": 3.99,
+          "eps_actual": 4.37,
+          "surprise_pct": 9.63,
+          "result": "상회"
+        },
+        {
+          "date": "2025-01-15",
+          "eps_estimate": 4.04,
+          "eps_actual": 4.81,
+          "surprise_pct": 19.18,
+          "result": "상회"
+        },
+        {
+          "date": "2025-04-11",
+          "eps_estimate": 4.64,
+          "eps_actual": 5.07,
+          "surprise_pct": 9.15,
+          "result": "상회"
+        },
+        {
+          "date": "2025-07-15",
+          "eps_estimate": 4.48,
+          "eps_actual": 4.96,
+          "surprise_pct": 10.62,
+          "result": "상회"
+        },
+        {
+          "date": "2025-10-14",
+          "eps_estimate": 4.87,
+          "eps_actual": 5.07,
+          "surprise_pct": 4.01,
+          "result": "상회"
+        },
+        {
+          "date": "2026-01-13",
+          "eps_estimate": 4.82,
+          "eps_actual": 4.63,
+          "surprise_pct": -3.91,
+          "result": "하회"
+        },
+        {
+          "date": "2026-04-14",
+          "eps_estimate": 5.51,
+          "eps_actual": 5.94,
+          "surprise_pct": 7.78,
+          "result": "상회"
+        },
+        {
+          "date": "2026-07-14",
+          "eps_estimate": 5.8,
+          "eps_actual": 6.14,
+          "surprise_pct": 5.86,
+          "result": "상회"
+        },
+        {
+          "date": "2026-10-13",
+          "eps_estimate": 5.94,
+          "eps_actual": 5.75,
+          "surprise_pct": -3.24,
+          "result": "하회"
+        }
+      ]
+    },
+    {
+      "ticker": "WMT",
+      "yahoo": "WMT",
+      "currency": "USD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-11-19",
+          "eps_estimate": 0.53,
+          "eps_actual": 0.58,
+          "surprise_pct": 8.84,
+          "result": "상회"
+        },
+        {
+          "date": "2025-02-20",
+          "eps_estimate": 0.65,
+          "eps_actual": 0.66,
+          "surprise_pct": 2.04,
+          "result": "상회"
+        },
+        {
+          "date": "2025-05-15",
+          "eps_estimate": 0.58,
+          "eps_actual": 0.61,
+          "surprise_pct": 5.64,
+          "result": "상회"
+        },
+        {
+          "date": "2025-08-21",
+          "eps_estimate": 0.74,
+          "eps_actual": 0.68,
+          "surprise_pct": -7.97,
+          "result": "하회"
+        },
+        {
+          "date": "2025-11-20",
+          "eps_estimate": 0.6,
+          "eps_actual": 0.62,
+          "surprise_pct": 3.11,
+          "result": "상회"
+        },
+        {
+          "date": "2026-02-19",
+          "eps_estimate": 0.73,
+          "eps_actual": 0.74,
+          "surprise_pct": 1.79,
+          "result": "상회"
+        },
+        {
+          "date": "2026-05-21",
+          "eps_estimate": 0.66,
+          "eps_actual": 0.66,
+          "surprise_pct": 0.19,
+          "result": "부합"
+        },
+        {
+          "date": "2026-08-20",
+          "eps_estimate": 0.74,
+          "eps_actual": 0.81,
+          "surprise_pct": 9.27,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "JNJ",
+      "yahoo": "JNJ",
+      "currency": "USD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-10-15",
+          "eps_estimate": 2.21,
+          "eps_actual": 2.42,
+          "surprise_pct": 9.71,
+          "result": "상회"
+        },
+        {
+          "date": "2025-01-22",
+          "eps_estimate": 2.01,
+          "eps_actual": 2.04,
+          "surprise_pct": 1.38,
+          "result": "상회"
+        },
+        {
+          "date": "2025-04-15",
+          "eps_estimate": 2.58,
+          "eps_actual": 2.77,
+          "surprise_pct": 7.38,
+          "result": "상회"
+        },
+        {
+          "date": "2025-07-16",
+          "eps_estimate": 2.68,
+          "eps_actual": 2.77,
+          "surprise_pct": 3.21,
+          "result": "상회"
+        },
+        {
+          "date": "2025-10-14",
+          "eps_estimate": 2.76,
+          "eps_actual": 2.8,
+          "surprise_pct": 1.49,
+          "result": "상회"
+        },
+        {
+          "date": "2026-01-21",
+          "eps_estimate": 2.46,
+          "eps_actual": 2.46,
+          "surprise_pct": -0.11,
+          "result": "부합"
+        },
+        {
+          "date": "2026-04-14",
+          "eps_estimate": 2.68,
+          "eps_actual": 2.7,
+          "surprise_pct": 0.85,
+          "result": "상회"
+        },
+        {
+          "date": "2026-07-15",
+          "eps_estimate": 2.85,
+          "eps_actual": 2.9,
+          "surprise_pct": 1.58,
+          "result": "상회"
+        },
+        {
+          "date": "2026-10-13",
+          "eps_estimate": 2.52,
+          "eps_actual": 2.59,
+          "surprise_pct": 2.69,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "NOVN.SW",
+      "yahoo": "NOVN.SW",
+      "currency": "USD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-10-28",
+          "eps_estimate": 1.94,
+          "eps_actual": 2.06,
+          "surprise_pct": 5.94,
+          "result": "상회"
+        },
+        {
+          "date": "2025-01-30",
+          "eps_estimate": 1.82,
+          "eps_actual": 1.98,
+          "surprise_pct": 8.72,
+          "result": "상회"
+        },
+        {
+          "date": "2025-04-29",
+          "eps_estimate": 2.15,
+          "eps_actual": 2.28,
+          "surprise_pct": 6.28,
+          "result": "상회"
+        },
+        {
+          "date": "2025-07-17",
+          "eps_estimate": 2.37,
+          "eps_actual": 2.42,
+          "surprise_pct": 2.0,
+          "result": "상회"
+        },
+        {
+          "date": "2025-10-28",
+          "eps_estimate": 1.87,
+          "eps_actual": 2.04,
+          "surprise_pct": 9.02,
+          "result": "상회"
+        },
+        {
+          "date": "2026-02-04",
+          "eps_estimate": 2.07,
+          "eps_actual": 2.03,
+          "surprise_pct": -1.73,
+          "result": "하회"
+        },
+        {
+          "date": "2026-04-27",
+          "eps_estimate": 2.08,
+          "eps_actual": 1.99,
+          "surprise_pct": -4.51,
+          "result": "하회"
+        },
+        {
+          "date": "2026-07-20",
+          "eps_estimate": 2.14,
+          "eps_actual": 2.41,
+          "surprise_pct": 12.68,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "AZN",
+      "yahoo": "AZN",
+      "currency": "USD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-11-12",
+          "eps_estimate": 1.03,
+          "eps_actual": 1.04,
+          "surprise_pct": 1.13,
+          "result": "상회"
+        },
+        {
+          "date": "2025-02-06",
+          "eps_estimate": 1.04,
+          "eps_actual": 1.05,
+          "surprise_pct": 0.84,
+          "result": "상회"
+        },
+        {
+          "date": "2025-04-29",
+          "eps_estimate": 1.12,
+          "eps_actual": 1.25,
+          "surprise_pct": 11.59,
+          "result": "상회"
+        },
+        {
+          "date": "2025-07-29",
+          "eps_estimate": 0.88,
+          "eps_actual": 0.79,
+          "surprise_pct": -10.71,
+          "result": "하회"
+        },
+        {
+          "date": "2025-11-06",
+          "eps_estimate": 1.13,
+          "eps_actual": 1.19,
+          "surprise_pct": 4.88,
+          "result": "상회"
+        },
+        {
+          "date": "2026-04-29",
+          "eps_estimate": 1.27,
+          "eps_actual": 1.29,
+          "surprise_pct": 1.43,
+          "result": "상회"
+        },
+        {
+          "date": "2026-07-27",
+          "eps_estimate": 1.25,
+          "eps_actual": 1.32,
+          "surprise_pct": 4.85,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "SPCX",
+      "yahoo": "SPCX",
+      "currency": "USD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2026-08-04",
+          "eps_estimate": -0.29,
+          "eps_actual": -0.09,
+          "surprise_pct": 68.89,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "ARM",
+      "yahoo": "ARM",
+      "currency": "USD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2024-11-07",
+          "eps_estimate": 0.26,
+          "eps_actual": 0.3,
+          "surprise_pct": 17.12,
+          "result": "상회"
+        },
+        {
+          "date": "2025-02-05",
+          "eps_estimate": 0.34,
+          "eps_actual": 0.39,
+          "surprise_pct": 14.0,
+          "result": "상회"
+        },
+        {
+          "date": "2025-05-07",
+          "eps_estimate": 0.52,
+          "eps_actual": 0.55,
+          "surprise_pct": 5.04,
+          "result": "상회"
+        },
+        {
+          "date": "2025-07-30",
+          "eps_estimate": 0.35,
+          "eps_actual": 0.35,
+          "surprise_pct": -0.31,
+          "result": "부합"
+        },
+        {
+          "date": "2025-11-05",
+          "eps_estimate": 0.33,
+          "eps_actual": 0.39,
+          "surprise_pct": 17.7,
+          "result": "상회"
+        },
+        {
+          "date": "2026-02-04",
+          "eps_estimate": 0.41,
+          "eps_actual": 0.43,
+          "surprise_pct": 5.09,
+          "result": "상회"
+        },
+        {
+          "date": "2026-05-05",
+          "eps_estimate": 0.58,
+          "eps_actual": 0.6,
+          "surprise_pct": 3.57,
+          "result": "상회"
+        },
+        {
+          "date": "2026-07-29",
+          "eps_estimate": 0.4,
+          "eps_actual": 0.45,
+          "surprise_pct": 11.44,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "CRWV",
+      "yahoo": "CRWV",
+      "currency": "USD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2025-05-14",
+          "eps_estimate": -0.22,
+          "eps_actual": -1.4,
+          "surprise_pct": -538.37,
+          "result": "하회"
+        },
+        {
+          "date": "2025-08-12",
+          "eps_estimate": -0.21,
+          "eps_actual": -0.27,
+          "surprise_pct": -29.81,
+          "result": "하회"
+        },
+        {
+          "date": "2025-11-10",
+          "eps_estimate": -0.48,
+          "eps_actual": -0.22,
+          "surprise_pct": 54.37,
+          "result": "상회"
+        },
+        {
+          "date": "2026-02-26",
+          "eps_estimate": -0.68,
+          "eps_actual": -0.89,
+          "surprise_pct": -29.96,
+          "result": "하회"
+        },
+        {
+          "date": "2026-05-07",
+          "eps_estimate": -1.2,
+          "eps_actual": -1.4,
+          "surprise_pct": -16.26,
+          "result": "하회"
+        },
+        {
+          "date": "2026-08-11",
+          "eps_estimate": -1.47,
+          "eps_actual": -1.14,
+          "surprise_pct": 22.45,
+          "result": "상회"
+        }
+      ]
+    },
+    {
+      "ticker": "NBIS",
+      "yahoo": "NBIS",
+      "currency": "USD",
+      "method": "earnings_dates",
+      "quarters": [
+        {
+          "date": "2025-02-20",
+          "eps_estimate": -0.39,
+          "eps_actual": -0.37,
+          "surprise_pct": 4.82,
+          "result": "상회"
+        },
+        {
+          "date": "2025-05-20",
+          "eps_estimate": -0.44,
+          "eps_actual": -0.39,
+          "surprise_pct": 12.7,
+          "result": "상회"
+        },
+        {
+          "date": "2025-08-07",
+          "eps_estimate": -0.41,
+          "eps_actual": 2.45,
+          "surprise_pct": 697.12,
+          "result": "상회"
+        },
+        {
+          "date": "2025-11-11",
+          "eps_estimate": -0.39,
+          "eps_actual": -0.47,
+          "surprise_pct": -20.25,
+          "result": "하회"
+        },
+        {
+          "date": "2026-02-12",
+          "eps_estimate": -0.6,
+          "eps_actual": -0.99,
+          "surprise_pct": -63.06,
+          "result": "하회"
+        },
+        {
+          "date": "2026-05-13",
+          "eps_estimate": -0.71,
+          "eps_actual": 2.11,
+          "surprise_pct": 396.14,
+          "result": "상회"
+        },
+        {
+          "date": "2026-08-12",
+          "eps_estimate": -0.86,
+          "eps_actual": -0.68,
+          "surprise_pct": 21.24,
+          "result": "상회"
+        }
+      ]
+    }
+  ],
+  "missing": [
+    {
+      "ticker": "SU.PA",
+      "reason": "제공자 EPS 컨센서스 없음"
+    },
+    {
+      "ticker": "OR.PA",
+      "reason": "제공자 EPS 컨센서스 없음"
+    },
+    {
+      "ticker": "MC.PA",
+      "reason": "제공자 EPS 컨센서스 없음"
+    },
+    {
+      "ticker": "NESN.SW",
+      "reason": "제공자 EPS 컨센서스 없음"
+    },
+    {
+      "ticker": "ROG.SW",
+      "reason": "제공자 EPS 컨센서스 없음"
+    }
+  ]
+}
