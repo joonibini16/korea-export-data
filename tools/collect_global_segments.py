@@ -8,7 +8,7 @@
   period = 회계분기 말일이 속한 '달력' 분기(YYYY-Qn).
 SEC 공정 접근 규칙(초당 10회 이하, 연락처 User-Agent)을 지킵니다. 이미 처리한 공시는 캐시(.secseg-cache)에서 건너뜁니다.
 """
-import csv, json, re, sys, time, gzip, pathlib, datetime as dt, urllib.request
+import csv, json, re, sys, time, gzip, itertools, pathlib, datetime as dt, urllib.request
 from collections import defaultdict
 
 UA = {'User-Agent': 'korea-export-data research dashboard knwy26@gmail.com', 'Accept-Encoding': 'gzip'}
@@ -16,7 +16,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / 'global_segments_sec.csv'
 CACHE = ROOT / '.secseg-cache'; CACHE.mkdir(exist_ok=True)
 REV = {'Revenues', 'RevenueFromContractWithCustomerExcludingAssessedTax', 'RevenueFromContractWithCustomerIncludingAssessedTax', 'SalesRevenueNet', 'RevenuesNetOfInterestExpense'}
-AXES = ['ProductOrServiceAxis', 'StatementBusinessSegmentsAxis']
+EXCL = re.compile(r'Geograph|LegalEntity|ConsolidationItems|Range|Scenario|Concentration|Customer|Restatement|Adjustment|Currency|Country|Region|Statement(Equity|ClassOfStock)|Counterparty|Maturity|FinancialInstrument|Hedg|Derivative|Location|Market(s)?Axis')
 START = '2018-01-01'
 last = [0.0]
 
@@ -43,10 +43,11 @@ def label(member):
     return m.strip()
 
 
-def qlabel(end):
-    d = dt.date.fromisoformat(end)
-    # 말일이 분기 첫 며칠이면(예: 52/53주 회계) 직전 분기로
-    if d.day <= 7 and d.month in (1, 4, 7, 10): d = d - dt.timedelta(days=10)
+def qlabel(span):
+    """회계분기의 가운데 날짜가 속한 달력 분기."""
+    s, e = (dt.date.fromisoformat(x) for x in span)
+    if (e - s).days > 100: s = e - dt.timedelta(days=91)
+    d = s + (e - s) / 2
     return f'{d.year}-Q{(d.month - 1) // 3 + 1}'
 
 
@@ -113,23 +114,11 @@ def main():
                     tot.setdefault((s, e), v); src.setdefault((s, e), url); continue
                 if len(dims) != 1: continue
                 axis, mem = dims[0][0].split(':')[-1], dims[0][1]
-                if axis not in AXES: continue
+                if EXCL.search(axis): continue
                 seg[(axis, mem)].setdefault((s, e), v); src.setdefault((s, e), url)
         if not seg:
             status[t] = f'{len(fl)} filings, no segment facts'; continue
-        # 축 선택: 분기 수 × 합계 일치도가 가장 좋은 축
-        best = None
-        for axis in AXES:
-            mems = [k for k in seg if k[0] == axis]
-            if not mems: continue
-            q = defaultdict(dict)
-            for k in mems:
-                for (s, e), v in seg[k].items(): q[(s, e)][k[1]] = v
-            ok = sum(1 for p, d in q.items() if p in tot and tot[p] and abs(sum(d.values()) / tot[p] - 1) < 0.03)
-            score = (ok, len(q))
-            if not best or score > best[0]: best = (score, axis, mems)
-        _, axis, mems = best
-        # 분기값 만들기: 3개월 값 우선, 없으면 연간 − 같은 회계연도 3개 분기 합
+
         def quarters(series):
             out = {}
             for (s, e), v in series.items():
@@ -140,20 +129,47 @@ def main():
                 if len(qs) == 3: out[e] = (v - sum(qv[0] for _, qv in qs), (s, e))
             return out
         tq = quarters(tot)
-        per_item = {k[1]: quarters(seg[k]) for k in mems}
-        ends = sorted(set(e for d in per_item.values() for e in d))
-        n = 0
+        q_axis = defaultdict(lambda: defaultdict(dict))   # axis → end → {member: (v, span)}
+        for (axis, mem), ser in seg.items():
+            for e, vs in quarters(ser).items():
+                if vs[0] > 0: q_axis[axis][e][mem] = vs
+        pref = lambda ax: 0 if 'Product' in ax else 1 if 'Segment' in ax else 2
+
+        def fit(items, total):
+            """항목 합이 총매출과 맞는 가장 많은 항목 조합(상위·하위 항목 중복 제거)."""
+            if not total: return items
+            ks = list(items)
+            if abs(sum(v[0] for v in items.values()) / total - 1) < 0.02: return items
+            if len(ks) > 14: return None
+            best = None
+            for r in range(len(ks), 1, -1):
+                for comb in itertools.combinations(ks, r):
+                    if abs(sum(items[k][0] for k in comb) / total - 1) < 0.02:
+                        best = {k: items[k] for k in comb}; break
+                if best: break
+            return best
+        ends = sorted(set(e for ax in q_axis for e in q_axis[ax]))
+        n = 0; used = defaultdict(int)
         for e in ends:
-            vals = {label(m): d[e][0] for m, d in per_item.items() if e in d and d[e][0] > 0}
-            if len(vals) < 2: continue
-            per = qlabel(e); s_e = next(d[e][1] for d in per_item.values() if e in d); u = src.get(s_e, '')
-            total = sum(vals.values())
-            if e in tq: rows.append(dict(company=t, period=per, kind='revenue', item='매출(합계)', value=round(tq[e][0] / 1e6, 1), unit='USD mn', source=u))
-            for it, v in vals.items():
-                rows.append(dict(company=t, period=per, kind='segment_revenue', item=it, value=round(v / 1e6, 1), unit='USD mn', source=u + f' (SEC XBRL {axis})'))
-                rows.append(dict(company=t, period=per, kind='share', item=it, value=round(v / total * 100, 2), unit='%', source=u + ' (항목 합 대비)'))
+            total = tq.get(e, (None,))[0]
+            choice = None
+            for ax in sorted(q_axis, key=lambda a: (pref(a), -len(q_axis[a].get(e, {})))):
+                items = q_axis[ax].get(e, {})
+                if len(items) < 2: continue
+                f2 = fit(items, total)
+                if f2 and len(f2) >= 2: choice = (ax, f2); break
+            if not choice: continue
+            ax, items = choice; used[ax] += 1
+            span = next(iter(items.values()))[1]; u = src.get(span, '')
+            per = qlabel(span)
+            ssum = sum(v[0] for v in items.values())
+            if total: rows.append(dict(company=t, period=per, kind='revenue', item='매출(합계)', value=round(total / 1e6, 1), unit='USD mn', source=u))
+            for m, (v, _) in items.items():
+                it = label(m)
+                rows.append(dict(company=t, period=per, kind='segment_revenue', item=it, value=round(v / 1e6, 1), unit='USD mn', source=u + f' (SEC XBRL {ax})'))
+                rows.append(dict(company=t, period=per, kind='share', item=it, value=round(v / ssum * 100, 2), unit='%', source=u + ' (항목 합 대비)'))
             n += 1
-        status[t] = f'{axis} · {len(mems)} items · {n} quarters'
+        status[t] = f'{n} quarters · axes ' + ', '.join(f'{a}({c})' for a, c in used.items())
         print(t, status[t], flush=True)
     with OUT.open('w', encoding='utf-8-sig', newline='') as f:
         w = csv.DictWriter(f, fieldnames=['company', 'period', 'kind', 'item', 'value', 'unit', 'source']); w.writeheader()
