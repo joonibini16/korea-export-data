@@ -24,9 +24,9 @@
   const rev={},sh={},pr={},pu={},vol={},vu={};
   rs.forEach(r=>{const v=Number(r.value);if(r.kind==='segment_revenue')(rev[r.item]=rev[r.item]||{})[r.period]=v;else if(r.kind==='share')(sh[r.item]=sh[r.item]||{})[r.period]=v;else if(r.kind==='price'){(pr[r.item]=pr[r.item]||{})[r.period]=v;pu[r.item]=r.unit;}else if(r.kind==='volume'){(vol[r.item]=vol[r.item]||{})[r.period]=v;vu[r.item]=r.unit;}});
   const items=[...new Set(rs.filter(r=>r.kind==='share'||r.kind==='segment_revenue').map(r=>r.item))];
-  const pf={op_income:{},gross_profit:{},net_income:{},revenue:{}},sop={};
-  rs.forEach(r=>{const v=Number(r.value);if(pf[r.kind])pf[r.kind][r.period]=v;else if(r.kind==='seg_op_income')(sop[r.item]=sop[r.item]||{})[r.period]=v;});
-  return {pf,sop,per,items,rev,sh,pr,pu,vol,vu,unit:'백만 USD',src:!rs[0]?'':/SEC XBRL/.test(rs.find(r=>r.kind==='segment_revenue')?.source||'')?'미국 SEC 분기·연간 보고서(10-Q·10-K) 인라인 XBRL의 제품·부문별 매출 · 4분기 = 연간 − 1~3분기 합 · 분기는 회계분기 중간일이 속한 달력 분기 · 항목명은 공시 태그 영문명':'회사 IR 공식 자료(분기 경영보고서 등) · 부문 매출 = 총매출 × 공시 비중 · 단가 = 매출 ÷ 출하량'};
+  const pf={op_income:{},gross_profit:{},net_income:{},revenue:{}},sop={},srev={};
+  rs.forEach(r=>{const v=Number(r.value);if(pf[r.kind])pf[r.kind][r.period]=v;else if(r.kind==='seg_op_income')(sop[r.item]=sop[r.item]||{})[r.period]=v;else if(r.kind==='seg_revenue')(srev[r.item]=srev[r.item]||{})[r.period]=v;});
+  return {pf,sop,srev,per,items,rev,sh,pr,pu,vol,vu,unit:'백만 USD',src:!rs[0]?'':/SEC XBRL/.test(rs.find(r=>r.kind==='segment_revenue')?.source||'')?'미국 SEC 분기·연간 보고서(10-Q·10-K) 인라인 XBRL의 제품·부문별 매출 · 4분기 = 연간 − 1~3분기 합 · 분기는 회계분기 중간일이 속한 달력 분기 · 항목명은 공시 태그 영문명':'회사 IR 공식 자료(분기 경영보고서 등) · 부문 매출 = 총매출 × 공시 비중 · 단가 = 매출 ÷ 출하량'};
  }
  function render(id,name){
   cur=id;destroy();const d=data(id);
@@ -66,13 +66,13 @@
   const rev=p=>d.pf.revenue[p]??(series.reduce((a,s)=>a+(s.rev[p]||0),0)||null);
   const opm=p=>d.pf.op_income[p]!=null&&rev(p)?d.pf.op_income[p]/rev(p)*100:null,gpm=p=>d.pf.gross_profit[p]!=null&&rev(p)?d.pf.gross_profit[p]/rev(p)*100:null;
   if(!per.some(p=>opm(p)!=null))return;
-  const top=series[0];const tsh=p=>top?.sh?.[p]??null;
+  const lp0=[...d.per].reverse().find(p=>series.some(s=>(s.rev[p]||0)>0));const top=[...series].filter(s=>s.k!=='그 밖의 품목').sort((a,b)=>(b.rev[lp0]||0)-(a.rev[lp0]||0))[0];const tsh=p=>top?.sh?.[p]??null;
   // 비중-이익률 관계(최근 12분기): 상관계수와 기울기
   const pts=per.slice(-12).map(p=>[tsh(p),opm(p)]).filter(x=>x[0]!=null&&x[1]!=null);
   let corr=null,slope=null;if(pts.length>=6){const n=pts.length,mx=pts.reduce((a,x)=>a+x[0],0)/n,my=pts.reduce((a,x)=>a+x[1],0)/n,sxy=pts.reduce((a,x)=>a+(x[0]-mx)*(x[1]-my),0),sxx=pts.reduce((a,x)=>a+(x[0]-mx)**2,0),syy=pts.reduce((a,x)=>a+(x[1]-my)**2,0);corr=sxx&&syy?sxy/Math.sqrt(sxx*syy):null;slope=sxx?sxy/sxx:null;}
   const L=per.filter(p=>opm(p)!=null).at(-1),Y=L&&`${Number(L.slice(0,4))-1}${L.slice(4)}`;const f=v=>v==null?'—':v.toFixed(1)+'%',dp=(a,b)=>a==null||b==null?'—':((a-b>=0?'+':'')+(a-b).toFixed(1)+'%p');
   const sopK=Object.keys(d.sop||{}).filter(k=>Object.keys(d.sop[k]).length>=4);
-  const segM=k=>{const r=series.find(s=>s.k===k);return p=>r&&r.rev[p]&&d.sop[k][p]!=null?d.sop[k][p]/r.rev[p]*100:null;};
+  const segM=k=>{const sr=d.srev&&d.srev[k],r=series.find(s=>s.k===k);const rv=p=>sr&&sr[p]!=null?sr[p]:r?r.rev[p]:null;return p=>rv(p)&&d.sop[k][p]!=null?d.sop[k][p]/rv(p)*100:null;};
   const box=document.createElement('div');box.innerHTML=`<h3>매출 비중과 이익 변화</h3><p class="muted">막대 = 회사 전체 영업이익(백만 USD), 선 = 영업이익률·매출총이익률(오른쪽 축), 점선 = 최대 품목(${top?top.k:'—'}) 매출 비중. 영업이익·매출총이익은 SEC 공시의 회사 전체 값입니다.</p>
    <div class="pd-c" style="height:330px"><canvas id="pdProfit"></canvas></div>
    <table class="pd-t"><thead><tr><th class="l">지표</th><th>${L?lab(L):''}</th><th>전년 동기</th><th>변화</th></tr></thead><tbody>
@@ -82,7 +82,7 @@
     <tr><td class="l">영업이익 (백만 USD)</td><td>${d.pf.op_income[L]!=null?Math.round(d.pf.op_income[L]).toLocaleString():'—'}</td><td>${d.pf.op_income[Y]!=null?Math.round(d.pf.op_income[Y]).toLocaleString():'—'}</td><td>${d.pf.op_income[L]!=null&&d.pf.op_income[Y]>0?((d.pf.op_income[L]/d.pf.op_income[Y]-1)*100).toFixed(1)+'%':'—'}</td></tr>
    </tbody></table>
    <p class="pd-int">${corr==null?'비중과 이익률의 관계를 계산할 분기 수가 부족합니다.':`최근 ${pts.length}분기 기준 <b>${top.k}</b> 비중과 영업이익률의 상관계수 <b>${corr.toFixed(2)}</b>, 비중 1%p 변화당 영업이익률 <b>${slope>=0?'+':''}${slope.toFixed(2)}%p</b>. ${Math.abs(corr)>=0.6?(corr>0?'고마진 품목 비중이 커질수록 이익률이 오르는 <em>믹스 개선</em> 구조가 뚜렷합니다.':'이 품목 비중이 커질수록 이익률이 낮아지는 구조입니다(저마진 품목이거나 성장 투자 단계).'):'비중 변화와 이익률의 연관이 약해, 이익률은 가격·원가 등 다른 요인 영향이 큽니다.'} (상관은 인과가 아니며, 회사 전체 이익률 기준입니다.)`}</p>
-   ${sopK.length?`<h3>사업부문별 영업이익·이익률</h3><p class="muted">막대 = 부문 영업이익(공시 기준 부문 이익), 선 = 부문 이익률(부문 영업이익 ÷ 같은 이름 부문 매출, 오른쪽 축). 회사가 부문 구분을 바꾼 구간은 끊겨 보일 수 있습니다.</p><div class="pd-c" style="height:330px"><canvas id="pdSegOp"></canvas></div>`:''}`;
+   ${sopK.length?`<h3>사업부문별 영업이익·이익률</h3><p class="muted">막대 = 부문 영업이익(공시 기준 부문 이익), 선 = 부문 이익률(부문 영업이익 ÷ 같은 부문 매출, 오른쪽 축). 회사가 부문 구분을 바꾼 구간은 끊겨 보일 수 있습니다.</p><div class="pd-c" style="height:330px"><canvas id="pdSegOp"></canvas></div>`:''}`;
   sec.appendChild(box);
   const labels=per.map(lab),axisC={ticks:{color:'#94a3b8'}};
   charts.push(new Chart(document.getElementById('pdProfit'),{data:{labels,datasets:[
@@ -91,8 +91,8 @@
    {type:'line',label:'매출총이익률',data:per.map(gpm),borderColor:'#34d399',backgroundColor:'#34d399',yAxisID:'y1',pointRadius:2,borderWidth:2,spanGaps:true},
    {type:'line',label:(top?top.k:'최대 품목')+' 비중',data:per.map(tsh),borderColor:'#f87171',backgroundColor:'#f87171',borderDash:[5,4],yAxisID:'y1',pointRadius:1.5,borderWidth:2,spanGaps:true}]},
    options:{responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:'index',intersect:false},plugins:{rangeNav:false,legend:{position:'bottom',labels:{color:'#cbd5e1',boxWidth:12}}},scales:{x:{ticks:{color:'#94a3b8',maxTicksLimit:14}},y:{...axisC,title:{display:true,text:'백만 USD',color:'#94a3b8'}},y1:{position:'right',grid:{drawOnChartArea:false},ticks:{color:'#94a3b8',callback:v=>v+'%'}}}}}));
-  if(sopK.length){const ds=[];sopK.forEach((k,i)=>{const c=PAL[(series.findIndex(s=>s.k===k)+PAL.length)%PAL.length]||PAL[i%PAL.length];ds.push({type:'bar',label:k+' 영업이익',data:per.map(p=>d.sop[k][p]??null),backgroundColor:c+'aa',stack:'op',yAxisID:'y'});const m=segM(k);if(per.some(p=>m(p)!=null))ds.push({type:'line',label:k+' 이익률',data:per.map(m),borderColor:c,backgroundColor:c,yAxisID:'y1',pointRadius:2,borderWidth:2,spanGaps:true});});
-   charts.push(new Chart(document.getElementById('pdSegOp'),{data:{labels,datasets:ds},options:{responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:'index',intersect:false},plugins:{rangeNav:false,legend:{position:'bottom',labels:{color:'#cbd5e1',boxWidth:12}}},scales:{x:{stacked:true,ticks:{color:'#94a3b8',maxTicksLimit:14}},y:{stacked:true,...axisC},y1:{position:'right',grid:{drawOnChartArea:false},ticks:{color:'#94a3b8',callback:v=>v+'%'}}}}}));}
+  if(sopK.length){const ds=[];sopK.forEach((k,i)=>{const j=series.findIndex(s=>s.k===k),c=PAL[(j>=0?j:i)%PAL.length];ds.push({type:'bar',label:k+' 영업이익',data:per.map(p=>d.sop[k][p]??null),backgroundColor:c+'aa',stack:'op',yAxisID:'y'});const m=segM(k);if(per.some(p=>m(p)!=null))ds.push({type:'line',label:k+' 이익률',data:per.map(m),borderColor:c,backgroundColor:c,yAxisID:'y1',pointRadius:2,borderWidth:2,spanGaps:true});});
+   charts.push(new Chart(document.getElementById('pdSegOp'),{data:{labels,datasets:ds},options:{responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:'index',intersect:false},plugins:{rangeNav:false,legend:{position:'bottom',labels:{color:'#cbd5e1',boxWidth:12}}},scales:{x:{stacked:true,ticks:{color:'#94a3b8',maxTicksLimit:14}},y:{stacked:true,...axisC,title:{display:true,text:'백만 USD',color:'#94a3b8'}},y1:{display:ds.some(x=>x.type==='line'),position:'right',grid:{drawOnChartArea:false},ticks:{color:'#94a3b8',callback:v=>v+'%'}}}}}));}
  }
  async function tick(){
   const sel=document.getElementById(SRC==='kr'?'company':'companyPick');const id=window.__prodCompany||sel?.value;if(!id||id===cur)return;

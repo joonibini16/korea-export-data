@@ -215,6 +215,10 @@ def main():
             for e, (v, span) in quarters(ser).items():
                 rows.append(dict(company=t, period=qlabel(span), kind=k, item={'op_income': '영업이익', 'gross_profit': '매출총이익', 'net_income': '순이익'}[k], value=round(v / 1e6, 1), unit='USD mn', source=src.get(span, '') + ' (SEC XBRL)')); npf += 1
         for mem, ser in pseg.items():
+            rser = seg.get(('StatementBusinessSegmentsAxis', mem))
+            if rser:
+                for e, (v, span) in quarters(rser).items():
+                    if v > 0: rows.append(dict(company=t, period=qlabel(span), kind='seg_revenue', item=label(mem), value=round(v / 1e6, 1), unit='USD mn', source=src.get(span, '') + ' (SEC XBRL 사업부문 매출)'))
             for e, (v, span) in quarters(ser).items():
                 rows.append(dict(company=t, period=qlabel(span), kind='seg_op_income', item=label(mem), value=round(v / 1e6, 1), unit='USD mn', source=src.get(span, '') + ' (SEC XBRL 사업부문 영업이익)'))
         status[t] = f'{n} quarters · profit {npf} · seg-op {len(pseg)} · axes ' + ', '.join(f'{a}({c})' for a, c in used.items())
