@@ -26,4 +26,21 @@
  q.addEventListener('input',build);q.addEventListener('keydown',e=>{if(e.key==='Enter'){const b=chips.querySelector('button');if(b)b.click();}});
  sel.addEventListener('change',mark);new MutationObserver(build).observe(sel,{childList:true});build();
  // 선택이 코드로 바뀌는 경우(표 클릭 등)도 반영
- let last=sel.value;setInterval(()=>{if(sel.value!==last){last=sel.value;mark();}},500);})();</script></body></html>
+ let last=sel.value;setInterval(()=>{if(sel.value!==last){last=sel.value;mark();}},500);})();</script><style>.ge-tabs{display:flex;gap:8px;margin:0 0 14px}.ge-tabs button{padding:9px 20px;border-radius:10px;border:1px solid #2a3a5c;background:#0f1a31;color:#cbd5e1;font-size:15px;font-weight:700;cursor:pointer}.ge-tabs button.on{background:#2563eb;border-color:#2563eb;color:#fff}.tab-off{display:none!important}.ge-fin-note{margin:0 0 10px}</style><script>(function(){
+ // 컨콜 / 실적 분석 탭: 같은 기업 선택을 공유하고 화면 구성만 나눔
+ const bar=document.querySelector('.ge-sticky')||document.getElementById('selected');
+ const tabs=document.createElement('div');tabs.className='ge-tabs';tabs.innerHTML='<button data-t="call">컨콜 분석</button><button data-t="fin">실적 분석</button>';
+ bar.after(tabs);
+ const fin=[document.querySelector('[aria-labelledby="annualTitle"]'),document.getElementById('prodPanel')].filter(Boolean);
+ const call=[document.getElementById('selected')];
+ const note=document.createElement('p');note.className='muted ge-fin-note';note.textContent='실적 분석: 선택한 기업의 2026~2028년 매출·이익·OPM·PER 추정과 제품·사업부문별 매출 구성·비중·단가 추이입니다. 컨콜 요약·경영진 발언은 컨콜 분석 탭에서 보세요.';
+ fin[0]&&fin[0].before(note);fin.unshift(note);
+ // 실적 분석 블록을 컨콜 블록 바로 아래로 모음
+ let anchor=document.getElementById('selected');fin.forEach(el=>{anchor.after(el);anchor=el;});
+ const set=t=>{call.forEach(e=>e.classList.toggle('tab-off',t!=='call'));fin.forEach(e=>e.classList.toggle('tab-off',t!=='fin'));
+  tabs.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.t===t));
+  try{history.replaceState(null,'',location.pathname+location.search.replace(/([?&])tab=[^&]*&?/,'$1').replace(/[?&]$/,'')+'#'+t);}catch(e){}
+  if(t==='fin')window.dispatchEvent(new Event('resize'));};
+ tabs.onclick=e=>{const b=e.target.closest('button');if(b)set(b.dataset.t);};
+ set(location.hash==='#fin'||/[?&]tab=fin/.test(location.search)?'fin':'call');
+})();</script></body></html>
