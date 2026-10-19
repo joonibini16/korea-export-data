@@ -17,6 +17,7 @@ OUT = ROOT / 'global_segments_sec.csv'
 CACHE = ROOT / '.secseg-cache'; CACHE.mkdir(exist_ok=True)
 REV = {'Revenues', 'RevenueFromContractWithCustomerExcludingAssessedTax', 'RevenueFromContractWithCustomerIncludingAssessedTax', 'SalesRevenueNet', 'RevenuesNetOfInterestExpense'}
 GENERIC = {'product', 'products', 'service', 'services', 'productandservice', 'productsandservices', 'serviceandother', 'serviceother', 'productother'}
+PS = re.compile(r'^(Products?|Services?|Product.*Excluding|Services? And|Subscriptions? ?and Services|Product And Service)', re.I)
 EXCL = re.compile(r'Geograph|LegalEntity|ConsolidationItems|Range|Scenario|Concentration|Customer|Restatement|Adjustment|Currency|Country|Region|Statement(Equity|ClassOfStock)|Counterparty|Maturity|FinancialInstrument|Hedg|Derivative|Location|Market(s)?Axis')
 START = '2018-01-01'
 last = [0.0]
@@ -175,22 +176,26 @@ def main():
         n = 0; used = defaultdict(int)
         for e in ends:
             total = tq.get(e, (None,))[0]
-            choice = None
-            for ax in sorted(q_axis, key=lambda a: (pref(a), -len(q_axis[a].get(e, {})))):
+            cands = []
+            for ax in q_axis:
                 items = q_axis[ax].get(e, {})
                 if len(items) < 2: continue
                 f2 = fit(items, total)
                 if f2 and ax.endswith('#geo') and len(f2) != len(items): f2 = None
-                if f2 and len(f2) >= 2: choice = (ax, f2); break
-            if not choice: continue
-            ax, items = choice; used[ax] += 1
+                if f2 and len(f2) >= 2:
+                    # '제품/서비스'처럼 정보가 적은 구분보다 사업부문·제품군 구분을 우선
+                    gen = sum(1 for m in f2 if PS.search(label(m))) / len(f2)
+                    cands.append(((gen >= 0.5, len(f2) < 3, pref(ax), -len(f2)), ax, f2))
+            if not cands: continue
+            _, ax, items = min(cands, key=lambda c: c[0]); used[ax] += 1
             span = next(iter(items.values()))[1]; u = src.get(span, '')
             per = qlabel(span)
             items = {m: v for m, v in items.items() if v[0] > 0}
             ssum = sum(v[0] for v in items.values())
             if total: rows.append(dict(company=t, period=per, kind='revenue', item='매출(합계)', value=round(total / 1e6, 1), unit='USD mn', source=u))
-            for m, (v, _) in items.items():
-                it = label(m)
+            merged = defaultdict(float)
+            for m, (v, _) in items.items(): merged[label(m)] += v
+            for it, v in merged.items():
                 rows.append(dict(company=t, period=per, kind='segment_revenue', item=it, value=round(v / 1e6, 1), unit='USD mn', source=u + f" (SEC XBRL {ax.replace('#geo', ', 지역 합산')})"))
                 rows.append(dict(company=t, period=per, kind='share', item=it, value=round(v / ssum * 100, 2), unit='%', source=u + ' (항목 합 대비)'))
             n += 1
