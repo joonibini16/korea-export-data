@@ -79,7 +79,7 @@
     "DRAM과 플래시를 가중치 없이 합쳐 회사 매출로 환산하거나, MCP·상위 HS와 중복 합산하지 않습니다.",
     "제시된 상관계수는 과거 YoY의 단순 상관이며 인과관계·예측력 검증 결과가 아닙니다. 이 데이터만으로 영업이익을 산출하지 않습니다."
   ],
-  "built_at": "2026-10-19T05:44:13.191083+00:00",
+  "built_at": "2026-10-19T05:46:43.395825+00:00",
   "coverage": [
     {
       "hs_code": "8542321010",
@@ -140,38 +140,38 @@
   ],
   "source_files": {
     "country_8542321010.csv": {
-      "sha256": "4d5481a2fbdba45363e08cd6292e6090303232b1cd319d36edfaa5e3a5426881",
+      "sha256": "488d073ab62e62188edccd61a21e0b6305ca6bc2b783e888564ce26e218692c4",
       "data_end": "2026.09"
     },
     "country_8542321030.csv": {
-      "sha256": "79a17ab97a3d49345a1762339327faeeac4a3d2180ddcaeda7b0b45bf9528f05",
+      "sha256": "b58e8e3dce1070dc5dd9875df5aabffe6a11b486c8c160f782ff0e0a4471d749",
       "data_end": "2026.09"
     },
     "country_8473304060.csv": {
-      "sha256": "d19dccbd906478794804fe570bdd958f5f6117585625233807283a577e709e39",
+      "sha256": "505f02a8730ddac44017d3486303ce5d6e38c191f46b67f368544f79d56bd858",
       "data_end": "2026.09"
     },
     "country_8523511000.csv": {
-      "sha256": "7b2c3355e0dcb24677d8b0082b10d6a23a4333de971a4fdfd660c8b1eb2e32ad",
+      "sha256": "b57fbc87de724353af3ede7e3d06c3f9d202f1b58e817cb1604e34bb9ffc8033",
       "data_end": "2026.09"
     },
     "country_8542323000.csv": {
-      "sha256": "eca9853eead894fe988ef4c2e5a6dbd94597b13a7561d1bee1a3e6e4f3de5823",
+      "sha256": "5826a7f57cdeaadf907634966e97770d72db79c4cadc0c8d2b11c7219ad276c0",
       "data_end": "2026.09"
     },
     "country_854232.csv": {
-      "sha256": "c8aea5653e7ea9c4fa76dccac633f9705ddc4348dda9a851eeec49ec7499ac14",
+      "sha256": "d2c843b152c91f9ef17fab8ac40caf8a0c65c3dcdeb6d76f3b8921409b19bda2",
       "data_end": "2026.09"
     },
     "country_853400.csv": {
-      "sha256": "34b7d38e8f8c4f519973d60a49b55c87d27f534d49e656ada20ef4bcd2cae271",
+      "sha256": "d9bf2c1eac84630cb6eaddb025d61c1ff0f93b897ed2fd02a00854c52833a77b",
       "data_end": "2026.09"
     },
     "company_financials.csv": {
-      "sha256": "a823c0d377f306830f00c5d07c4ad3344c48cde298120dff3edf5d0bc1231813"
+      "sha256": "8746dcbbcb28c8279149fe512fe11dfdbc86d92ac450142246d69cca1444c68b"
     },
     "hs_codes.csv": {
-      "sha256": "b31e1fdd3632426311031d275037db82807596921709ed05052228455f37ff60"
+      "sha256": "8db9b8fbdbbec9cbcfb615f2ad67d902d696ccc6f6b154002fd757933c9e7a5a"
     },
     "hanyang_vietnam_config.json": {
       "sha256": "ccbf5b1ee4a96cf79fe0db75e68084f17f79b6ffb7a1fc57bd229482360a0b00"
