@@ -72,24 +72,25 @@
         const values = mode === 'index' ? s.data.filter(x => base && x.d >= common).map(x => ({x:stamp(x.d), y:x.v / base * 100})) : s.data.map(x => ({x:stamp(x.d), y:x.v}));
         return {label:s.name, data:values, borderColor:s.color, backgroundColor:s.color, borderWidth:2.3, pointRadius:values.length < 8 ? 4 : 0, pointHitRadius:12, parsing:false, spanGaps:false};
       });
-      const hist = document.getElementById('gpu-hist').checked;
+      const hist = document.getElementById('gpu-hist').value === 'hist';
       if (hist) {
+        datasets.length = 0;
         const lastAll = Math.max(...sets.flatMap(s => s.data.map(x => stamp(x.d))), 0);
         specs.forEach(([key, name, color]) => {
           let r = refSeries(key).filter(x => stamp(x.d) >= cutoff);
           if (!r.length) return;
           let data = r.map(x => ({x:stamp(x.d), y:x.v}));
           if (mode === 'index') { const b = data[0].y; data = data.map(p => ({x:p.x, y:p.y / b * 100})); }
-          datasets.push({label:name + ' 과거(판독 참고)', data, borderColor:color + 'aa', backgroundColor:color + 'aa', borderWidth:1.4, pointRadius:0, pointHitRadius:6, parsing:false, spanGaps:true, order:10});
+          datasets.push({label:name, data, borderColor:color, backgroundColor:color, borderWidth:2, pointRadius:0, pointHitRadius:6, parsing:false, spanGaps:true});
         });
       }
-      if (mode === 'price' && document.getElementById('gpu-runpod').checked) {
+      if (!hist && mode === 'price' && document.getElementById('gpu-runpod').checked) {
         specs.forEach(([key, name, color]) => {
           const data = series('gpu_' + key + '_runpod_secure').filter(x => stamp(x.d) >= cutoff).map(x => ({x:stamp(x.d), y:x.v}));
           if (data.length) datasets.push({label:name + ' RunPod Secure', data, borderColor:color, backgroundColor:color, borderDash:[5,3], borderWidth:1.5, pointRadius:data.length < 8 ? 3 : 0, parsing:false, spanGaps:false});
         });
       }
-      document.getElementById('gpu-runpod').disabled = mode !== 'price';
+      document.getElementById('gpu-runpod').disabled = hist || mode !== 'price';
       const times = datasets.flatMap(s => s.data.map(x => x.x)), min = Math.min(...times), max = Math.max(...times), longSpan = max - min > 120 * day;
       if (chart) chart.destroy();
       chart = new Chart(document.getElementById('gpu-trend'), {
@@ -98,7 +99,7 @@
           plugins:{legend:{position:'top'}, tooltip:{callbacks:{title:items => new Date(items[0].parsed.x).toISOString().slice(0,10), label:c => c.dataset.label + ': ' + (mode === 'price' ? money(c.parsed.y) + ' / GPU·시간' : c.parsed.y.toFixed(2))}}},
           scales:{x:{type:'linear', min:Number.isFinite(min) && max - min < 2 * day ? min - day : undefined, max:Number.isFinite(max) && max - min < 2 * day ? max + day : undefined, ticks:{stepSize:max - min < 90 * day ? day : undefined, maxTicksLimit:8, callback:v => longSpan ? new Date(v).toISOString().slice(2,7).replace('-', '.') : new Date(v).toISOString().slice(0,10)}}, y:{beginAtZero:false, title:{display:true, text:mode === 'price' ? 'USD / GPU·시간' : (hist ? '각 선의 첫 값 = 100' : `공통 첫 관측일 ${common || '없음'} = 100`)}}}}
       });
-      document.getElementById('gpu-note').textContent = (mode === 'index' ? common ? `5종 공통 관측일 ${common}부터 비교합니다. ` : '5종 공통 관측일이 아직 없어 지수 비교를 보류합니다. ' : '호가와 공시가는 실제 체결가가 아닙니다. ') + (hist ? '옅은 선은 2024년 9월부터의 과거 이력(BADONION 차트 판독 참고치, A100·H100·B200)으로, Vast.ai 호가 중앙값과 집계 방식이 달라 수준 차이가 있습니다(예: A100 판독 $1.5 vs Vast 중앙값 $0.8). 방향·추세 비교용으로 보세요. ' : '') + '마우스를 올리면 해당 날짜·가격을 확인할 수 있습니다. 전일·7일·30일 값이 없으면 변동률은 비워둡니다. H200·RTX 5090은 이번 수집부터 누적합니다.';
+      document.getElementById('gpu-note').textContent = hist ? '장기 지수: 2024년 9월부터의 GPU 임대 지수(BADONION 차트 판독 참고치, 일별)입니다. 최근 값은 판독 자료가 갱신된 날까지이며, 매일 수집하는 Vast.ai 호가는 위 표와 "데이터" 선택에서 따로 볼 수 있습니다. 실제 체결가(Ornn OCPI)는 위 바로가기에서 확인하세요. 마우스를 올리면 날짜·값이 보입니다.' : (mode === 'index' ? (common ? `5종 공통 관측일 ${common}부터 비교합니다. ` : '5종 공통 관측일이 아직 없어 지수 비교를 보류합니다. ') : 'Vast.ai 호가와 RunPod 공시가는 실제 체결가가 아닙니다. ') + '전일·7일·30일 값이 없으면 변동률은 비워둡니다. H200·RTX 5090은 10월 중순 수집부터 누적합니다.';
     }
     draw();
     ['gpu-mode','gpu-range','gpu-runpod','gpu-hist'].forEach(id => document.getElementById(id).addEventListener('change', draw));
