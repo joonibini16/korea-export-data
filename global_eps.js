@@ -2,7 +2,7 @@
 (async function(){
  const sec=document.getElementById('epsPanel');if(!sec)return;
  const $=id=>document.getElementById(id);
- const C={est:'#7c8ba3',act:'#60a5fa',beat:'#34d399',miss:'#f87171',grid:'#22314f',tick:'#a9b8ce'};
+ const C={est:'#7c8ba3',act:'#fbbf24',beat:'#f87171',miss:'#60a5fa',grid:'#22314f',tick:'#a9b8ce'};
  let E,W;
  try{[E,W]=await Promise.all(['global_eps_surprise.json','global_earnings.json'].map(f=>fetch('./'+f+'?t='+Date.now(),{cache:'no-store'}).then(r=>{if(!r.ok)throw Error(f+' HTTP '+r.status);return r.json();})));}
  catch(e){$('epsMeta').textContent='EPS 컨센서스 자료가 아직 없습니다. (수집 대기)';return;}
@@ -36,7 +36,7 @@
     options:opts('분기 EPS: 컨센서스 vs 실제 (발표 월)',v=>fmt(v))}));
    const sp=q.map(x=>x.surprise_pct);
    charts.push(new Chart($('epsSurprise'),{type:'bar',data:{labels:L,datasets:[{label:'EPS 서프라이즈(%)',data:sp,backgroundColor:sp.map(v=>v>=0?C.beat:C.miss),borderRadius:4,maxBarThickness:22}]},
-    options:Object.assign(opts('컨센서스 대비 서프라이즈(%) · 초록 상회 / 빨강 하회',v=>pct(v)),{plugins:{title:{display:true,text:'컨센서스 대비 서프라이즈(%) · 초록 상회 / 빨강 하회',color:'#e2e8f0',font:{size:13}},legend:{display:false},tooltip:{callbacks:{label:ctx=>'서프라이즈: '+pct(ctx.parsed.y)}}}})}));
+    options:Object.assign(opts('컨센서스 대비 서프라이즈(%) · 빨강 상회 / 파랑 하회',v=>pct(v)),{plugins:{title:{display:true,text:'컨센서스 대비 서프라이즈(%) · 빨강 상회 / 파랑 하회',color:'#e2e8f0',font:{size:13}},legend:{display:false},tooltip:{callbacks:{label:ctx=>'서프라이즈: '+pct(ctx.parsed.y)}}}})}));
   }
   for(const x of [...q].reverse()){const tr=document.createElement('tr');
    for(const [v,k] of [[x.date,''],[fmt(x.eps_estimate),''],[fmt(x.eps_actual),''],[pct(x.surprise_pct),cls(x.surprise_pct)],[x.result||'—',cls(x.surprise_pct)]]){const td=document.createElement('td');td.textContent=v;if(k)td.className=k;tr.append(td);}
@@ -45,7 +45,7 @@
  function table(){
   const s=$('sector')?.value||'',body=$('epsSummary');body.replaceChildren();
   const rows=list.filter(x=>!s||x.sector===s).map(x=>({x,c:byT.get(x.ticker)})).map(o=>({...o,s:o.c?stats(o.c):null}))
-   .sort((a,b)=>(b.s?.n?1:0)-(a.s?.n?1:0)||(b.s?.med??-1e9)-(a.s?.med??-1e9));
+   .sort((a,b)=>(b.s?.n?1:0)-(a.s?.n?1:0)||((b.s?.n||0)>=4)-((a.s?.n||0)>=4)||(b.s?.med??-1e9)-(a.s?.med??-1e9));
   $('epsSummaryTitle').textContent=`${s||'전체 업종'} · 기업별 EPS 컨센서스 상회 이력 (최근 2년)`;
   for(const {x,c,s:st} of rows){const tr=document.createElement('tr');tr.tabIndex=0;tr.dataset.t=x.ticker;if(x.ticker===cur)tr.setAttribute('aria-selected','true');
    const cells=st&&st.n?[[`${x.name} (${x.ticker})`,''],[x.sector,''],[`${st.beat}/${st.n}`,''],[fmt(st.n?st.beat/st.n*100:null,0)+'%',''],[pct(st.med),cls(st.med)],[st.last?pct(st.last.surprise_pct):'—',cls(st.last?.surprise_pct)],[st.last?.date||'—','']]

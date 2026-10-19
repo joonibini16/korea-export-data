@@ -127,7 +127,7 @@ def main():
     data = {
         'updated_at': dt.datetime.now(KST).isoformat(timespec='seconds'),
         'provider': 'Yahoo Finance (yfinance) EPS 추정·실적',
-        'method': '발표일 기준 최근 2년. EPS·컨센서스는 자료 제공자 기준(대개 조정 EPS, ADR은 ADR 1주 기준)으로 회사 공시 GAAP EPS와 다를 수 있습니다. 서프라이즈 = (실제−컨센서스)/|컨센서스|. 반기 보고 기업은 반기 실적만 표시됩니다.',
+        'method': '발표일 기준 최근 2년. EPS·컨센서스는 자료 제공자 기준(대개 조정 EPS, ADR은 ADR 1주 기준)으로 회사 공시 GAAP EPS와 다를 수 있습니다. 서프라이즈 = (실제−컨센서스)/|컨센서스|. 반기 보고 기업은 반기 실적만 표시됩니다. 실제 EPS에 지분 평가이익 등 일회성 손익이 포함되면 서프라이즈가 크게 과장될 수 있습니다(예: 투자지분 평가이익이 반영된 분기). 매출 위주로 발표하거나 반기 보고하는 일부 유럽 기업은 제공자 컨센서스가 없어 제외됩니다.',
         'companies': companies,
         'missing': missing,
     }
