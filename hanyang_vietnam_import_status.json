@@ -1,11 +1,11 @@
 {
-  "checked_at": "2026-10-19T05:58:42.238762+00:00",
+  "checked_at": "2026-10-19T06:07:39.985921+00:00",
   "end_month": "202609",
   "expected": 162,
   "rows": 162,
-  "received": 162,
+  "received": 18,
   "missing": [],
   "failures": [],
   "source": "https://www.data.go.kr/data/15100475/openapi.do",
-  "note": "韓国の輸入統計・相手国VN。空応答はゼロ補完しない。金額CIF・純重量KG。"
+  "note": "한국 수입통계·상대국 VN. 빈 응답을 0으로 보완하지 않음. 금액 CIF·순중량 KG."
 }
