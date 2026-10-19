@@ -21,7 +21,8 @@
  const monthRate=(c,p,mo,k,daily=adj)=>{if(c==null||!Number.isFinite(c)||!Number.isFinite(p)||!(p>0)||c<0)return null;if(!daily)return (c/p-1)*100;const a=segDays(mo,k,false),b=segDays(prevMonth(mo),k,false);return a&&b?((c/a)/(p/b)-1)*100:null;};
  const SEGL=['1~10일','11~20일','21~말일'];
  let pageView='overall',mode='item',adj=true,R=[],chart=null,focusCharts=[],focusPeriod='D10',focusRange='12';
- const selected={item:'',country:''};
+ const selected={item:'총계',country:''};
+ const displayName=n=>n==='총계'?'총괄':n;
  const esc=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  // 관세청 조업일수: 평일 1, 토요일 0.5, 일요일·공휴일 0 (근로자의날 포함, 설·추석이 토요일과 겹칠 때 대체휴일 없음) — 발표문 조업일수와 대조 검증
  const HOL={2024:'0101 0209 0210 0211 0212 0301 0410 0415 0501 0506 0515 0606 0815 0916 0917 0918 1001 1003 1009 1225',
@@ -80,19 +81,20 @@ for(const rel of ['D10','D20']){const k=rel==='D10'?'10d':'20d';releases[rel]=mo
  function renderPicker(){
   const picker=document.getElementById('provisional-item-select'),buttons=document.getElementById('provisional-item-buttons'),overview=document.getElementById('provisional-overview');
   if(!picker||!buttons)return;
-  const names=[...new Set(R.filter(r=>r.kind==='item'&&r.flow==='export'&&['D10','D20'].includes(r.release)).map(r=>r.name))].sort((a,b)=>a.localeCompare(b,'ko')).concat(['총계','총계(반도체 제외)']);
+  const names=[...new Set(R.filter(r=>r.kind==='item'&&r.flow==='export'&&['D10','D20'].includes(r.release)).map(r=>r.name))].sort((a,b)=>a.localeCompare(b,'ko')).concat(['총계(반도체 제외)']);
   const value=pageView==='overall'?'__overall':mode==='item'?selected.item:'';
   picker.innerHTML='<option value="__overall">총괄 잠정수출</option><option value="">전체 품목 비교</option>'+names.map(n=>`<option value="${esc(n)}">${esc(n)}</option>`).join('');
   picker.value=value;
-  const choose=n=>{pageView=n==='__overall'?'overall':'items';mode='item';selected.item=n==='__overall'?'':n;render();};
+  const choose=n=>{pageView=n==='__overall'?'overall':'items';mode='item';selected.item=n==='__overall'?'총계':n;render();};
   picker.onchange=e=>choose(e.target.value);
   buttons.innerHTML=[['__overall','총괄'],...names.map(n=>[n,n])].map(([n,t])=>`<button type="button" data-item="${esc(n)}" aria-pressed="${value===n}">${esc(t)}</button>`).join('');
   buttons.querySelectorAll('button').forEach(b=>b.onclick=()=>choose(b.dataset.item));
   if(overview)overview.hidden=pageView!=='overall';
   const status=document.getElementById('provisional-picker-status');
-  if(status)status.textContent=pageView==='overall'?'아래 버튼 또는 선택창에서 품목을 고르면 해당 품목의 수출액·YoY·MoM 차트와 표가 표시됩니다.':(mode==='item'&&selected.item?selected.item:mode==='country'?'국가별':'전체 품목')+' 조회 중 · 총괄 버튼으로 돌아갈 수 있습니다.';
+  if(status)status.textContent=pageView==='overall'?'총괄에서 공식 발표 요약과 전체 수출의 YoY·MoM 상세 분석을 함께 볼 수 있습니다.':(mode==='item'&&selected.item?selected.item:mode==='country'?'국가별':'전체 품목')+' 조회 중 · 총괄 버튼으로 돌아갈 수 있습니다.';
  }
  function render(){
+  if(mode==='item'&&selected.item==='총계')pageView='overall';
   renderPicker();
   focusCharts.forEach(c=>c.destroy());focusCharts=[];
   if(chart){chart.destroy();chart=null;}
@@ -102,11 +104,11 @@ for(const rel of ['D10','D20']){const k=rel==='D10'?'10d':'20d';releases[rel]=mo
   const cnt={};L.forEach(x=>cnt[x.sig]=(cnt[x.sig]||0)+1);
   const latest=L[0]?.last9.at(-1);
   host.innerHTML=`<div class="sg-top"><div class="sg-tg">${[['item','수출 품목'],['country','수출 국가']].map(([k,t])=>`<button class="period${mode===k?' active':''}" data-m="${k}">${t}</button>`).join('')}<span style="width:14px"></span>${[[1,'일평균(조업일수 보정)'],[0,'금액 그대로']].map(([k,t])=>`<button class="period${+adj===k?' active':''}" data-a="${k}">${t}</button>`).join('')}</div>
-   <label style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">${mode==='item'?'품목 선택':'국가 선택'} <select id="sg-select" aria-label="${mode==='item'?'품목 선택':'국가 선택'}" style="padding:9px 12px;border:1px solid #94a3b8;border-radius:8px;background:#0f1a33;color:#e5e7eb;min-width:220px;max-width:100%"><option value="">전체 ${mode==='item'?'품목':'국가'}</option>${[...all].sort((a,b)=>a.n.localeCompare(b.n,'ko')).map(x=>`<option value="${esc(x.n)}"${selected[mode]===x.n?' selected':''}>${esc(x.n)}</option>`).join('')}</select><span class="sg-h">${L.length} / ${all.length}개 표시 · 선택하면 상세 그래프가 열립니다</span></label>
+   <label style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">${mode==='item'?'품목 선택':'국가 선택'} <select id="sg-select" aria-label="${mode==='item'?'품목 선택':'국가 선택'}" style="padding:9px 12px;border:1px solid #94a3b8;border-radius:8px;background:#0f1a33;color:#e5e7eb;min-width:220px;max-width:100%"><option value="">전체 ${mode==='item'?'품목':'국가'}</option>${[...all].sort((a,b)=>a.n.localeCompare(b.n,'ko')).map(x=>`<option value="${esc(displayName(x.n))}"${selected[mode]===x.n?' selected':''}>${esc(displayName(x.n))}</option>`).join('')}</select><span class="sg-h">${L.length} / ${all.length}개 표시 · 선택하면 상세 그래프가 열립니다</span></label>
    <div class="sg-sum">${Object.keys(SIG).filter(k=>cnt[k]).map(k=>`<span class="sg-b" style="color:${SIG[k].c};background:${SIG[k].bg}">${k} ${cnt[k]}</span>`).join(' ')}</div></div>
    <section id="sg-focus" aria-label="선택 항목 상세"></section>
    <div class="table-wrap"><table class="sg"><thead><tr><th>${mode==='item'?'품목':'국가'}</th><th>시그널</th><th>최신구간 YoY${adj?'<div class="sg-h">일평균 기준</div>':''}<div class="sg-h">${latest?latest.m.slice(2).replace('.','.')+' '+SEGL[latest.k-1]:''}</div></th><th>최신구간 MoM<div class="sg-h">전월 동일 구간${adj?' · 일평균':''}</div></th><th>3개월 추세<div class="sg-h">10일 구간 YoY · 9구간</div></th><th>모멘텀<div class="sg-h">최근3−직전3 (%p)</div></th><th>당월누적 YoY<div class="sg-h">${L[0]?L[0].cumLbl+'일':''}</div></th><th>당월누적 MoM<div class="sg-h">전월 동일 누적기간</div></th><th>TTM YoY<div class="sg-h">확정치 12개월</div></th><th>TTM (억$)</th><th></th></tr></thead><tbody>`+
-   L.map((x,i)=>{const s=SIG[x.sig],tot=/^총계/.test(x.n);return `<tr class="${tot?'sg-tot':''}"><td><b>${x.n}</b></td><td><span class="sg-b" style="color:${s.c};background:${s.bg}" title="${s.d}">${x.sig}</span></td>
+   L.map((x,i)=>{const s=SIG[x.sig],tot=/^총계/.test(x.n);return `<tr class="${tot?'sg-tot':''}"><td><b>${displayName(x.n)}</b></td><td><span class="sg-b" style="color:${s.c};background:${s.bg}" title="${s.d}">${x.sig}</span></td>
     <td class="num ${cls(x.lastY&&x.lastY.y)}">${x.lastY?f1(x.lastY.y)+'%':'—'}${x.lastY&&x.lastY!==x.last9.at(-1)?'<div class="sg-h">'+x.lastY.m.slice(2)+' '+SEGL[x.lastY.k-1]+'</div>':''}</td>
     <td class="num ${cls(x.last9.at(-1)?.monthChange)}">${x.last9.at(-1)?.monthChange==null?'—':f1(x.last9.at(-1).monthChange)+'%'}</td><td>${spark(x.last9,s.c)}</td><td class="num ${cls(x.mom)}"><b>${f1(x.mom)}</b></td><td class="num ${cls(x.cumY)}">${x.cumY==null?'—':f1(x.cumY)+'%'}</td>
     <td class="num ${cls(x.cumMoM)}">${x.cumMoM==null?'—':f1(x.cumMoM)+'%'}</td><td class="num ${cls(x.ttmY)}">${x.ttmY==null?'—':f1(x.ttmY)+'%'}</td><td class="num">${x.ttm==null?'—':Math.round(x.ttm/100).toLocaleString()}</td>
@@ -136,7 +138,7 @@ for(const rel of ['D10','D20']){const k=rel==='D10'?'10d':'20d';releases[rel]=mo
   const limit=focusRange==='ALL'?null:+focusRange;
   if(limit){const months=[...new Set(data.map(q=>q.m))].slice(-limit);data=data.filter(q=>months.includes(q.m));}
   const latest=data.at(-1),modeLabel=adj?'일평균':'수출액';
-  box.innerHTML=`<div class="sg-focus-head"><h3>${esc(x.n)} · 수출 상세</h3><button class="sg-d" id="sg-all">전체 목록 보기</button></div>
+  box.innerHTML=`<div class="sg-focus-head"><h3>${esc(displayName(x.n))} · 수출 상세</h3><button class="sg-d" id="sg-all">전체 목록 보기</button></div>
    <div class="sg-focus-controls"><label>조회 기준 <select id="sg-focus-period" aria-label="상세 조회 기준">${[['D10','1~10일 누적 (D10)'],['D20','1~20일 누적 (D20)'],['SEG','10일 개별 구간']].map(([k,t])=>`<option value="${k}"${focusPeriod===k?' selected':''}>${t}</option>`).join('')}</select></label>
    <label>조회 기간 <select id="sg-focus-range" aria-label="상세 조회 기간">${[['6','최근 6개월'],['12','최근 12개월'],['ALL','전체 기간']].map(([k,t])=>`<option value="${k}"${focusRange===k?' selected':''}>${t}</option>`).join('')}</select></label><span class="sub">${latest?label(latest):'조회 자료 없음'} · 차트 증감률: ${modeLabel} 기준</span></div>
    <div class="cards sg-focus-cards">${[
@@ -146,10 +148,10 @@ for(const rel of ['D10','D20']){const k=rel==='D10'?'10d':'20d';releases[rel]=mo
     ['일평균 YoY',rate(latest?dailyY(latest):null),'조업일수 보정',latest?dailyY(latest):null],
     ['일평균 MoM',rate(latest?.monthDaily),'조업일수 보정',latest?.monthDaily]
    ].map(([t,v,d,r])=>`<div class="card"><div class="label">${t}</div><div class="value ${cls(r)}">${v}</div><div class="detail">${d}</div></div>`).join('')}</div>
-   <div class="grid"><div><h3>수출액 · 전년동기 비교</h3><div class="chart"><canvas id="sg-amount-chart" role="img" aria-label="${esc(x.n)} 수출액 비교"></canvas></div></div>
-   <div><h3>${modeLabel} YoY · MoM</h3><div class="chart"><canvas id="sg-rate-chart" role="img" aria-label="${esc(x.n)} YoY MoM 추이"></canvas></div></div></div>
+   <div class="grid"><div><h3>수출액 · 전년동기 비교</h3><div class="chart"><canvas id="sg-amount-chart" role="img" aria-label="${esc(displayName(x.n))} 수출액 비교"></canvas></div></div>
+   <div><h3>${modeLabel} YoY · MoM</h3><div class="chart"><canvas id="sg-rate-chart" role="img" aria-label="${esc(displayName(x.n))} YoY MoM 추이"></canvas></div></div></div>
    <p class="sub">D10은 D10끼리, D20은 D20끼리 비교합니다. 개별 구간은 1~10일·11~20일·21일~말일로 나누며 MoM은 전월의 같은 구간 대비입니다. 빈칸은 자료 미확보 또는 비교 불가입니다.</p>
-   <div class="table-wrap sg-focus-table"><table><caption>${esc(x.n)} 기간별 수출액·YoY·MoM</caption><thead><tr><th>기준기간</th><th>수출액 (억 달러)</th><th>전년동기 (억 달러)</th><th>YoY (%)</th><th>MoM (%)</th><th>일평균 YoY (%)</th><th>일평균 MoM (%)</th><th>조업일수 (당해/전년)</th></tr></thead><tbody>${[...data].reverse().map(q=>`<tr><td>${label(q)}</td><td class="num">${amount(q.c)}</td><td class="num">${amount(q.p)}</td><td class="num ${cls(q.yr)}">${rate(q.yr)}</td><td class="num ${cls(q.monthRaw)}">${rate(q.monthRaw)}</td><td class="num ${cls(dailyY(q))}">${rate(dailyY(q))}</td><td class="num ${cls(q.monthDaily)}">${rate(q.monthDaily)}</td><td>${q.da??'—'} / ${q.db??'—'}</td></tr>`).join('')}</tbody></table></div>
+   <div class="table-wrap sg-focus-table"><table><caption>${esc(displayName(x.n))} 기간별 수출액·YoY·MoM</caption><thead><tr><th>기준기간</th><th>수출액 (억 달러)</th><th>전년동기 (억 달러)</th><th>YoY (%)</th><th>MoM (%)</th><th>일평균 YoY (%)</th><th>일평균 MoM (%)</th><th>조업일수 (당해/전년)</th></tr></thead><tbody>${[...data].reverse().map(q=>`<tr><td>${label(q)}</td><td class="num">${amount(q.c)}</td><td class="num">${amount(q.p)}</td><td class="num ${cls(q.yr)}">${rate(q.yr)}</td><td class="num ${cls(q.monthRaw)}">${rate(q.monthRaw)}</td><td class="num ${cls(dailyY(q))}">${rate(dailyY(q))}</td><td class="num ${cls(q.monthDaily)}">${rate(q.monthDaily)}</td><td>${q.da??'—'} / ${q.db??'—'}</td></tr>`).join('')}</tbody></table></div>
    <p class="sub"><span class="sg-b" style="color:${s.c};background:${s.bg}">${x.sig}</span> 10일 개별 구간 시그널 · 모멘텀 ${f1(x.mom)}%p${x.ttm==null?'':` · TTM ${Math.round(x.ttm/100).toLocaleString()}억 달러 (${x.ttmEnd}까지)`}</p>`;
   box.querySelector('#sg-all').onclick=()=>{selected[mode]='';render();};
   box.querySelector('#sg-focus-period').onchange=e=>{focusPeriod=e.target.value;render();};

@@ -58,6 +58,7 @@ h2{margin:0 0 14px}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:
   <div class="sub" id="provisional-picker-status">품목 목록을 불러오는 중…</div>
 </div>
 <section id="provisional-overview" aria-label="총괄 잠정수출">
+<h2>총괄 · 공식 발표 요약</h2><p><a href="#provisional-item-board">전체 수출 YoY·MoM 상세 분석 보기 ↓</a></p>
 <div class="controls">
   <button class="period active" data-period="ALL">전체</button>
   <button class="period" data-period="D10">1~10일</button>
@@ -125,5 +126,5 @@ function render(){
 document.querySelectorAll(".period").forEach(b=>b.onclick=()=>{document.querySelectorAll(".period").forEach(x=>x.classList.toggle("active",x===b));filterPeriod=b.dataset.period;render()});
 csv("provisional_official.csv").then(a=>{official=a;render();}).catch(e=>{document.getElementById("latest").textContent="데이터 로딩 오류: "+e.message});
 </script>
-<script src="./provisional_signal.js?v=6"></script>
+<script src="./provisional_signal.js?v=7"></script>
 </body></html>
