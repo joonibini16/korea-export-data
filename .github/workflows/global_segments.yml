@@ -1,0 +1,38 @@
+name: Global segment revenue (SEC XBRL)
+on:
+  workflow_dispatch:
+    inputs:
+      tickers: {description: '비우면 전체, 예: NVDA AMD', required: false, default: ''}
+      commit: {description: 'yes = main에 저장', required: false, default: 'yes'}
+  schedule:
+    - cron: '20 23 * * 2'   # 매주 수요일 08:20 KST
+permissions:
+  contents: write
+concurrency:
+  group: global-segments
+  cancel-in-progress: false
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - uses: actions/cache/restore@v4
+        with: {path: .secseg-cache, key: secseg-${{ github.run_id }}, restore-keys: secseg-}
+      - run: python tools/collect_global_segments.py ${{ github.event.inputs.tickers }}
+      - uses: actions/cache/save@v4
+        if: always()
+        with: {path: .secseg-cache, key: secseg-${{ github.run_id }}}
+      - name: Save
+        run: |
+          git config user.name github-actions; git config user.email github-actions@github.com
+          if [ "${{ github.event.inputs.commit }}" = "no" ]; then
+            cp global_segments_sec.csv global_segments_sec_status.json /tmp/; git checkout -q --orphan probe-output; git rm -rq --cached .; cp /tmp/global_segments_sec.csv /tmp/global_segments_sec_status.json .
+            git add global_segments_sec.csv global_segments_sec_status.json; git commit -qm probe; git push -qf origin HEAD:probe-output; exit 0
+          fi
+          git add global_segments_sec.csv global_segments_sec_status.json
+          git diff --cached --quiet && exit 0
+          git commit -qm "Update global segment revenue (SEC XBRL)"
+          for i in 1 2 3 4 5; do git pull -q --rebase -X theirs origin main && git push -q origin HEAD:main && exit 0; sleep $((i*5)); done; exit 1
