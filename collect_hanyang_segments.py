@@ -7,7 +7,7 @@ import collect_company_history as history
 
 ROOT=Path(__file__).resolve().parent
 PRODUCTS={'메모리모듈':'memory_module','SSD':'ssd'}
-FIELDS=['period','segment','revenue_krw','cumulative_revenue_krw','basis','precision','source','prior_source']
+FIELDS=['period','segment','revenue_krw','cumulative_revenue_krw','company_revenue_krw','company_cumulative_revenue_krw','basis','precision','source','prior_source']
 def norm(s):return re.sub(r'\s|　','',s)
 def parse(content):
     doc=html.fromstring(content)
@@ -64,7 +64,8 @@ def main():
             value=cur if q==1 else cur-prior['values'][seg] if prior and seg in prior['values'] else None
             if value is not None and value<0:raise ValueError('negative product quarter')
             rows[(p,seg)]=dict(period=p,segment=seg,revenue_krw='' if value is None else value,
-                cumulative_revenue_krw=cur,basis='연결',precision='사업의 내용 매출표·백만원 반올림; Q2~Q4는 누적 차감',
+                cumulative_revenue_krw=cur,company_revenue_krw=d['total'] if q==1 else d['total']-prior['total'] if prior else '',
+                company_cumulative_revenue_krw=d['total'],basis='연결',precision='사업의 내용 매출표·백만원 반올림; Q2~Q4는 누적 차감',
                 source=d['source'],prior_source=prior['source'] if prior else '')
     if rows:
         with path.open('w',encoding='utf-8-sig',newline='') as f:

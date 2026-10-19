@@ -19,6 +19,7 @@ on:
       - 'hs_codes.csv'
       - 'hanyang_vietnam_config.json'
       - 'build_hanyang_vietnam.py'
+      - 'hanyang_product_revenue.csv'
   schedule:
     - cron: '30 12 * * *'
 permissions:

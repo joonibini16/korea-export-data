@@ -108,6 +108,17 @@ def build():
             financials.append({'period':r['period'],'revenue_krw':number(r['revenue_KRW']),
                                'operating_profit_krw':float(r['operating_profit_KRW']) if r['operating_profit_KRW'] else None,
                                'basis':r['basis'],'source':r['source']})
+    # Product-table totals are tied to the actual fiscal period, unlike a later filing's
+    # current/comparative statement columns. Override this tracker only; keep shared CSVs intact.
+    product_path=ROOT/'hanyang_product_revenue.csv'
+    if product_path.exists():
+        verified={r['period']:r for r in read_csv(product_path) if r['segment']=='memory_module' and r.get('company_revenue_krw')}
+        for r in financials:
+            v=verified.get(r['period'])
+            if v:
+                r.update(revenue_krw=number(v['company_revenue_krw']),operating_profit_krw=None,
+                         source=v['source'],basis='연결',precision=v['precision'])
+        sources[product_path.name]={'sha256':hashlib.sha256(product_path.read_bytes()).hexdigest()}
     financials.sort(key=lambda r:r['period'])
     for r in financials:
         p=r['period'];old=next((f for f in financials if f['period']==f'{int(p[:4])-1}{p[4:]}'),{})
