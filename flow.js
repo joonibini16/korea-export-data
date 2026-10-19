@@ -1,7 +1,7 @@
 'use strict';
 (async()=>{
  const $=id=>document.getElementById(id), fmt=(x,n=2)=>Number(x).toLocaleString('ko-KR',{minimumFractionDigits:n,maximumFractionDigits:n}), signed=(x,n=1)=>(x>0?'+':'')+fmt(x,n);
- let data, stockData, stockEntries, chart1, chart2;
+ let data, stockData, stockEntries, stockLoad, chart1, chart2;
  try{const res=await fetch('./flow_oscillator.json?v='+Date.now(),{cache:'no-store'});if(!res.ok)throw Error('HTTP '+res.status);data=await res.json();}
  catch(e){$('verdict').textContent='자료 수집 대기';$('explain').textContent='오실레이터 파일을 읽을 수 없습니다: '+e.message;return;}
  const entries=Object.entries(data.groups),g=$('group');
@@ -16,9 +16,29 @@
  }
  const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  $('ranking').innerHTML=entries.map(([key,x])=>{const r=x.rows,a=r.at(-1),b=r.at(-2);return `<tr class="pick" data-key="${esc(key)}"><td>${esc(x.name)}</td><td>${a[8]} / ${x.universe}</td><td>${signed(a[4],4)}%p</td><td>${signed(a[4]-b[4],4)}%p</td><td>${signed(a[1],4)}%</td><td>${signed(a[5])}억</td><td>${signed(a[6])}억</td></tr>`;}).join('');
- $('ranking').querySelectorAll('tr').forEach(row=>row.onclick=()=>{$('mode').value='group';g.hidden=false;$('stock').hidden=true;$('stockSearch').hidden=true;$('stockMatches').hidden=true;g.value=row.dataset.key;render();scrollTo({top:0,behavior:'smooth'});});g.onchange=render;g.value='top700';render();
+ $('ranking').querySelectorAll('tr').forEach(row=>row.onclick=()=>{g.value=row.dataset.key;setMode('group');scrollTo({top:0,behavior:'smooth'});});g.onchange=render;g.value='top700';render();
  $('stock').onchange=render;
  function filterStocks(){const query=$('stockSearch').value.trim().toLocaleLowerCase();const matched=stockEntries.filter(([code,x])=>code.includes(query)||x.name.toLocaleLowerCase().includes(query));const select=$('stock'),selected=select.value;select.replaceChildren(...matched.map(([code,x])=>{const opt=document.createElement('option');opt.value=code;opt.textContent=`${x.rank}위 · ${x.name} (${code}) · ${x.market}`;return opt;}));if(matched.some(([code])=>code===selected))select.value=selected;$('stockMatches').textContent=matched.length?`${matched.length}개 종목`:'검색 결과 없음';select.disabled=!matched.length;if(matched.length)render();else $('explain').textContent='일치하는 종목이 없습니다. 종목명 또는 6자리 코드를 다시 입력하세요.';}
  $('stockSearch').oninput=filterStocks;
- $('mode').onchange=async()=>{const selected=$('mode').value==='stock';g.hidden=selected;$('stock').hidden=!selected;$('stockSearch').hidden=!selected;$('stockMatches').hidden=!selected;if(selected&&!stockData){$('explain').textContent='개별 종목 시계열을 읽는 중입니다.';try{const res=await fetch('./flow_stocks.json?v='+Date.now(),{cache:'no-store'});if(!res.ok)throw Error('HTTP '+res.status);stockData=await res.json();stockEntries=Object.entries(stockData.stocks).sort((a,b)=>a[1].rank-b[1].rank);}catch(e){$('explain').textContent='종목별 자료를 읽을 수 없습니다: '+e.message;return;}}if(selected)filterStocks();else render();};
+ async function setMode(mode){
+  $('mode').value=mode;const selected=mode==='stock';
+  document.querySelectorAll('.view-tabs [role=tab]').forEach(tab=>{const active=tab.dataset.mode===mode;tab.setAttribute('aria-selected',String(active));tab.tabIndex=active?0:-1;});
+  $('flowView').setAttribute('aria-labelledby',selected?'stockTab':'groupTab');
+  $('selectionLabel').textContent=selected?'종목 검색·선택':'시장·규모·업종 선택';$('selectionLabel').htmlFor=selected?'stockSearch':'group';
+  g.hidden=selected;$('stock').hidden=!selected;$('stockSearch').hidden=!selected;$('stockMatches').hidden=!selected;$('groupRanking').hidden=selected;
+  const url=new URL(location.href);if(selected)url.searchParams.set('view','stock');else url.searchParams.delete('view');history.replaceState(null,'',url);
+  if(!selected){render();return;}
+  if(!stockData){
+   $('explain').textContent='개별 종목 시계열을 읽는 중입니다.';$('stock').disabled=true;
+   if(!stockLoad)stockLoad=(async()=>{const res=await fetch('./flow_stocks.json?v='+Date.now(),{cache:'no-store'});if(!res.ok)throw Error('HTTP '+res.status);const result=await res.json();stockData=result;stockEntries=Object.entries(result.stocks).sort((a,b)=>a[1].rank-b[1].rank);})();
+   try{await stockLoad;}catch(e){stockLoad=null;if($('mode').value==='stock')$('explain').textContent='종목별 자료를 읽을 수 없습니다: '+e.message;return;}
+  }
+  if($('mode').value==='stock')filterStocks();
+ }
+ document.querySelectorAll('.view-tabs [role=tab]').forEach((tab,index,tabs)=>{
+  tab.onclick=()=>setMode(tab.dataset.mode);
+  tab.onkeydown=event=>{let next;if(event.key==='ArrowRight'||event.key==='ArrowLeft')next=tabs[(index+1)%tabs.length];else if(event.key==='Home')next=tabs[0];else if(event.key==='End')next=tabs[tabs.length-1];if(next){event.preventDefault();next.focus();setMode(next.dataset.mode);}};
+ });
+ setMode(new URLSearchParams(location.search).get('view')==='stock'?'stock':'group');
 })();
+
