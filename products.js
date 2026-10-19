@@ -66,13 +66,13 @@
   const rev=p=>d.pf.revenue[p]??(series.reduce((a,s)=>a+(s.rev[p]||0),0)||null);
   const opm=p=>d.pf.op_income[p]!=null&&rev(p)?d.pf.op_income[p]/rev(p)*100:null,gpm=p=>d.pf.gross_profit[p]!=null&&rev(p)?d.pf.gross_profit[p]/rev(p)*100:null;
   if(!per.some(p=>opm(p)!=null))return;
-  const lp0=[...d.per].reverse().find(p=>series.some(s=>(s.rev[p]||0)>0));const top=[...series].filter(s=>s.k!=='그 밖의 품목').sort((a,b)=>(b.rev[lp0]||0)-(a.rev[lp0]||0))[0];const tsh=p=>top?.sh?.[p]??null;
+  const lp0=[...d.per].reverse().find(p=>series.some(s=>(s.rev[p]||0)>0));const top=[...series].filter(s=>s.k!=='그 밖의 품목').sort((a,b)=>(b.rev[lp0]||0)-(a.rev[lp0]||0))[0];const tsh=p=>{const sr=top&&d.srev&&d.srev[top.k];if(sr&&sr[p]!=null&&rev(p))return sr[p]/rev(p)*100;return top?.sh?.[p]??null;};
   // 비중-이익률 관계(최근 12분기): 상관계수와 기울기
   const pts=per.slice(-12).map(p=>[tsh(p),opm(p)]).filter(x=>x[0]!=null&&x[1]!=null);
   let corr=null,slope=null;if(pts.length>=6){const n=pts.length,mx=pts.reduce((a,x)=>a+x[0],0)/n,my=pts.reduce((a,x)=>a+x[1],0)/n,sxy=pts.reduce((a,x)=>a+(x[0]-mx)*(x[1]-my),0),sxx=pts.reduce((a,x)=>a+(x[0]-mx)**2,0),syy=pts.reduce((a,x)=>a+(x[1]-my)**2,0);corr=sxx&&syy?sxy/Math.sqrt(sxx*syy):null;slope=sxx?sxy/sxx:null;}
   const L=per.filter(p=>opm(p)!=null).at(-1),Y=L&&`${Number(L.slice(0,4))-1}${L.slice(4)}`;const f=v=>v==null?'—':v.toFixed(1)+'%',dp=(a,b)=>a==null||b==null?'—':((a-b>=0?'+':'')+(a-b).toFixed(1)+'%p');
   const sopK=Object.keys(d.sop||{}).filter(k=>Object.keys(d.sop[k]).length>=4);
-  const segM=k=>{const sr=d.srev&&d.srev[k],r=series.find(s=>s.k===k);const rv=p=>sr&&sr[p]!=null?sr[p]:r?r.rev[p]:null;return p=>rv(p)&&d.sop[k][p]!=null?d.sop[k][p]/rv(p)*100:null;};
+  const segM=k=>{const sr=d.srev&&d.srev[k],r=series.find(s=>s.k===k);const rv=p=>sr&&sr[p]!=null?sr[p]:r?r.rev[p]:null;return p=>{if(!(rv(p)&&d.sop[k][p]!=null))return null;const m=d.sop[k][p]/rv(p)*100;return Math.abs(m)>100?null:m;};};
   const box=document.createElement('div');box.innerHTML=`<h3>매출 비중과 이익 변화</h3><p class="muted">막대 = 회사 전체 영업이익(백만 USD), 선 = 영업이익률·매출총이익률(오른쪽 축), 점선 = 최대 품목(${top?top.k:'—'}) 매출 비중. 영업이익·매출총이익은 SEC 공시의 회사 전체 값입니다.</p>
    <div class="pd-c" style="height:330px"><canvas id="pdProfit"></canvas></div>
    <table class="pd-t"><thead><tr><th class="l">지표</th><th>${L?lab(L):''}</th><th>전년 동기</th><th>변화</th></tr></thead><tbody>
