@@ -16,7 +16,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / 'global_segments_sec.csv'
 CACHE = ROOT / '.secseg-cache'; CACHE.mkdir(exist_ok=True)
 REV = {'Revenues', 'RevenueFromContractWithCustomerExcludingAssessedTax', 'RevenueFromContractWithCustomerIncludingAssessedTax', 'SalesRevenueNet', 'RevenuesNetOfInterestExpense'}
-GENERIC = {'product', 'products', 'service', 'services', 'productandservice', 'productsandservices', 'serviceandother'}
+GENERIC = {'product', 'products', 'service', 'services', 'productandservice', 'productsandservices', 'serviceandother', 'serviceother', 'productother'}
 EXCL = re.compile(r'Geograph|LegalEntity|ConsolidationItems|Range|Scenario|Concentration|Customer|Restatement|Adjustment|Currency|Country|Region|Statement(Equity|ClassOfStock)|Counterparty|Maturity|FinancialInstrument|Hedg|Derivative|Location|Market(s)?Axis')
 START = '2018-01-01'
 last = [0.0]
@@ -150,7 +150,7 @@ def main():
         q_axis = defaultdict(lambda: defaultdict(dict))   # axis → end → {member: (v, span)}
         for (axis, mem), ser in seg.items():
             for e, vs in quarters(ser).items():
-                if vs[0] > 0: q_axis[axis][e][mem] = vs
+                if vs[0] != 0: q_axis[axis][e][mem] = vs
         pref = lambda ax: (0 if 'Product' in ax else 1 if 'Segment' in ax else 2) + (0.5 if ax.endswith('#geo') else 0)
 
         def fit(items, total):
@@ -186,6 +186,7 @@ def main():
             ax, items = choice; used[ax] += 1
             span = next(iter(items.values()))[1]; u = src.get(span, '')
             per = qlabel(span)
+            items = {m: v for m, v in items.items() if v[0] > 0}
             ssum = sum(v[0] for v in items.values())
             if total: rows.append(dict(company=t, period=per, kind='revenue', item='매출(합계)', value=round(total / 1e6, 1), unit='USD mn', source=u))
             for m, (v, _) in items.items():

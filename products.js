@@ -7,7 +7,7 @@
  const parse=t=>{const L=t.replace(/^﻿/,'').trim().split(/\r?\n/);const h=L.shift().split(',');return L.filter(Boolean).map(l=>{const o=[],re=/("([^"]|"")*"|[^,]*)(,|$)/g;let m;while((m=re.exec(l))&&o.length<h.length){o.push(m[1].replace(/^"|"$/g,'').replace(/""/g,'"'));if(m[3]==='')break;}return Object.fromEntries(h.map((k,i)=>[k,o[i]??'']));});};
  const get=f=>fetch(f+'?v='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():'').then(t=>t?parse(t):[]).catch(()=>[]);
  let P=null,PR=null,G=null,charts=[],cur=null,mode='rev';
- const load=async()=>{if(SRC==='kr'){if(!P)[P,PR]=await Promise.all([get('company_products.csv'),get('company_prices.csv')]);}else if(!G)G=await get('global_products.csv');};
+ const load=async()=>{if(SRC==='kr'){if(!P)[P,PR]=await Promise.all([get('company_products.csv'),get('company_prices.csv')]);}else if(!G){const [a,b]=await Promise.all([get('global_products.csv'),get('global_segments_sec.csv')]);const man=new Set(a.map(r=>r.company));G=[...a,...b.filter(r=>!man.has(r.company))];}};
  const pid=p=>p; // 'YYYY-Qn'
  const lab=p=>p.slice(2,4)+'.'+p.slice(-2);
  function destroy(){charts.forEach(c=>c.destroy());charts=[];}
@@ -24,7 +24,7 @@
   const rev={},sh={},pr={},pu={},vol={},vu={};
   rs.forEach(r=>{const v=Number(r.value);if(r.kind==='segment_revenue')(rev[r.item]=rev[r.item]||{})[r.period]=v;else if(r.kind==='share')(sh[r.item]=sh[r.item]||{})[r.period]=v;else if(r.kind==='price'){(pr[r.item]=pr[r.item]||{})[r.period]=v;pu[r.item]=r.unit;}else if(r.kind==='volume'){(vol[r.item]=vol[r.item]||{})[r.period]=v;vu[r.item]=r.unit;}});
   const items=[...new Set(rs.filter(r=>r.kind==='share'||r.kind==='segment_revenue').map(r=>r.item))];
-  return {per,items,rev,sh,pr,pu,vol,vu,unit:'백만 USD',src:rs[0]?.source?'회사 IR 공식 자료(분기 경영보고서 등) · 부문 매출 = 총매출 × 공시 비중 · 단가 = 매출 ÷ 출하량':''};
+  return {per,items,rev,sh,pr,pu,vol,vu,unit:'백만 USD',src:!rs[0]?'':/SEC XBRL/.test(rs.find(r=>r.kind==='segment_revenue')?.source||'')?'미국 SEC 분기·연간 보고서(10-Q·10-K) 인라인 XBRL의 제품·부문별 매출 · 4분기 = 연간 − 1~3분기 합 · 분기는 회계분기 중간일이 속한 달력 분기 · 항목명은 공시 태그 영문명':'회사 IR 공식 자료(분기 경영보고서 등) · 부문 매출 = 총매출 × 공시 비중 · 단가 = 매출 ÷ 출하량'};
  }
  function render(id,name){
   cur=id;destroy();const d=data(id);
