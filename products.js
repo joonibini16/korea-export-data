@@ -42,7 +42,7 @@
    <div><h3>매출 비중 추이 (%)</h3><div class="pd-c"><canvas id="pdShare"></canvas></div></div></div>
    ${priceKeys.length?`<h3>제품 단가 추이 ${priceKeys.length>1?'(첫 값 = 100 지수, 툴팁에 실제 값)':''}</h3><div class="pd-c" style="height:300px"><canvas id="pdPrice"></canvas></div>`:''}
    <div style="overflow:auto"><table class="pd-t"><thead><tr><th class="l">품목</th><th>${lastP?lab(lastP):''} 매출</th><th>비중</th><th>전년 동기 비중</th><th>매출 YoY</th>${priceKeys.length?'<th>최근 단가</th><th>단가 YoY</th>':''}</tr></thead><tbody>${
-    series.map((s,i)=>{const v=s.rev[lastP],p=yago?s.rev[yago]:null,y=v!=null&&p>0?(v/p-1)*100:null;const pk=priceKeys.find(k=>k===s.k)||null;
+    series.map((s,i)=>[s,i]).filter(([s])=>(s.rev[lastP]||0)>0).map(([s,i])=>{const v=s.rev[lastP],p=yago?s.rev[yago]:null,y=v!=null&&p>0?(v/p-1)*100:null;const pk=priceKeys.find(k=>k===s.k)||null;
      const pv=pk?d.pr[pk]:null,pps=pv?Object.keys(pv).sort():[],lp=pps.at(-1),py=lp?pv[`${Number(lp.slice(0,4))-1}${lp.slice(4)}`]:null;
      return `<tr><td class="l"><i style="background:${PAL[i%PAL.length]}"></i>${s.k}</td><td>${v==null?'—':Math.round(v).toLocaleString()}</td><td>${s.sh[lastP]==null?'—':s.sh[lastP].toFixed(1)+'%'}</td><td>${yago&&s.sh[yago]!=null?s.sh[yago].toFixed(1)+'%':'—'}</td><td class="${y>0?'up':y<0?'dn':''}">${y==null?'—':(y>0?'+':'')+y.toFixed(1)+'%'}</td>${priceKeys.length?`<td>${lp?Number(pv[lp]).toLocaleString()+' '+(d.pu[pk]||''):'—'}</td><td>${py?((pv[lp]/py-1)*100).toFixed(1)+'%':'—'}</td>`:''}</tr>`;}).join('')}
    </tbody></table></div>${priceKeys.length&&priceKeys.some(k=>!d.items.includes(k))?`<p class="muted">단가 항목: ${priceKeys.map(k=>k+' ('+(d.pu[k]||'단위 미기재')+')').join(' · ')}</p>`:''}`;
