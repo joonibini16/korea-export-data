@@ -1,0 +1,83 @@
+{
+  "company_id": "078350",
+  "company_name": "한양디지텍",
+  "country_code": "VN",
+  "country_name": "베트남",
+  "series": [
+    {
+      "hs_code": "8542321010",
+      "name": "DRAM",
+      "role": "핵심 투입",
+      "reason": "서버·PC 메모리모듈 조립용 DRAM 투입의 국가 단위 후보 지표",
+      "caution": "DDR4·DDR5·LPDDR·HBM 및 수출업체를 분리할 수 없음"
+    },
+    {
+      "hs_code": "8542321030",
+      "name": "플래시메모리 (NAND 중심 후보)",
+      "role": "핵심 투입",
+      "reason": "SSD 조립용 NAND 투입의 후보 지표",
+      "caution": "관세 품명은 플래시메모리이며 NAND·NOR, 고객·최종 용도를 분리하지 못함"
+    },
+    {
+      "hs_code": "8473304060",
+      "name": "DRAM 모듈",
+      "role": "완제품 보조",
+      "reason": "한국산 완성 모듈의 베트남행 흐름 확인",
+      "caution": "베트남 현지 조립 투입량과 다름. DRAM과 합산 금지"
+    },
+    {
+      "hs_code": "8523511000",
+      "name": "SSD",
+      "role": "완제품 보조",
+      "reason": "한국산 SSD의 베트남행 흐름 확인",
+      "caution": "베트남 생산 SSD의 출하액이 아님. 플래시메모리와 합산 금지"
+    },
+    {
+      "hs_code": "8542323000",
+      "name": "MCP (복합구조집 IC)",
+      "role": "혼입 점검",
+      "reason": "베트남 메모리 수출에 다른 용도·패키지 수요가 섞이는지 점검",
+      "caution": "한양디지텍 전용 지표가 아니며 핵심 DRAM 지표에 합산하지 않음"
+    },
+    {
+      "hs_code": "854232",
+      "name": "메모리 집적회로 전체",
+      "role": "상위 분류 점검",
+      "reason": "베트남 메모리 수출 전체와 세부 품목 흐름 비교",
+      "caution": "DRAM·플래시·MCP를 포함하는 상위 분류. 세부 코드와 합산 금지"
+    },
+    {
+      "hs_code": "853400",
+      "name": "PCB 전체",
+      "role": "부품 보조",
+      "reason": "메모리모듈·SSD에 필요한 기판 공급의 보조 후보",
+      "caution": "메모리 기판 이외 용도와 타 업체가 포함되며 해외 직접 조달은 미포착"
+    }
+  ],
+  "sources": [
+    {
+      "label": "한양디지텍 2026년 1분기보고서",
+      "url": "https://kind.krx.co.kr/external/2026/05/14/000548/20260514001234/11013.htm"
+    },
+    {
+      "label": "한양디지텍 2025년 사업보고서",
+      "url": "https://kind.krx.co.kr/external/2026/03/16/002658/20260316007471/11011.htm"
+    },
+    {
+      "label": "관세청 HSK 품명 확인 (공식 양허표)",
+      "url": "https://www.customs.go.kr/download/ftaportalkor/_down/trty/kor_cam_04.pdf"
+    },
+    {
+      "label": "월간 수출 원자료 · 기존 관세청 Open API 수집 CSV",
+      "url": "https://github.com/joonibini16/korea-export-data"
+    }
+  ],
+  "limitations": [
+    "한국→베트남 국가 전체 통계이며 한양디지텍에 납품된 물량이나 회사 매출을 식별하지 못합니다.",
+    "수출액 상승은 물량·가격·고용량 제품 믹스 변화를 함께 반영합니다. KG와 USD/KG는 칩 개수·비트 출하량·칩 ASP가 아닙니다.",
+    "공급지·재고·운송시차·타 업체 생산 및 환율 영향으로 국가 수출과 회사 분기 실적은 다를 수 있습니다.",
+    "DRAM과 플래시를 가중치 없이 합쳐 회사 매출로 환산하거나, MCP·상위 HS와 중복 합산하지 않습니다.",
+    "제시된 상관계수는 과거 YoY의 단순 상관이며 인과관계·예측력 검증 결과가 아닙니다. 이 데이터만으로 영업이익을 산출하지 않습니다."
+  ]
+}
+
