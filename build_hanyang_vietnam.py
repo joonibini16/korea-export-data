@@ -116,7 +116,12 @@ def build():
         for r in financials:
             v=verified.get(r['period'])
             if v:
-                r.update(revenue_krw=number(v['company_revenue_krw']),operating_profit_krw=None,
+                verified_revenue=number(v['company_revenue_krw'])
+                # Retain existing profit only when the same quarter's revenue reconciles
+                # within the source table's rounding tolerance; preserve its own source.
+                profit=r['operating_profit_krw'] if r['revenue_krw'] is not None and abs(r['revenue_krw']-verified_revenue)<=2000000 else None
+                r['operating_profit_source']=r['source'] if profit is not None else None
+                r.update(revenue_krw=verified_revenue,operating_profit_krw=profit,
                          source=v['source'],basis='연결',precision=v['precision'])
         sources[product_path.name]={'sha256':hashlib.sha256(product_path.read_bytes()).hexdigest()}
     financials.sort(key=lambda r:r['period'])
