@@ -48,7 +48,19 @@ td.h{font-weight:700}.flag{font-size:12px;padding:2px 8px;border-radius:999px;ba
 <h1>버블 신호 모니터</h1>
 <p class="muted">주가 하락이 약한 나라·업종부터 시작되는지, 유동성이 줄고 있는지, 신용(회사채 스프레드·CDS)이 먼저 흔들리는지를 한 화면에서 점검합니다. 한 지표보다 여러 지표가 같은 방향을 가리키는지가 중요합니다.</p>
 <div id="err" class="notice" hidden></div>
-<section class="panel"><h2 data-upd="bubble_status.json,fred_data.csv,market_daily.csv">종합 경고등</h2><div class="score"><div class="big" id="scoreBig">—</div><div id="scoreText" class="muted"></div></div><div class="lights" id="lights"></div><p class="muted" id="asof"></p></section>
+<section class="panel"><h2 data-upd="bubble_status.json,fred_data.csv,market_daily.csv">종합 경고등</h2><div class="score"><div class="big" id="scoreBig">—</div><div id="scoreText" class="muted"></div></div><div class="lights" id="lights"></div><p class="muted" id="asof"></p>
+<div id="signal-history" style="margin-top:24px;border-top:1px solid #2b3b59;padding-top:20px">
+<h3 style="margin:0 0 10px">종합 신호 · 일별 흐름</h3>
+<p id="signal-history-summary" style="font-weight:700;font-size:18px" aria-live="polite">일별 이력을 읽는 중입니다.</p>
+<div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap"><label>기간 <select id="signal-history-range"><option value="30">최근 1개월</option><option value="90" selected>최근 3개월</option><option value="365">최근 1년</option><option value="">전체</option></select></label><button id="signal-history-refresh" type="button">이력 새로고침</button></div>
+<p class="muted" id="signal-history-updated"></p>
+<div class="chart" style="height:320px"><canvas id="signal-history-chart" aria-label="일별 경고 주의 정상 지표 수와 7관측일 평균 추이" role="img"></canvas></div>
+<p class="muted">빨강 경고 · 주황 주의 · 초록 정상 · 회색 자료 없음. 파란 선 = (경고+주의) ÷ 유효 지표 수의 7관측일 평균이며 확률이 아닙니다. 마우스를 올려 날짜별 값을 확인하고, 클릭하거나 날짜를 선택해 지표별 변화를 확인하세요.</p>
+<label>날짜 <select id="signal-history-date" aria-label="신호 이력 날짜"></select></label>
+<p id="signal-history-detail" style="font-weight:700"></p><p id="signal-history-changes" style="line-height:1.7"></p>
+<details><summary style="cursor:pointer">선택일의 전체 지표와 전일 변화 보기</summary><div style="overflow:auto"><table><thead><tr><th>지표</th><th>상태</th><th>수치</th><th>자료 기준일</th><th>직전 기록 → 선택일</th></tr></thead><tbody id="signal-history-rows"></tbody></table></div></details>
+<p class="muted">매일 자동수집 후 같은 날짜는 마지막 정상 수집값으로 갱신하고 과거 날짜는 보존합니다. 휴장일에는 새 거래 자료가 없을 수 있습니다. 2026-10-20 이전의 회색 표기 ‘재계산’ 구간은 현재 보관 자료에 기존 판정식을 적용한 참고치로, 당시 공표시차·수정 전 수치를 재현하지 못하므로 당시 실제 관측이나 투자 백테스트로 해석하지 않습니다. 오늘 이후 ‘실제 관측’은 수집 당시 저장값입니다. 지표별 자료 기준일이 달라 판정일과 구분해 확인하세요.</p>
+</div></section>
 
 <h2 class="sec" data-upd="fred_data.csv,market_daily.csv,kofia_daily.csv">유동성·신용 한눈에 · 최근 1년</h2><section class="panel"><p id="miniHead" style="margin:0 0 12px;font-size:14px"></p><div class="mini-grid" id="mini"></div></section>
 <h2 class="sec" data-upd="size_breadth.json,size_breadth_log.csv">규모별 Breadth Desk · 60일 신고가−신저가</h2><section class="panel" id="sbDesk"><p class="muted">규모별 Breadth를 읽는 중입니다.</p></section>
@@ -96,7 +108,7 @@ td.h{font-weight:700}.flag{font-size:12px;padding:2px 8px;border-radius:999px;ba
 <section class="panel"><h2>기준과 출처</h2><p class="muted">주가·환율·원자재: Yahoo Finance 일별 종가(비공식 API). 유동성·스프레드·수출·금리: FRED(세인트루이스 연준). 기업 CDS: 언론 보도 수치를 수동 기록(cds_manual.csv). 한국 금리·스프레드: 한국은행 ECOS 시장금리(일별). VKOSPI: KRX Open API. 신용융자·예탁금·반대매매: 금융투자협회 FreeSIS. 시장폭: KRX Open API(키 등록 시) · 미등록 동안 KIND 상장법인목록 + 네이버 일봉 대체 계산. MOVE·VIX3M: Yahoo Finance(ICE·CBOE). 평일 하루 두 번(한국 시간 07:30, 18:30) 자동 갱신.</p><p class="muted" id="status"></p></section>
 </main>
 <script src="./bubble_indicators.js?v=10x"></script>
-<script src="./bubble.js?v=15"></script><script src="./bubble_breadth_live.js?v=4"></script>
+<script src="./bubble.js?v=16"></script><script src="./bubble_signal_history.js?v=1"></script><script src="./bubble_breadth_live.js?v=4"></script>
 <script src="./bubble_breadth_reference.js?v=5"></script><script src="./bubble_breadth_db_snapshot.js?v=2"></script><script src="./bubble_size.js?v=net2"></script><script src="./rangenav.js?v=1"></script><script src="./bubble_dotcom.js?v=13"></script><script src="./bubble_hike_align.js?v=1"></script><script src="./bubble_cds_all.js?v=6"></script><script src="./bubble_bonds.js?v=8"></script><script src="./bubble_credit_matrix.js?v=4"></script><script src="./bubble_gfc.js?v=6"></script>
 <script src="./bubble_sector_grouped.js?v=3"></script>
 <script>(function(){const b=document.getElementById('sectorStocks'),c=document.getElementById('sectorStocksCount');if(!b||!c)return;new MutationObserver(()=>{c.textContent=b.children.length?'· '+b.children.length+'종목 (표 안에서 스크롤)':'';const box=b.closest('.scroll-box');if(box)box.scrollTop=0;}).observe(b,{childList:true});})();</script>
@@ -125,5 +137,6 @@ td.h{font-weight:700}.flag{font-size:12px;padding:2px 8px;border-radius:999px;ba
  bar.addEventListener('click',e=>{const b=e.target.closest('button');if(b)show(b.dataset.g,true);});
  show(({breadth:'breadth',credit:'credit'})[new URLSearchParams(location.search).get('tab')]||'bubble',false);})();</script>
 </body></html>
+
 
 

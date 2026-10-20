@@ -199,7 +199,7 @@ function renderBreadth(){const out={};// 경고등용 수치만 계산(그래프
  for(const [mk,sym] of [['KOSPI','^KS11'],['KOSDAQ','^KQ11']]){const all=BR.filter(r=>r.market===mk),b5=sma(all.map(r=>r.breadth60),5),rs=rsi(ser(sym));out[mk]={b5:b5.at(-1),rsi:rs.at(-1)?.v};}
  return out;}
 function light(name,val,state,sub){const d=document.createElement('div');d.className='light '+state;d.innerHTML='<b></b><strong></strong><span></span>';d.children[0].textContent=name;d.children[1].textContent=val;d.children[2].textContent=sub;el('lights').append(d);return state;}
-function renderLights(weak,liq,cr){el('lights').replaceChildren();const st=[];const L=(...a)=>st.push(light(...a));
+function calculateLights(weak,liq,cr,br,lev){const signals=[];const L=(name,value,state,basis)=>signals.push({name,value,state,basis});
  const spx=ser('^GSPC'),sox=ser('^SOX');const a=dd52(spx),b=dd52(sox);
  L('S&P500 고점 대비',pct(a),a==null?'na':a<=-10?'bad':a<=-5?'warn':'ok','−5% 주의 · −10% 경고');
  L('반도체(SOX) 고점 대비',pct(b),b==null?'na':b<=-20?'bad':b<=-10?'warn':'ok','−10% 주의 · −20% 경고');
@@ -214,9 +214,11 @@ function renderLights(weak,liq,cr){el('lights').replaceChildren();const st=[];co
  const jp=ser('JPY=X'),j1=ret(jp,30);L('엔화 1개월 (달러/엔)',pct(j1),j1==null?'na':j1<=-5?'bad':j1<=-3?'warn':'ok','−3% 주의 · −5% 경고 (엔캐리 청산)');
  const t3=fs('T10Y3M').at(-1)?.v;L('장단기 금리차 10Y−3M',t3!=null?t3.toFixed(2)+'%p':'—',t3==null?'na':t3<0?'warn':'ok','역전 = 경기 둔화 신호');
  const sahm=fs('SAHMREALTIME').at(-1)?.v;L('삼의 법칙',sahm?.toFixed(2)??'—',sahm==null?'na':sahm>=0.5?'bad':sahm>=0.3?'warn':'ok','0.5 이상 = 침체 진입 신호');
- if(window.__br){const k=window.__br.KOSPI||{};if(k.rsi!=null)L('코스피 RSI(14)',k.rsi.toFixed(1),k.rsi>=75||k.rsi<=25?'bad':k.rsi>=70||k.rsi<=30?'warn':'ok','70 이상 과열 · 30 이하 침체');if(k.b5!=null)L('코스피 Breadth_60 (5일)',k.b5.toFixed(1)+'%',k.b5<=20?'bad':k.b5<=35?'warn':'ok','60일선 위 종목 비율 · 35% 주의 · 20% 경고');}
- if(window.__lev){const v=window.__lev;L('국내 반대매매 (5일 평균)',(v.avg/100).toFixed(0)+'억원',v.pc>=95?'bad':v.pc>=80?'warn':'ok',`1년 백분위 ${Math.round(v.pc)}% · 80 주의 · 95 경고`);}
- const bad=st.filter(s=>s==='bad').length,warn=st.filter(s=>s==='warn').length,tot=st.filter(s=>s!=='na').length;
+ if(br){const k=br.KOSPI||{};if(k.rsi!=null)L('코스피 RSI(14)',k.rsi.toFixed(1),k.rsi>=75||k.rsi<=25?'bad':k.rsi>=70||k.rsi<=30?'warn':'ok','70 이상 과열 · 30 이하 침체');if(k.b5!=null)L('코스피 Breadth_60 (5일)',k.b5.toFixed(1)+'%',k.b5<=20?'bad':k.b5<=35?'warn':'ok','60일선 위 종목 비율 · 35% 주의 · 20% 경고');}
+ if(lev){const v=lev;L('국내 반대매매 (5일 평균)',(v.avg/100).toFixed(0)+'억원',v.pc>=95?'bad':v.pc>=80?'warn':'ok',`1년 백분위 ${Math.round(v.pc)}% · 80 주의 · 95 경고`);}
+ const bad=signals.filter(s=>s.state==='bad').length,warn=signals.filter(s=>s.state==='warn').length,tot=signals.filter(s=>s.state!=='na').length;
+ return {bad,warn,ok:tot-bad-warn,total:tot,signals,state:bad>=4?'bad':bad>=2||warn>=4?'warn':'ok',pressure:tot?(bad+warn)/tot*100:null};}
+function renderLights(weak,liq,cr){const snap=calculateLights(weak,liq,cr,window.__br,window.__lev),{bad,warn,total:tot}=snap;el('lights').replaceChildren();snap.signals.forEach(s=>light(s.name,s.value,s.state,s.basis));window.__bubbleSignal=snap;
  el('scoreBig').textContent=`경고 ${bad} · 주의 ${warn} / ${tot}`;el('scoreBig').style.color=bad>=4?'#f87171':bad>=2||warn>=4?'#fbbf24':'#4ade80';
  el('scoreText').textContent=bad>=4?'여러 영역(주가·신용·유동성)이 동시에 경고 — 위험 관리 강화 구간':bad>=2||warn>=4?'일부 영역에서 균열 — 신용·유동성 지표가 따라 움직이는지 주시':'광범위한 스트레스 신호는 아직 제한적';}
 async function init(){try{const [m,f,c,s,kp,ec,vk,kf,br,cs,hc]=await Promise.all([read('market_daily.csv'),read('fred_data.csv'),read('cds_manual.csv'),read('bubble_status.json'),read('provisional_official.csv'),read('ecos_rates.csv'),read('vkospi.csv'),read('kofia_daily.csv'),read('breadth_kr.csv'),read('cds_series.csv'),read('hyperscaler_credit.json')]);
@@ -234,5 +236,35 @@ async function init(){try{const [m,f,c,s,kp,ec,vk,kf,br,cs,hc]=await Promise.all
  const st=s?JSON.parse(s):{};await renderBubbleIndicators(st);el('asof').textContent=`자료 기준: 주가 ${ser('^GSPC').at(-1)?.d||'—'} · 스프레드 ${fs('BAMLH0A0HYM2').at(-1)?.d||'—'} · 순유동성 ${liq.nl.at(-1)?.d||'—'} · 수집 ${st.updated_at||'—'}`;
  el('status').textContent=st.failures?.length?`수집 실패 ${st.failures.length}건: `+st.failures.map(x=>x.id).join(', '):'';
  }catch(e){el('err').hidden=false;el('err').textContent='오류: '+e.message;console.error(e);}}
-init();
+if(typeof module==='undefined')init();
+
+// The scheduled collector uses the same threshold function as the live cards.
+if(typeof module!=='undefined')module.exports={snapshotFromData,rows};
+function snapshotFromData(input,date){
+ M=new Map();F=new Map();
+ for(const [key,group,field,target] of [['market','symbol','close',M],['fred','series','value',F]])for(const r of input[key]||[]){
+  const v=num(r[field]);if(r.date>date||v==null||!Number.isFinite(v))continue;
+  if(!target.has(r[group]))target.set(r[group],[]);target.get(r[group]).push({d:r.date,v});
+ }
+ for(const a of [...M.values(),...F.values()])a.sort((a,b)=>a.d.localeCompare(b.d));
+ KF=(input.kofia||[]).filter(r=>r.date<=date).map(r=>Object.fromEntries(Object.entries(r).map(([k,v])=>[k,k==='date'?v:num(v)]))).sort((a,b)=>a.date.localeCompare(b.date));
+ BR=(input.breadth||[]).filter(r=>r.date<=date).map(r=>({...r,breadth60:num(r.breadth60)})).sort((a,b)=>a.date.localeCompare(b.date));
+ KRM=(input.provisional||[]).filter(r=>r['기간구분']==='MONTH'&&r['발표일']<=date&&num(r['수출YoY_pct'])!=null).map(r=>({k:r['기준월'].replace('.','-'),y:num(r['수출YoY_pct'])}));
+ const weak=Object.entries(C).map(([s,[name,cc,ex]])=>({dd:dd52(ser(s)),e:cc==='KR'?krExport():ex?yoyM(fs(ex)):{}}));
+ const nl=netLiq(),bc=yoySeries(fs('TOTBKCR')),hy=fs('BAMLH0A0HYM2');
+ const liq={ch3:nl.length>13?(nl.at(-1).v/nl.at(-14).v-1)*100:null,bc:bc.at(-1)?.v};
+ const orcl=(input.cds||[]).filter(r=>r.ticker==='ORCL'&&r.date<=date).sort((a,b)=>a.date.localeCompare(b.date)).at(-1);
+ const cr={hy:hy.at(-1),h3:hy.length>63?hy.at(-1).v-hy.at(-64).v:null,orcl:orcl?{d:orcl.date,v:num(orcl.cds_5y_bps)}:null};
+ let lev=null;
+ if(KF.length){const vals=KF.slice(-5).map(r=>r.forced_sale).filter(v=>v!=null),yr=KF.filter(r=>r.date>=(Number(KF.at(-1).date.slice(0,4))-1)+KF.at(-1).date.slice(4)).map(r=>r.forced_sale).filter(v=>v!=null);
+  if(vals.length&&yr.length){const avg=vals.reduce((a,b)=>a+b,0)/vals.length;lev={avg,pc:yr.filter(v=>v<=avg).length/yr.length*100};}}
+ const result=calculateLights(weak,liq,cr,renderBreadth(),lev);
+ const ds=s=>ser(s).at(-1)?.d||null,df=s=>fs(s).at(-1)?.d||null;
+ const dates=[ds('^GSPC'),ds('^SOX'),date,ds('^VIX'),df('BAMLH0A0HYM2'),orcl?.date||null,nl.at(-1)?.d||null,df('TOTBKCR'),df('NFCI'),ds('JPY=X'),df('T10Y3M'),df('SAHMREALTIME')];
+ if(result.signals.some(s=>s.name==='코스피 RSI(14)'))dates.push(ds('^KS11'));
+ if(result.signals.some(s=>s.name==='코스피 Breadth_60 (5일)'))dates.push(BR.filter(r=>r.market==='KOSPI').at(-1)?.date||null);
+ if(lev)dates.push(KF.at(-1).date);
+ result.signals.forEach((s,i)=>{s.data_date=dates[i];});return result;
+}
+
 

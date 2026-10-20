@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: ['collect_bubble.py', '.github/workflows/bubble.yml']
+    paths: ['collect_bubble.py', 'collect_bubble_signals.cjs', 'bubble.js', '.github/workflows/bubble.yml']
   schedule:
     # 한국시간 평일 09:30, 10:30, 13:00, 15:40, 21:30 (UTC 기준)
     - cron: '30 0,1 * * 1-5'
@@ -23,11 +23,16 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: {python-version: '3.12'}
+      - uses: actions/setup-node@v4
+        with: {node-version: '20'}
       - run: python collect_bubble.py
         env:
           ECOS_API_KEY: ${{ secrets.ECOS_API_KEY }}
           KRX_API_KEY: ${{ secrets.KRX_API_KEY }}
+      - name: Save daily composite signal history
+        run: node collect_bubble_signals.cjs
       - run: |
           git config user.name github-actions; git config user.email github-actions@github.com
-          for f in market_daily.csv fred_data.csv bubble_status.json ecos_rates.csv vkospi.csv kofia_daily.csv; do if [ -f $f ]; then git add $f; fi; done
+          for f in market_daily.csv fred_data.csv bubble_status.json ecos_rates.csv vkospi.csv kofia_daily.csv bubble_signal_history.json; do if [ -f $f ]; then git add $f; fi; done
           if ! git diff --cached --quiet; then git commit -m "Update bubble monitor data"; git pull --rebase origin main || (git rebase --abort; exit 1); git push; fi
+
