@@ -1,0 +1,22 @@
+name: MLCC Report Probe (review)
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['tools/mlcc_probe.py', '.github/workflows/mlcc_probe.yml']
+permissions:
+  contents: write
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: pip install -q pdfplumber
+      - run: python tools/mlcc_probe.py
+      - run: |
+          git config user.name github-actions; git config user.email github-actions@github.com
+          cp -r probe /tmp/probe; git checkout -q --orphan probe-mlcc; git rm -rq --cached .; rm -rf probe; cp -r /tmp/probe probe
+          git add probe; git commit -qm "mlcc probe"; git push -qf origin HEAD:probe-mlcc
