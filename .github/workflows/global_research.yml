@@ -1,0 +1,16 @@
+name: Global Research Validation
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['global_research.json', 'validate_global_research.py', '.github/workflows/global_research.yml']
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python validate_global_research.py global_research.json

@@ -1,0 +1,357 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-10-20T08:36:49.030Z",
+  "last_checked_at": "2026-10-20T08:36:49.030Z",
+  "schedule_note": "매일 오전 8시 전후(한국시간), Work에서 공식 공개자료를 확인해 갱신",
+  "sectors": [
+    "반도체·장비",
+    "AI·IT하드웨어",
+    "소프트웨어",
+    "전력·데이터센터",
+    "소비재·식품",
+    "바이오·의료",
+    "산업재·자동차",
+    "에너지·소재",
+    "금융·신용",
+    "매크로·전략",
+    "기타"
+  ],
+  "providers": [
+    {
+      "id": "GS",
+      "name": "Goldman Sachs",
+      "source_url": "https://www.goldmansachs.com/insights",
+      "status": "partial",
+      "note": "공개 리서치 해설·트레이딩 팟캐스트 확인. GIR 고객 전용 리포트 전체는 점검 범위 밖.",
+      "checked_at": "2026-10-20T08:36:49.030Z"
+    },
+    {
+      "id": "MS",
+      "name": "Morgan Stanley",
+      "source_url": "https://www.morganstanley.com/what-we-do/research/",
+      "status": "partial",
+      "note": "공개 Research 기사 확인. 목록과 본문 날짜 차이를 개별 기록에 명시.",
+      "checked_at": "2026-10-20T08:36:49.030Z"
+    },
+    {
+      "id": "JPM",
+      "name": "J.P. Morgan",
+      "source_url": "https://www.jpmorgan.com/insights/research",
+      "status": "partial",
+      "note": "Global Research 목록 직접 열람은 403 응답. 공개 Asset Management 자료를 별도 표기해 등록.",
+      "checked_at": "2026-10-20T08:36:49.030Z"
+    },
+    {
+      "id": "UBS",
+      "name": "UBS",
+      "source_url": "https://www.ubs.com/global/en/wealthmanagement/insights/house-view.html",
+      "status": "partial",
+      "note": "CIO 공개 해설 확인. 투자은행의 고객 전용 개별종목 리포트와 구분.",
+      "checked_at": "2026-10-20T08:36:49.030Z"
+    },
+    {
+      "id": "BofA",
+      "name": "Bank of America",
+      "source_url": "https://institute.bankofamerica.com/consumer-checkpoint.html",
+      "status": "partial",
+      "note": "Institute 공개 PDF 확인. BofA Global Research 고객 전용 보고서 전체 확인을 뜻하지 않음.",
+      "checked_at": "2026-10-20T08:36:49.030Z"
+    },
+    {
+      "id": "Citi",
+      "name": "Citi",
+      "source_url": "https://www.citigroup.com/global/insights/research-citi-podcasts",
+      "status": "partial",
+      "note": "공식 팟캐스트 소개문 확인. 해당 콘텐츠는 정식 투자 리서치가 아님을 명시.",
+      "checked_at": "2026-10-20T08:36:49.030Z"
+    },
+    {
+      "id": "Barclays",
+      "name": "Barclays",
+      "source_url": "https://privatebank.barclays.com/insights/",
+      "status": "failed",
+      "note": "공식 검색 결과는 확인했으나 목록 본문 수집 실패. 신규 발간 없음으로 판정하지 않음.",
+      "checked_at": "2026-10-20T08:36:49.030Z"
+    },
+    {
+      "id": "DB",
+      "name": "Deutsche Bank",
+      "source_url": "https://investmentbank.db.com/research/index",
+      "status": "partial",
+      "note": "공식 공개 목록 확인. Q3 시장 설문 등의 상세 원문·발간일 추가 확인 필요.",
+      "checked_at": "2026-10-20T08:36:49.030Z"
+    }
+  ],
+  "reports": [
+    {
+      "id": "ubs-ai-20261019",
+      "publisher": "UBS",
+      "division": "Chief Investment Office",
+      "published_at": "2026-10-19",
+      "title": "AI fundamentals remain robust despite market volatility",
+      "title_ko": "AI 수요는 견조하나 네오클라우드의 자금조달 위험은 분리해서 봐야",
+      "sectors": [
+        "AI·IT하드웨어",
+        "반도체·장비",
+        "전력·데이터센터"
+      ],
+      "companies": [
+        {
+          "ticker": "ASML",
+          "name": "ASML",
+          "relationship": "원문 언급"
+        },
+        {
+          "ticker": "TSM",
+          "name": "TSMC",
+          "relationship": "원문 언급"
+        }
+      ],
+      "document_type": "cio_commentary",
+      "source_scope": "full_text",
+      "source_url": "https://www.ubs.com/global/en/assetmanagement/insights/cross-divisional-adp/global/en/wealthmanagement/insights/chief-investment-office/house-view/daily/2026/latest-19102026.html",
+      "headline": "AI 구조적 성장 전망 유지. 투자 대상은 자금력이 강한 기업으로 선별.",
+      "facts": [
+        "네오클라우드의 선행 투자·자금 회수 시차와 하이퍼스케일러의 사업 다각화를 구분했다.",
+        "GPU 임대료와 최근 반도체 실적을 근거로 컴퓨팅 수요가 유지된다고 평가했다."
+      ],
+      "interpretation": "수요 둔화와 금융비용 상승을 분리해 추적할 필요. 업종 전체보다 재무구조에 따른 차별화에 초점.",
+      "estimate_signal": "개별 기업의 다음 분기·내년 매출/EPS 수정 수치는 제시되지 않아 상향·하향을 확정하지 않음.",
+      "tone_change": "긍정적 구조 전망 유지. 직전 리포트와의 직접 대조는 미실시.",
+      "valuation_change": "개별 목표가 변경 미확인",
+      "stance": "mixed",
+      "watch": [
+        "GPU 요금의 공급자·계약 조건별 차이",
+        "네오클라우드의 차입비용·납기·현금흐름"
+      ],
+      "date_note": "공식 본문 발간일 확인",
+      "first_seen_at": "2026-10-20T08:36:49.030Z",
+      "last_verified_at": "2026-10-20T08:36:49.030Z",
+      "prior_source": null,
+      "initial_archive": true
+    },
+    {
+      "id": "jpmam-ai-productivity-20261019",
+      "publisher": "JPM",
+      "division": "Asset Management · LTCMA (투자은행 리서치와 구분)",
+      "published_at": "2026-10-19",
+      "title": "A brighter productivity outlook for the AI era",
+      "title_ko": "AI 생산성 전망 상향: 장기 투자 사이클의 수익화가 관건",
+      "sectors": [
+        "매크로·전략",
+        "AI·IT하드웨어",
+        "전력·데이터센터"
+      ],
+      "companies": [],
+      "document_type": "research_article",
+      "source_scope": "full_text",
+      "source_url": "https://am.jpmorgan.com/au/en/asset-management/adv/insights/portfolio-insights/ltcma/a-brighter-productivity-outlook-for-the-ai-era/",
+      "headline": "장기 생산성 가정은 개선. 이를 단기 기업 EPS 상향으로 환산하지 않음.",
+      "facts": [
+        "10~15년 전망에서 AI의 생산성 효과와 설비투자에 따른 자본 심화를 반영해 방법론을 개편했다.",
+        "미국 노동생산성 성장 전망은 연 2.2%. 전년 가정 대비 올해의 추가 상향 효과를 20bp로 설명했다."
+      ],
+      "interpretation": "장기 AI 가치사슬의 수익 기회는 넓어지지만, 투자금 회수·감가상각·자금조달 제약이 단기 실적과 주가를 가를 변수.",
+      "estimate_signal": "장기 생산성 가정 상향을 확인. 개별 기업의 다음 분기·내년 매출/EPS 변경은 미제시.",
+      "tone_change": "2023년 이후 점진 반영에서 올해 방법론 재구축으로 분석 강화.",
+      "valuation_change": "개별 목표가 변경 미확인",
+      "stance": "positive",
+      "watch": [
+        "AI 도입 속도와 수익화",
+        "대체 투자 위축·감가상각·전력 제약"
+      ],
+      "date_note": "공식 본문 Published 19/10/2026",
+      "first_seen_at": "2026-10-20T08:36:49.030Z",
+      "last_verified_at": "2026-10-20T08:36:49.030Z",
+      "prior_source": null,
+      "initial_archive": true
+    },
+    {
+      "id": "gs-credit-ai-20261016",
+      "publisher": "GS",
+      "division": "FICC and Equities · The Markets (트레이딩 해설)",
+      "published_at": "2026-10-16",
+      "title": "How Higher Rates and AI Issuance Are Affecting Credit Markets",
+      "title_ko": "고금리·AI 채권 발행에도 신용시장은 견조, 개별 신용 선별 강조",
+      "sectors": [
+        "금융·신용",
+        "전력·데이터센터"
+      ],
+      "companies": [],
+      "document_type": "podcast",
+      "source_scope": "full_text",
+      "source_url": "https://www.goldmansachs.com/insights/the-markets/how-higher-rates-and-ai-issuance-are-affecting-credit-markets",
+      "headline": "전면적 신용 경색보다 발행사별 차별화. 조달비용의 급등이 위험 전환 조건.",
+      "facts": [
+        "신용시장의 수급 흡수력을 긍정적으로 평가하며, 급격한 금리 상승과 경제성이 사라지는 조달금리를 위험으로 지적했다.",
+        "우량 AI 신용물의 높은 금리와 헤지 기회를 논의했다."
+      ],
+      "interpretation": "AI 관련 채권 공급 증가를 곧바로 시장 전체 경색으로 보지 않고, 발행사별 금리·스프레드·재무여력을 함께 확인할 필요.",
+      "estimate_signal": "기업 실적 추정치 수정 자료 아님.",
+      "tone_change": "직전 동일 프로그램과의 대조 미실시. 톤 변화 단정 보류.",
+      "valuation_change": "목표가 변경 자료 아님",
+      "stance": "mixed",
+      "watch": [
+        "AI 신규 발행의 조건과 만기",
+        "다른 업종으로 신용불안이 전이되는지"
+      ],
+      "date_note": "게시 10/16 · 녹음 중 발언 날짜 10/15, 게시일 기준",
+      "first_seen_at": "2026-10-20T08:36:49.030Z",
+      "last_verified_at": "2026-10-20T08:36:49.030Z",
+      "prior_source": null,
+      "initial_archive": true
+    },
+    {
+      "id": "citi-global-equities-20261013",
+      "publisher": "Citi",
+      "division": "Research @ Citi · 공식 테마 팟캐스트",
+      "published_at": "2026-10-13",
+      "title": "Markets Edition: Global Equities: Resilience or Complacence?",
+      "title_ko": "글로벌 증시 강세를 이익 성장의 결과로 평가",
+      "sectors": [
+        "매크로·전략"
+      ],
+      "companies": [],
+      "document_type": "podcast",
+      "source_scope": "official_summary",
+      "source_url": "https://www.citigroup.com/global/insights/markets-edition-global-equities-resilience-or-complacence",
+      "headline": "이익 성장 기반의 긍정적 주식 전망. 공개 소개문 범위에서 확인.",
+      "facts": [
+        "공식 소개문은 거시 환경과 이익 성장을 강세의 근거로 제시했다.",
+        "성장주·경기민감주와 미국·일본 선호를 소개했다."
+      ],
+      "interpretation": "강세 지속 논리가 실적에 기대는 만큼, 향후 기업 전망이 이익 기대를 충족하는지 확인이 핵심.",
+      "estimate_signal": "개별 기업 추정치 상향·하향 및 신규 EPS 숫자 미확인.",
+      "tone_change": "직전 자료 대조·전문 청취 미실시.",
+      "valuation_change": "개별 목표가 변경 미확인",
+      "stance": "positive",
+      "watch": [
+        "이익 성장의 지역·업종 확산",
+        "금리와 지정학 위험"
+      ],
+      "date_note": "공식 게시일 확인",
+      "coverage_note": "KEY TAKEAWAYS·소개문만 확인. Citi가 정식 투자 리서치가 아닌 테마 콘텐츠라고 명시.",
+      "first_seen_at": "2026-10-20T08:36:49.030Z",
+      "last_verified_at": "2026-10-20T08:36:49.030Z",
+      "prior_source": null,
+      "initial_archive": true
+    },
+    {
+      "id": "gs-china-ai-20261009",
+      "publisher": "GS",
+      "division": "Goldman Sachs Research · 공개 해설",
+      "published_at": "2026-10-09",
+      "title": "Competition Among China’s AI Models Is Intensifying as the Chip Sector Advances",
+      "title_ko": "중국 AI 모델 경쟁 심화: 비용·생태계와 반도체 증설에 초점",
+      "sectors": [
+        "반도체·장비",
+        "AI·IT하드웨어",
+        "소프트웨어"
+      ],
+      "companies": [],
+      "document_type": "research_article",
+      "source_scope": "full_text",
+      "source_url": "https://www.goldmansachs.com/insights/articles/competition-among-chinas-ai-models-is-intensifying-as-chip-sector-advances",
+      "headline": "모델 성능 차별화는 어려워지고 비용 효율·생태계·반도체 공급망의 중요성 확대.",
+      "facts": [
+        "중국 AI 모델의 성능 격차 축소와 실행 생태계인 harness layer 투자를 논의했다.",
+        "중국 반도체의 증설 진전에도 GPU·파운드리·장비 공급의 제약이 남아 있다고 평가했다."
+      ],
+      "interpretation": "모델 개발사뿐 아니라 장비·네트워크·생태계의 경쟁우위와 공급 제약을 분리해 점검할 필요.",
+      "estimate_signal": "개별 기업의 매출/EPS 변경은 미확인.",
+      "tone_change": "직전 동일 주제 리포트와 수치 대조 미실시.",
+      "valuation_change": "개별 목표가 변경 미확인",
+      "stance": "mixed",
+      "watch": [
+        "중국 내 생산능력의 실제 가동",
+        "모델 가격 경쟁과 수익화"
+      ],
+      "date_note": "공식 본문 10/9 확인",
+      "first_seen_at": "2026-10-20T08:36:49.030Z",
+      "last_verified_at": "2026-10-20T08:36:49.030Z",
+      "prior_source": null,
+      "initial_archive": true
+    },
+    {
+      "id": "bofa-consumer-20261009",
+      "publisher": "BofA",
+      "division": "Bank of America Institute (Global Research와 구분)",
+      "published_at": "2026-10-09",
+      "title": "Consumer Checkpoint: Strength in numbers",
+      "title_ko": "미국 소비 강세가 소득 계층과 업종 전반으로 확산",
+      "sectors": [
+        "소비재·식품",
+        "매크로·전략"
+      ],
+      "companies": [],
+      "document_type": "research_pdf",
+      "source_scope": "full_text",
+      "source_url": "https://institute.bankofamerica.com/content/dam/economic-insights/consumer-checkpoint-october-2026.pdf",
+      "landing_url": "https://institute.bankofamerica.com/economic-insights/consumer-checkpoint-october-2026.html",
+      "headline": "소비의 저변은 양호. 전월 흐름과 신용 의존도는 별도 점검.",
+      "facts": [
+        "9월 가구당 카드 소비는 전년 대비 6.2%, 주유 제외 5.1% 증가했다고 집계했다.",
+        "소득 계층 전반의 소비와 재량 소비의 폭을 긍정적으로 평가하되 후불결제 부담을 관찰했다."
+      ],
+      "interpretation": "소비재 실적의 수요 기반은 지지되지만 명목 카드 소비를 개별 업체의 실질 매출 성장률로 곧바로 대입하면 안 됨.",
+      "estimate_signal": "거래 데이터 기반 소비 분석. 개별 기업 매출/EPS 추정 변경 미제시.",
+      "tone_change": "직전 월간 보고서 직접 대조 미실시.",
+      "valuation_change": "개별 목표가 변경 자료 아님",
+      "stance": "positive",
+      "watch": [
+        "주유 제외 전월 소비",
+        "소득별 소비와 후불결제 상환"
+      ],
+      "date_note": "웹 소개는 2026년 10월, PDF에 09 October 2026 명시",
+      "first_seen_at": "2026-10-20T08:36:49.030Z",
+      "last_verified_at": "2026-10-20T08:36:49.030Z",
+      "prior_source": null,
+      "initial_archive": true
+    },
+    {
+      "id": "ms-china-industry-20260925",
+      "publisher": "MS",
+      "division": "Morgan Stanley Research · 공개 해설",
+      "published_at": "2026-09-25",
+      "title": "China's Next Industrial Era",
+      "title_ko": "중국 산업 고도화: 자동화·반도체·산업 소프트웨어 기회와 과잉설비 위험",
+      "sectors": [
+        "산업재·자동차",
+        "반도체·장비",
+        "소프트웨어"
+      ],
+      "companies": [],
+      "document_type": "research_article",
+      "source_scope": "full_text",
+      "source_url": "https://www.morganstanley.com/insights/articles/china-next-industrial-revolution-industry-5-outlook",
+      "headline": "중국 제조업의 가치사슬 상승이 투자 기회. 공급과잉은 수익성 위험.",
+      "facts": [
+        "AI가 공장·공급망·산업 시스템에 내재화되는 산업 고도화 방향을 제시했다.",
+        "자동화·로봇·반도체·산업 소프트웨어를 기회로 보면서 수요를 넘는 증설의 위험도 지적했다."
+      ],
+      "interpretation": "장기 설비투자 기회를 보되 실제 주문·가격·수익성을 확인해야 하며 국내 업체에 대한 직접 수혜는 추가 검증 필요.",
+      "estimate_signal": "장기 산업 전망. 개별 기업의 다음 분기·내년 추정치 변경 미확인.",
+      "tone_change": "직전 리포트 대조 미실시.",
+      "valuation_change": "개별 목표가 변경 미확인",
+      "stance": "mixed",
+      "watch": [
+        "신규 산업설비의 가동과 수요",
+        "첨단 제조업의 가격·마진"
+      ],
+      "date_note": "본문 9/25, Research 목록 10/1로 달라 본문 날짜를 우선. 초기 참고자료이며 신규 발간으로 세지 않음",
+      "first_seen_at": "2026-10-20T08:36:49.030Z",
+      "last_verified_at": "2026-10-20T08:36:49.030Z",
+      "prior_source": null,
+      "initial_archive": true
+    }
+  ],
+  "checks": [
+    {
+      "checked_at": "2026-10-20T08:36:49.030Z",
+      "kind": "initial_archive",
+      "new_publications": 0,
+      "added_reports": 7,
+      "note": "초기 참고자료 등록. 등록일을 발간일로 사용하지 않음. 고객 전용 리포트 전수 점검이 아님."
+    }
+  ]
+}
