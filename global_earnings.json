@@ -3060,6 +3060,13 @@
       "source": "https://investor.exxonmobil.com/company-information/press-releases/detail/1212/exxonmobil-to-release-third-quarter-2026-financial-results"
     },
     {
+      "ticker": "AAPL",
+      "date": "2026-11-02",
+      "time": "장 마감 후 · 14:00 America/Los_Angeles(컨콜)",
+      "event": "FY26 Q4 실적·컨퍼런스콜",
+      "source": "https://investor.apple.com/investor-relations/default.aspx"
+    },
+    {
       "ticker": "EL",
       "date": "2026-11-02",
       "time": "08:30 America/New_York(실적 발표·컨콜)",
