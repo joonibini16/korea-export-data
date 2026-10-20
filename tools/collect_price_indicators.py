@@ -2,6 +2,7 @@
 
 - OpenRouter: 일별 전체 토큰(rankings/models?view=day 전 모델 합) · 모델 가격(api/v1/models)으로 추정 지출액과 가중평균 단가
 - GPU 임대: Vast.ai 현재 대여 가능 on-demand 매물의 GPU 1장당 시간당 가격 중앙값 · RunPod 공시가(Secure/Community)
+- GPU 체결 지수: Ornn Compute Price Index(OCPI) 무료 공개 일별 정산값(Ornn Data 서면 허가, KST 하루 1회 요청)
 - DRAM: DRAMeXchange 첫 화면 현물가(DDR5 RDIMM 32GB 모듈, DDR5 UDIMM 16GB 모듈, DDR5 16Gb 칩)
 
 결과는 price_indicators_log.csv(date,series,value,unit,source)에 날짜·계열별로 덮어쓰기/추가하며 과거 행은 지우지 않습니다.
@@ -116,6 +117,44 @@ try:
 except Exception as e:
     errors.append(f'runpod: {e}')
 
+# ---------- GPU: Ornn Compute Price Index (OCPI) ----------
+# Ornn Data 서면 허가(2026-10-19, wayne@ornn.com "Yes this is fine.") 범위: 무료 공개 일별 정산값만,
+# 하루 1회 요청, 출처 표기·원문 링크, 재판매·상업 이용·원자료 재배포·AI 학습 금지, 요청 시 즉시 삭제.
+# 하루 여러 번 도는 워크플로라도 KST 하루 1회만 요청하고, 계열이 비어 있을 때만 공개 이력(최근 3개월)을 한 번 채웁니다.
+ORNN = {'a100': 'A100 SXM4', 'h100': 'H100 SXM', 'h200': 'H200', 'b200': 'B200'}
+ORNN_SRC = 'Ornn Data — Ornn Compute Price Index (OCPI), settled (used with permission)'
+try:
+    prev_status = json.loads(pathlib.Path('price_indicators_status.json').read_text(encoding='utf-8'))
+except Exception:
+    prev_status = {}
+ornn_last = prev_status.get('ornn_last_fetch_kst')
+
+
+def ornn_put(ts, key, value):
+    d = str(ts)[:10]  # 정산 시각 20:00Z → 미국 거래일
+    if re.fullmatch(r'\d{4}-\d{2}-\d{2}', d) and isinstance(value, (int, float)) and value > 0:
+        put(d, f'gpu_{key}_ornn', float(value), 'USD/GPU·시간', ORNN_SRC)
+
+
+if ornn_last != today:
+    try:
+        for key, name in ORNN.items():
+            if not any(s == f'gpu_{key}_ornn' for _, s in rows):
+                h = json.loads(get('https://data.ornn.com/api/public-index/gpu/' + urllib.parse.quote(name) + '/index-history'))
+                for x in h.get('data') or []:
+                    ornn_put(x.get('timestamp'), key, x.get('index_value'))
+        d = json.loads(get('https://data.ornn.com/api/public-index/daily-index/all'))
+        by_name = {x.get('gpu_type'): x for x in d.get('data') or [] if (x.get('region') or 'global') == 'global'}
+        for key, name in ORNN.items():
+            x = by_name.get(name)
+            if x:
+                ornn_put(x.get('date') or d.get('date'), key, x.get('index_value'))
+            else:
+                errors.append(f'ornn {key}: 일별 지수 없음(기존값 보존)')
+        ornn_last = today
+    except Exception as e:
+        errors.append(f'ornn: {e}')
+
 # ---------- DRAM: DRAMeXchange ----------
 MON = {m: i for i, m in enumerate(['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], 1)}
 try:
@@ -143,7 +182,7 @@ out = sorted(rows.values(), key=lambda r: (r['date'], r['series']))
 with LOG.open('w', encoding='utf-8', newline='') as f:
     w = csv.DictWriter(f, fieldnames=['date', 'series', 'value', 'unit', 'source'], lineterminator='\n')
     w.writeheader(); w.writerows(out)
-pathlib.Path('price_indicators_status.json').write_text(json.dumps(dict(updated=dt.datetime.now(dt.timezone.utc).isoformat(timespec='seconds'), rows=len(out), errors=errors), ensure_ascii=False, indent=1))
+pathlib.Path('price_indicators_status.json').write_text(json.dumps(dict(updated=dt.datetime.now(dt.timezone.utc).isoformat(timespec='seconds'), rows=len(out), errors=errors, ornn_last_fetch_kst=ornn_last), ensure_ascii=False, indent=1))
 print('rows', len(out), 'errors', errors)
 if len(errors) >= 4:
     sys.exit(1)
