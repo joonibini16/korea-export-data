@@ -24,13 +24,13 @@
   const ds=[];let mn=Infinity,mx=-Infinity;
   T.forEach(([t,n,c,w,ax])=>{const s=S[t];if(!s.line.length&&!s.dots.length)return;
    const R0=s.line.filter(p=>p.o!==3),E0=s.line.filter(p=>p.o===3);const L=R0.map(p=>({x:ts(p.d),y:p.v}));const LE=E0.length?[R0.at(-1),...E0].map(p=>({x:ts(p.d),y:p.v})):[];LE.forEach(p=>{mn=Math.min(mn,p.x);mx=Math.max(mx,p.x);});L.forEach(p=>{mn=Math.min(mn,p.x);mx=Math.max(mx,p.x);});
-   ds.push({type:'line',label:ax?t+' (우)':t,yAxisID:ax||'y',data:L,borderColor:c,backgroundColor:c,borderWidth:w,borderDash:t==='SPCX'?[5,3]:undefined,pointRadius:0,tension:0,parsing:false,spanGaps:true,_n:n});
-   if(LE.length)ds.push({type:'line',label:t+' 추정',yAxisID:ax||'y',data:LE,borderColor:c,backgroundColor:c,borderWidth:w,borderDash:[3,3],pointRadius:0,pointHoverRadius:4,tension:0,parsing:false,_n:n+' (FINRA 회사채로 추정)',rnSkip:true});
+   const LA=[...L,...LE.slice(1).map(p=>({...p,est:1}))];
+   ds.push({type:'line',label:ax?t+' (우)':t,yAxisID:ax||'y',data:LA,borderColor:c,backgroundColor:c,borderWidth:w,pointRadius:0,pointHoverRadius:4,tension:0,parsing:false,spanGaps:true,_n:n});
    /* 보도 수치 점은 판독 선과 겹쳐 표시하지 않음(판독 이후 구간 이어 붙이기에만 사용) */});
   const tick=v=>{const d=new Date(v);return String(d.getUTCFullYear()).slice(2)+'.'+(d.getUTCMonth()+1);};
   new Chart(cv,{type:'line',data:{datasets:ds},options:{responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:'nearest',intersect:false,axis:'x'},
    plugins:{legend:{position:'top',labels:{boxWidth:14,filter:i=>!/보도$|추정$/.test(i.text)}},
-    tooltip:{itemSort:(a,b)=>b.parsed.y-a.parsed.y,callbacks:{title:it=>new Date(it[0].parsed.x).toISOString().slice(0,10),label:t=>{const d=t.dataset;if(d._dots){const p=d._dots[t.dataIndex];return `${d.label}: ${t.parsed.y}bp (${p.src||''})`;}return `${d._n||d.label}: ${Math.round(t.parsed.y)}bp`;}}}},
+    tooltip:{itemSort:(a,b)=>b.parsed.y-a.parsed.y,callbacks:{title:it=>new Date(it[0].parsed.x).toISOString().slice(0,10),label:t=>{const d=t.dataset;if(d._dots){const p=d._dots[t.dataIndex];return `${d.label}: ${t.parsed.y}bp (${p.src||''})`;}return `${d._n||d.label}: ${Math.round(t.parsed.y)}bp${t.raw&&t.raw.est?' (FINRA 회사채로 추정)':''}`;}}}},
    scales:{x:{type:'linear',min:mn,max:mx+Math.max((mx-mn)*0.04,10*864e5),ticks:{maxTicksLimit:12,callback:tick}},y:{beginAtZero:true,grace:'8%',title:{display:true,text:'5Y CDS (bp)'}},...(ds.some(d=>d.yAxisID==='y1')?{y1:{position:'right',min:0,grace:'8%',grid:{drawOnChartArea:false},ticks:{color:'#60a5fa'},title:{display:true,text:'코어위브 5Y CDS (bp, 우)',color:'#60a5fa'}}}:{})}}});
   // 오른쪽 'CDS 5년' 표도 같은 일별 이력(판독 → FINRA 매일 추정)으로 최신화
   {const NM={ORCL:'Oracle',SPCX:'SpaceX',AVGO:'Broadcom',META:'Meta',NVDA:'Nvidia',AMZN:'Amazon',GOOGL:'Alphabet',MSFT:'Microsoft',AAPL:'Apple',CRWV:'CoreWeave'};
