@@ -1,6 +1,6 @@
 """Validate the public research index without making network requests."""
 import json, sys
-from datetime import date, datetime
+from datetime import date, datetime, timezone, timedelta
 from urllib.parse import urlparse, parse_qsl, urlencode
 
 def canonical(url):
@@ -23,7 +23,8 @@ def validate(data):
         assert r['source_scope'] in ['full_text','official_summary','media_only','listing_only']
         assert r['stance'] in ['positive','negative','mixed','neutral','unknown']
         if r['published_at']: date.fromisoformat(r['published_at'])
-        assert r['published_at'] is None or r['published_at']<=r['last_verified_at'][:10], 'Future publication'
+        verified_day=datetime.fromisoformat(r['last_verified_at'].replace('Z','+00:00')).astimezone(timezone(timedelta(hours=9))).date().isoformat()
+        assert r['published_at'] is None or r['published_at']<=verified_day, 'Future publication'
         for k in ['first_seen_at','last_verified_at']: datetime.fromisoformat(r[k].replace('Z','+00:00'))
         for k in ['title','title_ko','headline','division','interpretation','estimate_signal','tone_change','valuation_change']: assert isinstance(r[k],str) and r[k].strip(), k
         assert isinstance(r['facts'],list) and r['facts'] and all(isinstance(v,str) and v.strip() for v in r['facts'])
