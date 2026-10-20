@@ -1,0 +1,155 @@
+[
+ {
+  "name": "report.pdf",
+  "url": "https://media.futureelectronics.com/doc/Market-Conditions-Report.pdf",
+  "status": 200,
+  "length": 16849747,
+  "headers": {
+   "Content-Type": "application/pdf",
+   "Last-Modified": "Mon, 19 Oct 2026 12:13:37 GMT",
+   "Accept-Ranges": "bytes",
+   "ETag": "\"7ddceb44c35fdd1:0\"",
+   "Server": "Microsoft-IIS/10.0",
+   "X-Powered-By": "ASP.NET",
+   "Content-Length": "16849747",
+   "Cache-Control": "no-cache",
+   "Date": "Tue, 20 Oct 2026 08:02:31 GMT",
+   "Connection": "close"
+  }
+ },
+ {
+  "name": "mcr.html",
+  "url": "https://www.futureelectronics.com/resources/market-conditions-report",
+  "status": 200,
+  "length": 170482,
+  "headers": {
+   "Server": "*",
+   "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+   "Pragma": "no-cache",
+   "Expires": "0",
+   "Strict-Transport-Security": "max-age=31536000 ; includeSubDomains",
+   "X-XSS-Protection": "0",
+   "X-Content-Type-Options": "nosniff",
+   "Content-Type": "text/html;charset=UTF-8",
+   "Content-Language": "en",
+   "X-SAP-Pad": "83",
+   "Content-Security-Policy": "frame-ancestors self *.futureelectronics.com",
+   "X-Akamai-Transformed": "9 25391 0 pmb=mNONE,1mRUM,2",
+   "Vary": "Accept-Encoding",
+   "Date": "Tue, 20 Oct 2026 08:02:31 GMT",
+   "Transfer-Encoding": "chunked",
+   "Connection": "close",
+   "Set-Cookie": "JSESSIONID=82CC8A11C2EAC2D76DC0168F0711A247.accstorefront-76bffcb64b-7t4lx; Path=/; Secure; HttpOnly;Secure ;SameSite=None",
+   "Server-Timing": "cdn-cache; desc=MISS",
+   "X-Akam-SW-Version": "0.5.0"
+  }
+ },
+ {
+  "name": "mcr_mlcc.html",
+  "url": "https://www.futureelectronics.com/resources/market-conditions-report/mlcc",
+  "error": "HTTP Error 404: Not Found"
+ },
+ {
+  "name": "terms.html",
+  "url": "https://www.futureelectronics.com/policies/terms-of-use",
+  "status": 200,
+  "length": 172333,
+  "headers": {
+   "Server": "*",
+   "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+   "Pragma": "no-cache",
+   "Expires": "0",
+   "Strict-Transport-Security": "max-age=31536000 ; includeSubDomains",
+   "X-XSS-Protection": "0",
+   "X-Content-Type-Options": "nosniff",
+   "Content-Type": "text/html;charset=UTF-8",
+   "Content-Language": "en",
+   "X-SAP-Pad": "2",
+   "Content-Security-Policy": "frame-ancestors self *.futureelectronics.com",
+   "X-Akamai-Transformed": "9 28610 0 pmb=mNONE,1mRUM,2",
+   "Vary": "Accept-Encoding",
+   "Date": "Tue, 20 Oct 2026 08:02:31 GMT",
+   "Transfer-Encoding": "chunked",
+   "Connection": "close",
+   "Set-Cookie": "JSESSIONID=1BE7872FB461FF8B41BB9ED009D53302.accstorefront-76bffcb64b-f78r5; Path=/; Secure; HttpOnly;Secure ;SameSite=None",
+   "Server-Timing": "cdn-cache; desc=MISS",
+   "X-Akam-SW-Version": "0.5.0"
+  }
+ },
+ {
+  "name": "robots.txt",
+  "url": "https://www.futureelectronics.com/robots.txt",
+  "status": 200,
+  "length": 777,
+  "headers": {
+   "Server": "*",
+   "Strict-Transport-Security": "max-age=31536000 ; includeSubDomains",
+   "X-XSS-Protection": "0",
+   "X-Content-Type-Options": "nosniff",
+   "Content-Type": "text/plain;charset=UTF-8",
+   "Content-Language": "en",
+   "X-SAP-Pad": "6837830",
+   "Content-Security-Policy": "frame-ancestors self *.futureelectronics.com",
+   "Vary": "Accept-Encoding",
+   "Cache-Control": "public, max-age=2399",
+   "Expires": "Tue, 20 Oct 2026 08:42:30 GMT",
+   "Date": "Tue, 20 Oct 2026 08:02:31 GMT",
+   "Content-Length": "777",
+   "Connection": "close",
+   "Set-Cookie": "country=US; expires=Thu, 19-Nov-2026 08:02:31 GMT; path=/; domain=futureelectronics.com",
+   "Server-Timing": "cdn-cache; desc=HIT"
+  }
+ },
+ {
+  "name": "media_robots.txt",
+  "url": "https://media.futureelectronics.com/robots.txt",
+  "error": "HTTP Error 404: Not Found"
+ },
+ {
+  "pdf": {
+   "pages": 32,
+   "meta": {
+    "CreationDate": "D:20261016113118-04'00'",
+    "Creator": "Adobe InDesign 21.0 (Macintosh)",
+    "ModDate": "D:20261016113131-04'00'",
+    "Producer": "Adobe PDF Library 18.0",
+    "Trapped": "False"
+   },
+   "images_per_page": [
+    8,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3
+   ],
+   "nonascii_chars": {}
+  }
+ }
+]

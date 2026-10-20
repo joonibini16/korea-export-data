@@ -1,0 +1,2418 @@
+<!DOCTYPE html>
+<!--[if lte IE 9]>
+    <html lang="en" class="ie ie9">
+<![endif]-->
+<!--[if !IE]> -->
+<html lang="en">
+<!-- <![endif]-->
+<head>
+	<!-- Oracle CX Tag - begin -->
+    <script>
+// akam-sw.js install script version 1.3.6
+"serviceWorker"in navigator&&"find"in[]&&function(){var e=new Promise(function(e){"complete"===document.readyState||!1?e():(window.addEventListener("load",function(){e()}),setTimeout(function(){"complete"!==document.readyState&&e()},1e4))}),n=window.akamServiceWorkerInvoked,r="1.3.6";if(n)aka3pmLog("akam-setup already invoked");else{window.akamServiceWorkerInvoked=!0,window.aka3pmLog=function(){window.akamServiceWorkerDebug&&console.log.apply(console,arguments)};function o(e){(window.BOOMR_mq=window.BOOMR_mq||[]).push(["addVar",{"sm.sw.s":e,"sm.sw.v":r}])}var i="/akam-sw.js",a=new Map;navigator.serviceWorker.addEventListener("message",function(e){var n,r,o=e.data;if(o.isAka3pm)if(o.command){var i=(n=o.command,(r=a.get(n))&&r.length>0?r.shift():null);i&&i(e.data.response)}else if(o.commandToClient)switch(o.commandToClient){case"enableDebug":window.akamServiceWorkerDebug||(window.akamServiceWorkerDebug=!0,aka3pmLog("Setup script debug enabled via service worker message"),v());break;case"boomerangMQ":o.payload&&(window.BOOMR_mq=window.BOOMR_mq||[]).push(o.payload)}aka3pmLog("akam-sw message: "+JSON.stringify(e.data))});var t=function(e){return new Promise(function(n){var r,o;r=e.command,o=n,a.has(r)||a.set(r,[]),a.get(r).push(o),navigator.serviceWorker.controller&&(e.isAka3pm=!0,navigator.serviceWorker.controller.postMessage(e))})},c=function(e){return t({command:"navTiming",navTiming:e})},s=null,m={},d=function(){var e=i;return s&&(e+="?othersw="+encodeURIComponent(s)),function(e,n){return new Promise(function(r,i){aka3pmLog("Registering service worker with URL: "+e),navigator.serviceWorker.register(e,n).then(function(e){aka3pmLog("ServiceWorker registration successful with scope: ",e.scope),r(e),o(1)}).catch(function(e){aka3pmLog("ServiceWorker registration failed: ",e),o(0),i(e)})})}(e,m)},g=navigator.serviceWorker.__proto__.register;if(navigator.serviceWorker.__proto__.register=function(n,r){return n.includes(i)?g.call(this,n,r):(aka3pmLog("Overriding registration of service worker for: "+n),s=new URL(n,window.location.href),m=r,navigator.serviceWorker.controller?new Promise(function(n,r){var o=navigator.serviceWorker.controller.scriptURL;if(o.includes(i)){var a=encodeURIComponent(s);o.includes(a)?(aka3pmLog("Cancelling registration as we already integrate other SW: "+s),navigator.serviceWorker.getRegistration().then(function(e){n(e)})):e.then(function(){aka3pmLog("Unregistering existing 3pm service worker"),navigator.serviceWorker.getRegistration().then(function(e){e.unregister().then(function(){return d()}).then(function(e){n(e)}).catch(function(e){r(e)})})})}else aka3pmLog("Cancelling registration as we already have akam-sw.js installed"),navigator.serviceWorker.getRegistration().then(function(e){n(e)})}):g.call(this,n,r))},navigator.serviceWorker.controller){var u=navigator.serviceWorker.controller.scriptURL;u.includes("/akam-sw.js")||u.includes("/akam-sw-preprod.js")||u.includes("/threepm-sw.js")||(aka3pmLog("Detected existing service worker. Removing and re-adding inside akam-sw.js"),s=new URL(u,window.location.href),e.then(function(){navigator.serviceWorker.getRegistration().then(function(e){m={scope:e.scope},e.unregister(),d()})}))}else e.then(function(){window.akamServiceWorkerPreprod&&(i="/akam-sw-preprod.js"),d()});if(window.performance){var w=window.performance.timing,l=w.responseEnd-w.responseStart;c(l)}e.then(function(){t({command:"pageLoad"})});var k=!1;function v(){window.akamServiceWorkerDebug&&!k&&(k=!0,aka3pmLog("Initializing debug functions at window scope"),window.aka3pmInjectSwPolicy=function(e){return t({command:"updatePolicy",policy:e})},window.aka3pmDisableInjectedPolicy=function(){return t({command:"disableInjectedPolicy"})},window.aka3pmDeleteInjectedPolicy=function(){return t({command:"deleteInjectedPolicy"})},window.aka3pmGetStateAsync=function(){return t({command:"getState"})},window.aka3pmDumpState=function(){aka3pmGetStateAsync().then(function(e){aka3pmLog(JSON.stringify(e,null,"\t"))})},window.aka3pmInjectTiming=function(e){return c(e)},window.aka3pmUpdatePolicyFromNetwork=function(){return t({command:"pullPolicyFromNetwork"})})}v()}}();</script>
+<script type="text/javascript" data-cookieconsent="ignore" src="https://d.oracleinfinity.io/infy/acs/account/a36803d12327416b15016d5f7962a889/js/femainsite/odc.js?_ora.config=analytics:production">
+            </script>
+        <!-- Oracle CX Tag - end -->
+
+
+
+
+
+
+
+
+<script data-cookieconsent="ignore">
+    window.dataLayer = window.dataLayer || [];
+
+    
+        
+        
+        
+        
+        
+        
+        
+        
+            allPages()
+        
+    
+
+    
+
+    function getRegion() {
+        
+            
+            
+            
+            
+                return "americas"
+            
+        
+    }
+
+    function getSite() {
+        
+            
+            
+                return "global"
+            
+        
+    }
+
+    function getVisitorLoginState() {
+        
+            
+                return "false"
+            
+            
+        
+    }
+
+    function getUserType() {
+        
+            
+            
+                return "web"
+            
+        
+    }
+
+    function getCalculatorName() {
+                
+        }
+
+    
+
+    
+
+    
+
+    function allPages() {
+        dataLayer.push(
+            {
+                
+
+"event": "PV",
+"page": {
+     "language": "en",
+     "region": getRegion(),
+     "currency": "USD",
+     "site": getSite(),
+     "pageType": getPageType(),
+},
+"user": {
+    'visitorLoginState': getVisitorLoginState(),
+    'userId': "",
+    'iseID': "",
+    'billto': "",
+    'userType': getUserType()
+},
+
+            }
+        )
+    }
+
+    function getPageType() {
+        
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+                return "cms";
+            
+        
+    }
+
+    
+
+    
+
+    function wishListForm(formName, addEntireList, isMobile, rowId) {
+        var totalWishListItems = document.getElementById('wishlists').getElementsByTagName("li").length;
+        var products = [];
+        for(var i = 0; i < totalWishListItems; i++) {
+            if(document.getElementById("chk"+i).checked || addEntireList || isMobile) {
+                if(isMobile) {
+                    i = rowId;
+                }
+                var currency = document.getElementById(formName+i).elements['currency'].value;
+                var name = document.getElementById(formName+i).elements['name'].value;
+                var id = document.getElementById(formName+i).elements['id'].value;
+                var price = document.getElementById(formName+i).elements['price'].value;
+                var quantity = document.getElementById(formName+i).elements['quantity'].value;
+                var brand = document.getElementById(formName+i).elements['brand'].value;
+                var category = document.getElementById(formName+i).elements['category'].value;
+                var variant = document.getElementById(formName+i).elements['variant'].value;
+                var dimension6 = document.getElementById(formName+i).elements['dimension6'].value;
+                var dimension7 = document.getElementById(formName+i).elements['dimension7'].value;
+                var dimension12 = document.getElementById(formName+i).elements['dimension12'].value;
+                var description = document.getElementById(formName+i).elements['description'].value;
+                var imageURL = document.getElementById(formName+i).elements['imageURL'].value;
+
+                var product = {
+                    "currency": currency,
+                    "name": name,
+                    "id": id,
+                    "price": price,
+                    "quantity": quantity,
+                    "brand": brand,
+                    "category": category,
+                    "variant": getVariantType(variant),
+                    "dimension6": dimension6,
+                    "dimension7": dimension7,
+                    "dimension12": dimension12,
+                    "description": description,
+                    "imageUrl": imageURL
+                }
+                products.push(product);
+                if(isMobile) {
+                    break;
+                }
+            }
+        }
+
+        dataLayer.push({
+            "event": "addToCart",
+                "ecommerce": {
+                    "currencyCode": "USD",
+                    "add": {
+                        "products": products
+                    }
+                }
+            }
+        );
+    }
+
+    function productClickPLP(formName) {
+        var currency = document.getElementById(formName).elements['currency'].value;
+        var name = document.getElementById(formName).elements['name'].value;
+        var id = document.getElementById(formName).elements['id'].value;
+        var contractPrice = document.getElementById(formName).elements['contractPrice'];
+        var price = document.getElementById(formName).elements['productPostSinglePrice'];
+        if(contractPrice.value !== "") {
+            price = contractPrice.value;
+        } else {
+            price = price.value;
+        }
+        var brand = document.getElementById(formName).elements['brand'].value;
+        var category = document.getElementById(formName).elements['category'].value;
+        var variant = document.getElementById(formName).elements['variant'].value;
+        var position = document.getElementById(formName).elements['position'].value;
+        var dimension6 = document.getElementById(formName).elements['dimension6'].value;
+        var dimension7 = document.getElementById(formName).elements['dimension7'].value;
+        var dimension11 = document.getElementById(formName).elements['dimension11'].value;
+        var dimension12 = document.getElementById(formName).elements['dimension12'].value;
+
+        dataLayer.push({
+            "event": "productClick",
+            "ecommerce": {
+                    "click": {
+                        "actionField": {
+                            "list": getList(),
+                        },
+                        "products": [
+                            {
+                                "name": name,
+                                "id": id,
+                                "price": price,
+                                "brand": brand,
+                                "category": category,
+                                "variant": variant,
+                                "position": position,
+                                "dimension6": dimension6,
+                                "dimension7": dimension7,
+                                "dimension11": dimension11,
+                                "dimension12": dimension12,
+                            }
+                        ]
+                    }
+                }
+        });
+    }
+
+    function productClick(formName, productCode) {
+        var mpn = document.getElementById(formName).elements['productPostMpn'].value;
+        var id = document.getElementById(formName).elements['productCodePost'].value;
+        var quantity = document.getElementById(formName).elements['qty'].value;
+        var quantityField = formName.replace('addToCartForm', 'quantity_');
+        var quantity = $('#' + quantityField).val();
+        var price;
+        var contractPrice = document.getElementById(formName).elements['contractPrice'];
+        if((contractPrice !== undefined) && (contractPrice)) {
+            price = contractPrice.value;
+        } else {
+            price = getVolumePrice(formName, quantity);
+        }
+        var brand = document.getElementById(formName).elements['productPostBrand'].value;
+        var category = document.getElementById(formName).elements['productPostCategory'].value;
+        var variant = document.getElementById(formName).elements['productPostVariant'].value;
+
+        
+            
+            
+        
+
+        var dimension6 = document.getElementById(formName).elements['productPostManufacturer'].value;
+        var dimension7 = document.getElementById(formName).elements['productPostPriceType'].value;
+        var dimension11 = document.getElementById(formName).elements['productPostStock'].value;
+        var dimension12 = document.getElementById(formName).elements['dimension12'].value;
+
+        dataLayer.push({
+            "event": "productClick",
+            "ecommerce": {
+                    "click": {
+                        "actionField": {
+                            "list": getList(),
+                        },
+                        "products": [
+                            {
+                                "name": mpn,
+                                "id": id,
+                                "price": price,
+                                "brand": brand,
+                                "category": category,
+                                "variant": variant,
+                                "position": position,
+                                "dimension6": dimension6,
+                                "dimension7": dimension7,
+                                "dimension11": dimension11,
+                                "dimension12": dimension12,
+                            }
+                        ]
+                    }
+                }
+        });
+        addToCart(formName);
+    }
+
+    
+        function addToCart(formName) {
+            var mpn = document.getElementById(formName).elements['productPostMpn'].value;
+            var id = document.getElementById(formName).elements['productCodePost'].value;
+            var quantityField = formName.replace('addToCartForm', 'quantity_');
+            var quantity = $('#' + quantityField).val();
+            var price;
+            var contractPrice = document.getElementById(formName).elements['contractPrice'];
+            if((contractPrice !== undefined) && (contractPrice)) {
+                price = contractPrice.value;
+            } else {
+                price = getVolumePrice(formName, quantity);
+            }
+            var brand = document.getElementById(formName).elements['productPostBrand'].value;
+            var category = document.getElementById(formName).elements['productPostCategory'].value;
+            var variant = document.getElementById(formName).elements['productPostVariant'].value;
+            var dimension6 = document.getElementById(formName).elements['productPostManufacturer'].value;
+            var dimension7 = document.getElementById(formName).elements['productPostPriceType'].value;
+            var dimension12 = document.getElementById(formName).elements['dimension12'].value;
+            var description = document.getElementById(formName).elements['description'].value;
+            var imageURL = document.getElementById(formName).elements['imageURL'].value;
+
+            dataLayer.push({
+                "event": "addToCart",
+                    "ecommerce": {
+                        "currencyCode": "USD",
+                        "add": {
+                            "products": [
+                                {
+                                    "name": mpn,
+                                    "id": id,
+                                    "price": price,
+                                    "quantity": quantity,
+                                    "brand": brand,
+                                    "category": category,
+                                    "variant": variant,
+                                    "dimension6": dimension6,
+                                    "dimension7": dimension7,
+                                    "dimension12": dimension12,
+                                    "description": description,
+                                    "imageUrl": imageURL
+                                }
+                            ]
+                        }
+                    }
+                }
+            );
+        }
+    
+
+    function addSharedCartToCart(cartEntries) {
+        var products = [];
+        var numberOfEntries = cartEntries;
+
+        for(var i = 0; i < numberOfEntries; i++) {
+            var form = $('#sharedCartForm' + i);
+
+            var name = form.find('input[name=mpn]').val();
+            var id = form.find('input[name=id]').val();
+            var price = form.find('input[name=price]').val();
+            var quantity = form.find('input[name=quantity]').val();
+            var brand = form.find('input[name=brand]').val();
+            var category = form.find('input[name=category]').val();
+            var variant = form.find('input[name=variant]').val();
+            var dimension6 = form.find('input[name=dimension6]').val();
+            var dimension7 = form.find('input[name=dimension7]').val();
+            var dimension12 = form.find('input[name=dimension12]').val();
+
+            var product = {
+                "name": name,
+                "id": id,
+                "price": price,
+                "quantity": quantity,
+                "brand": brand,
+                "category": category,
+                "variant": getVariantType(variant),
+                "dimension6": dimension6,
+                "dimension7": dimension7,
+                "dimension12": dimension12,
+            }
+            products.push(product);
+        }
+
+        dataLayer.push({
+            "event": "addToCart",
+                "ecommerce": {
+                    "currencyCode": "USD",
+                    "add": {
+                        "products": products
+                    }
+                }
+            }
+        );
+    }
+
+    
+        function addToCartPDP(formName) {
+            var quantity = document.getElementById(formName).elements['qty'].value;
+            dataLayer.push({
+                "event": "addToCart",
+                    "ecommerce": {
+                        "currencyCode": "USD",
+                        "add": {
+                            "products": [
+                                {
+                                    'name': "",
+                                    'id': "",
+                                    
+                                        
+                                        
+                                        
+                                        
+                                            'price': "",
+                                        
+                                    
+                                    
+                                        
+                                        
+                                            "quantity": quantity,
+                                        
+                                    
+                                    'brand': "",
+                                    'category': "",
+                                    
+                                        
+                                        
+                                            
+                                        
+                                    
+                                    "dimension6": "",
+                                    "dimension7": "",
+                                    
+                                        
+                                        
+                                        
+                                            "dimension7": "web",
+                                        
+                                    
+                                    
+                                        
+                                        
+                                            "dimension12": "",
+                                        
+                                    
+                                    "description": "",
+                                    
+                        "imageUrl": "https://www.futureelectronics.com/_ui/addons/febrowseaddon/responsive/theme-green/images/missing_product.jpg",
+                    
+                                }
+                            ]
+                        }
+                    }
+                }
+            );
+        }
+    
+
+    var deleteIndex;
+    function beforeProductRemoveSingle(formIndex) {
+        deleteIndex = formIndex;
+    }
+
+    function productRemoveSingle() {
+        var form = $('#updateCartForm' + deleteIndex);
+
+        var currency = form.find('input[name=currency]').val();
+        var name = form.find('input[name=mpn]').val();
+        var id = form.find('input[name=productCode]').val();
+        var price = form.find('input[name=price]').val();
+        var quantity = form.find('input[name=initialQuantity]').val();
+        var brand = form.find('input[name=brand]').val();
+        var category = form.find('input[name=category]').val();
+        var variant = form.find('input[name=variant]').val();
+        var dimension6 = form.find('input[name=dimension6]').val();
+        var dimension7 = form.find('input[name=dimension7]').val();
+        var dimension12 = form.find('input[name=dimension12]').val();
+
+        dataLayer.push({
+            "event": "productRemove",
+                "ecommerce": {
+                    "currencyCode": "USD",
+                    "remove": {
+                        "products": [
+                            {
+                                "name": name,
+                                "id": id,
+                                "price": price,
+                                "quantity": quantity,
+                                "brand": brand,
+                                "category": category,
+                                "variant": getVariantType(variant),
+                                "dimension6": dimension6,
+                                "dimension7": dimension7,
+                                "dimension12": dimension12,
+                            }
+                        ]
+                    }
+                }
+            }
+        );
+    }
+
+    function productRemove() {
+        var products = [];
+
+        $("[name='selectCartItem']:checked").each(function(index) {
+            var cartEntry = $(this).parent().parent().parent().attr('id');
+            var formIndex = cartEntry.charAt(cartEntry.length-1)
+            var form = $('#updateCartForm' + formIndex);
+
+            var currency = form.find('input[name=currency]').val();
+            var name = form.find('input[name=mpn]').val();
+            var id = form.find('input[name=productCode]').val();
+            var price = form.find('input[name=price]').val();
+            var quantity = form.find('input[name=initialQuantity]').val();
+            var brand = form.find('input[name=brand]').val();
+            var category = form.find('input[name=category]').val();
+            var gtmCategory = prepareGtmCategory(category);
+            var variant = form.find('input[name=variant]').val().toLowerCase();
+            var dimension6 = form.find('input[name=dimension6]').val();
+            var dimension7 = form.find('input[name=dimension7]').val();
+            var dimension12 = form.find('input[name=dimension12]').val();
+
+            var product = {
+                "name": name,
+                "id": id,
+                "price": price,
+                "quantity": quantity,
+                "brand": brand,
+                "category": gtmCategory,
+                "variant": variant,
+                "dimension6": dimension6,
+                "dimension7": dimension7,
+                "dimension12": dimension12,
+            }
+            products.push(product);
+        });
+
+        dataLayer.push({
+            "event": "productRemove",
+                "ecommerce": {
+                    "currencyCode": "USD",
+                    "remove": {
+                        "products": products
+                    }
+                }
+            }
+        );
+    }
+
+    function addToCartBOM(hasUnresolvedItems) {
+        var products = [];
+
+        if(($(".js-unresolved:checked").length == 0) || (hasUnresolvedItems)) {
+            var formName = "#bomEntryForm";
+
+            $(".js-mpn-line-item:checked:not('.js-unresolved')").each(function(index) {
+                index = $(this).parent().parent().attr('id');
+                var currency = $(formName+index).find('input[name=currency]').val()
+                var name = $(formName+index).find('input[name=mpn]').val()
+                var id = $(formName+index).find('input[name=id]').val()
+                var price = $(formName+index).find('input[name=price]').val()
+                var quantity = $(formName+index).find('input[name=quantity]').val()
+                var brand = $(formName+index).find('input[name=brand]').val()
+                var category = $(formName+index).find('input[name=category]').val()
+                var variant = $(formName+index).find('input[name=variant]').val()
+                var dimension6 = $(formName+index).find('input[name=dimension6]').val()
+                var dimension7 = $(formName+index).find('input[name=dimension7]').val()
+                var dimension12 = $(formName+index).find('input[name=dimension12]').val()
+                var description = $(formName+index).find('input[name=description]').val()
+                var imageURL = $(formName+index).find('input[name=imageURL]').val()
+
+                var product = {
+                    "name": name,
+                    "id": id,
+                    "price": price,
+                    "quantity": quantity,
+                    "brand": brand,
+                    "category": category,
+                    "variant": getVariantType(variant),
+                    "dimension6": dimension6,
+                    "dimension7": dimension7,
+                    "dimension12": dimension12,
+                    "description": description,
+                    "imageUrl": imageURL
+                }
+                products.push(product);
+            });
+            dataLayer.push({
+                "event": "addToCart",
+                    "ecommerce": {
+                        "currencyCode": "USD",
+                        "add": {
+                            "products": products
+                        }
+                    }
+                }
+            );
+        }
+    }
+
+    function prepareGtmCategory(category) {
+        if(category.length != 0) {
+            if(category.indexOf("/p/") == 0) {
+                category = category.replace("/p/", "");
+            }
+            if(category.indexOf("/") > -1) {
+                category = category.substring(0, category.lastIndexOf("/"))
+            }
+            if(category.indexOf("--") > -1) {
+                category = category.replace(/--/g, "/");
+            }
+        }
+        return category;
+    }
+
+    function getVolumePrice(formName, selectedQty) {
+        var quantity;
+        if(selectedQty !== undefined) {
+            quantity = Number(selectedQty);
+        } else {
+            quantity = Number(document.getElementById(formName).elements['qty'].value);
+        }
+        var numberOfPrices = document.getElementById(formName).elements['numberOfPrices'].value;
+        for(var i = numberOfPrices - 1; i >= 0; i--) {
+            var minQuantity = Number(document.getElementById(formName).elements['volumePriceMinQty' + i].value);
+            if(quantity >= minQuantity) {
+                var volumePrice = document.getElementById(formName).elements['volumePrice' + i].value;
+                if(selectedQty === undefined) {
+                    return priceFormatter(volumePrice)
+                }
+                return volumePrice;
+            }
+        }
+        if(volumePrice === undefined) {
+            volumePrice = document.getElementById(formName).elements['volumePrice0'].value;
+            if(selectedQty === undefined) {
+                return priceFormatter(volumePrice)
+            }
+            return volumePrice;
+        }
+    }
+
+    function priceFormatter(volumePrice) {
+        if((volumePrice.indexOf(".0") == volumePrice.length-2) || (volumePrice.indexOf(",0") == volumePrice.length-2)) {
+            volumePrice = volumePrice + "0";
+        }
+        return volumePrice;
+    }
+
+    function getList() {
+        
+            
+            
+            
+                return "category"
+            
+        
+    }
+
+    function getVariantType(variant) {
+        switch (variant) {
+            case "MINI_REEL":
+                return "mini reel";
+            case "AMMO":
+                return "ammo pack";
+            case "BULK":
+                return "bulk";
+            case "DIE":
+                return "die";
+            case "KIT":
+                return "kit";
+            case "ROLL":
+                return "roll";
+            case "STRP":
+                return "strip";
+            case "TRAY":
+                return "tray";
+            case "TUBE":
+                return "tube";
+            case "REEL":
+                return "reel";
+            case "CUTT":
+                return "cut tape";
+            case "BOX":
+                return "box";
+            case "BAG":
+                return "bag";
+            case "SAMPLES":
+                return "samples";
+            case "STDMFR":
+                return "std. mfr. pkg";
+            case "BSTR":
+                return "blister pack";
+        }
+    }
+
+</script>
+
+<!-- Google Tag Manager -->
+<script data-cookieconsent="ignore">
+  (function(w,d,s,l,i) {
+    w[l]=w[l]||[];w[l].push({
+        'gtm.start': new Date().getTime(),event:'gtm.js'
+      });
+    var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+    j.async=true;
+    j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;
+    f.parentNode.insertBefore(j,f);
+  })
+  (window,document,'script','dataLayer',"GTM-WJCPQKJ");
+</script>
+<!-- End Google Tag Manager -->
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  var _elqQ = _elqQ || [];
+  _elqQ.push(['elqSetSiteId', '736472']);
+  _elqQ.push(['elqUseFirstPartyCookie', 'trk.futureelectronics.com']);
+  _elqQ.push(['elqTrackPageView']);
+
+  (function() {
+    function async_load() {
+      var s = document.createElement('script'); s.type = 'text/javascript';
+      s.async = true;
+      s.src = '//img.en25.com/i/elqCfg.min.js';
+      var x = document.getElementsByTagName('script')[0];
+      x.parentNode.insertBefore(s, x);
+    }
+    if(window.addEventListener) window.addEventListener('DOMContentLoaded', async_load, false);
+    else if (window.attachEvent) window.attachEvent('onload', async_load);
+  })();
+</script>
+
+<script>
+  function elqGetGuidCookieValue() {
+    var name, value, index, cookies=document.cookie.split(';');
+    for (var i = 0; i < cookies.length; i++) {
+      index = cookies[i].indexOf('=');
+      if (index > 0 && cookies[i].length > index + 1) {
+        name = cookies[i].substr(0, index).trim();
+        if (name == 'ELOQUA') {
+          value = cookies[i].substr(index + 1);
+          var subCookies = value.split("&");
+          for (var l = 0; 1 < subCookies.length; l++) {
+            var subCookie = subCookies[l].split("=");
+            if (subCookie.length == 2 && subCookie[0] == 'GUID') {
+              return subCookie[1];
+            }
+          }
+        }
+      }
+    }
+    return '';
+  }
+</script>
+<script type="text/javascript" src="/_ui/shared/js/analyticsmediator.js" async></script>
+	 <script src="/_ui/addons/smarteditaddon/shared/common/js/webApplicationInjector.js"></script>
+     <script src="/_ui/addons/smarteditaddon/shared/common/js/reprocessPage.js"></script>
+     <script src="/_ui/addons/smarteditaddon/shared/common/js/adjustComponentRenderingToSE.js"></script>
+     <script data-ad-client="ca-pub-3000425861010028" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<title>Terms of Use | Futureelectronics NorthAmerica Site</title>
+
+<meta name="google-site-verification" content="T3pa0c-rtKA8LNDH7x3QCaPtq7SPl6vPrAyY6tdtfT4" />
+
+<meta name="facebook-domain-verification" content="uzxjfl1ovizq3pwi9kh4dpopnj7ngt" />
+
+
+<script type="application/ld+json">
+        {"@context":"https://schema.org/","@graph":[{"@type":"Organization","name":"Future Electronics","legalName":"Future Electronics, Inc.","url":"https://www.futureelectronics.com","logo":"https://www.futureelectronics.com/medias/sys_master/images/images/9473568800798/logo-dp.png","contactPoint":{"@type":"ContactPoint","contactType":"Customer Service"},"sameAs":["https://www.facebook.com/FutureElectronics/","https://www.youtube.com/channel/UCqzyHMbket3E1gS2mAPJ9UA","https://ca.linkedin.com/company/future-electronics","https://en.wikipedia.org/wiki/Future_Electronics","https://twitter.com/FutureElec"]}]}</script><script type="application/ld+json">
+        {"@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":"0","name":"Home","item":"https://www.futureelectronics.com"},{"@type":"ListItem","position":"1","name":"terms-of-use","item":"https://www.futureelectronics.comnull"},{"@type":"ListItem","position":"2","name":"Terms of Use","item":"https://www.futureelectronics.com#"}]}]}</script><meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+
+<meta itemprop="name"
+	content="Terms of Use | Futureelectronics NorthAmerica Site">
+
+<meta property="og:type" content="Futureelectronics NorthAmerica Site" />
+<meta property="og:url" content="" />
+<meta property="og:title" content="Terms of Use | Futureelectronics NorthAmerica Site" />
+<meta property="og:description" content="This page contains the Future Electronics Inc. Terms of Use Policy." />
+		<meta property="og:image" content="/medias/sys_master/root/8882444566558/PRIMARYpolicyTermsUse-356x300-T.jpg" />
+		<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@FutureElec" />
+<meta name="twitter:title" content="Terms of Use | Futureelectronics NorthAmerica Site">
+
+<meta name="twitter:description" content="This page contains the Future Electronics Inc. Terms of Use Policy." />
+		<meta itemprop="description" content="This page contains the Future Electronics Inc. Terms of Use Policy.">
+		<meta name="twitter:image" content="/medias/sys_master/root/8882444566558/PRIMARYpolicyTermsUse-356x300-T.jpg" />
+		<meta name="keywords" content="">
+<meta name="description" content="This page contains the Future Electronics Inc. Terms of Use Policy.">
+<link rel="shortcut icon" type="image/x-icon" media="all"
+    href="/_ui/addons/febrowseaddon/responsive/theme-green/images/favicon.ico" />
+
+
+<link rel="stylesheet" type="text/css" media="all" href="/_ui/addons/febrowseaddon/responsive/theme-green/css/style.min.css?v=1.1" />
+		<link rel="stylesheet" type="text/css" media="all"
+							href="/_ui/addons/assistedservicestorefront/responsive/common/css/storeFinder.css?v=1.1" />
+					<link rel="stylesheet" type="text/css" media="all"
+							href="/_ui/addons/assistedservicestorefront/responsive/common/css/customer360.css?v=1.1" />
+					<link rel="stylesheet" type="text/css" media="all"
+						href="/_ui/addons/febrowseaddon/responsive/theme-green/css/febrowseaddon.min.css?v=1.1" />
+					<link rel="stylesheet" type="text/css" media="all"
+							href="/_ui/addons/smarteditaddon/responsive/common/css/smarteditaddon.css?v=1.1" />
+					
+
+
+
+
+  
+
+
+
+
+
+
+
+<!--[if lte IE 9]>
+      <script src="/_ui/addons/febrowseaddon/responsive/theme-green/js/matchMedia.js"></script>
+      <script src="/_ui/addons/febrowseaddon/responsive/theme-green/js/matchMedia.addListener.js"></script>
+    <![endif]-->
+
+<link rel="x-default" href="" hreflang=""/>
+
+<script src='https://future.componentsearchengine.com/common/plugin.js'></script>
+
+<script>(window.BOOMR_mq=window.BOOMR_mq||[]).push(["addVar",{"rua.upush":"false","rua.cpush":"false","rua.upre":"false","rua.cpre":"false","rua.uprl":"false","rua.cprl":"false","rua.cprf":"false","rua.trans":"","rua.cook":"false","rua.ims":"false","rua.ufprl":"false","rua.cfprl":"false","rua.isuxp":"false","rua.texp":"norulematch","rua.ceh":"false","rua.ueh":"false","rua.ieh.st":"0"}]);</script>
+                                <script>!function(a){var e="https://s.go-mpulse.net/boomerang/",t="addEventListener";if("False"=="True")a.BOOMR_config=a.BOOMR_config||{},a.BOOMR_config.PageParams=a.BOOMR_config.PageParams||{},a.BOOMR_config.PageParams.pci=!0,e="https://s2.go-mpulse.net/boomerang/";if(window.BOOMR_API_key="FZY6X-JY8DG-6YSL9-Q63AM-F37NR",function(){function n(e){a.BOOMR_onload=e&&e.timeStamp||(new Date).getTime()}if(!a.BOOMR||!a.BOOMR.version&&!a.BOOMR.snippetExecuted){a.BOOMR=a.BOOMR||{},a.BOOMR.snippetExecuted=!0;var i,_,o,r=document.createElement("iframe");if(a[t])a[t]("load",n,!1);else if(a.attachEvent)a.attachEvent("onload",n);r.src="javascript:void(0)",r.title="",r.role="presentation",(r.frameElement||r).style.cssText="width:0;height:0;border:0;display:none;",o=document.getElementsByTagName("script")[0],o.parentNode.insertBefore(r,o);try{_=r.contentWindow.document}catch(O){i=document.domain,r.src="javascript:var d=document.open();d.domain='"+i+"';void(0);",_=r.contentWindow.document}_.open()._l=function(){var a=this.createElement("script");if(i)this.domain=i;a.id="boomr-if-as",a.src=e+"FZY6X-JY8DG-6YSL9-Q63AM-F37NR",BOOMR_lstart=(new Date).getTime(),this.body.appendChild(a)},_.write("<bo"+'dy onload="document._l();">'),_.close()}}(),"".length>0)if(a&&"performance"in a&&a.performance&&"function"==typeof a.performance.setResourceTimingBufferSize)a.performance.setResourceTimingBufferSize();!function(){if(BOOMR=a.BOOMR||{},BOOMR.plugins=BOOMR.plugins||{},!BOOMR.plugins.AK){var e=""=="true"?1:0,t="",n="cq3v6elilz6ec2wxealq-f-d54646e19-clientnsv4-s.akamaihd.net",i="false"=="true"?2:1,_={"ak.v":"41","ak.cp":"1737116","ak.ai":parseInt("1061723",10),"ak.ol":"0","ak.cr":2,"ak.ipv":4,"ak.proto":"http/1.1","ak.rid":"b6416938","ak.r":51513,"ak.a2":e,"ak.m":"dsca","ak.n":"essl","ak.cport":37378,"ak.gh":"23.3.12.153","ak.quicv":"","ak.tlsv":"tls1.3","ak.0rtt":"","ak.0rtt.ed":"","ak.csrc":"-","ak.acc":"bbr","ak.t":"1792483351","ak.ak":"hOBiQwZUYzCg5VSAfCLimQ==g+IKVh5suNDSUMpoJGfFo62OeZYWlOS0ZZ6axmLucn4MylggBJQATyfMDaHVJvRqQvHwVP2BN33JZlGwybHhkDp8o+JgU4ljWvCvRknMaZniqGMCDycbyq9+CA86e4cdV6ZsjCoRwFIe54sV0jtWSRZxCp+lePVgkrAQUUMrFRCFaiByVxwjlVQOjcNuk4OiJP+F0kf046pyB/1u8KtM7JMVbbHUvb1mX8dIipl75KN7VZCCn29idqsFMJh2EnObuRQUYAI/Y/Zgs7jnC4ZPV+54ljwPQvtJdepuZ7mkpA372YbGwHRywuAX7lU05z7q/gNrUKyJDRC/ei4tFClLcmpu10kkZOthkNMLeuG1mhRXCyAD05ZXhOyZQ+b3/360BJuME9K07GGKJi3mnL4nUfI2+4vsY1HNaNSV8zUy2mw=","ak.pv":"79","ak.dpoabenc":"","ak.tf":i};if(""!==t)_["ak.ruds"]=t;var o={i:!1,av:function(e){var t="http.initiator";if(e&&(!e[t]||"spa_hard"===e[t]))_["ak.feo"]=void 0!==a.aFeoApplied?1:0,BOOMR.addVar(_)},rv:function(){var a=["ak.cport","ak.cr","ak.csrc","ak.gh","ak.ipv","ak.m","ak.n","ak.ol","ak.proto","ak.quicv","ak.tlsv","ak.0rtt","ak.0rtt.ed","ak.r","ak.acc","ak.t","ak.tf"];BOOMR.removeVar(a)}};BOOMR.plugins.AK={akVars:_,akDNSPreFetchDomain:n,init:function(){if(!o.i){var a=BOOMR.subscribe;a("before_beacon",o.av,null,null),a("onbeacon",o.rv,null,null),o.i=!0}return this},is_complete:function(){return!0}}}}()}(window);</script></head>
+
+<body
+	class="global-body page-TermsofUse-Policies pageType-ContentResourcePage template-pages-addon--febrowseaddon-pages-content-contentDetailsPageTemplate  smartedit-page-uid-TermsofUse_Policies smartedit-page-uuid-eyJpdGVtSWQiOiJUZXJtc29mVXNlX1BvbGljaWVzIiwiY2F0YWxvZ0lkIjoiZmVOQUNvbnRlbnRDYXRhbG9nIiwiY2F0YWxvZ1ZlcnNpb24iOiJPbmxpbmUifQ== smartedit-catalog-version-uuid-feNAContentCatalog/Online  language-en ">
+
+	<!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WJCPQKJ"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+	<input type="hidden" id="isAddToList" value="" />
+	<input type="hidden" id="isNoList" value="" />
+	<input type="hidden" id="billtoattribute"
+		data-auth-success=""
+		data-redirect-url="/"
+		data-lastattribute="" data-title="Select your Billing Account" />
+	<input type="hidden" id="checkoutloggedInUser" value="" />
+	<input type="hidden" id="billTo" value="" />
+	<input type="hidden" id="languagePatternUrl" value="" />
+	<input type="hidden" id="customerType" value="" />
+    <input type="hidden" id="shippingCountryEmpty" value="true" />
+    <input type="hidden" id="shippingCountryCookie" value="" />
+	<input type="hidden" id="productListSession"
+		value='' />
+	<input type="hidden" id="pageTypeSession"
+		value='' />
+	<input type="hidden" id="sharedCartCode"
+		value='' />
+	<input id="uiBlockMsg" type="hidden" value="Please Wait" />
+
+	<input type="hidden" id="isAnonymous" value="true" />
+	<div class="branding-mobile hidden-md hidden-lg hidden-sm">
+			<div class="js-mobile-logo">
+				</div>
+		</div>
+		<main data-currency-iso-code="USD">
+			<a href="#skip-to-content" class="skiptocontent" data-role="none">text.skipToContent</a>
+			<a href="#skiptonavigation" class="skiptonavigation" data-role="none">text.skipToNavigation</a>
+
+
+			<img class="hidden"  src="/_ui/responsive/common/images/spinner.gif" />
+<link rel="dns-prefetch preconnect" href="//futureelectronics.sc.omtrdc.net">
+<link rel="dns-prefetch preconnect" href="//media.futureelectronics.com">  
+
+<header class="js-mainHeader js-rotw-mainHeader ">
+			<nav class="navigation navigation--top hidden-xs header-div-nav fe-todate fe-pt-0 ">
+
+		<div class="container" id="TermsofUse_Policies">
+
+                <ul class="nav__links--primary pull-left  left-sec-site">
+                    <li class="select-list" data-automation-ref="GL_Geo">
+		<div class="dropdown fe-theme country-select top-fixed-select">
+
+   	    <button class="select-label dropdown-toggle" type="button" data-toggle="dropdown">
+   	    <img src=""/>
+                                    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 17 17" class="globe-svg svg d-none replaced-svg"><defs><style>.cls-1{fill:#737373;}</style></defs><path id="solid_globe" data-name="solid globe" class="cls-1" d="M11.54,5.21C11,2.15,9.87,0,8.5,0S6,2.15,5.47,5.21ZM5.21,8.5c0,.73,0,1.47.11,2.2h6.36c.07-.73.11-1.46.11-2.19s0-1.47-.11-2.2H5.32C5.25,7,5.21,7.77,5.21,8.5ZM16.34,5.21A8.52,8.52,0,0,0,10.93.35a11.7,11.7,0,0,1,1.71,4.86ZM6.07.36A8.53,8.53,0,0,0,.66,5.21h3.7A11.66,11.66,0,0,1,6.07.36ZM16.71,6.31H12.78c.07.72.11,1.46.11,2.19s0,1.48-.11,2.2h3.93A8.63,8.63,0,0,0,17,8.5a8.5,8.5,0,0,0-.29-2.19ZM4.11,8.5a19.82,19.82,0,0,1,.12-2.19H.29a8.34,8.34,0,0,0,0,4.38H4.22C4.15,10,4.11,9.24,4.11,8.5Zm1.36,3.29C6,14.85,7.14,17,8.5,17s2.54-2.15,3-5.21Zm5.46,4.86a8.52,8.52,0,0,0,5.41-4.86h-3.7a11.56,11.56,0,0,1-1.71,4.86ZM.66,11.79a8.53,8.53,0,0,0,5.42,4.86,11.58,11.58,0,0,1-1.72-4.86Z"></path><path id="solid_globe-2" data-name="solid globe" d="M11.54,5.21C11,2.15,9.87,0,8.5,0S6,2.15,5.47,5.21ZM5.21,8.5c0,.73,0,1.47.11,2.2h6.36c.07-.73.11-1.46.11-2.19s0-1.47-.11-2.2H5.32C5.25,7,5.21,7.77,5.21,8.5ZM16.34,5.21A8.52,8.52,0,0,0,10.93.35a11.7,11.7,0,0,1,1.71,4.86ZM6.07.36A8.53,8.53,0,0,0,.66,5.21h3.7A11.66,11.66,0,0,1,6.07.36ZM16.71,6.31H12.78c.07.72.11,1.46.11,2.19s0,1.48-.11,2.2h3.93A8.63,8.63,0,0,0,17,8.5a8.5,8.5,0,0,0-.29-2.19ZM4.11,8.5a19.82,19.82,0,0,1,.12-2.19H.29a8.34,8.34,0,0,0,0,4.38H4.22C4.15,10,4.11,9.24,4.11,8.5Zm1.36,3.29C6,14.85,7.14,17,8.5,17s2.54-2.15,3-5.21Zm5.46,4.86a8.52,8.52,0,0,0,5.41-4.86h-3.7a11.56,11.56,0,0,1-1.71,4.86ZM.66,11.79a8.53,8.53,0,0,0,5.42,4.86,11.58,11.58,0,0,1-1.72-4.86Z"></path></svg>
+                                    USD ($)
+                        			<span class="caret"></span>
+         </button>
+        <ul class="dropdown-menu dropdown-list">
+            <li class="default"><a href="javascript:void(0);">Region & Currency</a></li>
+			<li class="region">
+                    <a href="javascript:void(0);"  class="selected-curr">
+                        Americas<span class="icon icon-FutureElectronics-Plus_V2 pull-right plux"></span>
+                        <span class="icon icon-FutureElectronics-Minus_V2 pull-right minus"></span>
+                    </a>
+                    <ul class="country-list">
+                                  <div class="country-ftz">
+                                        <p class="other-currencies-nav">Shipping Country</p>
+                                        <div class="currency-group1">
+                                           <div class="myForm">
+                                           <label>
+                                               <input type="radio" name="shippingCountry1" value="CA" >
+                                               <span>Canada</span>
+                                              </label>
+                                              <label>
+                                               <input type="radio" name="shippingCountry1" value="US" >
+                                               <span>United States</span>
+                                              </label>
+                                              </div>
+                                        </div>
+                                     </div>
+                                  <li class="other-currencies-nav">Other Currencies</li>
+        				<li>
+                                		<a class="currency-select" href="javascript:void(0);" data-anonym-selectedSite="futureelectronics_northamerica" data-anonym-selectedIsoCode="CAD" data-anonym-selectedCountry="">
+                                            <span>CAD&nbsp;($)</span>
+                                        </a>
+                               		</li>
+    							<li class="selected active">
+                                		<a href="javascript:void(0);" data-anonym-selectedSite="futureelectronics_northamerica" data-anonym-selectedIsoCode="USD" data-anonym-selectedCountry="">
+                                            <span>USD&nbsp;($)</span>
+                                        </a>
+                               		</li>
+    							</ul>
+                </li>
+            <li class="region">
+                    <a href="javascript:void(0);"  class="selected-curr">
+                        Asia Pacific<span class="icon icon-FutureElectronics-Plus_V2 pull-right plux"></span>
+                        <span class="icon icon-FutureElectronics-Minus_V2 pull-right minus"></span>
+                    </a>
+                    <ul class="country-list">
+                                  <li class="other-currencies-nav">Other Currencies</li>
+        				<li>
+                                		<a class="currency-select" href="javascript:void(0);" data-anonym-selectedSite="futureelectronics_apac" data-anonym-selectedIsoCode="AUD" data-anonym-selectedCountry="">
+                                            <span>AUD&nbsp;($)</span>
+                                        </a>
+                               		</li>
+    							<li>
+                                		<a class="currency-select" href="javascript:void(0);" data-anonym-selectedSite="futureelectronics_apac" data-anonym-selectedIsoCode="JPY" data-anonym-selectedCountry="">
+                                            <span>JPY&nbsp;(¥)</span>
+                                        </a>
+                               		</li>
+    							<li>
+                                		<a class="currency-select" href="javascript:void(0);" data-anonym-selectedSite="futureelectronics_apac" data-anonym-selectedIsoCode="KRW" data-anonym-selectedCountry="">
+                                            <span>KRW&nbsp;(₩)</span>
+                                        </a>
+                               		</li>
+    							</ul>
+                                <ul class="country-list">
+                                <li>
+                                		<a class="currency-select" href="javascript:void(0);" data-anonym-selectedSite="futureelectronics_apac" data-anonym-selectedIsoCode="MYR" data-anonym-selectedCountry="">
+                                            <span>MYR&nbsp;(RM)</span>
+                                        </a>
+                               		</li>
+    							<li>
+                                		<a class="currency-select" href="javascript:void(0);" data-anonym-selectedSite="futureelectronics_apac" data-anonym-selectedIsoCode="NZD" data-anonym-selectedCountry="">
+                                            <span>NZD&nbsp;($)</span>
+                                        </a>
+                               		</li>
+    							<li>
+                                		<a class="currency-select" href="javascript:void(0);" data-anonym-selectedSite="futureelectronics_apac" data-anonym-selectedIsoCode="SGD" data-anonym-selectedCountry="">
+                                            <span>SGD&nbsp;($)</span>
+                                        </a>
+                               		</li>
+    							</ul>
+                                <ul class="country-list">
+                                <li>
+                                		<a class="currency-select" href="javascript:void(0);" data-anonym-selectedSite="futureelectronics_apac" data-anonym-selectedIsoCode="USD" data-anonym-selectedCountry="">
+                                            <span>USD&nbsp;($)</span>
+                                        </a>
+                               		</li>
+    							</ul>
+                </li>
+            <li class="region">
+                    <a href="javascript:void(0);"  class="selected-curr">
+                        Europe, Middle East, Africa<span class="icon icon-FutureElectronics-Plus_V2 pull-right plux"></span>
+                        <span class="icon icon-FutureElectronics-Minus_V2 pull-right minus"></span>
+                    </a>
+                    <ul class="country-list">
+                                  <li class="other-currencies-nav">Other Currencies</li>
+        				<li>
+                                		<a class="currency-select" href="javascript:void(0);" data-anonym-selectedSite="futureelectronics_emea" data-anonym-selectedIsoCode="CHF" data-anonym-selectedCountry="">
+                                            <span>CHF&nbsp;(CHF)</span>
+                                        </a>
+                               		</li>
+    							<li>
+                                		<a class="currency-select" href="javascript:void(0);" data-anonym-selectedSite="futureelectronics_emea" data-anonym-selectedIsoCode="CZK" data-anonym-selectedCountry="">
+                                            <span>CZK&nbsp;(Kč)</span>
+                                        </a>
+                               		</li>
+    							<li>
+                                		<a class="currency-select" href="javascript:void(0);" data-anonym-selectedSite="futureelectronics_emea" data-anonym-selectedIsoCode="DKK" data-anonym-selectedCountry="">
+                                            <span>DKK&nbsp;(kr)</span>
+                                        </a>
+                               		</li>
+    							</ul>
+                                <ul class="country-list">
+                                <li>
+                                		<a class="currency-select" href="javascript:void(0);" data-anonym-selectedSite="futureelectronics_emea" data-anonym-selectedIsoCode="EUR" data-anonym-selectedCountry="">
+                                            <span>EUR&nbsp;(€)</span>
+                                        </a>
+                               		</li>
+    							<li>
+                                		<a class="currency-select" href="javascript:void(0);" data-anonym-selectedSite="futureelectronics_emea" data-anonym-selectedIsoCode="GBP" data-anonym-selectedCountry="">
+                                            <span>GBP&nbsp;(£)</span>
+                                        </a>
+                               		</li>
+    							<li>
+                                		<a class="currency-select" href="javascript:void(0);" data-anonym-selectedSite="futureelectronics_emea" data-anonym-selectedIsoCode="HUF" data-anonym-selectedCountry="">
+                                            <span>HUF&nbsp;(Ft)</span>
+                                        </a>
+                               		</li>
+    							</ul>
+                                <ul class="country-list">
+                                <li>
+                                		<a class="currency-select" href="javascript:void(0);" data-anonym-selectedSite="futureelectronics_emea" data-anonym-selectedIsoCode="NOK" data-anonym-selectedCountry="">
+                                            <span>NOK&nbsp;(kr)</span>
+                                        </a>
+                               		</li>
+    							<li>
+                                		<a class="currency-select" href="javascript:void(0);" data-anonym-selectedSite="futureelectronics_emea" data-anonym-selectedIsoCode="PLN" data-anonym-selectedCountry="">
+                                            <span>PLN&nbsp;(zl)</span>
+                                        </a>
+                               		</li>
+    							<li>
+                                		<a class="currency-select" href="javascript:void(0);" data-anonym-selectedSite="futureelectronics_emea" data-anonym-selectedIsoCode="SEK" data-anonym-selectedCountry="">
+                                            <span>SEK&nbsp;(kr)</span>
+                                        </a>
+                               		</li>
+    							</ul>
+                                <ul class="country-list">
+                                <li>
+                                		<a class="currency-select" href="javascript:void(0);" data-anonym-selectedSite="futureelectronics_emea" data-anonym-selectedIsoCode="USD" data-anonym-selectedCountry="">
+                                            <span>USD&nbsp;($)</span>
+                                        </a>
+                               		</li>
+    							</ul>
+                </li>
+            </ul>
+    </div>
+    <form class="anonym-currency-form" action="/regionSwitch" method="post"><input type ="hidden" name="site" class="anonym-selectedSite" value=""/>
+    	<input type ="hidden" name="currentRegion" class="anonym-currentRegion" value="futureelectronics_northamerica"/>
+    	<input type="hidden" name="isocode" class="anonym-selectedIsoCode" value="USD"/>
+    	<input type="hidden" name="country" class="anonym-selectedCountry" value=""/>
+    	<input type="hidden" name="productCode" value=""/>
+	<div>
+<input type="hidden" name="CSRFToken" value="aOBlPT0dLQSJAaTSTZNPI_M_Clp_KXhAQ1d1Ab0O8MWHeXw7XddSCwUkHTSkYpazer57E5ALJ2McHBltc2NFNow4xvG0H0wK" />
+</div></form><input type="hidden" class="currency_popup_title" value='Region Switching' />
+<div class="anonym-currency-switch hidden">
+    <div class="currency-swich-info">
+        You are changing the region you shop from. This may affect price, shipping options and product availability. Items in your current Cart will not be transferred.</div>
+    <button class="btn btn-submit pull-left currency-cancel mt20">
+        Cancel</button>
+    <button class="btn btn-submit pull-right currency-process mt20">
+        Confirm</button>
+</div>
+
+<input type="hidden" name="apac_currency_popup_title" value='Currency Switching'/>
+<div class="anonym-currency-switch-apac hidden">
+    <div class="currency-swich-info">
+        You are changing currency. This may affect price, shipping options and product availability. Items in your current Cart will not be transferred.</div>
+    <button class="btn btn-submit pull-left currency-cancel mt20">
+        Cancel</button>
+    <button class="btn btn-submit pull-right currency-process mt20">
+        Confirm</button>
+</div>
+
+<div id="change-shipping-country" style="display:none;">
+<div class="con">
+  <h2>Shipping Country Change</h2>
+   <div class="inner-content-country">
+You are changing the region you shop from. This may affect price, shipping options and product availability. Items in your current Cart will not be transferred.</div>
+<div class="button-div">
+<button id="cancel-country">Cancel</button>
+<button id ="continue-change-c">Continue</button>
+</div>
+</div></li>
+<li class="select-list  lang-select-div" data-automation-ref="GL_Language">
+		<div class='dropdown fe-theme lang-select top-fixed-select'>
+    <button class="select-label dropdown-toggle" type="button" data-toggle="dropdown">
+    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 17 17" class="globe-svg svg d-none replaced-svg"><defs><style>.cls-1{fill:#737373;}</style></defs><path id="solid_globe" data-name="solid globe" class="cls-1" d="M11.54,5.21C11,2.15,9.87,0,8.5,0S6,2.15,5.47,5.21ZM5.21,8.5c0,.73,0,1.47.11,2.2h6.36c.07-.73.11-1.46.11-2.19s0-1.47-.11-2.2H5.32C5.25,7,5.21,7.77,5.21,8.5ZM16.34,5.21A8.52,8.52,0,0,0,10.93.35a11.7,11.7,0,0,1,1.71,4.86ZM6.07.36A8.53,8.53,0,0,0,.66,5.21h3.7A11.66,11.66,0,0,1,6.07.36ZM16.71,6.31H12.78c.07.72.11,1.46.11,2.19s0,1.48-.11,2.2h3.93A8.63,8.63,0,0,0,17,8.5a8.5,8.5,0,0,0-.29-2.19ZM4.11,8.5a19.82,19.82,0,0,1,.12-2.19H.29a8.34,8.34,0,0,0,0,4.38H4.22C4.15,10,4.11,9.24,4.11,8.5Zm1.36,3.29C6,14.85,7.14,17,8.5,17s2.54-2.15,3-5.21Zm5.46,4.86a8.52,8.52,0,0,0,5.41-4.86h-3.7a11.56,11.56,0,0,1-1.71,4.86ZM.66,11.79a8.53,8.53,0,0,0,5.42,4.86,11.58,11.58,0,0,1-1.72-4.86Z"></path><path id="solid_globe-2" data-name="solid globe" d="M11.54,5.21C11,2.15,9.87,0,8.5,0S6,2.15,5.47,5.21ZM5.21,8.5c0,.73,0,1.47.11,2.2h6.36c.07-.73.11-1.46.11-2.19s0-1.47-.11-2.2H5.32C5.25,7,5.21,7.77,5.21,8.5ZM16.34,5.21A8.52,8.52,0,0,0,10.93.35a11.7,11.7,0,0,1,1.71,4.86ZM6.07.36A8.53,8.53,0,0,0,.66,5.21h3.7A11.66,11.66,0,0,1,6.07.36ZM16.71,6.31H12.78c.07.72.11,1.46.11,2.19s0,1.48-.11,2.2h3.93A8.63,8.63,0,0,0,17,8.5a8.5,8.5,0,0,0-.29-2.19ZM4.11,8.5a19.82,19.82,0,0,1,.12-2.19H.29a8.34,8.34,0,0,0,0,4.38H4.22C4.15,10,4.11,9.24,4.11,8.5Zm1.36,3.29C6,14.85,7.14,17,8.5,17s2.54-2.15,3-5.21Zm5.46,4.86a8.52,8.52,0,0,0,5.41-4.86h-3.7a11.56,11.56,0,0,1-1.71,4.86ZM.66,11.79a8.53,8.53,0,0,0,5.42,4.86,11.58,11.58,0,0,1-1.72-4.86Z"></path></svg>
+        English<span class="caret"></span>
+    </button>
+	<ul class="dropdown-menu dropdown-list list-item">
+		<li class="default"><a href="javascript:void(0);">Language</a></li>
+		<li class="selected"> <a href="javascript:void(0);">English</a></li>
+				<li> <a href="javascript:void(0);" class="lang-list" data-selectedLanguage="fr">Français</a></li>
+				</ul>
+</div>
+<form class="lang-form" action="/_s/selectLanguage" method="get"><input type="hidden" class="selected-language"  value="en" name="code"/>
+</form></li>
+
+<li class="select-list phone-li">
+            <a class="select-label-phone" href="tel:1 (800) 675-1619"><svg xmlns="http://www.w3.org/2000/svg" height="20" id="Layer_1" data-name="Layer 1" viewBox="0 0 17 17" class="svg phone-svg replaced-svg" height="20"><path id="solid_phone-alt" data-name="solid phone-alt" d="M16.52,12,12.8,10.42a.79.79,0,0,0-.93.23l-1.65,2A12.26,12.26,0,0,1,4.34,6.78l2-1.65a.8.8,0,0,0,.23-.93L5,.48A.79.79,0,0,0,4.07,0L.62.82A.79.79,0,0,0,0,1.59,15.4,15.4,0,0,0,15.39,17h0a.79.79,0,0,0,.77-.62l.8-3.45a.81.81,0,0,0-.46-.92Z"></path></svg> <span>1 (800) 675-1619</span></a>
+        </li>
+    </ul>
+
+
+
+			<ul class="nav__links--primary pull-right  right-sec-site">
+			    <li class="bom-li">
+					<a href="/bom" class="bom_desktop">
+					    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 15.82 16.95" class="bom-svg svg fe-d-none replaced-svg"><path id="ic_file_upload_24px" data-name="ic file upload 24px" d="M4.52,13H11.3V7h4.52L7.91,0,0,7H4.52ZM0,15H15.82v2H0Z"></path></svg>
+						<span class="icon icon-FutureElectronics-Upload"></span>
+						BOM</a>
+					<a href="/bom" class="bom-tab">
+                        <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 15.82 16.95" class="bom-svg svg fe-d-none replaced-svg"><path id="ic_file_upload_24px" data-name="ic file upload 24px" d="M4.52,13H11.3V7h4.52L7.91,0,0,7H4.52ZM0,15H15.82v2H0Z"></path></svg>
+                        <span class="icon icon-FutureElectronics-Upload"></span>
+                        BOM</a>
+				</li>
+				<li class="nav-add-to-list">
+<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 14.76 16.87" class="list-svg svg fe-d-none replaced-svg"><path id="ic_receipt_24px" data-name="ic receipt 24px" d="M12.3,12.65H2.46V11H12.3Zm0-3.37H2.46V7.59H12.3Zm0-3.38H2.46V4.22H12.3ZM0,16.87,1.23,15.6l1.23,1.26L3.69,15.6l1.23,1.26L6.15,15.6l1.23,1.26L8.61,15.6l1.23,1.26,1.23-1.26,1.23,1.26,1.23-1.26,1.23,1.26V0L13.53,1.27,12.3,0,11.07,1.27,9.84,0,8.61,1.27,7.38,0,6.15,1.27,4.92,0,3.69,1.27,2.46,0,1.23,1.27,0,0Z"></path></svg>
+	<span class="icon icon-FutureElectronics-List"></span>
+	<a href="/my-account/lists" class="list-text">Lists</a>
+	<span class="added-show icon icon-FutureElectronics-Check-ClosedCircle"></span>
+	<input type="hidden" name="add-to-wishlist" value="Add To List" />
+	<div class="wish-list-container js-wish-list-container hidden-xs" id="wish-list-container"></div>
+</li><li class="nav-cart cart" data-automation-ref="GL_MiniCart">
+<a 	href="javascript:void(0)"	
+		class="mini-cart-link js-mini-cart-link"
+		data-cart-page-url="/cart"
+		data-mini-cart-url="/cart/rollover/MiniCart_GC"
+		data-mini-cart-refresh-url="/cart/miniCart/SUBTOTAL"
+		data-mini-cart-name="Cart"
+		data-mini-cart-empty-name="Empty Cart"
+		data-mini-cart-items-text=""
+		aria-disabled = "true" tabindex="-1"
+		data-cart-count="0"
+		>
+		<span class="mini-cart-icon">
+			<span class="icon icon-FutureElectronics-ShoppingCart"></span>
+		</span>
+		<span class="icon icon-FutureElectronics-Check-ClosedCircle selected"></span>
+		<span class="mini-cart-count js-mini-cart-count">
+                <span class="nav-items-total">
+                    
+                            0
+                        </span>
+            </span>
+        <span class="hidden-sm hidden-md hidden-lg hidden-xs label-text">
+		
+		
+		
+			Cart</span>
+	</a>
+
+<div class="mini-cart-container js-mini-cart-container hidden-xs" id="mini-cart-container"></div>
+</li>
+<!--
+                <li>
+                    <a href="javascript:void(0);" onclick="LC_API.open_chat_window();return false;">
+                        <span class="icon icon-FutureElectronics-SpeechBubble"></span>
+                        <span>Live Chat</span>
+                    </a>
+                </li>
+                -->
+
+
+				<li class=" nav__links--primary liUserSign" data-automation-ref="HP_RegisterLogin" itemprop="name">
+                        <a class="userSign" itemprop="url" href="/login">
+                         <img src="/_ui/addons/febrowseaddon/responsive/theme-green/images/user-account.svg" height="20" width="20" alt="phone icon"  class="fe-w-100 svg user-account-svg"/ style="display-none">
+
+                            My Account / Register</a>
+                    </li>
+                </ul>
+		</div>
+	</nav>
+
+	<div class="hidden-xs js-secondaryNavAccount collapse" id="accNavComponentDesktopOne">
+		<ul class="nav__links">
+
+		</ul>
+	</div>
+	<div class="hidden-xs js-secondaryNavCompany collapse" id="accNavComponentDesktopTwo">
+		<ul class="nav__links js-nav__links">
+
+		</ul>
+	</div>
+	<nav class="navigation navigation--middle js-navigation--middle header-div-nav">
+		<div class="container">
+			<div class="bom-mob-message fe-d-none"><div class="bom-mob-alert"><span class="icon icon-FutureElectronics-Close bom-alert-close"></span><span></span>This tool is currently unavailable on mobile or tablet devices.</div></div>
+
+			<div class="row mobile-cart-row">
+				<div class="mobile__nav__row mobile__nav__row--table">
+					<div class="mobile__nav__row--table-group">
+						<div class="mobile__nav__row--table-row">
+	<div class="mobile__nav__row--table-cell  menu-icon">
+							<span class="overlay-menu" style="display:none"></span>
+								<button class="mobile__nav__row--btn btn mobile__nav__row--btn-menu js-toggle-sm-navigation"
+										type="button">
+									<span class="icon icon-FutureElectronics-HamburgerMenu">
+									<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31.05 23"><defs><style>.cls-1{fill:#272727;}</style></defs><g id="Group_1012" data-name="Group 1012"><rect id="Rectangle_168" data-name="Rectangle 168" class="cls-1" width="31.05" height="4.6" rx="1.53"/><rect id="Rectangle_169" data-name="Rectangle 169" class="cls-1" y="18.4" width="31.05" height="4.6" rx="1.53"/><rect id="Rectangle_170" data-name="Rectangle 170" class="cls-1" y="9.2" width="31.05" height="4.6" rx="1.53"/></g></svg>
+
+									</span>
+									<span class="sr-only">label.global.header.menu</span>
+								</button>
+							</div>
+                        <div class="mobile_only">
+							<div class="mobile__nav__row--table-cell logo">
+								<div class="mobile__nav__row--btn btn mobile__nav__row--btn-search hidden-md hidden-lg">
+										<div id="MobileHeaderLogo" class="header-logo MobileHeaderLogo">
+
+											<div class="yCmsComponent yComponentWrapper">
+<div class="banner__component banner">
+	<a href="/"><img title="FE Logo"
+						alt="FE Logo" src="/medias/sys_master/images/images/9847947100190/Future-F-RGB-Mobile-LG.svg"></a>
+				</div></div></div>
+
+										<span class="sr-only">label.global.header.logo</span>
+									</div>
+
+								</div>
+                         <div class="mobile__nav__row--table-cell hidden-md hidden-lg new_modification">
+                         									  <li class="select-list phone-li">
+            <a class="select-label-phone" href="tel:1 (800) 675-1619"><svg xmlns="http://www.w3.org/2000/svg" height="20" id="Layer_1" data-name="Layer 1" viewBox="0 0 17 17" class="svg phone-svg replaced-svg" height="20"><path id="solid_phone-alt" data-name="solid phone-alt" d="M16.52,12,12.8,10.42a.79.79,0,0,0-.93.23l-1.65,2A12.26,12.26,0,0,1,4.34,6.78l2-1.65a.8.8,0,0,0,.23-.93L5,.48A.79.79,0,0,0,4.07,0L.62.82A.79.79,0,0,0,0,1.59,15.4,15.4,0,0,0,15.39,17h0a.79.79,0,0,0,.77-.62l.8-3.45a.81.81,0,0,0-.46-.92Z"></path></svg> <span>1 (800) 675-1619</span></a>
+        </li>
+    </div>
+
+
+							<div class="mobile__nav__row--table-cell hidden-md hidden-lg search-toggle">
+										<a href="/store-finder" class="mobile__nav__row--btn mobile__nav__row--btn-search btn mobile_nav_search">
+											<span class="icon icon-FutureElectronics-Search"></span>
+										</a>
+									</div>
+								<div class="mobile__nav__row--table-cell  hidden-lg finder">
+                                                        										<a href="javascript:void(0);" onclick="LC_API.open_chat_window();return false;" class="mobile__nav__row--btn mobile__nav__row--btn-location btn">
+                                                        										<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 20 20" style="enable-background:new 0 0 20 20;" xml:space="preserve">
+                                                                                                <style type="text/css">
+                                                                                                	.st0{fill:#FFFFFF;}
+                                                                                                </style>
+                                                                                                <g id="Group_1200" transform="translate(-270 -78.035)">
+                                                                                                	<g id="Live_Chat" transform="translate(270 78.035)" style="&#10;    color: red;&#10;">
+                                                                                                		<path id="solid_comment-alt" class="st0" d="M17.5,0h-15C1.12,0,0,1.12,0,2.5v11.25c0,1.38,1.12,2.5,2.5,2.5h3.75v3.28    c0,0.26,0.21,0.47,0.47,0.47c0.1,0,0.2-0.03,0.28-0.09l4.88-3.66h5.62c1.38,0,2.5-1.12,2.5-2.5V2.5C20,1.12,18.88,0,17.5,0z"/>
+                                                                                                	</g>
+                                                                                                </g>
+                                                                                                </svg>
+
+
+
+                                                        										</a>
+                                                        									</div>
+
+							<div class="mobile__nav__row--table-cell hidden-md hidden-lg mobile-miniCartSlot ">
+								<a href="javascript:void(0)"
+									data-cart-page-url="/cart"
+									data-mini-cart-refresh-url="/cart/miniCart/SUBTOTAL"
+									 class="mobile__nav__row--btn mobile__nav__row--btn-cart btn js-mini-cart-mobile-link">
+									<span class="icon icon-FutureElectronics-ShoppingCart"></span>
+									<span class="items-count-container">
+										<span class="icon icon-FutureElectronics-Check-ClosedCircle selected"></span>
+										<span class="items-total">0</span>
+									</span>
+								</a>
+							</div>
+							<div class=" mobile__nav__row--table-cell  hidden-lg liUserSign" data-automation-ref="HP_RegisterLogin" itemprop="name">
+                    	<span class="mob-acc-icon" style="display:none;"><img src="/_ui/addons/febrowseaddon/responsive/theme-green/images/home/user-account.svg" alt="profile" class="mob-pro-svg svg"> </span>
+                        <a class="userSign mob-user-login" itemprop="url" href="/login">
+
+                            <span class="mob-acc"> My Account / Register</span>
+                        </a>
+                    </div>
+                </div>
+
+        <div class="tablet_only">
+           <li class="select-list phone-li">
+            <a class="select-label-phone" href="tel:1 (800) 675-1619"><svg xmlns="http://www.w3.org/2000/svg" height="20" id="Layer_1" data-name="Layer 1" viewBox="0 0 17 17" class="svg phone-svg replaced-svg" height="20"><path id="solid_phone-alt" data-name="solid phone-alt" d="M16.52,12,12.8,10.42a.79.79,0,0,0-.93.23l-1.65,2A12.26,12.26,0,0,1,4.34,6.78l2-1.65a.8.8,0,0,0,.23-.93L5,.48A.79.79,0,0,0,4.07,0L.62.82A.79.79,0,0,0,0,1.59,15.4,15.4,0,0,0,15.39,17h0a.79.79,0,0,0,.77-.62l.8-3.45a.81.81,0,0,0-.46-.92Z"></path></svg> <span>1 (800) 675-1619</span></a>
+        </li>
+    <ul class="nav__links--primary pull-right  right-sec-site">
+			    <li class="bom-li">
+					<a href="/bom" class="bom_desktop">
+					    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 15.82 16.95" class="bom-svg svg fe-d-none replaced-svg"><path id="ic_file_upload_24px" data-name="ic file upload 24px" d="M4.52,13H11.3V7h4.52L7.91,0,0,7H4.52ZM0,15H15.82v2H0Z"></path></svg>
+						<span class="icon icon-FutureElectronics-Upload"></span>
+						BOM</a>
+					<a href="/bom" class="bom-tab">
+                        <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 15.82 16.95" class="bom-svg svg fe-d-none replaced-svg"><path id="ic_file_upload_24px" data-name="ic file upload 24px" d="M4.52,13H11.3V7h4.52L7.91,0,0,7H4.52ZM0,15H15.82v2H0Z"></path></svg>
+                        <span class="icon icon-FutureElectronics-Upload"></span>
+                        BOM</a>
+				</li>
+				<li class="nav-add-to-list">
+<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 14.76 16.87" class="list-svg svg fe-d-none replaced-svg"><path id="ic_receipt_24px" data-name="ic receipt 24px" d="M12.3,12.65H2.46V11H12.3Zm0-3.37H2.46V7.59H12.3Zm0-3.38H2.46V4.22H12.3ZM0,16.87,1.23,15.6l1.23,1.26L3.69,15.6l1.23,1.26L6.15,15.6l1.23,1.26L8.61,15.6l1.23,1.26,1.23-1.26,1.23,1.26,1.23-1.26,1.23,1.26V0L13.53,1.27,12.3,0,11.07,1.27,9.84,0,8.61,1.27,7.38,0,6.15,1.27,4.92,0,3.69,1.27,2.46,0,1.23,1.27,0,0Z"></path></svg>
+	<span class="icon icon-FutureElectronics-List"></span>
+	<a href="/my-account/lists" class="list-text">Lists</a>
+	<span class="added-show icon icon-FutureElectronics-Check-ClosedCircle"></span>
+	<input type="hidden" name="add-to-wishlist" value="Add To List" />
+	<div class="wish-list-container js-wish-list-container hidden-xs" id="wish-list-container"></div>
+</li><li class="nav-cart cart" data-automation-ref="GL_MiniCart">
+<a 	href="javascript:void(0)"	
+		class="mini-cart-link js-mini-cart-link"
+		data-cart-page-url="/cart"
+		data-mini-cart-url="/cart/rollover/MiniCart_GC"
+		data-mini-cart-refresh-url="/cart/miniCart/SUBTOTAL"
+		data-mini-cart-name="Cart"
+		data-mini-cart-empty-name="Empty Cart"
+		data-mini-cart-items-text=""
+		aria-disabled = "true" tabindex="-1"
+		data-cart-count="0"
+		>
+		<span class="mini-cart-icon">
+			<span class="icon icon-FutureElectronics-ShoppingCart"></span>
+		</span>
+		<span class="icon icon-FutureElectronics-Check-ClosedCircle selected"></span>
+		<span class="mini-cart-count js-mini-cart-count">
+                <span class="nav-items-total">
+                    
+                            0
+                        </span>
+            </span>
+        <span class="hidden-sm hidden-md hidden-lg hidden-xs label-text">
+		
+		
+		
+			Cart</span>
+	</a>
+
+<div class="mini-cart-container js-mini-cart-container hidden-xs" id="mini-cart-container"></div>
+</li>
+<!--
+                <li>
+                    <a href="javascript:void(0);" onclick="LC_API.open_chat_window();return false;">
+                        <span class="icon icon-FutureElectronics-SpeechBubble"></span>
+                        <span>Live Chat</span>
+                    </a>
+                </li>
+                -->
+
+
+				<li class=" mobile__nav__row--table-cell nav__links--primary  hidden-lg liUserSign" data-automation-ref="HP_RegisterLogin" itemprop="name" style="display:inline-block !important;">
+                                                                             	<span class="mob-acc-icon" style="display:none;"><img src="/_ui/addons/febrowseaddon/responsive/theme-green/images/home/user-account.svg" alt="profile" class="mob-pro-svg svg"> </span>
+                                                                                 <a class="userSign mob-user-login" itemprop="url" href="/login">
+
+                                                                                     <span class="mob-acc"> My Account / Register</span>
+                                                                                 </a>
+                                                                             </li>
+                </ul>
+            </div>
+
+
+
+
+						</div>
+					</div>
+				</div>
+				<div class="mobile-cart-container  hidden-md hidden-lg">
+					<span class="icon icon-FutureElectronics-Check-ClosedCircle"></span>
+					<span class="item-count-data"></span>
+					new item(s) added to Cart.</div>
+			</div>
+		</div>
+		<div class="search-mdiv">
+		    <div class="container">
+		        <div class="row desktop__nav">
+                    <div class="nav__left">
+                        <div class="row">
+                            <div class="col-sm-3 col-md-2 header-logo" id="HeaderLogo">
+
+                                <div class="yCmsComponent yComponentWrapper">
+<div class="banner__component banner">
+	<a href="/"><img title="Future Electronics"
+						alt="Future Electronics" src="/medias/sys_master/images/images/11013544509470/logo-dp.svg"></a>
+				</div></div></div>
+                            <div class="col-sm-9 col-md-10 search-container">
+                                <button class="sticky-toggle-menu js-sticky-toggle-menu" type="button">
+                                        <span class="icon icon-FutureElectronics-HamburgerMenu menu"></span>
+                                        <span class="icon icon-FutureElectronics-Close close-btn"></span>
+                                    </button>
+                                <div class="site-search">
+                                <div class="ui-front">
+                                    <div class="yCmsComponent">
+<form name="search_form_SearchBox_GC" method="get" action="/search">
+    <div class="input-group">
+        <label class="sr-only" for="js-site-search-input">Search Results</label>
+            <input type="text" name="text" required="required" id="js-site-search-input" class="form-control js-site-search-input ui-autocomplete-input" name="text" value=""
+                maxlength="100" placeholder="Search the largest available to sell inventory"
+                data-options='{"autocompleteUrl" : "/search/autocomplete/SearchBox_GC","minCharactersBeforeRequest" : "3","waitTimeBeforeRequest" : "500","displayProductImages" : true}' data-automation-ref="GL_SearchBar">
+        <span class="input-group-btn">
+            <button class="btn btn-link" type="submit" data-automation-ref="GL_Search">
+                    <span class="icon icon-FutureElectronics-Search"></span>
+                    <span class="sr-only">Search Results</span>
+                        </button>
+            </span>
+    </div>
+</form>
+
+
+</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+		    </div>
+		</div>
+	</nav>
+	<a id="skiptonavigation"></a>
+
+	<nav
+		class="navigation navigation--bottom js_navigation--bottom js-enquire-offcanvas-navigation header-div-nav"
+		data-automation-ref="GL_Navigation">
+		<div class="container">
+			<!-- <ul class="sticky-nav-top js-sticky-user-group  hidden-md hidden-lg">
+
+                </ul> -->
+			<div class="navigation__overflow mob_header_nav" itemscope itemtype="http://www.schema.org/SiteNavigationElement">
+				<button type="button" class="js-toggle-sm-navigation btn">
+					<span class="icon icon icon-FutureElectronics-HamburgerMenu"></span><span
+						class="sr-only">label.global.header.close</span>
+				</button>
+
+				<ul data-trigger="#signedInUserOptionsToggle"
+					class="nav__links nav__links--products nav__links--mobile js-userAccount-Links js-nav-collapse-body offcanvasGroup1 collapse in hidden-md hidden-lg">
+					</ul>
+				<ul class="nav__links nav__links--products js-offcanvas-links nav__links-mainlinks hidden-xs hidden-sm">
+
+					<li class="auto nav__links--primary nav__links--primary auto nav__links--primary-has__sub js-enquire-has-sub nav__links--primary-has__sub js-enquire-has-sub js-category-has-sub">
+            <span class="yCmsComponent nav__link js_nav__link">
+<a href="#" title="Products">Products</a></span><span class="glyphicon  glyphicon-chevron-right hidden-md hidden-lg nav__link--drill__down js_nav__link--drill__down"></span>
+                <div class="sub__navigation js_sub__navigation nav_dropdowninit full-view">
+                    <div class="sub__navigation_drop_cont">
+                    <div class="row sub_nav_section">
+                        <div class="sub-navigation-section col-sm-4 col-md-20-percent">
+                                <break>
+                                   <a href="/c/semiconductors/analog" class="title" title="Analog">Analog</a><ul class="sub-navigation-list has-title">
+                                <li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/analog--amplifiers" title="Amplifiers">Amplifiers</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/analog--analog-switches" title="Analog Switches">Analog Switches</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/analog--comparators" title="Comparators">Comparators</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/analog--data-converters" title="Data Converters">Data Converters</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/analog--digital-potentiometers" title="Digital Potentiometers">Digital Potentiometers</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/analog--drivers" title="Drivers">Drivers</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/analog--multiplexer-demultiplexer" title="Multiplexers/Demultiplexers">Multiplexers/Demultiplexers</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/analog--power-controllers" title="Power Controllers">Power Controllers</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/analog--power-switches" title="Power Switches">Power Switches</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/analog--regulators-reference" title="Regulators References">Regulators References</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/analog--sensors" title="Sensors">Sensors</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/analog--system-management" title="System Management">System Management</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/analog--timer-circuits" title="Timer Circuits">Timer Circuits</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/analog" title="View all">View all</a></li></ul>
+                            </div>
+                        <div class="sub-navigation-section col-sm-4 col-md-20-percent">
+                                <break>
+                                   <a href="/c/passives/capacitors" class="title" title="Capacitors">Capacitors</a><ul class="sub-navigation-list has-title">
+                                <li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/passives/capacitors--aluminum-electrolytic-capacitors" title="Aluminum Electrolytic Capacitors">Aluminum Electrolytic Capacitors</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/passives/capacitors--aluminum-organic-polymer" title="Aluminum Polymer Capacitors">Aluminum Polymer Capacitors</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/passives/capacitors--ceramic-capacitors" title="Ceramic Capacitors">Ceramic Capacitors</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/passives/capacitors--feed-through-capacitors/products" title="Feed Through Capacitors">Feed Through Capacitors</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/passives/capacitors--film-capacitors" title="Film Capacitors">Film Capacitors</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/passives/capacitors--mica-capacitors" title="Mica Capacitors">Mica Capacitors</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/passives/capacitors--niobium-oxide-capacitors" title="Niobium Oxide Capacitors">Niobium Oxide Capacitors</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/passives/capacitors--rf-capacitors" title="RF Capacitors">RF Capacitors</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/passives/capacitors--super-caps" title="Super Caps">Super Caps</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/passives/capacitors--tantalum-capacitors" title="Tantalum Capacitors">Tantalum Capacitors</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/passives/capacitors" title="View all">View all</a></li></ul>
+                            </div>
+                        <div class="sub-navigation-section col-sm-4 col-md-20-percent">
+                                <break>
+                                   <a href="/c/electromechanical/circuit-protection" class="title" title="Circuit Protection">Circuit Protection</a><ul class="sub-navigation-list has-title">
+                                <li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/electromechanical/circuit-protection--circuit-breakers" title="Circuit Breakers">Circuit Breakers</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/electromechanical/circuit-protection--electronic-fuses" title="Electronic Fuses">Electronic Fuses</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/electromechanical/circuit-protection--power-thyristors" title="Power Thyristors">Power Thyristors</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/electromechanical/circuit-protection--protection-thyristors" title="Protection Thyristors">Protection Thyristors</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/electromechanical/circuit-protection--resettable-fuse" title="Resettable Fuses">Resettable Fuses</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/electromechanical/circuit-protection--tvs-diodes" title="TVS Diodes">TVS Diodes</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/discretes--discretes-circuit-protection--varistors-mov-mlv" title="Varistors (MOV/MLV)">Varistors (MOV/MLV)</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/electromechanical/circuit-protection" title="View all">View all</a></li></ul>
+                            </div>
+                        <div class="sub-navigation-section col-sm-4 col-md-20-percent">
+                                <break>
+                                   <a href="/c/interconnect" class="title" title="Connectors">Connectors</a><ul class="sub-navigation-list has-title">
+                                <li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/interconnect/cable-assemblies" title="Cable Assemblies">Cable Assemblies</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/interconnect/connectors-circular" title="Circular Connectors">Circular Connectors</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/interconnect/connectors-rectangular-plastic-industrial" title="Connector Housings">Connector Housings</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/interconnect/pin-and-socket-connectors--crimp-terminals" title="Crimp Terminals">Crimp Terminals</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/interconnect/dual-in-line-package-sockets" title="IC Sockets">IC Sockets</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/interconnect/connectors-pcb" title="PCB">PCB</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/interconnect/terminal-blocks" title="Terminal Blocks">Terminal Blocks</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/interconnect" title="View all">View all</a></li></ul>
+                            </div>
+                        <div class="sub-navigation-section col-sm-4 col-md-20-percent">
+                                <break>
+                                   <a href="/c/semiconductors/comm-products" class="title" title="Comm Products">Comm Products</a><ul class="sub-navigation-list has-title">
+                                <li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/comm-products--can" title="CAN">CAN</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/comm-products--controllers" title="Controllers">Controllers</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/comm-products--switch" title="Ethernet">Ethernet</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/comm-products--i2c" title="I2C">I2C</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/comm-products--phy" title="PHY">PHY</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/comm-products--t1-e1" title="T1/E1">T1/E1</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/comm-products" title="View all">View all</a></li></ul>
+                            </div>
+                        <div class="sub-navigation-section col-sm-4 col-md-20-percent">
+                                <break>
+                                   <a href="/c/development-tools" class="title" title="Development Tools">Development Tools</a><ul class="sub-navigation-list has-title">
+                                <li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/development-tools/analog-power" title="Analog &amp; Power">Analog &amp; Power</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/development-tools/communication" title="Communication">Communication</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/development-tools/development-tool-hardware" title="Dev Tools - Hardware">Dev Tools - Hardware</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/development-tools/development-software" title="Dev Tools - Software">Dev Tools - Software</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/development-tools/microcontroller-microprocessor" title="Microcontroller &amp; Microprocessor">Microcontroller &amp; Microprocessor</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/wireless-rf--rf-wireless" title="RF / Wireless">RF / Wireless</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/development-tools" title="View all">View all</a></li></ul>
+                            </div>
+                        <div class="sub-navigation-section col-sm-4 col-md-20-percent">
+                                <break>
+                                   <a href="/c/semiconductors/discretes--diodes" class="title" title="Diodes">Diodes</a><ul class="sub-navigation-list has-title">
+                                <li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/discretes--diodes--bridge-rectifiers" title="Bridge Rectifiers">Bridge Rectifiers</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/discretes--diodes--current-limiting-diodes/products" title="Current Limiting Diodes">Current Limiting Diodes</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/discretes--diodes--fast-rectifiers" title="Fast Rectifiers">Fast Rectifiers</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/discretes--diodes--pin-diodes-rf/products" title="PIN Diodes">PIN Diodes</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/discretes--diodes--schottky-diodes/products" title="Schottky Diodes">Schottky Diodes</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/discretes--diodes--scottky-rectifiers/products" title="Schottky Rectifiers">Schottky Rectifiers</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/discretes--diodes--small-signal-diodes/products" title="Small Signal Diodes">Small Signal Diodes</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/discretes--diodes--standard-rectifiers/products" title="Standard Rectifiers">Standard Rectifiers</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/discretes--diodes--switching/products" title="Switching Diodes">Switching Diodes</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/discretes--diodes--tuning-varactor/products" title="Tuning/Varactor Diodes">Tuning/Varactor Diodes</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/discretes--diodes--ultrafast-rectifiers/products" title="Ultrafast Rectifiers">Ultrafast Rectifiers</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/discretes--diodes--zener/products" title="Zener">Zener</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/discretes--diodes" title="View all">View all</a></li></ul>
+                            </div>
+                        <div class="sub-navigation-section col-sm-4 col-md-20-percent">
+                                <break>
+                                   <a href="/c/semiconductors/discretes" class="title" title="Discretes">Discretes</a><ul class="sub-navigation-list has-title">
+                                <li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/discretes--diodes" title="Diodes">Diodes</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/discretes--diodes--silicon-carbide-diode-sic-diodes/products" title="Silicon Carbide Diodes">Silicon Carbide Diodes</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/discretes--transistors--silicon-carbide-mosfets-sic-mosfets/products" title="Silicon Carbide MOSFETs">Silicon Carbide MOSFETs</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/discretes--transistors" title="Transistors">Transistors</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/discretes" title="View all">View all</a></li></ul>
+                            </div>
+                        <div class="sub-navigation-section col-sm-4 col-md-20-percent">
+                                <break>
+                                   <a href="/c/semiconductors/lcd-display-solutions" class="title" title="Display Solutions">Display Solutions</a><ul class="sub-navigation-list has-title">
+                                <li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/lcd-display-solutions--controllers-displays" title="Display Controllers">Display Controllers</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/lcd-display-solutions--displays" title="Displays">Displays</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/lcd-display-solutions--touch-screens" title="Touch Screens">Touch Screens</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/lcd-display-solutions" title="View all">View all</a></li></ul>
+                            </div>
+                        <div class="sub-navigation-section col-sm-4 col-md-20-percent">
+                                <break>
+                                   <a href="/c/electromechanical" class="title" title="Electromechanical">Electromechanical</a><ul class="sub-navigation-list has-title">
+                                <li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/electromechanical/batteries" title="Batteries">Batteries</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/electromechanical/battery-holders-accessories" title="Battery Holders Accessories">Battery Holders Accessories</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/electromechanical/circuit-protection" title="Circuit Protection">Circuit Protection</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/electromechanical/timing-devices" title="Frequency Control &amp; Timing Devices">Frequency Control &amp; Timing Devices</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/electromechanical/power-cords" title="Power Cords">Power Cords</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/electromechanical/power-supplies" title="Power Supplies">Power Supplies</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/electromechanical/relays" title="Relays">Relays</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/electromechanical/switches" title="Switches">Switches</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/electromechanical/thermal-management" title="Thermal Management">Thermal Management</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/electromechanical" title="View all">View all</a></li></ul>
+                            </div>
+                        <div class="sub-navigation-section col-sm-4 col-md-20-percent">
+                                <break>
+                                   <a href="/c/semiconductors/embedded-solutions/products" class="title" title="Embedded Solutions">Embedded Solutions</a><ul class="sub-navigation-list has-title">
+                                <li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/embedded-solutions--embedded-boards/products" title="Embedded Boards">Embedded Boards</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/embedded-solutions--embedded-systems" title="Embedded Systems">Embedded Systems</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/embedded-solutions/products" title="View all">View all</a></li></ul>
+                            </div>
+                        <div class="sub-navigation-section col-sm-4 col-md-20-percent">
+                                <break>
+                                   <a href="/c/semiconductors/Led-lighting-components/products" class="title" title="LED Lighting Components">LED Lighting Components</a><ul class="sub-navigation-list has-title">
+                                <li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/Led-lighting-components--cob-holders/products" title="Chip-On-Board (COB) LED Holders">Chip-On-Board (COB) LED Holders</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/Led-lighting-components--led-driver-modules-rev" title="LED Driver Modules">LED Driver Modules</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/Led-lighting-components--led-lighting/products" title="LED Lighting">LED Lighting</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/Led-lighting-components--led-lighting-optics-lenses" title="LED Lighting Optics / Lenses">LED Lighting Optics / Lenses</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/Led-lighting-components/products" title="View all">View all</a></li></ul>
+                            </div>
+                        <div class="sub-navigation-section col-sm-4 col-md-20-percent">
+                                <break>
+                                   <a href="/c/semiconductors/lighting-solutions" class="title" title="Lighting Solutions">Lighting Solutions</a><ul class="sub-navigation-list has-title">
+                                <li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/lighting-solutions--light-engine-led-assemblies" title="LED Assemblies">LED Assemblies</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/lighting-solutions--led-light-modules" title="LED Light Modules">LED Light Modules</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/lighting-solutions--led-emitters" title="LED Emitters">LED Emitters</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/lighting-solutions--lighting-controls" title="Lighting Controls">Lighting Controls</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/lighting-solutions--optics" title="Optics">Optics</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/lighting-solutions" title="View all">View all</a></li></ul>
+                            </div>
+                        <div class="sub-navigation-section col-sm-4 col-md-20-percent">
+                                <break>
+                                   <a href="/c/semiconductors/logic" class="title" title="Logic">Logic</a><ul class="sub-navigation-list has-title">
+                                <li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/logic--74-series" title="74 Series">74 Series</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/logic--bus-switch" title="Bus Switches">Bus Switches</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/logic--gates" title="Gates">Gates</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/logic--timing-solutions" title="Timing Solutions">Timing Solutions</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/logic--translators" title="Translators">Translators</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/logic" title="View all">View all</a></li></ul>
+                            </div>
+                        <div class="sub-navigation-section col-sm-4 col-md-20-percent">
+                                <break>
+                                   <a href="/c/semiconductors/memory" class="title" title="Memory">Memory</a><ul class="sub-navigation-list has-title">
+                                <li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/memory--RAM--eeprom" title="EEPROM">EEPROM</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/memory--flash" title="Flash">Flash</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/memory--flash--nand/products" title="NAND">NAND</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/memory--RAM--nvram" title="NVRAM">NVRAM</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/memory--RAM/products" title="RAM">RAM</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/memory--storage--nand-drive/products" title="Solid State Drive">Solid State Drive</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/memory--RAM--static-ram" title="Static RAM">Static RAM</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/memory--storage/products" title="Storage">Storage</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/memory" title="View all">View all</a></li></ul>
+                            </div>
+                        <div class="sub-navigation-section col-sm-4 col-md-20-percent">
+                                <break>
+                                   <a href="/c/semiconductors/microcontrollers" class="title" title="Microcontrollers">Microcontrollers</a><ul class="sub-navigation-list has-title">
+                                <li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/microcontrollers--16-bit-digital-signal-controller-dsc" title="16 bit Digital Signal Controller (DSC)">16 bit Digital Signal Controller (DSC)</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/microcontrollers--16-bit-general-purpose" title="16 bit General Purpose">16 bit General Purpose</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/microcontrollers--32-bit" title="32 bit">32 bit</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/microcontrollers--8-bit" title="8 bit">8 bit</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/microcontrollers" title="View all">View all</a></li></ul>
+                            </div>
+                        <div class="sub-navigation-section col-sm-4 col-md-20-percent">
+                                <break>
+                                   <a href="/c/semiconductors/microprocessors" class="title" title="Microprocessors">Microprocessors</a><ul class="sub-navigation-list has-title">
+                                <li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/microprocessors--digital-signal-processors" title="Digital Signal Processors">Digital Signal Processors</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/microprocessors--embedded-processors" title="Embedded Processors">Embedded Processors</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/microprocessors--networking-processors" title="Networking Processors">Networking Processors</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/microprocessors" title="View all">View all</a></li></ul>
+                            </div>
+                        <div class="sub-navigation-section col-sm-4 col-md-20-percent">
+                                <break>
+                                   <a href="/c/semiconductors/optoelectronics" class="title" title="Optoelectronics">Optoelectronics</a><ul class="sub-navigation-list has-title">
+                                <li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/optoelectronics--infrared-emitters-detectors" title="Infrared Emitters">Infrared Emitters</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/optoelectronics--infrared-receivers" title="Infrared Receivers">Infrared Receivers</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/optoelectronics--infrared-transceivers" title="Infrared Transceivers">Infrared Transceivers</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/optoelectronics--isolation-components-optocouplers" title="Isolation Components / Optocouplers">Isolation Components / Optocouplers</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/optoelectronics--lasers" title="Lasers">Lasers</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/optoelectronics--leds" title="LEDs">LEDs</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/optoelectronics--light-pipes-light-guides" title="Light Pipes &amp; Light Guides">Light Pipes &amp; Light Guides</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/optoelectronics" title="View all">View all</a></li></ul>
+                            </div>
+                        <div class="sub-navigation-section col-sm-4 col-md-20-percent">
+                                <break>
+                                   <a href="/c/passives" class="title" title="Passives">Passives</a><ul class="sub-navigation-list has-title">
+                                <li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/passives/capacitors" title="Capacitors">Capacitors</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/passives/filters" title="Filters">Filters</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/passives/inductors" title="Inductors">Inductors</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/passives/resistors" title="Resistors">Resistors</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/passives/transformers" title="Transformers">Transformers</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/passives" title="View all">View all</a></li></ul>
+                            </div>
+                        <div class="sub-navigation-section col-sm-4 col-md-20-percent">
+                                <break>
+                                   <a href="/c/electromechanical/power-supplies" class="title" title="Power Supplies">Power Supplies</a><ul class="sub-navigation-list has-title">
+                                <li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/electromechanical/power-supplies--ac-dc" title="AC/DC">AC/DC</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/electromechanical/power-supplies--accessories-power-supplies" title="Accessories - Power Supplies">Accessories - Power Supplies</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/electromechanical/power-supplies--dc-dc" title="DC/DC">DC/DC</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/electromechanical/power-supplies--power-filters" title="Power Filters">Power Filters</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/electromechanical/power-supplies" title="View all">View all</a></li></ul>
+                            </div>
+                        <div class="sub-navigation-section col-sm-4 col-md-20-percent">
+                                <break>
+                                   <a href="/c/production-products" class="title" title="Production Products">Production Products</a><ul class="sub-navigation-list has-title">
+                                <li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/production-products/cable-management" title="Cable Management">Cable Management</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/production-products/enclosures" title="Enclosures">Enclosures</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/production-products/hardware" title="Hardware">Hardware</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/production-products/labeling" title="Labeling">Labeling</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/production-products/solder" title="Solder">Solder</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/production-products/static-control" title="Static Control">Static Control</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/production-products" title="View all">View all</a></li></ul>
+                            </div>
+                        <div class="sub-navigation-section col-sm-4 col-md-20-percent">
+                                <break>
+                                   <a href="/c/semiconductors/programmable-logic" class="title" title="Programmable Logic">Programmable Logic</a><ul class="sub-navigation-list has-title">
+                                <li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/programmable-logic--cpld" title="CPLD">CPLD</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/" title="FPGA">FPGA</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/programmable-logic--fpga-configuration" title="FPGA Configuration">FPGA Configuration</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/programmable-logic--mixed-signal" title="Mixed Signal">Mixed Signal</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/programmable-logic" title="View all">View all</a></li></ul>
+                            </div>
+                        <div class="sub-navigation-section col-sm-4 col-md-20-percent">
+                                <break>
+                                   <a href="/c/semiconductors/analog--sensors" class="title" title="Sensors">Sensors</a><ul class="sub-navigation-list has-title">
+                                <li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/analog--sensors--accelerometers/products" title="Accelerometers">Accelerometers</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/analog--sensors--chemical-gas/products" title="Chemical Gas">Chemical Gas</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/analog--sensors--combo-sensors/products" title="Combo Sensors">Combo Sensors</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/analog--sensors--current/products" title="Current">Current</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/analog--sensors--humidity-dew/products" title="Humidity / Dew">Humidity / Dew</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/analog--sensors--magnetic-hall-effect/products" title="Magnetic / Hall Effect">Magnetic / Hall Effect</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/analog--sensors--gyro-angular-rate/products" title="Position">Position</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/analog--sensors--pressure/products" title="Pressure">Pressure</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/analog--sensors--temperature/products" title="Temperature">Temperature</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/analog--sensors" title="View all">View all</a></li></ul>
+                            </div>
+                        <div class="sub-navigation-section col-sm-4 col-md-20-percent">
+                                <break>
+                                   <a href="/c/semiconductors/signal-interface" class="title" title="Signal / Interface">Signal / Interface</a><ul class="sub-navigation-list has-title">
+                                <li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/signal-interface--darlington-arrays" title="Darlington Arrays">Darlington Arrays</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/signal-interface--rs-232" title="RS 232">RS 232</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/signal-interface--rs-485-422" title="RS 485/422">RS 485/422</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/signal-interface--smartcard-interface" title="Smartcard Interface">Smartcard Interface</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/signal-interface--specialty-interface" title="Specialty Interface">Specialty Interface</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/signal-interface--uart" title="UART">UART</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/signal-interface--usb" title="USB">USB</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/signal-interface" title="View all">View all</a></li></ul>
+                            </div>
+                        <div class="sub-navigation-section col-sm-4 col-md-20-percent">
+                                <break>
+                                   <a href="/c/electromechanical/switches" class="title" title="Switches">Switches</a><ul class="sub-navigation-list has-title">
+                                <li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/electromechanical/switches--detect" title="Detect">Detect</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/electromechanical/switches--dip-switch" title="Dip Switch">Dip Switch</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/electromechanical/switches--encoder-switches" title="Encoder Switch">Encoder Switch</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/electromechanical/switches--hardware-accessories" title="Hardware &amp; Accessories">Hardware &amp; Accessories</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/electromechanical/switches--key" title="Key">Key</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/electromechanical/switches--pushbutton" title="Pushbutton">Pushbutton</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/electromechanical/switches--rocker" title="Rocker">Rocker</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/electromechanical/switches--rotary" title="Rotary">Rotary</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/electromechanical/switches--slide" title="Slide">Slide</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/electromechanical/switches--snap-acting" title="Snap Acting">Snap Acting</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/electromechanical/switches--tactile" title="Tactile">Tactile</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/electromechanical/switches--toggle" title="Toggle">Toggle</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/electromechanical/switches" title="View all">View all</a></li></ul>
+                            </div>
+                        <div class="sub-navigation-section col-sm-4 col-md-20-percent">
+                                <break>
+                                   <a href="/c/electromechanical/timing-devices" class="title" title="Timing Devices">Timing Devices</a><ul class="sub-navigation-list has-title">
+                                <li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/electromechanical/timing-devices--crystals" title="Crystals">Crystals</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/electromechanical/timing-devices--oscillators" title="Oscillators">Oscillators</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/electromechanical/timing-devices--resonators" title="Resonators">Resonators</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/electromechanical/timing-devices" title="View all">View all</a></li></ul>
+                            </div>
+                        <div class="sub-navigation-section col-sm-4 col-md-20-percent">
+                                <break>
+                                   <a href="/c/electromechanical/thermal-management" class="title" title="Thermal Management">Thermal Management</a><ul class="sub-navigation-list has-title">
+                                <li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/electromechanical/thermal-management--fans" title="Fans">Fans</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/electromechanical/thermal-management--heatsinks-accessories" title="Heatsinks">Heatsinks</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/electromechanical/thermal-management--thermal-tapes" title="Thermal Accessories">Thermal Accessories</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/electromechanical/thermal-management" title="View all">View all</a></li></ul>
+                            </div>
+                        <div class="sub-navigation-section col-sm-4 col-md-20-percent">
+                                <break>
+                                   <a href="/c/semiconductors/wireless-rf" class="title" title="Wireless &amp; RF">Wireless &amp; RF</a><ul class="sub-navigation-list has-title">
+                                <li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/wireless-rf--antennas" title="Antennas">Antennas</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/wireless-rf--attenuators" title="Attenuators">Attenuators</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/wireless-rf--mixers" title="Mixers">Mixers</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/wireless-rf--receiver-ics" title="Receiver ICs">Receiver ICs</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/wireless-rf--rf-amplifiers" title="RF Amplifiers">RF Amplifiers</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/wireless-rf--rf-filters" title="RF Filters">RF Filters</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/wireless-rf--rf-modules-solutions" title="RF Modules &amp; Solutions">RF Modules &amp; Solutions</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/c/semiconductors/wireless-rf" title="View all">View all</a></li></ul>
+                            </div>
+                        </div>
+                </div>
+                </div>
+
+            </li>
+
+    <li class="auto nav__links--primary nav__links--primary auto nav__links--primary-has__sub js-enquire-has-sub ">
+            <span class="yCmsComponent nav__link js_nav__link">
+<a href="/manufacturers" title="Manufacturers">Manufacturers</a></span></li>
+
+    <li class="auto nav__links--primary nav__links--primary auto nav__links--primary-has__sub js-enquire-has-sub ">
+            <span class="yCmsComponent nav__link js_nav__link">
+<a href="/c/development-tools" title="Kits &amp; Tools">Kits &amp; Tools</a></span></li>
+
+    <li class="auto nav__links--primary nav__links--primary auto nav__links--primary-has__sub js-enquire-has-sub ">
+            <span class="yCmsComponent nav__link js_nav__link">
+<a href="/npi" title="New Products">New Products</a></span></li>
+
+    <li class="auto nav__links--primary nav__links--primary auto nav__links--primary-has__sub js-enquire-has-sub nav__links--primary-has__sub js-enquire-has-sub js-category-has-sub">
+            <span class="yCmsComponent nav__link js_nav__link">
+<a href="/our-solutions" title="Our Solutions">Our Solutions</a></span><span class="glyphicon  glyphicon-chevron-right hidden-md hidden-lg nav__link--drill__down js_nav__link--drill__down"></span>
+                <div class="sub__navigation js_sub__navigation nav_dropdowninit fixed-view">
+                    <div class="sub__navigation_drop_cont">
+                    <div class="row sub_nav_section">
+                        <div class="sub-navigation-section col-sm-12">
+                                <ul class="sub-navigation-list has-title">
+                                <li class="yCmsComponent nav__link--secondary grid-item">
+<a href="https://www.futureelectronics.com/our-solutions/aerospace-and-defense" title="Aerospace &amp; Defense">Aerospace &amp; Defense</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/our-solutions/automation" title="Automation">Automation</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/our-solutions/energy-innovation" title="Energy Innovation">Energy Innovation</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/our-solutions/health-and-wellness" title="Health &amp; Wellness">Health &amp; Wellness</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="https://www.futureelectronics.com/our-solutions/supply-chain-solutions" title="Supply Chain Solutions">Supply Chain Solutions</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/our-solutions/transportation" title="Transportation">Transportation</a></li></ul>
+                            </div>
+                        </div>
+                </div>
+                </div>
+
+            </li>
+
+    <li class="auto nav__links--primary nav__links--primary auto nav__links--primary-has__sub js-enquire-has-sub nav__links--primary-has__sub js-enquire-has-sub js-category-has-sub">
+            <span class="yCmsComponent nav__link js_nav__link">
+<a href="/resources" title="Resources">Resources</a></span><span class="glyphicon  glyphicon-chevron-right hidden-md hidden-lg nav__link--drill__down js_nav__link--drill__down"></span>
+                <div class="sub__navigation js_sub__navigation nav_dropdowninit fixed-view">
+                    <div class="sub__navigation_drop_cont">
+                    <div class="row sub_nav_section">
+                        <div class="sub-navigation-section col-sm-12">
+                                <ul class="sub-navigation-list has-title">
+                                <li class="yCmsComponent nav__link--secondary grid-item">
+<a href="https://content.futureelectronics.com" title="Content Library">Content Library</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="https://www.futureelectronics.com/tools/conversion-calculators" title="Conversion Calculators">Conversion Calculators</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="https://content.futureelectronics.com/events" title="Events">Events</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/resources/featured-products" title="Featured Products">Featured Products</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/resources/future-picks" title="Future Picks">Future Picks</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="https://www.futureelectronics.com/our-solutions/iot-designer-guide" title="IoT Designer Guide">IoT Designer Guide</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="/resources/market-conditions-report" title="Market Conditions">Market Conditions</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="https://content.futureelectronics.com/news/" title="Press Releases">Press Releases</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="https://content.futureelectronics.com/techventures" title="TechVentures with Lazina">TechVentures with Lazina</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="https://content.futureelectronics.com/the-current-vodcast" title="The Current Video Podcast">The Current Video Podcast</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="https://www.futureelectronics.com/tools" title="Tools">Tools</a></li><li class="yCmsComponent nav__link--secondary grid-item">
+<a href="https://www.youtube.com/c/futureelectronics" title="Videos" target="_blank" rel="noopener noreferrer">Videos</a></li></ul>
+                            </div>
+                        </div>
+                </div>
+                </div>
+
+            </li>
+
+    <li class="auto nav__links--primary nav__links--primary auto nav__links--primary-has__sub js-enquire-has-sub ">
+            <span class="yCmsComponent nav__link js_nav__link">
+<a href="https://www.futureelectronics.com/ftm/" title="FTM">FTM</a></span></li>
+
+    <li class="live_chat">
+    <a href="javascript:void(0);" onclick="LC_API.open_chat_window();return false;">
+        <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 16.97 16.97" class="chat-svg svg replaced-svg"><path id="solid_comment-alt" data-name="solid comment-alt" d="M14.85,0H2.12A2.12,2.12,0,0,0,0,2.12v9.54a2.13,2.13,0,0,0,2.12,2.13H5.3v2.78a.4.4,0,0,0,.4.4.36.36,0,0,0,.23-.08l4.14-3.1h4.77A2.14,2.14,0,0,0,17,11.67V2.12A2.13,2.13,0,0,0,14.85,0Z"></path></svg>
+        <span>Live Chat</span>
+    </a>
+</li></ul>
+
+				<div class="toggle-navigation-container">
+					<div class="toggle-navigation-content">
+					<a href="javascript:void(0);" class="toggle-back">
+						<span class="icon icon-FutureElectronics-Left-full"></span>
+						Back</a>
+
+
+                 <!--    
+ -->
+
+					<div class="mobile-nav-footer">
+						<!-- <ul class="nav__links--primary">
+							<li class="nav-add-to-list">
+								<span class="icon icon-FutureElectronics-List"></span>
+								<a href="/my-account/lists" class="list-text">Lists</a>
+							</li>
+							<li class="nav-cart cart" data-automation-ref="GL_MiniCart">
+								<a href="/cart">
+									<span class="mini-cart-icon">
+										<span class="icon icon-FutureElectronics-ShoppingCart"></span>
+									</span>
+									<span class="label-text">Cart</span>
+								</a>
+							</li>
+							<li><a href="/bom"> <span
+									class="icon icon-FutureElectronics-Upload"></span>
+									BOM</a></li>
+							<li><a href="javascript:void(0);" onclick="LC_API.open_chat_window();return false;"> <span
+									class="icon icon-FutureElectronics-SpeechBubble"></span> <span
+									class="label-text">Live Chat</span>
+							</a></li> -->
+							<!--  -->
+							<!-- 	<li class=" auto nav__links--primary-has__sub auto nav__links--primary-has__sub js-category-has-sub nav__level-1">
+								<a href="/" class="move-to-lang">
+									<span class="text">English</span>
+									<span class="icon icon-FutureElectronics-Right-closed pull-right"></span>
+								</a>
+
+							</li> -->
+						<!-- 	<li class="change-list">
+								<a href="javascript:void(0);" class="move-to-lang">
+									<span class="text">English</span>
+									<span class="icon icon-FutureElectronics-Right-closed pull-right"></span>
+								</a>
+							</li> -->
+
+
+
+						<!-- </ul> -->
+						<div class="mobile_nav_lang_select">
+							<li class="select-list" data-automation-ref="GL_Geo">
+		<div class="dropdown fe-theme country-select top-fixed-select">
+
+   	    <button class="select-label dropdown-toggle" type="button" data-toggle="dropdown">
+   	    <img src=""/>
+                                    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 17 17" class="globe-svg svg d-none replaced-svg"><defs><style>.cls-1{fill:#737373;}</style></defs><path id="solid_globe" data-name="solid globe" class="cls-1" d="M11.54,5.21C11,2.15,9.87,0,8.5,0S6,2.15,5.47,5.21ZM5.21,8.5c0,.73,0,1.47.11,2.2h6.36c.07-.73.11-1.46.11-2.19s0-1.47-.11-2.2H5.32C5.25,7,5.21,7.77,5.21,8.5ZM16.34,5.21A8.52,8.52,0,0,0,10.93.35a11.7,11.7,0,0,1,1.71,4.86ZM6.07.36A8.53,8.53,0,0,0,.66,5.21h3.7A11.66,11.66,0,0,1,6.07.36ZM16.71,6.31H12.78c.07.72.11,1.46.11,2.19s0,1.48-.11,2.2h3.93A8.63,8.63,0,0,0,17,8.5a8.5,8.5,0,0,0-.29-2.19ZM4.11,8.5a19.82,19.82,0,0,1,.12-2.19H.29a8.34,8.34,0,0,0,0,4.38H4.22C4.15,10,4.11,9.24,4.11,8.5Zm1.36,3.29C6,14.85,7.14,17,8.5,17s2.54-2.15,3-5.21Zm5.46,4.86a8.52,8.52,0,0,0,5.41-4.86h-3.7a11.56,11.56,0,0,1-1.71,4.86ZM.66,11.79a8.53,8.53,0,0,0,5.42,4.86,11.58,11.58,0,0,1-1.72-4.86Z"></path><path id="solid_globe-2" data-name="solid globe" d="M11.54,5.21C11,2.15,9.87,0,8.5,0S6,2.15,5.47,5.21ZM5.21,8.5c0,.73,0,1.47.11,2.2h6.36c.07-.73.11-1.46.11-2.19s0-1.47-.11-2.2H5.32C5.25,7,5.21,7.77,5.21,8.5ZM16.34,5.21A8.52,8.52,0,0,0,10.93.35a11.7,11.7,0,0,1,1.71,4.86ZM6.07.36A8.53,8.53,0,0,0,.66,5.21h3.7A11.66,11.66,0,0,1,6.07.36ZM16.71,6.31H12.78c.07.72.11,1.46.11,2.19s0,1.48-.11,2.2h3.93A8.63,8.63,0,0,0,17,8.5a8.5,8.5,0,0,0-.29-2.19ZM4.11,8.5a19.82,19.82,0,0,1,.12-2.19H.29a8.34,8.34,0,0,0,0,4.38H4.22C4.15,10,4.11,9.24,4.11,8.5Zm1.36,3.29C6,14.85,7.14,17,8.5,17s2.54-2.15,3-5.21Zm5.46,4.86a8.52,8.52,0,0,0,5.41-4.86h-3.7a11.56,11.56,0,0,1-1.71,4.86ZM.66,11.79a8.53,8.53,0,0,0,5.42,4.86,11.58,11.58,0,0,1-1.72-4.86Z"></path></svg>
+                                    USD ($)
+                        			<span class="caret"></span>
+         </button>
+        <ul class="dropdown-menu dropdown-list">
+            <li class="default"><a href="javascript:void(0);">Region & Currency</a></li>
+			<li class="region">
+                    <a href="javascript:void(0);"  class="selected-curr">
+                        Americas<span class="icon icon-FutureElectronics-Plus_V2 pull-right plux"></span>
+                        <span class="icon icon-FutureElectronics-Minus_V2 pull-right minus"></span>
+                    </a>
+                    <ul class="country-list">
+                                  <div class="country-ftz">
+                                        <p class="other-currencies-nav">Shipping Country</p>
+                                        <div class="currency-group1">
+                                           <div class="myForm">
+                                           <label>
+                                               <input type="radio" name="shippingCountry1" value="CA" >
+                                               <span>Canada</span>
+                                              </label>
+                                              <label>
+                                               <input type="radio" name="shippingCountry1" value="US" >
+                                               <span>United States</span>
+                                              </label>
+                                              </div>
+                                        </div>
+                                     </div>
+                                  <li class="other-currencies-nav">Other Currencies</li>
+        				<li>
+                                		<a class="currency-select" href="javascript:void(0);" data-anonym-selectedSite="futureelectronics_northamerica" data-anonym-selectedIsoCode="CAD" data-anonym-selectedCountry="">
+                                            <span>CAD&nbsp;($)</span>
+                                        </a>
+                               		</li>
+    							<li class="selected active">
+                                		<a href="javascript:void(0);" data-anonym-selectedSite="futureelectronics_northamerica" data-anonym-selectedIsoCode="USD" data-anonym-selectedCountry="">
+                                            <span>USD&nbsp;($)</span>
+                                        </a>
+                               		</li>
+    							</ul>
+                </li>
+            <li class="region">
+                    <a href="javascript:void(0);"  class="selected-curr">
+                        Asia Pacific<span class="icon icon-FutureElectronics-Plus_V2 pull-right plux"></span>
+                        <span class="icon icon-FutureElectronics-Minus_V2 pull-right minus"></span>
+                    </a>
+                    <ul class="country-list">
+                                  <li class="other-currencies-nav">Other Currencies</li>
+        				<li>
+                                		<a class="currency-select" href="javascript:void(0);" data-anonym-selectedSite="futureelectronics_apac" data-anonym-selectedIsoCode="AUD" data-anonym-selectedCountry="">
+                                            <span>AUD&nbsp;($)</span>
+                                        </a>
+                               		</li>
+    							<li>
+                                		<a class="currency-select" href="javascript:void(0);" data-anonym-selectedSite="futureelectronics_apac" data-anonym-selectedIsoCode="JPY" data-anonym-selectedCountry="">
+                                            <span>JPY&nbsp;(¥)</span>
+                                        </a>
+                               		</li>
+    							<li>
+                                		<a class="currency-select" href="javascript:void(0);" data-anonym-selectedSite="futureelectronics_apac" data-anonym-selectedIsoCode="KRW" data-anonym-selectedCountry="">
+                                            <span>KRW&nbsp;(₩)</span>
+                                        </a>
+                               		</li>
+    							</ul>
+                                <ul class="country-list">
+                                <li>
+                                		<a class="currency-select" href="javascript:void(0);" data-anonym-selectedSite="futureelectronics_apac" data-anonym-selectedIsoCode="MYR" data-anonym-selectedCountry="">
+                                            <span>MYR&nbsp;(RM)</span>
+                                        </a>
+                               		</li>
+    							<li>
+                                		<a class="currency-select" href="javascript:void(0);" data-anonym-selectedSite="futureelectronics_apac" data-anonym-selectedIsoCode="NZD" data-anonym-selectedCountry="">
+                                            <span>NZD&nbsp;($)</span>
+                                        </a>
+                               		</li>
+    							<li>
+                                		<a class="currency-select" href="javascript:void(0);" data-anonym-selectedSite="futureelectronics_apac" data-anonym-selectedIsoCode="SGD" data-anonym-selectedCountry="">
+                                            <span>SGD&nbsp;($)</span>
+                                        </a>
+                               		</li>
+    							</ul>
+                                <ul class="country-list">
+                                <li>
+                                		<a class="currency-select" href="javascript:void(0);" data-anonym-selectedSite="futureelectronics_apac" data-anonym-selectedIsoCode="USD" data-anonym-selectedCountry="">
+                                            <span>USD&nbsp;($)</span>
+                                        </a>
+                               		</li>
+    							</ul>
+                </li>
+            <li class="region">
+                    <a href="javascript:void(0);"  class="selected-curr">
+                        Europe, Middle East, Africa<span class="icon icon-FutureElectronics-Plus_V2 pull-right plux"></span>
+                        <span class="icon icon-FutureElectronics-Minus_V2 pull-right minus"></span>
+                    </a>
+                    <ul class="country-list">
+                                  <li class="other-currencies-nav">Other Currencies</li>
+        				<li>
+                                		<a class="currency-select" href="javascript:void(0);" data-anonym-selectedSite="futureelectronics_emea" data-anonym-selectedIsoCode="CHF" data-anonym-selectedCountry="">
+                                            <span>CHF&nbsp;(CHF)</span>
+                                        </a>
+                               		</li>
+    							<li>
+                                		<a class="currency-select" href="javascript:void(0);" data-anonym-selectedSite="futureelectronics_emea" data-anonym-selectedIsoCode="CZK" data-anonym-selectedCountry="">
+                                            <span>CZK&nbsp;(Kč)</span>
+                                        </a>
+                               		</li>
+    							<li>
+                                		<a class="currency-select" href="javascript:void(0);" data-anonym-selectedSite="futureelectronics_emea" data-anonym-selectedIsoCode="DKK" data-anonym-selectedCountry="">
+                                            <span>DKK&nbsp;(kr)</span>
+                                        </a>
+                               		</li>
+    							</ul>
+                                <ul class="country-list">
+                                <li>
+                                		<a class="currency-select" href="javascript:void(0);" data-anonym-selectedSite="futureelectronics_emea" data-anonym-selectedIsoCode="EUR" data-anonym-selectedCountry="">
+                                            <span>EUR&nbsp;(€)</span>
+                                        </a>
+                               		</li>
+    							<li>
+                                		<a class="currency-select" href="javascript:void(0);" data-anonym-selectedSite="futureelectronics_emea" data-anonym-selectedIsoCode="GBP" data-anonym-selectedCountry="">
+                                            <span>GBP&nbsp;(£)</span>
+                                        </a>
+                               		</li>
+    							<li>
+                                		<a class="currency-select" href="javascript:void(0);" data-anonym-selectedSite="futureelectronics_emea" data-anonym-selectedIsoCode="HUF" data-anonym-selectedCountry="">
+                                            <span>HUF&nbsp;(Ft)</span>
+                                        </a>
+                               		</li>
+    							</ul>
+                                <ul class="country-list">
+                                <li>
+                                		<a class="currency-select" href="javascript:void(0);" data-anonym-selectedSite="futureelectronics_emea" data-anonym-selectedIsoCode="NOK" data-anonym-selectedCountry="">
+                                            <span>NOK&nbsp;(kr)</span>
+                                        </a>
+                               		</li>
+    							<li>
+                                		<a class="currency-select" href="javascript:void(0);" data-anonym-selectedSite="futureelectronics_emea" data-anonym-selectedIsoCode="PLN" data-anonym-selectedCountry="">
+                                            <span>PLN&nbsp;(zl)</span>
+                                        </a>
+                               		</li>
+    							<li>
+                                		<a class="currency-select" href="javascript:void(0);" data-anonym-selectedSite="futureelectronics_emea" data-anonym-selectedIsoCode="SEK" data-anonym-selectedCountry="">
+                                            <span>SEK&nbsp;(kr)</span>
+                                        </a>
+                               		</li>
+    							</ul>
+                                <ul class="country-list">
+                                <li>
+                                		<a class="currency-select" href="javascript:void(0);" data-anonym-selectedSite="futureelectronics_emea" data-anonym-selectedIsoCode="USD" data-anonym-selectedCountry="">
+                                            <span>USD&nbsp;($)</span>
+                                        </a>
+                               		</li>
+    							</ul>
+                </li>
+            </ul>
+    </div>
+    <form class="anonym-currency-form" action="/regionSwitch" method="post"><input type ="hidden" name="site" class="anonym-selectedSite" value=""/>
+    	<input type ="hidden" name="currentRegion" class="anonym-currentRegion" value="futureelectronics_northamerica"/>
+    	<input type="hidden" name="isocode" class="anonym-selectedIsoCode" value="USD"/>
+    	<input type="hidden" name="country" class="anonym-selectedCountry" value=""/>
+    	<input type="hidden" name="productCode" value=""/>
+	<div>
+<input type="hidden" name="CSRFToken" value="aOBlPT0dLQSJAaTSTZNPI_M_Clp_KXhAQ1d1Ab0O8MWHeXw7XddSCwUkHTSkYpazer57E5ALJ2McHBltc2NFNow4xvG0H0wK" />
+</div></form><input type="hidden" class="currency_popup_title" value='Region Switching' />
+<div class="anonym-currency-switch hidden">
+    <div class="currency-swich-info">
+        You are changing the region you shop from. This may affect price, shipping options and product availability. Items in your current Cart will not be transferred.</div>
+    <button class="btn btn-submit pull-left currency-cancel mt20">
+        Cancel</button>
+    <button class="btn btn-submit pull-right currency-process mt20">
+        Confirm</button>
+</div>
+
+<input type="hidden" name="apac_currency_popup_title" value='Currency Switching'/>
+<div class="anonym-currency-switch-apac hidden">
+    <div class="currency-swich-info">
+        You are changing currency. This may affect price, shipping options and product availability. Items in your current Cart will not be transferred.</div>
+    <button class="btn btn-submit pull-left currency-cancel mt20">
+        Cancel</button>
+    <button class="btn btn-submit pull-right currency-process mt20">
+        Confirm</button>
+</div>
+
+<div id="change-shipping-country" style="display:none;">
+<div class="con">
+  <h2>Shipping Country Change</h2>
+   <div class="inner-content-country">
+You are changing the region you shop from. This may affect price, shipping options and product availability. Items in your current Cart will not be transferred.</div>
+<div class="button-div">
+<button id="cancel-country">Cancel</button>
+<button id ="continue-change-c">Continue</button>
+</div>
+</div></li>
+<li class="select-list  lang-select-div" data-automation-ref="GL_Language">
+		<div class='dropdown fe-theme lang-select top-fixed-select'>
+    <button class="select-label dropdown-toggle" type="button" data-toggle="dropdown">
+    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 17 17" class="globe-svg svg d-none replaced-svg"><defs><style>.cls-1{fill:#737373;}</style></defs><path id="solid_globe" data-name="solid globe" class="cls-1" d="M11.54,5.21C11,2.15,9.87,0,8.5,0S6,2.15,5.47,5.21ZM5.21,8.5c0,.73,0,1.47.11,2.2h6.36c.07-.73.11-1.46.11-2.19s0-1.47-.11-2.2H5.32C5.25,7,5.21,7.77,5.21,8.5ZM16.34,5.21A8.52,8.52,0,0,0,10.93.35a11.7,11.7,0,0,1,1.71,4.86ZM6.07.36A8.53,8.53,0,0,0,.66,5.21h3.7A11.66,11.66,0,0,1,6.07.36ZM16.71,6.31H12.78c.07.72.11,1.46.11,2.19s0,1.48-.11,2.2h3.93A8.63,8.63,0,0,0,17,8.5a8.5,8.5,0,0,0-.29-2.19ZM4.11,8.5a19.82,19.82,0,0,1,.12-2.19H.29a8.34,8.34,0,0,0,0,4.38H4.22C4.15,10,4.11,9.24,4.11,8.5Zm1.36,3.29C6,14.85,7.14,17,8.5,17s2.54-2.15,3-5.21Zm5.46,4.86a8.52,8.52,0,0,0,5.41-4.86h-3.7a11.56,11.56,0,0,1-1.71,4.86ZM.66,11.79a8.53,8.53,0,0,0,5.42,4.86,11.58,11.58,0,0,1-1.72-4.86Z"></path><path id="solid_globe-2" data-name="solid globe" d="M11.54,5.21C11,2.15,9.87,0,8.5,0S6,2.15,5.47,5.21ZM5.21,8.5c0,.73,0,1.47.11,2.2h6.36c.07-.73.11-1.46.11-2.19s0-1.47-.11-2.2H5.32C5.25,7,5.21,7.77,5.21,8.5ZM16.34,5.21A8.52,8.52,0,0,0,10.93.35a11.7,11.7,0,0,1,1.71,4.86ZM6.07.36A8.53,8.53,0,0,0,.66,5.21h3.7A11.66,11.66,0,0,1,6.07.36ZM16.71,6.31H12.78c.07.72.11,1.46.11,2.19s0,1.48-.11,2.2h3.93A8.63,8.63,0,0,0,17,8.5a8.5,8.5,0,0,0-.29-2.19ZM4.11,8.5a19.82,19.82,0,0,1,.12-2.19H.29a8.34,8.34,0,0,0,0,4.38H4.22C4.15,10,4.11,9.24,4.11,8.5Zm1.36,3.29C6,14.85,7.14,17,8.5,17s2.54-2.15,3-5.21Zm5.46,4.86a8.52,8.52,0,0,0,5.41-4.86h-3.7a11.56,11.56,0,0,1-1.71,4.86ZM.66,11.79a8.53,8.53,0,0,0,5.42,4.86,11.58,11.58,0,0,1-1.72-4.86Z"></path></svg>
+        English<span class="caret"></span>
+    </button>
+	<ul class="dropdown-menu dropdown-list list-item">
+		<li class="default"><a href="javascript:void(0);">Language</a></li>
+		<li class="selected"> <a href="javascript:void(0);">English</a></li>
+				<li> <a href="javascript:void(0);" class="lang-list" data-selectedLanguage="fr">Français</a></li>
+				</ul>
+</div>
+<form class="lang-form" action="/_s/selectLanguage" method="get"><input type="hidden" class="selected-language"  value="en" name="code"/>
+</form></li>
+
+</div>
+
+					</div>
+
+					<ul class="toggle__nav__links">
+
+                    </ul>
+
+					<ul class="toggle-level-2">
+
+
+						</ul>
+					</div>
+
+
+
+					<ul class="toggle-level-2">
+
+					</ul>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<div class="heroBannerpromotion container">
+		<section class="row vertical-center-4 slider smartedit_slider"   data-timer="10000">
+			<div class="carousel-slide" style="background:#535353" data-time="100000">
+<div class="heropromotionsec" >
+<p class="fe_promotion_content">
+<img src="/medias/sys_master/root/h2e/hd1/11416455413790/Truck-Icon/Truck-Icon.svg" alt="Promotion Icon" class="hero_banner_icon">
+<span>Free shipping within the continental US over $50. <a href="https://www.futureelectronics.com/policies/shipping-delivery#freeshipping" tabindex="0">Conditions apply</a></span></p>
+</div>
+</div>
+</section>
+	</div>
+	<div class="breadcrumb-section">
+		<div class="container">
+
+			<div class='share-section'>
+				</div>
+		</div>
+	</div>
+
+<div id="abc" style="display:none;">
+   <h2>Select Your Shipping Location</h2>
+   <div class="country-listing-wrap">
+      <P>Select Country</P>
+      <div class="country-list1">
+         <div class="ftz-count">
+            <label>
+
+                     <input type="radio" name="shippingCountry" value="CA" >
+                     <span>  <img src="/medias/sys_master/root/h3d/h82/11350653763614/canada-flag-circle/canada-flag-circle.svg"/> Canada</span>
+               </label>
+            <label>
+
+                     <input type="radio" name="shippingCountry" value="US" >
+                     <span>  <img src="/medias/sys_master/root/h95/h82/11350653730846/united-states-flag-circle/united-states-flag-circle.svg"/> United States</span>
+               </label>
+            </div>
+      </div>
+   </div>
+   <div class="linking-section">
+      <button id="website-continue">Continue to Website</button>
+   </div>
+</div>
+
+</header>
+	<a id="skip-to-content"></a>
+		
+			<div>
+			<!-- TODO this  needs to be moved to an new jsp or tag file -->
+				<div class="global-alerts container">
+		</div><!-- main template container start here -->
+
+	<!-- CONTENT SLOT -BreadCrumb componet start -->
+	<div class="breadcrumb-section">
+		<div class="container">
+
+			<ol class="breadcrumb" aria-label="Breadcrumbs">
+<li><a href="/" aria-label="home"><span class="icon icon-FutureElectronics-Home02">&nbsp;</span></a></li>
+    <li><a href="/policies">Policies</a></li>
+    <li class="active">Terms of Use</li>
+</ol>
+<h1 class="page-heading">Terms of Use</h1></div>
+	</div>
+	<!-- CONTENT SLOT -BreadCrumb End -->
+
+
+	<div class="container">
+		<!-- CONTENT SLOT -A componet start -->
+		<div class="row">
+					<div class="content-slot col-xs-12">
+						<div>
+							<div class="content"><p>&nbsp;</p></div><p>This Internet Website is operated and maintained by Future Electronics Inc. or its subsidiaries or affiliated companies (collectively "FUTURE"). The Site provides data, information, text images, programs and other materials and content (collectively, "Content") and other services such as the online sale of computer and electronic components and production tools ("Services"). The Site, the Content and the Services are provided to you subject to your agreement to be bound by these terms and conditions of use ("Terms of Use").</p>
+<p>&nbsp;</p>
+<h5>BY ACCESSING OR USING THE SITE OR THE SERVICES, YOU AGREE TO BE BOUND BY THESE TERMS OF USE. IF YOU DO NOT AGREE WITH ONE OR MORE OF THESE TERMS AND CONDITIONS, DO NOT ACCESS OR USE THE SITE OR THE SERVICES.</h5>
+<p>&nbsp;</p>
+<p>The Site is open to visitors. However, to access certain areas of the Site, we require you to register with us. Registration is free and allows you to access other Services not available to visitors including product profiles. By registering, you certify that the information you provide in the registration form is accurate.</p>
+<p>The Company reserves the right to change these Terms of Use at any time and your continued access or use of the Site after such changes indicates your acceptance of the Terms of Use as modified. It is your responsibility to review these Terms of Use before each access or use or the Site.</p>
+<p>&nbsp;</p><div class="cmsimage">
+	<img title="Divider_FullScreen.jpg" src="/medias/sys_master/images/images/8891419852830/Divider-FullScreen.jpg" alt="Divider_FullScreen.jpg"/>
+</div><p>&nbsp;</p>
+<p><strong>* ALL SALES ARE SUBJECT TO FUTURE'S TERMS AND CONDITIONS OF SALE. *</strong></p>
+<p>&nbsp;</p>
+<p><strong>I. Use Restrictions and Intellectual Property</strong></p>
+<p><strong>A. Copyrights</strong>. All Content provided on the Site is protected by law, including U.S. and Canadian copyright law, intellectual property rights laws and international treaties. All Content is the copyrighted property of FUTURE or the original creator of such Content. Except as stated herein, none of the Content may be copied, reproduced, republished, displayed or distributed by any means, including but not limited to electronic, mechanical, photocopying, recording or otherwise, without the express prior written permission of FUTURE or the relevant right holder. The entire Site is Copyright 2004 FUTURE. All rights reserved.</p>
+<p><strong>B. Restrictions of Use of Copyrighted Content</strong>. You are granted permission to display, download and print the Content on the Site for individual, non-commercial use only, provided you keep intact all copyright and other proprietary notices. Any special terms and conditions for use of certain Content or Services provided on the Site and included elsewhere on the Site are incorporated into, and become part of, these Terms of Use. Except as explicitly allowed herein, you agree not to reproduce, copy, retransmit, distribute, sell, republish, modify, translate or create derivative works of, or in any way commercially exploit, in whole or in part, any portion of the Site, the Content and/or the Services, in whole or in part, without the express prior written consent of FUTURE and any decompilation, disassembly, reverse engineering or other exploitation of the Site, the Content and/or the Services is strictly prohibited. You acquire absolutely no rights or licenses to the Site, the Content or the Services other than the limited right to use the Site, the Content and the Services in accordance with these Terms of Use.</p>
+<p><strong>C. Proprietary Marks</strong>. The names, logos, taglines, and other marks identifying FUTURE and its products and services are proprietary marks of FUTURE. All rights reserved. All other trademarks and service marks are the property of their respective owners. This Agreement does not grant you the right to use any trademark, service mark or logo appearing on the Site for any purpose whatsoever. Title to the Site, the Content and the Services and the trademarks or trade names displayed on the Site remains with FUTURE and/or its licensors. Nothing contained in these Terms of Use or on the Site shall be construed as conferring by implication, estoppel or otherwise any license or right to use any trade-marks, trade-names, copyright or other intellectual property rights of FUTURE or its licensors. Any unauthorized use of the Site, the Content or the Services or the trade-marks, trade names, copyright or other intellectual property rights of FUTURE or its licensors is strictly prohibited, and FUTURE reserve the right to take such steps as it deems necessary, including legal action, to enforce such rights. Any question connected with whether a mark or logo that is not listed above is a trademark or service mark of FUTURE should be directed to FUTURE.</p>
+<p><strong>D. Framing</strong>. You may not frame or utilize framing techniques to enclose any trademark, logo or other proprietary information (including text, images, or page layout) on the Site, nor may you &quot;mirror&quot; any Content on the Site on any other server, without the express prior written consent of FUTURE.</p>
+<p><strong>E. Permission to Republish</strong>. Requests to republish or redistribute the Content should be addressed to FUTURE as directed in Section X hereof.</p>
+<p>&nbsp;</p>
+<p><strong>II. Privacy</strong></p>
+<p>Your privacy is of great importance to FUTURE. All information gathered from you or related to your use of the Site will be governed by FUTURE's Privacy Policy. Please see our Privacy Policy for its terms.</p>
+<p>&nbsp;</p>
+<p><strong>III. New Services, Your Password and Conformance with Laws</strong></p>
+<p><strong>A. New Services</strong>. Whenever new products or services are introduced on the Site as part of the Services, your use of such Services will be subject to these Terms of Use unless we notify you otherwise.</p>
+<p><strong>B. Your Password</strong>. Certain areas of the Site are protected by passwords. You are solely and fully responsible for keeping your password confidential, and will be solely and fully responsible for all uses of your password or registration, even if these uses were not authorized by you. If you become aware of any unauthorized use of your password or registration, you are required to notify FUTURE immediately in accordance with Section X below.</p>
+<p><strong>C. Conformance with Law</strong>. You agree to use the Site, the Content and the Services for lawful purposes only and in a manner consistent with all applicable local, national or international laws, rules and regulations. Potential users in any jurisdiction where laws (whether common or statutory) would: (i) void these Terms of Use in whole or in any essential part (the essential parts being at least, but not only, the provisions relating to the governing law and the disclaimer and limitation of liability); or (ii) render accessing the Site or the Content, or using the Services, illegal, are not authorized to use the Site, the Content or the Services.</p>
+<p>&nbsp;</p>
+<p><strong>IV. Limitations of Liability</strong></p>
+<p><strong>A.</strong> YOU EXPRESSLY AGREE THAT YOUR USE OF THE SITE IS AT YOUR SOLE RISK. ALL INFORMATION IS PROVIDED &quot;AS IS&quot; WITHOUT WARRANTY OF ANY KIND. NEITHER FUTURE NOR ITS LICENSORS MAKE ANY REPRESENTATIONS, WARRANTIES OR CONDITIONS ABOUT THE QUALITY, ACCURACY, RELIABILITY, COMPLETENESS, CURRENCY, OR TIMELINESS OF THE SITE, THE CONTENT OR THE SERVICES. FUTURE AND/OR ITS LICENSORS DO NOT ASSUME ANY RESPONSIBILITY FOR ANY ERRORS, OMISSIONS OR INACCURACIES IN THE SITE, THE CONTENT OR THE SERVICES. FURTHER, FUTURE IS NOT RESPONSIBLE FOR ANY SLANDEROUS, DEFAMATORY, OFFENSIVE OR ILLEGAL CONDUCT OF OTHER USERS OF THE SITE OR THE SERVICES. YOU ASSUME TOTAL RESPONSIBILITY AND RISK FOR YOUR USE OF THE SITE AND THE INTERNET. FUTURE SHALL HAVE NO LIABILITY TO YOU RELATING TO THIS AGREEMENT OR THE SITE, EXCEPT AS EXPRESSLY PROVIDED IN THIS SECTION.</p>
+<p><strong>B.</strong> THE CONTENT IS PROVIDED FOR INFORMATIONAL PURPOSES ONLY AND IS NOT INTENDED TO PROVIDE TECHNICAL OR OTHER ADVICE TO YOU AND YOU SHOULD NOT RELY UPON THE CONTENT TO PROVIDE ANY SUCH ADVICE. YOU SHOULD SEEK THE ADVICE OF PROFESSIONALS REGARDING THE EVALUATION AND VERIFICATION OF ANY CONTENT PROVIDED ON THE SITE AND, IN ANY EVENT, PRIOR TO MAKING ANY PURCHASES BASED ON SUCH CONTENT.</p>
+<p><strong>C.</strong> TO THE FULLEST EXTENT PERMISSIBLE BY APPLICABLE LAW, FUTURE AND ITS LICENSORS DISCLAIM ALL REPRESENTATIONS, WARRANTIES AND CONDITIONS, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO, IMPLICATIONS, WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE, REGARDING YOUR USE OF THE SITE. FUTURE AND ITS LICENSORS DO NOT WARRANT THAT THE SITE, OR ANY INFORMATION, PRODUCT OR SERVICE THAT MAY BE OBTAINED THROUGH A LINK FROM OR TO THE SITE, WILL BE UNINTERRUPTED, ERROR-FREE, FREE OF VIRUSES OR OTHER HARMFUL COMPONENTS, OR THAT DEFECTS WILL BE CORRECTED.</p>
+<p><strong>D.</strong> UNDER NO CIRCUMSTANCES, WHETHER BASED ON WARRANTY, CONTRACT, TORT, NEGLIGENCE, STRICT LIABILITY OR ANY OTHER LEGAL THEORY, SHALL FUTURE OR ITS LICENSORS BE RESPONSIBLE FOR, AND FUTURE HEREBY EXPRESSLY DISCLAIMS ALL LIABILITY FOR DAMAGES OF ANY KIND, WHETHER DIRECT OR INDIRECT, CONSEQUENTIAL, COMPENSATORY, ACTUAL, PUNITIVE, SPECIAL, INCIDENTAL, EXPECTANCY, EXEMPLARY, INCLUDING BUT NOT LIMITED TO LOSS OF DATA OR PROFIT, PERSONAL INJURY, FINES, FEES, PENALTIES OR OTHER LIABILITIES ARISING OUT OF USE, THE INABILITY TO USE, REFERENCE TO, OR RELIANCE ON ANY INFORMATION OBTAINED ON, DOWNLOADED, OR HYPERLINKED FROM THE SITE OR THE CONTENT ON THE SITE, EVEN IF FUTURE HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. IF YOUR USE OF THE SITE RESULTS IN THE NEED FOR SERVICING, REPAIR OR CORRECTION OF EQUIPMENT OR DATA YOU ASSUME ANY COSTS THEREOF.</p>
+<p><strong>E.</strong> FUTURE SHALL NOT BE LIABLE OR DEEMED TO BE IN DEFAULT FOR UNAUTHORIZED ACCESS TO THE SITE.</p>
+<p><strong>F.</strong> YOUR SOLE REMEDY FOR DISSATISFACTION WITH FUTURE OR THE SITE IS TO STOP USING THE SITE, INCLUDING ANY OF THE SERVICES OR PRODUCTS ADVERTISED OR AVAILABLE ON THE SITE. IF, FOR ANY REASON, THE FOREGOING LIMITATION IS FOUND BY A COURT OF COMPETENT JURISDICTION TO BE INVALID OR INAPPLICABLE UNDER THE CIRCUMSTANCES, YOU AGREE THAT FUTURE'S TOTAL LIABILITY FOR ALL DAMAGES, LOSSES, OR CAUSES OF ACTION OF ANY KIND OR NATURE SHALL BE LIMITED TO THE AMOUNT PAID BY YOU, IF ANY, FOR SUCH SERVICES OR PRODUCTS OR FOR ACCESSING THE SITE.</p>
+<p><strong>G.</strong> SOME JURISDICTIONS DO NOT ALLOW EXCLUSION OR LIMITATION OF INCIDENTAL OR CONSEQUENTIAL DAMAGES, SO THE ABOVE LIMITATIONS OR EXCLUSIONS MAY NOT APPLY TO YOU.</p>
+<p>&nbsp;</p>
+<p><strong>V. Links, Viruses and Indemnification</strong></p>
+<p><strong>A. Links</strong>. The Site may contain links and pointers to the other Internet Websites and resources. Links to and from the Site to other Websites, maintained by third parties do not constitute an endorsement by FUTURE of any third party Website, its resources or its contents. FUTURE is not responsible for examining or evaluating, and FUTURE does not warrant the offerings of any of these businesses or individuals or the content of linked Websites. FUTURE does not assume any responsibility or liability for the actions, products, and content of any third party or their Websites. Please note that when you click on one of these links, you are moving to another Website. You should read the terms of use and privacy statements, if any, of these linked Websites as their terms and privacy policies may differ from that of FUTURE. Once you leave the Site, FUTURE is not responsible for the content, accuracy or availability of any other Website accessed after leaving the Site. Your access to, or use of any non-FUTURE Website is at your sole risk.</p>
+<p><strong>B. Viruses</strong>. FUTURE cannot and does not guarantee or warrant that the Site, the Content or the Services are compatible with your systems or that the Site, the Content or the Services will be free of viruses, disabling devices or other code that manifests contaminating or destructive properties. You are responsible for implementing safeguards to protect the security and integrity of your systems. You are responsible for the costs of any service, repairs or connections which may be necessary to your systems as a result of your use of the Site, the Content or the Services.</p>
+<p><strong>C. Indemnification</strong>. You agree that your use of the Site, the Content or the Services shall not be made the basis for any claim, suit, demand or cause of action or other proceeding against FUTURE and/or its licensors. You agree, at your own expense, to indemnify and hold FUTURE and our directors, officers, employees, representatives, agents and licensors harmless against any claim, suit, demand, action or other proceeding brought against us, our directors, officers, employees, representatives, agents and licensors by a third party as a result of your breach of these Terms of Use.</p>
+<p>&nbsp;</p>
+<p><strong>VI. Entire Agreement, Severability and Electronic Communications</strong></p>
+<p><strong>A. Entire Agreement and Severability.</strong> Along with our Privacy Policy referenced herein, this Agreement constitutes the entire agreement between you and FUTURE with respect to the Site and supersedes all prior agreements or understandings between you and FUTURE with respect thereto. If any provision of this Agreement is later determined by a court of competent jurisdiction to be unlawful, void, or for any other reason unenforceable, then that provision shall be deemed severable from this Agreement and shall not affect the validity or enforceability of any remaining provisions.</p>
+<p><strong>B. Electronic Communications</strong>. When you access or use the Site or send e-mails to FUTURE, you are communicating with FUTURE electronically. You consent to receive communications from FUTURE electronically. FUTURE will communicate with you by e-mail or by posting notices on this site. You agree that all agreements, notices, disclosures and other communications that FUTURE provides to you electronically satisfy any legal requirement that such communications be in writing.</p>
+<p>&nbsp;</p>
+<p><strong>VII. Governing Law and Dispute Resolution</strong></p>
+<p><strong>A.</strong> The validity, interpretation and performance of this Agreement, with respect to use of the Site outside of Canada, shall be governed by and construed in accordance with the laws of the Commonwealth of Massachusetts, without regard to conflicts of laws principles. With respect to use of the Site within the U.S., sole and exclusive jurisdiction for any action or proceeding arising out of or related to this Agreement shall be with an appropriate federal or state court located in Boston, Massachusetts.</p>
+<p><strong>B.</strong> The validity, interpretation and performance of this Agreement with respect to use of the Site within Canada, this Agreement shall be governed by and construed in accordance with the laws of Quebec, without giving effect to conflict of laws principles. With respect to use of the Site within Canada, sole and exclusive jurisdiction for any action or proceeding arising out of or related to this Agreement shall lie properly in Montreal, Quebec.</p>
+<p><strong>C.</strong> Any dispute relating in any way to your visit to the Site shall be submitted to confidential arbitration in Montreal, Quebec except that, to the extent you have in any manner violated or threatened to violate FUTURE's intellectual property rights, FUTURE may seek injunctive or other appropriate relief in any court in accordance with subsections A and B above. Arbitration under this agreement shall be conducted pursuant to the rules of commercial arbitration of the Quebec Code of Civil Procedure. The arbitrator's award shall be binding and may be entered as a judgment in any court of competent jurisdiction. To the fullest extent permitted by applicable law, no arbitration under this Agreement shall be joined to an arbitration involving any other party subject to this Agreement, whether through class arbitration proceedings or otherwise.</p>
+<p>&nbsp;</p>
+<p><strong>VIII. Discontinuance of Service</strong></p>
+<p>FUTURE may change, suspend or discontinue any aspect of the Site at any time, including the availability of any feature, database, or Content. FUTURE may also impose limits on certain features and services or restrict your access to parts or all of the Site without notice or liability.</p>
+<p>&nbsp;</p>
+<p><strong>IX. Termination and Waiver</strong></p>
+<p><strong>A. Suspension</strong>. FUTURE reserves the right to deactivate, suspend, block or terminate your use of the Site if such use is found or is reasonably suspected to involve or facilitate any unauthorized, illegal, abusive, or unethical act or a violation of these Terms. In addition, FUTURE reserves the right to deactivate, suspend, block or terminate your use of the Site, the Content or the Services immediately, without notice, in our sole discretion.</p>
+<p><strong>B. Termination of Use</strong>. The permission to use the Site granted by this Agreement automatically terminates if you breach any of the terms and conditions contained herein. Upon termination, you must immediately destroy any downloaded or printed materials. Any unauthorized use of any Content contained in this Site may violate copyright laws, trademark laws, the laws of privacy and publicity, and communications statutes and regulations.</p>
+<p><strong>C.</strong> Failure by FUTURE to exercise any right or remedy under this Agreement does not constitute a waiver of that right or remedy.</p>
+<p>&nbsp;</p>
+<p><strong>X. Contact Information</strong></p>
+<p>All notices to and correspondence with FUTURE should be directed to a FUTURE representative.</p>
+<p>&nbsp;</p></div>
+					</div>
+				</div>
+			<!-- CONTENT SLOT -A End -->
+
+
+
+		<!-- CONTENT SLOT -B & C componet start -->
+		<div class="row">
+					<div class="content-slot">
+						<div class="col-sm-8 col-xs-12">
+									</div>
+							<div class="col-sm-4 col-xs-12 cl-c">
+									</div>
+							</div>
+				</div>
+			<!-- CONTENT SLOT B & C End -->
+
+
+
+
+		<!-- CONTENT SLOT D componet start -->
+		<div class="row">
+					<div class="content-slot col-xs-12">
+						<div>
+							</div>
+					</div>
+				</div>
+			<!-- CONTENT SLOT D End -->
+
+
+		<!-- CONTENT SLOT E F & G componet start -->
+
+		<div class="row">
+					<div class="content-slot">
+						<div class="col-sm-4 col-xs-12">
+									</div>
+							<div class="col-sm-4 col-xs-12">
+									</div>
+							<div class="col-sm-4 col-xs-12">
+								</div>
+							</div>
+				</div>
+			<!-- CONTENT SLOT E F & G End -->
+
+	</div>
+
+</div>
+
+			<footer class="fe-footer global" data-content="false">
+            </footer>
+    </main>
+
+	<form name="accessiblityForm">
+		<input type="hidden" id="accesibility_refreshScreenReaderBufferField"
+			name="accesibility_refreshScreenReaderBufferField" value="" />
+	</form>
+	<div id="ariaStatusMsg" class="skip" role="status" aria-relevant="text"
+		aria-live="polite"></div>
+
+	<script type="text/javascript">
+		/*<![CDATA[*/
+		
+		var ACC = { config: {} };
+			ACC.config.contextPath = "";
+			ACC.config.encodedContextPath = "";
+			ACC.config.commonResourcePath = "/_ui/responsive/common";
+			ACC.config.themeResourcePath = "/_ui/responsive/theme-green";
+			ACC.config.siteResourcePath = "/_ui/responsive/site-futureelectronics_northamerica";
+			ACC.config.rootPath = "/_ui/responsive";	
+			ACC.config.CSRFToken = "aOBlPT0dLQSJAaTSTZNPI_M_Clp_KXhAQ1d1Ab0O8MWHeXw7XddSCwUkHTSkYpazer57E5ALJ2McHBltc2NFNow4xvG0H0wK";
+			ACC.pwdStrengthVeryWeak = 'Very weak';
+			ACC.pwdStrengthWeak = 'Weak';
+			ACC.pwdStrengthMedium = 'Medium';
+			ACC.pwdStrengthStrong = 'Strong';
+			ACC.pwdStrengthVeryStrong = 'Very strong';
+			ACC.pwdStrengthUnsafePwd = 'password.strength.unsafepwd';
+			ACC.pwdStrengthTooShortPwd = 'Too short';
+			ACC.pwdStrengthMinCharText = 'Minimum length is %d characters';
+			ACC.accessibilityLoading = 'Loading... Please wait...';
+			ACC.accessibilityStoresLoaded = 'Stores loaded';
+			
+
+			ACC.config.analyticsEvent = '';
+			ACC.config.googleApiKey="";
+			ACC.config.googleApiVersion="3.7";
+
+			
+			ACC.autocompleteUrl = '/search/autocompleteSecure';
+			
+			
+			
+			ACC.config.loginUrl = '/login';
+			
+
+			
+			ACC.config.authenticationStatusUrl = '/authentication/status';
+
+			
+		/*]]>*/
+	</script>
+<script type="text/javascript">
+	/*<![CDATA[*/
+	ACC.addons = {};	//JS holder for addons properties
+			
+	
+		ACC.addons.wishlistsaddon = [];
+		
+		ACC.addons.smarteditaddon = [];
+		
+		ACC.addons.firstdatapaymentaddon = [];
+		
+		ACC.addons.febrowseaddon = [];
+		
+		ACC.addons.fecheckoutaddon = [];
+		
+		ACC.addons.fechinacheckoutaddon = [];
+		
+		ACC.addons.assistedservicestorefront = [];
+		
+				ACC.addons.assistedservicestorefront['asm.timer.min'] = 'min';
+			
+		ACC.addons.chinesepaymentaddon = [];
+		
+		ACC.addons.bomaddon = [];
+		
+		ACC.addons.chinabankaddon = [];
+		
+	/*]]>*/
+</script>
+<script type="text/javascript"
+	src="/_ui/shared/js/generatedVariables.js"></script><script type="text/javascript" src="/_ui/addons/febrowseaddon/responsive/theme-green/js/jslibs.min.js?v=1.1"></script>
+		<script type="text/javascript" src="/_ui/addons/febrowseaddon/responsive/theme-green/js/page-general.js?v=1.1" async></script> 
+
+		<script type="text/javascript">
+			window.__lc = window.__lc || {};
+			window.__lc.license = 8798261;
+			window.__lc.group = 1;
+			(function() {
+				var lc = document.createElement('script');
+				lc.type = 'text/javascript';
+				lc.async = true;
+				lc.src = ('https:' == document.location.protocol ? 'https://'
+						: 'http://')
+						+ 'cdn.livechatinc.com/tracking.js';
+				var s = document.getElementsByTagName('script')[0];
+				s.parentNode.insertBefore(lc, s);
+			})();
+		</script>
+		<!-- End of LiveChat code -->
+	<script type="text/javascript" nonce="1187ccdb5d5373286a6f6328f255d165" src="/ZgNB3B4u5/AdD8m6/WN/AK8ZiwzixU/3JYSQk0tb4hDtV/IV0ZAg/C3/tiP3hjMj8"></script><link rel="stylesheet" type="text/css" nonce="1187ccdb5d5373286a6f6328f255d165" href="/ZgNB3B4u5/AdD8m6/WN/AK8ZiwzixU/Qp/fGB1AQ/JS/wJIgtCcQRY"><script nonce="1187ccdb5d5373286a6f6328f255d165" src="/ZgNB3B4u5/AdD8m6/WN/AK8ZiwzixU/Qp/fGB1AQ/WG/YFdmRHHXUo" async defer></script><div id="sec-overlay" style="display:none;"><div id="sec-container"></div></div></body>
+<meta itemprop="name" content="Terms of Use">
+<meta itemprop="url" content="https://www.futureelectronics.com/policies/terms-of-use">
+</html>
