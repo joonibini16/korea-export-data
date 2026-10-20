@@ -268,6 +268,18 @@
    "절연전선,나동선및케이블제조및판매업"
   ]
  },
+ "000500": {
+  "name": "가온전선",
+  "periods": 22,
+  "first": "2021-Q1",
+  "last": "2026-Q2",
+  "segments": [
+   "목드럼",
+   "전력선",
+   "통신선",
+   "특수선"
+  ]
+ },
  "373220": {
   "name": "LG에너지솔루션",
   "periods": 0,
@@ -980,6 +992,839 @@
  },
  "262260": {
   "name": "에이프로",
+  "periods": 0,
+  "first": null,
+  "last": null,
+  "segments": [],
+  "reason": "부문 표 없음(단일 부문 또는 형식 불일치)"
+ },
+ "000990": {
+  "name": "DB하이텍",
+  "periods": 7,
+  "first": "2024-Q4",
+  "last": "2026-Q2",
+  "segments": [
+   "건설공사",
+   "반도체",
+   "부동산",
+   "합금철"
+  ]
+ },
+ "034220": {
+  "name": "LG디스플레이",
+  "periods": 0,
+  "first": null,
+  "last": null,
+  "segments": [],
+  "reason": "부문 표 없음(단일 부문 또는 형식 불일치)"
+ },
+ "066570": {
+  "name": "LG전자",
+  "periods": 11,
+  "first": "2021-Q2",
+  "last": "2023-Q4",
+  "segments": [
+   "재작성전",
+   "재작성후"
+  ]
+ },
+ "000150": {
+  "name": "두산",
+  "periods": 26,
+  "first": "2020-Q1",
+  "last": "2026-Q2",
+  "segments": [
+   "85기",
+   "86기",
+   "87기1분기",
+   "87기2분기",
+   "87기3분기",
+   "DBL",
+   "DoosanBabcockLtd.와그종속기업",
+   "HRSG",
+   "계속영업합계",
+   "기타",
+   "네오플럭스",
+   "두산건설",
+   "두산메카텍",
+   "두산메카텍㈜와그종속기업",
+   "두산밥캣(주)",
+   "두산에너빌리티",
+   "두산인프라코어",
+   "두산퓨얼셀(주)",
+   "두산퓨얼셀㈜",
+   "디지털이노베이션BU",
+   "면세",
+   "모트롤",
+   "연결후금액합계",
+   "연료전지및소재",
+   "전자BG",
+   "중단영업부문합계"
+  ]
+ },
+ "080220": {
+  "name": "제주반도체",
+  "periods": 26,
+  "first": "2020-Q1",
+  "last": "2026-Q2",
+  "segments": [
+   "반도체",
+   "복권",
+   "신"
+  ]
+ },
+ "183300": {
+  "name": "코미코",
+  "periods": 0,
+  "first": null,
+  "last": null,
+  "segments": [],
+  "reason": "부문 표 없음(단일 부문 또는 형식 불일치)"
+ },
+ "240810": {
+  "name": "원익IPS",
+  "periods": 21,
+  "first": "2020-Q1",
+  "last": "2026-Q2",
+  "segments": [
+   "반도체",
+   "반도체장비"
+  ]
+ },
+ "036930": {
+  "name": "주성엔지니어링",
+  "periods": 0,
+  "first": null,
+  "last": null,
+  "segments": [],
+  "reason": "부문 표 없음(단일 부문 또는 형식 불일치)"
+ },
+ "084370": {
+  "name": "유진테크",
+  "periods": 18,
+  "first": "2020-Q3",
+  "last": "2024-Q4",
+  "segments": [
+   "반도체용산업가스",
+   "반도체장비"
+  ]
+ },
+ "098460": {
+  "name": "고영",
+  "periods": 0,
+  "first": null,
+  "last": null,
+  "segments": [],
+  "reason": "부문 표 없음(단일 부문 또는 형식 불일치)"
+ },
+ "348210": {
+  "name": "넥스틴",
+  "periods": 0,
+  "first": null,
+  "last": null,
+  "segments": [],
+  "reason": "부문 표 없음(단일 부문 또는 형식 불일치)"
+ },
+ "319660": {
+  "name": "피에스케이",
+  "periods": 0,
+  "first": null,
+  "last": null,
+  "segments": [],
+  "reason": "부문 표 없음(단일 부문 또는 형식 불일치)"
+ },
+ "077360": {
+  "name": "덕산하이메탈",
+  "periods": 5,
+  "first": "2024-Q2",
+  "last": "2026-Q1",
+  "segments": [
+   "가스용기",
+   "금속재료",
+   "방산",
+   "제련"
+  ]
+ },
+ "005290": {
+  "name": "동진쎄미켐",
+  "periods": 26,
+  "first": "2020-Q1",
+  "last": "2026-Q2",
+  "segments": [
+   "국내기타",
+   "국내발포제",
+   "국내전자재료",
+   "국내정제유",
+   "단순합",
+   "중단영업",
+   "해외발포제",
+   "해외전자재료",
+   "해외지주"
+  ]
+ },
+ "260970": {
+  "name": "에스앤디",
+  "periods": 0,
+  "first": null,
+  "last": null,
+  "segments": [],
+  "reason": "부문 표 없음(단일 부문 또는 형식 불일치)"
+ },
+ "101160": {
+  "name": "월덱스",
+  "periods": 0,
+  "first": null,
+  "last": null,
+  "segments": [],
+  "reason": "부문 표 없음(단일 부문 또는 형식 불일치)"
+ },
+ "101490": {
+  "name": "에스앤에스텍",
+  "periods": 0,
+  "first": null,
+  "last": null,
+  "segments": [],
+  "reason": "부문 표 없음(단일 부문 또는 형식 불일치)"
+ },
+ "214450": {
+  "name": "파마리서치",
+  "periods": 0,
+  "first": null,
+  "last": null,
+  "segments": [],
+  "reason": "부문 표 없음(단일 부문 또는 형식 불일치)"
+ },
+ "214150": {
+  "name": "클래시스",
+  "periods": 0,
+  "first": null,
+  "last": null,
+  "segments": [],
+  "reason": "부문 표 없음(단일 부문 또는 형식 불일치)"
+ },
+ "336570": {
+  "name": "원텍",
+  "periods": 0,
+  "first": null,
+  "last": null,
+  "segments": [],
+  "reason": "부문 표 없음(단일 부문 또는 형식 불일치)"
+ },
+ "062040": {
+  "name": "산일전기",
+  "periods": 0,
+  "first": null,
+  "last": null,
+  "segments": [],
+  "reason": "부문 표 없음(단일 부문 또는 형식 불일치)"
+ },
+ "033100": {
+  "name": "제룡전기",
+  "periods": 0,
+  "first": null,
+  "last": null,
+  "segments": [],
+  "reason": "부문 표 없음(단일 부문 또는 형식 불일치)"
+ },
+ "012450": {
+  "name": "한화에어로스페이스",
+  "periods": 26,
+  "first": "2020-Q1",
+  "last": "2026-Q2",
+  "segments": [
+   "ICT",
+   "IT서비스",
+   "방산",
+   "산업용장비",
+   "시큐리티",
+   "엔진",
+   "정보통신",
+   "정보통신(ICT)",
+   "중단영업",
+   "파워시스템",
+   "항공",
+   "항공엔진",
+   "항공우주",
+   "해양"
+  ]
+ },
+ "064350": {
+  "name": "현대로템",
+  "periods": 11,
+  "first": "2023-Q4",
+  "last": "2026-Q2",
+  "segments": [
+   "AD&RH",
+   "EP",
+   "RS",
+   "방산",
+   "철도",
+   "플랜트"
+  ]
+ },
+ "483650": {
+  "name": "달바글로벌",
+  "periods": 0,
+  "first": null,
+  "last": null,
+  "segments": [],
+  "reason": "부문 표 없음(단일 부문 또는 형식 불일치)"
+ },
+ "047810": {
+  "name": "한국항공우주",
+  "periods": 19,
+  "first": "2021-Q4",
+  "last": "2026-Q2",
+  "segments": [
+   "고정익",
+   "기체",
+   "기타",
+   "회전익"
+  ]
+ },
+ "475960": {
+  "name": "토모큐브",
+  "periods": 0,
+  "first": null,
+  "last": null,
+  "segments": [],
+  "reason": "부문 표 없음(단일 부문 또는 형식 불일치)"
+ },
+ "082740": {
+  "name": "한화엔진",
+  "periods": 0,
+  "first": null,
+  "last": null,
+  "segments": [],
+  "reason": "부문 표 없음(단일 부문 또는 형식 불일치)"
+ },
+ "071970": {
+  "name": "HD현대마린엔진",
+  "periods": 20,
+  "first": "2020-Q1",
+  "last": "2024-Q4",
+  "segments": [
+   "발전설비",
+   "엔진ㆍ기자재"
+  ]
+ },
+ "267270": {
+  "name": "HD건설기계",
+  "periods": 0,
+  "first": null,
+  "last": null,
+  "segments": [],
+  "reason": "부문 표 없음(단일 부문 또는 형식 불일치)"
+ },
+ "083650": {
+  "name": "비에이치아이",
+  "periods": 0,
+  "first": null,
+  "last": null,
+  "segments": [],
+  "reason": "부문 표 없음(단일 부문 또는 형식 불일치)"
+ },
+ "100840": {
+  "name": "SNT에너지",
+  "periods": 7,
+  "first": "2020-Q1",
+  "last": "2026-Q2",
+  "segments": [
+   "공랭식열교환기및배열회수보일러",
+   "기타",
+   "복수기및질소산화물저감장치",
+   "열교환기"
+  ]
+ },
+ "340570": {
+  "name": "티앤엘",
+  "periods": 0,
+  "first": null,
+  "last": null,
+  "segments": [],
+  "reason": "부문 표 없음(단일 부문 또는 형식 불일치)"
+ },
+ "068270": {
+  "name": "셀트리온",
+  "periods": 26,
+  "first": "2020-Q1",
+  "last": "2026-Q2",
+  "segments": [
+   "기타",
+   "바이오의약품",
+   "제품과용역합계",
+   "케미컬의약품"
+  ]
+ },
+ "207940": {
+  "name": "삼성바이오로직스",
+  "periods": 11,
+  "first": "2023-Q4",
+  "last": "2026-Q2",
+  "segments": [
+   "CDMO",
+   "바이오의약품개발및상업화"
+  ]
+ },
+ "043150": {
+  "name": "바텍",
+  "periods": 10,
+  "first": "2020-Q1",
+  "last": "2022-Q2",
+  "segments": [
+   "덴탈이미징"
+  ]
+ },
+ "228670": {
+  "name": "레이",
+  "periods": 0,
+  "first": null,
+  "last": null,
+  "segments": [],
+  "reason": "부문 표 없음(단일 부문 또는 형식 불일치)"
+ },
+ "194700": {
+  "name": "노바렉스",
+  "periods": 0,
+  "first": null,
+  "last": null,
+  "segments": [],
+  "reason": "부문 표 없음(단일 부문 또는 형식 불일치)"
+ },
+ "145720": {
+  "name": "덴티움",
+  "periods": 7,
+  "first": "2024-Q4",
+  "last": "2026-Q2",
+  "segments": [
+   "덴탈",
+   "수소연료전지",
+   "에너지",
+   "임플란트,디지털장비,상품등"
+  ]
+ },
+ "039840": {
+  "name": "디오",
+  "periods": 0,
+  "first": null,
+  "last": null,
+  "segments": [],
+  "reason": "부문 표 없음(단일 부문 또는 형식 불일치)"
+ },
+ "261200": {
+  "name": "덴티스",
+  "periods": 25,
+  "first": "2020-Q2",
+  "last": "2026-Q2",
+  "segments": [
+   "3D프린트",
+   "BIO",
+   "기타",
+   "의료기기",
+   "임플란트"
+  ]
+ },
+ "200670": {
+  "name": "휴메딕스",
+  "periods": 0,
+  "first": null,
+  "last": null,
+  "segments": [],
+  "reason": "부문 표 없음(단일 부문 또는 형식 불일치)"
+ },
+ "240550": {
+  "name": "동방메디컬",
+  "periods": 7,
+  "first": "2024-Q4",
+  "last": "2026-Q2",
+  "segments": [
+   "미용및기타",
+   "한방"
+  ]
+ },
+ "257720": {
+  "name": "실리콘투",
+  "periods": 0,
+  "first": null,
+  "last": null,
+  "segments": [],
+  "reason": "부문 표 없음(단일 부문 또는 형식 불일치)"
+ },
+ "352480": {
+  "name": "씨앤씨인터내셔널",
+  "periods": 0,
+  "first": null,
+  "last": null,
+  "segments": [],
+  "reason": "부문 표 없음(단일 부문 또는 형식 불일치)"
+ },
+ "114840": {
+  "name": "아이패밀리에스씨",
+  "periods": 0,
+  "first": null,
+  "last": null,
+  "segments": [],
+  "reason": "부문 표 없음(단일 부문 또는 형식 불일치)"
+ },
+ "226400": {
+  "name": "오스테오닉",
+  "periods": 0,
+  "first": null,
+  "last": null,
+  "segments": [],
+  "reason": "부문 표 없음(단일 부문 또는 형식 불일치)"
+ },
+ "149980": {
+  "name": "하이로닉",
+  "periods": 0,
+  "first": null,
+  "last": null,
+  "segments": [],
+  "reason": "부문 표 없음(단일 부문 또는 형식 불일치)"
+ },
+ "009450": {
+  "name": "경동나비엔",
+  "periods": 0,
+  "first": null,
+  "last": null,
+  "segments": [],
+  "reason": "부문 표 없음(단일 부문 또는 형식 불일치)"
+ },
+ "033240": {
+  "name": "자화전자",
+  "periods": 0,
+  "first": null,
+  "last": null,
+  "segments": [],
+  "reason": "부문 표 없음(단일 부문 또는 형식 불일치)"
+ },
+ "213420": {
+  "name": "덕산네오룩스",
+  "periods": 0,
+  "first": null,
+  "last": null,
+  "segments": [],
+  "reason": "부문 표 없음(단일 부문 또는 형식 불일치)"
+ },
+ "054950": {
+  "name": "제이브이엠",
+  "periods": 0,
+  "first": null,
+  "last": null,
+  "segments": [],
+  "reason": "부문 표 없음(단일 부문 또는 형식 불일치)"
+ },
+ "103840": {
+  "name": "우양",
+  "periods": 26,
+  "first": "2020-Q1",
+  "last": "2026-Q2",
+  "segments": [
+   "식품",
+   "음료및기타"
+  ]
+ },
+ "189300": {
+  "name": "인텔리안테크",
+  "periods": 0,
+  "first": null,
+  "last": null,
+  "segments": [],
+  "reason": "부문 표 없음(단일 부문 또는 형식 불일치)"
+ },
+ "216080": {
+  "name": "제테마",
+  "periods": 0,
+  "first": null,
+  "last": null,
+  "segments": [],
+  "reason": "부문 표 없음(단일 부문 또는 형식 불일치)"
+ },
+ "025540": {
+  "name": "한국단자",
+  "periods": 0,
+  "first": null,
+  "last": null,
+  "segments": [],
+  "reason": "부문 표 없음(단일 부문 또는 형식 불일치)"
+ },
+ "083310": {
+  "name": "엘오티베큠",
+  "periods": 13,
+  "first": "2023-Q1",
+  "last": "2026-Q2",
+  "segments": [
+   "기타",
+   "기타의보고",
+   "반도체장비",
+   "장비",
+   "진공펌프"
+  ]
+ },
+ "099190": {
+  "name": "아이센스",
+  "periods": 0,
+  "first": null,
+  "last": null,
+  "segments": [],
+  "reason": "부문 표 없음(단일 부문 또는 형식 불일치)"
+ },
+ "206640": {
+  "name": "바디텍메드",
+  "periods": 0,
+  "first": null,
+  "last": null,
+  "segments": [],
+  "reason": "부문 표 없음(단일 부문 또는 형식 불일치)"
+ },
+ "140860": {
+  "name": "파크시스템스",
+  "periods": 0,
+  "first": null,
+  "last": null,
+  "segments": [],
+  "reason": "부문 표 없음(단일 부문 또는 형식 불일치)"
+ },
+ "156100": {
+  "name": "엘앤케이바이오",
+  "periods": 0,
+  "first": null,
+  "last": null,
+  "segments": [],
+  "reason": "부문 표 없음(단일 부문 또는 형식 불일치)"
+ },
+ "059210": {
+  "name": "메타바이오메드",
+  "periods": 26,
+  "first": "2020-Q1",
+  "last": "2026-Q2",
+  "segments": [
+   "Dental",
+   "Suture",
+   "기타",
+   "네트웍스",
+   "통신장비"
+  ]
+ },
+ "214370": {
+  "name": "케어젠",
+  "periods": 0,
+  "first": null,
+  "last": null,
+  "segments": [],
+  "reason": "부문 표 없음(단일 부문 또는 형식 불일치)"
+ },
+ "052330": {
+  "name": "코텍",
+  "periods": 3,
+  "first": "2025-Q4",
+  "last": "2026-Q2",
+  "segments": [
+   "제1",
+   "제2"
+  ]
+ },
+ "051360": {
+  "name": "토비스",
+  "periods": 26,
+  "first": "2020-Q1",
+  "last": "2026-Q2",
+  "segments": [
+   "A",
+   "B",
+   "Display",
+   "Glass"
+  ]
+ },
+ "210540": {
+  "name": "디와이파워",
+  "periods": 2,
+  "first": "2024-Q4",
+  "last": "2025-Q4",
+  "segments": [
+   "유압기기"
+  ]
+ },
+ "119610": {
+  "name": "인터로조",
+  "periods": 1,
+  "first": "2026-Q1",
+  "last": "2026-Q1",
+  "segments": [
+   "상품매출",
+   "제품매출"
+  ]
+ },
+ "010170": {
+  "name": "대한광통신",
+  "periods": 0,
+  "first": null,
+  "last": null,
+  "segments": [],
+  "reason": "부문 표 없음(단일 부문 또는 형식 불일치)"
+ },
+ "002710": {
+  "name": "TCC스틸",
+  "periods": 16,
+  "first": "2022-Q2",
+  "last": "2026-Q2",
+  "segments": [
+   "기타",
+   "부동산임대",
+   "표면처리강판"
+  ]
+ },
+ "019210": {
+  "name": "와이지-원",
+  "periods": 26,
+  "first": "2020-Q1",
+  "last": "2026-Q2",
+  "segments": [
+   "절삭공구"
+  ]
+ },
+ "100120": {
+  "name": "뷰웍스",
+  "periods": 3,
+  "first": "2025-Q4",
+  "last": "2026-Q2",
+  "segments": [
+   "공통자산",
+   "산업용이미지솔루션",
+   "의료용이미지솔루션"
+  ]
+ },
+ "230240": {
+  "name": "에치에프알",
+  "periods": 1,
+  "first": "2026-Q2",
+  "last": "2026-Q2",
+  "segments": [
+   "미국",
+   "한국"
+  ]
+ },
+ "001530": {
+  "name": "DI동일",
+  "periods": 0,
+  "first": null,
+  "last": null,
+  "segments": [],
+  "reason": "부문 표 없음(단일 부문 또는 형식 불일치)"
+ },
+ "014820": {
+  "name": "동원시스템즈",
+  "periods": 0,
+  "first": null,
+  "last": null,
+  "segments": [],
+  "reason": "부문 표 없음(단일 부문 또는 형식 불일치)"
+ },
+ "108320": {
+  "name": "LX세미콘",
+  "periods": 0,
+  "first": null,
+  "last": null,
+  "segments": [],
+  "reason": "부문 표 없음(단일 부문 또는 형식 불일치)"
+ },
+ "003720": {
+  "name": "삼영",
+  "periods": 23,
+  "first": "2020-Q1",
+  "last": "2026-Q2",
+  "segments": [
+   "베트남",
+   "조선",
+   "중공업",
+   "필름",
+   "한국"
+  ]
+ },
+ "014830": {
+  "name": "유니드",
+  "periods": 0,
+  "first": null,
+  "last": null,
+  "segments": [],
+  "reason": "부문 표 없음(단일 부문 또는 형식 불일치)"
+ },
+ "273640": {
+  "name": "와이엠텍",
+  "periods": 0,
+  "first": null,
+  "last": null,
+  "segments": [],
+  "reason": "부문 표 없음(단일 부문 또는 형식 불일치)"
+ },
+ "015230": {
+  "name": "대창단조",
+  "periods": 0,
+  "first": null,
+  "last": null,
+  "segments": [],
+  "reason": "부문 표 없음(단일 부문 또는 형식 불일치)"
+ },
+ "065510": {
+  "name": "휴비츠",
+  "periods": 15,
+  "first": "2020-Q1",
+  "last": "2023-Q3",
+  "segments": [
+   "금융투자업",
+   "제조업"
+  ]
+ },
+ "005010": {
+  "name": "휴스틸",
+  "periods": 0,
+  "first": null,
+  "last": null,
+  "segments": [],
+  "reason": "부문 표 없음(단일 부문 또는 형식 불일치)"
+ },
+ "093190": {
+  "name": "빅솔론",
+  "periods": 1,
+  "first": "2026-Q2",
+  "last": "2026-Q2",
+  "segments": [
+   "제조",
+   "투자"
+  ]
+ },
+ "058610": {
+  "name": "에스피지",
+  "periods": 0,
+  "first": null,
+  "last": null,
+  "segments": [],
+  "reason": "부문 표 없음(단일 부문 또는 형식 불일치)"
+ },
+ "000490": {
+  "name": "대동",
+  "periods": 23,
+  "first": "2020-Q4",
+  "last": "2026-Q2",
+  "segments": [
+   "기타",
+   "농기계",
+   "주물제품"
+  ]
+ },
+ "002900": {
+  "name": "TYM",
+  "periods": 6,
+  "first": "2023-Q1",
+  "last": "2024-Q3",
+  "segments": [
+   "기타",
+   "농기계",
+   "필터"
+  ]
+ },
+ "122310": {
+  "name": "제노레이",
   "periods": 0,
   "first": null,
   "last": null,
