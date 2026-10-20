@@ -38,6 +38,16 @@ def ranking(mkt):
     return rows
 
 
+def adj_base(code):
+    """네이버 일봉(수정주가)에서 기준일 종가 — 액면분할·병합·무상증자 반영."""
+    import re
+    t = get(f'https://fchart.stock.naver.com/sise.nhn?symbol={code}&timeframe=day&count=90&requestType=0')
+    for d in re.findall(r'<item data="([^"]+)"', t):
+        p = d.split('|')
+        if p[0] == BASE.replace('-', ''): return f(p[4])
+    return None
+
+
 def main():
     base = json.loads(gzip.decompress((ROOT / 'foreign_buy_days' / f'{BASE}.json.gz').read_bytes()))
     sector = {r['code']: r['sector'] for r in csv.DictReader((ROOT / 'market_sector_catalog.csv').open(encoding='utf-8-sig'))}
@@ -55,9 +65,18 @@ def main():
             at = at or s.get('localTradedAt', '')
             if code not in b or not px or not b[code][1]: continue
             name, bpx, bcap = b[code]
+            adj = ''
+            # 주가 비율과 시총 비율이 크게 어긋나면 주식 수가 바뀐 것(분할·병합·증자) → 수정주가 기준가로 교체
+            if cap and bcap and abs((px / bpx) / ((cap * 1e8) / bcap) - 1) > 0.15:
+                try:
+                    ab = adj_base(code); time.sleep(0.1)
+                except Exception:
+                    ab = None
+                if ab and abs(ab / bpx - 1) > 0.01: bpx, adj = ab, '수정'
+                else: adj = '주식수 변동'
             sec = sector.get(code, '')
             rows.append([code, s.get('stockName') or name, bpx, px, round((px / bpx - 1) * 100, 2), round(cap) if cap else round(bcap / 1e8),
-                         f(s.get('fluctuationsRatio')), sec, grp.get(sec, ''), s.get('stockEndType', '')])
+                         f(s.get('fluctuationsRatio')), sec, grp.get(sec, ''), s.get('stockEndType', ''), adj])
         rows.sort(key=lambda r: -r[4])
         try:
             ij = json.loads(get(f'https://m.stock.naver.com/api/index/{mkt}/basic'))
@@ -66,7 +85,7 @@ def main():
             icur = None
         ib = idx_base.get(sym)
         out['index'][mkt] = dict(base=ib[1] if ib else None, base_date=ib[0] if ib else None, cur=icur, chg=round((icur / ib[1] - 1) * 100, 2) if icur and ib and ib[1] else None)
-        out['markets'][mkt] = dict(traded_at=at, columns=['code', 'name', 'base_close', 'price', 'chg_pct', 'cap_eok', 'day_chg_pct', 'sector', 'group', 'type'], rows=rows,
+        out['markets'][mkt] = dict(traded_at=at, columns=['code', 'name', 'base_close', 'price', 'chg_pct', 'cap_eok', 'day_chg_pct', 'sector', 'group', 'type', 'adj'], rows=rows,
                                    missing_from_base=len(b) - len(rows))
         print(mkt, len(rows), 'rows', out['index'][mkt])
     (ROOT / 'since_base.json').write_text(json.dumps(out, ensure_ascii=False, separators=(',', ':')))
