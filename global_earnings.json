@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-20",
+  "updated_at": "2026-10-21",
   "method": "공식 컨콜 녹취록을 확인한 경우에만 Q&A 요약으로 표시합니다. 그 외 주제별 요약은 공식 IR 발표문을 출처로 명시하며, 투자 해석은 관전점으로 구분합니다. 반도체 장비 업종은 주요 공정·검사·테스트·패키징 기업을 추적하며 원문 미검증 기업은 분석 대기로 표시합니다.",
   "watchlist": [
     {
@@ -2914,16 +2914,107 @@
           }
         ]
       }
+    },
+    {
+      "ticker": "SPCX",
+      "period": "2026 Q3",
+      "date": "2026-10-20",
+      "evidence": "공식 Q3 실적 보도자료(ir.spacex.com 배포 PDF) 확인 · 직전 Q2 공식 분기보고서(10-Q)와 대조",
+      "direction": "개선",
+      "headline": "매출 $14.58bn(+161%, 전분기 $7.81bn의 약 2배), 영업이익 $2.79bn·순이익 $4.40bn 흑자 전환 · SI(AI) 부문 매출 $7.56bn·흑자 전환 · 분기 설비투자 $19.6bn",
+      "estimate_signal": "공식 보도자료에 Q4·연간 수치 가이던스 없음 — 추정 방향은 실적 자체(SI 매출 Q2 $2.56bn→Q3 $7.56bn, AI 연산 1.4→1.7GW)로 판단. 상향 압력이나 Cursor 편입($608m) 등 인수 효과 분리 필요",
+      "call_coverage": "공식 실적 보도자료 원문 확인 · 웹캐스트 공식 녹취록 미확인(Q&A·CEO 발언 미반영)",
+      "changes": [
+        {
+          "title": "SI(AI) 부문",
+          "direction": "개선",
+          "before": "Q2(당시 'AI' 부문): 매출 $2,561m, 영업손실 $1,257m, 설비투자 $15,828m. 연산 용량 1.4GW.",
+          "now": "Q3: 매출 $7,560m(솔루션·인프라 $7,022m, 광고 $538m), 영업이익 $431m, 조정 EBITDA $4,953m, 설비투자 $16,444m. 연산 용량 1.7GW(COLOSSUS II 증설). Cursor 인수 8/14 종결(내재 지분가치 $60bn), 편입 후 매출 $608m.",
+          "meaning": "AI 연산 인프라를 외부에 임대·판매하는 클라우드 사업이 한 분기 만에 매출 3배로 커지며 흑자 전환. 성장의 일부는 Cursor 인수 효과."
+        },
+        {
+          "title": "Connectivity(Starlink)",
+          "direction": "개선",
+          "before": "Q2 매출 $4,291m, 영업이익 $1,656m, 소비자 가입자 12.0M, ARPU $66.",
+          "now": "Q3 매출 $5,248m(+69% YoY), 영업이익 $2,367m(+99% YoY), 조정 EBITDA $3,499m. 가입자 13.6M(+1.6M QoQ), ARPU $69(QoQ +5%, 전년 $83). 항공기 3,800대+ 탑재. 800MHz 주파수(최대 14MHz) 인수 합의(2027 상반기 종결 예상).",
+          "meaning": "가입자 증가로 성장하는 현금창출원. ARPU는 전년보다 낮아 저가·신흥시장 확대의 단가 희석 진행 중."
+        },
+        {
+          "title": "Space(발사)",
+          "direction": "개선",
+          "before": "Q2 매출 $962m, 영업손실 $542m, 발사 38회.",
+          "now": "Q3 매출 $1,767m, 영업손실 $7m, 발사 35회·476톤. Starship 14차 비행이 첫 매출 발생 임무(Starlink V3 26기, Falcon 9 대비 다운링크 약 10배).",
+          "meaning": "Starship 상업 운용 개시로 Space 부문 손익분기 근접. Starlink V3 배치 속도가 통신 용량 확장의 관건."
+        },
+        {
+          "title": "설비투자·재무",
+          "direction": "악화",
+          "before": "Q2 설비투자 $18,369m(그중 AI $15,828m), 순손실 $541m.",
+          "now": "Q3 설비투자 $19,593m(SI $16,444m). 9M 영업현금흐름 $13,097m vs 설비투자 $48,069m. 9월 말 현금 $51.3bn·유가증권 $38.6bn, 차입·리스부채 약 $38.8bn(연초 약 $22.9bn). 인수 관련 향후 근속 조건 주식보상 $23.4bn.",
+          "meaning": "분기 흑자에도 현금흐름은 대규모 순유출. IPO 자금·차입으로 AI 투자를 조달하는 구조라 투자 속도와 자금조달 여건이 핵심 변수."
+        }
+      ],
+      "facts": "Q3 매출 $14,575m(+161% YoY; Space $1,767m, Connectivity $5,248m, SI $7,560m), 영업이익 $2,791m(Space -$7m, Connectivity $2,367m, SI $431m), 순이익 $4,404m(전년 -$1,054m), 조정 EBITDA $8,809m(+306%), 희석 EPS $0.35(기본 $0.37; 조정 EPS 미공개). 설비투자 $19,593m(SI $16,444m). 소비자 가입자 13.6M, ARPU $69. 발사 35회, AI 연산 1.7GW. 9M 매출 $27,083m, 순손실 $413m, 영업현금흐름 $13,097m. 9월 말 현금 $51,294m, 유가증권 $38,561m. 수치는 SpaceX 공식 보도자료.",
+      "guidance": "공식 보도자료에 Q4·2026 연간 수치 가이던스 없음. 제시된 일정: 800MHz 주파수 인수 2027 상반기 종결 예상, Louisiana 신규 발사장 2029 첫 발사 목표, NSSL 18건·NASA ISS 유인 3건·Starship 달 화물 계약 확보.",
+      "tone": "CFO(Bret Johnsen): Q3도 강한 분기였으며 미래 인프라를 규율 있게 구축하고 있다고 언급(보도자료). 웹캐스트 발언(Elon Musk·Gwynne Shotwell)과 Q&A 톤은 공식 녹취록 미확인으로 평가하지 않음.",
+      "interpretation": "분석: AI 클라우드(연산 임대)가 실적의 중심으로 올라선 첫 분기. SI 분기 설비투자 $16.4bn은 하이퍼스케일러급 규모로, GPU·HBM(SK하이닉스·삼성전자), 서버 전력기기(변압기·배전) 수요의 또 다른 대형 원천 — 한국 반도체·전력기기 수출에 긍정적 참고 지표. 다만 순이익(4.40bn)이 영업이익(2.79bn)보다 커 영업외 이익 기여가 크고, 9M 기준 FCF가 약 -$35bn이라 '현금으로 투자를 감당한다'는 단계는 아님. 일부 외부 리포트의 '조정 EPS $0.35'(실제 GAAP 희석 EPS), 'ARPU 상승'(전년 대비 하락), ARR·Tesla 합병 관련 언급은 공식 보도자료에서 확인되지 않음.",
+      "watch": "분석: 웹캐스트 공식 녹취록(ARR 목표·합병 관련 발언 진위), Q4 SI 매출에서 Cursor 효과 분리, 연산 용량 GW 증가 속도, 설비투자 대비 영업현금흐름, 부채·추가 자금조달, Starlink V3·Starship 발사 빈도, ARPU 추세.",
+      "source": "https://s21.q4cdn.com/184289198/files/content_files/SpaceX-Reports-Third-Quarter-2026-Results.pdf",
+      "prior_source": "https://s21.q4cdn.com/184289198/files/doc_financials/2026/q2/dc41a8f3-2234-40ec-95e3-3867336ae181.pdf",
+      "call_topics": [
+        {
+          "topic": "AI 클라우드",
+          "source_part": "공식 실적 보도자료",
+          "points": [
+            "SI 솔루션·인프라 매출 $7,022m(Q2 $2,194m).",
+            "연산 용량 1.7GW, Grok Bot 출시, Cursor 인수 종결."
+          ],
+          "implication": "외부 고객 연산 임대 계약의 지속성과 Cursor 제외 성장률 확인 필요."
+        },
+        {
+          "topic": "Starlink",
+          "source_part": "공식 실적 보도자료",
+          "points": [
+            "가입자 13.6M(+1.6M QoQ), ARPU $69.",
+            "Connectivity 영업이익 +99% YoY."
+          ],
+          "implication": "가입자 성장 대비 ARPU 희석 속도가 이익률을 좌우."
+        },
+        {
+          "topic": "투자·재무",
+          "source_part": "공식 실적 보도자료",
+          "points": [
+            "Q3 설비투자 $19.6bn, 9M $48.1bn.",
+            "현금+유가증권 약 $89.9bn, 차입·리스부채 약 $38.8bn."
+          ],
+          "implication": "투자 지속 가능 기간과 추가 조달 여부."
+        }
+      ],
+      "call_readthrough": {
+        "scope": "SpaceX 공식 Q3 실적 보도자료와 Q2 분기보고서를 한국어로 재서술. 웹캐스트 녹취록은 확인하지 못해 Q&A·CEO 발언은 인용하거나 추정하지 않음.",
+        "groups": [
+          {
+            "title": "경영진 발표 핵심",
+            "items": [
+              {
+                "title": "실적",
+                "body": "매출이 전년의 2.6배, 전분기의 약 2배로 늘었고 처음으로 분기 순이익 흑자를 냈다."
+              },
+              {
+                "title": "구조 변화",
+                "body": "AI 부문 매출이 전체의 절반을 넘으며 흑자로 돌아섰고, Starlink 이익은 1년 새 두 배가 됐다."
+              },
+              {
+                "title": "검증할 조건",
+                "body": "분기 약 $20bn의 설비투자를 감당할 현금흐름, 인수 효과를 뺀 AI 성장률, 웹캐스트 발언의 공식 녹취록 확인이 필요하다."
+              }
+            ]
+          }
+        ]
+      }
     }
   ],
   "upcoming": [
-    {
-      "ticker": "SPCX",
-      "date": "2026-10-20",
-      "time": "장 마감 후 · 15:30 America/Chicago(오디오 웹캐스트)",
-      "event": "2026 Q3 실적·웹캐스트",
-      "source": "https://ir.spacex.com/updates/releases-details/2026/SpaceX-to-Post-Third-Quarter-2026-Results-and-Host-Webcast-on-October-20-2026-2026-QssQGye3im/default.aspx"
-    },
     {
       "ticker": "LRCX",
       "date": "2026-10-21",
