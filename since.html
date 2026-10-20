@@ -4,7 +4,7 @@
 <style>:root{font-family:Arial,"Noto Sans KR",sans-serif}*{box-sizing:border-box}body{margin:0}main{max-width:1500px;margin:26px auto;padding:0 22px}.muted{font-size:13px;color:#93a3bd;line-height:1.6}
 .panel{border-radius:12px;padding:18px 20px;margin-bottom:18px}h2{font-size:19px;margin:0 0 6px}
 .ctl{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:10px 0 14px}.ctl label{font-size:13px;color:#93a3bd;margin-left:8px}.ctl input,.ctl select{background:#0f1a31;color:#e2e8f0;border:1px solid #2a3a5c;border-radius:8px;padding:6px 10px;font-size:13px}
-.mt{display:flex;gap:8px;margin:0 0 14px}.mt button{padding:9px 22px;border-radius:10px;border:1px solid #2a3a5c;background:#0f1a31;color:#cbd5e1;font-size:15px;font-weight:700;cursor:pointer}.mt button.on{background:#2563eb;border-color:#2563eb;color:#fff}
+.mt{display:flex;gap:8px;margin:0 0 14px}.mt button{padding:9px 22px;border-radius:10px;border:1px solid #2a3a5c;background:#0f1a31;color:#cbd5e1;font-size:15px;font-weight:700;cursor:pointer}.mt button.on,.mt button.active{background:#2563eb;border-color:#2563eb;color:#fff}
 .cards{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:6px 0 14px}.card{border:1px solid #22314f;background:#0f1a31;border-radius:10px;padding:12px 14px}.card small{display:block;color:#93a3bd;font-size:12px}.card b{display:block;font-size:22px;margin-top:4px}.card span{font-size:12px;color:#93a3bd}
 .kt{border-collapse:collapse;width:100%;font-size:13.5px;font-variant-numeric:tabular-nums}.kt th,.kt td{border-bottom:1px solid #22314f;padding:7px 8px;text-align:right;white-space:nowrap}.kt th{color:#93a3bd;font-weight:600;cursor:pointer;user-select:none}.kt th.sorted{color:#e2e8f0}.kt td.l,.kt th.l{text-align:left}
 .up{color:#f87171}.dn{color:#60a5fa}.tw{overflow:auto;max-height:calc(100vh - 90px);border-radius:8px}.kt thead th{position:sticky;top:0;z-index:2;background:#16223f;box-shadow:inset 0 -1px 0 #2b3d63}
@@ -13,7 +13,7 @@
 </style><link rel="stylesheet" href="./shell.css?v=3"></head><body><main>
 <h1 data-upd="since_base.json">2026-07-30 종가 대비 현재가 · 전 종목</h1>
 <p class="muted" id="meta">불러오는 중…</p>
-<div class="mt" id="mkt"><button data-m="KOSPI" class="on">코스피</button><button data-m="KOSDAQ">코스닥</button></div>
+<div class="mt" id="mkt"><button data-m="KOSPI" class="on active" style="background:#2563eb;color:#fff">코스피</button><button data-m="KOSDAQ">코스닥</button></div>
 <section class="panel"><div class="cards" id="cards"></div>
 <div class="g2"><div><h2>등락률 분포</h2><p class="muted">7/30 종가 대비 현재가 등락률의 종목 수 분포(10%p 구간). 빨강 = 상승, 파랑 = 하락, 노란 선 = 지수 등락률.</p><div class="chart"><canvas id="hist"></canvas></div></div>
 <div><h2>업종(대분류)별 중앙값</h2><p class="muted">업종 안 종목 등락률의 중앙값. 클릭하면 아래 표가 그 업종으로 걸러집니다.</p><div class="tw" style="max-height:300px"><table class="kt" id="sect"></table></div></div></div></section>
@@ -65,7 +65,7 @@
   $('more').hidden=F.length<=lim;
   $('tbl').querySelectorAll('th[data-k]').forEach(th=>th.onclick=()=>{const k=th.dataset.k;if(k==='bar')return;if(sortK===k)sortD=-sortD;else{sortK=k;sortD=typeof R[0]?.[k]==='string'?1:-1;}table();});
  }
- $('mkt').onclick=e=>{const b=e.target.closest('button');if(!b)return;M=b.dataset.m;$('mkt').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));$('grp').value='';lim=200;render();};
+ $('mkt').onclick=e=>{const b=e.target.closest('button');if(!b)return;M=b.dataset.m;$('mkt').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b);x.classList.toggle('active',x===b);x.style.background=x===b?'#2563eb':'';x.style.color=x===b?'#fff':'');$('grp').value='';lim=200;render();};
  ['q','grp','cap','dir'].forEach(id=>$(id).addEventListener('input',()=>{lim=200;table();}));$('more').onclick=()=>{lim+=300;table();};
  render();
 })();
