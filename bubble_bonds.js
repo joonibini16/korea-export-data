@@ -6,7 +6,7 @@
  const PD=s=>s>0?(1-Math.exp(-5*(s/1e4)/0.6))*100:0;
  const COL={CRWV:'#ef4444',ORCL:'#f97316',META:'#60a5fa',AMZN:'#f59e0b',NVDA:'#22c55e',GOOGL:'#a78bfa',MSFT:'#2dd4bf',AAPL:'#e2e8f0'};
  let sel='CRWV',mode='all',charts={};
- const tAx=(mn,mx)=>({type:'linear',min:mn,max:mx,ticks:{maxTicksLimit:9,callback:v=>{const d=new Date(v);return String(d.getUTCFullYear()).slice(2)+'.'+String(d.getUTCMonth()+1).padStart(2,'0');}}});
+ const tAx=(mn,mx)=>({type:'linear',min:mn,max:mx+Math.max((mx-mn)*0.04,10*864e5),ticks:{maxTicksLimit:9,callback:v=>{const d=new Date(v);return String(d.getUTCFullYear()).slice(2)+'.'+String(d.getUTCMonth()+1).padStart(2,'0');}}});
  Promise.all([fetch('bigtech_bonds.json').then(r=>r.json()),fetch('bigtech_bonds_hist.csv?v='+Date.now(),{cache:'no-store'}).then(r=>r.text()),
   fetch('bigtech_bonds_ref.csv',{cache:'no-store'}).then(r=>r.ok?r.text():'date,ticker\n').catch(()=>'date,ticker\n')]).then(([M,a,b])=>{
   const B=M.bonds,ref=parse(a),own=parse(b); // ref = FINRA 원본, own = 판독 참고치(대체용)

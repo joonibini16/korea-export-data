@@ -31,7 +31,7 @@
   new Chart(cv,{type:'line',data:{datasets:ds},options:{responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:'nearest',intersect:false,axis:'x'},
    plugins:{legend:{position:'top',labels:{boxWidth:14,filter:i=>!/보도$|추정$/.test(i.text)}},
     tooltip:{itemSort:(a,b)=>b.parsed.y-a.parsed.y,callbacks:{title:it=>new Date(it[0].parsed.x).toISOString().slice(0,10),label:t=>{const d=t.dataset;if(d._dots){const p=d._dots[t.dataIndex];return `${d.label}: ${t.parsed.y}bp (${p.src||''})`;}return `${d._n||d.label}: ${Math.round(t.parsed.y)}bp`;}}}},
-   scales:{x:{type:'linear',min:mn,max:mx,ticks:{maxTicksLimit:12,callback:tick}},y:{beginAtZero:true,title:{display:true,text:'5Y CDS (bp)'}},...(ds.some(d=>d.yAxisID==='y1')?{y1:{position:'right',min:0,grid:{drawOnChartArea:false},ticks:{color:'#60a5fa'},title:{display:true,text:'코어위브 5Y CDS (bp, 우)',color:'#60a5fa'}}}:{})}}});
+   scales:{x:{type:'linear',min:mn,max:mx+Math.max((mx-mn)*0.04,10*864e5),ticks:{maxTicksLimit:12,callback:tick}},y:{beginAtZero:true,grace:'8%',title:{display:true,text:'5Y CDS (bp)'}},...(ds.some(d=>d.yAxisID==='y1')?{y1:{position:'right',min:0,grace:'8%',grid:{drawOnChartArea:false},ticks:{color:'#60a5fa'},title:{display:true,text:'코어위브 5Y CDS (bp, 우)',color:'#60a5fa'}}}:{})}}});
   // 오른쪽 'CDS 5년' 표도 같은 일별 이력(판독 → FINRA 매일 추정)으로 최신화
   {const NM={ORCL:'Oracle',SPCX:'SpaceX',AVGO:'Broadcom',META:'Meta',NVDA:'Nvidia',AMZN:'Amazon',GOOGL:'Alphabet',MSFT:'Microsoft',AAPL:'Apple',CRWV:'CoreWeave'};
    const patch=()=>{const tb=document.getElementById('cdsTable');if(!tb||!tb.rows.length)return false;
