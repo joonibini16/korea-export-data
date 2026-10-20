@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>7/30 대비 등락률</title><script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script><script src="./shell.js?v=29"></script>
+<style>:root{font-family:Arial,"Noto Sans KR",sans-serif}*{box-sizing:border-box}body{margin:0}main{max-width:1500px;margin:26px auto;padding:0 22px}.muted{font-size:13px;color:#93a3bd;line-height:1.6}
+.panel{border-radius:12px;padding:18px 20px;margin-bottom:18px}h2{font-size:19px;margin:0 0 6px}
+.ctl{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:10px 0 14px}.ctl label{font-size:13px;color:#93a3bd;margin-left:8px}.ctl input,.ctl select{background:#0f1a31;color:#e2e8f0;border:1px solid #2a3a5c;border-radius:8px;padding:6px 10px;font-size:13px}
+.mt{display:flex;gap:8px;margin:0 0 14px}.mt button{padding:9px 22px;border-radius:10px;border:1px solid #2a3a5c;background:#0f1a31;color:#cbd5e1;font-size:15px;font-weight:700;cursor:pointer}.mt button.on{background:#2563eb;border-color:#2563eb;color:#fff}
+.cards{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:6px 0 14px}.card{border:1px solid #22314f;background:#0f1a31;border-radius:10px;padding:12px 14px}.card small{display:block;color:#93a3bd;font-size:12px}.card b{display:block;font-size:22px;margin-top:4px}.card span{font-size:12px;color:#93a3bd}
+.kt{border-collapse:collapse;width:100%;font-size:13.5px;font-variant-numeric:tabular-nums}.kt th,.kt td{border-bottom:1px solid #22314f;padding:7px 8px;text-align:right;white-space:nowrap}.kt th{color:#93a3bd;font-weight:600;cursor:pointer;user-select:none}.kt th.sorted{color:#e2e8f0}.kt td.l,.kt th.l{text-align:left}
+.up{color:#f87171}.dn{color:#60a5fa}.tw{overflow:auto;max-height:calc(100vh - 90px);border-radius:8px}.kt thead th{position:sticky;top:0;z-index:2;background:#16223f;box-shadow:inset 0 -1px 0 #2b3d63}
+.bar{position:relative;width:140px;height:16px;background:rgba(148,163,184,.10);border-radius:3px;display:inline-block;vertical-align:middle}.bar i{position:absolute;top:0;bottom:0;border-radius:3px}.bar:after{content:'';position:absolute;left:50%;top:-2px;bottom:-2px;width:1px;background:#64748b}
+.chart{position:relative;height:260px}.g2{display:grid;grid-template-columns:3fr 2fr;gap:18px}@media(max-width:1000px){.g2,.cards{grid-template-columns:1fr 1fr}}.more{margin-top:10px;padding:7px 16px;border-radius:8px;border:1px solid #2a3a5c;background:#0f1a31;color:#cbd5e1;cursor:pointer}
+</style><link rel="stylesheet" href="./shell.css?v=3"></head><body><main>
+<h1 data-upd="since_base.json">2026-07-30 종가 대비 현재가 · 전 종목</h1>
+<p class="muted" id="meta">불러오는 중…</p>
+<div class="mt" id="mkt"><button data-m="KOSPI" class="on">코스피</button><button data-m="KOSDAQ">코스닥</button></div>
+<section class="panel"><div class="cards" id="cards"></div>
+<div class="g2"><div><h2>등락률 분포</h2><p class="muted">7/30 종가 대비 현재가 등락률의 종목 수 분포(10%p 구간). 빨강 = 상승, 파랑 = 하락, 노란 선 = 지수 등락률.</p><div class="chart"><canvas id="hist"></canvas></div></div>
+<div><h2>업종(대분류)별 중앙값</h2><p class="muted">업종 안 종목 등락률의 중앙값. 클릭하면 아래 표가 그 업종으로 걸러집니다.</p><div class="tw" style="max-height:300px"><table class="kt" id="sect"></table></div></div></div></section>
+<section class="panel"><h2>전 종목</h2>
+<div class="ctl"><input id="q" type="search" placeholder="종목명·코드 검색"><label>업종<select id="grp"><option value="">전체</option></select></label><label>시가총액<select id="cap"><option value="0">전체</option><option value="1000">1,000억 이상</option><option value="5000">5,000억 이상</option><option value="10000">1조 이상</option><option value="100000">10조 이상</option></select></label><label>방향<select id="dir"><option value="">전체</option><option value="up">상승</option><option value="dn">하락</option><option value="beat">지수보다 강함</option><option value="lag">지수보다 약함</option></select></label><span class="muted" id="cnt"></span></div>
+<div class="tw"><table class="kt" id="tbl"></table></div><button class="more" id="more" hidden>더 보기</button>
+<p class="muted">기준가 = 2026-07-30 KRX 종가(정보데이터시스템 전종목 시세), 현재가 = 네이버 증권 시세(장중에는 현재가, 장 마감 후에는 종가). 장중 20분마다, 마감 후 16:25·18:10에 갱신됩니다. 7/30 이후 상장 종목은 기준가가 없어 제외하고, 액면분할·무상증자 등 기준가 조정은 반영하지 않으므로 해당 종목은 등락률이 왜곡될 수 있습니다.</p></section>
+</main>
+<script>
+(async function(){
+ const $=id=>document.getElementById(id);let D,M='KOSPI',sortK='chg_pct',sortD=-1,lim=200,hist;
+ try{D=await (await fetch('since_base.json?v='+Date.now(),{cache:'no-store'})).json();}catch(e){$('meta').textContent='자료를 아직 수집하지 못했습니다.';return;}
+ const fmt=(v,d=0)=>v==null?'—':Number(v).toLocaleString(undefined,{maximumFractionDigits:d,minimumFractionDigits:d});
+ const pc=v=>v==null?'—':(v>0?'+':'')+v.toFixed(2)+'%',cl=v=>v>0?'up':v<0?'dn':'';
+ const med=a=>{const s=[...a].sort((x,y)=>x-y),n=s.length;return n?(n%2?s[(n-1)/2]:(s[n/2-1]+s[n/2])/2):null;};
+ const rows=m=>{const t=D.markets[m];return t.rows.map(r=>Object.fromEntries(t.columns.map((c,i)=>[c,r[i]])));};
+ const COLS=[['name','종목','l'],['group','업종','l'],['base_close','7/30 종가'],['price','현재가'],['chg_pct','7/30 대비'],['bar','',''],['day_chg_pct','오늘'],['cap_eok','시가총액(억)']];
+ function render(){
+  const R=rows(M),I=D.index[M]||{},ix=I.chg;const chg=R.map(r=>r.chg_pct);
+  $('meta').innerHTML=`기준일 <b>${D.base_date}</b> 종가 대비 · 현재가 기준 ${D.markets[M].traded_at?D.markets[M].traded_at.replace('T',' ').slice(0,16):D.updated_at.replace('T',' ').slice(0,16)} · 갱신 ${D.updated_at.replace('T',' ').slice(0,16)} KST`;
+  const up=chg.filter(v=>v>0).length,dn=chg.filter(v=>v<0).length,beat=ix==null?null:chg.filter(v=>v>ix).length;
+  $('cards').innerHTML=`<div class="card"><small>${M==='KOSPI'?'코스피':'코스닥'} 지수</small><b class="${cl(ix)}">${pc(ix)}</b><span>${fmt(I.base,2)} → ${fmt(I.cur,2)}</span></div>
+   <div class="card"><small>종목 중앙값</small><b class="${cl(med(chg))}">${pc(med(chg))}</b><span>${R.length.toLocaleString()}종목</span></div>
+   <div class="card"><small>상승 / 하락</small><b><span class="up" style="font-size:22px;color:#f87171">${up}</span> / <span style="font-size:22px;color:#60a5fa">${dn}</span></b><span>상승 비율 ${(up/R.length*100).toFixed(1)}%</span></div>
+   <div class="card"><small>지수보다 강한 종목</small><b>${beat==null?'—':beat}</b><span>${beat==null?'':(beat/R.length*100).toFixed(1)+'% · 지수 쏠림 정도'}</span></div>
+   <div class="card"><small>+50% 이상 / −30% 이하</small><b><span style="font-size:22px;color:#f87171">${chg.filter(v=>v>=50).length}</span> / <span style="font-size:22px;color:#60a5fa">${chg.filter(v=>v<=-30).length}</span></b><span>극단 종목 수</span></div>`;
+  // 분포
+  const B=[];for(let x=-60;x<=100;x+=10)B.push(x);const lab=B.map((x,i)=>i===0?'≤'+(x+10)+'%':i===B.length-1?'≥'+x+'%':`${x}~${x+10}%`);
+  const cnt=B.map((x,i)=>chg.filter(v=>i===0?v<x+10:i===B.length-1?v>=x:v>=x&&v<x+10).length);
+  hist&&hist.destroy();const ixBin=ix==null?null:Math.max(0,Math.min(B.length-1,Math.floor((ix+60)/10)));
+  hist=new Chart($('hist'),{type:'bar',data:{labels:lab,datasets:[{label:'종목 수',data:cnt,backgroundColor:B.map(x=>x+10<=0?'rgba(96,165,250,.7)':x>=0?'rgba(248,113,113,.7)':'rgba(148,163,184,.6)')}]},
+   options:{responsive:true,maintainAspectRatio:false,animation:false,plugins:{rangeNav:false,legend:{display:false},tooltip:{callbacks:{afterLabel:c=>c.dataIndex===ixBin?'지수 등락률 '+pc(ix)+' 구간':''}}},scales:{x:{ticks:{color:'#94a3b8',maxRotation:0,autoSkip:true}},y:{ticks:{color:'#94a3b8'}}}},
+   plugins:[{id:'ixline',afterDatasetsDraw(ch){if(ixBin==null)return;const xs=ch.scales.x,y=ch.scales.y,w=xs.getPixelForValue(1)-xs.getPixelForValue(0),x=xs.getPixelForValue(ixBin)-w/2+w*(((ix+60)/10)%1);const c=ch.ctx;c.save();c.strokeStyle='#fbbf24';c.lineWidth=2;c.setLineDash([5,4]);c.beginPath();c.moveTo(x,y.top);c.lineTo(x,y.bottom);c.stroke();c.fillStyle='#fbbf24';c.font='12px sans-serif';c.fillText('지수 '+pc(ix),x+4,y.top+12);c.restore();}}]});
+  // 업종
+  const g={};R.forEach(r=>{const k=r.group||'기타·미분류';(g[k]=g[k]||[]).push(r.chg_pct);});
+  const gs=Object.entries(g).map(([k,a])=>[k,med(a),a.length,a.filter(v=>v>0).length/a.length*100]).sort((a,b)=>b[1]-a[1]);
+  $('sect').innerHTML='<thead><tr><th class="l">업종</th><th>중앙값</th><th>종목 수</th><th>상승 비율</th></tr></thead><tbody>'+gs.map(([k,m,n,u])=>`<tr data-g="${k}" style="cursor:pointer"><td class="l">${k}</td><td class="${cl(m)}">${pc(m)}</td><td>${n}</td><td>${u.toFixed(0)}%</td></tr>`).join('')+'</tbody>';
+  $('sect').querySelectorAll('tr[data-g]').forEach(tr=>tr.onclick=()=>{$('grp').value=tr.dataset.g==='기타·미분류'?'':tr.dataset.g;lim=200;table();});
+  const cur=$('grp').value;$('grp').innerHTML='<option value="">전체</option>'+gs.map(([k])=>k).filter(k=>k!=='기타·미분류').map(k=>`<option${k===cur?' selected':''}>${k}</option>`).join('');
+  table();
+ }
+ function table(){
+  const R=rows(M),ix=(D.index[M]||{}).chg,q=$('q').value.trim().toLowerCase(),gp=$('grp').value,cap=+$('cap').value,dir=$('dir').value;
+  let F=R.filter(r=>(!q||r.name.toLowerCase().includes(q)||r.code.includes(q))&&(!gp||r.group===gp)&&(r.cap_eok||0)>=cap&&(!dir||(dir==='up'?r.chg_pct>0:dir==='dn'?r.chg_pct<0:dir==='beat'?ix!=null&&r.chg_pct>ix:ix!=null&&r.chg_pct<ix)));
+  F.sort((a,b)=>{const x=a[sortK],y=b[sortK];return (typeof x==='string'?x.localeCompare(y):(x??-1e18)-(y??-1e18))*sortD;});
+  $('cnt').textContent=`${F.length.toLocaleString()}종목`;const mx=Math.max(50,...F.slice(0,lim).map(r=>Math.abs(r.chg_pct)));
+  $('tbl').innerHTML='<thead><tr><th>#</th>'+COLS.map(([k,t,c])=>`<th class="${c||''}${k===sortK?' sorted':''}" data-k="${k}">${t}${k===sortK?(sortD<0?' ▼':' ▲'):''}</th>`).join('')+'</tr></thead><tbody>'+
+   F.slice(0,lim).map((r,i)=>{const w=Math.min(50,Math.abs(r.chg_pct)/mx*50);return `<tr><td>${i+1}</td><td class="l"><a href="https://m.stock.naver.com/domestic/stock/${r.code}/total" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">${r.name}</a> <span class="muted" style="font-size:11px">${r.code}</span></td><td class="l muted" style="font-size:12px">${r.group||''}</td><td>${fmt(r.base_close)}</td><td>${fmt(r.price)}</td><td class="${cl(r.chg_pct)}"><b>${pc(r.chg_pct)}</b></td><td><span class="bar"><i style="${r.chg_pct>=0?`left:50%;width:${w}%;background:rgba(248,113,113,.65)`:`right:50%;width:${w}%;background:rgba(96,165,250,.65)`}"></i></span></td><td class="${cl(r.day_chg_pct)}">${pc(r.day_chg_pct)}</td><td>${fmt(r.cap_eok)}</td></tr>`;}).join('')+'</tbody>';
+  $('more').hidden=F.length<=lim;
+  $('tbl').querySelectorAll('th[data-k]').forEach(th=>th.onclick=()=>{const k=th.dataset.k;if(k==='bar')return;if(sortK===k)sortD=-sortD;else{sortK=k;sortD=typeof R[0]?.[k]==='string'?1:-1;}table();});
+ }
+ $('mkt').onclick=e=>{const b=e.target.closest('button');if(!b)return;M=b.dataset.m;$('mkt').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));$('grp').value='';lim=200;render();};
+ ['q','grp','cap','dir'].forEach(id=>$(id).addEventListener('input',()=>{lim=200;table();}));$('more').onclick=()=>{lim+=300;table();};
+ render();
+})();
+</script></body></html>

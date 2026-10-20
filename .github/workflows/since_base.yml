@@ -1,0 +1,28 @@
+name: Since-base price change (2026-07-30)
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['collect_since_base.py', '.github/workflows/since_base.yml']
+permissions:
+  contents: write
+concurrency:
+  group: since-base
+  cancel-in-progress: false
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python collect_since_base.py
+      - run: |
+          git config user.name github-actions; git config user.email github-actions@github.com
+          cp since_base.json /tmp/sb.json
+          for i in 1 2 3 4 5; do
+            git fetch -q origin main && git reset -q --hard origin/main && cp /tmp/sb.json since_base.json
+            git add since_base.json; git diff --cached --quiet && exit 0
+            git commit -qm "Update since-base price change" && git push -q origin HEAD:main && exit 0; sleep $((i*4))
+          done; exit 1

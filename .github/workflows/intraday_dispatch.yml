@@ -26,7 +26,7 @@ jobs:
           end=$(TZ=Asia/Seoul date -d 'today 16:10' +%s)
           while :; do
             now=$(date +%s)
-            for w in size_breadth.yml breadth.yml breadth_naver.yml bubble.yml; do
+            for w in size_breadth.yml breadth.yml breadth_naver.yml bubble.yml since_base.yml; do
               gh workflow run "$w" --repo "$REPO" --ref main && echo "$(TZ=Asia/Seoul date +%H:%M) dispatched $w" || echo "fail $w"
               sleep 5
             done
