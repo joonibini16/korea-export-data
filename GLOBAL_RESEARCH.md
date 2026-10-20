@@ -5,7 +5,7 @@
 
 ## 갱신 절차
 
-1. main의 이 문서·JSON과 최신 SHA를 읽는다. `providers`의 8개 발간사 공식 목록·검색에서 직전 점검 이후 신규 자료를 확인하고 최근 7일도 재검색한다. 유료 원문은 권한을 우회하지 않는다.
+1. main의 이 문서·JSON과 최신 SHA를 읽는다. `providers`에 등록된 모든 발간사 공식 목록·검색에서 직전 점검 이후 신규 자료를 확인하고 최근 7일도 재검색한다. 유료 원문은 권한을 우회하지 않는다.
 2. 발간일은 본문/PDF 기준으로 확인한다. 크롤링일·최초 발견일을 발간일로 쓰지 않는다. 날짜가 모호하면 `published_at: null`, `date_note`로 설명한다. 은행 자체 실적 발표를 해당 은행의 리서치로 오인하지 않는다.
 3. 신규 리포트는 `reports`에 추가한다. 동일 발간사+제목+발간일+정규화 출처 URL을 중복 저장하지 않는다. 추적 파라미터·PDF/기사·번역본 중복도 대조한다. 기존 `id`, `first_seen_at`, 과거 정상 기록은 유지한다. 수정이 확인된 기존 자료만 근거를 검증해 갱신한다.
 4. 짧은 한국어 재서술로 `headline`(투자 결론), `facts`(원문 사실), `interpretation`(분석자 해석), `estimate_signal`(실적추정 영향), `valuation_change`(목표가/밸류), `tone_change`, `watch`를 채운다. 비교 자료가 없으면 변화 단정을 보류하고 없는 수치·목표가를 만들지 않는다. 전문·도표·유료 PDF를 복제하지 않는다.
@@ -19,7 +19,7 @@
 
 `reports[]` 필수 항목:
 - `id`: 안정적인 고유 문자열. `publisher`: providers의 id.
-- `published_at`: YYYY-MM-DD 또는 null. `first_seen_at`, `last_verified_at`: UTC ISO 시각.
+- `published_at`: YYYY-MM-DD 또는 null. 월만 확인되면 선택 항목 `published_month: YYYY-MM`로 보존하고 임의의 일자를 넣지 않는다. 발간일 미확인 자료는 UI의 전체 기간·오늘 확인에서 볼 수 있다. `first_seen_at`, `last_verified_at`: UTC ISO 시각.
 - `title`: 원문 제목. `title_ko`: 한국어 제목. `division`: 실제 작성 부서. IB 리서치·AM·CIO·Institute·트레이딩을 구분한다.
 - `sectors`: 최상위 sectors 중 1개 이상. 첫 업종이 기본 그룹이다. 증권사에서 쓰는 큰 업종 범주를 유지하고 불필요하게 세분화하지 않는다.
 - `companies`: 실제 원문 분석/언급 기업만 `{ticker,name,relationship}`로 기록한다. 미지정은 빈 배열. 발간 은행을 대상 기업으로 잘못 넣거나 임의의 국내 수혜주를 붙이지 않는다.
@@ -30,7 +30,7 @@
 - `stance`: positive / negative / mixed / neutral / unknown. 이는 분석자 해석이며 증권사의 공식 투자의견 변경과 혼동하지 않는다.
 - `initial_archive`: 초기 기존 참고자료에만 true. 새 자료에 false. 오래된 참고자료를 신규 발간으로 세지 않는다.
 
-`providers[]`: id/name/source_url/checked_at/status/note. 현재 GS, MS, JPM, UBS, BofA, Citi, Barclays, DB를 유지한다.
+`providers[]`: id/name/source_url/checked_at/status/note. 기존 GS, MS, JPM, UBS, BofA, Citi, Barclays, DB와 추가 Nomura, Daiwa, Mizuho, HSBC, BNP, SocGen, Jefferies, Bernstein, Macquarie, RBC를 유지한다. 업체 수를 코드·자동화에 고정하지 않고 providers 전체를 점검한다. Nomura와 NRI, Bernstein Research와 Bernstein/AllianceBernstein 자산관리 콘텐츠를 구분하며 그룹 내 발간 부서를 실제 자료에 맞춰 표시한다.
 `checks[]`: checked_at/kind/new_publications/added_reports/note. kind는 initial_archive 또는 daily_review.
 
 UI 코드는 텍스트를 DOM textContent로 표시하며, 자료 갱신은 JSON만 변경하면 된다. 정상 운영 중 HTML/공통 메뉴나 다른 대시보드·실적 파일을 수정할 필요가 없다.
