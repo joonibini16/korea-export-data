@@ -1,7 +1,7 @@
 {
- "updated_at": "2026-10-20T18:37:36+09:00",
+ "updated_at": "2026-10-20T21:12:47+09:00",
  "yahoo_rows": 55607,
- "fred_rows": 34076,
+ "fred_rows": 34077,
  "ecos_rows": 0,
  "ecos_key": false,
  "vkospi_rows": null,
@@ -31,7 +31,7 @@
   "ICSA": "2026-10-10",
   "SAHMREALTIME": "2026-09-01",
   "DTWEXBGS": "2026-10-16",
-  "SOFR": "2026-10-16",
+  "SOFR": "2026-10-19",
   "IORB": "2026-10-20",
   "DRTSCILM": "2026-07-01",
   "XTEXVA01KRM667S": "2026-08-01",
