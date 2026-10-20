@@ -1,0 +1,35 @@
+name: Future Electronics Lead Times
+# 수동 실행 전용: Future Electronics 이용약관상 재게시는 서면 허가가 필요해, 허가 전에는 예약 실행하지 않습니다.
+# 허가를 받으면 아래 schedule 주석을 풀어 주 2회 확인합니다(보고서는 매월 중순 갱신, 변경 없으면 커밋하지 않음).
+on:
+  workflow_dispatch:
+  # schedule:
+  #   - cron: '23 1 * * 2,5'   # 화·금 10:23 KST
+permissions:
+  contents: write
+concurrency:
+  group: future-mcr
+  cancel-in-progress: false
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq tesseract-ocr poppler-utils
+      - run: pip install -q pdfplumber pytesseract pillow numpy scipy
+      - run: python tools/collect_future_mcr.py
+      - run: |
+          git config user.name github-actions; git config user.email github-actions@github.com
+          cp future_mcr_log.csv future_mcr_status.json /tmp/ 2>/dev/null || exit 0
+          for i in 1 2 3; do
+            git fetch -q origin main && git reset -q --hard origin/main
+            cp /tmp/future_mcr_log.csv /tmp/future_mcr_status.json .
+            git add future_mcr_log.csv future_mcr_status.json
+            git diff --cached --quiet && exit 0
+            git commit -qm "Update Future Electronics lead times" && git push -q origin HEAD:main && exit 0
+            sleep 10
+          done
+          exit 1
