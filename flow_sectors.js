@@ -7,7 +7,7 @@
  const sg=(v,d=4)=>v==null?'—':(v>0?'+':'')+v.toFixed(d);
  function draw(){
   charts.forEach(c=>c.destroy());charts=[];
-  const C=D.columns,ix=k=>C.indexOf(k),io=ix('oscillator'),ic=ix('cap_eok'),idt=ix('date');
+  const C=D.columns,ix=k=>C.indexOf(k),io=(window.__flowOK&&window.__flowOK()===4)?ix('oscillator'):ix('macd'),ic=ix('cap_eok'),idt=ix('date');
   const G=Object.entries(D.groups).filter(([k])=>k.startsWith('msec:'+mk+':')).map(([k,g])=>{const r=g.rows,l=r.at(-1),p=r.at(-2);return {k,name:g.name,n:g.universe,rows:r,osc:l[io],prev:p?p[io]:null,cap:l[ic]};});
   G.sort((a,b)=>sortBy==='cap'?b.cap-a.cap:sortBy==='chg'?((b.osc-(b.prev??b.osc))-(a.osc-(a.prev??a.osc))):b.osc-a.osc);
   const grid=box.querySelector('.so-grid');
@@ -27,5 +27,5 @@
  fetch(FILE+'?v='+Date.now(),{cache:'no-store'}).then(r=>r.json()).then(d=>{D=d;
   box.querySelectorAll('[data-mk]').forEach(b=>b.onclick=()=>{mk=b.dataset.mk;box.querySelectorAll('[data-mk]').forEach(x=>{const on=x===b;x.classList.toggle('active',on);x.style.background=on?'#2563eb':'';x.style.color=on?'#fff':'';});draw();});
   box.querySelector('#soRange').onchange=e=>{rng=+e.target.value;draw();};box.querySelector('#soSort').onchange=e=>{sortBy=e.target.value;draw();};
-  draw();}).catch(e=>{box.querySelector('.so-grid').innerHTML='<p class="muted">업종 오실레이터 자료를 읽지 못했습니다.</p>';});
+  window.addEventListener('osckind',draw);draw();}).catch(e=>{box.querySelector('.so-grid').innerHTML='<p class="muted">업종 오실레이터 자료를 읽지 못했습니다.</p>';});
 })();
