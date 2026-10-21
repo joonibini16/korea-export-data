@@ -57,8 +57,21 @@
  function sources(e){const d=el('div','src');d.append(document.createTextNode('출처(회사 공식 IR): '),link(e.source,e.source_label||'이번 분기 자료'),document.createTextNode(' · '),link(e.prior_source,e.prior_source_label||'직전 분기 자료'));if(e.call_source)d.append(document.createTextNode(' · '),link(e.call_source,e.call_source_label||'컨콜 녹취록'));d.append(el('br'),document.createTextNode(`검증 범위: ${e.call_coverage||e.evidence||'—'}. 빗금 막대·'보도 기준'은 공식 자료로 확인되지 않은 수치이며, '분석'으로 표시한 문장은 해석으로 투자 권유가 아닙니다.`));return d;}
  function changesTable(e){if(!(e.changes||[]).length)return null;const f=document.createDocumentFragment();f.append(el('h4',null,'직전 발표 대비 변화'));f.append(table(['항목','방향','의미'],e.changes.map(c=>[c.title,c.direction||'—',c.meaning||'—'])));return f;}
 
+ // 실적·컨콜 핵심 요약: 사업별 카드, '직전 → 이번' 변화와 상향·하향 표시
+ const TAGC={'상향':'up','개선':'up','신규':'new','유지':'flat','혼재':'flat','하향':'down','악화':'down'};
+ function digest(e){
+  const R=e.report||{};let cards=R.digest;
+  if(!(cards||[]).length)cards=(e.changes||[]).map(c=>({topic:c.title,tag:c.direction,items:(c.rows||[]).length?c.rows.slice(0,5).map(r=>({label:r.item,before:r.before,now:r.now,note:r.delta})):[c.before?{label:'직전',plain:c.before}:null,{label:'이번',now:c.now}].filter(Boolean),note:c.meaning}));
+  if(!cards.length)return null;
+  const f=document.createDocumentFragment();f.append(el('div','dg-h','실적·컨콜 핵심 요약'));
+  if(R.digest_scope)f.append(el('div','dg-scope',R.digest_scope));
+  const g=el('div','dg');
+  for(const c of cards){const card=el('div','dg-card');const h=el('div','dg-top');h.append(el('b',null,c.topic));if(c.tag)h.append(el('span','dg-tag '+(TAGC[c.tag]||'flat'),c.tag));card.append(h);
+   const ul=el('ul');for(const it of c.items||[]){const li=el('li');if(it.label)li.append(el('span','dg-l',it.label+' '));if(it.plain!=null){li.append(rich(it.plain));ul.append(li);continue;}if(it.before&&it.before!=='—'){li.append(rich(it.before),el('span','dg-arrow',' → '));}const nw=el('b','dg-now');nw.append(rich(it.now||'—'));li.append(nw);if(it.note){const n=el('span','dg-note');n.append(document.createTextNode(' · '),rich(it.note));li.append(n);}ul.append(li);}
+   card.append(ul);if(c.note)card.append(P(c.note,'dg-mean'));g.append(card);}
+  f.append(g);if(R.digest_source)f.append(P(R.digest_source,'note'));return f;}
  function renderRich(e,co){const R=e.report,f=document.createDocumentFragment();
-  f.append(header(e,co));
+  f.append(header(e,co));{const dg=digest(e);if(dg)f.append(dg);}
   f.append(sec('01','회사 개요','Company Description'));for(const t of R.overview||[])f.append(P(t));if(R.positioning)f.append(call('핵심 포지셔닝',R.positioning));
   f.append(sec('02','실적 리뷰','Performance Review'));let n=1;
   f.append(el('h4',null,`${n++}. ${e.period} 종합 성과`));f.append(kpis(R.kpis));if(R.summary)f.append(call('핵심 성과 요약',R.summary,'blue'));
@@ -88,7 +101,7 @@
   f.append(sources(e));return f;}
 
  function renderBasic(e,co){const f=document.createDocumentFragment();
-  f.append(header(e,co));
+  f.append(header(e,co));{const dg=digest(e);if(dg)f.append(dg);}
   f.append(sec('01','회사 개요','Company Description'));f.append(P(`${co.name}(${e.ticker}) · 업종: ${co.sector}.`));f.append(call('핵심 판단',e.headline||'—'));
   f.append(sec('02','실적 리뷰','Performance Review'));
   f.append(el('h4',null,'1. 공식 발표 핵심 수치'));f.append(P(e.facts||'—'));
