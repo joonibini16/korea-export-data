@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-19T08:59:21",
+ "updated": "2026-10-21T01:36:19",
  "companies": {
   "NVDA": "27 quarters · profit 81 · seg-op 4 · axes ProductOrServiceAxis(27)",
   "AMD": "25 quarters · profit 102 · seg-op 11 · axes StatementBusinessSegmentsAxis(25)",
@@ -27,7 +27,7 @@
   "ONTO": "33 quarters · profit 107 · seg-op 1 · axes ProductOrServiceAxis(33)",
   "CAMT": "0 filings, no segment facts",
   "TSLA": "32 quarters · profit 100 · seg-op 0 · axes ProductOrServiceAxis(31), StatementBusinessSegmentsAxis(1)",
-  "GM": "19 quarters · profit 66 · seg-op 0 · axes BusinessGroupAxis(12), StatementBusinessSegmentsAxis(7)",
+  "GM": "20 quarters · profit 68 · seg-op 0 · axes BusinessGroupAxis(12), StatementBusinessSegmentsAxis(8)",
   "F": "32 quarters · profit 45 · seg-op 0 · axes ProductOrServiceAxis(32)",
   "STLA": "0 filings, no segment facts",
   "AAPL": "33 quarters · profit 103 · seg-op 5 · axes ProductOrServiceAxis(33)",
@@ -39,9 +39,9 @@
   "STM": "0 filings, no segment facts",
   "CAT": "33 quarters · profit 44 · seg-op 0 · axes ProductOrServiceAxis(30), StatementBusinessSegmentsAxis(3)",
   "BA": "34 quarters · profit 102 · seg-op 6 · axes StatementBusinessSegmentsAxis(32), ProductOrServiceAxis(2)",
-  "GE": "16 quarters · profit 34 · seg-op 7 · axes StatementBusinessSegmentsAxis(16)",
+  "GE": "16 quarters · profit 35 · seg-op 7 · axes StatementBusinessSegmentsAxis(16)",
   "LMT": "34 quarters · profit 102 · seg-op 5 · axes StatementBusinessSegmentsAxis(33), ProductOrServiceAxis(1)",
-  "RTX": "31 quarters · profit 72 · seg-op 17 · axes StatementBusinessSegmentsAxis(12), ProductOrServiceAxis(19)",
+  "RTX": "32 quarters · profit 74 · seg-op 17 · axes StatementBusinessSegmentsAxis(12), ProductOrServiceAxis(20)",
   "XOM": "2 quarters · profit 2 · seg-op 0 · axes ProductOrServiceAxis(2)",
   "CVX": "0 quarters · profit 34 · seg-op 0 · axes ",
   "SHEL": "0 filings, no segment facts",
