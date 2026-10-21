@@ -105,6 +105,6 @@
   if(t==='fin')window.dispatchEvent(new Event('resize'));};
  tabs.onclick=e=>{const b=e.target.closest('button');if(b)set(b.dataset.t);};
  set(location.hash==='#fin'||/[?&]tab=fin/.test(location.search)?'fin':location.hash==='#report'||/[?&]tab=report/.test(location.search)?'report':'call');
-})();</script><script src="./global_earnings_report.js?v=4" defer></script>
+})();</script><style>/* 분기 실적 리포트: 숫자·증감·판정 태그 색 제거, 표 마우스오버 색 제거 */.paper .num,.paper .pos,.paper .neg{color:inherit!important;font-weight:inherit}.paper .dg-tag,.paper .dg-tag.up,.paper .dg-tag.down,.paper .dg-tag.flat,.paper .dg-tag.new{color:#4b5563!important;border-color:#9ca3af}.paper .verdict,.paper .verdict.up,.paper .verdict.down,.paper .verdict.flat{color:#4b5563!important;border-color:#9ca3af!important;background:transparent!important}.paper .kpi.up .s,.paper .kpi.down .s{color:inherit!important}.paper tr:hover,.paper tr:hover td,.paper tr:hover th{background:transparent!important}.paper tbody tr:hover td{background:transparent!important}.paper tr{cursor:default}</style><script src="./global_earnings_report.js?v=4" defer></script>
 </body></html>
 
