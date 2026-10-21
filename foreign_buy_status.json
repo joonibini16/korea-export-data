@@ -1,5 +1,5 @@
 {
- "run": "2026-10-21T16:25:36+09:00",
+ "run": "2026-10-21T17:02:55+09:00",
  "steps": [
   {
    "step": "loader",
@@ -32,6 +32,11 @@
    "step": "inv_days",
    "investor": "P",
    "fetched": 2
+  },
+  {
+   "step": "inv_days",
+   "investor": "N",
+   "fetched": 70
   },
   {
    "step": "inv_days",
@@ -78,6 +83,12 @@
    "investor": "O",
    "days": 61,
    "series": 2168
+  },
+  {
+   "step": "build",
+   "investor": "N",
+   "days": 61,
+   "series": 1025
   }
  ],
  "ok": true
