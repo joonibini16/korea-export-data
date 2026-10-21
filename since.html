@@ -10,7 +10,7 @@
 .up{color:#f87171}.dn{color:#60a5fa}.tw{overflow:auto;max-height:calc(100vh - 90px);border-radius:8px}.kt thead th{position:sticky;top:0;z-index:2;background:#16223f;box-shadow:inset 0 -1px 0 #2b3d63}
 .bar{position:relative;width:140px;height:16px;background:rgba(148,163,184,.10);border-radius:3px;display:inline-block;vertical-align:middle}.bar i{position:absolute;top:0;bottom:0;border-radius:3px}.bar:after{content:'';position:absolute;left:50%;top:-2px;bottom:-2px;width:1px;background:#64748b}
 .chart{position:relative;height:260px}.g2{display:grid;grid-template-columns:3fr 2fr;gap:18px}@media(max-width:1000px){.g2,.cards{grid-template-columns:1fr 1fr}}.more{margin-top:10px;padding:7px 16px;border-radius:8px;border:1px solid #2a3a5c;background:#0f1a31;color:#cbd5e1;cursor:pointer}
-</style><link rel="stylesheet" href="./shell.css?v=3"></head><body><main>
+</style><link rel="stylesheet" href="./shell.css?v=3"><style>.si-box h2{margin-bottom:4px}.si-lead p{font-size:15.5px;font-weight:700;line-height:1.6;margin:10px 0 12px;padding:10px 14px;border-left:4px solid #60a5fa;background:#112440;border-radius:0 8px 8px 0}.si-notes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.si-note{background:#0c1a30;border:1px solid #2c4264;border-radius:10px;padding:12px 14px}.si-note b{display:block;color:#93c5fd;font-size:14.5px;margin-bottom:4px}.si-note p{margin:0;font-size:13.5px;line-height:1.65;color:#dbe4f3}.si-asof{margin:8px 0 6px}.si-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:6px;margin-top:10px}.si-col h3{font-size:15px;margin:12px 0 6px}.si-t td,.si-t th{font-size:12.5px;padding:6px 8px;white-space:nowrap}.si-t td.si-names{white-space:normal;min-width:150px;color:#c3cde0;text-align:left}.si-t td:first-child,.si-t th:first-child{text-align:left}.si-tw{max-height:none!important;overflow-x:auto}.si-up{color:#f87171;font-weight:700}.si-dn{color:#60a5fa;font-weight:700}@media(max-width:1000px){.si-grid,.si-notes{grid-template-columns:1fr}}</style></head><body><main>
 <h1 data-upd="since_base.json">2026-07-30 종가 대비 현재가 · 올해 고점 대비 · 전 종목</h1>
 <p class="muted" id="meta">불러오는 중…</p>
 <div class="mt" id="mkt"><button data-m="KOSPI" class="on active" style="background:#2563eb;color:#fff">코스피</button><button data-m="KOSDAQ">코스닥</button></div>
@@ -71,4 +71,4 @@
  ['q','grp','cap','dir'].forEach(id=>$(id).addEventListener('input',()=>{lim=200;table();}));$('more').onclick=()=>{lim+=300;table();};
  render();
 })();
-</script></body></html>
+</script><script src="./since_insight.js?v=2"></script></body></html>
