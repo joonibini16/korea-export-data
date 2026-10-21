@@ -1,5 +1,5 @@
 {
- "run": "2026-10-21T18:14:46+09:00",
+ "run": "2026-10-21T21:27:52+09:00",
  "steps": [
   {
    "step": "loader",
@@ -36,7 +36,7 @@
   {
    "step": "inv_days",
    "investor": "N",
-   "fetched": 59
+   "fetched": 2
   },
   {
    "step": "inv_days",
