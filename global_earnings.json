@@ -4996,6 +4996,174 @@
           }
         ]
       }
+    },
+    {
+      "ticker": "CATL",
+      "period": "2026 Q3",
+      "date": "2026-10-20",
+      "evidence": "공식 2026년 3분기 보고서(HKEX 공시, 3750) 확인 · 직전 2026 반기보고서(심천거래소 공시) 대조 · 분기 수치 일부는 공식 누적치에서 산출",
+      "direction": "혼재",
+      "headline": "Q3 매출 RMB165.2bn(+58.6%)·귀속 순이익 RMB21.2bn(+14.5%) · 매출은 급증했지만 산출 매출총이익률 약 20.7%(H1 23.9%)·Q3 영업현금흐름 약 RMB1.4bn으로 급감 · 재고 +53%",
+      "estimate_signal": "CATL은 수치 가이던스를 내지 않음(반기·3분기 보고서 모두 업적 지표 미제시). 직전 반기 대비 매출 성장률은 유지(+54.8%→Q3 +58.6%)됐으나 이익 성장률은 둔화(H1 +42.0%→Q3 +14.5%) — 물량은 상향, 마진·현금흐름 추정치는 하향 압력 신호",
+      "call_coverage": "공식 3분기 보고서 원문 확인 · 공식 Q&A 녹취록 미확인(3분기 실적 컨퍼런스콜 공식 자료 미확인)",
+      "changes": [
+        {
+          "title": "성장 대비 이익률",
+          "direction": "악화",
+          "before": "H1(7월 공시): 매출 RMB276.9bn(+54.8%), 귀속 순이익 RMB43.3bn(+42.0%), 매출총이익률 23.93%(-1.09%p), 분기 평균 순이익 약 RMB21.6bn.",
+          "now": "Q3: 매출 RMB165.2bn(+58.6%), 귀속 순이익 RMB21.2bn(+14.5%), 공제 후 순이익 RMB18.9bn(+14.9%). 9M 매출총이익률 22.72% → Q3 단독 산출치 약 20.7%. Q3 순이익률 약 12.9%(H1 15.6%).",
+          "meaning": "물량(매출)은 오히려 가속했지만 단위당 이익이 빠르게 줄었다. 반기보고서가 경고한 경쟁 심화·탄산리튬 등 원재료 가격 상승 위험이 분기 마진에 반영된 것으로 보인다(분석).",
+          "rows": [
+            {
+              "item": "매출 YoY",
+              "before": "+54.8%(H1)",
+              "now": "+58.6%(Q3)",
+              "delta": "가속",
+              "tone": "good"
+            },
+            {
+              "item": "귀속 순이익 YoY",
+              "before": "+42.0%(H1)",
+              "now": "+14.5%(Q3)",
+              "delta": "둔화",
+              "tone": "bad"
+            },
+            {
+              "item": "매출총이익률",
+              "before": "23.93%(H1)",
+              "now": "약 20.7%(Q3 산출)",
+              "delta": "약 −3.2%p",
+              "tone": "bad"
+            },
+            {
+              "item": "순이익률",
+              "before": "15.6%(H1)",
+              "now": "12.9%(Q3)",
+              "delta": "−2.8%p",
+              "tone": "bad"
+            },
+            {
+              "item": "공제 후 순이익(분기)",
+              "before": "약 RMB19.5bn(H1 평균)",
+              "now": "RMB18.9bn",
+              "delta": "감소",
+              "tone": "bad"
+            }
+          ],
+          "note": "Q3 매출총이익률은 공식 9M 매출·영업원가(RMB341.7bn)에서 H1 매출·영업원가(RMB210.7bn)를 차감해 산출한 값으로 회사 공시 수치가 아님."
+        },
+        {
+          "title": "현금흐름·운전자본",
+          "direction": "악화",
+          "before": "H1 영업현금흐름 RMB60.2bn(+2.6%).",
+          "now": "9M 영업현금흐름 RMB61.6bn(-23.6%) → Q3 단독 약 RMB1.4bn(산출). 9월 말 재고 RMB144.8bn(연초 대비 +53.2%), 매출채권 RMB112.9bn(+47.8%), 계약부채 RMB40.7bn(연초 RMB49.2bn).",
+          "meaning": "회사는 재고·채권 증가를 '사업 규모 확대'로 설명. 다만 선수금 성격의 계약부채가 줄고 재고·채권이 늘어 현금 전환이 크게 느려졌다.",
+          "rows": [
+            {
+              "item": "영업현금흐름(분기)",
+              "before": "약 RMB30.1bn(H1 평균)",
+              "now": "약 RMB1.4bn(Q3 산출)",
+              "delta": "급감",
+              "tone": "bad"
+            },
+            {
+              "item": "재고",
+              "before": "연초 대비",
+              "now": "RMB144.8bn",
+              "delta": "+53.2%",
+              "tone": "bad"
+            },
+            {
+              "item": "매출채권",
+              "before": "연초 대비",
+              "now": "RMB112.9bn",
+              "delta": "+47.8%",
+              "tone": "bad"
+            },
+            {
+              "item": "계약부채",
+              "before": "RMB49.2bn(연초)",
+              "now": "RMB40.7bn",
+              "delta": "−17.4%",
+              "tone": "bad"
+            }
+          ],
+          "note": "재무활동 현금흐름은 H주 배정 대금·채권 발행으로 +724% 증가(보고서 설명)."
+        },
+        {
+          "title": "주주환원·자본 조달",
+          "direction": "유지",
+          "before": "H1: A주 자사주 매입 RMB20~40bn(소각 목적) 신규 승인, 중간배당 10주당 RMB14.11(약 RMB6.5bn, 순이익의 약 15%).",
+          "now": "9월 말까지 A주 10,945,162주를 RMB3.303bn에 매입. 중기채·회사채 발행으로 사채 급증, 자회사(광동 Brunp 리사이클링) 최대 RMB5bn 채권 발행, 2차 A주 종업원지주제 추진.",
+          "meaning": "매입 진도는 승인 한도 대비 초기 단계. 자본 지출·운전자본을 차입·H주 자금으로 메우는 구조로 바뀌고 있다.",
+          "rows": [
+            {
+              "item": "자사주 매입 누계",
+              "before": "한도 RMB20~40bn",
+              "now": "RMB3.30bn",
+              "delta": "한도 대비 약 8~17%"
+            },
+            {
+              "item": "총자산",
+              "before": "연초 대비",
+              "now": "RMB1,183.2bn",
+              "delta": "+21.4%"
+            }
+          ]
+        }
+      ],
+      "facts": "Q3(7~9월) 매출 RMB165,220.8m(+58.58%), 귀속 순이익 RMB21,246.1m(+14.54%), 공제 후 순이익 RMB18,862.5m(+14.86%), 기본 EPS RMB4.62(+12.68%), 가중평균 ROE 5.56%(-0.57%p). 9M 매출 RMB442,137.4m(+56.19%), 귀속 순이익 RMB64,530.1m(+31.60%), 공제 후 RMB57,875.8m(+32.68%), EPS RMB14.13, 영업원가 RMB341,695.0m(+61.61%), R&D RMB18,517.0m, 영업현금흐름 RMB61,625.5m(-23.60%). 9월 말 총자산 RMB1,183.2bn(+21.37%), 귀속 자본 RMB386.9bn(+14.76%), 재고 RMB144.8bn(+53.15%), 매출채권 RMB112.9bn(+47.78%). 미감사. 수치는 CATL 공식 3분기 보고서.",
+      "guidance": "수치 가이던스 없음(3분기 보고서에 전망 문구 없음). 직전 반기보고서는 글로벌 동력·ESS 배터리 수요 증가를 정성적으로 제시하고 경쟁 심화·신기술·탄산리튬 가격 상승을 위험으로 명시. H1 기준 전지 생산능력 525GWh, 건설 중 764GWh, 가동률 94.86%.",
+      "tone": "공식 보고서는 증감 사유를 '사업 규모 확대'로 일관되게 설명하며 전망 표현 없음. 컨퍼런스콜 Q&A는 공식 녹취록 미확인으로 평가하지 않음.",
+      "interpretation": "분석: 매출 +59%는 ESS·해외 수요가 견조하다는 의미지만, 이익 성장률이 42%→15%로 꺾이고 Q3 영업현금흐름이 사실상 0에 가까워 '물량은 늘고 질은 약해진' 분기다. 원재료(리튬) 상승분을 판가에 즉시 전가하지 못했거나 가격 경쟁이 심해졌을 가능성. 한국 연결고리 — CATL의 마진 압박은 중국 업체의 가격 공세 여력을 줄여 LG에너지솔루션·삼성SDI·SK온의 해외(특히 ESS·유럽) 가격 경쟁 완화 요인이 될 수 있으나, 재고 RMB145bn 누적은 향후 밀어내기·판가 인하 리스크. 리튬 가격 상승 국면은 에코프로·포스코퓨처엠 등 소재사 판가에는 긍정적.",
+      "watch": "분석: Q4 매출총이익률 회복 여부, 재고·매출채권 감소(현금 전환) 여부, 계약부채(선수금) 추이, 탄산리튬 가격과 판가 연동, 자사주 매입 속도, 헝가리·인도네시아·스페인 해외 공장 가동 시점, 연간 보고서의 ESS 출하·점유율.",
+      "source": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/1020/2026102001315.pdf",
+      "source_label": "CATL 2026 3분기 보고서(HKEX)",
+      "prior_source": "https://disc.static.szse.cn/disc/disk03/finalpage/2026-07-25/8e6750da-b178-4be9-a74a-4b1d8fc42c58.PDF",
+      "prior_source_label": "CATL 2026 반기보고서(심천거래소)",
+      "verified_at": "2026-10-21",
+      "call_topics": [
+        {
+          "topic": "마진·원가",
+          "source_part": "공식 3분기 보고서(누적 손익 산출)",
+          "points": [
+            "9M 영업원가 +61.6%로 매출 증가율(+56.2%)을 상회.",
+            "Q3 단독 매출총이익률 약 20.7%로 산출(H1 23.93%)."
+          ],
+          "implication": "원가 상승 속도가 판가를 앞질러 이익률이 하락."
+        },
+        {
+          "topic": "운전자본",
+          "source_part": "공식 3분기 보고서",
+          "points": [
+            "재고 +53.2%, 매출채권 +47.8%(연초 대비), 사유는 '사업 규모 확대'.",
+            "9M 영업현금흐름 -23.6%."
+          ],
+          "implication": "성장의 현금 전환이 지연 — 차입·H주 자금 의존 확대."
+        }
+      ],
+      "call_readthrough": {
+        "scope": "CATL 공식 2026 3분기 보고서와 2026 반기보고서를 한국어로 재서술. 컨퍼런스콜 녹취록은 확인하지 못해 Q&A는 인용하거나 추정하지 않음. 분기 매출총이익률·영업현금흐름은 공식 누적치 차감 산출.",
+        "groups": [
+          {
+            "title": "공식 보고서 핵심",
+            "items": [
+              {
+                "title": "실적",
+                "body": "매출은 59% 늘었지만 순이익 증가율은 15%로 반기(42%)보다 크게 낮아졌다."
+              },
+              {
+                "title": "질적 변화",
+                "body": "산출 매출총이익률이 약 20.7%로 떨어지고 3분기 영업현금흐름은 약 RMB1.4bn에 그쳤다."
+              },
+              {
+                "title": "검증할 조건",
+                "body": "재고·채권 정상화, 원재료 가격 전가, 해외 공장 가동이 4분기 확인 대상이다."
+              }
+            ]
+          }
+        ]
+      }
     }
   ],
   "upcoming": [
@@ -5313,6 +5481,34 @@
       "time": "장 마감 후 · 13:30 America/Los_Angeles(컨콜)",
       "event": "2026 Q3 실적·컨퍼런스콜",
       "source": "https://www.arista.com/company/news/press-release/24817-pr-20261006"
+    },
+    {
+      "ticker": "ETN",
+      "date": "2026-11-03",
+      "time": "장 시작 전 · 11:00 America/New_York(컨콜)",
+      "event": "2026 Q3 실적·컨퍼런스콜",
+      "source": "https://www.businesswire.com/news/home/20261020762951/en/Eaton-to-announce-third-quarter-2026-earnings-on-November-3-2026"
+    },
+    {
+      "ticker": "ARM",
+      "date": "2026-11-04",
+      "time": "장 마감 후 · 14:00 America/Los_Angeles(컨콜)",
+      "event": "FY27 Q2 실적·웹캐스트",
+      "source": "https://investors.arm.com/news-releases/news-release-details/arm-announces-earnings-release-date-second-quarter-fiscal-year-2"
+    },
+    {
+      "ticker": "NVO",
+      "date": "2026-11-04",
+      "time": "07:30 Europe/Copenhagen",
+      "event": "2026 9개월 누적(Q3) 실적 발표",
+      "source": "https://www.novonordisk.com/investors/financial-results.html"
+    },
+    {
+      "ticker": "QCOM",
+      "date": "2026-11-04",
+      "time": "장 마감 후 · 13:45 America/Los_Angeles(컨콜)",
+      "event": "FY26 Q4 실적·컨퍼런스콜",
+      "source": "https://investor.qualcomm.com/news-events/investor-events/events/event-details/2026/Q4-FY26-Earnings-Conference-Call-2026-zipgVlNz63/default.aspx"
     }
   ]
 }
