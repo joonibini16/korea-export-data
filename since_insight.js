@@ -1,4 +1,4 @@
-// 7/30 대비 등락률 페이지 맨 위: 상승·하락 종목군 특징(테마·규모·업종) 자동 집계 + 작성일 기준 분석 메모
+// 기준일(7/30·10/16) 대비 등락률 페이지 맨 위: 상승·하락 종목군 특징(테마·규모·업종) 자동 집계 + 작성일 기준 분석 메모
 (async()=>{
  const meta=document.getElementById('meta');if(!meta)return;
  const box=document.createElement('section');box.className='panel si-box';box.id='insight';meta.after(box);
@@ -7,7 +7,7 @@
  const cls=v=>v>0?'si-up':v<0?'si-dn':'';
  const med=a=>{const s=a.filter(x=>x!=null&&isFinite(x)).sort((x,y)=>x-y);if(!s.length)return null;const m=s.length>>1;return s.length%2?s[m]:(s[m-1]+s[m])/2;};
  try{
-  const [b,t]=await Promise.all(['since_base.json','since_themes.json'].map(f=>fetch(f+'?v='+Date.now(),{cache:'no-store'}).then(r=>{if(!r.ok)throw Error(f+' HTTP '+r.status);return r.json();})));
+  const [b,t]=await Promise.all([(new URLSearchParams(location.search).get('tab')==='1016'?'since_base_1016.json':'since_base.json'),'since_themes.json'].map(f=>fetch(f+'?v='+Date.now(),{cache:'no-store'}).then(r=>{if(!r.ok)throw Error(f+' HTTP '+r.status);return r.json();})));
   const rows=[];for(const [mk,v] of Object.entries(b.markets||{})){const c=v.columns;for(const r of v.rows){const x={};c.forEach((k,i)=>x[k]=r[i]);x.mkt=mk;if(x.type==='stock'&&x.chg_pct!=null)rows.push(x);}}
   const byName=new Map(rows.map(r=>[r.name,r]));const ix=b.index||{};
   box.append(el('h2',null,'상승·하락 종목군 특징'));
@@ -20,7 +20,8 @@
   lead.append(el('p',null,`지수: 코스피 ${pct(k1?.chg)}, 코스닥 ${pct(k2?.chg)}. 강한 테마는 ${top.map(x=>`${x.name}(${pct(x.med)})`).join(', ')}, 약한 테마는 ${bot.map(x=>`${x.name}(${pct(x.med)})`).join(', ')}입니다.`));
   box.append(lead);
   // 분석 메모
-  if((t.notes||[]).length){const g=el('div','si-notes');for(const n of t.notes){const c=el('div','si-note');c.append(el('b',null,n.title),el('p',null,n.body));g.append(c);}box.append(g);box.append(el('p','muted si-asof',`분석 메모 작성 기준: ${t.notes_as_of} (수치는 작성 시점 기준이며, 아래 표는 최신 시세로 자동 갱신됩니다. '분석'은 해석이며 투자 권유가 아닙니다.)`));}
+  const NB=(t.notes_by_base||{})[b.base_date],NOTES=NB?NB.notes:(b.base_date==='2026-07-30'?t.notes:[]),NAS=NB?NB.as_of:t.notes_as_of;
+  if((NOTES||[]).length){const g=el('div','si-notes');for(const n of NOTES){const c=el('div','si-note');c.append(el('b',null,n.title),el('p',null,n.body));g.append(c);}box.append(g);box.append(el('p','muted si-asof',`분석 메모 작성 기준: ${NAS} (수치는 작성 시점 기준이며, 아래 표는 최신 시세로 자동 갱신됩니다. '분석'은 해석이며 투자 권유가 아닙니다.)`));}
   // 테마 표
   const sec=el('div','si-grid');
   const tw=el('div','si-col');tw.append(el('h3',null,'테마별 등락률 (중앙값 순)'));
