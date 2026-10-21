@@ -101,7 +101,7 @@ def load_day(d):
 
 
 # 투자자 구분: KRX 투자자 코드 · 이름 · 출력 파일 접두어
-INV = {'F': ('9000', '외국인', 'foreign_buy'), 'I': ('7050', '기관 합계', 'inst_buy'), 'T': ('3000', '투신', 'trust_buy'), 'P': ('3100', '사모', 'pe_buy'), 'B': ('1000', '금융투자', 'fi_buy'), 'O': ('7100', '기타법인', 'corp_buy'), 'N': ('6000', '연기금 등', 'pension_buy')}
+INV = {'F': ('9000', '외국인', 'foreign_buy'), 'I': ('7050', '기관 합계', 'inst_buy'), 'T': ('3000', '투신', 'trust_buy'), 'P': ('3100', '사모', 'pe_buy'), 'B': ('1000', '금융투자', 'fi_buy'), 'O': ('7100', '기타법인', 'corp_buy'), 'N': ('6000', '연기금 등', 'pension_buy'), 'C': (None, '투신·사모·연기금', 'core_buy')}  # C는 수집하지 않고 T+P+N을 합산
 IDAYS = pathlib.Path('invest_days')
 
 
@@ -117,6 +117,19 @@ def fetch_inv(day, key):
 
 
 def load_inv(key, d):
+    if key == 'C':
+        # 투신·사모·연기금 합산: 세 투자자 파일이 모두 있는 날만
+        parts = [load_inv(k, d) for k in ('T', 'P', 'N')]
+        if not all(parts):
+            return None
+        out = {}
+        for m in parts[0]:
+            acc = {}
+            for part in parts:
+                for code, buy, sell in part.get(m, []):
+                    a = acc.setdefault(code, [code, 0, 0]); a[1] += buy; a[2] += sell
+            out[m] = list(acc.values())
+        return out
     f = IDAYS / key / f'{d}.json.gz'
     return json.loads(gzip.decompress(f.read_bytes())) if f.exists() else None
 
