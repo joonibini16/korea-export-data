@@ -105,6 +105,11 @@ def build(basis='all'):
               'KOSDAQ': ('코스닥 전체', {c for c in current if current[c][0] == 'KOSDAQ'})}
     for sector in sorted(set(sectors.values())):
         groups['sector:'+sector] = (sector, {c for c,s in sectors.items() if s == sector})
+        # 시장별 업종(KSP/KSQ): 같은 업종이라도 코스피·코스닥 수급은 따로 봄
+        for mk, ab in (('KOSPI', 'KSP'), ('KOSDAQ', 'KSQ')):
+            cs = {c for c,s in sectors.items() if s == sector and current[c][0] == mk}
+            if len(cs) >= 3:
+                groups[f'msec:{mk}:{sector}'] = (f'{ab} {sector}', cs)
     series = {}
     for key, (name, codes) in groups.items():
         points = []
