@@ -3,7 +3,7 @@
   "source": "https://nebius.com/spot-prices",
   "method": "공식 공개 화면 All live prices 정상 조회 · Work 브라우저",
   "unit": "USD/GPU-hour",
-  "collected_at": "2026-10-21T06:11:27.130Z",
+  "collected_at": "2026-10-21T07:52:30.630Z",
   "latest_market_count": 12,
   "records": [
     {
@@ -2189,6 +2189,90 @@
       "region": "us-central1",
       "price_usd_per_gpu_hour": 0.79,
       "effective_at": "2026-10-21T06:01:00.000Z"
+    },
+    {
+      "observed_at": "2026-10-21T07:52:30.630Z",
+      "gpu": "B300",
+      "region": "eu-west2",
+      "price_usd_per_gpu_hour": 6.79,
+      "effective_at": "2026-10-21T07:21:00.000Z"
+    },
+    {
+      "observed_at": "2026-10-21T07:52:30.630Z",
+      "gpu": "B300",
+      "region": "uk-south1",
+      "price_usd_per_gpu_hour": 4.4,
+      "effective_at": "2026-10-21T07:21:00.000Z"
+    },
+    {
+      "observed_at": "2026-10-21T07:52:30.630Z",
+      "gpu": "B300",
+      "region": "us-north1",
+      "price_usd_per_gpu_hour": 8.59,
+      "effective_at": "2026-10-21T07:46:00.000Z"
+    },
+    {
+      "observed_at": "2026-10-21T07:52:30.630Z",
+      "gpu": "B200",
+      "region": "me-west1",
+      "price_usd_per_gpu_hour": 4.1,
+      "effective_at": "2026-10-21T07:26:00.000Z"
+    },
+    {
+      "observed_at": "2026-10-21T07:52:30.630Z",
+      "gpu": "B200",
+      "region": "us-central1",
+      "price_usd_per_gpu_hour": 1.9,
+      "effective_at": "2026-10-21T07:51:00.000Z"
+    },
+    {
+      "observed_at": "2026-10-21T07:52:30.630Z",
+      "gpu": "H200",
+      "region": "eu-north1",
+      "price_usd_per_gpu_hour": 0.79,
+      "effective_at": "2026-10-21T06:16:00.000Z"
+    },
+    {
+      "observed_at": "2026-10-21T07:52:30.630Z",
+      "gpu": "H200",
+      "region": "eu-west1",
+      "price_usd_per_gpu_hour": 5.09,
+      "effective_at": "2026-10-21T07:11:00.000Z"
+    },
+    {
+      "observed_at": "2026-10-21T07:52:30.630Z",
+      "gpu": "H200",
+      "region": "us-central1",
+      "price_usd_per_gpu_hour": 0.79,
+      "effective_at": "2026-10-21T07:36:00.000Z"
+    },
+    {
+      "observed_at": "2026-10-21T07:52:30.630Z",
+      "gpu": "H100",
+      "region": "eu-north1",
+      "price_usd_per_gpu_hour": 0.79,
+      "effective_at": "2026-10-09T17:01:00.000Z"
+    },
+    {
+      "observed_at": "2026-10-21T07:52:30.630Z",
+      "gpu": "RTX PRO 6000",
+      "region": "eu-south1",
+      "price_usd_per_gpu_hour": 1.38,
+      "effective_at": "2026-10-21T06:26:00.000Z"
+    },
+    {
+      "observed_at": "2026-10-21T07:52:30.630Z",
+      "gpu": "RTX PRO 6000",
+      "region": "uk-south2",
+      "price_usd_per_gpu_hour": 1.38,
+      "effective_at": "2026-10-21T07:31:00.000Z"
+    },
+    {
+      "observed_at": "2026-10-21T07:52:30.630Z",
+      "gpu": "RTX PRO 6000",
+      "region": "us-central1",
+      "price_usd_per_gpu_hour": 0.79,
+      "effective_at": "2026-10-21T07:16:00.000Z"
     }
   ],
   "history": [
