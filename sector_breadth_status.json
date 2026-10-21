@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-21T22:16:10+09:00",
+ "updated_at": "2026-10-22T07:03:43+09:00",
  "source": "KIND 상장법인목록 + 네이버 fchart 확정 종가",
  "confirmed_through": "2026-10-21",
  "groups": {
@@ -83,13 +83,15 @@
   "KOSDAQ|의료용 기기 제조업": {
    "market": "KOSDAQ",
    "sector": "의료용 기기 제조업",
-   "target": 62,
+   "target": 63,
    "success": 62,
-   "unavailable": [],
-   "members": "f26f6017ac1d6ce16f840d3b046a56e5e0b13e067e494a25b74ce0310f1b82e4",
+   "unavailable": [
+    "0013Y0"
+   ],
+   "members": "6c50024f0f093d21997ec9a6a30b245dd7b416536e47f6dfa0b69f12d375083c",
    "latest": "2026-10-21",
-   "updated_at": "2026-10-21T22:16:10+09:00",
-   "observations": 359
+   "updated_at": "2026-10-22T07:03:43+09:00",
+   "observations": 358
   },
   "KOSDAQ|기타 화학제품 제조업": {
    "market": "KOSDAQ",
@@ -3151,7 +3153,7 @@
   "KOSDAQ|특수 목적용 기계 제조업": 0
  },
  "issues": [],
- "listed": 2648,
+ "listed": 2649,
  "industry_total": 262,
  "industry_done": 262,
  "stock_done": 2648
