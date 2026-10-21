@@ -19,7 +19,7 @@
 <script>
 (async()=>{
  const $=id=>document.getElementById(id);
- const INVS={F:['외국인','foreign_buy'],I:['기관 합계','inst_buy'],T:['투신','trust_buy'],P:['사모','pe_buy'],N:['연기금','pension_buy']};
+ const INVS={F:['외국인','foreign_buy'],I:['기관 합계','inst_buy'],T:['투신','trust_buy'],P:['사모','pe_buy'],N:['연기금(연금)','pension_buy']};
  let P=null,SER=null,inv=(()=>{const k=new URLSearchParams(location.search).get('inv');return INVS[k]?k:'F';})(),per='1d',mkt='전체',minCap=1000,showN=100,openCode=null,chart=null;
  const PC={},SC={};
  const loadP=async k=>{if(!(k in PC)){try{const r=await fetch(INVS[k][1]+'_periods.json?v='+Date.now(),{cache:'no-store'});PC[k]=r.ok?await r.json():null;}catch(e){PC[k]=null;}}return PC[k];};
