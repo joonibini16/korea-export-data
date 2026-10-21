@@ -101,7 +101,7 @@ def load_day(d):
 
 
 # 투자자 구분: KRX 투자자 코드 · 이름 · 출력 파일 접두어
-INV = {'F': ('9000', '외국인', 'foreign_buy'), 'I': ('7050', '기관 합계', 'inst_buy'), 'T': ('3000', '투신', 'trust_buy'), 'P': ('3100', '사모', 'pe_buy'), 'B': ('1000', '금융투자', 'fi_buy'), 'O': ('7100', '기타법인', 'corp_buy')}
+INV = {'F': ('9000', '외국인', 'foreign_buy'), 'I': ('7050', '기관 합계', 'inst_buy'), 'T': ('3000', '투신', 'trust_buy'), 'P': ('3100', '사모', 'pe_buy'), 'B': ('1000', '금융투자', 'fi_buy'), 'O': ('7100', '기타법인', 'corp_buy'), 'N': ('6000', '연기금 등', 'pension_buy')}
 IDAYS = pathlib.Path('invest_days')
 
 
@@ -228,8 +228,8 @@ def main():
     HOL.write_text(json.dumps(sorted(hol)))
     have = sorted(f.name[:10] for f in DAYS.glob('*.json.gz'))
     log(step='days', fetched=got, total=len(have), latest=have[-1] if have else None)
-    # 기관 합계·투신·사모: 외국인 파일이 있는 거래일 기준으로 없는 날 + 최근 2거래일을 받음
-    for key in ('I', 'T', 'P', 'B', 'O'):
+    # 기관 합계·투신·사모·연기금 등: 외국인 파일이 있는 거래일 기준으로 없는 날 + 최근 2거래일을 받음
+    for key in ('I', 'T', 'P', 'N', 'B', 'O'):
         (IDAYS / key).mkdir(parents=True, exist_ok=True)
         hk = {f.name[:10] for f in (IDAYS / key).glob('*.json.gz')}
         need = [d for d in have if d not in hk] + have[-2:]

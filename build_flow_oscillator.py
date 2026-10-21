@@ -11,7 +11,16 @@ from collections import defaultdict
 from pathlib import Path
 
 FOREIGN = Path('foreign_buy_days')
-INSTITUTION = Path('invest_days/I')
+INVEST = Path('invest_days')
+# 수급 기준: all = 외국인 + 기관 합계(KRX 7050: 금융투자·보험·투신·사모·은행·기타금융·연기금 등)
+#           core = 외국인 + 투신 + 사모 + 연기금 등(금융투자·보험·은행 등 제외)
+BASES = {
+    'all': dict(keys=('I',), inst_label='기관 합계', output='flow_oscillator.json', stock_output='flow_stocks.json', stock_limit=1400,
+                title='외국인 + 기관 합계', source='KRX 정보데이터시스템 외국인·기관합계 거래실적 및 전종목 시가총액; KIND 업종→증권사식 업종 매핑'),
+    'core': dict(keys=('T', 'P', 'N'), inst_label='투신·사모·연기금', output='flow_oscillator_core.json', stock_output='flow_stocks_core.json', stock_limit=700,
+                 title='외국인 + 투신·사모·연기금', source='KRX 정보데이터시스템 외국인·투신·사모·연기금 등 거래실적 및 전종목 시가총액; KIND 업종→증권사식 업종 매핑'),
+}
+INSTITUTION = INVEST / 'I'
 SECTOR_FILE = Path('sector_group_map.csv')
 CATALOG_FILE = Path('market_sector_catalog.csv')
 OUTPUT = Path('flow_oscillator.json')
@@ -42,21 +51,27 @@ def oscillator(points):
             for p,r,m,s in zip(points, rates, macd, signal)]
 
 
-def build():
+def build(basis='all'):
+    cfg = BASES[basis]
+    OUTPUT, STOCK_OUTPUT = Path(cfg['output']), Path(cfg['stock_output'])
     fdays = {p.name[:10] for p in FOREIGN.glob('*.json.gz')}
-    idays = {p.name[:10] for p in INSTITUTION.glob('*.json.gz')}
+    idays = set.intersection(*[{p.name[:10] for p in (INVEST / k).glob('*.json.gz')} for k in cfg['keys']])
     days = sorted(fdays & idays)
     if len(days) < 30:
         raise ValueError(f'오실레이터 계산에 필요한 공통 거래일 부족: {len(days)}')
     latest = days[-1]
     raw = {}
     for day in days:
-        f, i = load(FOREIGN / f'{day}.json.gz'), load(INSTITUTION / f'{day}.json.gz')
-        if not all(f.get(m) and i.get(m) for m in ('KOSPI', 'KOSDAQ')):
+        f = load(FOREIGN / f'{day}.json.gz')
+        parts = [load(INVEST / k / f'{day}.json.gz') for k in cfg['keys']]
+        if not all(f.get(m) and all(i.get(m) for i in parts) for m in ('KOSPI', 'KOSDAQ')):
             continue
         raw[day] = {}
         for market in ('KOSPI', 'KOSDAQ'):
-            inst = {r[0]: (r[1]-r[2]) / 1e8 for r in i[market]}
+            inst = defaultdict(float)
+            for i in parts:
+                for r in i[market]:
+                    inst[r[0]] += (r[1]-r[2]) / 1e8
             for code, name, buy, sell, cap, close, change, val in f[market]:
                 if cap > 0:
                     raw[day][code] = (market, name, cap / 1e8, (buy-sell) / 1e8, inst.get(code, 0),
@@ -104,13 +119,14 @@ def build():
         if len(points) >= 30:
             series[key] = {'name':name, 'universe':len(codes), 'rows':oscillator(points)}
     result = {'asof':latest, 'updated_at':dt.datetime.now(dt.timezone(dt.timedelta(hours=9))).isoformat(timespec='seconds'),
-              'source':'KRX 정보데이터시스템 외국인·기관합계 거래실적 및 전종목 시가총액; KIND 업종→증권사식 업종 매핑',
+              'basis':basis, 'basis_title':cfg['title'], 'institution_label':cfg['inst_label'],
+              'source':cfg['source'],
               'columns':['date','net_cap_pct','macd','signal','oscillator','foreign_net_eok','institution_net_eok','cap_eok','observed_stocks'],
-              'definition':'외국인+기관 순매수/당일 시총 ×100 → EMA12−EMA26 → EMA9 신호선 → 차이',
+              'definition':f"({cfg['title']}) 순매수/당일 시총 ×100 → EMA12−EMA26 → EMA9 신호선 → 차이",
               'membership':'최신일 시총 순위와 현재 업종 구성을 과거 전체에 고정; 신규·상폐·종목별 누락은 해당 거래일 집계에서 제외',
               'groups':series}
     stocks = {}
-    for rank, code in enumerate(ranks[:1400], 1):
+    for rank, code in enumerate(ranks[:cfg['stock_limit']], 1):
         points = []
         for day in days:
             if code not in raw[day]:
@@ -132,9 +148,14 @@ def build():
             pass
     OUTPUT.write_text(json.dumps(result,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
     STOCK_OUTPUT.write_text(json.dumps(stock_result,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
-    print('flow oscillator:',latest,'days',len(days),'groups',len(series),'stocks',len(stocks),'bytes',OUTPUT.stat().st_size,STOCK_OUTPUT.stat().st_size)
+    print('flow oscillator',basis+':',latest,'days',len(days),'groups',len(series),'stocks',len(stocks),'bytes',OUTPUT.stat().st_size,STOCK_OUTPUT.stat().st_size)
     return result
 
 
 if __name__ == '__main__':
-    build()
+    build('all')
+    try:
+        build('core')
+    except (ValueError, FileNotFoundError, TypeError) as e:
+        # 연기금 등 일별 자료가 30거래일 이상 쌓이기 전에는 core 기준을 건너뜀
+        print('flow oscillator core: 건너뜀 -', e)
