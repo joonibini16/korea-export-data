@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-21T13:15:46+00:00",
+ "updated": "2026-10-21T18:58:54+00:00",
  "bonds": {
   "CRWV": {
    "cusip": "U2069EAA8",
@@ -119,7 +119,15 @@
    }
   }
  },
- "errors": [],
+ "errors": [
+  "fred DGS1: not enough values to unpack (expected 2, got 1)",
+  "fred DGS2: not enough values to unpack (expected 2, got 1)",
+  "fred DGS3: not enough values to unpack (expected 2, got 1)",
+  "fred DGS5: not enough values to unpack (expected 2, got 1)",
+  "fred DGS7: not enough values to unpack (expected 2, got 1)",
+  "fred DGS10: not enough values to unpack (expected 2, got 1)",
+  "fred DGS20: not enough values to unpack (expected 2, got 1)"
+ ],
  "notes": [],
  "cookies": [
   "XSRF-TOKEN",
