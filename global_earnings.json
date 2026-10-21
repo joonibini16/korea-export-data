@@ -3243,7 +3243,84 @@
           "closing": [
             "공식 Q&A 녹취록에서 환급의 가이던스 포함 여부와 2027 방향을 확인할 필요가 있다."
           ]
-        }
+        },
+        "charts": [
+          {
+            "section": "review",
+            "title": "수주잔고: 방산이 한 분기에 +$45B",
+            "subtitle": "증가율은 직전 막대 대비",
+            "unit": "$B",
+            "growth": "prev",
+            "bars": [
+              {
+                "label": "Q2 총잔고",
+                "value": 289,
+                "accent": false
+              },
+              {
+                "label": "Q3 총잔고",
+                "value": 340
+              },
+              {
+                "label": "Q2 방산",
+                "value": 119,
+                "accent": false,
+                "growth": false
+              },
+              {
+                "label": "Q3 방산",
+                "value": 164
+              }
+            ],
+            "footnotes": [
+              "Q3 막대의 증가율은 같은 항목의 Q2 대비. 분기 신규 수주 $81B+, Tomahawk·AMRAAM 다년 생산계약 반영."
+            ],
+            "sources": [
+              {
+                "label": "RTX Q3 2026 보도자료",
+                "url": "https://www.rtx.com/news/news-center/2026/10/20/rtx-reports-q3-2026-results"
+              },
+              {
+                "label": "RTX Q2 2026 보도자료",
+                "url": "https://www.rtx.com/news/news-center/2026/07/23/rtx-reports-q2-2026-results"
+              }
+            ]
+          },
+          {
+            "section": "guidance",
+            "title": "2026 조정 EPS 가이던스 중간값: 두 분기 연속 상향",
+            "subtitle": "증가율은 1분기 발표 대비. 3분기 상향분 중 약 $0.25는 IEEPA 관세 환급과 겹침",
+            "unit": "$",
+            "base": 0,
+            "bars": [
+              {
+                "label": "Q1 발표",
+                "value": 6.8,
+                "display": "$6.80"
+              },
+              {
+                "label": "Q2 발표",
+                "value": 7.175,
+                "display": "$7.18"
+              },
+              {
+                "label": "Q3 발표",
+                "value": 7.7,
+                "display": "$7.70"
+              }
+            ],
+            "sources": [
+              {
+                "label": "RTX Q3 2026 보도자료",
+                "url": "https://www.rtx.com/news/news-center/2026/10/20/rtx-reports-q3-2026-results"
+              },
+              {
+                "label": "RTX Q2 2026 보도자료",
+                "url": "https://www.rtx.com/news/news-center/2026/07/23/rtx-reports-q2-2026-results"
+              }
+            ]
+          }
+        ]
       }
     },
     {
@@ -3746,7 +3823,199 @@
           "closing": [
             "다음 분기 확인 포인트는 Cursor를 뺀 SI 성장률, 연산 용량(GW) 증가 속도, 설비투자 대비 영업현금흐름이다."
           ]
-        }
+        },
+        "charts": [
+          {
+            "section": "review",
+            "title": "SpaceX AI 연산 용량: 실적과 경영진이 제시했다고 보도된 전망",
+            "subtitle": "증가율은 현재 공시 용량 1.7GW 대비. 빗금 막대는 공식 녹취록으로 확인되지 않은 보도 수치이며 달성이 확정된 용량이 아닙니다.",
+            "unit": "GW",
+            "base": 2,
+            "bars": [
+              {
+                "label": "2025 Q3",
+                "value": 0.6,
+                "display": "0.6 GW"
+              },
+              {
+                "label": "2026 Q2",
+                "value": 1.4,
+                "display": "1.4 GW"
+              },
+              {
+                "label": "2026 Q3 (현재)",
+                "value": 1.7,
+                "display": "1.7 GW"
+              },
+              {
+                "label": "2026년 말 목표",
+                "value": 3,
+                "display": "2~3 GW",
+                "kind": "reported"
+              },
+              {
+                "label": "2027년 말 기대",
+                "value": 13,
+                "display": "13 GW",
+                "kind": "reported"
+              },
+              {
+                "label": "2027년 말 상단",
+                "value": 20,
+                "display": "20 GW+",
+                "kind": "reported"
+              }
+            ],
+            "footnotes": [
+              "실선: 회사 공시 명판(nameplate) 연산 용량(분기 말). 빗금: 10/20 실적 발표 관련 보도 — 2026년 말은 보도에 따라 '2GW 이상'과 '2.5~3GW'로 엇갈려 상단 3GW로 표시.",
+              "2027년 말 13GW(기대)와 20GW+(상단)는 서로 다른 시나리오. 일부 보도는 15~20GW를 연산이 아닌 전력·냉각 인프라 용량으로 설명. 동일한 집계 기준이라는 가정하에 비교."
+            ],
+            "sources": [
+              {
+                "label": "SpaceX Q3 2026 보도자료",
+                "url": "https://s21.q4cdn.com/184289198/files/content_files/SpaceX-Reports-Third-Quarter-2026-Results.pdf"
+              },
+              {
+                "label": "보도(Crypto Briefing)",
+                "url": "https://cryptobriefing.com/musk-13-gigawatts-ai-compute-2027/"
+              },
+              {
+                "label": "보도(BigGo Finance)",
+                "url": "https://finance.biggo.com/news/US_SPCX_2026-10-20"
+              }
+            ]
+          },
+          {
+            "section": "review",
+            "title": "분기 매출: 1년 만에 2.6배",
+            "subtitle": "증가율은 직전 막대 대비",
+            "unit": "$B",
+            "growth": "prev",
+            "bars": [
+              {
+                "label": "2025 Q3",
+                "value": 5.576
+              },
+              {
+                "label": "2026 Q2",
+                "value": 7.814
+              },
+              {
+                "label": "2026 Q3",
+                "value": 14.575
+              }
+            ],
+            "sources": [
+              {
+                "label": "SpaceX Q3 2026 보도자료",
+                "url": "https://s21.q4cdn.com/184289198/files/content_files/SpaceX-Reports-Third-Quarter-2026-Results.pdf"
+              }
+            ]
+          },
+          {
+            "section": "review",
+            "title": "Starlink 소비자 가입자",
+            "subtitle": "증가율은 직전 막대 대비. 같은 기간 월 ARPU는 $83 → $66 → $69",
+            "unit": "M",
+            "growth": "prev",
+            "bars": [
+              {
+                "label": "2025 Q3",
+                "value": 7.2,
+                "display": "7.2M"
+              },
+              {
+                "label": "2026 Q2",
+                "value": 12.0,
+                "display": "12.0M"
+              },
+              {
+                "label": "2026 Q3",
+                "value": 13.6,
+                "display": "13.6M"
+              }
+            ],
+            "sources": [
+              {
+                "label": "SpaceX Q3 2026 보도자료",
+                "url": "https://s21.q4cdn.com/184289198/files/content_files/SpaceX-Reports-Third-Quarter-2026-Results.pdf"
+              }
+            ]
+          },
+          {
+            "section": "capital",
+            "title": "분기 설비투자: 매출을 웃도는 투자",
+            "subtitle": "증가율은 직전 막대 대비. 2026 Q3 설비투자 $19.6B 중 SI(AI) $16.4B",
+            "unit": "$B",
+            "growth": "prev",
+            "bars": [
+              {
+                "label": "2025 Q3",
+                "value": 6.88
+              },
+              {
+                "label": "2026 Q2",
+                "value": 18.369
+              },
+              {
+                "label": "2026 Q3",
+                "value": 19.593
+              },
+              {
+                "label": "2026 Q4 (보도)",
+                "value": 37.5,
+                "display": "$35~40B",
+                "kind": "reported"
+              }
+            ],
+            "footnotes": [
+              "2026 Q4 $35~40B는 실적 발표 관련 보도 수치(공식 자료 미확인), 막대는 중간값."
+            ],
+            "sources": [
+              {
+                "label": "SpaceX Q3 2026 보도자료",
+                "url": "https://s21.q4cdn.com/184289198/files/content_files/SpaceX-Reports-Third-Quarter-2026-Results.pdf"
+              },
+              {
+                "label": "보도(BigGo Finance)",
+                "url": "https://finance.biggo.com/news/US_SPCX_2026-10-20"
+              }
+            ]
+          }
+        ],
+        "reported_outlook": [
+          {
+            "item": "AI 연산 용량 2026년 말",
+            "value": "2GW 이상 / 2.5~3GW",
+            "status": "보도 간 불일치 · 미검증"
+          },
+          {
+            "item": "AI 연산 용량 2027년 말",
+            "value": "약 13GW(기대), 20GW+(상단)",
+            "status": "보도 기준 · 미검증"
+          },
+          {
+            "item": "2027년 1분기 매출",
+            "value": "$33~37B",
+            "status": "단일 보도 · 미검증"
+          },
+          {
+            "item": "2026년 4분기 설비투자",
+            "value": "$35~40B",
+            "status": "단일 보도 · 미검증"
+          },
+          {
+            "item": "ARR",
+            "value": "2026년 말 $100B, 2027년 말 $500B~$1T",
+            "status": "보도 기준 · 미검증"
+          },
+          {
+            "item": "Starship 발사 빈도",
+            "value": "2027 상반기 주 1회, 연말 주 2회+",
+            "status": "보도 기준 · 미검증"
+          }
+        ],
+        "reported_note": "공식 보도자료에는 수치 가이던스가 없다. 위 수치는 웹캐스트 관련 보도에서 나온 것으로, 일부 보도는 발언자 이름부터 틀려 신뢰도가 낮다. 공식 녹취록이 IR에 올라오면 확인 후 본문에 반영한다."
       }
     },
     {
@@ -4200,7 +4469,78 @@
           "closing": [
             "1월 연간 실적에서 2027 가이던스와 관세·원자재 비용 실적치를 확인한다."
           ]
-        }
+        },
+        "charts": [
+          {
+            "section": "review",
+            "title": "북미(GMNA) EBIT-adjusted 마진",
+            "subtitle": "단위 %. 증가율이 아닌 수준 비교",
+            "unit": "%",
+            "bars": [
+              {
+                "label": "2025 Q3",
+                "value": 6.2,
+                "accent": false
+              },
+              {
+                "label": "2026 Q2",
+                "value": 8.6,
+                "accent": false
+              },
+              {
+                "label": "2026 Q3",
+                "value": 8.7
+              }
+            ],
+            "sources": [
+              {
+                "label": "GM Q3 2026 보도자료",
+                "url": "https://investor.gm.com/static-files/c79ce1e6-c1f9-41cc-b503-1b98e1dbdfb2"
+              },
+              {
+                "label": "GM Q2 2026 보도자료",
+                "url": "https://investor.gm.com/static-files/4ee9aed7-9a23-46d5-aa6c-093668907497"
+              }
+            ]
+          },
+          {
+            "section": "guidance",
+            "title": "2026 조정 자동차 FCF 가이던스 중간값: +$1.5B 상향",
+            "subtitle": "증가율은 직전 발표 대비",
+            "unit": "$B",
+            "growth": "prev",
+            "bars": [
+              {
+                "label": "Q1 발표",
+                "value": 10.0,
+                "display": "$10.0B"
+              },
+              {
+                "label": "Q2 발표",
+                "value": 10.5,
+                "display": "$10.5B"
+              },
+              {
+                "label": "Q3 발표",
+                "value": 12.0,
+                "display": "$12.0B"
+              }
+            ],
+            "footnotes": [
+              "범위: Q1 $9.0~11.0B → Q2 $9.5~11.5B → Q3 $11.5~12.5B. 같은 기간 EBIT-adjusted 중간값은 $14.5B → $15.0B → $15.0B로 유지."
+            ],
+            "sources": [
+              {
+                "label": "GM Q3 2026 보도자료",
+                "url": "https://investor.gm.com/static-files/c79ce1e6-c1f9-41cc-b503-1b98e1dbdfb2"
+              },
+              {
+                "label": "GM Q2 2026 보도자료",
+                "url": "https://investor.gm.com/static-files/4ee9aed7-9a23-46d5-aa6c-093668907497"
+              }
+            ]
+          }
+        ]
       }
     },
     {
