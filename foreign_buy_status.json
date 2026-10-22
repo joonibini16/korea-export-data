@@ -1,5 +1,5 @@
 {
- "run": "2026-10-22T15:55:15+09:00",
+ "run": "2026-10-22T16:25:41+09:00",
  "steps": [
   {
    "step": "loader",
@@ -9,97 +9,56 @@
    "step": "login",
    "id_len": 6,
    "status": 200,
-   "code": null,
-   "msg": "\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n \r\n\r\n\r\n<html>\r\n<head>\r\n  <title>에러페이지 - 한국거래소 | Data Marketpla"
-  },
-  {
-   "step": "day",
-   "day": "2026-10-22",
-   "error": "200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <title>에러페이지 - 한국거래소 | Data Marketplace</title>\\r\\n  <meta charset=\"utf-8\">\\r\\n  <meta http-equiv=\"Content-Type\" content=\"te"
+   "code": "CD001",
+   "msg": "정상"
   },
   {
    "step": "days",
-   "fetched": 0,
-   "total": 195,
-   "latest": "2026-10-21"
-  },
-  {
-   "step": "inv_day",
-   "investor": "I",
-   "day": "2026-10-21",
-   "error": "200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <title>에러페이지 - 한국거래소 | Data Marketplace</title>\\r\\n  <meta charset=\"utf-8\">\\r\\n  <meta http-equiv=\"Content-Type\" content=\"te"
+   "fetched": 2,
+   "total": 196,
+   "latest": "2026-10-22"
   },
   {
    "step": "inv_days",
    "investor": "I",
-   "fetched": 0
-  },
-  {
-   "step": "inv_day",
-   "investor": "T",
-   "day": "2026-10-21",
-   "error": "200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <title>에러페이지 - 한국거래소 | Data Marketplace</title>\\r\\n  <meta charset=\"utf-8\">\\r\\n  <meta http-equiv=\"Content-Type\" content=\"te"
+   "fetched": 2
   },
   {
    "step": "inv_days",
    "investor": "T",
-   "fetched": 0
-  },
-  {
-   "step": "inv_day",
-   "investor": "P",
-   "day": "2026-10-21",
-   "error": "200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <title>에러페이지 - 한국거래소 | Data Marketplace</title>\\r\\n  <meta charset=\"utf-8\">\\r\\n  <meta http-equiv=\"Content-Type\" content=\"te"
+   "fetched": 2
   },
   {
    "step": "inv_days",
    "investor": "P",
-   "fetched": 0
-  },
-  {
-   "step": "inv_day",
-   "investor": "N",
-   "day": "2026-10-21",
-   "error": "200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <title>에러페이지 - 한국거래소 | Data Marketplace</title>\\r\\n  <meta charset=\"utf-8\">\\r\\n  <meta http-equiv=\"Content-Type\" content=\"te"
+   "fetched": 2
   },
   {
    "step": "inv_days",
    "investor": "N",
-   "fetched": 0
-  },
-  {
-   "step": "inv_day",
-   "investor": "B",
-   "day": "2026-10-21",
-   "error": "200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <title>에러페이지 - 한국거래소 | Data Marketplace</title>\\r\\n  <meta charset=\"utf-8\">\\r\\n  <meta http-equiv=\"Content-Type\" content=\"te"
+   "fetched": 2
   },
   {
    "step": "inv_days",
    "investor": "B",
-   "fetched": 0
-  },
-  {
-   "step": "inv_day",
-   "investor": "O",
-   "day": "2026-10-21",
-   "error": "200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <title>에러페이지 - 한국거래소 | Data Marketplace</title>\\r\\n  <meta charset=\"utf-8\">\\r\\n  <meta http-equiv=\"Content-Type\" content=\"te"
+   "fetched": 2
   },
   {
    "step": "inv_days",
    "investor": "O",
-   "fetched": 0
+   "fetched": 2
   },
   {
    "step": "build",
    "investor": "F",
    "days": 61,
-   "series": 2204
+   "series": 2206
   },
   {
    "step": "build",
    "investor": "I",
    "days": 61,
-   "series": 2197
+   "series": 2200
   },
   {
    "step": "build",
@@ -111,13 +70,13 @@
    "step": "build",
    "investor": "P",
    "days": 61,
-   "series": 1677
+   "series": 1680
   },
   {
    "step": "build",
    "investor": "B",
    "days": 61,
-   "series": 2194
+   "series": 2197
   },
   {
    "step": "build",
@@ -129,13 +88,13 @@
    "step": "build",
    "investor": "N",
    "days": 61,
-   "series": 1025
+   "series": 1028
   },
   {
    "step": "build",
    "investor": "C",
    "days": 61,
-   "series": 1775
+   "series": 1776
   }
  ],
  "ok": true
