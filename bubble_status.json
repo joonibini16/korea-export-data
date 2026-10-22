@@ -1,7 +1,7 @@
 {
- "updated_at": "2026-10-22T21:26:55+09:00",
+ "updated_at": "2026-10-22T21:38:05+09:00",
  "yahoo_rows": 55613,
- "fred_rows": 34097,
+ "fred_rows": 34098,
  "ecos_rows": 0,
  "ecos_key": false,
  "vkospi_rows": null,
@@ -28,7 +28,7 @@
   "DFII10": "2026-10-20",
   "NFCI": "2026-10-16",
   "STLFSI4": "2026-10-09",
-  "ICSA": "2026-10-10",
+  "ICSA": "2026-10-17",
   "SAHMREALTIME": "2026-09-01",
   "DTWEXBGS": "2026-10-16",
   "SOFR": "2026-10-21",
