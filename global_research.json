@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-21T23:46:06.044Z",
-  "last_checked_at": "2026-10-21T23:46:06.044Z",
+  "updated_at": "2026-10-22T23:57:55.007Z",
+  "last_checked_at": "2026-10-22T23:57:55.007Z",
   "schedule_note": "매일 오전 8시 전후(한국시간), Work에서 공식 공개자료를 확인해 갱신",
   "sectors": [
     "반도체·장비",
@@ -22,144 +22,144 @@
       "name": "Goldman Sachs",
       "source_url": "https://www.goldmansachs.com/insights",
       "status": "partial",
-      "note": "공개 Insights·Goldman Sachs Research·Top of Mind의 최근 7일 및 10/21 신규 게시를 확인. 고객 전용 GIR 전체 리포트는 점검 범위 밖이며 신규 등록 없음.",
-      "checked_at": "2026-10-21T23:46:06.044Z"
+      "note": "공개 Insights와 최근 7일을 확인해 10/22 럭셔리 해설 1건 등록. Executive Office 공개 기사와 고객 전용 GIR 원보고서를 구분했으며 후자는 점검 범위 밖.",
+      "checked_at": "2026-10-22T23:57:55.007Z"
     },
     {
       "id": "MS",
       "name": "Morgan Stanley",
       "source_url": "https://www.morganstanley.com/what-we-do/research/",
       "status": "partial",
-      "note": "공개 Research·Investment Management 인사이트와 최근 7일 검색을 확인. MSIM과 Morgan Stanley Research를 구분했으며 신규 등록 없음.",
-      "checked_at": "2026-10-21T23:46:06.044Z"
+      "note": "공개 Research·Institute·Investment Management 최근 7일을 확인해 10/22 Institute 설문 1건과 10/21 Research 색인 지연분 1건 등록. 부서별 자료 성격을 구분.",
+      "checked_at": "2026-10-22T23:57:55.007Z"
     },
     {
       "id": "JPM",
       "name": "J.P. Morgan",
       "source_url": "https://www.jpmorgan.com/insights/research",
       "status": "partial",
-      "note": "공개 Global Research·J.P. Morgan AM 인사이트와 최근 7일 검색을 확인. 고객 전용 원문은 범위 밖이며 신규 등록 없음.",
-      "checked_at": "2026-10-21T23:46:06.044Z"
+      "note": "공개 Global Research·Asset Management 최근 7일을 확인. 10/20 바이오파마·채권 페이지는 공개 검색 목록만 확인돼 기존 요약과 중복 가능성을 배제할 상세 원문이 없어 등록 보류.",
+      "checked_at": "2026-10-22T23:57:55.007Z"
     },
     {
       "id": "UBS",
       "name": "UBS",
       "source_url": "https://www.ubs.com/global/en/wealthmanagement/insights/house-view.html",
       "status": "partial",
-      "note": "공개 CIO House View 최근 7일을 확인해 10/21 Daily 1건을 등록. 투자은행 고객 전용 개별종목 리포트와 구분.",
-      "checked_at": "2026-10-21T23:46:06.044Z"
+      "note": "공개 CIO House View 최근 7일을 확인해 10/22 유가·포트폴리오 방어 Daily 1건 등록. 투자은행 고객 전용 개별종목 리서치와 구분.",
+      "checked_at": "2026-10-22T23:57:55.007Z"
     },
     {
       "id": "BofA",
       "name": "Bank of America",
       "source_url": "https://institute.bankofamerica.com/consumer-checkpoint.html",
       "status": "partial",
-      "note": "Bank of America Institute 공개 목록과 최근 7일 검색을 확인. BofA Global Research 고객 전용 전체 보고서는 범위 밖이며 신규 등록 없음.",
-      "checked_at": "2026-10-21T23:46:06.044Z"
+      "note": "Bank of America Institute·공개 BofA 자료 최근 7일을 확인. Global Research 고객 전용 전체 보고서는 범위 밖이며 신규 등록 없음.",
+      "checked_at": "2026-10-22T23:57:55.007Z"
     },
     {
       "id": "Citi",
       "name": "Citi",
       "source_url": "https://www.citigroup.com/global/insights/research-citi-podcasts",
       "status": "partial",
-      "note": "공식 Insights 최근 7일을 확인해 10/21 Nordic T+1 팟캐스트 소개문 1건을 등록. 전체 전사는 미확인.",
-      "checked_at": "2026-10-21T23:46:06.044Z"
+      "note": "공식 Insights 최근 7일을 확인해 10/22 AI 팟캐스트와 글로벌 성장 팟캐스트 2건 등록. 공식 소개문 범위만 요약하고 정식 투자 리서치와 구분.",
+      "checked_at": "2026-10-22T23:57:55.007Z"
     },
     {
       "id": "Barclays",
       "name": "Barclays",
       "source_url": "https://privatebank.barclays.com/insights/",
       "status": "partial",
-      "note": "Private Bank 공개 Insights 최근 7일 목록을 확인. 투자은행 고객 전용 리서치 전체는 확인 불가하며 신규 등록 없음.",
-      "checked_at": "2026-10-21T23:46:06.044Z"
+      "note": "공개 Insights 최근 7일 검색을 확인. 9월 소비 동향 페이지는 접근 제한으로 검색 목록만 확인했으며 투자은행 고객 전용 리서치 전체는 미확인, 신규 등록 없음.",
+      "checked_at": "2026-10-22T23:57:55.007Z"
     },
     {
       "id": "DB",
       "name": "Deutsche Bank",
       "source_url": "https://investmentbank.db.com/research/index",
       "status": "partial",
-      "note": "Investment Bank Research·공개 flow 최근 7일 검색을 확인. 고객 전용 상세 원문은 미확인, 신규 등록 없음.",
-      "checked_at": "2026-10-21T23:46:06.044Z"
+      "note": "Investment Bank Research·공개 flow 최근 7일 검색을 확인. 고객 전용 상세 원문은 미확인했으며 신규 등록 없음.",
+      "checked_at": "2026-10-22T23:57:55.007Z"
     },
     {
       "id": "Nomura",
       "name": "Nomura (노무라)",
       "source_url": "https://www.nomuraconnects.com/",
       "status": "partial",
-      "note": "Nomura Connects 공개 목록과 최근 7일 검색을 확인. NRI·Nomura AM·고객용 Global Research와 구분. 일부 게시물의 월·본문 시점이 불일치해 신규 등록 보류.",
-      "checked_at": "2026-10-21T23:46:06.044Z"
+      "note": "Nomura Connects 공개 목록과 최근 7일 검색을 확인. NRI·Nomura AM·고객용 Global Research와 구분했으며 날짜가 검증되지 않은 게시물은 등록하지 않음.",
+      "checked_at": "2026-10-22T23:57:55.007Z"
     },
     {
       "id": "Daiwa",
       "name": "Daiwa (다이와)",
       "source_url": "https://www.dir.co.jp/english/research/report/index.html",
       "status": "partial",
-      "note": "Daiwa Institute of Research 영문 공개 발간 목록과 최근 7일 검색을 확인. 증권사 고객용 개별종목 리서치 전수 확인은 아니며 신규 등록 없음.",
-      "checked_at": "2026-10-21T23:46:06.044Z"
+      "note": "Daiwa Institute of Research 영문 공개 발간 목록과 최근 7일 검색을 확인. Daiwa Securities Group IR와 증권사 고객용 리서치를 구분했으며 신규 등록 없음.",
+      "checked_at": "2026-10-22T23:57:55.007Z"
     },
     {
       "id": "Mizuho",
       "name": "Mizuho (미즈호)",
       "source_url": "https://www.mizuhogroup.com/what-we-do/research",
       "status": "partial",
-      "note": "Mizuho Bank·EMEA 공개 Insights 최근 7일을 확인. 고객용 주식 리서치 포털과 구분했으며 신규 등록 없음.",
-      "checked_at": "2026-10-21T23:46:06.044Z"
+      "note": "Mizuho Bank·EMEA 공개 Insights 최근 7일 검색을 확인. 고객용 주식 리서치 포털과 구분했으며 신규 등록 없음.",
+      "checked_at": "2026-10-22T23:57:55.007Z"
     },
     {
       "id": "HSBC",
       "name": "HSBC",
       "source_url": "https://www.business.hsbc.com/en-gb/products/global-investment-research",
       "status": "partial",
-      "note": "HSBC Corporate and Institutional Banking 공개 Insights 최근 7일을 확인해 10/22 GCC 인프라 기사 1건 등록. Global Investment Research 고객 전용 전문과 구분.",
-      "checked_at": "2026-10-21T23:46:06.044Z"
+      "note": "HSBC Corporate and Institutional Banking 공개 Insights 최근 7일을 확인. 고객 전용 Global Investment Research 전문과 구분했으며 신규 등록 없음.",
+      "checked_at": "2026-10-22T23:57:55.007Z"
     },
     {
       "id": "BNP",
       "name": "BNP Paribas (BNP파리바)",
       "source_url": "https://globalmarkets.cib.bnpparibas/markets-360/",
       "status": "partial",
-      "note": "BNP Paribas Global Markets 공개 Markets 360·Insights 최근 7일을 확인. 고객용 원보고서 전문과 구분했으며 신규 등록 없음.",
-      "checked_at": "2026-10-21T23:46:06.044Z"
+      "note": "BNP Paribas Global Markets Markets 360·Wealth Management 공개 Insights 최근 7일을 확인. 공개된 신규 원문 미확인, 고객용 원보고서 전문은 범위 밖.",
+      "checked_at": "2026-10-22T23:57:55.007Z"
     },
     {
       "id": "SocGen",
       "name": "Société Générale (소시에테제네랄)",
       "source_url": "https://insight-public.sgmarkets.com/",
       "status": "partial",
-      "note": "공식 SG Markets Insight에서 10/21 AI·테크 실적 영상 제목·날짜를 확인해 목록 범위로 등록. JavaScript 제한으로 본문·영상 내용은 미확인.",
-      "checked_at": "2026-10-21T23:46:06.044Z"
+      "note": "SG Markets 공개 Insight와 최근 7일 검색을 확인. 동적 목록·영상 본문은 제한되어 제목 수준만 점검했으며 검증 가능한 신규 원문 없음.",
+      "checked_at": "2026-10-22T23:57:55.007Z"
     },
     {
       "id": "Jefferies",
       "name": "Jefferies (제프리스)",
       "source_url": "https://www.jefferies.com/insights/",
       "status": "partial",
-      "note": "공식 Insights·Equity Research 공개 목록의 최근 7일을 확인. 행사·기업 홍보와 리서치를 구분했으며 신규 등록 없음.",
-      "checked_at": "2026-10-21T23:46:06.044Z"
+      "note": "공식 Insights·Equity Research 공개 목록의 최근 7일을 확인. 행사·편집 기사와 정식 리서치를 구분했으며 신규 등록 없음.",
+      "checked_at": "2026-10-22T23:57:55.007Z"
     },
     {
       "id": "Bernstein",
       "name": "Bernstein Research (번스타인)",
       "source_url": "https://www.bernsteinresearch.com/Research/",
       "status": "partial",
-      "note": "공식 Research 페이지와 최근 7일 검색을 확인. 공개 원문은 없고 제3자 인용은 원문 미확인이라 등록하지 않음. AllianceBernstein AM과 구분.",
-      "checked_at": "2026-10-21T23:46:06.044Z"
+      "note": "Bernstein Research 공식 페이지와 최근 7일 검색을 확인. Bernstein Private Wealth·AllianceBernstein 자산관리 콘텐츠와 구분했으며 공개 Research 원문 신규 없음.",
+      "checked_at": "2026-10-22T23:57:55.007Z"
     },
     {
       "id": "Macquarie",
       "name": "Macquarie (맥쿼리)",
       "source_url": "https://www.macquarie.com/au/en/insights.html",
       "status": "partial",
-      "note": "공식 Insights·ANZ Equity Research·AM 공개 목록의 최근 7일을 확인. 동적 목록·고객용 전문은 부분 확인이며 신규 등록 없음.",
-      "checked_at": "2026-10-21T23:46:06.044Z"
+      "note": "Macquarie 공식 Insights·ANZ Equity Research·AM 공개 목록 최근 7일을 확인. 동적 목록과 고객용 전문은 부분 확인이며 신규 등록 없음.",
+      "checked_at": "2026-10-22T23:57:55.007Z"
     },
     {
       "id": "RBC",
       "name": "RBC Capital Markets",
       "source_url": "https://www.rbccm.com/en/insights",
       "status": "partial",
-      "note": "RBC Capital Markets 공개 Insights·Strategy & Economics 최근 7일을 확인. 고객 포털 원문과 구분했으며 신규 등록 없음.",
-      "checked_at": "2026-10-21T23:46:06.044Z"
+      "note": "RBC Capital Markets 공개 Insights·Strategy & Economics와 RBC Thought Leadership 최근 7일을 확인. 부서와 고객 포털 원문을 구분했으며 신규 등록 없음.",
+      "checked_at": "2026-10-22T23:57:55.007Z"
     }
   ],
   "reports": [
@@ -886,6 +886,245 @@
       "last_verified_at": "2026-10-21T23:46:06.044Z",
       "prior_source": null,
       "initial_archive": false
+    },
+    {
+      "id": "gs-luxury-growth-20261022",
+      "publisher": "GS",
+      "division": "Goldman Sachs Executive Office 공개 해설 — Goldman Sachs Research 인용(GIR 원보고서와 구분)",
+      "published_at": "2026-10-22",
+      "title": "Why Luxury Goods Companies’ Revenues Are Forecast to Climb",
+      "title_ko": "럭셔리 매출 회복 전망: 2027년 성장률 7%, 가격보다 판매 모멘텀이 촉매",
+      "sectors": [
+        "소비재·식품"
+      ],
+      "companies": [],
+      "document_type": "research_article",
+      "source_scope": "full_text",
+      "source_url": "https://www.goldmansachs.com/insights/articles/why-luxury-goods-companies-revenues-are-forecast-to-climb",
+      "headline": "럭셔리 업종 매출 성장률은 2026년 6%에서 2027년 7%로 가속될 전망이지만, 밸류에이션보다 판매 모멘텀 회복이 실제 촉매다.",
+      "facts": [
+        "Goldman Sachs Research가 추적하는 주요 럭셔리 종목 바스켓의 매출 성장률을 2026년 6%, 2027년 7%로 전망했다.",
+        "코로나 이후 2019년 중반부터 2026년 중반까지 약 60%의 가격 인상이 소비자의 가치 인식을 약화시켰다고 분석했다.",
+        "미국 수요는 개선되고 홍콩은 회복 조짐이 있지만, 한국 수요는 기술주 중심의 변동성 높은 주식시장에 연동돼 취약할 수 있다고 봤다."
+      ],
+      "interpretation": "2027년 업종 매출 추정 방향은 상방이지만, 가격 인상보다 신제품·브랜드 혁신과 미국·중국권 트래픽 회복이 실적 전환을 결정한다.",
+      "estimate_signal": "업종 매출 성장률이 2026년 6%에서 2027년 7%로 높아지는 방향. 개별 기업의 다음 분기·내년 EPS 변경 수치는 공개 기사에 없음.",
+      "valuation_change": "업종 밸류에이션은 특별히 싸지도 과도하게 높지도 않다고 평가. 개별 목표가 변경은 공개되지 않음.",
+      "tone_change": "부진 장기화 우려를 반박하고 회복을 전망하지만, 직전 동일 보고서와의 직접 비교가 없어 공식 상향 전환으로 단정하지 않음.",
+      "stance": "positive",
+      "watch": [
+        "미국·중국·홍콩의 럭셔리 매장 트래픽",
+        "신임 크리에이티브 디렉터 컬렉션의 판매 전환",
+        "한국 주식시장과 고가 소비의 연동성"
+      ],
+      "date_note": "공식 본문에 2026년 10월 22일 표시",
+      "coverage_note": "공개 기사 전문 확인. 문서 하단에 Executive Office 작성이며 Goldman Sachs Global Investment Research 상품이 아니라고 명시되어 고객용 GIR 원보고서와 구분.",
+      "first_seen_at": "2026-10-22T23:57:55.007Z",
+      "last_verified_at": "2026-10-22T23:57:55.007Z",
+      "prior_source": null,
+      "initial_archive": false
+    },
+    {
+      "id": "ms-sustainable-signals-20261022",
+      "publisher": "MS",
+      "division": "Morgan Stanley Institute for Sustainable Investing(Research Department와 구분)",
+      "published_at": "2026-10-22",
+      "title": "Institutional Investors Expect Modest Growth in Sustainable Allocations",
+      "title_ko": "지속가능 투자 증액은 이어지지만 속도 둔화, 기후 적응·책임 AI가 핵심",
+      "sectors": [
+        "금융·신용",
+        "매크로·전략",
+        "AI·IT하드웨어"
+      ],
+      "companies": [],
+      "document_type": "research_article",
+      "source_scope": "full_text",
+      "source_url": "https://www.morganstanley.com/insights/articles/sustainable-signals-institutional-investors-2026",
+      "headline": "지속가능 투자 비중은 늘지만 대폭 증액 기대는 줄었고, 기후 적응·책임 AI·데이터 품질이 기관 자금 배분의 핵심 기준으로 이동했다.",
+      "facts": [
+        "2026년 8~10월 900개 기관투자자를 조사했으며 80% 이상이 향후 2년간 지속가능 투자 비중 확대를 예상했다.",
+        "10%포인트를 넘는 확대를 예상한 비중은 자산보유자 2%, 자산운용사 4%로 2025년 약 20%에서 크게 낮아졌다.",
+        "데이터 가용성과 일관성을 매우 중대한 우려로 꼽은 비중은 64%로 2025년 47%보다 높아졌고, 응답자의 3분의 2가 책임 AI를 전략에 포함했다."
+      ],
+      "interpretation": "자금 유입 방향은 유지되지만 성장률 기대는 낮아졌다. 기후 적응 인프라와 AI 거버넌스·데이터 솔루션은 상대적으로 수요가 견조할 가능성이 있다.",
+      "estimate_signal": "개별 기업의 매출·이익 추정치 변경 자료는 아니다. 지속가능 투자상품과 기후 적응·책임 AI 관련 수요에는 중기 우호적이나 증액 속도는 둔화.",
+      "valuation_change": "목표가·밸류에이션 변경 자료 아님",
+      "tone_change": "2025년보다 대규모 증액 기대는 약해졌고 위험관리·데이터 품질 중심으로 더 신중해진 톤.",
+      "stance": "mixed",
+      "watch": [
+        "기후 적응·복원력 투자 비중",
+        "책임 AI 거버넌스 채택",
+        "지속가능 데이터 품질과 맞춤형 위임 확대"
+      ],
+      "date_note": "공식 본문에 2026년 10월 22일 표시",
+      "coverage_note": "공개 기사 전문과 설문 요약 확인. Morgan Stanley Research Department 보고서가 아니라고 본문에 명시.",
+      "first_seen_at": "2026-10-22T23:57:55.007Z",
+      "last_verified_at": "2026-10-22T23:57:55.007Z",
+      "prior_source": null,
+      "initial_archive": false
+    },
+    {
+      "id": "ms-ai-3600-stocks-20261021",
+      "publisher": "MS",
+      "division": "Morgan Stanley Research — U.S. Thematic and Equity Strategy / AI Tech Thematic Strategy",
+      "published_at": "2026-10-21",
+      "title": "The Undervalued Companies Benefiting from AI",
+      "title_ko": "AI 주도주 확산: 선별 인프라와 저평가 도입 기업으로 범위 확대",
+      "sectors": [
+        "AI·IT하드웨어",
+        "반도체·장비",
+        "전력·데이터센터",
+        "소프트웨어"
+      ],
+      "companies": [],
+      "document_type": "research_article",
+      "source_scope": "full_text",
+      "source_url": "https://www.morganstanley.com/insights/articles/3600-stocks-map-out-ai-investing-opportunties-across-sectors",
+      "headline": "AI 투자 기회는 선별된 인프라 공급자에서 펀더멘털이 개선되는 도입 기업과 데이터센터 병목 해결 기업으로 넓어지고 있다.",
+      "facts": [
+        "Morgan Stanley Research가 글로벌 커버리지 약 3,600개 종목의 AI 노출과 펀더멘털을 분류했다.",
+        "AI 도입 기업의 선행 PER 중앙값은 18배로 MSCI World와 비슷하고, 인프라·기술 공급 기업의 22배보다 낮다고 제시했다.",
+        "향후 6~12개월 리더십은 전력 병목을 해결하는 기업, 선별 반도체·인프라 기업, 초기 소프트웨어 공급자와 수익화가 확인되는 도입 기업에 집중될 것으로 봤다."
+      ],
+      "interpretation": "AI 테마의 중심이 일괄적인 인프라 프리미엄에서 전력·노동·규제 병목을 푸는 기업과 실제 생산성·매출 개선이 보이는 도입 기업으로 확산되는 신호.",
+      "estimate_signal": "공급 기업의 이익 모멘텀은 여전히 강하고 도입 기업의 펀더멘털도 변곡점에 진입했다고 평가. 장기 생산성 효과가 컨센서스에 충분히 반영되지 않았다는 상방 방향이지만 개별 기업 수치는 없음.",
+      "valuation_change": "도입 기업 PER 중앙값 18배, 공급 기업 22배의 격차를 근거로 도입 기업 위험보상이 개선됐다고 평가. 개별 목표가 변경 없음.",
+      "tone_change": "AI 주도권이 완전 순환하기보다 공급자 중심에서 도입 기업까지 확산된다는 방향으로 범위를 넓힘.",
+      "stance": "positive",
+      "watch": [
+        "전력·노동·규제 병목 해소 기업의 수주",
+        "AI 도입 기업의 생산성·매출 전환",
+        "공급 기업과 도입 기업의 밸류에이션 격차"
+      ],
+      "date_note": "공식 본문에 2026년 10월 21일 표시",
+      "coverage_note": "공개 기사 전문 확인. 직전 점검 뒤 색인된 과거 발간분이므로 신규 발간 수에는 포함하지 않음.",
+      "first_seen_at": "2026-10-22T23:57:55.007Z",
+      "last_verified_at": "2026-10-22T23:57:55.007Z",
+      "prior_source": null,
+      "initial_archive": false
+    },
+    {
+      "id": "ubs-oil-resilience-20261022",
+      "publisher": "UBS",
+      "division": "Chief Investment Office",
+      "published_at": "2026-10-22",
+      "title": "Build resilience as oil prices climb",
+      "title_ko": "유가 급등에도 성장 기본 시나리오 유지, 원자재로 방어력 강화",
+      "sectors": [
+        "에너지·소재",
+        "매크로·전략",
+        "AI·IT하드웨어"
+      ],
+      "companies": [
+        {
+          "ticker": "2222.SR",
+          "name": "Saudi Aramco",
+          "relationship": "동부 지역 유전 공격 위험 맥락에서 원문 언급"
+        }
+      ],
+      "document_type": "cio_commentary",
+      "source_scope": "full_text",
+      "source_url": "https://www.ubs.com/global/en/wealthmanagement/insights/chief-investment-office/house-view/daily/2026/latest-22102026.html",
+      "headline": "Brent 112달러에도 글로벌 성장이 훼손되는 것이 기본 시나리오는 아니며, 시장 이탈보다 원자재를 활용한 포트폴리오 방어가 우선이다.",
+      "facts": [
+        "Brent가 배럴당 112달러로 상승해 10월 들어 9.4% 올랐다고 기록했다.",
+        "OPEC 원유 생산은 9월 하루 92만배럴 늘어 2,510만배럴로 회복됐고, G7 비축유 방출이 단기 완충 역할을 할 수 있다고 봤다.",
+        "경제 성장·기업 이익·AI 수요가 주식시장을 지지하며, 에너지 흐름과 생산 회복으로 유가가 내년에 완화될 것을 기본 시나리오로 제시했다."
+      ],
+      "interpretation": "에너지 생산자에는 단기 실적 상방, 에너지 소비 업종에는 비용 하방이지만 시장 전체 위험회피 신호로 보지는 않는다. 원자재 익스포저를 헤지 수단으로 강조.",
+      "estimate_signal": "에너지 생산 기업의 단기 매출·현금흐름에는 상방, 소비 업종 마진에는 하방 요인. 개별 기업 추정치 수정은 제시하지 않음.",
+      "valuation_change": "개별 목표가·밸류에이션 변경 없음",
+      "tone_change": "10월 21일의 일반적 변동성 방어에서 에너지 공급충격과 원자재 헤지를 더 구체적으로 강조했으나 성장·AI에 대한 건설적 시각은 유지.",
+      "stance": "mixed",
+      "watch": [
+        "Brent 현물과 공급 차질",
+        "OPEC 생산 회복과 G7 비축유 방출",
+        "AI 전력수요와 원자재 가격"
+      ],
+      "date_note": "공식 본문에 2026년 10월 22일 표시",
+      "coverage_note": "UBS CIO 공개 Daily 전문 확인. 투자은행 개별종목 리서치와 구분.",
+      "first_seen_at": "2026-10-22T23:57:55.007Z",
+      "last_verified_at": "2026-10-22T23:57:55.007Z",
+      "prior_source": "https://www.ubs.com/global/en/wealthmanagement/insights/chief-investment-office/house-view/daily/2026/latest-21102026.html",
+      "initial_archive": false
+    },
+    {
+      "id": "citi-state-of-ai-20261022",
+      "publisher": "Citi",
+      "division": "Research @ Citi Podcast — Technology & Communications Research(테마 콘텐츠)",
+      "published_at": "2026-10-22",
+      "title": "E90: The State of AI",
+      "title_ko": "AI 경쟁의 다음 단계: 에이전트·인프라·사이버 위험",
+      "sectors": [
+        "AI·IT하드웨어",
+        "소프트웨어",
+        "반도체·장비",
+        "전력·데이터센터"
+      ],
+      "companies": [],
+      "document_type": "podcast",
+      "source_scope": "official_summary",
+      "source_url": "https://www.citigroup.com/global/insights/e90-the-state-of-ai",
+      "headline": "프런티어 모델 경쟁보다 에이전트와 기업용 하네스, 인프라 수요, 사이버 위험이 AI 수익화와 비용 구조를 가르는 핵심 변수다.",
+      "facts": [
+        "공식 요약은 프런티어·embodied 모델의 발전 가속과 고도 AI가 만드는 사이버보안 위험 증가를 핵심 주제로 제시했다.",
+        "기업 적용을 위한 AI 하네스, AI 인프라의 경제적 영향, 선도 연구소 간 경쟁을 논의했다고 밝혔다.",
+        "연구·발명에서 AI 모델이 인간 주도 방식을 넘어설 수 있다는 장기 전망을 소개했다."
+      ],
+      "interpretation": "AI 인프라 수요는 우호적이지만 모델 차별화만으로 수익성을 가정하기보다 기업용 적용 계층과 보안 비용을 함께 추적해야 한다.",
+      "estimate_signal": "AI 인프라·에이전트·보안 수요에는 중기 상방 방향. 공식 요약에 개별 기업의 다음 분기·내년 매출·이익 수정 수치는 없음.",
+      "valuation_change": "개별 목표가·밸류에이션 변경 없음",
+      "tone_change": "직전 동일 회차와 비교 자료가 없어 변화 판단 보류. 발전 가속과 보안 위험을 동시에 강조하는 혼재된 톤.",
+      "stance": "mixed",
+      "watch": [
+        "기업용 AI 하네스 채택",
+        "에이전트 수익화와 인프라 사용량",
+        "AI 기반 사이버 공격과 보안 지출"
+      ],
+      "date_note": "공식 페이지에 2026년 10월 22일 표시",
+      "coverage_note": "공식 KEY TAKEAWAYS와 소개문만 확인. Citi는 정식 투자 리서치가 아닌 테마 콘텐츠라고 명시했으며 전체 전사를 확인한 것으로 보지 않음.",
+      "first_seen_at": "2026-10-22T23:57:55.007Z",
+      "last_verified_at": "2026-10-22T23:57:55.007Z",
+      "prior_source": null,
+      "initial_archive": false
+    },
+    {
+      "id": "citi-industry-growth-20261022",
+      "publisher": "Citi",
+      "division": "Citi Securities Services / Global Strategy & Macro 참여 팟캐스트",
+      "published_at": "2026-10-22",
+      "title": "Industry Perspectives Episode 3 — Growth: Conflicts, Supply Chains and Resilience",
+      "title_ko": "분쟁·공급망 충격 속 글로벌 성장의 회복력 점검",
+      "sectors": [
+        "매크로·전략",
+        "금융·신용",
+        "에너지·소재"
+      ],
+      "companies": [],
+      "document_type": "podcast",
+      "source_scope": "official_summary",
+      "source_url": "https://www.citigroup.com/global/insights/industry-perspectives-episode-3",
+      "headline": "전쟁·인플레이션·고금리·관세·에너지 충격에도 글로벌 성장 회복력이 유지되는지 공급망과 정책 경로를 중심으로 점검한 자료다.",
+      "facts": [
+        "Citi의 Global Trustee & Fiduciary Services가 주관하고 Interim Head of Research와 Global Chief Economist가 참여했다.",
+        "공식 소개문은 러시아-우크라이나 전쟁, 인플레이션, 중앙은행 금리, 미국 관세와 이란 전쟁이 단기·장기 성장에 미치는 영향을 다룬다고 밝혔다."
+      ],
+      "interpretation": "기업 실적 추정 자료보다 거시 회복력 점검에 가깝다. 성장 둔화보다 공급망·에너지·금리 충격의 지속기간이 위험자산 방향을 결정할 변수.",
+      "estimate_signal": "개별 기업의 다음 분기·내년 매출·이익 추정치 또는 정량 전망은 공식 소개문에 없음.",
+      "valuation_change": "목표가·밸류에이션 변경 자료 아님",
+      "tone_change": "비교 가능한 직전 자료와 전문을 확인하지 않아 변화 판단 보류.",
+      "stance": "neutral",
+      "watch": [
+        "에너지 충격의 소비·물가 전이",
+        "중앙은행 금리 경로",
+        "관세와 공급망 재편의 성장 영향"
+      ],
+      "date_note": "공식 페이지에 2026년 10월 22일 표시",
+      "coverage_note": "공식 소개문과 참여자·주제만 확인. 전체 팟캐스트 전사는 검토하지 않음.",
+      "first_seen_at": "2026-10-22T23:57:55.007Z",
+      "last_verified_at": "2026-10-22T23:57:55.007Z",
+      "prior_source": null,
+      "initial_archive": false
     }
   ],
   "checks": [
@@ -916,6 +1155,13 @@
       "new_publications": 4,
       "added_reports": 4,
       "note": "providers 18곳의 공식 공개 경로와 최근 7일 재검색. UBS·Citi·SocGen·HSBC 공개 자료 4건 추가. SocGen은 목록만 확인, Citi는 소개문만 확인, Nomura 일부 페이지는 날짜·본문 시점 불일치로 등록 보류. 고객 전용 원문은 권한 범위 밖."
+    },
+    {
+      "checked_at": "2026-10-22T23:57:55.007Z",
+      "kind": "daily_review",
+      "new_publications": 5,
+      "added_reports": 6,
+      "note": "providers 18곳의 공식 공개 경로와 최근 7일 재검색. 10/22 공개 자료 5건과 10/21 색인 지연분 1건을 중복 없이 추가. 투자은행 리서치가 아닌 Executive Office·Institute·CIO·Securities Services 자료는 작성 부서와 확인 범위를 구분했고, 고객 전용 원문은 우회하지 않음."
     }
   ]
 }
