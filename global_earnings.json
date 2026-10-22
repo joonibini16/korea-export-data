@@ -6404,6 +6404,92 @@
           }
         ]
       }
+    },
+    {
+      "ticker": "NOKIA.HE",
+      "period": "2026 Q3",
+      "date": "2026-10-22",
+      "evidence": "공식 Q3 중간보고서(회사 배포 보도자료) · 7/23 공식 Q2 보고서와 대조",
+      "direction": "혼재",
+      "headline": "AI·클라우드 매출 +123%·이익률 11.7%로 개선 · 연간 이익 전망 유지, 현금전환율 전망은 하향",
+      "estimate_signal": "Network Infrastructure(광·IP) 추정 상향 근거 · 연간 비교영업이익 €2.1~2.6bn 유지 · FCF 추정은 하향 근거",
+      "call_coverage": "공식 중간보고서 기준 · 공식 Q&A 녹취록 미확인; Q&A 톤 평가 없음",
+      "changes": [
+        {
+          "title": "광·IP 네트워크 성장 가속",
+          "direction": "개선",
+          "before": "Q2: Optical+IP 2026년 합산 성장 가정 18~20%, AI·클라우드 고객 매출 +105% YoY.",
+          "now": "Q3: IP Networks +43%, Optical Networks +18%, Network Infrastructure 매출 €2,158m(+15% 고정환율). Optical+IP 성장 가정은 기존 18~20%를 '다소 상회'로 상향, 2027년 25~30% 성장 기대 제시. AI·클라우드 매출 +123%, 수주 +118%, 신규 수주 €1.5bn.",
+          "meaning": "데이터센터 간 광통신·라우팅 수요가 가이던스를 끌어올린 부분. 광모듈·광부품 공급망 수요 신호."
+        },
+        {
+          "title": "연간 이익 전망은 유지",
+          "direction": "유지",
+          "before": "Q2: 2026년 비교영업이익 €2.1~2.6bn(중단사업 재분류에 따른 기술적 조정, 영업상 변경 없음).",
+          "now": "Q3: 같은 €2.1~2.6bn 유지. Q3 비교영업이익 €605m(+35% YoY), 이익률 11.7%(+220bp). Q4 매출은 Q3 대비 20~24% 증가 가정.",
+          "meaning": "분기 실적은 개선됐지만 연간 범위는 그대로여서 연간 이익 추정 상향 폭은 제한. Mobile Infrastructure 매출 일부가 Q4에서 Q3로 당겨졌다는 점도 감안."
+        },
+        {
+          "title": "현금흐름 전망 하향",
+          "direction": "악화",
+          "before": "Q2: FCF 전환율(비교영업이익 대비) 55~75%.",
+          "now": "Q3: 35~55%로 하향, 운전자본 추가 투자 €400m 반영. 구조조정 비용 연간 €1,100m로 상향, 관련 현금유출 €800~900m. 순현금 €2,584m(전년 €3,001m).",
+          "meaning": "성장 투자·구조조정으로 이익의 현금화가 늦어지는 구간. 주주환원 여력 판단 시 별도 확인."
+        }
+      ],
+      "facts": "Q3 매출 €5,154m(+10% 보고, +9% 고정환율·포트폴리오). 비교 총이익률 44.6%(-20bp), 비교영업이익 €605m(+35%), 이익률 11.7%. 보고 영업이익 €196m(-22%), 이익률 3.8%. 비교 희석EPS €0.09(전년 €0.06), 보고 €0.03. Network Infrastructure €2,158m(이익률 10.0%), Mobile Infrastructure €2,902m(+5%, 이익률 14.5%), Portfolio €96m.",
+      "guidance": "2026년 비교영업이익 €2.1~2.6bn(유지, EUR/USD 1.14 가정). FCF 전환율 35~55%(종전 55~75%에서 하향). Network Infrastructure 매출 성장 12~14%(유지), Optical+IP는 18~20% 다소 상회(상향). Capex €750~850m(종전 €800~900m에서 축소). 비교 금융손익 +€300~400m(상향). Q4 매출 QoQ +20~24% 가정. 배당 주당 €0.03(기준일 10/27, 지급 11/5).",
+      "tone": "공식 보고서의 CEO(Justin Hotard) 발언: 성장 가속과 영업 레버리지 가시화, AI·클라우드 매출 2배 이상, Infinera 통합 계획보다 1년 빠른 2026년 말 완료·순시너지 €200m. 공식 Q&A 녹취록 미확인.",
+      "interpretation": "분석: 하이퍼스케일러 데이터센터 네트워크(광·IP) 수요가 통신사 장비 사이클과 별개로 고성장 중임을 공식 수치로 확인. 다만 연간 이익 범위 유지와 FCF 전환율 하향은 성장이 운전자본·구조조정 비용을 동반한다는 의미. 한국 투자 관점에서는 광트랜시버·광부품·PCB 등 데이터센터 네트워크 공급망에 긍정적, 통신사향 무선장비 수요는 Q4 선반영 효과를 감안해 보수적으로.",
+      "watch": "Q4 매출 +20~24% QoQ 달성 여부, Optical+IP 2027년 25~30% 성장 전망 구체화, AI·클라우드 수주 잔고, 운전자본·FCF 회복, Mobile Infrastructure 선반영 이후 Q4 감소 폭.",
+      "source": "https://www.globenewswire.com/news-release/2026/10/22/3386019/0/en/nokia-corporation-interim-report-for-q3-2026.html",
+      "source_label": "Nokia Q3 2026 공식 중간보고서(회사 배포 보도자료)",
+      "prior_source": "https://www.nokia.com/newsroom/nokia-corporation-report-for-q2-and-half-year-2026/",
+      "prior_source_label": "7/23 Nokia Q2·상반기 공식 보고서",
+      "call_topics": [
+        {
+          "topic": "AI·클라우드 수요",
+          "source_part": "공식 중간보고서",
+          "points": [
+            "AI·클라우드 고객 매출 +123%, 수주 +118%, 신규 수주 €1.5bn.",
+            "IP Networks +43%, Optical Networks +18%.",
+            "Optical+IP 2027년 25~30% 성장 기대."
+          ],
+          "implication": "데이터센터 네트워크 공급망 수요 지속 신호."
+        },
+        {
+          "topic": "이익과 현금",
+          "source_part": "공식 중간보고서",
+          "points": [
+            "비교영업이익률 11.7%(+220bp).",
+            "연간 비교영업이익 €2.1~2.6bn 유지.",
+            "FCF 전환율 35~55%로 하향, 운전자본 €400m 추가."
+          ],
+          "implication": "이익 개선과 현금흐름 둔화를 분리해서 볼 것."
+        }
+      ],
+      "call_readthrough": {
+        "scope": "Nokia 공식 Q3 중간보고서를 한국어로 짧게 재서술. 컨콜 Q&A 원문 미검증.",
+        "groups": [
+          {
+            "title": "발표 흐름",
+            "items": [
+              {
+                "title": "Q3 결과",
+                "body": "매출은 9%(고정환율) 늘었고 비교영업이익률은 11.7%로 높아졌다. 광·IP 네트워크와 AI·클라우드 고객이 성장을 이끌었다."
+              },
+              {
+                "title": "전망",
+                "body": "연간 이익 범위는 그대로 두었고, 광·IP 성장 가정은 올렸다. 반면 운전자본 투자 확대로 현금전환율 전망은 낮췄다."
+              },
+              {
+                "title": "투자 관전점",
+                "body": "Q4 매출 급증 가정의 달성 여부와 2027년 광·IP 25~30% 성장 전망이 수주로 이어지는지 확인한다."
+              }
+            ]
+          }
+        ]
+      }
     }
   ],
   "upcoming": [
@@ -6434,13 +6520,6 @@
       "time": "07:00 Europe/Zurich · 09:30 투자자 콜",
       "event": "2026 9개월 누적 매출 발표",
       "source": "https://www.nestle.com/media/mediaeventscalendar/allevents/2026-nine-month-sales"
-    },
-    {
-      "ticker": "NOKIA.HE",
-      "date": "2026-10-22",
-      "time": "08:00 Europe/Helsinki · 15:00 애널리스트 웹캐스트",
-      "event": "2026 Q3(1~9월) 중간보고서 발표",
-      "source": "https://www.nokia.com/newsroom/nokia-to-publish-third-quarter-and-january-september-2026-interim-report-on-22-october-2026/"
     },
     {
       "ticker": "OR.PA",
