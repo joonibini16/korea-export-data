@@ -7018,7 +7018,8 @@
           }
         ]
       },
-      "call_source": "https://edge.media-server.com/mmc/p/34id7xsh"
+      "call_source": "https://edge.media-server.com/mmc/p/34id7xsh",
+      "call_source_label": "공식 컨콜 재생"
     },
     {
       "ticker": "OR.PA",
@@ -7192,7 +7193,8 @@
           }
         ]
       },
-      "call_source": "https://edge.media-server.com/mmc/p/b6h5c2xs"
+      "call_source": "https://edge.media-server.com/mmc/p/b6h5c2xs",
+      "call_source_label": "공식 컨콜 재생"
     }
   ],
   "upcoming": [
