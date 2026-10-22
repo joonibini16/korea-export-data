@@ -1,0 +1,212 @@
+{
+ "run": "2026-10-22T21:07:32+09:00",
+ "steps": [
+  {
+   "step": "login",
+   "ok": true
+  },
+  {
+   "step": "sample",
+   "market": "KOSPI",
+   "keys": [
+    "TRD_DD",
+    "CLSPRC_IDX",
+    "FLUC_TP_CD",
+    "PRV_DD_CMPR",
+    "UPDN_RATE",
+    "OPNPRC_IDX",
+    "HGPRC_IDX",
+    "LWPRC_IDX",
+    "ACC_TRDVOL",
+    "ACC_TRDVAL",
+    "MKTCAP"
+   ],
+   "row": {
+    "TRD_DD": "2015/12/30",
+    "CLSPRC_IDX": "1,961.31",
+    "FLUC_TP_CD": "2",
+    "PRV_DD_CMPR": "-5.00",
+    "UPDN_RATE": "-0.25",
+    "OPNPRC_IDX": "1,973.03",
+    "HGPRC_IDX": "1,974.67",
+    "LWPRC_IDX": "1,958.78"
+   }
+  },
+  {
+   "step": "mdc",
+   "market": "KOSPI",
+   "year": 2015,
+   "rows": 248
+  },
+  {
+   "step": "mdc",
+   "market": "KOSPI",
+   "year": 2016,
+   "rows": 246
+  },
+  {
+   "step": "mdc",
+   "market": "KOSPI",
+   "year": 2017,
+   "rows": 243
+  },
+  {
+   "step": "mdc",
+   "market": "KOSPI",
+   "year": 2018,
+   "rows": 244
+  },
+  {
+   "step": "mdc",
+   "market": "KOSPI",
+   "year": 2019,
+   "rows": 246
+  },
+  {
+   "step": "mdc",
+   "market": "KOSPI",
+   "year": 2020,
+   "rows": 248
+  },
+  {
+   "step": "mdc",
+   "market": "KOSPI",
+   "year": 2021,
+   "rows": 248
+  },
+  {
+   "step": "mdc",
+   "market": "KOSPI",
+   "year": 2022,
+   "rows": 246
+  },
+  {
+   "step": "mdc",
+   "market": "KOSPI",
+   "year": 2023,
+   "rows": 245
+  },
+  {
+   "step": "mdc",
+   "market": "KOSPI",
+   "year": 2024,
+   "rows": 244
+  },
+  {
+   "step": "mdc",
+   "market": "KOSPI",
+   "year": 2025,
+   "rows": 242
+  },
+  {
+   "step": "mdc",
+   "market": "KOSPI",
+   "year": 2026,
+   "rows": 196
+  },
+  {
+   "step": "sample",
+   "market": "KOSDAQ",
+   "keys": [
+    "TRD_DD",
+    "CLSPRC_IDX",
+    "FLUC_TP_CD",
+    "PRV_DD_CMPR",
+    "UPDN_RATE",
+    "OPNPRC_IDX",
+    "HGPRC_IDX",
+    "LWPRC_IDX",
+    "ACC_TRDVOL",
+    "ACC_TRDVAL",
+    "MKTCAP"
+   ],
+   "row": {
+    "TRD_DD": "2015/12/30",
+    "CLSPRC_IDX": "682.35",
+    "FLUC_TP_CD": "1",
+    "PRV_DD_CMPR": "9.13",
+    "UPDN_RATE": "1.36",
+    "OPNPRC_IDX": "677.08",
+    "HGPRC_IDX": "683.34",
+    "LWPRC_IDX": "674.87"
+   }
+  },
+  {
+   "step": "mdc",
+   "market": "KOSDAQ",
+   "year": 2015,
+   "rows": 248
+  },
+  {
+   "step": "mdc",
+   "market": "KOSDAQ",
+   "year": 2016,
+   "rows": 246
+  },
+  {
+   "step": "mdc",
+   "market": "KOSDAQ",
+   "year": 2017,
+   "rows": 243
+  },
+  {
+   "step": "mdc",
+   "market": "KOSDAQ",
+   "year": 2018,
+   "rows": 244
+  },
+  {
+   "step": "mdc",
+   "market": "KOSDAQ",
+   "year": 2019,
+   "rows": 246
+  },
+  {
+   "step": "mdc",
+   "market": "KOSDAQ",
+   "year": 2020,
+   "rows": 248
+  },
+  {
+   "step": "mdc",
+   "market": "KOSDAQ",
+   "year": 2021,
+   "rows": 248
+  },
+  {
+   "step": "mdc",
+   "market": "KOSDAQ",
+   "year": 2022,
+   "rows": 246
+  },
+  {
+   "step": "mdc",
+   "market": "KOSDAQ",
+   "year": 2023,
+   "rows": 245
+  },
+  {
+   "step": "mdc",
+   "market": "KOSDAQ",
+   "year": 2024,
+   "rows": 244
+  },
+  {
+   "step": "mdc",
+   "market": "KOSDAQ",
+   "year": 2025,
+   "rows": 242
+  },
+  {
+   "step": "mdc",
+   "market": "KOSDAQ",
+   "year": 2026,
+   "rows": 196
+  }
+ ],
+ "rows": 5792,
+ "last": {
+  "KOSPI": "2026-10-22",
+  "KOSDAQ": "2026-10-22"
+ }
+}
