@@ -1,5 +1,5 @@
 {
- "run": "2026-10-22T03:08:58+09:00",
+ "run": "2026-10-22T15:55:15+09:00",
  "steps": [
   {
    "step": "loader",
@@ -9,44 +9,85 @@
    "step": "login",
    "id_len": 6,
    "status": 200,
-   "code": "CD001",
-   "msg": "정상"
+   "code": null,
+   "msg": "\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n \r\n\r\n\r\n<html>\r\n<head>\r\n  <title>에러페이지 - 한국거래소 | Data Marketpla"
+  },
+  {
+   "step": "day",
+   "day": "2026-10-22",
+   "error": "200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <title>에러페이지 - 한국거래소 | Data Marketplace</title>\\r\\n  <meta charset=\"utf-8\">\\r\\n  <meta http-equiv=\"Content-Type\" content=\"te"
   },
   {
    "step": "days",
-   "fetched": 1,
+   "fetched": 0,
    "total": 195,
    "latest": "2026-10-21"
   },
   {
+   "step": "inv_day",
+   "investor": "I",
+   "day": "2026-10-21",
+   "error": "200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <title>에러페이지 - 한국거래소 | Data Marketplace</title>\\r\\n  <meta charset=\"utf-8\">\\r\\n  <meta http-equiv=\"Content-Type\" content=\"te"
+  },
+  {
    "step": "inv_days",
    "investor": "I",
-   "fetched": 2
+   "fetched": 0
+  },
+  {
+   "step": "inv_day",
+   "investor": "T",
+   "day": "2026-10-21",
+   "error": "200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <title>에러페이지 - 한국거래소 | Data Marketplace</title>\\r\\n  <meta charset=\"utf-8\">\\r\\n  <meta http-equiv=\"Content-Type\" content=\"te"
   },
   {
    "step": "inv_days",
    "investor": "T",
-   "fetched": 2
+   "fetched": 0
+  },
+  {
+   "step": "inv_day",
+   "investor": "P",
+   "day": "2026-10-21",
+   "error": "200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <title>에러페이지 - 한국거래소 | Data Marketplace</title>\\r\\n  <meta charset=\"utf-8\">\\r\\n  <meta http-equiv=\"Content-Type\" content=\"te"
   },
   {
    "step": "inv_days",
    "investor": "P",
-   "fetched": 2
+   "fetched": 0
+  },
+  {
+   "step": "inv_day",
+   "investor": "N",
+   "day": "2026-10-21",
+   "error": "200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <title>에러페이지 - 한국거래소 | Data Marketplace</title>\\r\\n  <meta charset=\"utf-8\">\\r\\n  <meta http-equiv=\"Content-Type\" content=\"te"
   },
   {
    "step": "inv_days",
    "investor": "N",
-   "fetched": 2
+   "fetched": 0
+  },
+  {
+   "step": "inv_day",
+   "investor": "B",
+   "day": "2026-10-21",
+   "error": "200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <title>에러페이지 - 한국거래소 | Data Marketplace</title>\\r\\n  <meta charset=\"utf-8\">\\r\\n  <meta http-equiv=\"Content-Type\" content=\"te"
   },
   {
    "step": "inv_days",
    "investor": "B",
-   "fetched": 2
+   "fetched": 0
+  },
+  {
+   "step": "inv_day",
+   "investor": "O",
+   "day": "2026-10-21",
+   "error": "200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <title>에러페이지 - 한국거래소 | Data Marketplace</title>\\r\\n  <meta charset=\"utf-8\">\\r\\n  <meta http-equiv=\"Content-Type\" content=\"te"
   },
   {
    "step": "inv_days",
    "investor": "O",
-   "fetched": 2
+   "fetched": 0
   },
   {
    "step": "build",
