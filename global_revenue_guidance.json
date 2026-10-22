@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-20",
+  "updated_at": "2026-10-22",
   "unit": "현지 통화 백만",
   "method": "회사 공식 실적 보도자료(IR 페이지·SEC 8-K/6-K 사본·공식 주주서한/전망 자료)만 사용. 가이던스는 직전 분기 발표에서 제시한 해당 분기 총매출 전망이며, \"X ± Y\"는 범위로, \"약 X\"는 단일값으로 기록. 퍼센트로 제시된 가이던스(ASM 등)는 기준 매출로 환산. 해석은 수치에서 규칙적으로 산출한 분석이며 회사 설명은 보도자료 내용을 한국어로 재서술.",
   "companies": [
@@ -1060,9 +1060,24 @@
           "next_guide_high": 6150.0,
           "next_guide_text": "TI's third quarter outlook is for revenue in the range of $5.65 billion to $6.15 billion",
           "driver_note": "산업용·데이터센터·자동차 주도로 전년比 23% 광범위한 성장"
+        },
+        {
+          "period": "2026 Q3",
+          "quarter_end": "2026-09-30",
+          "report_date": "2026-10-21",
+          "actual": 6055.0,
+          "guide_low": 5650.0,
+          "guide_high": 6150.0,
+          "guide_text": "TI's third quarter outlook is for revenue in the range of $5.65 billion to $6.15 billion",
+          "guide_source": "https://investor.ti.com/node/38476",
+          "source": "https://investor.ti.com/news-releases/news-release-details/ti-reports-third-quarter-2026-financial-results-and-shareholder",
+          "next_guide_low": 5800.0,
+          "next_guide_high": 6300.0,
+          "next_guide_text": "TI's fourth quarter outlook is for revenue in the range of $5.80 billion to $6.30 billion",
+          "driver_note": "산업용·자동차·데이터센터의 광범위한 성장 지속으로 전분기比 11%, 전년比 28% 증가"
         }
       ],
-      "notes": "Revenue from income statement in TI's official releases (investor.ti.com). Q3 2026 earnings call scheduled 2026-10-21 (after cutoff), so 8 quarters. TI's Q4 2024 and Q4 2025 releases give no explicit revenue driver; driver_note restates the stated sequential/YoY change. Quarter-end dates use calendar quarter ends as labelled in TI statements."
+      "notes": "Revenue from income statement in TI's official releases (investor.ti.com). 9 quarters through Q3 2026 (reported 2026-10-21). TI's Q4 2024 and Q4 2025 releases give no explicit revenue driver; driver_note restates the stated sequential/YoY change. Quarter-end dates use calendar quarter ends as labelled in TI statements."
     },
     {
       "ticker": "NXPI",
