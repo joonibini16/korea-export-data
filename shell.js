@@ -11,6 +11,11 @@
   for(const [g,links] of GROUPS){const h=document.createElement('div');h.className='sh-group';h.textContent=g;side.append(h);const box=document.createElement('div');box.className='sh-links';
    for(const [href,label,files] of links){const a=document.createElement('a');const tabQ=(href.split('?tab=')[1]||''),curTab=new URLSearchParams(location.search).get('tab')||'';a.className='sh-link'+(files.includes(page)&&tabQ===curTab?' active':'');a.href=href;a.textContent=label;box.append(a);}side.append(box);}
   document.body.prepend(side);
+  // 왼쪽 메뉴 스크롤 위치 유지: 메뉴를 눌러 다른 화면으로 가도 같은 위치에서 보이게
+  const KEY='shSideScroll',save=()=>{try{sessionStorage.setItem(KEY,String(side.scrollTop));}catch(e){}};
+  side.addEventListener('click',e=>{if(e.target.closest('a'))save();});addEventListener('pagehide',save);
+  let y=null;try{y=sessionStorage.getItem(KEY);}catch(e){}
+  if(y!=null)side.scrollTop=+y;else{const act=side.querySelector('.sh-link.active');if(act&&act.offsetTop>side.clientHeight-60)side.scrollTop=act.offsetTop-side.clientHeight/2;}
   const h1=document.querySelector('h1');if(h1&&!h1.closest('.sh-hero')){const hero=document.createElement('section');hero.className='sh-hero';h1.before(hero);hero.append(h1);
    const nxt=hero.nextElementSibling;if(nxt&&/subtitle|sub|muted/.test(nxt.className||'')&&nxt.tagName!=='SECTION'){nxt.classList.add('sh-hero-sub');hero.append(nxt);}}}
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',build);else build();
