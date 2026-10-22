@@ -1,0 +1,35 @@
+name: Market turnover (KOSPI/KOSDAQ trading value)
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['tools/collect_market_turnover.py', '.github/workflows/market_turnover.yml']
+permissions:
+  contents: write
+concurrency:
+  group: market-turnover
+  cancel-in-progress: false
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: pip install -q requests
+      - run: python tools/collect_market_turnover.py
+        continue-on-error: true
+        env:
+          KRX_API_KEY: ${{ secrets.KRX_API_KEY }}
+          KRX_ID: ${{ secrets.KRX_ID }}
+          KRX_PW: ${{ secrets.KRX_PW }}
+      - run: |
+          git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp market_turnover_status.json /tmp/s.json 2>/dev/null; cp market_turnover.csv /tmp/t.csv 2>/dev/null
+          for i in 1 2 3 4 5; do
+            git fetch -q origin main && git reset -q --hard origin/main
+            cp /tmp/s.json market_turnover_status.json 2>/dev/null; cp /tmp/t.csv market_turnover.csv 2>/dev/null
+            git add market_turnover.csv market_turnover_status.json 2>/dev/null; git diff --cached --quiet && exit 0
+            git commit -qm "Update market turnover" && git push -q origin HEAD:main && exit 0; sleep $((i*4))
+          done; exit 1
