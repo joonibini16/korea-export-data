@@ -64,6 +64,7 @@ h2{margin:0 0 14px}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:
   <button class="period" data-period="D10">1~10일</button>
   <button class="period" data-period="D20">1~20일</button>
   <button class="period" data-period="S20">11~20일</button>
+  <button class="period" data-period="S30">21~말일</button>
   <button class="period" data-period="MONTH">월 전체</button>
 </div>
 <div class="cards">
@@ -78,7 +79,7 @@ h2{margin:0 0 14px}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:
   <div class="box"><h2>잠정 수출액 vs 전년동기</h2><div class="chart"><canvas id="exportChart"></canvas></div></div>
   <div class="box"><h2>잠정 수출 YoY</h2><div class="chart"><canvas id="yoyChart"></canvas></div></div>
 </div>
-<div class="box"><h2>잠정 수출 MoM · 전월 동일기간</h2><div class="sub">1~10일은 전월 1~10일, 1~20일은 전월 1~20일, 11~20일은 전월 11~20일과 비교합니다. 11~20일은 관세청 1~20일 발표치에서 1~10일 발표치를 뺀 값입니다(전년동기 금액·조업일수도 같은 방식). 전월 자료가 없거나 0이면 계산하지 않습니다.</div><div class="chart"><canvas id="momChart"></canvas></div></div>
+<div class="box"><h2>잠정 수출 MoM · 전월 동일기간</h2><div class="sub">1~10일은 전월 1~10일, 1~20일은 전월 1~20일, 11~20일·21~말일은 전월 같은 구간과 비교합니다. 11~20일 = 1~20일 − 1~10일, 21~말일 = 월 전체 − 1~20일(관세청 발표치끼리 차감, 전년동기 금액·조업일수도 같은 방식). 월 전체는 관세청 익월 1일 잠정치를 우선 쓰고, 없으면 월간 확정치를 씁니다. 전월 자료가 없거나 0이면 계산하지 않습니다.</div><div class="chart"><canvas id="momChart"></canvas></div></div>
 <div class="box"><h2>발표 이력</h2><div class="table-wrap"><table><thead><tr><th>기준</th><th>기간</th><th>수출</th><th>YoY</th><th>MoM</th><th>일평균 MoM</th><th>일평균 YoY</th><th>반도체</th><th>무역수지</th><th>발표일</th></tr></thead><tbody id="history"></tbody></table></div></div>
 </section>
 <div class="box" id="provisional-item-board">
@@ -99,12 +100,24 @@ const money=v=>"$"+(Number(v||0)/1000).toFixed(1)+"B";
 const numeric=v=>v==null||String(v).trim()===""?null:(Number.isFinite(Number(v))?Number(v):null);
 const pct=v=>{const n=numeric(v);return n!==null?(n>0?"+":"")+n.toFixed(1)+"%":"-"};
 const pclass=v=>numeric(v)===null?"":Number(v)>=0?"pos":"neg";
-const periodLabel=r=>r["기간구분"]==="D10"?"1~10일":r["기간구분"]==="D20"?"1~20일":r["기간구분"]==="S20"?"11~20일":"월 전체";
-// 11~20일 = 1~20일 − 1~10일 (같은 달, 관세청 발표치끼리 차감). 전년동기·조업일수도 같은 방식으로 뺌
-function addS20(a,items=[]){const out=[];const pool=[...a];for(const it of items){if(it.kind!=="total"||it.flow!=="export"||!(it.release==="D10"||it.release==="D20"))continue;if(pool.some(r=>r["기준월"]===it.month&&r["기간구분"]===it.release))continue;pool.push({"기준월":it.month,"기간구분":it.release,"종료일":it.end_day,"발표일":"","수출_USD_mn":it.usd_mn,"전년동기수출_USD_mn":it.prev_usd_mn,"출처URL":it.source,"_items":1});}for(const d20 of pool.filter(r=>r["기간구분"]==="D20")){const d10=pool.find(r=>r["기준월"]===d20["기준월"]&&r["기간구분"]==="D10");if(!d10)continue;const sub=k=>{const x=numeric(d20[k]),y=numeric(d10[k]);return x===null||y===null?"":String(Math.round((x-y)*10)/10);};const yoy=(c,p)=>{c=numeric(c);p=numeric(p);return c!==null&&p>0?((c/p-1)*100).toFixed(1):"";};const r={...d20,"기간구분":"S20","시작일":"11"};["수출_USD_mn","전년동기수출_USD_mn","수입_USD_mn","전년동기수입_USD_mn","무역수지_USD_mn","조업일수","전년조업일수","반도체수출_USD_mn"].forEach(k=>r[k]=sub(k));r["수출YoY_pct"]=yoy(r["수출_USD_mn"],r["전년동기수출_USD_mn"]);r["수입YoY_pct"]=yoy(r["수입_USD_mn"],r["전년동기수입_USD_mn"]);const wd=numeric(r["조업일수"]),pw=numeric(r["전년조업일수"]);r["일평균수출_USD_mn"]=wd>0?(numeric(r["수출_USD_mn"])/wd).toFixed(0):"";r["전년일평균수출_USD_mn"]=pw>0?(numeric(r["전년동기수출_USD_mn"])/pw).toFixed(0):"";r["일평균YoY_pct"]=yoy(r["일평균수출_USD_mn"],r["전년일평균수출_USD_mn"]);if(!(numeric(d20["반도체수출_USD_mn"])>0&&numeric(d10["반도체수출_USD_mn"])>0))r["반도체수출_USD_mn"]="";out.push(r);}return a.concat(out);}
+const periodLabel=r=>r["기간구분"]==="D10"?"1~10일":r["기간구분"]==="D20"?"1~20일":r["기간구분"]==="S20"?"11~20일":r["기간구분"]==="S30"?"21~말일":"월 전체";
+function addS20(a,items=[]){const out=[];const pool=[...a];
+ const PRI={MONTH:0,MONTHLY:1,FINAL:2};
+ for(const it of [...items].sort((x,y)=>(PRI[x.release]??-1)-(PRI[y.release]??-1))){if(it.kind!=="total"||it.flow!=="export")continue;const k=it.release==="D10"||it.release==="D20"?it.release:(it.release in PRI?"MONTH":null);if(!k)continue;if(pool.some(r=>r["기준월"]===it.month&&r["기간구분"]===k))continue;
+  pool.push({"기준월":it.month,"기간구분":k,"종료일":it.end_day,"발표일":"","수출_USD_mn":it.usd_mn,"전년동기수출_USD_mn":it.prev_usd_mn,"출처URL":it.source,"_items":1});}
+ const yoy=(c,p)=>{c=numeric(c);p=numeric(p);return c!==null&&p>0?((c/p-1)*100).toFixed(1):"";};
+ // 11~20일 = 1~20일 − 1~10일, 21~말일 = 월 전체 − 1~20일
+ for(const [hiK,loK,seg,start] of [["D20","D10","S20","11"],["MONTH","D20","S30","21"]]){
+  for(const hi of pool.filter(r=>r["기간구분"]===hiK)){const lo=pool.find(r=>r["기준월"]===hi["기준월"]&&r["기간구분"]===loK);if(!lo)continue;
+   const sub=k=>{const x=numeric(hi[k]),y=numeric(lo[k]);return x===null||y===null?"":String(Math.round((x-y)*10)/10);};
+   const r={...hi,"기간구분":seg,"시작일":start};["수출_USD_mn","전년동기수출_USD_mn","수입_USD_mn","전년동기수입_USD_mn","무역수지_USD_mn","조업일수","전년조업일수","반도체수출_USD_mn"].forEach(k=>r[k]=sub(k));
+   r["수출YoY_pct"]=yoy(r["수출_USD_mn"],r["전년동기수출_USD_mn"]);r["수입YoY_pct"]=yoy(r["수입_USD_mn"],r["전년동기수입_USD_mn"]);
+   const wd=numeric(r["조업일수"]),pw=numeric(r["전년조업일수"]);r["일평균수출_USD_mn"]=wd>0?(numeric(r["수출_USD_mn"])/wd).toFixed(0):"";r["전년일평균수출_USD_mn"]=pw>0?(numeric(r["전년동기수출_USD_mn"])/pw).toFixed(0):"";
+   r["일평균YoY_pct"]=yoy(r["일평균수출_USD_mn"],r["전년일평균수출_USD_mn"]);if(!(numeric(hi["반도체수출_USD_mn"])>0&&numeric(lo["반도체수출_USD_mn"])>0))r["반도체수출_USD_mn"]="";out.push(r);}}
+ return a.concat(out);}
 function priorMonth(mo){const [y,m]=mo.split('.').map(Number);return m===1?(y-1)+'.12':y+'.'+String(m-1).padStart(2,'0');}
 function momOf(r,daily=false){const prev=official.find(p=>p['기준월']===priorMonth(r['기준월'])&&p['기간구분']===r['기간구분']);if(!prev)return null;let a=numeric(r['수출_USD_mn']),b=numeric(prev['수출_USD_mn']);if(a===null||a<0||!(b>0))return null;if(daily){const da=numeric(r['조업일수']),db=numeric(prev['조업일수']);if(!(da>0&&db>0))return null;a/=da;b/=db;}return (a/b-1)*100;}
-function rows(){return official.filter(r=>filterPeriod==="ALL"?r["기간구분"]!=="S20":r["기간구분"]===filterPeriod).sort((a,b)=>(a["기준월"]+a["종료일"]).localeCompare(b["기준월"]+b["종료일"]))}
+function rows(){return official.filter(r=>filterPeriod==="ALL"?!["S20","S30"].includes(r["기간구분"]):r["기간구분"]===filterPeriod).sort((a,b)=>(a["기준월"]+a["종료일"]).localeCompare(b["기준월"]+b["종료일"]))}
 function latestRow(){return rows().slice(-1)[0]}
 function render(){
  const data=rows(), latest=latestRow(); if(!latest)return;
