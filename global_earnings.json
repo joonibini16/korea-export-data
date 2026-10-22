@@ -6709,6 +6709,13 @@
       "source": "https://investors.arm.com/news-releases/news-release-details/arm-announces-earnings-release-date-second-quarter-fiscal-year-2"
     },
     {
+      "ticker": "BMW.DE",
+      "date": "2026-11-04",
+      "time": "시간 미공지(Europe/Berlin)",
+      "event": "2026 Q3 분기 보고서(9월 말 누적)",
+      "source": "https://www.bmwgroup.com/en/investor-relations/company-reports.html"
+    },
+    {
       "ticker": "NVO",
       "date": "2026-11-04",
       "time": "07:30 Europe/Copenhagen",
@@ -6721,6 +6728,20 @@
       "time": "장 마감 후 · 13:45 America/Los_Angeles(컨콜)",
       "event": "FY26 Q4 실적·컨퍼런스콜",
       "source": "https://investor.qualcomm.com/news-events/investor-events/events/event-details/2026/Q4-FY26-Earnings-Conference-Call-2026-zipgVlNz63/default.aspx"
+    },
+    {
+      "ticker": "MAERSK-B.CO",
+      "date": "2026-11-05",
+      "time": "08:00 CEST · 11:00 컨콜·웹캐스트",
+      "event": "2026 Q3 실적 발표",
+      "source": "https://investor.maersk.com/events/event-details/interim-report-3rd-quarter-2026"
+    },
+    {
+      "ticker": "RHM.DE",
+      "date": "2026-11-05",
+      "time": "시간 미공지(Europe/Berlin)",
+      "event": "2026 Q3 분기 보고서",
+      "source": "https://ir.rheinmetall.com/investor-relations/news/financial-reports"
     }
   ]
 }
