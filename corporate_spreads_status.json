@@ -1,11 +1,16 @@
 {
-  "updated": "2026-10-21T17:35:59+00:00",
+  "updated": "2026-10-22T05:13:27+00:00",
   "targets": 25,
   "bonds": {
     "CORZ": {
       "name": "코어 사이언티픽",
-      "state": "no matching traded issue",
-      "matches": 1
+      "state": "collected",
+      "matches": 1,
+      "cusip": "U2062LAA9",
+      "coupon": 7.75,
+      "maturity": "2031-05-15",
+      "n": 25,
+      "latest": "2026-10-16"
     },
     "APLD": {
       "name": "어플라이드 디지털",
@@ -24,48 +29,93 @@
     },
     "BEIGNET": {
       "name": "메타 하이페리온 SPV",
-      "state": "no matching traded issue",
-      "matches": 1
+      "state": "collected",
+      "matches": 1,
+      "cusip": "U06930AA6",
+      "coupon": 6.581,
+      "maturity": "2049-05-30",
+      "n": 89,
+      "latest": "2026-10-20"
     },
     "HUT": {
       "name": "헛에이트",
-      "state": "no matching traded issue",
-      "matches": 1
+      "state": "collected",
+      "matches": 1,
+      "cusip": "U43898AA0",
+      "coupon": 6.192,
+      "maturity": "2042-11-15",
+      "n": 16,
+      "latest": "2026-09-29"
     },
     "STX": {
       "name": "씨게이트",
-      "state": "no matching traded issue",
-      "matches": 1
+      "state": "collected",
+      "matches": 1,
+      "cusip": "81180LAS4",
+      "coupon": 5.75,
+      "maturity": "2034-12-01",
+      "n": 215,
+      "latest": "2026-07-10"
     },
     "HPE": {
       "name": "HPE",
-      "state": "no matching traded issue",
-      "matches": 1
+      "state": "collected",
+      "matches": 1,
+      "cusip": "U42832AJ1",
+      "coupon": 6.2,
+      "maturity": "2035-10-15",
+      "n": 3,
+      "latest": "2023-12-18"
     },
     "MU": {
       "name": "마이크론",
-      "state": "no matching traded issue",
-      "matches": 1
+      "state": "collected",
+      "matches": 1,
+      "cusip": "595112BZ5",
+      "coupon": 5.875,
+      "maturity": "2033-02-09",
+      "n": 877,
+      "latest": "2026-10-20"
     },
     "DELL": {
       "name": "델",
-      "state": "no matching traded issue",
-      "matches": 1
+      "state": "collected",
+      "matches": 1,
+      "cusip": "24703DBL4",
+      "coupon": 5.75,
+      "maturity": "2033-02-01",
+      "n": 926,
+      "latest": "2026-10-20"
     },
     "INTC": {
       "name": "인텔",
-      "state": "no matching traded issue",
-      "matches": 1
+      "state": "collected",
+      "matches": 1,
+      "cusip": "458140BH2",
+      "coupon": 2.45,
+      "maturity": "2029-11-15",
+      "n": 1226,
+      "latest": "2026-10-20"
     },
     "AMD": {
       "name": "AMD",
-      "state": "no matching traded issue",
-      "matches": 1
+      "state": "collected",
+      "matches": 1,
+      "cusip": "007903BF3",
+      "coupon": 3.924,
+      "maturity": "2032-06-01",
+      "n": 1044,
+      "latest": "2026-10-20"
     },
     "QCOM": {
       "name": "퀄컴",
-      "state": "no matching traded issue",
-      "matches": 1
+      "state": "collected",
+      "matches": 1,
+      "cusip": "747525BM4",
+      "coupon": 1.65,
+      "maturity": "2032-05-20",
+      "n": 1,
+      "latest": "2022-11-18"
     },
     "TSM": {
       "name": "TSMC",
@@ -79,8 +129,13 @@
     },
     "EQIX": {
       "name": "에퀴닉스",
-      "state": "no matching traded issue",
-      "matches": 1
+      "state": "collected",
+      "matches": 1,
+      "cusip": "29444UBE5",
+      "coupon": 3.2,
+      "maturity": "2029-11-18",
+      "n": 1224,
+      "latest": "2026-10-20"
     },
     "DLR": {
       "name": "디지털 리얼티",
@@ -89,33 +144,63 @@
     },
     "TLN": {
       "name": "탈렌",
-      "state": "no matching traded issue",
-      "matches": 1
+      "state": "collected",
+      "matches": 1,
+      "cusip": "U8302WAJ3",
+      "coupon": 6.25,
+      "maturity": "2034-02-01",
+      "n": 12,
+      "latest": "2026-09-30"
     },
     "NRG": {
       "name": "NRG",
-      "state": "no matching traded issue",
-      "matches": 1
+      "state": "collected",
+      "matches": 1,
+      "cusip": "U66962AW8",
+      "coupon": 3.625,
+      "maturity": "2031-02-15",
+      "n": 203,
+      "latest": "2026-10-16"
     },
     "VST": {
       "name": "비스트라",
-      "state": "no matching traded issue",
-      "matches": 1
+      "state": "collected",
+      "matches": 1,
+      "cusip": "U9226VAM9",
+      "coupon": 7.75,
+      "maturity": "2031-10-15",
+      "n": 104,
+      "latest": "2026-10-16"
     },
     "CEG": {
       "name": "컨스텔레이션",
-      "state": "no matching traded issue",
-      "matches": 1
+      "state": "collected",
+      "matches": 1,
+      "cusip": "210385AC4",
+      "coupon": 5.8,
+      "maturity": "2033-03-01",
+      "n": 879,
+      "latest": "2026-10-20"
     },
     "SOFTBANK": {
       "name": "소프트뱅크그룹",
-      "state": "no matching traded issue",
-      "matches": 1
+      "state": "collected",
+      "matches": 1,
+      "cusip": "J7600PAC7",
+      "coupon": 9.75,
+      "maturity": "2034-04-01",
+      "n": 16,
+      "latest": "2026-10-20"
     },
     "OTF": {
       "name": "블루아울 테크놀로지 파이낸스",
-      "state": "no matching traded issue",
-      "matches": 1
+      "state": "collected",
+      "matches": 1,
+      "cusip": "095924AD8",
+      "coupon": 6.5,
+      "maturity": "2029-10-15",
+      "n": 97,
+      "latest": "2026-10-20"
     },
     "OBDC": {
       "name": "블루아울 캐피털",
