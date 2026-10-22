@@ -37,6 +37,7 @@ def mdc(mkt, s, e):
         d = r.get('TRD_DD', '').replace('/', '-')
         v = num(r.get('ACC_TRDVAL'))
         if d and v:
+            if v > 1e9: v = round(v / 1e6)  # 정보데이터시스템은 원 단위로 내려줌 → 백만원
             out.append(dict(date=d, market=mkt, close=num(r.get('CLSPRC_IDX')) or '', trdval_mn=v, src='KRX MDCSTAT00301'))
     return out, (rows[0] if rows else None)
 

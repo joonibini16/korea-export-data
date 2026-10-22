@@ -6,7 +6,7 @@ function rows(t){const L=t.replace(/^﻿/,'').trim().split(/\r?\n/);const h=L[0]
 function chart(id,cfg){charts[id]?.destroy();charts[id]=new Chart(el(id),cfg);}
 const C={'^GSPC':['미국 S&P500','US','BOPTEXP'],'^IXIC':['미국 나스닥','US','BOPTEXP'],'^SOX':['미국 반도체(SOX)','US','BOPTEXP'],'^KS11':['한국 코스피','KR','XTEXVA01KRM667S'],'^KQ11':['한국 코스닥','KR','XTEXVA01KRM667S'],'^TWII':['대만 가권','TW',null],'^N225':['일본 닛케이','JP','XTEXVA01JPM667S'],'000001.SS':['중국 상해종합','CN','XTEXVA01CNM667S'],'^HSI':['홍콩 항셍','HK',null],'^GDAXI':['독일 DAX','DE','XTEXVA01DEM667S'],'^FCHI':['프랑스 CAC40','FR','XTEXVA01FRM667S'],'^FTSE':['영국 FTSE100','GB','XTEXVA01GBM667S'],'^STOXX50E':['유로 STOXX50','EU',null],'^NSEI':['인도 니프티50','IN','XTEXVA01INM667S'],'^BVSP':['브라질 보베스파','BR','XTEXVA01BRM667S'],'^GSPTSE':['캐나다 TSX','CA','XTEXVA01CAM667S'],'^AXJO':['호주 ASX200','AU','XTEXVA01AUM667S'],'^JKSE':['인도네시아 JCI','ID','XTEXVA01IDM667S'],'^MXX':['멕시코 IPC','MX','XTEXVA01MXM667S']};
 const AI={ORCL:'오라클',NVDA:'엔비디아',AVGO:'브로드컴',MSFT:'마이크로소프트',META:'메타',AMZN:'아마존',GOOGL:'알파벳',TSM:'TSMC(ADR)',AMD:'AMD',CRWV:'코어위브',HYG:'하이일드 채권 ETF (HYG)',LQD:'투자등급 채권 ETF (LQD)'};
-let CDSS=[],HC=[],M=new Map(),F=new Map(),E=new Map(),VK=[],KF=[],BR=[],brRange='1y',levRange='ytd',cds=[],KRM=[];
+let TV={KOSPI:new Map(),KOSDAQ:new Map()},CDSS=[],HC=[],M=new Map(),F=new Map(),E=new Map(),VK=[],KF=[],BR=[],brRange='1y',levRange='ytd',cds=[],KRM=[];
 const ser=s=>M.get(s)||[],fs=s=>F.get(s)||[];
 function at(arr,date){let lo=0,hi=arr.length-1,ans=null;while(lo<=hi){const m=(lo+hi)>>1;if(arr[m].d<=date){ans=arr[m];lo=m+1;}else hi=m-1;}return ans;}
 function back(arr,days){const last=arr.at(-1);if(!last)return null;const d=new Date(last.d);d.setDate(d.getDate()-days);return at(arr,d.toISOString().slice(0,10));}
@@ -156,16 +156,21 @@ function levDerived(ck,sym){const all=KF.filter(x=>x[ck]!=null),cv=all.map(x=>x[
   out.set(x.d,{...out.get(x.d),imdd:(x.v/pi-1)*100});});return out;}
 const lvX={};function renderLev(){if(!KF.length){el('levErr').hidden=false;return;}el('levErr').hidden=true;
  const S=levStart(),R=KF.filter(x=>x.date>=S&&x.deposit!=null),labels=R.map(x=>x.date);
- for(const [k,sym,ck,nm] of [['k','^KS11','credit_kospi','코스피'],['q','^KQ11','credit_kosdaq','코스닥']]){
-  const ix=ser(sym),labels=[...new Set([...R.map(x=>x.date),...ix.filter(x=>x.d>=S).map(x=>x.d)])].sort();
+ for(const [k,sym,ck,nm,mk] of [['k','^KS11','credit_kospi','코스피','KOSPI'],['q','^KQ11','credit_kosdaq','코스닥','KOSDAQ']]){
+  const TVm=TV[mk],ix=ser(sym),labels=[...new Set([...R.map(x=>x.date),...ix.filter(x=>x.d>=S).map(x=>x.d),...[...TVm.keys()].filter(d=>d>=S)])].sort();
+  const tvAll=[...TVm.entries()].sort((a,b)=>a[0].localeCompare(b[0])),tvMA=new Map(tvAll.map(([d],i)=>[d,i>=19?tvAll.slice(i-19,i+1).reduce((a,b)=>a+b[1],0)/20:null]));
+  const tvv=labels.map(d=>TVm.get(d)??null),tvm=labels.map(d=>tvMA.get(d)??null);
   const indexByDate=new Map(ix.map(x=>[x.d,x.v])),financeByDate=new Map(R.map(x=>[x.date,x]));
   const idx=labels.map(d=>indexByDate.get(d)??null),cr=labels.map(d=>{const v=financeByDate.get(d)?.[ck];return v!=null?v/1e6:null;});
   const dep=labels.map(d=>{const v=financeByDate.get(d)?.deposit;return v!=null?v/1e6:null;});
   const ra=labels.map((_,i)=>cr[i]!=null&&dep[i]>0?cr[i]/dep[i]*100:null);
   let hi=-1,hv=-Infinity;idx.forEach((v,i)=>{if(v!=null&&v>hv){hv=v;hi=i;}});const lastI=ix.at(-1);
   const G='LEV'+k;if(typeof SYNC!=='undefined'){SYNC.pin[G]=null;SYNC.last[G]=null;SYNC.groups[G]=[];const f=(v,d)=>v==null?'—':v.toLocaleString(undefined,{maximumFractionDigits:d});
-   SYNC.noteFn[G]=i=>{const dv=levDerived.__c?.[G]?.get(labels[i]);const p=v=>v==null?'—':(v>0?'+':'')+v.toFixed(1)+'%';return `${labels[i]} · ${nm} ${f(idx[i],0)} · 신용융자 ${f(cr[i],2)}조 · 고객예탁금 ${f(dep[i],1)}조 · 신용÷예탁금 ${f(ra[i],2)}% · 오실레이터 ${p(dv?.osc)} · MDD 지수 ${p(dv?.imdd)} / 신용 ${p(dv?.cmdd)}`;};const nt=el('syncNote'+G);if(nt){nt.classList.remove('pinned');}}
-  levChart('lev'+k+'I',labels,idx,LC.idx,'pt',0,hi,G);levChart('lev'+k+'C',labels,cr,LC.cr,'조원',1,hi,G);levChart('lev'+k+'D',labels,dep,LC.dep,'조원',1,hi,G);levChart('lev'+k+'R',labels,ra,LC.ratio,'%',1,hi,G);
+   SYNC.noteFn[G]=i=>{const dv=levDerived.__c?.[G]?.get(labels[i]);const p=v=>v==null?'—':(v>0?'+':'')+v.toFixed(1)+'%';return `${labels[i]} · ${nm} ${f(idx[i],0)} · 거래대금 ${f(tvv[i],1)}조 · 신용융자 ${f(cr[i],2)}조 · 고객예탁금 ${f(dep[i],1)}조 · 신용÷예탁금 ${f(ra[i],2)}% · 오실레이터 ${p(dv?.osc)} · MDD 지수 ${p(dv?.imdd)} / 신용 ${p(dv?.cmdd)}`;};const nt=el('syncNote'+G);if(nt){nt.classList.remove('pinned');}}
+  levChart('lev'+k+'I',labels,idx,LC.idx,'pt',0,hi,G);
+  if(el('lev'+k+'V')){levMulti('lev'+k+'V',labels,[{type:'bar',label:'거래대금',data:tvv,color:'rgba(56,189,248,.55)',w:0},{label:'20일 평균',data:tvm,color:'#f8fafc',w:1.6}],'조',G);
+   const lt=tvv.findLastIndex(v=>v!=null),pct20=lt>=0&&tvm[lt]?(tvv[lt]/tvm[lt]-1)*100:null,cr2=lt>=0?cr.slice(0,lt+1).filter(v=>v!=null).at(-1):null;
+   el('lev'+k+'VT').textContent=lt<0?'자료 수집 전':`조원 · ${labels[lt]} ${tvv[lt].toFixed(1)}조 · 흰 선 20일 평균 ${tvm[lt]==null?'—':tvm[lt].toFixed(1)+'조'}${pct20==null?'':` (${pct20>0?'+':''}${pct20.toFixed(0)}%)`}${cr2&&tvm[lt]?` · 신용잔고 = 20일 평균 거래대금의 ${(cr2/tvm[lt]).toFixed(1)}배`:''}`;}levChart('lev'+k+'C',labels,cr,LC.cr,'조원',1,hi,G);levChart('lev'+k+'D',labels,dep,LC.dep,'조원',1,hi,G);levChart('lev'+k+'R',labels,ra,LC.ratio,'%',1,hi,G);
   const DV=levDerived(ck,sym);(levDerived.__c=levDerived.__c||{})[G]=DV;const osc=labels.map(d=>DV.get(d)?.osc??null),cm=labels.map(d=>DV.get(d)?.cmdd??null),im=labels.map(d=>DV.get(d)?.imdd??null);
   levMulti('lev'+k+'O',labels,[{type:'bar',label:'오실레이터',data:osc,color:'#f59e0b',bg:osc.map(v=>v>=0?'rgba(239,91,69,.8)':'rgba(79,127,240,.8)'),w:0}],'%',G);
   levMulti('lev'+k+'M',labels,[{label:nm+' MDD',data:im,color:LC.idx,w:2},{label:'신용잔고 MDD',data:cm,color:LC.cr,w:2}],'%',G,{max:0});
@@ -221,13 +226,14 @@ function calculateLights(weak,liq,cr,br,lev){const signals=[];const L=(name,valu
 function renderLights(weak,liq,cr){const snap=calculateLights(weak,liq,cr,window.__br,window.__lev),{bad,warn,total:tot}=snap;el('lights').replaceChildren();snap.signals.forEach(s=>light(s.name,s.value,s.state,s.basis));window.__bubbleSignal=snap;
  el('scoreBig').textContent=`경고 ${bad} · 주의 ${warn} / ${tot}`;el('scoreBig').style.color=bad>=4?'#f87171':bad>=2||warn>=4?'#fbbf24':'#4ade80';
  el('scoreText').textContent=bad>=4?'여러 영역(주가·신용·유동성)이 동시에 경고 — 위험 관리 강화 구간':bad>=2||warn>=4?'일부 영역에서 균열 — 신용·유동성 지표가 따라 움직이는지 주시':'광범위한 스트레스 신호는 아직 제한적';}
-async function init(){try{const [m,f,c,s,kp,ec,vk,kf,br,cs,hc]=await Promise.all([read('market_daily.csv'),read('fred_data.csv'),read('cds_manual.csv'),read('bubble_status.json'),read('provisional_official.csv'),read('ecos_rates.csv'),read('vkospi.csv'),read('kofia_daily.csv'),read('breadth_kr.csv'),read('cds_series.csv'),read('hyperscaler_credit.json')]);
+async function init(){try{const [m,f,c,s,kp,ec,vk,kf,br,cs,hc,tv]=await Promise.all([read('market_daily.csv'),read('fred_data.csv'),read('cds_manual.csv'),read('bubble_status.json'),read('provisional_official.csv'),read('ecos_rates.csv'),read('vkospi.csv'),read('kofia_daily.csv'),read('breadth_kr.csv'),read('cds_series.csv'),read('hyperscaler_credit.json'),read('market_turnover.csv')]);
  if(!m||!f){el('err').hidden=false;el('err').textContent='데이터를 아직 수집하지 못했습니다. 자동 수집이 끝나면 표시됩니다.';}
  for(const r of rows(m||'symbol,date,close')){const v=num(r.close);if(v==null)continue;if(!M.has(r.symbol))M.set(r.symbol,[]);M.get(r.symbol).push({d:r.date,v});}
  for(const r of rows(f||'series,date,value')){const v=num(r.value);if(v==null)continue;if(!F.has(r.series))F.set(r.series,[]);F.get(r.series).push({d:r.date,v});}
  for(const r of rows(ec||'series,date,value')){const v=num(r.value);if(v==null)continue;if(!E.has(r.series))E.set(r.series,[]);E.get(r.series).push({d:r.date,v});}
  KF=rows(kf||'date').map(r=>{const o={date:r.date};for(const k in r)if(k!=='date')o[k]=num(r[k]);return o;}).filter(x=>x.date).sort((a,b)=>a.date.localeCompare(b.date));
  BR=rows(br||'date').filter(r=>r.date).map(r=>({date:r.date,market:r.market,n60:num(r.n60),breadth60:num(r.breadth60),nh:num(r.nh),nl:num(r.nl),hli:num(r.hli)})).sort((a,b)=>a.date.localeCompare(b.date));
+ TV={KOSPI:new Map(),KOSDAQ:new Map()};for(const r of rows(tv||'date,market,trdval_mn')){const v=num(r.trdval_mn);if(v!=null&&TV[r.market])TV[r.market].set(r.date,v/1e6);}
  VK=rows(vk||'date,close').map(r=>({d:r.date,v:num(r.close)})).filter(x=>x.v!=null);
  for(const a of [...M.values(),...F.values(),...E.values(),VK])a.sort((x,y)=>x.d.localeCompare(y.d));cds=c?rows(c):[];CDSS=cs?rows(cs):[];try{HC=hc?JSON.parse(hc):[];}catch(e){HC=[];}
  KRM=kp?rows(kp).filter(r=>r['기간구분']==='MONTH'&&num(r['수출YoY_pct'])!=null).map(r=>({k:r['기준월'].replace('.','-'),y:num(r['수출YoY_pct'])})):[];
