@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-22T21:40:45+09:00",
+ "updated_at": "2026-10-23T01:05:22+09:00",
  "markets": {
   "KOSPI": {
    "listed": 829,
@@ -8,7 +8,7 @@
    "last": "2026-10-22"
   },
   "KOSDAQ": {
-   "listed": 1752,
+   "listed": 1753,
    "with_prices": 1744,
    "first": "2024-06-24",
    "last": "2026-10-22"
