@@ -1,5 +1,5 @@
 {
- "run": "2026-10-23T16:25:13+09:00",
+ "run": "2026-10-23T18:10:17+09:00",
  "steps": [
   {
    "step": "login",
@@ -36,7 +36,7 @@
    "step": "mdc",
    "market": "KOSPI",
    "year": 2026,
-   "rows": 11
+   "rows": 10
   },
   {
    "step": "sample",
@@ -69,7 +69,7 @@
    "step": "mdc",
    "market": "KOSDAQ",
    "year": 2026,
-   "rows": 11
+   "rows": 10
   }
  ],
  "rows": 5794,
