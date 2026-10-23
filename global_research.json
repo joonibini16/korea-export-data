@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-22T23:57:55.007Z",
-  "last_checked_at": "2026-10-22T23:57:55.007Z",
+  "updated_at": "2026-10-23T23:47:28.529Z",
+  "last_checked_at": "2026-10-23T23:47:28.529Z",
   "schedule_note": "매일 오전 8시 전후(한국시간), Work에서 공식 공개자료를 확인해 갱신",
   "sectors": [
     "반도체·장비",
@@ -22,147 +22,183 @@
       "name": "Goldman Sachs",
       "source_url": "https://www.goldmansachs.com/insights",
       "status": "partial",
-      "note": "공개 Insights와 최근 7일을 확인해 10/22 럭셔리 해설 1건 등록. Executive Office 공개 기사와 고객 전용 GIR 원보고서를 구분했으며 후자는 점검 범위 밖.",
-      "checked_at": "2026-10-22T23:57:55.007Z"
+      "note": "공식 Global Research/Insights 공개 경로와 최근 7일을 재검색. 10/23 이후 검증 가능한 신규 공개물은 확인되지 않았고 기관 고객 전용 원문은 점검 범위 밖.",
+      "checked_at": "2026-10-23T23:47:28.529Z"
     },
     {
       "id": "MS",
       "name": "Morgan Stanley",
       "source_url": "https://www.morganstanley.com/what-we-do/research/",
       "status": "partial",
-      "note": "공개 Research·Institute·Investment Management 최근 7일을 확인해 10/22 Institute 설문 1건과 10/21 Research 색인 지연분 1건 등록. 부서별 자료 성격을 구분.",
-      "checked_at": "2026-10-22T23:57:55.007Z"
+      "note": "공식 Insights·Research·Institute 공개 경로와 최근 7일을 재검색. 10/22 기존 등록 자료 이후 검증 가능한 신규 공개물은 확인되지 않음.",
+      "checked_at": "2026-10-23T23:47:28.529Z"
     },
     {
       "id": "JPM",
       "name": "J.P. Morgan",
       "source_url": "https://www.jpmorgan.com/insights/research",
       "status": "partial",
-      "note": "공개 Global Research·Asset Management 최근 7일을 확인. 10/20 바이오파마·채권 페이지는 공개 검색 목록만 확인돼 기존 요약과 중복 가능성을 배제할 상세 원문이 없어 등록 보류.",
-      "checked_at": "2026-10-22T23:57:55.007Z"
+      "note": "공식 Research 및 Asset Management 공개 인사이트와 최근 7일을 재검색. 검증 가능한 신규 공개물은 확인되지 않았고 고객 전용 원문은 점검 범위 밖.",
+      "checked_at": "2026-10-23T23:47:28.529Z"
     },
     {
       "id": "UBS",
       "name": "UBS",
       "source_url": "https://www.ubs.com/global/en/wealthmanagement/insights/house-view.html",
       "status": "partial",
-      "note": "공개 CIO House View 최근 7일을 확인해 10/22 유가·포트폴리오 방어 Daily 1건 등록. 투자은행 고객 전용 개별종목 리서치와 구분.",
-      "checked_at": "2026-10-22T23:57:55.007Z"
+      "note": "공식 CIO/Wealth Management 공개 인사이트와 최근 7일을 재검색. 검증 가능한 2026년 신규 공개물은 확인되지 않음.",
+      "checked_at": "2026-10-23T23:47:28.529Z"
     },
     {
       "id": "BofA",
       "name": "Bank of America",
       "source_url": "https://institute.bankofamerica.com/consumer-checkpoint.html",
       "status": "partial",
-      "note": "Bank of America Institute·공개 BofA 자료 최근 7일을 확인. Global Research 고객 전용 전체 보고서는 범위 밖이며 신규 등록 없음.",
-      "checked_at": "2026-10-22T23:57:55.007Z"
+      "note": "공식 Global Research 공개 소개·주간 리캡 경로와 최근 7일을 재검색. 검증 가능한 신규 공개물은 확인되지 않았고 전체 기관 리서치는 로그인 범위 밖.",
+      "checked_at": "2026-10-23T23:47:28.529Z"
     },
     {
       "id": "Citi",
       "name": "Citi",
       "source_url": "https://www.citigroup.com/global/insights/research-citi-podcasts",
       "status": "partial",
-      "note": "공식 Insights 최근 7일을 확인해 10/22 AI 팟캐스트와 글로벌 성장 팟캐스트 2건 등록. 공식 소개문 범위만 요약하고 정식 투자 리서치와 구분.",
-      "checked_at": "2026-10-22T23:57:55.007Z"
+      "note": "공식 Global Insights/Research 공개 경로와 최근 7일을 재검색. 기존 등록 이후 검증 가능한 신규 공개물은 확인되지 않음.",
+      "checked_at": "2026-10-23T23:47:28.529Z"
     },
     {
       "id": "Barclays",
       "name": "Barclays",
       "source_url": "https://privatebank.barclays.com/insights/",
       "status": "partial",
-      "note": "공개 Insights 최근 7일 검색을 확인. 9월 소비 동향 페이지는 접근 제한으로 검색 목록만 확인했으며 투자은행 고객 전용 리서치 전체는 미확인, 신규 등록 없음.",
-      "checked_at": "2026-10-22T23:57:55.007Z"
+      "note": "공식 Insights 공개 경로와 최근 7일을 재검색. 10/23 Sustainability Insights 신규 1건을 확인했으나 본문은 403으로 제한되어 listing_only로 등록.",
+      "checked_at": "2026-10-23T23:47:28.529Z"
     },
     {
       "id": "DB",
       "name": "Deutsche Bank",
       "source_url": "https://investmentbank.db.com/research/index",
       "status": "partial",
-      "note": "Investment Bank Research·공개 flow 최근 7일 검색을 확인. 고객 전용 상세 원문은 미확인했으며 신규 등록 없음.",
-      "checked_at": "2026-10-22T23:57:55.007Z"
+      "note": "공식 Research/Insights 공개 경로와 최근 7일을 재검색. 검증 가능한 신규 공개물은 확인되지 않았고 기관용 원문은 점검 범위 밖.",
+      "checked_at": "2026-10-23T23:47:28.529Z"
     },
     {
       "id": "Nomura",
       "name": "Nomura (노무라)",
       "source_url": "https://www.nomuraconnects.com/",
       "status": "partial",
-      "note": "Nomura Connects 공개 목록과 최근 7일 검색을 확인. NRI·Nomura AM·고객용 Global Research와 구분했으며 날짜가 검증되지 않은 게시물은 등록하지 않음.",
-      "checked_at": "2026-10-22T23:57:55.007Z"
+      "note": "Nomura Connects 공식 Focused Thinking/분류 목록과 최근 7일을 재검색. 날짜가 오래된 콘텐츠와 월 단위 페이지를 구분했으며 검증 가능한 신규 발간은 확인되지 않음.",
+      "checked_at": "2026-10-23T23:47:28.529Z"
     },
     {
       "id": "Daiwa",
       "name": "Daiwa (다이와)",
       "source_url": "https://www.dir.co.jp/english/research/report/index.html",
       "status": "partial",
-      "note": "Daiwa Institute of Research 영문 공개 발간 목록과 최근 7일 검색을 확인. Daiwa Securities Group IR와 증권사 고객용 리서치를 구분했으며 신규 등록 없음.",
-      "checked_at": "2026-10-22T23:57:55.007Z"
+      "note": "Daiwa Asset Management 공식 Market Outlook 목록·PDF와 최근 7일을 재검색. 10월 월간 자료는 기존 범위이며 이후 신규 공개물은 확인되지 않음.",
+      "checked_at": "2026-10-23T23:47:28.529Z"
     },
     {
       "id": "Mizuho",
       "name": "Mizuho (미즈호)",
       "source_url": "https://www.mizuhogroup.com/what-we-do/research",
       "status": "partial",
-      "note": "Mizuho Bank·EMEA 공개 Insights 최근 7일 검색을 확인. 고객용 주식 리서치 포털과 구분했으며 신규 등록 없음.",
-      "checked_at": "2026-10-22T23:57:55.007Z"
+      "note": "Mizuho 공식 Insights/Research 공개 경로와 최근 7일을 재검색. 검증 가능한 신규 공개물은 확인되지 않았고 공개 색인 범위가 제한적.",
+      "checked_at": "2026-10-23T23:47:28.529Z"
     },
     {
       "id": "HSBC",
       "name": "HSBC",
       "source_url": "https://www.business.hsbc.com/en-gb/products/global-investment-research",
       "status": "partial",
-      "note": "HSBC Corporate and Institutional Banking 공개 Insights 최근 7일을 확인. 고객 전용 Global Investment Research 전문과 구분했으며 신규 등록 없음.",
-      "checked_at": "2026-10-22T23:57:55.007Z"
+      "note": "HSBC 공식 Insights 공개 경로와 최근 7일을 재검색. 기존 등록 이후 검증 가능한 신규 공개물은 확인되지 않음.",
+      "checked_at": "2026-10-23T23:47:28.529Z"
     },
     {
       "id": "BNP",
       "name": "BNP Paribas (BNP파리바)",
       "source_url": "https://globalmarkets.cib.bnpparibas/markets-360/",
       "status": "partial",
-      "note": "BNP Paribas Global Markets Markets 360·Wealth Management 공개 Insights 최근 7일을 확인. 공개된 신규 원문 미확인, 고객용 원보고서 전문은 범위 밖.",
-      "checked_at": "2026-10-22T23:57:55.007Z"
+      "note": "BNP Paribas 공식 Insights 공개 경로와 최근 7일을 재검색. 검증 가능한 신규 공개물은 확인되지 않았고 일부 리서치 원문은 공개되지 않음.",
+      "checked_at": "2026-10-23T23:47:28.529Z"
     },
     {
       "id": "SocGen",
       "name": "Société Générale (소시에테제네랄)",
       "source_url": "https://insight-public.sgmarkets.com/",
       "status": "partial",
-      "note": "SG Markets 공개 Insight와 최근 7일 검색을 확인. 동적 목록·영상 본문은 제한되어 제목 수준만 점검했으며 검증 가능한 신규 원문 없음.",
-      "checked_at": "2026-10-22T23:57:55.007Z"
+      "note": "Societe Generale Wholesale Banking 공식 News & Insights와 최근 7일을 재검색. 검증 가능한 신규 발간은 확인되지 않았고 검색 결과의 과거 행사·자료를 신규로 세지 않음.",
+      "checked_at": "2026-10-23T23:47:28.529Z"
     },
     {
       "id": "Jefferies",
       "name": "Jefferies (제프리스)",
       "source_url": "https://www.jefferies.com/insights/",
       "status": "partial",
-      "note": "공식 Insights·Equity Research 공개 목록의 최근 7일을 확인. 행사·편집 기사와 정식 리서치를 구분했으며 신규 등록 없음.",
-      "checked_at": "2026-10-22T23:57:55.007Z"
+      "note": "Jefferies 공식 Insights 공개 경로와 최근 7일을 재검색. 검증 가능한 10/23 이후 신규 공개물은 확인되지 않음.",
+      "checked_at": "2026-10-23T23:47:28.529Z"
     },
     {
       "id": "Bernstein",
       "name": "Bernstein Research (번스타인)",
       "source_url": "https://www.bernsteinresearch.com/Research/",
       "status": "partial",
-      "note": "Bernstein Research 공식 페이지와 최근 7일 검색을 확인. Bernstein Private Wealth·AllianceBernstein 자산관리 콘텐츠와 구분했으며 공개 Research 원문 신규 없음.",
-      "checked_at": "2026-10-22T23:57:55.007Z"
+      "note": "Bernstein Research 공개 경로와 최근 7일을 재검색. 최신 공식 공개 리서치가 확인되지 않았고 고객 전용 자료는 우회하지 않음.",
+      "checked_at": "2026-10-23T23:47:28.529Z"
     },
     {
       "id": "Macquarie",
       "name": "Macquarie (맥쿼리)",
       "source_url": "https://www.macquarie.com/au/en/insights.html",
       "status": "partial",
-      "note": "Macquarie 공식 Insights·ANZ Equity Research·AM 공개 목록 최근 7일을 확인. 동적 목록과 고객용 전문은 부분 확인이며 신규 등록 없음.",
-      "checked_at": "2026-10-22T23:57:55.007Z"
+      "note": "Macquarie 공식 Insights 공개 경로와 최근 7일을 재검색. 검증 가능한 신규 공개물은 확인되지 않음.",
+      "checked_at": "2026-10-23T23:47:28.529Z"
     },
     {
       "id": "RBC",
       "name": "RBC Capital Markets",
       "source_url": "https://www.rbccm.com/en/insights",
       "status": "partial",
-      "note": "RBC Capital Markets 공개 Insights·Strategy & Economics와 RBC Thought Leadership 최근 7일을 확인. 부서와 고객 포털 원문을 구분했으며 신규 등록 없음.",
-      "checked_at": "2026-10-22T23:57:55.007Z"
+      "note": "RBC Thought Leadership 공개 경로와 최근 7일을 재검색. 검증 가능한 신규 공개물은 확인되지 않았고 RBC Capital Markets 고객 리서치는 점검 범위 밖.",
+      "checked_at": "2026-10-23T23:47:28.529Z"
     }
   ],
   "reports": [
+    {
+      "id": "barclays-climate-tech-hidden-20261023",
+      "publisher": "Barclays",
+      "division": "Sustainability Insights (공식 공개 인사이트)",
+      "published_at": "2026-10-23",
+      "title": "In the Field: The climate tech innovations hidden in plain sight",
+      "title_ko": "현장 점검: 눈에 잘 띄지 않는 기후기술 혁신",
+      "sectors": [
+        "에너지·소재",
+        "산업재·자동차"
+      ],
+      "companies": [],
+      "document_type": "research_article",
+      "source_scope": "listing_only",
+      "source_url": "https://home.barclays/insights/2026/10/the-climate-tech-innovations-hidden-in-plain-sight/",
+      "headline": "신규 기후기술 인사이트 발간을 확인했지만 본문 접근이 제한돼 투자 방향 판단은 보류.",
+      "facts": [
+        "Barclays 공식 Sustainability Insights 목록에서 2026년 10월 23일 발간일과 제목을 확인했다.",
+        "공식 페이지 본문은 이번 점검에서 403 응답으로 열리지 않아 목록·검색 노출 범위만 확인했다."
+      ],
+      "interpretation": "기후기술의 상용화 사례를 다룰 가능성은 있으나 본문을 확인하지 못했으므로 업종·기업별 수혜나 실적 영향을 추정하지 않음.",
+      "estimate_signal": "다음 분기·내년 매출 및 이익 추정에 반영할 수 있는 공개 수치나 기업별 전망을 확인하지 못함.",
+      "tone_change": "직전 공개물과 비교할 수 있는 본문 근거가 없어 톤 변화 판단 보류.",
+      "valuation_change": "목표가·밸류에이션 변경 확인 불가",
+      "stance": "unknown",
+      "watch": [
+        "공식 본문 또는 공개 요약 접근 가능 여부",
+        "구체적 기술·기업·상용화 사례 공개 여부"
+      ],
+      "date_note": "공식 검색 결과와 페이지 메타데이터에서 23 October 2026 확인",
+      "coverage_note": "공식 페이지 제목·분류·발간일만 확인(listing_only). 본문 접근 제한으로 내용 요약과 투자 판단을 확장하지 않음.",
+      "first_seen_at": "2026-10-23T23:47:28.529Z",
+      "last_verified_at": "2026-10-23T23:47:28.529Z",
+      "prior_source": null,
+      "initial_archive": false
+    },
     {
       "id": "ubs-ai-20261019",
       "publisher": "UBS",
@@ -1162,6 +1198,13 @@
       "new_publications": 5,
       "added_reports": 6,
       "note": "providers 18곳의 공식 공개 경로와 최근 7일 재검색. 10/22 공개 자료 5건과 10/21 색인 지연분 1건을 중복 없이 추가. 투자은행 리서치가 아닌 Executive Office·Institute·CIO·Securities Services 자료는 작성 부서와 확인 범위를 구분했고, 고객 전용 원문은 우회하지 않음."
+    },
+    {
+      "checked_at": "2026-10-23T23:47:28.529Z",
+      "kind": "daily_review",
+      "new_publications": 1,
+      "added_reports": 1,
+      "note": "providers 18곳의 공식 공개 경로와 최근 7일을 재검색. Barclays Sustainability Insights 10/23 신규 1건을 확인했으나 본문이 403으로 제한되어 제목·발간일·분류만 listing_only로 등록. 다른 발간사는 검증 가능한 신규 공개물 없음. 기관 고객 전용 원문은 우회하지 않음."
     }
   ]
 }
