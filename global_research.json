@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-23T23:47:28.529Z",
-  "last_checked_at": "2026-10-23T23:47:28.529Z",
+  "updated_at": "2026-10-24T23:18:58.199Z",
+  "last_checked_at": "2026-10-24T23:18:58.199Z",
   "schedule_note": "매일 오전 8시 전후(한국시간), Work에서 공식 공개자료를 확인해 갱신",
   "sectors": [
     "반도체·장비",
@@ -22,40 +22,40 @@
       "name": "Goldman Sachs",
       "source_url": "https://www.goldmansachs.com/insights",
       "status": "partial",
-      "note": "공식 Global Research/Insights 공개 경로와 최근 7일을 재검색. 10/23 이후 검증 가능한 신규 공개물은 확인되지 않았고 기관 고객 전용 원문은 점검 범위 밖.",
-      "checked_at": "2026-10-23T23:47:28.529Z"
+      "note": "공식 Global Research/Insights 공개 경로와 최근 7일을 재검색. 직전 점검 이후 검증 가능한 신규 공개물은 확인되지 않았고 기관 고객 전용 원문은 점검 범위 밖.",
+      "checked_at": "2026-10-24T23:18:58.199Z"
     },
     {
       "id": "MS",
       "name": "Morgan Stanley",
       "source_url": "https://www.morganstanley.com/what-we-do/research/",
       "status": "partial",
-      "note": "공식 Insights·Research·Institute 공개 경로와 최근 7일을 재검색. 10/22 기존 등록 자료 이후 검증 가능한 신규 공개물은 확인되지 않음.",
-      "checked_at": "2026-10-23T23:47:28.529Z"
+      "note": "공식 Insights·Research·Institute·Thoughts on the Market와 최근 7일을 재검색. 10/22 글로벌 경제 라운드테이블 전문을 색인 지연분으로 등록.",
+      "checked_at": "2026-10-24T23:18:58.199Z"
     },
     {
       "id": "JPM",
       "name": "J.P. Morgan",
       "source_url": "https://www.jpmorgan.com/insights/research",
       "status": "partial",
-      "note": "공식 Research 및 Asset Management 공개 인사이트와 최근 7일을 재검색. 검증 가능한 신규 공개물은 확인되지 않았고 고객 전용 원문은 점검 범위 밖.",
-      "checked_at": "2026-10-23T23:47:28.529Z"
+      "note": "공식 Research·Asset Management·공개 Insights와 최근 7일을 재검색. 10/20 바이오파마·의료기기 거래보고서는 공식 소개문만 확인해 listing_only로 등록; 고객 전용 원문은 범위 밖.",
+      "checked_at": "2026-10-24T23:18:58.199Z"
     },
     {
       "id": "UBS",
       "name": "UBS",
       "source_url": "https://www.ubs.com/global/en/wealthmanagement/insights/house-view.html",
       "status": "partial",
-      "note": "공식 CIO/Wealth Management 공개 인사이트와 최근 7일을 재검색. 검증 가능한 2026년 신규 공개물은 확인되지 않음.",
-      "checked_at": "2026-10-23T23:47:28.529Z"
+      "note": "공식 CIO/Wealth Management 공개 인사이트와 최근 7일을 재검색. 기존 등록 이후 검증 가능한 신규 공개물은 확인되지 않음.",
+      "checked_at": "2026-10-24T23:18:58.199Z"
     },
     {
       "id": "BofA",
       "name": "Bank of America",
       "source_url": "https://institute.bankofamerica.com/consumer-checkpoint.html",
       "status": "partial",
-      "note": "공식 Global Research 공개 소개·주간 리캡 경로와 최근 7일을 재검색. 검증 가능한 신규 공개물은 확인되지 않았고 전체 기관 리서치는 로그인 범위 밖.",
-      "checked_at": "2026-10-23T23:47:28.529Z"
+      "note": "Bank of America Institute·Global Research 공개 소개와 최근 7일을 재검색. 10/16 보험비용 보고서는 기간 밖 과거 자료로 확인했으며 이번 신규 목록에는 추가하지 않음.",
+      "checked_at": "2026-10-24T23:18:58.199Z"
     },
     {
       "id": "Citi",
@@ -63,79 +63,79 @@
       "source_url": "https://www.citigroup.com/global/insights/research-citi-podcasts",
       "status": "partial",
       "note": "공식 Global Insights/Research 공개 경로와 최근 7일을 재검색. 기존 등록 이후 검증 가능한 신규 공개물은 확인되지 않음.",
-      "checked_at": "2026-10-23T23:47:28.529Z"
+      "checked_at": "2026-10-24T23:18:58.199Z"
     },
     {
       "id": "Barclays",
       "name": "Barclays",
       "source_url": "https://privatebank.barclays.com/insights/",
       "status": "partial",
-      "note": "공식 Insights 공개 경로와 최근 7일을 재검색. 10/23 Sustainability Insights 신규 1건을 확인했으나 본문은 403으로 제한되어 listing_only로 등록.",
-      "checked_at": "2026-10-23T23:47:28.529Z"
+      "note": "공식 Insights와 최근 7일을 재검색. 10/20 Rightsizing Revisited를 색인 지연분으로 확인했으나 본문 403 제한으로 listing_only 등록; 10/23 기후기술 자료는 기존 기록 유지.",
+      "checked_at": "2026-10-24T23:18:58.199Z"
     },
     {
       "id": "DB",
       "name": "Deutsche Bank",
       "source_url": "https://investmentbank.db.com/research/index",
       "status": "partial",
-      "note": "공식 Research/Insights 공개 경로와 최근 7일을 재검색. 검증 가능한 신규 공개물은 확인되지 않았고 기관용 원문은 점검 범위 밖.",
-      "checked_at": "2026-10-23T23:47:28.529Z"
+      "note": "공식 Research/Insights 공개 경로와 최근 7일을 재검색. 검증 가능한 신규 공개물은 확인되지 않았고 기관용 원문은 범위 밖.",
+      "checked_at": "2026-10-24T23:18:58.199Z"
     },
     {
       "id": "Nomura",
       "name": "Nomura (노무라)",
       "source_url": "https://www.nomuraconnects.com/",
       "status": "partial",
-      "note": "Nomura Connects 공식 Focused Thinking/분류 목록과 최근 7일을 재검색. 날짜가 오래된 콘텐츠와 월 단위 페이지를 구분했으며 검증 가능한 신규 발간은 확인되지 않음.",
-      "checked_at": "2026-10-23T23:47:28.529Z"
+      "note": "Nomura Connects 공식 공개 자료와 최근 7일을 재검색. 검색 노출 자료의 실제 발간월을 본문에서 대조했으며 2025년·2026년 8~9월 자료를 신규로 세지 않음.",
+      "checked_at": "2026-10-24T23:18:58.199Z"
     },
     {
       "id": "Daiwa",
       "name": "Daiwa (다이와)",
       "source_url": "https://www.dir.co.jp/english/research/report/index.html",
       "status": "partial",
-      "note": "Daiwa Asset Management 공식 Market Outlook 목록·PDF와 최근 7일을 재검색. 10월 월간 자료는 기존 범위이며 이후 신규 공개물은 확인되지 않음.",
-      "checked_at": "2026-10-23T23:47:28.529Z"
+      "note": "Daiwa Institute of Research·Daiwa Asset Management 공개 목록과 최근 7일을 재검색. 검증 가능한 신규 공개물은 확인되지 않음.",
+      "checked_at": "2026-10-24T23:18:58.199Z"
     },
     {
       "id": "Mizuho",
       "name": "Mizuho (미즈호)",
       "source_url": "https://www.mizuhogroup.com/what-we-do/research",
       "status": "partial",
-      "note": "Mizuho 공식 Insights/Research 공개 경로와 최근 7일을 재검색. 검증 가능한 신규 공개물은 확인되지 않았고 공개 색인 범위가 제한적.",
-      "checked_at": "2026-10-23T23:47:28.529Z"
+      "note": "Mizuho 공식 Research·Insights·Mizuho Bank 공개 목록과 최근 7일을 재검색. 행사·과거 자료 외 검증 가능한 신규 리서치는 확인되지 않음.",
+      "checked_at": "2026-10-24T23:18:58.199Z"
     },
     {
       "id": "HSBC",
       "name": "HSBC",
       "source_url": "https://www.business.hsbc.com/en-gb/products/global-investment-research",
       "status": "partial",
-      "note": "HSBC 공식 Insights 공개 경로와 최근 7일을 재검색. 기존 등록 이후 검증 가능한 신규 공개물은 확인되지 않음.",
-      "checked_at": "2026-10-23T23:47:28.529Z"
+      "note": "HSBC Global Investment Research 공개 Insights와 최근 7일을 재검색. 기존 등록 이후 검증 가능한 신규 공개물은 확인되지 않음.",
+      "checked_at": "2026-10-24T23:18:58.199Z"
     },
     {
       "id": "BNP",
       "name": "BNP Paribas (BNP파리바)",
       "source_url": "https://globalmarkets.cib.bnpparibas/markets-360/",
       "status": "partial",
-      "note": "BNP Paribas 공식 Insights 공개 경로와 최근 7일을 재검색. 검증 가능한 신규 공개물은 확인되지 않았고 일부 리서치 원문은 공개되지 않음.",
-      "checked_at": "2026-10-23T23:47:28.529Z"
+      "note": "BNP Paribas Global Markets 공개 목록과 최근 7일을 재검색. 10/22 Quant Forum 공개 전문을 색인 지연분으로 등록.",
+      "checked_at": "2026-10-24T23:18:58.199Z"
     },
     {
       "id": "SocGen",
       "name": "Société Générale (소시에테제네랄)",
       "source_url": "https://insight-public.sgmarkets.com/",
       "status": "partial",
-      "note": "Societe Generale Wholesale Banking 공식 News & Insights와 최근 7일을 재검색. 검증 가능한 신규 발간은 확인되지 않았고 검색 결과의 과거 행사·자료를 신규로 세지 않음.",
-      "checked_at": "2026-10-23T23:47:28.529Z"
+      "note": "Societe Generale 공개 Insights와 최근 7일을 재검색. 검증 가능한 신규 발간은 확인되지 않았고 동적·고객 전용 범위는 제한적.",
+      "checked_at": "2026-10-24T23:18:58.199Z"
     },
     {
       "id": "Jefferies",
       "name": "Jefferies (제프리스)",
       "source_url": "https://www.jefferies.com/insights/",
       "status": "partial",
-      "note": "Jefferies 공식 Insights 공개 경로와 최근 7일을 재검색. 검증 가능한 10/23 이후 신규 공개물은 확인되지 않음.",
-      "checked_at": "2026-10-23T23:47:28.529Z"
+      "note": "Jefferies 공식 Insights와 최근 7일을 재검색. 검증 가능한 신규 공개물은 확인되지 않음.",
+      "checked_at": "2026-10-24T23:18:58.199Z"
     },
     {
       "id": "Bernstein",
@@ -143,23 +143,23 @@
       "source_url": "https://www.bernsteinresearch.com/Research/",
       "status": "partial",
       "note": "Bernstein Research 공개 경로와 최근 7일을 재검색. 최신 공식 공개 리서치가 확인되지 않았고 고객 전용 자료는 우회하지 않음.",
-      "checked_at": "2026-10-23T23:47:28.529Z"
+      "checked_at": "2026-10-24T23:18:58.199Z"
     },
     {
       "id": "Macquarie",
       "name": "Macquarie (맥쿼리)",
       "source_url": "https://www.macquarie.com/au/en/insights.html",
       "status": "partial",
-      "note": "Macquarie 공식 Insights 공개 경로와 최근 7일을 재검색. 검증 가능한 신규 공개물은 확인되지 않음.",
-      "checked_at": "2026-10-23T23:47:28.529Z"
+      "note": "Macquarie 공식 Insights와 최근 7일을 재검색. 검증 가능한 신규 공개물은 확인되지 않음.",
+      "checked_at": "2026-10-24T23:18:58.199Z"
     },
     {
       "id": "RBC",
       "name": "RBC Capital Markets",
       "source_url": "https://www.rbccm.com/en/insights",
       "status": "partial",
-      "note": "RBC Thought Leadership 공개 경로와 최근 7일을 재검색. 검증 가능한 신규 공개물은 확인되지 않았고 RBC Capital Markets 고객 리서치는 점검 범위 밖.",
-      "checked_at": "2026-10-23T23:47:28.529Z"
+      "note": "RBC Capital Markets Insights·Markets in Motion와 최근 7일을 재검색. 10/19 공식 핵심 요약을 색인 지연분으로 등록하고 오디오 전문 미확인 범위를 명시.",
+      "checked_at": "2026-10-24T23:18:58.199Z"
     }
   ],
   "reports": [
@@ -1161,6 +1161,195 @@
       "last_verified_at": "2026-10-22T23:57:55.007Z",
       "prior_source": null,
       "initial_archive": false
+    },
+    {
+      "id": "jpm-biopharma-medtech-deals-q3-20261020",
+      "publisher": "JPM",
+      "division": "J.P. Morgan Commercial Banking · Life Sciences Deal Reports (Global Research와 구분)",
+      "published_at": "2026-10-20",
+      "title": "Biopharma and Medtech Deal Reports for Q3 2026",
+      "title_ko": "2026년 3분기 바이오파마·의료기기 거래 동향",
+      "sectors": [
+        "바이오·의료",
+        "금융·신용"
+      ],
+      "companies": [],
+      "document_type": "research_article",
+      "source_scope": "listing_only",
+      "source_url": "https://www.jpmorgan.com/insights/markets-and-economy/outlook/biopharma-medtech-deal-reports",
+      "headline": "바이오파마·의료기기 벤처투자와 라이선싱·M&A·IPO의 3분기 흐름을 묶은 자료지만, 공개 원문 접근 제한으로 거래 회복 강도 판단은 보류.",
+      "facts": [
+        "J.P. Morgan 공식 공개 목록에서 2026년 10월 20일 발간일과 제목을 확인했다.",
+        "공식 소개문은 2026년 3분기 바이오파마·의료기기 벤처자금, 라이선싱, M&A, IPO 활동을 다룬다고 명시했다."
+      ],
+      "interpretation": "거래시장 회복 여부를 확인할 유용한 자료이나 세부 수치와 원문을 확인하지 못해 바이오 기업의 자금조달·밸류에이션 방향을 단정하지 않음.",
+      "estimate_signal": "개별 기업의 다음 분기·내년 매출 및 이익 추정 변경 근거는 공개 목록에서 확인되지 않음.",
+      "valuation_change": "개별 목표가·밸류에이션 변경 확인 불가",
+      "tone_change": "직전 분기 보고서의 동일 지표를 확인하지 못해 변화 판단 보류.",
+      "stance": "unknown",
+      "watch": [
+        "벤처투자·라이선싱·M&A·IPO 건수와 금액",
+        "바이오파마와 의료기기 간 자금조달 차이"
+      ],
+      "date_note": "공식 검색 결과에 2026년 10월 20일 표시",
+      "coverage_note": "공식 제목·발간일·소개문만 확인(listing_only). 페이지 접근 제한으로 보고서 전문을 확인한 것으로 보지 않음.",
+      "first_seen_at": "2026-10-24T23:18:58.199Z",
+      "last_verified_at": "2026-10-24T23:18:58.199Z",
+      "prior_source": null,
+      "initial_archive": false
+    },
+    {
+      "id": "barclays-rightsizing-revisited-20261020",
+      "publisher": "Barclays",
+      "division": "Barclays Policy Insights (공식 공개 정책 인사이트)",
+      "published_at": "2026-10-20",
+      "title": "Rightsizing Revisited",
+      "title_ko": "영국 주택 라이트사이징 정책 재점검",
+      "sectors": [
+        "매크로·전략",
+        "금융·신용"
+      ],
+      "companies": [],
+      "document_type": "research_article",
+      "source_scope": "listing_only",
+      "source_url": "https://home.barclays/insights/2026/10/Rightsizing-Revisited/",
+      "headline": "영국 주택 이동성과 고령 가구의 라이트사이징을 재점검한 정책 자료지만, 본문 접근 제한으로 주택·금융 업종 영향 판단은 보류.",
+      "facts": [
+        "Barclays 공식 공개 목록에서 2026년 10월 20일 자료로 확인했다.",
+        "공식 소개문은 2024년 The Right-sizing Revolution을 잇는 정책 스냅샷이라고 설명했다."
+      ],
+      "interpretation": "주택 재고 활용과 거래 활성화 논의로 이어질 수 있으나 정책 제안과 수치를 확인하지 못해 투자 방향을 확장하지 않음.",
+      "estimate_signal": "주택·은행·건설 기업의 다음 분기·내년 실적 추정에 반영할 정량 근거를 확인하지 못함.",
+      "valuation_change": "목표가·밸류에이션 변경 자료 아님",
+      "tone_change": "2024년 자료와 비교 가능한 본문 근거가 없어 변화 판단 보류.",
+      "stance": "unknown",
+      "watch": [
+        "영국 주택 거래 활성화 정책",
+        "고령 가구 이동과 주택 재고 효과"
+      ],
+      "date_note": "공식 공개 목록에서 2026년 10월 20일 확인",
+      "coverage_note": "공식 제목·소개문만 확인(listing_only). 본문 403 제한으로 세부 정책과 수치를 요약하지 않음.",
+      "first_seen_at": "2026-10-24T23:18:58.199Z",
+      "last_verified_at": "2026-10-24T23:18:58.199Z",
+      "prior_source": "https://home.barclays/insights/2024/06/the-right-sizing-revolution/",
+      "initial_archive": false
+    },
+    {
+      "id": "ms-global-growth-roundtable-20261022",
+      "publisher": "MS",
+      "division": "Morgan Stanley Research · Thoughts on the Market Podcast",
+      "published_at": "2026-10-22",
+      "title": "Economic Roundtable: Why Is Global Growth So Resilient?",
+      "title_ko": "글로벌 성장 회복력의 동력: AI 투자·아시아 CAPEX·소비",
+      "sectors": [
+        "매크로·전략",
+        "AI·IT하드웨어",
+        "반도체·장비"
+      ],
+      "companies": [],
+      "document_type": "podcast",
+      "source_scope": "full_text",
+      "source_url": "https://www.morganstanley.com/insights/podcasts/thoughts-on-the-market/global-economic-growth-roundtable-seth-carpenter-michael-gapen-jens-eisenschmidt-chetan-ahya",
+      "headline": "AI CAPEX가 미국 성장의 핵심 버팀목이고 아시아에서는 기술 투자에서 에너지·방산·산업재로 확산되고 있어 글로벌 성장의 하방 위험을 완충.",
+      "facts": [
+        "미국에서는 AI 관련 지출이 분기 성장률에 약 0.4~0.6%포인트 기여한다고 설명했다.",
+        "아시아 경상수지 흑자는 1.6조달러, GDP 대비 4.2%로 제시됐고 CAPEX 회복이 기술에서 에너지·방산·산업재로 확산된다고 평가했다.",
+        "유럽은 AI 관련 외부수요와 소비 회복력이 성장을 지지하지만 에너지 가격 상승이 소비를 약화시킬 위험을 제시했다."
+      ],
+      "interpretation": "AI 투자 사이클이 반도체·서버에만 머물지 않고 제조·에너지·방산으로 확산되는 단계다. 다만 미국은 자산가격과 고소득층 소비까지 AI 투자에 연결돼 성장 동력이 좁다는 위험이 커졌다.",
+      "estimate_signal": "AI 인프라·아시아 자본재·전력·방산의 중기 매출 추정에는 상방 방향. 유럽 소비와 에너지 집약 업종 이익에는 비용 하방 위험이 남음. 개별 기업 추정 수치는 제시하지 않음.",
+      "valuation_change": "개별 목표가·밸류에이션 변경 없음",
+      "tone_change": "글로벌 성장의 회복력을 유지하면서도 미국의 AI 의존 집중도와 유럽 소비 둔화 위험을 이전보다 구체적으로 강조.",
+      "stance": "positive",
+      "watch": [
+        "AI CAPEX의 비기술 제조업 확산",
+        "유럽 소비의 에너지 가격 민감도",
+        "아시아 수출에서 내수·고용으로의 전이"
+      ],
+      "date_note": "공식 페이지와 전문에 2026년 10월 22일 표시",
+      "coverage_note": "공식 팟캐스트 전문 확인. 투자은행 개별종목 리포트가 아닌 글로벌 경제 라운드테이블로 구분.",
+      "first_seen_at": "2026-10-24T23:18:58.199Z",
+      "last_verified_at": "2026-10-24T23:18:58.199Z",
+      "prior_source": null,
+      "initial_archive": false
+    },
+    {
+      "id": "bnp-quant-forum-ai-macro-qis-20261022",
+      "publisher": "BNP",
+      "division": "BNP Paribas Global Markets · QIS Lab",
+      "published_at": "2026-10-22",
+      "title": "AI, Macro Trends, and QIS: Key Takeaways from the BNP Paribas Quant Forum 2026",
+      "title_ko": "AI 집중위험과 거시 불확실성: BNP파리바 퀀트포럼 핵심",
+      "sectors": [
+        "금융·신용",
+        "AI·IT하드웨어",
+        "매크로·전략"
+      ],
+      "companies": [],
+      "document_type": "research_article",
+      "source_scope": "full_text",
+      "source_url": "https://globalmarkets.cib.bnpparibas/bnp-paribas-quant-forum-2026/",
+      "headline": "AI 도입 자체는 구조적이지만 자산군 전반의 AI 집중도가 기존 상관·베타보다 높아, 포트폴리오 위험관리와 QIS 수요가 커지는 국면.",
+      "facts": [
+        "포럼 참가자는 한 포트폴리오 자산의 약 70%가 직접·간접적으로 AI에 연결됐다고 추정했다.",
+        "주식·채권·사모시장·데이터센터 부동산이 모두 AI에 노출돼 전통적 자산배분만으로 분산 효과가 제한될 수 있다고 지적했다.",
+        "에너지 충격·인플레이션·채권금리 상승과 지정학 위험 속에서 QIS가 분산과 알파 도구로 활용된다고 설명했다."
+      ],
+      "interpretation": "AI 수요 약화 신호라기보다 AI 노출의 숨은 상관관계가 커졌다는 경고다. AI 인프라 투자 판단에는 실적뿐 아니라 회사채·사모대출·데이터센터 부동산의 동시 스트레스를 함께 봐야 한다.",
+      "estimate_signal": "개별 기업 매출·이익 추정 변경은 없다. AI 솔루션·데이터 인프라 수요에는 중기 우호적이나 금융비용과 포트폴리오 디레버리징은 밸류에이션 하방 변수.",
+      "valuation_change": "개별 목표가 변경 없음. 전통적 베타·상관계수가 AI 집중위험을 과소평가할 수 있다는 밸류에이션 위험을 제시.",
+      "tone_change": "AI의 운영 효율보다 자산군 전반의 집중·군집 위험을 더 강하게 강조하는 신중한 톤.",
+      "stance": "mixed",
+      "watch": [
+        "AI 관련 회사채·사모대출 스프레드",
+        "데이터센터 부동산과 기술주 동조화",
+        "에이전트 기반 투자전략의 군집화"
+      ],
+      "date_note": "공식 본문에 2026년 10월 22일 표시",
+      "coverage_note": "BNP Paribas Global Markets QIS Lab 공개 기사 전문 확인. 패널 발언은 BNP파리바의 공식 투자의견과 구분.",
+      "first_seen_at": "2026-10-24T23:18:58.199Z",
+      "last_verified_at": "2026-10-24T23:18:58.199Z",
+      "prior_source": null,
+      "initial_archive": false
+    },
+    {
+      "id": "rbc-caveats-risks-20261019",
+      "publisher": "RBC",
+      "division": "RBC Capital Markets Research · Markets in Motion Podcast",
+      "published_at": "2026-10-19",
+      "title": "Caveats and risks",
+      "title_ko": "3분기 실적 초반: 회복력 속 위험 신호",
+      "sectors": [
+        "매크로·전략",
+        "금융·신용",
+        "AI·IT하드웨어"
+      ],
+      "companies": [],
+      "document_type": "podcast",
+      "source_scope": "official_summary",
+      "source_url": "https://www.rbccm.com/en/insights/2026/10/caveats-and-risks",
+      "headline": "3분기 실적 통계는 다소 약하지만 기업 코멘트의 경기·소비·AI 회복력은 유지됐고, 하이일드 스프레드 확대는 소형주에 새 하방 위험.",
+      "facts": [
+        "RBC는 3분기 실적 시즌 초반 통계가 다소 약하게 출발했다고 평가했다.",
+        "기업 코멘트는 경제와 소비의 회복력, AI 순풍을 계속 언급하지만 투자자들은 중립적이고 단기 위험에 더 민감해졌다고 설명했다.",
+        "하이일드 신용스프레드 확대를 소형주의 새로운 우려 요인으로 지목했다."
+      ],
+      "interpretation": "대형 AI 수혜주의 실적 모멘텀보다 소형주 금융여건이 먼저 약해질 수 있다는 신호다. 시장 폭 확대를 기대하려면 하이일드 스프레드 안정이 선행돼야 한다.",
+      "estimate_signal": "대형 AI 관련주 이익 추정에는 중립~상방이나 소형주 이익과 밸류에이션에는 금융비용 하방 위험. 개별 기업 수정 수치는 없음.",
+      "valuation_change": "개별 목표가 변경 없음. 하이일드 스프레드 확대를 소형주 밸류에이션 부담으로 제시.",
+      "tone_change": "경기 회복력은 유지했지만 실적 통계의 약한 출발과 신용스프레드 위험을 추가해 더 신중해짐.",
+      "stance": "mixed",
+      "watch": [
+        "3분기 EPS 상회율과 가이던스",
+        "하이일드 신용스프레드",
+        "소형주 포지셔닝과 자금조달 비용"
+      ],
+      "date_note": "공식 페이지에 2026년 10월 19일 표시",
+      "coverage_note": "공식 핵심 요약을 확인. 오디오 전체 전사는 검토하지 않아 official_summary 범위로 제한.",
+      "first_seen_at": "2026-10-24T23:18:58.199Z",
+      "last_verified_at": "2026-10-24T23:18:58.199Z",
+      "prior_source": "https://www.rbccm.com/en/insights/2026/10/the-micro-reality",
+      "initial_archive": false
     }
   ],
   "checks": [
@@ -1205,6 +1394,13 @@
       "new_publications": 1,
       "added_reports": 1,
       "note": "providers 18곳의 공식 공개 경로와 최근 7일을 재검색. Barclays Sustainability Insights 10/23 신규 1건을 확인했으나 본문이 403으로 제한되어 제목·발간일·분류만 listing_only로 등록. 다른 발간사는 검증 가능한 신규 공개물 없음. 기관 고객 전용 원문은 우회하지 않음."
+    },
+    {
+      "checked_at": "2026-10-24T23:18:58.199Z",
+      "kind": "daily_review",
+      "new_publications": 0,
+      "added_reports": 5,
+      "note": "providers 18곳의 공식 공개 경로와 최근 7일을 재검색. 신규 발간은 확인되지 않았고 직전 점검 당시 누락된 색인 지연분 5건을 중복 없이 추가. 본문 접근 제한 자료는 listing_only, 공식 핵심 요약만 확인한 자료는 official_summary로 구분. 고객 전용 원문은 우회하지 않음."
     }
   ]
 }
