@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-25",
+  "updated_at": "2026-10-26",
   "method": "공식 컨콜 녹취록을 확인한 경우에만 Q&A 요약으로 표시합니다. 그 외 주제별 요약은 공식 IR 발표문을 출처로 명시하며, 투자 해석은 관전점으로 구분합니다. 반도체 장비 업종은 주요 공정·검사·테스트·패키징 기업을 추적하며 원문 미검증 기업은 분석 대기로 표시합니다.",
   "watchlist": [
     {
@@ -7886,6 +7886,13 @@
       "source": "https://www.bmwgroup.com/en/investor-relations/company-reports.html"
     },
     {
+      "ticker": "CAMT",
+      "date": "2026-11-04",
+      "time": "09:00 America/New_York(Zoom 컨콜)",
+      "event": "2026 Q3 실적·컨퍼런스콜(10/14 잠정 매출 기발표)",
+      "source": "https://www.prnewswire.com/il/news-releases/camtek-to-report-third-quarter-2026-financial-results-on-wednesday-november-4-2026-302915313.html"
+    },
+    {
       "ticker": "NVO",
       "date": "2026-11-04",
       "time": "07:30 Europe/Copenhagen",
@@ -7912,6 +7919,13 @@
       "time": "시간 미공지(Europe/Berlin)",
       "event": "2026 Q3 분기 보고서",
       "source": "https://ir.rheinmetall.com/investor-relations/news/financial-reports"
+    },
+    {
+      "ticker": "ONTO",
+      "date": "2026-11-09",
+      "time": "장 마감 후 · 16:30 America/New_York(컨콜)",
+      "event": "2026 Q3 실적·컨퍼런스콜",
+      "source": "https://investors.ontoinnovation.com/news/news-details/2026/Onto-Innovation-to-Report-Third-Quarter-2026-Financial-Results-on-November-9-2026/default.aspx"
     }
   ]
 }
