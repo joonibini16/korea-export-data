@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-25T23:28:41.718Z",
-  "last_checked_at": "2026-10-25T23:28:41.718Z",
+  "updated_at": "2026-10-26T23:07:48.459Z",
+  "last_checked_at": "2026-10-26T23:07:48.459Z",
   "schedule_note": "매일 오전 8시 전후(한국시간), Work에서 공식 공개자료를 확인해 갱신",
   "sectors": [
     "반도체·장비",
@@ -22,144 +22,144 @@
       "name": "Goldman Sachs",
       "source_url": "https://www.goldmansachs.com/insights",
       "status": "partial",
-      "note": "공식 Global Research/Insights 공개 경로와 최근 7일을 재검색. 직전 점검 이후 검증 가능한 신규 공개물은 확인되지 않았고 기관 고객 전용 원문은 점검 범위 밖.",
-      "checked_at": "2026-10-25T23:28:41.718Z"
+      "note": "공식 Insights와 최근 7일 공개물을 재점검. 10월 23일 팟캐스트 2건을 색인 지연분으로 추가. 공개 전문 범위만 확인했으며 고객 전용 GIR은 미확인.",
+      "checked_at": "2026-10-26T23:07:48.459Z"
     },
     {
       "id": "MS",
       "name": "Morgan Stanley",
       "source_url": "https://www.morganstanley.com/what-we-do/research/",
       "status": "partial",
-      "note": "공식 Insights·Research·Institute·Thoughts on the Market와 최근 7일을 재검색. 직전 점검 이후 신규는 없으며 10/20 AI 비상장시장 팟캐스트 전문을 색인 지연분으로 등록.",
-      "checked_at": "2026-10-25T23:28:41.718Z"
+      "note": "공식 공개 Research/Insights와 최근 7일을 재점검했으나 직전 점검 이후 검증 가능한 신규 공개 발간물은 확인되지 않음. 고객 전용·로그인 자료는 우회하지 않아 공개 범위만 확인.",
+      "checked_at": "2026-10-26T23:07:48.459Z"
     },
     {
       "id": "JPM",
       "name": "J.P. Morgan",
       "source_url": "https://www.jpmorgan.com/insights/research",
       "status": "partial",
-      "note": "공식 Research·Asset Management·공개 Insights와 최근 7일을 재검색. 직전 점검 이후 검증 가능한 신규 공개물은 없고 고객 전용 원문은 범위 밖.",
-      "checked_at": "2026-10-25T23:28:41.718Z"
+      "note": "공식 공개 Research/Insights와 최근 7일을 재점검했으나 직전 점검 이후 검증 가능한 신규 공개 발간물은 확인되지 않음. 고객 전용·로그인 자료는 우회하지 않아 공개 범위만 확인.",
+      "checked_at": "2026-10-26T23:07:48.459Z"
     },
     {
       "id": "UBS",
       "name": "UBS",
       "source_url": "https://www.ubs.com/global/en/wealthmanagement/insights/house-view.html",
       "status": "partial",
-      "note": "공식 CIO/Wealth Management 공개 인사이트와 최근 7일을 재검색. 기존 등록 이후 검증 가능한 신규 공개물은 확인되지 않음.",
-      "checked_at": "2026-10-25T23:28:41.718Z"
+      "note": "공식 CIO 공개물을 재점검. 10월 23일 시장 해설 1건을 색인 지연분으로 추가. 자산관리 CIO 자료로 구분.",
+      "checked_at": "2026-10-26T23:07:48.459Z"
     },
     {
       "id": "BofA",
       "name": "Bank of America",
       "source_url": "https://institute.bankofamerica.com/consumer-checkpoint.html",
       "status": "partial",
-      "note": "Bank of America Institute·Global Research 공개 경로와 최근 7일을 재검색. 신규는 없으며 발간일이 2026년 10월로만 표시된 물류 Business Checkpoint를 과거 누락분으로 등록.",
-      "checked_at": "2026-10-25T23:28:41.718Z"
+      "note": "공식 공개 Research/Insights와 최근 7일을 재점검했으나 직전 점검 이후 검증 가능한 신규 공개 발간물은 확인되지 않음. 고객 전용·로그인 자료는 우회하지 않아 공개 범위만 확인.",
+      "checked_at": "2026-10-26T23:07:48.459Z"
     },
     {
       "id": "Citi",
       "name": "Citi",
       "source_url": "https://www.citigroup.com/global/insights/research-citi-podcasts",
       "status": "partial",
-      "note": "공식 Global Insights/Research 공개 경로와 최근 7일을 재검색. 신규는 없으며 10/20 IMF Markets Edition 공식 핵심요약을 색인 지연분으로 등록.",
-      "checked_at": "2026-10-25T23:28:41.718Z"
+      "note": "공식 공개 Research/Insights와 최근 7일을 재점검했으나 직전 점검 이후 검증 가능한 신규 공개 발간물은 확인되지 않음. 고객 전용·로그인 자료는 우회하지 않아 공개 범위만 확인.",
+      "checked_at": "2026-10-26T23:07:48.459Z"
     },
     {
       "id": "Barclays",
       "name": "Barclays",
       "source_url": "https://privatebank.barclays.com/insights/",
       "status": "partial",
-      "note": "공식 Insights와 최근 7일을 재검색. 직전 점검 이후 검증 가능한 신규 공개물은 확인되지 않았고 본문 403 제한 자료는 기존 listing_only 기록을 유지.",
-      "checked_at": "2026-10-25T23:28:41.718Z"
+      "note": "공식 공개 Research/Insights와 최근 7일을 재점검했으나 직전 점검 이후 검증 가능한 신규 공개 발간물은 확인되지 않음. 고객 전용·로그인 자료는 우회하지 않아 공개 범위만 확인.",
+      "checked_at": "2026-10-26T23:07:48.459Z"
     },
     {
       "id": "DB",
       "name": "Deutsche Bank",
       "source_url": "https://investmentbank.db.com/research/index",
       "status": "partial",
-      "note": "공식 Research/Insights 공개 경로와 최근 7일을 재검색. 검증 가능한 신규 공개물은 확인되지 않았고 기관용 원문은 범위 밖.",
-      "checked_at": "2026-10-25T23:28:41.718Z"
+      "note": "공식 공개 Research/Insights와 최근 7일을 재점검했으나 직전 점검 이후 검증 가능한 신규 공개 발간물은 확인되지 않음. 고객 전용·로그인 자료는 우회하지 않아 공개 범위만 확인.",
+      "checked_at": "2026-10-26T23:07:48.459Z"
     },
     {
       "id": "Nomura",
       "name": "Nomura (노무라)",
       "source_url": "https://www.nomuraconnects.com/",
       "status": "partial",
-      "note": "Nomura Connects 공식 공개 자료와 최근 7일을 재검색. 신규는 없으며 발간일이 2026년 10월로만 표시된 변동성 타깃 연구를 과거 누락분으로 등록; NRI 자료와 혼동하지 않음.",
-      "checked_at": "2026-10-25T23:28:41.718Z"
+      "note": "공식 공개 Research/Insights와 최근 7일을 재점검했으나 직전 점검 이후 검증 가능한 신규 공개 발간물은 확인되지 않음. 고객 전용·로그인 자료는 우회하지 않아 공개 범위만 확인.",
+      "checked_at": "2026-10-26T23:07:48.459Z"
     },
     {
       "id": "Daiwa",
       "name": "Daiwa (다이와)",
       "source_url": "https://www.dir.co.jp/english/research/report/index.html",
       "status": "partial",
-      "note": "Daiwa Institute of Research·Daiwa Asset Management 공개 목록과 최근 7일을 재검색. 검증 가능한 신규 공개물은 확인되지 않음.",
-      "checked_at": "2026-10-25T23:28:41.718Z"
+      "note": "Daiwa Institute of Research 최신 보고서 목록 전체를 점검. 10월 26일 보고서 7건을 추가했으며 공개 요약 또는 목록 확인 범위를 구분.",
+      "checked_at": "2026-10-26T23:07:48.459Z"
     },
     {
       "id": "Mizuho",
       "name": "Mizuho (미즈호)",
       "source_url": "https://www.mizuhogroup.com/what-we-do/research",
       "status": "partial",
-      "note": "Mizuho 공식 Research·Insights·Mizuho Bank 공개 목록과 최근 7일을 재검색. 행사·과거 자료 외 검증 가능한 신규 리서치는 확인되지 않음.",
-      "checked_at": "2026-10-25T23:28:41.718Z"
+      "note": "공식 공개 Research/Insights와 최근 7일을 재점검했으나 직전 점검 이후 검증 가능한 신규 공개 발간물은 확인되지 않음. 고객 전용·로그인 자료는 우회하지 않아 공개 범위만 확인.",
+      "checked_at": "2026-10-26T23:07:48.459Z"
     },
     {
       "id": "HSBC",
       "name": "HSBC",
       "source_url": "https://www.business.hsbc.com/en-gb/products/global-investment-research",
       "status": "partial",
-      "note": "HSBC Global Investment Research 공개 Insights와 최근 7일을 재검색. 기존 등록 이후 검증 가능한 신규 공개물은 확인되지 않음.",
-      "checked_at": "2026-10-25T23:28:41.718Z"
+      "note": "공식 공개 Research/Insights와 최근 7일을 재점검했으나 직전 점검 이후 검증 가능한 신규 공개 발간물은 확인되지 않음. 고객 전용·로그인 자료는 우회하지 않아 공개 범위만 확인.",
+      "checked_at": "2026-10-26T23:07:48.459Z"
     },
     {
       "id": "BNP",
       "name": "BNP Paribas (BNP파리바)",
       "source_url": "https://globalmarkets.cib.bnpparibas/markets-360/",
       "status": "partial",
-      "note": "BNP Paribas Global Markets 공개 목록과 최근 7일을 재검색. 직전 점검 이후 검증 가능한 신규 공개물은 확인되지 않음.",
-      "checked_at": "2026-10-25T23:28:41.718Z"
+      "note": "BNP Paribas Global Markets 공개 자료를 점검. 10월 26일 QIS Lab 금리변동성 연구 소개 1건 추가; 전체 백서는 고객 접근이 필요해 미확인.",
+      "checked_at": "2026-10-26T23:07:48.459Z"
     },
     {
       "id": "SocGen",
       "name": "Société Générale (소시에테제네랄)",
       "source_url": "https://insight-public.sgmarkets.com/",
       "status": "partial",
-      "note": "Societe Generale 공개 Insights와 최근 7일을 재검색. 검증 가능한 신규 발간은 확인되지 않았고 동적·고객 전용 범위는 제한적.",
-      "checked_at": "2026-10-25T23:28:41.718Z"
+      "note": "공식 공개 Research/Insights와 최근 7일을 재점검했으나 직전 점검 이후 검증 가능한 신규 공개 발간물은 확인되지 않음. 고객 전용·로그인 자료는 우회하지 않아 공개 범위만 확인.",
+      "checked_at": "2026-10-26T23:07:48.459Z"
     },
     {
       "id": "Jefferies",
       "name": "Jefferies (제프리스)",
       "source_url": "https://www.jefferies.com/insights/",
       "status": "partial",
-      "note": "Jefferies 공식 Insights와 최근 7일을 재검색. 검증 가능한 신규 공개물은 확인되지 않음.",
-      "checked_at": "2026-10-25T23:28:41.718Z"
+      "note": "공식 공개 Research/Insights와 최근 7일을 재점검했으나 직전 점검 이후 검증 가능한 신규 공개 발간물은 확인되지 않음. 고객 전용·로그인 자료는 우회하지 않아 공개 범위만 확인.",
+      "checked_at": "2026-10-26T23:07:48.459Z"
     },
     {
       "id": "Bernstein",
       "name": "Bernstein Research (번스타인)",
       "source_url": "https://www.bernsteinresearch.com/Research/",
       "status": "partial",
-      "note": "Bernstein Research 공개 경로와 최근 7일을 재검색. 최신 공식 공개 리서치가 확인되지 않았고 Bernstein/AllianceBernstein 자산관리 콘텐츠와 구분했으며 고객 전용 자료는 우회하지 않음.",
-      "checked_at": "2026-10-25T23:28:41.718Z"
+      "note": "공식 공개 Research/Insights와 최근 7일을 재점검했으나 직전 점검 이후 검증 가능한 신규 공개 발간물은 확인되지 않음. 고객 전용·로그인 자료는 우회하지 않아 공개 범위만 확인.",
+      "checked_at": "2026-10-26T23:07:48.459Z"
     },
     {
       "id": "Macquarie",
       "name": "Macquarie (맥쿼리)",
       "source_url": "https://www.macquarie.com/au/en/insights.html",
       "status": "partial",
-      "note": "Macquarie 공식 Insights와 최근 7일을 재검색. 검증 가능한 신규 공개물은 확인되지 않음.",
-      "checked_at": "2026-10-25T23:28:41.718Z"
+      "note": "공식 공개 Research/Insights와 최근 7일을 재점검했으나 직전 점검 이후 검증 가능한 신규 공개 발간물은 확인되지 않음. 고객 전용·로그인 자료는 우회하지 않아 공개 범위만 확인.",
+      "checked_at": "2026-10-26T23:07:48.459Z"
     },
     {
       "id": "RBC",
       "name": "RBC Capital Markets",
       "source_url": "https://www.rbccm.com/en/insights",
       "status": "partial",
-      "note": "RBC Capital Markets Insights·Markets in Motion와 최근 7일을 재검색. 직전 점검 이후 검증 가능한 신규 공개물은 확인되지 않음.",
-      "checked_at": "2026-10-25T23:28:41.718Z"
+      "note": "공식 공개 Research/Insights와 최근 7일을 재점검했으나 직전 점검 이후 검증 가능한 신규 공개 발간물은 확인되지 않음. 고객 전용·로그인 자료는 우회하지 않아 공개 범위만 확인.",
+      "checked_at": "2026-10-26T23:07:48.459Z"
     }
   ],
   "reports": [
@@ -1503,6 +1503,443 @@
       "last_verified_at": "2026-10-25T23:28:41.718Z",
       "prior_source": null,
       "initial_archive": false
+    },
+    {
+      "id": "gs-ai-exposure-reduction-20261023",
+      "publisher": "GS",
+      "division": "FICC and Equities · The Markets",
+      "published_at": "2026-10-23",
+      "title": "Why Investors Are Reducing AI Exposure",
+      "title_ko": "AI 집중거래 축소: 투자자는 이제 CAPEX의 매출 전환을 확인하려 한다",
+      "sectors": [
+        "AI·IT하드웨어",
+        "반도체·장비",
+        "금융·신용"
+      ],
+      "companies": [],
+      "document_type": "market_commentary",
+      "source_scope": "full_text",
+      "source_url": "https://www.goldmansachs.com/insights/the-markets/why-investors-are-reducing-ai-exposure",
+      "headline": "AI 장기 수요가 꺾였다는 판단보다, 금리·자본비용 상승 속에서 혼잡한 AI 포지션을 줄이고 CAPEX의 매출 전환을 확인하려는 국면이다.",
+      "facts": [
+        "Goldman Sachs 유럽 주식 트레이딩 책임자는 AI·반도체·하이퍼스케일러에 집중된 포지션이 최근 몇 주간 되돌림을 겪었다고 설명했다.",
+        "시장 초점은 하이퍼스케일러 투자계획 자체에서 그 지출이 매출 성장으로 이어지는 증거로 이동했고, 3분기 대형 기술기업 실적을 핵심 확인 지점으로 제시했다."
+      ],
+      "interpretation": "AI 인프라 지출의 방향보다 수익화 속도와 자금조달비용이 멀티플을 가르는 단계다. 실적이 지출 확대만 보여주고 매출 전환을 입증하지 못하면 고밸류 체인의 변동성이 커질 수 있다.",
+      "estimate_signal": "다음 분기·2027년 추정에는 하이퍼스케일러 CAPEX와 클라우드·AI 매출의 동행 여부가 핵심이다. 개별 기업 실적추정 변경은 제시되지 않았다.",
+      "valuation_change": "개별 목표가·밸류에이션 변경 없음",
+      "tone_change": "AI 수요 낙관론보다 혼잡도·자본비용·수익화 검증을 더 강하게 경계하는 톤이다.",
+      "stance": "mixed",
+      "watch": [
+        "하이퍼스케일러 CAPEX 대비 AI 매출",
+        "네오클라우드 자금조달 스프레드",
+        "반도체·AI 포지션 집중도"
+      ],
+      "date_note": "공식 페이지에 2026년 10월 23일 표시",
+      "coverage_note": "Goldman Sachs 공식 팟캐스트 공개 전문 확인. Global Investment Research 보고서가 아니라 FICC and Equities 트레이딩 해설로 구분.",
+      "first_seen_at": "2026-10-26T23:07:48.459Z",
+      "last_verified_at": "2026-10-26T23:07:48.459Z",
+      "prior_source": null,
+      "initial_archive": false
+    },
+    {
+      "id": "gs-oil-supply-hedging-20261023",
+      "publisher": "GS",
+      "division": "Global Commodities Research · Exchanges",
+      "published_at": "2026-10-23",
+      "title": "Why Oil Prices Are Surging Despite Recovering Supply",
+      "title_ko": "공급 회복에도 유가가 높은 이유: 예방적 매수와 포트폴리오 헤지",
+      "sectors": [
+        "에너지·소재",
+        "매크로·전략"
+      ],
+      "companies": [],
+      "document_type": "podcast",
+      "source_scope": "full_text",
+      "source_url": "https://www.goldmansachs.com/insights/goldman-sachs-exchanges/why-oil-prices-are-surging-despite-recovering-supply",
+      "headline": "원유 물량 회복만으로 가격이 정상화되기 어렵다. 낮은 재고, 공급차질 위험과 금융시장의 에너지 헤지가 현재 가격을 떠받친다.",
+      "facts": [
+        "공식 대담은 당시 Brent 약 112달러 중 약 27달러를 위험 프리미엄으로 추정하고, 연말 90달러·2027년 평균 80달러의 기준 전망에는 상방 위험이 더 크다고 설명했다.",
+        "페르시아만 원유 수출은 2025년 평균의 110% 수준까지 회복했지만 정제품 수출은 약 40%에 머물렀고, 정제설비 손상과 구조적 투자 부족을 원인으로 들었다.",
+        "유럽 LNG 공급이 낮은 상태에서 추운 겨울이 겹치면 TTF가 MWh당 150유로까지 오를 수 있는 상방 시나리오를 제시했다."
+      ],
+      "interpretation": "원유 생산량보다 재고·운송·정제능력 병목이 에너지 비용과 아시아 수입단가를 좌우한다. 제조·운송 업종의 마진 압박은 원유 가격이 일부 하락해도 늦게 완화될 수 있다.",
+      "estimate_signal": "다음 분기 에너지·운송·소비재 이익 추정에는 Brent보다 정제제품 가격과 운임을 함께 반영해야 한다. 개별 기업 추정치 변경은 없다.",
+      "valuation_change": "개별 목표가·밸류에이션 변경 없음",
+      "tone_change": "공급 회복을 인정하면서도 정제품·가스의 상방 꼬리위험을 더 강조했다.",
+      "stance": "mixed",
+      "watch": [
+        "Brent 위험 프리미엄",
+        "페르시아만 정제품 수출 회복률",
+        "유럽 LNG 유입과 겨울 기온"
+      ],
+      "date_note": "공식 페이지에 2026년 10월 23일 표시, 대담은 10월 22일 녹음",
+      "coverage_note": "Goldman Sachs Exchanges 공식 공개 전문 확인. Global Investment Research 문서가 아니라 원자재 리서치 책임자 팟캐스트로 구분.",
+      "first_seen_at": "2026-10-26T23:07:48.459Z",
+      "last_verified_at": "2026-10-26T23:07:48.459Z",
+      "prior_source": "https://www.goldmansachs.com/insights/articles/will-oil-prices-decline-as-middle-east-supply-recovers",
+      "initial_archive": false
+    },
+    {
+      "id": "ubs-riskoff-oil-ai-20261023",
+      "publisher": "UBS",
+      "division": "Chief Investment Office",
+      "published_at": "2026-10-23",
+      "title": "Higher oil and AI concerns drive risk-off move",
+      "title_ko": "고유가·AI 수익성 우려에도 전면 방어보다 선별적 위험노출",
+      "sectors": [
+        "AI·IT하드웨어",
+        "반도체·장비",
+        "에너지·소재",
+        "매크로·전략"
+      ],
+      "companies": [
+        {
+          "ticker": "META",
+          "name": "Meta Platforms",
+          "relationship": "실적 발표 뒤 CAPEX 확대 우려로 주가가 하락한 사례로 원문 언급"
+        }
+      ],
+      "document_type": "cio_commentary",
+      "source_scope": "full_text",
+      "source_url": "https://www.ubs.com/global/en/wealthmanagement/insights/chief-investment-office/house-view/daily/2026/latest-23102026.html",
+      "headline": "AI 생태계 전체를 줄이기보다 자금력이 약한 네오클라우드를 피하고 하이퍼스케일러·반도체·하드웨어로 집중하라는 판단이다.",
+      "facts": [
+        "UBS는 3분기 S&P 500 EPS가 전년 대비 28% 증가하고 반도체가 증가분의 약 절반을 기여할 것으로 예상했다.",
+        "평균 클라우드 매출 증가율이 6월분기 48%에서 9월분기 58%로 가속할 것으로 전망했다.",
+        "유가가 전년보다 평균 배럴당 40달러 높아지면 단독 효과로 세계 GDP 성장률을 0.3~0.5%포인트 낮출 수 있다고 추정했다."
+      ],
+      "interpretation": "AI 성장률 자체는 강하지만 자본집약도와 자금조달 구조가 기업별 차별화를 키운다. 기술주 조정과 시장 내 상승종목 확산이 동시에 나타나면 업종 내 교체 신호로 보는 편이 타당하다.",
+      "estimate_signal": "다음 분기 반도체·클라우드 매출 추정에는 상방 신호지만 네오클라우드 이익·현금흐름에는 하방 위험이다. 2027년은 CAPEX 회수 속도가 관건이다.",
+      "valuation_change": "개별 목표가 변경 없음; 하이퍼스케일러·고품질 반도체/하드웨어 선호 유지",
+      "tone_change": "AI 구조적 낙관은 유지하되 네오클라우드의 자금조달·실행 위험을 더 명확히 경고했다.",
+      "stance": "mixed",
+      "watch": [
+        "클라우드 매출 성장률",
+        "네오클라우드 자금조달 여건",
+        "유가의 성장·물가 전이"
+      ],
+      "date_note": "공식 본문에 2026년 10월 23일 표시",
+      "coverage_note": "UBS CIO 공식 공개 본문 전체 확인. 증권 리서치가 아닌 자산관리 CIO 데일리 해설로 구분.",
+      "first_seen_at": "2026-10-26T23:07:48.459Z",
+      "last_verified_at": "2026-10-26T23:07:48.459Z",
+      "prior_source": "https://www.ubs.com/global/en/wealthmanagement/insights/chief-investment-office/house-view/daily/2026/latest-20102026.html",
+      "initial_archive": false
+    },
+    {
+      "id": "bnp-rates-vol-arbitrage-20261026",
+      "publisher": "BNP",
+      "division": "Global Markets · QIS Lab",
+      "published_at": "2026-10-26",
+      "title": "Unlocking rates volatility arbitrage: Insights from BNP Paribas’ QIS Lab",
+      "title_ko": "금리 변동성 프리미엄: 주식·채권과 다른 분산수익원",
+      "sectors": [
+        "금융·신용",
+        "매크로·전략"
+      ],
+      "companies": [],
+      "document_type": "research_article",
+      "source_scope": "official_summary",
+      "source_url": "https://globalmarkets.cib.bnpparibas/rates-volatility-arbitrage/",
+      "headline": "금리 변동성 매도 프리미엄은 전통 주식·채권과 상관이 낮아 분산수익원이 될 수 있지만, 거시 충격과 꼬리위험 관리가 전제다.",
+      "facts": [
+        "공개 소개문은 금리 변동성 차익거래가 주식·채권과 낮은 상관을 보이며 주식 변동성 차익거래와 연계성이 있다고 설명한다.",
+        "10년물 미 국채 선물옵션은 주간 만기와 장중 헤지를 적용할 때 USD 스왑션에 준하는 프리미엄을 보였다고 제시했다.",
+        "장기 20~30년 스왑을 기초로 한 1~3개월 ATM 스왑션이 역사적으로 가장 높은 위험조정수익을 보였다고 밝혔다."
+      ],
+      "interpretation": "고금리와 재정 불확실성이 커질수록 변동성 프리미엄은 매력적일 수 있으나, 단순 숏볼 전략이 아니라 만기·행사가·헤지 빈도 설계가 수익의 핵심이다.",
+      "estimate_signal": "기업 실적 추정 영향은 직접적이지 않다. 금리 변동성이 지속되면 금융사의 트레이딩·헤지 수요에는 우호적이나 자산평가 변동성은 높일 수 있다.",
+      "valuation_change": "개별 목표가·밸류에이션 변경 없음",
+      "tone_change": "비교 가능한 이전 자료가 없어 톤 변화는 단정하지 않음",
+      "stance": "neutral",
+      "watch": [
+        "1~3개월 ATM 스왑션 프리미엄",
+        "인플레이션·재정위험",
+        "동적 델타헤지 성과"
+      ],
+      "date_note": "공식 본문에 2026년 10월 26일 표시",
+      "coverage_note": "BNP Paribas Global Markets QIS Lab의 공식 소개문만 확인. 전체 백서는 고객 접근이 필요해 전문을 확인했다고 주장하지 않음.",
+      "first_seen_at": "2026-10-26T23:07:48.459Z",
+      "last_verified_at": "2026-10-26T23:07:48.459Z",
+      "prior_source": "https://globalmarkets.cib.bnpparibas/a-guide-to-volatility-arbitrage-strategies-in-portfolio-risk-management/",
+      "initial_archive": false
+    },
+    {
+      "id": "daiwa-genai-text-indicators-20261026",
+      "publisher": "Daiwa",
+      "division": "Daiwa Institute of Research · Economic Research Department",
+      "published_at": "2026-10-26",
+      "title": "生成AI時代の景気判断とテキスト経済指標",
+      "title_ko": "생성AI 시대의 경기판단과 텍스트 경제지표",
+      "sectors": [
+        "AI·IT하드웨어",
+        "매크로·전략"
+      ],
+      "companies": [],
+      "document_type": "research_article",
+      "source_scope": "official_summary",
+      "source_url": "https://www.dir.co.jp/report/research/economics/japan/20261026_030188.html",
+      "headline": "생성AI 기반 텍스트 지표는 기존 통계의 시차와 설명력 한계를 보완할 수 있지만, 공공 데이터 기반과 표본 편향 관리가 선행돼야 한다.",
+      "facts": [
+        "공식 요약은 텍스트 지표가 정도·확신도·배경·전망 정보를 기존 수치통계에 보완할 수 있다고 설명한다.",
+        "민간 빅데이터의 제공 중단과 표본편향 위험을 지적하고, 경기워처조사 같은 공공 텍스트 데이터 확대를 제안한다."
+      ],
+      "interpretation": "경기 선행지표 개발에는 모델 정교화만큼 지속 가능한 원천 데이터와 재현성 있는 검증체계가 중요하다는 신호다.",
+      "estimate_signal": "개별 기업 실적 추정 변경은 없다. 텍스트 지표가 축적되면 경기·소비·고용 추정의 선행성이 개선될 가능성이 있다.",
+      "valuation_change": "개별 목표가·밸류에이션 변경 없음",
+      "tone_change": "비교 가능한 이전 자료가 없어 톤 변화는 단정하지 않음",
+      "stance": "neutral",
+      "watch": [
+        "공공 텍스트 데이터 개방",
+        "지표의 실시간성·재현성",
+        "표본편향 검증"
+      ],
+      "date_note": "공식 페이지에 2026년 10월 26일 표시",
+      "coverage_note": "Daiwa Institute of Research 경제조사부의 공식 공개 요약 범위에서만 독자적으로 요약. Nomura/NRI와 무관하며 PDF 전문을 복제하지 않음.",
+      "first_seen_at": "2026-10-26T23:07:48.459Z",
+      "last_verified_at": "2026-10-26T23:07:48.459Z",
+      "prior_source": null,
+      "initial_archive": false
+    },
+    {
+      "id": "daiwa-voting-pass-through-20261026",
+      "publisher": "Daiwa",
+      "division": "Daiwa Institute of Research · Policy Research Department",
+      "published_at": "2026-10-26",
+      "title": "利用広がる議決権パススルー",
+      "title_ko": "확산되는 의결권 패스스루: 펀드 고객의 직접 선택 확대",
+      "sectors": [
+        "금융·신용",
+        "기타"
+      ],
+      "companies": [
+        {
+          "ticker": "BLK",
+          "name": "BlackRock",
+          "relationship": "의결권 패스스루 확대 사례로 원문 언급"
+        },
+        {
+          "ticker": "STT",
+          "name": "State Street",
+          "relationship": "의결권 패스스루 확대 사례로 원문 언급"
+        }
+      ],
+      "document_type": "research_article",
+      "source_scope": "official_summary",
+      "source_url": "https://www.dir.co.jp/report/research/capital-mkt/asset/20261026_026160.html",
+      "headline": "의결권 패스스루가 대형 운용사의 수탁자책임·고객선택 구조를 바꾸고 있어 일본 운용사에도 제도 검토 압력이 커질 수 있다.",
+      "facts": [
+        "공식 요약은 미국을 중심으로 펀드 고객이 사전 정책을 선택해 보유지분의 의결권 방향을 정하는 방식이 확산됐다고 설명한다.",
+        "Vanguard·BlackRock·State Street의 이용 확대와 달리 일본 리테일 펀드에서는 공개된 도입 움직임이 뚜렷하지 않다고 지적한다."
+      ],
+      "interpretation": "패스스루는 ESG 찬반 판단을 운용사에서 고객으로 이동시키며, 운용 플랫폼의 데이터·투표 인프라 경쟁을 촉진할 수 있다.",
+      "estimate_signal": "단기 실적 추정 영향은 제한적이다. 중장기적으로 대형 운용사의 시스템 투자와 고객 유지비용에 영향을 줄 수 있다.",
+      "valuation_change": "개별 목표가·밸류에이션 변경 없음",
+      "tone_change": "비교 가능한 이전 자료가 없어 톤 변화는 단정하지 않음",
+      "stance": "neutral",
+      "watch": [
+        "일본 리테일 펀드 도입",
+        "투표정책 선택률",
+        "운용사 시스템 비용"
+      ],
+      "date_note": "공식 페이지에 2026년 10월 26일 표시",
+      "coverage_note": "Daiwa Institute of Research 정책조사부의 공식 공개 요약 확인. 투자은행 리서치가 아닌 정책·자산운용 연구로 구분.",
+      "first_seen_at": "2026-10-26T23:07:48.459Z",
+      "last_verified_at": "2026-10-26T23:07:48.459Z",
+      "prior_source": null,
+      "initial_archive": false
+    },
+    {
+      "id": "daiwa-japan-awm-model-20261026",
+      "publisher": "Daiwa",
+      "division": "Daiwa Institute of Research · Financial Research Department",
+      "published_at": "2026-10-26",
+      "title": "日本版米国型ＡＷＭビジネスモデルを創出するための条件",
+      "title_ko": "일본형 미국식 자산·웰스관리 모델의 조건",
+      "sectors": [
+        "금융·신용"
+      ],
+      "companies": [
+        {
+          "ticker": "MS",
+          "name": "Morgan Stanley",
+          "relationship": "저자본 WM 전문은행 모델 사례로 원문 언급"
+        }
+      ],
+      "document_type": "research_article",
+      "source_scope": "official_summary",
+      "source_url": "https://www.dir.co.jp/report/research/capital-mkt/it/20261026_030191.html",
+      "headline": "일본 금융사의 AWM 확장은 단순 상품판매가 아니라 고객기반·CIO·자회사 운용·PB·디지털을 통합하는 자본경량 모델이 핵심이다.",
+      "facts": [
+        "공식 요약은 미국 가계의 상속인 대상 자산이전 규모를 2048년까지 105조달러로 제시한다.",
+        "일본형 모델의 조건으로 고객기반, CIO 기능, captive AM, PB 기능, 디지털 기반의 다섯 요소를 제시한다."
+      ],
+      "interpretation": "은행·증권의 예대마진·브로커리지 의존도를 낮추고 반복 수수료를 키우는 역량이 중장기 ROE 차별화 요인이 될 수 있다.",
+      "estimate_signal": "단기 추정 변경은 없지만 AWM 자산유입과 수수료율, 디지털 투자비가 일본 금융사의 중장기 이익 방향을 가를 수 있다.",
+      "valuation_change": "개별 목표가·밸류에이션 변경 없음",
+      "tone_change": "비교 가능한 이전 자료가 없어 톤 변화는 단정하지 않음",
+      "stance": "positive",
+      "watch": [
+        "AWM 순유입",
+        "수수료 기반 수익 비중",
+        "디지털·PB 투자비"
+      ],
+      "date_note": "공식 페이지에 2026년 10월 26일 표시",
+      "coverage_note": "Daiwa Institute of Research 금융조사부의 공식 공개 요약 확인. Daiwa Securities 투자등급 보고서가 아닌 금융산업 연구로 구분.",
+      "first_seen_at": "2026-10-26T23:07:48.459Z",
+      "last_verified_at": "2026-10-26T23:07:48.459Z",
+      "prior_source": null,
+      "initial_archive": false
+    },
+    {
+      "id": "daiwa-regional-bank-competition-20261026",
+      "publisher": "Daiwa",
+      "division": "Daiwa Institute of Research · Financial Research Department",
+      "published_at": "2026-10-26",
+      "title": "次世代の「地域金融の課題と競争のあり方」",
+      "title_ko": "일본 지역은행 경쟁가능성 재점검",
+      "sectors": [
+        "금융·신용",
+        "매크로·전략"
+      ],
+      "companies": [],
+      "document_type": "research_article",
+      "source_scope": "official_summary",
+      "source_url": "https://www.dir.co.jp/report/research/capital-mkt/it/20261026_030190.html",
+      "headline": "금리상승으로 지역은행 수익은 개선됐지만, 신용비용 증가와 대출마진 축소에 취약한 구조적 문제는 남아 있다.",
+      "facts": [
+        "공식 요약은 2025년도 지역은행 95개 데이터를 재계산해 경쟁 가능한 지역이 크게 늘었다고 설명한다.",
+        "스트레스테스트에서는 인구감소보다 신용비용 증가와 대출마진 하락이 경쟁가능성을 더 크게 낮췄다."
+      ],
+      "interpretation": "현재 이익 개선을 구조적 정상화로 보기 어렵고, 자산건전성·비이자수익·비용효율이 금리 사이클 이후의 지속성을 결정한다.",
+      "estimate_signal": "단기 이익에는 금리상승이 우호적이지만 다음 경기하강기에는 신용비용과 마진 정상화가 하방요인이다.",
+      "valuation_change": "개별 목표가·밸류에이션 변경 없음",
+      "tone_change": "호전된 수익환경을 인정하면서도 구조적 낙관을 경계하는 혼합 톤이다.",
+      "stance": "mixed",
+      "watch": [
+        "신용비용률",
+        "대출마진",
+        "비이자수익·경비율"
+      ],
+      "date_note": "공식 페이지에 2026년 10월 26일 표시",
+      "coverage_note": "Daiwa Institute of Research 금융조사부의 공식 공개 요약 확인. 지역은행 업종 연구이며 개별 은행 투자의견은 없음.",
+      "first_seen_at": "2026-10-26T23:07:48.459Z",
+      "last_verified_at": "2026-10-26T23:07:48.459Z",
+      "prior_source": null,
+      "initial_archive": false
+    },
+    {
+      "id": "daiwa-taxfree-savings-nisa-20261026",
+      "publisher": "Daiwa",
+      "division": "Daiwa Institute of Research · Financial Research Department",
+      "published_at": "2026-10-26",
+      "title": "マル優・NISA等の非課税制度が家計金融資産に及ぼした影響の長期分析",
+      "title_ko": "비과세 저축·NISA가 가계 금융자산에 미친 장기 영향",
+      "sectors": [
+        "금융·신용",
+        "매크로·전략"
+      ],
+      "companies": [],
+      "document_type": "research_article",
+      "source_scope": "official_summary",
+      "source_url": "https://www.dir.co.jp/report/research/law-research/tax/20261026_030189.html",
+      "headline": "이자 비과세만 확대하면 저수익 예금에 머물 수 있어, NISA의 장기 분산투자를 훼손하지 않는 제도 설계가 중요하다.",
+      "facts": [
+        "공식 요약은 실질수익률이 음수인 시기에 이자소득 비과세가 실질 담세력을 보완하지만 명목금리가 낮으면 효과가 작다고 분석한다.",
+        "새 이자 비과세제도가 NISA를 통한 주식·펀드 장기투자를 방해하지 않도록 유의해야 한다고 제안한다."
+      ],
+      "interpretation": "세제혜택의 자산군 배분 효과가 예금·국채 수요와 위험자산 자금유입을 동시에 바꿀 수 있어 금융상품별 자금흐름 관찰이 필요하다.",
+      "estimate_signal": "개별 기업 추정 변경은 없다. 제도화 시 은행 예금, 국채, 펀드 순유입과 금융사 수수료 수익의 방향에 영향을 줄 수 있다.",
+      "valuation_change": "개별 목표가·밸류에이션 변경 없음",
+      "tone_change": "비교 가능한 이전 자료가 없어 톤 변화는 단정하지 않음",
+      "stance": "neutral",
+      "watch": [
+        "2027년도 세제개편",
+        "NISA 순유입",
+        "가계 국채·예금 비중"
+      ],
+      "date_note": "공식 페이지에 2026년 10월 26일 표시",
+      "coverage_note": "Daiwa Institute of Research 금융조사부의 공식 공개 요약 확인. 세제·가계자산 연구로 분류.",
+      "first_seen_at": "2026-10-26T23:07:48.459Z",
+      "last_verified_at": "2026-10-26T23:07:48.459Z",
+      "prior_source": null,
+      "initial_archive": false
+    },
+    {
+      "id": "daiwa-midtech-trap-rd-20261026",
+      "publisher": "Daiwa",
+      "division": "Daiwa Institute of Research · Policy Research Department",
+      "published_at": "2026-10-26",
+      "title": "日本は「中技術国の罠」から抜け出せるか",
+      "title_ko": "일본은 중기술국 함정에서 벗어날 수 있는가",
+      "sectors": [
+        "산업재·자동차",
+        "AI·IT하드웨어",
+        "반도체·장비",
+        "매크로·전략"
+      ],
+      "companies": [],
+      "document_type": "research_article",
+      "source_scope": "official_summary",
+      "source_url": "https://www.dir.co.jp/report/research/economics/japan/20261026_030187.html",
+      "headline": "R&D 총액보다 자동차 중심의 중기술 편중을 줄이고 AI·양자·반도체로 자본과 인재를 재배분하는 것이 생산성 개선의 핵심이다.",
+      "facts": [
+        "공식 요약은 일본의 2024년 R&D가 22.1조엔, GDP의 3.6%로 높지만 생산성 수준과 증가율은 낮다고 설명한다.",
+        "일본과 유럽 R&D의 약 절반이 자동차 등 중기술에 배분됐고, 일본은 특히 편중도가 높다고 지적한다.",
+        "증분·환급형 R&D 세제, 정부조달 금액 약정, 고급 외국인재 정착, 프로젝트 일몰규정 등을 제안한다."
+      ],
+      "interpretation": "정책지원이 실제 예산·조달·인재 이동으로 이어지면 첨단 반도체·AI 생태계에는 중장기 상방, 기존 중기술 산업에는 자본배분 압력이 될 수 있다.",
+      "estimate_signal": "단기 실적 변경은 없지만 정책 집행 시 AI·반도체 R&D 및 정부조달 관련 매출에는 중장기 상방 신호다.",
+      "valuation_change": "개별 목표가·밸류에이션 변경 없음",
+      "tone_change": "정책 방향은 긍정하지만 배분지표·퇴출규율 부재를 지적하는 조건부 긍정이다.",
+      "stance": "mixed",
+      "watch": [
+        "6대 국가전략기술 예산",
+        "R&D 세제 개편",
+        "정부조달 약정·프로젝트 일몰"
+      ],
+      "date_note": "공식 페이지에 2026년 10월 26일 표시",
+      "coverage_note": "Daiwa Institute of Research 정책조사부의 공식 공개 요약 확인. 특정 기업 리서치가 아닌 산업·정책 연구로 구분.",
+      "first_seen_at": "2026-10-26T23:07:48.459Z",
+      "last_verified_at": "2026-10-26T23:07:48.459Z",
+      "prior_source": null,
+      "initial_archive": false
+    },
+    {
+      "id": "daiwa-takaichi-growth-strategy-20261026",
+      "publisher": "Daiwa",
+      "division": "Daiwa Institute of Research · Research Division",
+      "published_at": "2026-10-26",
+      "title": "高市政権の成長戦略に対する期待と不安",
+      "title_ko": "다카이치 정부 성장전략에 대한 기대와 우려",
+      "sectors": [
+        "매크로·전략"
+      ],
+      "companies": [],
+      "document_type": "research_article",
+      "source_scope": "listing_only",
+      "source_url": "https://www.dir.co.jp/report/research/economics/japan/20261026_030186.html",
+      "headline": "일본 성장전략을 다룬 보고서가 공개됐지만, 공개 페이지에 내용 요약이 없어 결론이나 투자방향을 추정하지 않는다.",
+      "facts": [
+        "공식 페이지에서 제목, 2026년 10월 26일 발간일, 저자와 분류를 확인했다.",
+        "공개 페이지에는 보고서 내용의 실질적 요약이 제공되지 않았다."
+      ],
+      "interpretation": "원문 내용을 확인하지 못했으므로 성장·재정·사회보장에 대한 방향을 별도로 해석하지 않는다.",
+      "estimate_signal": "기업 또는 거시 추정치 영향은 공개 정보만으로 판단할 수 없다.",
+      "valuation_change": "확인 가능한 목표가·밸류에이션 변경 없음",
+      "tone_change": "본문 미확인으로 톤 변화를 판단하지 않음",
+      "stance": "unknown",
+      "watch": [
+        "공식 요약 공개 여부",
+        "성장전략 예산·법안",
+        "재정·사회보장 세부안"
+      ],
+      "date_note": "공식 페이지에 2026년 10월 26일 표시",
+      "coverage_note": "Daiwa Institute of Research 발간목록·메타데이터만 확인(listing_only). 공개 요약이 없어 전문을 읽은 것처럼 서술하지 않음.",
+      "first_seen_at": "2026-10-26T23:07:48.459Z",
+      "last_verified_at": "2026-10-26T23:07:48.459Z",
+      "prior_source": null,
+      "initial_archive": false
     }
   ],
   "checks": [
@@ -1561,6 +1998,13 @@
       "new_publications": 0,
       "added_reports": 4,
       "note": "providers 18곳의 공식 공개 경로와 최근 7일을 재검색. 직전 점검 이후 신규 발간은 확인되지 않았고 색인 지연·월 단위 발간일의 과거 누락분 4건을 중복 없이 추가. 일자 미공개 자료는 published_at을 null로 유지하고 published_month와 설명을 기록. 고객 전용 원문은 우회하지 않음."
+    },
+    {
+      "checked_at": "2026-10-26T23:07:48.459Z",
+      "kind": "daily_review",
+      "new_publications": 8,
+      "added_reports": 11,
+      "note": "providers 18곳의 공식 공개 경로와 최근 7일을 재검색. 직전 점검 이후 2026-10-26 신규 공개물 8건(Daiwa Institute 7건, BNP Paribas QIS Lab 1건)과 색인 지연분 3건(Goldman Sachs 2건, UBS 1건)을 중복 없이 추가. 자료 유형과 확인 범위를 구분하고 고객 전용 원문은 우회하지 않음."
     }
   ]
 }
