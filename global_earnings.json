@@ -8198,7 +8198,7 @@
             ]
           ]
         },
-        "note": "실적·전년·전분기 수치는 Teradyne 공식 IR(Q3·Q2 실적 보도자료). 부문별로는 메모리·통합시스템 테스트(ISTG)가 사상 최대, 로보틱스는 3분기 기준 최대 매출·흑자. '시장 예상'은 회사 자료가 아닌 외부 컨센서스이며 집계 기관마다 다르다(Q3 EPS: Investing.com $2.08·FactSet $2.09, Q4 EPS: Investing.com $2.03·LSEG $2.06). '—'는 공식 자료로 비교치를 확인하지 못한 칸.",
+        "note": "실적·전년·전분기 수치는 Teradyne 공식 IR(Q3·Q2 실적 보도자료). '시장 예상'은 회사 자료가 아닌 외부 컨센서스이며 집계 기관마다 다르다(Q3 EPS: Investing.com $2.08·FactSet $2.09, Q4 EPS: Investing.com $2.03·LSEG $2.06). '—'는 공식 자료로 비교치를 확인하지 못한 칸.",
         "consensus_sources": [
           {
             "url": "https://www.investing.com/news/earnings/teradyne-falls-6-despite-strongerthanexpected-q3-print-guidance-93CH-4977003",
@@ -8210,40 +8210,48 @@
           }
         ]
       },
-      "reaction": {
-        "title": "주가 하락 추정 이유",
-        "summary": "분석: 컨센서스를 매출 +3%, EPS +10% 넘었지만 주가는 시간외에서 약 5~6% 하락(외부 보도 기준, 약 $306). 숫자 자체보다 '분기 성장의 정체'가 더 크게 읽힌 것으로 추정한다.",
-        "reasons": [
+      "analysis": {
+        "title": "실적 분석",
+        "segment": "부문별로는 반도체 테스트 $1,072m, 제품 테스트 $138m, 로보틱스 $96m(흑자)이었고, 메모리·통합시스템 테스트는 사상 최대였습니다.",
+        "points": [
           {
-            "title": "① 분기 성장이 멈췄다 (가장 유력)",
-            "body": "매출은 Q1 $1,282m → Q2 $1,329m → Q3 $1,306m → Q4 가이던스 중간 $1,300m로 4개 분기째 $1.3bn 안팎에 머문다. 비GAAP EPS는 $2.56 → $2.47 → $2.29 → $2.10(가이던스 중간)으로 3분기 연속 내려가는 경로다. 전년 대비 +70%라는 숫자에 가려져 있지만, 'AI 테스트 수요가 정점(피크)에 왔다'는 우려가 나오기 쉬운 구조다."
+            "title": "① 분기 대비로는 성장이 멈췄습니다 (가장 중요)",
+            "body": "매출은 Q1 $1,282m → Q2 $1,329m → Q3 $1,306m → Q4 가이던스 중간값 $1,300m로 4개 분기째 $1.3bn 안팎에 머뭅니다. 비GAAP EPS는 $2.56 → $2.47 → $2.29 → $2.10(가이던스 중간값)으로 3분기 연속 낮아지는 경로입니다. 전년 대비 +70%라는 숫자에 가려져 있지만 분기 기준으로는 제자리라서, 'AI 테스트 수요가 정점(피크)에 왔다'는 우려가 나올 수 있는 구조입니다."
           },
           {
-            "title": "② Q4 EPS 전망이 다시 낮아진다",
-            "body": "Q4 비GAAP EPS 가이던스 중간값 $2.10은 시장 예상($2.03, 집계에 따라 $2.06)을 조금 넘지만 Q3 실적 $2.29보다 8% 낮고, 하단 $1.95는 예상보다 낮다. 주가가 높은 기대를 반영하고 있었다면 이 정도로는 부족하다."
+            "title": "② 4분기 EPS 전망이 다시 낮아집니다",
+            "body": "Q4 비GAAP EPS 가이던스 중간값 $2.10은 시장 예상 $2.03(집계에 따라 $2.06)을 조금 넘지만, Q3 실적 $2.29보다 8% 낮습니다. 하단 $1.95는 시장 예상보다 낮습니다. 기대가 높은 상태라면 이 정도 가이던스로는 부족하다는 평가가 나올 수 있습니다."
           },
           {
-            "title": "③ 수익성도 2분기 연속 하락",
-            "body": "비GAAP 영업이익률이 Q2 33.7% → Q3 31.6%로 낮아졌다. 매출이 제자리인데 비용이 늘면 이익이 먼저 꺾인다는 신호로 읽힐 수 있다."
+            "title": "③ 수익성이 2분기 연속 낮아졌습니다",
+            "body": "비GAAP 영업이익률은 Q2 33.7% → Q3 31.6%, 매출총이익률은 59.8% → 59.1%로 내려왔습니다. 전년(20.4%)보다는 훨씬 높지만, 매출이 정체된 구간에서 비용이 늘며 이익이 매출보다 먼저 둔화하고 있습니다."
           },
           {
-            "title": "④ AI 기대가 이미 높았다",
-            "body": "외부 보도 기준 주가는 발표 전날(10/26) 종가로 연초 대비 약 +49% 올라 있었다. 기대가 높은 자리라 차익 실현 매물이 나오기 쉬웠다."
+            "title": "④ 다만 성장의 폭은 넓어지고 있습니다",
+            "body": "반도체 테스트는 QoQ −4.5%였지만 제품 테스트가 $107m → $138m(+29%)로 늘었고, 로보틱스는 3분기 기준 최대 매출로 흑자를 냈습니다. 회사는 수요가 메모리·HDD 테스트·고속 인터커넥트·로보틱스로 넓어졌다고 설명했습니다. 메모리 테스트 사상 최대는 HBM·고용량 DRAM 테스트 투자가 계속되고 있다는 신호입니다."
+          },
+          {
+            "title": "⑤ AI 기대가 이미 높았습니다",
+            "body": "외부 보도 기준 주가는 발표 전날(10/26) 종가로 연초 대비 약 +49% 올라 있었습니다. 컨센서스를 매출 +3%, EPS +10% 넘었는데도 발표 후 시간외에서 약 5~6% 내린 것은, 시장이 '얼마나 넘었나'보다 '다음 분기에도 커지나'를 보고 있다는 뜻입니다."
           }
         ],
-        "counterpoint": "분석: 반대로 메모리 테스트 사상 최대, 제품 테스트 +29% QoQ, 로보틱스 흑자는 수요가 넓어지고 있다는 근거다. 10/28 컨콜의 2027년 테스트 시장 전망과 Advantest(10/28) 실적이 '정점'인지 '고원 후 재성장'인지를 가를 확인 포인트다.",
+        "conclusion": "정리: 숫자는 컨센서스를 넘었지만 분기 기준 매출은 고점권에서 정체, EPS·이익률은 하락 경로입니다. 다음 확인 포인트는 10/28 컨콜의 2027년 테스트 시장 전망과 Advantest(10/28) 실적으로, 지금이 '정점'인지 '고원 후 재성장'인지를 가르는 근거가 됩니다.",
         "sources": [
-          {
-            "url": "https://www.investing.com/news/earnings/teradyne-falls-6-despite-strongerthanexpected-q3-print-guidance-93CH-4977003",
-            "label": "Investing.com(주가 −6%, 외부)"
-          },
-          {
-            "url": "https://rallies.ai/news/teradyne-q3-adjusted-eps-usd-229-vs-ibes-estimate-usd-208-a1cdfab66b860aa8",
-            "label": "시간외 −5.3%·연초 대비 +49%(외부 보도)"
-          },
           {
             "url": "https://investors.teradyne.com/news-events/press-releases/detail/445",
             "label": "Teradyne Q2 2026 공식 보도자료(Q1·Q2 수치)"
+          },
+          {
+            "url": "https://investors.teradyne.com/news-events/press-releases/detail/455/teradyne-reports-third-quarter-2026-results",
+            "label": "Teradyne Q3 2026 공식 보도자료"
+          },
+          {
+            "url": "https://www.investing.com/news/earnings/teradyne-falls-6-despite-strongerthanexpected-q3-print-guidance-93CH-4977003",
+            "label": "Investing.com(컨센서스·주가, 외부)"
+          },
+          {
+            "url": "https://rallies.ai/news/teradyne-q3-adjusted-eps-usd-229-vs-ibes-estimate-usd-208-a1cdfab66b860aa8",
+            "label": "연초 대비 +49%·시간외 −5.3%(외부 보도)"
           }
         ]
       }
