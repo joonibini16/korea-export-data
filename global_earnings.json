@@ -7604,6 +7604,99 @@
           }
         ]
       }
+    },
+    {
+      "ticker": "NOVN.SW",
+      "period": "2026 Q3",
+      "date": "2026-10-27",
+      "evidence": "공식 Q3 실적 보도자료(Art. 53 LR 수시공시, 회사 배포) · 7/21 공식 Q2 실적 발표(SEC 6-K 첨부)와 대조",
+      "direction": "개선",
+      "headline": "Q3 매출 +4%(cc)·core 영업이익 +10%(cc)로 반등 · 연간 core 영업이익 가이던스 '한 자릿수 초반 감소'→'보합~한 자릿수 초반 증가'로 상향",
+      "estimate_signal": "core 영업이익·EPS 추정 상향 근거(연간 가이던스 상향) · 매출 가이던스(low single-digit 증가)는 유지 · 일회성 손상(USD 1.9bn)으로 보고 순이익은 급감",
+      "call_coverage": "공식 보도자료 기준 · 공식 Q&A 녹취록 미확인; Q&A 톤 평가 없음",
+      "changes": [
+        {
+          "title": "성장률 반등과 특허만료 영향 축소",
+          "direction": "개선",
+          "before": "Q2: 매출 USD 14,408m(+1% cc), 제네릭 경쟁 영향 -14%p, core 영업이익 USD 5,940m(cc 보합), core 마진 41.2%.",
+          "now": "Q3: 매출 USD 14,522m(+4% cc), 물량 +14%p·제네릭 -9%p·가격 -1%p. core 영업이익 USD 6,036m(+10% cc), core 마진 41.6%(+2.0%p cc), core EPS USD 2.46(+8% cc).",
+          "meaning": "Entresto 등 특허만료 충격이 정점을 지나며 신제품 성장이 실적 증가로 이어지기 시작한 분기."
+        },
+        {
+          "title": "연간 가이던스",
+          "direction": "상향",
+          "before": "7/21: 2026년 매출 low single-digit 증가, core 영업이익 low single-digit 감소(cc).",
+          "now": "10/27: 매출 low single-digit 증가 유지, core 영업이익 '보합~low single-digit 증가(in line to grow low single-digit)'로 상향. 10월 말 환율 기준 매출·core 영업이익 각각 +1%p 환율 효과.",
+          "meaning": "이익 추정치의 바닥 확인 신호. 매출 가이던스는 그대로라 마진 개선이 상향의 핵심."
+        },
+        {
+          "title": "성장 브랜드 vs 특허만료 브랜드",
+          "direction": "개선",
+          "before": "Q2 cc 성장: Kisqali +43%, Kesimpta +32%, Pluvicto +43%, Leqvio +59%, Scemblix +89%, Entresto -51%.",
+          "now": "Q3 cc 성장: Kisqali USD 1,821m(+37%), Kesimpta 1,484m(+22%), Scemblix 593m(+67%), Leqvio 506m(+63%), Pluvicto 674m(+20%), Cosentyx 1,857m(+9%), Entresto 1,165m(-38%).",
+          "meaning": "성장 브랜드 증가율은 다소 둔화(특히 Pluvicto)됐지만 Entresto 감소 폭이 줄어 순효과는 개선."
+        },
+        {
+          "title": "파이프라인 차질과 손상",
+          "direction": "악화",
+          "before": "Q2 발표 시점 del-desiran·pelacarsen 3상 결과 대기.",
+          "now": "del-desiran(DM1) 3상 HARBOR 1차 평가변수 미달로 USD 1.9bn 부분 손상, pelacarsen 3상 HORIZON 1차 평가변수 미달, remibrutinib 중증근무력증 3상 중단. 반면 remibrutinib 재발성 MS 3상 긍정, Pluvicto mHSPC FDA·중국 승인.",
+          "meaning": "보고 영업이익(-61% cc)·순이익(-71% cc) 급감은 손상 영향. 중장기 파이프라인 신뢰도는 점검 필요."
+        }
+      ],
+      "facts": "Q3 매출 USD 14,522m(+4% USD·cc), 영업이익 USD 1,843m(-61% cc), core 영업이익 USD 6,036m(+10% cc), core 마진 41.6%, 순이익 USD 1,196m(-71% cc), core EPS USD 2.46(+8% cc), FCF USD 5,111m(-18%). 9개월 매출 USD 42,043m(0% cc), core 영업이익 USD 16,873m(-2% cc). 상위 20개 브랜드 Q3 USD 12,052m(+7% cc). 9개월 자사주 30.9백만주(USD 4.7bn) 매입, USD 10bn 프로그램 잔여 최대 USD 4.9bn. 순부채 USD 37.4bn(2025년 말 21.9bn).",
+      "guidance": "2026년(cc, 전년 대비): 매출 low single-digit 증가(유지), core 영업이익 low single-digit 감소 → 보합~low single-digit 증가로 상향. 10월 말 환율 지속 시 매출·core 영업이익 각 +1%p.",
+      "tone": "공식 보도자료의 CEO(Vas Narasimhan) 발언: Q3가 사업의 '대체 성장력(replacement power)'을 보여줬고 중장기 전망 달성 궤도에 있다고 언급. 공식 Q&A 녹취록 미확인.",
+      "interpretation": "분석: Entresto 미국 제네릭 진입으로 상반기 이익이 줄었던 Novartis가 Q3에 매출·core 이익 모두 플러스로 돌아서고 연간 이익 가이던스를 올렸다. '특허절벽 바닥 통과'를 공식 수치로 확인한 분기. 다만 손상(USD 1.9bn)과 3상 실패 2건, 인수 등으로 늘어난 순부채(USD 37.4bn)는 부담. 한국 관점: Kisqali·Kesimpta·Leqvio 등 신약 성장 지속은 CDMO(바이오의약품 위탁생산) 수요 측면에서 우호적이고, 제네릭 영향 축소는 글로벌 빅파마 이익 바닥론에 힘을 싣는 신호.",
+      "watch": "Q4 core 마진 유지 여부, Entresto 감소 폭 추가 축소, Pluvicto 성장 둔화(Q2 +43%→Q3 +20%), del-desiran·pelacarsen 실패 이후 파이프라인 재평가, 순부채 증가와 자사주 매입 속도, 미국 약가 정책 영향.",
+      "source": "https://www.globenewswire.com/news-release/2026/10/27/3388691/0/en/novartis-delivered-sales-growth-and-core-margin-expansion-in-q3-raised-fy-core-operating-income-guidance.html",
+      "source_label": "Novartis Q3 2026 공식 실적 보도자료(회사 배포, Art. 53 LR 수시공시)",
+      "prior_source": "https://www.sec.gov/Archives/edgar/data/0001114448/000111444826000012/nvs-20260630-99_1.htm",
+      "prior_source_label": "7/21 Novartis Q2 2026 공식 실적 발표(SEC 6-K 첨부)",
+      "call_topics": [
+        {
+          "topic": "실적 반등",
+          "source_part": "공식 보도자료",
+          "points": [
+            "Q3 매출 +4% cc, core 영업이익 +10% cc.",
+            "core 마진 41.6%(+2.0%p cc).",
+            "제네릭 영향 Q2 -14%p → Q3 -9%p."
+          ],
+          "implication": "특허만료 충격 완화와 신제품 성장으로 이익 반등."
+        },
+        {
+          "topic": "가이던스·파이프라인",
+          "source_part": "공식 보도자료",
+          "points": [
+            "연간 core 영업이익 가이던스 상향(감소→보합~증가).",
+            "del-desiran 3상 실패로 USD 1.9bn 손상.",
+            "remibrutinib 재발성 MS 3상 긍정."
+          ],
+          "implication": "이익 바닥 확인, 파이프라인 신뢰도는 점검."
+        }
+      ],
+      "call_readthrough": {
+        "scope": "Novartis 공식 Q3 보도자료를 한국어로 짧게 재서술. 컨콜 Q&A 원문 미검증.",
+        "groups": [
+          {
+            "title": "발표 흐름",
+            "items": [
+              {
+                "title": "Q3 결과",
+                "body": "매출은 고정환율 4%, core 영업이익은 10% 늘었다. 제네릭 경쟁으로 깎인 성장률이 Q2 -14%p에서 -9%p로 줄었다."
+              },
+              {
+                "title": "전망",
+                "body": "연간 매출 전망은 유지하고, core 영업이익 전망을 '소폭 감소'에서 '보합~소폭 증가'로 올렸다."
+              },
+              {
+                "title": "투자 관전점",
+                "body": "Q4 마진 유지, Entresto 감소 둔화, 3상 실패 이후 파이프라인과 순부채 추이를 본다."
+              }
+            ]
+          }
+        ]
+      }
     }
   ],
   "upcoming": [
@@ -7620,13 +7713,6 @@
       "time": "10:30 America/New_York(컨콜)",
       "event": "2026 Q3 실적·컨퍼런스콜",
       "source": "https://boeing.mediaroom.com/2026-09-30-Boeing-to-Release-Third-Quarter-Results-on-October-27"
-    },
-    {
-      "ticker": "NOVN.SW",
-      "date": "2026-10-27",
-      "time": "13:00 Europe/Zurich(웹캐스트)",
-      "event": "2026 Q3 실적 발표",
-      "source": "https://www.novartis.com/investors/event-calendar"
     },
     {
       "ticker": "NXPI",
