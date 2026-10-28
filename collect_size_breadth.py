@@ -165,6 +165,17 @@ def main():
             mk['buckets'].append(dict(name=nm, idx_chg=chg, grade=g, badge=badge, members=len(mem), trend=trend, **cur))
             log_rows.append(dict(ts=ts, date=live_day, market=m, bucket=nm, breadth=cur['breadth'], nh=cur['nh'], nl=cur['nl'], n=cur['n'], idx_chg=chg, grade=g))
         res['markets'][m] = mk
+    res['daily_strength'] = daily_strength(rank, hist, days10)
+    if OUT.exists():
+        old = json.loads(OUT.read_text())
+        if old.get('live_day', '') > live_day:
+            raise RuntimeError('stale response; preserve existing output')
+        for group in res['daily_strength']['groups']:
+            previous = next((g for g in old.get('daily_strength', {}).get('groups', []) if g['id'] == group['id']), {})
+            merged = {r['date']: r for r in previous.get('rows', [])}
+            merged.update({r['date']: r for r in group['rows']})
+            group['rows'] = sorted(merged.values(), key=lambda r: r['date'])
+            add_sma(group['rows'])
     OUT.write_text(json.dumps(res, ensure_ascii=False, separators=(',', ':')))
     new = not LOG.exists()
     with LOG.open('a', encoding='utf-8', newline='') as fh:
@@ -175,5 +186,50 @@ def main():
         print(m, [(b['name'], b['breadth'], b['grade'], b['idx_chg'], b['badge']) for b in res['markets'][m]['buckets']])
 
 
+def add_sma(rows):
+    for i, row in enumerate(rows):
+        window = rows[max(0, i - 4):i + 1]
+        row['sma5'] = round(sum(r['value'] for r in window) / 5, 2) if len(window) == 5 and all(r['value'] is not None for r in window) else None
+
+
+def daily_strength(rank, hist, dates):
+    """Photo-inspired A/D percent proxy, not a reverse-engineered original index.
+
+    Current market-cap top 200/150 are NOT official KOSPI200/KOSDAQ150.
+    Flat prices are counted separately, excluded from the A/D denominator.
+    Missing prices are never zero-filled. Reject days with <95% coverage.
+    """
+    groups = []
+    for key, name, members in (
+        ('KOSPI_TOP200', '코스피 시총 상위 200 · 대용', rank['KOSPI'][:200]),
+        ('KOSDAQ_TOP150', '코스닥 시총 상위 150 · 대용', rank['KOSDAQ'][:150]),
+        ('KOSDAQ_ALL', '코스닥 전체 보통주', rank['KOSDAQ']),
+    ):
+        rows = []
+        for day in dates:
+            up = down = flat = missing = 0
+            for member in members:
+                series = hist.get(member['code'], [])
+                pos = next((i for i, (d, _) in enumerate(series) if d == day), None)
+                if pos is None or pos == 0:
+                    missing += 1
+                    continue
+                now, prev = series[pos][1], series[pos - 1][1]
+                if now > prev: up += 1
+                elif now < prev: down += 1
+                else: flat += 1
+            n = up + down + flat
+            value = round(100 * (up - down) / (up + down), 2) if up + down and n >= len(members) * .95 else None
+            rows.append(dict(date=day, value=value, up=up, down=down, flat=flat, missing=missing, eligible=n, total=len(members)))
+        add_sma(rows)
+        if not rows or rows[-1]['value'] is None:
+            raise RuntimeError(f'{key}: insufficient A/D coverage; preserve existing output')
+        groups.append(dict(id=key, name=name, rows=rows))
+    return dict(version=1, original_method_verified=False,
+        formula='100*(advances-declines)/(advances+declines); unchanged excluded',
+        universe='현재 시총 순위 보통주; 공식 KOSPI200/KOSDAQ150 구성 아님; 과거에도 현재 구성 사용', groups=groups)
+
+
 if __name__ == '__main__':
     main()
+
