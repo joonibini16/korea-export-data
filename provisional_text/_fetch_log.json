@@ -1,8 +1,6 @@
 {
- "found": 22,
+ "found": 51,
  "saved": [],
- "errors": [
-  "list 23: 503 Server Error: Service Temporarily Unavailable for url: https://customs.go.kr/kcs/na/ntt/selectNttList.do?bbsId=1362&mi=2891&currPage=23"
- ],
- "pages": 22
+ "errors": [],
+ "pages": 60
 }
