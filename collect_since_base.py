@@ -141,5 +141,12 @@ def main(BASE, OUT, HI, CHG, icur_cache):
 
 if __name__ == '__main__':
     HI, CHG = ytd_stats(); ic = {}
+    # 당일 기준: 현재가 날짜(네이버 시세 기준일) 바로 앞 거래일의 KRX 종가 = 전일 종가 대비
+    try:
+        pdate = (ranking('KOSPI')[0].get('localTradedAt') or '')[:10]
+        prev = max(fp.name[:10] for fp in (ROOT / 'foreign_buy_days').glob('20*.json.gz') if fp.name[:10] < (pdate or dt.datetime.now(KST).date().isoformat()))
+        BASES[prev] = 'since_base_today.json'
+    except Exception as e:
+        print('today base skipped', e)
     for b, out in BASES.items():
         main(b, out, HI, CHG, ic)
