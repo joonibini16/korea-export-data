@@ -6,7 +6,7 @@ on:
       max_days: {description: '한 번에 받을 최대 일수', required: false, default: '70'}
   push:
     branches: [main]
-    paths: ['collect_foreign_buy.py', 'build_flow_oscillator.py', '.github/workflows/foreign_buy.yml']
+    paths: ['collect_foreign_buy.py', 'build_flow_oscillator.py', 'build_rs.py', '.github/workflows/foreign_buy.yml']
   schedule:
     # 한국시간 평일 15:50, 16:20, 18:10, 20:40, 21:30, 22:30
     # 20시 장 종료 이후 KRX 최종치 지연에 대비해 21:30/22:30 재조회
@@ -39,9 +39,11 @@ jobs:
           BACKFILL_FROM: ${{ github.event.inputs.backfill_from }}
           MAX_DAYS: ${{ github.event.inputs.max_days || '70' }}
       - run: python build_flow_oscillator.py
+      - run: python build_rs.py
+        continue-on-error: true
       - run: |
           git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add foreign_buy.json foreign_buy_hist.csv foreign_buy_status.json foreign_buy_periods.json foreign_buy_series.json foreign_buy_days invest_days inst_buy_periods.json inst_buy_series.json trust_buy_periods.json trust_buy_series.json pe_buy_periods.json pe_buy_series.json fi_buy_periods.json fi_buy_series.json corp_buy_periods.json corp_buy_series.json pension_buy_periods.json pension_buy_series.json core_buy_periods.json core_buy_series.json flow_oscillator.json flow_stocks.json flow_oscillator_core.json flow_stocks_core.json 2>/dev/null || git add foreign_buy_status.json
+          git add rs_rank.json foreign_buy.json foreign_buy_hist.csv foreign_buy_status.json foreign_buy_periods.json foreign_buy_series.json foreign_buy_days invest_days inst_buy_periods.json inst_buy_series.json trust_buy_periods.json trust_buy_series.json pe_buy_periods.json pe_buy_series.json fi_buy_periods.json fi_buy_series.json corp_buy_periods.json corp_buy_series.json pension_buy_periods.json pension_buy_series.json core_buy_periods.json core_buy_series.json flow_oscillator.json flow_stocks.json flow_oscillator_core.json flow_stocks_core.json 2>/dev/null || git add foreign_buy_status.json
           if ! git diff --cached --quiet; then
             git commit -qm "Update foreign buy ranking"
             for attempt in 1 2 3 4 5; do

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RS 강도 순위</title><script src="./shell.js?v=37"></script>
+<style>:root{font-family:Arial,"Noto Sans KR",sans-serif}*{box-sizing:border-box}body{margin:0}main{max-width:1500px;margin:26px auto;padding:0 22px}.muted{font-size:13px;color:#93a3bd;line-height:1.6}
+.panel{border-radius:12px;padding:18px 20px;margin-bottom:18px}h2{font-size:19px;margin:0 0 6px}h3{font-size:15px;margin:10px 0 6px}
+.ctl{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:10px 0 14px}.ctl label{font-size:13px;color:#93a3bd;margin-left:8px}.ctl input,.ctl select{background:#0f1a31;color:#e2e8f0;border:1px solid #2a3a5c;border-radius:8px;padding:6px 10px;font-size:13px}
+.mt{display:flex;gap:8px;margin:0 0 14px}.mt button{padding:9px 22px;border-radius:10px;border:1px solid #2a3a5c;background:#0f1a31;color:#cbd5e1;font-size:15px;font-weight:700;cursor:pointer}.mt button.on{background:#2563eb;border-color:#2563eb;color:#fff}
+.cards{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:6px 0 14px}.card{border:1px solid #22314f;background:#0f1a31;border-radius:10px;padding:12px 14px}.card small{display:block;color:#93a3bd;font-size:12px}.card b{display:block;font-size:20px;margin-top:4px}.card span{font-size:12px;color:#93a3bd}
+.kt{border-collapse:collapse;width:100%;font-size:13.5px;font-variant-numeric:tabular-nums}.kt th,.kt td{border-bottom:1px solid #22314f;padding:7px 8px;text-align:right;white-space:nowrap}.kt th{color:#93a3bd;font-weight:600;cursor:pointer;user-select:none}.kt th.sorted{color:#e2e8f0}.kt td.l,.kt th.l{text-align:left}
+.up{color:#f87171}.dn{color:#60a5fa}.tw{overflow:auto;max-height:calc(100vh - 90px);border-radius:8px}.kt thead th{position:sticky;top:0;z-index:2;background:#16223f;box-shadow:inset 0 -1px 0 #2b3d63}
+.rs{display:inline-block;min-width:34px;padding:2px 6px;border-radius:6px;font-weight:700;text-align:center;color:#0b1220}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px}@media(max-width:1000px){.g2,.cards{grid-template-columns:1fr 1fr}}.more{margin-top:10px;padding:7px 16px;border-radius:8px;border:1px solid #2a3a5c;background:#0f1a31;color:#cbd5e1;cursor:pointer}
+.star{color:#facc15;font-weight:700}
+</style><link rel="stylesheet" href="./shell.css?v=3"></head><body><main>
+<h1 data-upd="rs_rank.json">RS 강도 순위 · 코스피·코스닥 전 종목</h1>
+<p class="muted" id="meta">불러오는 중…</p>
+<div class="mt" id="mkt"><button data-m="" class="on">전체</button><button data-m="KOSPI">코스피</button><button data-m="KOSDAQ">코스닥</button></div>
+<section class="panel"><div class="cards" id="cards"></div>
+<div class="g2"><div><h2>업종(대분류)별 RS 중앙값</h2><p class="muted">업종 안 종목 RS 등급의 중앙값. 클릭하면 아래 표가 그 업종으로 걸러집니다.</p><div class="tw" style="max-height:340px"><table class="kt" id="grpT"></table></div></div>
+<div><h2>세부 업종(KIND) RS 상위 15</h2><p class="muted">5종목 이상 업종만. 4주 전보다 중앙값이 오른 업종은 ▲로 표시합니다.</p><div class="tw" style="max-height:340px"><table class="kt" id="secT"></table></div></div></div></section>
+<section class="panel"><h2>종목 순위</h2>
+<div class="ctl"><input id="q" type="search" placeholder="종목명·코드 검색"><label>업종<select id="grp"><option value="">전체</option></select></label>
+<label>시가총액<select id="cap"><option value="0">전체</option><option value="1000" selected>1,000억 이상</option><option value="5000">5,000억 이상</option><option value="10000">1조 이상</option></select></label>
+<label>20일 평균 거래대금<select id="val"><option value="0">전체</option><option value="10" selected>10억 이상</option><option value="50">50억 이상</option><option value="100">100억 이상</option></select></label>
+<label>조건<select id="cond"><option value="">전체</option><option value="80">RS 80 이상</option><option value="rise">4주 새 RS 20 이상 상승</option><option value="line">RS선 신고가</option><option value="lead">RS 80+ · 고점 −15% 이내</option></select></label><span class="muted" id="cnt"></span></div>
+<div class="tw"><table class="kt" id="tbl"></table></div><button class="more" id="more" hidden>더 보기</button>
+<p class="muted" id="method"></p></section>
+</main>
+<script>
+(async function(){
+ const $=id=>document.getElementById(id);let D,M='',sortK='rs',sortD=-1,lim=200,G='';
+ try{D=await (await fetch('rs_rank.json?v='+Date.now(),{cache:'no-store'})).json();}catch(e){$('meta').textContent='자료를 아직 만들지 못했습니다.';return;}
+ const R=D.rows.map(r=>Object.fromEntries(D.columns.map((c,i)=>[c,r[i]])));
+ const pc=v=>v==null?'—':(v>0?'+':'')+v.toFixed(1)+'%',cl=v=>v>0?'up':v<0?'dn':'',fmt=v=>v==null?'—':Number(v).toLocaleString();
+ const med=a=>{const s=a.filter(v=>v!=null).sort((x,y)=>x-y),n=s.length;return n?(n%2?s[(n-1)/2]:(s[n/2-1]+s[n/2])/2):null;};
+ const col=v=>v==null?'#334155':v>=90?'#22c55e':v>=80?'#86efac':v>=60?'#fde68a':v>=40?'#fdba74':'#fca5a5';
+ const badge=v=>`<span class="rs" style="background:${col(v)}">${v??'—'}</span>`;
+ const chg=v=>v==null?'—':`<span class="${cl(v)}">${v>0?'▲':v<0?'▼':''}${Math.abs(v)}</span>`;
+ $('meta').innerHTML=`기준일 <b>${D.asof}</b> · KRX 일별 종가 ${D.n_days}거래일(${D.first}~) · 갱신 ${D.updated_at.replace('T',' ').slice(0,16)} KST`;
+ $('method').textContent=`${D.method}. RS 등급 99 = 상위 1%. 수정종가는 주식 수가 하루 15% 넘게 바뀐 날(액면분할·병합·무상증자)을 기준으로 과거 가격을 보정합니다. 12개월 구간은 자료 시작일(${D.first}) 이전이 없으면 가능한 가장 긴 구간으로 대체합니다. RS선 신고가 = 종가÷소속 지수(코스피·코스닥)가 자료 기간 최고치. 고점 대비 = 자료 기간 최고 종가(수정) 대비. 매수 추천이 아닌 추세 강도 순위입니다.`;
+ [...new Set(R.map(r=>r.group).filter(Boolean))].sort().forEach(g=>$('grp').append(new Option(g,g)));
+ const base=()=>R.filter(r=>(!M||r.market===M));
+ function filt(){const q=$('q').value.trim(),cap=+$('cap').value,val=+$('val').value,cd=$('cond').value,g=$('grp').value;
+  return base().filter(r=>(!q||r.name.includes(q)||r.code.includes(q))&&(r.cap_eok||0)>=cap&&(r.val20_eok||0)>=val&&(!g||r.group===g)&&
+   (!cd||(cd==='80'&&r.rs>=80)||(cd==='rise'&&r.rs_chg_4w>=20)||(cd==='line'&&r.rs_line_high)||(cd==='lead'&&r.rs>=80&&r.from_high>=-15)));}
+ const COLS=[['#','#','n'],['name','종목','l'],['group','업종','l'],['rs','RS'],['rs_chg_1w','1주 변화'],['rs_chg_4w','4주 변화'],['ret_1w','1주'],['ret_1m','1개월'],['ret_3m','3개월'],['ret_6m','6개월'],['from_high','고점 대비'],['rs_line_high','RS선 신고가'],['val20_eok','거래대금(억)'],['cap_eok','시총(억)']];
+ function table(){const A=filt().sort((a,b)=>{const x=a[sortK],y=b[sortK];if(x==null)return 1;if(y==null)return -1;return typeof x==='string'?sortD*x.localeCompare(y):sortD*(x-y);});
+  $('cnt').textContent=`${A.length.toLocaleString()}종목`;
+  $('tbl').innerHTML='<thead><tr>'+COLS.map(([k,t,a])=>`<th class="${a==='l'?'l':''} ${k===sortK?'sorted':''}" data-k="${k}">${t}${k===sortK?(sortD<0?' ▼':' ▲'):''}</th>`).join('')+'</tr></thead><tbody>'+
+   A.slice(0,lim).map((r,i)=>`<tr><td>${i+1}</td><td class="l"><b>${r.name}</b> <span class="muted">${r.code}·${r.market==='KOSPI'?'P':'Q'}</span></td><td class="l muted">${r.group||''}</td><td>${badge(r.rs)}</td><td>${chg(r.rs_chg_1w)}</td><td>${chg(r.rs_chg_4w)}</td>`+
+   ['ret_1w','ret_1m','ret_3m','ret_6m','from_high'].map(k=>`<td class="${cl(r[k])}">${pc(r[k])}</td>`).join('')+`<td>${r.rs_line_high?'<span class="star">★</span>':''}</td><td>${fmt(r.val20_eok)}</td><td>${fmt(r.cap_eok)}</td></tr>`).join('')+'</tbody>';
+  $('more').hidden=A.length<=lim;
+  $('tbl').querySelectorAll('th').forEach(th=>th.onclick=()=>{const k=th.dataset.k;if(k==='#')return;if(sortK===k)sortD=-sortD;else{sortK=k;sortD=['name','group'].includes(k)?1:-1;}table();});}
+ function summary(){const B=base().filter(r=>r.rs!=null),A=filt();
+  const n80=B.filter(r=>r.rs>=80).length,line=B.filter(r=>r.rs_line_high).length,lead=B.filter(r=>r.rs>=80&&r.from_high>=-15).length,rise=B.filter(r=>r.rs_chg_4w>=20).length;
+  $('cards').innerHTML=[['대상 종목',B.length.toLocaleString(),'RS 산출 가능 보통주'],['RS 80 이상',n80.toLocaleString(),'상위 20% 강세주'],['RS선 신고가',line.toLocaleString(),'지수 대비 상대강도 최고치'],['주도주 후보',lead.toLocaleString(),'RS 80+ · 고점 −15% 이내'],['4주 RS 급등',rise.toLocaleString(),'4주 새 RS 20 이상 상승']]
+   .map(([a,b,c])=>`<div class="card"><small>${a}</small><b>${b}</b><span>${c}</span></div>`).join('');
+  const gm=new Map();B.forEach(r=>{if(!r.group)return;(gm.get(r.group)||gm.set(r.group,[]).get(r.group)).push(r);});
+  const gl=[...gm].map(([g,a])=>({g,n:a.length,m:med(a.map(r=>r.rs)),h:a.filter(r=>r.rs>=80).length/a.length*100,c:med(a.map(r=>r.rs_chg_4w))})).sort((a,b)=>b.m-a.m);
+  $('grpT').innerHTML='<thead><tr><th class="l">업종</th><th>종목</th><th>RS 중앙값</th><th>RS 80+ 비중</th><th>4주 변화</th></tr></thead><tbody>'+gl.map(x=>`<tr data-g="${x.g}" style="cursor:pointer${x.g===$('grp').value?';background:#1d2c4d':''}"><td class="l">${x.g}</td><td>${x.n}</td><td>${badge(Math.round(x.m))}</td><td>${x.h.toFixed(0)}%</td><td>${chg(x.c==null?null:Math.round(x.c))}</td></tr>`).join('')+'</tbody>';
+  $('grpT').querySelectorAll('tr[data-g]').forEach(tr=>tr.onclick=()=>{$('grp').value=$('grp').value===tr.dataset.g?'':tr.dataset.g;lim=200;summary();table();});
+  const sm=new Map();B.forEach(r=>{if(!r.sector)return;(sm.get(r.sector)||sm.set(r.sector,[]).get(r.sector)).push(r);});
+  const sl=[...sm].filter(([,a])=>a.length>=5).map(([s,a])=>({s,n:a.length,m:med(a.map(r=>r.rs)),c:med(a.map(r=>r.rs_chg_4w)),top:[...a].sort((x,y)=>y.rs-x.rs).slice(0,3).map(r=>r.name).join(', ')})).sort((a,b)=>b.m-a.m).slice(0,15);
+  $('secT').innerHTML='<thead><tr><th class="l">세부 업종</th><th>종목</th><th>RS 중앙값</th><th>4주</th><th class="l">상위 종목</th></tr></thead><tbody>'+sl.map(x=>`<tr><td class="l">${x.s}</td><td>${x.n}</td><td>${badge(Math.round(x.m))}</td><td>${chg(x.c==null?null:Math.round(x.c))}</td><td class="l muted" style="white-space:normal;min-width:180px">${x.top}</td></tr>`).join('')+'</tbody>';}
+ ['q','grp','cap','val','cond'].forEach(id=>$(id).addEventListener(id==='q'?'input':'change',()=>{lim=200;if(id==='grp')summary();table();}));
+ $('more').onclick=()=>{lim+=200;table();};
+ $('mkt').querySelectorAll('button').forEach(b=>b.onclick=()=>{M=b.dataset.m;$('mkt').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));lim=200;summary();table();});
+ summary();table();
+})();
+</script></body></html>
