@@ -7,7 +7,7 @@
  const cls=v=>v>0?'si-up':v<0?'si-dn':'';
  const med=a=>{const s=a.filter(x=>x!=null&&isFinite(x)).sort((x,y)=>x-y);if(!s.length)return null;const m=s.length>>1;return s.length%2?s[m]:(s[m-1]+s[m])/2;};
  try{
-  const [b,t]=await Promise.all([(new URLSearchParams(location.search).get('base')==='1016'?'since_base_1016.json':'since_base.json'),'since_themes.json'].map(f=>fetch(f+'?v='+Date.now(),{cache:'no-store'}).then(r=>{if(!r.ok)throw Error(f+' HTTP '+r.status);return r.json();})));
+  const [b,t]=await Promise.all([(({'1016':'since_base_1016.json','1026':'since_base_1026.json'})[new URLSearchParams(location.search).get('base')]||'since_base.json'),'since_themes.json'].map(f=>fetch(f+'?v='+Date.now(),{cache:'no-store'}).then(r=>{if(!r.ok)throw Error(f+' HTTP '+r.status);return r.json();})));
   const rows=[];for(const [mk,v] of Object.entries(b.markets||{})){const c=v.columns;for(const r of v.rows){const x={};c.forEach((k,i)=>x[k]=r[i]);x.mkt=mk;if(x.type==='stock'&&x.chg_pct!=null)rows.push(x);}}
   const byName=new Map(rows.map(r=>[r.name,r]));const ix=b.index||{};
   box.append(el('h2',null,'상승·하락 종목군 특징'));

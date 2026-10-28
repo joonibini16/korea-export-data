@@ -1,4 +1,4 @@
-name: Since-base price change (2026-07-30, 2026-10-16)
+name: Since-base price change (2026-07-30, 10-16, 10-26)
 on:
   workflow_dispatch:
   push:
@@ -20,9 +20,9 @@ jobs:
       - run: python collect_since_base.py
       - run: |
           git config user.name github-actions; git config user.email github-actions@github.com
-          cp since_base.json /tmp/sb.json; cp since_base_1016.json /tmp/sb1016.json
+          mkdir -p /tmp/sb && cp since_base*.json /tmp/sb/
           for i in 1 2 3 4 5; do
-            git fetch -q origin main && git reset -q --hard origin/main && cp /tmp/sb.json since_base.json && cp /tmp/sb1016.json since_base_1016.json
-            git add since_base.json since_base_1016.json; git diff --cached --quiet && exit 0
+            git fetch -q origin main && git reset -q --hard origin/main && cp /tmp/sb/since_base*.json .
+            git add since_base*.json; git diff --cached --quiet && exit 0
             git commit -qm "Update since-base price change" && git push -q origin HEAD:main && exit 0; sleep $((i*4))
           done; exit 1

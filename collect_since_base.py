@@ -3,11 +3,11 @@
 - 기준 종가: KRX 정보데이터시스템 일별 전종목 시세(foreign_buy_days/2026-07-30.json.gz, 이미 수집된 원본)
 - 현재가: 네이버 증권 시가총액 순위 API(m.stock.naver.com/api/stocks/marketValue, 장중엔 현재가·장 마감 후엔 종가)
 - 지수: 네이버 지수 API 현재값, 기준일 지수 종가는 market_daily.csv(^KS11·^KQ11)
-Output: since_base.json(2026-07-30 기준), since_base_1016.json(2026-10-16 기준)
+Output: since_base.json(2026-07-30 기준), since_base_1016.json(2026-10-16 기준), since_base_1026.json(2026-10-26 기준)
 """
 import csv, gzip, json, time, urllib.request, pathlib, datetime as dt
 
-BASES = {'2026-07-30': 'since_base.json', '2026-10-16': 'since_base_1016.json'}
+BASES = {'2026-07-30': 'since_base.json', '2026-10-16': 'since_base_1016.json', '2026-10-26': 'since_base_1026.json'}
 BASE = '2026-07-30'
 _RANK = {}
 ROOT = pathlib.Path(__file__).resolve().parent
