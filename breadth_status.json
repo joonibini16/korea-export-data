@@ -1,1 +1,1 @@
-{"updated_at":"2026-10-28T15:47:38+09:00","failures":[],"markets":{},"state":"blocked","message":"KRX 인증키 미등록: 전 종목 종가 수집 대기. 유가증권·코스닥 일별매매정보 이용승인과 KRX_API_KEY 등록이 필요합니다. 기존 관측값이 있으면 유지합니다."}
+{"updated_at":"2026-10-28T16:08:09+09:00","failures":[],"markets":{},"state":"blocked","message":"KRX 인증키 미등록: 전 종목 종가 수집 대기. 유가증권·코스닥 일별매매정보 이용승인과 KRX_API_KEY 등록이 필요합니다. 기존 관측값이 있으면 유지합니다."}
