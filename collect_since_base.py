@@ -42,14 +42,19 @@ def ranking(mkt):
     return rows
 
 
+_HIST = {}
+
+
 def adj_hist(code):
-    """네이버 일봉(수정주가) {YYYYMMDD: 종가}."""
+    """네이버 일봉(수정주가) {YYYYMMDD: 종가}. 기준일이 여러 개라 종목별로 한 번만 받음."""
     import re
+    if code in _HIST: return _HIST[code]
     t = get(f'https://fchart.stock.naver.com/sise.nhn?symbol={code}&timeframe=day&count=260&requestType=0')
     out = {}
     for d in re.findall(r'<item data="([^"]+)"', t):
         p = d.split('|')
         if len(p) >= 5 and f(p[4]): out[p[0]] = f(p[4])
+    _HIST[code] = out
     return out
 
 
@@ -71,12 +76,7 @@ def ytd_stats():
 
 def adj_base(code, BASE):
     """네이버 일봉(수정주가)에서 기준일 종가 — 액면분할·병합·무상증자 반영."""
-    import re
-    t = get(f'https://fchart.stock.naver.com/sise.nhn?symbol={code}&timeframe=day&count=260&requestType=0')
-    for d in re.findall(r'<item data="([^"]+)"', t):
-        p = d.split('|')
-        if p[0] == BASE.replace('-', ''): return f(p[4])
-    return None
+    return adj_hist(code).get(BASE.replace('-', ''))
 
 
 def main(BASE, OUT, HI, CHG, icur_cache):
