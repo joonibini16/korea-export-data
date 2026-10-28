@@ -18592,13 +18592,6 @@
   ],
   "upcoming": [
     {
-      "ticker": "F",
-      "date": "2026-10-28",
-      "time": "16:05 America/New_York · 17:00 컨콜",
-      "event": "2026 Q3 실적·컨퍼런스콜",
-      "source": "https://s205.q4cdn.com/882619693/files/content_files/Ford-Q3-2026-Earnings-Call-Advisory-10-1-26.pdf"
-    },
-    {
       "ticker": "AMZN",
       "date": "2026-10-29",
       "time": "14:00 America/Los_Angeles(컨콜·웹캐스트)",
@@ -18800,6 +18793,20 @@
       "time": "시간 미공지(Europe/Berlin) · 확장 Q4 컨콜",
       "event": "FY26 Q4·연간 실적 발표",
       "source": "https://www.siemens-energy.com/global/en/home/investor-relations.html"
+    },
+    {
+      "ticker": "AMAT",
+      "date": "2026-11-12",
+      "time": "장 마감 후 · 13:30 America/Los_Angeles(컨콜)",
+      "event": "FY26 Q4·연간 실적·컨퍼런스콜",
+      "source": "https://ir.appliedmaterials.com/news-releases/news-release-details/applied-materials-report-fourth-quarter-and-fiscal-2026-results"
+    },
+    {
+      "ticker": "SIE.DE",
+      "date": "2026-11-12",
+      "time": "시간 미공지(Europe/Berlin, 뮌헨)",
+      "event": "FY26 Q4 실적 발표",
+      "source": "https://www.siemens.com/ko-kr/company/investor-relations/financial-calendar/"
     }
   ]
 }
