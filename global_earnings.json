@@ -18596,6 +18596,308 @@
           }
         ]
       }
+    },
+    {
+      "ticker": "F",
+      "period": "2026 Q3",
+      "date": "2026-10-28",
+      "evidence": "공식 Q3 실적 보도자료(SEC 8-K Exhibit 99.1, 10/28 장 마감 후) 확인 · 직전 Q2 공식 보도자료와 대조",
+      "direction": "개선",
+      "headline": "매출 $49.5bn(-2%), 조정 EBIT $2.7bn(마진 5.4%), 조정 EPS $0.49(+9%) · 조정 FCF $4.7bn · 연간 조정 EBIT $10.0~11.0bn→$10.5~11.0bn 하단 상향",
+      "estimate_signal": "2026 조정 EBIT 중간값 $10.5bn→$10.75bn(+2.4%), 조정 FCF $6~7bn·CapEx $9.5~10.5bn 유지 — 부문별로 Blue·Credit 상향, Pro는 범위 하단으로 수렴",
+      "call_coverage": "공식 보도자료(SEC 8-K) 원문 확인 · 공식 Q&A 녹취록 미확인",
+      "changes": [
+        {
+          "title": "2026 연간 가이던스",
+          "direction": "개선",
+          "before": "Q2 발표(7월): 조정 EBIT $10.0~11.0bn, 조정 FCF $6.0~7.0bn, CapEx $9.5~10.5bn. 가정: 미국 SAAR 16.0~16.5M, 업계 가격 약 +0.5%.",
+          "now": "Q3 발표: 조정 EBIT $10.5~11.0bn, 조정 FCF $6~7bn·CapEx $9.5~10.5bn 유지. 가정: SAAR 16.5M, 업계 가격 약 +1%(100bp), 원자재 역풍 약 $2.5bn(YoY), 재료·보증비 절감 $1bn.",
+          "meaning": "하단만 $0.5bn 올려 연간 목표 달성 확신을 표시. 원자재 역풍 약 $2.5bn을 가격(+1%)·수요 가정 상향으로 상쇄하는 구조. 중동 분쟁 확대·미국 경기 급락은 가이던스에 미반영.",
+          "rows": [
+            {
+              "item": "조정 EBIT",
+              "before": "$10.0~11.0bn",
+              "now": "$10.5~11.0bn",
+              "delta": "하단 +$0.5bn",
+              "tone": "good"
+            },
+            {
+              "item": "조정 FCF",
+              "before": "$6.0~7.0bn",
+              "now": "$6~7bn",
+              "delta": "유지"
+            },
+            {
+              "item": "CapEx",
+              "before": "$9.5~10.5bn",
+              "now": "$9.5~10.5bn",
+              "delta": "유지"
+            },
+            {
+              "item": "미국 SAAR 가정",
+              "before": "16.0~16.5M",
+              "now": "16.5M",
+              "delta": "상단으로",
+              "tone": "good"
+            },
+            {
+              "item": "업계 가격 가정",
+              "before": "약 +0.5%",
+              "now": "약 +1%",
+              "delta": "상향",
+              "tone": "good"
+            }
+          ],
+          "note": "원자재 역풍 '약 $2.5bn 접근'은 이번에 새로 수치화된 가정."
+        },
+        {
+          "title": "부문별 연간 전망",
+          "direction": "혼재",
+          "before": "Q2 발표: Ford Blue $5.0~5.5bn, Ford Pro $7.0~7.5bn, Model e 손실 약 $4.0bn, Ford Credit EBT $2.5bn 초과.",
+          "now": "Q3 발표: Ford Blue 약 $5.5bn, Ford Pro 약 $7bn, Model e 손실 약 $4bn, Ford Credit EBT 약 $2.8bn.",
+          "meaning": "Blue·Credit은 범위 상단 이상, 상용차(Pro)는 범위 하단. 그동안 이익 엔진이던 Pro가 원자재·Super Duty 오크빌 신공장 초기 비용으로 둔화.",
+          "rows": [
+            {
+              "item": "Ford Blue EBIT",
+              "before": "$5.0~5.5bn",
+              "now": "약 $5.5bn",
+              "delta": "상단",
+              "tone": "good"
+            },
+            {
+              "item": "Ford Pro EBIT",
+              "before": "$7.0~7.5bn",
+              "now": "약 $7bn",
+              "delta": "하단",
+              "tone": "bad"
+            },
+            {
+              "item": "Model e 손실",
+              "before": "약 $4.0bn",
+              "now": "약 $4bn",
+              "delta": "유지"
+            },
+            {
+              "item": "Ford Credit EBT",
+              "before": "$2.5bn 초과",
+              "now": "약 $2.8bn",
+              "delta": "상향",
+              "tone": "good"
+            }
+          ]
+        },
+        {
+          "title": "분기 부문 실적",
+          "direction": "혼재",
+          "before": "Q3 2025: Blue 마진 5.5%, Pro 마진 11.4%, Model e 손실 약 $1.4bn.",
+          "now": "Q3 2026: Blue EBIT $1.4bn(-10%, 마진 5.1%), Pro EBIT $1.7bn(-16%, 마진 9.4%), Model e 손실 $1.1bn(25% 개선), Credit EBT $803m(+27%). 도매 1,049K(-9%).",
+          "meaning": "본업(Blue·Pro) 이익은 줄었지만 EV 손실 축소와 금융 부문 개선으로 전사 조정 EBIT는 소폭 증가. 물량 감소(-9%)를 믹스·가격이 메운 분기.",
+          "rows": [
+            {
+              "item": "Ford Blue EBIT",
+              "before": "약 $1.5bn",
+              "now": "$1.4bn",
+              "delta": "YoY -10%",
+              "tone": "bad"
+            },
+            {
+              "item": "Ford Pro EBIT",
+              "before": "약 $2.0bn",
+              "now": "$1.7bn",
+              "delta": "YoY -16%",
+              "tone": "bad"
+            },
+            {
+              "item": "Model e EBIT",
+              "before": "약 -$1.4bn",
+              "now": "-$1.1bn",
+              "delta": "손실 25% 축소",
+              "tone": "good"
+            },
+            {
+              "item": "Ford Credit EBT",
+              "before": "약 $632m",
+              "now": "$803m",
+              "delta": "YoY +27%",
+              "tone": "good"
+            },
+            {
+              "item": "도매 판매",
+              "before": "1,156K",
+              "now": "1,049K",
+              "delta": "YoY -9%",
+              "tone": "bad"
+            }
+          ],
+          "note": "전년 부문 이익은 회사 발표 증감률로 역산한 근사치."
+        }
+      ],
+      "facts": "Q3 매출 $49.5bn(-2%), 순이익 $2.0bn(전년 $2.4bn), 희석 EPS $0.50, 조정 EBIT $2.7bn(전년 $2.6bn, 마진 5.4% +0.3%p), 조정 EPS $0.49(전년 $0.45), 영업현금흐름 $5.4bn, 조정 FCF $4.7bn(전년 $4.3bn). Ford Blue 매출 $27.1bn·EBIT $1.4bn(마진 5.1%), Ford Pro 매출 $17.8bn(+2%)·EBIT $1.7bn(마진 9.4%), Model e 매출 $1.2bn(-31%)·EBIT -$1.1bn, Ford Credit EBT $803m. 도매 1,049K(Blue 657K, Model e 34K, Pro 358K). 현금 $25.3bn, 유동성 $46.4bn. Q4 정기배당 $0.15(12/1 지급). 수치는 Ford 공식 보도자료(SEC 8-K).",
+      "guidance": "2026: 조정 EBIT $10.5~11.0bn(이전 $10.0~11.0bn), 조정 FCF $6~7bn·CapEx $9.5~10.5bn(유지). 부문: Blue 약 $5.5bn, Pro 약 $7bn, Model e 손실 약 $4bn, Credit EBT 약 $2.8bn. 가정: 미국 SAAR 16.5M, 원자재 역풍 약 $2.5bn, 업계 가격 약 +100bp, 재료·보증비 절감 $1bn(관세·Novelis 제외). 중동 분쟁의 중대한 확대·미국 경기 급락 영향은 미포함.",
+      "tone": "보도자료: CEO 짐 팔리 '강한 분기였고 회사 전환의 결정적 국면에 들어서고 있다'(Universal EV 플랫폼·Ford Energy 출시 언급), CFO 셰리 하우스 '연간 조정 EBIT 목표 달성 궤도'. Q&A 톤은 공식 녹취록 미확인으로 평가하지 않음.",
+      "interpretation": "분석: 물량 -9%·원자재 역풍에도 가격·믹스·EV 손실 축소로 조정 EBIT를 지켰고, 연간 하단을 올려 '목표 미달' 우려를 줄였다. 다만 상용차(Pro) 마진이 11.4%→9.4%로 떨어져 이익 엔진이 약해진 점, 원자재 역풍이 약 $2.5bn까지 커진 점은 2027 부담. 외부 집계 기준 조정 EPS $0.49는 컨센서스 $0.36을 크게 상회. 한국 연결고리 — 원자재(알루미늄 등) 비용 상승은 완성차 원가 압박, EV 물량 -31%는 배터리 셀(SK온은 BlueOval SK 정리 후 관계 변화) 수요에 부정적, Super Duty 신규 생산(오크빌)은 픽업 부품 수요에 긍정.",
+      "watch": "분석: Q4 Pro 마진 회복(Super Duty 오크빌 초기비용 해소), 원자재 역풍 실적치, 중동 분쟁의 수요 영향, Universal EV 플랫폼 투자 일정, 2월 발표 2027 가이던스.",
+      "source": "https://www.sec.gov/Archives/edgar/data/0000037996/000003799626000190/exhibit99tooctober282026.htm",
+      "prior_source": "https://www.sec.gov/Archives/edgar/data/0000037996/000003799626000155/exhibit99tojuly282026for.htm",
+      "call_topics": [
+        {
+          "topic": "비용·가정",
+          "source_part": "공식 보도자료 가이던스 가정",
+          "points": [
+            "원자재 역풍 YoY 약 $2.5bn 접근.",
+            "재료·보증비 절감 $1bn(관세·Novelis 제외), 업계 가격 약 +100bp, SAAR 16.5M."
+          ],
+          "implication": "가격 인상으로 원가 상승을 넘기는 구조라 수요 둔화 시 민감."
+        },
+        {
+          "topic": "Ford Pro",
+          "source_part": "공식 보도자료 부문 실적",
+          "points": [
+            "EBIT $1.7bn(-16%), 마진 9.4%(-2.1%p).",
+            "원자재 비용과 오크빌 Super Duty 생산 초기 비용, 관세 감소·믹스가 일부 상쇄."
+          ],
+          "implication": "상용차 이익 엔진 둔화가 일시적인지 확인 필요."
+        }
+      ],
+      "call_readthrough": {
+        "scope": "Ford 공식 Q3 보도자료(SEC 8-K)와 Q2 보도자료를 한국어로 재서술. 컨퍼런스콜 녹취록은 확인하지 못해 Q&A는 인용하거나 추정하지 않음.",
+        "groups": [
+          {
+            "title": "경영진 발표 핵심",
+            "items": [
+              {
+                "title": "실적",
+                "body": "매출은 2% 줄었지만 조정 EBIT는 $2.7bn으로 소폭 늘었고, 조정 FCF는 $4.7bn이었다."
+              },
+              {
+                "title": "연간 목표",
+                "body": "조정 EBIT 범위 하단을 $10.5bn으로 올리고 현금흐름·투자 목표는 유지했다."
+              },
+              {
+                "title": "검증할 조건",
+                "body": "원자재 비용, 상용차 마진, 중동 분쟁 확대 여부가 추가 확인이 필요하다."
+              }
+            ]
+          }
+        ]
+      },
+      "scorecard": {
+        "title": "발표 숫자 (2026 Q3)",
+        "columns": [
+          "항목",
+          "실적",
+          "시장 예상",
+          "컨센 대비",
+          "전년 대비",
+          "전분기 대비"
+        ],
+        "rows": [
+          [
+            "매출",
+            "$49.5bn",
+            "—",
+            "—",
+            "-2% (Q3'25 $50.5bn)",
+            "+2.5% (Q2 $48.3bn)"
+          ],
+          [
+            "조정 EPS",
+            "$0.49",
+            "$0.36",
+            "+36%",
+            "+9% (Q3'25 $0.45)",
+            "+17% (Q2 $0.42)"
+          ],
+          [
+            "조정 EBIT(마진)",
+            "$2.7bn (5.4%)",
+            "—",
+            "—",
+            "+4% / +0.3%p (Q3'25 $2.6bn)",
+            "+8% / +0.2%p (Q2 $2.5bn, 5.2%)"
+          ],
+          [
+            "순이익 / 희석 EPS",
+            "$2.0bn / $0.50",
+            "—",
+            "—",
+            "-17% (Q3'25 $2.4bn)",
+            "흑자 전환 (Q2 -$1.3bn)"
+          ],
+          [
+            "조정 FCF",
+            "$4.7bn",
+            "—",
+            "—",
+            "+9% (Q3'25 $4.3bn)",
+            "+124% (Q2 $2.1bn)"
+          ],
+          [
+            "2026 조정 EBIT 가이던스",
+            "$10.5~11.0bn (중간 $10.75bn)",
+            "—",
+            "—",
+            "—",
+            "+2.4% (Q2 가이던스 중간 $10.5bn)"
+          ],
+          [
+            "2026 조정 FCF 가이던스",
+            "$6~7bn",
+            "—",
+            "—",
+            "—",
+            "유지"
+          ]
+        ],
+        "note": "실적·가이던스는 Ford 공식 Q3·Q2 보도자료(SEC 8-K). '시장 예상' 조정 EPS $0.36은 회사 자료가 아닌 외부 집계(TheFly via TipRanks). '—'는 비교치를 확인하지 못한 칸.",
+        "consensus_sources": [
+          {
+            "url": "https://www.tipranks.com/news/the-fly/ford-reports-q3-eps-49c-consensus-36c-thefly",
+            "label": "TheFly via TipRanks(외부, 조정 EPS 컨센 $0.36)"
+          }
+        ]
+      },
+      "analysis": {
+        "title": "실적 분석",
+        "segment": "부문별로는 Ford Pro EBIT $1.7bn(마진 9.4%), Ford Blue $1.4bn(5.1%), Ford Credit EBT $803m, Model e 손실 $1.1bn이었습니다. 조정 FCF $4.7bn으로 현금 창출은 견조했습니다.",
+        "points": [
+          {
+            "title": "① 연간 이익 목표 하단 상향 (가장 중요)",
+            "body": "조정 EBIT 가이던스가 $10.0~11.0bn → $10.5~11.0bn으로 하단만 $0.5bn 올라 중간값이 +2.4% 상향됐습니다. FCF $6~7bn·CapEx는 유지. 회사는 '연간 궤도에 대한 자신감'을 이유로 들었습니다."
+          },
+          {
+            "title": "② 물량 감소를 가격·믹스·EV 손실 축소로 메웠습니다",
+            "body": "도매 판매는 -9%(Model e -31%)였지만 Model e 손실이 25% 줄고 Ford Credit이 +27% 늘어 전사 조정 EBIT는 $2.6bn → $2.7bn으로 증가했습니다."
+          },
+          {
+            "title": "③ 상용차(Pro)의 마진 하락은 경계 신호",
+            "body": "Pro 마진은 11.4% → 9.4%로 2.1%p 하락했습니다. 원자재 비용과 오크빌 Super Duty 초기 비용 때문이며, 연간 Pro 전망도 $7.0~7.5bn에서 약 $7bn(하단)으로 낮아졌습니다."
+          },
+          {
+            "title": "④ 원자재 역풍 약 $2.5bn — 가격으로 버티는 구조",
+            "body": "가정에 원자재 역풍 약 $2.5bn이 새로 수치화됐고, 업계 가격 상승 가정을 +0.5% → +1%로 올렸습니다. 수요 둔화나 중동 분쟁 확대 시 가격 전가력이 약해지면 가이던스 리스크가 커집니다."
+          },
+          {
+            "title": "⑤ 한국에는 원가·EV 측면에서 엇갈린 신호",
+            "body": "EV 물량 감소(-31%)는 국내 배터리·EV 부품 수요에 부정적이고, 원자재 비용 상승은 완성차 전반의 원가 압박 신호입니다. 반면 내연기관 대형 픽업(Super Duty) 증산은 관련 부품 공급사에 우호적입니다."
+          }
+        ],
+        "conclusion": "정리: 외부 집계 기준 EPS가 예상을 크게 넘고 연간 하단을 올려 단기 신뢰는 높아졌지만, 상용차 마진 둔화와 원자재 역풍이 2027 이익의 핵심 변수입니다.",
+        "sources": [
+          {
+            "url": "https://www.sec.gov/Archives/edgar/data/0000037996/000003799626000190/exhibit99tooctober282026.htm",
+            "label": "Ford Q3 2026 공식 보도자료(SEC 8-K)"
+          },
+          {
+            "url": "https://www.sec.gov/Archives/edgar/data/0000037996/000003799626000155/exhibit99tojuly282026for.htm",
+            "label": "Ford Q2 2026 공식 보도자료(SEC 8-K)"
+          },
+          {
+            "url": "https://www.tipranks.com/news/the-fly/ford-reports-q3-eps-49c-consensus-36c-thefly",
+            "label": "TheFly via TipRanks(컨센서스, 외부)"
+          }
+        ]
+      }
     }
   ],
   "upcoming": [
