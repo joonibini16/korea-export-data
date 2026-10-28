@@ -16977,6 +16977,228 @@
           }
         ]
       }
+    },
+    {
+      "ticker": "GEV",
+      "period": "2026 Q3",
+      "date": "2026-10-28",
+      "evidence": "공식 Q3 실적 발표문(PDF)·IR 기사 확인 · 직전 Q2 공식 실적 발표문과 대조",
+      "direction": "상향",
+      "headline": "수주 $29B(유기적 +96%), 매출 $12.6B(+27%), 조정 EBITDA 마진 15.4%(+690bp), FCF $5.4B · 2026 매출·마진·FCF 가이던스 모두 상향, 자사주 한도 $10B→$20B, Trench Group $9.0B 인수 합의",
+      "estimate_signal": "2026 매출 $45.5~46.5B→$46.5~47.5B, 조정 EBITDA 마진 12~14%→13.5~14.5%, FCF $11.5~12.5B→$16~17B로 상향 — 이익·현금흐름 추정치 상향 신호. 다만 풍력(Wind) 연간 EBITDA 손실 가이던스는 약 $400M→$400~500M로 범위 확대",
+      "call_coverage": "공식 실적 발표문 원문 확인 · 공식 Q&A 녹취록 미확인",
+      "changes": [
+        {
+          "title": "2026 연간 가이던스",
+          "direction": "상향",
+          "before": "7월 Q2 발표: 매출 $45.5~46.5B, 조정 EBITDA 마진 12~14%, FCF $11.5~12.5B.",
+          "now": "10월 Q3 발표: 매출 $46.5~47.5B, 조정 EBITDA 마진 13.5~14.5%, FCF $16~17B.",
+          "meaning": "두 분기 연속 상향. 특히 FCF 상향폭(중간값 +$4.5B)이 커 고객 선수금 유입이 이익보다 빠르게 늘고 있음을 보여줌."
+        },
+        {
+          "title": "가스터빈 백로그·슬롯 예약",
+          "direction": "상향",
+          "before": "Q2: 가스 장비 백로그+슬롯 예약 100GW→116GW, 연말 최소 125GW 기대.",
+          "now": "Q3: 116GW→122GW(백로그 53→64GW, 슬롯 예약 63→58GW로 확정 수주 전환), 연말 최소 130GW 기대. 전체 RPO $197B(전분기 대비 +$20B), Q4 중 $200B 돌파 예상.",
+          "meaning": "슬롯 예약이 확정 백로그로 넘어가는 속도가 빨라짐. 데이터센터·전력 수요가 가스발전 장비 장기 물량으로 고정되는 흐름."
+        },
+        {
+          "title": "Power 부문 수익성",
+          "direction": "상향",
+          "before": "Q2: Power 매출 $5.5B, EBITDA 마진 18.8%. 연간 유기적 매출 +18~20%, 마진 17~19%.",
+          "now": "Q3: Power 수주 $21.8B(유기적 +178%), 매출 $6.1B(+25%), EBITDA 마진 21.4%(+800bp). 연간 유기적 매출 +19~21%, 마진 19~21%로 상향.",
+          "meaning": "가격 인상분이 반영된 수주가 매출로 넘어오면서 마진이 한 단계 올라감."
+        },
+        {
+          "title": "Electrification·Wind",
+          "direction": "혼재",
+          "before": "Q2: Electrification 수주 $6.3B(유기적 +66%), 마진 18.4%. Wind 매출 유기적 '두 자릿수 초반%' 감소, EBITDA 약 $400M 손실 가이던스.",
+          "now": "Q3: Electrification 수주 $5.4B(유기적 −9%)이나 매출 $3.9B(+51%)·마진 19.1%, 연간 마진 18~20% 상단 지향. Wind 분기 EBITDA $72M 흑자, 연간 매출은 '한 자릿수 중반%' 감소로 개선, EBITDA 손실은 $400~500M로 범위 확대.",
+          "meaning": "전력망 장비는 수주가 분기 기준 쉬어갔지만 백로그 $42.2B로 매출 가시성은 높음. 풍력은 매출 전망이 나아졌지만 손실 범위가 넓어져 4분기 부담이 남음."
+        }
+      ],
+      "facts": "Q3 수주 $29B(유기적 +96%), 매출 $12.6B(+27%, 유기적 +18%), 순이익 $1.3B(마진 10.2%), 희석 EPS $4.81(Q3'25 $1.64), 조정 EBITDA $1.9B(마진 15.4%, 유기적 +690bp), 영업현금흐름 $6.1B, FCF $5.4B, 현금 $16.8B. RPO $197B. 부문: Power 수주 $21,780m·매출 $6,067m·EBITDA $1,297m(21.4%), Electrification 수주 $5,371m·매출 $3,862m·EBITDA $739m(19.1%), Wind 수주 $2,140m·매출 $2,741m·EBITDA $72m(2.6%). 1~9월 주주환원 $5.7B.",
+      "guidance": "2026: 매출 $46.5~47.5B, 조정 EBITDA 마진 13.5~14.5%, FCF $16~17B(모두 상향). Power 유기적 매출 +19~21%·마진 19~21%, Electrification 매출 $14.5~15.0B(Prolec GE 약 $3.1B 포함)·마진 18~20% 상단, Wind 유기적 매출 한 자릿수 중반% 감소·EBITDA $400~500M 손실. 연말 가스 백로그+슬롯 예약 최소 130GW, Q4 RPO $200B 초과 예상. 자사주 매입 한도 $20B로 증액. Trench Group 인수($9.0B 상당, 2028 조정 EBITDA 13배, 2027년 말 종결 예정).",
+      "tone": "CEO 스콧 스트라직은 4분기에 백로그가 $2,000억을 넘고 마진도 개선될 것으로 본다고 밝혔다(발표문 기준).",
+      "interpretation": "분석: 가이던스를 두 분기 연속 올렸고 FCF 상향폭이 매출·마진 상향보다 훨씬 커 '선수금 기반 초과 수요'가 확인됐다. 가스 슬롯 예약이 확정 백로그로 빠르게 전환되는 점은 2027~2028년 매출 가시성을 높인다. 변압기·고압 장비 업체 Trench 인수는 전력망 병목 대응을 위한 생산능력 확보로 읽힌다. 한국 관점에서는 HD현대일렉트릭·효성중공업·LS ELECTRIC 등 전력기기, 두산에너빌리티(가스터빈 부품·발전 기자재) 수요의 우호 신호다.",
+      "watch": "분석: Electrification 수주 반등 여부(이번 분기 유기적 −9%), 연말 130GW 달성, Wind 4분기 손실 규모, Trench 인수 규제 승인, 가격 인상 지속에 따른 Power 마진 20%대 유지.",
+      "source": "https://www.gevernova.com/sites/default/files/gev_webcast_pressrelease_10282026.pdf",
+      "prior_source": "https://www.gevernova.com/sites/default/files/gev_webcast_pressrelease_07222026.pdf",
+      "prior_source_label": "GE Vernova Q2 2026 공식 실적 발표문",
+      "call_topics": [
+        {
+          "topic": "가이던스",
+          "source_part": "공식 실적 발표문",
+          "points": [
+            "2026 매출·조정 EBITDA 마진·FCF 가이던스를 모두 상향.",
+            "Power 마진 가이던스 17~19%→19~21%, Electrification 마진은 18~20% 상단 지향."
+          ],
+          "implication": "이익보다 현금흐름 상향이 커 선수금 유입 강도를 확인."
+        },
+        {
+          "topic": "백로그",
+          "source_part": "공식 실적 발표문",
+          "points": [
+            "RPO $197B로 전분기 대비 $20B 증가, Q4 $200B 초과 예상.",
+            "가스 장비 백로그+슬롯 예약 122GW, 연말 최소 130GW 기대."
+          ],
+          "implication": "슬롯 예약의 확정 수주 전환 속도가 향후 매출 성장률을 좌우."
+        },
+        {
+          "topic": "자본 배분",
+          "source_part": "공식 실적 발표문·IR 기사",
+          "points": [
+            "자사주 매입 한도 $10B→$20B, 1~9월 주주환원 $5.7B.",
+            "Trench Group을 $9.0B 상당(EUR/USD 1.12 기준)에 인수 합의, 2027년 말 종결 예정."
+          ],
+          "implication": "현금 창출력을 주주환원과 전력망 장비 생산능력 확대에 동시에 투입."
+        }
+      ],
+      "call_readthrough": {
+        "scope": "GE Vernova 공식 Q3 실적 발표문(PDF)·IR 기사와 Q2 공식 발표문을 한국어로 재서술. 웹캐스트 녹취록은 확인하지 못해 Q&A는 인용하거나 추정하지 않음.",
+        "groups": [
+          {
+            "title": "경영진 발표 핵심",
+            "items": [
+              {
+                "title": "실적",
+                "body": "수주가 유기적으로 96% 늘어난 $29B, 매출 $12.6B, 조정 EBITDA 마진 15.4%로 전 부문 EBITDA가 개선됐다."
+              },
+              {
+                "title": "연간 목표",
+                "body": "매출·마진·FCF 가이던스를 모두 올렸고 FCF는 $16~17B로 크게 상향했다."
+              },
+              {
+                "title": "검증할 조건",
+                "body": "Electrification 수주 회복, Wind 손실 관리, Trench 인수 승인과 통합이 남은 과제다."
+              }
+            ]
+          }
+        ]
+      },
+      "scorecard": {
+        "title": "발표 숫자 (2026 Q3)",
+        "columns": [
+          "항목",
+          "실적",
+          "시장 예상",
+          "컨센 대비",
+          "전년 대비",
+          "전분기 대비"
+        ],
+        "rows": [
+          [
+            "수주",
+            "$29.0B",
+            "—",
+            "—",
+            "유기적 +96%",
+            "+20% (Q2 $24.2B)"
+          ],
+          [
+            "매출",
+            "$12.6B",
+            "—",
+            "—",
+            "+27% (유기적 +18%)",
+            "+14% (Q2 $11.1B)"
+          ],
+          [
+            "조정 EBITDA(마진)",
+            "$1.9B (15.4%)",
+            "—",
+            "—",
+            "유기적 +690bp",
+            "Q2 $1.25B (11.3%)"
+          ],
+          [
+            "순이익",
+            "$1.3B",
+            "—",
+            "—",
+            "—",
+            "+100% (Q2 $649M)"
+          ],
+          [
+            "희석 EPS",
+            "$4.81",
+            "—",
+            "—",
+            "+193% (Q3'25 $1.64)",
+            "Q2 $2.47"
+          ],
+          [
+            "FCF",
+            "$5.4B",
+            "—",
+            "—",
+            "—",
+            "Q2 $5.1B"
+          ],
+          [
+            "RPO(백로그)",
+            "$197B",
+            "—",
+            "—",
+            "—",
+            "+$20B (Q2 $176B)"
+          ],
+          [
+            "Power EBITDA 마진",
+            "21.4%",
+            "—",
+            "—",
+            "+800bp",
+            "Q2 18.8%"
+          ],
+          [
+            "2026 가이던스",
+            "매출 $46.5~47.5B·마진 13.5~14.5%·FCF $16~17B",
+            "—",
+            "—",
+            "—",
+            "상향 (Q2: $45.5~46.5B·12~14%·$11.5~12.5B)"
+          ]
+        ],
+        "note": "실적·가이던스·부문 수치는 GE Vernova 공식 Q3 실적 발표문, 전분기 수치와 직전 가이던스는 7월 Q2 공식 실적 발표문 기준. 전분기 대비 증감률은 두 공식 수치로 계산. 시장 컨센서스는 확인하지 못해 '—'로 둠."
+      },
+      "analysis": {
+        "title": "실적 분석",
+        "segment": "Power 수주 $21.8B(유기적 +178%)·매출 $6.1B·EBITDA 마진 21.4%, Electrification 수주 $5.4B(유기적 −9%)·매출 $3.9B(+51%, Prolec GE 편입)·마진 19.1%, Wind 수주 $2.1B·매출 $2.7B·EBITDA $72M(2.6%)입니다. Electrification 장비 백로그는 $42.2B(전년 대비 +$15.7B, Prolec GE $5B 포함)입니다.",
+        "points": [
+          {
+            "title": "① 가이던스 2분기 연속 상향, FCF가 가장 크게 올랐습니다 (가장 중요)",
+            "body": "FCF 가이던스 중간값이 $12B에서 $16.5B로 올랐습니다. 고객이 장비 슬롯을 확보하려 선수금을 내는 구조가 강해졌다는 뜻으로, 수요 우위의 가격 결정력이 유지되고 있음을 보여줍니다."
+          },
+          {
+            "title": "② 가스터빈 예약이 확정 수주로 빠르게 전환 중입니다",
+            "body": "슬롯 예약은 63GW→58GW로 줄었지만 확정 백로그가 53GW→64GW로 늘었습니다. 예약 고객이 실제 계약으로 넘어오고 있으며, 연말 최소 130GW 목표도 125GW에서 올렸습니다."
+          },
+          {
+            "title": "③ 전력망 장비는 수주가 쉬어갔지만 인수로 생산능력을 키웁니다",
+            "body": "Electrification 수주는 유기적으로 9% 줄었지만 매출·마진은 개선됐고, 변압기·고압 부품 업체 Trench Group 인수로 공급 능력을 넓힙니다."
+          },
+          {
+            "title": "④ 한국 관점: 전력기기·발전 기자재 수요의 우호 신호",
+            "body": "가스발전·전력망 장비 백로그 확대는 국내 변압기·차단기 업체와 가스터빈 부품·발전 기자재 업체의 북미 수출 수요가 이어질 가능성을 높입니다."
+          }
+        ],
+        "conclusion": "정리: 수주·마진·현금흐름이 모두 기대 이상으로 개선되며 연간 가이던스를 상향했습니다. 다음 확인 포인트는 연말 가스 130GW 달성, Electrification 수주 반등, Wind 손실 관리입니다.",
+        "sources": [
+          {
+            "url": "https://www.gevernova.com/sites/default/files/gev_webcast_pressrelease_10282026.pdf",
+            "label": "GE Vernova Q3 2026 공식 실적 발표문(PDF)"
+          },
+          {
+            "url": "https://www.gevernova.com/news/articles/ge-vernova-releases-third-quarter-2026-financial-results-announces-agreement-acquire",
+            "label": "GE Vernova Q3 2026 실적·Trench 인수 IR 기사"
+          },
+          {
+            "url": "https://www.gevernova.com/sites/default/files/gev_webcast_pressrelease_07222026.pdf",
+            "label": "GE Vernova Q2 2026 공식 실적 발표문(직전 가이던스 비교)"
+          }
+        ]
+      }
     }
   ],
   "upcoming": [
@@ -17000,13 +17222,6 @@
       "time": "16:05 America/New_York · 17:00 컨콜",
       "event": "2026 Q3 실적·컨퍼런스콜",
       "source": "https://s205.q4cdn.com/882619693/files/content_files/Ford-Q3-2026-Earnings-Call-Advisory-10-1-26.pdf"
-    },
-    {
-      "ticker": "GEV",
-      "date": "2026-10-28",
-      "time": "장 시작 전 · 07:30 America/New_York(웹캐스트)",
-      "event": "2026 Q3 실적 발표",
-      "source": "https://www.gevernova.com/news/press-releases/ge-vernova-announce-third-quarter-2026-financial-results-october-28"
     },
     {
       "ticker": "GOOGL",
