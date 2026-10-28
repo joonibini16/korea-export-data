@@ -22,7 +22,7 @@
 <div class="ctl"><input id="q" type="search" placeholder="종목명·코드 검색"><label>업종<select id="grp"><option value="">전체</option></select></label>
 <label>시가총액<select id="cap"><option value="0">전체</option><option value="1000" selected>1,000억 이상</option><option value="5000">5,000억 이상</option><option value="10000">1조 이상</option></select></label>
 <label>20일 평균 거래대금<select id="val"><option value="0">전체</option><option value="10" selected>10억 이상</option><option value="50">50억 이상</option><option value="100">100억 이상</option></select></label>
-<label>조건<select id="cond"><option value="">전체</option><option value="80">RS 80 이상</option><option value="rise">4주 새 RS 20 이상 상승</option><option value="line">RS선 신고가</option><option value="lead">RS 80+ · 고점 −15% 이내</option></select></label><span class="muted" id="cnt"></span></div>
+<label>조건<select id="cond"><option value="">전체</option><option value="80">RS 80 이상</option><option value="rise">4주 새 RS 20 이상 상승</option><option value="line">RS선 신고가</option><option value="lead">RS 80+ · 고점 −15% 이내</option><option value="d5">당일 +5% 이상</option><option value="rsd">RS 80+ · 당일 상승</option></select></label><span class="muted" id="cnt"></span></div>
 <div class="tw"><table class="kt" id="tbl"></table></div><button class="more" id="more" hidden>더 보기</button>
 <p class="muted" id="method"></p></section>
 </main>
@@ -30,25 +30,27 @@
 (async function(){
  const $=id=>document.getElementById(id);let D,M='',sortK='rs',sortD=-1,lim=200,G='';
  try{D=await (await fetch('rs_rank.json?v='+Date.now(),{cache:'no-store'})).json();}catch(e){$('meta').textContent='자료를 아직 만들지 못했습니다.';return;}
- const R=D.rows.map(r=>Object.fromEntries(D.columns.map((c,i)=>[c,r[i]])));
+ // 당일 등락률: 주가 등락률 '당일' 자료(네이버 현재가, 장중 20분 갱신)를 종목코드로 붙임
+ let T={},TA='';try{const t=await (await fetch('since_base_today.json?v='+Date.now(),{cache:'no-store'})).json();for(const m of Object.values(t.markets||{})){const c=m.columns,ic=c.indexOf('code'),id=c.indexOf('chg_pct'),ip=c.indexOf('price');for(const r of m.rows)T[r[ic]]=[r[id],r[ip]];TA=TA||m.traded_at||'';}}catch(e){}
+ const R=D.rows.map(r=>Object.fromEntries(D.columns.map((c,i)=>[c,r[i]])));R.forEach(r=>{const t=T[r.code];r.ret_1d=t?t[0]:null;r.price=t?t[1]:r.close;});
  const pc=v=>v==null?'—':(v>0?'+':'')+v.toFixed(1)+'%',cl=v=>v>0?'up':v<0?'dn':'',fmt=v=>v==null?'—':Number(v).toLocaleString();
  const med=a=>{const s=a.filter(v=>v!=null).sort((x,y)=>x-y),n=s.length;return n?(n%2?s[(n-1)/2]:(s[n/2-1]+s[n/2])/2):null;};
  const col=v=>v==null?'#334155':v>=90?'#22c55e':v>=80?'#86efac':v>=60?'#fde68a':v>=40?'#fdba74':'#fca5a5';
  const badge=v=>`<span class="rs" style="background:${col(v)}">${v??'—'}</span>`;
  const chg=v=>v==null?'—':`<span class="${cl(v)}">${v>0?'▲':v<0?'▼':''}${Math.abs(v)}</span>`;
- $('meta').innerHTML=`기준일 <b>${D.asof}</b> · KRX 일별 종가 ${D.n_days}거래일(${D.first}~) · 갱신 ${D.updated_at.replace('T',' ').slice(0,16)} KST`;
+ $('meta').innerHTML=`RS 기준일 <b>${D.asof}</b> 종가 · 당일 등락률·현재가 ${TA?TA.replace('T',' ').slice(0,16):'—'} 기준 (장중 20분 갱신) · KRX 일별 종가 ${D.n_days}거래일(${D.first}~) · 갱신 ${D.updated_at.replace('T',' ').slice(0,16)} KST`;
  $('method').textContent=`${D.method}. RS 등급 99 = 상위 1%. 수정종가는 주식 수가 하루 15% 넘게 바뀐 날(액면분할·병합·무상증자)을 기준으로 과거 가격을 보정합니다. 12개월 구간은 자료 시작일(${D.first}) 이전이 없으면 가능한 가장 긴 구간으로 대체합니다. RS선 신고가 = 종가÷소속 지수(코스피·코스닥)가 자료 기간 최고치. 고점 대비 = 자료 기간 최고 종가(수정) 대비. 매수 추천이 아닌 추세 강도 순위입니다.`;
  [...new Set(R.map(r=>r.group).filter(Boolean))].sort().forEach(g=>$('grp').append(new Option(g,g)));
  const base=()=>R.filter(r=>(!M||r.market===M));
  function filt(){const q=$('q').value.trim(),cap=+$('cap').value,val=+$('val').value,cd=$('cond').value,g=$('grp').value;
   return base().filter(r=>(!q||r.name.includes(q)||r.code.includes(q))&&(r.cap_eok||0)>=cap&&(r.val20_eok||0)>=val&&(!g||r.group===g)&&
-   (!cd||(cd==='80'&&r.rs>=80)||(cd==='rise'&&r.rs_chg_4w>=20)||(cd==='line'&&r.rs_line_high)||(cd==='lead'&&r.rs>=80&&r.from_high>=-15)));}
- const COLS=[['#','#','n'],['name','종목','l'],['group','업종','l'],['rs','RS'],['rs_chg_1w','1주 변화'],['rs_chg_4w','4주 변화'],['ret_1w','1주'],['ret_1m','1개월'],['ret_3m','3개월'],['ret_6m','6개월'],['from_high','고점 대비'],['rs_line_high','RS선 신고가'],['val20_eok','거래대금(억)'],['cap_eok','시총(억)']];
+   (!cd||(cd==='80'&&r.rs>=80)||(cd==='rise'&&r.rs_chg_4w>=20)||(cd==='line'&&r.rs_line_high)||(cd==='lead'&&r.rs>=80&&r.from_high>=-15)||(cd==='d5'&&r.ret_1d>=5)||(cd==='rsd'&&r.rs>=80&&r.ret_1d>0)));}
+ const COLS=[['#','#','n'],['name','종목','l'],['group','업종','l'],['rs','RS'],['rs_chg_1w','1주 변화'],['rs_chg_4w','4주 변화'],['price','현재가'],['ret_1d','당일'],['ret_1w','1주'],['ret_1m','1개월'],['ret_3m','3개월'],['ret_6m','6개월'],['from_high','고점 대비'],['rs_line_high','RS선 신고가'],['val20_eok','거래대금(억)'],['cap_eok','시총(억)']];
  function table(){const A=filt().sort((a,b)=>{const x=a[sortK],y=b[sortK];if(x==null)return 1;if(y==null)return -1;return typeof x==='string'?sortD*x.localeCompare(y):sortD*(x-y);});
   $('cnt').textContent=`${A.length.toLocaleString()}종목`;
   $('tbl').innerHTML='<thead><tr>'+COLS.map(([k,t,a])=>`<th class="${a==='l'?'l':''} ${k===sortK?'sorted':''}" data-k="${k}">${t}${k===sortK?(sortD<0?' ▼':' ▲'):''}</th>`).join('')+'</tr></thead><tbody>'+
    A.slice(0,lim).map((r,i)=>`<tr><td>${i+1}</td><td class="l"><b>${r.name}</b> <span class="muted">${r.code}·${r.market==='KOSPI'?'P':'Q'}</span></td><td class="l muted">${r.group||''}</td><td>${badge(r.rs)}</td><td>${chg(r.rs_chg_1w)}</td><td>${chg(r.rs_chg_4w)}</td>`+
-   ['ret_1w','ret_1m','ret_3m','ret_6m','from_high'].map(k=>`<td class="${cl(r[k])}">${pc(r[k])}</td>`).join('')+`<td>${r.rs_line_high?'<span class="star">★</span>':''}</td><td>${fmt(r.val20_eok)}</td><td>${fmt(r.cap_eok)}</td></tr>`).join('')+'</tbody>';
+   `<td>${fmt(r.price)}</td>`+['ret_1d','ret_1w','ret_1m','ret_3m','ret_6m','from_high'].map(k=>`<td class="${cl(r[k])}">${pc(r[k])}</td>`).join('')+`<td>${r.rs_line_high?'<span class="star">★</span>':''}</td><td>${fmt(r.val20_eok)}</td><td>${fmt(r.cap_eok)}</td></tr>`).join('')+'</tbody>';
   $('more').hidden=A.length<=lim;
   $('tbl').querySelectorAll('th').forEach(th=>th.onclick=()=>{const k=th.dataset.k;if(k==='#')return;if(sortK===k)sortD=-sortD;else{sortK=k;sortD=['name','group'].includes(k)?1:-1;}table();});}
  function summary(){const B=base().filter(r=>r.rs!=null),A=filt();
