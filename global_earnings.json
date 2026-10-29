@@ -19699,6 +19699,62 @@
       "source_label": "Prysmian 2026 Q3·9개월 공식 실적 보도자료",
       "prior_source": "https://na.prysmian.com/resources/press-releases/prysmian-raises-guidance-after-its-best-quarter-yet",
       "prior_source_label": "Prysmian 2026 상반기 공식 실적 보도자료"
+    },
+    {
+      "ticker": "CAT",
+      "period": "2026 Q3",
+      "date": "2026-10-29",
+      "evidence": "Caterpillar 공식 3Q'26 실적 보도자료(SEC 8-K Exhibit 99.1) · 직전 2Q'26 공식 보도자료(8-K Exhibit 99.1)와 대조",
+      "direction": "혼재",
+      "headline": "매출 $20.7bn(+17% YoY)·조정 EPS $7.20으로 2분기 연속 $20bn대, '사상 최대 수주잔고' · 다만 성장률 24%→17%, 조정 영업이익률 21.9%→20.6%로 전분기 대비 둔화",
+      "estimate_signal": "전년 대비 고성장과 사상 최대 잔고는 2027 매출 추정의 하방을 지지 · 전분기 대비로는 건설기계 성장 둔화(+35%→+18%)와 관세환급 효과 축소($392m→$128m)로 마진이 낮아져 이익 추정 상향 폭은 제한 · 보도자료에 연간 정량 가이던스 없음",
+      "call_coverage": "공식 실적 보도자료 기준 · 공식 Q&A 녹취록 미확인; 컨콜 발표 자료의 연간 전망과 Q&A 톤은 반영하지 않음",
+      "changes": [
+        {
+          "title": "매출 성장",
+          "direction": "혼재",
+          "before": "2Q'26: 매출 $20.5bn, 전년 대비 +24%(창사 첫 분기 $20bn 돌파).",
+          "now": "3Q'26: 매출 $20.68bn, 전년 대비 +17%. 물량 +$2.2bn, 가격 +$663m 기여.",
+          "meaning": "절대 매출은 전분기보다 소폭 늘어 고점을 유지했지만 전년 대비 성장률은 둔화했다. 가격보다 물량이 성장의 주동력이라는 점은 수요의 질이 양호하다는 뜻이다."
+        },
+        {
+          "title": "수익성",
+          "direction": "악화",
+          "before": "2Q'26: 영업이익률 20.9%, 조정 영업이익률 21.9%, 조정 EPS $8.17(IEEPA 관세환급 예상분 $392m 대부분 2분기 인식).",
+          "now": "3Q'26: 영업이익률 20.4%, 조정 영업이익률 20.6%, 조정 EPS $7.20(관세환급 $128m).",
+          "meaning": "전년(17.5%) 대비로는 크게 개선됐지만 전분기 대비 하락은 일회성 관세환급 축소 영향이 크다. 환급을 제외한 기초 마진 추세는 공식 녹취록·10-Q로 확인할 필요가 있다."
+        },
+        {
+          "title": "Power & Energy(데이터센터 발전 포함)",
+          "direction": "개선",
+          "before": "2Q'26: 매출 $8.238bn(+17%), 부문이익 $2.027bn, 마진 24.6%.",
+          "now": "3Q'26: 매출 $8.784bn(+18%), 부문이익 $2.143bn(+31%), 마진 24.4%. 최대 부문으로 확대.",
+          "meaning": "성장률이 전분기보다 오히려 높아졌고 매출 규모도 QoQ +7% 늘었다. 발전·에너지 수요가 건설 사이클 둔화를 상쇄하는 구조가 강화되고 있다."
+        },
+        {
+          "title": "Construction·Resource",
+          "direction": "악화",
+          "before": "2Q'26: Construction 매출 $8.346bn(+35%)·마진 23.3%, Resource 매출 $4.648bn(+20%)·마진 14.9%.",
+          "now": "3Q'26: Construction $7.983bn(+18%)·마진 22.9%, Resource $4.615bn(+15%)·마진 13.5%(관세 포함 원가 상승), 철도 매출 -5%.",
+          "meaning": "건설기계는 전분기 매출이 QoQ로 줄며 성장률이 반토막났고, 광산기계는 관세에 따른 원가 부담으로 마진이 낮아졌다."
+        },
+        {
+          "title": "현금·주주환원",
+          "direction": "유지",
+          "before": "2Q'26: 영업현금흐름 $4.4bn, 현금 $6.7bn, 자사주 $1.5bn·배당 $0.7bn.",
+          "now": "3Q'26: 영업현금흐름 $4.4bn, 현금 $7.9bn, 자사주 $1.2bn·배당 $0.7bn. 9개월 누적 자사주 $7.7bn.",
+          "meaning": "현금창출력은 유지됐고 분기 자사주 집행 속도는 다소 느려졌다."
+        }
+      ],
+      "facts": "3Q'26 매출 $20.682bn(+17%, 전년 $17.6bn), 영업이익률 20.4%(전년 17.3%), 조정 영업이익률 20.6%(전년 17.5%), EPS $7.13, 조정 EPS $7.20(전년 $4.95). 부문 매출: Power & Energy $8.784bn(+18%, 마진 24.4%), Construction Industries $7.983bn(+18%, 22.9%), Resource Industries $4.615bn(+15%, 13.5%). 구조조정비용 $41m 조정, IEEPA 관세환급 $128m 반영. 영업현금흐름 $4.4bn, 분기 말 현금 $7.9bn, 분기 자사주 $1.2bn·배당 $0.7bn.",
+      "guidance": "공식 보도자료에는 연간 매출·마진·현금흐름 정량 가이던스가 없다. CEO는 '강한 수주율과 사상 최대 수주잔고'로 '강한 한 해'를 언급했고, 4분기·연간 조정 EPS는 연금 재측정 손익을 제외해 설명할 예정이라고 밝혔다. 잔고 금액은 보도자료에 미기재.",
+      "tone": "공식 보도자료에서 CEO는 최종시장의 내구성, 강한 수주율, 사상 최대 잔고를 강조했다. 공식 Q&A 녹취록 미확인이므로 경영진 Q&A 톤은 평가하지 않는다.",
+      "interpretation": "분석: 핵심은 '피크아웃'보다 믹스 전환이다. Construction 성장률이 35%→18%로 꺾이고 매출이 QoQ로 줄었지만, Power & Energy는 18% 성장·QoQ +7%로 최대 부문이 됐다. 전분기 대비 마진 하락은 관세환급 인식 시점 차이($392m→$128m) 영향이 커 기초 체력 악화로 단정하기 어렵다. 한국 관점에서는 데이터센터용 발전기·가스터빈 수요가 이어진다는 신호로 HD현대일렉트릭·두산에너빌리티 등 전력기기·발전 밸류체인에 우호적이고, 건설기계 성장 둔화는 HD현대건설기계·두산밥캣 등의 북미 수요 모멘텀 점검 포인트다.",
+      "watch": "분석: 컨콜 자료의 2026 연간 매출·조정 마진 전망 변화, 수주잔고 금액과 Power & Energy 비중, 관세 순비용 추정, Construction 딜러 재고와 4분기 계절성, Resource의 원가 부담 완화 여부.",
+      "source": "https://www.sec.gov/Archives/edgar/data/0000018230/000001823026000052/ex991toformcat3q2026earnin.htm",
+      "source_label": "Caterpillar 3Q'26 공식 실적 보도자료(8-K Ex.99.1)",
+      "prior_source": "https://www.sec.gov/Archives/edgar/data/0000018230/000001823026000040/ex991toformcat2q2026earnin.htm",
+      "prior_source_label": "Caterpillar 2Q'26 공식 실적 보도자료(8-K Ex.99.1)"
     }
   ],
   "upcoming": [
@@ -19708,13 +19764,6 @@
       "time": "14:00 America/Los_Angeles(컨콜·웹캐스트)",
       "event": "2026 Q3 실적·컨퍼런스콜",
       "source": "https://www.businesswire.com/news/home/20261015676873/en/Amazon.com-to-Webcast-Third-Quarter-2026-Financial-Results-Conference-Call"
-    },
-    {
-      "ticker": "CAT",
-      "date": "2026-10-29",
-      "time": "장 시작 전 05:30 · 07:30 America/Chicago(컨콜)",
-      "event": "2026 Q3 실적·컨퍼런스콜",
-      "source": "https://www.caterpillar.com/en/news/corporate-press-releases/h/caterpillar-to-announce-3Q-2026-financial-results-on-oct-29.html"
     },
     {
       "ticker": "INTC",
