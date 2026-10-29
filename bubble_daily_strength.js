@@ -60,7 +60,7 @@
     const valid=rows.filter(r=>finite(r.score));
     text('p','올해 '+rows.length+'거래일 중 점수 유효 '+valid.length+'일 · 유효 범위 '+(valid.length?valid[0].date+' ~ '+valid.at(-1).date:'자료 대기'),card);
     if(typeof Chart!=='undefined')new Chart(canvas,{type:'line',data:{labels:rows.map(r=>r.date),datasets:[
-     {label:'자체 OBOS 점수',data:rows.map(r=>r.score),borderColor:'#a78bfa',borderWidth:3,pointRadius:3,pointBackgroundColor:rows.map(r=>color(r.score)),spanGaps:false},
+     {label:'자체 OBOS 점수',data:rows.map(r=>r.score),borderColor:'#a78bfa',borderWidth:3,pointRadius:rows.map(r=>r.date===D.live_day&&finite(r.score)?4:0),pointHoverRadius:rows.map(r=>r.date===D.live_day&&finite(r.score)?6:0),pointHitRadius:8,pointBackgroundColor:rows.map(r=>color(r.score)),spanGaps:false},
      {label:'5일 등락 종목폭 평균',data:rows.map(r=>r.ma5),borderColor:'#34d399',borderWidth:1.5,pointRadius:0,spanGaps:false},
      {label:'10일 등락 종목폭 평균',data:rows.map(r=>r.ma10),borderColor:'#fbbf24',borderWidth:1.5,pointRadius:0,spanGaps:false},
      {label:'당일 등락 종목폭',data:rows.map(r=>r.ad),borderColor:'#94a3b866',borderWidth:1,pointRadius:0,spanGaps:false},
