@@ -63,7 +63,7 @@ td.h{font-weight:700}.flag{font-size:12px;padding:2px 8px;border-radius:999px;ba
 </div></section>
 
 <h2 class="sec" data-upd="fred_data.csv,market_daily.csv,kofia_daily.csv">유동성·신용 한눈에 · 최근 1년</h2><section class="panel"><p id="miniHead" style="margin:0 0 12px;font-size:14px"></p><div class="mini-grid" id="mini"></div></section>
-<h2 class="sec" id="dailyStrengthTitle" data-upd="size_breadth.json">시장 내부 체력 · 과매수·과매도 추정</h2><section class="panel" id="dailyStrength"><p class="muted">당일 상승·하락 종목 편중도를 읽는 중입니다.</p></section>
+<h2 class="sec" id="dailyStrengthTitle" data-upd="size_breadth.json">시장 내부 체력 · 자체 과매수·과매도 지수</h2><section class="panel" id="dailyStrength"><p class="muted">자체 OBOS 점수와 5·10거래일 수급폭을 읽는 중입니다.</p></section>
 <h2 class="sec" data-upd="size_breadth.json,size_breadth_log.csv">규모별 Breadth Desk · 60일 신고가−신저가</h2><section class="panel" id="sbDesk"><p class="muted">규모별 Breadth를 읽는 중입니다.</p></section>
 <h2 class="sec" id="technicalTitle" data-upd="breadth_daily.json,breadth_kr.csv,market_daily.csv">시장 내부 체력 · Breadth · 신고가 · RSI</h2>
 <section class="panel breadth-signal neutral" id="breadthSignal" aria-labelledby="breadthSignalTitle" aria-live="polite"><div class="breadth-signal-head"><span class="breadth-lamps" aria-hidden="true"><i class="red"></i><i class="orange"></i><i class="green"></i></span><strong id="breadthSignalTitle">시장 Breadth · 판정 대기</strong><small id="breadthSignalDate">확정 종가 확인 중</small></div><p class="verdict" id="breadthSignalConclusion">코스피·코스닥 수치를 읽고 있습니다.</p><div class="breadth-metrics" id="breadthSignalMetrics"></div><p class="basis" id="breadthSignalLive">최신 자동 수집 자료를 읽고 있습니다.</p><p class="basis" id="breadthSignalBasis">판정: 빨강 = 두 시장 모두 Breadth_60 40% 미만, 또는 한 시장 35% 미만이며 두 시장 모두 5일 평균 아래. 초록 = 두 시장 모두 50% 이상·5일 평균 이상이고 신고가 비율 3% 이상. 그 밖은 주황. RSI는 참고 수치입니다.</p></section>
@@ -114,7 +114,7 @@ td.h{font-weight:700}.flag{font-size:12px;padding:2px 8px;border-radius:999px;ba
 </div>
 <section class="panel"><h2>기준과 출처</h2><p class="muted">주가·환율·원자재: Yahoo Finance 일별 종가(비공식 API). 유동성·스프레드·수출·금리: FRED(세인트루이스 연준). 기업 CDS: 언론 보도 수치를 수동 기록(cds_manual.csv). 한국 금리·스프레드: 한국은행 ECOS 시장금리(일별). VKOSPI: KRX Open API. 신용융자·예탁금·반대매매: 금융투자협회 FreeSIS. 시장폭: KRX Open API(키 등록 시) · 미등록 동안 KIND 상장법인목록 + 네이버 일봉 대체 계산. MOVE·VIX3M: Yahoo Finance(ICE·CBOE). 평일 하루 두 번(한국 시간 07:30, 18:30) 자동 갱신.</p><p class="muted" id="status"></p></section>
 </main>
-<script src="./bubble_daily_strength.js?v=1"></script>
+<script src="./bubble_daily_strength.js?v=obos2"></script>
 <script src="./bubble_indicators.js?v=10x"></script>
 <script src="./bubble.js?v=17"></script><script src="./bubble_signal_history.js?v=1"></script><script src="./bubble_breadth_live.js?v=4"></script>
 <script src="./bubble_breadth_reference.js?v=5"></script><script src="./bubble_breadth_db_snapshot.js?v=2"></script><script src="./bubble_size.js?v=net2"></script><script src="./rangenav.js?v=1"></script><script src="./bubble_dotcom.js?v=13"></script><script src="./bubble_hike_align.js?v=1"></script><script src="./bubble_cds_all.js?v=9"></script><script src="./bubble_hyper.js?v=1"></script><script src="./bubble_bonds.js?v=9"></script><script src="./bubble_credit_matrix.js?v=4"></script><script src="./bubble_gfc.js?v=6"></script>
