@@ -8,8 +8,15 @@
  let data;try{const r=await fetch('./global_earnings.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);data=await r.json();}catch(e){$('scoreMeta').textContent='자료를 읽지 못했습니다: '+e.message;return;}
  const byT=new Map((data.watchlist||[]).map(x=>[x.ticker,x])),events=data.events||[];
  const tone=v=>/^[+＋]/.test(v)?'up':/^[−-]\d/.test(v)?'down':'';
- const cell=(v,cls,split)=>{const td=el('td',cls);const m=split&&String(v).match(/^(.*?)\s*\((.*)\)\s*$/);if(m&&m[1]){td.append(el('div',null,m[1]),el('div','sub2',m[2]));}else td.textContent=v;return td;};
- const table=(cols,rows,colored)=>{const w=el('div','table'),t=el('table','score-table'),h=el('tr');for(const c of cols)h.append(el('th',null,c));const th=el('thead');th.append(h);const tb=el('tbody');for(const r of rows){const tr=el('tr');r.forEach((v,i)=>{tr.append(cell(v,i===0?'lbl':(colored&&i>=3?tone(String(v)):''),colored&&i>=3));});tb.append(tr);}t.append(th,tb);w.append(t);return w;};
+ // 전년·전분기 대비 칸: "+379% (FQ4'25 $11,315m)" → 비교 분기(FQ4'25)는 열 제목 아래로 올리고, 칸에는 숫자만 남긴다.
+ const PER=/^((?:FY\d{2,4}\s?)?(?:F?Q[1-4]|[1-4]Q|H[12]|\d{1,2}월|9개월|FY\d{2,4}|20\d{2})(?:['’]\d{2}|\s?FY\d{2,4})?):?\s+(?=\S)/;
+ const splitSub=v=>{const m=String(v).match(/^(.*?)\s*\((.*)\)\s*$/);if(!m||!m[1])return null;const p=m[2].match(PER);return {main:m[1],per:p?p[1]:null,rest:p?m[2].slice(p[0].length):m[2]};};
+ const cell=(v,cls,split,colPer)=>{const td=el('td',cls);const x=split&&splitSub(v);if(x){const sub=x.per&&x.per!==colPer?x.per+' '+x.rest:x.rest;td.append(el('div',null,x.main),el('div','sub2',sub));}else td.textContent=v;return td;};
+ const table=(cols,rows,colored)=>{const w=el('div','table'),t=el('table','score-table'),h=el('tr');
+  // 열마다 가장 많이 쓰인 비교 분기를 제목 아래에 표시
+  const colPer=cols.map((c,i)=>{if(!colored||i<3||!/대비/.test(c))return null;const n=new Map();for(const r of rows){const x=splitSub(r[i]??'');if(x&&x.per)n.set(x.per,(n.get(x.per)||0)+1);}let best=null,bc=0;for(const [k,c2] of n)if(c2>bc){best=k;bc=c2;}return best;});
+  cols.forEach((c,i)=>{const th=el('th',null,c);if(colPer[i])th.append(el('div','th-per',colPer[i]));h.append(th);});
+  const th=el('thead');th.append(h);const tb=el('tbody');for(const r of rows){const tr=el('tr');r.forEach((v,i)=>{tr.append(cell(v,i===0?'lbl':(colored&&i>=3?tone(String(v)):''),colored&&i>=3,colPer[i]));});tb.append(tr);}t.append(th,tb);w.append(t);return w;};
  // ── 가이던스 숫자 읽기: "$61.5bn ±$1.5bn", "$1,250~1,350m (중간 $1,300m)", "€1,100m ±5%", "74.0% ±0.5%p", "약 $34.8bn" → {lo,hi,mid,pct}
  const U={tn:1e6,bn:1e3,b:1e3,m:1,'':1};
  const N=(x,u)=>parseFloat(String(x).replace(/,/g,''))*(U[(u||'').toLowerCase()]??1);
