@@ -1,18 +1,20 @@
 {
- "updated_at": "2026-10-29T23:41:09+09:00",
+ "updated_at": "2026-10-30T08:04:22+09:00",
  "source": "KIND 상장법인목록 + 네이버 fchart 확정 종가",
  "confirmed_through": "2026-10-29",
  "groups": {
   "KOSDAQ|소프트웨어 개발 및 공급업": {
    "market": "KOSDAQ",
    "sector": "소프트웨어 개발 및 공급업",
-   "target": 177,
+   "target": 178,
    "success": 177,
-   "unavailable": [],
-   "members": "f857436cf31fa60fd15e28152c8deb8e6cc6aec4f2498ce9373b20ae3fdb9087",
+   "unavailable": [
+    "420610"
+   ],
+   "members": "2c6f60323a18c96ac716ff81e41422b7afe2ca5b79dab14a8d0647110ba4aab8",
    "latest": "2026-10-29",
-   "updated_at": "2026-10-29T23:41:09+09:00",
-   "observations": 362
+   "updated_at": "2026-10-30T08:04:22+09:00",
+   "observations": 361
   },
   "KOSDAQ|특수 목적용 기계 제조업": {
    "market": "KOSDAQ",
@@ -50,13 +52,15 @@
   "KOSDAQ|금융 지원 서비스업": {
    "market": "KOSDAQ",
    "sector": "금융 지원 서비스업",
-   "target": 69,
+   "target": 70,
    "success": 69,
-   "unavailable": [],
-   "members": "662726e88b9ed61302a8159efb0ea36cd1f259a2547c7408d95aa86735cf3d02",
+   "unavailable": [
+    "0127E0"
+   ],
+   "members": "fb7a614054e1f82487e5a770f8b2f8e0857ba2a4cecf7898a9c9d925a191fb87",
    "latest": "2026-10-29",
-   "updated_at": "2026-10-29T23:41:09+09:00",
-   "observations": 362
+   "updated_at": "2026-10-30T08:04:22+09:00",
+   "observations": 361
   },
   "KOSDAQ|자연과학 및 공학 연구개발업": {
    "market": "KOSDAQ",
@@ -644,13 +648,15 @@
   "KOSDAQ|그외 기타 제품 제조업": {
    "market": "KOSDAQ",
    "sector": "그외 기타 제품 제조업",
-   "target": 10,
+   "target": 11,
    "success": 10,
-   "unavailable": [],
-   "members": "8bdda680dbc83964fc38d5ddb1634b01eba90c5e0eed59f072e4cb01cf327988",
+   "unavailable": [
+    "439270"
+   ],
+   "members": "3ba59598061e5781601e10528723dc6e6c5224bfcabe6847f6f0ba6ea63e7393",
    "latest": "2026-10-29",
-   "updated_at": "2026-10-29T23:41:09+09:00",
-   "observations": 362
+   "updated_at": "2026-10-30T08:04:22+09:00",
+   "observations": 361
   },
   "KOSDAQ|항공기,우주선 및 부품 제조업": {
    "market": "KOSDAQ",
@@ -3151,7 +3157,7 @@
   "KOSDAQ|특수 목적용 기계 제조업": 0
  },
  "issues": [],
- "listed": 2652,
+ "listed": 2655,
  "industry_total": 262,
  "industry_done": 262,
  "stock_done": 2652
