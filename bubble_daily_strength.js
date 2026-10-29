@@ -27,6 +27,7 @@
   }
   return rows;
  }
+ const yearRows=(rows,liveDay)=>rows.filter(r=>r.date>=liveDay.slice(0,4)+'-01-01'&&r.date<=liveDay);
  const direction=r=>!finite(r?.delta)?'전일 비교 부족':r.delta>1?'점수 상승 · 매수 쏠림 강화 / 매도 압력 완화':r.delta< -1?'점수 하락 · 매도 쏠림 강화 / 매수 압력 완화':'전일 대비 큰 변화 없음 (±1점)';
  async function run(){
   const root=document.getElementById('dailyStrength');if(!root)return;
@@ -41,6 +42,7 @@
    const title=document.getElementById('dailyStrengthTitle');if(title)title.textContent='시장 내부 체력 · 자체 과매수·과매도 지수';
    text('h2','결론 먼저 · 자체 OBOS 지수');
    text('p','기준 거래일 '+D.live_day+' · 원자료 수집 '+D.updated_at+' · 수집 시점 가격 기준, 당일 값은 장중 잠정일 수 있습니다.').className='muted';
+   text('p','표시 기간: '+D.live_day.slice(0,4)+'년 1월~최신 거래일 (연초 이전 자료는 평균 계산에만 사용). 표본 부족 날짜는 공란으로 표시합니다.').className='muted';
    text('p','−100~+100점: +40 이상 과매수 · −40 이하 과매도 · ±60 이상 극단. 현재 상태와 전일 방향은 별개입니다. 과매도는 매수 확정, 과매수는 매도 확정 신호가 아닙니다.');
    const grid=document.createElement('div');grid.className='db-grid';root.append(grid);
    for(const g of groups){
@@ -54,7 +56,9 @@
     text('p','당일 등락 종목폭 '+fmt(x?.ad,'%')+' · 상승 '+(x?.up??'—')+' / 하락 '+(x?.down??'—')+' / 보합 '+(x?.flat??'—')+' / 누락 '+(x?.missing??'—'),card);
     text('p',x?.total?'표본 충족률 '+((x.up+x.down+x.flat)/x.total*100).toFixed(1)+'% · '+x.date:'최신 거래일 표본 없음',card);
     const wrap=document.createElement('div');wrap.style.cssText='height:290px;position:relative';const canvas=document.createElement('canvas');canvas.setAttribute('aria-label',g.name+' 자체 과매수 과매도 점수 추이');wrap.append(canvas);card.append(wrap);
-    const rows=g.rows.slice(-120);
+    const rows=yearRows(g.rows,D.live_day);
+    const valid=rows.filter(r=>finite(r.score));
+    text('p','올해 '+rows.length+'거래일 중 점수 유효 '+valid.length+'일 · 유효 범위 '+(valid.length?valid[0].date+' ~ '+valid.at(-1).date:'자료 대기'),card);
     if(typeof Chart!=='undefined')new Chart(canvas,{type:'line',data:{labels:rows.map(r=>r.date),datasets:[
      {label:'자체 OBOS 점수',data:rows.map(r=>r.score),borderColor:'#a78bfa',borderWidth:3,pointRadius:3,pointBackgroundColor:rows.map(r=>color(r.score)),spanGaps:false},
      {label:'5일 등락 종목폭 평균',data:rows.map(r=>r.ma5),borderColor:'#34d399',borderWidth:1.5,pointRadius:0,spanGaps:false},
@@ -63,12 +67,12 @@
      ...[40,-40,60,-60].map(v=>({label:'판정선 '+v,data:rows.map(()=>v),borderColor:v>0?'#ef444466':'#38bdf866',borderDash:[4,4],pointRadius:0,borderWidth:1}))
     ]},options:{responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:'index',intersect:false},plugins:{legend:{labels:{color:'#cbd5e1',filter:item=>item.datasetIndex<4}},tooltip:{filter:item=>item.datasetIndex<4,callbacks:{label:c=>c.dataset.label+': '+fmt(c.parsed.y),afterBody:items=>{const r=rows[items[0]?.dataIndex];return r?signal(r.score)+' · 전일 '+fmt(r.delta):'';}}}},scales:{x:{ticks:{color:'#94a3b8',maxTicksLimit:5}},y:{min:-100,max:100,title:{display:true,text:'점수 / 등락 종목폭(%)',color:'#94a3b8'},ticks:{color:'#94a3b8'}}}}});
    }
-   const details=document.createElement('details');details.open=true;root.append(details);text('summary','최근 20거래일 · 종합점수 / 전일 변화 / 판정',details);
-   const scroll=document.createElement('div');scroll.style.overflowX='auto';details.append(scroll);
+   const details=document.createElement('details');details.open=true;root.append(details);text('summary','올해 전체 거래일 · 종합점수 / 전일 변화 / 판정',details);
+   const scroll=document.createElement('div');scroll.style.cssText='overflow:auto;max-height:460px';details.append(scroll);
    const table=document.createElement('table');table.className='db-data-table';scroll.append(table);
    const head=document.createElement('thead'),tr=document.createElement('tr');head.append(tr);table.append(head);
    ['날짜',...groups.map(g=>g.name)].forEach(s=>text('th',s,tr));const body=document.createElement('tbody');table.append(body);
-   const dates=[...new Set(groups.flatMap(g=>g.rows.map(r=>r.date)))].sort().slice(-20).reverse();
+   const dates=[...new Set(groups.flatMap(g=>yearRows(g.rows,D.live_day).map(r=>r.date)))].sort().reverse();
    for(const date of dates){const row=document.createElement('tr');text('td',date,row);for(const g of groups){const x=g.rows.find(r=>r.date===date);const cell=text('td',fmt(x?.score)+' / Δ '+fmt(x?.delta)+' / '+signal(x?.score),row);cell.style.color=color(x?.score);}body.append(row);}
    const method=document.createElement('details');root.append(method);text('summary','산식·판정 기준·한계 (자체 설계 v2)',method);
    text('p','D = 100 × (상승−하락) ÷ (상승+하락+보합). 보합을 포함해 움직인 종목이 적을 때 과장되는 것을 줄입니다. S5 = 최근 5거래일 D의 단순평균, S10 = 최근 10거래일 D의 단순평균. OBOS = 0.6×S5 + 0.4×S10. 최근 5일은 각 16%, 이전 5일은 각 4% 가중치입니다. 계산은 반올림 전 원값을 사용합니다.',method);
@@ -78,6 +82,6 @@
    text('p','거래대금·투자자 순매수 기반 수급 지표가 아닙니다. source: size_breadth.json의 daily_strength 상승·하락·보합 수. 기존 규모별 Breadth 자동 수집 일정에 따라 다시 계산하며 별도 유료 데이터·사진 수치·임의의 과거값은 사용하지 않습니다. 이 지표는 가격의 고평가·저평가가 아니라 시장 참여의 단기 쏠림을 측정합니다.',method);
   }catch(error){root.textContent='자체 OBOS 지표: '+error.message+' — 자료 부족은 0점·중립으로 처리하지 않습니다.';}
  }
- if(typeof module!=='undefined')module.exports={signal,fmt,ad,calculate};
+ if(typeof module!=='undefined')module.exports={signal,fmt,ad,calculate,yearRows};
  if(typeof document!=='undefined'){if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();}
 })();
