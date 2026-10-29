@@ -96,26 +96,35 @@ def main():
     now = datetime.now(KST); today = now.date().isoformat(); ts = now.isoformat(timespec='seconds')
     CACHE.mkdir(exist_ok=True)
     hist = json.loads(gzip.decompress(HIST.read_bytes())) if HIST.exists() else {}
-    idx = {m: daily(m, 25) for m in ('KOSPI', 'KOSDAQ')}
+    # Full current year + pre-January warmup; existing size desk still uses 20 days.
+    idx = {m: daily(m, 420) for m in ('KOSPI', 'KOSDAQ')}
     tdays = [d for d, _ in idx['KOSPI']]
     live_day = tdays[-1]  # 오늘(장중 포함) 또는 마지막 거래일
     prev_day = tdays[-2]
     rank = {m: ranking(m) for m in BUCKETS}
     codes = sorted({r['code'] for m in rank for r in rank[m]})
-    stale = [c for c in codes if not hist.get(c) or hist[c][-1][0] < prev_day]
+    obos_days = year_dates(tdays, live_day)
+    deep_path = CACHE / 'ytd-fetched.json'
+    deep = json.loads(deep_path.read_text()) if deep_path.exists() else {}
+    year = live_day[:4]
+    stale = [c for c in codes if not hist.get(c) or hist[c][-1][0] < prev_day
+             or (hist[c][0][0] > obos_days[0] and deep.get(c) != year)]
     print('stocks', len(codes), 'refetch', len(stale), flush=True)
 
     def one(c):
-        try: return c, daily(c, 80)
+        try: return c, daily(c, 420)
         except Exception: return c, None
     with ThreadPoolExecutor(8) as pool:
         for c, s in pool.map(one, stale):
-            if s: hist[c] = s
+            if s:
+                hist[c] = sorted(dict(hist.get(c, []) + s).items())
+                deep[c] = year  # IPOs legitimately have shorter history; don't refetch forever.
+    deep_path.write_text(json.dumps(deep))
     # 오늘 값은 시총 순위 API의 현재가로 덮어씀(장중 실시간)
     for m in rank:
         for r in rank[m]:
             h = [x for x in hist.get(r['code'], []) if x[0] < live_day]
-            hist[r['code']] = (h + [[live_day, r['price']]])[-90:]
+            hist[r['code']] = (h + [[live_day, r['price']]])[-500:]
     HIST.write_bytes(gzip.compress(json.dumps(hist, separators=(',', ':')).encode()))
 
     res = dict(updated_at=ts, live_day=live_day, markets={})
@@ -165,7 +174,8 @@ def main():
             mk['buckets'].append(dict(name=nm, idx_chg=chg, grade=g, badge=badge, members=len(mem), trend=trend, **cur))
             log_rows.append(dict(ts=ts, date=live_day, market=m, bucket=nm, breadth=cur['breadth'], nh=cur['nh'], nl=cur['nl'], n=cur['n'], idx_chg=chg, grade=g))
         res['markets'][m] = mk
-    res['daily_strength'] = daily_strength(rank, hist, days10)
+    res['daily_strength'] = daily_strength(rank, hist, obos_days,
+        dict(zip(tdays[1:], tdays[:-1])))
     if OUT.exists():
         old = json.loads(OUT.read_text())
         if old.get('live_day', '') > live_day:
@@ -173,7 +183,11 @@ def main():
         for group in res['daily_strength']['groups']:
             previous = next((g for g in old.get('daily_strength', {}).get('groups', []) if g['id'] == group['id']), {})
             merged = {r['date']: r for r in previous.get('rows', [])}
-            merged.update({r['date']: r for r in group['rows']})
+            for r in group['rows']:
+                previous_row = merged.get(r['date'])
+                # Backfill absent/invalid history, preserve already-observed valid past rows.
+                if previous_row is None or previous_row.get('value') is None or r['date'] == live_day:
+                    merged[r['date']] = r
             group['rows'] = sorted(merged.values(), key=lambda r: r['date'])
             add_sma(group['rows'])
     OUT.write_text(json.dumps(res, ensure_ascii=False, separators=(',', ':')))
@@ -192,7 +206,13 @@ def add_sma(rows):
         row['sma5'] = round(sum(r['value'] for r in window) / 5, 2) if len(window) == 5 and all(r['value'] is not None for r in window) else None
 
 
-def daily_strength(rank, hist, dates):
+def year_dates(dates, live_day):
+    """Include ten pre-year sessions (delta and 10-day OBOS warmup)."""
+    first = next(i for i, d in enumerate(dates) if d >= live_day[:4] + '-01-01')
+    return dates[max(0, first - 10):]
+
+
+def daily_strength(rank, hist, dates, previous_dates=None):
     """Photo-inspired A/D percent proxy, not a reverse-engineered original index.
 
     Current market-cap top 200/150 are NOT official KOSPI200/KOSDAQ150.
@@ -200,6 +220,12 @@ def daily_strength(rank, hist, dates):
     Missing prices are never zero-filled. Reject days with <95% coverage.
     """
     groups = []
+    # Require the actual preceding market session; don't compare across missing prices.
+    previous_dates = previous_dates or dict(zip(dates[1:], dates[:-1]))
+    changes = {code: {cur[0]: (cur[1], prev[1])
+                     for prev, cur in zip(series, series[1:])
+                     if previous_dates.get(cur[0], prev[0]) == prev[0]}
+               for code, series in hist.items()}
     for key, name, members in (
         ('KOSPI_TOP200', '코스피 시총 상위 200 · 대용', rank['KOSPI'][:200]),
         ('KOSDAQ_TOP150', '코스닥 시총 상위 150 · 대용', rank['KOSDAQ'][:150]),
@@ -209,12 +235,11 @@ def daily_strength(rank, hist, dates):
         for day in dates:
             up = down = flat = missing = 0
             for member in members:
-                series = hist.get(member['code'], [])
-                pos = next((i for i, (d, _) in enumerate(series) if d == day), None)
-                if pos is None or pos == 0:
+                pair = changes.get(member['code'], {}).get(day)
+                if pair is None:
                     missing += 1
                     continue
-                now, prev = series[pos][1], series[pos - 1][1]
+                now, prev = pair
                 if now > prev: up += 1
                 elif now < prev: down += 1
                 else: flat += 1
