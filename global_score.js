@@ -79,7 +79,7 @@
   const abox=$('analysisBody')||box;box.replaceChildren();if(abox!==box)abox.replaceChildren();const co=byT.get(ticker);
   const mine=events.filter(e=>e.ticker===ticker).sort((a,b)=>b.date.localeCompare(a.date));
   const e=mine.find(x=>x.period===period)||mine[0];
-  if(!co||!e){$('scoreMeta').textContent='기업을 선택하세요.';box.append(el('p','muted','기업을 선택하세요.'));return;}
+  if(!co||!e){$('scoreMeta').textContent='기업을 선택하세요.';box.append(el('p','muted',co?`${co.name}: 공식 자료로 검증한 발표 기록이 아직 없습니다.`:'기업을 선택하세요.'));return;}
   $('scoreMeta').textContent=`${co.name} (${ticker}) · ${e.period} · 발표 ${e.date}`;
   const S=e.scorecard,A=e.analysis;
   if(!S)box.append(el('p','muted','이 발표는 아직 발표 숫자 표가 정리되지 않았습니다. 공식 수치는 아래 \'회사 발표 원문 요약\'에서 보세요.'));
