@@ -19755,6 +19755,55 @@
       "source_label": "Caterpillar 3Q'26 공식 실적 보도자료(8-K Ex.99.1)",
       "prior_source": "https://www.sec.gov/Archives/edgar/data/0000018230/000001823026000040/ex991toformcat2q2026earnin.htm",
       "prior_source_label": "Caterpillar 2Q'26 공식 실적 보도자료(8-K Ex.99.1)"
+    },
+    {
+      "ticker": "LLY",
+      "period": "2026 Q3",
+      "date": "2026-10-29",
+      "evidence": "Eli Lilly 공식 3Q'26 실적 보도자료(PR Newswire 배포 원문) · 8/5 공식 2Q'26 실적 보도자료(investor.lilly.com)와 대조",
+      "direction": "상향",
+      "headline": "매출 $24.4bn(+39%)·연간 매출 가이던스 $85~87bn→$91~92bn으로 세 번째 상향 · 성과마진 49.0~50.5%→52.0~52.5% · 비GAAP EPS 범위는 IPR&D $4.57 반영으로 $35.0~36.0",
+      "estimate_signal": "매출·영업이익 추정 상향 근거 · 연간 매출 중간값 $86bn→$91.5bn(+6.4%), 성과마진 중간값 +2.5%p · EPS 범위 하향은 3분기 인수 IPR&D 비용($4.57) 때문이며 기초 EPS 중간값은 +$4.07 상향 · 다만 가격 -15%로 가격 하락 폭이 커지는 흐름은 물량 의존도를 높임",
+      "call_coverage": "공식 실적 보도자료 기준 · 10/29 10:00 ET 컨콜의 공식 Q&A 녹취록 미확인; Q&A 톤 평가 없음",
+      "changes": [
+        {
+          "title": "연간 가이던스",
+          "direction": "상향",
+          "before": "2Q'26 발표: 매출 $85~87bn, 성과마진(비GAAP) 49.0~50.5%, 비GAAP EPS $35.50~36.50.",
+          "now": "3Q'26 발표: 매출 $91~92bn, 성과마진 52.0~52.5%, 비GAAP EPS $35.00~36.00(기초 중간값 +$4.07, 3Q IPR&D -$4.57), 세율 19~20%(이전 18~19%).",
+          "meaning": "연초 이후 세 번째 매출 상향이며 이번 상향 폭(중간값 +$5.5bn)이 2분기(+$2.5bn)보다 크다. EPS 범위 하향은 BD 비용 회계 처리 결과로 사업 체력 악화가 아니다."
+        },
+        {
+          "title": "매출 성장·가격",
+          "direction": "혼재",
+          "before": "2Q'26: 매출 $23.0bn(+48%), 물량 +60%·가격 -13%. 미국 +33%(가격 -3%), 해외 +80%(가격 -36%).",
+          "now": "3Q'26: 매출 $24.4bn(+39%, QoQ +6%), 물량 +53%·가격 -15%. 미국 $15.1bn +34%(가격 -7%), 해외 $9.3bn +47%(가격 -29%).",
+          "meaning": "절대 매출은 신기록이지만 기저효과로 성장률은 낮아졌다. 미국 가격 하락 폭이 -3%→-7%로 커진 것은 보험 커버리지 확대·직판 가격 인하와 맞바꾼 물량 성장이라는 의미다."
+        },
+        {
+          "title": "인크레틴(Mounjaro·Zepbound)",
+          "direction": "개선",
+          "before": "2Q'26: Mounjaro $9.94bn(+91%), Zepbound $4.93bn(+46%), Foundayo $98m(첫 분기).",
+          "now": "3Q'26: Mounjaro $10.7bn(+65%, 해외 $5.7bn +93%), Zepbound $5.4bn(+49%), Foundayo(경구 orforglipron) $184m(QoQ 약 2배).",
+          "meaning": "두 주력 제품이 QoQ로 각각 약 8%, 10% 늘어 수요 둔화 신호는 없다. 경구제 Foundayo가 본격 램프업 단계에 들어갔다."
+        },
+        {
+          "title": "수익성·비용",
+          "direction": "혼재",
+          "before": "2Q'26: 비GAAP 매출총이익률 86.3%, R&D $3.82bn, 비GAAP EPS $8.38(IPR&D $3.03 포함).",
+          "now": "3Q'26: 비GAAP 매출총이익률 84.4%(+0.8%p YoY), R&D $4.2bn(+23%), 인수 IPR&D $4.2bn, 비GAAP EPS $7.48(IPR&D $4.57 포함).",
+          "meaning": "IPR&D를 더하면 비GAAP EPS는 약 $11.41→$12.05로 QoQ 개선이다. 매출총이익률은 가격 하락 영향으로 전분기보다 낮아졌다."
+        }
+      ],
+      "facts": "3Q'26 매출 $24.4bn(+39%, 물량 +53%·가격 -15%), 미국 $15.1bn(+34%), 해외 $9.3bn(+47%). Mounjaro $10.7bn(+65%), Zepbound $5.4bn(+49%), Foundayo $184m, Jaypirca $228m(+59%), Ebglyss $202m(+59%), Kisunla $193m(+175%), Omvoh $114m(+76%), Inluriyo $73m. 비GAAP 매출총이익률 84.4%, R&D $4.2bn(+23%), SG&A $3.1bn(+14%), 인수 IPR&D $4.2bn. EPS $7.22(+16%), 비GAAP EPS $7.48(+7%, IPR&D $4.57 포함). Mounjaro 2형 당뇨 심혈관 위험 감소 FDA 승인, 주1회 기저 인슐린 Onswik 승인, retatrutide vs Ozempic 2mg 직접비교 3상 긍정적 탑라인.",
+      "guidance": "2026 매출 $91~92bn(이전 $85~87bn), 성과마진 52.0~52.5%(이전 49.0~50.5%), 비GAAP EPS $35.00~36.00(이전 $35.50~36.50; 기초 중간값 +$4.07, 3Q 인수 IPR&D -$4.57), 세율 19~20%(이전 18~19%). 9/30 이후 발생할 인수 IPR&D는 가이던스에서 제외.",
+      "tone": "공식 보도자료에서 CEO는 '이전 기대를 넘어선 분기'로 연간 전망을 올렸다고 밝히고, Mounjaro·Zepbound의 글로벌 소비자 수요, Foundayo 글로벌 출시, 미국 비만 보험 커버리지 확대, 신제품 매출 2배 증가를 성장 동력으로 꼽았다. 텍사스·버지니아 생산 증설도 언급. 공식 Q&A 녹취록 미확인으로 Q&A 톤은 평가하지 않는다.",
+      "interpretation": "분석: 핵심 변곡점은 가격 하락이 커지는데도(미국 -3%→-7%) 물량이 이를 압도해 연간 매출 가이던스를 중간값 기준 6% 넘게 올렸다는 점이다. 비만치료제 시장이 '고가·소수'에서 '저가·대중화'로 이동 중이며 Lilly는 생산능력으로 점유율을 지키는 구조다. 경쟁사 NVO의 11/4 9개월 실적에서 가격 압력과 점유율 변화를 함께 봐야 한다. 한국 관점에서는 GLP-1 위탁생산(CDMO)·원료·주사기/펜 관련 밸류체인 수요 지속 신호로, 삼성바이오로직스 등 CDMO와 펩타이드 원료 업체의 수주 모멘텀 점검 근거가 된다.",
+      "watch": "분석: 공식 컨콜 녹취록에서 2027 가격 하락 폭·Medicare 비만 커버리지 영향, Foundayo 처방 램프업과 해외 출시 속도, retatrutide 허가 일정, 4분기 IPR&D 추가 발생 여부, 11/4 Novo Nordisk 실적과의 점유율 비교.",
+      "source": "https://www.prnewswire.com/news-releases/lilly-reports-third-quarter-2026-financial-results-raises-full-year-guidance-and-highlights-regulatory-progress-across-the-portfolio-302922907.html",
+      "source_label": "Eli Lilly 3Q'26 공식 실적 보도자료",
+      "prior_source": "https://investor.lilly.com/news-releases/news-release-details/lilly-reports-second-quarter-2026-financial-results-raises-full",
+      "prior_source_label": "Eli Lilly 2Q'26 공식 실적 보도자료"
     }
   ],
   "upcoming": [
@@ -19771,13 +19820,6 @@
       "time": "장 마감 후 · 14:00 America/Los_Angeles(컨콜)",
       "event": "2026 Q3 실적·컨퍼런스콜",
       "source": "https://www.intc.com/news-events/press-releases/detail/1782/intel-to-report-third-quarter-2026-financial-results"
-    },
-    {
-      "ticker": "LLY",
-      "date": "2026-10-29",
-      "time": "10:00 America/New_York(컨콜)",
-      "event": "2026 Q3 실적·컨퍼런스콜",
-      "source": "https://investor.lilly.com/events/event-details/q3-2026-earnings-call"
     },
     {
       "ticker": "6752.T",
