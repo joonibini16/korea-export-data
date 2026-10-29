@@ -1,4 +1,4 @@
-// 해외 실적·컨콜 변곡점 페이지의 '분기 실적 리포트' 탭.
+// 해외 실적·컨콜 변곡점 페이지 요약 탭 하단의 '상세 리포트'(접이식). events[].report 가 있는 발표만 보이고, 없으면 패널을 숨긴다(요약과 중복 방지).
 // global_earnings.js 가 기업·분기를 고르면 'ge:show' 이벤트를 보내고, 여기서 리포트를 그린다.
 (async()=>{
  const $=id=>document.getElementById(id);
@@ -121,14 +121,15 @@
 
  function render(ticker,period){
   const co=byT.get(ticker);tabsBox.replaceChildren();paper.replaceChildren();
-  if(!co){paper.append(el('p','lite','기업을 선택하세요.'));return;}
+  if(!co){const pn=$('reportPanel');if(pn)pn.hidden=true;paper.append(el('p','lite','기업을 선택하세요.'));return;}
   const mine=events.filter(e=>e.ticker===ticker).sort((a,b)=>b.date.localeCompare(a.date));
-  if(!mine.length){paper.append(el('p','lite',`${co.name}: 공식 자료로 검증한 분기 실적 기록이 아직 없습니다.`));return;}
+  if(!mine.length){const pn=$('reportPanel');if(pn)pn.hidden=true;paper.append(el('p','lite',`${co.name}: 공식 자료로 검증한 분기 실적 기록이 아직 없습니다.`));return;}
   const e=mine.find(x=>x.period===period)||mine[0];
   tabsBox.append(el('span','lbl','발표 분기'));
   for(const x of mine){const b=el('button',x===e?'on':'');b.type='button';b.setAttribute('role','tab');b.setAttribute('aria-selected',x===e?'true':'false');b.append(document.createTextNode(x.period),el('small',null,x.date.slice(5).replace('-','/')));
    b.onclick=()=>{const pp=$('periodPick');if(pp&&[...pp.options].some(o=>o.value===x.period)){pp.value=x.period;pp.dispatchEvent(new Event('change'));}else render(ticker,x.period);};tabsBox.append(b);}
-  paper.append(e.report?renderRich(e,co):renderBasic(e,co));}
+  const panel=$('reportPanel');if(panel)panel.hidden=!e.report;
+  if(e.report)paper.append(renderRich(e,co));}
  window.addEventListener('ge:show',ev=>render(ev.detail.ticker,ev.detail.period));
  const cp=$('companyPick'),pp=$('periodPick');if(cp&&cp.value)render(cp.value,pp?.value);
 })();
