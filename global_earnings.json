@@ -19650,6 +19650,55 @@
       "source_label": "TotalEnergies 2026 Q3 공식 실적 발표",
       "prior_source": "https://totalenergies.com/system/files/documents/totalenergies_pr-results-2q26_2026_en.pdf",
       "prior_source_label": "TotalEnergies 2026 Q2 공식 실적 발표"
+    },
+    {
+      "ticker": "PRY.MI",
+      "period": "2026 Q3",
+      "date": "2026-10-29",
+      "evidence": "Prysmian 공식 Q3·9개월 실적 보도자료 · 7/30 공식 상반기 실적 보도자료와 대조",
+      "direction": "개선",
+      "headline": "Q3 조정 EBITDA €851m(+32%)·마진 16.8%로 사상 최대 · 2026 EBITDA 가이던스 €2.80~2.90bn→€3.075~3.125bn, FCF €1.65~1.75bn→€1.75~1.85bn 재상향 · 2028 목표를 2년 조기 초과 전망",
+      "estimate_signal": "9개월 조정 EBITDA €2.182bn과 새 연간 가이던스를 대조하면 Q4에 약 €893~943m이 필요해 Q3 사상 최대치 €851m보다 높은 이익을 전제(분석) · 2026 Q4 이익 추정은 상향 방향 · 2027 정량 가이던스는 아직 없지만 데이터센터·전력망·송전의 두 자릿수 성장과 2028 목표 조기 초과 전망은 다음 해 추정의 상방 근거",
+      "call_coverage": "공식 Q3·9개월 실적 보도자료 기준 · 공식 컨콜 Q&A 녹취록 미확인; Q&A 톤 평가 없음",
+      "changes": [
+        {
+          "title": "2026 연간 가이던스",
+          "direction": "상향",
+          "before": "7/30: 조정 EBITDA €2.80~2.90bn, FCF €1.65~1.75bn.",
+          "now": "10/29: 조정 EBITDA €3.075~3.125bn, FCF €1.75~1.85bn.",
+          "meaning": "EBITDA 중간값은 €2.85bn→€3.10bn으로 약 8.8% 상향됐다. Q4에도 높은 이익 수준을 요구하는 가이던스다."
+        },
+        {
+          "title": "Q3 성장·수익성",
+          "direction": "개선",
+          "before": "Q2: 매출 €6.021bn, 유기성장 +9.4%, 조정 EBITDA €730m, 마진 15.4%.",
+          "now": "Q3: 매출 €6.417bn, 유기성장 +13.1%, 조정 EBITDA €851m, 마진 16.8%.",
+          "meaning": "매출 성장 가속과 마진 확대가 동시에 발생해 분기 EBITDA가 16.6% QoQ 늘었다."
+        },
+        {
+          "title": "AI·데이터센터 노출",
+          "direction": "개선",
+          "before": "Q2: Digital Solutions 유기성장 +18.0%, EBITDA €122m, 마진 23.8%; I&C 유기성장 +9.1%.",
+          "now": "Q3: Digital Solutions 유기성장 +17.3%, EBITDA €134m, 마진 25.0%; I&C 유기성장 +14.2%, 마진 17.6%.",
+          "meaning": "미국 광섬유·Channell과 북미 데이터센터 전력 수요가 디지털·전력 케이블 양쪽 이익률을 끌어올렸다."
+        },
+        {
+          "title": "중기 목표·재무",
+          "direction": "상향",
+          "before": "7/30: 2028 목표 조기 달성 가능성을 언급, LTM FCF €978m, 순부채 €4.079bn.",
+          "now": "10/29: 2028 EBITDA·FCF 목표를 2년 조기 초과 전망, LTM FCF €1.434bn, 순부채 €2.857bn.",
+          "meaning": "영업현금 창출과 자본확충으로 재무여력이 개선됐고 Atkore·Xtera 통합 이후 새 목표는 2027년 상반기 자본시장일에서 제시될 예정이다."
+        }
+      ],
+      "facts": "Q3 매출 €6.417bn(전년 €5.030bn), 유기성장 +13.1%, 조정 EBITDA €851m(+32.1% YoY), 마진 16.8%(전년 14.8%). 9개월 매출 €17.656bn, 조정 EBITDA €2.182bn, 마진 15.5%, 순이익 €998m, LTM FCF €1.434bn, 순부채 €2.857bn. 부문 Q3 유기성장: Transmission +23.1%, Power Grid +7.5%, I&C +14.2%, Specialties +5.3%, Digital Solutions +17.3%.",
+      "guidance": "2026 조정 EBITDA €3.075~3.125bn, FCF €1.75~1.85bn. 2028 조정 EBITDA·FCF 목표를 2026년에 2년 앞당겨 초과할 전망. 2027년 상반기 자본시장일에서 새 중기 목표를 제시할 예정이며, 2027 정량 실적 가이던스는 이번 자료에 없다.",
+      "tone": "공식 발표문에서 CEO는 이번 분기를 '최고의 분기'로 평가하고, 모든 사업의 질 높은 성과와 전략적 인수가 가이던스 재상향의 근거라고 강조했다. 공식 Q&A 녹취록 미확인으로 Q&A 톤은 평가하지 않는다.",
+      "interpretation": "분석: 가장 중요한 변화는 가이던스 중간값 상향과 그 안에 내재된 Q4 EBITDA 약 €918m이다. 이는 Q3 사상 최대치보다도 높아 회사가 데이터센터·전력망·송전 수요와 Atkore 기여의 지속성을 강하게 전제하고 있음을 뜻한다. Digital Solutions와 I&C 마진 동반 개선은 AI 인프라 수요가 광섬유뿐 아니라 전력 케이블·배전 솔루션으로 확산됐다는 신호다. 다만 Q4에는 인수 연결효과가 섞이므로 유기성장과 인수 기여를 구분해 봐야 한다.",
+      "watch": "분석: Q4 조정 EBITDA €893~943m 달성 여부, Atkore 통합·시너지와 인수부채 변화, Digital Solutions 25% 마진 유지, 북미 데이터센터 수요와 구리 가격 전가, Transmission 프로젝트 실행, 2027 상반기 자본시장일의 새 중기 목표.",
+      "source": "https://www.prysmian.com/en/media/press-releases/prysmian-to-exceed-2028-financial-targets-two-years-early-raises-2026-guidance-again-after-its-best-quarter-to-date",
+      "source_label": "Prysmian 2026 Q3·9개월 공식 실적 보도자료",
+      "prior_source": "https://na.prysmian.com/resources/press-releases/prysmian-raises-guidance-after-its-best-quarter-yet",
+      "prior_source_label": "Prysmian 2026 상반기 공식 실적 보도자료"
     }
   ],
   "upcoming": [
@@ -19680,13 +19729,6 @@
       "time": "10:00 America/New_York(컨콜)",
       "event": "2026 Q3 실적·컨퍼런스콜",
       "source": "https://investor.lilly.com/events/event-details/q3-2026-earnings-call"
-    },
-    {
-      "ticker": "PRY.MI",
-      "date": "2026-10-29",
-      "time": "시간 미공지(Europe/Rome)",
-      "event": "2026 Q3 실적 발표",
-      "source": "https://www.prysmian.com/en/investors/financial-calendar"
     },
     {
       "ticker": "6752.T",
