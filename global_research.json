@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-29T02:40:33.857467Z",
-  "last_checked_at": "2026-10-29T02:40:33.857467Z",
+  "updated_at": "2026-10-29T23:28:40.745Z",
+  "last_checked_at": "2026-10-29T23:28:40.745Z",
   "schedule_note": "매일 오전 8시 전후(한국시간), Work에서 공식 공개자료를 확인해 갱신",
   "sectors": [
     "반도체·장비",
@@ -22,144 +22,144 @@
       "name": "Goldman Sachs",
       "source_url": "https://www.goldmansachs.com/insights",
       "status": "partial",
-      "note": "공식 Insights 목록과 최근 7일 검색을 재확인. 추가 등록 가능한 신규 원문은 확인하지 못함. GIR 고객전용 전수 확인은 아님.",
-      "checked_at": "2026-10-29T02:40:33.857467Z"
+      "note": "공식 Insights와 최근 7일 재확인. 10월 29일 Global Institute 안보 슈퍼사이클 공개 요약 추가. GIR 고객전용 전수 확인은 아님.",
+      "checked_at": "2026-10-29T23:28:40.745Z"
     },
     {
       "id": "MS",
       "name": "Morgan Stanley",
       "source_url": "https://www.morganstanley.com/what-we-do/research/",
       "status": "partial",
-      "note": "공식 Research 공개 페이지와 최근 7일 검색 범위를 확인. 추가 검증 자료 없음. 고객 포털·모든 MSIM 발간물 전수 확인은 아님.",
-      "checked_at": "2026-10-29T02:40:33.857467Z"
+      "note": "공식 Research·Insights와 최근 7일 재확인. 추가 검증 자료 없음. 고객 포털·MSIM 전수 확인은 아님.",
+      "checked_at": "2026-10-29T23:28:40.745Z"
     },
     {
       "id": "JPM",
       "name": "J.P. Morgan",
       "source_url": "https://www.jpmorgan.com/insights/research",
       "status": "partial",
-      "note": "공식 Research 페이지는 403으로 본문 확인 실패. 이번 실행에서 신규 없음으로 판단하지 않으며 기존 정상 자료를 보존.",
-      "checked_at": "2026-10-29T02:40:33.857467Z"
+      "note": "10월 29일 Investment Banking Making Sense 녹취록 추가. Research 페이지 일부는 403이며 고객전용 리서치 전수 확인은 아님.",
+      "checked_at": "2026-10-29T23:28:40.745Z"
     },
     {
       "id": "UBS",
       "name": "UBS",
       "source_url": "https://www.ubs.com/global/en/wealthmanagement/insights/house-view.html",
       "status": "partial",
-      "note": "공식 CIO House View 공개 범위를 재확인. 기존 10월 28일 자료 이후 추가 검증 자료 없음. 고객전용 IB 자료 미확인.",
-      "checked_at": "2026-10-29T02:40:33.857467Z"
+      "note": "공식 CIO House View와 최근 7일 재확인. 10월 29일 AI Daily 전문 추가. 고객전용 IB 자료 미확인.",
+      "checked_at": "2026-10-29T23:28:40.745Z"
     },
     {
       "id": "BofA",
       "name": "Bank of America",
       "source_url": "https://institute.bankofamerica.com/consumer-checkpoint.html",
       "status": "partial",
-      "note": "Institute Consumer Checkpoint 공개 목록과 최근 검색 범위 확인. 추가 검증 자료 없음. 전체 BofA Global Research 미확인.",
-      "checked_at": "2026-10-29T02:40:33.857467Z"
+      "note": "Institute Daily Insights와 최근 7일 확인. 10월 28일 비용·마진 자료는 목록만 확인돼 listing_only로 추가. Global Research 전수 확인은 아님.",
+      "checked_at": "2026-10-29T23:28:40.745Z"
     },
     {
       "id": "Citi",
       "name": "Citi",
       "source_url": "https://www.citigroup.com/global/insights/research-citi-podcasts",
       "status": "partial",
-      "note": "공식 시리즈 페이지의 동적 목록 추출은 제한됨. 최근 7일 검색에서 10월 27일 누락 팟캐스트를 찾아 공식 녹취록으로 추가.",
-      "checked_at": "2026-10-29T02:40:33.857467Z"
+      "note": "공식 Insights·팟캐스트 재확인. 10월 29일 호주 포럼 Perspective는 기업홍보성 자료로 등록하지 않음. 고객전용 리서치 미확인.",
+      "checked_at": "2026-10-29T23:28:40.745Z"
     },
     {
       "id": "Barclays",
       "name": "Barclays",
       "source_url": "https://privatebank.barclays.com/insights/",
       "status": "partial",
-      "note": "Private Bank 목록 직접 열람은 403. 공식 검색 색인만 일부 재확인. 이를 신규 없음이나 전체 점검 완료로 간주하지 않음.",
-      "checked_at": "2026-10-29T02:40:33.857467Z"
+      "note": "Private Bank·공개 Insights 재확인. 새 검증 자료 없음. 일부 경로 403으로 전체 확인은 아님.",
+      "checked_at": "2026-10-29T23:28:40.745Z"
     },
     {
       "id": "DB",
       "name": "Deutsche Bank",
       "source_url": "https://investmentbank.db.com/research/index",
       "status": "partial",
-      "note": "Investment Bank Research 공개 경로와 Private Bank Insights 목록을 확인. 후자에 10월 22·26일 후보가 있으나 개별 원문 검증은 미완료여서 등록 보류.",
-      "checked_at": "2026-10-29T02:40:33.857467Z"
+      "note": "Investment Bank와 Wealth Management 경로 재확인. 검색 색인의 10월 29일 반도체 항목은 실제 7월 27일 자료로 확인돼 제외.",
+      "checked_at": "2026-10-29T23:28:40.745Z"
     },
     {
       "id": "Nomura",
       "name": "Nomura (노무라)",
       "source_url": "https://www.nomuraconnects.com/",
       "status": "partial",
-      "note": "Nomura Connects 공개 목록·최근 검색과 기존 Central Banks 원문을 대조. 기존 등록 자료를 재등록하지 않음. NRI·고객전용 자료 제외.",
-      "checked_at": "2026-10-29T02:40:33.857467Z"
+      "note": "Nomura Connects 목록 재확인. 10월 월단위 자료 외 발간일 검증 신규 없음. NRI·고객전용 제외.",
+      "checked_at": "2026-10-29T23:28:40.745Z"
     },
     {
       "id": "Daiwa",
       "name": "Daiwa (다이와)",
       "source_url": "https://www.dir.co.jp/english/research/report/index.html",
       "status": "partial",
-      "note": "Daiwa Institute 일본어 최신 보고서 목록과 영어 목록 재확인. 최신 10월 28일 자료는 이미 등록됨. 전체 PDF 확인을 뜻하지 않음.",
-      "checked_at": "2026-10-29T02:40:33.857467Z"
+      "note": "Daiwa Institute 최신 목록·공식 요약 확인. 10월 29일 FOMC 자료 추가.",
+      "checked_at": "2026-10-29T23:28:40.745Z"
     },
     {
       "id": "Mizuho",
       "name": "Mizuho (미즈호)",
       "source_url": "https://www.mizuhogroup.com/what-we-do/research",
       "status": "partial",
-      "note": "Singapore 공개 목록에서 10월 28일 Daily 확인. 연결 PDF는 열람 오류로 본문 미확인 상태 유지. 신규 없음으로 간주하지 않음.",
-      "checked_at": "2026-10-29T02:40:33.857467Z"
+      "note": "Mizuho Bank Singapore 목록에서 10월 29일 Daily 확인, listing_only 추가. 연결 PDF 본문 오류.",
+      "checked_at": "2026-10-29T23:28:40.745Z"
     },
     {
       "id": "HSBC",
       "name": "HSBC",
       "source_url": "https://www.business.hsbc.com/en-gb/products/global-investment-research",
       "status": "partial",
-      "note": "Global Investment Research 공개 소개 경로와 최근 검색 범위 확인. 추가 등록 가능한 신규 자료 미확인. 고객전용 상세 보고서 미확인.",
-      "checked_at": "2026-10-29T02:40:33.857467Z"
+      "note": "공식 Insights 재확인. 10월 28일 대만 ETF 공개 본문 추가. GIR 고객전용 전수 확인은 아님.",
+      "checked_at": "2026-10-29T23:28:40.745Z"
     },
     {
       "id": "BNP",
       "name": "BNP Paribas (BNP파리바)",
       "source_url": "https://globalmarkets.cib.bnpparibas/markets-360/",
       "status": "partial",
-      "note": "Markets 360 공개 목록과 최근 검색 범위 재확인. Economic Research 전체 신규물을 전수 확인한 것은 아님. 추가 등록 자료 없음.",
-      "checked_at": "2026-10-29T02:40:33.857467Z"
+      "note": "Global Markets·Economic Research 재확인. 10월 28일 미국 사모신용 자금구조 전문 추가.",
+      "checked_at": "2026-10-29T23:28:40.745Z"
     },
     {
       "id": "SocGen",
       "name": "Société Générale (소시에테제네랄)",
       "source_url": "https://insight-public.sgmarkets.com/",
       "status": "failed",
-      "note": "공식 페이지가 JavaScript 실행 안내만 반환해 동적 발간 목록 확인 실패. 검색 확인도 제한적이므로 신규 없음으로 판단하지 않음.",
-      "checked_at": "2026-10-29T02:40:33.857467Z"
+      "note": "공식 페이지가 JavaScript 안내만 반환해 발간 목록 확인 실패. 신규 없음으로 판단하지 않음.",
+      "checked_at": "2026-10-29T23:28:40.745Z"
     },
     {
       "id": "Jefferies",
       "name": "Jefferies (제프리스)",
       "source_url": "https://www.jefferies.com/insights/",
       "status": "partial",
-      "note": "공식 Insights와 최근 검색을 일부 확인. 10월 9일 과거 자료는 이번 기간 밖으로 보류. 고객전용 리서치 미확인.",
-      "checked_at": "2026-10-29T02:40:33.857467Z"
+      "note": "공식 Insights·Research 재확인. 10월 30일 에너지안보 컨퍼런스는 행사 공지여서 등록하지 않음.",
+      "checked_at": "2026-10-29T23:28:40.745Z"
     },
     {
       "id": "Bernstein",
       "name": "Bernstein Research (번스타인)",
       "source_url": "https://www.bernsteinresearch.com/Research/",
       "status": "partial",
-      "note": "공식 Research 소개 페이지는 확인되나 공개 발간목록·최근 원문을 확보하지 못함. 신규 없음으로 판단하지 않음. AB 자산운용 콘텐츠는 제외.",
-      "checked_at": "2026-10-29T02:40:33.857467Z"
+      "note": "공식 소개·로그인 경로 재확인. 공개 발간 목록·신규 원문 미확보. AB 자산운용 제외.",
+      "checked_at": "2026-10-29T23:28:40.745Z"
     },
     {
       "id": "Macquarie",
       "name": "Macquarie (맥쿼리)",
       "source_url": "https://www.macquarie.com/au/en/insights.html",
       "status": "partial",
-      "note": "공식 그룹 Insights와 최근 검색 범위를 일부 확인. 검증 가능한 추가 자료 없음. MAM·고객전용 전체 발간물 전수 확인은 아님.",
-      "checked_at": "2026-10-29T02:40:33.857467Z"
+      "note": "공식 Insights와 CGM 공개 경로 재확인. 추가 검증 자료 없음. 고객전용 포털 미확인.",
+      "checked_at": "2026-10-29T23:28:40.745Z"
     },
     {
       "id": "RBC",
       "name": "RBC Capital Markets",
       "source_url": "https://www.rbccm.com/en/insights",
       "status": "partial",
-      "note": "공식 Insights 목록에서 10월 26일 Midterm musings 누락분을 공식 소개문 범위로 추가. 10월 20일 AI 콘텐츠는 9월 16일 재게시 자료로 신규 발간에서 제외.",
-      "checked_at": "2026-10-29T02:40:33.857467Z"
+      "note": "공식 Insights·팟캐스트 재확인. 10월 28일 Canadian Equity Compass 소개문 추가. 오디오 전문 미확인.",
+      "checked_at": "2026-10-29T23:28:40.745Z"
     }
   ],
   "reports": [
@@ -2632,6 +2632,374 @@
       ],
       "date_note": "공식 본문에 Published October 26, 2026 표시. 새 발간이 아닌 과거 누락분으로 추가.",
       "coverage_note": "RBC Capital Markets 공식 소개문만 확인. 팟캐스트 전체 청취·전문 확인으로 간주하지 않음."
+    },
+    {
+      "companies": [],
+      "prior_source": null,
+      "initial_archive": false,
+      "first_seen_at": "2026-10-29T23:28:40.745Z",
+      "last_verified_at": "2026-10-29T23:28:40.745Z",
+      "id": "gs-security-supercycle-20261029",
+      "publisher": "GS",
+      "division": "Goldman Sachs Global Institute",
+      "published_at": "2026-10-29",
+      "title": "The Security Supercycle: Investing in Innovation, Resilience, and Rearmament",
+      "title_ko": "안보 슈퍼사이클: 재무장·회복탄력성·이중용도 기술 투자",
+      "sectors": [
+        "산업재·자동차",
+        "에너지·소재",
+        "AI·IT하드웨어"
+      ],
+      "document_type": "research_article",
+      "source_scope": "official_summary",
+      "source_url": "https://www.goldmansachs.com/insights/articles/the-security-supercycle-investing-in-innovation-resilience-and-rearmament",
+      "headline": "방위비 증액을 넘어 생산능력·첨단제조·에너지 기술까지 이어지는 장기 안보 투자 사이클이 형성되고 있으며, 구조적으로 유지해야 하는 희소 생산능력에 프리미엄이 붙을 가능성.",
+      "facts": [
+        "지정학 경쟁·활성 분쟁·기술 혁신과 넓어진 국가안보의 정의가 재무장 투자 사이클을 이끈다고 설명했다.",
+        "저가 무인체계가 전쟁 경제성을 바꾸고 방산 스타트업과 기존 방산업체로 자본이 함께 유입된다고 평가했다.",
+        "드론·분산전력 등 이중용도 기술이 핵심 인프라와 민간 시장으로 확장되고 있다고 제시했다."
+      ],
+      "interpretation": "수혜 범위가 전통 방산에서 첨단제조·전력·인프라로 넓어질 수 있다. 회사별 실적 반영에는 실제 수주와 생산능력 전환 속도 확인이 필요하다.",
+      "estimate_signal": "방산·첨단제조·분산전력의 중기 수주와 매출 추정에는 상방 방향. 개별 기업 추정치 수정 수치는 제시하지 않았다.",
+      "valuation_change": "개별 목표가·밸류에이션 변경 없음",
+      "tone_change": "비교 자료가 없어 변화 판단 보류. 안보 투자를 구조적 산업정책으로 보는 긍정적 톤.",
+      "stance": "positive",
+      "watch": [
+        "국방예산의 계약 전환",
+        "희소 생산능력 증설",
+        "이중용도 기술의 민간 매출 전환"
+      ],
+      "date_note": "공식 페이지에 2026년 10월 29일 표시",
+      "coverage_note": "공식 공개 기사와 보고서 소개문 확인. 전체 보고서 PDF는 검토하지 않아 official_summary로 구분."
+    },
+    {
+      "companies": [],
+      "prior_source": null,
+      "initial_archive": false,
+      "first_seen_at": "2026-10-29T23:28:40.745Z",
+      "last_verified_at": "2026-10-29T23:28:40.745Z",
+      "id": "jpm-sponsors-spreads-stress-20261029",
+      "publisher": "JPM",
+      "division": "J.P. Morgan Investment Banking · Making Sense Podcast(Research 부서와 구분)",
+      "published_at": "2026-10-29",
+      "title": "Sponsors, spreads and stress testing: Navigating 2026’s rate reset",
+      "title_ko": "금리 리셋기의 스폰서·스프레드·스트레스테스트",
+      "sectors": [
+        "금융·신용",
+        "매크로·전략"
+      ],
+      "document_type": "podcast",
+      "source_scope": "full_text",
+      "source_url": "https://www.jpmorgan.com/insights/podcast-hub/making-sense/sponsors-spreads-rate-reset",
+      "headline": "고금리 자체보다 신용등급 하단의 차별화가 핵심 위험이다. BB·B 스프레드는 비교적 안정적이지만 CCC 스프레드가 300bp 이상 확대돼 저품질 차주의 현금흐름 스트레스가 먼저 나타나고 있다.",
+      "facts": [
+        "9월 이후 하이일드 수익률이 약 100bp 상승했고 MOVE 지수는 9월 한 달 약 30% 올랐다고 설명했다.",
+        "BB·B 스프레드는 연초 대비 대체로 유지됐지만 CCC 스프레드는 300bp 이상 확대됐다고 밝혔다.",
+        "9월 하이일드 신규 발행은 540억달러로 기록적 수준이었고 대부분 M&A 관련이었다.",
+        "대부분의 정상 기업은 2024년 이후 차환으로 만기가 최소 3~4년 뒤에 있어 광범위한 즉시 만기벽은 없다고 평가했다."
+      ],
+      "interpretation": "시장 전체의 신용경색보다 저등급·낮은 이자보상 기업에서 선별적 스트레스가 시작된 신호다. AI·인프라 CAPEX 둔화 시 상위 등급 전이를 점검해야 한다.",
+      "estimate_signal": "레버리지 높은 저등급 기업의 순이익에는 하방, 자본시장·헤지 수요에는 상방 방향. 개별 기업 추정치는 없다.",
+      "valuation_change": "개별 목표가 변경 없음. CCC 위험 프리미엄 확대 확인.",
+      "tone_change": "강한 유동성과 만기 연장을 인정하면서도 저품질 신용과 높은 기준금리에 대한 경계가 높아진 톤.",
+      "stance": "mixed",
+      "watch": [
+        "CCC 스프레드와 부도율",
+        "AI·에너지 인프라 CAPEX",
+        "하이일드·CLO 자금유입"
+      ],
+      "date_note": "공식 발간일 2026년 10월 29일, 녹음일 10월 13일",
+      "coverage_note": "공식 팟캐스트 전체 녹취록 확인. Research가 아닌 Investment Banking 제작 자료로 구분."
+    },
+    {
+      "companies": [
+        {
+          "ticker": "GOOGL",
+          "name": "Alphabet",
+          "relationship": "원문 실적·클라우드 성장 언급"
+        },
+        {
+          "ticker": "MSFT",
+          "name": "Microsoft",
+          "relationship": "원문 Azure·Copilot 언급"
+        },
+        {
+          "ticker": "ORCL",
+          "name": "Oracle",
+          "relationship": "원문 클라우드 성장 언급"
+        },
+        {
+          "ticker": "META",
+          "name": "Meta",
+          "relationship": "원문 자금조달·CAPEX 언급"
+        }
+      ],
+      "prior_source": "https://www.ubs.com/global/en/wealthmanagement/insights/chief-investment-office/house-view/daily/2026/latest-27102026.html",
+      "initial_archive": false,
+      "first_seen_at": "2026-10-29T23:28:40.745Z",
+      "last_verified_at": "2026-10-29T23:28:40.745Z",
+      "id": "ubs-ai-delivers-volatility-20261029",
+      "publisher": "UBS",
+      "division": "UBS Chief Investment Office · House View Daily",
+      "published_at": "2026-10-29",
+      "title": "AI delivers despite volatility",
+      "title_ko": "변동성 속에서도 AI 수익화와 클라우드 성장은 견조",
+      "sectors": [
+        "AI·IT하드웨어",
+        "반도체·장비",
+        "전력·데이터센터"
+      ],
+      "document_type": "cio_commentary",
+      "source_scope": "full_text",
+      "source_url": "https://www.ubs.com/global/en/wealthmanagement/insights/chief-investment-office/house-view/daily/2026/latest-29102026.html",
+      "headline": "주가 변동성과 높은 기대치에도 클라우드 성장 가속·AI 제품 수익화·높은 CAPEX가 확인돼 AI 수요 판단은 유지. 다만 네오클라우드 자금조달 위험과 종목 집중은 분리해야 한다.",
+      "facts": [
+        "Google Cloud 성장률은 103%로 직전 분기 82%에서 가속됐다고 제시했다.",
+        "Azure는 48%로 43%, Oracle은 62%로 47%에서 가속됐다고 설명했다.",
+        "Microsoft의 대형 Copilot 계정은 8배 증가했고 Gemini 사용자는 10억명에 도달했다고 언급했다.",
+        "Microsoft의 2026년 CAPEX 전망은 1750억달러에서 1700억달러로 소폭 낮아졌지만 2027년 투자 가속을 강조했다."
+      ],
+      "interpretation": "AI 투자 논리는 CAPEX 확대에서 클라우드 매출과 제품 사용량으로 검증 단계가 이동한다. 고품질 업체와 자금조달 의존 전문 AI 클라우드의 차별화가 커질 가능성.",
+      "estimate_signal": "고품질 반도체·하드웨어와 하이퍼스케일러의 2027년 매출·이익에는 상방 방향. 전문 AI 클라우드는 일괄 상향하기 어렵다.",
+      "valuation_change": "개별 목표가 변경 없음. 높은 기대치와 집중도가 변동성 프리미엄 요인.",
+      "tone_change": "AI 수요의 건설적 시각은 유지하되 수익화와 재무건전성을 더 강하게 요구하는 선별적 긍정.",
+      "stance": "positive",
+      "watch": [
+        "클라우드 성장과 AI 제품 매출",
+        "2027년 CAPEX",
+        "GPU 임대료와 네오클라우드 조달비용"
+      ],
+      "date_note": "공식 본문에 2026년 10월 29일 표시",
+      "coverage_note": "UBS CIO House View Daily 공개 전문 확인. IB 개별종목 리서치와 구분."
+    },
+    {
+      "companies": [],
+      "prior_source": null,
+      "initial_archive": false,
+      "first_seen_at": "2026-10-29T23:28:40.745Z",
+      "last_verified_at": "2026-10-29T23:28:40.745Z",
+      "id": "daiwa-fomc-wait-clarity-20261029",
+      "publisher": "Daiwa",
+      "division": "Daiwa Institute of Research · Economic Research Department",
+      "published_at": "2026-10-29",
+      "title": "FOMC　明確さを待つために様子見",
+      "title_ko": "FOMC, 명확성을 기다리며 동결: 12월 인상 가능성은 열어둠",
+      "sectors": [
+        "매크로·전략",
+        "금융·신용"
+      ],
+      "document_type": "research_article",
+      "source_scope": "official_summary",
+      "source_url": "https://www.dir.co.jp/report/research/economics/usa/20261029_026164.html",
+      "headline": "10월 FOMC는 3.75~4.00%로 동결했지만 인플레이션과 금융여건 악화 사이에서 12월 25bp 인상 가능성을 남겼다. 금리보다 신용스프레드와 노동참가율이 핵심.",
+      "facts": [
+        "정책금리 목표 범위를 3.75~4.00%로 유지했다.",
+        "경기 판단은 상향됐고 소비·설비투자·고용의 견조함과 높은 인플레이션이 강조됐다.",
+        "일부 자산의 신용스프레드 급확대를 금융여건 긴축 신호로 언급했다.",
+        "9월 점도표와 최근 FedWatch는 12월 25bp 추가 인상을 시사한다고 설명했다."
+      ],
+      "interpretation": "정책금리 경로가 인플레이션과 신용스트레스의 균형으로 전환됐다. 저등급 신용과 성장주의 할인율 변동성이 높게 유지될 가능성.",
+      "estimate_signal": "은행 순이자마진에는 혼재, 고부채 기업 이자비용에는 하방 방향. 개별 기업 추정 수정은 없다.",
+      "valuation_change": "개별 목표가 변경 없음. 장기금리·스프레드 변동성이 할인 요인.",
+      "tone_change": "경기 견조함을 인정하면서 금융환경의 부분적 스트레스를 새로 강조한 혼재 톤.",
+      "stance": "mixed",
+      "watch": [
+        "기대인플레이션",
+        "노동참가율",
+        "회사채 수익률·스프레드"
+      ],
+      "date_note": "공식 페이지에 2026년 10월 29일 표시",
+      "coverage_note": "Daiwa Institute 공식 페이지 공개 요약 확인. PDF 전문은 재게시하지 않아 official_summary로 구분."
+    },
+    {
+      "companies": [],
+      "prior_source": "https://www.mizuhogroup.com/asia-pacific/singapore/research",
+      "initial_archive": false,
+      "first_seen_at": "2026-10-29T23:28:40.745Z",
+      "last_verified_at": "2026-10-29T23:28:40.745Z",
+      "id": "mizuho-daily-20261029",
+      "publisher": "Mizuho",
+      "division": "Mizuho Bank Singapore · Macro & Market Research",
+      "published_at": "2026-10-29",
+      "title": "Mizuho Daily 29 October 2026",
+      "title_ko": "미즈호 데일리 2026년 10월 29일",
+      "sectors": [
+        "매크로·전략"
+      ],
+      "document_type": "market_commentary",
+      "source_scope": "listing_only",
+      "source_url": "https://www.mizuhogroup.com/asia-pacific/singapore/research",
+      "headline": "공식 목록에서 10월 29일 데일리 발간을 확인했지만 연결 원문을 열지 못해 시장 방향 판단은 보류.",
+      "facts": [
+        "공식 Macro & Market Research 목록에 자료가 게시됐다.",
+        "공식 소개문은 G3와 아시아 시장의 야간 흐름과 단기 전망을 다루는 일일 자료라고 설명한다."
+      ],
+      "interpretation": "본문을 확인하지 못했으므로 금리·환율·주식 방향을 추정하지 않는다.",
+      "estimate_signal": "개별 기업 실적 추정 근거 확인 불가.",
+      "valuation_change": "목표가·밸류에이션 변경 확인 불가",
+      "tone_change": "본문과 직전 자료의 동일 지표를 확인하지 못해 변화 판단 보류.",
+      "stance": "unknown",
+      "watch": [
+        "연결 PDF 접근",
+        "G3·아시아 금리와 환율 전망"
+      ],
+      "date_note": "공식 목록에 2026년 10월 29일 표시",
+      "coverage_note": "공식 목록과 자료 설명만 확인(listing_only). 연결 PDF 본문 미확인."
+    },
+    {
+      "companies": [],
+      "prior_source": null,
+      "initial_archive": false,
+      "first_seen_at": "2026-10-29T23:28:40.745Z",
+      "last_verified_at": "2026-10-29T23:28:40.745Z",
+      "id": "bnp-us-private-credit-funding-20261028",
+      "publisher": "BNP",
+      "division": "BNP Paribas Economic Research · Banking Economics",
+      "published_at": "2026-10-28",
+      "title": "Who finances private credit in the United States? What the Federal Reserve’s data reveal",
+      "title_ko": "미국 사모신용 자금은 누가 대는가: 연준 데이터 분석",
+      "sectors": [
+        "금융·신용",
+        "AI·IT하드웨어",
+        "전력·데이터센터"
+      ],
+      "document_type": "research_article",
+      "source_scope": "full_text",
+      "source_url": "https://economic-research.bnpparibas.com/html/en-US/finances-private-credit-United-States-Federal-Reserve-data-reveal-10/28/2026%2C53881",
+      "headline": "미국 사모신용은 기업부채의 7.1%까지 커졌고 가계·보험·은행이 자금을 공급한다. AI·데이터센터 자금원이라는 상방과 반개방형 펀드 유동성 위험이 동시에 확대.",
+      "facts": [
+        "사모신용은 미국 비금융기업 대출의 17.3%, 전체 기업부채의 7.1%를 차지한다.",
+        "자금조달 구성은 가계 31%, 보험·연기금 20%, 은행 19%다.",
+        "은행은 사모신용 펀드 부채의 65%를 제공한다.",
+        "2025년 직접대출의 거의 절반이 소프트웨어·데이터센터·AI 등 기술 부문으로 향했다."
+      ],
+      "interpretation": "AI 인프라 자금조달의 은행 밖 경로가 커졌지만 스트레스가 가계·보험·은행으로 전이될 수 있다. 펀드 환매도 점검해야 한다.",
+      "estimate_signal": "AI·데이터센터 투자 자금공급에는 상방이나 고레버리지 차주 이익과 금융기관 충당금에는 하방 위험.",
+      "valuation_change": "개별 목표가 변경 없음. 불투명성과 유동성 위험이 할인 요인.",
+      "tone_change": "성장 자금원 역할을 인정하면서 반개방형 구조와 환매 위험을 구체적으로 경고하는 혼재 톤.",
+      "stance": "mixed",
+      "watch": [
+        "펀드 환매",
+        "은행 익스포저",
+        "AI·데이터센터 직접대출 연체"
+      ],
+      "date_note": "공식 본문에 2026년 10월 28일 표시",
+      "coverage_note": "BNP Paribas Economic Research 공개 본문 전문 확인."
+    },
+    {
+      "companies": [],
+      "prior_source": null,
+      "initial_archive": false,
+      "first_seen_at": "2026-10-29T23:28:40.745Z",
+      "last_verified_at": "2026-10-29T23:28:40.745Z",
+      "id": "rbc-canadian-equity-compass-20261028",
+      "publisher": "RBC",
+      "division": "RBC Capital Markets Research · Markets in Motion Podcast",
+      "published_at": "2026-10-28",
+      "title": "Canadian Equity Compass",
+      "title_ko": "캐나다 주식 나침반: AI 없이도 미국 지수와 맞먹은 수익률",
+      "sectors": [
+        "매크로·전략",
+        "에너지·소재",
+        "금융·신용"
+      ],
+      "document_type": "podcast",
+      "source_scope": "official_summary",
+      "source_url": "https://www.rbccm.com/en/insights/2026/10/canadian-equity-compass",
+      "headline": "캐나다 증시는 AI 주도주 없이도 최근 1년간 S&P 500·나스닥을 앞섰고 연초 이후 수익률도 유사해, 에너지·금융 등 비미국 분산의 실적 기반을 점검할 가치가 커졌다.",
+      "facts": [
+        "최근 1년간 S&P 500과 나스닥을 상회했고 연초 이후 수익률은 유사하다고 밝혔다.",
+        "캐나다 주식의 지수·업종 펀더멘털과 향후 전망을 다룬다.",
+        "RBC Research의 캐나다 주식전략 책임자와 북미 금리전략가가 참여했다."
+      ],
+      "interpretation": "미국 기술주 집중을 낮출 분산 후보임을 시사한다. 업종별 이익 전망과 밸류에이션 수치는 녹취록 확인 전 보류한다.",
+      "estimate_signal": "캐나다 에너지·금융·소재의 상대이익 방향 점검 근거지만 개별 기업 상향·하향은 확정하지 않는다.",
+      "valuation_change": "개별 목표가·밸류에이션 변경 확인 불가",
+      "tone_change": "비교 가능한 직전 자료가 없어 변화 판단 보류. 상대성과를 강조하는 건설적 톤.",
+      "stance": "positive",
+      "watch": [
+        "캐나다 업종별 EPS 수정",
+        "미국 대비 밸류에이션",
+        "원자재와 금리 민감도"
+      ],
+      "date_note": "공식 페이지에 2026년 10월 28일 표시",
+      "coverage_note": "RBC 공식 소개문만 확인. 오디오 녹취록은 확인하지 않아 official_summary로 구분."
+    },
+    {
+      "companies": [],
+      "prior_source": null,
+      "initial_archive": false,
+      "first_seen_at": "2026-10-29T23:28:40.745Z",
+      "last_verified_at": "2026-10-29T23:28:40.745Z",
+      "id": "hsbc-taiwan-etf-market-20261028",
+      "publisher": "HSBC",
+      "division": "HSBC Bank (Taiwan) · Markets and Securities Services",
+      "published_at": "2026-10-28",
+      "title": "Taiwan ETFs – growing in global stature",
+      "title_ko": "대만 ETF 시장의 글로벌 위상 확대",
+      "sectors": [
+        "금융·신용",
+        "반도체·장비",
+        "AI·IT하드웨어"
+      ],
+      "document_type": "research_article",
+      "source_scope": "full_text",
+      "source_url": "https://www.business.hsbc.com/en-gb/insights/taiwan-etfs-growing-in-global-stature",
+      "headline": "AI 반도체가 만든 자산 증가와 정책 지원으로 대만 ETF 시장이 급성장하고 있다. 글로벌 운용사의 대만 진입과 현지 증권서비스 수요에는 구조적 상방.",
+      "facts": [
+        "대만 ETF는 전체 펀드산업 자산의 약 3분의 2를 차지한다.",
+        "액티브 ETF AUM은 1년간 86억대만달러에서 8,664억대만달러로 약 100배 늘었고 25개 상품으로 확대됐다.",
+        "2026년 첫 7개월 출시된 26개 ETF 중 9개는 외국계 운용사가 출시했다.",
+        "글로벌 상위 10개 운용사 중 6곳이 대만에 투자신탁 거점을 설립했다."
+      ],
+      "interpretation": "반도체 호황이 자본시장 상품 성장으로 확산되는 2차 효과다. 수탁·관리시장에는 긍정적이지만 반도체 기업 이익을 직접 상향하는 자료는 아니다.",
+      "estimate_signal": "대만 자산운용·수탁·증권서비스 매출에는 중기 상방. 반도체 기업 추정 변경은 없다.",
+      "valuation_change": "개별 목표가 변경 없음",
+      "tone_change": "대만 ETF 규모와 상품 다양화에 대한 긍정적 톤. 직전 직접 비교 없음.",
+      "stance": "positive",
+      "watch": [
+        "액티브 ETF 자금유입",
+        "외국계 운용사 상품",
+        "반도체 사이클과 가계자산"
+      ],
+      "date_note": "공식 본문에 2026년 10월 28일 표시",
+      "coverage_note": "HSBC Bank (Taiwan) 공개 본문 확인. 주식 리서치가 아닌 증권서비스 시장 인사이트로 구분."
+    },
+    {
+      "companies": [],
+      "prior_source": null,
+      "initial_archive": false,
+      "first_seen_at": "2026-10-29T23:28:40.745Z",
+      "last_verified_at": "2026-10-29T23:28:40.745Z",
+      "id": "bofa-rising-costs-business-margins-20261028",
+      "publisher": "BofA",
+      "division": "Bank of America Institute · Daily Insights",
+      "published_at": "2026-10-28",
+      "title": "Rising costs risk cutting into companies' bottom lines",
+      "title_ko": "비용 상승이 기업 수익성을 압박할 위험",
+      "sectors": [
+        "매크로·전략",
+        "산업재·자동차"
+      ],
+      "document_type": "research_article",
+      "source_scope": "listing_only",
+      "source_url": "https://institute.bankofamerica.com/daily-insights.html",
+      "headline": "10월 28일 비용 상승과 기업 수익성 압박을 다룬 자료 발간을 확인했지만 세부 데이터가 열리지 않아 이익 추정 방향은 보류.",
+      "facts": [
+        "공식 Daily Insights 목록에 2026년 10월 28일 자료로 게시됐다.",
+        "제목은 비용 상승이 기업의 최종 수익을 압박할 위험을 제시한다."
+      ],
+      "interpretation": "업종별 비용과 마진 민감도를 확인할 자료지만 본문 수치가 없어 기업별 영향을 추정하지 않는다.",
+      "estimate_signal": "세부 데이터 미확인으로 실적 추정에 반영하지 않음.",
+      "valuation_change": "목표가·밸류에이션 변경 자료 아님",
+      "tone_change": "본문과 비교 지표가 없어 변화 판단 보류.",
+      "stance": "unknown",
+      "watch": [
+        "원가·물류비와 중소기업 수익성",
+        "세부 PDF 공개"
+      ],
+      "date_note": "공식 목록에 10-28-2026 표시",
+      "coverage_note": "제목과 발간일만 확인(listing_only). 세부 PDF 본문 미확인."
     }
   ],
   "checks": [
@@ -2711,6 +3079,13 @@
       "new_publications": 0,
       "added_reports": 2,
       "note": "이어서 공개 경로 18곳 및 최근 7일 검색을 보완 점검. Citi 10/27 공식 녹취록과 RBC 10/26 공식 소개문 누락분 2건 추가. 모두 직전 점검 이전 발간으로 신규 발간 수는 0. JPM·Barclays 403, SocGen 동적 목록 실패, Bernstein 공개 발간목록 미확보, Mizuho PDF 오류를 신규 없음과 구분해 기록. 기존 61건 및 점검 이력 보존."
+    },
+    {
+      "checked_at": "2026-10-29T23:28:40.745Z",
+      "kind": "daily_review",
+      "new_publications": 5,
+      "added_reports": 9,
+      "note": "providers 18곳의 공식 공개 경로와 최근 7일 재검색. 10월 29일 신규 5건과 10월 28일 색인 지연 4건을 중복 없이 추가. 전문·요약·목록 확인을 구분하고 홍보·행사 공지는 제외. 접근 제한은 신규 없음과 구분 기록."
     }
   ]
 }
