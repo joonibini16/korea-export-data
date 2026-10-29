@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-28T23:53:01.386Z",
-  "last_checked_at": "2026-10-28T23:53:01.386Z",
+  "updated_at": "2026-10-29T02:40:33.857467Z",
+  "last_checked_at": "2026-10-29T02:40:33.857467Z",
   "schedule_note": "매일 오전 8시 전후(한국시간), Work에서 공식 공개자료를 확인해 갱신",
   "sectors": [
     "반도체·장비",
@@ -22,144 +22,144 @@
       "name": "Goldman Sachs",
       "source_url": "https://www.goldmansachs.com/insights",
       "status": "partial",
-      "note": "공식 Insights와 최근 7일을 재점검. 10월 27일 AI 도입·책임 관련 CEO 팟캐스트 전문 1건 추가. 고객 전용 GIR은 미확인.",
-      "checked_at": "2026-10-28T23:53:01.386Z"
+      "note": "공식 Insights 목록과 최근 7일 검색을 재확인. 추가 등록 가능한 신규 원문은 확인하지 못함. GIR 고객전용 전수 확인은 아님.",
+      "checked_at": "2026-10-29T02:40:33.857467Z"
     },
     {
       "id": "MS",
       "name": "Morgan Stanley",
       "source_url": "https://www.morganstanley.com/what-we-do/research/",
       "status": "partial",
-      "note": "공식 Research/Insights와 MSIM 공개 목록을 재점검. 10월 26일 Research 팟캐스트 색인 지연분과 10월 27일 MSIM FABN 공식 소개문을 추가. 투자은행 리서치와 자산운용 자료를 구분.",
-      "checked_at": "2026-10-28T23:53:01.386Z"
+      "note": "공식 Research 공개 페이지와 최근 7일 검색 범위를 확인. 추가 검증 자료 없음. 고객 포털·모든 MSIM 발간물 전수 확인은 아님.",
+      "checked_at": "2026-10-29T02:40:33.857467Z"
     },
     {
       "id": "JPM",
       "name": "J.P. Morgan",
       "source_url": "https://www.jpmorgan.com/insights/research",
       "status": "partial",
-      "note": "공식 공개 Research/Insights와 최근 7일을 재점검. 10월 26일 브라질 결선 관련 Private Bank 투자전략 본문을 색인 지연분으로 추가. 고객 전용 Global Research는 미확인.",
-      "checked_at": "2026-10-28T23:53:01.386Z"
+      "note": "공식 Research 페이지는 403으로 본문 확인 실패. 이번 실행에서 신규 없음으로 판단하지 않으며 기존 정상 자료를 보존.",
+      "checked_at": "2026-10-29T02:40:33.857467Z"
     },
     {
       "id": "UBS",
       "name": "UBS",
       "source_url": "https://www.ubs.com/global/en/wealthmanagement/insights/house-view.html",
       "status": "partial",
-      "note": "UBS CIO 공개물을 재점검. 10월 27일 AI 분산투자와 10월 28일 Fed 긴축 시장해설 2건을 추가. 자산관리 CIO 자료로 구분.",
-      "checked_at": "2026-10-28T23:53:01.386Z"
+      "note": "공식 CIO House View 공개 범위를 재확인. 기존 10월 28일 자료 이후 추가 검증 자료 없음. 고객전용 IB 자료 미확인.",
+      "checked_at": "2026-10-29T02:40:33.857467Z"
     },
     {
       "id": "BofA",
       "name": "Bank of America",
       "source_url": "https://institute.bankofamerica.com/consumer-checkpoint.html",
       "status": "partial",
-      "note": "Bank of America Institute와 최근 7일 공개물을 재점검. 직전 점검 이후 검증 가능한 신규 공개 발간물은 확인되지 않음. 고객 전용 Global Research는 미확인.",
-      "checked_at": "2026-10-28T23:53:01.386Z"
+      "note": "Institute Consumer Checkpoint 공개 목록과 최근 검색 범위 확인. 추가 검증 자료 없음. 전체 BofA Global Research 미확인.",
+      "checked_at": "2026-10-29T02:40:33.857467Z"
     },
     {
       "id": "Citi",
       "name": "Citi",
       "source_url": "https://www.citigroup.com/global/insights/research-citi-podcasts",
       "status": "partial",
-      "note": "공식 공개 Research/Insights와 최근 7일을 재점검했으나 신규 공개 발간물은 확인되지 않음. 은행 실적·보도자료는 리서치에서 제외.",
-      "checked_at": "2026-10-28T23:53:01.386Z"
+      "note": "공식 시리즈 페이지의 동적 목록 추출은 제한됨. 최근 7일 검색에서 10월 27일 누락 팟캐스트를 찾아 공식 녹취록으로 추가.",
+      "checked_at": "2026-10-29T02:40:33.857467Z"
     },
     {
       "id": "Barclays",
       "name": "Barclays",
       "source_url": "https://privatebank.barclays.com/insights/",
       "status": "partial",
-      "note": "공식 Sustainability Insights와 Private Bank 공개물을 재점검. 10월 26일 Markets Weekly 팟캐스트 색인 지연분 1건 추가. Barclays Research와 Private Bank 해설을 구분.",
-      "checked_at": "2026-10-28T23:53:01.386Z"
+      "note": "Private Bank 목록 직접 열람은 403. 공식 검색 색인만 일부 재확인. 이를 신규 없음이나 전체 점검 완료로 간주하지 않음.",
+      "checked_at": "2026-10-29T02:40:33.857467Z"
     },
     {
       "id": "DB",
       "name": "Deutsche Bank",
       "source_url": "https://investmentbank.db.com/research/index",
       "status": "partial",
-      "note": "Investment Bank Research 공개 경로와 최근 7일을 재점검했으나 검증 가능한 신규 공개 발간물은 확인되지 않음. 고객 포털 자료는 미확인.",
-      "checked_at": "2026-10-28T23:53:01.386Z"
+      "note": "Investment Bank Research 공개 경로와 Private Bank Insights 목록을 확인. 후자에 10월 22·26일 후보가 있으나 개별 원문 검증은 미완료여서 등록 보류.",
+      "checked_at": "2026-10-29T02:40:33.857467Z"
     },
     {
       "id": "Nomura",
       "name": "Nomura (노무라)",
       "source_url": "https://www.nomuraconnects.com/",
       "status": "partial",
-      "note": "Nomura Connects 공식 공개 경로와 최근 7일을 재점검했으나 신규 자료는 확인되지 않음. NRI 자료와 고객 전용 리서치는 별도이며 미확인.",
-      "checked_at": "2026-10-28T23:53:01.386Z"
+      "note": "Nomura Connects 공개 목록·최근 검색과 기존 Central Banks 원문을 대조. 기존 등록 자료를 재등록하지 않음. NRI·고객전용 자료 제외.",
+      "checked_at": "2026-10-29T02:40:33.857467Z"
     },
     {
       "id": "Daiwa",
       "name": "Daiwa (다이와)",
       "source_url": "https://www.dir.co.jp/english/research/report/index.html",
       "status": "partial",
-      "note": "Daiwa Institute of Research 최신 목록을 점검. 10월 27일 1건과 10월 28일 2건의 공식 요약을 추가. Daiwa Securities 개별종목 리서치와 구분.",
-      "checked_at": "2026-10-28T23:53:01.386Z"
+      "note": "Daiwa Institute 일본어 최신 보고서 목록과 영어 목록 재확인. 최신 10월 28일 자료는 이미 등록됨. 전체 PDF 확인을 뜻하지 않음.",
+      "checked_at": "2026-10-29T02:40:33.857467Z"
     },
     {
       "id": "Mizuho",
       "name": "Mizuho (미즈호)",
       "source_url": "https://www.mizuhogroup.com/what-we-do/research",
       "status": "partial",
-      "note": "Mizuho Bank Singapore Macro & Market Research 목록을 점검. 10월 27·28일 Daily 2건을 목록 확인 범위로 추가. PDF 본문 추출은 실패했고 Mizuho Securities 리서치와 구분.",
-      "checked_at": "2026-10-28T23:53:01.386Z"
+      "note": "Singapore 공개 목록에서 10월 28일 Daily 확인. 연결 PDF는 열람 오류로 본문 미확인 상태 유지. 신규 없음으로 간주하지 않음.",
+      "checked_at": "2026-10-29T02:40:33.857467Z"
     },
     {
       "id": "HSBC",
       "name": "HSBC",
       "source_url": "https://www.business.hsbc.com/en-gb/products/global-investment-research",
       "status": "partial",
-      "note": "공식 Insights와 최근 7일을 점검. 10월 26일 Global Investment Research 공개 기사 색인 지연분과 10월 29일 기업금융 국제사업 기사 2건 추가. 부서를 구분.",
-      "checked_at": "2026-10-28T23:53:01.386Z"
+      "note": "Global Investment Research 공개 소개 경로와 최근 검색 범위 확인. 추가 등록 가능한 신규 자료 미확인. 고객전용 상세 보고서 미확인.",
+      "checked_at": "2026-10-29T02:40:33.857467Z"
     },
     {
       "id": "BNP",
       "name": "BNP Paribas (BNP파리바)",
       "source_url": "https://globalmarkets.cib.bnpparibas/markets-360/",
       "status": "partial",
-      "note": "BNP Paribas Global Markets와 Economic Research 공개물을 점검. 10월 27일 유럽 가계 구매력 EcoTV 전문 1건 추가. 고객 전용 원문은 미확인.",
-      "checked_at": "2026-10-28T23:53:01.386Z"
+      "note": "Markets 360 공개 목록과 최근 검색 범위 재확인. Economic Research 전체 신규물을 전수 확인한 것은 아님. 추가 등록 자료 없음.",
+      "checked_at": "2026-10-29T02:40:33.857467Z"
     },
     {
       "id": "SocGen",
       "name": "Société Générale (소시에테제네랄)",
       "source_url": "https://insight-public.sgmarkets.com/",
-      "status": "partial",
-      "note": "공식 공개 Insight 경로와 최근 7일을 재점검했으나 신규 공개 자료는 확인되지 않음. 동적 목록과 고객 전용 자료는 공개 범위에서 일부만 확인.",
-      "checked_at": "2026-10-28T23:53:01.386Z"
+      "status": "failed",
+      "note": "공식 페이지가 JavaScript 실행 안내만 반환해 동적 발간 목록 확인 실패. 검색 확인도 제한적이므로 신규 없음으로 판단하지 않음.",
+      "checked_at": "2026-10-29T02:40:33.857467Z"
     },
     {
       "id": "Jefferies",
       "name": "Jefferies (제프리스)",
       "source_url": "https://www.jefferies.com/insights/",
       "status": "partial",
-      "note": "공식 Insights·Research 아카이브와 최근 7일을 재점검했으나 신규 투자 리서치는 확인되지 않음. 실적·행사 공지는 제외.",
-      "checked_at": "2026-10-28T23:53:01.386Z"
+      "note": "공식 Insights와 최근 검색을 일부 확인. 10월 9일 과거 자료는 이번 기간 밖으로 보류. 고객전용 리서치 미확인.",
+      "checked_at": "2026-10-29T02:40:33.857467Z"
     },
     {
       "id": "Bernstein",
       "name": "Bernstein Research (번스타인)",
       "source_url": "https://www.bernsteinresearch.com/Research/",
       "status": "partial",
-      "note": "Bernstein Research 공개 경로를 재점검했으나 검증 가능한 신규 공개 발간물은 확인되지 않음. AllianceBernstein 자산운용 콘텐츠와 고객 전용 자료는 제외.",
-      "checked_at": "2026-10-28T23:53:01.386Z"
+      "note": "공식 Research 소개 페이지는 확인되나 공개 발간목록·최근 원문을 확보하지 못함. 신규 없음으로 판단하지 않음. AB 자산운용 콘텐츠는 제외.",
+      "checked_at": "2026-10-29T02:40:33.857467Z"
     },
     {
       "id": "Macquarie",
       "name": "Macquarie (맥쿼리)",
       "source_url": "https://www.macquarie.com/au/en/insights.html",
       "status": "partial",
-      "note": "공식 Insights와 Macquarie Asset Management 공개 목록을 재점검했으나 최근 7일 신규 공개 발간물은 확인되지 않음. 부서별 자료를 구분.",
-      "checked_at": "2026-10-28T23:53:01.386Z"
+      "note": "공식 그룹 Insights와 최근 검색 범위를 일부 확인. 검증 가능한 추가 자료 없음. MAM·고객전용 전체 발간물 전수 확인은 아님.",
+      "checked_at": "2026-10-29T02:40:33.857467Z"
     },
     {
       "id": "RBC",
       "name": "RBC Capital Markets",
       "source_url": "https://www.rbccm.com/en/insights",
       "status": "partial",
-      "note": "RBC Capital Markets 공개 Insights·Strategy & Economics를 재점검했으나 10월 19일 이후 신규 공개 발간물은 확인되지 않음. 고객 포털 자료는 미확인.",
-      "checked_at": "2026-10-28T23:53:01.386Z"
+      "note": "공식 Insights 목록에서 10월 26일 Midterm musings 누락분을 공식 소개문 범위로 추가. 10월 20일 AI 콘텐츠는 9월 16일 재게시 자료로 신규 발간에서 제외.",
+      "checked_at": "2026-10-29T02:40:33.857467Z"
     }
   ],
   "reports": [
@@ -2556,6 +2556,82 @@
       ],
       "date_note": "공식 페이지에 2026년 10월 26일 표시",
       "coverage_note": "Barclays Private Bank 공식 팟캐스트 전문 확인. Barclays Research가 아닌 자산관리 시장해설로 구분."
+    },
+    {
+      "companies": [],
+      "prior_source": null,
+      "initial_archive": false,
+      "first_seen_at": "2026-10-29T02:40:33.857467Z",
+      "last_verified_at": "2026-10-29T02:40:33.857467Z",
+      "valuation_change": "개별 목표가·밸류에이션 변경은 확인되지 않음",
+      "id": "citi-midterms-blue-wave-ripple-20261027",
+      "publisher": "Citi",
+      "division": "Citi Research · Markets Edition (공식 주제별 시장해설 팟캐스트)",
+      "published_at": "2026-10-27",
+      "title": "Markets Edition: Blue Wave or Ripple? What the Midterms May Change",
+      "title_ko": "미국 중간선거: 예산·부채한도·AI 규제의 경로",
+      "sectors": [
+        "매크로·전략",
+        "AI·IT하드웨어",
+        "전력·데이터센터"
+      ],
+      "document_type": "podcast",
+      "source_scope": "full_text",
+      "source_url": "https://www.citigroup.com/rcs/citigpa/storage/public/Research-Citi-Markets-Edition-Transcript-10-26-26.pdf",
+      "landing_url": "https://www.citigroup.com/global/insights/markets-edition-blue-wave-or-ripple-what-the-midterms-may-change",
+      "headline": "미국 중간선거는 지수 전체 이익보다 예산 협상과 업종별 정책 차별화가 핵심이며, AI 데이터센터는 연방보다 주별 인허가를 점검해야 한다.",
+      "facts": [
+        "Citi는 중간선거 결과와 무관하게 S&P 500의 단기 펀더멘털은 대체로 유지될 것으로 평가했다.",
+        "민주당의 하원 승리 가능성은 높게, 상원은 불확실하게 보며 예산·부채한도 협상을 주요 위험으로 제시했다.",
+        "헬스케어를 금융보다 상대적으로 긍정적으로 평가했고 AI 데이터센터 규제는 주별 차이가 클 것으로 봤다."
+      ],
+      "interpretation": "분석: 선거 결과를 지수 이익 하향으로 곧바로 연결하기보다, 예산·보조금·지역 인허가에 노출된 기업을 구분하는 것이 유효하다.",
+      "estimate_signal": "지수 전체 다음 분기·내년 이익추정 변경 근거는 없다. 헬스케어 정책과 데이터센터 인허가가 업종별 실적 시점을 바꿀 수 있으나 정량 수정치는 제시하지 않았다.",
+      "tone_change": "단일 선거 시나리오보다 예산 불확실성과 업종별 차이를 강조한다. 직접 비교한 이전 원문이 없어 톤의 상향·하향은 단정하지 않음.",
+      "stance": "mixed",
+      "watch": [
+        "12월 11일 임시예산 만료와 후속 협상",
+        "부채한도·의료 보조금",
+        "주별 데이터센터 인허가"
+      ],
+      "date_note": "공식 녹취록은 녹음 10월 26일·발간 10월 27일을 구분해 표시",
+      "coverage_note": "공식 6쪽 녹취록 확인. Citi가 투자 리서치가 아닌 주제별 정보 콘텐츠라고 명시한 팟캐스트이며 고객전용 보고서를 열람한 것은 아님."
+    },
+    {
+      "companies": [],
+      "prior_source": null,
+      "initial_archive": false,
+      "first_seen_at": "2026-10-29T02:40:33.857467Z",
+      "last_verified_at": "2026-10-29T02:40:33.857467Z",
+      "valuation_change": "개별 목표가·밸류에이션 변경은 확인되지 않음",
+      "id": "rbc-midterm-musings-20261026",
+      "publisher": "RBC",
+      "division": "RBC Capital Markets · Markets in Motion",
+      "published_at": "2026-10-26",
+      "title": "Midterm musings",
+      "title_ko": "미국 중간선거: 결과별 시나리오 준비",
+      "sectors": [
+        "매크로·전략"
+      ],
+      "document_type": "podcast",
+      "source_scope": "official_summary",
+      "source_url": "https://www.rbccm.com/en/insights/2026/10/midterm-musings",
+      "headline": "중간선거 방향에 단일 베팅하기보다 결과별 미국 주식 시나리오를 준비해야 한다는 신호다.",
+      "facts": [
+        "공식 소개문은 과거 시장반응과 자체 애널리스트 설문을 이용해 중간선거 결과별 미국 주식시장 영향을 검토한다고 설명한다.",
+        "경합 지역 의회 선거운동에서 주식시장과 관련된 쟁점을 점검한다고 밝힌다."
+      ],
+      "interpretation": "분석: 공개 소개문만으로 특정 업종의 수혜나 선거 결과별 수익률을 도출할 수 없다. 이벤트 위험의 시나리오 관리에 활용하는 것이 적절하다.",
+      "estimate_signal": "공개 소개문에 다음 분기·내년 매출·이익 추정 변경은 없으며 방향 판단을 보류한다.",
+      "tone_change": "직전 비교 자료·전체 녹취록 미확인으로 톤 변화는 단정하지 않음",
+      "stance": "neutral",
+      "watch": [
+        "선거 결과별 정책 경로",
+        "경합 지역의 기업 관련 공약",
+        "공식 전체 녹취록"
+      ],
+      "date_note": "공식 본문에 Published October 26, 2026 표시. 새 발간이 아닌 과거 누락분으로 추가.",
+      "coverage_note": "RBC Capital Markets 공식 소개문만 확인. 팟캐스트 전체 청취·전문 확인으로 간주하지 않음."
     }
   ],
   "checks": [
@@ -2628,6 +2704,13 @@
       "new_publications": 11,
       "added_reports": 15,
       "note": "providers 18곳의 공식 공개 경로와 최근 7일을 재검색. 직전 점검 이후 10/27~10/29 신규 공개물 11건과 10/26 색인 지연분 4건을 중복 없이 추가. 투자은행 리서치·자산운용·CIO·Private Bank·기업금융·Institute 자료의 작성 부서와 확인 범위를 구분하고 고객 전용 원문은 우회하지 않음."
+    },
+    {
+      "checked_at": "2026-10-29T02:40:33.857467Z",
+      "kind": "daily_review",
+      "new_publications": 0,
+      "added_reports": 2,
+      "note": "이어서 공개 경로 18곳 및 최근 7일 검색을 보완 점검. Citi 10/27 공식 녹취록과 RBC 10/26 공식 소개문 누락분 2건 추가. 모두 직전 점검 이전 발간으로 신규 발간 수는 0. JPM·Barclays 403, SocGen 동적 목록 실패, Bernstein 공개 발간목록 미확보, Mizuho PDF 오류를 신규 없음과 구분해 기록. 기존 61건 및 점검 이력 보존."
     }
   ]
 }
