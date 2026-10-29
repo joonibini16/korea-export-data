@@ -19608,6 +19608,48 @@
           }
         ]
       }
+    },
+    {
+      "ticker": "TTE.PA",
+      "period": "2026 Q3",
+      "date": "2026-10-29",
+      "evidence": "TotalEnergies 공식 Q3 실적 발표문·IR 결과 페이지 · 7/23 공식 Q2 실적 발표와 대조",
+      "direction": "개선",
+      "headline": "조정 순이익 $9.1bn(Q2 $6.0bn)·CFFO $12.3bn(Q2 $9.8bn)으로 급증 · gearing 13.1%→10% 미만 · Q4와 2027 Q1 각각 $2.5bn 자사주 매입 제시",
+      "estimate_signal": "정제마진·가스/LNG 환경 개선에 따른 Q3 이익·현금흐름 반등은 단기 이익 추정의 상향 근거 · 다만 공식 발표문에 2027 영업이익 정량 가이던스는 없어 높은 Q3 이익을 그대로 연율화하지 않음 · 낮아진 gearing과 두 분기 연속 $2.5bn 자사주는 주당가치·재무구조에 긍정적",
+      "call_coverage": "공식 실적 발표문 기준 · 결과 설명회는 10/29 13:00 London 예정이며 반영 시점 기준 공식 Q&A 녹취록 미공개; Q&A 톤 평가 없음",
+      "changes": [
+        {
+          "title": "이익·현금흐름",
+          "direction": "개선",
+          "before": "Q2: 조정 순이익 $6.0bn, 조정 EPS $2.68, CFFO $9.8bn, 조정 EBITDA $13.2bn.",
+          "now": "Q3: 조정 순이익 $9.1bn(+51% QoQ), 조정 EPS $4.03(+51%), CFFO $12.3bn(+25%), 조정 EBITDA $17.8bn(+35%).",
+          "meaning": "정제마진과 가스·LNG 환경 개선이 전분기 대비 이익 레버리지로 연결됐다. 단기 이익·현금흐름 추정에는 상향 요인이다."
+        },
+        {
+          "title": "재무구조",
+          "direction": "개선",
+          "before": "Q2 말 gearing 13.1%, 순부채 $19.7bn.",
+          "now": "Q3 말 gearing은 10% 미만(공식 상세표 9.1%), 순부채 $13.8bn.",
+          "meaning": "높은 현금창출로 인수·투자 이후에도 레버리지가 빠르게 낮아졌다. 향후 환원 여력이 커진다."
+        },
+        {
+          "title": "주주환원",
+          "direction": "상향",
+          "before": "Q2 발표: Q3 자사주 매입 최대 $1.5bn, 분기 배당 €0.90.",
+          "now": "Q3 발표: Q4 2026과 Q1 2027에 각각 $2.5bn 자사주 매입, 분기 배당 €0.90 유지.",
+          "meaning": "매입 속도를 높이고 다음 해 1분기까지 규모를 명시했다. 배당보다 자사주를 통한 추가 환원 강화다."
+        }
+      ],
+      "facts": "Q3 조정 순이익 $9.1bn, 조정 EPS $4.03, CFFO $12.3bn, 조정 EBITDA $17.8bn, 주주귀속 순이익 $8.3bn. 전분기는 각각 $6.0bn, $2.68, $9.8bn, $13.2bn, $5.4bn. Q3 말 gearing 9.1%(Q2 13.1%), 순부채 $13.8bn(Q2 $19.7bn). 분기 배당 €0.90 유지.",
+      "guidance": "Q4 2026 자사주 매입 $2.5bn, Q1 2027 자사주 매입 $2.5bn. 이번 공식 발표문에는 2027 영업이익·현금흐름 정량 가이던스가 제시되지 않았다.",
+      "tone": "공식 발표문은 통합 사업모델과 지역 다변화가 Q3 이익·현금흐름 급증을 만들었다고 강조했다. 공식 Q&A 녹취록 미공개이므로 경영진 Q&A 톤은 평가하지 않는다.",
+      "interpretation": "분석: 핵심 변곡점은 이익 증가 자체보다 CFFO가 전분기 대비 25% 늘어난 동시에 gearing이 13.1%에서 10% 미만으로 내려간 점이다. 자사주를 Q4와 다음 해 Q1에 각각 $2.5bn으로 제시한 것은 현금창출 지속성에 대한 회사의 자신감을 보여준다. 다만 정제마진·가스가격·트레이딩 기여가 큰 분기여서 Q3 수준의 이익을 구조적 기준으로 단순 연율화하면 안 된다.",
+      "watch": "분석: Q4 정제마진과 LNG·가스 트레이딩 정상화 여부, Q4 및 Q1 2027 자사주 $2.5bn 집행, 유가·가스가격 민감도, 공식 컨콜 녹취록 공개 후 2027 투자·생산 계획의 정량화.",
+      "source": "https://totalenergies.com/newsroom/resultats-du-troisieme-trimestre-2026-516472/?lang=eng",
+      "source_label": "TotalEnergies 2026 Q3 공식 실적 발표",
+      "prior_source": "https://totalenergies.com/system/files/documents/totalenergies_pr-results-2q26_2026_en.pdf",
+      "prior_source_label": "TotalEnergies 2026 Q2 공식 실적 발표"
     }
   ],
   "upcoming": [
@@ -19645,13 +19687,6 @@
       "time": "시간 미공지(Europe/Rome)",
       "event": "2026 Q3 실적 발표",
       "source": "https://www.prysmian.com/en/investors/financial-calendar"
-    },
-    {
-      "ticker": "TTE.PA",
-      "date": "2026-10-29",
-      "time": "시간 미공지(Europe/Paris)",
-      "event": "2026 Q3 실적 발표",
-      "source": "https://totalenergies.com/news/calendar"
     },
     {
       "ticker": "6752.T",
