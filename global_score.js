@@ -82,6 +82,11 @@
    t.append(th,tb);w.append(t);box.append(w);
    box.append(el('p','muted','평가 기준: 가이던스 중간값이 ① 컨센서스보다 2% 넘게 높으면 +1(낮으면 −1) ② 이번 분기 실적보다 1% 넘게 높으면 +1(낮으면 −1, 이익률은 ±0.5%p) ③ 전년 대비 증가율이 이번 분기 전년 대비 증가율보다 1%p 넘게 높으면 +1(성장 가속), 낮으면 −1(성장 둔화). 합계 2 이상 강함 · 1 양호 · 0 중립 · 음수 약함. 전년 대비는 분기 추이 표에 1년 전 같은 분기가 있을 때만 계산합니다. 이익률 항목은 %p 차이.'));}
  }
+ // 다각도 분석(events[].deep_analysis): 결론 한 줄 → 각도별(실적·가이던스·피어·환율·현금·환원·한국) 서술 → 계산 근거 → 아직 확인 못 한 것
+ function deep(D,box){const w=el('div','deep');if(D.lead)w.append(el('p','deep-lead',D.lead));
+  for(const s of D.sections||[]){const c=el('section','deep-sec'),h=el('div','deep-h');if(s.angle)h.append(el('span','deep-angle',s.angle));h.append(el('b',null,s.title||''));c.append(h);for(const p of [].concat(s.body||[]))c.append(el('p',null,p));if(s.calc)c.append(el('p','deep-calc','계산 근거: '+s.calc));w.append(c);}
+  if((D.open_questions||[]).length){const o=el('div','deep-open');o.append(el('b',null,'아직 확인 못 한 것'));const ul=el('ul');for(const q of D.open_questions)ul.append(el('li',null,q));o.append(ul);w.append(o);}
+  box.append(w);if((D.sources||[]).length)box.append(srcs(D.sources,'출처: '));}
  function render(ticker,period){
   const abox=$('analysisBody')||box;box.replaceChildren();if(abox!==box)abox.replaceChildren();const co=byT.get(ticker);
   const mine=events.filter(e=>e.ticker===ticker).sort((a,b)=>b.date.localeCompare(a.date));
@@ -96,7 +101,9 @@
    if(S.trend){box.append(el('h4',null,S.trend.title||'분기 추이'));box.append(table(S.trend.columns,S.trend.rows,false));}
    if(S.note){const d=el('details');d.append(el('summary',null,'수치 기준·시장 예상 출처'),el('p','muted',S.note));if((S.consensus_sources||[]).length)d.append(srcs(S.consensus_sources,'시장 예상 출처(회사 자료 아님): '));box.append(d);}
    else if((S.consensus_sources||[]).length)box.append(srcs(S.consensus_sources,'시장 예상 출처(회사 자료 아님): '));}
-  if(!A){abox.append(el('p','muted','이 발표는 아직 실적 분석이 정리되지 않았습니다. 아래 \'회사 발표 원문 요약·출처\'의 투자 해석을 참고하세요.'));return;}
+  const D=e.deep_analysis;if(D)deep(D,abox);
+  if(!A){if(!D)abox.append(el('p','muted','이 발표는 아직 실적 분석이 정리되지 않았습니다. 아래 \'회사 발표 원문 요약·출처\'의 투자 해석을 참고하세요.'));return;}
+  if(D)abox.append(el('h4',null,'요점 정리'));
   if(A.conclusion)abox.append(el('p','signal',A.conclusion));
   if(A.segment)abox.append(el('p','segment',A.segment));
   const ol=el('div','reason-list');for(const r of A.points||[]){const c=el('div','reason');c.append(el('b',null,r.title),el('p',null,r.body));ol.append(c);}abox.append(ol);
