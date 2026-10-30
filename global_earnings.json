@@ -21441,6 +21441,13 @@
       "source": "https://investors.coreweave.com/news/news-details/2026/CoreWeave-Announces-Date-of-Third-Quarter-2026-Financial-Results-and-Conference-Call/default.aspx"
     },
     {
+      "ticker": "IFX.DE",
+      "date": "2026-11-10",
+      "time": "시간 미공지(Europe/Berlin) · 잠정 일정",
+      "event": "FY26 Q4·연간 실적 발표",
+      "source": "https://www.infineon.com/assets/row/public/documents/corporate/press/2026/infpr202608-125e.pdf"
+    },
+    {
       "ticker": "ENR.DE",
       "date": "2026-11-11",
       "time": "시간 미공지(Europe/Berlin) · 확장 Q4 컨콜",
@@ -21453,6 +21460,13 @@
       "time": "장 마감 후 · 13:30 America/Los_Angeles(컨콜)",
       "event": "FY26 Q4·연간 실적·컨퍼런스콜",
       "source": "https://ir.appliedmaterials.com/news-releases/news-release-details/applied-materials-report-fourth-quarter-and-fiscal-2026-results"
+    },
+    {
+      "ticker": "NBIS",
+      "date": "2026-11-12",
+      "time": "장 시작 전 · 08:00 America/New_York(컨콜)",
+      "event": "2026 Q3 실적·컨퍼런스콜",
+      "source": "https://nebius.com/newsroom/nebius-group-announces-date-of-third-quarter-2026-results-and-conference-call"
     },
     {
       "ticker": "SIE.DE",
