@@ -1,11 +1,16 @@
 {
-  "updated": "2026-10-30T10:41:11+00:00",
+  "updated": "2026-10-30T12:39:31+00:00",
   "targets": 25,
   "bonds": {
     "CORZ": {
       "name": "코어 사이언티픽",
-      "state": "error",
-      "matches": 1
+      "state": "collected",
+      "matches": 1,
+      "cusip": "U2062LAA9",
+      "coupon": 7.75,
+      "maturity": "2031-05-15",
+      "n": 26,
+      "latest": "2026-10-28"
     },
     "APLD": {
       "name": "어플라이드 디지털",
@@ -24,43 +29,83 @@
     },
     "BEIGNET": {
       "name": "메타 하이페리온 SPV",
-      "state": "error",
-      "matches": 1
+      "state": "collected",
+      "matches": 1,
+      "cusip": "U06930AA6",
+      "coupon": 6.581,
+      "maturity": "2049-05-30",
+      "n": 94,
+      "latest": "2026-10-27"
     },
     "HUT": {
       "name": "헛에이트",
-      "state": "error",
-      "matches": 1
+      "state": "collected",
+      "matches": 1,
+      "cusip": "U43898AA0",
+      "coupon": 6.192,
+      "maturity": "2042-11-15",
+      "n": 19,
+      "latest": "2026-10-29"
     },
     "STX": {
       "name": "씨게이트",
-      "state": "error",
-      "matches": 1
+      "state": "collected",
+      "matches": 1,
+      "cusip": "81180LAS4",
+      "coupon": 5.75,
+      "maturity": "2034-12-01",
+      "n": 215,
+      "latest": "2026-07-10"
     },
     "HPE": {
       "name": "HPE",
-      "state": "error",
-      "matches": 1
+      "state": "collected",
+      "matches": 1,
+      "cusip": "U42832AJ1",
+      "coupon": 6.2,
+      "maturity": "2035-10-15",
+      "n": 3,
+      "latest": "2023-12-18"
     },
     "MU": {
       "name": "마이크론",
-      "state": "error",
-      "matches": 1
+      "state": "collected",
+      "matches": 1,
+      "cusip": "595112BZ5",
+      "coupon": 5.875,
+      "maturity": "2033-02-09",
+      "n": 881,
+      "latest": "2026-10-29"
     },
     "DELL": {
       "name": "델",
-      "state": "error",
-      "matches": 1
+      "state": "collected",
+      "matches": 1,
+      "cusip": "24703DBL4",
+      "coupon": 5.75,
+      "maturity": "2033-02-01",
+      "n": 933,
+      "latest": "2026-10-29"
     },
     "INTC": {
       "name": "인텔",
-      "state": "error",
-      "matches": 1
+      "state": "collected",
+      "matches": 1,
+      "cusip": "458140BH2",
+      "coupon": 2.45,
+      "maturity": "2029-11-15",
+      "n": 1228,
+      "latest": "2026-10-29"
     },
     "AMD": {
       "name": "AMD",
-      "state": "error",
-      "matches": 1
+      "state": "collected",
+      "matches": 1,
+      "cusip": "007903BF3",
+      "coupon": 3.924,
+      "maturity": "2032-06-01",
+      "n": 1051,
+      "latest": "2026-10-29"
     },
     "QCOM": {
       "name": "퀄컴",
@@ -168,16 +213,6 @@
       "matches": 0
     }
   },
-  "errors": [
-    "CORZ: The read operation timed out ",
-    "BEIGNET: The read operation timed out ",
-    "HUT: The read operation timed out ",
-    "STX: The read operation timed out ",
-    "HPE: The read operation timed out ",
-    "MU: The read operation timed out ",
-    "DELL: The read operation timed out ",
-    "INTC: The read operation timed out ",
-    "AMD: The read operation timed out "
-  ],
-  "rows": 7030
+  "errors": [],
+  "rows": 7035
 }
