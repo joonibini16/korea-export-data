@@ -1,8 +1,8 @@
 {
- "updated_at": "2026-10-29T11:46:00+09:00",
+ "updated_at": "2026-10-30T11:52:30+09:00",
  "companies": 186,
  "with_data": 144,
- "rows_fetched": 60610,
- "rows_stored": 67484,
+ "rows_fetched": 60618,
+ "rows_stored": 69805,
  "failures": []
 }
