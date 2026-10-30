@@ -20610,6 +20610,158 @@
           }
         ]
       }
+    },
+    {
+      "ticker": "XOM",
+      "period": "2026 Q3",
+      "date": "2026-10-30",
+      "evidence": "공식 2026 Q3 실적 보도자료(IR) 확인 · 직전 7월 31일 Q2 공식 보도자료와 대조",
+      "direction": "상향",
+      "headline": "정제마진 급등으로 Energy Products 조정이익 $4.1bn→$9.1bn · 조정 EPS $3.52→$4.23, FCF $19.1bn · 2027년 자사주 매입 $20bn 계획 제시",
+      "estimate_signal": "정제(다운스트림) 이익 추정 상향 신호. 반면 업스트림은 유가 하락·가이아나 원가회수(entitlement) 영향으로 조정이익 $9.2bn→$7.3bn 감소. 공식 연간 생산·capex 수치 가이던스는 보도자료에 없음.",
+      "call_coverage": "공식 보도자료 확인 · 공식 준비발언(Prepared Remarks)·프레젠테이션은 게시됐으나 본문 미확인 · 공식 Q&A 녹취록 미확인, Q&A 톤 미평가",
+      "changes": [
+        {
+          "title": "정제(Energy Products) 이익",
+          "direction": "상향",
+          "before": "Q2 조정이익 $4,099M(GAAP $5,465M).",
+          "now": "Q3 조정이익 $9,053M(GAAP $7,169M). 미 걸프연안 정제설비 원유처리 가동률 100%, 걸프연안 디젤 생산 역대 2위.",
+          "meaning": "디젤 중심 정제마진 강세가 이익의 중심이 업스트림에서 다운스트림으로 이동. 조정이익 중 정제 비중이 업스트림을 넘어섬."
+        },
+        {
+          "title": "업스트림 이익·생산",
+          "direction": "하향",
+          "before": "Q2 업스트림 조정이익 $9,189M, 생산 4,514천boe/일(중동 차질 제외 시 20여년 최고), 퍼미안 1.8Mboe/일 이상 기록.",
+          "now": "Q3 업스트림 조정이익 $7,308M, 생산 4,496천boe/일. 유가 하락과 가이아나 원가회수 물량 감소 가속이 원인.",
+          "meaning": "생산량은 거의 유지됐으나 가격·계약상 물량(entitlement) 효과로 업스트림 이익이 줄어듦."
+        },
+        {
+          "title": "현금흐름·주주환원",
+          "direction": "상향",
+          "before": "Q2 영업현금흐름 $23.6bn, FCF $17.2bn, 주주환원 $9.4bn(자사주 $5.1bn). 연간 자사주 수치 언급 없음.",
+          "now": "Q3 영업현금흐름 $25.7bn, FCF $19.1bn, 주주환원 $9.4bn(자사주 $5.1bn), 순부채 연초 대비 약 $11bn 감소한 $22.1bn. '합리적 시장 여건 전제' 2027년 자사주 $20bn 계획. 분기배당 $1.03→$1.07.",
+          "meaning": "다음 해 주주환원 규모를 미리 제시해 현금창출력에 대한 경영진 자신감을 보여줌."
+        },
+        {
+          "title": "비용 절감",
+          "direction": "상향",
+          "before": "2019년 대비 누적 구조적 비용절감 $16.3bn(상반기 추가 $1.2bn).",
+          "now": "누적 $16.9bn(9개월 추가 $1.8bn).",
+          "meaning": "유가와 무관한 이익 체력 개선이 계속됨."
+        }
+      ],
+      "facts": "Q3 GAAP 순이익 $15,413M(EPS $3.72), 식별항목 제외 조정이익 $17,505M(EPS $4.23). 식별항목 +$449M(자산매각 이익 $675M 포함), 타이밍 효과 -$2,541M. 부문 조정이익: 업스트림 $7,308M, Energy Products $9,053M, Chemical $725M(마진 하락), Specialty $1,283M(기유 마진 개선). 영업현금흐름 $25,650M, FCF $19,109M, 현금 capex $7,002M. 생산 4,496천boe/일. 가이아나·Kearl 누적 생산 각 10억 배럴 돌파, Nucor CCS 가동, Papua LNG 운영권 확보.",
+      "guidance": "보도자료 기준 2027년 자사주 매입 $20bn(합리적 시장 여건 전제), 4분기 배당 주당 $1.07(44년 연속 증배). 2026년 capex·생산 수치 가이던스와 4분기 고려사항은 보도자료에 없음(준비발언·프레젠테이션 본문 미확인). Q2 발표 기준 가이아나 신규 FPSO 2026년 4분기 가동(용량 +250천b/일) 계획.",
+      "tone": "CEO(대런 우즈)는 '효율을 높이면서 생산을 늘리고 있다', 정제 투자(보몬트 확장 등)로 2019년 이후 디젤 등 중간유분 생산이 약 40% 늘었다며 '유리한 가격·마진만의 결과가 아닌 지속적 개선'이라고 강조. 공식 Q&A 녹취록 미확인으로 Q&A 톤은 평가하지 않음.",
+      "interpretation": "분석: 이번 분기는 유가보다 정제마진이 이익을 끌어올린 분기다. 업스트림 감익을 정제 이익 증가가 상쇄하고도 남아 조정 EPS가 20% 늘었다. 2027년 자사주 $20bn 제시는 유가 변동에도 현금환원을 유지하겠다는 신호로 읽힌다. 다만 타이밍 효과(-$2.5bn)와 중동 관련 변수가 커서 분기 실적 변동성은 높다.",
+      "watch": "분석: 4분기 가이아나 신규 FPSO 가동, 디젤 크랙 스프레드 지속 여부, 화학(Chemical) 마진 회복, 12월 기업 계획(2027 capex·생산) 발표. 한국 관점: 정제마진 강세는 국내 정유사(SK이노베이션·S-Oil·GS) 실적에 같은 방향, 화학 마진 약세는 석유화학에 부정적 신호.",
+      "source": "https://investor.exxonmobil.com/company-information/press-releases/detail/1213/exxonmobil-announces-third-quarter-2026-results",
+      "prior_source": "https://investor.exxonmobil.com/company-information/press-releases/detail/1208/exxonmobil-announces-second-quarter-2026-results",
+      "prior_source_label": "ExxonMobil 공식 2026 Q2 실적 보도자료",
+      "call_topics": [
+        {
+          "topic": "정제 이익",
+          "source_part": "공식 보도자료",
+          "points": [
+            "Energy Products 조정이익 $9.1bn, 전분기 대비 두 배 이상.",
+            "걸프연안 원유처리 가동률 100%, 디젤 생산 역대 2위."
+          ],
+          "implication": "디젤 공급 부족 환경에서 정제 설비 보유 기업의 이익이 확대."
+        },
+        {
+          "topic": "주주환원",
+          "source_part": "공식 보도자료",
+          "points": [
+            "Q3 주주환원 $9.4bn(배당 $4.3bn, 자사주 $5.1bn).",
+            "2027년 자사주 $20bn 계획, 배당 $1.07로 증액."
+          ],
+          "implication": "현금흐름 기반 환원 확대 기조 유지."
+        }
+      ],
+      "call_readthrough": {
+        "scope": "ExxonMobil 공식 2026 Q3 보도자료를 한국어로 재서술. 준비발언·프레젠테이션 본문과 Q&A 녹취록은 확인하지 못해 Q&A 발언·톤은 평가하지 않음.",
+        "groups": [
+          {
+            "title": "보도자료 핵심",
+            "items": [
+              {
+                "title": "이익 구조",
+                "body": "업스트림 감익을 정제 이익 급증이 상쇄해 조정 EPS가 $3.52에서 $4.23으로 증가했다."
+              },
+              {
+                "title": "현금",
+                "body": "FCF $19.1bn, 순부채는 연초 대비 약 $11bn 줄어든 $22.1bn이다."
+              },
+              {
+                "title": "환원",
+                "body": "2027년 자사주 $20bn 계획과 배당 증액을 발표했다."
+              }
+            ]
+          }
+        ]
+      },
+      "scorecard": {
+        "title": "발표 숫자 (2026 Q3)",
+        "columns": [
+          "항목",
+          "실적",
+          "시장 예상",
+          "컨센 대비",
+          "전년 대비",
+          "전분기 대비"
+        ],
+        "rows": [
+          [
+            "GAAP 순이익",
+            "$15,413M",
+            "—",
+            "—",
+            "—",
+            "+6% (Q2 $14,525M)"
+          ],
+          [
+            "조정 EPS",
+            "$4.23",
+            "—",
+            "—",
+            "—",
+            "+20% (Q2 $3.52)"
+          ],
+          [
+            "업스트림 조정이익",
+            "$7,308M",
+            "—",
+            "—",
+            "—",
+            "-20% (Q2 $9,189M)"
+          ],
+          [
+            "Energy Products 조정이익",
+            "$9,053M",
+            "—",
+            "—",
+            "—",
+            "+121% (Q2 $4,099M)"
+          ],
+          [
+            "FCF",
+            "$19,109M",
+            "—",
+            "—",
+            "—",
+            "+11% (Q2 $17,236M)"
+          ],
+          [
+            "생산(천boe/일)",
+            "4,496",
+            "—",
+            "—",
+            "—",
+            "-0.4% (Q2 4,514)"
+          ]
+        ],
+        "note": "ExxonMobil 공식 보도자료 기준. 증감률은 공식 수치로 계산. 시장 컨센서스는 공식 자료가 아니어서 '—'로 표시."
+      }
     }
   ],
   "upcoming": [
@@ -20633,13 +20785,6 @@
       "time": "11:00 America/New_York(컨콜)",
       "event": "2026 Q3 실적·컨퍼런스콜",
       "source": "https://chevroncorp.gcs-web.com/news-releases/news-release-details/advisory-chevron-corporations-3q-2026-earnings-conference-call"
-    },
-    {
-      "ticker": "XOM",
-      "date": "2026-10-30",
-      "time": "05:30 America/Chicago · 08:30 컨콜",
-      "event": "2026 Q3 실적·컨퍼런스콜",
-      "source": "https://investor.exxonmobil.com/company-information/press-releases/detail/1212/exxonmobil-to-release-third-quarter-2026-financial-results"
     },
     {
       "ticker": "AAPL",
