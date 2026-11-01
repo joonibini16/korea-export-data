@@ -1,81 +1,125 @@
 {
- "updated": "2026-11-01T14:32:30+00:00",
+ "updated": "2026-11-01T19:13:38+00:00",
  "bonds": {
   "CRWV": {
-   "cusip": [
-    "U2069EAA8"
-   ],
-   "n": 0
+   "cusip": "U2069EAA8",
+   "n": 342,
+   "first": "2025-05-22",
+   "last": "2026-10-29",
+   "sample": {
+    "cusip": "U2069EAA8",
+    "tradeDate": "2026-10-29",
+    "lastSaleYield": null,
+    "productType": "CA",
+    "lastSalePrice": 88.74
+   }
   },
   "ORCL": {
-   "cusip": [
-    "68389XCJ2"
-   ],
-   "n": 0
+   "cusip": "68389XCJ2",
+   "n": 977,
+   "first": "2022-11-07",
+   "last": "2026-10-29",
+   "sample": {
+    "cusip": "68389XCJ2",
+    "tradeDate": "2026-10-29",
+    "lastSaleYield": 7.21,
+    "productType": "CA",
+    "lastSalePrice": 95.335
+   }
   },
   "META": {
-   "cusip": [
-    "30303M8H8"
-   ],
-   "n": 0
+   "cusip": "30303M8H8",
+   "n": 940,
+   "first": "2023-01-03",
+   "last": "2026-10-29",
+   "sample": {
+    "cusip": "30303M8H8",
+    "tradeDate": "2026-10-29",
+    "lastSaleYield": 5.64,
+    "productType": "CA",
+    "lastSalePrice": 91.221
+   }
   },
   "AMZN": {
-   "cusip": [
-    "023135BZ8"
-   ],
-   "n": 0
+   "cusip": "023135BZ8",
+   "n": 1228,
+   "first": "2021-11-02",
+   "last": "2026-10-29",
+   "sample": {
+    "cusip": "023135BZ8",
+    "tradeDate": "2026-10-29",
+    "lastSaleYield": 5.32,
+    "productType": "CA",
+    "lastSalePrice": 87.14245
+   }
   },
   "NVDA": {
-   "cusip": [
-    "67066GAF1"
-   ],
-   "n": 0
+   "cusip": "67066GAF1",
+   "n": 1229,
+   "first": "2021-11-02",
+   "last": "2026-10-29",
+   "sample": {
+    "cusip": "67066GAF1",
+    "tradeDate": "2026-10-29",
+    "lastSaleYield": 5.26,
+    "productType": "CA",
+    "lastSalePrice": 92.527271
+   }
   },
   "GOOGL": {
-   "cusip": [
-    "02079KAD9"
-   ],
-   "n": 0
+   "cusip": "02079KAD9",
+   "n": 1230,
+   "first": "2021-11-02",
+   "last": "2026-10-29",
+   "sample": {
+    "cusip": "02079KAD9",
+    "tradeDate": "2026-10-29",
+    "lastSaleYield": 5.12,
+    "productType": "CA",
+    "lastSalePrice": 86.299
+   }
   },
   "MSFT": {
-   "cusip": [
-    "594918BC7"
-   ],
-   "n": 0
+   "cusip": "594918BC7",
+   "n": 1221,
+   "first": "2021-11-02",
+   "last": "2026-10-29",
+   "sample": {
+    "cusip": "594918BC7",
+    "tradeDate": "2026-10-29",
+    "lastSaleYield": 5.34,
+    "productType": "CA",
+    "lastSalePrice": 87.836
+   }
   },
   "AAPL": {
-   "cusip": [
-    "037833EP1"
-   ],
-   "n": 0
+   "cusip": "037833EP1",
+   "n": 1043,
+   "first": "2022-08-01",
+   "last": "2026-10-29",
+   "sample": {
+    "cusip": "037833EP1",
+    "tradeDate": "2026-10-29",
+    "lastSaleYield": 4.99,
+    "productType": "CA",
+    "lastSalePrice": 91.857
+   }
   },
   "AVGO": {
-   "cusip": [
-    "11135FCW9"
-   ],
-   "n": 0
+   "cusip": "11135FCW9",
+   "n": 276,
+   "first": "2025-09-22",
+   "last": "2026-10-29",
+   "sample": {
+    "cusip": "11135FCW9",
+    "tradeDate": "2026-10-29",
+    "lastSaleYield": 5.73,
+    "productType": "CA",
+    "lastSalePrice": 94.644
+   }
   }
  },
- "errors": [
-  "CRWV U2069EAA8: HTTP Error 403: Forbidden",
-  "ORCL 68389XCJ2: HTTP Error 403: Forbidden",
-  "META 30303M8H8: HTTP Error 403: Forbidden",
-  "AMZN 023135BZ8: HTTP Error 403: Forbidden",
-  "NVDA 67066GAF1: HTTP Error 403: Forbidden",
-  "GOOGL 02079KAD9: HTTP Error 403: Forbidden",
-  "MSFT 594918BC7: HTTP Error 403: Forbidden",
-  "AAPL 037833EP1: HTTP Error 403: Forbidden",
-  "AVGO 11135FCW9: HTTP Error 403: Forbidden",
-  "search CRWV: HTTP Error 403: Forbidden",
-  "search ORCL: HTTP Error 403: Forbidden",
-  "search META: HTTP Error 403: Forbidden",
-  "search AMZN: HTTP Error 403: Forbidden",
-  "search NVDA: HTTP Error 403: Forbidden",
-  "search GOOGL: HTTP Error 403: Forbidden",
-  "search MSFT: HTTP Error 403: Forbidden",
-  "search AAPL: HTTP Error 403: Forbidden",
-  "search AVGO: HTTP Error 403: Forbidden"
- ],
+ "errors": [],
  "notes": [],
  "cookies": [
   "XSRF-TOKEN",
