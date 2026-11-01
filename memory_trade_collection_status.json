@@ -1,10 +1,19 @@
 {
-  "checked_at": "2026-10-31T17:18:56.643100+00:00",
-  "end_month": "202609",
-  "expected": 162,
+  "checked_at": "2026-11-01T18:00:35.339705+00:00",
+  "end_month": "202610",
+  "expected": 164,
   "rows": 162,
-  "received": 6,
-  "missing": [],
+  "received": 18,
+  "missing": [
+    {
+      "month": "2026.10",
+      "hs_code": "8473304060"
+    },
+    {
+      "month": "2026.10",
+      "hs_code": "8523511000"
+    }
+  ],
   "failures": [],
   "source": "https://www.data.go.kr/data/15100475/openapi.do",
   "note": "한국 수입통계·상대국 VN. 빈 응답을 0으로 보완하지 않음. 수입금액 CIF·수출금액 FOB·순중량 KG."
