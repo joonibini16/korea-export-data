@@ -91,7 +91,7 @@
  const $=id=>document.getElementById(id),B=[['7/30','since_base.json'],['10/16','since_base_1016.json'],['10/26','since_base_1026.json'],['당일','since_base_today.json']];
  let DB=null,IDX=[],sel=[],cur=-1,PI=null,PM={},MD=null,per='63',lch=null;
  // ── 기간 비교: 월별 수정종가 파일(price_hist) + 지수(market_daily) + 당일 현재가
- async function pidx(){if(!PI)PI=await fetch('price_hist/_index.json?v='+Date.now(),{cache:'no-store'}).then(r=>r.json()).catch(()=>({}));return PI;}
+ async function pidx(){if(!PI)PI=await fetch('price_hist/index.json?v='+Date.now(),{cache:'no-store'}).then(r=>r.json()).catch(()=>({}));return PI;}
  async function month(m){if(!PM[m])PM[m]=fetch('price_hist/'+m+'.json?v='+(m>=Object.keys(PI).sort().at(-1)?Date.now():'1'),{cache:'no-store'}).then(r=>r.json()).catch(()=>null);return PM[m];}
  async function mdaily(){if(!MD){const t=await fetch('market_daily.csv?v='+Date.now(),{cache:'no-store'}).then(r=>r.text());MD={KOSPI:[],KOSDAQ:[]};for(const l of t.split(/\r?\n/)){const [s,d,c]=l.split(',');if(s==='^KS11')MD.KOSPI.push([d,+c]);else if(s==='^KQ11')MD.KOSDAQ.push([d,+c]);}}return MD;}
  function range(){const I=PI||{},ms=Object.keys(I).sort();const first=ms.length?I[ms[0]][0]:'2025-10-01',last=ms.length?I[ms.at(-1)][1]:'';return [first,last];}

@@ -119,7 +119,7 @@ def write_hist(S, dates):
         f = P / f'{m}.json'
         if not f.exists() or f.read_text() != txt: f.write_text(txt)
         idx[m] = [md[0], md[-1]]
-    (P / '_index.json').write_text(json.dumps(idx, separators=(',', ':')))
+    (P / 'index.json').write_text(json.dumps(idx, separators=(',', ':')))
 
 if __name__ == '__main__':
     main()
