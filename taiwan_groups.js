@@ -18,9 +18,9 @@
  function draw(){charts.forEach(c=>c.destroy());charts=[];const box=document.getElementById('twGroupGrid');box.replaceChildren();
   const all=[...new Set([...D.keys()].map(k=>k.split('|')[0]))];const last=[...new Set([...D.keys()].map(k=>k.split('|')[1]))].sort().at(-1);
   const start=range==='2022'?'2022.01':lab(mid(last)-12);const months=[];for(let i=mid(start);i<=mid(last);i++)months.push(lab(i));
-  G.forEach(([name,ids],gi)=>{const S=series(ids||all,months);const lv=S.at(-1);
+  G.forEach(([name,ids],gi)=>{const S=series(ids||all,months);const lv=S.at(-1);const pn=(S.at(-2)||{}).n||0;const part=lv.n<pn?` · <em class="part">${lv.n}/${pn}개사 공시(집계 중)</em>`:'';
    const card=document.createElement('div');card.className='twg-card'+(gi===0?' wide':'');
-   card.innerHTML=`<div class="twg-h"><b>${name}</b><span>${lv.m} · ${lv.v==null?'—':lv.v.toFixed(lv.v<10?2:1)}십억 NT$ · YoY <em class="${lv.yoy>0?'up':lv.yoy<0?'dn':''}">${lv.yoy==null?'—':(lv.yoy>0?'+':'')+lv.yoy.toFixed(1)+'%'}</em></span></div><div class="twg-c" style="height:${gi===0?300:220}px"><canvas></canvas></div><small>${ids?ids.length+'개사':'전체'} 합산 · 막대 = 월매출(십억 NT$, 좌) · 선 = YoY(우, 전년 같은 달 자료가 있는 회사끼리)</small>`;
+   card.innerHTML=`<div class="twg-h"><b>${name}</b><span>${lv.m} · ${lv.v==null?'—':lv.v.toFixed(lv.v<10?2:1)}십억 NT$ · YoY <em class="${lv.yoy>0?'up':lv.yoy<0?'dn':''}">${lv.yoy==null?'—':(lv.yoy>0?'+':'')+lv.yoy.toFixed(1)+'%'}</em>${part}</span></div><div class="twg-c" style="height:${gi===0?300:220}px"><canvas></canvas></div><small>${ids?ids.length+'개사':'전체'} 합산 · 막대 = 월매출(십억 NT$, 좌) · 선 = YoY(우, 전년 같은 달 자료가 있는 회사끼리)</small>`;
    box.append(card);
    charts.push(new Chart(card.querySelector('canvas'),{data:{labels:months.map(m=>"'"+m.slice(2)),datasets:[
     {type:'line',label:'YoY (%)',data:S.map(x=>x.yoy),borderColor:'#3b82f6',backgroundColor:'#0b1220',pointBorderColor:'#3b82f6',pointRadius:range==='2022'?2:3.5,borderWidth:2.2,yAxisID:'y1',order:0,spanGaps:true},

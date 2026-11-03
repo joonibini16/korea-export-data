@@ -10,8 +10,10 @@ on:
     branches: [main]
     paths: ['collect_taiwan_revenue.py', 'taiwan_watchlist.json', '.github/workflows/taiwan_revenue.yml']
   schedule:
-    # Taiwan companies must report by the 10th; run 11th·13th·16th 10:40 KST
-    - cron: '40 1 11,13,16 * *'
+    # 대만 기업은 매월 1~10일에 전월 매출을 공시(마감 10일) → 1~16일 매일 두 번 수집해 공시되는 대로 반영
+    # 10:40 KST(전날 저녁 공시분) · 19:10 KST(당일 장 마감 후 공시분)
+    - cron: '40 1 1-16 * *'
+    - cron: '10 10 1-16 * *'
 permissions:
   contents: write
   pages: write
