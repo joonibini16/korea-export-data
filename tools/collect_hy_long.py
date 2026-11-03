@@ -29,8 +29,25 @@ def get(u):
     raise last
 
 
+def spx_long(st):
+    """비교용 S&P500 일별 종가(2000~), Yahoo Finance 차트(기존 market_daily와 같은 출처) → sp500_long.csv"""
+    import datetime as dt
+    try:
+        u = 'https://query1.finance.yahoo.com/v8/finance/chart/%5EGSPC?period1=946684800&period2=' + str(int(time.time())) + '&interval=1d'
+        req = urllib.request.Request(u, headers={'User-Agent': 'Mozilla/5.0'})
+        j = json.loads(urllib.request.urlopen(req, timeout=60).read())['chart']['result'][0]
+        ts, cl = j['timestamp'], j['indicators']['quote'][0]['close']
+        rows = [(dt.datetime.utcfromtimestamp(t).strftime('%Y-%m-%d'), round(c, 2)) for t, c in zip(ts, cl) if c]
+        with (ROOT / 'sp500_long.csv').open('w', encoding='utf-8', newline='') as f:
+            w = csv.writer(f); w.writerow(['date', 'close']); w.writerows(rows)
+        st['spx'] = dict(rows=len(rows), first=rows[0][0], last=rows[-1][0])
+    except Exception as e:
+        st['spx'] = dict(error=str(e)[:200])
+
+
 def main():
     st = {'tries': []}; data = {}
+    spx_long(st)
     if OUT.exists():
         for r in csv.DictReader(OUT.open(encoding='utf-8')): data[r['date']] = r
     got = {}
