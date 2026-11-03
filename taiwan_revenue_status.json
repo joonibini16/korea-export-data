@@ -1,225 +1,273 @@
 {
- "updated_at": "2026-10-16T15:20:22+0900",
+ "updated_at": "2026-11-04T08:49:33+0900",
  "range": [
   "2015.01",
-  "2026.09"
+  "2026.10"
  ],
  "months_fetched_this_run": 3,
  "backfill_pending": {},
- "failures": [],
+ "failures": [
+  {
+   "month": "2026.10",
+   "market": "sii+otc",
+   "error": "NOT_IN_TABLE 1503,1513,1519,1815,2303,2308,2313,2317,2327,2330,2344,2345,2351,2353,2357,2368,2376,2382,2383,2449,2454,2492,3008,3017,3037,3044,3090,3167,3189,3231,3645,3711,3715,4958,5274,5340,5439,5469,5498,6209,6213,6274,6488,6515,6669,6805,8021,8070,8299,8358"
+  }
+ ],
  "coverage": [
   {
    "company_id": "2330",
    "name": "TSMC",
    "months": 141,
-   "expected": 141,
+   "expected": 142,
    "first": "2015.01",
    "last": "2026.09",
-   "missing": []
+   "missing": [
+    "2026.10"
+   ]
   },
   {
    "company_id": "2303",
    "name": "UMC",
    "months": 141,
-   "expected": 141,
+   "expected": 142,
    "first": "2015.01",
    "last": "2026.09",
-   "missing": []
+   "missing": [
+    "2026.10"
+   ]
   },
   {
    "company_id": "2454",
    "name": "MediaTek",
    "months": 141,
-   "expected": 141,
+   "expected": 142,
    "first": "2015.01",
    "last": "2026.09",
-   "missing": []
+   "missing": [
+    "2026.10"
+   ]
   },
   {
    "company_id": "2408",
    "name": "Nanya Technology",
-   "months": 141,
-   "expected": 141,
+   "months": 142,
+   "expected": 142,
    "first": "2015.01",
-   "last": "2026.09",
+   "last": "2026.10",
    "missing": []
   },
   {
    "company_id": "2344",
    "name": "Winbond",
    "months": 141,
-   "expected": 141,
+   "expected": 142,
    "first": "2015.01",
    "last": "2026.09",
-   "missing": []
+   "missing": [
+    "2026.10"
+   ]
   },
   {
    "company_id": "3711",
    "name": "ASE Technology",
    "months": 102,
-   "expected": 102,
+   "expected": 103,
    "first": "2018.04",
    "last": "2026.09",
-   "missing": []
+   "missing": [
+    "2026.10"
+   ]
   },
   {
    "company_id": "6488",
    "name": "GlobalWafers",
    "months": 141,
-   "expected": 141,
+   "expected": 142,
    "first": "2015.01",
    "last": "2026.09",
-   "missing": []
+   "missing": [
+    "2026.10"
+   ]
   },
   {
    "company_id": "3037",
    "name": "Unimicron",
    "months": 141,
-   "expected": 141,
+   "expected": 142,
    "first": "2015.01",
    "last": "2026.09",
-   "missing": []
+   "missing": [
+    "2026.10"
+   ]
   },
   {
    "company_id": "3189",
    "name": "Kinsus",
    "months": 141,
-   "expected": 141,
+   "expected": 142,
    "first": "2015.01",
    "last": "2026.09",
-   "missing": []
+   "missing": [
+    "2026.10"
+   ]
   },
   {
    "company_id": "8046",
    "name": "Nan Ya PCB",
-   "months": 141,
-   "expected": 141,
+   "months": 142,
+   "expected": 142,
    "first": "2015.01",
-   "last": "2026.09",
+   "last": "2026.10",
    "missing": []
   },
   {
    "company_id": "2368",
    "name": "Gold Circuit",
    "months": 141,
-   "expected": 141,
+   "expected": 142,
    "first": "2015.01",
    "last": "2026.09",
-   "missing": []
+   "missing": [
+    "2026.10"
+   ]
   },
   {
    "company_id": "2383",
    "name": "Elite Material",
    "months": 141,
-   "expected": 141,
+   "expected": 142,
    "first": "2015.01",
    "last": "2026.09",
-   "missing": []
+   "missing": [
+    "2026.10"
+   ]
   },
   {
    "company_id": "2327",
    "name": "Yageo",
    "months": 141,
-   "expected": 141,
+   "expected": 142,
    "first": "2015.01",
    "last": "2026.09",
-   "missing": []
+   "missing": [
+    "2026.10"
+   ]
   },
   {
    "company_id": "2317",
    "name": "Hon Hai (Foxconn)",
    "months": 141,
-   "expected": 141,
+   "expected": 142,
    "first": "2015.01",
    "last": "2026.09",
-   "missing": []
+   "missing": [
+    "2026.10"
+   ]
   },
   {
    "company_id": "2382",
    "name": "Quanta",
    "months": 141,
-   "expected": 141,
+   "expected": 142,
    "first": "2015.01",
    "last": "2026.09",
-   "missing": []
+   "missing": [
+    "2026.10"
+   ]
   },
   {
    "company_id": "6669",
    "name": "Wiwynn",
    "months": 129,
-   "expected": 129,
+   "expected": 130,
    "first": "2016.01",
    "last": "2026.09",
-   "missing": []
+   "missing": [
+    "2026.10"
+   ]
   },
   {
    "company_id": "2308",
    "name": "Delta Electronics",
    "months": 141,
-   "expected": 141,
+   "expected": 142,
    "first": "2015.01",
    "last": "2026.09",
-   "missing": []
+   "missing": [
+    "2026.10"
+   ]
   },
   {
    "company_id": "1519",
    "name": "Fortune Electric",
    "months": 141,
-   "expected": 141,
+   "expected": 142,
    "first": "2015.01",
    "last": "2026.09",
-   "missing": []
+   "missing": [
+    "2026.10"
+   ]
   },
   {
    "company_id": "1503",
    "name": "Shihlin Electric",
    "months": 141,
-   "expected": 141,
+   "expected": 142,
    "first": "2015.01",
    "last": "2026.09",
-   "missing": []
+   "missing": [
+    "2026.10"
+   ]
   },
   {
    "company_id": "1513",
    "name": "Chung-Hsin Electric",
    "months": 141,
-   "expected": 141,
+   "expected": 142,
    "first": "2015.01",
    "last": "2026.09",
-   "missing": []
+   "missing": [
+    "2026.10"
+   ]
   },
   {
    "company_id": "2449",
    "name": "KYEC",
    "months": 141,
-   "expected": 141,
+   "expected": 142,
    "first": "2015.01",
    "last": "2026.09",
-   "missing": []
+   "missing": [
+    "2026.10"
+   ]
   },
   {
    "company_id": "8299",
    "name": "Phison",
    "months": 141,
-   "expected": 141,
+   "expected": 142,
    "first": "2015.01",
    "last": "2026.09",
-   "missing": []
+   "missing": [
+    "2026.10"
+   ]
   },
   {
    "company_id": "5274",
    "name": "Aspeed",
    "months": 141,
-   "expected": 141,
+   "expected": 142,
    "first": "2015.01",
    "last": "2026.09",
-   "missing": []
+   "missing": [
+    "2026.10"
+   ]
   },
   {
    "company_id": "6515",
    "name": "WinWay",
    "months": 92,
-   "expected": 141,
+   "expected": 142,
    "first": "2015.01",
    "last": "2026.09",
    "missing": [
@@ -253,253 +301,309 @@
    "company_id": "2353",
    "name": "Acer",
    "months": 141,
-   "expected": 141,
+   "expected": 142,
    "first": "2015.01",
    "last": "2026.09",
-   "missing": []
+   "missing": [
+    "2026.10"
+   ]
   },
   {
    "company_id": "2357",
    "name": "Asustek",
    "months": 141,
-   "expected": 141,
+   "expected": 142,
    "first": "2015.01",
    "last": "2026.09",
-   "missing": []
+   "missing": [
+    "2026.10"
+   ]
   },
   {
    "company_id": "3231",
    "name": "Wistron",
    "months": 141,
-   "expected": 141,
+   "expected": 142,
    "first": "2015.01",
    "last": "2026.09",
-   "missing": []
+   "missing": [
+    "2026.10"
+   ]
   },
   {
    "company_id": "2376",
    "name": "Gigabyte",
    "months": 141,
-   "expected": 141,
+   "expected": 142,
    "first": "2015.01",
    "last": "2026.09",
-   "missing": []
+   "missing": [
+    "2026.10"
+   ]
   },
   {
    "company_id": "3017",
    "name": "AVC (Asia Vital Components)",
    "months": 141,
-   "expected": 141,
+   "expected": 142,
    "first": "2015.01",
    "last": "2026.09",
-   "missing": []
+   "missing": [
+    "2026.10"
+   ]
   },
   {
    "company_id": "6805",
    "name": "Fositek",
    "months": 73,
-   "expected": 73,
+   "expected": 74,
    "first": "2020.09",
    "last": "2026.09",
-   "missing": []
+   "missing": [
+    "2026.10"
+   ]
   },
   {
    "company_id": "3044",
    "name": "Tripod",
    "months": 141,
-   "expected": 141,
+   "expected": 142,
    "first": "2015.01",
    "last": "2026.09",
-   "missing": []
+   "missing": [
+    "2026.10"
+   ]
   },
   {
    "company_id": "5469",
    "name": "GBM (HannStar Board)",
    "months": 141,
-   "expected": 141,
+   "expected": 142,
    "first": "2015.01",
    "last": "2026.09",
-   "missing": []
+   "missing": [
+    "2026.10"
+   ]
   },
   {
    "company_id": "5439",
    "name": "First Hi-Tec Enterprise",
    "months": 141,
-   "expected": 141,
+   "expected": 142,
    "first": "2015.01",
    "last": "2026.09",
-   "missing": []
+   "missing": [
+    "2026.10"
+   ]
   },
   {
    "company_id": "3715",
    "name": "Dynamic Holdings",
    "months": 50,
-   "expected": 50,
+   "expected": 51,
    "first": "2022.08",
    "last": "2026.09",
-   "missing": []
+   "missing": [
+    "2026.10"
+   ]
   },
   {
    "company_id": "2313",
    "name": "Compeq",
    "months": 141,
-   "expected": 141,
+   "expected": 142,
    "first": "2015.01",
    "last": "2026.09",
-   "missing": []
+   "missing": [
+    "2026.10"
+   ]
   },
   {
    "company_id": "4958",
    "name": "Zhen Ding",
    "months": 141,
-   "expected": 141,
+   "expected": 142,
    "first": "2015.01",
    "last": "2026.09",
-   "missing": []
+   "missing": [
+    "2026.10"
+   ]
   },
   {
    "company_id": "6274",
    "name": "TUC",
    "months": 141,
-   "expected": 141,
+   "expected": 142,
    "first": "2015.01",
    "last": "2026.09",
-   "missing": []
+   "missing": [
+    "2026.10"
+   ]
   },
   {
    "company_id": "6213",
    "name": "ITEQ",
    "months": 141,
-   "expected": 141,
+   "expected": 142,
    "first": "2015.01",
    "last": "2026.09",
-   "missing": []
+   "missing": [
+    "2026.10"
+   ]
   },
   {
    "company_id": "1815",
    "name": "Fulltech Fiber Glass",
    "months": 141,
-   "expected": 141,
+   "expected": 142,
    "first": "2015.01",
    "last": "2026.09",
-   "missing": []
+   "missing": [
+    "2026.10"
+   ]
   },
   {
    "company_id": "5340",
    "name": "Baotek",
    "months": 141,
-   "expected": 141,
+   "expected": 142,
    "first": "2015.01",
    "last": "2026.09",
-   "missing": []
+   "missing": [
+    "2026.10"
+   ]
   },
   {
    "company_id": "8358",
    "name": "Co-Tech",
    "months": 141,
-   "expected": 141,
+   "expected": 142,
    "first": "2015.01",
    "last": "2026.09",
-   "missing": []
+   "missing": [
+    "2026.10"
+   ]
   },
   {
    "company_id": "8021",
    "name": "Topoint",
    "months": 141,
-   "expected": 141,
+   "expected": 142,
    "first": "2015.01",
    "last": "2026.09",
-   "missing": []
+   "missing": [
+    "2026.10"
+   ]
   },
   {
    "company_id": "5498",
    "name": "Keyware",
    "months": 141,
-   "expected": 141,
+   "expected": 142,
    "first": "2015.01",
    "last": "2026.09",
-   "missing": []
+   "missing": [
+    "2026.10"
+   ]
   },
   {
    "company_id": "3167",
    "name": "Ta Liang",
    "months": 141,
-   "expected": 141,
+   "expected": 142,
    "first": "2015.01",
    "last": "2026.09",
-   "missing": []
+   "missing": [
+    "2026.10"
+   ]
   },
   {
    "company_id": "2345",
    "name": "Accton",
    "months": 141,
-   "expected": 141,
+   "expected": 142,
    "first": "2015.01",
    "last": "2026.09",
-   "missing": []
+   "missing": [
+    "2026.10"
+   ]
   },
   {
    "company_id": "2492",
    "name": "Walsin Technology",
    "months": 141,
-   "expected": 141,
+   "expected": 142,
    "first": "2015.01",
    "last": "2026.09",
-   "missing": []
+   "missing": [
+    "2026.10"
+   ]
   },
   {
    "company_id": "3090",
    "name": "Nichidenbo",
    "months": 141,
-   "expected": 141,
+   "expected": 142,
    "first": "2015.01",
    "last": "2026.09",
-   "missing": []
+   "missing": [
+    "2026.10"
+   ]
   },
   {
    "company_id": "3645",
    "name": "Taimide",
    "months": 141,
-   "expected": 141,
+   "expected": 142,
    "first": "2015.01",
    "last": "2026.09",
-   "missing": []
+   "missing": [
+    "2026.10"
+   ]
   },
   {
    "company_id": "3008",
    "name": "Largan",
    "months": 141,
-   "expected": 141,
+   "expected": 142,
    "first": "2015.01",
    "last": "2026.09",
-   "missing": []
+   "missing": [
+    "2026.10"
+   ]
   },
   {
    "company_id": "6209",
    "name": "GESO",
    "months": 141,
-   "expected": 141,
+   "expected": 142,
    "first": "2015.01",
    "last": "2026.09",
-   "missing": []
+   "missing": [
+    "2026.10"
+   ]
   },
   {
    "company_id": "8070",
    "name": "CWTC (Chang Wah Technology)",
    "months": 141,
-   "expected": 141,
+   "expected": 142,
    "first": "2015.01",
    "last": "2026.09",
-   "missing": []
+   "missing": [
+    "2026.10"
+   ]
   },
   {
    "company_id": "2351",
    "name": "SDI Corporation",
    "months": 141,
-   "expected": 141,
+   "expected": 142,
    "first": "2015.01",
    "last": "2026.09",
-   "missing": []
+   "missing": [
+    "2026.10"
+   ]
   }
  ]
 }
