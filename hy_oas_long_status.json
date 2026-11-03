@@ -1,0 +1,56 @@
+{
+ "tries": [
+  {
+   "name": "FRED 최신",
+   "rows": 784,
+   "first": "2023-11-03",
+   "last": "2026-10-30",
+   "header": [
+    "observation_date",
+    "BAMLH0A0HYM2"
+   ]
+  },
+  {
+   "name": "ALFRED 2023-01-03 발표본",
+   "rows": 784,
+   "first": "2023-11-03",
+   "last": "2026-10-30",
+   "header": [
+    "observation_date",
+    "BAMLH0A0HYM2"
+   ]
+  },
+  {
+   "name": "ALFRED 2022-01-03 발표본",
+   "rows": 784,
+   "first": "2023-11-03",
+   "last": "2026-10-30",
+   "header": [
+    "observation_date",
+    "BAMLH0A0HYM2"
+   ]
+  },
+  {
+   "name": "ALFRED 2023-01-03 (alfred)",
+   "error": "HTTP Error 404: Not Found"
+  },
+  {
+   "name": "ALFRED 2020-06-01 발표본",
+   "rows": 784,
+   "first": "2023-11-03",
+   "last": "2026-10-30",
+   "header": [
+    "observation_date",
+    "BAMLH0A0HYM2"
+   ]
+  }
+ ],
+ "spx": {
+  "rows": 6749,
+  "first": "2000-01-03",
+  "last": "2026-11-02"
+ },
+ "rows": 784,
+ "first": "2023-11-03",
+ "last": "2026-10-30"
+}
