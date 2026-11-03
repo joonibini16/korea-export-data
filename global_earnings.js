@@ -9,7 +9,7 @@
  const safeLink=(url,text)=>{const a=document.createElement('a');if(!/^https:\/\//.test(url))throw Error('출처 URL 오류');a.href=url;a.textContent=text;a.target='_blank';a.rel='noopener noreferrer';return a;};
  for(const x of data.upcoming||[]){const p=document.createElement('p');p.textContent=`${x.date} ${x.time} · ${byTicker.get(x.ticker)?.name||x.ticker} · ${x.event} · `;p.append(safeLink(x.source,'IR 일정'));$('upcoming').append(p);}
  const sectors=[...new Set(list.map(x=>x.sector))];for(const s of sectors)$('sector').add(new Option(s,s));
- const GOOD=/상향|상회|사상 최대|최대|최고|가속|개선|흑자|증가|반전/,BAD=/하향|하회|급감|감소|둔화|악화|적자|부진|축소|낮/;
+ const GOOD=/상향|상회|사상 최대|최대|최고|가속|개선|흑자|증가|반전/,BAD=/^다만|하향|하회|급감|감소|둔화|악화|적자|부진|축소|낮/;
 function toneOf(t){const b=BAD.test(t),g=GOOD.test(t);return b&&!g?'bad':g&&!b?'good':b&&g?'mix':'neutral';}
 function splitGuide(s){const guides=[];const out=s.replace(/\(([^()]*)\)/g,(all,inner)=>{const items=inner.split(/,\s*/);const keep=[];for(const it of items){if(/가이던스/.test(it))guides.push(it.trim());else keep.push(it);}return keep.length?'('+keep.join(', ')+')':'';});return [out.trim(),guides];}
 function guideLines(el,guides){for(const g of guides){const d=document.createElement('div');d.className='guide-line '+toneOf(g);d.textContent='→ '+g;el.append(d);}}
