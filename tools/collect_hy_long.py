@@ -1,7 +1,7 @@
-"""미국 하이일드 스프레드(ICE BofA US High Yield OAS) 장기 이력(1996~) → hy_oas_long.csv
+"""미국 하이일드 스프레드(ICE BofA US High Yield OAS) 장기 이력(1996~) → hy_oas_long.csv · sp500_long.csv · credit_long.csv
 
-FRED는 ICE 지수를 최근 약 3년만 내려주므로, 과거 구간은 ALFRED(FRED 과거 발표본, 같은 St. Louis Fed)의
-예전 발표본(vintage)에서 받습니다. 같은 시리즈(BAMLH0A0HYM2)의 공식 발표값이며, 날짜가 겹치면 최신 FRED 값을 우선합니다.
+FRED는 ICE 지수를 최근 약 3년만 내려줍니다(ALFRED 과거 발표본도 같은 제한, 2026-11 확인). 받은 값은 지우지 않고 계속 쌓으며,
+2023년 이전은 장기 신용 스프레드 대리지표(credit_long.csv)로 보여줍니다.
 기존 파일의 행은 지우지 않고, 새로 받은 날짜만 추가·갱신합니다.
 """
 import csv, io, json, pathlib, time, urllib.request
@@ -11,10 +11,6 @@ OUT = ROOT / 'hy_oas_long.csv'; ST = ROOT / 'hy_oas_long_status.json'
 SID = 'BAMLH0A0HYM2'
 TRY = [
     ('FRED 최신', f'https://fred.stlouisfed.org/graph/fredgraph.csv?id={SID}&cosd=1996-12-31'),
-    ('ALFRED 2023-01-03 발표본', f'https://fred.stlouisfed.org/graph/fredgraph.csv?id={SID}&cosd=1996-12-31&vintage_date=2023-01-03'),
-    ('ALFRED 2022-01-03 발표본', f'https://fred.stlouisfed.org/graph/fredgraph.csv?id={SID}&cosd=1996-12-31&vintage_date=2022-01-03'),
-    ('ALFRED 2023-01-03 (alfred)', f'https://alfred.stlouisfed.org/graph/alfredgraph.csv?id={SID}&cosd=1996-12-31&vintage_date=2023-01-03'),
-    ('ALFRED 2020-06-01 발표본', f'https://fred.stlouisfed.org/graph/fredgraph.csv?id={SID}&cosd=1996-12-31&vintage_date=2020-06-01'),
 ]
 
 
@@ -49,9 +45,36 @@ def spx_long(st):
         st['spx'] = dict(error=str(e)[:200])
 
 
+def proxies(st):
+    """하이일드 OAS의 2023년 이전 공백을 메울 장기 신용 스프레드(원본 공식 자료) → credit_long.csv (series,date,value, %p)
+    - BAA10Y: 무디스 Baa 회사채 수익률 − 10년 국채(FRED, 일별, 1986~)
+    - GZ: 연준 Gilchrist-Zakrajšek 회사채 스프레드(federalreserve.gov FEDS Notes, 월별, 1973~)"""
+    out = []
+    try:
+        t = get('https://fred.stlouisfed.org/graph/fredgraph.csv?id=BAA10Y&cosd=2000-01-01')
+        out += [('BAA10Y', d, v) for d, v in list(csv.reader(io.StringIO(t)))[1:] if v not in ('', '.')]
+        st['baa10y'] = len(out)
+    except Exception as e:
+        st['baa10y'] = str(e)[:150]
+    try:
+        with urllib.request.urlopen(urllib.request.Request('https://www.federalreserve.gov/econres/notes/feds-notes/ebp_csv.csv', headers={'User-Agent': 'Mozilla/5.0'}), timeout=60) as r:
+            t = r.read().decode('utf-8-sig')
+        g = [('GZ', row['date'], row['gz_spread']) for row in csv.DictReader(io.StringIO(t)) if row['date'] >= '2000' and row['gz_spread']]
+        out += g; st['gz'] = dict(rows=len(g), last=g[-1][1] if g else None)
+    except Exception as e:
+        st['gz'] = str(e)[:150]
+    p = ROOT / 'credit_long.csv'; old = {}
+    if p.exists():
+        for r in csv.DictReader(p.open(encoding='utf-8')): old[(r['series'], r['date'])] = r['value']
+    for k, d, v in out: old[(k, d)] = str(round(float(v), 4))
+    if old:
+        with p.open('w', encoding='utf-8', newline='') as f:
+            w = csv.writer(f); w.writerow(['series', 'date', 'value']); w.writerows(sorted((k, d, v) for (k, d), v in old.items()))
+
+
 def main():
     st = {'tries': []}; data = {}
-    spx_long(st)
+    spx_long(st); proxies(st)
     if OUT.exists():
         for r in csv.DictReader(OUT.open(encoding='utf-8')): data[r['date']] = r
     got = {}

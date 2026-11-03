@@ -2,15 +2,17 @@
 (function(){
  const box=document.getElementById('hyBox');if(!box||!window.Chart)return;
  const csv=t=>{const L=t.trim().split(/\r?\n/),h=L[0].replace(/^﻿/,'').split(',');return L.slice(1).map(l=>{const v=l.split(',');return Object.fromEntries(h.map((k,i)=>[k,v[i]]));});};
- let F={},SP=[],rng='2000',ccc=false,ch=null;
+ let F={},SP=[],PX={BAA10Y:[],GZ:[]},px=true,rng='2000',ccc=false,ch=null;
  const get=s=>(F[s]||[]);
  function draw(){
   const hy=get('BAMLH0A0HYM2');if(!hy.length){box.querySelector('.hy-c').innerHTML='<p class="muted">자료가 아직 없습니다.</p>';return;}
   const last=hy.at(-1),d0=new Date(last.d);d0.setMonth(d0.getMonth()-(rng==='3m'?3:rng==='6m'?6:rng==='1y'?12:rng==='5y'?60:400));const S=rng==='2000'?'2000-01-01':d0.toISOString().slice(0,10);
-  const R=hy.filter(x=>x.d>=S),labels=R.map(x=>x.d),cm=new Map(get('BAMLH0A3HYC').map(x=>[x.d,x.v])),sm=new Map(SP.map(x=>[x.d,x.v]));
+  const R=hy.filter(x=>x.d>=S),hm=new Map(R.map(x=>[x.d,x.v])),bm=new Map(PX.BAA10Y.filter(x=>x.d>=S).map(x=>[x.d,x.v])),gm=new Map(PX.GZ.filter(x=>x.d>=S).map(x=>[x.d,x.v]));
+  const showPx=px&&(bm.size||gm.size),labels=showPx?[...new Set([...hm.keys(),...bm.keys(),...gm.keys()])].sort():R.map(x=>x.d),cm=new Map(get('BAMLH0A3HYC').map(x=>[x.d,x.v])),sm=new Map(SP.map(x=>[x.d,x.v]));
   let ls=null;const spx=labels.map(d=>{if(sm.has(d))ls=sm.get(d);return ls;});
-  const ds=[{label:'하이일드 스프레드 (bp)',data:R.map(x=>x.v),borderColor:'#ef4444',backgroundColor:'rgba(239,68,68,.08)',fill:true,borderWidth:2.6,pointRadius:0,yAxisID:'y'},
+  const ds=[{label:'하이일드 스프레드 (bp, ICE BofA)',data:labels.map(d=>hm.get(d)??null),spanGaps:false,borderColor:'#ef4444',backgroundColor:'rgba(239,68,68,.08)',fill:true,borderWidth:2.6,pointRadius:0,yAxisID:'y'},
    {label:'S&P500 (오른쪽)',data:spx,borderColor:'#94a3b8',backgroundColor:'#94a3b8',borderWidth:1.3,pointRadius:0,yAxisID:'y1'}];
+  if(showPx){ds.splice(1,0,{label:'Baa − 10년 국채 (bp, 무디스·일별)',data:labels.map(d=>bm.get(d)??null),borderColor:'#a78bfa',backgroundColor:'#a78bfa',borderWidth:1.5,pointRadius:0,spanGaps:true,yAxisID:'y'},{label:'GZ 회사채 스프레드 (bp, 연준·월별)',data:labels.map(d=>gm.get(d)??null),borderColor:'#34d399',backgroundColor:'#34d399',borderWidth:1.5,borderDash:[5,3],pointRadius:0,spanGaps:true,yAxisID:'y'});}
   if(ccc)ds.splice(1,0,{label:'CCC 이하 (bp)',data:labels.map(d=>cm.get(d)??null),borderColor:'#f59e0b',backgroundColor:'#f59e0b',borderWidth:1.6,pointRadius:0,yAxisID:'y'});
   const lines={id:'hyl',beforeDatasetsDraw(c){const y=c.scales.y,a=c.chartArea,x=c.ctx;x.save();for(const [v,col,t] of [[400,'rgba(251,191,36,.7)','주의 400'],[500,'rgba(239,68,68,.8)','경고 500']]){const p=y.getPixelForValue(v);if(p<a.top||p>a.bottom)continue;x.strokeStyle=col;x.setLineDash([5,4]);x.beginPath();x.moveTo(a.left,p);x.lineTo(a.right,p);x.stroke();x.fillStyle=col;x.font='11px sans-serif';x.fillText(t,a.left+4,p-3);}x.restore();}};
   if(ch)ch.destroy();
@@ -26,9 +28,11 @@
   box.querySelector('.hy-sum').innerHTML=`<span class="hy-badge" style="background:${st[1]}">${st[0]}</span> <b>${last.d}</b> 하이일드 스프레드 <b style="color:#ef4444">${last.v.toFixed(0)}bp</b> (${(last.v/100).toFixed(2)}%p) · 1개월 ${sg(c1)} · 3개월 ${sg(c3)} · ${hy[0].d.slice(0,4)}년 이후 범위 ${mn.toFixed(0)}~${mx.toFixed(0)}bp · 백분위 ${pc.toFixed(0)}% (높을수록 스프레드가 넓은 쪽)`;
  }
  box.querySelectorAll('[data-hr]').forEach(b=>b.onclick=()=>{rng=b.dataset.hr;box.querySelectorAll('[data-hr]').forEach(x=>x.classList.toggle('on',x===b));draw();});
+ const pb=box.querySelector('[data-px]');if(pb)pb.onclick=e=>{px=!px;e.target.classList.toggle('on',px);draw();};
  box.querySelector('[data-ccc]').onclick=e=>{ccc=!ccc;e.target.classList.toggle('on',ccc);draw();};
  const opt=u=>fetch(u+'?v='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():'').catch(()=>'');
- Promise.all([fetch('fred_data.csv?v='+Date.now(),{cache:'no-store'}).then(r=>r.text()),fetch('market_daily.csv?v='+Date.now(),{cache:'no-store'}).then(r=>r.text()),opt('hy_oas_long.csv'),opt('sp500_long.csv')]).then(([f,m,hl,sl])=>{
+ Promise.all([fetch('fred_data.csv?v='+Date.now(),{cache:'no-store'}).then(r=>r.text()),fetch('market_daily.csv?v='+Date.now(),{cache:'no-store'}).then(r=>r.text()),opt('hy_oas_long.csv'),opt('sp500_long.csv'),opt('credit_long.csv')]).then(([f,m,hl,sl,cl])=>{
+  if(cl)for(const r of csv(cl)){const v=parseFloat(r.value);if(isFinite(v)&&PX[r.series])PX[r.series].push({d:r.date,v:v*100});}for(const k in PX)PX[k].sort((a,b)=>a.d.localeCompare(b.d));
   // 장기 이력(ALFRED 과거 발표본·Yahoo) 먼저, 같은 날짜는 최신 FRED·market_daily 값으로 덮어씀
   const HM=new Map();if(hl)for(const r of csv(hl)){const v=parseFloat(r.value);if(isFinite(v))HM.set(r.date,v*100);}
   const SM=new Map();if(sl)for(const r of csv(sl)){const v=+r.close;if(v)SM.set(r.date,v);}

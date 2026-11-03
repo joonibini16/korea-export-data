@@ -23,10 +23,10 @@ jobs:
         continue-on-error: true
       - run: |
           git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          cp hy_oas_long_status.json /tmp/s.json; cp hy_oas_long.csv /tmp/h.csv 2>/dev/null || true; cp sp500_long.csv /tmp/sp.csv 2>/dev/null || true
+          cp hy_oas_long_status.json /tmp/s.json; cp hy_oas_long.csv /tmp/h.csv 2>/dev/null || true; cp sp500_long.csv /tmp/sp.csv 2>/dev/null || true; cp credit_long.csv /tmp/cl.csv 2>/dev/null || true
           for i in 1 2 3 4 5; do
             git fetch -q origin main && git reset -q --hard origin/main
-            cp /tmp/s.json hy_oas_long_status.json; cp /tmp/h.csv hy_oas_long.csv 2>/dev/null || true; cp /tmp/sp.csv sp500_long.csv 2>/dev/null || true
-            git add hy_oas_long_status.json hy_oas_long.csv sp500_long.csv 2>/dev/null; git diff --cached --quiet && exit 0
+            cp /tmp/s.json hy_oas_long_status.json; cp /tmp/h.csv hy_oas_long.csv 2>/dev/null || true; cp /tmp/sp.csv sp500_long.csv 2>/dev/null || true; cp /tmp/cl.csv credit_long.csv 2>/dev/null || true
+            git add hy_oas_long_status.json hy_oas_long.csv sp500_long.csv credit_long.csv 2>/dev/null; git diff --cached --quiet && exit 0
             git commit -qm "Update HY OAS long history" && git push -q origin HEAD:main && exit 0; sleep $((i*4))
           done; exit 1

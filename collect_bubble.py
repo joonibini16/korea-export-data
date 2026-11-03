@@ -148,7 +148,9 @@ def kofia(fails):
 
 def merge(path, rows, key, fields, got):
     old = [r for r in csv.DictReader(path.open(encoding='utf-8'))] if path.exists() else []
-    keep = [r for r in old if r[key] not in got]
+    # 저장된 이력은 지우지 않음: 새로 받은 (계열, 날짜)만 덮어쓰고, 제공 기간이 줄어든 계열(FRED ICE 지수 3년 제한 등)의 과거 행은 유지
+    new = {(r[key], r['date']) for r in rows}
+    keep = [r for r in old if (r[key], r['date']) not in new]
     with path.open('w', encoding='utf-8', newline='') as f:
         w = csv.DictWriter(f, fieldnames=fields); w.writeheader()
         w.writerows(sorted(keep + rows, key=lambda r: (r[key], r['date'])))
