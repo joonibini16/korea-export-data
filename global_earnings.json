@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-03",
+  "updated_at": "2026-11-04",
   "method": "공식 컨콜 녹취록을 확인한 경우에만 Q&A 요약으로 표시합니다. 그 외 주제별 요약은 공식 IR 발표문을 출처로 명시하며, 투자 해석은 관전점으로 구분합니다. 반도체 장비 업종은 주요 공정·검사·테스트·패키징 기업을 추적하며 원문 미검증 기업은 분석 대기로 표시합니다.",
   "watchlist": [
     {
@@ -22027,16 +22027,217 @@
       },
       "call_source": "https://edge.media-server.com/mmc/p/3cyhkhhf",
       "call_source_label": "공식 Q3 2026 컨퍼런스콜 웹캐스트(IR 페이지 링크)"
+    },
+    {
+      "ticker": "AMD",
+      "period": "2026 Q3",
+      "date": "2026-11-03",
+      "evidence": "AMD 공식 2026 Q3 실적 보도자료(ir.amd.com, 11/3 장 마감 후) 전문·재무표 확인 · 직전 2026 Q2 공식 보도자료의 Q3 가이던스 대조",
+      "direction": "개선",
+      "headline": "Q3 매출 $13.4bn(+45% YoY, +16% QoQ, 가이던스 상단 $13.3bn 상회) · 데이터센터 $8.5bn(+97%) · Q4 매출 가이던스 약 $17bn±3%(QoQ +27%, YoY +66%)로 성장 재가속 · 다만 Q4 비GAAP 총마진 56% → 55% 가이던스, Q3 FCF $554m로 급감",
+      "estimate_signal": "Q3 매출이 가이던스 중간값($13.0bn)을 약 $0.4bn 넘었고 Q4 가이던스 $17bn은 Q3 대비 +27%로 MI450·Helios 램프가 숫자로 반영되는 첫 분기. 매출 추정치는 상향 방향. 반면 Q4 총마진 가이던스 55%(Q3 56%)는 GPU 비중 확대에 따른 믹스 희석을 시사해 EPS 상향폭은 매출보다 작을 수 있음",
+      "call_coverage": "공식 보도자료 확인 · 11/3 17:00 ET 컨콜 공식 Q&A 녹취록 미확인; Q&A 톤 미반영",
+      "changes": [
+        {
+          "title": "매출·가이던스 대비",
+          "direction": "개선",
+          "before": "Q2 발표 시 Q3 가이던스: 매출 약 $13.0bn±$0.3bn(YoY 약 +41%, QoQ 약 +13%), 비GAAP 총마진 약 56%. Q2 실적 매출 $11,536m(+50%).",
+          "now": "Q3 매출 $13,377m(+45% YoY, +16% QoQ)로 가이던스 상단 상회. 비GAAP 총마진 56%(가이던스 부합), 비GAAP 영업이익 $3,923m(마진 29%), 비GAAP EPS $2.09(+74%), GAAP EPS $1.46(+95%).",
+          "meaning": "매출 서프라이즈는 데이터센터가 주도했고 총마진은 가이던스 수준 유지. 영업 레버리지로 비GAAP 영업이익이 QoQ +27%로 매출(+16%)보다 빠르게 증가.",
+          "rows": [
+            {
+              "item": "매출 vs 가이던스",
+              "before": "$12.7~13.3bn",
+              "now": "$13.38bn",
+              "delta": "상단 +$0.08bn",
+              "tone": "good"
+            },
+            {
+              "item": "비GAAP 총마진",
+              "before": "약 56%(가이던스)",
+              "now": "56%",
+              "delta": "부합",
+              "tone": "neutral"
+            },
+            {
+              "item": "비GAAP 영업이익",
+              "before": "$3,094m(Q2)",
+              "now": "$3,923m(Q3)",
+              "delta": "+27% QoQ",
+              "tone": "good"
+            },
+            {
+              "item": "비GAAP EPS",
+              "before": "$1.66(Q2)",
+              "now": "$2.09(Q3)",
+              "delta": "+$0.43",
+              "tone": "good"
+            }
+          ]
+        },
+        {
+          "title": "데이터센터(EPYC·Instinct MI450)",
+          "direction": "개선",
+          "before": "Q2: 데이터센터 매출 $6,718m(+107%), 영업이익 $2,103m(마진 31.3%). CEO는 하반기 'EPYC 수요 가속, Instinct 배치 확대, Helios 램프 시작'을 언급.",
+          "now": "Q3: 데이터센터 매출 $8,546m(+97% YoY, +27% QoQ), 영업이익 $2,882m(마진 33.7%). EPYC 수요와 Instinct MI450 시리즈 출시가 성장 동인. Anthropic·Meta·Microsoft·OpenAI·OCI가 첫 Helios 랙 시스템(MI450+6세대 EPYC)에서 워크로드 가동.",
+          "meaning": "MI450·Helios가 계획대로 출하 단계에 진입했음을 공식 확인. 데이터센터 이익률도 QoQ +2.4%p 개선.",
+          "rows": [
+            {
+              "item": "데이터센터 매출",
+              "before": "$6,718m(Q2)",
+              "now": "$8,546m(Q3)",
+              "delta": "+27% QoQ",
+              "tone": "good"
+            },
+            {
+              "item": "데이터센터 영업이익률",
+              "before": "31.3%",
+              "now": "33.7%",
+              "delta": "+2.4%p",
+              "tone": "good"
+            }
+          ]
+        },
+        {
+          "title": "Q4 가이던스",
+          "direction": "개선",
+          "before": "Q2 발표 시 Q3 가이던스: 매출 약 $13.0bn(QoQ +13%), 비GAAP 총마진 약 56%.",
+          "now": "Q4 가이던스: 매출 약 $17bn±3%(중간값 YoY 약 +66%, QoQ 약 +27%), 비GAAP 총마진 약 55%.",
+          "meaning": "분기 성장률 가이던스가 13% → 27%로 두 배. 총마진 1%p 하향 가이던스는 GPU·랙 시스템 비중 확대 영향으로 보이며(분석), 컨콜 확인 필요.",
+          "rows": [
+            {
+              "item": "다음 분기 매출 가이던스(QoQ)",
+              "before": "+13%(Q3 가이던스)",
+              "now": "+27%(Q4 가이던스)",
+              "delta": "+14%p",
+              "tone": "good"
+            },
+            {
+              "item": "다음 분기 비GAAP 총마진 가이던스",
+              "before": "약 56%",
+              "now": "약 55%",
+              "delta": "-1%p",
+              "tone": "bad"
+            }
+          ]
+        },
+        {
+          "title": "클라이언트·게이밍·임베디드",
+          "direction": "혼조",
+          "before": "Q2: Client $3,062m(+23%), Gaming $779m(-31%), Client+Gaming 영업이익 $582m. Embedded $977m(+19%), 영업이익 $386m.",
+          "now": "Q3: Client $2,949m(+7% YoY, QoQ -4%), Gaming $773m(-40%), Client+Gaming 합계 $3.7bn(-8%), 영업이익 $573m(전년 $867m). Embedded 약 $1.1bn(+29%), 영업이익 $453m.",
+          "meaning": "PC 성장률이 23% → 7%로 둔화되고 게임 콘솔(세미커스텀) 감소가 이어짐. 임베디드는 항공우주·방산·자동차·통신·산업 회복으로 가속.",
+          "rows": [
+            {
+              "item": "Client YoY",
+              "before": "+23%(Q2)",
+              "now": "+7%(Q3)",
+              "delta": "-16%p",
+              "tone": "bad"
+            },
+            {
+              "item": "Gaming YoY",
+              "before": "-31%(Q2)",
+              "now": "-40%(Q3)",
+              "delta": "-9%p",
+              "tone": "bad"
+            },
+            {
+              "item": "Embedded YoY",
+              "before": "+19%(Q2)",
+              "now": "+29%(Q3)",
+              "delta": "+10%p",
+              "tone": "good"
+            }
+          ]
+        },
+        {
+          "title": "현금흐름",
+          "direction": "악화",
+          "before": "Q2: 잉여현금흐름 $1,558m.",
+          "now": "Q3: 영업현금흐름 $1,202m, 설비투자 $648m, 잉여현금흐름 $554m(전년 $1,530m).",
+          "meaning": "이익은 사상 최대인데 현금 전환은 급감. 원인(재고·매출채권 등 운전자본 증가 여부)은 보도자료 본문에 설명이 없어 10-Q·컨콜에서 확인 필요.",
+          "rows": [
+            {
+              "item": "잉여현금흐름",
+              "before": "$1,558m(Q2)",
+              "now": "$554m(Q3)",
+              "delta": "-64%",
+              "tone": "bad"
+            }
+          ]
+        }
+      ],
+      "facts": "2026 Q3(공식 보도자료): 매출 $13,377m(전년 $9,246m, +45%; Q2 $11,536m 대비 +16%). GAAP 총마진 54%, 영업이익 $2,832m(+123%), 순이익 $2,428m, 희석 EPS $1.46(전년 $0.75). 비GAAP 총마진 56%, 영업이익 $3,923m(+75%), 순이익 $3,471m, 희석 EPS $2.09(전년 $1.20). 부문: 데이터센터 매출 $8,546m(+97%)·영업이익 $2,882m(전년 $1,074m); Client $2,949m(+7%), Gaming $773m(-40%), Client+Gaming 영업이익 $573m; Embedded 약 $1.1bn(+29%)·영업이익 $453m. 영업현금흐름 $1,202m, 설비투자 $648m, 잉여현금흐름 $554m. 주요 사항: Instinct MI450 출시, Helios 랙(Anthropic·Meta·Microsoft·OpenAI·OCI 가동), HPE Helios 첫 고객 Vultr, OCI E7 인스턴스에 6세대 EPYC, ROCm 10 출시, EuroHPC LUMI-AI에 MI430X 선정, World Labs·Taalas 인수 합의.",
+      "guidance": "2026 Q4: 매출 약 $17bn±3%(중간값 YoY 약 +66%, QoQ 약 +27%), 비GAAP 총마진 약 55%. (직전 Q3 가이던스: 매출 약 $13.0bn±$0.3bn, 비GAAP 총마진 약 56%.) 2027년 수치 가이던스는 보도자료에 없음.",
+      "tone": "보도자료 경영진 코멘트 기준: Lisa Su CEO는 가이던스 상단을 넘은 사상 최대 분기이며 Instinct·EPYC 수요가 계속 강해지고 있고, Helios와 'Venice'(6세대 EPYC) 생산 확대로 Q4 성장이 더 가속될 것이라고 언급. Jean Hu CFO는 사업 모델의 영업 레버리지와 Q4 매출·이익 성장 가속을 강조. 컨콜 Q&A는 공식 녹취록 미확인으로 톤을 평가하지 않음.",
+      "interpretation": "분석: 핵심은 MI450·Helios의 실출하 확인과 Q4 +27% QoQ 가이던스다. AMD가 엔비디아 대안 GPU 공급자로서 '계획'이 아닌 '매출' 단계에 들어섰고, 하이퍼스케일러 5곳(Anthropic·Meta·MS·OpenAI·OCI)이 동시에 가동 중이라는 점은 AI 가속기 시장의 공급자 다변화가 실제로 진행되고 있다는 뜻이다. 한계는 ① Q4 총마진 55% 가이던스(랙 시스템·GPU 믹스로 마진 희석), ② FCF 급감(램프 초기 재고·채권 증가 가능성), ③ PC·게임 둔화다. 한국 관점에서 MI450은 HBM4를 대량 탑재하는 제품이므로 Helios 램프는 삼성전자·SK하이닉스 HBM 수요의 추가 축이며, 특히 AMD 공급 비중이 높은 것으로 알려진 삼성전자 HBM에 의미가 크다(분석; 공급사 비중은 AMD 공식 미공개). 6세대 EPYC(Venice) 확대는 서버 DDR5·고용량 RDIMM 수요에도 우호적이다. 반면 게임 콘솔 감소는 관련 부품 수요엔 부정적이다.",
+      "watch": "분석: 공식 녹취록에서 ① Q4 $17bn 중 데이터센터 GPU 비중과 MI450 램프 속도, ② 총마진 55% 하향 이유와 2027년 마진 방향, ③ FCF 감소 원인(재고·선급금), ④ OpenAI·Anthropic 등 GW급 계약의 2027년 매출 인식 일정, ⑤ HBM·CoWoS 등 공급 제약 언급, ⑥ 수출 규제·중국 매출 영향 확인. 10-Q 재고 수치와 2027년 2월 Q4 실적에서 $17bn 달성 여부.",
+      "source": "https://ir.amd.com/news-events/press-releases/detail/1303/amd-reports-third-quarter-2026-financial-results",
+      "source_label": "AMD 2026 Q3 실적 보도자료(공식 IR)",
+      "prior_source": "https://ir.amd.com/news-events/press-releases/detail/1295/amd-reports-second-quarter-2026-financial-results",
+      "prior_source_label": "AMD 2026 Q2 실적 보도자료(공식 IR, Q3 가이던스 포함)",
+      "verified_at": "2026-11-04",
+      "call_topics": [
+        {
+          "topic": "가이던스 상회·영업 레버리지",
+          "source_part": "공식 2026 Q3 보도자료",
+          "points": [
+            "매출 $13.4bn(+45%)으로 가이던스($13.0bn±$0.3bn) 상단 상회.",
+            "비GAAP 영업이익 QoQ +27%, 비GAAP EPS $2.09(+74%)."
+          ],
+          "implication": "분석: 매출 증가가 이익으로 빠르게 전환."
+        },
+        {
+          "topic": "MI450·Helios 출하 개시",
+          "source_part": "공식 2026 Q3 보도자료",
+          "points": [
+            "데이터센터 매출 $8.5bn(+97%), EPYC 수요와 MI450 출시가 동인.",
+            "Anthropic·Meta·Microsoft·OpenAI·OCI가 첫 Helios 랙에서 워크로드 가동."
+          ],
+          "implication": "분석: AI 가속기 공급자 다변화의 실매출 확인, HBM 수요 축 확대."
+        },
+        {
+          "topic": "Q4 가속 가이던스와 마진",
+          "source_part": "공식 2026 Q3 보도자료",
+          "points": [
+            "Q4 매출 약 $17bn±3%(QoQ +27%, YoY +66%).",
+            "비GAAP 총마진 약 55%로 Q3(56%)보다 낮게 제시."
+          ],
+          "implication": "분석: 성장은 가속, 믹스로 마진은 소폭 희석."
+        }
+      ],
+      "call_readthrough": {
+        "scope": "AMD 공식 2026 Q3·Q2 보도자료를 한국어로 재서술. 컨콜 공식 녹취록을 확인하지 못해 Q&A를 인용·추정하지 않음.",
+        "groups": [
+          {
+            "title": "공식 보도자료 핵심",
+            "items": [
+              {
+                "title": "실적",
+                "body": "매출 134억 달러로 전년보다 45% 늘었고 회사 가이던스 상단을 넘었다."
+              },
+              {
+                "title": "데이터센터",
+                "body": "데이터센터 매출이 85억 달러로 거의 두 배가 됐고 MI450 GPU 출하가 시작됐다."
+              },
+              {
+                "title": "가이던스",
+                "body": "4분기 매출을 약 170억 달러로 제시해 3분기보다 27% 더 늘어날 것으로 봤다. 총마진은 55%로 소폭 낮췄다."
+              },
+              {
+                "title": "검증할 조건",
+                "body": "현금흐름 급감 원인과 마진 하락 이유를 공식 녹취록·10-Q로 확인해야 한다."
+              }
+            ]
+          }
+        ]
+      },
+      "call_source": "https://ir.amd.com/news-events",
+      "call_source_label": "AMD IR 이벤트(Q3 2026 컨콜 웹캐스트)"
     }
   ],
   "upcoming": [
-    {
-      "ticker": "AMD",
-      "date": "2026-11-03",
-      "time": "장 마감 후 · 17:00 America/New_York(컨콜)",
-      "event": "2026 Q3 실적·컨퍼런스콜",
-      "source": "https://ir.amd.com/news-events/press-releases/detail/1300/amd-to-report-fiscal-third-quarter-2026-financial-results"
-    },
     {
       "ticker": "ANET",
       "date": "2026-11-03",
