@@ -99,8 +99,27 @@ def main():
                columns=['code', 'name', 'market', 'rs', 'rs_chg_1w', 'rs_chg_4w', 'score', 'ret_1w', 'ret_1m', 'ret_3m', 'ret_6m', 'from_high', 'rs_line_high', 'cap_eok', 'val20_eok', 'close', 'sector', 'group', 'days'],
                rows=rows)
     (ROOT / 'rs_rank.json').write_text(json.dumps(out, ensure_ascii=False, separators=(',', ':')))
+    write_hist(S, dates)
     print(last, len(rows), 'stocks', len(dates), 'days')
 
+
+def write_hist(S, dates):
+    """기간 비교용 일별 수정종가 — 월별 파일 price_hist/YYYY-MM.json {d:[날짜], c:{코드:[종가]}} (내용이 바뀐 달만 다시 씀)"""
+    P = ROOT / 'price_hist'; P.mkdir(exist_ok=True)
+    months = sorted({d[:7] for d in dates}); idx = {}
+    for m in months:
+        md = [d for d in dates if d[:7] == m]; pos = {d: i for i, d in enumerate(md)}; c = {}
+        for code, s in S.items():
+            if not s['d'] or s['d'][-1] != dates[-1]: continue
+            arr = [None] * len(md); hit = False
+            for d, a in zip(s['d'], s['a']):
+                if d in pos: arr[pos[d]] = int(a) if a == int(a) else round(a, 2); hit = True
+            if hit: c[code] = arr
+        txt = json.dumps({'d': md, 'c': c}, separators=(',', ':'))
+        f = P / f'{m}.json'
+        if not f.exists() or f.read_text() != txt: f.write_text(txt)
+        idx[m] = [md[0], md[-1]]
+    (P / '_index.json').write_text(json.dumps(idx, separators=(',', ':')))
 
 if __name__ == '__main__':
     main()
