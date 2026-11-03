@@ -1,0 +1,16 @@
+[
+ {
+  "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=BAA10Y&cosd=2000-01-01",
+  "error": "The read operation timed out"
+ },
+ {
+  "url": "https://www.federalreserve.gov/econres/notes/feds-notes/ebp_csv.csv",
+  "status": 200,
+  "length": 44606,
+  "head": "date,gz_spread,ebp,est_prob\n1973-01-01,1.1307714053429057,-0.04758657214441975,0.1834563942368741\n1973-02-01,1.075493276125443,-0.05699084055462,0.18034642987710903\n1973-03-01,1.0299678416836435,-0.14982863744086505,0.1514390617287162\n1973-04-01,0.9827458103604768,-0.21038452173444444,0.13434193877993095\n1973-05-01,1.0464935117518377,-0.0844082305442917,0.1714698167204848\n1973-06-01,1.185925775964"
+ },
+ {
+  "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=BAMLH0A0HYM2EY&cosd=2000-01-01",
+  "error": "The read operation timed out"
+ }
+]
