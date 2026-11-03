@@ -60,7 +60,9 @@ def main():
     have = {m: max([d for d, mm in data if mm == m], default=None) for m in IDX}
     ok = fb.login(); log(step='login', ok=ok)
     for mkt in IDX:
-        start = dt.date(2015, 1, 1) if not have[mkt] else dt.date.fromisoformat(have[mkt]) - dt.timedelta(days=14)
+        first = min([d for d, mm in data if mm == mkt], default=None)
+        # 2000년 이후 이력이 비어 있으면(최초 2015년부터 받음) 2000년부터 다시 채움 — 기존 행은 유지, 같은 날짜만 갱신
+        start = dt.date(2000, 1, 1) if (not have[mkt] or (first and first > '2000-01-10')) else dt.date.fromisoformat(have[mkt]) - dt.timedelta(days=14)
         got = 0
         if ok:
             s = start

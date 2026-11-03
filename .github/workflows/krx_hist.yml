@@ -1,0 +1,43 @@
+name: KRX daily history backfill (2000~)
+on:
+  workflow_dispatch:
+    inputs:
+      hist_from: {description: '시작일 (YYYY-MM-DD)', required: false, default: ''}
+permissions:
+  contents: write
+  actions: write
+concurrency:
+  group: krx-hist
+  cancel-in-progress: false
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 175
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: pip install -q requests
+      - run: python tools/collect_krx_daily_hist.py
+        continue-on-error: true
+        env:
+          KRX_ID: ${{ secrets.KRX_ID }}
+          KRX_PW: ${{ secrets.KRX_PW }}
+          HIST_FROM: ${{ github.event.inputs.hist_from }}
+          BUDGET_MIN: '150'
+      - run: python build_breadth200.py
+        continue-on-error: true
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          mkdir -p /tmp/kh && cp -r krx_hist krx_hist_status.json /tmp/kh/ 2>/dev/null; cp breadth200.csv /tmp/kh/ 2>/dev/null || true
+          for i in 1 2 3 4 5; do
+            git fetch -q origin main && git reset -q --hard origin/main
+            cp -r /tmp/kh/krx_hist . ; cp /tmp/kh/krx_hist_status.json . ; cp /tmp/kh/breadth200.csv . 2>/dev/null || true
+            git add krx_hist krx_hist_status.json breadth200.csv 2>/dev/null; git diff --cached --quiet && break
+            git commit -qm "KRX daily history backfill" && git push -q origin HEAD:main && break; sleep $((i*4))
+          done
+      - name: Continue if incomplete
+        env: {GH_TOKEN: '${{ github.token }}'}
+        run: |
+          if [ "$(cat /tmp/krx_hist_done 2>/dev/null)" = "0" ]; then gh workflow run krx_hist.yml --repo "${{ github.repository }}" --ref main && echo re-dispatched; fi
