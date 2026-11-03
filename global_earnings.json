@@ -21926,6 +21926,13 @@
       "time": "시간 미공지(Europe/Berlin, 뮌헨)",
       "event": "FY26 Q4 실적 발표",
       "source": "https://www.siemens.com/ko-kr/company/investor-relations/financial-calendar/"
+    },
+    {
+      "ticker": "NVDA",
+      "date": "2026-11-17",
+      "time": "장 마감 후 · 14:00 America/Los_Angeles(컨콜)",
+      "event": "FY27 Q3 실적·컨퍼런스콜",
+      "source": "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Sets-Conference-Call-for-Third-Quarter-Financial-Results/default.aspx"
     }
   ]
 }
