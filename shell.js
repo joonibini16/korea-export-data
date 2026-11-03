@@ -19,7 +19,7 @@
   const h1=document.querySelector('h1');if(h1&&!h1.closest('.sh-hero')){const hero=document.createElement('section');hero.className='sh-hero';h1.before(hero);hero.append(h1);
    const nxt=hero.nextElementSibling;if(nxt&&/subtitle|sub|muted/.test(nxt.className||'')&&nxt.tagName!=='SECTION'){nxt.classList.add('sh-hero-sub');hero.append(nxt);}}}
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',build);else build();
- if(window.Chart){const D=Chart.defaults;D.color='#c3cfe2';D.borderColor='rgba(148,163,184,0.16)';D.scale.grid.color='rgba(148,163,184,0.14)';const PAL=['#60a5fa','#f59e0b','#34d399','#f472b6','#a78bfa','#f87171','#22d3ee','#facc15'];
+ if(window.Chart){const D=Chart.defaults;{const LL=D.plugins.legend.labels,f0=LL.filter;LL.filter=(i,d)=>!/^(0선|0 기준선)$/.test(i.text||'')&&(!f0||f0(i,d));}D.color='#c3cfe2';D.borderColor='rgba(148,163,184,0.16)';D.scale.grid.color='rgba(148,163,184,0.14)';const PAL=['#60a5fa','#f59e0b','#34d399','#f472b6','#a78bfa','#f87171','#22d3ee','#facc15'];
   Object.assign(D.plugins.tooltip,{backgroundColor:'rgba(15,26,51,0.97)',titleColor:'#f1f5fb',bodyColor:'#dbe4f3',borderColor:'#2a4378',borderWidth:1});
   // 어두운 배경에서 안 보이는 검정·남색 선은 밝은 회색으로 바꿉니다.
   const dark=c=>{if(typeof c!=='string')return false;const m=c.match(/^#([0-9a-f]{6})/i);if(!m)return false;const n=parseInt(m[1],16),r=n>>16,g=(n>>8)&255,b=n&255;return (0.2126*r+0.7152*g+0.0722*b)<45;};
