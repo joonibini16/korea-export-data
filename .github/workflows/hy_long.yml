@@ -1,0 +1,31 @@
+name: US high-yield OAS long history
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['tools/collect_hy_long.py', '.github/workflows/hy_long.yml']
+  schedule:
+    - cron: '20 23 * * 1-5'
+permissions:
+  contents: write
+concurrency:
+  group: hy-long
+  cancel-in-progress: false
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python tools/collect_hy_long.py
+      - run: |
+          git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp hy_oas_long_status.json /tmp/s.json; cp hy_oas_long.csv /tmp/h.csv 2>/dev/null || true
+          for i in 1 2 3 4 5; do
+            git fetch -q origin main && git reset -q --hard origin/main
+            cp /tmp/s.json hy_oas_long_status.json; cp /tmp/h.csv hy_oas_long.csv 2>/dev/null || true
+            git add hy_oas_long_status.json hy_oas_long.csv 2>/dev/null; git diff --cached --quiet && exit 0
+            git commit -qm "Update HY OAS long history" && git push -q origin HEAD:main && exit 0; sleep $((i*4))
+          done; exit 1
