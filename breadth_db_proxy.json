@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-03T08:55:50+09:00",
+ "updated_at": "2026-11-03T09:15:37+09:00",
  "method": "추정: 60일 종가 신고가 수−신저가 수; HLI=신고가 수/(신고가 수+신저가 수)*100; 당일 거래량 0 제외",
  "verified_db_method": false,
  "markets": {
@@ -160,7 +160,7 @@
     "nh60": 45,
     "nl60": 60,
     "breadth60": -15,
-    "breadth5sma": -10.6,
+    "breadth5sma": null,
     "hli": 42.86,
     "hli10sma": null
    },
@@ -212,7 +212,7 @@
     "breadth60": -134,
     "breadth5sma": -89.6,
     "hli": 14.74,
-    "hli10sma": 32.87
+    "hli10sma": null
    },
    {
     "date": "2024-07-24",
@@ -5723,6 +5723,16 @@
     "breadth5sma": -130.0,
     "hli": 15.19,
     "hli10sma": 8.89
+   },
+   {
+    "date": "2026-11-03",
+    "n": 794,
+    "nh60": 12,
+    "nl60": 121,
+    "breadth60": -109,
+    "breadth5sma": -131.4,
+    "hli": 9.02,
+    "hli10sma": 8.4
    }
   ],
   "KOSDAQ": [
@@ -5882,7 +5892,7 @@
     "nh60": 39,
     "nl60": 187,
     "breadth60": -148,
-    "breadth5sma": -86.4,
+    "breadth5sma": null,
     "hli": 17.26,
     "hli10sma": null
    },
@@ -5934,7 +5944,7 @@
     "breadth60": -373,
     "breadth5sma": -317.6,
     "hli": 7.52,
-    "hli10sma": 17.0
+    "hli10sma": null
    },
    {
     "date": "2024-07-24",
@@ -11445,6 +11455,16 @@
     "breadth5sma": -207.2,
     "hli": 14.29,
     "hli10sma": 16.68
+   },
+   {
+    "date": "2026-11-03",
+    "n": 1637,
+    "nh60": 16,
+    "nl60": 366,
+    "breadth60": -350,
+    "breadth5sma": -259.6,
+    "hli": 4.19,
+    "hli10sma": 14.74
    }
   ]
  },
