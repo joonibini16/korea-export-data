@@ -6,7 +6,7 @@
  const NM={KOSPI:'코스피',KOSDAQ:'코스닥'};
  function draw(m){
   const all=B[m];const c=box.querySelector(`[data-m="${m}"]`);if(!all.length){c.querySelector('.b2-sum').textContent='자료 수집 중입니다.';return;}
-  const last=all.at(-1).d,y=+last.slice(0,4),S=rng==='all'?'0000':rng==='10y'?(y-10)+last.slice(4):rng==='5y'?(y-5)+last.slice(4):(y-1)+last.slice(4);
+  const last=all.at(-1).d,y=+last.slice(0,4),S=rng==='all'?'2000-01-01':rng==='10y'?(y-10)+last.slice(4):rng==='5y'?(y-5)+last.slice(4):(y-1)+last.slice(4);
   const R=all.filter(x=>x.d>=S),labels=R.map(x=>x.d),short=R.length&&(new Date(R.at(-1).d)-new Date(R[0].d))<730*864e5,idx=I[m];let li=null;const iv=labels.map(d=>{if(idx.has(d))li=idx.get(d);return li;});
   // 회색 면: 50% 선을 기준으로 위·아래 채움
   const base={id:'b50',beforeDatasetsDraw(ch){const ys=ch.scales.y,a=ch.chartArea,x=ch.ctx,p=ys.getPixelForValue(50);x.save();x.strokeStyle='#e2e8f0';x.lineWidth=1.4;x.beginPath();x.moveTo(a.left,p);x.lineTo(a.right,p);x.stroke();x.restore();}};
@@ -19,9 +19,9 @@
     scales:{x:{ticks:{maxTicksLimit:rng==='1y'?12:14,callback:function(v){const l=this.getLabelForValue(v);return short?l.slice(2,7).replace('-','.'):l.slice(0,4);}},grid:{display:false}},
      y:{position:'left',min:0,max:100,ticks:{stepSize:20,callback:v=>v+'%'},grid:{color:'rgba(148,163,184,.10)'}},
      y1:{position:'right',type:'logarithmic',grid:{display:false},ticks:{color:'#f87171',maxTicksLimit:6,callback:v=>Number(v).toLocaleString()}}}}});
-  const L=all.at(-1),pc=all.filter(x=>x.v<=L.v).length/all.length*100,w4=all.length>20?L.v-all.at(-21).v:null;
+  const L=all.at(-1),A2=all.filter(x=>x.d>='2000'),pc=A2.filter(x=>x.v<=L.v).length/A2.length*100,w4=all.length>20?L.v-all.at(-21).v:null;
   const zone=L.v>=80?['과열권(80%↑)','#f59e0b']:L.v<=20?['극단적 약세(20%↓) — 과거 바닥권','#60a5fa']:L.v>=50?['50% 위 — 다수 종목 장기 상승 추세','#22c55e']:['50% 아래 — 다수 종목 장기 하락 추세','#f87171'];
-  c.querySelector('.b2-sum').innerHTML=`<b>${L.d}</b> 200일선 상회 <b style="color:${zone[1]}">${L.v.toFixed(1)}%</b> (${L.n.toLocaleString()}종목 중 ${L.a.toLocaleString()}) · 4주 변화 ${w4==null?'—':(w4>0?'+':'')+w4.toFixed(1)+'%p'} · ${all[0].d.slice(0,4)}년 이후 백분위 ${pc.toFixed(0)}% · <span style="color:${zone[1]}">${zone[0]}</span>`;
+  c.querySelector('.b2-sum').innerHTML=`<b>${L.d}</b> 200일선 상회 <b style="color:${zone[1]}">${L.v.toFixed(1)}%</b> (${L.n.toLocaleString()}종목 중 ${L.a.toLocaleString()}) · 4주 변화 ${w4==null?'—':(w4>0?'+':'')+w4.toFixed(1)+'%p'} · 2000년 이후 백분위 ${pc.toFixed(0)}% · <span style="color:${zone[1]}">${zone[0]}</span>`;
  }
  const drawAll=()=>['KOSPI','KOSDAQ'].forEach(draw);
  box.querySelectorAll('[data-br]').forEach(b=>b.onclick=()=>{rng=b.dataset.br;box.querySelectorAll('[data-br]').forEach(x=>x.classList.toggle('on',x===b));drawAll();});
