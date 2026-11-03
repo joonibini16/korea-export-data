@@ -1,80 +1,116 @@
 {
- "run": "2026-11-03T05:11:03",
+ "run": "2026-11-03T07:41:53",
  "years": {
   "1999": {
    "days": 249,
-   "fetched": 249
+   "fetched": 0
   },
   "2000": {
    "days": 241,
-   "fetched": 241
+   "fetched": 0
   },
   "2001": {
    "days": 246,
-   "fetched": 246
+   "fetched": 0
   },
   "2002": {
    "days": 244,
-   "fetched": 244
+   "fetched": 0
   },
   "2003": {
    "days": 247,
-   "fetched": 247
+   "fetched": 0
   },
   "2004": {
    "days": 249,
-   "fetched": 249
+   "fetched": 0
   },
   "2005": {
    "days": 249,
-   "fetched": 249
+   "fetched": 0
   },
   "2006": {
    "days": 247,
-   "fetched": 247
+   "fetched": 0
   },
   "2007": {
    "days": 246,
-   "fetched": 246
+   "fetched": 0
   },
   "2008": {
    "days": 248,
-   "fetched": 248
+   "fetched": 0
   },
   "2009": {
    "days": 253,
-   "fetched": 253
+   "fetched": 0
   },
   "2010": {
    "days": 251,
-   "fetched": 251
+   "fetched": 0
   },
   "2011": {
    "days": 248,
-   "fetched": 248
+   "fetched": 0
   },
   "2012": {
    "days": 248,
-   "fetched": 248
+   "fetched": 0
   },
   "2013": {
    "days": 247,
-   "fetched": 247
+   "fetched": 0
   },
   "2014": {
    "days": 245,
-   "fetched": 245
+   "fetched": 0
   },
   "2015": {
    "days": 248,
-   "fetched": 248
+   "fetched": 0
   },
   "2016": {
-   "days": 73,
-   "fetched": 73
+   "days": 246,
+   "fetched": 173
+  },
+  "2017": {
+   "days": 243,
+   "fetched": 243
+  },
+  "2018": {
+   "days": 244,
+   "fetched": 244
+  },
+  "2019": {
+   "days": 246,
+   "fetched": 246
+  },
+  "2020": {
+   "days": 248,
+   "fetched": 248
+  },
+  "2021": {
+   "days": 248,
+   "fetched": 248
+  },
+  "2022": {
+   "days": 246,
+   "fetched": 246
+  },
+  "2023": {
+   "days": 245,
+   "fetched": 245
+  },
+  "2024": {
+   "days": 244,
+   "fetched": 244
+  },
+  "2025": {
+   "days": 183,
+   "fetched": 183
   }
  },
  "login": true,
- "complete": false,
- "elapsed_min": 150.0
+ "complete": true,
+ "elapsed_min": 87.3
 }
