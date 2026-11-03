@@ -18,11 +18,15 @@ TRY = [
 ]
 
 
+T0 = time.time(); BUDGET = 18 * 60
+
+
 def get(u):
     last = None
-    for a in range(3):
+    for a in range(2):
+        if time.time() - T0 > BUDGET: raise TimeoutError('전체 제한시간 초과')
         try:
-            with urllib.request.urlopen(urllib.request.Request(u, headers={'User-Agent': 'korea-export-data research (python urllib)'}), timeout=150) as r:
+            with urllib.request.urlopen(urllib.request.Request(u), timeout=75) as r:
                 return r.read().decode('utf-8-sig')
         except Exception as e:
             last = e; time.sleep(5 * (a + 1))
@@ -59,6 +63,7 @@ def main():
             got[name] = vals
         except Exception as e:
             st['tries'].append(dict(name=name, error=str(e)[:200]))
+        ST.write_text(json.dumps(st, ensure_ascii=False, indent=1)); print(st['tries'][-1], flush=True)
     # 오래된 발표본부터 넣고, 최신 FRED 값으로 덮어씀
     for name, _ in reversed(TRY):
         for d, v in got.get(name, []):

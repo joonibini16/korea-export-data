@@ -14,12 +14,13 @@ concurrency:
 jobs:
   collect:
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: {python-version: '3.12'}
       - run: python tools/collect_hy_long.py
+        continue-on-error: true
       - run: |
           git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           cp hy_oas_long_status.json /tmp/s.json; cp hy_oas_long.csv /tmp/h.csv 2>/dev/null || true; cp sp500_long.csv /tmp/sp.csv 2>/dev/null || true
