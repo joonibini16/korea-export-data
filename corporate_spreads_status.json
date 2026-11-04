@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-04T06:53:08+00:00",
+  "updated": "2026-11-04T11:43:39+00:00",
   "targets": 25,
   "bonds": {
     "CORZ": {
@@ -9,23 +9,20 @@
       "cusip": "U2062LAA9",
       "coupon": 7.75,
       "maturity": "2031-05-15",
-      "n": 26,
-      "latest": "2026-10-28"
+      "n": 27,
+      "latest": "2026-11-03"
     },
     "APLD": {
       "name": "어플라이드 디지털",
-      "state": "no matching traded issue",
-      "matches": 0
+      "state": "error"
     },
     "CIFR": {
       "name": "사이퍼 마이닝",
-      "state": "no matching traded issue",
-      "matches": 0
+      "state": "error"
     },
     "WULF": {
       "name": "테라울프",
-      "state": "no matching traded issue",
-      "matches": 0
+      "state": "error"
     },
     "BEIGNET": {
       "name": "메타 하이페리온 SPV",
@@ -74,8 +71,8 @@
       "cusip": "595112BZ5",
       "coupon": 5.875,
       "maturity": "2033-02-09",
-      "n": 883,
-      "latest": "2026-11-02"
+      "n": 884,
+      "latest": "2026-11-03"
     },
     "DELL": {
       "name": "델",
@@ -84,8 +81,8 @@
       "cusip": "24703DBL4",
       "coupon": 5.75,
       "maturity": "2033-02-01",
-      "n": 935,
-      "latest": "2026-11-02"
+      "n": 936,
+      "latest": "2026-11-03"
     },
     "INTC": {
       "name": "인텔",
@@ -94,8 +91,8 @@
       "cusip": "458140BH2",
       "coupon": 2.45,
       "maturity": "2029-11-15",
-      "n": 1226,
-      "latest": "2026-11-02"
+      "n": 1227,
+      "latest": "2026-11-03"
     },
     "AMD": {
       "name": "AMD",
@@ -104,8 +101,8 @@
       "cusip": "007903BF3",
       "coupon": 3.924,
       "maturity": "2032-06-01",
-      "n": 1053,
-      "latest": "2026-11-02"
+      "n": 1054,
+      "latest": "2026-11-03"
     },
     "QCOM": {
       "name": "퀄컴",
@@ -119,8 +116,7 @@
     },
     "TSM": {
       "name": "TSMC",
-      "state": "no matching traded issue",
-      "matches": 0
+      "state": "error"
     },
     "IRM": {
       "name": "아이언 마운틴",
@@ -134,8 +130,8 @@
       "cusip": "29444UBE5",
       "coupon": 3.2,
       "maturity": "2029-11-18",
-      "n": 1224,
-      "latest": "2026-11-02"
+      "n": 1225,
+      "latest": "2026-11-03"
     },
     "DLR": {
       "name": "디지털 리얼티",
@@ -159,8 +155,8 @@
       "cusip": "U66962AW8",
       "coupon": 3.625,
       "maturity": "2031-02-15",
-      "n": 206,
-      "latest": "2026-10-27"
+      "n": 207,
+      "latest": "2026-11-03"
     },
     "VST": {
       "name": "비스트라",
@@ -179,8 +175,8 @@
       "cusip": "210385AC4",
       "coupon": 5.8,
       "maturity": "2033-03-01",
-      "n": 888,
-      "latest": "2026-11-02"
+      "n": 889,
+      "latest": "2026-11-03"
     },
     "SOFTBANK": {
       "name": "소프트뱅크그룹",
@@ -199,8 +195,8 @@
       "cusip": "095924AD8",
       "coupon": 6.5,
       "maturity": "2029-10-15",
-      "n": 106,
-      "latest": "2026-11-02"
+      "n": 107,
+      "latest": "2026-11-03"
     },
     "OBDC": {
       "name": "블루아울 캐피털",
@@ -213,6 +209,11 @@
       "matches": 0
     }
   },
-  "errors": [],
-  "rows": 7052
+  "errors": [
+    "APLD: The read operation timed out ",
+    "CIFR: The read operation timed out ",
+    "WULF: The read operation timed out ",
+    "TSM: The read operation timed out "
+  ],
+  "rows": 7061
 }
