@@ -25,7 +25,7 @@
   if(groups.some(rows=>rows.length<10||!Number.isFinite(rows.at(-1).breadth_60)))throw Error('시장별 추이 자료가 부족합니다');
   root.replaceChildren();
   const lastDates=groups.map(rows=>rows.at(-1).date);
-  status.textContent='자동 갱신 · '+source+' 기준 · 코스피 '+lastDates[0]+' / 코스닥 '+lastDates[1]+' 자료. 20거래일 추이를 표시합니다. 평일 한국시간 09:30·10:30·13:00·15:40·21:30 수집 예약(실제 실행·배포는 지연될 수 있음). 장중 수치는 잠정치이며 15:40 이후 수집 자료를 종가 기준으로 확인하세요. 종전 DB 화면의 음수 Breadth와 계산식·표본이 달라 값이 이어지지 않습니다.';
+  status.textContent='자동 갱신 · '+source+' 기준 · 코스피 '+lastDates[0]+' / 코스닥 '+lastDates[1]+' 자료. 2025년 1월 이후 추이를 표시합니다. 평일 한국시간 09:30·10:30·13:00·15:40·21:30 수집 예약(실제 실행·배포는 지연될 수 있음). 장중 수치는 잠정치이며 15:40 이후 수집 자료를 종가 기준으로 확인하세요. 종전 DB 화면의 음수 Breadth와 계산식·표본이 달라 값이 이어지지 않습니다.';
   for(let m=0;m<2;m++){
    const rows=groups[m],name=names[m],latest=rows.at(-1);
    const breadth=rows.map(x=>x.breadth_60),hli=rows.map(x=>x.hli);
@@ -45,13 +45,13 @@
     const wrap=document.createElement('div');wrap.className='db-plot';
     const canvas=document.createElement('canvas');canvas.setAttribute('aria-label',name+' '+d.label+' 자동 갱신 추이');
     wrap.append(canvas);box.append(p,wrap);card.append(box);
-    const tail=rows.slice(-20),offset=rows.length-tail.length;
+    const tail=rows.filter(x=>x.date>='2025-01-01'),offset=rows.length-tail.length;
     new Chart(canvas,{type:'line',data:{labels:tail.map(x=>x.date),datasets:[
-     {label:d.label,data:d.values.slice(offset),borderColor:d.color,backgroundColor:d.color+'33',fill:true,borderWidth:3,pointRadius:2,pointHoverRadius:5,tension:0,spanGaps:false},
-     {label:d.ma,data:d.mean.slice(offset),borderColor:'#34d399',backgroundColor:'#34d399',borderWidth:2,pointRadius:1,pointHoverRadius:4,tension:0,spanGaps:false}
+     {label:d.label,data:d.values.slice(offset),borderColor:d.color,backgroundColor:d.color+'33',fill:true,borderWidth:1.8,pointRadius:0,pointHoverRadius:4,tension:0,spanGaps:false,pointRadius:0},
+     {label:d.ma,data:d.mean.slice(offset),borderColor:'#34d399',backgroundColor:'#34d399',borderWidth:1.6,pointRadius:0,pointHoverRadius:3,tension:0,spanGaps:false}
     ]},options:{responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:'index',intersect:false,axis:'x'},
      plugins:{legend:{labels:{color:'#cbd5e1'}},tooltip:{mode:'index',intersect:false,callbacks:{title:items=>items[0]?.label||'',label:item=>item.dataset.label+': '+fmt(item.parsed.y)+'%'}}},
-     scales:{x:{ticks:{color:'#94a3b8',maxTicksLimit:6},grid:{display:false}},y:{min:0,max:d.full?100:(()=>{const v=[...d.values.slice(offset),...d.mean.slice(offset)].filter(Number.isFinite),mx=Math.max(1,...v)*1.3;const st=mx<=5?1:mx<=10?2:mx<=25?5:10;return Math.ceil(mx/st)*st;})(),ticks:{color:'#94a3b8',callback:v=>v+'%'},grid:{color:'rgba(148,163,184,.13)'}}}}});
+     scales:{x:{ticks:{color:'#94a3b8',maxTicksLimit:8,callback:function(v){const l=this.getLabelForValue(v);return typeof l==='string'?l.slice(2,7).replace('-','.'):'';}},grid:{display:false}},y:{min:0,max:d.full?100:(()=>{const v=[...d.values.slice(offset),...d.mean.slice(offset)].filter(Number.isFinite),mx=Math.max(1,...v)*1.3;const st=mx<=5?1:mx<=10?2:mx<=25?5:10;return Math.ceil(mx/st)*st;})(),ticks:{color:'#94a3b8',callback:v=>v+'%'},grid:{color:'rgba(148,163,184,.13)'}}}}});
    }
    const detail=document.createElement('details');detail.open=true;const sum=document.createElement('summary');sum.textContent='최근 5거래일 수치 표로 확인';
    const table=document.createElement('table');table.className='db-data-table';

@@ -26,7 +26,7 @@
   Chart.register({id:'shDarkFix',beforeUpdate(ch){(ch.data.datasets||[]).forEach((ds,i)=>{if(ds.borderColor==null&&ds.backgroundColor==null){const c=PAL[i%PAL.length];ds.borderColor=c;ds.backgroundColor=(ds.type||ch.config.type)==='bar'?c+'cc':c;}});for(const ds of ch.data.datasets||[]){if(dark(ds.borderColor))ds.borderColor='#e5e7eb';if(dark(ds.pointBorderColor))ds.pointBorderColor='#e5e7eb';if(ds.pointBackgroundColor==='#fff'||ds.pointBackgroundColor==='#ffffff')ds.pointBackgroundColor='#0f1a33';if(Array.isArray(ds.pointBackgroundColor))ds.pointBackgroundColor=ds.pointBackgroundColor.map(c=>c==='#fff'||c==='#ffffff'?'#0f1a33':c);}}});}
 })();
 // 모든 차트에 기간 조절 바(내비게이터) 자동 부착
-(function(){const r=document.createElement('script');r.src='./rightpad.js?v=1';(document.head||document.documentElement).appendChild(r);})();
+(function(){const r=document.createElement('script');r.src='./rightpad.js?v=2';(document.head||document.documentElement).appendChild(r);})();
 (function(){if(window.RangeNav&&window.RangeNav.v>=2)return;const s=document.createElement('script');s.src='./rangenav.js?v=1';(document.head||document.documentElement).appendChild(s);})();
 // 제목 옆 '기준일 · 수집' 표시: 데이터 파일 안의 마지막 날짜(기준일)와 마지막 갱신(커밋) 시각(data_updated.json)
 (function(){
