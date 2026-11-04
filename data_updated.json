@@ -33,7 +33,7 @@
 "a": null
 },
 "breadth_db_proxy.json": {
-"c": "2026-11-05T03:57+09:00",
+"c": "2026-11-05T05:00+09:00",
 "a": "2026-11-04"
 },
 "breadth_external_snapshots.json": {
@@ -49,7 +49,7 @@
 "a": "2026-11-04"
 },
 "breadth_naver_status.json": {
-"c": "2026-11-05T03:57+09:00",
+"c": "2026-11-05T05:00+09:00",
 "a": "2026-11-04"
 },
 "breadth_status.json": {
