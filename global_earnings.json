@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-04",
+  "updated_at": "2026-11-05",
   "method": "수치·가이던스는 회사 공식 IR 자료(보도자료·실적 발표문·SEC/거래소 공시)만 사용합니다. 컨콜 경영진 코멘트·Q&A 요약은 공식 녹취록·준비 발언을 우선하고, 없으면 무료 공개 녹취록(Motley Fool 등)을 근거로 하되 '비공식 녹취록 기반'으로 출처를 표시합니다. 투자 해석은 관전점·'분석:'으로 구분합니다. 반도체 장비 업종은 주요 공정·검사·테스트·패키징 기업을 추적하며 원문 미검증 기업은 분석 대기로 표시합니다.",
   "authoring_guide": {
     "summary": "새 events 항목에는 summary 필드를 반드시 작성한다(화면 맨 위 '핵심 결론'에 표시). 형식: {basis: '공식 보도자료 기준(필요 시 미감사)', items: [{label:'매출', text:'…', sub:'가이던스 대비 상회/하회/부합만'}, {label:'연간 가이던스', text:'A → B 상향'}](2~4개), cautions: [유의·부정 사항 1~3개], take: '1~2문장 투자 해석(한국 관련 업종 시사점 포함)'}. 예시는 SMCI 'FY27 Q1'.",
@@ -26252,6 +26252,169 @@
       },
       "call_source": "https://www.camtek.com/",
       "call_source_label": "Camtek 홈페이지(컨콜 녹화본은 종료 수시간 후 게시 예정 — 미확인)"
+    },
+    {
+      "ticker": "QCOM",
+      "period": "FY26 Q4",
+      "date": "2026-11-04",
+      "evidence": "Qualcomm 공식 FY26 Q4 실적 보도자료(investor.qualcomm.com 게시 PDF, 11/4 장 마감 후) 재무표 확인 · 직전 FY26 Q3 공식 보도자료의 Q4 가이던스 대조",
+      "direction": "혼조",
+      "headline": "FY26 Q4 비GAAP 매출 $10.44bn(-7% YoY, +5% QoQ, 가이던스 상단 근접) · 비GAAP EPS $2.17(-28% YoY) · 자동차 첫 $2bn(+89% YoY)이 핸드셋 -26% YoY를 일부 상쇄 · FY27 Q1 매출 가이던스 $10.4~11.2bn, 비GAAP EPS $2.15~2.35",
+      "estimate_signal": "Q4 실적은 매출·EPS 모두 가이던스 범위 상단 쪽. FY27 Q1 가이던스 중간값은 매출이 컨센서스를 약 2% 상회했지만 비GAAP EPS는 약 2% 하회 — 매출 추정은 소폭 상향, EPS 추정은 소폭 하향 압력(원가 상승분 가격 전가 효과가 FY27 하반기에야 총마진에 온전히 반영된다고 회사가 밝힘). 컨센서스 대비: Q1 매출 중간값 $10.8bn vs $10.57bn → +2.2% 상회, 비GAAP EPS 중간값 $2.25 vs $2.30 → -2.0% 하회(Yahoo 컨센서스, 발표 전 11/4 스냅샷)",
+      "call_coverage": "공식 Q&A 녹취록 미확인 — 컨콜(11/4 13:45 PT) 녹취록을 이번 회차에서 확인하지 못해 보도자료 기준으로 먼저 반영. Q&A 톤은 추정하지 않음",
+      "summary": {
+        "basis": "공식 보도자료 기준(컨콜 녹취록 미확인)",
+        "items": [
+          {
+            "label": "매출",
+            "text": "비GAAP $10.44bn(-7% YoY, +5% QoQ), GAAP $10.32bn",
+            "sub": "가이던스 $9.7~10.5bn 상단 근접(중간값 $10.1bn 상회)"
+          },
+          {
+            "label": "비GAAP EPS",
+            "text": "$2.17(-28% YoY), GAAP EPS $1.17",
+            "sub": "가이던스 $2.05~2.25 중간값($2.15) 소폭 상회"
+          },
+          {
+            "label": "FY27 Q1 가이던스",
+            "text": "매출 $10.4~11.2bn, 비GAAP EPS $2.15~2.35",
+            "cons": "매출 $10.8bn vs $10.57bn → +2.2% 상회 · EPS $2.25 vs $2.30 → -2.0% 하회(Yahoo 컨센서스, 발표 전 11/4 스냅샷)"
+          },
+          {
+            "label": "비핸드셋",
+            "text": "자동차 $1.99bn(+89% YoY, +25% QoQ) 첫 $2bn 돌파 · IoT $1.89bn(+4% YoY) · FY27 비핸드셋 +60% 이상 성장·데이터센터 $5bn 목표 유지"
+          }
+        ],
+        "cautions": [
+          "핸드셋 매출 $5.14bn(-26% YoY)로 감소 지속",
+          "QCT EBT 마진 29% → 24%(YoY -5%p)로 하락, 원가 상승분 가격 전가는 FY27 하반기에야 온전히 반영",
+          "FY26 설비투자 $1.19bn → $2.49bn으로 2배, 영업현금흐름 $14.0bn → $11.1bn"
+        ],
+        "take": "스마트폰 의존도가 빠르게 낮아지는 전환 구간. 핸드셋 약세는 메모리 가격 상승에 따른 스마트폰 수요 부진 신호로 모바일 DRAM·카메라모듈 등 한국 스마트폰 부품주엔 부정적, 반면 자동차 SoC·데이터센터(아마존 협력) 확대는 차량용 메모리·기판 수요엔 우호적"
+      },
+      "changes": [
+        {
+          "title": "매출·가이던스 대비",
+          "direction": "개선",
+          "before": "FY26 Q3 발표 시 Q4 가이던스: 매출 $9.7~10.5bn(QCT $8.4~9.0bn, QTL $1.2~1.4bn), 비GAAP EPS $2.05~2.25. Q3 실적 매출 $9,947m(-4% YoY), 비GAAP EPS $2.21.",
+          "now": "Q4 비GAAP 매출 $10,442m(-7% YoY, +5% QoQ), GAAP $10,322m(-8% YoY). QCT $9,015m(-8% YoY), QTL $1,304m(-7% YoY). 비GAAP EPS $2.17(-28% YoY), GAAP EPS $1.17.",
+          "meaning": "매출은 가이던스 상단에 근접(CEO도 '상단'이라고 표현), EPS는 중간값 수준. YoY 감소는 핸드셋 부진 때문.",
+          "rows": [
+            {
+              "item": "매출 vs 가이던스",
+              "before": "$9.7~10.5bn",
+              "now": "$10.44bn(비GAAP)",
+              "delta": "중간값 +$0.34bn",
+              "tone": "good"
+            },
+            {
+              "item": "비GAAP EPS vs 가이던스",
+              "before": "$2.05~2.25",
+              "now": "$2.17",
+              "delta": "중간값 +$0.02",
+              "tone": "neutral"
+            },
+            {
+              "item": "QCT EBT 마진",
+              "before": "26%(Q3)",
+              "now": "24%(Q4)",
+              "delta": "-2%p QoQ",
+              "tone": "bad"
+            }
+          ]
+        },
+        {
+          "title": "핸드셋 vs 비핸드셋",
+          "direction": "혼조",
+          "before": "FY26 Q3: 핸드셋 $5,086m(-20% YoY), 자동차 $1,588m(+61% YoY), IoT $1,830m(+9% YoY). CEO는 비핸드셋 성장률이 FY26 24% → FY27 60% 이상으로 높아질 것이라 언급.",
+          "now": "FY26 Q4: 핸드셋 $5,137m(-26% YoY, +1% QoQ), 자동차 $1,990m(+89% YoY, +25% QoQ, 첫 $2bn), IoT $1,888m(+4% YoY). 자동차+IoT 합산 +36% YoY. 연간 핸드셋 $24.1bn(-13%), 자동차 $6.0bn(+52%), IoT $7.1bn(+8%).",
+          "meaning": "자동차가 분기 성장을 주도, 핸드셋은 바닥권에서 정체. 보도자료는 FY27 비핸드셋 +60% 이상 성장과 데이터센터 $5bn 목표를 재확인.",
+          "rows": [
+            {
+              "item": "핸드셋 YoY",
+              "before": "-20%(Q3)",
+              "now": "-26%(Q4)",
+              "delta": "-6%p",
+              "tone": "bad"
+            },
+            {
+              "item": "자동차 YoY",
+              "before": "+61%(Q3)",
+              "now": "+89%(Q4)",
+              "delta": "+28%p",
+              "tone": "good"
+            },
+            {
+              "item": "IoT YoY",
+              "before": "+9%(Q3)",
+              "now": "+4%(Q4)",
+              "delta": "-5%p",
+              "tone": "bad"
+            }
+          ]
+        },
+        {
+          "title": "FY27 Q1 가이던스",
+          "direction": "혼조",
+          "before": "Q4 가이던스: 매출 $9.7~10.5bn(중간값 $10.1bn), 비GAAP EPS $2.05~2.25(중간값 $2.15).",
+          "now": "FY27 Q1 가이던스: 매출 $10.4~11.2bn(중간값 $10.8bn, Q4 비GAAP 매출 대비 약 +3% QoQ), QCT $9.0~9.6bn(데이터센터 포함), QTL $1.3~1.5bn, 비GAAP EPS $2.15~2.35, GAAP EPS $1.03~1.23.",
+          "meaning": "매출 가이던스는 컨센서스 상회, EPS는 하회. 원가 상승을 가격 인상으로 상쇄 중이지만 효과는 FY27 하반기에 온전히 반영된다고 밝혀 단기 마진 회복은 더딤.",
+          "rows": [
+            {
+              "item": "매출 가이던스 중간값 vs 컨센서스",
+              "before": "$10.57bn(컨센서스)",
+              "now": "$10.8bn",
+              "delta": "+2.2%",
+              "tone": "good"
+            },
+            {
+              "item": "비GAAP EPS 가이던스 중간값 vs 컨센서스",
+              "before": "$2.30(컨센서스)",
+              "now": "$2.25",
+              "delta": "-2.0%",
+              "tone": "bad"
+            }
+          ]
+        },
+        {
+          "title": "주주환원·현금흐름",
+          "direction": "악화",
+          "before": "FY25: 영업현금흐름 $14,012m, 설비투자 $1,192m.",
+          "now": "FY26: 영업현금흐름 $11,145m, 설비투자 $2,494m. Q4 자사주 $1,011m·배당 $987m(합계 약 $2.0bn), 연간 환원 $11.67bn. 기말 현금+유가증권 약 $7.7bn, 총차입 약 $15.1bn.",
+          "meaning": "설비투자 2배(데이터센터 등 신사업 투자로 보임, 분석)와 이익 감소로 현금창출력이 약해졌는데 환원은 영업현금흐름을 상회.",
+          "rows": [
+            {
+              "item": "연간 영업현금흐름",
+              "before": "$14.0bn(FY25)",
+              "now": "$11.1bn(FY26)",
+              "delta": "-20% YoY",
+              "tone": "bad"
+            },
+            {
+              "item": "연간 설비투자",
+              "before": "$1.19bn",
+              "now": "$2.49bn",
+              "delta": "+109% YoY",
+              "tone": "neutral"
+            }
+          ]
+        }
+      ],
+      "facts": "FY26 Q4(공식 보도자료): GAAP 매출 $10,322m(전년 $11,270m, -8%), 비GAAP 매출 $10,442m(-7%). GAAP 영업이익 $1,356m, 비GAAP 영업이익 $2,769m(전년 $3,808m). GAAP 순이익 $1,251m, 희석 EPS $1.17(전년 -$2.89). 비GAAP 순이익 $2,332m(-28%), EPS $2.17(전년 $3.00, -28%). QCT 매출 $9,015m(-8%)·EBT $2,142m(마진 24%, 전년 29%): 핸드셋 $5,137m(-26%), 자동차 $1,990m(+89%), IoT $1,888m(+4%). QTL 매출 $1,304m(-7%)·EBT 마진 70%. FY26 연간: GAAP 매출 $43,120m(-3%), 비GAAP EPS $10.54(-12%), GAAP EPS $12.70(법인세 평가충당금 환입 $5.7bn 포함). 자사주 연간 $7,817m, 배당 $3,854m. 주요 사항: Apple·Huawei·Transsion과 QTL 장기 라이선스 갱신, 아마존과 AI 데이터센터 다세대 제품 협력 발표.",
+      "guidance": "FY27 Q1: 매출 $10.4~11.2bn(QCT $9.0~9.6bn·데이터센터 포함, QTL $1.3~1.5bn), GAAP EPS $1.03~1.23, 비GAAP EPS $2.15~2.35. FY27 비핸드셋 매출 +60% 이상 YoY, 데이터센터 매출 $5bn 목표 재확인. 원가 상승은 가격 인상으로 상쇄 중이며 QCT 총마진에 FY27 하반기 온전히 반영 예상. (직전 Q4 가이던스: 매출 $9.7~10.5bn, 비GAAP EPS $2.05~2.25.)",
+      "tone": "보도자료 기준: CEO는 'FY27은 데이터센터 램프를 포함한 비핸드셋 매출 변곡의 시작'이라며 전환을 강조. 컨콜 Q&A 톤은 공식 녹취록 미확인으로 판단 보류.",
+      "interpretation": "분석: 핵심은 '핸드셋 약세 vs 비핸드셋 가속'의 교차다. 자동차가 +89% YoY로 분기 $2bn을 넘었고, 회사는 FY27 데이터센터 $5bn·비핸드셋 +60% 목표를 유지해 사업 구조 전환의 숫자가 보이기 시작했다. 반면 핸드셋 -26% YoY와 Q1 EPS 가이던스의 컨센서스 하회는 메모리 등 부품가 급등이 스마트폰 수요와 칩 마진을 동시에 누르고 있음을 시사한다(AMD가 PC 감소를 계획한 것과 같은 흐름). 한국 관점: ① 스마트폰 수요 둔화는 모바일 DRAM·카메라모듈·기판 등 모바일 부품 업체에 부정적 신호, ② 메모리 가격 강세의 수요 파괴가 모바일에서 나타난다는 점은 삼성전자·SK하이닉스의 범용 모바일 DRAM 물량엔 부담이지만 가격 측면은 여전히 우호적, ③ 자동차 SoC 성장(디지털 섀시)은 차량용 메모리·LPDDR 수요, 아마존과의 데이터센터 협력은 서버 메모리 수요에 추가 축.",
+      "watch": "분석: 공식 녹취록·컨콜에서 ① FY27 Q1 핸드셋 가이던스와 메모리 가격 상승의 스마트폰 수요 영향, ② 데이터센터 $5bn 목표의 분기별 인식 경로와 아마존 협력 범위, ③ 가격 인상에 따른 QCT 총마진 회복 시점, ④ Apple 모뎀 매출 감소 반영 속도, ⑤ 설비투자 2배의 용도를 확인. 다음 분기(FY27 Q1, 2027년 2월 초) 실적에서 핸드셋 YoY 감소폭 축소 여부.",
+      "source": "https://s204.q4cdn.com/645488518/files/content_files/FY2026-4th-Quarter-Earnings-Release.pdf",
+      "source_label": "Qualcomm FY26 Q4 실적 보도자료(공식 IR 게시 PDF)",
+      "prior_source": "https://s204.q4cdn.com/645488518/files/doc_financials/2026/q3/FY2026-3rd-Quarter-Earnings-Release.pdf",
+      "prior_source_label": "Qualcomm FY26 Q3 실적 보도자료(공식 IR 게시 PDF, Q4 가이던스 포함)",
+      "verified_at": "2026-11-05",
+      "call_topics": [],
+      "call_readthrough": {
+        "scope": "녹취록 미공개 — 공식 컨콜 녹취록을 이번 회차에서 확인하지 못함. 다음 회차에 공식·공개 녹취록으로 보강 예정.",
+        "groups": []
+      }
     }
   ],
   "upcoming": [
@@ -26261,13 +26424,6 @@
       "time": "장 마감 후 · 14:00 America/Los_Angeles(컨콜)",
       "event": "FY27 Q2 실적·웹캐스트",
       "source": "https://investors.arm.com/news-releases/news-release-details/arm-announces-earnings-release-date-second-quarter-fiscal-year-2"
-    },
-    {
-      "ticker": "QCOM",
-      "date": "2026-11-04",
-      "time": "장 마감 후 · 13:45 America/Los_Angeles(컨콜)",
-      "event": "FY26 Q4 실적·컨퍼런스콜",
-      "source": "https://investor.qualcomm.com/news-events/investor-events/events/event-details/2026/Q4-FY26-Earnings-Conference-Call-2026-zipgVlNz63/default.aspx"
     },
     {
       "ticker": "MAERSK-B.CO",
