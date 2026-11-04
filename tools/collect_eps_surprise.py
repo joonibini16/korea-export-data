@@ -12,6 +12,8 @@ import yfinance as yf
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / 'global_eps_surprise.json'
+HIST = ROOT / 'global_consensus_history.json'   # 발표 전 컨센서스 확인용 일별 스냅샷(가이던스 중간값 vs 컨센서스 비교)
+HIST_DAYS = 200
 KST = dt.timezone(dt.timedelta(hours=9))
 YAHOO = {'CATL': '300750.SZ'}          # 나머지는 watchlist 티커를 그대로 사용
 DAYS = 760                             # 최근 2년 + 여유(발표 지연분)
@@ -92,7 +94,26 @@ def collect(ticker, since):
     except Exception:
         pass
     return {'ticker': ticker, 'yahoo': sym, 'currency': cur, 'method': src,
-            'quarters': finish(rows), 'revision': revision(t)}, err
+            'quarters': finish(rows), 'revision': revision(t), 'revenue_est': revenue_est(t)}, err
+
+
+def revenue_est(t):
+    """컨센서스 매출 추정(평균·최저·최고·애널리스트 수·전년 동기). 기간 0q·+1q·0y·+1y. 단위: 보고 통화 원 단위."""
+    out = {}
+    try:
+        df = t.revenue_estimate
+    except Exception:
+        return out
+    if df is None or getattr(df, 'empty', True):
+        return out
+    for per in ('0q', '+1q', '0y', '+1y'):
+        if per in df.index:
+            r = df.loc[per]
+            row = {'avg': num(r.get('avg')), 'low': num(r.get('low')), 'high': num(r.get('high')),
+                   'n': num(r.get('numberOfAnalysts')), 'year_ago': num(r.get('yearAgoRevenue'))}
+            if row['avg'] is not None:
+                out[per] = row
+    return out
 
 
 TREND_COLS = [('90daysAgo', 'd90'), ('60daysAgo', 'd60'), ('30daysAgo', 'd30'), ('7daysAgo', 'd7'), ('current', 'now')]
@@ -165,6 +186,33 @@ def main():
     }
     OUT.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n')
     print('companies', len(companies), 'missing', len(missing))
+    save_history(companies, data['updated_at'], set(want))
+
+
+def save_history(companies, stamp, want):
+    """티커별 컨센서스 스냅샷을 날짜별로 누적. 실적 발표 시각 이전의 가장 최근 스냅샷 = 발표 전 컨센서스.
+    0q = 발표 대상 분기, +1q = 다음 분기(가이던스 대상), 0y·+1y = 올해·내년 회계연도."""
+    try:
+        h = json.loads(HIST.read_text()) if HIST.exists() else {}
+    except Exception:
+        h = {}
+    snaps = h.get('tickers', {})
+    cutoff = (dt.date.today() - dt.timedelta(days=HIST_DAYS)).isoformat()
+    day = stamp[:10]
+    for c in companies:
+        if want and c['ticker'] not in want:
+            continue
+        eps = {per: v.get('now') for per, v in (c.get('revision') or {}).items() if v.get('now') is not None}
+        rev = {per: v.get('avg') for per, v in (c.get('revenue_est') or {}).items() if v.get('avg') is not None}
+        if not eps and not rev:
+            continue
+        last_q = (c.get('quarters') or [{}])[-1].get('date')
+        lst = [x for x in snaps.get(c['ticker'], []) if x['at'][:10] != day and x['at'][:10] >= cutoff]
+        lst.append({'at': stamp, 'last_reported': last_q, 'currency': c.get('currency'), 'eps': eps, 'revenue': rev})
+        snaps[c['ticker']] = sorted(lst, key=lambda x: x['at'])
+    HIST.write_text(json.dumps({'updated_at': stamp, 'provider': 'Yahoo Finance (yfinance) 컨센서스',
+                                'method': '매일 수집한 컨센서스 스냅샷. eps = 기간별 평균 EPS 추정(제공자 기준, 대개 조정 EPS), revenue = 기간별 평균 매출 추정(보고 통화, 원 단위). 기간 0q=아직 발표 안 된 이번 분기, +1q=다음 분기, 0y=올해 회계연도, +1y=내년. 가이던스 비교는 실적 발표 시각 이전의 가장 최근 스냅샷(last_reported 가 직전 분기인 것)을 씁니다.',
+                                'tickers': snaps}, ensure_ascii=False, indent=1) + '\n')
 
 
 if __name__ == '__main__':
