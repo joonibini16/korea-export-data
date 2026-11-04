@@ -2,6 +2,7 @@
 (function(){
  const box=document.getElementById('b200Box');if(!box||!window.Chart)return;
  const csv=t=>{const L=t.trim().split(/\r?\n/),h=L[0].replace(/^﻿/,'').split(',');return L.slice(1).map(l=>{const v=l.split(',');return Object.fromEntries(h.map((k,i)=>[k,v[i]]));});};
+ const PIN={KOSPI:null,KOSDAQ:null};
  let B={KOSPI:[],KOSDAQ:[]},I={KOSPI:new Map(),KOSDAQ:new Map()},rng='all',charts={};
  const NM={KOSPI:'코스피',KOSDAQ:'코스닥'};
  function draw(m){
@@ -13,9 +14,16 @@
   if(charts[m])charts[m].destroy();
   charts[m]=new Chart(c.querySelector('canvas'),{type:'line',data:{labels,datasets:[
    {label:'200일선 상회 종목 비율 (좌, %)',data:R.map(x=>x.v),borderColor:'rgba(160,170,185,.9)',backgroundColor:'rgba(160,170,185,.45)',borderWidth:.8,pointRadius:0,fill:{value:50},yAxisID:'y',order:2},
-   {label:NM[m]+' (우, 로그)',data:iv,borderColor:'#ef4444',backgroundColor:'#ef4444',borderWidth:2.2,pointRadius:0,yAxisID:'y1',order:1}]},plugins:[base],
+   {label:NM[m]+' (우, 로그)',data:iv,borderColor:'#ef4444',backgroundColor:'#ef4444',borderWidth:2.2,pointRadius:0,yAxisID:'y1',order:1}]},plugins:[base,{id:'xhair',afterEvent(ch,a){const e=a.event;if(e.type==='mouseout'){ch.$hx=null;a.changed=true;return;}if(e.type==='mousemove'){const ar=ch.chartArea;ch.$hx=(e.x>=ar.left&&e.x<=ar.right)?Math.round(ch.scales.x.getValueForPixel(e.x)):null;a.changed=true;}
+   if(e.type==='click'){const i=Math.round(ch.scales.x.getValueForPixel(e.x));const cur=PIN[m];PIN[m]=(cur&&cur.d===labels[i])?null:{d:labels[i],v:R[i]?.v,iv:iv[i]};pinInfo();ch.update('none');}},
+   afterDatasetsDraw(ch){const c=ch.ctx,ar=ch.chartArea,ys=ch.scales.y,y1=ch.scales.y1,xs=ch.scales.x;c.save();
+    const hl=(py,col,txt,right,dash)=>{if(py<ar.top||py>ar.bottom)return;c.strokeStyle=col;c.lineWidth=1;c.setLineDash(dash||[4,3]);c.beginPath();c.moveTo(ar.left,py);c.lineTo(ar.right,py);c.stroke();c.setLineDash([]);c.font='bold 11px sans-serif';const w=c.measureText(txt).width+8;const x=right?ar.right-w-2:ar.left+2;c.fillStyle='rgba(11,18,32,.85)';c.fillRect(x,py-15,w,14);c.fillStyle=col;c.fillText(txt,x+4,py-4);};
+    const P=PIN[m];if(P){if(P.v!=null)hl(ys.getPixelForValue(P.v),'#fbbf24',`고정 ${P.d} · 비율 ${P.v.toFixed(1)}%`,false,[6,3]);if(P.iv!=null)hl(y1.getPixelForValue(P.iv),'#fb923c',`고정 ${NM[m]} ${Math.round(P.iv).toLocaleString()}`,true,[6,3]);const pi=labels.indexOf(P.d);if(pi>=0){const px=xs.getPixelForValue(pi);c.strokeStyle='rgba(251,191,36,.6)';c.setLineDash([2,3]);c.beginPath();c.moveTo(px,ar.top);c.lineTo(px,ar.bottom);c.stroke();}}
+    const i=ch.$hx;if(i!=null&&i>=0&&i<labels.length){const px=xs.getPixelForValue(i);c.strokeStyle='rgba(226,232,240,.55)';c.setLineDash([3,3]);c.beginPath();c.moveTo(px,ar.top);c.lineTo(px,ar.bottom);c.stroke();
+     const v=R[i]?.v,w=iv[i];if(v!=null)hl(ys.getPixelForValue(v),'#e2e8f0',`${labels[i]} · 비율 ${v.toFixed(1)}%`,false);if(w!=null)hl(y1.getPixelForValue(w),'#f87171',`${NM[m]} ${Math.round(w).toLocaleString()}`,true);}
+    c.restore();}}],
    options:{responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:'index',intersect:false},
-    plugins:{legend:{position:'top',align:'start',labels:{boxHeight:8}},tooltip:{callbacks:{label:c=>c.datasetIndex?` ${NM[m]} ${c.parsed.y?.toLocaleString(undefined,{maximumFractionDigits:0})}`:` 200일선 상회 ${c.parsed.y?.toFixed(1)}%`}}},
+    plugins:{legend:{position:'top',align:'start',labels:{boxHeight:8}},tooltip:{callbacks:{afterBody:it=>{const P=PIN[m];if(!P||!it.length)return '';const i=it[0].dataIndex,v=R[i]?.v,w=iv[i];return [`— 고정일 ${P.d} 대비 —`,v!=null&&P.v!=null?`비율 ${(v-P.v>0?'+':'')+(v-P.v).toFixed(1)}%p`:'',w&&P.iv?`${NM[m]} ${(w/P.iv-1>0?'+':'')+((w/P.iv-1)*100).toFixed(1)}%`:''].filter(Boolean);},label:c=>c.datasetIndex?` ${NM[m]} ${c.parsed.y?.toLocaleString(undefined,{maximumFractionDigits:0})}`:` 200일선 상회 ${c.parsed.y?.toFixed(1)}%`}}},
     scales:{x:{ticks:{maxTicksLimit:rng==='1y'?12:14,callback:function(v){const l=this.getLabelForValue(v);return short?l.slice(2,7).replace('-','.'):l.slice(0,4);}},grid:{display:false}},
      y:{position:'left',min:0,max:100,ticks:{stepSize:20,callback:v=>v+'%'},grid:{color:'rgba(148,163,184,.10)'}},
      y1:{position:'right',type:'logarithmic',grid:{display:false},ticks:{color:'#f87171',maxTicksLimit:6,callback:v=>Number(v).toLocaleString()}}}}});
@@ -23,6 +31,7 @@
   const zone=L.v>=80?['과열권(80%↑)','#f59e0b']:L.v<=20?['극단적 약세(20%↓) — 과거 바닥권','#60a5fa']:L.v>=50?['50% 위 — 다수 종목 장기 상승 추세','#22c55e']:['50% 아래 — 다수 종목 장기 하락 추세','#f87171'];
   c.querySelector('.b2-sum').innerHTML=`<b>${L.d}</b> 200일선 상회 <b style="color:${zone[1]}">${L.v.toFixed(1)}%</b> (${L.n.toLocaleString()}종목 중 ${L.a.toLocaleString()}) · 4주 변화 ${w4==null?'—':(w4>0?'+':'')+w4.toFixed(1)+'%p'} · 2000년 이후 백분위 ${pc.toFixed(0)}% · <span style="color:${zone[1]}">${zone[0]}</span>`;
  }
+ function pinInfo(){for(const k of ['KOSPI','KOSDAQ']){const el=box.querySelector(`[data-m="${k}"] .b2-pin`);if(!el)continue;const P=PIN[k];el.innerHTML=P?`📌 고정: <b>${P.d}</b> · 비율 ${P.v?.toFixed(1)}% · ${NM[k]} ${P.iv?Math.round(P.iv).toLocaleString():'—'} <a href="#" data-unpin="${k}" style="color:#93c5fd">해제</a>`:'그래프를 클릭하면 그 날짜의 수준을 기준선으로 고정해 다른 날짜와 비교할 수 있습니다.';el.querySelector('[data-unpin]')?.addEventListener('click',ev=>{ev.preventDefault();PIN[k]=null;pinInfo();charts[k]?.update('none');});}}
  const drawAll=()=>['KOSPI','KOSDAQ'].forEach(draw);
  box.querySelectorAll('[data-br]').forEach(b=>b.onclick=()=>{rng=b.dataset.br;box.querySelectorAll('[data-br]').forEach(x=>x.classList.toggle('on',x===b));drawAll();});
  const get=u=>fetch(u+'?v='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():'').catch(()=>'');
@@ -33,5 +42,5 @@
   if(md)for(const r of csv(md)){const m=r.symbol==='^KS11'?'KOSPI':r.symbol==='^KQ11'?'KOSDAQ':null;if(m&&+r.close)I[m].set(r.date,+r.close);}
   if(t)for(const r of csv(t))if(I[r.market]&&+r.close)I[r.market].set(r.date,+r.close);
   const s=box.querySelector('.b2-src');const f=B.KOSPI[0]?.d;if(s&&f&&f>'2001')s.textContent=`※ 과거 일별 종가를 KRX에서 받는 중이라 현재는 ${f}부터 표시됩니다(2000년까지 순차 채움, 자동 갱신).`;
-  drawAll();});
+  drawAll();pinInfo();});
 })();
