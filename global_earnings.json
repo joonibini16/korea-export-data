@@ -22031,7 +22031,35 @@
         ]
       },
       "call_source": "https://edge.media-server.com/mmc/p/3cyhkhhf",
-      "call_source_label": "공식 Q3 2026 컨퍼런스콜 웹캐스트(IR 페이지 링크)"
+      "call_source_label": "공식 Q3 2026 컨퍼런스콜 웹캐스트(IR 페이지 링크)",
+      "summary": {
+        "basis": "공식 보도자료 기준",
+        "items": [
+          {
+            "label": "매출",
+            "text": "$8.9bn(+28% YoY, 유기 +19% YoY)",
+            "sub": "유기성장 가이던스 13.5~15.5% 상회"
+          },
+          {
+            "label": "조정 EPS",
+            "text": "$3.68 사상 최대",
+            "sub": "가이던스 $3.46~3.56 상회"
+          },
+          {
+            "label": "연간 가이던스",
+            "text": "유기성장 11~13% → 13~15%, 조정 EPS $13.40~13.60 → $13.70~13.80 상향"
+          },
+          {
+            "label": "전기 부문 수주",
+            "text": "미주 +39%, 글로벌 +51%(Q2 +33%에서 가속), 북투빌 1.2"
+          }
+        ],
+        "cautions": [
+          "연간 세그먼트 마진 가이던스 24.1~24.5%는 그대로(성장 상향 대비 이익 상향폭 제한)",
+          "항공우주 마진 전년 대비 -100bp"
+        ],
+        "take": "AI 데이터센터 전력 인프라 수요가 가속 중. HD현대일렉트릭·LS ELECTRIC·효성중공업 등 변압기·배전기기 수출주의 수요 지속성을 뒷받침"
+      }
     },
     {
       "ticker": "AMD",
@@ -22239,7 +22267,31 @@
         ]
       },
       "call_source": "https://ir.amd.com/news-events",
-      "call_source_label": "AMD IR 이벤트(Q3 2026 컨콜 웹캐스트)"
+      "call_source_label": "AMD IR 이벤트(Q3 2026 컨콜 웹캐스트)",
+      "summary": {
+        "basis": "공식 보도자료 기준",
+        "items": [
+          {
+            "label": "매출",
+            "text": "$13.4bn(+45% YoY, +16% QoQ) 사상 최대",
+            "sub": "가이던스 $13.0bn±$0.3bn 상단 상회"
+          },
+          {
+            "label": "데이터센터",
+            "text": "$8.5bn(+97% YoY, +27% QoQ), 영업이익률 31.3% → 33.7%. MI450 GPU·Helios 랙 출하 시작(Anthropic·Meta·MS·OpenAI·OCI 가동)"
+          },
+          {
+            "label": "Q4 가이던스",
+            "text": "매출 약 $17bn±3%(QoQ +27%, YoY +66%)로 성장 재가속"
+          }
+        ],
+        "cautions": [
+          "Q4 비GAAP 총마진 가이던스 56% → 55%로 하향(GPU·랙 믹스 영향 추정)",
+          "잉여현금흐름 $1,558m(Q2) → $554m로 급감",
+          "PC 성장 +23% → +7%로 둔화, 게임 -40%"
+        ],
+        "take": "엔비디아 대안 AI GPU가 '계획'에서 '매출' 단계로 넘어갔음을 확인. MI450은 HBM4를 대량 탑재하므로 Helios 램프는 삼성전자·SK하이닉스 HBM 수요의 추가 축"
+      }
     },
     {
       "ticker": "ANET",
@@ -22410,7 +22462,31 @@
         ]
       },
       "call_source": "https://investors.arista.com/",
-      "call_source_label": "Arista IR(Q3 2026 컨콜 웹캐스트)"
+      "call_source_label": "Arista IR(Q3 2026 컨콜 웹캐스트)",
+      "summary": {
+        "basis": "공식 보도자료(SEC 8-K) 기준",
+        "items": [
+          {
+            "label": "매출",
+            "text": "$3.66bn(+58.5% YoY, +20.5% QoQ), 상장 후 최고 성장률",
+            "sub": "가이던스 약 $3.3bn을 약 11% 상회"
+          },
+          {
+            "label": "EPS",
+            "text": "비GAAP $1.20",
+            "sub": "가이던스 $1.06~1.08 상회"
+          },
+          {
+            "label": "Q4 가이던스",
+            "text": "매출 $3.9~4.0bn, 비GAAP EPS $1.26~1.30"
+          }
+        ],
+        "cautions": [
+          "비GAAP 영업이익률 49.9% → 49.1%, Q4 가이던스도 48~49%로 그대로(마진 레버리지 정체)",
+          "이연매출 $6.87bn → $6.84bn으로 증가 정체"
+        ],
+        "take": "AI 데이터센터 네트워크의 이더넷 전환이 실적으로 확인. 같은 주 AMD·슈퍼마이크로와 함께 비엔비디아 AI 클러스터 증설 흐름을 보여줌. 고다층 PCB·광부품·서버 메모리 수요에 우호적"
+      }
     },
     {
       "ticker": "SMCI",
@@ -22602,7 +22678,27 @@
         ]
       },
       "call_source": "https://ir.supermicro.com/",
-      "call_source_label": "Supermicro IR(FY27 Q1 컨콜 웹캐스트)"
+      "call_source_label": "Supermicro IR(FY27 Q1 컨콜 웹캐스트)",
+      "summary": {
+        "basis": "공식 보도자료 기준, 미감사",
+        "items": [
+          {
+            "label": "매출",
+            "text": "$19.9bn으로 1년 전의 약 4배, 직전 분기의 약 1.8배",
+            "sub": "원래 가이던스 $14.5~15.5bn 상회, 10/20 잠정치($18.5~19.5bn)보다도 높음"
+          },
+          {
+            "label": "연간 가이던스",
+            "text": "FY27 매출 $65~72bn → $72~82bn 상향"
+          }
+        ],
+        "cautions": [
+          "다음 분기(10~12월) 매출 가이던스 $19.5~21.5bn은 이번 분기 대비 약 +3%에 그침. 연간 가이던스 중간값으로 계산하면 하반기 매출이 상반기보다 낮아지는 구조",
+          "총이익률이 직전 분기 17.5% → 12.7%로 하락",
+          "영업현금흐름 -$434m 적자 전환, 재고 $15.1bn까지 증가"
+        ],
+        "take": "물량은 폭발적이지만 이익률과 현금 사정은 약함. 메모리 관점에서는 분기 $20bn 수준의 AI 서버 출하가 이어진다는 점이 HBM·서버 DRAM 수요에 긍정적 신호"
+      }
     }
   ],
   "upcoming": [
