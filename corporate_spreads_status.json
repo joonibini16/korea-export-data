@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-04T11:43:39+00:00",
+  "updated": "2026-11-04T12:37:22+00:00",
   "targets": 25,
   "bonds": {
     "CORZ": {
@@ -14,15 +14,18 @@
     },
     "APLD": {
       "name": "어플라이드 디지털",
-      "state": "error"
+      "state": "no matching traded issue",
+      "matches": 0
     },
     "CIFR": {
       "name": "사이퍼 마이닝",
-      "state": "error"
+      "state": "no matching traded issue",
+      "matches": 0
     },
     "WULF": {
       "name": "테라울프",
-      "state": "error"
+      "state": "no matching traded issue",
+      "matches": 0
     },
     "BEIGNET": {
       "name": "메타 하이페리온 SPV",
@@ -116,7 +119,8 @@
     },
     "TSM": {
       "name": "TSMC",
-      "state": "error"
+      "state": "no matching traded issue",
+      "matches": 0
     },
     "IRM": {
       "name": "아이언 마운틴",
@@ -209,11 +213,6 @@
       "matches": 0
     }
   },
-  "errors": [
-    "APLD: The read operation timed out ",
-    "CIFR: The read operation timed out ",
-    "WULF: The read operation timed out ",
-    "TSM: The read operation timed out "
-  ],
+  "errors": [],
   "rows": 7061
 }
