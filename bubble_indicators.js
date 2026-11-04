@@ -24,13 +24,13 @@ const EV_ALL=['mousemove','mouseout','click','touchstart','touchmove'];
 function syncGroup(id){return id.endsWith('KOSPI')?'KOSPI':id.endsWith('KOSDAQ')?'KOSDAQ':null;}
 const syncPlugin={id:'syncCross',
  afterEvent(ch,args){const g=ch.$sg;if(!g||SYNC.busy)return;const e=args.event;
-  if(e.type==='click'){const x=ch.scales.x;if(!x||e.x<ch.chartArea.left||e.x>ch.chartArea.right)return;const i=Math.round(x.getValueForPixel(e.x));
+  if(e.type==='click'){const x=ch.scales.x;if(!x||e.x<ch.chartArea.left||e.x>ch.chartArea.right)return;const i=Math.min((ch.data.labels||[]).length-1,Math.round(x.getValueForPixel(e.x)));
    // 왼쪽 클릭 = 그 날짜에 세로선 고정, 같은 곳을 다시 클릭하면 해제(다른 곳 클릭은 고정 위치 이동)
    if(SYNC.pin[g]===i)syncPin(g,null);else syncPin(g,i);return;}
   if(SYNC.pin[g]!=null)return;
   if(e.type==='mouseout'){if(SYNC.last[g]!=null)syncSet(g,null);return;}
   if(e.type!=='mousemove')return;const x=ch.scales.x;if(!x||e.x<ch.chartArea.left||e.x>ch.chartArea.right){return;}
-  const i=Math.round(x.getValueForPixel(e.x));if(SYNC.last[g]===i)return;syncSet(g,i,ch);},
+  const i=Math.min((ch.data.labels||[]).length-1,Math.round(x.getValueForPixel(e.x)));if(SYNC.last[g]===i)return;syncSet(g,i,ch);},
  afterDatasetsDraw(ch){const i=ch.$si;if(i==null)return;const x=ch.scales.x.getPixelForValue(i),{top,bottom}=ch.chartArea,c=ch.ctx,pinned=SYNC.pin[ch.$sg]!=null;c.save();c.strokeStyle=pinned?'rgba(251,191,36,.95)':'rgba(226,232,240,.75)';c.lineWidth=pinned?2:1;c.beginPath();c.moveTo(x,top);c.lineTo(x,bottom);c.stroke();c.restore();}};
 function syncPin(g,i){SYNC.pin[g]=i;const list=SYNC.groups[g]||[];for(const ch of list){ch.options.events=i==null?EV_ALL:['click'];}syncSet(g,i);}
 if(typeof document!=='undefined'&&document.addEventListener)document.addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight','Escape'].includes(e.key))return;for(const g of Object.keys(SYNC.pin)){const i=SYNC.pin[g];if(i==null)continue;
