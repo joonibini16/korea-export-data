@@ -25557,6 +25557,161 @@
         ],
         "take": "물량은 폭발적이지만 이익률과 현금 사정은 약함. 메모리 관점에서는 분기 $20bn 수준의 AI 서버 출하가 이어진다는 점이 HBM·서버 DRAM 수요에 긍정적 신호"
       }
+    },
+    {
+      "ticker": "NVO",
+      "period": "2026 Q3",
+      "date": "2026-11-04",
+      "evidence": "공식 Q3 2026 회사 공시(Company announcement No. 65/2026, GlobeNewswire 배포) 확인 · 직전 8/4 Q2 공식 공시의 2026 전망과 대조 · 상세 재무보고서 PDF는 이 환경에서 열람하지 못함",
+      "direction": "개선",
+      "headline": "Q3 매출 DKK 79.2bn(+4% CER, +6% DKK YoY), 조정 영업이익 DKK 31.7bn(+27% CER YoY) · 2026 조정 매출·조정 영업이익 성장 전망 0~−6% → −2~+2%(CER)로 두 분기 연속 상향 · Wegovy 알약 Q3 매출 DKK 5.4bn",
+      "estimate_signal": "2026 조정 매출·조정 영업이익 성장률 전망 중간값 −3% → 0%(CER)로 상향 — 추정치 상향 방향. 컨센서스 대비: Q3 매출 DKK 79.2bn vs Yahoo 컨센서스 DKK 73.4bn → +7.9% 상회(발표 전 11/4 스냅샷). 연간 가이던스는 CER 성장률 기준이라 금액 컨센서스와 직접 비교 불가 — 컨센서스 미확보. 다만 보고 영업이익은 손상차손 DKK 8.7bn으로 −9% CER YoY.",
+      "call_coverage": "공식 Q&A 녹취록 미확인 — 컨콜(11/4 13:00 CET)은 웹캐스트만 공개, 회사 녹취록 미게시. 보도자료 기준으로 먼저 반영하고 Q&A 톤은 추정하지 않음.",
+      "summary": {
+        "basis": "공식 회사 공시(보도자료) 기준 · 상세 보고서 PDF·컨콜 녹취록 미확인",
+        "items": [
+          {
+            "label": "매출",
+            "text": "Q3 DKK 79.2bn, +4% YoY(CER)·+6% YoY(DKK) · 직전 분기 조정 매출 대비 +0.9% QoQ",
+            "sub": "회사 분기 가이던스 없음(연간 성장률만 제시)"
+          },
+          {
+            "label": "조정 영업이익",
+            "text": "Q3 DKK 31.7bn, +27% YoY(CER) — 전년 Q3 구조조정 비용 DKK 9bn의 기저효과 포함",
+            "sub": "보고 영업이익은 DKK 23.0bn, −9% YoY(CER)(손상차손 DKK 8.7bn)"
+          },
+          {
+            "label": "2026 가이던스",
+            "text": "조정 매출·조정 영업이익 성장률 0~−6% → −2~+2%(CER) 상향",
+            "cons": "컨센서스 미확보(가이던스가 CER 성장률 기준이라 금액 컨센서스와 직접 비교 불가) · 참고: Q3 매출 실적 DKK 79.2bn vs DKK 73.4bn → +7.9% 상회(Yahoo 컨센서스, 발표 전 11/4 스냅샷)"
+          },
+          {
+            "label": "신제품",
+            "text": "Wegovy 알약 Q3 매출 DKK 5.4bn, 8개 시장 출시 · Ozempic 알약 5월 미국 출시"
+          }
+        ],
+        "cautions": [
+          "가이던스를 올렸어도 중간값은 '역성장 없음(0%)' 수준 — 성장 회복이 아니라 감소 우려 해소 단계",
+          "Q3 비현금 손상차손 DKK 8.7bn(ziltivekimab DKK 4.6bn, 생산망 축소 DKK 4.1bn) — 보고 영업이익 −9% YoY(CER)",
+          "조정 영업이익 QoQ −5%(Q2 DKK 33.4bn → Q3 31.7bn), YoY +27%는 전년 구조조정 비용 기저효과가 큼"
+        ],
+        "take": "비만약 가격 압박 속에서도 물량(특히 알약 신제품)으로 매출 바닥을 확인한 분기. 한국 관점에서는 GLP-1 수요 지속이 펩타이드 CDMO·원료(삼성바이오로직스·펩트론·한미약품 비만 파이프라인 등) 테마에 우호적이지만, 노보 스스로 생산망을 축소하고 있어 외부 위탁 확대를 단정하기는 이르다."
+      },
+      "changes": [
+        {
+          "title": "2026 연간 전망",
+          "direction": "개선",
+          "before": "8/4 Q2: 조정 매출 성장률 0~−6%, 조정 영업이익 성장률 0~−6%(CER). 5/6 Q1의 −4~−12%에서 한 차례 상향된 상태.",
+          "now": "11/4 Q3: 조정 매출·조정 영업이익 성장률 모두 −2~+2%(CER)로 재상향. 회사는 GLP-1 제품 판매 기대 상향을 이유로 제시.",
+          "meaning": "두 분기 연속 상향으로 중간값이 −3% → 0%. 역성장 리스크가 줄었다는 신호이지 고성장 복귀 신호는 아님.",
+          "rows": [
+            {
+              "item": "조정 매출 성장률(CER)",
+              "before": "0~−6%",
+              "now": "−2~+2%",
+              "delta": "중간값 +3%p",
+              "tone": "good"
+            },
+            {
+              "item": "조정 영업이익 성장률(CER)",
+              "before": "0~−6%",
+              "now": "−2~+2%",
+              "delta": "중간값 +3%p",
+              "tone": "good"
+            }
+          ]
+        },
+        {
+          "title": "매출 모멘텀",
+          "direction": "개선",
+          "before": "Q2: 조정 매출 DKK 78.5bn, +7% YoY(CER).",
+          "now": "Q3: 매출 DKK 79.2bn, +4% YoY(CER)·+6% YoY(DKK), 조정 매출 대비 +0.9% QoQ. 미국·국제사업 모두 성장(비만 중심), Wegovy 알약 DKK 5.4bn.",
+          "meaning": "YoY 성장률은 Q2보다 낮지만 QoQ로는 소폭 증가. 알약 제형이 주사제 가격 하락을 일부 메우는 구조."
+        },
+        {
+          "title": "수익성·일회성",
+          "direction": "혼재",
+          "before": "Q2: 조정 영업이익 DKK 33.4bn(+11% YoY, CER), 파이프라인 손상 DKK 6.3bn 제외.",
+          "now": "Q3: 조정 영업이익 DKK 31.7bn(+27% YoY, CER, −5% QoQ), 보고 영업이익 DKK 23.0bn(−9% YoY, CER). 손상 DKK 8.7bn(ziltivekimab 4.6bn·생산망 4.1bn).",
+          "meaning": "조정 기준은 기저효과로 좋아 보이지만 보고 기준은 연속된 손상차손으로 부진. 파이프라인 정리와 생산설비 축소가 동시에 진행 중."
+        }
+      ],
+      "facts": "Q3 2026: 매출 DKK 79,195m(+6% DKK·+4% CER YoY), 조정 매출 동일. 보고 영업이익 DKK 23,011m(−3% DKK·−9% CER YoY), 조정 영업이익 DKK 31,720m(+34% DKK·+27% CER YoY). 9개월: 매출 DKK 254,506m(+11% DKK·+13% CER), 조정 매출 DKK 227,746m(0% DKK·+2% CER), 보고 영업이익 DKK 109,690m(+18% CER), 조정 영업이익 DKK 97,967m(+8% CER). Wegovy 알약 Q3 매출 DKK 5,394m·8개 시장 출시, Wegovy 미국 브랜드 비만약 신규환자 점유율 50% 이상, Ozempic 알약 5월 미국 출시 후 주간 신규처방이 출시 전 Rybelsus 대비 약 +100%. 비현금 손상 DKK 8.7bn. 파이프라인: CagriSema REDEFINE 9 68주 체중 −21%, REIMAGINE 5에서 티르제파타이드 5mg 대비 체중 감소 우위(12.4% vs 9.1%)·미국 출시 2027년 초 예상(승인 전제), 경구 zenagamtide 3상(AMAZE 9) 9월 개시, Frehemgo(denecimig) CHMP 긍정 의견.",
+      "guidance": "2026(CER): 조정 매출 성장률 −2~+2%, 조정 영업이익 성장률 −2~+2%(직전 0~−6%에서 상향). 보고 기준·DKK 기준 전망은 보도자료에 없음.",
+      "tone": "보도자료 기준: CEO 마이크 도우스타르는 GLP-1 모멘텀을 근거로 '연간 조정 매출·조정 영업이익 전망을 상향한다'고 밝힘. 공식 Q&A 녹취록은 확인하지 못해 애널리스트 질의응답 톤은 추정하지 않음.",
+      "interpretation": "분석: 2025~26년 내내 하향되던 노보의 이익 기대가 Q2·Q3 연속 상향으로 방향이 바뀌었다. 핵심 동력은 알약(Wegovy·Ozempic 경구)으로, 주사제 가격 인하를 물량과 신제형으로 상쇄하는 구도다. 다만 연간 성장률 중간값 0%는 '바닥 확인' 수준이며, 반복되는 손상차손(파이프라인·생산망)은 비용 구조 재편이 끝나지 않았음을 보여준다. 한국 관점: 비만약 시장 확대는 펩타이드 원료·CDMO와 국내 비만 신약 개발사 밸류에이션에 우호적이나, 노보의 생산망 '축소'는 위탁 수요 확대를 낙관하기 어렵게 한다. 일라이 릴리(LLY)와의 점유율 경쟁도 함께 확인할 필요.",
+      "watch": "분석: 4분기 Wegovy 알약 매출 증가 속도, 미국 가격 정책(약가 협상·340B 등) 영향, CagriSema 미국 승인 일정(2027년 초 출시 목표), 2027년 첫 가이던스(2월), 추가 손상차손·구조조정 여부, 자사주 매입 규모.",
+      "source": "https://www.globenewswire.com/news-release/2026/11/04/3395015/0/en/novo-raises-full-year-outlook-on-continued-glp-1-momentum-with-third-quarter-adjusted-operating-profit-increasing-27-at-cer-to-dkk-31-720-million.html",
+      "source_label": "Novo Nordisk Q3 2026 공식 회사 공시(GlobeNewswire 배포)",
+      "prior_source": "https://view.news.eu.nasdaq.com/view?id=1456795",
+      "prior_source_label": "Novo Nordisk 8/4 Q2 2026 공식 회사 공시(전망 상향)",
+      "verified_at": "2026-11-04",
+      "call_topics": [
+        {
+          "topic": "연간 전망",
+          "source_part": "공식 회사 공시",
+          "points": [
+            "조정 매출·조정 영업이익 성장률 0~−6% → −2~+2%(CER).",
+            "상향 이유는 GLP-1 판매 기대 상승."
+          ],
+          "implication": "두 분기 연속 상향, 역성장 우려 완화."
+        },
+        {
+          "topic": "알약 제형",
+          "source_part": "공식 회사 공시",
+          "points": [
+            "Wegovy 알약 Q3 매출 DKK 5.4bn, 8개 시장 출시.",
+            "Ozempic 알약 신규처방이 출시 전 Rybelsus 대비 약 2배."
+          ],
+          "implication": "주사제 가격 하락을 신제형 물량으로 상쇄."
+        },
+        {
+          "topic": "일회성·파이프라인",
+          "source_part": "공식 회사 공시",
+          "points": [
+            "손상차손 DKK 8.7bn(ziltivekimab·생산망 축소).",
+            "CagriSema 2027년 초 미국 출시 예상(승인 전제)."
+          ],
+          "implication": "비용 구조 재편 진행 중, 차기 성장축은 CagriSema."
+        }
+      ],
+      "call_readthrough": {
+        "scope": "Novo Nordisk 공식 Q3 2026 회사 공시와 8/4 Q2 공시를 한국어로 재서술. 컨콜 공식 녹취록이 없어 Q&A는 인용·추정하지 않음(녹취록 미공개 — 다음 회차 보강 대상).",
+        "groups": [
+          {
+            "title": "경영진 코멘트",
+            "items": [
+              {
+                "title": "전망 상향",
+                "body": "GLP-1 제품 판매 기대가 높아져 연간 조정 매출·조정 영업이익 전망을 −2~+2%(CER)로 올렸다.",
+                "meaning": "분석: 하향 사이클 종료 신호."
+              },
+              {
+                "title": "미국·국제 동반 성장",
+                "body": "3분기 미국과 국제사업 모두 매출이 늘었고 비만 부문이 성장을 이끌었다."
+              },
+              {
+                "title": "알약 출시 확대",
+                "body": "Wegovy 알약은 미국·UAE·영국·독일 등 8개 시장에 출시됐고 미국 브랜드 비만약 신규환자 점유율 50% 이상을 유지한다."
+              },
+              {
+                "title": "파이프라인 정리",
+                "body": "ziltivekimab 관련 손상 DKK 4.6bn, 생산망 축소 관련 DKK 4.1bn을 인식했다.",
+                "meaning": "분석: 선택과 집중, 설비 과잉 해소."
+              }
+            ]
+          },
+          {
+            "title": "Q&A 핵심",
+            "items": [
+              {
+                "title": "녹취록 미공개",
+                "body": "공식 Q&A 녹취록을 확인하지 못해 애널리스트 질의응답은 반영하지 않았다. 다음 회차에 공식 자료로 보강한다."
+              }
+            ]
+          }
+        ]
+      }
     }
   ],
   "upcoming": [
@@ -25580,13 +25735,6 @@
       "time": "09:00 America/New_York(Zoom 컨콜)",
       "event": "2026 Q3 실적·컨퍼런스콜(10/14 잠정 매출 기발표)",
       "source": "https://www.prnewswire.com/il/news-releases/camtek-to-report-third-quarter-2026-financial-results-on-wednesday-november-4-2026-302915313.html"
-    },
-    {
-      "ticker": "NVO",
-      "date": "2026-11-04",
-      "time": "07:30 Europe/Copenhagen",
-      "event": "2026 9개월 누적(Q3) 실적 발표",
-      "source": "https://www.novonordisk.com/investors/financial-results.html"
     },
     {
       "ticker": "QCOM",
