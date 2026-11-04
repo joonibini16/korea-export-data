@@ -92,7 +92,7 @@
 // 종목 검색: 코스피·코스닥 전체에서 찾아 모든 기준일(7/30·10/16·10/26·당일) 등락률과 올해 고점 대비를 한 표로
 (function(){
  const $=id=>document.getElementById(id),B=[['7/30','since_base.json'],['10/16','since_base_1016.json'],['10/26','since_base_1026.json'],['당일','since_base_today.json']];
- let DB=null,IDX=[],sel=[],cur=-1,PI=null,PM={},MD=null,per='63',lch=null;
+ let KEEP=null,DB=null,IDX=[],sel=[],cur=-1,PI=null,PM={},MD=null,per='63',lch=null;
  // ── 기간 비교: 월별 수정종가 파일(price_hist) + 지수(market_daily) + 당일 현재가
  async function pidx(){if(!PI)PI=await fetch('price_hist/index.json?v='+Date.now(),{cache:'no-store'}).then(r=>r.json()).catch(()=>({}));return PI;}
  async function month(m){if(!PM[m])PM[m]=fetch('price_hist/'+m+'.json?v='+(m>=Object.keys(PI).sort().at(-1)?Date.now():'1'),{cache:'no-store'}).then(r=>r.json()).catch(()=>null);return PM[m];}
@@ -133,7 +133,14 @@
   const ds=sel.map((s,k)=>({label:s.name,data:norm(PS[k]),borderColor:C[k%C.length],backgroundColor:C[k%C.length],borderWidth:2,pointRadius:0,spanGaps:true}));
   for(const m of ['KOSPI','KOSDAQ'])if(sel.some(s=>s.mkt===m))ds.push({label:(m==='KOSPI'?'코스피':'코스닥')+' 지수',data:norm(IS[m]),borderColor:'#94a3b8',backgroundColor:'#94a3b8',borderDash:m==='KOSDAQ'?[5,4]:[],borderWidth:1.6,pointRadius:0,spanGaps:true});
   $('lchart').style.display='';if(lch)lch.destroy();
-  lch=new Chart($('lchart').querySelector('canvas'),{type:'line',data:{labels:L,datasets:ds},options:{responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:'index',intersect:false},plugins:{legend:{position:'bottom'},tooltip:{callbacks:{label:c=>` ${c.dataset.label} ${c.parsed.y==null?'—':(c.parsed.y-100>0?'+':'')+(c.parsed.y-100).toFixed(2)+'%'}`}}},scales:{x:{ticks:{maxTicksLimit:8,callback:function(v){return this.getLabelForValue(v).slice(5).replace('-','/');}},grid:{display:false}},y:{title:{display:true,text:'시작일 = 100'},grid:{color:'rgba(148,163,184,.12)'}}}}});}
+  ds.forEach(d=>{d.$c=d.borderColor;d.$w=d.borderWidth;});
+  // 선택 강조: 범례나 선을 클릭하면 그 선만 굵고 진하게, 나머지는 흐리게(다시 클릭하면 해제)
+  const fade=c=>{const m=/^#([0-9a-f]{6})$/i.exec(c);if(!m)return c;const n=parseInt(m[1],16);return `rgba(${n>>16},${(n>>8)&255},${n&255},.18)`;};
+  const focus=(ch,i)=>{ch.$focus=(ch.$focus===i||i==null)?null:i;KEEP=ch.$focus==null?null:ch.data.datasets[ch.$focus].label;ch.data.datasets.forEach((d,k)=>{const on=ch.$focus==null||ch.$focus===k;d.borderColor=on?d.$c:fade(d.$c);d.backgroundColor=d.borderColor;d.borderWidth=ch.$focus===k?d.$w+2:d.$w;d.order=ch.$focus===k?-1:0;});ch.update('none');
+   const nm=ch.$focus==null?null:ch.data.datasets[ch.$focus].label;$('lres').querySelectorAll('tbody tr').forEach(tr=>{const b=tr.querySelector('td b');tr.style.outline=nm&&b&&b.textContent===nm?'2px solid '+ch.data.datasets[ch.$focus].$c:'';tr.style.opacity=nm&&!(b&&b.textContent===nm)&&!/지수/.test(tr.textContent.slice(0,8))?'.55':'';});};
+  lch=new Chart($('lchart').querySelector('canvas'),{type:'line',data:{labels:L,datasets:ds},options:{onClick:(e,els,ch)=>{const hit=ch.getElementsAtEventForMode(e,'nearest',{intersect:false,axis:'xy'},true)[0];if(!hit)return focus(ch,null);const px=ch.getDatasetMeta(hit.datasetIndex).data[hit.index];if(px&&Math.hypot(px.x-e.x,px.y-e.y)>18)return focus(ch,null);focus(ch,hit.datasetIndex);},responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:'index',intersect:false},plugins:{legend:{position:'bottom',labels:{sort:(a,b)=>a.datasetIndex-b.datasetIndex},onClick:(e,item,lg)=>focus(lg.chart,item.datasetIndex)},tooltip:{itemSort:(a,b)=>(a.chart.$focus===b.datasetIndex)-(a.chart.$focus===a.datasetIndex),callbacks:{label:c=>` ${c.dataset.label} ${c.parsed.y==null?'—':(c.parsed.y-100>0?'+':'')+(c.parsed.y-100).toFixed(2)+'%'}`}}},scales:{x:{ticks:{maxTicksLimit:8,callback:function(v){return this.getLabelForValue(v).slice(5).replace('-','/');}},grid:{display:false}},y:{title:{display:true,text:'시작일 = 100'},grid:{color:'rgba(148,163,184,.12)'}}}}});
+  {const kp=KEEP;const i=kp?ds.findIndex(d=>d.label===kp):-1;if(i>=0){lch.$focus=null;focus(lch,i);}lch.$onf=()=>{KEEP=lch.$focus==null?null:ds[lch.$focus].label;};}
+  $('lchart').querySelector('canvas').title='선이나 범례를 클릭하면 그 종목만 강조됩니다(다시 클릭하면 해제)';}
  const save=()=>{try{localStorage.setItem('sinceLookup',JSON.stringify(sel.map(s=>s.code)));}catch(e){}};
  function add(list){for(const s of list)if(!sel.some(x=>x.code===s.code))sel.push(s);save();show();}
  function sug(){const q=$('lq').value,parts=q.split(','),last=parts.at(-1),L=find(last).slice(0,12),box=$('lsug');cur=-1;
