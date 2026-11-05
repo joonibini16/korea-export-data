@@ -6,7 +6,7 @@ function rows(t){const L=t.replace(/^﻿/,'').trim().split(/\r?\n/);const h=L[0]
 function chart(id,cfg){charts[id]?.destroy();charts[id]=new Chart(el(id),cfg);}
 const C={'^GSPC':['미국 S&P500','US','BOPTEXP'],'^IXIC':['미국 나스닥','US','BOPTEXP'],'^SOX':['미국 반도체(SOX)','US','BOPTEXP'],'^KS11':['한국 코스피','KR','XTEXVA01KRM667S'],'^KQ11':['한국 코스닥','KR','XTEXVA01KRM667S'],'^TWII':['대만 가권','TW',null],'^N225':['일본 닛케이','JP','XTEXVA01JPM667S'],'000001.SS':['중국 상해종합','CN','XTEXVA01CNM667S'],'^HSI':['홍콩 항셍','HK',null],'^GDAXI':['독일 DAX','DE','XTEXVA01DEM667S'],'^FCHI':['프랑스 CAC40','FR','XTEXVA01FRM667S'],'^FTSE':['영국 FTSE100','GB','XTEXVA01GBM667S'],'^STOXX50E':['유로 STOXX50','EU',null],'^NSEI':['인도 니프티50','IN','XTEXVA01INM667S'],'^BVSP':['브라질 보베스파','BR','XTEXVA01BRM667S'],'^GSPTSE':['캐나다 TSX','CA','XTEXVA01CAM667S'],'^AXJO':['호주 ASX200','AU','XTEXVA01AUM667S'],'^JKSE':['인도네시아 JCI','ID','XTEXVA01IDM667S'],'^MXX':['멕시코 IPC','MX','XTEXVA01MXM667S']};
 const AI={ORCL:'오라클',NVDA:'엔비디아',AVGO:'브로드컴',MSFT:'마이크로소프트',META:'메타',AMZN:'아마존',GOOGL:'알파벳',TSM:'TSMC(ADR)',AMD:'AMD',CRWV:'코어위브',HYG:'하이일드 채권 ETF (HYG)',LQD:'투자등급 채권 ETF (LQD)'};
-let TV={KOSPI:new Map(),KOSDAQ:new Map()},CDSS=[],HC=[],M=new Map(),F=new Map(),E=new Map(),VK=[],KF=[],BR=[],brRange='1y',levRange='2020',cds=[],KRM=[];
+let TV={KOSPI:new Map(),KOSDAQ:new Map()},CDSS=[],HC=[],M=new Map(),F=new Map(),E=new Map(),VK=[],KF=[],BR=[],brRange='1y',levRange='2018',cds=[],KRM=[];
 const ser=s=>M.get(s)||[],fs=s=>F.get(s)||[];
 function at(arr,date){let lo=0,hi=arr.length-1,ans=null;while(lo<=hi){const m=(lo+hi)>>1;if(arr[m].d<=date){ans=arr[m];lo=m+1;}else hi=m-1;}return ans;}
 function back(arr,days){const last=arr.at(-1);if(!last)return null;const d=new Date(last.d);d.setDate(d.getDate()-days);return at(arr,d.toISOString().slice(0,10));}
@@ -132,7 +132,7 @@ function renderMini(){const box=el('mini');box.replaceChildren();const alerts=[]
 
 // ── 한국 증시 레버리지: 코스피·코스닥별 지수 / 신용융자 / 고객예탁금 / 신용÷예탁금 (금융투자협회 FreeSIS, 백만원)
 const LC={idx:'#4f7ff0',cr:'#ef5b45',dep:'#34b27b',ratio:'#a77be6'};
-function levStart(){const last=KF.at(-1)?.date;if(!last)return '2015-01-01';const y=Number(last.slice(0,4));return levRange==='ytd'?y+'-01-01':levRange==='1y'?(y-1)+last.slice(4):levRange==='3y'?(y-3)+last.slice(4):levRange==='2020'?'2020-01-01':'2015-01-01';}
+function levStart(){const last=KF.at(-1)?.date;if(!last)return '2015-01-01';const y=Number(last.slice(0,4));return levRange==='ytd'?y+'-01-01':levRange==='1y'?(y-1)+last.slice(4):levRange==='3y'?(y-3)+last.slice(4):levRange==='2018'?'2018-01-01':'2015-01-01';}
 const vline={id:'vline',afterDatasetsDraw(ch,_,o){const i=o?.i;if(i==null||i<0)return;const x=ch.scales.x.getPixelForValue(i),{top,bottom}=ch.chartArea,c=ch.ctx;c.save();c.strokeStyle='rgba(245,158,11,.75)';c.setLineDash([4,4]);c.beginPath();c.moveTo(x,top);c.lineTo(x,bottom);c.stroke();c.restore();}};
 function levChart(id,labels,data,color,unit,dec,mark,grp){const v=data.filter(x=>x!=null),last=v.at(-1);
  const t=document.getElementById(id+'T');if(t)t.textContent=`${unit} · 최근 ${last==null?'—':last.toLocaleString(undefined,{maximumFractionDigits:dec})}${unit==='조원'?'조':unit==='%'?'%':''}`;
