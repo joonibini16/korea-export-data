@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>4계절 국면 판단</title><script src="./shell.js?v=42"></script>
+<style>:root{font-family:Arial,"Noto Sans KR",sans-serif}*{box-sizing:border-box}body{margin:0}main{max-width:1400px;margin:26px auto;padding:0 22px}.muted{font-size:13px;color:#93a3bd;line-height:1.65}
+.panel{border-radius:12px;padding:18px 20px;margin-bottom:18px}h2{font-size:19px;margin:0 0 8px}h3{font-size:16px;margin:4px 0 8px}
+.sea{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.sc{border-radius:12px;padding:14px 16px;border:1px solid #22314f;background:#0f1a31;position:relative}
+.sc .t{font-size:17px;font-weight:800}.sc .s{font-size:12.5px;color:#93a3bd;margin-top:2px}.sc table{width:100%;font-size:13px;margin:10px 0 8px;border-collapse:collapse}.sc td{padding:3px 0}.sc td:last-child{text-align:right;font-weight:700}
+.sc p{font-size:12.5px;color:#cbd5e1;line-height:1.55;margin:6px 0 0}.sc .flag{position:absolute;top:12px;right:12px;display:flex;gap:4px}.flag span{font-size:11.5px;font-weight:800;padding:2px 8px;border-radius:999px;background:#e2e8f0;color:#0b1220}
+.up{color:#f87171}.dn{color:#60a5fa}.fl{color:#fbbf24}
+.wrap{display:grid;grid-template-columns:360px 1fr;gap:18px;align-items:start}@media(max-width:1100px){.wrap,.sea,.ctry{grid-template-columns:1fr!important}}
+.ctry{display:grid;grid-template-columns:1fr 1fr;gap:18px}.cc{border:1px solid #22314f;border-radius:12px;padding:16px 18px;background:#0f1a31}
+.verdict{display:inline-block;font-size:13px;font-weight:800;padding:4px 12px;border-radius:999px;color:#0b1220;margin:2px 0 8px}
+.ind{display:grid;grid-template-columns:86px 1fr;gap:6px 12px;margin:10px 0;border-top:1px solid #22314f;padding-top:10px}.ind .k{font-weight:800;font-size:13.5px}.ind .k small{display:block;font-weight:700;margin-top:2px}
+.ind ul{margin:0;padding-left:16px;font-size:13px;line-height:1.6;color:#cbd5e1}.auto{font-size:12.5px;color:#93c5fd;margin-top:4px}
+.kt{border-collapse:collapse;width:100%;font-size:13px;font-variant-numeric:tabular-nums}.kt th,.kt td{border-bottom:1px solid #22314f;padding:6px 8px;text-align:right}.kt th{color:#93a3bd;font-weight:600}.kt td.l,.kt th.l{text-align:left}
+.src a{color:#93c5fd}.src li{font-size:12.5px;line-height:1.7}
+</style><link rel="stylesheet" href="./shell.css?v=3"></head><body><main>
+<h1 data-upd="seasons.json,seasons_auto.json">우라가미 4계절 국면 판단 · 한국 vs 미국</h1>
+<p class="muted" id="meta"></p>
+
+<section class="panel"><h2>이론 요약 — 우라가미 구니오의 주식시장 4계절</h2>
+<p class="muted">일본 증권가 우라가미 구니오(浦上邦雄)는 『주식시장 흐름 읽는 법』에서 주가가 <b>금리(돈의 흐름)</b>와 <b>기업 실적(이익)</b>의 조합에 따라 봄→여름→가을→겨울 네 국면을 순환한다고 봤습니다. 핵심은 "주가 = 이익 × PER"에서 PER은 금리가, 이익은 경기가 움직인다는 것입니다. 금리가 내리면 PER이 커지고(봄), 이익이 늘면 주가가 따라가고(여름), 금리가 오르면 이익이 늘어도 PER이 줄고(가을), 이익까지 줄면 마지막 하락(겨울)이 옵니다.</p>
+<div class="sea" id="sea"></div></section>
+
+<section class="panel"><h2>현재 국면 — 순환도 위 위치</h2>
+<div class="wrap"><div id="wheel"></div><div><p class="muted" id="wheelTxt"></p><div id="autoTbl"></div></div></div></section>
+
+<div class="ctry" id="ctry"></div>
+
+<section class="panel"><h2>한국 이익 추정치 변화 (자동 · FnGuide 컨센서스 일별 기록)</h2>
+<p class="muted">대시보드가 매일 기록하는 관심 기업(약 140곳, 반도체 소부장 비중이 큼) 영업이익 컨센서스 합계의 변화입니다. 우라가미 이론에서 '이익의 방향'은 실제 실적보다 추정치가 오르는지 내리는지가 먼저 알려줍니다. 삼성전자·SK하이닉스가 합계의 90% 이상이라 두 회사를 뺀 값을 따로 봅니다.</p>
+<div id="revTbl"></div></section>
+
+<section class="panel src"><h2>판단 근거 자료</h2><p class="muted" id="note"></p><ul id="srcs"></ul></section>
+</main>
+<script>
+(async function(){
+ const $=id=>document.getElementById(id),get=u=>fetch(u+'?v='+Date.now(),{cache:'no-store'}).then(r=>r.json());
+ const [M,A]=await Promise.all([get('seasons.json'),get('seasons_auto.json').catch(()=>({}))]);
+ const SEA=[
+  {k:'spring',t:'봄 · 금융장세',c:'#86efac',rate:['하락','dn'],eps:['감소·바닥','dn'],px:['급등','up'],d:'경기는 나쁘지만 중앙은행이 금리를 내리고 돈이 풀려 PER이 확대되는 국면. 실적 개선 전 "기대"로 오르며 상승 속도가 가장 빠름.',lead:'금리 민감주(증권·건설·부동산), 낙폭 과대 성장주'},
+  {k:'summer',t:'여름 · 실적장세',c:'#fbbf24',rate:['바닥→완만 상승','fl'],eps:['급증','up'],px:['완만한 상승','up'],d:'경기 회복으로 이익이 실제로 늘며 주가를 끌어올리는 가장 긴 국면. 금리는 바닥을 지나 오르기 시작하지만 이익 증가가 더 큼.',lead:'경기민감주·소재·산업재 → 후반엔 실적 성장주'},
+  {k:'autumn',t:'가을 · 역금융장세',c:'#fb923c',rate:['급등(긴축)','up'],eps:['증가·정점','up'],px:['하락·조정','dn'],d:'물가·과열을 잡으려 금리를 올리면서 이익은 여전히 늘어도 PER이 크게 줄어 주가가 떨어지는 국면. "실적은 좋은데 주가는 빠진다".',lead:'현금·단기채, 저PER·고배당 방어주'},
+  {k:'winter',t:'겨울 · 역실적장세',c:'#60a5fa',rate:['정점→하락','dn'],eps:['감소','dn'],px:['바닥 다지기','dn'],d:'긴축 효과로 경기가 꺾이고 이익이 줄어드는 국면. 금리는 내려가기 시작하지만 실적 악화가 주가를 누르며 투매 뒤 바닥을 만듦.',lead:'우량 대형주 분할 매수 준비, 채권(금리 하락 수혜)'}];
+ const byK=Object.fromEntries(SEA.map(s=>[s.k,s]));
+ $('sea').innerHTML=SEA.map(s=>{const fl=M.countries.filter(c=>c.season===s.k).map(c=>`<span style="background:${s.c}">${c.name}</span>`).join('');
+  return `<div class="sc" style="border-color:${fl?s.c:'#22314f'};${fl?'box-shadow:0 0 0 1px '+s.c+' inset':''}"><div class="flag">${fl}</div><div class="t" style="color:${s.c}">${s.t}</div><table><tr><td>금리</td><td class="${s.rate[1]}">${s.rate[0]}</td></tr><tr><td>기업 이익</td><td class="${s.eps[1]}">${s.eps[0]}</td></tr><tr><td>주가</td><td class="${s.px[1]}">${s.px[0]}</td></tr></table><p>${s.d}</p><p class="muted" style="margin-top:6px">유리한 쪽: ${s.lead}</p></div>`;}).join('');
+ // 순환도
+ const R=130,cx=170,cy=170,ang=p=>(-90+p*360)*Math.PI/180,pt=(p,r)=>[cx+r*Math.cos(ang(p)),cy+r*Math.sin(ang(p))];
+ let svg=`<svg viewBox="0 0 340 340" width="100%" style="max-width:360px">`;
+ SEA.forEach((s,i)=>{const [x1,y1]=pt(i/4,R),[x2,y2]=pt((i+1)/4,R),[lx,ly]=pt(i/4+0.125,R*0.62);svg+=`<path d="M${cx},${cy} L${x1},${y1} A${R},${R} 0 0,1 ${x2},${y2} Z" fill="${s.c}" fill-opacity=".16" stroke="${s.c}" stroke-opacity=".6"/><text x="${lx}" y="${ly-6}" text-anchor="middle" fill="${s.c}" font-size="14" font-weight="800">${s.t.split(' · ')[0]}</text><text x="${lx}" y="${ly+12}" text-anchor="middle" fill="#cbd5e1" font-size="11">${s.t.split(' · ')[1]}</text>`;});
+ svg+=`<circle cx="${cx}" cy="${cy}" r="${R+12}" fill="none" stroke="#334155" stroke-dasharray="3 4"/>`;
+ const [ax,ay]=pt(0.97,R+12);svg+=`<text x="${ax+6}" y="${ay-4}" fill="#64748b" font-size="11">순환 방향 ↻</text>`;
+ const CC={KR:'#f472b6',US:'#38bdf8'};
+ M.countries.forEach((c,i)=>{const [x,y]=pt(c.position,R+12);svg+=`<circle cx="${x}" cy="${y}" r="13" fill="${CC[c.id]}" stroke="#0b1220" stroke-width="3"/><text x="${x}" y="${y+4}" text-anchor="middle" font-size="11" font-weight="800" fill="#0b1220">${c.id}</text>`;});
+ $('wheel').innerHTML=svg+'</svg>';
+ $('wheelTxt').innerHTML=M.countries.map(c=>`<b style="color:${CC[c.id]}">● ${c.name}</b> — <b>${c.stage}</b>`).join('<br>')+`<br><span class="muted">점의 위치는 각 국면 안에서 얼마나 진행됐는지를 나타냅니다(시계 방향으로 순환).</span>`;
+ // 자동 지표 표
+ const P=A.prices||{},RT=A.rates||{},f1=(v,d=1,u='%')=>v==null?'—':(v>0?'+':'')+v.toFixed(d)+u,cl=v=>v>0?'up':v<0?'dn':'';
+ const NM={'^KS11':'코스피','^KQ11':'코스닥','^GSPC':'S&P500','^IXIC':'나스닥'};
+ $('autoTbl').innerHTML=`<table class="kt"><thead><tr><th class="l">지수(자동)</th><th>기준일</th><th>종가</th><th>52주 고점 대비</th><th>200일선 대비</th><th>3개월</th><th>12개월</th></tr></thead><tbody>`+['^KS11','^KQ11','^GSPC','^IXIC'].filter(k=>P[k]).map(k=>{const x=P[k];return `<tr><td class="l">${NM[k]}</td><td>${x.date.slice(5)}</td><td>${x.close.toLocaleString(undefined,{maximumFractionDigits:2})}</td><td class="${cl(x.from_high)}">${f1(x.from_high)}</td><td class="${cl(x.vs200)}">${f1(x.vs200)}</td><td class="${cl(x.m3)}">${f1(x.m3)}</td><td class="${cl(x.m12)}">${f1(x.m12)}</td></tr>`;}).join('')+`</tbody></table>`+
+  (Object.keys(RT).length?`<table class="kt" style="margin-top:10px"><thead><tr><th class="l">미국 금리·신용(자동, FRED)</th><th>기준일</th><th>현재</th><th>3개월 변화</th><th>12개월 변화</th></tr></thead><tbody>`+[['DFEDTARU','연준 목표금리 상단'],['DGS10','10년물 국채'],['DGS2','2년물 국채'],['T10Y3M','10년−3개월 금리차'],['BAMLH0A0HYM2','하이일드 스프레드']].filter(([k])=>RT[k]).map(([k,n])=>{const x=RT[k];return `<tr><td class="l">${n}</td><td>${x.date.slice(5)}</td><td>${x.value.toFixed(2)}%</td><td class="${cl(x.chg3m)}">${f1(x.chg3m,2,'%p')}</td><td class="${cl(x.chg12m)}">${f1(x.chg12m,2,'%p')}</td></tr>`;}).join('')+`</tbody></table>`:'');
+ // 나라별 카드
+ const ARW={up:['▲','up'],down:['▼','dn'],flat:['▶','fl'],peak:['◆','fl']};
+ const RV=A.kr_revisions||{};
+ const autoLine=(c,key)=>{if(key==='stocks'){const a=P[c.index],b=P[c.index2];if(!a)return '';return `자동: ${NM[c.index]} 52주 고점 대비 ${f1(a.from_high)}, 200일선 대비 ${f1(a.vs200)}, 3개월 ${f1(a.m3)}`+(b?` · ${NM[c.index2]} 고점 대비 ${f1(b.from_high)}`:'');}
+  if(key==='earnings'&&c.id==='KR'&&RV.fy0)return `자동(추정치 1개월 변화): 올해 영업이익 ${f1(RV.fy0.m1)} · 대형 2사 제외 ${f1(RV.fy0_ex?.m1)} · 내년 ${f1(RV.fy1?.m1)} · 4분기 대형 2사 제외 ${f1(RV.nq_ex?.m1)} · 상향 ${RV.fy0.up} / 하향 ${RV.fy0.down}곳`;
+  if(key==='rates'&&c.id==='US'&&RT.DGS10)return `자동: 10년물 ${RT.DGS10.value.toFixed(2)}% (3개월 ${f1(RT.DGS10.chg3m,2,'%p')})`+(RT.DFEDTARU?` · 정책금리 상단 ${RT.DFEDTARU.value.toFixed(2)}%`:'');
+  return '';};
+ $('ctry').innerHTML=M.countries.map(c=>{const s=byK[c.season];const row=(key,t)=>{const x=c[key]||{};const a=ARW[x.dir]||['',''];const au=autoLine(c,key);return `<div class="k">${t}<small class="${a[1]}">${a[0]} ${x.label||''}</small></div><div>${x.facts?'<ul>'+x.facts.map(f=>`<li>${f}</li>`).join('')+'</ul>':''}${au?`<div class="auto">${au}</div>`:''}</div>`;};
+  return `<section class="cc"><h3 style="color:${CC[c.id]}">${c.name}</h3><span class="verdict" style="background:${s.c}">${c.stage}</span><p class="muted" style="color:#cbd5e1">${c.summary}</p>
+   <div class="ind">${row('rates','금리')}${row('earnings','기업 이익')}${row('stocks','주가')}</div>
+   <div style="border-top:1px solid #22314f;padding-top:8px"><b style="font-size:13.5px">다음 국면 전환 신호(체크리스트)</b><ul style="margin:6px 0 0;padding-left:18px;font-size:13px;line-height:1.7;color:#cbd5e1">${c.watch.map(w=>`<li>${w}</li>`).join('')}</ul></div></section>`;}).join('');
+ // 추정치 표
+ if(RV.fy0){const rows=[['fy0',`올해(${RV.fy0.period}) 연간`],['fy1',`내년(${RV.fy1?.period||''}) 연간`],['nq',`다음 분기(${RV.nq?.period||''})`]];
+  $('revTbl').innerHTML=`<table class="kt"><thead><tr><th class="l">구분</th><th>기업 수</th><th>합계(조원)</th><th>1개월 변화</th><th>3개월 변화</th><th>상향/하향(1개월)</th><th>대형 2사 제외 합계</th><th>제외 1개월</th><th>제외 3개월</th></tr></thead><tbody>`+rows.filter(([k])=>RV[k]).map(([k,n])=>{const a=RV[k],b=RV[k+'_ex']||{};return `<tr><td class="l">${n}</td><td>${a.n}</td><td>${a.total_jo.toLocaleString()}</td><td class="${cl(a.m1)}">${f1(a.m1)}</td><td class="${cl(a.m3)}">${f1(a.m3)}</td><td>${a.up} / ${a.down}</td><td>${b.total_jo??'—'}</td><td class="${cl(b.m1)}">${f1(b.m1)}</td><td class="${cl(b.m3)}">${f1(b.m3)}</td></tr>`;}).join('')+`</tbody></table><p class="muted">컨센서스 기록 기준일 ${RV.asof}. 1개월·3개월 모두 같은 기업 묶음으로 비교합니다.</p>`;}
+ $('meta').innerHTML=`판단 기준일 <b>${M.asof}</b> · 자동 지표 갱신 ${(A.updated_at||'').replace('T',' ').slice(0,16)} KST`;
+ $('note').textContent=M.note;
+ $('srcs').innerHTML=M.sources.map(([t,u])=>`<li><a href="${u}" target="_blank" rel="noopener">${t}</a></li>`).join('');
+})();
+</script></body></html>

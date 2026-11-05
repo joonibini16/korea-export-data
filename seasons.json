@@ -1,0 +1,39 @@
+{
+ "asof": "2026-11-05",
+ "note": "실적·금리 수치는 발표 자료와 보도(아래 출처) 기준, 주가·추정치 변화·미국 금리는 매일 자동 갱신(seasons_auto.json). 판단은 Claude가 우라가미 구니오의 4계절 이론에 대입한 해석이며 투자 권유가 아닙니다.",
+ "countries": [
+  {
+   "id": "KR", "name": "한국", "index": "^KS11", "index2": "^KQ11",
+   "season": "autumn", "stage": "가을(역금융장세) 후반 · 반도체 외 업종은 겨울(역실적장세) 입구",
+   "position": 0.70,
+   "summary": "금리 인상(7·8월)이 주가 고점(6월 22일)과 겹친 뒤, 실적은 사상 최대인데도 주가가 40% 넘게 빠진 전형적인 역금융장세입니다. 다만 반도체 2사를 뺀 기업들의 이익 추정치가 1개월 새 줄고 있어, 이익 정점 이후의 겨울(역실적장세) 신호가 섞이기 시작했습니다.",
+   "rates": {"dir": "up", "label": "상승(긴축)", "facts": ["한국은행 7월·8월 연속 인상 → 기준금리 3.00%, 10월 22일 동결(11월 추가 인상 거론)", "국고채 3년물 9월 11일 4.018%로 3년여 만의 최고 → 11월 2일 3.740%로 일부 되돌림", "국고채 10년물 9월 4.55% 부근 → 11월 2일 4.034%"]},
+   "earnings": {"dir": "peak", "label": "사상 최대이나 정점 신호", "facts": ["코스피 3분기 영업이익 컨센서스 274조원, 전년 대비 +319%(반도체 202조원 +1,201%, 비반도체 72조원 +44%, 비반도체는 전분기 대비 −10%)", "삼성전자 3분기 영업이익 107.4조원: 컨센서스 대비 +0.7%(매출은 −2.8%), 전년 대비 +783%", "원화 강세로 이익 모멘텀 둔화, 대형 2사 쏠림(K자형) 보도"]},
+   "stocks": {"dir": "down", "label": "하락 추세"},
+   "watch": ["반도체 2사 2027년 이익 추정치가 꺾이는지(꺾이면 겨울 확정)", "11월 26일 금통위 인상 여부 — 인상 종료·동결 장기화 → 금리 하락 전환이 봄(금융장세)의 출발점", "국고채 3년물이 9월 고점(4.1%) 아래에서 하향 추세를 이어가는지", "200일선 상회 종목 비율 20% 이하 바닥권(시장 Breadth 탭)에서 반등이 나오는지"]
+  },
+  {
+   "id": "US", "name": "미국", "index": "^GSPC", "index2": "^IXIC",
+   "season": "summer", "stage": "여름(실적장세) 막바지 → 가을(역금융장세) 진입 초기",
+   "position": 0.47,
+   "summary": "이익은 3분기 연속 +25% 이상 늘고 있지만, 연준이 9월에 인상을 재개하고 10년물이 5%를 넘으면서 주가는 이익만큼 오르지 못하고 PER이 낮아지는 중입니다. 이익 증가를 금리 상승(PER 하락)이 상쇄하기 시작한 단계로, 실적장세에서 역금융장세로 넘어가는 경계입니다.",
+   "rates": {"dir": "up", "label": "상승(재긴축)", "facts": ["연준 9월 16일 인상(3.75~4.00%), 10월 28일 동결 — 2명은 인상 주장, 12월 인상 확률 약 86%(CME)", "10년물 10월 28일 5.05%(연중 고점 10월 5일 5.31%), 2년물 4.67%", "9월 CPI 3.7%(근원 2.6%)로 물가 재상승"]},
+   "earnings": {"dir": "up", "label": "강한 증가", "facts": ["S&P500 3분기 이익 증가율 +29.5%(10월 23일 FactSet, 10월 30일 약 +29%), 매출 +12.7%", "초기 발표 기업 84%가 EPS 예상 상회(5년 평균 78%)하지만 상회 폭 +2.6%로 평균(+7.5%)보다 작음", "4분기 +28.6%, 2026년 연간 +32.8% 예상 · 12개월 선행 PER 18.7배(5년 평균 19.8배) — 이익보다 PER이 먼저 줄어드는 중", "빅테크 설비투자 급증으로 아마존·메타·알파벳 잉여현금흐름 마이너스"]},
+   "stocks": {"dir": "flat", "label": "고점 부근 정체"},
+   "watch": ["12월 9일 FOMC 인상 여부와 10년물 5.3% 재돌파 여부", "4분기·2027년 이익 추정치 하향이 시작되는지(시작되면 가을 본격화)", "하이일드 스프레드가 400bp를 넘는지(신용 경계선)", "S&P500이 200일선을 이탈하는지"]
+  }
+ ],
+ "sources": [
+  ["FactSet · S&P 500 Q3 2026 초기 집계(Hossa 정리, 10월 16일)", "https://gethossa.com/news/q3-2026-earnings-season-sp-500-early-results"],
+  ["Motley Fool · FactSet 10월 23일 업데이트(+29.5%, PER 18.7)", "https://www.fool.com/investing/2026/10/30/here-s-what-the-s-and-p-500-did-the-last-2-times-its-earnings-grew-25-plus-for-3-straight-quarters/"],
+  ["Shattered · FactSet 10월 30일, 빅테크 현금흐름", "https://shattered.io/sp-500-q3-earnings-30-2-percent-big-tech-free-cash-flow-developers-2026/"],
+  ["IndraStra · 10월 FOMC 동결·국채 금리·CPI", "https://www.indrastra.com/2026/10/fed-holds-rates-steady-but-december.html"],
+  ["신한투자증권 · 코스피 3분기 실적 컨센서스(9월 29일)", "https://file.alphasquare.co.kr/media/pdfs/market-report/%EC%8B%A0%ED%95%9C20260929%EC%8B%A0%ED%95%9C%ED%88%AC%EC%9E%90%EC%A6%9D%EA%B6%8C.pdf"],
+  ["StockHub · 삼성전자 3분기 잠정실적과 컨센서스", "https://www.stockhub.kr/insights/view_1791420339349_rirmz2bfh-samsung-electronics-005930-cy26-q3-preliminary-earnings-20261008"],
+  ["SBS Biz · 3분기 실적 K자형 양극화(11월 4일)", "https://biz.sbs.co.kr/article/20000344207"],
+  ["한국금융신문 · 10월 금통위 3.00% 동결", "https://www.fntimes.com/html/view.php?ud=202610220949143753179ad43907_18"],
+  ["뉴스1 · 10월 통화정책방향(7·8월 연속 인상)", "https://www.news1.kr/economy/trend/6328320"],
+  ["SBS Biz · 국고채 3년물 4%대(9월 11일)", "https://biz.sbs.co.kr/amp/article/20000334138"],
+  ["SBS Biz · 국고채 금리(11월 2일)", "https://biz.sbs.co.kr/amp/article/20000343722"]
+ ]
+}
