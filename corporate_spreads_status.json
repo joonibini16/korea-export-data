@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-05T11:44:14+00:00",
+  "updated": "2026-11-05T12:37:17+00:00",
   "targets": 25,
   "bonds": {
     "CORZ": {
@@ -14,7 +14,8 @@
     },
     "APLD": {
       "name": "어플라이드 디지털",
-      "state": "error"
+      "state": "no matching traded issue",
+      "matches": 0
     },
     "CIFR": {
       "name": "사이퍼 마이닝",
@@ -212,8 +213,6 @@
       "matches": 0
     }
   },
-  "errors": [
-    "APLD: The read operation timed out "
-  ],
+  "errors": [],
   "rows": 7069
 }
