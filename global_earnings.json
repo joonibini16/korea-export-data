@@ -26964,6 +26964,13 @@
       "time": "장 마감 후 · 14:00 America/Los_Angeles(컨콜)",
       "event": "FY27 Q3 실적·컨퍼런스콜",
       "source": "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Sets-Conference-Call-for-Third-Quarter-Financial-Results/default.aspx"
+    },
+    {
+      "ticker": "WMT",
+      "date": "2026-11-19",
+      "time": "장 시작 전 · 07:00 America/Chicago(컨콜, 자료는 06:00 CT 공개)",
+      "event": "FY27 Q3 실적·컨퍼런스콜",
+      "source": "https://corporate.walmart.com/news/events/fy2027-q3-earnings-release"
     }
   ]
 }
