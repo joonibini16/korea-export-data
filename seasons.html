@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>4계절 국면 판단</title><script src="./shell.js?v=42"></script>
+<title>4계절 국면 판단</title><script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script><script src="./shell.js?v=42"></script>
 <style>:root{font-family:Arial,"Noto Sans KR",sans-serif}*{box-sizing:border-box}body{margin:0}main{max-width:1400px;margin:26px auto;padding:0 22px}.muted{font-size:13px;color:#93a3bd;line-height:1.65}
 .panel{border-radius:12px;padding:18px 20px;margin-bottom:18px}h2{font-size:19px;margin:0 0 8px}h3{font-size:16px;margin:4px 0 8px}
 .sea{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.sc{border-radius:12px;padding:14px 16px;border:1px solid #22314f;background:#0f1a31;position:relative}
@@ -13,6 +13,7 @@
 .ind{display:grid;grid-template-columns:86px 1fr;gap:6px 12px;margin:10px 0;border-top:1px solid #22314f;padding-top:10px}.ind .k{font-weight:800;font-size:13.5px}.ind .k small{display:block;font-weight:700;margin-top:2px}
 .ind ul{margin:0;padding-left:16px;font-size:13px;line-height:1.6;color:#cbd5e1}.auto{font-size:12.5px;color:#93c5fd;margin-top:4px}
 .kt{border-collapse:collapse;width:100%;font-size:13px;font-variant-numeric:tabular-nums}.kt th,.kt td{border-bottom:1px solid #22314f;padding:6px 8px;text-align:right}.kt th{color:#93a3bd;font-weight:600}.kt td.l,.kt th.l{text-align:left}
+.tl{display:flex;height:30px;border-radius:6px;overflow:hidden;margin:4px 0 2px 0;cursor:pointer}.tl div{display:flex;align-items:center;justify-content:center;font-size:11.5px;font-weight:800;color:#0b1220;white-space:nowrap;overflow:hidden;border-right:1px solid #0b1220}.tl div:hover{filter:brightness(1.15)}.tl div.sel{outline:2px solid #fff;outline-offset:-2px}.ev{font-size:13px;color:#e2e8f0;background:#0f1a31;border:1px solid #22314f;border-radius:8px;padding:8px 12px;margin:6px 0 14px;min-height:38px;line-height:1.6}.tly{display:flex;justify-content:space-between;font-size:11px;color:#64748b;margin-bottom:4px}
 .src a{color:#93c5fd}.src li{font-size:12.5px;line-height:1.7}
 </style><link rel="stylesheet" href="./shell.css?v=3"></head><body><main>
 <h1 data-upd="seasons.json,seasons_auto.json">우라가미 4계절 국면 판단 · 한국 vs 미국</h1>
@@ -25,6 +26,9 @@
 <section class="panel"><h2>현재 국면 — 순환도 위 위치</h2>
 <div class="wrap"><div id="wheel"></div><div><p class="muted" id="wheelTxt"></p><div id="autoTbl"></div></div></div></section>
 
+<section class="panel"><h2>2020년 이후 국면 흐름 — 지수와 계절</h2>
+<p class="muted">지수(로그 눈금) 배경색과 아래 띠가 그 시기의 계절입니다. 띠를 클릭하면 그 국면으로 판단한 근거가 나옵니다. <span id="histNote"></span></p>
+<div id="hist"></div></section>
 <div class="ctry" id="ctry"></div>
 
 <section class="panel"><h2>한국 이익 추정치 변화 (자동 · FnGuide 컨센서스 일별 기록)</h2>
@@ -74,6 +78,29 @@
  // 추정치 표
  if(RV.fy0){const rows=[['fy0',`올해(${RV.fy0.period}) 연간`],['fy1',`내년(${RV.fy1?.period||''}) 연간`],['nq',`다음 분기(${RV.nq?.period||''})`]];
   $('revTbl').innerHTML=`<table class="kt"><thead><tr><th class="l">구분</th><th>기업 수</th><th>합계(조원)</th><th>1개월 변화</th><th>3개월 변화</th><th>상향/하향(1개월)</th><th>대형 2사 제외 합계</th><th>제외 1개월</th><th>제외 3개월</th></tr></thead><tbody>`+rows.filter(([k])=>RV[k]).map(([k,n])=>{const a=RV[k],b=RV[k+'_ex']||{};return `<tr><td class="l">${n}</td><td>${a.n}</td><td>${a.total_jo.toLocaleString()}</td><td class="${cl(a.m1)}">${f1(a.m1)}</td><td class="${cl(a.m3)}">${f1(a.m3)}</td><td>${a.up} / ${a.down}</td><td>${b.total_jo??'—'}</td><td class="${cl(b.m1)}">${f1(b.m1)}</td><td class="${cl(b.m3)}">${f1(b.m3)}</td></tr>`;}).join('')+`</tbody></table><p class="muted">컨센서스 기록 기준일 ${RV.asof}. 1개월·3개월 모두 같은 기업 묶음으로 비교합니다.</p>`;}
+
+ // ── 2020년 이후 국면 흐름
+ const csvT=t=>{const L=t.trim().split(/\r?\n/),hd=L[0].replace(/^\uFEFF/,'').split(',');return L.slice(1).map(l=>{const v=l.split(',');return Object.fromEntries(hd.map((k,i)=>[k,v[i]]));});};
+ const txt=u=>fetch(u+'?v='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():'').catch(()=>'');
+ const [mt,sl,md]=await Promise.all([txt('market_turnover.csv'),txt('sp500_long.csv'),txt('market_daily.csv')]);
+ const IX={KR:new Map(),US:new Map()};
+ if(mt)for(const r of csvT(mt))if(r.market==='KOSPI'&&r.date>='2020-01-01'&&+r.close)IX.KR.set(r.date,+r.close);
+ if(sl)for(const r of csvT(sl))if(r.date>='2020-01-01'&&+r.close)IX.US.set(r.date,+r.close);
+ if(md)for(const r of csvT(md)){if(r.date<'2020-01-01'||!+r.close)continue;if(r.symbol==='^KS11')IX.KR.set(r.date,+r.close);else if(r.symbol==='^GSPC')IX.US.set(r.date,+r.close);}
+ $('histNote').textContent=M.history_note||'';
+ const HN={KR:'코스피',US:'S&P500'};
+ for(const c of M.countries){const H=(M.history||{})[c.id];if(!H)continue;
+  const S=[...IX[c.id]].sort((a,b)=>a[0].localeCompare(b[0]));if(!S.length)continue;const labels=S.map(x=>x[0]),vals=S.map(x=>x[1]),last=labels.at(-1);
+  const segs=H.map(([s,e,k,ev])=>{const e2=e==='today'?last:e;const i0=labels.findIndex(d=>d>=s),i1=labels.findLastIndex(d=>d<=e2);return {s,e:e2,k,ev,i0,i1};}).filter(x=>x.i0>=0&&x.i1>=x.i0);
+  const box=document.createElement('div');box.innerHTML=`<h3 style="color:${CC[c.id]};margin-top:10px">${c.name} · ${HN[c.id]}</h3><div style="position:relative;height:300px"><canvas></canvas></div><div class="tl"></div><div class="tly"><span>${labels[0].slice(0,4)}</span><span>${last}</span></div><div class="ev">띠를 클릭하면 국면 판단 근거가 나옵니다. 현재: <b>${c.stage}</b></div>`;$('hist').append(box);
+  const shade={id:'sea',beforeDatasetsDraw(ch){const x=ch.scales.x,a=ch.chartArea,g=ch.ctx;g.save();for(const s of segs){const x0=x.getPixelForValue(s.i0),x1=x.getPixelForValue(Math.min(s.i1+1,labels.length-1));g.fillStyle=byK[s.k].c+'2e';g.fillRect(x0,a.top,Math.max(1,x1-x0),a.bottom-a.top);}g.restore();}};
+  const ch=new Chart(box.querySelector('canvas'),{type:'line',data:{labels,datasets:[{label:HN[c.id],data:vals,borderColor:'#e2e8f0',backgroundColor:'#e2e8f0',borderWidth:1.6,pointRadius:0}]},plugins:[shade],
+   options:{responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:'index',intersect:false},plugins:{rightPad:false,rangeNav:false,legend:{display:false},tooltip:{callbacks:{afterLabel:it=>{const s=segs.find(s=>it.dataIndex>=s.i0&&it.dataIndex<=s.i1);return s?byK[s.k].t:'';},label:it=>` ${HN[c.id]} ${it.parsed.y.toLocaleString(undefined,{maximumFractionDigits:0})}`}}},
+    scales:{x:{ticks:{maxTicksLimit:8,callback:function(v){return this.getLabelForValue(v).slice(0,7).replace('-','.');}},grid:{display:false}},y:{type:'logarithmic',ticks:{maxTicksLimit:6,callback:v=>Number(v).toLocaleString()},grid:{color:'rgba(148,163,184,.10)'}}}}});
+  const tl=box.querySelector('.tl'),evb=box.querySelector('.ev'),n=labels.length;
+  segs.forEach((s,i)=>{const d=document.createElement('div');const w=(s.i1-s.i0+1)/n*100;d.style.width=w+'%';d.style.background=byK[s.k].c;d.textContent=w>5?byK[s.k].t.split(' · ')[0]:'';d.title=`${s.s} ~ ${s.e===last?'현재':s.e} · ${byK[s.k].t}`;
+   d.onclick=()=>{tl.querySelectorAll('div').forEach(x=>x.classList.remove('sel'));d.classList.add('sel');evb.innerHTML=`<b style="color:${byK[s.k].c}">${byK[s.k].t}</b> · ${s.s} ~ ${s.e===last?'현재':s.e} · ${HN[c.id]} ${vals[s.i0].toLocaleString(undefined,{maximumFractionDigits:0})} → ${vals[s.i1].toLocaleString(undefined,{maximumFractionDigits:0})} (${((vals[s.i1]/vals[s.i0]-1)*100).toFixed(1)}%)<br>${s.ev}`;ch.$sel=i;ch.update('none');};tl.append(d);});
+ }
  $('meta').innerHTML=`판단 기준일 <b>${M.asof}</b> · 자동 지표 갱신 ${(A.updated_at||'').replace('T',' ').slice(0,16)} KST`;
  $('note').textContent=M.note;
  $('srcs').innerHTML=M.sources.map(([t,u])=>`<li><a href="${u}" target="_blank" rel="noopener">${t}</a></li>`).join('');
