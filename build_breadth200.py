@@ -5,7 +5,7 @@
 - 주식 수가 하루 15% 넘게 바뀌면(분할·병합·무상증자) 이전 가격을 그 비율로 보정해 이동평균이 왜곡되지 않게 함
 - 200거래일 이상 시세가 쌓인 종목만 분모에 넣음
 출력 열: date, market, n(분모), above(200일선 위), pct(%)
-추가 출력 breadth_hl60.csv(2024~): 60일 종가 신고가·신저가 종목 수와 Breadth = (신고가−신저가)÷(신고가+신저가)×100
+추가 출력 breadth_hl60.csv(2020~): 60일 종가 신고가·신저가 종목 수와 Breadth = (신고가−신저가)÷(신고가+신저가)×100
 """
 import csv, gzip, json, pathlib
 from collections import deque
@@ -34,7 +34,7 @@ def main():
     H = {}  # (market, code) -> deque(최근 60 종가, 보정)
     for d in sorted(D):
         for m, recs in D[d].items():
-            n = above = 0; hn = nh = nl = 0; doHL = d >= '2024-01-01'
+            n = above = 0; hn = nh = nl = 0; doHL = d >= '2020-01-01'
             for code, close, sh in recs:
                 k = (m, code); w = W.get(k)
                 if w is None: w = W[k] = [deque(maxlen=N), sh, 0.0]
