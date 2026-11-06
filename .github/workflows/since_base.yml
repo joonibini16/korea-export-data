@@ -20,9 +20,9 @@ jobs:
       - run: python collect_since_base.py
       - run: |
           git config user.name github-actions; git config user.email github-actions@github.com
-          mkdir -p /tmp/sb && cp since_base*.json /tmp/sb/
+          mkdir -p /tmp/sb && cp since_base*.json /tmp/sb/ && cp -r intraday /tmp/sb/ 2>/dev/null || true
           for i in 1 2 3 4 5; do
-            git fetch -q origin main && git reset -q --hard origin/main && cp /tmp/sb/since_base*.json .
-            git add since_base*.json; git diff --cached --quiet && exit 0
+            git fetch -q origin main && git reset -q --hard origin/main && cp /tmp/sb/since_base*.json . && cp -r /tmp/sb/intraday . 2>/dev/null || true
+            git add since_base*.json intraday 2>/dev/null; git diff --cached --quiet && exit 0
             git commit -qm "Update since-base price change" && git push -q origin HEAD:main && exit 0; sleep $((i*4))
           done; exit 1
