@@ -23,8 +23,8 @@
    const all=[...ref,...chain.slice(1)];const last=all.at(-1);
    document.getElementById('n1').textContent=`일별 이력 · ${ref[0]?.d||''} ~ ${last?.d||''}`;
    document.getElementById('b1').innerHTML=`WoW <span class="${col(wow(all))}">${sg(wow(all))}</span>`;
-   const D1=[L('BADONION 지수(판독)',pts(ref),C.cy),L('자체 연결 지수(OpenRouter 가중평균 단가)',pts(chain),'#fbbf24',{borderDash:[5,3],pointRadius:chain.length<6?3:0})];new Chart(document.getElementById('c1'),{type:'line',data:{datasets:D1},
-    options:{...base(),scales:{x:timeAxis(D1),y:{title:{display:true,text:'Index'}}}}});
+   const one=[...ref.filter(x=>!chain.length||x.d<chain[0].d),...chain].sort((a,b)=>a.d.localeCompare(b.d));const D1=[L('LLM 토큰 지출 지수',pts(one),C.cy)];new Chart(document.getElementById('c1'),{type:'line',data:{datasets:D1},
+    options:(()=>{const o=base();o.plugins={...o.plugins,legend:{display:false}};return {...o,scales:{x:timeAxis(D1),y:{title:{display:true,text:'Index'}}}};})()});
    const o=own.at(-1),sp=ser(G,'or_spend_musd').at(-1),cv=ser(G,'or_priced_cover').at(-1);
    document.getElementById('f1').textContent=o?`최근 ${o.d}: 가중평균 단가 $${o.v.toFixed(3)}/백만 토큰 · 추정 일 지출 $${sp?sp.v.toFixed(2):'—'}M (가격 매칭 토큰 비중 ${cv?cv.v.toFixed(0):'—'}%)`:'자체 수집은 다음 실행부터 이어집니다.';}
   // 2) 토큰 사용량
