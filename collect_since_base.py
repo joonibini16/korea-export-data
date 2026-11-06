@@ -143,12 +143,12 @@ def intraday_snapshot(ic):
     """당일 주가 흐름: 수집할 때마다(장중 약 20분 간격) 전 종목 현재가를 한 점씩 쌓음 → intraday/latest.json
     날짜가 바뀌면 전날 파일을 intraday/YYYY-MM-DD.json.gz로 보관(지우지 않음)."""
     import gzip
-    P = ROOT / 'intraday'; P.mkdir(exist_ok=True); f = P / 'latest.json'
+    P = ROOT / 'intraday'; P.mkdir(exist_ok=True); FP = P / 'latest.json'
     rows = (_RANK.get('KOSPI') or []) + (_RANK.get('KOSDAQ') or [])
     ts = max((s.get('localTradedAt') or '') for s in rows) if rows else ''
     if not ts: return
     day, hm = ts[:10], ts[11:16]
-    J = json.loads(f.read_text()) if f.exists() else None
+    J = json.loads(FP.read_text()) if FP.exists() else None
     if J and J.get('date') != day:
         (P / f"{J['date']}.json.gz").write_bytes(gzip.compress(json.dumps(J, separators=(',', ':')).encode(), mtime=0)); J = None
     if not J: J = {'date': day, 't': [], 'base': {}, 'p': {}, 'name': {}, 'mkt': {}, 'idx': {}}
@@ -160,7 +160,7 @@ def intraday_snapshot(ic):
             if not c or not px: continue
             if c not in J['base'] and r is not None: J['base'][c] = round(px / (1 + r / 100))
             J['name'][c] = s.get('stockName'); J['mkt'][c] = m
-            a = J['p'].setdefault(c, []); a.extend([None] * (k - len(a))); a.append(px)
+            a = J['p'].setdefault(c, []); a.extend([None] * (k - len(a))); a.append(int(px) if px == int(px) else px)
         try:
             ij = json.loads(get(f'https://m.stock.naver.com/api/index/{m}/basic'))
             cur, ratio = f(ij.get('closePrice')), f(ij.get('fluctuationsRatio'))
@@ -168,7 +168,7 @@ def intraday_snapshot(ic):
             I['v'].extend([None] * (k - len(I['v']))); I['v'].append(cur)
         except Exception:
             pass
-    f.write_text(json.dumps(J, ensure_ascii=False, separators=(',', ':')))
+    FP.write_text(json.dumps(J, ensure_ascii=False, separators=(',', ':')))
     print('intraday', day, hm, len(J['p']))
 
 
