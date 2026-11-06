@@ -187,3 +187,14 @@ if __name__ == '__main__':
         print('today base skipped', e)
     for b, out in BASES.items():
         main(b, out, HI, CHG, ic)
+    # 당일 스냅샷의 기준가를 KRX 전일 종가(since_base_today.json)로 정확히 맞춤
+    try:
+        FP = ROOT / 'intraday' / 'latest.json'; J = json.loads(FP.read_text()); T = json.loads((ROOT / 'since_base_today.json').read_text())
+        for m, t in T['markets'].items():
+            c = t['columns']; ic_, ib = c.index('code'), c.index('base_close')
+            for r in t['rows']: J['base'][r[ic_]] = r[ib]
+        for m in ('KOSPI', 'KOSDAQ'):
+            if T['index'].get(m, {}).get('base') and m in J['idx']: J['idx'][m]['base'] = T['index'][m]['base']
+        FP.write_text(json.dumps(J, ensure_ascii=False, separators=(',', ':')))
+    except Exception as e:
+        print('intraday base fix skipped', e)
