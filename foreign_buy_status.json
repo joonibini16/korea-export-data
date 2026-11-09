@@ -1,5 +1,5 @@
 {
- "run": "2026-11-09T18:10:39+09:00",
+ "run": "2026-11-09T21:35:39+09:00",
  "steps": [
   {
    "step": "loader",
@@ -58,7 +58,7 @@
    "step": "build",
    "investor": "I",
    "days": 61,
-   "series": 2204
+   "series": 2205
   },
   {
    "step": "build",
@@ -70,7 +70,7 @@
    "step": "build",
    "investor": "P",
    "days": 61,
-   "series": 1672
+   "series": 1673
   },
   {
    "step": "build",
@@ -94,7 +94,7 @@
    "step": "build",
    "investor": "C",
    "days": 61,
-   "series": 1778
+   "series": 1779
   }
  ],
  "ok": true
