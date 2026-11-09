@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-09T17:40:24+0900",
+ "updated_at": "2026-11-10T05:41:11+0900",
  "range": [
   "2015.01",
   "2026.10"
@@ -10,7 +10,7 @@
   {
    "month": "2026.10",
    "market": "sii+otc",
-   "error": "NOT_IN_TABLE 1503,1519,2308,2327,2330,2351,2353,2454,3044,3645,3711,5340,5439,5469,5498"
+   "error": "NOT_IN_TABLE 1503,1519,2327,2330,2454,3044,3711,5439,5469,5498"
   }
  ],
  "coverage": [
@@ -169,13 +169,11 @@
   {
    "company_id": "2308",
    "name": "Delta Electronics",
-   "months": 141,
+   "months": 142,
    "expected": 142,
    "first": "2015.01",
-   "last": "2026.09",
-   "missing": [
-    "2026.10"
-   ]
+   "last": "2026.10",
+   "missing": []
   },
   {
    "company_id": "1519",
@@ -272,13 +270,11 @@
   {
    "company_id": "2353",
    "name": "Acer",
-   "months": 141,
+   "months": 142,
    "expected": 142,
    "first": "2015.01",
-   "last": "2026.09",
-   "missing": [
-    "2026.10"
-   ]
+   "last": "2026.10",
+   "missing": []
   },
   {
    "company_id": "2357",
@@ -415,13 +411,11 @@
   {
    "company_id": "5340",
    "name": "Baotek",
-   "months": 141,
+   "months": 142,
    "expected": 142,
    "first": "2015.01",
-   "last": "2026.09",
-   "missing": [
-    "2026.10"
-   ]
+   "last": "2026.10",
+   "missing": []
   },
   {
    "company_id": "8358",
@@ -491,13 +485,11 @@
   {
    "company_id": "3645",
    "name": "Taimide",
-   "months": 141,
+   "months": 142,
    "expected": 142,
    "first": "2015.01",
-   "last": "2026.09",
-   "missing": [
-    "2026.10"
-   ]
+   "last": "2026.10",
+   "missing": []
   },
   {
    "company_id": "3008",
@@ -529,13 +521,11 @@
   {
    "company_id": "2351",
    "name": "SDI Corporation",
-   "months": 141,
+   "months": 142,
    "expected": 142,
    "first": "2015.01",
-   "last": "2026.09",
-   "missing": [
-    "2026.10"
-   ]
+   "last": "2026.10",
+   "missing": []
   }
  ]
 }
