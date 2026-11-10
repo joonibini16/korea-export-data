@@ -1,0 +1,37 @@
+name: Active ETF holdings (PDF) daily
+on:
+  workflow_dispatch:
+    inputs:
+      pdf_from: {description: '과거 채우기 시작일 (YYYY-MM-DD)', required: false, default: ''}
+  push:
+    branches: [main]
+    paths: ['tools/collect_etf_pdf.py', '.github/workflows/etf_pdf.yml']
+permissions:
+  contents: write
+concurrency:
+  group: etf-pdf
+  cancel-in-progress: false
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: pip install -q requests
+      - run: python tools/collect_etf_pdf.py
+        continue-on-error: true
+        env:
+          KRX_ID: ${{ secrets.KRX_ID }}
+          KRX_PW: ${{ secrets.KRX_PW }}
+          PDF_FROM: ${{ github.event.inputs.pdf_from }}
+      - run: |
+          git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          mkdir -p /tmp/ep && cp -r etf_pdf etf_pdf_status.json /tmp/ep/ 2>/dev/null || true
+          for i in 1 2 3 4 5; do
+            git fetch -q origin main && git reset -q --hard origin/main
+            cp -r /tmp/ep/etf_pdf . 2>/dev/null; cp /tmp/ep/etf_pdf_status.json . 2>/dev/null || true
+            git add etf_pdf etf_pdf_status.json 2>/dev/null; git diff --cached --quiet && exit 0
+            git commit -qm "Update active ETF holdings" && git push -q origin HEAD:main && exit 0; sleep $((i*4))
+          done; exit 1
