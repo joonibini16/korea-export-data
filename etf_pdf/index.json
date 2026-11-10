@@ -1,0 +1,61 @@
+{
+ "updated_at": "2026-11-10T14:23:40+09:00",
+ "etfs": [
+  {
+   "code": "0243M0",
+   "name": "DS AI반도체액티브",
+   "label": "DS AI반도체액티브",
+   "days": 21,
+   "last": "2026-11-10"
+  },
+  {
+   "code": "0163Y0",
+   "name": "KoAct 코스닥액티브",
+   "label": "KoAct 코스닥액티브",
+   "days": 25,
+   "last": "2026-11-10"
+  },
+  {
+   "code": "0162Y0",
+   "name": "TIME 코스닥액티브",
+   "label": "TIME 코스닥액티브",
+   "days": 25,
+   "last": "2026-11-10"
+  },
+  {
+   "code": "0204S0",
+   "name": "TIGER 코스닥액티브",
+   "label": "TIGER 코스닥액티브",
+   "days": 25,
+   "last": "2026-11-10"
+  },
+  {
+   "code": "0220B0",
+   "name": "DS 코스닥액티브",
+   "label": "DS 코스닥액티브",
+   "days": 25,
+   "last": "2026-11-10"
+  },
+  {
+   "code": "422420",
+   "name": "RISE 2차전지액티브",
+   "label": "RISE 2차전지액티브",
+   "days": 25,
+   "last": "2026-11-10"
+  },
+  {
+   "code": "471780",
+   "name": "TIGER 코리아테크액티브",
+   "label": "TIGER 코리아테크액티브",
+   "days": 25,
+   "last": "2026-11-10"
+  },
+  {
+   "code": "0191B0",
+   "name": "MIDAS 코스닥액티브",
+   "label": "MIDAS 코스닥액티브",
+   "days": 25,
+   "last": "2026-11-10"
+  }
+ ]
+}
