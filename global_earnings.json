@@ -27233,6 +27233,201 @@
       },
       "call_source": "https://investors.ontoinnovation.com/",
       "call_source_label": "Onto Innovation IR(컨콜 웹캐스트 — 녹취록 미확인)"
+    },
+    {
+      "ticker": "IFX.DE",
+      "period": "FY26 Q4",
+      "date": "2026-11-10",
+      "evidence": "Infineon 공식 Q4·FY2026 실적 보도자료(EQS News 공식 배포, 11/10 07:30 CET, 미감사) 확인 · 직전 Q3 공식 보도자료(8/4)의 Q4·연간 가이던스 대조 · 전년 Q4 수치는 FY2025 공식 보도자료 기준",
+      "direction": "개선",
+      "headline": "Q4 매출 €4.71bn(+13% QoQ, +19% YoY)·부문이익률 23.8%로 가이던스 부합·상회 · FY27 매출 약 €20bn(+20% 초과)·부문이익률 20%대 중반 제시, 데이터센터 전력 매출 €4bn 근접",
+      "estimate_signal": "Q4 매출 €4,706m로 Q3 때 가이던스(약 €4.7bn) 부합, 부문이익률 23.8%로 가이던스(약 23%) 상회. 발표 전 컨센서스 대비 Q4 매출 −0.2%(부합), 조정 EPS €0.60 vs €0.63 → −4.2% 하회(Yahoo 컨센서스, 발표 전 11/10 스냅샷). 새 가이던스: Q1 FY27 매출 약 €4.6bn vs €4.67bn → −1.5% 하회, FY27 매출 약 €20bn vs €20.0bn → 부합(Yahoo 컨센서스, 발표 전 11/10 스냅샷). 이익률(20%대 중반, +약 5%p YoY)은 상향 요인이나 매출 추정치는 대체로 유지 방향",
+      "call_coverage": "공식 Q&A 녹취록 미확인 — 애널리스트 콜은 11/10 09:30 CET 진행, 반영 시점에 공식 녹취록 미확인. 보도자료 기준으로 먼저 반영하고 Q&A 톤은 추정하지 않음",
+      "summary": {
+        "basis": "공식 보도자료 기준(EQS 배포, 미감사) · 컨콜 녹취록 미확인",
+        "items": [
+          {
+            "label": "매출",
+            "text": "Q4 €4,706m으로 분기 최대, +13% QoQ, +19% YoY · FY26 €16,353m(+12% YoY)",
+            "sub": "Q4 가이던스 약 €4.7bn 부합, FY26 가이던스 약 €16.3bn 부합"
+          },
+          {
+            "label": "이익률",
+            "text": "Q4 부문이익률 23.8%(Q3 19.1%, 1년 전 18.2%), 조정 EPS €0.60(+36% QoQ)",
+            "sub": "Q4 부문이익률 가이던스 약 23% 상회 · FY26 부문이익률 19.7%로 가이던스 약 20% 소폭 하회"
+          },
+          {
+            "label": "Q1 FY27 가이던스",
+            "text": "매출 약 €4.6bn(QoQ 거의 보합), 부문이익률 약 23%",
+            "cons": "매출 €4.6bn vs €4.67bn → −1.5% 하회(Yahoo 컨센서스, 발표 전 11/10 스냅샷) · EPS 가이던스 없음"
+          },
+          {
+            "label": "FY27 가이던스",
+            "text": "매출 약 €20bn(+20% 초과 YoY), 부문이익률 20%대 중반, 데이터센터 전력 매출 €4bn 근접",
+            "cons": "매출 €20.0bn vs €20.0bn → 부합(Yahoo 컨센서스, 발표 전 11/10 스냅샷) · EPS 가이던스 없음"
+          }
+        ],
+        "cautions": [
+          "Q1 FY27 매출이 QoQ 거의 보합(약 €4.6bn)으로 Q4의 +13% QoQ에서 급감속, ES 부문은 완만한 감소 전망",
+          "FY27 투자 €3.0~3.5bn(Q4만 €931m)으로 늘어 FY27 FCF 약 €1.8bn에 그침 · 순차입 €4.7bn",
+          "Q4 조정 EPS €0.60은 발표 전 컨센서스 €0.63을 하회"
+        ],
+        "take": "AI 데이터센터 전력(800V DC·GaN·SiC)이 성장을 끌고 이익률이 20%대 중반으로 오르는 '수익성 레벨업' 가이던스. 매출 숫자는 이미 컨센서스에 반영돼 있어 서프라이즈는 이익률 쪽이며, 국내 전력반도체·SiC 소재·AI 서버 전원 부품 업체에는 수요 지속 신호"
+      },
+      "changes": [
+        {
+          "title": "Q4 실적 vs 가이던스",
+          "direction": "개선",
+          "before": "Q3 발표(8/4) 때 Q4 가이던스: 매출 약 €4.7bn(+13% 남짓 QoQ), 부문이익률 약 23%(EUR/USD 1.15 가정).",
+          "now": "Q4 실적: 매출 €4,706m(+13% QoQ, +19% YoY), 부문이익 €1,119m(+40% QoQ), 부문이익률 23.8%, 조정 매출총이익률 45.1%(Q3 42.8%), 조정 EPS €0.60.",
+          "meaning": "매출은 가이던스 부합, 이익률은 가이던스를 0.8%p 상회.",
+          "rows": [
+            {
+              "item": "매출",
+              "before": "약 €4.7bn",
+              "now": "€4,706m",
+              "delta": "부합",
+              "tone": "neutral"
+            },
+            {
+              "item": "부문이익률",
+              "before": "약 23%",
+              "now": "23.8%",
+              "delta": "+0.8%p",
+              "tone": "good"
+            }
+          ]
+        },
+        {
+          "title": "FY26 연간 vs 가이던스",
+          "direction": "유지",
+          "before": "Q3 발표 때 FY26 가이던스: 매출 약 €16.3bn, 부문이익률 약 20%, 조정 FCF 약 €1.85bn, FCF 약 €0.9bn, 투자 약 €2.7bn.",
+          "now": "FY26 실적: 매출 €16,353m(+12% YoY), 부문이익 €3,223m·이익률 19.7%, 조정 EPS €1.73(FY25 €1.39), 조정 FCF €1,925m, FCF €993m.",
+          "meaning": "매출 부합, 이익률 소폭 하회, 현금흐름은 가이던스 상회.",
+          "rows": [
+            {
+              "item": "매출",
+              "before": "약 €16.3bn",
+              "now": "€16,353m",
+              "delta": "부합",
+              "tone": "neutral"
+            },
+            {
+              "item": "부문이익률",
+              "before": "약 20%",
+              "now": "19.7%",
+              "delta": "−0.3%p",
+              "tone": "bad"
+            },
+            {
+              "item": "조정 FCF",
+              "before": "약 €1.85bn",
+              "now": "€1,925m",
+              "delta": "+€75m",
+              "tone": "good"
+            },
+            {
+              "item": "FCF",
+              "before": "약 €0.9bn",
+              "now": "€993m",
+              "delta": "+€93m",
+              "tone": "good"
+            }
+          ]
+        },
+        {
+          "title": "FY27 가이던스(신규)",
+          "direction": "개선",
+          "before": "FY26: 매출 €16,353m, 부문이익률 19.7%, 조정 매출총이익률 40%대 초중반 가이던스, 투자 약 €2.7bn 가이던스.",
+          "now": "FY27: 매출 약 €20bn(+20% 초과 YoY), 데이터센터 전력 매출 €4bn 근접, 부문이익률 20%대 중반, 조정 매출총이익률 40%대 중후반, 투자 €3.0~3.5bn, 조정 FCF 약 €2.2bn, FCF 약 €1.8bn. 부문별 성장: ATV 10%대 중반, ES 10%대 초반, PS는 그룹보다 훨씬 빠르게.",
+          "meaning": "이익률이 약 5%p 오르는 가이던스. 매출 중간값은 컨센서스와 같아 매출보다 이익률이 상향 포인트.",
+          "rows": [
+            {
+              "item": "Q1 FY27 매출 vs 컨센서스",
+              "before": "€4.67bn",
+              "now": "약 €4.6bn",
+              "delta": "−1.5%",
+              "tone": "bad"
+            },
+            {
+              "item": "FY27 매출 vs 컨센서스",
+              "before": "€20.0bn",
+              "now": "약 €20bn",
+              "delta": "부합",
+              "tone": "neutral"
+            }
+          ]
+        }
+      ],
+      "facts": "Q4 FY26(7~9월): 매출 €4,706m(+13% QoQ, Q3 €4,172m; +19% YoY, Q4 FY25 €3,943m). 매출총이익률 41.8%(조정 45.1%). 부문이익 €1,119m·이익률 23.8%(Q3 19.1%, Q4 FY25 18.2%). 영업이익 €775m(Q3 €594m). 순이익 €532m, 계속사업 EPS 기본 €0.41·희석 €0.40, 조정 희석 EPS €0.60(Q3 €0.44). 투자 €931m(Q3 €514m), 감가상각 €499m. FCF €656m, 영업현금흐름 €2,171m(ams OSRAM 센서 사업 인수대금 €564m 지급 후). 총현금 €2,137m, 차입금 €6,850m, 순현금 −€4,713m. FY26: 매출 €16,353m(+12% YoY), 부문이익 €3,223m(19.7%), 조정 EPS €1.73, FCF €993m, 조정 FCF €1,925m. 배당 제안 주당 €0.38(+€0.03, 총 약 €494m, 2027/2/25 주총). 7/1부로 부문을 ATV·ES·PS로 재편.",
+      "guidance": "Q1 FY27(EUR/USD 1.15 가정): 매출 약 €4.6bn(QoQ 거의 보합), 부문이익률 약 23%; ATV·PS 매출 안정, ES 완만한 감소. FY27: 매출 약 €20bn(+20% 초과), 데이터센터 전력 매출 €4bn 근접, 부문이익률 20%대 중반, 조정 매출총이익률 40%대 중후반, 투자 €3.0~3.5bn, 감가상각 약 €2.2bn, 조정 FCF 약 €2.2bn, FCF 약 €1.8bn, RoCE 10%대 초반. Winbond에 NOR Flash·F-RAM 매각(2027년 하반기 완료 예상)은 미반영, 완료 시 FCF 최대 €1bn 추가.",
+      "tone": "보도자료 기준: CEO(Jochen Hanebeck)는 또 한 번의 최대 분기로 회계연도를 마쳤고 FY27 매출·수익성의 큰 폭 성장을 기대한다고 밝힘. 성장 축으로 AI 데이터센터 전력, 소프트웨어 정의 차량, 에너지 인프라 확충·현대화, 로보틱스·엣지 AI를 언급. 공식 Q&A 녹취록 미확인으로 질의응답 톤은 판단하지 않음.",
+      "interpretation": "분석: 분기 매출이 Q4 FY25 €3.94bn → Q3 €4.17bn → Q4 €4.71bn으로 올라오고 부문이익률이 18.2% → 23.8%로 뛰며 '물량 회복 + 가동률 레버리지'가 확인됨. FY27 가이던스는 매출이 컨센서스와 같은 대신 이익률(20%대 중반)과 데이터센터 전력 매출(€4bn 근접, 그룹 매출의 약 20%)이 핵심. 다만 Q1 FY27 매출이 보합으로 컨센서스를 1.5% 밑돌아 단기 모멘텀은 숨 고르기. 한국 관점: AI 서버 전원(800V DC·GaN) 확산은 국내 전력반도체·SiC 웨이퍼·서버 파워 부품 업체에 우호적이고, 차량용(ATV +10%대 중반) 회복은 현대차·기아 전장 공급망 수요와 연결. 반면 투자 확대(€3.0~3.5bn)는 장비 발주 측면에서 우호적이나 Infineon 자체 FCF는 부담.",
+      "watch": "분석: 컨콜(11/10 09:30 CET)에서 Q1 보합의 원인(계절성·ES 재고·환율), 데이터센터 전력 매출 €4bn의 분기 경로와 GaN/SiC 비중, 차량용 수주·재고 정상화, 투자 €3.0~3.5bn 중 300mm GaN·SiC 증설 내역, Winbond 매각 일정. Q1 부문이익률 약 23% 달성과 FY27 '20%대 중반' 경로.",
+      "source": "https://www.eqs-news.com/news/corporate/infineon-closes-fy-2026-with-record-quarter-expects-revenue-growth-of-more-than-20-percent-and-a-5-percentage-point-increase-in-profitability-for-fy-2027/636d4c88-b664-4e1f-b9e9-d175692c88dd_en",
+      "source_label": "Infineon Q4·FY2026 공식 실적 보도자료(EQS News 배포, 11/10)",
+      "prior_source": "https://www.eqs-news.com/news/corporate/infineon-technolgies-ag-q3-fy-2026-concluded-with-record-sales-driven-by-strong-ai-business-further-significant-increase-in-revenue-and-margin-expected-in-q4-fy-2026/6dcee75d-16f0-414e-af63-1f6e3442ef7a_en",
+      "prior_source_label": "Infineon Q3 FY2026 공식 실적 보도자료(EQS News 배포, Q4·FY26 가이던스)",
+      "verified_at": "2026-11-10",
+      "call_topics": [
+        {
+          "topic": "분기 실적과 가이던스",
+          "source_part": "공식 보도자료",
+          "points": [
+            "Q4 매출 €4,706m(+13% QoQ)으로 가이던스 약 €4.7bn 부합, 부문이익률 23.8%로 가이던스 약 23% 상회.",
+            "Q1 FY27 매출 약 €4.6bn·부문이익률 약 23%, FY27 매출 약 €20bn·부문이익률 20%대 중반 제시."
+          ],
+          "implication": "Q1 보합 이후 FY27 +20% 성장의 하반기 쏠림 정도."
+        },
+        {
+          "topic": "성장 동인",
+          "source_part": "공식 보도자료",
+          "points": [
+            "FY27 데이터센터 전력 매출 €4bn 근접 전망.",
+            "부문별 FY27 성장: ATV 10%대 중반, ES 10%대 초반, PS는 그룹 평균보다 훨씬 빠르게.",
+            "투자 €3.0~3.5bn으로 FY26보다 확대."
+          ],
+          "implication": "AI 전력 수요 지속성과 증설 투자 대비 현금흐름."
+        }
+      ],
+      "call_readthrough": {
+        "scope": "공식 Q4·FY2026 보도자료(EQS 배포)를 한국어로 재서술. 애널리스트 콜(11/10 09:30 CET) 녹취록은 반영 시점에 미확인 — 다음 회차에 공식 자료로 보강.",
+        "groups": [
+          {
+            "title": "경영진 코멘트",
+            "items": [
+              {
+                "title": "최대 분기",
+                "body": "FY26을 또 한 번의 최대 분기로 마쳤고, 강한 모멘텀이 이어져 FY27 매출과 수익성이 크게 늘 것으로 봤다."
+              },
+              {
+                "title": "AI 데이터센터 전력",
+                "body": "FY27 데이터센터 전력 공급 관련 매출이 €4bn에 가까울 것으로 제시했다.",
+                "meaning": "분석: 그룹 매출의 약 20%로 커지는 핵심 성장축."
+              },
+              {
+                "title": "차량·산업",
+                "body": "소프트웨어 정의 차량과 에너지 인프라 확충·현대화를 성장 축으로 언급했고, FY27 ATV는 10%대 중반, ES는 10%대 초반 성장을 예상했다."
+              },
+              {
+                "title": "자본 배분",
+                "body": "FY27 투자 €3.0~3.5bn, 배당은 주당 €0.38로 €0.03 올리기로 제안했다. Winbond에 NOR Flash·F-RAM 사업 매각이 완료되면 FCF가 최대 €1bn 늘 수 있다고 밝혔다."
+              }
+            ]
+          },
+          {
+            "title": "Q&A 핵심",
+            "items": [
+              {
+                "title": "녹취록 미확인",
+                "body": "애널리스트 콜은 11/10 09:30 CET 진행으로 반영 시점에 공식 녹취록을 확인하지 못했다. 확인 후 Q&A 내용을 보강하며, 그 전까지 질의응답 톤은 추정하지 않는다."
+              }
+            ]
+          }
+        ]
+      },
+      "call_source": "https://www.infineon.com/about/investor",
+      "call_source_label": "Infineon IR(애널리스트 콜 — 녹취록 미확인)"
     }
   ],
   "upcoming": [
@@ -27249,13 +27444,6 @@
       "time": "장 마감 후 · 17:00 America/New_York(컨콜)",
       "event": "2026 Q3 실적·컨퍼런스콜",
       "source": "https://investors.coreweave.com/news/news-details/2026/CoreWeave-Announces-Date-of-Third-Quarter-2026-Financial-Results-and-Conference-Call/default.aspx"
-    },
-    {
-      "ticker": "IFX.DE",
-      "date": "2026-11-10",
-      "time": "시간 미공지(Europe/Berlin) · 잠정 일정",
-      "event": "FY26 Q4·연간 실적 발표",
-      "source": "https://www.infineon.com/assets/row/public/documents/corporate/press/2026/infpr202608-125e.pdf"
     },
     {
       "ticker": "2897.T",
