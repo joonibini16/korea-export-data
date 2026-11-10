@@ -22,6 +22,9 @@ TARGETS = [
     ('RISE 2차전지액티브', r'^RISE2차전지액티브'),
     ('TIGER 코리아테크액티브', r'^TIGER코리아테크액티브'),
     ('MIDAS 코스닥액티브', r'^MIDAS코스닥액티브'),
+    ('HANARO 반도체핵심공정주도주', r'^HANARO반도체핵심공정'),
+    ('PLUS AI반도체소부장액티브', r'^PLUSAI반도체소부장'),
+    ('PLUS 태양광&ESS', r'^PLUS태양광'),
 ]
 st = {'run': dt.datetime.now(KST).isoformat(timespec='seconds'), 'resolved': {}, 'errors': []}
 num = lambda s: float(str(s).replace(',', '')) if re.fullmatch(r'-?[\d,]+(\.\d+)?', str(s or '').strip()) else None
@@ -57,6 +60,8 @@ def main():
         while d0 <= dt.datetime.now(KST).date():
             if d0.weekday() < 5: days.append(d0.strftime('%Y%m%d'))
             d0 += dt.timedelta(days=1)
+    now = dt.datetime.now(KST); today = now.strftime('%Y%m%d'); closed = now.hour >= 16
+    if not closed: days = [d for d in days if d < today]  # 장중에는 당일 자료를 받지 않음(장 마감 후에만 반영)
     index = []
     for label, pat in TARGETS:
         hit = [m for m in M if re.search(pat, norm(m[0]), re.I)]
@@ -66,6 +71,11 @@ def main():
         st['resolved'][label] = [nm, code]
         f = OUT / f'{code}.json'
         J = json.loads(f.read_text()) if f.exists() else {'code': code, 'name': nm, 'label': label, 'dates': [], 'w': {}, 'names': {}}
+        tds = f'{today[:4]}-{today[4:6]}-{today[6:]}'
+        if closed and tds in J['dates'] and tds not in J.get('closed', []):  # 장중에 받은 당일 자료는 장 마감 후 다시 받음
+            i = J['dates'].index(tds); J['dates'].pop(i)
+            for a in J['w'].values():
+                if len(a) > i: a.pop(i)
         have = set(J['dates'])
         for d in days:
             ds = f'{d[:4]}-{d[4:6]}-{d[6:]}'
@@ -77,6 +87,7 @@ def main():
             if not rows: continue
             tot = sum(r[3] or 0 for r in rows)
             k = len(J['dates']); J['dates'].append(ds)
+            if closed or d < today: J.setdefault('closed', []).append(ds)
             for c, n, w, amt in rows:
                 key = c or n
                 if w is None and tot: w = (amt or 0) / tot * 100
