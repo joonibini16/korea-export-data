@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>테마 ETF 보드</title><script src="./shell.js?v=43"></script>
+<title>테마 ETF 보드</title><script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script><script src="./shell.js?v=43"></script>
 <style>
 :root{font-family:Arial,"Noto Sans KR",sans-serif}*{box-sizing:border-box}body{margin:0}main{max-width:1500px;margin:26px auto;padding:0 22px}
 .muted{font-size:13px;color:#93a3bd}.bar{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin:0 0 14px}
@@ -16,21 +16,33 @@
 .card .ft{display:flex;gap:10px;font-size:11.5px;color:#93a3bd;margin-top:6px;flex-wrap:wrap}.stale{color:#f59e0b}
 .sum{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:14px}.sum .panel{background:#111d36;border:1px solid #22314f;border-radius:12px;padding:12px 14px}.sum h3{margin:0 0 8px;font-size:14px}.sum .rk{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13px}
 @media(max-width:1250px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:900px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.sum{grid-template-columns:1fr}}@media(max-width:560px){.grid{grid-template-columns:1fr}main{padding:0 16px}}
-</style>
+.kt.ea{border-collapse:collapse;width:100%;font-size:13px;font-variant-numeric:tabular-nums}.kt.ea th,.kt.ea td{border-bottom:1px solid #22314f;padding:6px 8px;text-align:right;white-space:nowrap}.kt.ea th{color:#93a3bd;font-weight:600;cursor:pointer;position:sticky;top:0;background:#16223f}.kt.ea th.sorted{color:#e2e8f0}.kt.ea .l{text-align:left}.kt.ea .up{color:#f87171}.kt.ea .dn{color:#60a5fa}#actWrap select{background:#0f1a31;color:#e2e8f0;border:1px solid #2a3a5c;border-radius:8px;padding:5px 8px}.ea-sum .up{color:#f87171}.ea-sum .dn{color:#60a5fa}</style>
 <link rel="stylesheet" href="./shell.css?v=3">
 </head><body><main>
 <h1>테마 ETF 보드</h1>
-<div class="seg rg" id="rg" style="margin:0 0 12px"><button data-r="kr" class="on">국내기업 ETF</button><button data-r="gl">해외기업 ETF</button></div>
+<div class="seg rg" id="rg" style="margin:0 0 12px"><button data-r="kr" class="on">국내기업 ETF</button><button data-r="gl">해외기업 ETF</button><button data-r="act">액티브 ETF 비중 변화</button></div>
+<div id="boardWrap">
 <p class="muted">국내 상장 테마 ETF의 최근 흐름(선)과 당일 등락률, 상위 5개 구성종목의 당일 등락률을 한 화면에 모았습니다. 가로선은 선택 기간 첫날 종가입니다. 등락률이 ±5% 이상인 종목은 색으로 강조합니다(상승 빨강·하락 초록 배경).</p>
 <div class="bar"><span class="muted">기간</span><div class="seg" id="per"><button data-d="20">1개월</button><button data-d="60">3개월</button><button data-d="120" class="on">6개월</button></div>
 <span class="muted">정렬</span><div class="seg" id="sort"><button data-s="def" class="on">기본</button><button data-s="chg">당일 등락률</button><button data-s="ret">기간 수익률</button></div><span class="muted" id="asof"></span></div>
 <div class="sum"><div class="panel"><h3>당일 강한 테마</h3><div class="rk" id="topUp"></div></div><div class="panel"><h3>당일 약한 테마</h3><div class="rk" id="topDn"></div></div></div>
 <div class="grid" id="grid"></div>
 <p class="muted" id="foot"></p>
+</div>
+<div id="actWrap" hidden>
+<p class="muted">액티브 ETF는 운용역이 종목 비중을 매일 바꿀 수 있어, 비중 변화가 곧 운용사의 매매 방향입니다. KRX에 매일 공시되는 구성종목(PDF) 전체를 기록해 두 날짜의 비중을 비교합니다. 비중 변화에는 주가 등락 효과(오른 종목은 비중이 저절로 커짐)도 섞여 있으니 5·20거래일 흐름과 함께 보세요.</p>
+<div class="seg ea-etfs" style="margin:6px 0 10px;flex-wrap:wrap"></div>
+<div class="bar"><span class="muted">비교</span><select id="eaA"></select><span class="muted">→</span><select id="eaB"></select>
+<div class="seg"><button data-q="1">전일 대비</button><button data-q="5">5거래일</button><button data-q="20">20거래일</button><button data-q="all">기록 전체</button></div></div>
+<p class="ea-sum" style="margin:8px 0"></p>
+<div class="ea-body"><div class="panel"><h3>비중 추이 (표에서 체크한 종목)</h3><div style="position:relative;height:320px"><canvas id="eaChart"></canvas></div></div>
+<div class="panel" style="margin-top:12px;overflow:auto;max-height:640px"><table class="kt ea" id="eaTbl"></table></div></div>
+<p class="muted">원본: KRX 정보데이터시스템 ETF 구성종목(PDF) 일별 공시. 매일 18:10 무렵 자동 수집합니다. 현금·선물 등 종목이 아닌 구성도 포함될 수 있습니다.</p>
+</div>
 </main>
 <script>
 (function(){
- let D=null,days=120,sort='def',rg=new URLSearchParams(location.search).get('region')==='global'?'gl':'kr';
+ let D=null,days=120,sort='def',rg=({global:'gl',active:'act'})[new URLSearchParams(location.search).get('region')]||'kr';
  // 해외기업 ETF: 이름에 해외 지역·기업이 들어가거나, 구성종목(공시 상위) 비중의 30% 이상이 해외 상장 종목(국내 6자리 코드 없음)
  const GL=/미국|글로벌|차이나|중국|일본|아시아|한중|TSMC|엔비디아|나스닥|S&P|유럽|인도|베트남|대만/;
  const isGl=e=>{if(GL.test(e.name))return true;const hs=e.holdings||[];let f=0,t=0;for(const h of hs){const w=h.weight||0;t+=w;if(!/^[0-9A-Z]{6}$/.test(h.code||''))f+=w;}return t>0&&f/t>=0.3;};
@@ -51,12 +63,13 @@
   const ok=list().filter(e=>e.chg!=null).sort((a,b)=>b.chg-a.chg);const chip=e=>`<span>${esc(e.name)} <b class="chg ${cls(e.chg)}">${fmt(e.chg)}</b></span>`;
   document.getElementById('topUp').innerHTML=ok.slice(0,5).map(chip).join('');document.getElementById('topDn').innerHTML=ok.slice(-5).reverse().map(chip).join('');}
  const rgb=document.querySelectorAll('#rg button');const setRg=()=>{rgb.forEach(x=>x.classList.toggle('on',x.dataset.r===rg));if(D){const n=D.etfs.filter(isGl).length;rgb[0].textContent=`국내기업 ETF (${D.etfs.length-n})`;rgb[1].textContent=`해외기업 ETF (${n})`;}};
- rgb.forEach(b=>b.onclick=()=>{rg=b.dataset.r;const u=new URL(location.href);if(rg==='gl')u.searchParams.set('region','global');else u.searchParams.delete('region');history.replaceState(null,'',u);setRg();render();});
+ const showAct=on=>{document.getElementById('boardWrap').hidden=on;document.getElementById('actWrap').hidden=!on;if(on&&window.__etfActive)window.__etfActive();};
+ rgb.forEach(b=>b.onclick=()=>{rg=b.dataset.r;const u=new URL(location.href);if(rg==='gl')u.searchParams.set('region','global');else if(rg==='act')u.searchParams.set('region','active');else u.searchParams.delete('region');history.replaceState(null,'',u);setRg();if(rg==='act')return showAct(true);showAct(false);render();});
  for(const b of document.querySelectorAll('#per button'))b.onclick=()=>{days=Number(b.dataset.d);document.querySelectorAll('#per button').forEach(x=>x.classList.toggle('on',x===b));render();};
  for(const b of document.querySelectorAll('#sort button'))b.onclick=()=>{sort=b.dataset.s;document.querySelectorAll('#sort button').forEach(x=>x.classList.toggle('on',x===b));render();};
  fetch('etf_board.json?v='+Date.now(),{cache:'no-store'}).then(r=>r.json()).then(j=>{D=j;
   document.getElementById('asof').textContent=`기준일 ${j.asof||'—'} · 수집 ${String(j.updated_at||'').replace('T',' ').slice(0,16)}`;
-  document.getElementById('foot').textContent=`등락률은 전일 종가 대비(%). 괄호는 하락. 장중 수집분은 수집 시점 가격 기준이며, 평일 15:45 수집으로 종가가 확정됩니다. 구성종목은 운용사 공시 상위 비중 순(네이버 증권 ETF 분석). 종목에 마우스를 올리면 비중이 보입니다. 해외기업 ETF = 이름에 해외 지역·기업이 들어가거나 상위 구성종목 비중의 30% 이상이 해외 상장 종목인 ETF(국내 상장, 원화 거래). 해외 구성종목 등락률은 해당 시장의 직전 거래일 기준입니다.${j.failures?.length?' · 수집 실패: '+j.failures.map(f=>f.name).join(', '):''}`;setRg();render();})
+  document.getElementById('foot').textContent=`등락률은 전일 종가 대비(%). 괄호는 하락. 장중 수집분은 수집 시점 가격 기준이며, 평일 15:45 수집으로 종가가 확정됩니다. 구성종목은 운용사 공시 상위 비중 순(네이버 증권 ETF 분석). 종목에 마우스를 올리면 비중이 보입니다. 해외기업 ETF = 이름에 해외 지역·기업이 들어가거나 상위 구성종목 비중의 30% 이상이 해외 상장 종목인 ETF(국내 상장, 원화 거래). 해외 구성종목 등락률은 해당 시장의 직전 거래일 기준입니다.${j.failures?.length?' · 수집 실패: '+j.failures.map(f=>f.name).join(', '):''}`;setRg();if(rg==='act'){showAct(true);}else render();})
  .catch(()=>{document.getElementById('grid').innerHTML='<p class="muted">ETF 데이터를 아직 수집하지 못했습니다.</p>';});
 })();
-</script></body></html>
+</script><script src="./etf_active.js?v=1"></script></body></html>
