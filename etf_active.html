@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>액티브 ETF 구성비율 변화</title><script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script><script src="./shell.js?v=44"></script>
+<style>:root{font-family:Arial,"Noto Sans KR",sans-serif}*{box-sizing:border-box}body{margin:0}main{max-width:1400px;margin:26px auto;padding:0 22px}.muted{font-size:13px;color:#93a3bd;line-height:1.6}
+.panel{border-radius:12px;padding:16px 18px}h3{font-size:15px;margin:0 0 8px}.bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:6px 0}
+.seg{display:flex;gap:6px;flex-wrap:wrap}.seg button{padding:7px 14px;border-radius:999px;border:1px solid #2a3a5c;background:#0f1a31;color:#cbd5e1;font-size:13px;cursor:pointer}.seg button.on{background:#2563eb;border-color:#2563eb;color:#fff;font-weight:700}
+.kt.ea{border-collapse:collapse;width:100%;font-size:13px;font-variant-numeric:tabular-nums}.kt.ea th,.kt.ea td{border-bottom:1px solid #22314f;padding:6px 8px;text-align:right;white-space:nowrap}.kt.ea th{color:#93a3bd;font-weight:600;cursor:pointer;position:sticky;top:0;background:#16223f}.kt.ea th.sorted{color:#e2e8f0}.kt.ea .l{text-align:left}.kt.ea .up{color:#f87171}.kt.ea .dn{color:#60a5fa}#actWrap select{background:#0f1a31;color:#e2e8f0;border:1px solid #2a3a5c;border-radius:8px;padding:5px 8px}.ea-sum .up{color:#f87171}.ea-sum .dn{color:#60a5fa}</style><link rel="stylesheet" href="./shell.css?v=3"></head><body><main>
+<h1 data-upd="etf_pdf/index.json">액티브 ETF 구성비율 변화</h1>
+<div id="actWrap">
+<p class="muted">액티브 ETF는 운용역이 종목 비중을 매일 바꿀 수 있어, 비중 변화가 곧 운용사의 매매 방향입니다. KRX에 매일 공시되는 구성종목(PDF) 전체를 기록해 두 날짜의 비중을 비교합니다. 비중 변화에는 주가 등락 효과(오른 종목은 비중이 저절로 커짐)도 섞여 있으니 5·20거래일 흐름과 함께 보세요.</p>
+<div class="seg ea-etfs" style="margin:6px 0 10px;flex-wrap:wrap"></div>
+<div class="bar"><span class="muted">비교</span><select id="eaA"></select><span class="muted">→</span><select id="eaB"></select>
+<div class="seg"><button data-q="1">전일 대비</button><button data-q="5">5거래일</button><button data-q="20">20거래일</button><button data-q="all">기록 전체</button></div></div>
+<p class="ea-sum" style="margin:8px 0"></p>
+<div class="ea-body"><div class="panel"><h3>비중 추이 (표에서 체크한 종목)</h3><div style="position:relative;height:320px"><canvas id="eaChart"></canvas></div></div>
+<div class="panel" style="margin-top:12px;overflow:auto;max-height:640px"><table class="kt ea" id="eaTbl"></table></div></div>
+<p class="muted">원본: KRX 정보데이터시스템 ETF 구성종목(PDF) 일별 공시. 장 마감 후(매일 18:10 무렵)에만 자동 수집·정리합니다. 현금·선물 등 종목이 아닌 구성도 포함될 수 있습니다.</p>
+</div>
+</main><script src="./etf_active.js?v=2"></script><script>window.__etfActive&&window.__etfActive();</script></body></html>

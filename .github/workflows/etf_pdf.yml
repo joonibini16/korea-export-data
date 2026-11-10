@@ -1,11 +1,8 @@
-name: Active ETF holdings (PDF) daily
+name: Active ETF holdings (PDF) daily — after market close only
 on:
   workflow_dispatch:
     inputs:
       pdf_from: {description: '과거 채우기 시작일 (YYYY-MM-DD)', required: false, default: ''}
-  push:
-    branches: [main]
-    paths: ['tools/collect_etf_pdf.py', '.github/workflows/etf_pdf.yml']
 permissions:
   contents: write
 concurrency:
