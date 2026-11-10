@@ -1,5 +1,5 @@
 {
- "run": "2026-11-10T08:03:38+09:00",
+ "run": "2026-11-10T15:55:19+09:00",
  "steps": [
   {
    "step": "loader",
@@ -14,9 +14,9 @@
   },
   {
    "step": "days",
-   "fetched": 1,
-   "total": 267,
-   "latest": "2026-11-09"
+   "fetched": 2,
+   "total": 268,
+   "latest": "2026-11-10"
   },
   {
    "step": "inv_days",
@@ -52,7 +52,7 @@
    "step": "build",
    "investor": "F",
    "days": 61,
-   "series": 2212
+   "series": 2213
   },
   {
    "step": "build",
@@ -64,7 +64,7 @@
    "step": "build",
    "investor": "T",
    "days": 61,
-   "series": 1527
+   "series": 1528
   },
   {
    "step": "build",
@@ -76,25 +76,25 @@
    "step": "build",
    "investor": "B",
    "days": 61,
-   "series": 2200
+   "series": 2199
   },
   {
    "step": "build",
    "investor": "O",
    "days": 61,
-   "series": 2163
+   "series": 2162
   },
   {
    "step": "build",
    "investor": "N",
    "days": 61,
-   "series": 941
+   "series": 934
   },
   {
    "step": "build",
    "investor": "C",
    "days": 61,
-   "series": 1779
+   "series": 1777
   }
  ],
  "ok": true
