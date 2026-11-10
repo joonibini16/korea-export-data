@@ -1,18 +1,12 @@
 {
- "updated_at": "2026-11-10T17:50:32+0900",
+ "updated_at": "2026-11-11T02:45:24+0900",
  "range": [
   "2015.01",
   "2026.10"
  ],
  "months_fetched_this_run": 3,
  "backfill_pending": {},
- "failures": [
-  {
-   "month": "2026.10",
-   "market": "sii+otc",
-   "error": "NOT_IN_TABLE 1519,2454"
-  }
- ],
+ "failures": [],
  "coverage": [
   {
    "company_id": "2330",
@@ -35,13 +29,11 @@
   {
    "company_id": "2454",
    "name": "MediaTek",
-   "months": 141,
+   "months": 142,
    "expected": 142,
    "first": "2015.01",
-   "last": "2026.09",
-   "missing": [
-    "2026.10"
-   ]
+   "last": "2026.10",
+   "missing": []
   },
   {
    "company_id": "2408",
@@ -172,13 +164,11 @@
   {
    "company_id": "1519",
    "name": "Fortune Electric",
-   "months": 141,
+   "months": 142,
    "expected": 142,
    "first": "2015.01",
-   "last": "2026.09",
-   "missing": [
-    "2026.10"
-   ]
+   "last": "2026.10",
+   "missing": []
   },
   {
    "company_id": "1503",
