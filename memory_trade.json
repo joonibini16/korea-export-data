@@ -11,8 +11,8 @@
       "name": "SSD"
     }
   ],
-  "built_at": "2026-11-01T18:00:39.724211+00:00",
-  "fingerprint": "f639306e52fb3b494ca6174c1101188796faa167fc55e3428805853e6ec0c9ca",
+  "built_at": "2026-11-11T19:46:29.494657+00:00",
+  "fingerprint": "e8639c9fee634cc08739bf096011bfb6986c9ab686c14bd1d2cb915a66ad8f3c",
   "monthly": [
     {
       "month": "2020.01",
@@ -987,6 +987,18 @@
       "status": "observed"
     },
     {
+      "month": "2026.10",
+      "hs_code": "8473304060",
+      "name": "메모리모듈(DRAM)",
+      "country_code": "VN",
+      "direction": "export",
+      "weight_kg": 48353,
+      "yoy_pct": 24.46395016602745,
+      "mom_pct": 19.47567393936398,
+      "ma3_kg": 40610.333333333336,
+      "status": "observed"
+    },
+    {
       "month": "2020.01",
       "hs_code": "8473304060",
       "name": "메모리모듈(DRAM)",
@@ -1892,10 +1904,10 @@
       "name": "메모리모듈(DRAM)",
       "country_code": "VN",
       "direction": "import",
-      "weight_kg": 60163,
-      "yoy_pct": -8.715310968485902,
-      "mom_pct": -19.989626831928074,
-      "ma3_kg": 68705.33333333333,
+      "weight_kg": 60156,
+      "yoy_pct": -8.725931995083979,
+      "mom_pct": -19.99893608532596,
+      "ma3_kg": 68703.0,
       "status": "observed"
     },
     {
@@ -1906,8 +1918,8 @@
       "direction": "import",
       "weight_kg": 58156,
       "yoy_pct": -12.127164485811848,
-      "mom_pct": -3.3359373701444373,
-      "ma3_kg": 64504.333333333336,
+      "mom_pct": -3.3246891415652624,
+      "ma3_kg": 64502.0,
       "status": "observed"
     },
     {
@@ -1919,7 +1931,7 @@
       "weight_kg": 64300,
       "yoy_pct": -7.513952016569814,
       "mom_pct": 10.564688080335639,
-      "ma3_kg": 60873.0,
+      "ma3_kg": 60870.666666666664,
       "status": "observed"
     },
     {
@@ -1956,6 +1968,18 @@
       "yoy_pct": 8.757689136914193,
       "mom_pct": 22.807017543859654,
       "ma3_kg": 86541.66666666667,
+      "status": "observed"
+    },
+    {
+      "month": "2026.10",
+      "hs_code": "8473304060",
+      "name": "메모리모듈(DRAM)",
+      "country_code": "VN",
+      "direction": "import",
+      "weight_kg": 111633,
+      "yoy_pct": 24.06147896245916,
+      "mom_pct": 8.486880466472302,
+      "ma3_kg": 99441.0,
       "status": "observed"
     },
     {
@@ -2931,6 +2955,18 @@
       "status": "observed"
     },
     {
+      "month": "2026.10",
+      "hs_code": "8523511000",
+      "name": "SSD",
+      "country_code": "VN",
+      "direction": "export",
+      "weight_kg": 2386,
+      "yoy_pct": -46.47824136384029,
+      "mom_pct": 138.36163836163834,
+      "ma3_kg": 2102.3333333333335,
+      "status": "observed"
+    },
+    {
       "month": "2020.01",
       "hs_code": "8523511000",
       "name": "SSD",
@@ -3901,6 +3937,18 @@
       "mom_pct": -18.181685473628896,
       "ma3_kg": 59636.666666666664,
       "status": "observed"
+    },
+    {
+      "month": "2026.10",
+      "hs_code": "8523511000",
+      "name": "SSD",
+      "country_code": "VN",
+      "direction": "import",
+      "weight_kg": 66394,
+      "yoy_pct": 272.79056709713643,
+      "mom_pct": 18.45917784755924,
+      "ma3_kg": 63648.333333333336,
+      "status": "observed"
     }
   ],
   "quarterly": [
@@ -4283,6 +4331,20 @@
       "status": "complete"
     },
     {
+      "period": "2026-Q4",
+      "hs_code": "8473304060",
+      "name": "메모리모듈(DRAM)",
+      "country_code": "VN",
+      "direction": "export",
+      "weight_kg": null,
+      "partial_weight_kg": 48353,
+      "yoy_pct": null,
+      "qoq_pct": null,
+      "observed_months": 1,
+      "expected_months": 3,
+      "status": "partial"
+    },
+    {
       "period": "2020-Q1",
       "hs_code": "8473304060",
       "name": "메모리모듈(DRAM)",
@@ -4638,10 +4700,10 @@
       "name": "메모리모듈(DRAM)",
       "country_code": "VN",
       "direction": "import",
-      "weight_kg": 182619,
-      "partial_weight_kg": 182619,
-      "yoy_pct": -9.421019477910653,
-      "qoq_pct": -20.490504262414987,
+      "weight_kg": 182612,
+      "partial_weight_kg": 182612,
+      "yoy_pct": -9.42449147624409,
+      "qoq_pct": -20.493551954441358,
       "observed_months": 3,
       "expected_months": 3,
       "status": "complete"
@@ -4655,10 +4717,24 @@
       "weight_kg": 259625,
       "partial_weight_kg": 259625,
       "yoy_pct": -4.977234796357566,
-      "qoq_pct": 42.1675729250516,
+      "qoq_pct": 42.17302258340088,
       "observed_months": 3,
       "expected_months": 3,
       "status": "complete"
+    },
+    {
+      "period": "2026-Q4",
+      "hs_code": "8473304060",
+      "name": "메모리모듈(DRAM)",
+      "country_code": "VN",
+      "direction": "import",
+      "weight_kg": null,
+      "partial_weight_kg": 111633,
+      "yoy_pct": null,
+      "qoq_pct": null,
+      "observed_months": 1,
+      "expected_months": 3,
+      "status": "partial"
     },
     {
       "period": "2020-Q1",
@@ -5039,6 +5115,20 @@
       "status": "complete"
     },
     {
+      "period": "2026-Q4",
+      "hs_code": "8523511000",
+      "name": "SSD",
+      "country_code": "VN",
+      "direction": "export",
+      "weight_kg": null,
+      "partial_weight_kg": 2386,
+      "yoy_pct": null,
+      "qoq_pct": null,
+      "observed_months": 1,
+      "expected_months": 3,
+      "status": "partial"
+    },
+    {
       "period": "2020-Q1",
       "hs_code": "8523511000",
       "name": "SSD",
@@ -5415,6 +5505,20 @@
       "observed_months": 3,
       "expected_months": 3,
       "status": "complete"
+    },
+    {
+      "period": "2026-Q4",
+      "hs_code": "8523511000",
+      "name": "SSD",
+      "country_code": "VN",
+      "direction": "import",
+      "weight_kg": null,
+      "partial_weight_kg": 66394,
+      "yoy_pct": null,
+      "qoq_pct": null,
+      "observed_months": 1,
+      "expected_months": 3,
+      "status": "partial"
     }
   ],
   "coverage": [
@@ -5423,9 +5527,9 @@
       "name": "메모리모듈(DRAM)",
       "direction": "export",
       "first_month": "2020.01",
-      "last_month": "2026.09",
-      "expected": 81,
-      "observed": 81,
+      "last_month": "2026.10",
+      "expected": 82,
+      "observed": 82,
       "missing": []
     },
     {
@@ -5433,9 +5537,9 @@
       "name": "메모리모듈(DRAM)",
       "direction": "import",
       "first_month": "2020.01",
-      "last_month": "2026.09",
-      "expected": 81,
-      "observed": 81,
+      "last_month": "2026.10",
+      "expected": 82,
+      "observed": 82,
       "missing": []
     },
     {
@@ -5443,9 +5547,9 @@
       "name": "SSD",
       "direction": "export",
       "first_month": "2020.01",
-      "last_month": "2026.09",
-      "expected": 81,
-      "observed": 81,
+      "last_month": "2026.10",
+      "expected": 82,
+      "observed": 82,
       "missing": []
     },
     {
@@ -5453,9 +5557,9 @@
       "name": "SSD",
       "direction": "import",
       "first_month": "2020.01",
-      "last_month": "2026.09",
-      "expected": 81,
-      "observed": 81,
+      "last_month": "2026.10",
+      "expected": 82,
+      "observed": 82,
       "missing": []
     }
   ],
@@ -5466,7 +5570,7 @@
       "export_lead_months": 0,
       "growth": "yoy",
       "n": 23,
-      "r": -0.02372166952306813,
+      "r": -0.023721491568011902,
       "past_n": 16,
       "past_r": -0.0012057549577632971,
       "recent_n": 7,
@@ -5479,7 +5583,7 @@
       "export_lead_months": 0,
       "growth": "qoq",
       "n": 26,
-      "r": 0.08291801470531115,
+      "r": 0.0829180895322741,
       "past_n": 19,
       "past_r": 0.06158110681392034,
       "recent_n": 7,
@@ -5492,7 +5596,7 @@
       "export_lead_months": 1,
       "growth": "yoy",
       "n": 22,
-      "r": 0.006209981130534187,
+      "r": 0.0062102062542644595,
       "past_n": 15,
       "past_r": 0.14040730326425693,
       "recent_n": 7,
@@ -5505,7 +5609,7 @@
       "export_lead_months": 1,
       "growth": "qoq",
       "n": 25,
-      "r": 0.04546701697300236,
+      "r": 0.04546735720395045,
       "past_n": 18,
       "past_r": 0.008711505661249246,
       "recent_n": 7,
@@ -5518,7 +5622,7 @@
       "export_lead_months": 2,
       "growth": "yoy",
       "n": 22,
-      "r": -0.0681916639384306,
+      "r": -0.0681913092604785,
       "past_n": 15,
       "past_r": -0.1293084413471866,
       "recent_n": 7,
@@ -5531,7 +5635,7 @@
       "export_lead_months": 2,
       "growth": "qoq",
       "n": 25,
-      "r": -0.11286022894898085,
+      "r": -0.11286046697006988,
       "past_n": 18,
       "past_r": -0.18993393819726617,
       "recent_n": 7,
@@ -5544,7 +5648,7 @@
       "export_lead_months": 3,
       "growth": "yoy",
       "n": 22,
-      "r": -0.0527716849672355,
+      "r": -0.05277151150129073,
       "past_n": 15,
       "past_r": 0.09782913287155524,
       "recent_n": 7,
@@ -5557,7 +5661,7 @@
       "export_lead_months": 3,
       "growth": "qoq",
       "n": 25,
-      "r": -0.07167052813482556,
+      "r": -0.07167076292895444,
       "past_n": 18,
       "past_r": -0.10473088935579232,
       "recent_n": 7,
