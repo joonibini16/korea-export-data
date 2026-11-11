@@ -40262,7 +40262,7 @@ snapshot_date,company_id,freq,period,is_estimate,eps,net_income_100m,ctrl_net_in
 2026-11-11,000150,annual,2023,0,-18133,2721,-3883,https://m.stock.naver.com/api/stock/000150/finance/annual
 2026-11-11,000150,annual,2024,0,-10562,3022,-2262,https://m.stock.naver.com/api/stock/000150/finance/annual
 2026-11-11,000150,annual,2025,0,3546,2495,758,https://m.stock.naver.com/api/stock/000150/finance/annual
-2026-11-11,000150,annual,2026,1,29006,10996,,https://m.stock.naver.com/api/stock/000150/finance/annual
+2026-11-11,000150,annual,2026,1,33086,10727,,https://m.stock.naver.com/api/stock/000150/finance/annual
 2026-11-11,000150,quarter,2025-Q2,0,3670,2332,786,https://m.stock.naver.com/api/stock/000150/finance/quarter
 2026-11-11,000150,quarter,2025-Q3,0,5656,1115,1211,https://m.stock.naver.com/api/stock/000150/finance/quarter
 2026-11-11,000150,quarter,2025-Q4,0,-6944,-1064,-1476,https://m.stock.naver.com/api/stock/000150/finance/quarter
@@ -40532,7 +40532,7 @@ snapshot_date,company_id,freq,period,is_estimate,eps,net_income_100m,ctrl_net_in
 2026-11-11,010120,annual,2023,0,1373,2077,2060,https://m.stock.naver.com/api/stock/010120/finance/annual
 2026-11-11,010120,annual,2024,0,1591,2422,2387,https://m.stock.naver.com/api/stock/010120/finance/annual
 2026-11-11,010120,annual,2025,0,1911,2843,2866,https://m.stock.naver.com/api/stock/010120/finance/annual
-2026-11-11,010120,annual,2026,1,3722,5562,,https://m.stock.naver.com/api/stock/010120/finance/annual
+2026-11-11,010120,annual,2026,1,3732,5572,,https://m.stock.naver.com/api/stock/010120/finance/annual
 2026-11-11,010120,quarter,2025-Q2,0,447,673,671,https://m.stock.naver.com/api/stock/010120/finance/quarter
 2026-11-11,010120,quarter,2025-Q3,0,443,659,664,https://m.stock.naver.com/api/stock/010120/finance/quarter
 2026-11-11,010120,quarter,2025-Q4,0,555,838,833,https://m.stock.naver.com/api/stock/010120/finance/quarter
@@ -40872,7 +40872,7 @@ snapshot_date,company_id,freq,period,is_estimate,eps,net_income_100m,ctrl_net_in
 2026-11-11,062040,annual,2023,0,8807,391,391,https://m.stock.naver.com/api/stock/062040/finance/annual
 2026-11-11,062040,annual,2024,0,3214,837,837,https://m.stock.naver.com/api/stock/062040/finance/annual
 2026-11-11,062040,annual,2025,0,4891,1489,1489,https://m.stock.naver.com/api/stock/062040/finance/annual
-2026-11-11,062040,annual,2026,1,6709,2053,,https://m.stock.naver.com/api/stock/062040/finance/annual
+2026-11-11,062040,annual,2026,1,6617,2025,,https://m.stock.naver.com/api/stock/062040/finance/annual
 2026-11-11,062040,quarter,2025-Q2,0,1244,379,379,https://m.stock.naver.com/api/stock/062040/finance/quarter
 2026-11-11,062040,quarter,2025-Q3,0,1210,368,368,https://m.stock.naver.com/api/stock/062040/finance/quarter
 2026-11-11,062040,quarter,2025-Q4,0,1412,430,430,https://m.stock.naver.com/api/stock/062040/finance/quarter
@@ -40882,7 +40882,7 @@ snapshot_date,company_id,freq,period,is_estimate,eps,net_income_100m,ctrl_net_in
 2026-11-11,064290,annual,2023,0,-844,-108,-108,https://m.stock.naver.com/api/stock/064290/finance/annual
 2026-11-11,064290,annual,2024,0,-923,-119,-119,https://m.stock.naver.com/api/stock/064290/finance/annual
 2026-11-11,064290,annual,2025,0,-257,-33,-33,https://m.stock.naver.com/api/stock/064290/finance/annual
-2026-11-11,064290,annual,2026,1,333,44,,https://m.stock.naver.com/api/stock/064290/finance/annual
+2026-11-11,064290,annual,2026,1,443,58,,https://m.stock.naver.com/api/stock/064290/finance/annual
 2026-11-11,064290,quarter,2025-Q2,0,82,10,11,https://m.stock.naver.com/api/stock/064290/finance/quarter
 2026-11-11,064290,quarter,2025-Q3,0,-387,-50,-50,https://m.stock.naver.com/api/stock/064290/finance/quarter
 2026-11-11,064290,quarter,2025-Q4,0,437,56,56,https://m.stock.naver.com/api/stock/064290/finance/quarter
@@ -40902,7 +40902,7 @@ snapshot_date,company_id,freq,period,is_estimate,eps,net_income_100m,ctrl_net_in
 2026-11-11,064760,annual,2023,0,5246,612,612,https://m.stock.naver.com/api/stock/064760/finance/annual
 2026-11-11,064760,annual,2024,0,6167,720,720,https://m.stock.naver.com/api/stock/064760/finance/annual
 2026-11-11,064760,annual,2025,0,5996,699,699,https://m.stock.naver.com/api/stock/064760/finance/annual
-2026-11-11,064760,annual,2026,1,9421,1053,,https://m.stock.naver.com/api/stock/064760/finance/annual
+2026-11-11,064760,annual,2026,1,9389,1050,,https://m.stock.naver.com/api/stock/064760/finance/annual
 2026-11-11,064760,quarter,2025-Q2,0,1369,160,160,https://m.stock.naver.com/api/stock/064760/finance/quarter
 2026-11-11,064760,quarter,2025-Q3,0,1468,171,171,https://m.stock.naver.com/api/stock/064760/finance/quarter
 2026-11-11,064760,quarter,2025-Q4,0,1487,173,173,https://m.stock.naver.com/api/stock/064760/finance/quarter
@@ -40952,7 +40952,7 @@ snapshot_date,company_id,freq,period,is_estimate,eps,net_income_100m,ctrl_net_in
 2026-11-11,068270,annual,2023,0,3187,5397,5356,https://m.stock.naver.com/api/stock/068270/finance/annual
 2026-11-11,068270,annual,2024,0,1703,4189,4227,https://m.stock.naver.com/api/stock/068270/finance/annual
 2026-11-11,068270,annual,2025,0,4238,10315,10296,https://m.stock.naver.com/api/stock/068270/finance/annual
-2026-11-11,068270,annual,2026,1,6094,14138,,https://m.stock.naver.com/api/stock/068270/finance/annual
+2026-11-11,068270,annual,2026,1,6091,14327,,https://m.stock.naver.com/api/stock/068270/finance/annual
 2026-11-11,068270,quarter,2025-Q2,0,252,633,612,https://m.stock.naver.com/api/stock/068270/finance/quarter
 2026-11-11,068270,quarter,2025-Q3,0,1367,3319,3314,https://m.stock.naver.com/api/stock/068270/finance/quarter
 2026-11-11,068270,quarter,2025-Q4,0,2181,5279,5284,https://m.stock.naver.com/api/stock/068270/finance/quarter
@@ -41172,7 +41172,7 @@ snapshot_date,company_id,freq,period,is_estimate,eps,net_income_100m,ctrl_net_in
 2026-11-11,092870,annual,2023,0,431,49,49,https://m.stock.naver.com/api/stock/092870/finance/annual
 2026-11-11,092870,annual,2024,0,-112,-14,-14,https://m.stock.naver.com/api/stock/092870/finance/annual
 2026-11-11,092870,annual,2025,0,687,90,90,https://m.stock.naver.com/api/stock/092870/finance/annual
-2026-11-11,092870,annual,2026,1,2051,268,,https://m.stock.naver.com/api/stock/092870/finance/annual
+2026-11-11,092870,annual,2026,1,2134,279,,https://m.stock.naver.com/api/stock/092870/finance/annual
 2026-11-11,092870,quarter,2025-Q2,0,-132,-17,-17,https://m.stock.naver.com/api/stock/092870/finance/quarter
 2026-11-11,092870,quarter,2025-Q3,0,-58,-8,-8,https://m.stock.naver.com/api/stock/092870/finance/quarter
 2026-11-11,092870,quarter,2025-Q4,0,997,130,130,https://m.stock.naver.com/api/stock/092870/finance/quarter
@@ -41372,13 +41372,13 @@ snapshot_date,company_id,freq,period,is_estimate,eps,net_income_100m,ctrl_net_in
 2026-11-11,131290,annual,2023,0,11,-21,1,https://m.stock.naver.com/api/stock/131290/finance/annual
 2026-11-11,131290,annual,2024,0,3840,450,425,https://m.stock.naver.com/api/stock/131290/finance/annual
 2026-11-11,131290,annual,2025,0,3456,400,382,https://m.stock.naver.com/api/stock/131290/finance/annual
-2026-11-11,131290,annual,2026,1,13332,1648,,https://m.stock.naver.com/api/stock/131290/finance/annual
+2026-11-11,131290,annual,2026,1,13365,1629,,https://m.stock.naver.com/api/stock/131290/finance/annual
 2026-11-11,131290,quarter,2025-Q2,0,384,46,42,https://m.stock.naver.com/api/stock/131290/finance/quarter
 2026-11-11,131290,quarter,2025-Q3,0,1031,118,114,https://m.stock.naver.com/api/stock/131290/finance/quarter
 2026-11-11,131290,quarter,2025-Q4,0,1760,219,195,https://m.stock.naver.com/api/stock/131290/finance/quarter
 2026-11-11,131290,quarter,2026-Q1,0,3338,400,369,https://m.stock.naver.com/api/stock/131290/finance/quarter
 2026-11-11,131290,quarter,2026-Q2,0,3332,424,369,https://m.stock.naver.com/api/stock/131290/finance/quarter
-2026-11-11,131290,quarter,2026-Q3,1,3634,400,,https://m.stock.naver.com/api/stock/131290/finance/quarter
+2026-11-11,131290,quarter,2026-Q3,1,3469,400,,https://m.stock.naver.com/api/stock/131290/finance/quarter
 2026-11-11,131970,annual,2023,0,2839,491,491,https://m.stock.naver.com/api/stock/131970/finance/annual
 2026-11-11,131970,annual,2024,0,1903,368,368,https://m.stock.naver.com/api/stock/131970/finance/annual
 2026-11-11,131970,annual,2025,0,78,15,15,https://m.stock.naver.com/api/stock/131970/finance/annual
@@ -41472,7 +41472,7 @@ snapshot_date,company_id,freq,period,is_estimate,eps,net_income_100m,ctrl_net_in
 2026-11-11,161890,annual,2023,0,227,251,52,https://m.stock.naver.com/api/stock/161890/finance/annual
 2026-11-11,161890,annual,2024,0,3830,1253,901,https://m.stock.naver.com/api/stock/161890/finance/annual
 2026-11-11,161890,annual,2025,0,5299,1682,1251,https://m.stock.naver.com/api/stock/161890/finance/annual
-2026-11-11,161890,annual,2026,1,8077,2437,,https://m.stock.naver.com/api/stock/161890/finance/annual
+2026-11-11,161890,annual,2026,1,8081,2437,,https://m.stock.naver.com/api/stock/161890/finance/annual
 2026-11-11,161890,quarter,2025-Q2,0,1480,418,349,https://m.stock.naver.com/api/stock/161890/finance/quarter
 2026-11-11,161890,quarter,2025-Q3,0,1347,424,318,https://m.stock.naver.com/api/stock/161890/finance/quarter
 2026-11-11,161890,quarter,2025-Q4,0,1910,609,451,https://m.stock.naver.com/api/stock/161890/finance/quarter
@@ -41522,7 +41522,7 @@ snapshot_date,company_id,freq,period,is_estimate,eps,net_income_100m,ctrl_net_in
 2026-11-11,192820,annual,2023,0,5034,378,571,https://m.stock.naver.com/api/stock/192820/finance/annual
 2026-11-11,192820,annual,2024,0,7560,884,858,https://m.stock.naver.com/api/stock/192820/finance/annual
 2026-11-11,192820,annual,2025,0,10843,1311,1231,https://m.stock.naver.com/api/stock/192820/finance/annual
-2026-11-11,192820,annual,2026,1,15840,1868,,https://m.stock.naver.com/api/stock/192820/finance/annual
+2026-11-11,192820,annual,2026,1,15840,1869,,https://m.stock.naver.com/api/stock/192820/finance/annual
 2026-11-11,192820,quarter,2025-Q2,0,1844,218,209,https://m.stock.naver.com/api/stock/192820/finance/quarter
 2026-11-11,192820,quarter,2025-Q3,0,789,107,90,https://m.stock.naver.com/api/stock/192820/finance/quarter
 2026-11-11,192820,quarter,2025-Q4,0,7494,879,851,https://m.stock.naver.com/api/stock/192820/finance/quarter
@@ -41672,7 +41672,7 @@ snapshot_date,company_id,freq,period,is_estimate,eps,net_income_100m,ctrl_net_in
 2026-11-11,222800,annual,2023,0,-3606,-1151,-1149,https://m.stock.naver.com/api/stock/222800/finance/annual
 2026-11-11,222800,annual,2024,0,-953,-310,-303,https://m.stock.naver.com/api/stock/222800/finance/annual
 2026-11-11,222800,annual,2025,0,-4955,-1646,-1642,https://m.stock.naver.com/api/stock/222800/finance/annual
-2026-11-11,222800,annual,2026,1,4868,1850,,https://m.stock.naver.com/api/stock/222800/finance/annual
+2026-11-11,222800,annual,2026,1,4854,1850,,https://m.stock.naver.com/api/stock/222800/finance/annual
 2026-11-11,222800,quarter,2025-Q2,0,-587,-187,-187,https://m.stock.naver.com/api/stock/222800/finance/quarter
 2026-11-11,222800,quarter,2025-Q3,0,207,67,68,https://m.stock.naver.com/api/stock/222800/finance/quarter
 2026-11-11,222800,quarter,2025-Q4,0,-3225,-1168,-1167,https://m.stock.naver.com/api/stock/222800/finance/quarter
@@ -41732,7 +41732,7 @@ snapshot_date,company_id,freq,period,is_estimate,eps,net_income_100m,ctrl_net_in
 2026-11-11,240810,annual,2023,0,-275,-135,-135,https://m.stock.naver.com/api/stock/240810/finance/annual
 2026-11-11,240810,annual,2024,0,423,207,207,https://m.stock.naver.com/api/stock/240810/finance/annual
 2026-11-11,240810,annual,2025,0,1712,840,840,https://m.stock.naver.com/api/stock/240810/finance/annual
-2026-11-11,240810,annual,2026,1,4297,2110,,https://m.stock.naver.com/api/stock/240810/finance/annual
+2026-11-11,240810,annual,2026,1,3866,1897,,https://m.stock.naver.com/api/stock/240810/finance/annual
 2026-11-11,240810,quarter,2025-Q2,0,563,277,277,https://m.stock.naver.com/api/stock/240810/finance/quarter
 2026-11-11,240810,quarter,2025-Q3,0,576,283,283,https://m.stock.naver.com/api/stock/240810/finance/quarter
 2026-11-11,240810,quarter,2025-Q4,0,668,328,328,https://m.stock.naver.com/api/stock/240810/finance/quarter
@@ -41762,7 +41762,7 @@ snapshot_date,company_id,freq,period,is_estimate,eps,net_income_100m,ctrl_net_in
 2026-11-11,247540,annual,2023,0,-89,547,-87,https://m.stock.naver.com/api/stock/247540/finance/annual
 2026-11-11,247540,annual,2024,0,-987,-585,-965,https://m.stock.naver.com/api/stock/247540/finance/annual
 2026-11-11,247540,annual,2025,0,403,916,394,https://m.stock.naver.com/api/stock/247540/finance/annual
-2026-11-11,247540,annual,2026,1,-84,17,,https://m.stock.naver.com/api/stock/247540/finance/annual
+2026-11-11,247540,annual,2026,1,-118,-45,,https://m.stock.naver.com/api/stock/247540/finance/annual
 2026-11-11,247540,quarter,2025-Q2,0,117,343,115,https://m.stock.naver.com/api/stock/247540/finance/quarter
 2026-11-11,247540,quarter,2025-Q3,0,235,491,230,https://m.stock.naver.com/api/stock/247540/finance/quarter
 2026-11-11,247540,quarter,2025-Q4,0,193,182,189,https://m.stock.naver.com/api/stock/247540/finance/quarter
@@ -41842,7 +41842,7 @@ snapshot_date,company_id,freq,period,is_estimate,eps,net_income_100m,ctrl_net_in
 2026-11-11,267260,annual,2023,0,7189,2595,2592,https://m.stock.naver.com/api/stock/267260/finance/annual
 2026-11-11,267260,annual,2024,0,13914,4984,5016,https://m.stock.naver.com/api/stock/267260/finance/annual
 2026-11-11,267260,annual,2025,0,20324,7318,7326,https://m.stock.naver.com/api/stock/267260/finance/annual
-2026-11-11,267260,annual,2026,1,24116,8693,,https://m.stock.naver.com/api/stock/267260/finance/annual
+2026-11-11,267260,annual,2026,1,24065,8673,,https://m.stock.naver.com/api/stock/267260/finance/annual
 2026-11-11,267260,quarter,2025-Q2,0,3951,1419,1424,https://m.stock.naver.com/api/stock/267260/finance/quarter
 2026-11-11,267260,quarter,2025-Q3,0,5301,1911,1911,https://m.stock.naver.com/api/stock/267260/finance/quarter
 2026-11-11,267260,quarter,2025-Q4,0,6797,2454,2450,https://m.stock.naver.com/api/stock/267260/finance/quarter
@@ -41902,7 +41902,7 @@ snapshot_date,company_id,freq,period,is_estimate,eps,net_income_100m,ctrl_net_in
 2026-11-11,298040,annual,2023,0,12438,1319,1160,https://m.stock.naver.com/api/stock/298040/finance/annual
 2026-11-11,298040,annual,2024,0,23876,2229,2226,https://m.stock.naver.com/api/stock/298040/finance/annual
 2026-11-11,298040,annual,2025,0,55755,5028,5199,https://m.stock.naver.com/api/stock/298040/finance/annual
-2026-11-11,298040,annual,2026,1,81104,7717,,https://m.stock.naver.com/api/stock/298040/finance/annual
+2026-11-11,298040,annual,2026,1,82077,7804,,https://m.stock.naver.com/api/stock/298040/finance/annual
 2026-11-11,298040,quarter,2025-Q2,0,9922,873,925,https://m.stock.naver.com/api/stock/298040/finance/quarter
 2026-11-11,298040,quarter,2025-Q3,0,16109,1518,1502,https://m.stock.naver.com/api/stock/298040/finance/quarter
 2026-11-11,298040,quarter,2025-Q4,0,18769,1601,1750,https://m.stock.naver.com/api/stock/298040/finance/quarter
