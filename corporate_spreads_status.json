@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-11T11:33:53+00:00",
+  "updated": "2026-11-11T12:37:16+00:00",
   "targets": 25,
   "bonds": {
     "CORZ": {
@@ -119,11 +119,13 @@
     },
     "TSM": {
       "name": "TSMC",
-      "state": "error"
+      "state": "no matching traded issue",
+      "matches": 0
     },
     "IRM": {
       "name": "아이언 마운틴",
-      "state": "error"
+      "state": "no matching traded issue",
+      "matches": 0
     },
     "EQIX": {
       "name": "에퀴닉스",
@@ -137,7 +139,8 @@
     },
     "DLR": {
       "name": "디지털 리얼티",
-      "state": "error"
+      "state": "no matching traded issue",
+      "matches": 0
     },
     "TLN": {
       "name": "탈렌",
@@ -201,19 +204,15 @@
     },
     "OBDC": {
       "name": "블루아울 캐피털",
-      "state": "error"
+      "state": "no matching traded issue",
+      "matches": 0
     },
     "ARCC": {
       "name": "아레스 캐피털",
-      "state": "error"
+      "state": "no matching traded issue",
+      "matches": 0
     }
   },
-  "errors": [
-    "TSM: The read operation timed out ",
-    "IRM: The read operation timed out ",
-    "DLR: The read operation timed out ",
-    "OBDC: The read operation timed out ",
-    "ARCC: The read operation timed out "
-  ],
+  "errors": [],
   "rows": 7107
 }
