@@ -27859,14 +27859,14 @@
     {
       "ticker": "6525.T",
       "date": "2026-11-09",
-      "time": "발표 완료(11/9 Asia/Tokyo) · 회사 IR 페이지에서 결산단신(tdnet/2907737)·결산설명자료(tdnet/2907746) 게재 확인 · 11/10·11/11(16:40 KST 포함) 회차에도 공식 PDF 원문 직접 열람 실패로 events 미반영 — 원문 확인 후 반영",
+      "time": "발표 완료(11/9 Asia/Tokyo) · 회사 IR 페이지에서 결산단신(tdnet/2907737)·결산설명자료(tdnet/2907746) 게재 확인 · 11/10·11/11(16:40·21:40 KST 포함) 회차에도 공식 PDF 원문 직접 열람 실패로 events 미반영 — 원문 확인 후 반영",
       "event": "FY27(2027년 3월기) Q2 실적 발표",
       "source": "https://www.kokusai-electric.com/ir/"
     },
     {
       "ticker": "2897.T",
       "date": "2026-11-11",
-      "time": "발표 완료(11/11 Asia/Tokyo) · 회사 IR 결산단신·보충자료 페이지에 중간기 자료 게재 확인 · 11/11 회차에 공식 PDF 원문 직접 열람 실패로 events 미반영 — 원문 확인 후 반영",
+      "time": "발표 완료(11/11 Asia/Tokyo) · 회사 IR 결산단신·보충자료 페이지에 중간기 자료 게재 확인 · 11/11(21:40 KST 포함) 회차에도 공식 PDF 원문 직접 열람 실패로 events 미반영 — 원문 확인 후 반영",
       "event": "FY27(2027년 3월기) Q2 실적 발표",
       "source": "https://www.nissin.com/jp/company/ir/library/financialresults/"
     },
