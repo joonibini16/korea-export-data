@@ -27859,16 +27859,16 @@
     {
       "ticker": "6525.T",
       "date": "2026-11-09",
-      "time": "발표 완료(11/9 Asia/Tokyo) · 회사 IR 페이지에서 결산단신(tdnet/2907737)·결산설명자료(tdnet/2907746) 게재 확인 · 11/10·11/11 회차에도 공식 PDF 원문 직접 열람 실패로 events 미반영 — 원문 확인 후 반영",
+      "time": "발표 완료(11/9 Asia/Tokyo) · 회사 IR 페이지에서 결산단신(tdnet/2907737)·결산설명자료(tdnet/2907746) 게재 확인 · 11/10·11/11(16:40 KST 포함) 회차에도 공식 PDF 원문 직접 열람 실패로 events 미반영 — 원문 확인 후 반영",
       "event": "FY27(2027년 3월기) Q2 실적 발표",
       "source": "https://www.kokusai-electric.com/ir/"
     },
     {
       "ticker": "2897.T",
       "date": "2026-11-11",
-      "time": "시간 미공지(Asia/Tokyo) · 회사 공지상 예정(변경 가능)",
+      "time": "발표 완료(11/11 Asia/Tokyo) · 회사 IR 결산단신·보충자료 페이지에 중간기 자료 게재 확인 · 11/11 회차에 공식 PDF 원문 직접 열람 실패로 events 미반영 — 원문 확인 후 반영",
       "event": "FY27(2027년 3월기) Q2 실적 발표",
-      "source": "https://www.nissin.com/jp/company/ir/calendar/"
+      "source": "https://www.nissin.com/jp/company/ir/library/financialresults/"
     },
     {
       "ticker": "AMAT",
@@ -27904,6 +27904,13 @@
       "time": "장 시작 전 · 07:00 America/Chicago(컨콜, 자료는 06:00 CT 공개)",
       "event": "FY27 Q3 실적·컨퍼런스콜",
       "source": "https://corporate.walmart.com/news/events/fy2027-q3-earnings-release"
+    },
+    {
+      "ticker": "DELL",
+      "date": "2026-11-24",
+      "time": "장 마감 후 · 컨퍼런스콜(회사 공지)",
+      "event": "FY27 Q3 실적·컨퍼런스콜",
+      "source": "https://investors.delltechnologies.com/news-events/press-releases/detail/1661/dell-technologies-to-hold-conference-call-nov-24-to-discuss-third-quarter-fiscal-2027-financial-results"
     }
   ]
 }
