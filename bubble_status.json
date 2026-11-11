@@ -1,11 +1,11 @@
 {
- "updated_at": "2026-11-11T15:09:20+09:00",
+ "updated_at": "2026-11-11T15:29:47+09:00",
  "yahoo_rows": 55652,
  "fred_rows": 44507,
  "ecos_rows": 0,
  "ecos_key": false,
  "vkospi_rows": null,
- "kofia_rows": 2919,
+ "kofia_rows": 2920,
  "krx_key": false,
  "fred_last": {
   "WALCL": "2026-11-04",
