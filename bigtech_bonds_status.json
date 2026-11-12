@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-12T08:48:11+00:00",
+ "updated": "2026-11-12T16:19:54+00:00",
  "bonds": {
   "CRWV": {
    "cusip": "U2069EAA8",
@@ -16,28 +16,28 @@
   },
   "ORCL": {
    "cusip": "68389XCJ2",
-   "n": 985,
+   "n": 986,
    "first": "2022-11-07",
-   "last": "2026-11-10",
+   "last": "2026-11-11",
    "sample": {
     "cusip": "68389XCJ2",
-    "tradeDate": "2026-11-10",
-    "lastSaleYield": 7.69,
+    "tradeDate": "2026-11-11",
+    "lastSaleYield": 7.66,
     "productType": "CA",
-    "lastSalePrice": 93.162
+    "lastSalePrice": 93.2931
    }
   },
   "META": {
    "cusip": "30303M8H8",
-   "n": 948,
+   "n": 949,
    "first": "2023-01-03",
-   "last": "2026-11-10",
+   "last": "2026-11-11",
    "sample": {
     "cusip": "30303M8H8",
-    "tradeDate": "2026-11-10",
-    "lastSaleYield": 5.82,
+    "tradeDate": "2026-11-11",
+    "lastSaleYield": 5.81,
     "productType": "CA",
-    "lastSalePrice": 90.461
+    "lastSalePrice": 90.483763
    }
   },
   "AMZN": {
@@ -55,28 +55,28 @@
   },
   "NVDA": {
    "cusip": "67066GAF1",
-   "n": 1229,
+   "n": 1230,
    "first": "2021-11-15",
-   "last": "2026-11-10",
+   "last": "2026-11-11",
    "sample": {
     "cusip": "67066GAF1",
-    "tradeDate": "2026-11-10",
-    "lastSaleYield": 5.35,
+    "tradeDate": "2026-11-11",
+    "lastSaleYield": 5.39,
     "productType": "CA",
-    "lastSalePrice": 92.328
+    "lastSalePrice": 92.20837
    }
   },
   "GOOGL": {
    "cusip": "02079KAD9",
-   "n": 1230,
+   "n": 1231,
    "first": "2021-11-15",
-   "last": "2026-11-10",
+   "last": "2026-11-11",
    "sample": {
     "cusip": "02079KAD9",
-    "tradeDate": "2026-11-10",
+    "tradeDate": "2026-11-11",
     "lastSaleYield": 5.17,
     "productType": "CA",
-    "lastSalePrice": 86.256
+    "lastSalePrice": 86.232
    }
   },
   "MSFT": {
@@ -94,15 +94,15 @@
   },
   "AAPL": {
    "cusip": "037833EP1",
-   "n": 1051,
+   "n": 1052,
    "first": "2022-08-01",
-   "last": "2026-11-10",
+   "last": "2026-11-11",
    "sample": {
     "cusip": "037833EP1",
-    "tradeDate": "2026-11-10",
+    "tradeDate": "2026-11-11",
     "lastSaleYield": 5.03,
     "productType": "CA",
-    "lastSalePrice": 91.668
+    "lastSalePrice": 91.706
    }
   },
   "AVGO": {
@@ -127,5 +127,5 @@
   "__cf_bm",
   "_cfuvid"
  ],
- "rows": 8591
+ "rows": 8596
 }
