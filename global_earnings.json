@@ -27887,9 +27887,9 @@
     {
       "ticker": "SIE.DE",
       "date": "2026-11-12",
-      "time": "시간 미공지(Europe/Berlin, 뮌헨)",
+      "time": "발표 완료(11/12 07:00 CET 보도·실적자료 공개, 회사 IR 이벤트 페이지 기준) · 11/12 16:40 KST 회차에 공식 보도자료·Earnings Release PDF 원문 직접 열람 실패로 events 미반영 — 원문 확인 후 반영",
       "event": "FY26 Q4 실적 발표",
-      "source": "https://www.siemens.com/ko-kr/company/investor-relations/financial-calendar/"
+      "source": "https://press.siemens.com/global/en/event/fourth-quarter-and-preliminary-figures-fiscal-2026"
     },
     {
       "ticker": "NVDA",
