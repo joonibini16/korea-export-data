@@ -1,7 +1,7 @@
 {
- "updated_at": "2026-11-13T00:38:13+09:00",
- "yahoo_rows": 55671,
- "fred_rows": 44518,
+ "updated_at": "2026-11-13T05:20:29+09:00",
+ "yahoo_rows": 55666,
+ "fred_rows": 44520,
  "ecos_rows": 0,
  "ecos_key": false,
  "vkospi_rows": null,
@@ -10,7 +10,7 @@
  "fred_last": {
   "WALCL": "2026-11-04",
   "WTREGEN": "2026-11-04",
-  "RRPONTSYD": "2026-11-10",
+  "RRPONTSYD": "2026-11-12",
   "WRESBAL": "2026-11-04",
   "TOTBKCR": "2026-10-28",
   "BUSLOANS": "2026-09-01",
@@ -27,7 +27,7 @@
   "T10Y3M": "2026-11-10",
   "DFII10": "2026-11-09",
   "NFCI": "2026-11-06",
-  "STLFSI4": "2026-10-30",
+  "STLFSI4": "2026-11-06",
   "ICSA": "2026-11-07",
   "SAHMREALTIME": "2026-10-01",
   "DTWEXBGS": "2026-11-06",
