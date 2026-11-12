@@ -1,9 +1,9 @@
 {
-  "checked_at": "2026-11-11T19:46:25.764897+00:00",
+  "checked_at": "2026-11-12T20:14:41.928313+00:00",
   "end_month": "202610",
   "expected": 164,
   "rows": 164,
-  "received": 20,
+  "received": 6,
   "missing": [],
   "failures": [],
   "source": "https://www.data.go.kr/data/15100475/openapi.do",
