@@ -28194,6 +28194,177 @@
           }
         ]
       }
+    },
+    {
+      "ticker": "AMAT",
+      "period": "FY26 Q4",
+      "date": "2026-11-12",
+      "evidence": "Applied Materials 공식 Q4·FY2026 실적 보도자료(11/12 장 마감 후, GlobeNewswire 배포 원문) 확인 · 직전 Q3 공식 실적 보도자료(SEC 8-K Exhibit 99.1, 8/13)의 Q4 가이던스 대조 · 컨콜(13:30 PT) 녹취록은 반영 시점에 미공개",
+      "direction": "개선",
+      "headline": "Q4 매출 $10.41bn(+53% YoY, +14% QoQ)·비GAAP EPS $4.16(+92% YoY)으로 가이던스 중간값·컨센서스 상회 · Q1 FY27 가이던스 매출 $11.1bn±0.5bn·EPS $4.35±0.20으로 컨센서스 약 +3% 상회 · DRAM 장비 비중 28%→33%",
+      "estimate_signal": "Q4 매출 $10.41bn vs 발표 전 컨센서스 $10.30bn → +1.1% 상회, 비GAAP EPS $4.16 vs $4.05 → +2.6% 상회. Q1 FY27 가이던스 중간값 매출 $11.1bn vs $10.80bn → +2.8% 상회, 비GAAP EPS $4.35 vs $4.23 → +2.9% 상회(Yahoo 컨센서스, 발표 전 11/12 스냅샷) → 추정치 상향 방향",
+      "call_coverage": "공식 Q&A 녹취록 미확인 — 컨콜(11/12 13:30 PT) 직후 반영으로 녹취록 미공개. 보도자료 기준으로 먼저 반영하고 Q&A 톤은 추정하지 않음. 다음 회차에 보강",
+      "summary": {
+        "basis": "공식 보도자료 기준 · 컨콜 녹취록 미공개",
+        "items": [
+          {
+            "label": "매출",
+            "text": "$10.41bn(사상 최대)으로 +53% YoY, +14% QoQ · 반도체장비 $8.00bn(+64% YoY)",
+            "sub": "Q4 가이던스 $9.75~10.75bn(중간값 $10.25bn) 중간값 상회"
+          },
+          {
+            "label": "비GAAP EPS",
+            "text": "$4.16으로 +92% YoY, +19% QoQ · 비GAAP 영업이익률 35.3%(1년 전 28.6%)",
+            "sub": "가이던스 $3.82~4.22(중간값 $4.02) 상회"
+          },
+          {
+            "label": "Q1 FY27 가이던스",
+            "text": "매출 $11.1bn±$0.5bn(중간값 +7% QoQ), 비GAAP EPS $4.35±$0.20",
+            "cons": "매출 $11.1bn vs $10.80bn → +2.8% 상회, EPS $4.35 vs $4.23 → +2.9% 상회(Yahoo 컨센서스, 발표 전 11/12 스냅샷)"
+          },
+          {
+            "label": "메모리·한국",
+            "text": "반도체장비 중 DRAM 비중 33%(1년 전 28%) — DRAM 장비 매출 약 2배 · 한국 매출 $1.81bn(+49% YoY)"
+          }
+        ],
+        "cautions": [
+          "Q1 가이던스 EPS에 $0.04 일회성 세금 이익 포함 — 제외 시 중간값 $4.31로 컨센서스 대비 약 +2%",
+          "중국 매출 $2.64bn(+35% YoY)으로 여전히 25% 비중 — 수출 규제 변수",
+          "배당 인상·신규 자사주 승인 발표는 없음(Q4 자사주 매입 $2.0bn은 집행)"
+        ],
+        "take": "분석: AI용 첨단 로직·HBM/DRAM 투자로 장비 수요가 다음 분기까지 가속하는 그림. DRAM 장비 비중 확대와 한국 매출 +49% YoY는 SK하이닉스·삼성전자의 메모리 증설이 실제 장비 발주로 이어지고 있음을 보여 줘 국내 장비·소재·부품주(원익IPS·주성엔지니어링·한미반도체·솔브레인 등)에 우호적"
+      },
+      "changes": [
+        {
+          "title": "Q4 실적 vs Q3 가이던스·컨센서스",
+          "direction": "개선",
+          "before": "Q3 FY26(공식 8-K): 매출 $9,115m(+25% YoY), 비GAAP 총이익률 50.4%, 비GAAP 영업이익률 34.0%, 비GAAP EPS $3.50(+41% YoY), 반도체장비 $7,040m. Q4 가이던스: 매출 $10.25bn±$0.5bn, 비GAAP EPS $4.02±$0.20.",
+          "now": "Q4 FY26(공식 보도자료): 매출 $10,409m(+53% YoY, +14% QoQ), 비GAAP 총이익률 50.6%, 비GAAP 영업이익률 35.3%, 비GAAP EPS $4.16(+92% YoY), GAAP EPS $3.40(+43% YoY), 반도체장비 $7,996m(+64% YoY), 서비스(AGS) $1,896m(+26% YoY).",
+          "meaning": "매출·EPS 모두 가이던스 중간값과 발표 전 컨센서스를 상회. 이익률도 QoQ 개선.",
+          "rows": [
+            {
+              "item": "매출",
+              "before": "$9,115m",
+              "now": "$10,409m",
+              "delta": "+14% QoQ",
+              "tone": "good"
+            },
+            {
+              "item": "매출 vs 가이던스 중간값",
+              "before": "$10,250m",
+              "now": "$10,409m",
+              "delta": "+1.6%",
+              "tone": "good"
+            },
+            {
+              "item": "비GAAP EPS vs 컨센서스",
+              "before": "$4.05",
+              "now": "$4.16",
+              "delta": "+2.6%",
+              "tone": "good"
+            },
+            {
+              "item": "비GAAP 영업이익률",
+              "before": "34.0%",
+              "now": "35.3%",
+              "delta": "+1.3%p QoQ",
+              "tone": "good"
+            },
+            {
+              "item": "반도체장비 매출",
+              "before": "$7,040m",
+              "now": "$7,996m",
+              "delta": "+14% QoQ",
+              "tone": "good"
+            }
+          ]
+        },
+        {
+          "title": "최종 시장 믹스(반도체장비)",
+          "direction": "개선",
+          "before": "Q4 FY25: 파운드리/로직 66%, DRAM 28%, 낸드 6% · 지역별 중국 29%, 한국 18%, 대만 27%.",
+          "now": "Q4 FY26: 파운드리/로직 58%, DRAM 33%, 낸드 9% · 지역별 중국 25%($2.64bn), 대만 28%($2.92bn), 한국 17%($1.81bn, +49% YoY), 미국 13%($1.32bn, +102% YoY).",
+          "meaning": "분석: 메모리(DRAM+낸드) 비중이 34%→42%로 확대 — HBM·DRAM 증설이 장비 수요의 핵심 동력으로 부상. 중국 비중은 낮아지고 대만·미국 비중이 상승."
+        },
+        {
+          "title": "다음 분기 가이던스",
+          "direction": "개선",
+          "before": "Q4 가이던스(8/13): 매출 $10.25bn±$0.5bn, 비GAAP EPS $4.02±$0.20.",
+          "now": "Q1 FY27 가이던스: 매출 $11.1bn±$0.5bn, 비GAAP EPS $4.35±$0.20($0.04 세금 이익 포함). CEO는 '2026년 달력 기준 반도체장비 사업 40% 이상 성장 궤도'라고 언급.",
+          "meaning": "중간값 기준 매출 +7% QoQ, 컨센서스 대비 매출 +2.8%·EPS +2.9% 상회(Yahoo, 11/12 스냅샷)."
+        }
+      ],
+      "facts": "Q4 FY26(10/25 마감): 매출 $10,409m(+53% YoY, Q4 FY25 $6,800m; +14% QoQ), GAAP 총이익률 50.4%·비GAAP 50.6%, GAAP 영업이익률 35.1%·비GAAP 35.3%, GAAP EPS $3.40(+43% YoY), 비GAAP EPS $4.16(+92% YoY), 영업현금흐름 $3,300m, 비GAAP FCF $2,616m(분기 최대), 자사주 매입 $2,000m, 배당 $421m. 부문: 반도체장비 $7,996m(영업이익률 38.8%; 파운드리/로직 58%·DRAM 33%·낸드 9%), AGS $1,896m(영업이익률 30.5%), 기타 $517m. 지역: 대만 $2,916m(28%), 중국 $2,642m(25%), 한국 $1,811m(17%), 미국 $1,320m(13%), 일본 $619m, 동남아 $581m, 유럽 $520m. FY26: 매출 $34,446m(+21% YoY), 비GAAP EPS $12.89(+37% YoY), GAAP EPS $12.62(+46% YoY), 비GAAP FCF $6,196m, 자사주 $3,177m, 배당 $1,571m, 중국 비중 27%(전년 30%).",
+      "guidance": "Q1 FY27: 매출 $11.1bn±$0.5bn, 비GAAP EPS $4.35±$0.20(인수 관련 비용 $0.01 제외, 내부 무형자산 이전에 따른 순세금 이익 $0.04 포함). 직전 Q4 가이던스: 매출 $10.25bn±$0.5bn, 비GAAP EPS $4.02±$0.20.",
+      "tone": "보도자료 기준: CEO는 'AI가 반도체 수요를 계속 끌어올려 다년간 매출·이익 성장에 좋은 위치', CFO는 '분기 최대 FCF와 8년여 만의 최대 분기 자사주 매입'을 강조하는 강한 자신감. 공식 Q&A 녹취록 미확인으로 질의응답 톤은 판단하지 않음.",
+      "interpretation": "분석: 매출이 Q2→Q3→Q4로 가속하고 Q1 가이던스도 +7% QoQ로 이어져 AI발 WFE(전공정 장비) 업사이클이 FY27 초까지 강화되는 흐름. 특히 DRAM 비중 33%와 한국 매출 +49% YoY는 HBM용 DRAM 증설(SK하이닉스·삼성전자) 투자 강도를 직접 보여 주는 지표. 앞서 발표한 Lam Research·KLA와 함께 장비 3사 모두 메모리 투자 확대를 확인. 한국 관점: 메모리 설비투자 확대 수혜 국내 장비·부품(원익IPS·주성엔지니어링·한미반도체·피에스케이·솔브레인)과 메모리 가격 사이클에 우호적, 반대로 중국 비중 하락 속도는 규제 리스크 변수.",
+      "watch": "분석: 컨콜에서 2027년 WFE 전망·DRAM/HBM 투자 지속성, 중국 매출 전망과 수출 규제 영향, 게이트올어라운드·후면전력 등 첨단 로직 장비 점유율, BESI 지분 확대 이후 하이브리드 본딩 전략, 서비스(AGS) 성장률.",
+      "source": "https://www.globenewswire.com/news-release/2026/11/12/3402149/0/en/applied-materials-announces-fourth-quarter-and-fiscal-year-2026-results.html",
+      "source_label": "Applied Materials Q4·FY2026 공식 실적 보도자료(11/12, GlobeNewswire 배포 원문)",
+      "prior_source": "https://www.sec.gov/Archives/edgar/data/0000006951/000162828026056699/exhibit991q32026earningsre.htm",
+      "prior_source_label": "Applied Materials Q3 FY2026 공식 실적 보도자료(SEC 8-K Exhibit 99.1, 8/13)",
+      "verified_at": "2026-11-12",
+      "call_topics": [
+        {
+          "topic": "분기 실적",
+          "source_part": "공식 보도자료",
+          "points": [
+            "매출 $10.41bn(+53% YoY), 비GAAP EPS $4.16(+92% YoY).",
+            "비GAAP 영업이익률 35.3%, FCF $2.62bn."
+          ],
+          "implication": "가속 국면 확인."
+        },
+        {
+          "topic": "메모리 투자",
+          "source_part": "공식 보도자료",
+          "points": [
+            "반도체장비 중 DRAM 33%(1년 전 28%), 낸드 9%(6%).",
+            "한국 매출 $1.81bn(+49% YoY)."
+          ],
+          "implication": "HBM·DRAM 증설 지속성."
+        },
+        {
+          "topic": "가이던스",
+          "source_part": "공식 보도자료",
+          "points": [
+            "Q1 FY27 매출 $11.1bn±$0.5bn, 비GAAP EPS $4.35±$0.20.",
+            "CEO: 2026년 반도체장비 사업 40% 이상 성장 궤도."
+          ],
+          "implication": "2027년 WFE 전망은 컨콜에서 확인."
+        }
+      ],
+      "call_readthrough": {
+        "scope": "공식 Q4 보도자료를 한국어로 재서술. 컨콜(11/12 13:30 PT) 녹취록은 반영 시점에 미공개 — 다음 회차에 공식 자료로 보강.",
+        "groups": [
+          {
+            "title": "경영진 코멘트",
+            "items": [
+              {
+                "title": "AI 수요",
+                "body": "CEO는 AI가 반도체에 대한 강한 추가 수요를 계속 만들고 있으며, 회사가 다년간 매출·이익 성장에 좋은 위치에 있다고 밝혔다.",
+                "meaning": "분석: 단기 사이클이 아닌 다년 성장 구도를 강조."
+              },
+              {
+                "title": "장비 사업 성장",
+                "body": "2026년 달력 기준 반도체장비 사업을 40% 넘게 키우는 궤도에 있다고 말했다."
+              },
+              {
+                "title": "주주환원",
+                "body": "CFO는 분기 최대 FCF $2.6bn을 냈고 $2.4bn 넘게 주주에게 돌려줬으며, 8년여 만에 최대 규모의 분기 자사주 매입을 했다고 밝혔다."
+              }
+            ]
+          },
+          {
+            "title": "Q&A 핵심",
+            "items": [
+              {
+                "title": "녹취록 미공개",
+                "body": "컨콜 직후 반영으로 공식 Q&A 녹취록을 확인하지 못함. 다음 회차에 보강."
+              }
+            ]
+          }
+        ]
+      }
     }
   ],
   "upcoming": [
@@ -28210,13 +28381,6 @@
       "time": "발표 완료(11/11 Asia/Tokyo) · 회사 IR 라이브러리에 중간기 결산단신(ket_2703_02.pdf) 게재 확인 · 11/12 05:40 KST 회차까지 공식 PDF 원문 직접 열람 실패로 events 미반영 — 원문 확인 후 반영",
       "event": "FY27(2027년 3월기) Q2 실적 발표",
       "source": "https://www.nissin.com/jp/company/ir/library/financialresults/"
-    },
-    {
-      "ticker": "AMAT",
-      "date": "2026-11-12",
-      "time": "장 마감 후 · 13:30 America/Los_Angeles(컨콜)",
-      "event": "FY26 Q4·연간 실적·컨퍼런스콜",
-      "source": "https://ir.appliedmaterials.com/news-releases/news-release-details/applied-materials-report-fourth-quarter-and-fiscal-2026-results"
     },
     {
       "ticker": "NVDA",
