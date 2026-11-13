@@ -28371,14 +28371,14 @@
     {
       "ticker": "6525.T",
       "date": "2026-11-09",
-      "time": "발표 완료(11/9 Asia/Tokyo) · 회사 IR '최신결산발표자료' 페이지에 결산단신(tdnet/2907737)·결산설명자료(tdnet/2907746)·질의응답집·프레젠테이션 텍스트판·반기보고서 게재 확인 · 11/13 06:40 KST 회차까지 공식 PDF 원문(eir-parts.net) 직접 열람 실패로 events 미반영 — 원문 확인 후 반영",
+      "time": "발표 완료(11/9 Asia/Tokyo) · 회사 IR '최신결산발표자료' 페이지에 결산단신(tdnet/2907737)·결산설명자료(tdnet/2907746)·질의응답집·프레젠테이션 텍스트판·반기보고서 게재 확인 · 11/13 12:40 KST 회차까지 공식 PDF 원문(eir-parts.net) 직접 열람 실패(실행 환경에서 eir-parts.net·media.www.nissin.com 접속 차단)로 events 미반영 — 원문 확인 후 반영",
       "event": "FY27(2027년 3월기) Q2 실적 발표",
       "source": "https://www.kokusai-electric.com/latest_report"
     },
     {
       "ticker": "2897.T",
       "date": "2026-11-11",
-      "time": "발표 완료(11/11 Asia/Tokyo) · 회사 IR 라이브러리에 중간기 결산단신(ket_2703_02.pdf)·결산보충자료·설명회 슬라이드(kes_2703_2q_01.pdf) 게재 확인 · 11/13 06:40 KST 회차까지 공식 PDF 원문 직접 열람 실패로 events 미반영 — 원문 확인 후 반영",
+      "time": "발표 완료(11/11 Asia/Tokyo) · 회사 IR 라이브러리에 중간기 결산단신(ket_2703_02.pdf)·결산보충자료·설명회 슬라이드(kes_2703_2q_01.pdf) 게재 확인 · 11/13 12:40 KST 회차까지 공식 PDF 원문 직접 열람 실패(실행 환경에서 eir-parts.net·media.www.nissin.com 접속 차단)로 events 미반영 — 원문 확인 후 반영",
       "event": "FY27(2027년 3월기) Q2 실적 발표",
       "source": "https://www.nissin.com/jp/company/ir/library/financialresults/"
     },
