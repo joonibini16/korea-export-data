@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-13T07:05:19+00:00",
+  "updated": "2026-11-13T11:42:36+00:00",
   "targets": 25,
   "bonds": {
     "CORZ": {
@@ -9,18 +9,16 @@
       "cusip": "U2062LAA9",
       "coupon": 7.75,
       "maturity": "2031-05-15",
-      "n": 29,
-      "latest": "2026-11-06"
+      "n": 30,
+      "latest": "2026-11-12"
     },
     "APLD": {
       "name": "어플라이드 디지털",
-      "state": "no matching traded issue",
-      "matches": 0
+      "state": "error"
     },
     "CIFR": {
       "name": "사이퍼 마이닝",
-      "state": "no matching traded issue",
-      "matches": 0
+      "state": "error"
     },
     "WULF": {
       "name": "테라울프",
@@ -74,8 +72,8 @@
       "cusip": "595112BZ5",
       "coupon": 5.875,
       "maturity": "2033-02-09",
-      "n": 890,
-      "latest": "2026-11-11"
+      "n": 891,
+      "latest": "2026-11-12"
     },
     "DELL": {
       "name": "델",
@@ -84,8 +82,8 @@
       "cusip": "24703DBL4",
       "coupon": 5.75,
       "maturity": "2033-02-01",
-      "n": 942,
-      "latest": "2026-11-11"
+      "n": 943,
+      "latest": "2026-11-12"
     },
     "INTC": {
       "name": "인텔",
@@ -94,8 +92,8 @@
       "cusip": "458140BH2",
       "coupon": 2.45,
       "maturity": "2029-11-15",
-      "n": 1228,
-      "latest": "2026-11-11"
+      "n": 1229,
+      "latest": "2026-11-12"
     },
     "AMD": {
       "name": "AMD",
@@ -104,8 +102,8 @@
       "cusip": "007903BF3",
       "coupon": 3.924,
       "maturity": "2032-06-01",
-      "n": 1059,
-      "latest": "2026-11-10"
+      "n": 1060,
+      "latest": "2026-11-12"
     },
     "QCOM": {
       "name": "퀄컴",
@@ -134,8 +132,8 @@
       "cusip": "29444UBE5",
       "coupon": 3.2,
       "maturity": "2029-11-18",
-      "n": 1225,
-      "latest": "2026-11-10"
+      "n": 1226,
+      "latest": "2026-11-12"
     },
     "DLR": {
       "name": "디지털 리얼티",
@@ -179,8 +177,8 @@
       "cusip": "210385AC4",
       "coupon": 5.8,
       "maturity": "2033-03-01",
-      "n": 894,
-      "latest": "2026-11-10"
+      "n": 895,
+      "latest": "2026-11-12"
     },
     "SOFTBANK": {
       "name": "소프트뱅크그룹",
@@ -189,8 +187,8 @@
       "cusip": "J7600PAC7",
       "coupon": 9.75,
       "maturity": "2034-04-01",
-      "n": 28,
-      "latest": "2026-11-11"
+      "n": 29,
+      "latest": "2026-11-12"
     },
     "OTF": {
       "name": "블루아울 테크놀로지 파이낸스",
@@ -199,8 +197,8 @@
       "cusip": "095924AD8",
       "coupon": 6.5,
       "maturity": "2029-10-15",
-      "n": 112,
-      "latest": "2026-11-10"
+      "n": 113,
+      "latest": "2026-11-12"
     },
     "OBDC": {
       "name": "블루아울 캐피털",
@@ -213,6 +211,9 @@
       "matches": 0
     }
   },
-  "errors": [],
-  "rows": 7111
+  "errors": [
+    "APLD: The read operation timed out ",
+    "CIFR: The read operation timed out "
+  ],
+  "rows": 7120
 }
