@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-13",
+  "updated_at": "2026-11-14",
   "method": "수치·가이던스는 회사 공식 IR 자료(보도자료·실적 발표문·SEC/거래소 공시)만 사용합니다. 컨콜 경영진 코멘트·Q&A 요약은 공식 녹취록·준비 발언을 우선하고, 없으면 무료 공개 녹취록(Motley Fool 등)을 근거로 하되 '비공식 녹취록 기반'으로 출처를 표시합니다. 투자 해석은 관전점·'분석:'으로 구분합니다. 반도체 장비 업종은 주요 공정·검사·테스트·패키징 기업을 추적하며 원문 미검증 기업은 분석 대기로 표시합니다.",
   "authoring_guide": {
     "summary": "새 events 항목에는 summary 필드를 반드시 작성한다(화면 맨 위 '핵심 결론'에 표시). 형식: {basis: '공식 보도자료 기준(필요 시 미감사)', items: [{label:'매출', text:'…', sub:'가이던스 대비 상회/하회/부합만'}, {label:'연간 가이던스', text:'A → B 상향'}](2~4개), cautions: [유의·부정 사항 1~3개], take: '1~2문장 투자 해석(한국 관련 업종 시사점 포함)'}. 예시는 SMCI 'FY27 Q1'.",
@@ -28371,14 +28371,14 @@
     {
       "ticker": "6525.T",
       "date": "2026-11-09",
-      "time": "발표 완료(11/9 Asia/Tokyo) · 회사 IR '최신결산발표자료' 페이지에 결산단신(tdnet/2907737)·결산설명자료(tdnet/2907746)·질의응답집·프레젠테이션 텍스트판·반기보고서 게재 확인 · 11/13 12:40 KST 회차까지 공식 PDF 원문(eir-parts.net) 직접 열람 실패(실행 환경에서 eir-parts.net·media.www.nissin.com 접속 차단)로 events 미반영 — 원문 확인 후 반영",
+      "time": "발표 완료(11/9 Asia/Tokyo) · 회사 IR '최신결산발표자료' 페이지에 결산단신(tdnet/2907737)·결산설명자료(tdnet/2907746)·질의응답집·프레젠테이션 텍스트판·반기보고서 게재 확인 · 11/14 12:40 KST 회차까지 공식 PDF 원문(eir-parts.net) 직접 열람 실패(실행 환경에서 eir-parts.net·media.www.nissin.com 접속 차단)로 events 미반영 — 원문 확인 후 반영",
       "event": "FY27(2027년 3월기) Q2 실적 발표",
       "source": "https://www.kokusai-electric.com/latest_report"
     },
     {
       "ticker": "2897.T",
       "date": "2026-11-11",
-      "time": "발표 완료(11/11 Asia/Tokyo) · 회사 IR 라이브러리에 중간기 결산단신(ket_2703_02.pdf)·결산보충자료·설명회 슬라이드(kes_2703_2q_01.pdf) 게재 확인 · 11/13 12:40 KST 회차까지 공식 PDF 원문 직접 열람 실패(실행 환경에서 eir-parts.net·media.www.nissin.com 접속 차단)로 events 미반영 — 원문 확인 후 반영",
+      "time": "발표 완료(11/11 Asia/Tokyo) · 회사 IR 라이브러리에 중간기 결산단신(ket_2703_02.pdf)·결산보충자료·설명회 슬라이드(kes_2703_2q_01.pdf)·CFO 온라인 설명회 노트·Q&A(kes_2703_2q_03.pdf) 게재 확인 · 11/14 12:40 KST 회차까지 공식 PDF 원문 직접 열람 실패(실행 환경에서 eir-parts.net·media.www.nissin.com 접속 차단)로 events 미반영 — 원문 확인 후 반영",
       "event": "FY27(2027년 3월기) Q2 실적 발표",
       "source": "https://www.nissin.com/jp/company/ir/library/financialresults/"
     },
