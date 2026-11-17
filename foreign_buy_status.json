@@ -1,16 +1,101 @@
 {
- "run": "2026-11-17T15:55:18+09:00",
+ "run": "2026-11-17T16:25:51+09:00",
  "steps": [
   {
    "step": "loader",
-   "status": 403
+   "status": 200
   },
   {
    "step": "login",
    "id_len": 6,
-   "status": 403,
-   "code": null,
-   "msg": "<HTML><HEAD>\n<TITLE>Access Denied</TITLE>\n</HEAD><BODY>\n<H1>Access Denied</H1>\n "
+   "status": 200,
+   "code": "CD001",
+   "msg": "정상"
+  },
+  {
+   "step": "days",
+   "fetched": 2,
+   "total": 273,
+   "latest": "2026-11-17"
+  },
+  {
+   "step": "inv_days",
+   "investor": "I",
+   "fetched": 2
+  },
+  {
+   "step": "inv_days",
+   "investor": "T",
+   "fetched": 2
+  },
+  {
+   "step": "inv_days",
+   "investor": "P",
+   "fetched": 2
+  },
+  {
+   "step": "inv_days",
+   "investor": "N",
+   "fetched": 2
+  },
+  {
+   "step": "inv_days",
+   "investor": "B",
+   "fetched": 2
+  },
+  {
+   "step": "inv_days",
+   "investor": "O",
+   "fetched": 2
+  },
+  {
+   "step": "build",
+   "investor": "F",
+   "days": 62,
+   "series": 2212
+  },
+  {
+   "step": "build",
+   "investor": "I",
+   "days": 62,
+   "series": 2203
+  },
+  {
+   "step": "build",
+   "investor": "T",
+   "days": 62,
+   "series": 1527
+  },
+  {
+   "step": "build",
+   "investor": "P",
+   "days": 62,
+   "series": 1678
+  },
+  {
+   "step": "build",
+   "investor": "B",
+   "days": 62,
+   "series": 2197
+  },
+  {
+   "step": "build",
+   "investor": "O",
+   "days": 62,
+   "series": 2159
+  },
+  {
+   "step": "build",
+   "investor": "N",
+   "days": 62,
+   "series": 978
+  },
+  {
+   "step": "build",
+   "investor": "C",
+   "days": 62,
+   "series": 1776
   }
- ]
+ ],
+ "ok": true
 }
