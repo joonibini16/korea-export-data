@@ -1,1118 +1,1118 @@
 {
  "222800": {
-  "reports": 26,
-  "products": 26,
-  "prices": 26,
-  "errors": 0
- },
- "353200": {
-  "reports": 25,
-  "products": 25,
-  "prices": 25,
-  "errors": 0
- },
- "007660": {
-  "reports": 26,
-  "products": 26,
-  "prices": 7,
-  "errors": 0
- },
- "192820": {
-  "reports": 26,
-  "products": 26,
-  "prices": 26,
-  "errors": 0
- },
- "161890": {
-  "reports": 26,
-  "products": 26,
-  "prices": 14,
-  "errors": 0
- },
- "007810": {
-  "reports": 26,
-  "products": 26,
-  "prices": 26,
-  "errors": 0
- },
- "051370": {
-  "reports": 26,
-  "products": 26,
-  "prices": 26,
-  "errors": 0
- },
- "090460": {
-  "reports": 26,
-  "products": 26,
-  "prices": 7,
-  "errors": 0
- },
- "009150": {
-  "reports": 26,
-  "products": 26,
-  "prices": 0,
-  "errors": 0
- },
- "011070": {
-  "reports": 26,
-  "products": 26,
-  "prices": 16,
-  "errors": 0
- },
- "195870": {
-  "reports": 26,
-  "products": 0,
-  "prices": 6,
-  "errors": 0
- },
- "241710": {
-  "reports": 26,
-  "products": 21,
-  "prices": 26,
-  "errors": 0
- },
- "003350": {
-  "reports": 26,
-  "products": 21,
-  "prices": 26,
-  "errors": 0
- },
- "090430": {
-  "reports": 26,
-  "products": 26,
-  "prices": 26,
-  "errors": 0
- },
- "051900": {
-  "reports": 26,
-  "products": 26,
-  "prices": 26,
-  "errors": 0
- },
- "005930": {
-  "reports": 26,
-  "products": 20,
-  "prices": 26,
-  "errors": 0
- },
- "000660": {
-  "reports": 26,
-  "products": 26,
-  "prices": 0,
-  "errors": 0
- },
- "064760": {
-  "reports": 26,
-  "products": 0,
-  "prices": 24,
-  "errors": 0
- },
- "166090": {
-  "reports": 26,
-  "products": 26,
-  "prices": 26,
-  "errors": 0
- },
- "058470": {
-  "reports": 26,
-  "products": 26,
-  "prices": 0,
-  "errors": 0
- },
- "039030": {
-  "reports": 26,
-  "products": 26,
-  "prices": 21,
-  "errors": 0
- },
- "267260": {
-  "reports": 26,
-  "products": 26,
-  "prices": 0,
-  "errors": 0
- },
- "298040": {
-  "reports": 26,
-  "products": 1,
-  "prices": 25,
-  "errors": 0
- },
- "010120": {
-  "reports": 26,
-  "products": 26,
-  "prices": 26,
-  "errors": 0
- },
- "103590": {
-  "reports": 26,
-  "products": 26,
-  "prices": 26,
-  "errors": 0
- },
- "000500": {
-  "reports": 26,
-  "products": 21,
-  "prices": 26,
-  "errors": 0
- },
- "373220": {
   "reports": 23,
   "products": 23,
   "prices": 23,
   "errors": 0
  },
- "006400": {
-  "reports": 26,
-  "products": 26,
-  "prices": 26,
+ "353200": {
+  "reports": 22,
+  "products": 22,
+  "prices": 22,
   "errors": 0
+ },
+ "007660": {
+  "reports": 28,
+  "products": 23,
+  "prices": 7,
+  "errors": 5
+ },
+ "192820": {
+  "reports": 26,
+  "products": 23,
+  "prices": 23,
+  "errors": 3
+ },
+ "161890": {
+  "reports": 25,
+  "products": 23,
+  "prices": 12,
+  "errors": 2
+ },
+ "007810": {
+  "reports": 24,
+  "products": 23,
+  "prices": 23,
+  "errors": 1
+ },
+ "051370": {
+  "reports": 24,
+  "products": 23,
+  "prices": 23,
+  "errors": 1
+ },
+ "090460": {
+  "reports": 26,
+  "products": 23,
+  "prices": 7,
+  "errors": 3
+ },
+ "009150": {
+  "reports": 24,
+  "products": 23,
+  "prices": 0,
+  "errors": 1
+ },
+ "011070": {
+  "reports": 27,
+  "products": 23,
+  "prices": 13,
+  "errors": 4
+ },
+ "195870": {
+  "reports": 24,
+  "products": 0,
+  "prices": 6,
+  "errors": 1
+ },
+ "241710": {
+  "reports": 24,
+  "products": 18,
+  "prices": 23,
+  "errors": 1
+ },
+ "003350": {
+  "reports": 26,
+  "products": 17,
+  "prices": 22,
+  "errors": 4
+ },
+ "090430": {
+  "reports": 24,
+  "products": 23,
+  "prices": 23,
+  "errors": 1
+ },
+ "051900": {
+  "reports": 24,
+  "products": 23,
+  "prices": 23,
+  "errors": 1
+ },
+ "005930": {
+  "reports": 23,
+  "products": 18,
+  "prices": 23,
+  "errors": 0
+ },
+ "000660": {
+  "reports": 24,
+  "products": 23,
+  "prices": 0,
+  "errors": 1
+ },
+ "064760": {
+  "reports": 24,
+  "products": 0,
+  "prices": 21,
+  "errors": 1
+ },
+ "166090": {
+  "reports": 24,
+  "products": 23,
+  "prices": 23,
+  "errors": 1
+ },
+ "058470": {
+  "reports": 24,
+  "products": 23,
+  "prices": 0,
+  "errors": 1
+ },
+ "039030": {
+  "reports": 25,
+  "products": 23,
+  "prices": 18,
+  "errors": 2
+ },
+ "267260": {
+  "reports": 24,
+  "products": 23,
+  "prices": 0,
+  "errors": 1
+ },
+ "298040": {
+  "reports": 29,
+  "products": 0,
+  "prices": 23,
+  "errors": 6
+ },
+ "010120": {
+  "reports": 24,
+  "products": 23,
+  "prices": 23,
+  "errors": 1
+ },
+ "103590": {
+  "reports": 24,
+  "products": 23,
+  "prices": 23,
+  "errors": 1
+ },
+ "000500": {
+  "reports": 26,
+  "products": 18,
+  "prices": 23,
+  "errors": 3
+ },
+ "373220": {
+  "reports": 21,
+  "products": 20,
+  "prices": 20,
+  "errors": 1
+ },
+ "006400": {
+  "reports": 24,
+  "products": 23,
+  "prices": 23,
+  "errors": 1
  },
  "247540": {
   "reports": 26,
-  "products": 26,
+  "products": 23,
   "prices": 0,
-  "errors": 0
+  "errors": 3
  },
  "066970": {
   "reports": 26,
-  "products": 26,
+  "products": 23,
   "prices": 0,
-  "errors": 0
+  "errors": 3
  },
  "003670": {
-  "reports": 26,
-  "products": 21,
-  "prices": 26,
-  "errors": 0
+  "reports": 28,
+  "products": 18,
+  "prices": 23,
+  "errors": 5
  },
  "082920": {
   "reports": 26,
   "products": 4,
   "prices": 0,
-  "errors": 0
+  "errors": 3
  },
  "086900": {
-  "reports": 26,
-  "products": 26,
+  "reports": 28,
+  "products": 23,
   "prices": 0,
-  "errors": 0
+  "errors": 5
  },
  "145020": {
-  "reports": 26,
-  "products": 26,
+  "reports": 25,
+  "products": 23,
   "prices": 0,
-  "errors": 0
+  "errors": 2
  },
  "069620": {
-  "reports": 26,
-  "products": 21,
-  "prices": 26,
-  "errors": 0
+  "reports": 29,
+  "products": 18,
+  "prices": 23,
+  "errors": 6
  },
  "041830": {
-  "reports": 26,
-  "products": 21,
-  "prices": 26,
-  "errors": 0
+  "reports": 28,
+  "products": 18,
+  "prices": 23,
+  "errors": 5
  },
  "003230": {
-  "reports": 26,
-  "products": 26,
+  "reports": 25,
+  "products": 23,
   "prices": 11,
-  "errors": 0
+  "errors": 2
  },
  "004370": {
-  "reports": 26,
-  "products": 21,
-  "prices": 26,
+  "reports": 23,
+  "products": 18,
+  "prices": 23,
   "errors": 0
  },
  "007310": {
-  "reports": 26,
+  "reports": 24,
   "products": 0,
-  "prices": 26,
-  "errors": 0
+  "prices": 23,
+  "errors": 1
  },
  "009830": {
-  "reports": 26,
-  "products": 26,
-  "prices": 26,
-  "errors": 0
+  "reports": 29,
+  "products": 23,
+  "prices": 23,
+  "errors": 6
  },
  "067310": {
-  "reports": 26,
-  "products": 26,
-  "prices": 26,
-  "errors": 0
+  "reports": 24,
+  "products": 23,
+  "prices": 23,
+  "errors": 1
  },
  "036540": {
-  "reports": 26,
-  "products": 21,
-  "prices": 26,
-  "errors": 0
+  "reports": 24,
+  "products": 18,
+  "prices": 23,
+  "errors": 1
  },
  "061970": {
-  "reports": 26,
-  "products": 26,
-  "prices": 26,
-  "errors": 0
+  "reports": 27,
+  "products": 23,
+  "prices": 23,
+  "errors": 4
  },
  "131970": {
-  "reports": 26,
+  "reports": 27,
   "products": 0,
   "prices": 2,
-  "errors": 0
+  "errors": 4
  },
  "033640": {
-  "reports": 26,
-  "products": 16,
-  "prices": 26,
-  "errors": 0
+  "reports": 25,
+  "products": 13,
+  "prices": 23,
+  "errors": 2
  },
  "330860": {
-  "reports": 23,
+  "reports": 20,
   "products": 0,
   "prices": 0,
   "errors": 0
  },
  "097800": {
-  "reports": 26,
-  "products": 26,
-  "prices": 26,
+  "reports": 23,
+  "products": 23,
+  "prices": 23,
   "errors": 0
  },
  "033170": {
-  "reports": 26,
-  "products": 21,
-  "prices": 3,
-  "errors": 0
+  "reports": 27,
+  "products": 18,
+  "prices": 2,
+  "errors": 4
  },
  "172670": {
-  "reports": 13,
-  "products": 13,
+  "reports": 10,
+  "products": 10,
   "prices": 0,
   "errors": 0
  },
  "200470": {
-  "reports": 26,
-  "products": 26,
-  "prices": 15,
+  "reports": 23,
+  "products": 23,
+  "prices": 12,
   "errors": 0
  },
  "078350": {
-  "reports": 26,
-  "products": 26,
-  "prices": 26,
+  "reports": 23,
+  "products": 23,
+  "prices": 23,
   "errors": 0
  },
  "219130": {
-  "reports": 26,
-  "products": 26,
+  "reports": 23,
+  "products": 23,
   "prices": 0,
   "errors": 0
  },
  "252990": {
-  "reports": 21,
-  "products": 21,
+  "reports": 19,
+  "products": 18,
   "prices": 0,
-  "errors": 0
+  "errors": 1
  },
  "446540": {
-  "reports": 11,
-  "products": 11,
-  "prices": 11,
-  "errors": 0
+  "reports": 10,
+  "products": 8,
+  "prices": 8,
+  "errors": 2
  },
  "131290": {
-  "reports": 26,
-  "products": 26,
+  "reports": 24,
+  "products": 23,
   "prices": 5,
-  "errors": 0
+  "errors": 1
  },
  "092870": {
-  "reports": 26,
-  "products": 26,
+  "reports": 23,
+  "products": 23,
   "prices": 0,
   "errors": 0
  },
  "064290": {
-  "reports": 26,
+  "reports": 23,
   "products": 0,
-  "prices": 26,
+  "prices": 23,
   "errors": 0
  },
  "420770": {
-  "reports": 13,
-  "products": 13,
-  "prices": 13,
-  "errors": 0
+  "reports": 15,
+  "products": 10,
+  "prices": 10,
+  "errors": 5
  },
  "114810": {
-  "reports": 26,
-  "products": 26,
+  "reports": 31,
+  "products": 23,
   "prices": 0,
-  "errors": 0
+  "errors": 8
  },
  "144960": {
-  "reports": 26,
+  "reports": 28,
   "products": 0,
-  "prices": 26,
-  "errors": 0
+  "prices": 23,
+  "errors": 5
  },
  "003160": {
-  "reports": 26,
-  "products": 21,
-  "prices": 26,
-  "errors": 0
+  "reports": 25,
+  "products": 18,
+  "prices": 23,
+  "errors": 2
  },
  "080580": {
-  "reports": 26,
-  "products": 26,
+  "reports": 23,
+  "products": 23,
   "prices": 0,
   "errors": 0
  },
  "232140": {
-  "reports": 26,
-  "products": 26,
+  "reports": 28,
+  "products": 23,
   "prices": 0,
-  "errors": 0
+  "errors": 5
  },
  "086390": {
-  "reports": 26,
-  "products": 26,
+  "reports": 24,
+  "products": 23,
   "prices": 0,
-  "errors": 0
+  "errors": 1
  },
  "253590": {
-  "reports": 26,
-  "products": 26,
+  "reports": 24,
+  "products": 23,
   "prices": 0,
-  "errors": 0
+  "errors": 1
  },
  "425420": {
-  "reports": 15,
-  "products": 15,
+  "reports": 14,
+  "products": 12,
   "prices": 0,
-  "errors": 0
+  "errors": 2
  },
  "089030": {
-  "reports": 26,
-  "products": 26,
+  "reports": 23,
+  "products": 23,
   "prices": 3,
   "errors": 0
  },
  "095340": {
-  "reports": 26,
-  "products": 21,
+  "reports": 24,
+  "products": 18,
   "prices": 0,
-  "errors": 0
+  "errors": 1
  },
  "147760": {
   "reports": 26,
-  "products": 26,
-  "prices": 26,
-  "errors": 0
+  "products": 23,
+  "prices": 23,
+  "errors": 3
  },
  "025560": {
   "reports": 26,
-  "products": 26,
-  "prices": 19,
-  "errors": 0
+  "products": 23,
+  "prices": 16,
+  "errors": 3
  },
  "089790": {
-  "reports": 26,
-  "products": 11,
+  "reports": 23,
+  "products": 10,
   "prices": 0,
   "errors": 0
  },
  "098120": {
-  "reports": 26,
-  "products": 9,
+  "reports": 25,
+  "products": 6,
   "prices": 0,
-  "errors": 0
+  "errors": 2
  },
  "006110": {
   "reports": 26,
-  "products": 26,
-  "prices": 26,
-  "errors": 0
+  "products": 23,
+  "prices": 23,
+  "errors": 3
  },
  "020150": {
-  "reports": 26,
+  "reports": 24,
   "products": 9,
   "prices": 21,
-  "errors": 0
+  "errors": 1
  },
  "078600": {
-  "reports": 26,
-  "products": 21,
-  "prices": 13,
-  "errors": 0
+  "reports": 27,
+  "products": 18,
+  "prices": 10,
+  "errors": 4
  },
  "091580": {
   "reports": 26,
-  "products": 21,
-  "prices": 26,
-  "errors": 0
+  "products": 18,
+  "prices": 23,
+  "errors": 3
  },
  "033790": {
   "reports": 26,
-  "products": 26,
+  "products": 23,
   "prices": 8,
-  "errors": 0
+  "errors": 3
  },
  "086520": {
   "reports": 26,
-  "products": 26,
+  "products": 23,
   "prices": 0,
-  "errors": 0
+  "errors": 3
  },
  "450080": {
-  "reports": 11,
-  "products": 11,
+  "reports": 12,
+  "products": 8,
   "prices": 3,
-  "errors": 0
+  "errors": 4
  },
  "005070": {
-  "reports": 26,
-  "products": 21,
+  "reports": 25,
+  "products": 18,
   "prices": 11,
-  "errors": 0
+  "errors": 2
  },
  "005420": {
   "reports": 26,
-  "products": 21,
-  "prices": 26,
-  "errors": 0
+  "products": 18,
+  "prices": 23,
+  "errors": 3
  },
  "278280": {
-  "reports": 26,
-  "products": 21,
-  "prices": 21,
-  "errors": 0
+  "reports": 31,
+  "products": 18,
+  "prices": 18,
+  "errors": 8
  },
  "348370": {
-  "reports": 19,
-  "products": 19,
+  "reports": 18,
+  "products": 14,
+  "prices": 0,
+  "errors": 4
+ },
+ "093370": {
+  "reports": 23,
+  "products": 3,
   "prices": 0,
   "errors": 0
  },
- "093370": {
-  "reports": 26,
-  "products": 3,
-  "prices": 1,
-  "errors": 0
- },
  "457190": {
-  "reports": 13,
-  "products": 13,
-  "prices": 13,
-  "errors": 0
+  "reports": 11,
+  "products": 10,
+  "prices": 10,
+  "errors": 1
  },
  "121600": {
-  "reports": 26,
+  "reports": 23,
   "products": 0,
   "prices": 0,
   "errors": 0
  },
  "361610": {
-  "reports": 21,
-  "products": 21,
+  "reports": 19,
+  "products": 18,
   "prices": 0,
-  "errors": 0
+  "errors": 1
  },
  "393890": {
-  "reports": 16,
+  "reports": 15,
   "products": 0,
   "prices": 1,
-  "errors": 0
+  "errors": 2
  },
  "137400": {
-  "reports": 26,
-  "products": 26,
-  "prices": 26,
-  "errors": 0
+  "reports": 28,
+  "products": 23,
+  "prices": 23,
+  "errors": 5
  },
  "299030": {
+  "reports": 23,
+  "products": 20,
+  "prices": 0,
+  "errors": 3
+ },
+ "222080": {
+  "reports": 24,
+  "products": 23,
+  "prices": 1,
+  "errors": 1
+ },
+ "259630": {
+  "reports": 27,
+  "products": 23,
+  "prices": 0,
+  "errors": 4
+ },
+ "372170": {
+  "reports": 13,
+  "products": 0,
+  "prices": 0,
+  "errors": 1
+ },
+ "277880": {
+  "reports": 23,
+  "products": 21,
+  "prices": 0,
+  "errors": 2
+ },
+ "243840": {
+  "reports": 24,
+  "products": 23,
+  "prices": 0,
+  "errors": 1
+ },
+ "089980": {
+  "reports": 24,
+  "products": 6,
+  "prices": 23,
+  "errors": 1
+ },
+ "365340": {
+  "reports": 16,
+  "products": 0,
+  "prices": 13,
+  "errors": 3
+ },
+ "290670": {
+  "reports": 26,
+  "products": 15,
+  "prices": 0,
+  "errors": 3
+ },
+ "011790": {
+  "reports": 27,
+  "products": 0,
+  "prices": 12,
+  "errors": 4
+ },
+ "262260": {
+  "reports": 22,
+  "products": 22,
+  "prices": 21,
+  "errors": 0
+ },
+ "000990": {
+  "reports": 24,
+  "products": 23,
+  "prices": 23,
+  "errors": 1
+ },
+ "034220": {
   "reports": 23,
   "products": 23,
   "prices": 0,
   "errors": 0
  },
- "222080": {
-  "reports": 26,
-  "products": 26,
-  "prices": 1,
-  "errors": 0
- },
- "259630": {
-  "reports": 26,
-  "products": 26,
-  "prices": 0,
-  "errors": 0
- },
- "372170": {
-  "reports": 15,
-  "products": 0,
-  "prices": 0,
-  "errors": 0
- },
- "277880": {
-  "reports": 25,
-  "products": 25,
-  "prices": 0,
-  "errors": 0
- },
- "243840": {
-  "reports": 26,
-  "products": 26,
-  "prices": 0,
-  "errors": 0
- },
- "089980": {
-  "reports": 26,
-  "products": 6,
-  "prices": 26,
-  "errors": 0
- },
- "365340": {
-  "reports": 16,
-  "products": 0,
-  "prices": 16,
-  "errors": 0
- },
- "290670": {
-  "reports": 26,
-  "products": 18,
-  "prices": 0,
-  "errors": 0
- },
- "011790": {
-  "reports": 26,
-  "products": 0,
-  "prices": 12,
-  "errors": 0
- },
- "262260": {
-  "reports": 25,
-  "products": 25,
-  "prices": 24,
-  "errors": 0
- },
- "000990": {
-  "reports": 26,
-  "products": 26,
-  "prices": 26,
-  "errors": 0
- },
- "034220": {
-  "reports": 26,
-  "products": 26,
-  "prices": 0,
-  "errors": 0
- },
  "066570": {
-  "reports": 26,
-  "products": 26,
+  "reports": 24,
+  "products": 23,
   "prices": 0,
-  "errors": 0
+  "errors": 1
  },
  "000150": {
-  "reports": 26,
-  "products": 21,
-  "prices": 26,
-  "errors": 0
+  "reports": 28,
+  "products": 18,
+  "prices": 23,
+  "errors": 5
  },
  "080220": {
-  "reports": 26,
-  "products": 26,
-  "prices": 5,
-  "errors": 0
+  "reports": 29,
+  "products": 23,
+  "prices": 2,
+  "errors": 6
  },
  "183300": {
-  "reports": 26,
-  "products": 26,
+  "reports": 25,
+  "products": 23,
   "prices": 0,
-  "errors": 0
+  "errors": 2
  },
  "240810": {
-  "reports": 26,
-  "products": 26,
+  "reports": 24,
+  "products": 23,
   "prices": 0,
-  "errors": 0
+  "errors": 1
  },
  "036930": {
-  "reports": 26,
-  "products": 26,
+  "reports": 25,
+  "products": 23,
   "prices": 5,
-  "errors": 0
+  "errors": 2
  },
  "084370": {
-  "reports": 26,
-  "products": 26,
-  "prices": 0,
-  "errors": 0
- },
- "098460": {
-  "reports": 26,
-  "products": 26,
-  "prices": 0,
-  "errors": 0
- },
- "348210": {
-  "reports": 24,
-  "products": 21,
-  "prices": 24,
-  "errors": 0
- },
- "319660": {
-  "reports": 26,
-  "products": 18,
-  "prices": 26,
-  "errors": 0
- },
- "077360": {
-  "reports": 26,
+  "reports": 23,
   "products": 23,
   "prices": 0,
   "errors": 0
  },
+ "098460": {
+  "reports": 23,
+  "products": 23,
+  "prices": 0,
+  "errors": 0
+ },
+ "348210": {
+  "reports": 25,
+  "products": 19,
+  "prices": 25,
+  "errors": 0
+ },
+ "319660": {
+  "reports": 24,
+  "products": 15,
+  "prices": 23,
+  "errors": 1
+ },
+ "077360": {
+  "reports": 25,
+  "products": 21,
+  "prices": 0,
+  "errors": 2
+ },
  "005290": {
-  "reports": 26,
-  "products": 26,
+  "reports": 23,
+  "products": 23,
   "prices": 0,
   "errors": 0
  },
  "260970": {
-  "reports": 21,
-  "products": 21,
-  "prices": 20,
-  "errors": 0
+  "reports": 19,
+  "products": 18,
+  "prices": 17,
+  "errors": 1
  },
  "101160": {
-  "reports": 26,
-  "products": 26,
+  "reports": 24,
+  "products": 23,
   "prices": 0,
-  "errors": 0
+  "errors": 1
  },
  "101490": {
-  "reports": 26,
-  "products": 21,
-  "prices": 6,
-  "errors": 0
+  "reports": 24,
+  "products": 18,
+  "prices": 5,
+  "errors": 1
  },
  "214450": {
   "reports": 26,
   "products": 0,
-  "prices": 6,
-  "errors": 0
+  "prices": 4,
+  "errors": 3
  },
  "214150": {
-  "reports": 26,
+  "reports": 23,
   "products": 8,
   "prices": 0,
   "errors": 0
  },
  "336570": {
-  "reports": 26,
-  "products": 17,
-  "prices": 4,
-  "errors": 0
+  "reports": 31,
+  "products": 14,
+  "prices": 1,
+  "errors": 8
  },
  "062040": {
-  "reports": 8,
-  "products": 8,
+  "reports": 6,
+  "products": 5,
   "prices": 0,
-  "errors": 0
+  "errors": 1
  },
  "033100": {
   "reports": 26,
-  "products": 26,
+  "products": 23,
   "prices": 0,
-  "errors": 0
+  "errors": 3
  },
  "012450": {
-  "reports": 26,
-  "products": 26,
-  "prices": 26,
-  "errors": 0
+  "reports": 27,
+  "products": 23,
+  "prices": 23,
+  "errors": 4
  },
  "064350": {
-  "reports": 26,
+  "reports": 25,
   "products": 8,
-  "prices": 25,
-  "errors": 0
+  "prices": 22,
+  "errors": 2
  },
  "483650": {
-  "reports": 5,
+  "reports": 2,
   "products": 0,
   "prices": 0,
-  "errors": 0
+  "errors": 1
  },
  "047810": {
-  "reports": 26,
-  "products": 26,
-  "prices": 26,
-  "errors": 0
+  "reports": 25,
+  "products": 23,
+  "prices": 23,
+  "errors": 2
  },
  "475960": {
-  "reports": 7,
-  "products": 7,
-  "prices": 7,
+  "reports": 4,
+  "products": 4,
+  "prices": 4,
   "errors": 0
  },
  "082740": {
-  "reports": 26,
-  "products": 21,
-  "prices": 10,
-  "errors": 0
+  "reports": 24,
+  "products": 18,
+  "prices": 8,
+  "errors": 1
  },
  "071970": {
-  "reports": 26,
-  "products": 13,
-  "prices": 18,
-  "errors": 0
+  "reports": 27,
+  "products": 10,
+  "prices": 15,
+  "errors": 4
  },
  "267270": {
   "reports": 26,
-  "products": 26,
-  "prices": 26,
-  "errors": 0
+  "products": 23,
+  "prices": 23,
+  "errors": 3
  },
  "083650": {
-  "reports": 26,
-  "products": 21,
+  "reports": 27,
+  "products": 18,
   "prices": 0,
-  "errors": 0
+  "errors": 4
  },
  "100840": {
-  "reports": 26,
-  "products": 26,
+  "reports": 24,
+  "products": 23,
   "prices": 0,
-  "errors": 0
+  "errors": 1
  },
  "340570": {
   "reports": 23,
-  "products": 22,
-  "prices": 22,
-  "errors": 0
+  "products": 19,
+  "prices": 19,
+  "errors": 3
  },
  "068270": {
-  "reports": 26,
-  "products": 26,
-  "prices": 26,
-  "errors": 0
+  "reports": 27,
+  "products": 23,
+  "prices": 23,
+  "errors": 4
  },
  "207940": {
-  "reports": 26,
+  "reports": 24,
   "products": 0,
   "prices": 0,
-  "errors": 0
+  "errors": 1
  },
  "043150": {
-  "reports": 26,
-  "products": 15,
+  "reports": 23,
+  "products": 12,
   "prices": 0,
   "errors": 0
  },
  "228670": {
-  "reports": 26,
+  "reports": 25,
   "products": 0,
   "prices": 0,
-  "errors": 0
+  "errors": 2
  },
  "194700": {
-  "reports": 26,
-  "products": 26,
+  "reports": 27,
+  "products": 23,
   "prices": 0,
-  "errors": 0
+  "errors": 4
  },
  "145720": {
   "reports": 26,
-  "products": 26,
+  "products": 19,
   "prices": 0,
-  "errors": 0
+  "errors": 7
  },
  "039840": {
   "reports": 26,
-  "products": 21,
-  "prices": 26,
-  "errors": 0
+  "products": 18,
+  "prices": 23,
+  "errors": 3
  },
  "261200": {
   "reports": 26,
-  "products": 25,
-  "prices": 25,
-  "errors": 0
+  "products": 22,
+  "prices": 22,
+  "errors": 3
  },
  "200670": {
-  "reports": 26,
+  "reports": 23,
   "products": 0,
   "prices": 0,
   "errors": 0
  },
  "240550": {
-  "reports": 7,
+  "reports": 4,
   "products": 0,
-  "prices": 7,
+  "prices": 4,
   "errors": 0
  },
  "257720": {
-  "reports": 20,
-  "products": 20,
+  "reports": 19,
+  "products": 17,
   "prices": 0,
-  "errors": 0
+  "errors": 2
  },
  "352480": {
-  "reports": 21,
-  "products": 21,
-  "prices": 21,
-  "errors": 0
+  "reports": 19,
+  "products": 18,
+  "prices": 18,
+  "errors": 1
  },
  "114840": {
-  "reports": 20,
+  "reports": 23,
   "products": 1,
-  "prices": 16,
-  "errors": 0
+  "prices": 13,
+  "errors": 6
  },
  "226400": {
-  "reports": 26,
-  "products": 21,
+  "reports": 27,
+  "products": 18,
   "prices": 0,
-  "errors": 0
+  "errors": 4
  },
  "149980": {
-  "reports": 26,
+  "reports": 27,
   "products": 0,
   "prices": 0,
-  "errors": 0
+  "errors": 4
  },
  "009450": {
   "reports": 26,
   "products": 0,
   "prices": 0,
-  "errors": 0
+  "errors": 3
  },
  "033240": {
-  "reports": 26,
-  "products": 26,
-  "prices": 7,
-  "errors": 0
+  "reports": 24,
+  "products": 23,
+  "prices": 4,
+  "errors": 1
  },
  "213420": {
-  "reports": 26,
-  "products": 26,
+  "reports": 25,
+  "products": 23,
   "prices": 0,
-  "errors": 0
+  "errors": 2
  },
  "054950": {
-  "reports": 26,
-  "products": 26,
-  "prices": 26,
+  "reports": 23,
+  "products": 23,
+  "prices": 23,
   "errors": 0
  },
  "103840": {
-  "reports": 26,
-  "products": 26,
-  "prices": 26,
+  "reports": 23,
+  "products": 23,
+  "prices": 23,
   "errors": 0
  },
  "189300": {
-  "reports": 26,
+  "reports": 24,
   "products": 0,
-  "prices": 26,
-  "errors": 0
+  "prices": 23,
+  "errors": 1
  },
  "216080": {
   "reports": 26,
-  "products": 26,
+  "products": 23,
   "prices": 0,
-  "errors": 0
+  "errors": 3
  },
  "025540": {
-  "reports": 26,
-  "products": 26,
+  "reports": 27,
+  "products": 23,
   "prices": 0,
-  "errors": 0
+  "errors": 4
  },
  "083310": {
-  "reports": 26,
-  "products": 19,
+  "reports": 24,
+  "products": 16,
   "prices": 0,
-  "errors": 0
+  "errors": 1
  },
  "099190": {
-  "reports": 26,
-  "products": 24,
-  "prices": 25,
+  "reports": 23,
+  "products": 21,
+  "prices": 23,
   "errors": 0
  },
  "206640": {
-  "reports": 26,
+  "reports": 24,
   "products": 0,
   "prices": 0,
-  "errors": 0
+  "errors": 1
  },
  "140860": {
-  "reports": 26,
-  "products": 26,
-  "prices": 26,
-  "errors": 0
+  "reports": 30,
+  "products": 23,
+  "prices": 23,
+  "errors": 7
  },
  "156100": {
-  "reports": 26,
-  "products": 14,
-  "prices": 26,
-  "errors": 0
+  "reports": 28,
+  "products": 13,
+  "prices": 23,
+  "errors": 5
  },
  "059210": {
-  "reports": 26,
-  "products": 21,
-  "prices": 26,
-  "errors": 0
+  "reports": 25,
+  "products": 18,
+  "prices": 23,
+  "errors": 2
  },
  "214370": {
-  "reports": 26,
+  "reports": 27,
   "products": 0,
   "prices": 0,
-  "errors": 0
+  "errors": 4
  },
  "052330": {
-  "reports": 26,
+  "reports": 24,
   "products": 0,
   "prices": 4,
-  "errors": 0
+  "errors": 1
  },
  "051360": {
-  "reports": 26,
-  "products": 26,
+  "reports": 25,
+  "products": 23,
   "prices": 0,
-  "errors": 0
+  "errors": 2
  },
  "210540": {
-  "reports": 26,
-  "products": 26,
-  "prices": 26,
+  "reports": 23,
+  "products": 23,
+  "prices": 23,
   "errors": 0
  },
  "119610": {
-  "reports": 26,
-  "products": 26,
+  "reports": 27,
+  "products": 23,
   "prices": 1,
-  "errors": 0
+  "errors": 4
  },
  "010170": {
-  "reports": 26,
-  "products": 21,
+  "reports": 23,
+  "products": 18,
   "prices": 0,
   "errors": 0
  },
  "002710": {
-  "reports": 26,
+  "reports": 25,
   "products": 0,
-  "prices": 26,
-  "errors": 0
+  "prices": 23,
+  "errors": 2
  },
  "019210": {
-  "reports": 26,
-  "products": 26,
+  "reports": 24,
+  "products": 23,
   "prices": 0,
-  "errors": 0
+  "errors": 1
  },
  "100120": {
-  "reports": 26,
-  "products": 26,
-  "prices": 25,
-  "errors": 0
+  "reports": 25,
+  "products": 23,
+  "prices": 22,
+  "errors": 2
  },
  "230240": {
-  "reports": 26,
-  "products": 25,
+  "reports": 25,
+  "products": 23,
   "prices": 0,
-  "errors": 0
+  "errors": 2
  },
  "001530": {
-  "reports": 26,
-  "products": 26,
-  "prices": 26,
-  "errors": 0
+  "reports": 25,
+  "products": 23,
+  "prices": 23,
+  "errors": 2
  },
  "014820": {
   "reports": 26,
-  "products": 26,
-  "prices": 26,
-  "errors": 0
+  "products": 23,
+  "prices": 23,
+  "errors": 3
  },
  "108320": {
-  "reports": 26,
-  "products": 26,
+  "reports": 25,
+  "products": 23,
   "prices": 2,
-  "errors": 0
+  "errors": 2
  },
  "003720": {
-  "reports": 26,
-  "products": 26,
-  "prices": 26,
-  "errors": 0
+  "reports": 25,
+  "products": 23,
+  "prices": 23,
+  "errors": 2
  },
  "014830": {
-  "reports": 26,
+  "reports": 24,
   "products": 8,
-  "prices": 26,
-  "errors": 0
+  "prices": 23,
+  "errors": 1
  },
  "273640": {
-  "reports": 20,
+  "reports": 19,
   "products": 0,
-  "prices": 20,
-  "errors": 0
+  "prices": 17,
+  "errors": 2
  },
  "015230": {
-  "reports": 26,
+  "reports": 25,
   "products": 0,
-  "prices": 26,
-  "errors": 0
+  "prices": 23,
+  "errors": 2
  },
  "065510": {
-  "reports": 26,
-  "products": 26,
+  "reports": 27,
+  "products": 23,
   "prices": 0,
-  "errors": 0
+  "errors": 4
  },
  "005010": {
-  "reports": 26,
-  "products": 26,
-  "prices": 26,
-  "errors": 0
+  "reports": 24,
+  "products": 23,
+  "prices": 23,
+  "errors": 1
  },
  "093190": {
-  "reports": 26,
+  "reports": 23,
   "products": 0,
   "prices": 11,
   "errors": 0
  },
  "058610": {
-  "reports": 26,
-  "products": 26,
-  "prices": 26,
-  "errors": 0
+  "reports": 25,
+  "products": 23,
+  "prices": 23,
+  "errors": 2
  },
  "000490": {
-  "reports": 26,
-  "products": 26,
-  "prices": 26,
-  "errors": 0
+  "reports": 25,
+  "products": 23,
+  "prices": 23,
+  "errors": 2
  },
  "002900": {
-  "reports": 26,
-  "products": 21,
-  "prices": 23,
+  "reports": 23,
+  "products": 18,
+  "prices": 20,
   "errors": 0
  },
  "122310": {
-  "reports": 26,
-  "products": 26,
+  "reports": 24,
+  "products": 23,
   "prices": 0,
-  "errors": 0
+  "errors": 1
  }
 }
