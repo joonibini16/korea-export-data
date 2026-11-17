@@ -49,7 +49,7 @@
    else{const P=C.map(r=>r.period),K=[['LFP','#60a5fa'],['NCM','#f87171'],['Flow','#34d399'],['Sodium','#f59e0b'],['기타','#94a3b8']];
     cfg={type:'bar',data:{labels:P.map(p=>p.slice(2).replace('-','.')),datasets:K.map(([k,c])=>({label:k==='Flow'?'Flow Battery':k==='Sodium'?'Sodium based':k,data:C.map(r=>num(r[k])),backgroundColor:c}))},
      options:{...base('%'),plugins:{legend:{position:'bottom',labels:{boxWidth:10}},tooltip:{callbacks:{label:x=>`${x.dataset.label}: ${x.parsed.y.toFixed(1)}%`}}},scales:{x:{stacked:true},y:{stacked:true,min:0,max:100,title:{display:true,text:'%'}}}}};
-    const l=C.at(-1);note=l?`${l.period.replace('-','.')}: LFP ${l.LFP}% · NCM ${l.NCM}% · Flow ${l.Flow}% · Sodium ${l.Sodium}% · 기타 ${l['기타']}% (리포트 본문 수치, 2025.8~)`:'';}
+    const l=C.at(-1);note=l?`${l.period.replace('-','.')}: LFP ${l.LFP}% · NCM ${l.NCM}% · Flow ${l.Flow}% · Sodium ${l.Sodium}% · 기타 ${l['기타']}% (리포트 본문 수치, 2025.8~; 2026.8은 9월호 MoM으로 역산)`:'';}
    new Chart(cv,cfg);const el=document.getElementById('rpn_'+d.id);if(el)el.textContent=note;});
   const fn=document.getElementById('rpNote');if(fn)fn.textContent=`진한 막대 = 리포트 표의 보고치, 옅은 막대 = 다음 해 리포트의 YoY로 역산한 추정치(${nEst}개월). 누적 YoY 선은 각 월 리포트의 '누적' 표 값입니다(2026-08은 사용자 제공 화면). BMI는 매월 과거 수치를 수정하므로 원 리포트 도표(최신 수정치)와 일부 다를 수 있습니다.`;
  });

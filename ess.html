@@ -31,7 +31,7 @@
   const pg=periods('grid_link',st.gSpan);
   ch.g=new Chart(document.getElementById('cGrid'),{type:'bar',data:{labels:pg.map(p=>lab(p,st.gSpan)),datasets:GL.map(g=>({label:g,data:pg.map(p=>n(get('grid_link',st.gSpan,p,g,'grid')?.gwh)),backgroundColor:GC[g]}))},options:opt('GWh')});
   const all=[...new Set(R.map(r=>r.period))].filter(p=>!p.includes('~')).sort();
-  const srcs=[...new Set(R.map(r=>r.source))];document.getElementById('coverNote').innerHTML=`현재 확보 기간(월간): ${all[0]} ~ ${all.at(-1)} (${all.length}개월).<br>2025-08 ~ 2026-07은 하나증권 ESS Battery 월보(PDF) 표의 보고치, 2026-08은 사용자 제공 화면입니다. 2024-08 ~ 2025-07은 이듬해 같은 달 리포트의 YoY로 역산했습니다(설치량 ÷ (1+YoY)). BMI는 매월 과거 수치를 수정하므로(예: 6월은 북미 사후 수정으로 재발간) 리포트마다 같은 기간 값이 조금 다를 수 있습니다.<br>출처: Benchmark Mineral Intelligence · 하나증권 ESS Battery Monthly (2025.9.23 ~ 2026.9.28 발간분).`;}
+  const srcs=[...new Set(R.map(r=>r.source))];document.getElementById('coverNote').innerHTML=`현재 확보 기간(월간): ${all[0]} ~ ${all.at(-1)} (${all.length}개월).<br>2025-08 ~ 2026-07, 2026-09는 하나증권 ESS Battery 월보(PDF) 표의 보고치, 2026-08은 사용자 제공 화면입니다. 9월호부터 BMI의 사후 수정 폭이 커서 리포트가 약 2개월 시차로 발간됩니다(9월 자료 → 11월 발간). 2024-08 ~ 2025-07은 이듬해 같은 달 리포트의 YoY로 역산했습니다(설치량 ÷ (1+YoY)). BMI는 매월 과거 수치를 수정하므로(예: 6월은 북미 사후 수정으로 재발간) 리포트마다 같은 기간 값이 조금 다를 수 있습니다.<br>출처: Benchmark Mineral Intelligence · 하나증권 ESS Battery Monthly (2025.9.23 ~ 2026.11.18 발간분).`;}
  function tables(){const pm=periods('region','month').filter(p=>R.some(r=>r.table==='region'&&r.span==='month'&&r.period===p&&r.basis==='reported')).at(-1),py=periods('region','ytd').filter(p=>R.some(r=>r.table==='region'&&r.span==='ytd'&&r.period===p&&r.basis==='reported')).at(-1);
   const mLab=Number(pm.slice(-2))+'월',yLab='누적<br>('+py.slice(5).replace('~','-').replace(/^0/,'').replace('-0','-')+'월)';
   let h=`<thead><tr><th rowspan="2"></th><th rowspan="2">지역</th><th colspan="2">Grid</th><th colspan="2">BTM</th><th colspan="2">Total</th><th rowspan="2"></th><th colspan="2">Grid</th><th colspan="2">BTM</th><th colspan="2">Total</th></tr><tr>${'<th>설치량</th><th>YoY</th>'.repeat(3)}${'<th>설치량</th><th>YoY</th>'.repeat(3)}</tr></thead><tbody>`;
@@ -44,4 +44,4 @@
  document.addEventListener('click',e=>{const b=e.target.closest('.seg button');if(!b)return;const k=b.parentElement.id;st[k]=b.dataset.v;b.parentElement.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));draw();});
  fetch('ess_installs.csv?v='+Date.now(),{cache:'no-store'}).then(r=>r.text()).then(t=>{const L=t.trim().split(/\r?\n/),h=L.shift().split(',');R=L.map(l=>{const f=l.split(',');return Object.fromEntries(h.map((k,i)=>[k,f[i]??'']));});draw();tables();});
 })();
-</script><script src="./ess_report.js?v=1"></script></body></html>
+</script><script src="./ess_report.js?v=2"></script></body></html>
