@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-17",
+  "updated_at": "2026-11-18",
   "method": "수치·가이던스는 회사 공식 IR 자료(보도자료·실적 발표문·SEC/거래소 공시)만 사용합니다. 컨콜 경영진 코멘트·Q&A 요약은 공식 녹취록·준비 발언을 우선하고, 없으면 무료 공개 녹취록(Motley Fool 등)을 근거로 하되 '비공식 녹취록 기반'으로 출처를 표시합니다. 투자 해석은 관전점·'분석:'으로 구분합니다. 반도체 장비 업종은 주요 공정·검사·테스트·패키징 기업을 추적하며 원문 미검증 기업은 분석 대기로 표시합니다.",
   "authoring_guide": {
     "summary": "새 events 항목에는 summary 필드를 반드시 작성한다(화면 맨 위 '핵심 결론'에 표시). 형식: {basis: '공식 보도자료 기준(필요 시 미감사)', items: [{label:'매출', text:'…', sub:'가이던스 대비 상회/하회/부합만'}, {label:'연간 가이던스', text:'A → B 상향'}](2~4개), cautions: [유의·부정 사항 1~3개], take: '1~2문장 투자 해석(한국 관련 업종 시사점 포함)'}. 예시는 SMCI 'FY27 Q1'.",
@@ -28531,6 +28531,187 @@
       },
       "call_source": "https://www.kokusai-electric.com/latest_report",
       "call_source_label": "공식 IR 최신 결산자료 페이지(설명자료·질의응답집 게재, 원문 미확인)"
+    },
+    {
+      "ticker": "NVDA",
+      "period": "FY27 Q3",
+      "date": "2026-11-17",
+      "evidence": "NVIDIA 공식 Q3 FY27 실적 보도자료(11/17 13:20 PT, GlobeNewswire 배포 원문) 확인 · 직전 Q2 FY27 공식 보도자료의 Q3 가이던스 대조 · CEO 교체(11/12 SEC 8-K 첨부 보도자료)·이사회 독립위원 성명(11/10 공식 뉴스룸) 확인 · 컨콜(14:00 PT) 녹취록·CFO 코멘터리는 반영 시점에 미확인",
+      "direction": "개선",
+      "headline": "Q3 매출 $115.8bn(+103% YoY, +20% QoQ)으로 가이던스 상단·컨센서스 크게 상회 · Q4 가이던스 $130bn±3%로 컨센서스 +4% 상회(추가 1주 포함) · Q4 총이익률 71~72%로 하락 경로 유지 · 젠슨 황 사임 후 첫 발표",
+      "estimate_signal": "Q3 매출 $115.8bn vs 발표 전 컨센서스 $108.7bn → +6.5% 상회, 비GAAP EPS $2.68 vs $2.47 → +8.5% 상회. Q4 가이던스 중간값 매출 $130.0bn vs $124.9bn → +4.1% 상회(Yahoo 컨센서스, 발표 전 11/17 스냅샷), EPS 가이던스는 미제시 → 매출 추정 상향 방향 · 단 Q4는 14주(추가 1주) 분기이고 총이익률은 71~72%로 하락",
+      "call_coverage": "공식 Q&A 녹취록 미확인 — 컨콜(11/17 14:00 PT = 11/18 07:00 KST) 시작 전 보도자료 기준으로 먼저 반영. Q&A 톤은 추정하지 않음. 다음 회차에 공식 녹취록·CFO 코멘터리로 보강",
+      "summary": {
+        "basis": "공식 보도자료 기준 · 컨콜 녹취록 미공개",
+        "items": [
+          {
+            "label": "매출",
+            "text": "$115.8bn으로 +103% YoY, +20% QoQ · 데이터센터 $107.6bn(+110% YoY, +21% QoQ), 에지 $8.2bn(+42% YoY)",
+            "sub": "Q3 가이던스 $108.0bn±2%(상단 $110.2bn) 상단까지 상회"
+          },
+          {
+            "label": "비GAAP EPS·마진",
+            "text": "EPS $2.68로 +111% YoY, +21% QoQ · 총이익률 74.9%, 영업이익률 약 67%",
+            "sub": "총이익률 가이던스 74.0%±0.5%p 상단 상회"
+          },
+          {
+            "label": "Q4 가이던스",
+            "text": "매출 $130.0bn±3%(중간값 +12% QoQ, 추가 1주 포함), 총이익률 71.0~72.0%, 중국 데이터센터 컴퓨트 매출 미반영",
+            "cons": "매출 $130.0bn vs $124.9bn → +4.1% 상회(Yahoo 컨센서스, 발표 전 11/17 스냅샷) · EPS는 가이던스 미제시로 비교 불가"
+          },
+          {
+            "label": "Rubin·주주환원",
+            "text": "Vera Rubin NVL72 양산·출하 — 회사 역사상 가장 빠른 램프 · Q3 주주환원 $28.1bn, 자사주 잔여 한도 $227.3bn"
+          }
+        ],
+        "cautions": [
+          "Q4 가이던스에 추가 1주가 포함(14주 분기) — 주당 매출 기준 성장률은 중간값 +12% QoQ보다 낮음",
+          "총이익률 74.9% → Q4 71~72%로 약 3%p 하락 예정(메모리 원가 부담, 8월 제시 경로 유지)",
+          "11/12 젠슨 황 CEO 사임(사유 미공개), 콜렛 크레스 CFO가 임시 CEO 겸임 · 이사회 독립위원회 조사 진행 중(대상 미공개)"
+        ],
+        "take": "분석: 실적·가이던스 숫자만 보면 AI 인프라 수요는 오히려 가속(분기 매출 증가폭 $19.6bn으로 사상 최대)이고 Rubin 램프도 빠름. 마진을 깎으면서도 물량을 늘리는 구조라 HBM·서버 기판·패키징 등 한국 공급망(SK하이닉스·삼성전자·삼성전기·이수페타시스·한미반도체)에는 물량·판가 모두 우호적이나, 경영진 교체와 이사회 조사라는 거버넌스 불확실성이 밸류에이션 할인 요인"
+      },
+      "changes": [
+        {
+          "title": "Q3 실적 vs Q2 가이던스·컨센서스",
+          "direction": "개선",
+          "before": "Q2 FY27(공식 보도자료): 매출 $96.2bn, 데이터센터 $89.0bn, 비GAAP 총이익률 75.0%, 비GAAP EPS $2.22. Q3 가이던스: 매출 $108.0bn±2%, 총이익률 74.0%±0.5%p.",
+          "now": "Q3 FY27: 매출 $115.8bn(+103% YoY, +20% QoQ), 데이터센터 $107.6bn(+110% YoY, +21% QoQ), 에지 $8.2bn(+42% YoY, +14% QoQ), 비GAAP 총이익률 74.9%, 비GAAP 영업이익 $77.9bn, 비GAAP EPS $2.68(+111% YoY, +21% QoQ).",
+          "meaning": "매출이 가이던스 상단($110.2bn)보다 5% 높고, 총이익률도 가이던스 상단을 넘음. 분기 매출 증가폭($19.6bn)은 직전 분기($14.6bn)보다 커짐.",
+          "rows": [
+            {
+              "item": "매출",
+              "before": "$96.2bn",
+              "now": "$115.8bn",
+              "delta": "+20% QoQ",
+              "tone": "good"
+            },
+            {
+              "item": "매출 vs 가이던스 중간값",
+              "before": "$108.0bn",
+              "now": "$115.8bn",
+              "delta": "+7.2%",
+              "tone": "good"
+            },
+            {
+              "item": "매출 vs 컨센서스",
+              "before": "$108.7bn",
+              "now": "$115.8bn",
+              "delta": "+6.5%",
+              "tone": "good"
+            },
+            {
+              "item": "비GAAP EPS vs 컨센서스",
+              "before": "$2.47",
+              "now": "$2.68",
+              "delta": "+8.5%",
+              "tone": "good"
+            },
+            {
+              "item": "비GAAP 총이익률",
+              "before": "75.0%",
+              "now": "74.9%",
+              "delta": "−0.1%p QoQ",
+              "tone": "neutral"
+            }
+          ]
+        },
+        {
+          "title": "Q4 가이던스와 마진 경로",
+          "direction": "혼재",
+          "before": "Q2 발표 컨콜: Q4 총이익률 71~72%, FY28 72~73% 예상(메모리 원가 상승).",
+          "now": "Q4 가이던스: 매출 $130.0bn±3%(추가 1주 포함), GAAP·비GAAP 총이익률 71.0~72.0%, 비GAAP 영업비용 약 $10.7bn, 중국 데이터센터 컴퓨트 매출 미반영.",
+          "meaning": "매출 가이던스는 컨센서스($124.9bn)를 +4.1% 상회하지만 추가 1주 효과가 섞여 있음. 마진 경로는 8월 제시치와 동일하게 하락 — 개선도 악화도 아닌 '유지'."
+        },
+        {
+          "title": "경영진·거버넌스",
+          "direction": "악화",
+          "before": "Q2 발표 시점: 젠슨 황 CEO 체제.",
+          "now": "11/10 이사회 독립위원들이 전 뉴욕남부지검 검사장 대행 조준(Joon H. Kim)과 Wachtell Lipton을 선임해 독립 조사 착수(대상 미공개). 11/12 젠슨 황 사장·CEO·이사 즉시 사임(사유 미공개), 콜렛 크레스 CFO가 임시 CEO 겸임, 하비 존스 초대 이사회 의장 선임. 이번 보도자료 위험 고지에 'CEO 탐색'과 '독립위원회 조사 진행 중' 명시.",
+          "meaning": "분석: 실적 숫자와 별개로 조사 결과·후임 CEO 결정까지 헤드라인 리스크가 이어짐. 회사는 고객 약정·로드맵에 차질이 없다고 밝힘."
+        }
+      ],
+      "facts": "Q3 FY27(10/25 마감): 매출 $115.8bn(+103% YoY, Q3 FY26 $57.0bn; +20% QoQ), 데이터센터 $107.6bn(+110% YoY, +21% QoQ), 에지 컴퓨팅 $8.2bn(+42% YoY, +14% QoQ). GAAP 총이익률 74.8%·비GAAP 74.9%(Q2 75.0%, 1년 전 73.5%). 비GAAP 영업비용 $8.8bn, 비GAAP 영업이익 $77.9bn, GAAP 순이익 $65.3bn(지분증권 이익 포함 GAAP 기타손익 $1.5bn), GAAP EPS $2.70, 비GAAP EPS $2.68(Q2 $2.22, 1년 전 $1.27). 영업현금흐름 $48.3bn, FCF $43.8bn. 주주환원 $28.1bn(자사주+배당), 9월 자사주 한도 $150bn 추가, 분기말 잔여 $227.3bn, 다음 배당 주당 $0.25(12/23 지급). 9개월 누적 매출 $293.7bn, FCF $113.7bn. Vera Rubin NVL72 양산·출하(CoreWeave·Google Cloud·Azure·OCI·Nebius 가동), Hugging Face 인수 합의, Meta Spectrum-X·BlueField-4 확대, MediaTek NVLink Fusion 협력, 공급망 파트너로 Amkor·삼성전기 증설 언급.",
+      "guidance": "Q4 FY27(추가 1주 포함): 매출 $130.0bn±3%, GAAP·비GAAP 총이익률 71.0~72.0%, 영업비용 GAAP 약 $11.0bn·비GAAP 약 $10.7bn, FY27 세율 16~18%. 중국 데이터센터 컴퓨트 매출 미반영. EPS 가이던스 없음. 직전 Q3 가이던스: 매출 $108.0bn±2%, 총이익률 74.0%±0.5%p.",
+      "tone": "보도자료 기준: 임시 CEO 콜렛 크레스는 '모멘텀은 실재한다', 'Vera Rubin이 폭발적으로 출발했고 로드맵은 계획대로'라고 강조. 공식 Q&A 녹취록 미확인으로 질의응답 톤은 판단하지 않음.",
+      "interpretation": "분석: 매출이 가이던스 상단을 5% 넘고 Q4 가이던스도 컨센서스를 웃돌아 'AI 투자 둔화' 우려와 달리 수요·출하는 가속. 다만 Q4 성장의 일부는 추가 1주 효과이고, 총이익률은 메모리 원가로 75% → 71~72%로 내려가 이익 증가율은 매출보다 낮아질 수 있음. 한국 관점: 엔비디아가 마진을 양보하며 메모리를 확보하는 구도는 SK하이닉스·삼성전자의 HBM 판가·물량에 우호적이고, 보도자료에 삼성전기(기판)가 공급망 증설 파트너로 직접 언급됨. 반면 CEO 사임·이사회 조사라는 이례적 거버넌스 이벤트는 AI 반도체 전반의 밸류에이션 변동성을 키울 수 있는 별도 변수.",
+      "watch": "분석: 컨콜에서 FY28 +70% 성장 전망 유지 여부, Rubin의 Q4 데이터센터 비중, 하이퍼스케일러 vs ACIE 매출 구성, 메모리 원가와 FY28 마진(72~73%) 경로, 추가 1주 효과 규모, 독립위원회 조사 대상·결과와 후임 CEO 선임 일정, 중국 매출 재개 여부.",
+      "source": "https://www.globenewswire.com/news-release/2026/11/17/3405200/0/en/nvidia-announces-financial-results-for-third-quarter-fiscal-2027.html",
+      "source_label": "NVIDIA Q3 FY27 공식 실적 보도자료(11/17, GlobeNewswire 배포 원문)",
+      "prior_source": "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Second-Quarter-Fiscal-2027/",
+      "prior_source_label": "NVIDIA Q2 FY27 공식 실적 보도자료(8/26)",
+      "verified_at": "2026-11-18",
+      "call_topics": [
+        {
+          "topic": "분기 실적",
+          "source_part": "공식 보도자료",
+          "points": [
+            "매출 $115.8bn(+103% YoY, +20% QoQ), 데이터센터 $107.6bn(+110% YoY).",
+            "비GAAP 총이익률 74.9%, 비GAAP EPS $2.68, FCF $43.8bn."
+          ],
+          "implication": "가이던스 상단 대비 +5% 상회로 수요 가속 확인."
+        },
+        {
+          "topic": "Vera Rubin 램프",
+          "source_part": "공식 보도자료",
+          "points": [
+            "Vera Rubin NVL72 양산·출하 시작, 회사 역사상 가장 빠른 제품 램프.",
+            "CoreWeave·Google Cloud·Azure·OCI·Nebius에서 랙 가동."
+          ],
+          "implication": "Q4 데이터센터 매출 중 Rubin 비중은 컨콜에서 확인."
+        },
+        {
+          "topic": "가이던스·마진",
+          "source_part": "공식 보도자료",
+          "points": [
+            "Q4 매출 $130.0bn±3%(추가 1주 포함), 총이익률 71~72%.",
+            "중국 데이터센터 컴퓨트 매출 미반영."
+          ],
+          "implication": "매출 상향·마진 하향을 따로 모델에 반영."
+        },
+        {
+          "topic": "경영진 교체",
+          "source_part": "공식 보도자료·8-K",
+          "points": [
+            "11/12 젠슨 황 사임, 콜렛 크레스 임시 CEO 겸 CFO.",
+            "이사회 독립위원회 조사 진행 중(대상 미공개)."
+          ],
+          "implication": "거버넌스 리스크는 실적과 별개 변수."
+        }
+      ],
+      "call_readthrough": {
+        "scope": "공식 Q3 FY27 보도자료와 11/10·11/12 공식 공지를 한국어로 재서술. 컨콜(11/17 14:00 PT) 녹취록·CFO 코멘터리는 반영 시점에 미확인 — 다음 회차에 공식 자료로 보강.",
+        "groups": [
+          {
+            "title": "경영진 코멘트",
+            "items": [
+              {
+                "title": "모멘텀",
+                "body": "임시 CEO 콜렛 크레스는 모멘텀이 실재하며 회사는 직원들의 혁신으로 움직이는 기술 리더라고 밝혔다.",
+                "meaning": "분석: 리더십 공백 우려를 실적으로 진화하려는 메시지."
+              },
+              {
+                "title": "Rubin·로드맵",
+                "body": "Vera Rubin이 폭발적으로 출발했고 로드맵은 계획대로 진행 중이라고 말했다. 보도자료는 Rubin HPC 신제품과 Vera CPU 고객 확대(OpenAI·Meta·CoreWeave 등)도 소개했다."
+              },
+              {
+                "title": "인수·파트너십",
+                "body": "Hugging Face 인수 합의, Palantir·MediaTek(NVLink Fusion) 협력, Anthropic의 클라우드 경유 Grace Blackwell·Vera Rubin 용량 확대를 발표했다. Amkor·삼성전기 등 공급망 파트너의 증설도 언급했다.",
+                "meaning": "분석: 삼성전기 언급은 한국 기판 공급망의 직접 수혜 신호."
+              }
+            ]
+          },
+          {
+            "title": "Q&A 핵심",
+            "items": [
+              {
+                "title": "녹취록 미공개",
+                "body": "컨콜 시작 전 반영으로 공식 Q&A 녹취록을 확인하지 못함. 다음 회차에 보강."
+              }
+            ]
+          }
+        ]
+      }
     }
   ],
   "upcoming": [
@@ -28540,13 +28721,6 @@
       "time": "발표 완료(11/11 Asia/Tokyo) · 회사 IR 라이브러리에 중간기 결산단신(ket_2703_02.pdf)·결산보충자료·설명회 슬라이드(kes_2703_2q_01.pdf)·CFO 온라인 설명회 노트·Q&A(kes_2703_2q_03.pdf) 게재 확인 · 11/17 21:40 KST 회차까지 공식 PDF 원문 직접 열람 실패(실행 환경에서 media.www.nissin.com·eir-parts.net·TDnet·JPX 접속 차단, IR 목록 페이지만 확인)로 events 미반영 — 원문 확인 후 반영",
       "event": "FY27(2027년 3월기) Q2 실적 발표",
       "source": "https://www.nissin.com/jp/company/ir/library/financialresults/"
-    },
-    {
-      "ticker": "NVDA",
-      "date": "2026-11-17",
-      "time": "장 마감 후 · 14:00 America/Los_Angeles(컨콜)",
-      "event": "FY27 Q3 실적·컨퍼런스콜",
-      "source": "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Sets-Conference-Call-for-Third-Quarter-Financial-Results/default.aspx"
     },
     {
       "ticker": "WMT",
