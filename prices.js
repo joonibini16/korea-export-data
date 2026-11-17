@@ -32,8 +32,8 @@
    document.getElementById('n2').textContent=`일별 전체 토큰 · ~ ${all.at(-1)?.d||''}`;
    const w=(()=>{const l=all.slice(-7),p=all.slice(-14,-7);if(l.length<7||p.length<7)return wow(all);return pct(l.reduce((s,x)=>s+x.v,0),p.reduce((s,x)=>s+x.v,0));})();
    document.getElementById('b2').innerHTML=`WoW(7일 합) <span class="${col(w)}">${sg(w)}</span>`;
-   const D2=[{label:'판독(BADONION)',data:pts(ref.filter(x=>!oD.has(x.d))),backgroundColor:'rgba(91,141,239,.55)',parsing:false,barPercentage:1,categoryPercentage:1},{label:'자체 수집(OpenRouter API)',data:pts(own),backgroundColor:'#5b8def',parsing:false,barPercentage:1,categoryPercentage:1}];new Chart(document.getElementById('c2'),{type:'bar',data:{datasets:D2},
-    options:{...base(),scales:{x:{...timeAxis(D2),offset:false,stacked:true},y:{stacked:false,beginAtZero:true,title:{display:true,text:'Total tokens (trillions)'}}}}});
+   const D2=[{label:'토큰 사용량',data:pts([...ref.filter(x=>!oD.has(x.d)),...own].sort((a,b)=>a.d<b.d?-1:a.d>b.d?1:0)),backgroundColor:'#5b8def',parsing:false,barPercentage:1,categoryPercentage:1}];new Chart(document.getElementById('c2'),{type:'bar',data:{datasets:D2},
+    options:{...base(),plugins:{...base().plugins,legend:{display:false}},scales:{x:{...timeAxis(D2),offset:false,stacked:true},y:{stacked:false,beginAtZero:true,title:{display:true,text:'Total tokens (trillions)'}}}}});
    const l=all.at(-1);document.getElementById('f2').textContent=l?`최근 ${l.d}: ${l.v.toFixed(2)}조 토큰 · 30일 전 대비 ${sg(pct(l.v,(all.find(x=>ts(x.d)>=ts(l.d)-30*DAY)||{}).v))}`:'';}
   // 3) GPU
   {const K=[['a100','A100',C.bl,'y'],['h100','H100',C.cy,'y1'],['b200','B200 (NonHPS)',C.pu,'y2']];const ds=[],bd=[];
