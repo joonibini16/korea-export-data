@@ -56,7 +56,7 @@
    document.getElementById('n4').textContent=`${s32[0]?.d||''} ~ ${s32.at(-1)?.d||''} | 64GB 계약가는 판독치(~${rc.at(-1)?.d.slice(0,7)||''})`;
    document.getElementById('b4').textContent=`32GB $${s32.at(-1)?Math.round(s32.at(-1).v).toLocaleString():'—'} | 64GB $${r64.at(-1)?Math.round(r64.at(-1).v).toLocaleString():'—'} | Spread $${sp.at(-1)?sp.at(-1).v.toLocaleString():'—'} (${sp.at(-1)?.d.slice(0,7)||''})`;
    const D4=[
-     L('32GB Spot Average',pts(r32),C.bl),...(own32.length?[L('32GB Spot (DRAMeXchange 자체)',pts([r32.at(-1),...own32].filter(Boolean)),C.bl,{borderDash:[2,2],pointRadius:3})]:[]),
+     L('32GB Spot Average',pts(s32),C.bl,{pointRadius:0}),
      L('64GB Spot Average',pts(r64),C.cy),L('64GB Contract',pts(rc),C.cy,{borderDash:[7,4]}),
      {type:'bar',label:'64GB Spot - Contract (우)',data:pts(sp),backgroundColor:C.gr,yAxisID:'y1',parsing:false,barThickness:14,order:5}];new Chart(document.getElementById('c4'),{type:'bar',data:{datasets:D4},
     options:{...base(),scales:{x:timeAxis(D4),y:{beginAtZero:true,title:{display:true,text:'Price (USD/module)'}},y1:{position:'right',beginAtZero:true,grid:{drawOnChartArea:false},title:{display:true,text:'64GB Spot - Contract (USD/module)'}}}}});
