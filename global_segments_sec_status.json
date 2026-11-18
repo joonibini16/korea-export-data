@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-11T02:48:23",
+ "updated": "2026-11-18T04:22:03",
  "companies": {
   "NVDA": "27 quarters · profit 81 · seg-op 4 · axes ProductOrServiceAxis(27)",
   "AMD": "26 quarters · profit 105 · seg-op 11 · axes StatementBusinessSegmentsAxis(26)",
@@ -22,7 +22,7 @@
   "VRT": "31 quarters · profit 58 · seg-op 3 · axes ProductOrServiceAxis(19), StatementBusinessSegmentsAxis(12)",
   "GEV": "15 quarters · profit 45 · seg-op 0 · axes StatementBusinessSegmentsAxis(6), ProductOrServiceAxis(9)",
   "BE": "29 quarters · profit 71 · seg-op 0 · axes ProductOrServiceAxis(29)",
-  "CATL": "1 filings, no segment facts",
+  "CATL": "2 filings, no segment facts",
   "EL": "4 quarters · profit 65 · seg-op 0 · axes ProductOrServiceAxis(4)",
   "LLY": "5 quarters · profit 23 · seg-op 0 · axes ProductOrServiceAxis(5)",
   "NVO": "0 filings, no segment facts",
@@ -48,7 +48,7 @@
   "LMT": "35 quarters · profit 105 · seg-op 5 · axes StatementBusinessSegmentsAxis(34), ProductOrServiceAxis(1)",
   "RTX": "32 quarters · profit 74 · seg-op 17 · axes StatementBusinessSegmentsAxis(12), ProductOrServiceAxis(20)",
   "XOM": "4 quarters · profit 4 · seg-op 0 · axes ProductOrServiceAxis(4)",
-  "CVX": "0 quarters · profit 35 · seg-op 0 · axes ",
+  "CVX": "0 quarters · profit 33 · seg-op 0 · axes ",
   "SHEL": "0 filings, no segment facts",
   "JPM": "4 quarters · profit 7 · seg-op 0 · axes StatementBusinessSegmentsAxis(4)",
   "WMT": "15 quarters · profit 32 · seg-op 8 · axes StatementBusinessSegmentsAxis(15)",
@@ -56,7 +56,7 @@
   "AZN": "0 filings, no segment facts",
   "SPCX": "4 quarters · profit 8 · seg-op 4 · axes StatementBusinessSegmentsAxis(4)",
   "ARM": "0 filings, no segment facts",
-  "CRWV": "4 filings, no segment facts",
+  "CRWV": "5 filings, no segment facts",
   "NBIS": "0 filings, no segment facts",
   "NEE": "0 quarters · profit 70 · seg-op 0 · axes "
  }
