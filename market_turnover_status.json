@@ -1,5 +1,5 @@
 {
- "run": "2026-11-19T16:25:21+09:00",
+ "run": "2026-11-19T18:10:26+09:00",
  "steps": [
   {
    "step": "login",
@@ -23,12 +23,12 @@
    ],
    "row": {
     "TRD_DD": "2026/11/19",
-    "CLSPRC_IDX": "5,117.46",
+    "CLSPRC_IDX": "5,137.89",
     "FLUC_TP_CD": "1",
-    "PRV_DD_CMPR": "50.02",
-    "UPDN_RATE": "0.99",
+    "PRV_DD_CMPR": "70.45",
+    "UPDN_RATE": "1.39",
     "OPNPRC_IDX": "5,090.04",
-    "HGPRC_IDX": "5,126.23",
+    "HGPRC_IDX": "5,137.89",
     "LWPRC_IDX": "4,963.61"
    }
   },
@@ -36,7 +36,7 @@
    "step": "mdc",
    "market": "KOSPI",
    "year": 2026,
-   "rows": 12
+   "rows": 11
   },
   {
    "step": "sample",
@@ -56,12 +56,12 @@
    ],
    "row": {
     "TRD_DD": "2026/11/19",
-    "CLSPRC_IDX": "680.30",
+    "CLSPRC_IDX": "684.81",
     "FLUC_TP_CD": "1",
-    "PRV_DD_CMPR": "17.49",
-    "UPDN_RATE": "2.64",
+    "PRV_DD_CMPR": "22.00",
+    "UPDN_RATE": "3.32",
     "OPNPRC_IDX": "668.31",
-    "HGPRC_IDX": "680.30",
+    "HGPRC_IDX": "684.81",
     "LWPRC_IDX": "650.39"
    }
   },
@@ -69,7 +69,7 @@
    "step": "mdc",
    "market": "KOSDAQ",
    "year": 2026,
-   "rows": 12
+   "rows": 11
   }
  ],
  "rows": 13250,
