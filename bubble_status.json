@@ -1,7 +1,7 @@
 {
- "updated_at": "2026-11-21T00:48:24+09:00",
- "yahoo_rows": 55691,
- "fred_rows": 44623,
+ "updated_at": "2026-11-21T05:41:23+09:00",
+ "yahoo_rows": 55686,
+ "fred_rows": 44624,
  "ecos_rows": 0,
  "ecos_key": false,
  "vkospi_rows": null,
@@ -10,7 +10,7 @@
  "fred_last": {
   "WALCL": "2026-11-18",
   "WTREGEN": "2026-11-18",
-  "RRPONTSYD": "2026-11-19",
+  "RRPONTSYD": "2026-11-20",
   "WRESBAL": "2026-11-18",
   "TOTBKCR": "2026-11-04",
   "BUSLOANS": "2026-10-01",
