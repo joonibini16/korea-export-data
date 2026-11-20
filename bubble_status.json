@@ -1,7 +1,7 @@
 {
- "updated_at": "2026-11-20T15:08:59+09:00",
- "yahoo_rows": 55671,
- "fred_rows": 44478,
+ "updated_at": "2026-11-20T15:29:21+09:00",
+ "yahoo_rows": 55675,
+ "fred_rows": 44620,
  "ecos_rows": 0,
  "ecos_key": false,
  "vkospi_rows": null,
@@ -14,6 +14,7 @@
   "WRESBAL": "2026-11-18",
   "TOTBKCR": "2026-11-04",
   "BUSLOANS": "2026-10-01",
+  "CONSUMER": "2026-10-01",
   "REALLN": "2026-10-01",
   "M2SL": "2026-09-01",
   "CPFF": "2026-11-18",
@@ -50,10 +51,5 @@
   "XTEXVA01IDM667S": "2026-09-01",
   "BOPTEXP": "2026-09-01"
  },
- "failures": [
-  {
-   "id": "CONSUMER",
-   "error": "HTTP Error 404: Not Found"
-  }
- ]
+ "failures": []
 }
