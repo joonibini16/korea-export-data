@@ -1,0 +1,41 @@
+name: Forward EPS consensus (all stocks) — after close
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: fwd-eps
+  cancel-in-progress: false
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python tools/collect_fwd_eps.py
+      - run: |
+          git config user.name github-actions; git config user.email github-actions@github.com
+          mkdir -p /tmp/o; cp fwd_eps_raw.json fwd_eps_status.json /tmp/o/; python - <<'PY'
+          import csv,pathlib;n=[r for r in csv.reader(open('fwd_eps_hist.csv',encoding='utf-8'))]
+          pathlib.Path('/tmp/o/hist_new.csv').write_text('\n'.join(','.join(r) for r in n)+'\n',encoding='utf-8')
+          PY
+          for i in 1 2 3; do
+            git fetch -q origin main && git reset -q --hard origin/main
+            cp /tmp/o/fwd_eps_raw.json /tmp/o/fwd_eps_status.json .
+            python - <<'PY'
+          import csv,pathlib
+          p=pathlib.Path('fwd_eps_hist.csv');old=list(csv.reader(p.open(encoding='utf-8'))) if p.exists() else []
+          new=list(csv.reader(open('/tmp/o/hist_new.csv',encoding='utf-8')))
+          seen={tuple(r) for r in old};rows=old or new[:1]
+          rows+=[r for r in new[1:] if tuple(r) not in seen]
+          with p.open('w',encoding='utf-8',newline='') as f: csv.writer(f).writerows(rows)
+          PY
+            python tools/build_fwd_eps.py
+            git add fwd_eps_raw.json fwd_eps_status.json fwd_eps_hist.csv fwd_eps.json
+            git diff --cached --quiet && exit 0
+            git commit -qm "Update forward EPS consensus (all stocks)" && git push -q origin HEAD:main && exit 0
+            sleep 10
+          done
+          exit 1

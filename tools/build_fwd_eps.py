@@ -1,6 +1,6 @@
 """12개월 선행 EPS(종목별) → fwd_eps.json  (주가 등락률 페이지에서 종가 ÷ 12M 선행 EPS = 12M FPER)
 
-이미 저장소에 쌓고 있는 컨센서스만 씁니다(새로 수집하지 않음).
+0) fwd_eps_raw.json: 전 종목 연간 EPS 컨센서스(tools/collect_fwd_eps.py, 매일 장 마감 후) — 최우선
 1) consensus_trend.csv: 연간(Y) EPS 컨센서스 평균, 회계연도별 가장 최근 시점 값 (FY1·FY2가 있음)
 2) valuation_consensus.csv: 가장 최근 스냅샷의 연간 추정 EPS(is_estimate=1) — FY2가 없을 때 FY1만 보조로 사용
 12M 선행 EPS = FY1 × (FY1 결산까지 남은 개월 ÷ 12) + FY2 × (1 − 남은 개월 ÷ 12). FY2가 없으면 FY1 단독(method=FY1).
@@ -39,6 +39,15 @@ if p.exists():
         d = est.setdefault(r['company_id'], {}); k = r['period'] + '/12'
         if k not in d:  # 추이 자료가 없을 때만 보조
             d[k] = (r['snapshot_date'], float(r['eps']), 'naver')
+
+p = ROOT / 'fwd_eps_raw.json'  # 전 종목 일별 수집분(가장 최신) — 있으면 우선
+if p.exists():
+    R = json.loads(p.read_text())
+    for code, e in R['rows'].items():
+        d = est.setdefault(code, {})
+        for k, v in e.items():
+            if k not in d or R['date'] >= d[k][0]:
+                d[k] = (R['date'], v, 'raw')
 
 out = {}
 for code, d in est.items():
