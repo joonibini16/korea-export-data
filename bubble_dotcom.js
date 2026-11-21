@@ -35,8 +35,10 @@
    <div><b>고점 이후 경로</b><span>코스피 1차 저점 ${fmt(kLow1.dd)}% (${kLow1.d})${kReb&&kReb.d>kLow1.d?` → 반등 ${fmt(kReb.dd)}% (${kReb.d})`:''} → 현재 ${fmt(kNow.dd)}%. 나스닥은 고점 후 같은 ${Math.round(kNow.t)}일째(${nSame.d}) ${fmt(nSame.dd)}%, 같은 낙폭은 ${nSameDD?nSameDD.d+'('+Math.round(nSameDD.t)+'일째)':'없음'}에 처음 도달. 중간 조정 사례: 나스닥 1998년 ${n98P.d} 고점 → ${n98L.d} ${fmt(n98L.dd)}%(${Math.round(n98L.t)}일) 뒤 50일 만에 회복하고 2000년까지 상승</span></div></div>
    <div class="dc-g" data-v="path"><h3>강세장 시작 = 100 (로그)</h3><div class="chart" style="height:400px"><canvas id="dcIdx"></canvas></div><div id="dcIdxNav"></div><div class="g2" style="margin-top:16px"><div><h3>100일 이격도 (%) <span class="muted" style="font-weight:400">· 위 기간 조절과 연동</span></h3><div class="chart"><canvas id="dcDisp"></canvas></div></div><div><h3>고점 이후 낙폭(MDD, %) · 고점 후 경과일</h3><div class="chart"><canvas id="dcDD"></canvas></div><div id="dcDDNav"></div></div></div></div>
    <div class="dc-peak" data-v="peak"><h3>닷컴버블 비교 ① 정점 정렬 · 코스피 고점 = 나스닥 2000-03-10 정점 = 100 (로그)</h3><div class="chart" style="height:340px"><canvas id="dcPeak"></canvas></div><div id="dcPeakNav"></div>
+   <h3 style="margin-top:14px">정점 정렬 · MDD (직전 최고치 대비 낙폭, %)</h3><div class="chart" style="height:260px"><canvas id="dcPeakDD"></canvas></div>
    <p class="muted" id="dcPeakNote"></p></div>
    <div class="dc-peak" data-v="mid"><h3>닷컴버블 비교 ② 중간 조정 정렬 · 코스피 고점 = 닷컴버블 중 1998-07-20 고점(LTCM 조정 직전) = 100 (로그)</h3><div class="chart" style="height:340px"><canvas id="dcMid"></canvas></div><div id="dcMidNav"></div>
+   <h3 style="margin-top:14px">중간 조정 정렬 · MDD (직전 최고치 대비 낙폭, %)</h3><div class="chart" style="height:260px"><canvas id="dcMidDD"></canvas></div>
    <p class="muted" id="dcMidNote"></p></div>
    <p class="muted">참고용 비교입니다(예측 아님). 나스닥 종합 1995-01-03, 코스피 ${startTxt}을 강세장 시작으로 맞췄습니다(버튼으로 변경). 가로축은 시작(또는 고점) 이후 경과 시간이라 실제 날짜가 다릅니다. 닷컴은 이익 없는 성장주가 주도했고, 현재 코스피는 반도체 실적 증가가 동반된다는 차이가 있습니다. 출처: 나스닥 Yahoo Finance(^IXIC), 코스피 market_daily.csv(매일 갱신).</p>`;
   charts.forEach(c=>c.destroy());charts=[];applyView(box);
@@ -59,6 +61,11 @@
     const elm=document.getElementById('dcMidNote');if(elm)elm.textContent=`닷컴버블 상승 도중의 조정과 비교: 코스피 고점(${kP.d})을 나스닥의 1998년 중간 고점(${n98P.d} ${Math.round(n98P.v).toLocaleString()})에 맞춘 그래프입니다. 나스닥은 ${lowM.d}까지 ${(lowM.y-100).toFixed(1)}%(${Math.round(lowM.x)}일) 조정 후 ${recM?recM.d+'('+Math.round(recM.x)+'일째)':'—'}에 전고점을 회복했고, 2000-03-10 최종 고점까지 고점 대비 ${Math.round(nP.v/n98P.v*100)}(+${Math.round(nP.v/n98P.v*100-100)}%)로 올랐습니다. 고점 전: ${rowsM}. 현재 고점 후 ${Math.round(kN.x)}일 코스피 ${kN.y.toFixed(0)} vs 같은 날짜 나스닥 ${nM.y.toFixed(0)}(${nM.d}). 1998년 경로를 그대로 따른다고 가정한 단순 환산(예측 아님): ${projM}.`;
     mk('dcMid',{type:'line',data:{datasets:[lineDS('닷컴버블 나스닥 (1998-07-20 중간 고점 = 100)',Nm.filter(x=>x.x>=-1500&&x.x<=1000).map(x=>({x:x.x,y:x.y})),'#94a3b8'),lineDS('코스피 (고점 '+kP.d+')',Kp.filter(x=>x.x>=-1500).map(x=>({x:x.x,y:x.y})),'#ef4444',2.5),now({x:kN.x,y:kN.y},'','현재')]},
      options:{...base,plugins:{...base.plugins,tooltip:{callbacks:{label:t=>`${t.dataset.label}: 고점 ${t.parsed.x>=0?'+':''}${Math.round(t.parsed.x)}일 · ${t.parsed.y.toFixed(1)}`}}},scales:{x:{type:'linear',min:-1500,max:1000,title:{display:true,text:'고점 대비 경과일 (음수 = 고점 전)'}},y:{type:'logarithmic',min:15,max:300,title:{display:true,text:'고점 = 100'}}}}});}
+   const ddOf=a=>{let mx=-1;return a.filter(x=>x.x>=-1500&&x.x<=1000).map(x=>{mx=Math.max(mx,x.y);return {x:x.x,y:(x.y/mx-1)*100,d:x.d};});};
+   const ddOpt=lab=>({...base,plugins:{...base.plugins,tooltip:{callbacks:{label:t=>`${t.dataset.label}: 고점 ${t.parsed.x>=0?'+':''}${Math.round(t.parsed.x)}일 · ${t.parsed.y.toFixed(1)}%`}}},scales:{x:{type:'linear',min:-1500,max:1000,title:{display:true,text:lab}},y:{max:0,title:{display:true,text:'직전 최고치 대비 (%)'}}}});
+   {const kD=ddOf(Kp),nD=ddOf(Np),mD=ddOf(pkRel(nq,n98P)),kz=kD.at(-1);
+    mk('dcPeakDD',{type:'line',data:{datasets:[lineDS('닷컴버블 나스닥 MDD (2000-03-10 정점 정렬)',nD,'#d4a017'),lineDS('코스피 MDD (고점 '+kP.d+')',kD,'#ef4444',2.5),now({x:kz.x,y:kz.y},'','현재 '+kz.y.toFixed(1)+'%')]},options:ddOpt('고점 대비 경과일 (음수 = 고점 전)')});
+    mk('dcMidDD',{type:'line',data:{datasets:[lineDS('닷컴버블 나스닥 MDD (1998-07-20 중간 고점 정렬)',mD,'#94a3b8'),lineDS('코스피 MDD (고점 '+kP.d+')',kD,'#ef4444',2.5),now({x:kz.x,y:kz.y},'','현재 '+kz.y.toFixed(1)+'%')]},options:ddOpt('고점 대비 경과일 (음수 = 고점 전)')});}
    mk('dcPeak',{type:'line',data:{datasets:[lineDS('닷컴버블 나스닥 (2000-03-10 정점 = 100)',Np.filter(x=>x.x>=-1500&&x.x<=1000).map(x=>({x:x.x,y:x.y})),'#d4a017'),lineDS('코스피 (고점 '+kP.d+')',Kp.filter(x=>x.x>=-1500).map(x=>({x:x.x,y:x.y})),'#ef4444',2.5),now({x:kN.x,y:kN.y},'','현재')]},
     options:{...base,plugins:{...base.plugins,tooltip:{callbacks:{label:t=>`${t.dataset.label}: 고점 ${t.parsed.x>=0?'+':''}${Math.round(t.parsed.x)}일 · ${t.parsed.y.toFixed(1)}`}}},scales:{x:{type:'linear',min:-1500,max:1000,title:{display:true,text:'고점 대비 경과일 (음수 = 고점 전)'}},y:{type:'logarithmic',min:10,max:110,title:{display:true,text:'고점 = 100'}}}}});}
   mk('dcDD',{type:'line',data:{datasets:[lineDS('나스닥 (2000.3.10 고점)',nA.map(x=>({x:x.t,y:x.dd})),'#d4a017'),lineDS('코스피 ('+kP.d+' 고점)',kA.map(x=>({x:x.t,y:x.dd})),'#ef4444',2.5),now({x:kNow.t,y:kNow.dd},'','현재')]},
@@ -67,7 +74,7 @@
    const Y={step:1,fmt:(v,f)=>f?'T+'+v.toFixed(2)+'년':'T+'+v+'Y'},D={step:250,fmt:v=>Math.round(v)+'일'};
    const nv=(id,ids,min,max,log,tick,ms)=>{const cs=ids.map(i=>byId[i]).filter(Boolean);if(cs.length)RangeNav(document.getElementById(id),{charts:cs,min,max,series:ser(cs[0]),log,tick,minSpan:ms});};
    nv('dcIdxNav',['dcIdx','dcDisp'],0,8,true,Y,.25);nv('dcDDNav',['dcDD'],0,1000,false,D,30);
-   nv('dcPeakNav',['dcPeak'],-1500,1000,true,D,60);nv('dcMidNav',['dcMid'],-1500,1000,true,D,60);}
+   nv('dcPeakNav',['dcPeak','dcPeakDD'],-1500,1000,true,D,60);nv('dcMidNav',['dcMid','dcMidDD'],-1500,1000,true,D,60);}
  }
  document.addEventListener('click',e=>{const b=e.target.closest('#dcStart button');if(!b)return;KS_START=b.dataset.s;run();});
  document.addEventListener('click',e=>{const b=e.target.closest('#dcView button');if(!b)return;VIEW=b.dataset.v;const box=b.closest('section');applyView(box);charts.forEach(c=>c.resize());});

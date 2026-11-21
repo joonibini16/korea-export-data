@@ -6,6 +6,10 @@ function rows(t){const L=t.replace(/^﻿/,'').trim().split(/\r?\n/);const h=L[0]
 function chart(id,cfg){charts[id]?.destroy();charts[id]=new Chart(el(id),cfg);}
 const C={'^GSPC':['미국 S&P500','US','BOPTEXP'],'^IXIC':['미국 나스닥','US','BOPTEXP'],'^SOX':['미국 반도체(SOX)','US','BOPTEXP'],'^KS11':['한국 코스피','KR','XTEXVA01KRM667S'],'^KQ11':['한국 코스닥','KR','XTEXVA01KRM667S'],'^TWII':['대만 가권','TW',null],'^N225':['일본 닛케이','JP','XTEXVA01JPM667S'],'000001.SS':['중국 상해종합','CN','XTEXVA01CNM667S'],'^HSI':['홍콩 항셍','HK',null],'^GDAXI':['독일 DAX','DE','XTEXVA01DEM667S'],'^FCHI':['프랑스 CAC40','FR','XTEXVA01FRM667S'],'^FTSE':['영국 FTSE100','GB','XTEXVA01GBM667S'],'^STOXX50E':['유로 STOXX50','EU',null],'^NSEI':['인도 니프티50','IN','XTEXVA01INM667S'],'^BVSP':['브라질 보베스파','BR','XTEXVA01BRM667S'],'^GSPTSE':['캐나다 TSX','CA','XTEXVA01CAM667S'],'^AXJO':['호주 ASX200','AU','XTEXVA01AUM667S'],'^JKSE':['인도네시아 JCI','ID','XTEXVA01IDM667S'],'^MXX':['멕시코 IPC','MX','XTEXVA01MXM667S']};
 const AI={ORCL:'오라클',NVDA:'엔비디아',AVGO:'브로드컴',MSFT:'마이크로소프트',META:'메타',AMZN:'아마존',GOOGL:'알파벳',TSM:'TSMC(ADR)',AMD:'AMD',CRWV:'코어위브',HYG:'하이일드 채권 ETF (HYG)',LQD:'투자등급 채권 ETF (LQD)'};
+// 특이 사례 보정(표시용): 2023-10-18~24 영풍제지 하한가 사태로 반대매매가 개별 종목에서 하루 5천억원대로 집계됨 → 직전 20거래일 평균으로 대체(원자료 kofia_daily.csv는 그대로)
+const KF_ODD=['2023-10-18','2023-10-24'];
+function kfSmooth(a){const i0=a.findIndex(x=>x.date>=KF_ODD[0]);if(i0<20)return a;const pre=a.slice(i0-20,i0),m=k=>{const v=pre.map(x=>x[k]).filter(v=>v!=null);return v.length?v.reduce((p,q)=>p+q,0)/v.length:null;};
+ const fs=m('forced_sale'),fr=m('forced_ratio');a.forEach(x=>{if(x.date>=KF_ODD[0]&&x.date<=KF_ODD[1]){x.forced_sale_raw=x.forced_sale;x.forced_ratio_raw=x.forced_ratio;x.forced_sale=fs!=null?Math.round(fs):x.forced_sale;x.forced_ratio=fr!=null?Math.round(fr*10)/10:x.forced_ratio;x.adj=1;}});return a;}
 let TV={KOSPI:new Map(),KOSDAQ:new Map()},CDSS=[],HC=[],M=new Map(),F=new Map(),E=new Map(),VK=[],KF=[],BR=[],brRange='1y',levRange='2018',cds=[],KRM=[];
 const ser=s=>M.get(s)||[],fs=s=>F.get(s)||[];
 function at(arr,date){let lo=0,hi=arr.length-1,ans=null;while(lo<=hi){const m=(lo+hi)>>1;if(arr[m].d<=date){ans=arr[m];lo=m+1;}else hi=m-1;}return ans;}
@@ -193,7 +197,7 @@ const lvX={};function renderLev(){if(!KF.length){el('levErr').hidden=false;retur
  chart('levU',{type:'line',data:{labels,datasets:[{label:'위탁매매 미수금 (억원)',data:uns,borderColor:'#f59e0b',backgroundColor:'#f59e0b',borderWidth:2,pointRadius:0},{label:'예탁증권담보융자 (억원)',data:R.map(x=>x.secured_loan!=null?x.secured_loan/100:null),borderColor:'#94a3b8',backgroundColor:'#94a3b8',borderWidth:1.5,pointRadius:0,yAxisID:'y1'}]},
   options:{responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:'index',intersect:false},plugins:{legend:{position:'bottom'}},scales:{x:{ticks:{maxTicksLimit:10},grid:{display:false}},y:{title:{display:true,text:'미수금 억원'}},y1:{position:'right',grid:{display:false},title:{display:true,text:'담보융자 억원'}}}}});
  const f5=KF.slice(-5).map(x=>x.forced_sale).filter(v=>v!=null),avg=f5.reduce((a,b)=>a+b,0)/(f5.length||1),yr=KF.filter(x=>x.date>=(Number(KF.at(-1).date.slice(0,4))-1)+KF.at(-1).date.slice(4)).map(x=>x.forced_sale).filter(v=>v!=null);
- el('levFN').textContent=`최근 5거래일 평균 반대매매 ${(avg/100).toFixed(0)}억원 · 1년 백분위 ${Math.round(yr.filter(v=>v<=avg).length/yr.length*100)}%. 반대매매가 급증하면 신용으로 산 주식이 강제로 팔리며 하락을 키웁니다.`;
+ el('levFN').textContent=`최근 5거래일 평균 반대매매 ${(avg/100).toFixed(0)}억원 · 1년 백분위 ${Math.round(yr.filter(v=>v<=avg).length/yr.length*100)}%. 반대매매가 급증하면 신용으로 산 주식이 강제로 팔리며 하락을 키웁니다. 2023-10-18~24(영풍제지 하한가 사태, 하루 최대 5,497억원)는 개별 종목 특이 사례라 직전 20거래일 평균으로 바꿔 표시합니다.`;
  return{avg,pc:yr.filter(v=>v<=avg).length/yr.length*100,ratio:KF.at(-1).credit_total/KF.at(-1).deposit*100};}
 
 // ── 한국 시장폭·과열: Breadth_60(5-SMA), 신고가 비율 HLI(10-SMA), RSI(14)
@@ -236,7 +240,7 @@ async function init(){try{const [m,f,c,s,kp,ec,vk,kf,br,cs,hc,tv]=await Promise.
  for(const r of rows(m||'symbol,date,close')){const v=num(r.close);if(v==null)continue;if(!M.has(r.symbol))M.set(r.symbol,[]);M.get(r.symbol).push({d:r.date,v});}
  for(const r of rows(f||'series,date,value')){const v=num(r.value);if(v==null)continue;if(!F.has(r.series))F.set(r.series,[]);F.get(r.series).push({d:r.date,v});}
  for(const r of rows(ec||'series,date,value')){const v=num(r.value);if(v==null)continue;if(!E.has(r.series))E.set(r.series,[]);E.get(r.series).push({d:r.date,v});}
- KF=rows(kf||'date').map(r=>{const o={date:r.date};for(const k in r)if(k!=='date')o[k]=num(r[k]);return o;}).filter(x=>x.date).sort((a,b)=>a.date.localeCompare(b.date));
+ KF=kfSmooth(rows(kf||'date').map(r=>{const o={date:r.date};for(const k in r)if(k!=='date')o[k]=num(r[k]);return o;}).filter(x=>x.date).sort((a,b)=>a.date.localeCompare(b.date)));
  BR=rows(br||'date').filter(r=>r.date).map(r=>({date:r.date,market:r.market,n60:num(r.n60),breadth60:num(r.breadth60),nh:num(r.nh),nl:num(r.nl),hli:num(r.hli)})).sort((a,b)=>a.date.localeCompare(b.date));
  TV={KOSPI:new Map(),KOSDAQ:new Map()};for(const r of rows(tv||'date,market,trdval_mn')){const v=num(r.trdval_mn);if(v!=null&&TV[r.market])TV[r.market].set(r.date,v/1e6);}
  VK=rows(vk||'date,close').map(r=>({d:r.date,v:num(r.close)})).filter(x=>x.v!=null);
@@ -258,7 +262,7 @@ function snapshotFromData(input,date){
   if(!target.has(r[group]))target.set(r[group],[]);target.get(r[group]).push({d:r.date,v});
  }
  for(const a of [...M.values(),...F.values()])a.sort((a,b)=>a.d.localeCompare(b.d));
- KF=(input.kofia||[]).filter(r=>r.date<=date).map(r=>Object.fromEntries(Object.entries(r).map(([k,v])=>[k,k==='date'?v:num(v)]))).sort((a,b)=>a.date.localeCompare(b.date));
+ KF=kfSmooth((input.kofia||[]).filter(r=>r.date<=date).map(r=>Object.fromEntries(Object.entries(r).map(([k,v])=>[k,k==='date'?v:num(v)]))).sort((a,b)=>a.date.localeCompare(b.date)));
  BR=(input.breadth||[]).filter(r=>r.date<=date).map(r=>({...r,breadth60:num(r.breadth60)})).sort((a,b)=>a.date.localeCompare(b.date));
  KRM=(input.provisional||[]).filter(r=>r['기간구분']==='MONTH'&&r['발표일']<=date&&num(r['수출YoY_pct'])!=null).map(r=>({k:r['기준월'].replace('.','-'),y:num(r['수출YoY_pct'])}));
  const weak=Object.entries(C).map(([s,[name,cc,ex]])=>({dd:dd52(ser(s)),e:cc==='KR'?krExport():ex?yoyM(fs(ex)):{}}));
