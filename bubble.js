@@ -83,7 +83,11 @@ function renderCredit(){const S='2019-01-01';
  const ai=el('ai');ai.replaceChildren();for(const [s,n] of Object.entries(AI)){const a=ser(s);if(!a.length)continue;const tr=document.createElement('tr');td(tr,n+' ('+s+')');td(tr,a.at(-1).d);[ret(a,7),ret(a,30),ret(a,91),dd52(a)].forEach(v=>td(tr,pct(v),heat(v),cls(v)+' h'));ai.append(tr);}
  const hy=fs('BAMLH0A0HYM2');const h3=hy.length>63?hy.at(-1).v-hy.at(-64).v:null;return{hy:hy.at(-1),h3,orcl:by.get('ORCL')?.at(-1)};}
 function renderOther(){const S='2020-01-01',p=s=>since(ser(s),S).map(x=>({d:x.d,v:x.v}));
- line('vol',[{label:'VIX',data:p('^VIX'),color:'#ef4444',w:2.5},{label:'NFCI',data:since(fs('NFCI'),S),color:'#60a5fa',axis:'y1'},{label:'금융스트레스(STLFSI4)',data:since(fs('STLFSI4'),S),color:'#f59e0b',axis:'y1'}],'VIX',{y1:'지수'});
+ {const y0=ser('^VIX'),vx=[...fs('VIXCLS').filter(x=>!y0.length||x.d<y0[0].d),...y0].map(x=>({d:x.d,v:x.v})),d0=vx[0]?.d,d1=vx.at(-1)?.d,lv=(v,lab,c)=>({label:lab,data:[{d:d0,v},{d:d1,v}],color:c,w:1,dash:[5,4]});
+  if(vx.length){line('vix',[{label:'VIX',data:vx,color:'#ef4444',w:2},lv(20,'20 경계','rgba(251,191,36,.7)'),lv(30,'30 공포','rgba(239,68,68,.6)')],'VIX');
+   const L=vx.at(-1),y1=vx.filter(x=>x.d>=String(+L.d.slice(0,4)-1)+L.d.slice(4)).map(x=>x.v),pc=Math.round(y1.filter(v=>v<=L.v).length/y1.length*100),mx=vx.reduce((m,x)=>x.v>m.v?x:m,vx[0]);
+   const el=document.getElementById('vixN');if(el)el.textContent=`${L.d} VIX ${L.v.toFixed(2)} · ${L.v>=30?'공포(30 이상)':L.v>=20?'경계(20~30)':'안정(20 미만)'} · 1년 백분위 ${pc}% · 표시 구간 최고 ${mx.v.toFixed(1)}(${mx.d})`;}}
+ line('vol',[{label:'NFCI',data:since(fs('NFCI'),S),color:'#60a5fa'},{label:'금융스트레스(STLFSI4)',data:since(fs('STLFSI4'),S),color:'#f59e0b'}],'지수');
  line('rates',[{label:'10년−3개월',data:since(fs('T10Y3M'),S),color:'#60a5fa',w:2.5},{label:'10년−2년',data:since(fs('T10Y2Y'),S),color:'#34d399'},{label:'10년 실질금리',data:since(fs('DFII10'),S),color:'#f59e0b',axis:'y1'}],'%p',{y1:'실질금리 %'});
  line('fx',[{label:'달러/엔',data:p('JPY=X'),color:'#ef4444',w:2.5},{label:'달러인덱스',data:p('DX-Y.NYB'),color:'#60a5fa',axis:'y1'},{label:'원/달러',data:p('KRW=X').map(x=>({d:x.d,v:x.v/10})),color:'#34d399',axis:'y1',dash:[4,3]}],'엔',{y1:'달러인덱스 · 원/달러÷10'});
  const cu=ser('HG=F'),au=ser('GC=F');const cg=since(cu,S).map(x=>{const g=at(au,x.d);return g?{d:x.d,v:x.v/g.v*1000}:null;}).filter(Boolean);

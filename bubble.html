@@ -117,7 +117,8 @@ td.h{font-weight:700}.flag{font-size:12px;padding:2px 8px;border-radius:999px;ba
 
 <h2 class="sec" data-upd="fred_data.csv,market_daily.csv,vkospi.csv">③ 그 밖의 위험 신호</h2>
 <div class="g2">
-<section class="panel"><h2>변동성 · 금융여건</h2><p class="muted">VIX, 시카고 연준 금융여건지수(NFCI, 0 이상 = 평균보다 긴축), 세인트루이스 연준 금융스트레스지수.</p><div class="chart"><canvas id="vol"></canvas></div></section>
+<section class="panel"><h2>VIX 변동성 지수</h2><p class="muted">S&amp;P500 옵션으로 계산한 향후 30일 기대 변동성(%). 20 미만 안정 · 20~30 경계 · 30 이상 공포 국면. 출처: FRED VIXCLS(2015~) + Yahoo Finance ^VIX(최근, 매일 갱신).</p><p class="muted" id="vixN" style="color:#e2e8f0"></p><div class="chart"><canvas id="vix"></canvas></div></section>
+<section class="panel"><h2>금융여건</h2><p class="muted">시카고 연준 금융여건지수(NFCI, 0 이상 = 평균보다 긴축), 세인트루이스 연준 금융스트레스지수(0 이상 = 평균보다 스트레스 높음).</p><div class="chart"><canvas id="vol"></canvas></div></section>
 <section class="panel"><h2>금리 · 장단기 차이</h2><p class="muted">10년−3개월, 10년−2년 금리차와 10년 실질금리. 역전 후 다시 벌어질 때(재스티프닝) 경기침체가 뒤따른 경우가 많습니다.</p><div class="chart"><canvas id="rates"></canvas></div></section>
 <section class="panel"><h2>엔캐리 · 달러</h2><p class="muted">달러/엔(낮아질수록 엔 강세 = 엔캐리 청산 압력), 달러인덱스, 원/달러.</p><div class="chart"><canvas id="fx"></canvas></div></section>
 <section class="panel"><h2>위험자산 심리 · 경기</h2><p class="muted">구리/금 비율(경기 기대), 비트코인, 신규 실업수당 청구, 삼의 법칙(0.5 이상 = 침체 신호).</p><div class="chart"><canvas id="macro"></canvas></div></section>
@@ -126,8 +127,8 @@ td.h{font-weight:700}.flag{font-size:12px;padding:2px 8px;border-radius:999px;ba
 </main>
 <script src="./bubble_daily_strength.js?v=obos2-ytd-last"></script>
 <script src="./bubble_indicators.js?v=11"></script>
-<script src="./bubble.js?v=24"></script><script src="./bubble_signal_history.js?v=1"></script><script src="./bubble_breadth_live.js?v=7"></script>
-<script src="./bubble_breadth_reference.js?v=6"></script><script src="./bubble_breadth_db_snapshot.js?v=2"></script><script src="./bubble_size.js?v=net2"></script><script src="./rangenav.js?v=1"></script><script src="./bubble_dotcom.js?v=14"></script><script src="./bubble_hike_align.js?v=1"></script><script src="./bubble_cds_all.js?v=9"></script><script src="./bubble_hyper.js?v=1"></script><script src="./bubble_hy.js?v=3"></script><script src="./bubble_b200.js?v=3"></script><script src="./bubble_bonds.js?v=9"></script><script src="./bubble_credit_matrix.js?v=4"></script><script src="./bubble_gfc.js?v=6"></script>
+<script src="./bubble.js?v=25"></script><script src="./bubble_signal_history.js?v=1"></script><script src="./bubble_breadth_live.js?v=7"></script>
+<script src="./bubble_breadth_reference.js?v=6"></script><script src="./bubble_breadth_db_snapshot.js?v=2"></script><script src="./bubble_size.js?v=net2"></script><script src="./rangenav.js?v=1"></script><script src="./bubble_dotcom.js?v=16"></script><script src="./bubble_hike_align.js?v=1"></script><script src="./bubble_cds_all.js?v=9"></script><script src="./bubble_hyper.js?v=1"></script><script src="./bubble_hy.js?v=3"></script><script src="./bubble_b200.js?v=3"></script><script src="./bubble_bonds.js?v=9"></script><script src="./bubble_credit_matrix.js?v=4"></script><script src="./bubble_gfc.js?v=6"></script>
 <script src="./bubble_sector_grouped.js?v=3"></script>
 <script>(function(){const b=document.getElementById('sectorStocks'),c=document.getElementById('sectorStocksCount');if(!b||!c)return;new MutationObserver(()=>{c.textContent=b.children.length?'· '+b.children.length+'종목 (표 안에서 스크롤)':'';const box=b.closest('.scroll-box');if(box)box.scrollTop=0;}).observe(b,{childList:true});})();</script>
 <script>(function(){const main=document.querySelector('main');if(!main)return;const nav=document.createElement('div');nav.setAttribute('role','navigation');nav.className='bnav';nav.setAttribute('aria-label','섹션 바로가기');
