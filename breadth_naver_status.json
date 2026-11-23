@@ -1,17 +1,17 @@
 {
- "updated_at": "2026-11-21T04:21:20+09:00",
+ "updated_at": "2026-11-23T09:17:16+09:00",
  "markets": {
   "KOSPI": {
    "listed": 828,
    "with_prices": 828,
-   "first": "2024-07-23",
-   "last": "2026-11-20"
+   "first": "2024-07-24",
+   "last": "2026-11-23"
   },
   "KOSDAQ": {
    "listed": 1765,
-   "with_prices": 1751,
-   "first": "2024-07-23",
-   "last": "2026-11-20"
+   "with_prices": 1752,
+   "first": "2024-07-24",
+   "last": "2026-11-23"
   }
  },
  "failures": 0,
