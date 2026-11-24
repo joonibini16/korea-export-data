@@ -1,0 +1,31 @@
+name: Malaysia Li-ion (HS 8507.60) exports — UN Comtrade
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '40 0 * * 2,5'   # 화·금 09:40 KST (Comtrade 갱신 주기가 불규칙해 주 2회 확인)
+permissions:
+  contents: write
+concurrency:
+  group: malaysia-cells
+  cancel-in-progress: false
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python tools/collect_malaysia_cells.py
+      - run: |
+          git config user.name github-actions; git config user.email github-actions@github.com
+          mkdir -p /tmp/o; cp malaysia_cells.csv malaysia_cells_status.json /tmp/o/
+          for i in 1 2 3; do
+            git fetch -q origin main && git reset -q --hard origin/main
+            cp /tmp/o/* .
+            git add malaysia_cells.csv malaysia_cells_status.json
+            git diff --cached --quiet && exit 0
+            git commit -qm "Update Malaysia Li-ion exports" && git push -q origin HEAD:main && exit 0
+            sleep 10
+          done
+          exit 1
