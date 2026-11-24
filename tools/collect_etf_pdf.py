@@ -51,6 +51,25 @@ def main():
     if not fb.login():
         st['errors'].append('KRX 로그인 실패'); return
     M = master(); st['master_n'] = len(M)
+    if os.environ.get('LIST_ACTIVE'):  # 국내 주식형 액티브 ETF 후보(순자산 순) 목록만 저장
+        day = dt.datetime.now(KST).strftime('%Y%m%d')
+        j = fb.krx('dbms/MDC/STAT/standard/MDCSTAT04601', trdDd=day, share='1', csvxls_isNo='false')
+        R = j.get('output') or j.get('OutBlock_1') or []
+        st['master_keys'] = list(R[0].keys()) if R else []
+        meta = {r.get('ISU_SRT_CD'): r for r in R}
+        p2 = fb.krx('dbms/MDC/STAT/standard/MDCSTAT04301', trdDd=fb.trade_days(3)[-1], share='1', money='1', csvxls_isNo='false')
+        P = p2.get('output') or p2.get('OutBlock_1') or []
+        st['price_keys'] = list(P[0].keys()) if P else []
+        out = []
+        for r in P:
+            nm = r.get('ISU_ABBRV') or ''
+            if '액티브' not in nm: continue
+            m = meta.get(r.get('ISU_SRT_CD'), {})
+            out.append(dict(code=r.get('ISU_SRT_CD'), name=nm, aum=num(r.get('INVSTASST_NETASST_TOTAMT')) or num(r.get('NETASST_TOTAMT')) or num(r.get('MKTCAP')),
+                            asset=m.get('IDX_ASST_CLSS_NM'), mkt=m.get('IDX_MKT_CLSS_NM'), list_dd=m.get('LIST_DD')))
+        out.sort(key=lambda x: -(x['aum'] or 0))
+        (ROOT / 'etf_active_candidates.json').write_text(json.dumps(out, ensure_ascii=False, indent=0))
+        return
     norm = lambda s: re.sub(r'\s+', '', s or '')
     days = fb.trade_days(60)
     start = (os.environ.get('PDF_FROM') or '').replace('-', '')
