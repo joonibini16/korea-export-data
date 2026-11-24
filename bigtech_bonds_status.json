@@ -1,121 +1,121 @@
 {
- "updated": "2026-11-23T19:30:16+00:00",
+ "updated": "2026-11-24T11:34:03+00:00",
  "bonds": {
   "CRWV": {
    "cusip": "U2069EAA8",
-   "n": 356,
+   "n": 357,
    "first": "2025-05-22",
-   "last": "2026-11-20",
+   "last": "2026-11-23",
    "sample": {
     "cusip": "U2069EAA8",
-    "tradeDate": "2026-11-20",
+    "tradeDate": "2026-11-23",
     "lastSaleYield": null,
     "productType": "CA",
-    "lastSalePrice": 83
+    "lastSalePrice": 84
    }
   },
   "ORCL": {
    "cusip": "68389XCJ2",
-   "n": 993,
+   "n": 994,
    "first": "2022-11-07",
-   "last": "2026-11-20",
+   "last": "2026-11-23",
    "sample": {
     "cusip": "68389XCJ2",
-    "tradeDate": "2026-11-20",
-    "lastSaleYield": 7.84,
+    "tradeDate": "2026-11-23",
+    "lastSaleYield": 7.97,
     "productType": "CA",
-    "lastSalePrice": 92.509
+    "lastSalePrice": 91.943
    }
   },
   "META": {
    "cusip": "30303M8H8",
-   "n": 956,
+   "n": 957,
    "first": "2023-01-03",
-   "last": "2026-11-20",
+   "last": "2026-11-23",
    "sample": {
     "cusip": "30303M8H8",
-    "tradeDate": "2026-11-20",
-    "lastSaleYield": 5.83,
+    "tradeDate": "2026-11-23",
+    "lastSaleYield": 5.79,
     "productType": "CA",
-    "lastSalePrice": 90.431
+    "lastSalePrice": 90.64
    }
   },
   "AMZN": {
    "cusip": "023135BZ8",
    "n": 1228,
-   "first": "2021-11-24",
-   "last": "2026-11-20",
+   "first": "2021-11-26",
+   "last": "2026-11-23",
    "sample": {
     "cusip": "023135BZ8",
-    "tradeDate": "2026-11-20",
-    "lastSaleYield": 5.41,
+    "tradeDate": "2026-11-23",
+    "lastSaleYield": 5.48,
     "productType": "CA",
-    "lastSalePrice": 86.995
+    "lastSalePrice": 86.7336
    }
   },
   "NVDA": {
    "cusip": "67066GAF1",
    "n": 1230,
-   "first": "2021-11-24",
-   "last": "2026-11-20",
+   "first": "2021-11-26",
+   "last": "2026-11-23",
    "sample": {
     "cusip": "67066GAF1",
-    "tradeDate": "2026-11-20",
-    "lastSaleYield": 5.45,
+    "tradeDate": "2026-11-23",
+    "lastSaleYield": 5.51,
     "productType": "CA",
-    "lastSalePrice": 92.096
+    "lastSalePrice": 91.9358
    }
   },
   "GOOGL": {
    "cusip": "02079KAD9",
    "n": 1231,
-   "first": "2021-11-24",
-   "last": "2026-11-20",
+   "first": "2021-11-26",
+   "last": "2026-11-23",
    "sample": {
     "cusip": "02079KAD9",
-    "tradeDate": "2026-11-20",
-    "lastSaleYield": 5.17,
+    "tradeDate": "2026-11-23",
+    "lastSaleYield": 5.14,
     "productType": "CA",
-    "lastSalePrice": 86.328
+    "lastSalePrice": 86.459
    }
   },
   "MSFT": {
    "cusip": "594918BC7",
    "n": 1221,
-   "first": "2021-11-24",
-   "last": "2026-11-20",
+   "first": "2021-11-26",
+   "last": "2026-11-23",
    "sample": {
     "cusip": "594918BC7",
-    "tradeDate": "2026-11-20",
-    "lastSaleYield": 5.36,
+    "tradeDate": "2026-11-23",
+    "lastSaleYield": 5.18,
     "productType": "CA",
-    "lastSalePrice": 87.726
+    "lastSalePrice": 88.849
    }
   },
   "AAPL": {
    "cusip": "037833EP1",
-   "n": 1059,
+   "n": 1060,
    "first": "2022-08-01",
-   "last": "2026-11-20",
+   "last": "2026-11-23",
    "sample": {
     "cusip": "037833EP1",
-    "tradeDate": "2026-11-20",
-    "lastSaleYield": 4.98,
+    "tradeDate": "2026-11-23",
+    "lastSaleYield": 5.02,
     "productType": "CA",
-    "lastSalePrice": 91.963
+    "lastSalePrice": 91.783
    }
   },
   "AVGO": {
    "cusip": "11135FCW9",
-   "n": 291,
+   "n": 292,
    "first": "2025-09-22",
-   "last": "2026-11-20",
+   "last": "2026-11-23",
    "sample": {
     "cusip": "11135FCW9",
-    "tradeDate": "2026-11-20",
-    "lastSaleYield": 5.75,
+    "tradeDate": "2026-11-23",
+    "lastSaleYield": 5.76,
     "productType": "CA",
-    "lastSalePrice": 94.639
+    "lastSalePrice": 94.606
    }
   }
  },
@@ -127,5 +127,5 @@
   "__cf_bm",
   "_cfuvid"
  ],
- "rows": 8658
+ "rows": 8667
 }
