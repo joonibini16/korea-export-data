@@ -42,6 +42,12 @@ TARGETS = [
     ('TIME 코리아밸류업액티브', 'code:495060'),
     ('MIDAS 코스피액티브', 'code:403790'),
     ('UNICORN SK하이닉스밸류체인액티브', 'code:494220'),
+    # 테마(패시브 포함): 휴머노이드·화장품·식품 — 국내 액티브가 없거나 적어 대표 ETF로 대체
+    ('TIGER 코리아휴머노이드로봇산업', 'code:0148J0'),
+    ('PLUS 글로벌휴머노이드로봇액티브', 'code:0035T0'),
+    ('TIGER 화장품', 'code:228790'),
+    ('SOL 화장품TOP3플러스', 'code:0008T0'),
+    ('HANARO Fn K-푸드', 'code:438900'),
 ]
 st = {'run': dt.datetime.now(KST).isoformat(timespec='seconds'), 'resolved': {}, 'errors': []}
 num = lambda s: float(str(s).replace(',', '')) if re.fullmatch(r'-?[\d,]+(\.\d+)?', str(s or '').strip()) else None
@@ -117,10 +123,16 @@ def main():
         for d in days:
             ds = f'{d[:4]}-{d[4:6]}-{d[6:]}'
             if ds in have: continue
-            try:
-                rows = pdf(isin, d); time.sleep(0.3)
-            except Exception as e:
-                st['errors'].append(f'{label} {ds} {str(e)[:80]}'); continue
+            rows = None
+            for att in range(3):  # KRX 세션 만료(로그인 화면 HTML) 시 다시 로그인 후 재시도
+                try:
+                    rows = pdf(isin, d); time.sleep(0.3); break
+                except Exception as e:
+                    if att == 2:
+                        st['errors'].append(f'{label} {ds} {str(e)[:80]}')
+                    else:
+                        time.sleep(3 * (att + 1)); fb.login()
+            if rows is None: continue
             if not rows: continue
             tot = sum(r[3] or 0 for r in rows)
             k = len(J['dates']); J['dates'].append(ds)
