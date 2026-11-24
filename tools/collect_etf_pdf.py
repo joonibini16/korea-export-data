@@ -60,7 +60,7 @@ def main():
         while d0 <= dt.datetime.now(KST).date():
             if d0.weekday() < 5: days.append(d0.strftime('%Y%m%d'))
             d0 += dt.timedelta(days=1)
-    now = dt.datetime.now(KST); today = now.strftime('%Y%m%d'); closed = now.hour >= 16
+    now = dt.datetime.now(KST); today = now.strftime('%Y%m%d'); closed = now.hour * 60 + now.minute >= 15 * 60 + 40  # 정규장 15:30 종료 후(10분 여유)
     if not closed: days = [d for d in days if d < today]  # 장중에는 당일 자료를 받지 않음(장 마감 후에만 반영)
     index = []
     for label, pat in TARGETS:

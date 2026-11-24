@@ -23,7 +23,7 @@ jobs:
           # 평일(KST) 실행표: 시각 워크플로...
           cat > /tmp/plan <<'EOF'
           08:50 etf_intraday.yml intraday_dispatch.yml hy_long.yml
-          15:45 size_breadth.yml breadth.yml breadth_naver.yml bubble.yml etf.yml corporate_spreads.yml
+          15:45 etf_pdf.yml size_breadth.yml breadth.yml breadth_naver.yml bubble.yml etf.yml corporate_spreads.yml
           15:55 foreign_buy.yml
           16:25 market_turnover.yml since_base.yml size_breadth.yml breadth.yml breadth_naver.yml bubble.yml etf.yml foreign_buy.yml sector_breadth.yml valuation.yml
           18:10 etf_pdf.yml market_turnover.yml since_base.yml size_breadth.yml breadth_naver.yml foreign_buy.yml etf.yml fwd_eps.yml
