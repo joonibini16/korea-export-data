@@ -25,6 +25,23 @@ TARGETS = [
     ('HANARO 반도체핵심공정주도주', r'^HANARO반도체핵심공정'),
     ('PLUS AI반도체소부장액티브', r'^PLUSAI반도체소부장'),
     ('PLUS 태양광&ESS', r'^PLUS태양광'),
+    # 대표 국내 주식형 액티브 ETF(순자산 1,000억원 이상, 2026-11-24 기준) — 종목코드로 고정
+    ('KODEX 로봇액티브', 'code:445290'),
+    ('KODEX 200액티브', 'code:494890'),
+    ('TIME Korea플러스배당액티브', 'code:441800'),
+    ('SOL 코리아메가테크액티브', 'code:444200'),
+    ('1Q 200액티브', 'code:451060'),
+    ('KoAct 바이오헬스케어액티브', 'code:462900'),
+    ('TIME 코스피액티브', 'code:385720'),
+    ('KODEX 신재생에너지액티브', 'code:385510'),
+    ('WON 반도체밸류체인액티브', 'code:474590'),
+    ('TIME K바이오액티브', 'code:463050'),
+    ('KoAct 코리아밸류업액티브', 'code:495230'),
+    ('ACE 라이프자산주주가치액티브', 'code:494330'),
+    ('RISE 비메모리반도체액티브', 'code:388420'),
+    ('TIME 코리아밸류업액티브', 'code:495060'),
+    ('MIDAS 코스피액티브', 'code:403790'),
+    ('UNICORN SK하이닉스밸류체인액티브', 'code:494220'),
 ]
 st = {'run': dt.datetime.now(KST).isoformat(timespec='seconds'), 'resolved': {}, 'errors': []}
 num = lambda s: float(str(s).replace(',', '')) if re.fullmatch(r'-?[\d,]+(\.\d+)?', str(s or '').strip()) else None
@@ -83,7 +100,7 @@ def main():
     if not closed: days = [d for d in days if d < today]  # 장중에는 당일 자료를 받지 않음(장 마감 후에만 반영)
     index = []
     for label, pat in TARGETS:
-        hit = [m for m in M if re.search(pat, norm(m[0]), re.I)]
+        hit = [m for m in M if (m[2] == pat[5:] if pat.startswith('code:') else re.search(pat, norm(m[0]), re.I))]
         if not hit:
             st['resolved'][label] = None; continue
         nm, isin, code = sorted(hit, key=lambda x: len(x[0]))[0]
