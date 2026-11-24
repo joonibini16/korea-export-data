@@ -82,113 +82,120 @@
    "code": "445290",
    "name": "KODEX 로봇액티브",
    "label": "KODEX 로봇액티브",
-   "days": 21,
-   "last": "2026-07-29"
+   "days": 105,
+   "last": "2026-11-24"
   },
   {
    "code": "494890",
    "name": "KODEX 200액티브",
    "label": "KODEX 200액티브",
-   "days": 0,
-   "last": null
+   "days": 105,
+   "last": "2026-11-24"
   },
   {
    "code": "441800",
    "name": "TIME Korea플러스배당액티브",
    "label": "TIME Korea플러스배당액티브",
-   "days": 0,
-   "last": null
+   "days": 105,
+   "last": "2026-11-24"
   },
   {
    "code": "444200",
    "name": "SOL 코리아메가테크액티브",
    "label": "SOL 코리아메가테크액티브",
-   "days": 0,
-   "last": null
+   "days": 105,
+   "last": "2026-11-24"
   },
   {
    "code": "451060",
    "name": "1Q 200액티브",
    "label": "1Q 200액티브",
-   "days": 0,
-   "last": null
+   "days": 105,
+   "last": "2026-11-24"
   },
   {
    "code": "462900",
    "name": "KoAct 바이오헬스케어액티브",
    "label": "KoAct 바이오헬스케어액티브",
-   "days": 0,
-   "last": null
+   "days": 105,
+   "last": "2026-11-24"
   },
   {
    "code": "385720",
    "name": "TIME 코스피액티브",
    "label": "TIME 코스피액티브",
-   "days": 0,
-   "last": null
+   "days": 105,
+   "last": "2026-11-24"
   },
   {
    "code": "385510",
    "name": "KODEX 신재생에너지액티브",
    "label": "KODEX 신재생에너지액티브",
-   "days": 2,
-   "last": "2026-08-18"
+   "days": 105,
+   "last": "2026-11-24"
   },
   {
    "code": "474590",
    "name": "WON 반도체밸류체인액티브",
    "label": "WON 반도체밸류체인액티브",
-   "days": 0,
-   "last": null
+   "days": 105,
+   "last": "2026-11-24"
   },
   {
    "code": "463050",
    "name": "TIME K바이오액티브",
    "label": "TIME K바이오액티브",
-   "days": 0,
-   "last": null
+   "days": 105,
+   "last": "2026-11-24"
   },
   {
    "code": "495230",
    "name": "KoAct 코리아밸류업액티브",
    "label": "KoAct 코리아밸류업액티브",
-   "days": 0,
-   "last": null
+   "days": 105,
+   "last": "2026-11-24"
   },
   {
    "code": "494330",
    "name": "ACE 라이프자산주주가치액티브",
    "label": "ACE 라이프자산주주가치액티브",
-   "days": 0,
-   "last": null
+   "days": 105,
+   "last": "2026-11-24"
   },
   {
    "code": "388420",
    "name": "RISE 비메모리반도체액티브",
    "label": "RISE 비메모리반도체액티브",
-   "days": 0,
-   "last": null
+   "days": 105,
+   "last": "2026-11-24"
   },
   {
    "code": "495060",
    "name": "TIME 코리아밸류업액티브",
    "label": "TIME 코리아밸류업액티브",
-   "days": 0,
-   "last": null
+   "days": 105,
+   "last": "2026-11-24"
   },
   {
    "code": "403790",
    "name": "MIDAS 코스피액티브",
    "label": "MIDAS 코스피액티브",
-   "days": 0,
-   "last": null
+   "days": 105,
+   "last": "2026-11-24"
   },
   {
    "code": "494220",
    "name": "UNICORN SK하이닉스밸류체인액티브",
    "label": "UNICORN SK하이닉스밸류체인액티브",
-   "days": 0,
-   "last": null
+   "days": 105,
+   "last": "2026-11-24"
+  },
+  {
+   "code": "0148J0",
+   "name": "TIGER 코리아휴머노이드로봇산업",
+   "label": "TIGER 코리아휴머노이드로봇산업",
+   "days": 105,
+   "last": "2026-11-24"
   }
  ]
 }

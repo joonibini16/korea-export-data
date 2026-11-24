@@ -131,7 +131,9 @@ def main():
                     if att == 2:
                         st['errors'].append(f'{label} {ds} {str(e)[:80]}')
                     else:
-                        time.sleep(3 * (att + 1)); fb.login()
+                        time.sleep(10 * (att + 1))
+                        try: fb.login()
+                        except Exception as le: st['errors'].append(f'재로그인 실패 {str(le)[:60]}')
             if rows is None: continue
             if not rows: continue
             tot = sum(r[3] or 0 for r in rows)
