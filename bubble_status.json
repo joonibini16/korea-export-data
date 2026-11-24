@@ -1,7 +1,7 @@
 {
- "updated_at": "2026-11-25T02:57:34+09:00",
+ "updated_at": "2026-11-25T03:17:46+09:00",
  "yahoo_rows": 55692,
- "fred_rows": 44646,
+ "fred_rows": 44647,
  "ecos_rows": 0,
  "ecos_key": false,
  "vkospi_rows": null,
@@ -16,7 +16,7 @@
   "BUSLOANS": "2026-10-01",
   "CONSUMER": "2026-10-01",
   "REALLN": "2026-10-01",
-  "M2SL": "2026-09-01",
+  "M2SL": "2026-10-01",
   "CPFF": "2026-11-20",
   "BAMLH0A0HYM2": "2026-11-23",
   "BAMLC0A0CM": "2026-11-23",
