@@ -115,7 +115,7 @@ def main():
             rows = None
             for att in range(3):  # KRX 세션 만료(로그인 화면 HTML) 시 다시 로그인 후 재시도
                 try:
-                    rows = pdf(isin, d); time.sleep(0.3); break
+                    rows = pdf(isin, d); time.sleep(1.2 if start else 0.3); break
                 except Exception as e:
                     if att == 2:
                         st['errors'].append(f'{label} {ds} {str(e)[:80]}')
