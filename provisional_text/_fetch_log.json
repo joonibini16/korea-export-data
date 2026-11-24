@@ -1,9 +1,8 @@
 {
- "found": 1,
- "saved": [],
- "errors": [
-  "('2026.11', 'D20'): HTTPSConnectionPool(host='customs.go.kr', port=443): Read timed out.",
-  "list 2: HTTPSConnectionPool(host='customs.go.kr', port=443): Read timed out."
+ "found": 54,
+ "saved": [
+  "2026.11_D20.txt"
  ],
- "pages": 1
+ "errors": [],
+ "pages": 60
 }
