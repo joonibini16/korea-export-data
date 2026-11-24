@@ -1,5 +1,5 @@
 {
- "run": "2026-11-24T21:36:10+09:00",
+ "run": "2026-11-24T22:27:26+09:00",
  "resolved": {
   "DS AI반도체액티브": [
    "DS AI반도체액티브",
@@ -45,53 +45,17 @@
    "PLUS 태양광&ESS",
    "457990"
   ],
-  "KODEX 로봇액티브": [
-   "KODEX 로봇액티브",
-   "445290"
-  ],
-  "KODEX 200액티브": [
-   "KODEX 200액티브",
-   "494890"
-  ],
-  "TIME Korea플러스배당액티브": [
-   "TIME Korea플러스배당액티브",
-   "441800"
-  ],
-  "SOL 코리아메가테크액티브": [
-   "SOL 코리아메가테크액티브",
-   "444200"
-  ],
-  "1Q 200액티브": [
-   "1Q 200액티브",
-   "451060"
-  ],
   "KoAct 바이오헬스케어액티브": [
    "KoAct 바이오헬스케어액티브",
    "462900"
-  ],
-  "TIME 코스피액티브": [
-   "TIME 코스피액티브",
-   "385720"
   ],
   "KODEX 신재생에너지액티브": [
    "KODEX 신재생에너지액티브",
    "385510"
   ],
-  "WON 반도체밸류체인액티브": [
-   "WON 반도체밸류체인액티브",
-   "474590"
-  ],
   "TIME K바이오액티브": [
    "TIME K바이오액티브",
    "463050"
-  ],
-  "KoAct 코리아밸류업액티브": [
-   "KoAct 코리아밸류업액티브",
-   "495230"
-  ],
-  "ACE 라이프자산주주가치액티브": [
-   "ACE 라이프자산주주가치액티브",
-   "494330"
   ],
   "RISE 비메모리반도체액티브": [
    "RISE 비메모리반도체액티브",
@@ -101,35 +65,95 @@
    "TIME 코리아밸류업액티브",
    "495060"
   ],
-  "MIDAS 코스피액티브": [
-   "MIDAS 코스피액티브",
-   "403790"
+  "KODEX 로봇액티브": [
+   "KODEX 로봇액티브",
+   "445290"
   ],
-  "UNICORN SK하이닉스밸류체인액티브": [
-   "UNICORN SK하이닉스밸류체인액티브",
-   "494220"
+  "RISE AI&로봇": [
+   "RISE AI&로봇",
+   "469070"
   ],
   "TIGER 코리아휴머노이드로봇산업": [
    "TIGER 코리아휴머노이드로봇산업",
    "0148J0"
   ],
-  "PLUS 글로벌휴머노이드로봇액티브": [
-   "PLUS 글로벌휴머노이드로봇액티브",
-   "0035T0"
-  ],
   "TIGER 화장품": [
    "TIGER 화장품",
    "228790"
-  ],
-  "SOL 화장품TOP3플러스": [
-   "SOL 화장품TOP3플러스",
-   "0008T0"
   ],
   "HANARO Fn K-푸드": [
    "HANARO Fn K-푸드",
    "438900"
   ]
  },
- "errors": [],
+ "errors": [
+  "RISE AI&로봇 2026-08-24 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-08-25 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-08-26 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-08-27 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-08-28 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-08-31 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-09-01 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-09-02 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-09-03 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-09-04 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-09-07 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-09-08 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-09-09 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-09-10 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-09-11 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-09-14 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-09-15 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-09-16 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-09-17 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-09-18 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-09-21 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-09-22 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-09-23 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-09-24 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-09-25 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-09-28 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-09-29 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-09-30 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-10-01 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-10-02 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-10-05 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-10-06 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-10-07 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-10-08 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-10-09 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-10-12 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-10-13 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-10-14 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-10-15 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-10-16 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-10-19 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-10-20 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-10-21 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-10-22 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-10-23 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-10-26 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-10-27 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-10-28 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-10-29 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-10-30 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-11-02 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-11-03 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-11-04 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-11-05 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-11-06 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-11-09 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-11-10 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-11-11 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-11-12 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-11-13 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-11-16 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-11-17 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-11-18 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-11-19 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-11-20 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-11-23 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit",
+  "RISE AI&로봇 2026-11-24 200 '\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n\\r\\n \\r\\n\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n  <tit"
+ ],
  "master_n": 1192
 }
