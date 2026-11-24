@@ -1,55 +1,68 @@
 <!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>말레이시아 원통형 배터리 셀 수출</title><script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script><script src="./chart_legend.js?v=3"></script><script src="./shell.js?v=45"></script>
+<title>말레이시아 진출 한국 기업 수출</title><script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script><script src="./chart_legend.js?v=3"></script><script src="./shell.js?v=46"></script>
 <style>
 :root{font-family:Arial,"Noto Sans KR",sans-serif;color:#18283c;background:#f5f6f8}*{box-sizing:border-box}body{margin:0}main{max-width:1400px;margin:26px auto;padding:0 22px}a{color:#245bb0}nav{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:25px}h1{font-size:30px;margin:0 0 12px}h2{font-size:20px;margin-top:0}p{line-height:1.65}.muted{color:#64748b;font-size:14px}.panel,.card{background:white;border:1px solid #e3e8ef;border-radius:12px;padding:22px;margin-bottom:20px}.controls{display:flex;gap:16px;flex-wrap:wrap}label{display:grid;gap:7px;font-size:13px;font-weight:bold}select{padding:10px;border:1px solid #cad2dc;border-radius:7px;background:white;max-width:100%}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.card strong{display:block;font-size:26px;margin:12px 0}.notice{background:#fff7e6;border-left:4px solid #dc990e;padding:15px;margin:16px 0;line-height:1.65}.chart{height:360px;position:relative}.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.table{overflow:auto;max-height:560px}table{border-collapse:collapse;width:100%;font-size:14px}thead{position:sticky;top:0;background:white}th,td{padding:10px 12px;border-bottom:1px solid #e3e8ef;text-align:right;white-space:nowrap}th:first-child,td:first-child,th:nth-child(2),td:nth-child(2){text-align:left}.up{color:#c0392b}.down{color:#1f5fbf}button.link{background:none;border:0;color:#245bb0;cursor:pointer;padding:0;font:inherit;text-decoration:underline;text-align:left}.lag{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.lag span{background:#eef3fa;border-radius:6px;padding:6px 10px;font-size:13px}.lag span.best{background:#245bb0;color:white}@media(max-width:800px){.cards{grid-template-columns:1fr 1fr}.grid{display:block}.chart{height:290px}}@media(max-width:480px){.cards{grid-template-columns:1fr}main{padding:0 12px}}
 .yc-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.yc-grid>div{min-width:0}.yc-h{margin:4px 0 8px;font-size:15px}@media(max-width:1100px){.yc-grid{grid-template-columns:1fr}}.yc-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;align-items:start}.yc-pair>section{min-width:0}@media(max-width:1100px){.yc-pair{grid-template-columns:1fr}}main>section.panel:has(>.controls #item){position:sticky;top:0;z-index:30;padding:12px 18px!important;box-shadow:0 8px 20px rgba(0,0,0,.45)}main>section.panel:has(>.controls #item) p{margin:6px 0 0;font-size:13px}</style><link rel="stylesheet" href="./shell.css?v=3">
 </head><body><main>
-<nav><a href="./">모니터링</a><b>말레이시아 원통형 셀 수출</b></nav>
-<h1 id="ttl" data-upd="malaysia_cells.csv">말레이시아 원통형 리튬이온 셀 수출 (추정)</h1>
-<p class="muted">말레이시아 리튬이온 배터리(HS 8507.60) 월별 수출액·수량·개당 단가와 목적지별 흐름입니다. 말레이시아 관세분류에는 '원통형 셀' 전용 코드가 없어 8507.60 전체를 원통형 셀 수출의 <b>대리지표</b>로 씁니다. 말레이시아의 리튬이온 수출은 삼성SDI 스름반(원통형), EVE에너지 케다(원통형) 등 원통형 셀 공장이 대부분이고, 개당 단가가 셀 수준(약 1~4달러)이면 셀 위주 수출로 판단할 수 있습니다.</p>
+<nav><a href="./">모니터링</a><b>말레이시아 한국 기업 수출</b></nav>
+<h1 id="ttl" data-upd="malaysia_exports.csv">말레이시아 진출 한국 기업 수출 (품목 대리지표)</h1>
+<p class="muted">기업별 수출액은 공개되지 않으므로, 말레이시아에서 한국 기업 공장이 주된 생산자인 품목의 말레이시아 전체 수출(HS 6단위)을 그 기업 출하의 대리지표로 봅니다. 품목을 고르면 아래 지표가 바뀝니다.</p>
+<section class="panel"><div class="lag" id="itm"></div><p class="muted" id="inote" style="margin:12px 0 0"></p></section>
 <div class="cards" id="cards"></div>
 <section class="panel"><h2>월별 수출액 · 전년 동월 대비</h2><div class="chart"><canvas id="cV"></canvas></div></section>
 <div class="grid">
-<section class="panel"><h2>수출 수량(개) · 개당 단가</h2><p class="muted">단가 = 수출액 ÷ 수량. 단가가 셀 수준에서 크게 오르면 팩·모듈 비중 증가 신호입니다.</p><div class="chart"><canvas id="cQ"></canvas></div></section>
-<section class="panel"><h2>목적지별 수출액 (월)</h2><p class="muted">미국은 전동공구·전기차(리비안 등)·마이크로모빌리티용 원통형 셀의 주요 목적지입니다.</p><div class="chart"><canvas id="cP"></canvas></div></section>
+<section class="panel"><h2 id="qh">수출 물량 · 단가</h2><p class="muted" id="qn"></p><div class="chart"><canvas id="cQ"></canvas></div></section>
+<section class="panel"><h2>목적지별 수출액 (월)</h2><p class="muted">상위 6개 목적지 + 기타.</p><div class="chart"><canvas id="cP"></canvas></div></section>
 </div>
+<section class="panel"><h2>품목 요약 · 최신월</h2><div class="table"><table id="sum"></table></div></section>
 <section class="panel"><h2>월별 표</h2><div class="table"><table id="tbl"></table></div>
-<p class="muted">출처: UN Comtrade 공개 API — 말레이시아 통계청(DOSM)이 UN에 보고한 월별 수출(FOB, 미 달러). 보고 시차가 2~4개월 있습니다. 매주 화·금 자동 확인, 기존 값은 지우지 않고 최근 6개월만 갱신합니다.</p></section>
+<p class="muted">출처: UN Comtrade 공개 API — 말레이시아 통계청(DOSM)이 UN에 보고한 월별 수출(FOB, 미 달러), 2019년~. 보고 시차가 2~4개월 있습니다. 매주 화·금 자동 확인, 기존 값은 지우지 않고 최근 6개월만 갱신합니다. 같은 품목을 만드는 다른 기업(외국계) 물량이 섞일 수 있어 '대리지표'입니다.</p></section>
 </main>
 <script>
 (async function(){
  const $=id=>document.getElementById(id);
- const txt=await (await fetch('malaysia_cells.csv?v='+Date.now(),{cache:'no-store'})).text().catch(()=>'');
+ const [txt,IT]=await Promise.all([fetch('malaysia_exports.csv?v='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():'').catch(()=>''),fetch('malaysia_items.json?v='+Date.now()).then(r=>r.json())]);
  const L=txt.trim().split('\n');if(L.length<2){$('cards').innerHTML='<div class="card">자료 수집 중입니다.</div>';return;}
- const H=L[0].split(','),R=L.slice(1).map(l=>{const a=l.split(',');return Object.fromEntries(H.map((h,i)=>[h,a[i]]));});
- const W=R.filter(r=>r.partner_code==='0').sort((a,b)=>a.period.localeCompare(b.period));
- const P=W.map(r=>r.period),V=Object.fromEntries(W.map(r=>[r.period,+r.value_usd])),Q=Object.fromEntries(W.map(r=>[r.period,+r.qty_units||null]));
- const prev=p=>(+p.slice(0,4)-1)+p.slice(4),yoy=p=>V[prev(p)]?(V[p]/V[prev(p)]-1)*100:null,up=p=>Q[p]?V[p]/Q[p]:null;
+ const H=L[0].split(','),ALL=L.slice(1).map(l=>{const a=l.split(',');return Object.fromEntries(H.map((h,i)=>[h,a[i]]));});
+ const items=IT.items,q=new URLSearchParams(location.search).get('item');let cur=items.find(x=>x.id===q)||items[0],ch=[];
  const M=v=>v==null?'—':(v/1e6).toFixed(1),pc=v=>v==null?'—':(v>0?'+':'')+v.toFixed(1)+'%',cl=v=>v>0?'up':v<0?'down':'';
- const last=P.at(-1),y=last.slice(0,4),ytd=P.filter(p=>p.startsWith(y)),ytdP=ytd.map(prev).filter(p=>V[p]!=null);
- const sum=a=>a.reduce((s,p)=>s+(V[p]||0),0),ytdY=ytdP.length===ytd.length?(sum(ytd)/sum(ytdP)-1)*100:null;
- const US=Object.fromEntries(R.filter(r=>r.partner_code==='842').map(r=>[r.period,+r.value_usd]));
- const l3=P.slice(-3),l3p=l3.map(prev),g3=l3p.every(p=>V[p])?(sum(l3)/sum(l3p)-1)*100:null;
- $('cards').innerHTML=[[`${last} 수출액`,`$${M(V[last])}M`,`전년 동월 대비 <b class="${cl(yoy(last))}">${pc(yoy(last))}</b>`],
-  ['최근 3개월 합계',`$${M(sum(l3))}M`,`전년 동기 대비 <b class="${cl(g3)}">${pc(g3)}</b>`],
-  [`${y}년 누적 (1~${+last.slice(5)}월)`,`$${M(sum(ytd))}M`,`전년 동기 대비 <b class="${cl(ytdY)}">${pc(ytdY)}</b>`],
-  [`${last} 수량 · 단가`,`${Q[last]?(Q[last]/1e6).toFixed(1)+'백만 개':'—'}`,`개당 $${up(last)?.toFixed(2)??'—'} · 미국 비중 ${US[last]?(US[last]/V[last]*100).toFixed(0)+'%':'—'}`]]
-  .map(([a,b,c])=>`<div class="card"><span class="muted">${a}</span><strong>${b}</strong><span class="muted">${c}</span></div>`).join('');
- const base={responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:'index',intersect:false},plugins:{legend:{position:'bottom'}}};
- new Chart($('cV'),{data:{labels:P,datasets:[{type:'bar',label:'수출액 (백만 달러)',data:P.map(p=>V[p]/1e6),backgroundColor:'rgba(91,141,239,.75)',yAxisID:'y'},{type:'line',label:'전년 동월 대비 (%)',data:P.map(yoy),borderColor:'#f59e0b',backgroundColor:'#f59e0b',pointRadius:0,borderWidth:2,yAxisID:'y1',spanGaps:true}]},
-  options:{...base,scales:{y:{title:{display:true,text:'백만 달러'}},y1:{position:'right',grid:{display:false},title:{display:true,text:'YoY %'}}}}});
- new Chart($('cQ'),{data:{labels:P,datasets:[{type:'bar',label:'수량 (백만 개)',data:P.map(p=>Q[p]?Q[p]/1e6:null),backgroundColor:'rgba(52,211,153,.6)',yAxisID:'y'},{type:'line',label:'개당 단가 ($)',data:P.map(up),borderColor:'#ef4444',backgroundColor:'#ef4444',pointRadius:0,borderWidth:2,yAxisID:'y1'}]},
-  options:{...base,scales:{y:{title:{display:true,text:'백만 개'}},y1:{position:'right',grid:{display:false},title:{display:true,text:'$/개'}}}}});
- const tot={};R.filter(r=>r.partner_code!=='0').forEach(r=>tot[r.partner_code]=(tot[r.partner_code]||0)+(+r.value_usd));
- const top=Object.entries(tot).sort((a,b)=>b[1]-a[1]).slice(0,6).map(x=>x[0]),nm={};R.forEach(r=>nm[r.partner_code]=r.partner||('코드 '+r.partner_code));
  const C=['#ef4444','#60a5fa','#34d399','#fbbf24','#a78bfa','#f472b6','#94a3b8'];
- const by=c=>Object.fromEntries(R.filter(r=>r.partner_code===c).map(r=>[r.period,+r.value_usd/1e6]));
- const ds=top.map((c,i)=>({label:nm[c],data:(m=>P.map(p=>m[p]??0))(by(c)),backgroundColor:C[i]}));
- ds.push({label:'기타',data:P.map(p=>Math.max(0,V[p]/1e6-ds.reduce((s,d)=>s+d.data[P.indexOf(p)],0))),backgroundColor:C[6]});
- new Chart($('cP'),{type:'bar',data:{labels:P,datasets:ds},options:{...base,scales:{x:{stacked:true},y:{stacked:true,title:{display:true,text:'백만 달러'}}}}});
- const tp=top.slice(0,3);
- $('tbl').innerHTML='<thead><tr><th>월</th><th>수출액($M)</th><th>YoY</th><th>수량(백만 개)</th><th>개당 단가($)</th>'+tp.map(c=>`<th>${nm[c]}($M)</th>`).join('')+'</tr></thead><tbody>'+
-  [...P].reverse().map(p=>`<tr><td>${p}</td><td>${M(V[p])}</td><td class="${cl(yoy(p))}">${pc(yoy(p))}</td><td>${Q[p]?(Q[p]/1e6).toFixed(1):'—'}</td><td>${up(p)?.toFixed(2)??'—'}</td>`+tp.map(c=>{const v=by(c)[p];return `<td>${v==null?'—':v.toFixed(1)}</td>`;}).join('')+'</tr>').join('')+'</tbody>';
+ const base={responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:'index',intersect:false},plugins:{legend:{position:'bottom'}}};
+ function agg(it){const R=ALL.filter(r=>it.hs.includes(r.hs)),V={},Q={},PV={},nm={};let unit='';
+  R.forEach(r=>{const k=r.period,v=+r.value_usd||0;if(r.partner_code==='0'){V[k]=(V[k]||0)+v;if(r.qty){Q[k]=(Q[k]||0)+(+r.qty);unit=r.qty_unit;}}else{(PV[r.partner_code]=PV[r.partner_code]||{})[k]=((PV[r.partner_code]||{})[k]||0)+v;nm[r.partner_code]=r.partner||('코드 '+r.partner_code);}});
+  const P=Object.keys(V).sort();return {P,V,Q,PV,nm,unit};}
+ const prev=p=>(+p.slice(0,4)-1)+p.slice(4),sum=(V,a)=>a.reduce((s,p)=>s+(V[p]||0),0);
+ const kpi=(A)=>{const {P,V}=A,last=P.at(-1),yy=p=>V[prev(p)]?(V[p]/V[prev(p)]-1)*100:null,l3=P.slice(-3),l3p=l3.map(prev),y=last.slice(0,4),ytd=P.filter(p=>p.startsWith(y)),ytdp=ytd.map(prev);
+  return {last,yoy:yy(last),yy,l3:sum(V,l3),g3:l3p.every(p=>V[p])?(sum(V,l3)/sum(V,l3p)-1)*100:null,ytd:sum(V,ytd),gy:ytdp.every(p=>V[p])?(sum(V,ytd)/sum(V,ytdp)-1)*100:null,y};};
+ $('sum').innerHTML='<thead><tr><th>품목</th><th>관련 한국 기업</th><th>최신월</th><th>수출액($M)</th><th>YoY</th><th>최근 3개월 YoY</th><th>올해 누적 YoY</th><th>대리지표 적합도</th></tr></thead><tbody>'+
+  items.map(it=>{const A=agg(it);if(!A.P.length)return `<tr><td>${it.name}</td><td>${it.firms}</td><td colspan="6" class="muted">자료 없음</td></tr>`;const k=kpi(A);
+   return `<tr><td><button class="link" data-i="${it.id}">${it.name}</button></td><td>${it.firms}</td><td>${k.last}</td><td>${M(A.V[k.last])}</td><td class="${cl(k.yoy)}">${pc(k.yoy)}</td><td class="${cl(k.g3)}">${pc(k.g3)}</td><td class="${cl(k.gy)}">${pc(k.gy)}</td><td>${it.fit}</td></tr>`;}).join('')+'</tbody>';
+ $('sum').querySelectorAll('[data-i]').forEach(b=>b.onclick=()=>{cur=items.find(x=>x.id===b.dataset.i);draw();scrollTo({top:0,behavior:'smooth'});});
+ function draw(){
+  $('itm').innerHTML=items.map(it=>`<span class="${it===cur?'best':''}" data-i="${it.id}" style="cursor:pointer">${it.name}</span>`).join('');
+  $('itm').querySelectorAll('[data-i]').forEach(b=>b.onclick=()=>{cur=items.find(x=>x.id===b.dataset.i);history.replaceState(null,'','?item='+cur.id);draw();});
+  $('inote').innerHTML=`<b>관련 기업:</b> ${cur.firms} · <b>관련 상장사:</b> ${cur.stocks} · <b>HS:</b> ${cur.hs.map(h=>h.slice(0,4)+'.'+h.slice(4)).join(' + ')}<br>${cur.note}`;
+  ch.forEach(c=>c.destroy());ch=[];const A=agg(cur),{P,V,Q,PV,nm,unit}=A;if(!P.length){$('cards').innerHTML='<div class="card">자료 수집 중입니다.</div>';return;}
+  const k=kpi(A),last=k.last,isPc=unit==='개',qd=v=>v==null?null:isPc?v/1e6:v/1e3,qU=isPc?'백만 개':'톤',up=p=>Q[p]?V[p]/Q[p]:null,uU=isPc?'$/개':'$/kg';
+  const top=Object.entries(PV).map(([c,m])=>[c,P.slice(-12).reduce((s,p)=>s+(m[p]||0),0)]).sort((a,b)=>b[1]-a[1]).slice(0,6).map(x=>x[0]);
+  const t1=top[0];
+  $('cards').innerHTML=[[`${last} 수출액`,`$${M(V[last])}M`,`전년 동월 대비 <b class="${cl(k.yoy)}">${pc(k.yoy)}</b>`],['최근 3개월 합계',`$${M(k.l3)}M`,`전년 동기 대비 <b class="${cl(k.g3)}">${pc(k.g3)}</b>`],
+   [`${k.y}년 누적 (1~${+last.slice(5)}월)`,`$${M(k.ytd)}M`,`전년 동기 대비 <b class="${cl(k.gy)}">${pc(k.gy)}</b>`],
+   [`${last} 물량 · 단가`,Q[last]?`${qd(Q[last]).toLocaleString(undefined,{maximumFractionDigits:1})} ${qU}`:'—',`단가 ${up(last)!=null?'$'+up(last).toFixed(2)+(isPc?'/개':'/kg'):'—'} · 1위 목적지 ${nm[t1]||'—'} ${t1&&PV[t1][last]?(PV[t1][last]/V[last]*100).toFixed(0)+'%':''}`]]
+   .map(([a,b,c])=>`<div class="card"><span class="muted">${a}</span><strong>${b}</strong><span class="muted">${c}</span></div>`).join('');
+  $('qh').textContent=`수출 물량(${qU}) · 단가(${uU})`;$('qn').textContent=isPc?'단가 = 수출액 ÷ 수량. 셀 수준(약 1~4달러)에서 크게 오르면 팩·모듈 비중 증가 신호입니다.':'단가 = 수출액 ÷ 중량. 원재료 가격(구리·실리콘·나프타 등)과 제품 믹스를 함께 반영합니다.';
+  ch.push(new Chart($('cV'),{data:{labels:P,datasets:[{type:'bar',label:'수출액 (백만 달러)',data:P.map(p=>V[p]/1e6),backgroundColor:'rgba(91,141,239,.75)',yAxisID:'y'},{type:'line',label:'전년 동월 대비 (%)',data:P.map(k.yy),borderColor:'#f59e0b',backgroundColor:'#f59e0b',pointRadius:0,borderWidth:2,yAxisID:'y1',spanGaps:true}]},
+   options:{...base,scales:{y:{title:{display:true,text:'백만 달러'}},y1:{position:'right',grid:{display:false},title:{display:true,text:'YoY %'}}}}}));
+  ch.push(new Chart($('cQ'),{data:{labels:P,datasets:[{type:'bar',label:`물량 (${qU})`,data:P.map(p=>qd(Q[p])),backgroundColor:'rgba(52,211,153,.6)',yAxisID:'y'},{type:'line',label:`단가 (${uU})`,data:P.map(up),borderColor:'#ef4444',backgroundColor:'#ef4444',pointRadius:0,borderWidth:2,yAxisID:'y1'}]},
+   options:{...base,scales:{y:{title:{display:true,text:qU}},y1:{position:'right',grid:{display:false},title:{display:true,text:uU}}}}}));
+  const ds=top.map((c,i)=>({label:nm[c],data:P.map(p=>(PV[c][p]||0)/1e6),backgroundColor:C[i]}));
+  ds.push({label:'기타',data:P.map((p,j)=>Math.max(0,V[p]/1e6-ds.reduce((s,d)=>s+d.data[j],0))),backgroundColor:C[6]});
+  ch.push(new Chart($('cP'),{type:'bar',data:{labels:P,datasets:ds},options:{...base,scales:{x:{stacked:true},y:{stacked:true,title:{display:true,text:'백만 달러'}}}}}));
+  const tp=top.slice(0,3);
+  $('tbl').innerHTML=`<thead><tr><th>월</th><th>수출액($M)</th><th>YoY</th><th>물량(${qU})</th><th>단가(${uU})</th>`+tp.map(c=>`<th>${nm[c]}($M)</th>`).join('')+'</tr></thead><tbody>'+
+   [...P].reverse().map(p=>`<tr><td>${p}</td><td>${M(V[p])}</td><td class="${cl(k.yy(p))}">${pc(k.yy(p))}</td><td>${Q[p]?qd(Q[p]).toLocaleString(undefined,{maximumFractionDigits:1}):'—'}</td><td>${up(p)?.toFixed(2)??'—'}</td>`+tp.map(c=>`<td>${PV[c][p]!=null?(PV[c][p]/1e6).toFixed(1):'—'}</td>`).join('')+'</tr>').join('')+'</tbody>';
+ }
+ draw();
 })();
 </script></body></html>
