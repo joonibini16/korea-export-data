@@ -1,6 +1,6 @@
 // 공통 셸: 왼쪽 메뉴를 만들고, 첫 제목을 히어로 카드로 감싸며, 그래프 기본색을 어두운 배경에 맞춥니다.
 (function(){
- const GROUPS=[['수출',[['./','수출확정치',['','index.html']],['./provisional.html','10일 잠정수출',['provisional.html']],['./memory_trade.html','메모리 수출입 · 중량',['memory_trade.html']]]],
+ const GROUPS=[['수출',[['./','수출확정치',['','index.html']],['./provisional.html','10일 잠정수출',['provisional.html']],['./memory_trade.html','메모리 수출입 · 중량',['memory_trade.html']],['./malaysia.html','말레이시아 원통형 셀 수출',['malaysia.html']]]],
   ['업체·실적',[['./regional.html','지역 수출 · 업체 실적 추적',['regional.html']],['./forecast_tracker.html','매출 예측 추적',['forecast_tracker.html']],['./revenue_signals.html','매출 상향·하향 예상',['revenue_signals.html']]]],
   ['해외 테크',[['./taiwan.html','대만 테크 월매출',['taiwan.html']],['./japan.html','일본 테크 수출',['japan.html']],['./global_earnings.html','해외 실적·컨콜 변곡점',['global_earnings.html']],['./global_research.html','해외 리서치 · 발간 모니터',['global_research.html']]]],
   ['산업 지표',[['./prices.html','가격 지표 (GPU·토큰·D램)',['prices.html']],['./ess.html','ESS 배터리 설치량',['ess.html']]]],
