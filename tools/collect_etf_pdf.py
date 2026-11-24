@@ -80,7 +80,8 @@ def main():
         out = []
         for r in P:
             nm = r.get('ISU_ABBRV') or ''
-            if '액티브' not in nm: continue
+            pat = os.environ.get('LIST_PAT')
+            if (pat and not re.search(pat, nm)) or (not pat and '액티브' not in nm): continue
             m = meta.get(r.get('ISU_SRT_CD'), {})
             out.append(dict(code=r.get('ISU_SRT_CD'), name=nm, aum=num(r.get('INVSTASST_NETASST_TOTAMT')) or num(r.get('NETASST_TOTAMT')) or num(r.get('MKTCAP')),
                             asset=m.get('IDX_ASST_CLSS_NM'), mkt=m.get('IDX_MKT_CLSS_NM'), list_dd=m.get('LIST_DD')))

@@ -4,6 +4,7 @@ on:
     inputs:
       pdf_from: {description: '과거 채우기 시작일 (YYYY-MM-DD)', required: false, default: ''}
       list_active: {description: '국내 액티브 ETF 후보 목록만 저장(1)', required: false, default: ''}
+      list_pat: {description: '후보 목록 이름 정규식(선택)', required: false, default: ''}
 permissions:
   contents: write
 concurrency:
@@ -25,6 +26,7 @@ jobs:
           KRX_PW: ${{ secrets.KRX_PW }}
           PDF_FROM: ${{ github.event.inputs.pdf_from }}
           LIST_ACTIVE: ${{ github.event.inputs.list_active }}
+          LIST_PAT: ${{ github.event.inputs.list_pat }}
       - run: |
           git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           mkdir -p /tmp/ep && cp -r etf_pdf etf_pdf_status.json /tmp/ep/ 2>/dev/null || true; cp etf_active_candidates.json /tmp/ep/ 2>/dev/null || true
