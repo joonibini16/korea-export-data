@@ -15,6 +15,13 @@
 <h3 style="margin-top:14px">ETF별 핵심 변화</h3><div style="overflow-x:auto"><table class="kt ea es-per"></table></div>
 <p class="muted" style="margin-top:8px">비중 변화에는 매매뿐 아니라 주가 등락 효과도 섞여 있습니다. 여러 ETF가 같은 방향으로 움직이거나 5·20거래일 누적으로 이어지면 운용사 판단일 가능성이 큽니다. 종목에 마우스를 올리면 ETF별 변화폭이 보입니다.</p>
 </section>
+<section class="panel" id="eaSearch" style="margin-bottom:14px">
+<h2 style="margin:0 0 8px">종목 검색 · 전체 ETF 비중 변화</h2>
+<div style="position:relative;max-width:420px"><input id="esq" type="search" placeholder="종목명 또는 코드 입력 (예: 케이씨텍)" autocomplete="off" style="width:100%;padding:8px 12px;border-radius:10px;border:1px solid #2a3a5c;background:#0b1322;color:inherit;font:inherit"><div id="essug" style="position:absolute;left:0;right:0;top:100%;z-index:20;background:#0f1a2e;border:1px solid #2a3a5c;border-radius:10px;margin-top:4px;max-height:300px;overflow:auto;display:none"></div></div>
+<p class="muted" id="esinfo" style="margin:8px 0"></p>
+<div style="overflow-x:auto"><table class="kt ea" id="estbl"></table></div>
+<div class="chart" style="height:300px;margin-top:10px;display:none" id="eschw"><canvas id="esch"></canvas></div>
+</section>
 <div id="actWrap">
 <p class="muted">액티브 ETF는 운용역이 종목 비중을 매일 바꿀 수 있어, 비중 변화가 곧 운용사의 매매 방향입니다. KRX에 매일 공시되는 구성종목(PDF) 전체를 기록해 두 날짜의 비중을 비교합니다. 비중 변화에는 주가 등락 효과(오른 종목은 비중이 저절로 커짐)도 섞여 있으니 5·20거래일 흐름과 함께 보세요.</p>
 <div class="seg ea-etfs" style="margin:6px 0 10px;flex-wrap:wrap"></div>
@@ -25,4 +32,4 @@
 <div class="panel" style="margin-top:12px;overflow:auto;max-height:640px"><table class="kt ea" id="eaTbl"></table></div></div>
 <p class="muted">원본: KRX 정보데이터시스템 ETF 구성종목(PDF) 일별 공시. 정규장 마감 직후(매일 15:45 무렵) 자동 수집·정리하고, 18:10에 한 번 더 확인합니다. 현금·선물 등 종목이 아닌 구성도 포함될 수 있습니다.</p>
 </div>
-</main><script src="./etf_active.js?v=2"></script><script src="./etf_active_summary.js?v=1"></script><script>window.__etfActive&&window.__etfActive();</script></body></html>
+</main><script src="./etf_active.js?v=2"></script><script src="./etf_active_summary.js?v=2"></script><script>window.__etfActive&&window.__etfActive();</script></body></html>
