@@ -1,49 +1,123 @@
 {
- "run": "2026-11-24T21:00:24+09:00",
- "resolved": {},
+ "run": "2026-11-24T21:02:12+09:00",
+ "resolved": {
+  "DS AI반도체액티브": [
+   "DS AI반도체액티브",
+   "0243M0"
+  ],
+  "KoAct 코스닥액티브": [
+   "KoAct 코스닥액티브",
+   "0163Y0"
+  ],
+  "TIME 코스닥액티브": [
+   "TIME 코스닥액티브",
+   "0162Y0"
+  ],
+  "TIGER 코스닥액티브": [
+   "TIGER 코스닥액티브",
+   "0204S0"
+  ],
+  "DS 코스닥액티브": [
+   "DS 코스닥액티브",
+   "0220B0"
+  ],
+  "RISE 2차전지액티브": [
+   "RISE 2차전지액티브",
+   "422420"
+  ],
+  "TIGER 코리아테크액티브": [
+   "TIGER 코리아테크액티브",
+   "471780"
+  ],
+  "MIDAS 코스닥액티브": [
+   "MIDAS 코스닥액티브",
+   "0191B0"
+  ],
+  "HANARO 반도체핵심공정주도주": [
+   "HANARO 반도체핵심공정주도주",
+   "476260"
+  ],
+  "PLUS AI반도체소부장액티브": [
+   "PLUS AI반도체소부장액티브",
+   "0239Z0"
+  ],
+  "PLUS 태양광&ESS": [
+   "PLUS 태양광&ESS",
+   "457990"
+  ],
+  "KODEX 로봇액티브": [
+   "KODEX 로봇액티브",
+   "445290"
+  ],
+  "KODEX 200액티브": [
+   "KODEX 200액티브",
+   "494890"
+  ],
+  "TIME Korea플러스배당액티브": [
+   "TIME Korea플러스배당액티브",
+   "441800"
+  ],
+  "SOL 코리아메가테크액티브": [
+   "SOL 코리아메가테크액티브",
+   "444200"
+  ],
+  "1Q 200액티브": [
+   "1Q 200액티브",
+   "451060"
+  ],
+  "KoAct 바이오헬스케어액티브": [
+   "KoAct 바이오헬스케어액티브",
+   "462900"
+  ],
+  "TIME 코스피액티브": [
+   "TIME 코스피액티브",
+   "385720"
+  ],
+  "KODEX 신재생에너지액티브": [
+   "KODEX 신재생에너지액티브",
+   "385510"
+  ],
+  "WON 반도체밸류체인액티브": [
+   "WON 반도체밸류체인액티브",
+   "474590"
+  ],
+  "TIME K바이오액티브": [
+   "TIME K바이오액티브",
+   "463050"
+  ],
+  "KoAct 코리아밸류업액티브": [
+   "KoAct 코리아밸류업액티브",
+   "495230"
+  ],
+  "ACE 라이프자산주주가치액티브": [
+   "ACE 라이프자산주주가치액티브",
+   "494330"
+  ],
+  "RISE 비메모리반도체액티브": [
+   "RISE 비메모리반도체액티브",
+   "388420"
+  ],
+  "TIME 코리아밸류업액티브": [
+   "TIME 코리아밸류업액티브",
+   "495060"
+  ],
+  "MIDAS 코스피액티브": [
+   "MIDAS 코스피액티브",
+   "403790"
+  ],
+  "UNICORN SK하이닉스밸류체인액티브": [
+   "UNICORN SK하이닉스밸류체인액티브",
+   "494220"
+  ],
+  "TIGER 코리아휴머노이드로봇산업": [
+   "TIGER 코리아휴머노이드로봇산업",
+   "0148J0"
+  ],
+  "PLUS 글로벌휴머노이드로봇액티브": [
+   "PLUS 글로벌휴머노이드로봇액티브",
+   "0035T0"
+  ]
+ },
  "errors": [],
- "master_n": 1192,
- "master_keys": [
-  "ISU_CD",
-  "ISU_SRT_CD",
-  "ISU_NM",
-  "ISU_ABBRV",
-  "ISU_ENG_NM",
-  "LIST_DD",
-  "ETF_OBJ_IDX_NM",
-  "IDX_CALC_INST_NM1",
-  "IDX_CALC_INST_NM2",
-  "ETF_REPLICA_METHD_TP_CD",
-  "IDX_MKT_CLSS_NM",
-  "IDX_ASST_CLSS_NM",
-  "LIST_SHRS",
-  "COM_ABBRV",
-  "CU_QTY",
-  "ETF_TOT_FEE",
-  "TAX_TP_CD"
- ],
- "price_keys": [
-  "ISU_SRT_CD",
-  "ISU_CD",
-  "SECUGRP_ID",
-  "ISU_ABBRV",
-  "TDD_CLSPRC",
-  "CMPPREVDD_PRC",
-  "FLUC_TP_CD",
-  "FLUC_RT",
-  "NAV",
-  "TDD_OPNPRC",
-  "TDD_HGPRC",
-  "TDD_LWPRC",
-  "ACC_TRDVOL",
-  "ACC_TRDVAL",
-  "MKTCAP",
-  "INVSTASST_NETASST_TOTAMT",
-  "LIST_SHRS",
-  "IDX_IND_NM",
-  "OBJ_STKPRC_IDX",
-  "CMPPREVDD_IDX",
-  "FLUC_TP_CD1",
-  "FLUC_RT1"
- ]
+ "master_n": 1192
 }
