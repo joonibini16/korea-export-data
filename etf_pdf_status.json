@@ -1,51 +1,49 @@
 {
- "run": "2026-11-24T18:10:29+09:00",
- "resolved": {
-  "DS AI반도체액티브": [
-   "DS AI반도체액티브",
-   "0243M0"
-  ],
-  "KoAct 코스닥액티브": [
-   "KoAct 코스닥액티브",
-   "0163Y0"
-  ],
-  "TIME 코스닥액티브": [
-   "TIME 코스닥액티브",
-   "0162Y0"
-  ],
-  "TIGER 코스닥액티브": [
-   "TIGER 코스닥액티브",
-   "0204S0"
-  ],
-  "DS 코스닥액티브": [
-   "DS 코스닥액티브",
-   "0220B0"
-  ],
-  "RISE 2차전지액티브": [
-   "RISE 2차전지액티브",
-   "422420"
-  ],
-  "TIGER 코리아테크액티브": [
-   "TIGER 코리아테크액티브",
-   "471780"
-  ],
-  "MIDAS 코스닥액티브": [
-   "MIDAS 코스닥액티브",
-   "0191B0"
-  ],
-  "HANARO 반도체핵심공정주도주": [
-   "HANARO 반도체핵심공정주도주",
-   "476260"
-  ],
-  "PLUS AI반도체소부장액티브": [
-   "PLUS AI반도체소부장액티브",
-   "0239Z0"
-  ],
-  "PLUS 태양광&ESS": [
-   "PLUS 태양광&ESS",
-   "457990"
-  ]
- },
+ "run": "2026-11-24T20:45:35+09:00",
+ "resolved": {},
  "errors": [],
- "master_n": 1192
+ "master_n": 1192,
+ "master_keys": [
+  "ISU_CD",
+  "ISU_SRT_CD",
+  "ISU_NM",
+  "ISU_ABBRV",
+  "ISU_ENG_NM",
+  "LIST_DD",
+  "ETF_OBJ_IDX_NM",
+  "IDX_CALC_INST_NM1",
+  "IDX_CALC_INST_NM2",
+  "ETF_REPLICA_METHD_TP_CD",
+  "IDX_MKT_CLSS_NM",
+  "IDX_ASST_CLSS_NM",
+  "LIST_SHRS",
+  "COM_ABBRV",
+  "CU_QTY",
+  "ETF_TOT_FEE",
+  "TAX_TP_CD"
+ ],
+ "price_keys": [
+  "ISU_SRT_CD",
+  "ISU_CD",
+  "SECUGRP_ID",
+  "ISU_ABBRV",
+  "TDD_CLSPRC",
+  "CMPPREVDD_PRC",
+  "FLUC_TP_CD",
+  "FLUC_RT",
+  "NAV",
+  "TDD_OPNPRC",
+  "TDD_HGPRC",
+  "TDD_LWPRC",
+  "ACC_TRDVOL",
+  "ACC_TRDVAL",
+  "MKTCAP",
+  "INVSTASST_NETASST_TOTAMT",
+  "LIST_SHRS",
+  "IDX_IND_NM",
+  "OBJ_STKPRC_IDX",
+  "CMPPREVDD_IDX",
+  "FLUC_TP_CD1",
+  "FLUC_RT1"
+ ]
 }
