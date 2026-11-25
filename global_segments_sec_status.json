@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-18T04:22:03",
+ "updated": "2026-11-25T05:32:35",
  "companies": {
   "NVDA": "27 quarters · profit 81 · seg-op 4 · axes ProductOrServiceAxis(27)",
   "AMD": "26 quarters · profit 105 · seg-op 11 · axes StatementBusinessSegmentsAxis(26)",
@@ -8,7 +8,7 @@
   "TSM": "0 filings, no segment facts",
   "MU": "32 quarters · profit 96 · seg-op 9 · axes ProductOrServiceAxis(32)",
   "WDC": "30 quarters · profit 111 · seg-op 0 · axes ProductOrServiceAxis(27), FormFactorAxis(1), StatementBusinessSegmentsAxis(2)",
-  "STX": "31 filings, no segment facts",
+  "STX": "30 filings, no segment facts",
   "ASML": "0 filings, no segment facts",
   "AMAT": "27 quarters · profit 102 · seg-op 7 · axes StatementBusinessSegmentsAxis(27)",
   "LRCX": "30 quarters · profit 111 · seg-op 0 · axes ProductOrServiceAxis(30)",
@@ -36,7 +36,7 @@
   "AAPL": "34 quarters · profit 106 · seg-op 5 · axes ProductOrServiceAxis(34)",
   "DELL": "14 quarters · profit 42 · seg-op 3 · axes StatementBusinessSegmentsAxis(12), ProductOrServiceAxis(2)",
   "SMCI": "28 quarters · profit 99 · seg-op 0 · axes ProductOrServiceAxis(28)",
-  "ANET": "23 quarters · profit 69 · seg-op 0 · axes ProductOrServiceAxis(23)",
+  "ANET": "21 quarters · profit 63 · seg-op 0 · axes ProductOrServiceAxis(21)",
   "INTC": "33 quarters · profit 105 · seg-op 17 · axes ProductOrServiceAxis(16), ConsolidatedEntitiesAxis(4), StatementBusinessSegmentsAxis(13)",
   "TXN": "32 quarters · profit 105 · seg-op 5 · axes StatementBusinessSegmentsAxis(32)",
   "NXPI": "0 quarters · profit 96 · seg-op 0 · axes ",
