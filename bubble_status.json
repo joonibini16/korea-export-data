@@ -1,7 +1,7 @@
 {
- "updated_at": "2026-11-26T21:37:37+09:00",
+ "updated_at": "2026-11-26T22:29:43+09:00",
  "yahoo_rows": 55708,
- "fred_rows": 44673,
+ "fred_rows": 44674,
  "ecos_rows": 0,
  "ecos_key": false,
  "vkospi_rows": null,
@@ -36,7 +36,7 @@
   "DRTSCILM": "2026-10-01",
   "DGS10": "2026-11-24",
   "DGS2": "2026-11-24",
-  "DFEDTARU": "2026-11-25",
+  "DFEDTARU": "2026-11-26",
   "XTEXVA01KRM667S": "2026-09-01",
   "XTEXVA01CNM667S": "2026-09-01",
   "XTEXVA01JPM667S": "2026-09-01",
