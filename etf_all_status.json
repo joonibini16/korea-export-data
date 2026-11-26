@@ -1,39 +1,64 @@
 {
- "run": "2026-11-26T17:26:44+09:00",
+ "run": "2026-11-26T18:13:22+09:00",
  "errors": [],
  "calls": 2400,
  "dates": {
   "2026-11-26": {
    "etfs": 460,
-   "added": 460,
-   "remaining": 10
+   "added": 0,
+   "remaining": 0
   },
   "2026-11-25": {
    "etfs": 460,
-   "added": 460,
-   "remaining": 10
+   "added": 0,
+   "remaining": 0
   },
   "2026-11-24": {
    "etfs": 460,
-   "added": 460,
-   "remaining": 10
+   "added": 0,
+   "remaining": 0
   },
   "2026-11-23": {
    "etfs": 460,
-   "added": 460,
-   "remaining": 10
+   "added": 0,
+   "remaining": 0
   },
   "2026-11-20": {
    "etfs": 460,
-   "added": 460,
-   "remaining": 10
+   "added": 0,
+   "remaining": 0
   },
   "2026-11-19": {
-   "etfs": 48,
-   "added": 48,
-   "remaining": 422
+   "etfs": 418,
+   "added": 370,
+   "remaining": 0
+  },
+  "2026-11-18": {
+   "etfs": 414,
+   "added": 414,
+   "remaining": 0
+  },
+  "2026-11-17": {
+   "etfs": 414,
+   "added": 414,
+   "remaining": 0
+  },
+  "2026-11-16": {
+   "etfs": 414,
+   "added": 414,
+   "remaining": 0
+  },
+  "2026-11-13": {
+   "etfs": 414,
+   "added": 414,
+   "remaining": 0
+  },
+  "2026-11-12": {
+   "etfs": 373,
+   "added": 373,
+   "remaining": 41
   }
  },
- "etfs": 470,
+ "etfs": 414,
  "budget_hit": true
 }
