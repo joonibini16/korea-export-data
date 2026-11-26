@@ -9,7 +9,8 @@
   const idx=await get('etf_pdf/index.json');if(!idx||!idx.etfs?.length){box.innerHTML='<p class="muted">자료 수집 중입니다.</p>';return;}
   ALL=(await Promise.all(idx.etfs.map(e=>get('etf_pdf/'+e.code+'.json').then(j=>j&&{...j,label:e.label})))).filter(j=>j&&j.dates.length>1);
   box.querySelectorAll('[data-n]').forEach(b=>b.onclick=()=>{N=+b.dataset.n;box.querySelectorAll('[data-n]').forEach(x=>x.classList.toggle('on',x===b));draw();});
-  draw();search();}
+  draw();search();
+  ['eafq','eafchg'].forEach(id=>document.getElementById(id)?.addEventListener('input',allTbl));document.getElementById('eafchg')?.addEventListener('change',allTbl);document.getElementById('eafxls')?.addEventListener('click',xls);}
  function draw(){
   const last=ALL.map(j=>j.dates.at(-1)).sort().at(-1);
   const agg={},nw=[],out=[],per=[];
@@ -36,6 +37,7 @@
   // 한 줄 요약
   const top=(a,f)=>a.slice(0,3).map(f).join(', ');
   box.querySelector('.es-line').innerHTML=[cu.length?`<b class="up">공통 확대</b> ${top(cu,g=>`${g.n}(${g.up.length}개)`)}`:'',cd.length?`<b class="dn">공통 축소</b> ${top(cd,g=>`${g.n}(${g.dn.length}개)`)}`:'',nw.length?`<b>신규 편입</b> ${nw.length}건`:'',out.length?`<b>편출</b> ${out.length}건`:''].filter(Boolean).join(' · ');
+  allTbl();
  }
 
  // 종목 검색: 선택 종목의 ETF별 비중·변화(전일·5·20거래일·최초 대비)와 비중 추이
@@ -70,5 +72,38 @@
   const k0=new URLSearchParams(location.search).get('q');if(k0&&S[k0])show(k0);
   box.addEventListener('click',e=>{const li=e.target.closest('li[data-k]');if(li){show(li.dataset.k);document.getElementById('eaSearch').scrollIntoView({behavior:'smooth'});}});
  }
+
+ // 전 종목 표: 기준일 A(N거래일 전) vs B(최신) — 보유 ETF 수, 신규·편출, 수량 증가·감소·유지, 평균 비중
+ let AT=[],aSort='inc',aDir=-1;
+ function allTbl(){
+  const T=document.getElementById('eaft');if(!T)return;const last=ALL.map(j=>j.dates.at(-1)).sort().at(-1);const M={};let dA='',byW=false;
+  for(const J of ALL){const B=J.dates.length-1;if(J.dates[B]!==last)continue;const A=Math.max(0,B-N);dA=J.dates[A];
+   const hasS=J.sd&&J.sd.includes(J.dates[A])&&J.sd.includes(J.dates[B]);if(!hasS)byW=true;
+   const keys=new Set([...Object.keys(J.w)]);
+   for(const k of keys){const n=J.names[k]||k;if(!isStock(k,n))continue;const a=J.w[k],wa=a[A]??null,wb=a[B]??null;if(wa==null&&wb==null)continue;
+    const r=M[k]=M[k]||{k,n,ha:0,hb:0,nw:0,ex:0,inc:0,dec:0,keep:0,sa:0,sb:0,incL:[],decL:[],byW:false};
+    if(wa!=null){r.ha++;r.sa+=wa;}if(wb!=null){r.hb++;r.sb+=wb;}
+    if(wa==null){r.nw++;r.incL.push([J.label,null,wb]);continue;}if(wb==null){r.ex++;r.decL.push([J.label,null,wa]);continue;}
+    let dir=0,pct=null;
+    if(hasS&&J.s&&J.s[k]&&J.s[k][A]!=null&&J.s[k][B]!=null){const qa=J.s[k][A],qb=J.s[k][B];pct=qa?(qb/qa-1)*100:null;dir=qb>qa?1:qb<qa?-1:0;}
+    else{const d=wb-wa;dir=d>0.05?1:d<-0.05?-1:0;pct=null;r.byW=true;}
+    if(dir>0){r.inc++;r.incL.push([J.label,pct,wb-wa]);}else if(dir<0){r.dec++;r.decL.push([J.label,pct,wb-wa]);}else r.keep++;}}
+  AT=Object.values(M).map(r=>({...r,wa:r.ha?r.sa/r.ha:null,wb:r.hb?r.sb/r.hb:null,dw:(r.hb?r.sb/r.hb:0)-(r.ha?r.sa/r.ha:0),net:r.inc+r.nw-r.dec-r.ex}));
+  const q=(document.getElementById('eafq').value||'').trim().toLowerCase(),oc=document.getElementById('eafchg').checked;
+  let R=AT.filter(r=>(!q||r.n.toLowerCase().includes(q)||r.k.includes(q))&&(!oc||r.inc+r.dec+r.nw+r.ex>0));
+  R.sort((x,y)=>{const a=x[aSort],b=y[aSort];if(typeof a==='string')return aDir*a.localeCompare(b);return aDir*((a??-1e9)-(b??-1e9))||(y.hb-x.hb);});
+  const dB=last.slice(5).replace('-','/'),dAa=dA.slice(5).replace('-','/');
+  document.getElementById('eafh').innerHTML=`<b>${dA} → ${last}</b> · 종목 ${R.length.toLocaleString()}개 (전체 ${AT.length.toLocaleString()}) · ETF ${ALL.length}개${byW?' · <span class="muted">일부 ETF는 수량 기록이 없어 비중 기준</span>':''}`;
+  const H=[['n',`종목명`],['ha',`${dAa} 보유 ETF 수`],['hb',`${dB} 보유 ETF 수`],['nw','신규 ETF'],['ex','편출 ETF'],['inc','수량 증가 ETF'],['dec','수량 감소 ETF'],['keep','유지 ETF'],['wa',`${dAa} 평균비중(%)`],['wb',`${dB} 평균비중(%)`],['dw','평균비중 증감(%p)'],['incL','수량 증가 ETF'],['decL','수량 감소·편출 ETF']];
+  const L=(r,side)=>(side?r.incL:r.decL).map(([l,p,x])=>p!=null?`${l}(${p>0?'+':''}${p.toFixed(1)}%)`:`${l}${x!=null?`(${x>0?'+':''}${x.toFixed(2)}%p)`:''}`).join(', ');
+  T.innerHTML='<thead><tr>'+H.map(([k,t])=>`<th data-k="${k}" class="${k==='n'||k.endsWith('L')?'l':''}">${t}${k===aSort?(aDir<0?' ▼':' ▲'):''}</th>`).join('')+'</tr></thead><tbody>'+
+   R.slice(0,1500).map(r=>`<tr><td class="l" style="min-width:110px"><b>${r.n}</b></td><td>${r.ha}</td><td>${r.hb}</td><td class="${r.nw?'up':''}">${r.nw}</td><td class="${r.ex?'dn':''}">${r.ex}</td><td class="${r.inc?'up':''}">${r.inc}</td><td class="${r.dec?'dn':''}">${r.dec}</td><td>${r.keep}</td><td>${r.wa==null?'—':r.wa.toFixed(2)}</td><td>${r.wb==null?'—':r.wb.toFixed(2)}</td><td class="${cl(r.dw)}">${(r.dw>0?'+':'')+r.dw.toFixed(2)}</td><td class="l">${L(r,1)}</td><td class="l">${L(r,0)}</td></tr>`).join('')+'</tbody>';
+  T.querySelectorAll('th').forEach(th=>th.onclick=()=>{const k=th.dataset.k;if(k.endsWith('L'))return;if(aSort===k)aDir=-aDir;else{aSort=k;aDir=k==='n'?1:-1;}allTbl();});
+  T.dataset.h=JSON.stringify(H.map(x=>x[1]));window.__eaAll=R.map(r=>[r.n,r.k,r.ha,r.hb,r.nw,r.ex,r.inc,r.dec,r.keep,r.wa==null?null:+r.wa.toFixed(2),r.wb==null?null:+r.wb.toFixed(2),+r.dw.toFixed(2),L(r,1),L(r,0)]);window.__eaHdr=['종목명','종목코드',...H.slice(1).map(x=>x[1])];window.__eaRange=`${dA}_${last}`;}
+ async function xls(){const R=window.__eaAll||[];if(!R.length)return;
+  if(!window.XLSX)await new Promise((ok,no)=>{const s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js';s.onload=ok;s.onerror=no;document.head.append(s);});
+  const ws=XLSX.utils.aoa_to_sheet([window.__eaHdr,...R]);ws['!cols']=[16,9,10,10,8,8,10,10,8,12,12,12,60,60].map(w=>({wch:w}));ws['!autofilter']={ref:XLSX.utils.encode_range({s:{r:0,c:0},e:{r:R.length,c:13}})};
+  const wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,'전종목');const blob=new Blob([XLSX.write(wb,{bookType:'xlsx',type:'array'})],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`액티브ETF_전종목_${window.__eaRange}.xlsx`;document.body.append(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},2000);}
  init();
 })();
