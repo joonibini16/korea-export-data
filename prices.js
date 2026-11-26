@@ -62,6 +62,13 @@
     options:{...base(),scales:{x:timeAxis(D4),y:{beginAtZero:true,title:{display:true,text:'Price (USD/module)'}},y1:{position:'right',beginAtZero:true,grid:{drawOnChartArea:false},title:{display:true,text:'64GB Spot - Contract (USD/module)'}}}}});
    const c=ser(G,'ddr5_16gb_chip_spot').at(-1),u=ser(G,'ddr5_udimm16_spot').at(-1);
    const st32=own32.at(-1)?Math.round((Date.now()-new Date(own32.at(-1).d))/864e5):0;document.getElementById('f4').textContent=(st32>8?`⚠ DRAMeXchange가 모듈 현물가를 ${own32.at(-1).d} 이후 ${st32}일째 새로 게시하지 않았습니다(원본 미갱신, 매일 자동 확인 중). `:'')+`DRAMeXchange 자체 수집: DDR5 RDIMM 32GB ${own32.at(-1)?'$'+own32.at(-1).v.toLocaleString()+' ('+own32.at(-1).d+')':'(다음 실행부터)'} · DDR5 UDIMM 16GB ${u?'$'+u.v+' ('+u.d+')':'—'} · DDR5 16Gb 칩 현물 ${c?'$'+c.v+' ('+c.d+')':'—'}`;}
+  {const sp=ser(R,'ref_dram_spot_gb'),ct=ser(R,'ref_dram_contract_gb');if(sp.length&&document.getElementById('c4b')){
+   const cm=Object.fromEntries(ct.map(x=>[x.d,x.v])),spr=sp.filter(x=>cm[x.d]).map(x=>({d:x.d,v:(x.v/cm[x.d]-1)*100})),ls=sp.at(-1),lc=ct.at(-1),lp=spr.at(-1),mx=sp.reduce((m,x)=>x.v>m.v?x:m,sp[0]);
+   document.getElementById('n4b').textContent=`${sp[0].d} ~ ${ls.d} · 현물 최고 $${mx.v.toFixed(2)}/Gb (${mx.d}) 대비 ${((ls.v/mx.v-1)*100).toFixed(1)}%`;
+   document.getElementById('b4b').textContent=`현물 $${ls.v.toFixed(2)} | 고정 $${lc.v.toFixed(2)} | 스프레드 ${lp.v>0?'+':''}${lp.v.toFixed(1)}%`;
+   const D=[{type:'line',label:'스프레드 % (우)',data:pts(spr),yAxisID:'y1',borderWidth:0,pointRadius:0,fill:'origin',backgroundColor:'rgba(148,163,184,.28)',parsing:false,order:9},
+     L('현물가 ($/Gb)',pts(sp),'#3b5bdb',{pointRadius:0,borderWidth:2.5}),L('고정가 ($/Gb)',pts(ct),'#ef4444',{pointRadius:0,borderWidth:2.5,stepped:true})];
+   new Chart(document.getElementById('c4b'),{type:'line',data:{datasets:D},options:{...base(),scales:{x:timeAxis(D),y:{beginAtZero:true,title:{display:true,text:'$/Gb'}},y1:{position:'right',grid:{drawOnChartArea:false},title:{display:true,text:'스프레드 %'},ticks:{callback:v=>v+'%'}}}}});}}
   // 최근 수집값 표
   {const last={};G.forEach(r=>{if(!last[r.series]||r.date>=last[r.series].date)last[r.series]=r;});
    const NM={or_tokens_t:'OpenRouter 일별 토큰',or_price_per_m:'OpenRouter 가중평균 단가',or_spend_musd:'OpenRouter 추정 일 지출',or_priced_cover:'가격 매칭 토큰 비중',or_prompt_share:'입력(prompt) 토큰 비중',or_models:'집계 모델 수',

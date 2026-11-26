@@ -33,6 +33,7 @@
 <section class="panel"><div class="ph"><div><h2 data-upd="price_indicators_log.csv">Token Usage (OpenRouter)</h2><p class="muted" id="n2"></p></div><div class="pbadge" id="b2"></div></div><div class="chart"><canvas id="c2"></canvas></div><p class="muted" id="f2"></p></section>
 <details class="panel"><summary>과거 GPU 참고지수 · 판독·연결 (별도 기준)</summary><section class="panel"><div class="ph"><div><h2 data-upd="price_indicators_log.csv">GPU 과거 참고지수</h2><p class="muted" id="n3"></p></div><div class="pbadge" id="b3"></div></div><div class="chart"><canvas id="c3"></canvas></div><p class="muted" id="f3"></p></section></details>
 <section class="panel"><div class="ph"><div><h2 data-upd="price_indicators_log.csv">DDR5 RDIMM Prices &amp; 64GB Spread</h2><p class="muted" id="n4"></p></div><div class="pbadge" id="b4"></div></div><div class="chart"><canvas id="c4"></canvas></div><p class="muted" id="f4"></p></section>
+<section class="panel"><div class="ph"><div><h2>DRAM 현물가 vs 고정가 ($/Gb) · 스프레드</h2><p class="muted" id="n4b"></p></div><div class="pbadge" id="b4b"></div></div><div class="chart"><canvas id="c4b"></canvas></div><p class="muted">스프레드 = 현물가 ÷ 고정가 − 1. 현물가가 고정가보다 높을수록(+) 다음 분기 고정가 인상 압력이 크고, 스프레드가 줄거나 마이너스로 돌아서면 고정가 상승 둔화·하락 전환의 선행 신호로 봅니다. 자료: 사용자 제공 차트 판독치(주간, 2024-10 ~ 2026-11-20).</p></section>
 </div>
 <section class="panel"><h2 data-upd="price_indicators_log.csv">최근 수집값</h2><p class="muted">GitHub Actions가 매일 10:37·12:37·14:37·16:47·19:47·23:47(KST)에 수집합니다. 실제 실행은 지연될 수 있으며 과거 행은 보존합니다.</p><div style="overflow:auto"><table class="kt" id="kt"></table></div><p class="muted" id="st"></p></section>
 <section class="panel"><h2>기준과 출처</h2><p class="muted" id="src"><b>원칙: 원본 출처 데이터를 우선 쓰고, 원본에서 구할 수 없는 구간(원본 사이트가 과거 이력을 공개하지 않거나 자동 수집을 금지한 경우)에만 BADONION 차트 판독치를 참고치로 씁니다.</b> 원본: OpenRouter(토큰·단가, 2026-10-14~), Vast.ai·RunPod(GPU, 2026-10-15~), Ornn OCPI(GPU 체결가, 공개 이력 2026-07~, Ornn Data 허가), DRAMeXchange(DDR5 32GB 현물, 2026-10-05~). 과거 이력: OpenRouter는 당일 값만 공개, DRAMeXchange 이력 차트는 robots.txt로 수집 금지, BADONION GPU 지수의 원 출처는 비공개라 판독치로 대체.<br>
@@ -42,6 +43,6 @@
 · <b>DDR5 RDIMM</b>: 32GB 현물가는 DRAMeXchange(TrendForce) 모듈 현물 세션 평균(주간 갱신)으로 매일 이어 붙입니다. 64GB 현물가·계약가와 스프레드 막대는 무료 공개 자료가 없어 BADONION 차트 판독치(~2026-10-05)만 표시합니다.<br>
 · 판독치는 차트 픽셀을 읽은 근사값이라 원 자료와 ±1~2% 차이가 날 수 있습니다.</p></section>
 </main>
-<script src="./prices.js?v=10"></script><script src="./gpu_rental.js?v=6"></script><script src="./nebius_spot.js?v=3"></script></body></html>
+<script src="./prices.js?v=11"></script><script src="./gpu_rental.js?v=6"></script><script src="./nebius_spot.js?v=3"></script></body></html>
 
 
