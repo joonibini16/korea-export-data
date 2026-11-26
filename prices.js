@@ -61,7 +61,7 @@
      {type:'bar',label:'64GB Spot - Contract (우)',data:pts(sp),backgroundColor:C.gr,yAxisID:'y1',parsing:false,barThickness:14,order:5}];new Chart(document.getElementById('c4'),{type:'bar',data:{datasets:D4},
     options:{...base(),scales:{x:timeAxis(D4),y:{beginAtZero:true,title:{display:true,text:'Price (USD/module)'}},y1:{position:'right',beginAtZero:true,grid:{drawOnChartArea:false},title:{display:true,text:'64GB Spot - Contract (USD/module)'}}}}});
    const c=ser(G,'ddr5_16gb_chip_spot').at(-1),u=ser(G,'ddr5_udimm16_spot').at(-1);
-   document.getElementById('f4').textContent=`DRAMeXchange 자체 수집: DDR5 RDIMM 32GB ${own32.at(-1)?'$'+own32.at(-1).v.toLocaleString()+' ('+own32.at(-1).d+')':'(다음 실행부터)'} · DDR5 UDIMM 16GB ${u?'$'+u.v+' ('+u.d+')':'—'} · DDR5 16Gb 칩 현물 ${c?'$'+c.v+' ('+c.d+')':'—'}`;}
+   const st32=own32.at(-1)?Math.round((Date.now()-new Date(own32.at(-1).d))/864e5):0;document.getElementById('f4').textContent=(st32>8?`⚠ DRAMeXchange가 모듈 현물가를 ${own32.at(-1).d} 이후 ${st32}일째 새로 게시하지 않았습니다(원본 미갱신, 매일 자동 확인 중). `:'')+`DRAMeXchange 자체 수집: DDR5 RDIMM 32GB ${own32.at(-1)?'$'+own32.at(-1).v.toLocaleString()+' ('+own32.at(-1).d+')':'(다음 실행부터)'} · DDR5 UDIMM 16GB ${u?'$'+u.v+' ('+u.d+')':'—'} · DDR5 16Gb 칩 현물 ${c?'$'+c.v+' ('+c.d+')':'—'}`;}
   // 최근 수집값 표
   {const last={};G.forEach(r=>{if(!last[r.series]||r.date>=last[r.series].date)last[r.series]=r;});
    const NM={or_tokens_t:'OpenRouter 일별 토큰',or_price_per_m:'OpenRouter 가중평균 단가',or_spend_musd:'OpenRouter 추정 일 지출',or_priced_cover:'가격 매칭 토큰 비중',or_prompt_share:'입력(prompt) 토큰 비중',or_models:'집계 모델 수',
