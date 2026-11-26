@@ -23,13 +23,13 @@
 <div class="chart" style="height:300px;margin-top:10px;display:none" id="eschw"><canvas id="esch"></canvas></div>
 </section>
 <section class="panel" id="eaAll" style="margin-bottom:14px">
-<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><h2 style="margin:0">전 종목 · ETF 보유 현황 비교</h2><div class="ea-q" id="eafsc" style="display:flex;gap:6px"><button data-s="all" class="on">국내 주식형 ETF 전체</button><button data-s="dash">대시보드 ETF</button></div></div>
+<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><h2 style="margin:0">전 종목 · ETF 보유 현황 비교</h2><div class="ea-q" id="eafsc" style="display:flex;gap:6px"><button data-s="all" class="on">국내 주식형 ETF 전체</button><button data-s="act">액티브 ETF 전체</button><button data-s="dash">대시보드 ETF</button></div></div>
 <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><input id="eafq" type="search" placeholder="종목 필터" style="padding:6px 10px;border-radius:8px;border:1px solid #2a3a5c;background:#0b1322;color:inherit;font:inherit;font-size:13px;width:150px">
 <label class="muted" style="font-size:12px"><input type="checkbox" id="eafchg"> 변화 있는 종목만</label>
 <button id="eafxls" type="button" style="padding:5px 12px;border-radius:999px;border:1px solid rgba(96,165,250,.5);background:rgba(37,99,235,.18);color:inherit;font:inherit;font-size:12px;cursor:pointer">엑셀 다운로드</button></div></div>
 <p class="muted" id="eafh" style="margin:6px 0"></p>
 <div style="overflow:auto;max-height:640px"><table class="kt ea" id="eaft"></table></div>
-<p class="muted" style="margin-top:8px">비교 기간은 위 '요약'의 전일 대비 / 5거래일 / 20거래일 버튼을 따릅니다. 수량 증가·감소는 ETF가 실제로 보유한 주식 수(CU당 주식 수) 기준이며, 수량 기록이 없는 날짜는 비중 변화(±0.05%p)로 대신 판정합니다(표에 '비중 기준' 표시). 평균 비중 = 그날 보유한 ETF들의 단순 평균.</p>
+<p class="muted" style="margin-top:8px">비교 기간은 위 '요약'의 전일 대비 / 5거래일 / 20거래일 버튼을 따릅니다. 수량 증가·감소는 ETF가 실제로 보유한 주식 수(CU당 주식 수) 기준이며, 수량 기록이 없는 날짜는 비중 변화(±0.05%p)로 대신 판정합니다(표에 '비중 기준' 표시). '전체'는 KRX 기초시장 국내·기초자산 주식인 ETF 전부(레버리지·인버스·합성 제외, 매일 19:20 수집)를 대상으로 합니다. 지수형 ETF는 지수 정기변경·CU 조정으로도 수량이 바뀌므로 운용 판단은 '액티브 ETF 전체'에서 보는 것이 정확합니다. 평균 비중 = 그날 보유한 ETF들의 단순 평균.</p>
 </section>
 <div id="actWrap">
 <p class="muted">액티브 ETF는 운용역이 종목 비중을 매일 바꿀 수 있어, 비중 변화가 곧 운용사의 매매 방향입니다. KRX에 매일 공시되는 구성종목(PDF) 전체를 기록해 두 날짜의 비중을 비교합니다. 비중 변화에는 주가 등락 효과(오른 종목은 비중이 저절로 커짐)도 섞여 있으니 5·20거래일 흐름과 함께 보세요.</p>
@@ -41,4 +41,4 @@
 <div class="panel" style="margin-top:12px;overflow:auto;max-height:640px"><table class="kt ea" id="eaTbl"></table></div></div>
 <p class="muted">원본: KRX 정보데이터시스템 ETF 구성종목(PDF) 일별 공시. 정규장 마감 직후(매일 15:45 무렵) 자동 수집·정리하고, 18:10에 한 번 더 확인합니다. 현금·선물 등 종목이 아닌 구성도 포함될 수 있습니다.</p>
 </div>
-</main><script src="./etf_active.js?v=2"></script><script src="./etf_active_summary.js?v=4"></script><script>window.__etfActive&&window.__etfActive();</script></body></html>
+</main><script src="./etf_active.js?v=2"></script><script src="./etf_active_summary.js?v=5"></script><script>window.__etfActive&&window.__etfActive();</script></body></html>

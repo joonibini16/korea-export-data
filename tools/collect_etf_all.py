@@ -18,6 +18,7 @@ now = dt.datetime.now(KST); today = now.strftime('%Y%m%d'); closed = now.hour * 
 st = {'run': now.isoformat(timespec='seconds'), 'errors': [], 'calls': 0, 'dates': {}}
 num = lambda s: float(str(s).replace(',', '')) if re.fullmatch(r'-?[\d,]+(\.\d+)?', str(s or '').strip()) else None
 BUDGET = int(os.environ.get('CALL_BUDGET') or 2400)
+SKIP = re.compile(r'레버리지|인버스|2X|합성')  # 파생 재조정으로 CU 수량이 매일 바뀌는 ETF는 제외
 
 
 def call(path, **q):
@@ -36,7 +37,7 @@ def targets():
     j = call('dbms/MDC/STAT/standard/MDCSTAT04601', trdDd=today, share='1', csvxls_isNo='false')
     out = []
     for r in j.get('output') or j.get('OutBlock_1') or []:
-        if r.get('IDX_MKT_CLSS_NM') == '국내' and r.get('IDX_ASST_CLSS_NM') == '주식':
+        if r.get('IDX_MKT_CLSS_NM') == '국내' and r.get('IDX_ASST_CLSS_NM') == '주식' and not SKIP.search(r.get('ISU_ABBRV') or ''):
             out.append((r.get('ISU_SRT_CD'), r.get('ISU_CD'), r.get('ISU_ABBRV') or r.get('ISU_NM')))
     return out
 
@@ -89,8 +90,10 @@ def build():
     if not snaps: return
     B = load(snaps[-1]); res = {'updated_at': st['run'], 'latest': snaps[-1], 'dates': snaps, 'views': {}}
     for N in (1, 5, 20):
-        if len(snaps) <= N: continue
-        A = load(snaps[-1 - N]); common = set(A['etfs']) & set(B['etfs'])  # 두 날짜 모두 받은 ETF만 비교
+      if len(snaps) <= N: continue
+      A = load(snaps[-1 - N])
+      for scope in ('all', 'act'):
+        common = {e for e in set(A['etfs']) & set(B['etfs']) if not SKIP.search(B['etfs'][e]['n']) and (scope == 'all' or '액티브' in B['etfs'][e]['n'])}  # 두 날짜 모두 받은 ETF만 비교
         M = {}
         for e in common:
             ha, hb, lab = A['etfs'][e]['h'], B['etfs'][e]['h'], B['etfs'][e]['n']
@@ -114,7 +117,7 @@ def build():
                          None if wa is None else round(wa, 2), None if wb is None else round(wb, 2), round((wb or 0) - (wa or 0), 2),
                          [[x[0], x[1]] for x in il], [[x[0], x[1]] for x in dl], len(r['il']), len(r['dl'])])
         rows.sort(key=lambda x: (-(x[6] + x[4] - x[7] - x[5]), -x[3]))
-        res['views'][str(N)] = {'from': snaps[-1 - N], 'to': snaps[-1], 'etfs': len(common),
+        res['views'][str(N) + ('' if scope == 'all' else 'a')] = {'from': snaps[-1 - N], 'to': snaps[-1], 'etfs': len(common),
                                 'columns': ['code', 'name', 'ha', 'hb', 'nw', 'ex', 'inc', 'dec', 'keep', 'wa', 'wb', 'dw', 'inc_list', 'dec_list', 'inc_n', 'dec_n'], 'rows': rows}
     (ROOT / 'etf_all_table.json').write_text(json.dumps(res, ensure_ascii=False, separators=(',', ':')))
 

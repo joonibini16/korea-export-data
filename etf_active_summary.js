@@ -78,10 +78,10 @@
  fetch('etf_all_table.json?v='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.json():null).then(j=>{EA=j;if(!EA||!Object.keys(EA.views||{}).length){SC='dash';}document.querySelectorAll('#eafsc [data-s]').forEach(b=>{b.classList.toggle('on',b.dataset.s===SC);b.onclick=()=>{SC=b.dataset.s;document.querySelectorAll('#eafsc [data-s]').forEach(x=>x.classList.toggle('on',x===b));allTbl();};});allTbl();}).catch(()=>{SC='dash';});
  function allTbl(){
   const T=document.getElementById('eaft');if(!T)return;
-  if(SC==='all'&&EA&&EA.views){const v=EA.views[String(N)]||EA.views[Object.keys(EA.views).sort((a,b)=>Math.abs(a-N)-Math.abs(b-N))[0]];
-   const ci=Object.fromEntries(v.columns.map((c,i)=>[c,i])),fl=(a,more)=>a.map(([l,p])=>p==null?l:`${l}(${p>0?'+':''}${p.toFixed(1)}%)`).join(', ')+(more>a.length?` 외 ${more-a.length}개`:'');
+  if((SC==='all'||SC==='act')&&EA&&EA.views){const sf=SC==='act'?'a':'',ks=Object.keys(EA.views).filter(k=>sf?k.endsWith('a'):!k.endsWith('a')),v=EA.views[N+sf]||EA.views[ks.sort((a,b)=>Math.abs(parseInt(a)-N)-Math.abs(parseInt(b)-N))[0]];
+   const ci=Object.fromEntries(v.columns.map((c,i)=>[c,i])),fl=(a,more)=>a.map(([l,p])=>p==null?l:`${l}(${p>0?'+':''}${p.toFixed(Math.abs(p)<0.1?2:1)}%)`).join(', ')+(more>a.length?` 외 ${more-a.length}개`:'');
    AT=v.rows.map(x=>({k:x[0],n:x[1],ha:x[2],hb:x[3],nw:x[4],ex:x[5],inc:x[6],dec:x[7],keep:x[8],wa:x[9],wb:x[10],dw:x[11],IL:fl(x[12],x[14]),DL:fl(x[13],x[15]),net:x[6]+x[4]-x[7]-x[5]}));
-   return renderAll(T,v.from,v.to,`국내 주식형 ETF ${v.etfs}개 (두 날짜 모두 수집된 ETF)`,false);}const last=ALL.map(j=>j.dates.at(-1)).sort().at(-1);const M={};let dA='',byW=false;
+   return renderAll(T,v.from,v.to,`${SC==='act'?'액티브':'국내 주식형'} ETF ${v.etfs}개 (두 날짜 모두 수집된 ETF)${parseInt(Object.keys(EA.views).find(k=>EA.views[k]===v))!==N?' · 요청 기간 자료 부족으로 가장 가까운 기간 표시':''}`,false);}const last=ALL.map(j=>j.dates.at(-1)).sort().at(-1);const M={};let dA='',byW=false;
   for(const J of ALL){const B=J.dates.length-1;if(J.dates[B]!==last)continue;const A=Math.max(0,B-N);dA=J.dates[A];
    const hasS=J.sd&&J.sd.includes(J.dates[A])&&J.sd.includes(J.dates[B]);if(!hasS)byW=true;
    const keys=new Set([...Object.keys(J.w)]);
