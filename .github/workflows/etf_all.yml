@@ -1,0 +1,37 @@
+name: All domestic equity ETF holdings (PDF) — after close
+on:
+  workflow_dispatch:
+    inputs:
+      all_days: {description: '최근 N거래일 채우기', required: false, default: '1'}
+      call_budget: {description: '실행당 KRX 호출 상한', required: false, default: '2400'}
+permissions:
+  contents: write
+concurrency:
+  group: etf-all
+  cancel-in-progress: false
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 80
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: pip install -q requests
+      - run: python tools/collect_etf_all.py
+        continue-on-error: true
+        env:
+          KRX_ID: ${{ secrets.KRX_ID }}
+          KRX_PW: ${{ secrets.KRX_PW }}
+          ALL_DAYS: ${{ github.event.inputs.all_days || '1' }}
+          CALL_BUDGET: ${{ github.event.inputs.call_budget || '2400' }}
+      - run: |
+          git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          mkdir -p /tmp/ea && cp -r etf_all etf_all_table.json etf_all_status.json /tmp/ea/ 2>/dev/null || true
+          for i in 1 2 3 4 5; do
+            git fetch -q origin main && git reset -q --hard origin/main
+            mkdir -p etf_all; cp /tmp/ea/etf_all/* etf_all/ 2>/dev/null; cp /tmp/ea/etf_all_table.json /tmp/ea/etf_all_status.json . 2>/dev/null || true
+            git add etf_all etf_all_table.json etf_all_status.json 2>/dev/null; git diff --cached --quiet && exit 0
+            git commit -qm "Update all-ETF holdings" && git push -q origin HEAD:main && exit 0; sleep $((i*4))
+          done
+          exit 1
