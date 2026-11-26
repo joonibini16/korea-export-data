@@ -5,6 +5,7 @@ on:
       pdf_from: {description: '과거 채우기 시작일 (YYYY-MM-DD)', required: false, default: ''}
       list_active: {description: '국내 액티브 ETF 후보 목록만 저장(1)', required: false, default: ''}
       list_pat: {description: '후보 목록 이름 정규식(선택)', required: false, default: ''}
+      shares_days: {description: '최근 N일 보유 수량 다시 받기', required: false, default: ''}
 permissions:
   contents: write
 concurrency:
@@ -27,6 +28,7 @@ jobs:
           PDF_FROM: ${{ github.event.inputs.pdf_from }}
           LIST_ACTIVE: ${{ github.event.inputs.list_active }}
           LIST_PAT: ${{ github.event.inputs.list_pat }}
+          SHARES_DAYS: ${{ github.event.inputs.shares_days }}
       - env:
           LIST_ACTIVE: ${{ github.event.inputs.list_active }}
         run: |

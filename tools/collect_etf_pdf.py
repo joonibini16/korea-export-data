@@ -55,7 +55,10 @@ def pdf(isin, day):
     for r in j.get('output') or j.get('OutBlock_1') or []:
         code = (r.get('COMPST_ISU_CD') or '').strip(); name = (r.get('COMPST_ISU_NM') or '').strip()
         w = num(r.get('COMPST_RTO')); amt = num(r.get('VALU_AMT'))
-        if name: out.append((code[-6:] if re.fullmatch(r'KR7\w{9}', code) else code, name, w, amt))
+        if 'pdf_keys' not in st: st['pdf_keys'] = {k: r[k] for k in list(r)[:20]}
+        sk = next((k for k in ('COMPST_ISU_CU1_SHRS', 'COMPST_ISU_SHRS', 'CU1_SHRS', 'SHRS') if k in r), None) or next((k for k in r if 'SHRS' in k or 'QTY' in k), None)
+        sh = num(r.get(sk)) if sk else None
+        if name: out.append((code[-6:] if re.fullmatch(r'KR7\w{9}', code) else code, name, w, amt, sh))
     return out
 
 
@@ -106,12 +109,16 @@ def main():
         tds = f'{today[:4]}-{today[4:6]}-{today[6:]}'
         if closed and tds in J['dates'] and tds not in J.get('closed', []):  # 장중에 받은 당일 자료는 장 마감 후 다시 받음
             i = J['dates'].index(tds); J['dates'].pop(i)
-            for a in J['w'].values():
+            for a in list(J['w'].values()) + list(J.get('s', {}).values()):
                 if len(a) > i: a.pop(i)
-        have = set(J['dates'])
-        for d in days:
+            J['sd'] = [x for x in J.get('sd', []) if x != tds]
+        have = set(J['dates']); J.setdefault('s', {}); J.setdefault('sd', [])
+        # 보유 수량(CU당 주식 수) 기록: 새 날짜는 함께 받고, SHARES_DAYS가 있으면 최근 N일 중 수량이 없는 날짜를 다시 받음
+        nsd = int(os.environ.get('SHARES_DAYS') or 0)
+        refill = [x.replace('-', '') for x in J['dates'][-nsd:] if x not in J['sd']] if nsd else []
+        for d in sorted(set(days) | set(refill)):
             ds = f'{d[:4]}-{d[4:6]}-{d[6:]}'
-            if ds in have: continue
+            if ds in have and d not in refill: continue
             rows = None
             for att in range(3):  # KRX 세션 만료(로그인 화면 HTML) 시 다시 로그인 후 재시도
                 try:
@@ -125,19 +132,30 @@ def main():
                         except Exception as le: st['errors'].append(f'재로그인 실패 {str(le)[:60]}')
             if rows is None: continue
             if not rows: continue
+            if ds in have:  # 기존 날짜: 수량만 채움
+                i = J['dates'].index(ds); n_ = len(J['dates'])
+                for c, n, w, amt, sh in rows:
+                    a = J['s'].setdefault(c or n, []); a.extend([None] * (n_ - len(a))); a[i] = sh
+                if any(r[4] is not None for r in rows): J['sd'].append(ds)
+                continue
             tot = sum(r[3] or 0 for r in rows)
-            k = len(J['dates']); J['dates'].append(ds)
+            k = len(J['dates']); J['dates'].append(ds); have.add(ds)
             if closed or d < today: J.setdefault('closed', []).append(ds)
-            for c, n, w, amt in rows:
+            if any(r[4] is not None for r in rows): J['sd'].append(ds)
+            for c, n, w, amt, sh in rows:
                 key = c or n
                 if w is None and tot: w = (amt or 0) / tot * 100
                 J['names'][key] = n
                 a = J['w'].setdefault(key, []); a.extend([None] * (k - len(a))); a.append(round(w, 2) if w is not None else None)
+                a = J['s'].setdefault(key, []); a.extend([None] * (k - len(a))); a.append(sh)
         # 날짜순 정렬(과거 채우기로 순서가 섞일 수 있음)
         order = sorted(range(len(J['dates'])), key=lambda i: J['dates'][i])
         J['dates'] = [J['dates'][i] for i in order]
         for key, a in J['w'].items():
             a.extend([None] * (len(order) - len(a))); J['w'][key] = [a[i] for i in order]
+        for key, a in J['s'].items():
+            a.extend([None] * (len(order) - len(a))); J['s'][key] = [a[i] for i in order]
+        J['sd'] = sorted(set(J['sd']))
         J['updated_at'] = st['run']
         f.write_text(json.dumps(J, ensure_ascii=False, separators=(',', ':')))
         index.append(dict(code=code, name=nm, label=label, days=len(J['dates']), last=J['dates'][-1] if J['dates'] else None))
