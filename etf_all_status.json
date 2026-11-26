@@ -1,12 +1,112 @@
 {
- "run": "2026-11-26T19:56:14+09:00",
+ "run": "2026-11-26T19:57:06+09:00",
  "errors": [],
- "calls": 1,
+ "calls": 1843,
  "dates": {
   "2026-11-26": {
    "etfs": 460,
    "added": 0,
    "remaining": 0
+  },
+  "2026-11-25": {
+   "etfs": 460,
+   "added": 0,
+   "remaining": 0
+  },
+  "2026-11-24": {
+   "etfs": 460,
+   "added": 0,
+   "remaining": 0
+  },
+  "2026-11-23": {
+   "etfs": 460,
+   "added": 0,
+   "remaining": 0
+  },
+  "2026-11-20": {
+   "etfs": 460,
+   "added": 0,
+   "remaining": 0
+  },
+  "2026-11-19": {
+   "etfs": 418,
+   "added": 0,
+   "remaining": 0
+  },
+  "2026-11-18": {
+   "etfs": 414,
+   "added": 0,
+   "remaining": 0
+  },
+  "2026-11-17": {
+   "etfs": 414,
+   "added": 0,
+   "remaining": 0
+  },
+  "2026-11-16": {
+   "etfs": 414,
+   "added": 0,
+   "remaining": 0
+  },
+  "2026-11-13": {
+   "etfs": 414,
+   "added": 0,
+   "remaining": 0
+  },
+  "2026-11-12": {
+   "etfs": 414,
+   "added": 41,
+   "remaining": 0
+  },
+  "2026-11-11": {
+   "etfs": 414,
+   "added": 0,
+   "remaining": 0
+  },
+  "2026-11-10": {
+   "etfs": 414,
+   "added": 0,
+   "remaining": 0
+  },
+  "2026-11-09": {
+   "etfs": 411,
+   "added": 0,
+   "remaining": 3
+  },
+  "2026-11-06": {
+   "etfs": 411,
+   "added": 0,
+   "remaining": 3
+  },
+  "2026-11-05": {
+   "etfs": 411,
+   "added": 0,
+   "remaining": 3
+  },
+  "2026-11-04": {
+   "etfs": 411,
+   "added": 131,
+   "remaining": 3
+  },
+  "2026-11-03": {
+   "etfs": 411,
+   "added": 411,
+   "remaining": 3
+  },
+  "2026-11-02": {
+   "etfs": 410,
+   "added": 410,
+   "remaining": 4
+  },
+  "2026-10-30": {
+   "etfs": 410,
+   "added": 410,
+   "remaining": 4
+  },
+  "2026-10-29": {
+   "etfs": 410,
+   "added": 410,
+   "remaining": 4
   }
  },
  "etfs": 414
