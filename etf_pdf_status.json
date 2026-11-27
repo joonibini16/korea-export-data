@@ -1,5 +1,5 @@
 {
- "run": "2026-11-26T18:10:19+09:00",
+ "run": "2026-11-27T15:45:20+09:00",
  "resolved": {
   "DS AI반도체액티브": [
    "DS AI반도체액티브",
@@ -87,5 +87,16 @@
   ]
  },
  "errors": [],
- "master_n": 1191
+ "master_n": 1191,
+ "pdf_keys": {
+  "COMPST_ISU_CD": "000660",
+  "COMPST_ISU_CD2": "KR7000660001",
+  "MKT_ID": "STK",
+  "SECUGRP_ID": "ST",
+  "COMPST_ISU_NM": "SK하이닉스",
+  "COMPST_ISU_CU1_SHRS": "67.00",
+  "VALU_AMT": "70,551,000",
+  "COMPST_AMT": "74,169,000",
+  "COMPST_RTO": "23.79"
+ }
 }
